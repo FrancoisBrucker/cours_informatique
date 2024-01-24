@@ -2,13 +2,6 @@
 layout: layout/post.njk 
 title: "Étude : mélanger un tableau"
 
-eleventyNavigation:
-    order: 18
-    prerequis:
-        - "../../code/projet-exponentiation/"
-        - "../../algorithme/complexités/problème/"
-        - "../complexités/amortie/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -16,11 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+> TBD complexité amortie ?
 
 Nous allons étudier deux algorithmes permettant de mélanger un tableau.
-
-<!-- end résumé -->
 
 {% faire %}
 Créez un projet vscode pour implémenter, tester et utiliser les différents algorithmes.
@@ -30,9 +21,9 @@ Commençons par identifier le problème. Nous allons utiliser le problème suiva
 
 {% note "**Problème** :" %}
 
-* **nom** : permutation
-* **entrée** : un tableau d'entiers
-* **sortie** : une permutation aléatoire du tableau en entrée
+- **nom** : permutation
+- **entrée** : un tableau d'entiers
+- **sortie** : une permutation aléatoire du tableau en entrée
 
 {% endnote %}
 
@@ -42,9 +33,9 @@ L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un e
 
 {% note "**Problème** :" %}
 
-* **nom** : randrange
-* **entrées** : un entier $a$
-* **sortie** : un entier aléatoire $b$ tel que $0 \leq b < a$.
+- **nom** : randrange
+- **entrées** : un entier $a$
+- **sortie** : un entier aléatoire $b$ tel que $0 \leq b < a$.
 
 {% endnote %}
 
@@ -128,11 +119,11 @@ L'ordre entre les tableau d'entier classique est l'[ordre lexicographique](https
 {% note "**définition**" %}
 L'***ordre lexicographique*** entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :
 
-* $T_1 = T_2$ si $|T_1| = |T_2|$ et $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$
-* $T_1 < T_2$ si :
-  * $T_1[i] = T_2[i]$ pour tout $0 \leq i < i^\star$ et $T_1[i^\star] < T_2[i^\star]$
-  * $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$ et $|T_1| < |T_2|$
-* $T_1 > T_2$ si $T_2 < T_1$
+- $T_1 = T_2$ si $|T_1| = |T_2|$ et $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$
+- $T_1 < T_2$ si :
+  - $T_1[i] = T_2[i]$ pour tout $0 \leq i < i^\star$ et $T_1[i^\star] < T_2[i^\star]$
+  - $T_1[i] = T_2[i]$ pour tout $0 \leq i < |T_1|$ et $|T_1| < |T_2|$
+- $T_1 > T_2$ si $T_2 < T_1$
 
 {% endnote %}
 
@@ -143,10 +134,10 @@ Dans notre cas, nous ne considérons pas pas tous les tableaux d'entiers, unique
 Quelle est la plus petite $S_1$ et la plus grande $S_{n!}$ des permutations de S ?
 
 {% endexercice %}
-{% details "corrigé", "open" %}
+{% details "corrigé" %}
 
-* la plus petite sont les entiers rangés par ordre croisant
-* la plus grande sont les entiers rangés par ordre décroisant
+- la plus petite sont les entiers rangés par ordre croisant
+- la plus grande sont les entiers rangés par ordre décroisant
 
 {% enddetails %}
 
@@ -165,27 +156,27 @@ Si $i^{\star} = 0$, alors $S_i$ est la permutation la plus grande. Elle ne poss�
 
 Sinon, soient :
 
-* $i_1 = i^\star - 1$
-* $i_2 \geq i^\star$ l'indice tel que :
-  * $S_i[i_1] <  S_i[i_2]$
-  * $S_i[i_1] \leq  S_i[j]$ pour tout $j \geq i^\star$
+- $i_1 = i^\star - 1$
+- $i_2 \geq i^\star$ l'indice tel que :
+  - $S_i[i_1] <  S_i[i_2]$
+  - $S_i[i_1] \leq  S_i[j]$ pour tout $j \geq i^\star$
 
 Soit alors $S^\star$ le tableau tel que :
 
-* $S^\star[i_1] = S_{i}[i_2]$
-* $S^\star[i_2] = S_{i}[i_1]$
-* $S^\star[j] = S_{i}[j]$ pour tout $j < i_1$
-* les éléments de $S^\star[i^\star:]$ sont rangés par ordre croissant
+- $S^\star[i_1] = S_{i}[i_2]$
+- $S^\star[i_2] = S_{i}[i_1]$
+- $S^\star[j] = S_{i}[j]$ pour tout $j < i_1$
+- les éléments de $S^\star[i^\star:]$ sont rangés par ordre croissant
 
 Nous allons montrer que $S^\star$ est le successeur de $S_i$. En effet, soit $S_i < S'$ et $k$ le plus petit indice tel que $S_i[k] \neq S'[k]$. On a alors :
 
-* $S'[k] = S_i[j]$ avec $j > k$
-* $S_i[k] < S'[k]$
-* $k < i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant
-* Si $k < i_1$ alors S^\star < S'$
-* Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
-  * soit $S^\star[i_1] < S'[i_1]$ et $S^\star < S'$
-  * soit $S^\star[i_1] = S'[i_1]$ et comme $S^\star[i^\star:]$ est rangé par ordre croissant et contient les mêmes éléments que $S'[i^\star:]$, $S^\star \leq S'$
+- $S'[k] = S_i[j]$ avec $j > k$
+- $S_i[k] < S'[k]$
+- $k < i^\star$ car $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant
+- Si $k < i_1$ alors S^\star < S'$
+- Si $k = i_1$ alors $S^\star[i_1] \leq S'[i_1]$ par construction.
+  - soit $S^\star[i_1] < S'[i_1]$ et $S^\star < S'$
+  - soit $S^\star[i_1] = S'[i_1]$ et comme $S^\star[i^\star:]$ est rangé par ordre croissant et contient les mêmes éléments que $S'[i^\star:]$, $S^\star \leq S'$
 
 {% enddetails %}
 
@@ -223,14 +214,14 @@ def successeur(T):
 
 Cet algorithme est bien exact car :
 
-* il s'arrête
-* la boucle `while`{.language-} de la ligne 3 trouve bien $i^\star$ en cherchant le plus grand indice tel que $T[i] < T[i+1]$
-* la boucle `while`{.language-} de la ligne 11 inverse les éléments de la liste $T[i^\star:]$. Celle ci étant initialement rangé par ordre décroissant, l'inverser la range par ordre croissant
-* la boucle `while`{.language-} de la ligne 16 utilise le fait que $T[i^\star:]$ est rangé par ordre croissant pour trouver $i_2$ en s'arrêtant au premier élément plus grand que $T[i_1]$
+- il s'arrête
+- la boucle `while`{.language-} de la ligne 3 trouve bien $i^\star$ en cherchant le plus grand indice tel que $T[i] < T[i+1]$
+- la boucle `while`{.language-} de la ligne 11 inverse les éléments de la liste $T[i^\star:]$. Celle ci étant initialement rangé par ordre décroissant, l'inverser la range par ordre croissant
+- la boucle `while`{.language-} de la ligne 16 utilise le fait que $T[i^\star:]$ est rangé par ordre croissant pour trouver $i_2$ en s'arrêtant au premier élément plus grand que $T[i_1]$
 
 {% enddetails %}
 
-Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexités/amortie#compteur-agrégat){.interne}, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
+Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour [l'analyse par agrégat du compteur binaire](../complexité-amortie/#compteur-agrégat){.interne}, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.
 
 Pour tout $1 \leq i < n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] < S[n-i+1]$ ou $S[n-i] > S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] < S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] > S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] < S[n-i+1]$ et $S[n-i+1] > S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] > S[n-i+3]$...
 
@@ -247,7 +238,7 @@ $$
 
 En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.
 
-En poussant le calcul [comme on a fait pour le compteur binaires](../complexités/amortie#compteur-agrégat-partition){.interne}, on trouve :
+En poussant le calcul [comme on a fait pour le compteur binaires](../complexité-amortie/#compteur-agrégat-partition){.interne}, on trouve :
 
 $$
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
@@ -294,9 +285,9 @@ Par exemple pour `permutations([1, 2, 3, 4])`{.language-} va rendre la liste :
 
 On remarque que :
 
-* le premier élément du tableau de sortie est le tableau initial
-* le dernier élément du tableau de sortie est l'inverse du tableau initial
-* que sont placés en premier les permutations ne changeant pas le 1er élément, puis celle où le 2nd élément est le premier, et ainsi de suite jusqu'à placer toutes les permutations où le dernier élément est le premier.
+- le premier élément du tableau de sortie est le tableau initial
+- le dernier élément du tableau de sortie est l'inverse du tableau initial
+- que sont placés en premier les permutations ne changeant pas le 1er élément, puis celle où le 2nd élément est le premier, et ainsi de suite jusqu'à placer toutes les permutations où le dernier élément est le premier.
 
 ## Un premier algorithme
 
@@ -526,8 +517,8 @@ On suppose que le tableau d'entrée possède $n$ éléments.
 
 On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :
 
-* qu'une fois un élément choisi, il n'est plus jamais déplacé
-* tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisit un élément à chaque itération)
+- qu'une fois un élément choisi, il n'est plus jamais déplacé
+- tous les éléments seront choisis une fois dans l'algorithme (il y a $n$ itérations et on choisit un élément à chaque itération)
 
 #### Preuve par probabilités
 
@@ -535,11 +526,11 @@ On va calculer la probabilité que l'élément originellement en position $i$ se
 
 Pour que cela arrive, il faut que :
 
-* l'élément n'ait pas été pris pendant la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)
-* l'élément n'ait pas été pris pendant la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)
-* ...
-* l'élément n'ait pas été pris pendant la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)
-* l'élément ait été pris pendant la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive
+- l'élément n'ait pas été pris pendant la première itération : il y a $\frac{n-1}{n}$ chances que ça arrive (on ne choisit pas notre élément parmi $n$ possibles : $1-\frac{1}{n} = \frac{n-1}{n}$)
+- l'élément n'ait pas été pris pendant la deuxième itération : il y a $\frac{n-2}{n-1}$ chances que ça arrive (on ne choisit pas notre élément parmi $n - 1$ possibles : $1-\frac{1}{n-1} = \frac{n-2}{n-1}$)
+- ...
+- l'élément n'ait pas été pris pendant la $j-1$ ème itération : il y a $\frac{n-j+1}{n-j+2}$ chances que ça arrive (on ne choisit pas notre élément parmi $n-(j-1) +1$ possibles : $1-\frac{1}{n-j+2} = \frac{n-j+1}{n-j+2}$)
+- l'élément ait été pris pendant la $j$ ème itération : il y a $\frac{1}{n-j+1}$ chances que ça arrive
 
 De là, la probabilité que l'élément originellement en position $i$ se retrouve en position $n-j$ à la fin de l'algorithme est :
 
@@ -587,9 +578,9 @@ La ligne `element=arr.pop(j)`{.language-} supprime l'élément $j$ de la liste `
 
 On va montrer trois écueils du mélange :
 
-* le premier lié à un mauvais choix d'algorithme (mais pas évident à voir) : atteindre toutes les permutations n'est pas une garanti d'équiprobabilité.
-* le second montre que si votre algorithme dépend d'un autre, il faut aussi analyser ses performances.
-* le troisième lié aux biais cognitifs humains qui ne voient pas l'aléatoire comme ce qu'il est réellement.
+- le premier lié à un mauvais choix d'algorithme (mais pas évident à voir) : atteindre toutes les permutations n'est pas une garanti d'équiprobabilité.
+- le second montre que si votre algorithme dépend d'un autre, il faut aussi analyser ses performances.
+- le troisième lié aux biais cognitifs humains qui ne voient pas l'aléatoire comme ce qu'il est réellement.
 
 ### A trop mélanger on ne mélange pas bien
 
@@ -648,9 +639,9 @@ La fonction $(1 - \frac{1}{n})^n = e^{n \ln (1-\frac{1}{n})}$ est équivalente �
 
 Ceci est incompatible avec l'équiprobabilité puisque :
 
-* $P_n$ est plus petit que la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme (c'est même strictement plus petit puisqu'il peut n'avoir jamais bougé ou être revenu à sa place)
-* s'il y a équiprobabilité, la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme doit être de $\frac{1}{n}$
-* il existe $N_0$ tel que pour tout $n \geq N_0$, on a  $\frac{1}{n} < (\frac{1}{e})^2$
+- $P_n$ est plus petit que la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme (c'est même strictement plus petit puisqu'il peut n'avoir jamais bougé ou être revenu à sa place)
+- s'il y a équiprobabilité, la probabilité que l'élément d'indice $l$ soit en position $l$ à la fin de l'algorithme doit être de $\frac{1}{n}$
+- il existe $N_0$ tel que pour tout $n \geq N_0$, on a  $\frac{1}{n} < (\frac{1}{e})^2$
 
 {% note %}
 Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l'élément $l$ soit en position $l$ à la fin de l'algorithme est strictement plus grande que l'équiprobabilité.
@@ -682,8 +673,8 @@ La partie *A Shortage Of Random Numbers!* du lien suivant <https://www.i-program
 
 La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le [biais de confirmation](https://fr.wikipedia.org/wiki/Biais_de_confirmation) tend à se rappeler les évènement très défavorables au détriment de ceux juste *normaux*. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :
 
-* Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, [ils répondent le plus souvent 7](https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/).
-* lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : cela ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
+- Lorsque l'on demande à des humains de choisir un nombre aléatoirement entre 1 et 10, [ils répondent le plus souvent 7](https://www.reddit.com/r/dataisbeautiful/comments/acow6y/asking_over_8500_students_to_pick_a_random_number/).
+- lorsque l'on demande à des humains d'écrire une suite aléatoire de 200 nombres valant 0 ou 1, il y aura une sous-représentation des longues séquences avec le même nombre : cela ne *fait pas aléatoire* d'avoir plein de fois le même nombre à la suite (alors que statistiquement, il faut bien que ces séquences existent).
 
 {% info %}
 Lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela avec le mélangeur de [MTGA](https://magic.wizards.com/fr/mtgarena).
@@ -693,6 +684,6 @@ Lisez l'article de <https://draftsim.com/mtg-arena-shuffler/> qui montre cela av
 
 Quelques autres articles sur le sujet :
 
-* <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>
-* <https://blog.codinghorror.com/the-danger-of-naivete/>
-* <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>
+- <https://possiblywrong.wordpress.com/2014/12/01/card-shuffling-algorithms-good-and-bad/>
+- <https://blog.codinghorror.com/the-danger-of-naivete/>
+- <https://www.stashofcode.fr/tri-aleatoire-des-elements-dun-tableau/>

@@ -1,12 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "Algorithmes de tri"
-
-eleventyNavigation:
-    order: 7
-    prerequis:
-        - "../complexités/moyenne/"
-        - "../../algorithme/complexités/problème/"
+title: "Algorithmes"
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,19 +9,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Étude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.
-
-<!-- end résumé -->
-
-Les informaticiens adorent les [algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
+Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :
 
 {% note "**Problème**" %}
 
-* **nom** : tri
-* **données** : un tableau d'entiers
-* **réponse** : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
+- **nom** : tri
+- **données** : un tableau d'entiers
+- **réponse** : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
 
 {% endnote %}
 
@@ -37,10 +25,10 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 
 {% note "**Problème**" %}
 
-* **nom** : est trié ?
-* **données** : un tableau $T$ d'entiers
-* **réponse** : $T$ est-il trié de façon croissante ?
-* **réponse** : OUI ou NON.
+- **nom** : est trié ?
+- **données** : un tableau $T$ d'entiers
+- **réponse** : $T$ est-il trié de façon croissante ?
+- **réponse** : OUI ou NON.
 
 {% endnote %}
 
@@ -59,27 +47,29 @@ def est_trie(T):
 
 L'algorithme rend bien :
 
-* `True`{.language-} pour `est_trie([42])`{.language-}
-* `False`{.language-} pour `est_trie([4, 2])`{.language-}
-* `True`{.language-} pour `est_trie([2, 4])`{.language-}
+- `True`{.language-} pour `est_trie([42])`{.language-}
+- `False`{.language-} pour `est_trie([4, 2])`{.language-}
+- `True`{.language-} pour `est_trie([2, 4])`{.language-}
 
 #### Preuve
 
 La finitude de l'algorithme est claire puisqu'il n'y a qu'une boucle for avec autant d'itérations que la taille du tableau passé en entrée.
 
-Le preuve en démontrant l'invariant de boucle :
+Le preuve en démontrant :
 
-> A la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
+{% note "**Invariant de boucle**" %}
+À la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.
+{% endnote %}
 
 1. à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $T[i] \geq T[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.
 2. Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $T[i] \geq T[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.
 
 Au final :
 
-* L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
-* si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $T[i] < T[i-1]$, donc $T$ ne peut être trié.
+- L'invariant prouve que : si on arrive à la ligne 6 de l'algorithme c'est que les $n$ premiers éléments du tableau sont triés.
+- si on utilise le retour de la ligne 5 c'est qu'il existe $i$ avec $T[i] < T[i-1]$, donc $T$ ne peut être trié.
 
-{% note %}
+{% note "**Proposition**" %}
 L'algorithme `est_trie`{.language-} est une solution au problème *"est trié ?"*
 {% endnote %}
 
@@ -102,9 +92,9 @@ La complexité de l'algorithme `est_trie`{.language-} est $\mathcal{O}(n)$ avec 
 
 ### Complexité du problème
 
-Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [complexité du problème de la *"recherche"*](../../algorithme/complexités/problème#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
+Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de [la complexité du problème de la *"recherche"*](../../problème-complexités/#complexité-recherche){.interne}, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème *"est trié ?"* est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de `est_trie`{.language-}  est également de $\mathcal{O}(n)$. On en conclut :
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.
 {% endnote %}
 
@@ -112,7 +102,9 @@ La complexité du problème *"est trié ?"* est de $\mathcal{O}(n)$ où $n$ est 
 
 Commençons par une remarque d'importance :
 
-> Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
+{% note "**À retenir**" %}
+Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
+{% endnote %}
 
 Par exemple, pour un tableau à trois éléments :
 
@@ -125,7 +117,7 @@ Par exemple, pour un tableau à trois éléments :
 
 Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations d'un tableau où toutes ses valeurs sont deux à deux différentes.
 
-{% note %}
+{% note "**À retenir**" %}
 
 Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.
 
@@ -135,24 +127,25 @@ Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont 
 
 Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).
 
-Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le [tri par selection](./#tri-sélection){.interne} que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :
+Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple [le tri par selection](./#tri-sélection){.interne} que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :
 
-{% note %}
+{% note "**Proposition**" %}
 Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.
 {% endnote %}
 
 ### Borne minimum
 
-En utilisant la propriété de [nombre de cas à distinguer](../../algorithme/complexités/problème#n-test-2n){.interne} vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
+En utilisant la propriété [du nombre de cas à distinguer](../../problème-complexités/#n-test-2n){.interne} vue dans la complexité du problème de la *"recherche ordonnée"*, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :
 
-{% note %}
-Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(\ln(n!))$.
+{% note "**{% note "**Proposition**" %}
+**" %}
+Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.
 {% endnote %}
 
 Pour expliciter ce qu'est $\ln(n!)$, utilisons la propriété suivante :
 
-{% note "**Propriété**" %}
-Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.
+{% note "**Proposition**" %}
+Toute fonction en $\ln(n!) = \Theta(n\ln(n))$
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -213,16 +206,16 @@ $$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln(n)} \leq 1$$
 
 Enfin, on peut montrer les équivalences de $\mathcal{O}$ :
 
-* si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot \ln(n!)$ pour n > $N_0$. On a donc $g(n) < C \cdot \ln(n!) < C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.
-* si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot n\ln(n)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln(n!) < C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.
+- si $g(n)$ est en $\mathcal{O}(\ln(n!))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot \ln(n!)$ pour n > $N_0$. On a donc $g(n) < C \cdot \ln(n!) < C \cdot n\ln(n)$ : $g(n)$ est en $\mathcal{O}(n\ln(n))$.
+- si $g(n)$ est en $\mathcal{O}(n\ln(n))$ il existe $N_0$ et $C$ tel que : $g(n) < C \cdot n\ln(n)$ pour n > $N_0$. Pour $N_1 = \max(N_0, 4)$ on a donc $g(n) < C \cdot \ln(n!) < C \cdot 4 \cdot \ln(n!)$ : $g(n)$ est en $\mathcal{O}(\ln(n!))$.
 
 {% enddetails %}
 
-Cet equivalence de $\mathcal{O}$ nous donne finalement la borne minimum courante :
+Cet equivalence nous donne finalement la borne minimum courante :
 
 <div id="complexité-problème"></div>
 {% note "**Proposition**" %}
-Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.
+Tout algorithme de tri d'une liste à $n$ éléments est en $\Omega(n\ln(n))$ opérations.
 {% endnote %}
 
 {% info %}
@@ -255,8 +248,8 @@ L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètr
 
 On vérifie que l'algorithme fonctionne pour :
 
-* un petit tableau trié : `[1, 2, 3]`{.language-}
-* un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
+- un petit tableau trié : `[1, 2, 3]`{.language-}
+- un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
 
 #### <span id="preuve-sélection"></span> Preuve
 
@@ -265,7 +258,10 @@ Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce q
 1. la boucle `for`{.language-} de la ligne 4 trouve l'indice du plus petit élément du tableau `T[i:]`{.language-}.
 2. la ligne 7 échange le minimum du tableau `T[i:]`{.language-} avec `T[i]`{.language-}
 3. comme la boucle `for`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle :
-    > A la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau
+
+{% note "**Invariant de boucle**" %}
+À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.
+{% endnote %}
 
 #### <span id="complexités-sélection"></span> Complexités
 
@@ -281,7 +277,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser la [règle de croissance](../complexités/max-min#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../calcul-complexités/règles-de-calcul#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 
@@ -303,28 +299,28 @@ $$
 
 Le nombre d'itérations est constant quelque soit le tableau, on a donc :
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille du tableau passé en entrée) :
 
-* la **complexité min** vaut $\mathcal{O}(n^2)$
-* la **complexité (max)** vaut $\mathcal{O}(n^2)$
-* la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)
+- la **complexité min** vaut $\mathcal{O}(n^2)$
+- la **complexité (max)** vaut $\mathcal{O}(n^2)$
+- la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)
 
 {% endnote %}
 
 ### <span id="tri-insertion"></span> Tri par insertion
 
-Le tri par insertion est une extension de l'[algorithme `est_trie`{.language-}](./#algo-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
+Le tri par insertion est une extension de [l'algorithme `est_trie`{.language-}](./#algo-est-trie){.interne}. Plutôt que de rendre `False`{.language-} il répare. L'algorithme `est_trie`{.language-} répond `False`{.language-} au plus petit `i`{.language-} tel que `T[i] < T[i-1]`{.language-}. On est alors dans le cas où :
 
-* `T[:i]`{.language-} est trié
-* et `T[i] < T[i-1]`{.language-}
+- `T[:i]`{.language-} est trié
+- et `T[i] < T[i-1]`{.language-}
 
 Pour que l'on puisse continuer, il faut s'arranger pour que `T[:i+1]`{.language-} soit trié. Pour cela, on peut utiliser le fait que `T[:i+1]`{.language-} est trié si et seulement si :
 
-* `T[1] >= T[0]`{.language-}
-* `T[2] >= T[1]`{.language-}
-* ...
-* `T[i] >= T[i-1]`{.language-}
+- `T[1] >= T[0]`{.language-}
+- `T[2] >= T[1]`{.language-}
+- ...
+- `T[i] >= T[i-1]`{.language-}
 
 Dans notre cas, toutes les conditions sont vérifiées sauf la dernière. Si l'on échange `T[i]`{.language-} et `T[i-1]`{.language-} toutes les conditions seront vérifiées sauf peut-être l'avant-dernière. Si elle n'est pas vérifiée on peut échanger `T[i-1]`{.language-} et `T[i-1]`{.language-} et alors toutes les conditions seront vérifiées sauf peut-être l'avant-avant-dernière, que l'on peut à nouveau échanger, et ainsi de suite jusqu'à ce que toutes les conditions soient vérifiées.
 
@@ -345,18 +341,18 @@ def insertion(T):
 
 L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-}, **modifie** le tableau passé en paramètre.
 
-Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 la [sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition).
+Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 [la sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition).
 
-{% info %}
-La technique des [sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) est très pratique, cela vaut le coup de la connaître.
-{% endinfo %}
+{% note "**À retenir**" %}
+La technique [des sentinelles](https://en.wikipedia.org/wiki/Sentinel_value) est très pratique, cela vaut le coup de la connaître.
+{% endnote %}
 
 #### <span id="fonctionnement-insertion"></span> Fonctionnement
 
 Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :
 
-* un petit tableau trié : `[1, 2, 3]`{.language-}
-* un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
+- un petit tableau trié : `[1, 2, 3]`{.language-}
+- un petit tableau non trié où le plus petit est en dernière place : `[3, 2, 1]`{.language-}
 
 #### <span id="preuve-insertion"></span> Preuve
 
@@ -366,7 +362,9 @@ On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deu
 
 Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle `for`{.language-} de la ligne 2 va être le même :
 
-> A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+{% note "**Invariant de boucle**" %}
+À la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+{% endnote %}
 
 Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `while`{.language-} de la ligne 5, c'est à dire lui trouver un invariant.
 
@@ -392,8 +390,8 @@ On peut donc maintenant démontrer l'invariant de la boucle `for`{.language-} :
 
 On a $i = 1$ pour la première itération donc à l'issue de la boucle while :
 
-* soit $j=i=1$ et $T[0] \leq T[1]$ (car la boucle s'est arrêtée)
-* soit $j=0$ et $T[0] \leq T[1]$ (invariant de boucle)
+- soit $j=i=1$ et $T[0] \leq T[1]$ (car la boucle s'est arrêtée)
+- soit $j=0$ et $T[0] \leq T[1]$ (invariant de boucle)
 
 Dans les 2 cas, les 2 premiers éléments de $T$ sont triées. L'initialisation de l'invariant est Ok.
 
@@ -401,8 +399,8 @@ On suppose l'invariant vrai à la fin de la $i-1$ ème boucle et on regarde à l
 
 La $i$ ème itération de la boucle `for`{.language-} (ligne 2), a fonctionné ainsi :
 
-* ligne 3 : on a : `T[:i+1] = T[:i] + [T[j]]`{.language-} ($j = i$)
-* à la sortie de la boucle `while`{.language-}, en notant `T`{.language-} le tableau avant la boucle `while`{.language-} et `T'`{.language-} le tableau en fin de `while`{.language-}, on a :
+- ligne 3 : on a : `T[:i+1] = T[:i] + [T[j]]`{.language-} ($j = i$)
+- à la sortie de la boucle `while`{.language-}, en notant `T`{.language-} le tableau avant la boucle `while`{.language-} et `T'`{.language-} le tableau en fin de `while`{.language-}, on a :
   1. `T'[:i+1] = T[:j] + [T[j]] + T[j:i]`{.language-}
   2. `T[:j]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] >= T[j-1]`{.language-} (car on est sorti de la boucle `while`{.language-})
   3. `T[j:i]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] < T[j+1]`{.language-} (invariant de la boucle `while`{.language-})
@@ -427,13 +425,13 @@ Ligne à ligne :
 
 Comme $K$ n'est pas constant pour chaque itération de la boucle `for`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
 
-* si le tableau est déjà trié : on ne rentre jamais dans la boucle `while`{.language-} : $K = 0$ pour chaque itération.
-* si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `for`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `while`{.language-}).
+- si le tableau est déjà trié : on ne rentre jamais dans la boucle `while`{.language-} : $K = 0$ pour chaque itération.
+- si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `for`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `while`{.language-}).
 
 On a donc 2 cas extrêmes pour le calcul :
 
 1. $K = 0$ à chaque itération
-2. $K$ croit de $1$ à $n-1$ à chaque itération : la [règle de croissance](../complexités/max-min#règle-croissance){.interne} nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
+2. $K$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../calcul-complexités/règles-de-calcul#règle-croissance){.interne} nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
 
 Ce qui donne une complexité de :
 
@@ -458,8 +456,8 @@ $$
 {%note %}
 La complexité de l'algorithme `insertion`{.language-} est ($n$ est la taille du tableau passé en entrée) :
 
-* la **complexité min** est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
-* la **complexité (max)** est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
+- la **complexité min** est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
+- la **complexité (max)** est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
 
 {% endnote %}
 
@@ -468,12 +466,12 @@ Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de donn�
 
 Cela signifie que pour chaque itération $i$ :
 
-* `T[i]`{.language-} sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux
-* `T[i]`{.language-} devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
-* ...
-* `T[i]`{.language-} devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
-* ...
-* `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux.
+- `T[i]`{.language-} sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux
+- `T[i]`{.language-} devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+- ...
+- `T[i]`{.language-} devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+- ...
+- `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux.
 
 La complexité en moyenne sera donc égale à :
 
@@ -530,7 +528,7 @@ Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de fai
 Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme de [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) :
 
 <span id="diviser-pour-régner"></span>
-{% note %}
+{% note "**À retenir**"%}
 Un algorithme de la forme ***diviser pour régner*** fonctionne en deux parties :
 
 1. **résoudre** $k$ sous-problèmes du problème initial
@@ -597,16 +595,18 @@ L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit `
 
 L'invariant de boucle que l'on peut facilement prouver est :
 
-> à la fin de chaque itération, `T[:i1 +i2]`{.language-} est trié et contient les `i1`{.language-} premiers éléments de `T1`{.language-} et les `i2`{.language-} premiers éléments de `T2`{.language-}
+{% note "**Invariant de boucle**" %}
+À la fin de chaque itération, `T[:i1 +i2]`{.language-} est trié et contient les `i1`{.language-} premiers éléments de `T1`{.language-} et les `i2`{.language-} premiers éléments de `T2`{.language-}
+{% endnote %}
 
 #### <span id="complexités-colle"></span> Complexités
 
 Allons un peu plus vite :
 
-* on a une boucle `while`{.language-} de `len(T1) + len(T2)`{.language-} itérations
-* chaque ligne de l'algorithme est en $\mathcal{O}(1)$
+- on a une boucle `while`{.language-} de `len(T1) + len(T2)`{.language-} itérations
+- chaque ligne de l'algorithme est en $\mathcal{O}(1)$
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité max et min de `colle`{.language-} est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux `T1`{.language-} et `T2`{.language-} respectivement.
 {% endnote %}
 
@@ -644,17 +644,17 @@ $$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$
 
 Où :
 
-* $C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme `fusion`)
-* $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `combiner`{.language-}).
+- $C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme `fusion`{.language-})
+- $D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme `combiner`{.language-}).
 
 Comme l'algorithme `combiner`{.language-} est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :
 
 $$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$
 
-Pour connaître la valeur de la complexité on utilise le [master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :
+Pour connaître la valeur de la complexité on utilise [le master theorem](https://fr.wikipedia.org/wiki/Master_theorem) qui est **LE** théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :
 
 <span id="master-theorem"></span>
-{% note "**Forme O du [master theorem](https://fr.wikipedia.org/wiki/Master_theorem)**" %}
+{% note "**Forme O [du master theorem](https://fr.wikipedia.org/wiki/Master_theorem)**" %}
 
 Une complexité de la forme :
 
@@ -666,9 +666,9 @@ $$
 
 Est en :
 
-* $C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)
-* $C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a>b^d$
-* $C(n)  = \mathcal{O}(n^d)$ si si $a<b^d$
+- $C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)
+- $C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a>b^d$
+- $C(n)  = \mathcal{O}(n^d)$ si si $a<b^d$
 
 {% endnote %}
 {% details "preuve" %}
@@ -727,8 +727,8 @@ $$
 
 On en déduit facilement que :
 
-* $\frac{a}{b^d} < 1$ (équivalent à $\log_b(a) < d$) implique $C'(n) = \mathcal{O}(n^d)$
-* $\frac{a}{b^d} > 1$ (équivalent à $\log_b(a) > d$) implique $C'(n) = \mathcal{O}(n^{\log_b(a)})$
+- $\frac{a}{b^d} < 1$ (équivalent à $\log_b(a) < d$) implique $C'(n) = \mathcal{O}(n^d)$
+- $\frac{a}{b^d} > 1$ (équivalent à $\log_b(a) > d$) implique $C'(n) = \mathcal{O}(n^{\log_b(a)})$
 
 {% enddetails %}
 {% info %}
@@ -736,10 +736,9 @@ Le master theorem est la raison pour laquelle vous verrez parfois des complexit�
 {% endinfo %}
 Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité de l'algorithme `fusion`{.language-} est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée
 {% endnote %}
-
 {% details "Calcul de la complexité sans utiliser le master theorem", "open" %}
 
 <div>
@@ -781,9 +780,9 @@ Le tri de python est **in place**. L'algorithme utilisé est [timsort](https://e
 {% note "**Complexités du timsort**" %}
 Pour un tableau de taille $n$, l'algorithme [timsort](https://en.wikipedia.org/wiki/Timsort) a :
 
-* une complexité de $\mathcal{O}(n\ln(n))$
-* une complexité min de $\mathcal{O}(n)$
-* une complexité en moyenne de $\mathcal{O}(n\ln(n))$
+- une complexité de $\mathcal{O}(n\ln(n))$
+- une complexité min de $\mathcal{O}(n)$
+- une complexité en moyenne de $\mathcal{O}(n\ln(n))$
 
 {% endnote %}
 
@@ -797,8 +796,8 @@ Le tri rapide est un algorithme qui a été très utilisé par le passé. On le 
 
 Le principe est ici de séparer le tableau en entrée `T`{.language-} en 2 tableaux `T1`{.language-} et `T2`{.language-} et une valeur nommé `pivot`{.language-} de tel sorte que :
 
-* toutes les valeurs de `T1`{.language-} soient plus petites que `pivot`{.language-}
-* toutes les valeurs de `T2`{.language-} soient strictement plus grande que `pivot`{.language-}
+- toutes les valeurs de `T1`{.language-} soient plus petites que `pivot`{.language-}
+- toutes les valeurs de `T2`{.language-} soient strictement plus grande que `pivot`{.language-}
 
 On a coutume de prendre pivot comme étant `T[0]`{.language-}.
 
@@ -820,7 +819,7 @@ def rapide(T):
 ```
 
 {% info %}
-On a utilisé les [list comprehension]({{ "/cours/utiliser-python/listes"  }}#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
+On a utilisé [les list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
 {% endinfo %}
 
 ### <span id="preuve-rapide"></span> Preuve
@@ -845,16 +844,16 @@ $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
 }$$
 
-Le [master theorem](./#master-theorem){.interne} ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
+[Le master theorem](./#master-theorem){.interne} ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
 
 On va montrer que :
 
-{% note "**Complexités du tri rapide**" %}
+{% note "**À retenir**" %}
 Pour trier un tableau de longueur $n$, les complexités de `rapide`{.language-} sont :
 
-* la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,
-* la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,
-* la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,
+- la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,
+- la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,
+- la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,
 
 {% endnote %}
 
@@ -862,7 +861,10 @@ Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. S
 
 #### Complexité (maximale) du tri rapide
 
-{% note "**Intuitivement**" %}
+{% note "**Proposition**" %}
+La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.
+{% endnote %}
+{% details "preuve intuitive", "open" %}
 
 La complexité maximale va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié.
 
@@ -887,7 +889,7 @@ Et donc :
 $$
 C_{\max}(n) = \mathcal{O}(n^2)
 $$
-{% endnote %}
+{% enddetails %}
 {% details "preuve formelle" %}
 Formellement, nous ne venons que de montrer que $\mathcal{O}(n^2) \leq C_{\max}(n)$. Pour conclure la preuve, il nous reste à montrer la réciproque, c'est à dire $\mathcal{O}(n^2) \geq C_{\max}(n)$.
 
@@ -917,7 +919,10 @@ La complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\math
 
 #### Complexité minimale du tri rapide
 
-{% note "**Intuitivement**" %}
+{% note "**Proposition**" %}
+La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.
+{% endnote %}
+{% details "preuve intuitive", "open" %}
 
 On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe
 
@@ -929,7 +934,7 @@ $$
 C_{\min(n)} = \mathcal{O}(n\ln(n))
 $$
 
-{% endnote %}
+{% enddetails %}
 
 {% info %}
 De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.
@@ -945,9 +950,9 @@ On lance l’algorithme à l'étage 0 avec $T_0$ comme tableau originel. Ce tabl
 
 Chaque tableau $T_i$ crée donc soit :
 
-* 0 tableau
-* 1 tableau nommé $T_{2\cdot i}$
-* 2 tableaux nommés $T_{2\cdot i}$ et $T_{2\cdot i + 1}$
+- 0 tableau
+- 1 tableau nommé $T_{2\cdot i}$
+- 2 tableaux nommés $T_{2\cdot i}$ et $T_{2\cdot i + 1}$
 
 L'étage $k>1$ est ainsi formé d'au plus $2^{k-1}$ tableaux, allant des tableaux allant des indices $(\sum_{0\leq i \leq k - 2}2^i) +1$ à $(\sum_{0\leq i \leq k-1}2^i)$.
 
@@ -973,9 +978,9 @@ On note $T_u$ l'ancêtre commun entre $T_i$ et $T_j$ ($T_u = T_i$ si $i=j$) : il
 
 On peut alors construire un nouvel arbre en :
 
-* déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$
-* supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$
-* ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$
+- déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$
+- supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$
+- ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$
 
 On obtient alors l'arbre suivant qui est une autre exécution possible du l'algorithme :
 
@@ -1038,13 +1043,16 @@ $$
 
 #### <span id="tri-rapide-complexité-moyenne"></span>Complexité en moyenne du tri rapide
 
-{% note "**Intuitivement**" %}
+{% note "**Proposition**" %}
+La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.
+{% endnote %}
+{% details "preuve intuitive", "open" %}
 
 on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](./#complexités-insertion){.interne}. Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 
-{% endnote %}
+{% enddetails %}
 {% details "preuve formelle" %}
 Il faut résoudre l'équation :
 
@@ -1068,8 +1076,8 @@ C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i < n}(C_{\mbox{moy}}(i) 
 
 Comme :
 
-* $\sum_{0 \leq i < n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
-* $\sum_{0 \leq i < n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
+- $\sum_{0 \leq i < n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
+- $\sum_{0 \leq i < n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$
 
 On a :
 
@@ -1159,11 +1167,11 @@ La complexité en moyenne du tri rapide pour un tableau de taille $n$ est $\math
 
 Le tri rapide a :
 
-* une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible
-* il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
+- une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible
+- il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.
 
 C'est donc *rigolo* :
 
-{% note %}
+{% note "**Fun fact**"  %}
 Commencer par mélanger un tableau pour le trier avec `rapide`{.language-} ensuite est plus rapide en moyenne que de le trier directement.
 {% endnote %}

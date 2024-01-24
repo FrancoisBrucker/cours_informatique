@@ -71,12 +71,37 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Complexité en moyenne](./complexité-moyenne){.interne}
 {% endaller %}
 
-## On s'entraîne : problèmes liés au tri
+## Problème du tri
 
-> TBD ordre et désordre
+{% aller %}
+[Problème du tri](./problème-tris){.interne}
+{% endaller %}
 
 ## Classes de Problèmes Algorithmiques
 
 > TBD on a vu avec exponentiation que l'on ne sait pas à priori la meilleurs complexité d'un algorithme résolvant un problème.
 > TBD définition de problème, complexité et classes de problèmes.
 > TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps
+
+## Méthode de design d'algorithmes
+
+> TBD
+
+## Complexité amortie
+
+{% aller %}
+[Analyse et complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
+## Structure avancée
+
+> TBD : liste et dictionnaires
+
+## Désordre et hasard
+
+{% aller %}
+[Mélanger un tableau](./projet-mélange){.interne}
+{% endaller %}
+
+> TBD nombre aléatoires
+

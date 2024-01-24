@@ -1,12 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Complexité amortie
-
-eleventyNavigation:
-    order: 4
-    prerequis:
-        - "../max-min/"
+title: Analyse et complexité amortie
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,14 +10,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.
 
-Définition, utilité et utilisation de la complexité amortie d'un algorithme.
+Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour [les listes](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes){.interne} par exemple).
 
-<!-- end résumé -->
+{% attention %}
+Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)
+{% endattention %}
 
-> TBD : dire que : c'est pour ce qui est utilisé souvent et est de complexité variable. C'est souvent utilisé pour des structures où on peut se permettre de faire compliqué de temps en temps pour gagner le reste du temps. Comment le prendre en compte dans le calcul des complexités ?
-> Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités max.
+## Définitions
 
 Si lors de l'exécution d'un algorithme $A$, une opération $O$ (ou une fonction) de celui-ci se répète plusieurs fois et que sa
 complexité diffère selon les appels, le calcul de la complexité de $A$ va nécessiter une analyse fine de de **toutes** les exécutions de l'opération $O$ car borner la complexité par le maximum conduit (souvent) à surestimer grandement la complexité réelle.
@@ -35,15 +31,11 @@ La ***complexité amortie*** de cet algorithme est alors $\frac{C}{m}$.
 
 Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.
 
-{% attention %}
-La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** une [complexité en moyenne](../complexités/moyenne){.interne} qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
+La complexité amortie est une moyenne de complexité maximale, ce n'est **pas** [une complexité en moyenne](../complexité-moyenne){.interne} qui est une moyenne probabiliste. Lors d'un calcul de complexité amortie on connaît les paramètres de chaque exécution alors qu'il ne sont connu qu'en probabilité pour un complexité en moyenne.
 
 Le temps moyen d'exécution pourra être supérieur à la complexité en moyenne si on a pas de chance alors qu'il ne pourra **jamais** excéder la complexité amortie.
-{% endattention %}
 
-La complexité amortie est un moyen efficace de calculer la complexité d'un algorithme lorsque l'on utilise des structures complexes dont l'opération coûteuse n'est faite qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour les [listes](../structure-de-données/liste){.interne} par exemple) :
-
-{% note %}
+{% note "**À retenir**" %}
 
 Pour des structures de données utilisées (très) souvent, on utilise la complexité amortie dans les calculs de complexités maximales.
 
@@ -53,8 +45,8 @@ Pour ces structures, complexité amortie et maximale sont par abus de langage co
 
 La complexité amortie est un concept avancé, utilisée dans deux cas principalement :
 
-* comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)
-* comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes
+- comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)
+- comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes
 
 ## Algorithmes exemples
 
@@ -91,13 +83,13 @@ A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0,
 
 A l'issue de la boucle `while`{.language-} de la ligne 4, $i$ vaut :
 
-* $-1$ si  $N$ valait initialement $N = [1, \dots, 1]$
-* le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)
+- $-1$ si  $N$ valait initialement $N = [1, \dots, 1]$
+- le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)
 
 Note algorithme calcule donc :
 
-* le successeur de $N$ si $0 \leq N < 2^N - 1$
-* $[0, \dots 0]$ si $N = 2^n - 1$
+- le successeur de $N$ si $0 \leq N < 2^N - 1$
+- $[0, \dots 0]$ si $N = 2^n - 1$
 
 {% enddetails %}
 
@@ -121,8 +113,8 @@ Quel est la complexité totale de l'exécution des $2^n$ opérations ? En dédui
 
 Comme pour l'exemple de la pile, la difficulté du calcul vient du fait que la complexité de la fonction `successeur(N)`{.language-} n'est pas constante :
 
-* au mieux, $N[-1] = 0$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$,
-* au pire, $N = [1, \dots, 1]$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(n)$,
+- au mieux, $N[-1] = 0$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(1)$,
+- au pire, $N = [1, \dots, 1]$ et la complexité de `successeur(N)`{.language-} est $\mathcal{O}(n)$,
 
 La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.language-} est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.
 
@@ -133,9 +125,9 @@ La aussi on le démontrera précisément, mais on peut intuitivement voir que ce
 {% note "**Définition**" %}
 Une ***[pile](https://fr.wikipedia.org/wiki/Pile_(informatique))*** est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :
 
-* une méthode `push(x)`{.language-} qui ajoute l'élément `x`{.language-} à la structure en $\mathcal{O}(1)$ opérations
-* une méthode  `pop()`{.language-} qui supprime l'élément le plus **récemment** ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie
-* une fonction  `len(P)`{.language-} qui renvoie le nombre d'éléments de la pile `P`{.language-} en $\mathcal{O}(1)$ opérations
+- une méthode `push(x)`{.language-} qui ajoute l'élément `x`{.language-} à la structure en $\mathcal{O}(1)$ opérations
+- une méthode  `pop()`{.language-} qui supprime l'élément le plus **récemment** ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie
+- une fonction  `len(P)`{.language-} qui renvoie le nombre d'éléments de la pile `P`{.language-} en $\mathcal{O}(1)$ opérations
 
 {% endnote %}
 
@@ -151,8 +143,8 @@ Implémentez une structure de pile en python.
 {% details "solution" %}
 On utilise une liste et les méthodes :
 
-* `append`{.language-} pour ajouter un élément à la structure
-* `pop`{.language-} pour supprimer un élément de la structure
+- `append`{.language-} pour ajouter un élément à la structure
+- `pop`{.language-} pour supprimer un élément de la structure
 
 La fonction `len`{.language-} nous permet de connaître le nombre d'élément dans la structure.
 
@@ -208,8 +200,8 @@ On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithm
 
 On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
 
-* Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-}  avec cette grande complexité
-* Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
+- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-}  avec cette grande complexité
+- Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
 
 ## Analyse par Agrégat
 
@@ -223,14 +215,14 @@ On évalue la complexité des $m$ opérations en même temps, sans distinguer le
 
 out d'abord, on remarque que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
 
-* si `N`{.language-} finit par la liste `[0]`{.language-} il faut de l'ordre de 1 opération à successeur (la boucle `while`{.language-} de la ligne 4 fait un test et aucune itération)
-* si `N`{.language-} finit par la liste `[0, 1]`{.language-} il faut de l'ordre de 2 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait une itération)
-* si `N`{.language-} finit par la liste `[0, 1, 1]`{.language-} il faut de l'ordre de 3 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait deux itérations)
-* ...
-* si `N`{.language-} finit par la liste `[0] + [1] * i`{.language-} il faut de l'ordre de $i+1$ opérations à successeur
-* ...
-* si `N`{.language-} finit par la liste `[0] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
-* si `N`{.language-} finit par la liste `[1] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
+- si `N`{.language-} finit par la liste `[0]`{.language-} il faut de l'ordre de 1 opération à successeur (la boucle `while`{.language-} de la ligne 4 fait un test et aucune itération)
+- si `N`{.language-} finit par la liste `[0, 1]`{.language-} il faut de l'ordre de 2 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait une itération)
+- si `N`{.language-} finit par la liste `[0, 1, 1]`{.language-} il faut de l'ordre de 3 opérations à successeur (la boucle `while`{.language-} de la ligne 4 fait deux itérations)
+- ...
+- si `N`{.language-} finit par la liste `[0] + [1] * i`{.language-} il faut de l'ordre de $i+1$ opérations à successeur
+- ...
+- si `N`{.language-} finit par la liste `[0] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
+- si `N`{.language-} finit par la liste `[1] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
 
 Nous allons compter le nombre total d'opérations de façons différentes.
 
@@ -283,13 +275,13 @@ $$
 
 De façon alternative, on peut aussi remarquer que la complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
 
-* le dernier bit de $N$ est modifié à chaque appel
-* l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
-* l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels
-* ...
-* le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels
-* ...
-* le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels
+- le dernier bit de $N$ est modifié à chaque appel
+- l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
+- l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels
+- ...
+- le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels
+- ...
+- le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels
 
 La complexité totale des $2^n$ appels à `successeur(N)`{.language-} vaut donc :
 
@@ -363,9 +355,9 @@ print(x)
 
 Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
 
-* $m'$ fois à la fonction `k-pop`{.language-},
-* $m''$ fois à la fonction `push`{.language-},
-* $m - m' - m''$ fois à la fonction `len`{.language-}.
+- $m'$ fois à la fonction `k-pop`{.language-},
+- $m''$ fois à la fonction `push`{.language-},
+- $m - m' - m''$ fois à la fonction `len`{.language-}.
 
 Le nombre total d'éléments *popés* au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments *pushés*. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
 
@@ -397,8 +389,8 @@ Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains co�
 
 La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
 
-* 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
-* 0 lorsqu'un bit est positionné à 0
+- 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
+- 0 lorsqu'un bit est positionné à 0
 
 Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.
 
@@ -408,9 +400,9 @@ Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est 
 
 La complexité de `k-pop`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
 
-* 1 à l'instruction `len`{.language-}
-* 2 à l'instruction `push`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
-* 1 à l'instruction `k-pop`{.language-}
+- 1 à l'instruction `len`{.language-}
+- 2 à l'instruction `push`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
+- 1 à l'instruction `k-pop`{.language-}
 
 On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.
 
@@ -452,13 +444,13 @@ Le nombre de bits changés à chaque exécution de successeur dépend du nombre 
 
 A chaque exécution de `successeur`{.language-} on a :
 
-* k bits passé à 0
-* 1 bit passé à 1
+- k bits passé à 0
+- 1 bit passé à 1
 
 On en déduit que :
 
-* la complexité d'exécution est de k + 1
-* la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$
+- la complexité d'exécution est de k + 1
+- la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$
 
 Le coût amorti d'une exécution de successeur vaut alors $\widehat(c_i) = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.
 
@@ -474,9 +466,9 @@ La seule opération ayant un coût variable est `k-pop`{.language-} et il dépen
 
 On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega(i)$ sera le nombre d'élément dans la pile après l'exécution de l'instruction $i$. Comme la pile est initialement vide on a bien $\Omega(i) \geq \Omega(0)$ pour tout $i$. Le coût amorti de chaque opération est alors :
 
-* le coût amorti de `len`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
-* le coût amorti de `push`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
-* le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
+- le coût amorti de `len`{.language-} est $1$ puisque la pile de change pas $\Omega(i) = \Omega(i - 1)$
+- le coût amorti de `push`{.language-} est $2$ puisque le coût réel est 1 et la pile à un élément de plus après l'opération ($\Omega(i) = \Omega(i - 1) + 1$)
+- le coût amorti de `k-pop`{.language-} est $1$ puisque le coût réel est de $1 + k$ et la pile à $k$ éléments de moins après l'opération ($\Omega(i) = \Omega(i - 1) - k$)
 
 Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
 

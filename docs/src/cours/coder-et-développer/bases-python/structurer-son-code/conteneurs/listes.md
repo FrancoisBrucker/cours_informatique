@@ -234,7 +234,7 @@ for i in range(10):
 ### <span id="list-comprehension"></span> Avec une *list comprehension*
 
 {% lien %}
-<https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions>
+<https://docs.python.org/fr/3/tutorial/datastructures.html#s>
 {% endlien %}
 
 ```python
@@ -501,7 +501,7 @@ for i in range(5):  # lignes
 
 {% enddetails %}
 
-Si on se sent plus hardi, on pourra utiliser des [*list comprehension*](./#list-comprehension){.interne} :
+Si on se sent plus hardi, on pourra utiliser des [*list comprehension*](./#){.interne} :
 
 {% exercice %}
 Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique *list comprehension*.
