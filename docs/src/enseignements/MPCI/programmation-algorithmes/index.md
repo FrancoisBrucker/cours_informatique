@@ -157,8 +157,12 @@ Parties abordées :
 
 #### Vendredi : étude de l'exponentiation
 
-- [étude de l'exponentiation]()
-- [suites additives]()
+{% aller %}
+
+1. [Calculer $x^y$](/cours/algorithmie/projet-exponentiation){.interne}
+2. Pour aller plus loin : [Les suites additives](/cours/algorithmie/projet-suite-additive){.interne}
+
+{% endaller %}
 
 ### Semaine 4
 
@@ -167,6 +171,8 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 {% endattention %}
 
 Semaine sur les tris.
+
+> TBD : prérequis : relire tris sélection.
 
 ### Semaine 5
 
