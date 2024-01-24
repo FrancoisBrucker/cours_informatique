@@ -83,44 +83,16 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/code/">Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/code/projet-exponentiation/">Projet exponentiation</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/">Problème de l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/implémentation-code/">Projet exponentiation</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../projet-pourcentages/">../projet-pourcentages/</a>
-            </li>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-exponentiation/">Étude : exponentiation</a>
-              </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>On vérifie que nos calculs théoriques sont validés expérimentalement.</p>
-<!-- end résumé -->
+  <p>On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement.</p>
 <h2>Mise en place</h2>
 <h3>Structures</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -144,7 +116,7 @@
 </div>
 <h3>Vscode</h3>
 <ol>
-<li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le</li>
+<li>on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre)</li>
 <li>on vérifie que le linter est actif (en faisant une faute de style)</li>
 </ol>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -238,7 +210,7 @@
 </div>
 </div>
 <h2>Complexité temporelle</h2>
-<p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../algorithme/complexit%C3%A9s/max-min#temps-ex%C3%A9cution" class="interne">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
+<p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../calcul-complexit%C3%A9s/d%C3%A9finitions/#complexit%C3%A9-temps" class="interne">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
 <p>Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :</p>
 <ul>
 <li>nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se <a href="https://fr.wikipedia.org/wiki/Temps_partag%C3%A9">partageant du temps de processeur</a> : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.</li>
@@ -256,8 +228,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>mesurer le temps d'exécution :</p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
+<p>Pour mesurer le temps d'exécution d'un algorithme :</p>
 <ol>
 <li>on note le nombre de secondes $t_1$ utilisées par le programme python juste avant d'exécuter l'algorithme</li>
 <li>on exécute l'algorithme</li>
@@ -288,6 +261,14 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Temps d'attente :"</span><span class="token punctuation">,</span> delta<span class="token punctuation">)</span>
 </code></pre>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.</p>
 </div>
 </div>
 <p>Le code précédent utilise une fonction du module <a href="https://docs.python.org/fr/3/library/time.html"><code class="language-">time</code></a> : <a href="https://docs.python.org/3/library/time.html#time.perf_counter"><code class="language-">perf_counter</code></a> qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)</p>

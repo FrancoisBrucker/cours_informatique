@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Complexité d&#39;un problème</title>
+    <title>Complexité d&#39;un problème algorithmique</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Complexité d&#39;un problème</h1>
+  <h1>Complexité d&#39;un problème algorithmique</h1>
   <div>
     
 
@@ -83,44 +83,16 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/">Complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/problème/">Complexité d&#39;un problème</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-complexités/">Complexité d&#39;un problème algorithmique</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../max-min/">../max-min/</a>
-            </li>
-            <li>
-              <a href="../../preuve-algorithme/">../../preuve-algorithme/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>Définition et étude de la complexité algorithmique d'un problème.</p>
-<!-- end résumé -->
-<p>Un même problème peut avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
+  <p><a href="../%C3%A9crire-algorithmes/probl%C3%A8me/">Un problème algorithmique</a> est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -128,109 +100,63 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <em><strong>complexité (maximale) d'un problème</strong></em> algorithmique est la complexité (maximale) du meilleur algorithme qui le résout.</p>
+<p>La <em><strong>complexité (maximale) d'un problème</strong></em> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.</p>
 </div>
 </div>
-<p>Ce n'est pas une question facile car :</p>
-<ul>
-<li>il faut pouvoir définir clairement quel est le problème que l'on cherche à résoudre</li>
-<li>il faut pouvoir raisonner sur les complexités sans avoir d'algorithme à sa disposition</li>
-</ul>
-<p>Cependant, si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est <strong>une borne maximale</strong> de la complexité du problème qu'il résout. Il est également souvent facile de se donner <strong>une borne minimale</strong> de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre), c'est la taille de la sortie de l'algorithme.</p>
+<p>Cette complexité existe toujours car :</p>
+<ol>
+<li>le problème étant algorithmique il admet au moins un algorithme pour le résoudre.</li>
+<li>Les algorithmes résolvant le problème peuvent être classées selon leurs complexités, entières, et admettent donc un minimum.</li>
+</ol>
+<p>Mais elle peut être difficile à trouver il faut pouvoir raisonner sans avoir tous les algorithmes (une infinité) à sa disposition.</p>
+<p>Cependant, si l'on possède déjà un algorithme pour résoudre le problème, sa complexité est <strong>une borne maximale</strong> de la complexité du problème qu'il résout. Il est également souvent facile de se donner <strong>une borne minimale</strong> de la complexité du problème (même si l'on ne sait pas s'il existe un algorithme pour le résoudre), c'est la taille de la sortie de l'algorithme. On a lors l'encadrement :</p>
+<div>
+$$
+\Omega(\text{taille sortie}) = \text{complexité du problème} = \mathcal{O}(\text{complexité d'un algorithme le résolvant})
+$$
+</div>
+<p>Cet encadrement est général pour tout problème algorithmique et s'écrit :</p>
+<div>
+$$
+\Omega(\text{borne minimale du problème}) = \text{complexité du problème} = \mathcal{O}(\text{borne maximale du problème})
+$$
+</div>
+<p>Si on arrive à mettre la même valeur à gauche et à droite on aura trouvé la complexité du problème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :</p>
+<p>$$<br>
+\Omega(\text{complexité de l'algorithme A le résolvant}) = \text{complexité du problème} = \mathcal{O}(\text{complexité de l'algorithme A le résolvant})<br>
+$$</p>
+<p>on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.</p>
+</div>
+</div>
 <p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.</p>
-<h2>Problème algorithmique</h2>
-<p>On supposera toujours ici qu'il existe un algorithme pour résoudre notre problème.</p>
-<h3>Définition</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p>Un <strong>problème algorithmique</strong> est composé de 4 parties :</p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : le nom du problème</li>
-<li><strong>données</strong> : les paramètres dont aura besoin l'algorithme</li>
-<li><strong>question</strong> : ce que l'on cherche à résoudre</li>
-<li><strong>réponse</strong> : la sortie de l'algorithme</li>
-</ul>
-</div>
-</div>
-<p>Par exemple :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : recherche</li>
-<li><strong>données</strong> : une valeur et un tableau d'entiers</li>
-<li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
-<li><strong>réponse</strong> : OUI ou NON</li>
-</ul>
-</div>
-</div>
-<p>Ou, si l'on cherche l'indice de valeur dans ce tableau :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : recherche indice</li>
-<li><strong>données</strong> : une valeur et un tableau d'entiers contenant valeur</li>
-<li><strong>réponse</strong> : l'indice du tableau contenant valeur</li>
-</ul>
-</div>
-</div>
-<p>La question peut-être omise si la réponse est spécifique.</p>
-<h3>Complexités</h3>
-<p>On pourra définir pour un problème donné :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définitions</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li>
-<p>la <em><strong>complexité du problème</strong></em> : la complexité maximale du meilleur algorithme permettant de résoudre le problème. Cette complexité existe toujours s'il existe un algorithme permettant de résoudre le problème (l'ensemble des algorithmes permettant de résoudre le problème au pire dénombrable puisqu'il n'existe qu'un <a href="../../algorithme/d%C3%A9finition#nb-d%C3%A9nombrable-algorithmes" class="interne">nombre dénombrable d'algorithmes</a>, il admet donc un minimum)</p>
-</li>
-<li>
-<p>une <em><strong>borne minimale</strong></em> de la complexité du problème : tout algorithme qui le résout sera de complexité supérieure ou égale</p>
-</li>
-<li>
-<p>une <em><strong>borne maximale</strong></em> de la complexité du problème : le meilleur algorithme sera de complexité plus faible ou égale</p>
-</li>
-</ul>
-</div>
-</div>
 <h2>Exemple : recherche d'un élément dans un tableau</h2>
-<p>On va chercher à résoudre le problème d'existence dans le tableau :</p>
+<p>On va chercher à résoudre le problème de décision suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
+<p><strong>Problème de décision</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : recherche</li>
 <li><strong>données</strong> : une valeur et un tableau d'entiers</li>
 <li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
-<li><strong>réponse</strong> : OUI ou NON</li>
 </ul>
 </div>
 </div>
 <p>Ce qu'on peut déjà dire de notre problème :</p>
 <ul>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
-<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (qu'on <a href="../../algorithme/complexit%C3%A9s/max-min#exemple-recherche" class="interne">a déjà vu</a>) résout le problème</li>
+<li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../calcul-complexit%C3%A9s/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
@@ -239,16 +165,16 @@
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
 <h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
-<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $N$ en prenant strictement moins de $n$ opérations : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $N$ pour répondre.</p>
-<p>Soit alors un tableau $T$ de taille $N$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $N$ opérations. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
-<p>On crée alors un tableau $T'$ de $N$ cases tel que :</p>
+<p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.</p>
+<p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
+<p>On crée alors un tableau $T'$ de $n$ cases tel que :</p>
 <ul>
 <li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
 <li>$T'[i^\star] = \mbox{valeur}$</li>
 </ul>
 <p>Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,<br>
 si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.</p>
-<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$.</p>
+<p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$ : la complexité du problème de la recherche est en $\Omega(n)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -259,7 +185,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </div>
 <p>Au final on a :</p>
 <ul>
-<li>une borne minimale de la complexité de la recherche de $\mathcal{O}(n)$</li>
+<li>une borne minimale de la complexité de la recherche de $\Omega(n)$</li>
 <li>un algorithme qui résout le problème en $\mathcal{O}(n)$</li>
 </ul>
 <p>Donc :</p>
@@ -267,7 +193,9 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.</p>
 </div>
 </div>
@@ -276,8 +204,10 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égal à la taille de ses données.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.</p>
 <p>Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.</p>
 </div>
 </div>
@@ -288,13 +218,12 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
+<p><strong>Problème de décision</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><strong>nom</strong> : recherche ordonnée</li>
 <li><strong>données</strong> : une valeur et un tableau d'entiers triés par ordre croissant</li>
 <li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
-<li><strong>réponse</strong> : OUI ou NON</li>
 </ul>
 </div>
 </div>
@@ -380,7 +309,9 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
 </div>
 </div>
@@ -437,8 +368,10 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi supérieure à $\mathcal{O}(\ln(n))$</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$</p>
 </div>
 </div>
 <p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.</p>
@@ -452,7 +385,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p>complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> :</p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> est en $\mathcal{O}(\ln(n))$ où $n$ est la taille du tableau.</p>
 </div>
