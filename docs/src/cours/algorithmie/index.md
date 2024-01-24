@@ -45,12 +45,16 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 ## Complexités
 
+Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
+
 {% aller %}
 [Calcul de complexité d'un algorithme](./calcul-complexités){.interne}
 {% endaller %}
 {% aller %}
 [Complexité d'un problème algorithmique](./problème-complexités){.interne}
 {% endaller %}
+
+La notion de complexité est centrale en algorithmie, nous en reparlerons encore plus tard dans le cours.
 
 ## On s'entraîne : problèmes liés à l'exponentiation
 
@@ -61,9 +65,15 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 [Les suites additives](./projet-suite-additive){.interne}
 {% endaller %}
 
-## On s'entraîne : problèmes de tris
+## Complexité en moyenne
 
-- ordre et désordre
+{% aller %}
+[Complexité en moyenne](./complexité-moyenne){.interne}
+{% endaller %}
+
+## On s'entraîne : problèmes liés au tri
+
+> TBD ordre et désordre
 
 ## Classes de Problèmes Algorithmiques
 
