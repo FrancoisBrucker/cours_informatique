@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Algorithmes de tri</title>
+    <title>Algorithmes</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Algorithmes de tri</h1>
+  <h1>Algorithmes</h1>
   <div>
     
 
@@ -83,45 +83,16 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/tris/">Algorithmes de tri</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithmes-tris/">Algorithmes</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/moyenne/">Complexité en moyenne</a>
-              </li>
-            <li>
-              <a href="../../algorithme/complexités/problème/">../../algorithme/complexités/problème/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>Étude du problème du tri puis analyse de complexité de quelques algorithmes de tris paradigmatiques.</p>
-<!-- end résumé -->
-<p>Les informaticiens adorent les <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
+  <p>Les informaticiens adorent <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">les algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier. Commençons par définir le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -170,10 +141,17 @@
 </ul>
 <h4>Preuve</h4>
 <p>La finitude de l'algorithme est claire puisqu'il n'y a qu'une boucle for avec autant d'itérations que la taille du tableau passé en entrée.</p>
-<p>Le preuve en démontrant l'invariant de boucle :</p>
-<blockquote>
-<p>A la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
-</blockquote>
+<p>Le preuve en démontrant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Invariant de boucle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>À la fin d'un itération, les $i + 1$ premiers éléments du tableau sont triés.</p>
+</div>
+</div>
 <ol>
 <li>à la fin de la première itération, si l'on est pas sorti de la boucle c'est que $T[i] \geq T[i-1]$ pour $i=1$ : les 2 premiers éléments du tableau sont bien triés.</li>
 <li>Si l'invariant est vrai à la fin de l'itération $i-1$, à la fin de l'itération $i$ on à $T[i] \geq T[i-1]$ et comme les $i + 1$ premiers éléments du tableau sont triés : les $i + 1$ premiers éléments du tableau sont triés.</li>
@@ -187,7 +165,9 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>L'algorithme <code class="language-">est_trie</code> est une solution au problème <em>&quot;est trié ?&quot;</em></p>
 </div>
 </div>
@@ -211,20 +191,29 @@
 </div>
 </div>
 <h3>Complexité du problème</h3>
-<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#complexit%C3%A9-recherche" class="interne">complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code>  est également de $\mathcal{O}(n)$. On en conclut :</p>
+<p>Comme toute case du tableau peut rendre le tableau non trié, on utilise l'argument de <a href="../../probl%C3%A8me-complexit%C3%A9s/#complexit%C3%A9-recherche" class="interne">la complexité du problème de la <em>&quot;recherche&quot;</em></a>, un algorithme résolvant ce problème doit considérer toutes les cases du tableau et donc une borne min du problème <em>&quot;est trié ?&quot;</em> est $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée. Comme la complexité de <code class="language-">est_trie</code>  est également de $\mathcal{O}(n)$. On en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité du problème <em>&quot;est trié ?&quot;</em> est de $\mathcal{O}(n)$ où $n$ est la taille du tableau en entrée.</p>
 </div>
 </div>
 <h2>Bornes du problème du tri</h2>
 <p>Commençons par une remarque d'importance :</p>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème &quot;tri&quot;.</p>
-</blockquote>
+</div>
+</div>
 <p>Par exemple, pour un tableau à trois éléments :</p>
 <ol>
 <li>$[1, 2, 3]$</li>
@@ -239,29 +228,33 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.</p>
 </div>
 </div>
 <h3>Borne maximum</h3>
 <p>Une première borne — irréaliste — serait de calculer toutes les $n!$ permutations d'un tableau et de vérifier pour chacune d'elle si elle est triée (avec notre algorithme de reconnaissance). En ne tenant pas en compte  l'algorithme permettant de trouver toutes les permutations d'un tableau, il faudrait déjà $\mathcal{O}(n! \cdot n)$ opérations pour toutes les tester (ce qui est trop).</p>
-<p>Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple  le <a href="#tri-s%C3%A9lection" class="interne">tri par selection</a> que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :</p>
+<p>Il existe des algorithmes simple de tri que vous avez sûrement déjà vu au cours de votre vie, comme par exemple <a href="#tri-s%C3%A9lection" class="interne">le tri par selection</a> que l'on analysera ci-après. Sa complexité étant en $\mathcal{O}(n^2)$ opérations avec $n$ la taille du tableau à trier, on en conclut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Une borne maximum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(n^2)$.</p>
 </div>
 </div>
 <h3>Borne minimum</h3>
-<p>En utilisant la propriété de <a href="../../algorithme/complexit%C3%A9s/probl%C3%A8me#n-test-2n" class="interne">nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :</p>
+<p>En utilisant la propriété <a href="../../probl%C3%A8me-complexit%C3%A9s/#n-test-2n" class="interne">du nombre de cas à distinguer</a> vue dans la complexité du problème de la <em>&quot;recherche ordonnée&quot;</em>, on en déduit que comme tout algorithme de tri d'un tableau à $n$ élément doit distinguer parmi $n!$ cas :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\mathcal{O}(\ln(n!))$.</p>
+<p>Une borne minimum de la complexité du problème du tri d'un tableau à $n$ éléments est $\Omega(\ln(n!))$.</p>
 </div>
 </div>
 <p>Pour expliciter ce qu'est $\ln(n!)$, utilisons la propriété suivante :</p>
@@ -270,9 +263,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Propriété</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Toute fonction en $\mathcal{O}(\ln(n!))$ est également une fonction en $\mathcal{O}(n\ln(n))$ et réciproquement.</p>
+<p>Toute fonction en $\ln(n!) = \Theta(n\ln(n))$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -344,7 +337,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>Cet equivalence de $\mathcal{O}$ nous donne finalement la borne minimum courante :</p>
+<p>Cet equivalence nous donne finalement la borne minimum courante :</p>
 <div id="complexité-problème"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -353,7 +346,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Tout algorithme de tri d'une liste à $n$ éléments a au moins une complexité de $\mathcal{O}(n\ln(n))$ opérations.</p>
+<p>Tout algorithme de tri d'une liste à $n$ éléments est en $\Omega(n\ln(n))$ opérations.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -389,12 +382,18 @@ $$</p>
 <ol>
 <li>la boucle <code class="language-">for</code> de la ligne 4 trouve l'indice du plus petit élément du tableau <code class="language-">T[i:]</code>.</li>
 <li>la ligne 7 échange le minimum du tableau <code class="language-">T[i:]</code> avec <code class="language-">T[i]</code></li>
-<li>comme la boucle <code class="language-">for</code> de la ligne 2 incrémente $i$, on a l'invariant de boucle :
-<blockquote>
-<p>A la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau</p>
-</blockquote>
-</li>
+<li>comme la boucle <code class="language-">for</code> de la ligne 2 incrémente $i$, on a l'invariant de boucle :</li>
 </ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Invariant de boucle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.</p>
+</div>
+</div>
 <h4><span id="complexités-sélection"></span> Complexités</h4>
 <p>On suppose que la taille du tableau est $n$.</p>
 <p>Ligne à ligne :</p>
@@ -407,7 +406,7 @@ $$</p>
 <li>une affectation : $\mathcal{O}(1)$</li>
 <li>deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance" class="interne">règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
+<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser <a href="../../calcul-complexit%C3%A9s/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
 <p>Ce qui donne une complexité de :</p>
 <div>
 $$
@@ -429,7 +428,9 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">sélection</code> est ($n$ est la taille du tableau passé en entrée) :</p>
 <ul>
 <li>la <strong>complexité min</strong> vaut $\mathcal{O}(n^2)$</li>
@@ -439,7 +440,7 @@ $$
 </div>
 </div>
 <h3><span id="tri-insertion"></span> Tri par insertion</h3>
-<p>Le tri par insertion est une extension de l'<a href="#algo-est-trie" class="interne">algorithme <code class="language-">est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
+<p>Le tri par insertion est une extension de <a href="#algo-est-trie" class="interne">l'algorithme <code class="language-">est_trie</code></a>. Plutôt que de rendre <code class="language-">False</code> il répare. L'algorithme <code class="language-">est_trie</code> répond <code class="language-">False</code> au plus petit <code class="language-">i</code> tel que <code class="language-">T[i] &lt; T[i-1]</code>. On est alors dans le cas où :</p>
 <ul>
 <li><code class="language-">T[:i]</code> est trié</li>
 <li>et <code class="language-">T[i] &lt; T[i-1]</code></li>
@@ -463,13 +464,15 @@ $$
             j <span class="token operator">-=</span> <span class="token number">1</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'algorithme <code class="language-">insertion</code>, comme l'algorithme <code class="language-">sélection</code>, <strong>modifie</strong> le tableau passé en paramètre.</p>
-<p>Pour garantir que <code class="language-">T[j - 1]</code> soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition <code class="language-">(courant &lt; T[j - 1])</code> de la ligne 5 la <a href="https://en.wikipedia.org/wiki/Sentinel_value">sentinelle</a> <code class="language-">(j &gt; 0)</code>. Les deux conditions étant liées par un <code class="language-">and</code>, python (et tout autre langage de programmation) n'évaluera la seconde condition <strong>que si la première est vérifiée</strong> (un <code class="language-">and</code> ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le <code class="language-">and</code> soit vrai il est donc inutile de vérifier la seconde condition).</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<p>Pour garantir que <code class="language-">T[j - 1]</code> soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition <code class="language-">(courant &lt; T[j - 1])</code> de la ligne 5 <a href="https://en.wikipedia.org/wiki/Sentinel_value">la sentinelle</a> <code class="language-">(j &gt; 0)</code>. Les deux conditions étant liées par un <code class="language-">and</code>, python (et tout autre langage de programmation) n'évaluera la seconde condition <strong>que si la première est vérifiée</strong> (un <code class="language-">and</code> ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le <code class="language-">and</code> soit vrai il est donc inutile de vérifier la seconde condition).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>La technique des <a href="https://en.wikipedia.org/wiki/Sentinel_value">sentinelle</a> est très pratique, cela vaut le coup de la connaître.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La technique <a href="https://en.wikipedia.org/wiki/Sentinel_value">des sentinelles</a> est très pratique, cela vaut le coup de la connaître.</p>
 </div>
 </div>
 <h4><span id="fonctionnement-insertion"></span> Fonctionnement</h4>
@@ -482,9 +485,16 @@ $$
 <p>Le principe de programmation du tri par insertion est correct puisque <code class="language-">est_trie</code> est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.</p>
 <p>On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du <code class="language-">while</code>) nous servant à prouver le premier (du <code class="language-">for</code>)</p>
 <p>Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle <code class="language-">for</code> de la ligne 2 va être le même :</p>
-<blockquote>
-<p>A la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
-</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Invariant de boucle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>À la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
+</div>
+</div>
 <p>Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle <code class="language-">while</code> de la ligne 5, c'est à dire lui trouver un invariant.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -593,7 +603,7 @@ $$
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
 <li>$K = 0$ à chaque itération</li>
-<li>$K$ croit de $1$ à $n-1$ à chaque itération : la <a href="../complexit%C3%A9s/max-min#r%C3%A8gle-croissance" class="interne">règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
+<li>$K$ croit de $1$ à $n-1$ à chaque itération : <a href="../../calcul-complexit%C3%A9s/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
 </ol>
 <p>Ce qui donne une complexité de :</p>
 <div>
@@ -695,7 +705,9 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Un algorithme de la forme <em><strong>diviser pour régner</strong></em> fonctionne en deux parties :</p>
 <ol>
 <li><strong>résoudre</strong> $k$ sous-problèmes du problème initial</li>
@@ -749,9 +761,16 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <h4><span id="preuve-colle"></span> Preuve</h4>
 <p>L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit <code class="language-">i1</code> soit <code class="language-">i2</code> augmente. Au bout de <code class="language-">len(T1) + len(T2)</code> itération on aura <code class="language-">i1</code> = <code class="language-">len(T1)</code> et <code class="language-">i2</code> = <code class="language-">len(T1)</code>, donc la condition <code class="language-">i1 &lt; len(T1) or i2 &lt; len(T2)</code> ne sera plus vérifiée.</p>
 <p>L'invariant de boucle que l'on peut facilement prouver est :</p>
-<blockquote>
-<p>à la fin de chaque itération, <code class="language-">T[:i1 +i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
-</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Invariant de boucle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>À la fin de chaque itération, <code class="language-">T[:i1 +i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
+</div>
+</div>
 <h4><span id="complexités-colle"></span> Complexités</h4>
 <p>Allons un peu plus vite :</p>
 <ul>
@@ -762,7 +781,9 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité max et min de <code class="language-">colle</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-">T1</code> et <code class="language-">T2</code> respectivement.</p>
 </div>
 </div>
@@ -791,19 +812,19 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$</p>
 <p>Où :</p>
 <ul>
-<li>$C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme <code>fusion</code>)</li>
+<li>$C(n)$ est la complexité de l'algorithme fusion pour une liste à $n$ éléments (algorithme <code class="language-">fusion</code>)</li>
 <li>$D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme <code class="language-">combiner</code>).</li>
 </ul>
 <p>Comme l'algorithme <code class="language-">combiner</code> est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :</p>
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$</p>
-<p>Pour connaître la valeur de la complexité on utilise le <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :</p>
+<p>Pour connaître la valeur de la complexité on utilise <a href="https://fr.wikipedia.org/wiki/Master_theorem">le master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :</p>
 <p><span id="master-theorem"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Forme O du <a href="https://fr.wikipedia.org/wiki/Master_theorem">master theorem</a></strong></p>
+<p><strong>Forme O <a href="https://fr.wikipedia.org/wiki/Master_theorem">du master theorem</a></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une complexité de la forme :</p>
 <div>
@@ -900,7 +921,9 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée</p>
 </div>
 </div>
@@ -1001,7 +1024,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé les <a href="/cours_informatique/cours/utiliser-python/listes#list-comprehension" class="interne">list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
+<p>On a utilisé <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension" class="interne">les list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
 </div>
 </div>
 <h3><span id="preuve-rapide"></span> Preuve</h3>
@@ -1018,14 +1041,14 @@ C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \under
 <p>$${<br>
 C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 }$$</p>
-<p>Le <a href="#master-theorem" class="interne">master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
+<p><a href="#master-theorem" class="interne">Le master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
 <p>On va montrer que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Complexités du tri rapide</strong></p>
+<p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-">rapide</code> sont :</p>
 <ul>
@@ -1042,8 +1065,28 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <p>La complexité maximale va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié.</p>
 <p>Pour des tableaux triés, <code class="language-">T1</code> ou <code class="language-">T2</code> est vide et l'autre tableau est de taille $n-1$, ce qui donne une complexité de :</p>
 <div>
@@ -1064,6 +1107,7 @@ $$
 C_{\max}(n) = \mathcal{O}(n^2)<br>
 $$</p>
 </div>
+</details>     
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -1110,8 +1154,28 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
 <p><img src="tris-4.png" alt="croissance convexe"></p>
 <p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et le <a href="#master-theorem">master theorem</a> nous permet de conclure que :</p>
@@ -1119,6 +1183,7 @@ $$
 C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
 $$</p>
 </div>
+</details>     
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1226,11 +1291,32 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Intuitivement</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="#complexit%C3%A9s-insertion" class="interne">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
 <p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
 </div>
+</details>     
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -1343,7 +1429,9 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Fun fact</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Commencer par mélanger un tableau pour le trier avec <code class="language-">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
 </div>
 </div>

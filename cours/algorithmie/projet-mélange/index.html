@@ -83,47 +83,19 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-mélange/">Étude : mélanger un tableau</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-mélange/">Étude : mélanger un tableau</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../code/projet-exponentiation/">../../code/projet-exponentiation/</a>
-            </li>
-            <li>
-              <a href="../../algorithme/complexités/problème/">../../algorithme/complexités/problème/</a>
-            </li>
-              
-              <li>
-                <a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/complexités/amortie/">Complexité amortie</a>
-              </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
+  <blockquote>
+<p>TBD complexité amortie ?</p>
+</blockquote>
 <p>Nous allons étudier deux algorithmes permettant de mélanger un tableau.</p>
-<!-- end résumé -->
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -303,7 +275,7 @@ rendre P[i]
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -440,7 +412,7 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 </div>
 </details>     
 </div>
-<p>Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat" class="interne">l'analyse par agrégat du compteur binaire</a>, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.</p>
+<p>Énumérer tous les successeurs prend alors $\mathcal{O}(n!)$ opérations en utilisant les arguments données pour <a href="../complexit%C3%A9-amortie/#compteur-agr%C3%A9gat" class="interne">l'analyse par agrégat du compteur binaire</a>, on peut partitionner l'ensemble des permutations (il y en a $n!$ au total) selon l'ordre de ses derniers éléments.</p>
 <p>Pour tout $1 \leq i &lt; n$, on peut séparer l'ensemble en 2 parties selon que $S[n-i] &lt; S[n-i+1]$ ou $S[n-i] &gt; S[n-i+1]$. Ces deux parties sont de même cardinal. Parmi toutes les permutations telles que $S[n-i] &lt; S[n-i+1]$, le même raisonnement que précédemment nous indique que la moitié sont telles que $S[n-i+1] &gt; S[n-i+2]$. On peut encore recommencer en considérant l'ensemble des permutations telles que $S[n-i] &lt; S[n-i+1]$ et $S[n-i+1] &gt; S[n-i+2]$, la moitié d'entres elles sont telle que $S[n-i+2] &gt; S[n-i+3]$...</p>
 <p>On arrive ainsi à démontrer par récurrence que l'ensemble $\mathcal{S}_i$ des permutations S telles que :</p>
 <ol>
@@ -452,7 +424,7 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 C = \sum_{i=1}^{n}i\cdot \frac{n!}{2^i} + n = n! \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n<br>
 $$</p>
 <p>En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.</p>
-<p>En poussant le calcul <a href="../complexit%C3%A9s/amortie#compteur-agr%C3%A9gat-partition" class="interne">comme on a fait pour le compteur binaires</a>, on trouve :</p>
+<p>En poussant le calcul <a href="../complexit%C3%A9-amortie/#compteur-agr%C3%A9gat-partition" class="interne">comme on a fait pour le compteur binaires</a>, on trouve :</p>
 <p>$$<br>
 C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)<br>
 $$</p>
