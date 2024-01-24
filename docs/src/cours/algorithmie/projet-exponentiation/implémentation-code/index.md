@@ -98,7 +98,7 @@ Si l'on modifie notre algorithme naif plus tard il faudra toujours qu'il soit te
 
 ## Complexité temporelle
 
-La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../calcul-complexités/définitions/#complexité-temps){.interne} de celui-ci pour une entrée réalisant la complexité maximale.
+La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../complexité-calculs/définitions/#complexité-temps){.interne} de celui-ci pour une entrée réalisant la complexité maximale.
 
 Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
 

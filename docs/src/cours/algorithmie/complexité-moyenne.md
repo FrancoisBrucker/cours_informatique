@@ -42,7 +42,7 @@ Si l'on a pas de modèle a priori, on considérera que chaque donnée est équip
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../calcul-complexités/O-pour-l-algorithmie/#exemple-recherche){.interne} :
+Reprenons l'exemple de [la recherche d'un élément d'un un tableau](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne} :
 
 ```python
 def est_dans_tableau(valeur, tableau):

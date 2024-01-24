@@ -48,7 +48,7 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
 
 {% aller %}
-[Calcul de complexité d'un algorithme](./calcul-complexités){.interne}
+[Calcul de complexité d'un algorithme](./complexité-calculs){.interne}
 {% endaller %}
 {% aller %}
 [Complexité d'un problème algorithmique](./problème-complexités){.interne}
@@ -83,10 +83,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 > TBD définition de problème, complexité et classes de problèmes.
 > TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps
 
-## Méthode de design d'algorithmes
-
-> TBD
-
 ## Complexité amortie
 
 {% aller %}
@@ -95,7 +91,11 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Structure avancée
 
-> TBD : liste et dictionnaires
+> TBD : liste, dictionnaires et comparaison avec le tableau
+
+## Méthode de design d'algorithmes
+
+> TBD
 
 ## Désordre et hasard
 

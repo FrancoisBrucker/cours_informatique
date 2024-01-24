@@ -68,7 +68,7 @@ On va chercher à résoudre le problème de décision suivant :
 Ce qu'on peut déjà dire de notre problème :
 
 - une **borne minimale** : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen
-- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../calcul-complexités/O-pour-l-algorithmie/#exemple-recherche){.interne}) résout le problème
+- une **borne maximale** : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on [on a déjà calculé la complexité](../complexité-calculs/O-pour-l-algorithmie/#exemple-recherche){.interne}) résout le problème
 
 ```python
 def est_dans_tableau(valeur, tableau):

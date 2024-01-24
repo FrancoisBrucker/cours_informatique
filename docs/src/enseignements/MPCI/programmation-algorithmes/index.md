@@ -137,8 +137,8 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 {% faire "**Prérequis**" %}
 Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin est rassemblé là :
 
-1. [définition de la complexité](/cours/algorithmie/calcul-complexités/définitions){.interne}
-2. [comparaisons asymptotiques](/cours/algorithmie/calcul-complexités/comparaisons-asymptotiques){.interne}
+1. [définition de la complexité](/cours/algorithmie/complexité-calculs/définitions){.interne}
+2. [comparaisons asymptotiques](/cours/algorithmie/complexité-calculs/comparaisons-asymptotiques){.interne}
 {% endfaire  %}
 {% info %}
 N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
@@ -148,9 +148,9 @@ Parties abordées :
 
 {% aller %}
 
-1. [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/calcul-complexités/O-pour-l-algorithmie){.interne}
-2. [règles de calculs](/cours/algorithmie/calcul-complexités/règles-de-calcul){.interne}
-3. [complexités des structures et des méthodes](/cours/algorithmie/calcul-complexités/méthodes-structures-calcul){.interne}
+1. [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/complexité-calculs/O-pour-l-algorithmie){.interne}
+2. [règles de calculs](/cours/algorithmie/complexité-calculs/règles-de-calcul){.interne}
+3. [complexités des structures et des méthodes](/cours/algorithmie/complexité-calculs/méthodes-structures-calcul){.interne}
 4. [Complexité d'un problème Algorithmique](/cours/algorithmie/problème-complexités/){.interne}
 
 {% endaller %}
