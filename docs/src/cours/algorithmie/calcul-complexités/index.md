@@ -95,5 +95,3 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
-
-> TBD : calcul pour les structures de données

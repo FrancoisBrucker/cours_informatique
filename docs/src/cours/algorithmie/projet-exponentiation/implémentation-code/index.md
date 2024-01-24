@@ -2,12 +2,6 @@
 layout: layout/post.njk 
 title: Projet exponentiation
 
-eleventyNavigation:
-    order: 4
-    prerequis:
-        - "../projet-pourcentages/"
-        - "../../algorithme/étude-exponentiation/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -15,11 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-On vérifie que nos calculs théoriques sont validés expérimentalement.
-
-<!-- end résumé -->
+On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement.
 
 ## Mise en place
 
@@ -30,15 +21,15 @@ On vérifie que nos calculs théoriques sont validés expérimentalement.
 1. créez un dossier nommé `exponentiation`{.fichier} où vous placerez vos fichiers
 2. créez un projet vscode dans ce dossier
 3. créez dans ce dossier les 3 fichiers de la trinité du code :
-   * `main.py`{.fichier}
-   * `exponentiation.py`{.fichier}
-   * `test_exponentiation.py`{.fichier}
+   - `main.py`{.fichier}
+   - `exponentiation.py`{.fichier}
+   - `test_exponentiation.py`{.fichier}
 
 {% endfaire %}
 
 ### Vscode
 
-1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre) et le 
+1. on vérifie que python est ok : le python utilisé par vscode (exécution via le triangle en haut à droite de la fenêtre)
 2. on vérifie que le linter est actif (en faisant une faute de style)
 
 {% faire %}
@@ -66,11 +57,11 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 
 {% faire %}
 
-* dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
-* dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
-  * vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
-  * vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
-  * vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 1 fonctionnent
+- dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
+- dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
+  - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
+  - vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
+  - vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 1 fonctionnent
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
@@ -82,9 +73,9 @@ Pour les tests, on utilisera les règles suivantes :
 
 Organisation des tests :
 
-* un fichier de test par fichier de code. Chaque fichier de test sea nommé : `test_[nom du fichier de code].py`{.fichier} où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
-* chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
-* un unique `assert`{.language-} par fonction de test : on ne doit tester qu'**une seule chose** par test
+- un fichier de test par fichier de code. Chaque fichier de test sea nommé : `test_[nom du fichier de code].py`{.fichier} où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
+- chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
+- un unique `assert`{.language-} par fonction de test : on ne doit tester qu'**une seule chose** par test
 
 {% endnote %}
 
@@ -92,8 +83,8 @@ Organisation des tests :
 
 {% faire %}
 
-* dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`{.language-}
-* dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
+- dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`{.language-}
+- dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
@@ -107,22 +98,24 @@ Si l'on modifie notre algorithme naif plus tard il faudra toujours qu'il soit te
 
 ## Complexité temporelle
 
-La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../algorithme/complexités/max-min#temps-exécution){.interne} de celui-ci pour une entrée réalisant la complexité maximale.
+La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la [complexité en temps](../../calcul-complexités/définitions/#complexité-temps){.interne} de celui-ci pour une entrée réalisant la complexité maximale.
 
 Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :
 
-* nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
-* python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique))) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.
+- nous ne sommes pas seul sur la machine, tous les programmes actifs s'exécutent souvent en même temps en se [partageant du temps de processeur](https://fr.wikipedia.org/wiki/Temps_partag%C3%A9) : il est donc difficile de mesurer précisément le temps uniquement pris pour notre algorithme par le processeur.
+- python fait des choses sans nous le dire, comme vérifier de temps en temps que les objets ont tous des noms et les supprimer s'ils n'en ont plus (on appelle ça un [ramasse miette](https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique))) : python lui-même exécute des instructions qui ne sont pas dans notre algorithme.
 
 Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces *temps parasites* :
 
-* on peut uniquement mesurer le temps pris par le programme python
-* les opérations régulières de python sont négligeables lorsque la taille des entrées deviennent grandes
-* ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
+- on peut uniquement mesurer le temps pris par le programme python
+- les opérations régulières de python sont négligeables lorsque la taille des entrées deviennent grandes
+- ils peuvent être vues comme des constantes dans le calcul de notre complexité : il ne participent donc pas à l'allure générale de la courbe de complexité.
 
 Le protocole de calcul sera alors le suivant :
 
-{% note "mesurer le temps d'exécution :" %}
+{% note "**À retenir**" %}
+
+Pour mesurer le temps d'exécution d'un algorithme :
 
 1. on note le nombre de secondes $t_1$ utilisées par le programme python juste avant d'exécuter l'algorithme
 2. on exécute l'algorithme
@@ -154,6 +147,9 @@ print("Temps d'attente :", delta)
 ```
 
 {% endfaire %}
+{% info %}
+On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.
+{% endinfo %}
 
 Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter) qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
@@ -161,9 +157,9 @@ Le code précédent utilise une fonction du module [`time`{.language-}](https://
 
 1. Exécutez plusieurs fois le code précédent pour voir que l'on passe bien environ 1 seconde à calculer $1000^{1000^2}$.
 2. Faites pour dix essais :
-   * le temps maximum de calcul
-   * le minimum maximum de calcul
-   * le temps moyen de calcul
+   - le temps maximum de calcul
+   - le minimum maximum de calcul
+   - le temps moyen de calcul
 
 Conclusion ?
 {% endfaire %}
@@ -218,9 +214,9 @@ Trouver $2^K$ la première puissance de 2 tel que le temps mis pour exécuter l�
 {% faire %}
 Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez trois listes :
 
-* la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec $K$ calculé précédemment)
-* la liste `temps_naif`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-}
-* la liste `temps_rapide`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_rapide(3, exposant[i])`{.language-}
+- la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec $K$ calculé précédemment)
+- la liste `temps_naif`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-}
+- la liste `temps_rapide`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_rapide(3, exposant[i])`{.language-}
 {% endfaire %}
 
 {% faire %}

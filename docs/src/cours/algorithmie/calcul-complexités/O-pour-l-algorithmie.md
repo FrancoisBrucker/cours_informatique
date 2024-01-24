@@ -108,9 +108,9 @@ Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(
 
 ## Usage de $\Omega$ et $\Theta$
 
-On utilisera très peu les fonctions $\Omega$ car le but des calculs de complexité est souvent de les majorer et non de les minorer.
+On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.
 
-Les fonctions $\Theta$ quant à elles serviront un peu pus. On les utilisera par exemple pour garantir qu'un algorithme est bien de la complexité annoncée et non juste une majoration.
+En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de [problèmes algorithmiques](../../écrire-algorithmes/problème) ou il faudra comparer plusieurs algorithmes entre eux.
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 

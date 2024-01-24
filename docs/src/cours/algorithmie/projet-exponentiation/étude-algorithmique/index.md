@@ -2,12 +2,6 @@
 layout: layout/post.njk 
 title: "Étude : exponentiation"
 
-eleventyNavigation:
-    order: 5
-    prerequis:
-        - "../../algorithme/complexités/max-min/"
-        - "../../algorithme/preuve-algorithme/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -15,15 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :
 
-* fonctionnement
-* preuve
-* complexité
-
-<!-- end résumé -->
+- fonctionnement
+- preuve
+- complexité
 
 {% info %}
 On utilisera le python comme langage de pseudo-code
@@ -103,28 +93,28 @@ C'est cet algorithme itératif que nous allons étudier maintenant.
 
 On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
 
-{% note %}
-On teste sur de petits nombres en se mettant à la place de l'ordinateur.
+{% note "**À retenir**" %}
+On teste toujours ses algorithmes sur de petits nombres en se mettant à la place de l'ordinateur.
 
-* on numérote chaque ligne
-* on note sur une feuille les variables
-* on exécute ligne à ligne en notant les différents résultats.
-* à la fin on vérifie que `r`{.language-} vaut bien ce qu'il doit valoir.
+- on numérote chaque ligne
+- on note sur une feuille les variables
+- on exécute ligne à ligne en notant les différents résultats
+- à la fin on vérifie que le retour de l'algorithme est bien correct
 
 {% endnote %}
 
 Les cas simples que l'on peut essayer sans peine, et permet de **tester les cas limites** :
 
-* `n`{.language-} vaut 1
-* `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
+- `n`{.language-} vaut 1
+- `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
 
 Puis un cas un peu plus compliqué pour **tester si les boucles fonctionnent bien** :
 
-* `n`{.language-} vaut 2 ou 3
-* `x`{.language-} vaut 2 ou 3
+- `n`{.language-} vaut 2 ou 3
+- `x`{.language-} vaut 2 ou 3
 
 {% faire %}
-Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus (vous pourrez utiliser python ou le faire à la main) sauf pour un (lequel et pourquoi ?).
+Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
 {% endfaire %}
 
 Une fois qu'on est convaincu que ça fonctionne, on prouve sa finitude, son exactitude et on calcule sa complexité.
@@ -135,14 +125,14 @@ En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il ca
 
 #### <span id="finitude-naif"></span> Finitude
 
-* `c`{.language-} diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0
-* condition : il faut que `c`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `n`{.language-} doit être un nombre strictement positif.
+- `c`{.language-} diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0
+- condition : il faut que `c`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `n`{.language-} doit être un nombre strictement positif.
 
-{% note %}
-Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions sur l'égalité stricte. Ceci pour deux raisons majeures :
+{% note "**À retenir**" %}
+Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions d'égalité. Ceci pour deux raisons majeures :
 
-* L'égalité entre réels n'existe pas en informatique par exemple.
-* dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
+- L'égalité entre réels n'existe pas en informatique, ces conditions ne fonctionneront donc pas avec eux.
+- dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
 
 {% endnote %}
 
@@ -150,7 +140,7 @@ Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus p
 
 Le fonctionnement de l'algorithme est *à peu prêt* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
 
-{% note %}
+{% note "**Invariant de boucle**" %}
 Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle :
 $$
 r \cdot x^c = x^n
@@ -161,10 +151,10 @@ Prouvons cet invariant.
 
 Juste avant la première itération de la boucle, `r = x`{.language-} et `c = n-1`{.language-} notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un `'` aux variable après l'itération :
 
-* `x' = x`{.language-}
-* `n' = n`{.language-}
-* `r' = r * x`{.language-}
-* `c' = c - 1`{.language-}
+- `x' = x`{.language-}
+- `n' = n`{.language-}
+- `r' = r * x`{.language-}
+- `c' = c - 1`{.language-}
 
 On a alors :  
 $$
@@ -177,7 +167,7 @@ On a démontré notre invariant de boucle.
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque `c = 0`{.language-}. Et là : $r \cdot x^c = r = x^n$
 {% endnote %}
 
-### <span id="complexité-naif"></span> Complexité
+### <span id="complexité-naif"></span> Complexité de l'algorithme naif
 
 Ligne à ligne :
 
@@ -241,8 +231,8 @@ def puissance(nombre, exposant):
 
 On a utilisé deux choses :
 
-* L'opérateur `%`{.language-} signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `compteur`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
-* la division entière `//`{.language-} pour s'assurer que exposant reste un entier. Le type de `4 / 2`{.language-} en python est un réel alors que le type de `4 // 2`{.language-} est un entier.
+- L'opérateur `%`{.language-} signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `compteur`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
+- la division entière `//`{.language-} pour s'assurer que exposant reste un entier. Le type de `4 / 2`{.language-} en python est un réel alors que le type de `4 // 2`{.language-} est un entier.
 
 Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
 
@@ -300,13 +290,13 @@ C'est cet algorithme itératif que nous allons étudier maintenant.
 
 Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :
 
-* `n`{.language-} vaut 1 ou 2
-* `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
+- `n`{.language-} vaut 1 ou 2
+- `x`{.language-} vaut 2 ou 3 (un peu plus que les cas triviaux)
 
 Enfin, comme l'algorithme vérifie si `c`{.language-} est pair ou impair, on peut essayer un exposant un peu plus grand, par exemple :
 
-* `n = 7`{.language-}
-* `x = 2`{.language-} (pas trop grand pour pouvoir calculer facilement les résultats de tête)
+- `n = 7`{.language-}
+- `x = 2`{.language-} (pas trop grand pour pouvoir calculer facilement les résultats de tête)
 
 {% faire %}
 Vérifiez que l'algorithme donne bien les bons résultats sur les exemples ci-dessus.
@@ -326,22 +316,22 @@ $$
 
 Juste avant la première itération de la boucle, $r = x$, $x = X$ et et $c = n-1$ notre invariant est donc vérifié au départ de l'algorithme. On suppose l'invariant vrai au début de la boucle d'itération $i$. Regardons comment les variables ont été modifiées lors de cette itération :
 
-* si compteur est impair on a :
-  * $c' = c - 1$
-  * $r' = r \cdot x$
-  * $x' = x$
-  * l'invariant vaut alors en fin d'itération : $r \cdot x^c = (r \cdot x) \cdot x^{c - 1} = r' \cdot (x')^{c'}$
-* si compteur est pair on a :
-  * $c' = c / 2$
-  * $r' = r$
-  * $x' = x \cdot x$
-  * l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$
+- si compteur est impair on a :
+  - $c' = c - 1$
+  - $r' = r \cdot x$
+  - $x' = x$
+  - l'invariant vaut alors en fin d'itération : $r \cdot x^c = (r \cdot x) \cdot x^{c - 1} = r' \cdot (x')^{c'}$
+- si compteur est pair on a :
+  - $c' = c / 2$
+  - $r' = r$
+  - $x' = x \cdot x$
+  - l'invariant vaut alors en fin d'itération : $r \cdot x^c = r \cdot (x \cdot x)^{c/2}  = r' \cdot (x')^{c'}$
 
 Dans tous les cas, l'invariant est toujours vérifié puisqu'en début de boucle notre invariant vaut $r \cdot x^c = X^n$
 
 Notre invariant est vrai avant et après chaque itération, il est donc également vrai à la fin de l'algorithme, lorsque $c = 0$, et là : $r \cdot x^c = r = X^n$
 
-### <span id="complexité-rapide"></span> Complexité
+### <span id="complexité-rapide"></span> Complexité de l'exponentiation indienne
 
 Pourquoi s'embêter avec la parité de compteur ? Parce que ça permet d'aller vachement plus vite !
 
@@ -384,7 +374,7 @@ $$
 
 La complexité est de l'ordre du nombre de fois où l'on rentre dans la boucle `tant que`{.language-} : c'est à dire le nombre de fois où `c`{.language-} a été modifié sans être égal à 0.
 
-#### nombre de fois où compteur est impair
+#### Nombre de fois où compteur est impair
 
 Si à l'itération numéro $i$ compteur est impair, il sera pair à l'itération $i + 1$ car `c' = c - 1`{.language-} dans ce cas là.
 
@@ -426,7 +416,7 @@ Cette complexité est très faible ! Comparez par exemple : $2^{16} = 65536$ op�
 
 Cette différence va aller exponentiellement lorsque compteur augmente, par exemple entre $2^{100} = 1267650600228229401496703205376$ et $100$ opérations
 
-## Complexité minimum
+## Complexité du problème
 
 {% lien %}
 Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer Programming* de Knuth.
@@ -434,8 +424,8 @@ Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer 
 
 Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :
 
-* $n$ multiplications pour l'algorithme naïf itératif
-* $\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne
+- $n$ multiplications pour l'algorithme naïf itératif
+- $\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne
 
 On peut alors chercher à minimiser le nombre de multiplications de l'algorithme d'exponentiation :
 
@@ -519,9 +509,9 @@ Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peu
 
 une ***suite multiplicative pour $x^n$*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
-* $a_0 = x$
-* $a_r = x^n$
-* $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
+- $a_0 = x$
+- $a_r = x^n$
+- $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
 
 {% endnote %}
 
@@ -533,8 +523,8 @@ Commençons par montrer que nos deux algorithmes peuvent s'écrire sous ce forma
 {% endexercice %}
 {% details "solution" %}
 
-* $a_0 = x$
-* $a_i = a_{i-1} \cdot a_0$ pour $0 < i \leq n-1$
+- $a_0 = x$
+- $a_i = a_{i-1} \cdot a_0$ pour $0 < i \leq n-1$
 
 Cette définition donne : $a_i = x^{i+1}$ et donc : $a_{n-1} = x^n$
 {% enddetails %}
@@ -549,17 +539,17 @@ Les éléments de la suite correspondant aux valeurs successives de $r$. Cependa
 
 Cette suite est bien multiplicative :
 
-* $a_0 = x$
-* $a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$
+- $a_0 = x$
+- $a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$
 
 Que l'on peut produire comme suit :
 
 ```text
     a = [x]
-    y = 2
-    tant que y < n:        
-        ajoute a[-1] * a[-1] à la fin de a
-        y *= 2
+    y = a[-1] * a[-1]
+    tant que y < x ** n:        
+        ajoute y à la fin de a
+        y = a[-1] * a[-1]
 ```
 
 On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :
@@ -585,22 +575,22 @@ Que donne cette suite pour $n=15$ ? et pour $n=10$ ?
 {% details "solution" %}
 Pour n=15 :
 
-* $a_0 = x$
-* $a_1 = x^2$
-* $a_2 = x^4$
-* $a_3 = x^8$
-* $a_4 = x^3$
-* $a_5 = x^7$
-* $a_6 = x^{15}$
+- $a_0 = x$
+- $a_1 = x^2$
+- $a_2 = x^4$
+- $a_3 = x^8$
+- $a_4 = x^3$
+- $a_5 = x^7$
+- $a_6 = x^{15}$
 
 Pour n=10 :
 
-* $a_0 = x$
-* $a_1 = x^2$
-* $a_2 = x^4$
-* $a_3 = x^8$
-* $a_4 = x^2$
-* $a_5 = x^{10}$
+- $a_0 = x$
+- $a_1 = x^2$
+- $a_2 = x^4$
+- $a_3 = x^8$
+- $a_4 = x^2$
+- $a_5 = x^{10}$
 
 On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.
 
@@ -620,7 +610,7 @@ C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai
 
 Ceci permet de montrer que :
 
-{% note %}
+{% note "**Proposition**" %}
 Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$  est telle que :
 <div>
 $$
@@ -628,17 +618,17 @@ $$
 $$
 </div>
 {% endnote %}
-{% details "solution" %}
+{% details "preuve", "open" %}
 
 Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.
 {% enddetails %}
 
 Ceci permet de dire que :
 
-{% note %}
-Tout algorithme calculant l'exponentiel $x^n$ est au moins de complexité $\mathcal{O}(\ln(n))$
+{% note "**Proposition**" %}
+Tout algorithme calculant l'exponentiel $x^n$ est en $\Omega(\ln(n))$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Il faut toujours au moins $\log_2(n)$ multiplications donc la complexité est forcément supérieure à ce nombre.
 {% enddetails %}
@@ -655,8 +645,8 @@ Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le n
 
 On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur `c`{.language-} vaut soit :
 
-* $b // 2^i$ si ce nombre est pair
-* $b // 2^i - 1$ sinon
+- $b // 2^i$ si ce nombre est pair
+- $b // 2^i - 1$ sinon
 
 {% enddetails %}
 
@@ -691,7 +681,7 @@ On peut aller plus loin et montrer que $l(n) = \Theta(\log_2)$, nous ne ferons c
 
 ## Conclusions
 
-* la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme
-* il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle
-* un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace
-* On peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.
+- la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme
+- il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle
+- un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace
+- On peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.

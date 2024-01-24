@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: Projet Suite additive
 
-eleventyNavigation:
-    order: 5
-    prerequis:
-        - "../../algorithme/étude-exponentiation/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -20,7 +15,7 @@ Algorithme pour résoudre le problème de la suite additive.
 
 <!-- end résumé -->
 
-Les [suite multiplicatives](../../algorithme/étude-exponentiation#suite-multiplicative){.interne} vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les *suite additives* :
+[Les suite multiplicatives](../projet-exponentiation/étude-algorithmique/#suite-multiplicative){.interne} vues dans l'étude de l'exponentiation sont une adaptation d'un problème plus ancien, concernant les *suite additives* :
 
 {% note "**Définition**" %}
 Une ***suite additive pour $n$*** est une suite finie d'entiers $(a_i)_{0\leq i \leq r}$ telle que :
@@ -33,7 +28,7 @@ On note ***$l(n)$*** la longueur minimale d'une chaîne additive pour $n$.
 {% endnote %}
 
 {% info %}
-Comme les exposant se composent de manière additive, les problèmes des suites additives et multiplicatives sont identiques.
+Comme les exposants se composent de manière additive, les problèmes des suites additives et multiplicatives sont identiques.
 {% endinfo %}
 
 Le problème de trouver une valeur exacte à $l(n)$ est compliqué. Nous allons ici uniquement donner quelques propriétés de $l(n)$. Le lecteur curieux pourra se reporter volume 2 de *The Art of Programming* de Knuth pour une histoire détaillée de $l(n)$.
@@ -95,7 +90,7 @@ Vous pourrez tester sur la suite `[1, 2, 4, 8, 3, 2, 11]`{.language-} (qui doit 
 ### Suite additive naïve
 
 {% faire %}
-Adaptez [la suite multiplicative naïve](../../algorithme/étude-exponentiation#multiplicatif-naif){.interne} pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative naïve](../projet-exponentiation/étude-algorithmique/#multiplicatif-naif){.interne} pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 {% endfaire %}
@@ -103,7 +98,7 @@ Vous pourrez tester que pour n=5 on obtienne : $[1, 2, 3, 4, 5]$
 ### Suite additive indienne
 
 {% faire %}
-Adaptez [la suite multiplicative indienne](../../algorithme/étude-exponentiation#multiplicatif-indienne){.interne} pour créer une fonction qui rende une suite additive.
+Adaptez [la suite multiplicative indienne](../projet-exponentiation/étude-algorithmique/#multiplicatif-indienne){.interne} pour créer une fonction qui rende une suite additive.
 
 Vous pourrez tester que pour n=15 on obtienne : $[1, 2, 4, 8, 3, 7, 15]$
 {% endfaire %}

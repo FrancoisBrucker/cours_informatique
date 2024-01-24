@@ -90,12 +90,18 @@ Ce cours est composée de plusieurs parties :
 - fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
 
 {% endfaire %}
+{% info %}
+N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
+{% endinfo %}
 
 Parties abordées :
 
-- questions sur les prérequis
-- [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
-- [écrire du code](/cours/coder-et-développer/développement/){.interne}
+{% aller %}
+
+1. [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
+2. [écrire du code](/cours/coder-et-développer/développement/){.interne}
+
+{% endaller %}
 
 ### Semaine 2
 
@@ -134,13 +140,20 @@ Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin
 1. [définition de la complexité](/cours/algorithmie/calcul-complexités/définitions){.interne}
 2. [comparaisons asymptotiques](/cours/algorithmie/calcul-complexités/comparaisons-asymptotiques){.interne}
 {% endfaire  %}
+{% info %}
+N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
+{% endinfo %}
 
 Parties abordées :
 
-- questions sur les prérequis
-- [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/calcul-complexités/O-pour-l-algorithmie){.interne}
-- [règles de calculs](/cours/algorithmie/calcul-complexités/règles-de-calcul){.interne}
-- [complexités des structures et des méthodes](/cours/algorithmie/calcul-complexités/méthodes-structures-calcul){.interne}
+{% aller %}
+
+1. [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/calcul-complexités/O-pour-l-algorithmie){.interne}
+2. [règles de calculs](/cours/algorithmie/calcul-complexités/règles-de-calcul){.interne}
+3. [complexités des structures et des méthodes](/cours/algorithmie/calcul-complexités/méthodes-structures-calcul){.interne}
+4. [Complexité d'un problème Algorithmique](/cours/algorithmie/problème-complexités/){.interne}
+
+{% endaller %}
 
 #### Vendredi : étude de l'exponentiation
 

@@ -24,7 +24,7 @@ Aucune compétences en informatique préalable n'est nécessaire.
 
 <!-- fin résumé -->
 
-## Bases
+## <span id="bases"></span>Bases
 
 ### Langage python
 
@@ -88,7 +88,7 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
-## Développement
+## <span id="développer"></span>Développer
 
 {% aller %}
 [Écrire et exécuter du code](développement){.interne}
@@ -97,8 +97,6 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 {% aller %}
 [Déboguer son code](debugger){.interne}
 {% endaller %}
-
-> TBD exercices mpci.
 
 ## Stockage des données
 

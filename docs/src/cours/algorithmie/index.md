@@ -48,10 +48,25 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 {% aller %}
 [Calcul de complexité d'un algorithme](./calcul-complexités){.interne}
 {% endaller %}
+{% aller %}
+[Complexité d'un problème algorithmique](./problème-complexités){.interne}
+{% endaller %}
 
-## On s'entraîne
+## On s'entraîne : problèmes liés à l'exponentiation
 
-> TBD
+{% aller %}
+[Calculer $x^y$](./projet-exponentiation){.interne}
+{% endaller %}
+{% aller %}
+[Les suites additives](./projet-suite-additive){.interne}
+{% endaller %}
 
-- exponentiation rapide
-- suites additives
+## On s'entraîne : problèmes de tris
+
+- ordre et désordre
+
+## Classes de Problèmes Algorithmiques
+
+> TBD on a vu avec exponentiation que l'on ne sait pas à priori la meilleurs complexité d'un algorithme résolvant un problème.
+> TBD définition de problème, complexité et classes de problèmes.
+> TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps
