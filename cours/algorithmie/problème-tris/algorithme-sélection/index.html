@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithme du tri par sélection</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Algorithme du tri par sélection</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-sélection/">Algorithme du tri par sélection</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le tri par sélection est un algorithme simple qui fonctionne de la même manière quelque-soit le tableau en entrée. L'algorithme procède ainsi : à chaque itération de l'algorithme, on place à l'indice $i$ du tableau son $i$-ème plus petit élément.</p>
+<p>On en déduit l'algorithme en pseudo-code suivant :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        min_index <span class="token operator">=</span> i
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                min_index <span class="token operator">=</span> j
+        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>L'algorithme <code class="language-">sélection</code> <strong>modifie</strong> le tableau passé en paramètre. On appelle ces algorithmes <a href="https://en.wikipedia.org/wiki/In-place_algorithm">in place</a> car ils ne rendent rien, mais modifient les données en entrées.</p>
+<h2><span id="fonctionnement-sélection"></span> Fonctionnement</h2>
+<p>On vérifie que l'algorithme fonctionne pour :</p>
+<ul>
+<li>un petit tableau trié : <code class="language-">[1, 2, 3]</code></li>
+<li>un petit tableau non trié où le plus petit est en dernière place : <code class="language-">[3, 2, 1]</code></li>
+</ul>
+<h2><span id="preuve-sélection"></span> Preuve</h2>
+<p>Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme <code class="language-">sélection</code> fait.</p>
+<ol>
+<li>la boucle <code class="language-">for</code> de la ligne 4 trouve l'indice du plus petit élément du tableau <code class="language-">T[i:]</code>.</li>
+<li>la ligne 7 échange le minimum du tableau <code class="language-">T[i:]</code> avec <code class="language-">T[i]</code></li>
+<li>comme la boucle <code class="language-">for</code> de la ligne 2 incrémente $i$, on a l'invariant de boucle :</li>
+</ol>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Invariant de boucle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.</p>
+</div>
+</div>
+<h2><span id="complexités-sélection"></span> Complexités</h2>
+<p>On suppose que la taille du tableau est $n$.</p>
+<p>Ligne à ligne :</p>
+<ol>
+<li>début de fonction : $\mathcal{O}(1)$</li>
+<li>une boucle de $n-1$ itérations</li>
+<li>une affectation $\mathcal{O}(1)$</li>
+<li>une boucle de $n-i-1$ itérations ($i$ est la variable définie ligne 2)</li>
+<li>un test et deux valeurs d'un tableau : $\mathcal{O}(1)$</li>
+<li>une affectation : $\mathcal{O}(1)$</li>
+<li>deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$</li>
+</ol>
+<p>Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle <code class="language-">for</code> de la ligne 2. On peut alors utiliser <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour utiliser le maximum, $n-1$, pour le calcul de la complexité.</p>
+<p>Ce qui donne une complexité de :</p>
+<div>
+$$
+\begin{array}{lcl}
+C & = & \mathcal{O}(1) + \\
+&& (n-1) \cdot (\\
+&& \mathcal{O}(1) + \\
+&& (n-1) \cdot ( \\
+&& \mathcal{O}(1) + \\
+&& \mathcal{O}(1)) + \\
+&& \mathcal{O}(1)) \\
+& = & \mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1))\\
+& = & \mathcal{O}(n^2) \\
+\end{array}
+$$
+</div>
+<p>Le nombre d'itérations est constant quelque soit le tableau, on a donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de l'algorithme <code class="language-">sélection</code> est ($n$ est la taille du tableau passé en entrée) :</p>
+<ul>
+<li>la <strong>complexité min</strong> vaut $\mathcal{O}(n^2)$</li>
+<li>la <strong>complexité (max)</strong> vaut $\mathcal{O}(n^2)$</li>
+<li>la <strong>complexité en moyenne</strong> vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)</li>
+</ul>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

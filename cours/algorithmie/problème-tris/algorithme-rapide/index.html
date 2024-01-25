@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Algorithme du tri rapide</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Algorithme du tri rapide</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-rapide/">Algorithme du tri rapide</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le tri rapide est un algorithme qui a été très utilisé par le passé. On le montre encore maintenant car c'est un exemple de <a href="#diviser-pour-r%C3%A9gner" class="interne">diviser pour régner</a> et, surtout, le calcul des complexités est très intéressant.</p>
+<p>Le principe est ici de séparer le tableau en entrée <code class="language-">T</code> en 2 tableaux <code class="language-">T1</code> et <code class="language-">T2</code> et une valeur nommé <code class="language-">pivot</code> de tel sorte que :</p>
+<ul>
+<li>toutes les valeurs de <code class="language-">T1</code> soient plus petites que <code class="language-">pivot</code></li>
+<li>toutes les valeurs de <code class="language-">T2</code> soient strictement plus grande que <code class="language-">pivot</code></li>
+</ul>
+<p>On a coutume de prendre pivot comme étant <code class="language-">T[0]</code>.</p>
+<p>Une fois ce découpage des données fait, la fonction <code class="language-">combiner</code> est triviale puisqu'il suffit de concaténer <code class="language-">T1</code> trié à <code class="language-">[T[0]]</code> puis à <code class="language-">T2</code> trié.</p>
+<h2>pseudo-code</h2>
+<p>En pseudo-code cela donne :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rapide</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> T
+
+    pivot <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    T1 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> pivot<span class="token punctuation">]</span>
+    T2 <span class="token operator">=</span> <span class="token punctuation">[</span>T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> pivot<span class="token punctuation">]</span>
+
+    <span class="token keyword">return</span> rapide<span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">[</span>pivot<span class="token punctuation">]</span> <span class="token operator">+</span> rapide<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a utilisé <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension" class="interne">les list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
+</div>
+</div>
+<h2><span id="preuve-rapide"></span> Preuve</h2>
+<p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré <strong>si</strong> les récursions s'arrêtent.</p>
+<p>C'est effectivement le cas ici puisque les tableaux  <code class="language-">T1</code> et  <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y a une condition d'arrêt sur la taille du tableau.</p>
+<h2><span id="complexités-rapide"></span> Complexités</h2>
+<p>En notant $n$ la taille de la liste on a comme équation de récurrence pour la complexité $C(n)$ :</p>
+<div>
+$${
+C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \underbracket{C(n_1) + C(n_2)}_{\mbox{r\'ecursions}}{}
+}$$
+</div>
+<p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut résoudre l'équation :</p>
+<p>$${<br>
+C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
+}$$</p>
+<p><a href="../algorithme-fusion/#master-theorem" class="interne">Le master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
+<p>On va montrer que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-">rapide</code> sont :</p>
+<ul>
+<li>la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,</li>
+<li>la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,</li>
+<li>la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,</li>
+</ul>
+</div>
+</div>
+<p>Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.</p>
+<h3>Complexité (maximale) du tri rapide</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité maximale va arriver si un des deux tableaux est toujours vide. Par exemple lorsque le tableau est déjà trié.</p>
+<p>Pour des tableaux triés, <code class="language-">T1</code> ou <code class="language-">T2</code> est vide et l'autre tableau est de taille $n-1$, ce qui donne une complexité de :</p>
+<div>
+$$
+\begin{array}{lcl}
+C_{\mbox{tri\'e}}(n) &=& \mathcal{O}(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'e}}(n-1)\\
+&=&\mathcal{O}(n) + C_{\mbox{tri\'e}}(n-1)\\
+&=& \mathcal{O}(n) + \mathcal{O}(n-1) + C_{\mbox{tri\'e}}(n-2)\\
+&=& ...\\
+&=& \sum_{i=1}^{n}\mathcal{O}(i) + C_{\mbox{tri\'e}}(0)\\
+&=& \mathcal{O}(\sum_{i=1}^{n}i)\\
+&=& \mathcal{O}(n^2)\\
+\end{array}
+$$
+</div>
+<p>Et donc :</p>
+<p>$$<br>
+C_{\max}(n) = \mathcal{O}(n^2)<br>
+$$</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve formelle</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Formellement, nous ne venons que de montrer que $\mathcal{O}(n^2) \leq C_{\max}(n)$. Pour conclure la preuve, il nous reste à montrer la réciproque, c'est à dire $\mathcal{O}(n^2) \geq C_{\max}(n)$.</p>
+<p>Faisons-le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$<br>
+Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :</p>
+<div>
+$$
+\begin{array}{lcll}
+C_{\max}(n) & = & \mathcal{O}(n) + \max_{0 \leq i < n}(C_{\max}(i) + C_{\max}(n-i-1))&\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot i^2 + k\cdot(n-i-1)^2)&\text{par hypothèse de récurrence}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(i + n-i-1)^2)&\text{car } a^2+b^2 \leq (a+b)^2 \text{ pour des entiers positifs}\\
+& \leq & \mathcal{O}(n) + \max_{0 \leq i < n}(k\cdot(n-1)^2)&\\
+& \leq & \mathcal{O}(n) + k\cdot(n-1)^2&\\
+& \leq & \mathcal{O}(n) + k\cdot n^2 -k(2n-1)&\\
+& \leq & \mathcal{O}(n^2)&\\
+\end{array}
+$$
+</div>
+<p>Notre hypothèse est démontrée.</p>
+<p>On a finalement l'encadrement : $\mathcal{O}(n^2) \leq C_{\max}(n) \leq \mathcal{O}(n^2)$, ce qui nous permet d'énoncer :</p>
+<p>La complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$</p>
+</div>
+</details>     
+</div>
+<h3>Complexité minimale du tri rapide</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
+<p><img src="tris-4.png" alt="croissance convexe"></p>
+<p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et <a href="../algorithme-fusion/#master-theorem">le master theorem</a> nous permet de conclure que :</p>
+<p>$$<br>
+C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
+$$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve formelle</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Faisons la preuve de complexité rigoureusement.</p>
+<p>Pour chaque exécution de l'algorithme, on crée (au maximum) deux tableaux à partir du tableau $T$ passé en paramètre. On peut ranger ces créations par <em>étage</em>, comme le montre la figure suivante :</p>
+<p><img src="%C3%A9tages-r%C3%A9cursions.png" alt="étages récursions"></p>
+<p>On lance l’algorithme à l'étage 0 avec $T_0$ comme tableau originel. Ce tableau crée (au maximum) les tableaux $T_1$ et $T_2$ à l'étage 1 qui eux-même vont créer d'autres tableaux qui formeront l'étage 2 et ainsi de suite.</p>
+<p>Chaque tableau $T_i$ crée donc soit :</p>
+<ul>
+<li>0 tableau</li>
+<li>1 tableau nommé $T_{2\cdot i}$</li>
+<li>2 tableaux nommés $T_{2\cdot i}$ et $T_{2\cdot i + 1}$</li>
+</ul>
+<p>L'étage $k&gt;1$ est ainsi formé d'au plus $2^{k-1}$ tableaux, allant des tableaux allant des indices $(\sum_{0\leq i \leq k - 2}2^i) +1$ à $(\sum_{0\leq i \leq k-1}2^i)$.</p>
+<p>Comme chaque exécution de l'algorithme est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :</p>
+<p>$$C =  \mathcal{O}(\sum_{i} n_i)$$</p>
+<p>Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot, ala complexité $C$ de l'algorithme vaut également :</p>
+<p>$$<br>
+C = \mathcal{O}(\sum_{x \in T_0}e(x))<br>
+$$</p>
+<p>En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot.</p>
+<p>Quelque soit $T_1$, tous les arbres tels que les éléments de $T_i$ sauf 1 sont répartis dans $T_{2\cdot i}$ et $T_{2\cdot i +1}$) sont des exécutions possibles de l'algorithme, nous allons maintenant caractériser les arbres qui engendrent la complexité minimale.</p>
+<p>Notons $K$ l'étage maximum obtenu et supposons qu'il existe $T_i$ à l'étage $k&lt; K-1$ qui n'a pas créé 2 tableaux lors de sa récursion. On se retrouve alors dans la configuration suivante (avec potentiellement $i=j$) :</p>
+<p><img src="arbre-pas-dense.png" alt="arbre pas dense"></p>
+<p>On note $T_u$ l'ancêtre commun entre $T_i$ et $T_j$ ($T_u = T_i$ si $i=j$) : il existe un chemin unique entre $T_u$ et $T_i$ et un chemin unique entre $T_u$ et $T_j$.</p>
+<p>On peut alors construire un nouvel arbre en :</p>
+<ul>
+<li>déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$</li>
+<li>supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$</li>
+<li>ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$</li>
+</ul>
+<p>On obtient alors l'arbre suivant qui est une autre exécution possible du l'algorithme :</p>
+<p><img src="arbre-densifier.png" alt="arbre densifier"></p>
+<p>La complexité associée à ce nouvel arbre est strictement plus petite que celle de l'arbre originelle car tous les éléments de $T_{4\cdot j}$ deviennent pivot à un étage strictement inférieur.</p>
+<p>La complexité minimum est ainsi obtenue pour des arbres où les seuls nœuds ayant un enfant ou moins sont ceux se trouvant à l'avant dernier ou au dernier étage de l'arbre. Pour ces arbres, les $K-1$ premiers étages contiennent $2^{k-1}$ tableaux. De plus, comme chaque tableau choisit exactement un pivot, chacun des $K-1$ premiers étages participe de l'ordre de $\mathcal{O}(k \cdot 2^{k-1})$ à la complexité totale. Ce qui donne :</p>
+<div>
+$$
+\begin{array}{lcl}
+C_\min &\geq& \mathcal{O}(\sum_{k=1}^{K-1}(k \cdot 2^{k-1}))\\
+\end{array}
+$$
+</div>
+<p>Travaillons un peu sur cette somme pour la rendre plus sympathique :</p>
+<div>
+$$
+\begin{array}{lcl}
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \sum_{k=1}^{K-1}(k \cdot 2^{k})\\
+& =& \frac{1}{2} \cdot (1 \cdot 2^1 + 2 \cdot 2^2 + \dots + i \cdot 2^i + \dots (K-1) \cdot 2^{K-1})\\
+& =& \frac{1}{2} \cdot (\sum_{k=1}^{K-1}2^k + \sum_{k=2}^{K-1}2^k + \dots + \sum_{k=i}^{K-1}2^k + \dots + \sum_{k=K-1}^{K-1}2^k)\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=i}^{K-1}2^k))\\
+&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=1}^{K-1}2^k) - \sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
+\end{array}
+$$
+</div>
+<p>On peut maintenant utiliser le fait que $\sum_{k=1}^i(2^k) = 2^{i+1} - 2$ (on le prouve aisément par récurrence) :</p>
+<div>
+$$
+\begin{array}{lcl}
+\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - \sum_{i=1}^{K-1}(2^i-2)\\
+&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - 2 \cdot (K-1) - (2^{K}-2)\\
+&=& (K-1) \cdot (2^{K-1}) - K + 1 -K + 1 - 2^{K-1} - 1\\
+&=& (K-2) \cdot (2^{K-1}) - 2 \cdot K + 1 \\
+\end{array}
+$$
+</div>
+<p>Ceci nous donne — effectivement — une forme plus sympathique de la la complexité :</p>
+<p>$$<br>
+C_\min \geq \mathcal{O}(K \cdot 2^K)<br>
+$$</p>
+<p>Enfin, comme $K \geq \log_{2}(n)$ (le nombre de fois où l'on peut diviser $n$ par 2) on a que :</p>
+<p>$$<br>
+C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))<br>
+$$</p>
+</div>
+</details>     
+</div>
+<h3><span id="tri-rapide-complexité-moyenne"></span>Complexité en moyenne du tri rapide</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve intuitive</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>on utilise l'argument utilisé pour calculer la complexité en moyenne du <a href="#complexit%C3%A9s-insertion" class="interne">tri par insertion</a>. Si les données sont aléatoires la moitié de <code class="language-">T[1:]</code> est plus grande que <code class="language-">T[0]</code>. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.</p>
+<p>Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.</p>
+</div>
+</details>     
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve formelle</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut résoudre l'équation :</p>
+<p>$${<br>
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+}$$</p>
+<p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.</p>
+<p>Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l'on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :</p>
+<p>$${<br>
+C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+}$$</p>
+<p>De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $u$ème ou le $v$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
+<p>$${<br>
+C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+}$$</p>
+<p>Comme :</p>
+<ul>
+<li>$\sum_{0 \leq i &lt; n}C_{\mbox{moy}}(i) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$</li>
+<li>$\sum_{0 \leq i &lt; n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$</li>
+</ul>
+<p>On a :</p>
+<p>$${<br>
+C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)<br>
+}$$</p>
+<p>Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d'éliminer la somme :</p>
+<div>
+$$
+\begin{array}{lcl}
+n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) & = & K\cdot n^2 +2\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)\\
+&&- K\cdot (n-1)^2 - 2\sum_{1 \leq i \leq n-1}C_{\mbox{moy}}(i-1)\\
+&=& K(n^2 - (n-1)^2) + 2\cdot C_{\mbox{moy}}(n-1)\\
+&=& K(2n - 1) + 2\cdot C_{\mbox{moy}}(n-1)\\
+\end{array}
+$$
+</div>
+<p>On en déduit :</p>
+<p>$$<br>
+n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)<br>
+$$</p>
+<p>Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l'équation :</p>
+<p>$$<br>
+\frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}<br>
+$$</p>
+<p>On peut alors poser $A(n) = \frac{1}{n+1} \cdot C_{\mbox{moy}}(n)$ et on doit maintenant résoudre :</p>
+<p>$$<br>
+A(n) = A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}<br>
+$$</p>
+<p>Ce qui donne :</p>
+<div>
+$$
+\begin{array}{lcl}
+A(n) &=& A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}\\
+&=& A(n-2) + K\cdot\frac{2(n-1) - 1}{(n-1)(n)} +  K\cdot\frac{2n - 1}{n(n+1)}\\
+&=& \dots \\
+&=&K \sum_{i=1}^{n}\frac{2i-1}{i(i+1)} + A(0)\\
+&=&K \sum_{i=1}^{n}\frac{2}{(i+1)} - K \sum_{i=1}^{n}\frac{1}{i(i+1)} + A(0)\\
+\end{array}
+$$
+</div>
+<p>On peut facilement montrer (par récurrence) que $\sum_{i=1}^{n}\frac{1}{i(i+1)} = \frac{n}{n+1} \leq 1$ et donc que :</p>
+<div>
+$$
+\begin{array}{lcl}
+A(n) &=& 2K\sum_{i=1}^{n}\frac{1}{(i+1)} + \mathcal{O}(1)\\
+&=& 2K\sum_{i=1}^{n}\frac{1}{i} - 2K + \mathcal{O}(1)\\
+&=& 2K\sum_{i=1}^{n}\frac{1}{i} + \mathcal{O}(1)\\
+&=& \mathcal{O}(\sum_{i=1}^{n}\frac{1}{i})\\
+\end{array}
+$$
+</div>
+<p>La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.</p>
+<p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,<br>
+et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :</p>
+<p>$$<br>
+A(n) = \mathcal{O}(\ln(n))<br>
+$$</p>
+<p>En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :</p>
+<p>$$<br>
+C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))<br>
+$$</p>
+<p>ouf.</p>
+<p>La complexité en moyenne du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
+</div>
+</details>     
+</div>
+<h2>Conclusion</h2>
+<p>Le tri rapide a :</p>
+<ul>
+<li>une complexité moyenne qui vaut sa complexité minimale et qui est $\mathcal{O}(n \ln(n))$, donc la meilleur possible</li>
+<li>il très rapide pour les tableaux en désordre et très lent pour les tableaux déjà triés.</li>
+</ul>
+<p>C'est donc <em>rigolo</em> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Fun fact</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Commencer par mélanger un tableau pour le trier avec <code class="language-">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
