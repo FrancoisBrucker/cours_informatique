@@ -98,7 +98,9 @@ Parties abordées :
 {% aller %}
 
 1. [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
-2. [écrire du code](/cours/coder-et-développer/développement/){.interne}
+2. [écrire du code](/cours/coder-et-développer/développement/){.interne}, les parties :
+   1. [coder](/cours/coder-et-développer/développement/coder){.interne}
+   2. [projet `hello dev`](/cours/coder-et-développer/développement/tutoriel-hello-dev){.interne}
 
 {% endaller %}
 
@@ -120,8 +122,10 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 
 {% aller %}
 
-1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne}
+1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} :
+   1. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
 2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
+3. pour aller plus loin : anales test code des années précédentes.
 
 {% endaller %}
 
