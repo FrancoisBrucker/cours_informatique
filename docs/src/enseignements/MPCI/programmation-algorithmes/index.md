@@ -151,7 +151,7 @@ Parties abordées :
 1. [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/complexité-calculs/O-pour-l-algorithmie){.interne}
 2. [règles de calculs](/cours/algorithmie/complexité-calculs/règles-de-calcul){.interne}
 3. [complexités des structures et des méthodes](/cours/algorithmie/complexité-calculs/méthodes-structures-calcul){.interne}
-4. [Complexité d'un problème Algorithmique](/cours/algorithmie/problème-complexités/){.interne}
+4. [Complexité d'un problème Algorithmique](/cours/algorithmie/complexité-problème/){.interne}
 
 {% endaller %}
 
@@ -170,9 +170,13 @@ Parties abordées :
 Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
 {% endattention %}
 
-Semaine sur les tris.
+Semaine consacrée au tris :
 
-> TBD : prérequis : relire tris sélection.
+{% aller %}
+
+[Calculer $x^y$](/cours/algorithmie/problème-tris){.interne}
+
+{% endaller %}
 
 ### Semaine 5
 

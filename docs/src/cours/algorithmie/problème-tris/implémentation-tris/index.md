@@ -20,8 +20,8 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
 1. créez un dossier nommé `tris`{.fichier} où vous placerez vos fichiers
 2. créez un projet vscode dans ce dossier
 3. créez dans ce dossier les 2 fichiers de la trinité du code (on fera plusieurs `main`{.fichier} ensuite) :
-   * `tris.py`{.fichier} : où vous placez les algorithmes de tris
-   * `test_tris.py`{.fichier}  : où vous placez les tests des algorithmes de tris
+   - `tris.py`{.fichier} : où vous placez les algorithmes de tris
+   - `test_tris.py`{.fichier}  : où vous placez les tests des algorithmes de tris
 
 {% endfaire %}
 
@@ -29,29 +29,29 @@ On code des tris et on vérifie que nos algorithmes fonctionnent.
 
 {% faire %}
 
-* on vérifie que python est ok avec le terminal et avec vscode
-* on vérifie que le linter est actif dans vscode
-* on vérifie que les tests fonctionnent (en créant un test bidon dans `tests_tris.py`{.fichier} et en vérifiant que `pytest` et vscode le trouvent)
+- on vérifie que python est ok avec le terminal et avec vscode
+- on vérifie que le linter est actif dans vscode
+- on vérifie que les tests fonctionnent (en créant un test bidon dans `tests_tris.py`{.fichier} et en vérifiant que `pytest` et vscode le trouvent)
 
 {% endfaire %}
 
 ## Tris basiques
 
-En reprenant le code donné dans [l'étude des algorithmes de tris](../algorithmes-tris){.interne} :
+En reprenant le code du cours :
 
 {% faire %}
 Implémentez :
 
-* l'algorithme du tri `sélection`{.language-} et ses tests
-* l'algorithme du tri `insertion`{.language-} et ses tests
+- l'algorithme du tri `sélection`{.language-} et ses tests
+- l'algorithme du tri `insertion`{.language-} et ses tests
 
 {% endfaire %}
 
 Pour les tests des algorithmes de tri, vous pouvez par exemple utiliser 3 tableaux différents :
 
-* le tableau des $5$ premiers entiers triés par ordre croissant
-* le tableau des $5$ premiers entiers triés par ordre décroissant
-* le tableau des $5$ premiers entiers mélangé (choisissez une permutation)
+- le tableau des $5$ premiers entiers triés par ordre croissant
+- le tableau des $5$ premiers entiers triés par ordre décroissant
+- le tableau des $5$ premiers entiers mélangé (choisissez une permutation)
 
 ### Complexités
 
@@ -213,8 +213,8 @@ On produit ensuite les fonctions qui vont créer les tableaux à trier :
 
 {% exercice %}
 
-* pour quel type de tableau est atteint la complexité minimale de l'algorithme `insertion`{.language-} ?
-* pour quel type de tableau est atteint la complexité maximale de l'algorithme `insertion`{.language-} ?
+- pour quel type de tableau est atteint la complexité minimale de l'algorithme `insertion`{.language-} ?
+- pour quel type de tableau est atteint la complexité maximale de l'algorithme `insertion`{.language-} ?
 
 D ans le fichier `main_insertion.py`{.fichier}, créez deux fonctions `tableau_min_insertion(n)`{.language-} et `tableau_max_insertion(n)`{.language-} rendant respectivement tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité minimale et un tableau de taille $n$ dont le tri par l'algorithme `insertion`{.language-} sera de complexité maximale.
 
@@ -226,8 +226,8 @@ Vous pourrez utiliser les techniques de [création de listes classiques](/cours/
 {% exercice %}
 En utilisant les fonctions précédentes et en vous inspirant de ce que vous avez fait pour le tri par sélection, affichez sur un même graphique :
 
-* la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abscisses) réalisant la complexité minimale
-* la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abscisses) réalisant la complexité maximale
+- la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion des tableaux de taille $n$ (axe des abscisses) réalisant la complexité minimale
+- la courbe du temps mis (axe des ordonnées) pour trier avec le tri par insertion  des tableaux de taille $n$ (axe des abscisses) réalisant la complexité maximale
 
 Vous prendrez les même tailles de tableaux que vous avez utilisées pour le tri par sélection.
 
@@ -317,8 +317,8 @@ def temps_insertion(T):
 
 Dans le fichier `mesures.py`{.fichier} Créez une fonction :
 
-* `temps_générique(algorithme, tableau)`{.language-} qui rend le temps mis par l'algorithme de nom `algorithme`{.language-} pour trier `tableau`{.language-}
-* `temps_générique_moyen(algorithme, tableau)`{.language-} qui rend la moyenne de 5 temps pris pour trier avec l'algorithme de nom `algorithme`{.language-} une permutation aléatoire du tableau `tableau`{.language-} en entrée.
+- `temps_générique(algorithme, tableau)`{.language-} qui rend le temps mis par l'algorithme de nom `algorithme`{.language-} pour trier `tableau`{.language-}
+- `temps_générique_moyen(algorithme, tableau)`{.language-} qui rend la moyenne de 5 temps pris pour trier avec l'algorithme de nom `algorithme`{.language-} une permutation aléatoire du tableau `tableau`{.language-} en entrée.
 
 {% endexercice %}
 
@@ -395,8 +395,8 @@ Le code précédent modifie l'algorithme `insertion`{.language-} pour qu'il affi
 {% faire %}
 Implémentez (algorithmes et tests) :
 
-* l'algorithme du tri `rapide`{.language-} et ses tests
-* l'algorithme du tri `fusion`{.language-} et ses tests
+- l'algorithme du tri `rapide`{.language-} et ses tests
+- l'algorithme du tri `fusion`{.language-} et ses tests
 
 {% endfaire %}
 {% info %}

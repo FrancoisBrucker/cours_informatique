@@ -51,7 +51,7 @@ Cette partie s'intéresse à la notion de complexités pour un algorithme et un 
 [Calcul de complexité d'un algorithme](./complexité-calculs){.interne}
 {% endaller %}
 {% aller %}
-[Complexité d'un problème algorithmique](./problème-complexités){.interne}
+[Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
 
 La notion de complexité est centrale en algorithmie, nous en reparlerons encore plus tard dans le cours.
