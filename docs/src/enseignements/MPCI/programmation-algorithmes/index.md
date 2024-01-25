@@ -174,7 +174,7 @@ Semaine consacrée au tris :
 
 {% aller %}
 
-[Calculer $x^y$](/cours/algorithmie/problème-tris){.interne}
+[Problème du tri](/cours/algorithmie/problème-tris){.interne}
 
 {% endaller %}
 
