@@ -85,7 +85,6 @@ Ce cours est composée de plusieurs parties :
 
 {% faire "**Prérequis**" %}
 
-- Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-noms/){.interne}
 - [avoir python d'installé](/cours/coder-et-développer/installer-python/#installation-développement){.interne} et savoir s'en servir (relisez la partie [bases de python](/cours/coder-et-développer/bases-python/){.interne})
 - fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
 
@@ -112,6 +111,12 @@ Parties abordées :
 {% endaller %}
 
 #### Vendredi : écrire du code
+
+{% faire "**Prérequis**" %}
+
+Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-noms/){.interne}
+
+{% endfaire %}
 
 {% aller %}
 
