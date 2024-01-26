@@ -20,13 +20,19 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ## <span id="installation-black"></span> Installation
 
+### Extension vscode
+
+Pour utiliser black directement avec vscode, installez l'extension vscode [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*black formatter*" développé par microsoft.
+
+### Module python
+
 Dans [un terminal](../../../../ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install black
 ```
 
-Une fois ce module python installé, on va pouvoir l'utiliser dans vscode en installant [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*black formatter*" de microsoft.
+Ceci vous permettra d'utiliser black dans le terminal. De plus, l'extension vscode va préférentiellement utiliser votre version de flake8 que la sienne.
 
 ## Utilisation
 

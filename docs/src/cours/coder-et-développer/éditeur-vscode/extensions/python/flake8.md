@@ -22,13 +22,19 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ## <span id="installation-flake8"></span> Installation
 
+### Extension vscode
+
+Pour utiliser le linter avec vscode, installez l'extension vscode [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*flake8*" développé par microsoft.
+
+### Module python
+
 Dans [un terminal](../../../../ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
 
 ```shell
 python -m pip install flake8
 ```
 
-Une fois ce module python installé, on va pouvoir l'utiliser dans vscode après avoir installé [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*flake8*" développé par microsoft.
+Ceci vous permettra d'utiliser le linter dans le terminal. De plus, l'extension vscode va préférentiellement utiliser votre version de flake8 que la sienne.
 
 ## Utilisation
 
