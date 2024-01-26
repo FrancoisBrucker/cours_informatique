@@ -2,8 +2,6 @@
 layout: layout/post.njk 
 
 title: Utiliser le terminal
-authors:
-    - François Brucker
 
 eleventyComputed:
     eleventyNavigation:
@@ -12,11 +10,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Comment utiliser un terminal.
-
-<!-- fin résumé -->
+Une fois l'utilisation du terminal comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou.
 
 ## Prompt
 

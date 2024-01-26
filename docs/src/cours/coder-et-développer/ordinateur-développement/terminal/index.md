@@ -145,9 +145,3 @@ Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` s
 Les commandes unix ont souvent pleins d'option, par exemple `ls` permet d'afficher les fichiers en liste avec plein d'informations supplémentaires, en utilisant l'option `-l` :
 
 ![terminal commande](terminal-3.png)
-
-Une fois sont utilisation comprise (cela ne prend pas beaucoup de temps), le terminal qui vous fera gagner un temps fou :
-
-{% aller %}
-[Utiliser le terminal](../terminal-utilisation){.interne}
-{% endaller %}
