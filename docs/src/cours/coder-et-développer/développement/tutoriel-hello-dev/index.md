@@ -359,7 +359,7 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 ### Installation de la bibliothèque de tests
 
 {% aller %}
-[Installer la bibliothèque de test avec vsc](/tutoriels/vsc-python-suppléments/pytest){.interne}
+[Installer la bibliothèque de test avec vsc](../../éditeur-vscode/extensions/python/pytest){.interne}
 {% endaller %}
 
 ### Utilisation de la bibliothèque de tests
