@@ -33,9 +33,7 @@ Le but de chaque instruction est de manipuler des objets, auxquels on peut accé
 
 ### <span id="objets-basique"></span> Objets et variables
 
-On doit pouvoir manipuler et stocker des *objets* en mémoire.
-
-On identifiera la mémoire à une gigantesque suite de cases adjacentes pouvant contenir ***un objet basique*** ou une ***variable***.
+On doit pouvoir manipuler et stocker des *objets* pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme ***une mémoire***. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir ***un objet basique*** ou ***une variable***.
 
 #### Objets basiques
 
