@@ -112,7 +112,8 @@
 <p>Un pseudo-code est une succession de lignes qui seront exécutées <em><strong>en séquence</strong></em> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
 <p>Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.</p>
 <h3><span id="objets-basique"></span> Objets et variables</h3>
-<p>On doit pouvoir manipuler et stocker des <em>objets</em>.</p>
+<p>On doit pouvoir manipuler et stocker des <em>objets</em> en mémoire.</p>
+<p>On identifiera la mémoire à une gigantesque suite de cases adjacentes pouvant contenir <em><strong>un objet basique</strong></em> ou une <em><strong>variable</strong></em>.</p>
 <h4>Objets basiques</h4>
 <p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <em><strong>objets basiques</strong></em> et sont au nombre de six :</p>
 <ul>
@@ -153,6 +154,31 @@
 <li><em><strong>la lecture</strong></em>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
 <li><em><strong>l'affichage à l'écran</strong></em>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
 </ul>
+<h4><span id="str"></span>Chaînes de caractères</h4>
+<p>Une <em><strong>chaîne de caractères</strong></em> est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.</p>
+<p>D'un point de vue complexité, on considérera que :</p>
+<ul>
+<li>la création d'une chaîne de caractère prend 1 instruction : <code class="language-">&quot;salut&quot;</code> crée la chaîne contenant les caractères <code class="language-">&quot;s&quot;</code>, <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;l&quot;</code>, <code class="language-">&quot;u&quot;</code> et <code class="language-">&quot;t&quot;</code> de façon contiguë en mémoire.</li>
+<li>l'affectation d'une chaîne de caractères à une variable prend 1 instruction : <code class="language-">s = &quot;salut&quot;</code> prend 2 instructions, une pour la création et une pour l'affectation.</li>
+<li>l'accès à un caractère particulier se fait en 1 instruction et en utilisant les crochets : <code class="language-">s[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On considère que créer une chaîne prend 1 instruction car cette chaîne est une constante. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
+</div>
+</div>
+<p>Les chaînes de caractères sont non mutables :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne peut pas changer un caractère d'une chaîne de caractères.</p>
+</div>
+</div>
 <h4><span id="tableaux"></span>Tableau</h4>
 <p>Un <em><strong>tableau</strong></em> est un objet qui en contient d'autres.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -162,36 +188,32 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>tableau</strong></em> est un conteneur nommé pouvant contenir $n$ objets. $n$ est la <em><strong>longueur</strong></em> ou la <em><strong>taille</strong></em> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
-<p>À chaque objet contenu dans le tableau est associé un <em><strong>indice</strong></em>, qui est un entier entre $0$ et $n-1$.</p>
-<p>Si le tableau est nommé $t$, $t[i]$ est le nom de l'objet d'indice $i$ du tableau $t$. Ce nom est une variable, on peut l'affecter ou la lire.</p>
+<p>Un <em><strong>tableau</strong></em> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <em><strong>longueur</strong></em> ou la <em><strong>taille</strong></em> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
+<p>Chaque variable du tableau peut être accédée via son <em><strong>indice</strong></em>, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.</p>
 </div>
 </div>
-<p>On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t<br>
-[n-1]$) plutôt qu'un seul.</p>
-<p>Les tableaux peuvent être simples comme :</p>
+<p>Comme une chaîne de caractères, les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement, mais contrairement à une chaîne de caractères qui contient uniquement des caractères constants, chaque élément du tableau est une variable et peut donc être affectée ou modifiée.</p>
+<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
+<p>D'un point de vue complexité, on considérera que :</p>
 <ul>
-<li>une suite finie d'entiers</li>
-<li>une suite finie de caractères, on appelle ces objets des une chaîne de caractères et ils ont souvent leur type propre</li>
+<li>la création d'un tableau prend 1 instruction : <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
+<ul>
+<li>d'indice 0 un entier valant 1</li>
+<li>d'indice 1 un entier valant 3</li>
+<li>d'indice 2 l'objet associé à la variable <code class="language-">x</code></li>
 </ul>
-<p>Ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</li>
+<li>l'affectation d'un tableau à une variable prend 1 instruction : <code class="language-">t=[1, 3, x]</code> prend 2 instructions une pour la création et une pour l'affectation</li>
+<li>l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : <code class="language-">t[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La chaîne de caractère ne peut être créée qu'en une fois. Il est impossible de modifier les caractères la constituant.</p>
+<p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
 </div>
 </div>
-<p>et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)</p>
-<h3>Objets et mémoire</h3>
-<p>Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :</p>
-<ul>
-<li>un entier</li>
-<li>un réel</li>
-<li>un caractère</li>
-</ul>
-<p>Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une instruction basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).</p>
 <h3><span id="instruction-basique"></span> Instruction basique</h3>
 <p>Le but d'une instruction est de transformer des objets. On utilisera un nombre restreint d'instructions, appelées instructions basiques, dont la composition permet (a priori) de réaliser toutes les instructions imaginables.</p>
 <p>Il y a 3 types d'instructions basiques :</p>
