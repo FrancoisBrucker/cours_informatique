@@ -61,13 +61,13 @@ Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est *
 
 ## Cours
 
-Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou qux divers prérequis que vous aurez à préparer avant le cours.
+Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque partie ci-après. Cela ne vous dispense pas de prendre des notes, mais vous aide à la révision ou aux divers prérequis que vous aurez à préparer avant le cours.
 
 ## Plan
 
 Ce cours est composée de plusieurs parties :
 
-- Notion d'Algorithme
+- Notion d'Algorithmie
 - Complexité d'un complexité
 - Structures de données
 - Programmation objet
@@ -125,7 +125,7 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} :
    1. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
 2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
-3. pour aller plus loin : anales test code des années précédentes.
+3. Pour aller plus loin : anales test code des années précédentes.
 
 {% endaller %}
 

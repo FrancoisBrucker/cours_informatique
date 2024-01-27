@@ -33,7 +33,9 @@ Le but de chaque instruction est de manipuler des objets, auxquels on peut accé
 
 ### <span id="objets-basique"></span> Objets et variables
 
-On doit pouvoir manipuler et stocker des *objets*.
+On doit pouvoir manipuler et stocker des *objets* en mémoire.
+
+On identifiera la mémoire à une gigantesque suite de cases adjacentes pouvant contenir ***un objet basique*** ou une ***variable***.
 
 #### Objets basiques
 
@@ -70,45 +72,53 @@ Les instructions autorisées sur les variables sont :
 - ***la lecture***. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
 - ***l'affichage à l'écran***. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
 
+#### <span id="str"></span>Chaînes de caractères
+
+Une ***chaîne de caractères*** est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.
+
+D'un point de vue complexité, on considérera que :
+
+- la création d'une chaîne de caractère prend 1 instruction : `"salut"`{.language-} crée la chaîne contenant les caractères `"s"`{.language-}, `"a"`{.language-}, `"l"`{.language-}, `"u"`{.language-} et `"t"`{.language-} de façon contiguë en mémoire.
+- l'affectation d'une chaîne de caractères à une variable prend 1 instruction : `s = "salut"`{.language-} prend 2 instructions, une pour la création et une pour l'affectation.
+- l'accès à un caractère particulier se fait en 1 instruction et en utilisant les crochets : `s[2]`{.language-} vaut le caractère `"l"`{.language-}
+
+{% info %}
+On considère que créer une chaîne prend 1 instruction car cette chaîne est une constante. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie).
+{% endinfo %}
+
+Les chaînes de caractères sont non mutables :
+
+{% attention %}
+On ne peut pas changer un caractère d'une chaîne de caractères.
+{% endattention %}
+
 #### <span id="tableaux"></span>Tableau
 
 Un ***tableau*** est un objet qui en contient d'autres.
 
 {% note "**Définition**" %}
-Un ***tableau*** est un conteneur nommé pouvant contenir $n$ objets. $n$ est la ***longueur*** ou la ***taille*** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
+Un ***tableau*** est un conteneur nommé pouvant contenir $n$ variables. $n$ est la ***longueur*** ou la ***taille*** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
 
-À chaque objet contenu dans le tableau est associé un ***indice***, qui est un entier entre $0$ et $n-1$.
-
-Si le tableau est nommé $t$, $t[i]$ est le nom de l'objet d'indice $i$ du tableau $t$. Ce nom est une variable, on peut l'affecter ou la lire.
+Chaque variable du tableau peut être accédée via son ***indice***, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.
 
 {% endnote %}
 
-On peut voir un tableau $t$ de longueur $n$ comme une variables contenant $n$ objets (de $t[0]$ à $t
-[n-1]$) plutôt qu'un seul.
+Comme une chaîne de caractères, les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement, mais contrairement à une chaîne de caractères qui contient uniquement des caractères constants, chaque élément du tableau est une variable et peut donc être affectée ou modifiée.
 
-Les tableaux peuvent être simples comme :
+Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
 
-- une suite finie d'entiers
-- une suite finie de caractères, on appelle ces objets des une chaîne de caractères et ils ont souvent leur type propre
+D'un point de vue complexité, on considérera que :
 
-Ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
+- la création d'un tableau prend 1 instruction : `[1, 3, x]`{.language-} crée un tableau qui affecte à sa variable :
+  - d'indice 0 un entier valant 1
+  - d'indice 1 un entier valant 3
+  - d'indice 2 l'objet associé à la variable `x`{.language-}
+- l'affectation d'un tableau à une variable prend 1 instruction : `t=[1, 3, x]`{.language-} prend 2 instructions une pour la création et une pour l'affectation
+- l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : `t[2]`{.language-} vaut le caractère `"l"`{.language-}
 
-{% attention %}
-La chaîne de caractère ne peut être créée qu'en une fois. Il est impossible de modifier les caractères la constituant.
-{% endattention %}
-
-
-et les chaînes de caractères prises comme un tout (on ne considère pas ici la chaîne comme un conteneur de caractères)
-
-### Objets et mémoire
-
-Les objets sont stockés en mémoire, que l'on identifiera à un gigantesque tableau fini. On considérera que l'on peut stocker sur une case mémoire :
-
-- un entier
-- un réel
-- un caractère
-
-Les chaînes de caractères et les tableaux sont stockées sur des cases mémoires continues, ce qui permet de connaître l'emplacement de l'élément d'indice $i$ en une instruction basique si l'on connaît l'emplacement du 1er élément (emplacement du premier élément + i).
+{% info %}
+On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie).
+{% endinfo %}
 
 ### <span id="instruction-basique"></span> Instruction basique
 
