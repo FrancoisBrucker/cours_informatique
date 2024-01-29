@@ -171,5 +171,5 @@ En déduire un algorithme linéaire pour rendre K (pour justifier de la linéari
 1. télécharge fichier <https://www.gutenberg.org/ebooks/6099> Il faudra peut-être forcer le téléchargement, parfois chrome le bloque
 2. charge fichier texte en python en entier et en une fois (pas plus)
 3. <https://github.com/avian2/unidecode>
-4. supprime espace
+4. supprime espace (ou même garde que les caractères A-Z ?`"".join(filter(lambda x: x.isalpha(), string))`{.language-}. Liste vers chaîne sinon va être trop long. Peut être aussi d'abord voir avec un ensemble tous les caractères, puis les caractères non alphabet)
 5. fonction
