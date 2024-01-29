@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DM 1 : palindromes</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">DM 1 : palindromes</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  <p>Le but de ce DM est de trouver des palindromes dans un texte.</p>
+<p>Il est composée de deux parties, la première correspondant à une analyse algorithmique et la seconde au code à fournir.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on demande de fournir un algorithme pour résoudre un problème, il faudra impérativement :</p>
+<ol>
+<li>en donner le pseudo-code</li>
+<li>démontrer :
+<ol>
+<li>sa finitude</li>
+<li>qu'il est bine une solution au problème</li>
+</ol>
+</li>
+<li>en donner (en justifiant) sa complexité</li>
+</ol>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour le code python, il faudra impérativement :</p>
+<ul>
+<li>faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande <code>python -m pytest</code></li>
+<li>votre code doit posséder un programme principal. Même si vous ne faites pas tout le code demandé, faites un programme qui utilise vos fonctions pour résoudre le problème demandé.</li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>TBD ajouter exemples</p>
+</blockquote>
+<h2>Palindrome</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une chaîne de caractères <code class="language-">s</code> de longueur $n &gt; 0$ est un <em><strong>palindrome</strong></em> si : $s[i] = s[n-1-i]$ pour tout $0 \leq i &lt; n$</p>
+</div>
+</div>
+<h3>Problème du palindrome</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Explicitez le problème de la reconnaissance d'un palindrome par un problème de décision.</li>
+<li>Donnez un algorithme de complexité linéaire (pour la taille de la chaîne en entrée) résolvant le problème le problème de reconnaissance. Cet algorithme sera de signature : <code class="language-">palindrome(s: str) -&gt; bool</code></li>
+<li>Démontrez que la complexité du problème de reconnaissance est linéaire pour la taille de la chaîne en entrée.</li>
+</ol>
+</div>
+</div>
+<h3>Propriétés</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<ol>
+<li>
+<p>Si une lettre toujours palindrome</p>
+</li>
+<li>
+<p>si deux lettre pas toujours (explicite non palindrome de taille n)</p>
+</li>
+<li>
+<p>si pair tout caractère est en nombre pair</p>
+</li>
+<li>
+<p>si impair tout caractère est en nombre pair saut peut-être 1</p>
+</li>
+<li>
+<p>ce n'est pas une cns</p>
+</li>
+</ol>
+<h2>Sous-palindrome</h2>
+<p>Cette partie est consacrée à l'étude des mots palindromiques d'une chaîne de caractères. Commençons par définir ce qu'est <em><strong>un mot</strong></em> d'une chaîne de caractères :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un mot $s[i:j]$ ($i &lt; j$) d'une chaîne de caractères $s=s_0\dots s_{n-1}$ est la chaîne :</p>
+<div>
+$$
+s[i:j] = s_i \dots s_{j-1}
+$$
+</div>
+</div>
+</div>
+<p>Puis de caractériser les mots palindromiques :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un mot <code>s[i:j]</code> ($i &lt; j$) d'une chaîne de caractères <code class="language-">s</code> de longueur $n &gt; 0$ est un <em><strong>sous-palindrome de <code class="language-">s</code></strong></em> si : $s[i:j]$ est un palindrome.</p>
+</div>
+</div>
+<p>Commençons par une propriété triviale :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Montrer que toute chaîne de caractères non vide admet un sous-palindrome.</p>
+</div>
+</div>
+<p>Poursuivons par un cas particulier :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée par au plus 2 caractères différents admet un sous-palindrome de longueur au moins 2.</p>
+</div>
+</div>
+<h3>Problème des mots palindromiques</h3>
+<ol>
+<li>opti</li>
+<li>existe si-et seulement si décision existe</li>
+<li>algo pour résoudre opti utilisant le palindrome et qui vérifie que tout mot est palindrome.
+<ol>
+<li>écrire, preuve et complexité.</li>
+</ol>
+</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Explicitez le problème de la reconnaissance d'un sous-palindrome par un problème de décision.</li>
+<li>Donnez un algorithme de complexité linéaire (pour la taille de la chaîne en entrée) résolvant le problème le problème de reconnaissance. Cet algorithme sera de signature : <code class="language-">palindrome(s: str) -&gt; bool</code></li>
+<li>Démontrez que la complexité du problème de reconnaissance est linéaire pour la taille de la chaîne en entrée.</li>
+</ol>
+</div>
+</div>
+<h3>propriétés</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<ol>
+<li>il existe toujours un mot palindromique</li>
+<li>si 2 lettres et s &gt; 2, il existe toujours un mot palindromique de taille &gt; 1.</li>
+</ol>
+<h3>Résolution par programmation dynamique</h3>
+<ol>
+<li>algo qui remplit une matrice si (i, j) est un palindrome</li>
+</ol>
+<p>passer de n3 à n2 par programmation dynamique</p>
+<ol>
+<li>relation entre (i-1, j + 1) et (i, j)</li>
+<li>en déduire que si on a tous ceux de longueur k, on a ceux de longueur k+2, lien avec la matrice de sous-palindromes ?</li>
+<li>en déduire que l'on peut remplir la matrice en n2.</li>
+<li>sous-mot est en n2</li>
+</ol>
+<h3>mots palindromiques impairs</h3>
+<p>palindrome (i,+k)</p>
+<ol>
+<li>en n trouver le palindrome de taille max centré en x</li>
+<li>en déduire n2 qui rend un tableau K ou K[i] est la longueur max du rayon pour i</li>
+<li>en déduire n2 qui rend le nombre de palindromes impairs</li>
+</ol>
+<p>On peut faire mieux.</p>
+<p>(i, +k) un palindrome impair de taille max et on connaît  (i-u,+k')</p>
+<p>que vaut (i+u,+k'') si :</p>
+<ul>
+<li>k' &lt; k-u</li>
+<li>k' &gt; k-u</li>
+</ul>
+<p>Que faire si k' = k-u pour déterminer k''.</p>
+<p>Faire un algo <code class="language-">suivant</code> qui :</p>
+<ol>
+<li>rend le premier élément i'' tel que k'=k-u ou i + k + 1.</li>
+<li>que vaut K[i'] pour i &lt; i' &lt; i''</li>
+<li>K[i''] &gt;= K[i]</li>
+</ol>
+<p>En déduire un algorithme linéaire pour rendre K (pour justifier de la linéarité, on pourra  remarquer que i'+K[i'] est croissant et $i' &gt; i$ pour chaque sortie de l'algo <code class="language-">suivant(i)</code>)</p>
+<h3>chaîne #s</h3>
+<blockquote>
+<p>ajout de #<br>
+lien entres mots palindromiques de s et de #s<br>
+parité des mots palindromiques de #s<br>
+création de #s à partir de s<br>
+Algo linéaire pour trouver le palindrome le plus grand<br>
+Algo linéaire pour trouver le nombre de palindromes</p>
+</blockquote>
+<h2>Code</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<ol>
+<li>
+<p>créez des mots aléatoires de taille $n$ à partir d'une chaîne alphabet $A$</p>
+</li>
+<li>
+<p>texte :</p>
+<ol>
+<li>téléchargement et lecture (dossier courant)</li>
+<li>trick utf8</li>
+<li>uppercase et suppression espace</li>
+</ol>
+</li>
+<li>
+<p>palindrome algo</p>
+</li>
+<li>
+<p>télécharge fichier <a href="https://www.gutenberg.org/ebooks/6099">https://www.gutenberg.org/ebooks/6099</a> Il faudra peut-être forcer le téléchargement, parfois chrome le bloque</p>
+</li>
+<li>
+<p>charge fichier texte en python en entier et en une fois (pas plus)</p>
+</li>
+<li>
+<p><a href="https://github.com/avian2/unidecode">https://github.com/avian2/unidecode</a></p>
+</li>
+<li>
+<p>supprime espace (ou même garde que les caractères A-Z ?<code class="language-">&quot;&quot;.join(filter(lambda x: x.isalpha(), string))</code>. Liste vers chaîne sinon va être trop long. Peut être aussi d'abord voir avec un ensemble tous les caractères, puis les caractères non alphabet)</p>
+</li>
+<li>
+<p>fonction</p>
+</li>
+</ol>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
