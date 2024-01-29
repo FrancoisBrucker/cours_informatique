@@ -265,16 +265,17 @@ for (i=0 ; i < 10 ; i++) {
 
 Le pseudo-code d'un algorithme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie. Par exemple :
 
+<div id="problème-recherche"></div>
 ```text
 Nom : recherche
-Entrées : 
+Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
     pour chaque élément e de t:
         si e == x:
             Retour vrai
-    Retour faux 
+    Retour faux
 ```
 
 ou de manière équivalente, en un mélange de python et de français :
@@ -289,6 +290,7 @@ def recherche(t, x):
 
 Ou encore, complètement en python :
 
+<div id="fonction-recherche"></div>
 ```python#
 def recherche(t, x):
     for e in t:
@@ -358,6 +360,25 @@ Prenons par exemple le code précédent et comptons les instructions utilisées 
 
 Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1$
 instructions c'est à dire $20$ instructions.
+
+### Signature d'une fonction
+
+Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple [le problème recherche](./#problème-recherche) nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant ***les signatures de fonctions***
+
+{% note "**Définition**" %}
+Une signature de fonction associe :
+
+- son type à chaque paramètre (précédé d'un `:`)
+- le type de sortie (précédé d'un `->`)
+{% endnote %}
+{% info %}
+Par exemple, la signature de [la fonction recherche](./#fonction-recherche) est :
+
+```python
+recherche(t: [int], x: int) -> bool
+```
+
+{% endinfo %}
 
 ### Instructions avancées
 

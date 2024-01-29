@@ -41,10 +41,10 @@ def bonjour():
 
 La première ligne est la définition du bloc fonction. Il contient :
 
-* un mot clé spécial précisant que l'on s'apprête à définir une fonction: `def`{.language-}
-* le nom de la fonction. Ici `bonjour`{.language-}
-* des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)
-* le `:`{.language-} qui indique que la ligne d'après va commencer le bloc proprement dit
+- un mot clé spécial précisant que l'on s'apprête à définir une fonction: `def`{.language-}
+- le nom de la fonction. Ici `bonjour`{.language-}
+- des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)
+- le `:`{.language-} qui indique que la ligne d'après va commencer le bloc proprement dit
   
 Ensuite vient le bloc fonction en lui-même qui ne contient ici qu'une seule ligne.
 
@@ -381,3 +381,41 @@ l.sort(key=lambda x: x[1])
 
 print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
 ```
+
+## Annotations de type
+
+{% lien %}
+<https://docs.python.org/fr/3.10/library/typing.html>
+{% endlien %}
+
+Les annotations de types permettent de renseigner le type des entrées et de la sortie d'une fonction python. Il n'est pas nécessaire de le faire, mais si vous avez besoin d'expliciter une signature de fonction comme on le ferait dans un langage compilé comme java, vous pouvez le faire en ajoutant :
+
+- son type à chaque paramètre (précédé d'un `:`)
+- le type de sortie (précédé d'un `->`)
+
+Par exemple, la fonction suivante permet de savoir si un élément est dans une liste :
+
+```python
+def recherche(t, x):
+    for e in t:
+        if e == x:
+            return True
+    return False
+```
+
+Si l'on veut restreindre cette fonctions aux listes d'entier on pourra écrire :
+
+```python
+def recherche(t: [int], x: int) -> bool
+    for e in t:
+        if e == x:
+            return True
+    return False
+```
+
+{% info %}
+La plupart du temps, pour de petits programme, ce genre de précision n'est pas importante. Elle ne devient cruciale que lorsque la base de code grossit et que spécifier les types d'entrée évite les bug.
+
+Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langage que python... Plus adapté au développement de grosses applications comme le java ou encore le rust.
+
+{% endinfo %}
