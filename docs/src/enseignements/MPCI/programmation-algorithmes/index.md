@@ -123,7 +123,7 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 {% aller %}
 
 1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} :
-   1. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
+   3. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
 2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
 3. Pour aller plus loin : anales test code des années précédentes.
 
