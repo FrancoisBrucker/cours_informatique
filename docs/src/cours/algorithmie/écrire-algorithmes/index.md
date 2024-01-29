@@ -14,4 +14,4 @@ eleventyComputed:
 
 1. [Pseudo-code](./pseudo-code){.interne}
 2. [Problème algorithmique](./problème){.interne}
-3. [Techniques de preuve](./prouver-un-algorithme){.interne}
+3. [Prouver un algorithme](./prouver-un-algorithme){.interne}

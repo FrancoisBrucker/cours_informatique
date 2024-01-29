@@ -20,7 +20,19 @@ Dans la suite, les algorithmes seront tous donnés en python.
 Le language python est très proche du pseudo-code et il devrait être facile de les comprendre, mais je vous conseille fortement de vous y mettre en suivant les prérequis de ce cours.
 {% endinfo %}
 
-Le but d'un algorithme est de résoudre un problème algorithmique.
+Le but d'un algorithme est de résoudre un problème algorithmique. Prouver un algorithme signifie qu'il fait bien ce qu'il est sensé faire :
+
+{% note "**Définition**" %}
+
+Prouver un algorithme $A$ c'est démontrer qu'il résout un problème algorithmique $P$. Pour cela :
+
+1. on explicitera le problème algorithmique $P$ :
+   - ses entrées
+   - sa question
+   - sa sortie
+2. on démontrera que le résultat de l'exécution de $A$ avec une instance d'entrées de $P$ est bien une réponse à $P$.
+
+{% endnote %}
 
 A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :
 

@@ -309,8 +309,13 @@ On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand q
 
 Par exemple :
 
-- $10! = 3628800$ et $2^{10} = 1024$
-- $74! = 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000$ et $2^{74} = 18889465931478580854784$
+- $10! = 3628800$
+- $2^{10} = 1024$
+
+Et la différence s’accroît exponentiellement  avec le nombre :
+
+- $74! = 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000$
+- $2^{74} = 18889465931478580854784$
 
 {% info %}
 Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$. Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.

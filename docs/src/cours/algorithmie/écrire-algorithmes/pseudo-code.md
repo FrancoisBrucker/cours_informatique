@@ -287,6 +287,16 @@ def recherche(t, x):
     return faux
 ```
 
+Ou encore, complètement en python :
+
+```python#
+def recherche(t, x):
+    for e in t:
+        if e == x:
+            return True
+    return False
+```
+
 Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.
 
 ### Fonctions
