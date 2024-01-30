@@ -8,7 +8,31 @@ authors:
 
 Le but de ce DM est de trouver des palindromes dans un texte.
 
-Il est composée de deux parties, la première correspondant à une analyse algorithmique et la seconde au code à fournir.
+{% note "**Définition**" %}
+Une chaîne de caractères $s$ de longueur $n > 0$ est un ***palindrome*** si : $s[i] = s[n-1-i]$ pour tout $0 \leq i < n$
+{% endnote %}
+
+Par exemple `lol`, `elle` ou `snobons` sont des palindromes en Français. De façon plus générale, on appelle ***phrase palindrome***, les chaînes de caractères dont la concaténation de leurs lettres forme un palindrome :
+
+{% note "**Définition**" %}
+Soit $s$ une chaîne de caractères écrite en Français. On définit  $s^\star$ la sous-chaîne de $s$ ne contenant que les lettres de $s$ dont on a supprimé les accents et mis en majuscule.
+
+La chaîne $s$ est une ***phrase palindrome*** si $s^\star$ est un palindrome (donc également non vide).
+
+{% endnote %}
+{% info %}
+Par exemple, la chaîne $s=\text{"Zeus a été à Suez."}$ est une phrase palindrome puisque $s^\star = \text{"ZEUSAETEASUEZ"}$ qui est un palindrome.
+{% endinfo %}
+
+Les phrases palindromes donnent bien de plus de liberté et donne des choses comme `élu par cette crapule` , `c'est sec ?` ou encore `À l'étape, épate-la !`.
+
+{% lien %}
+[Une liste de palindromes](https://fr.wiktionary.org/wiki/Annexe:Liste_de_palindromes_français)
+{% endlien %}
+
+La partie algorithmie se concentrera sur les palindromes et la partie code sur les phrases palindromes.
+
+## Partie algorithmie
 
 {% attention %}
 Lorsque l'on demande de fournir un algorithme pour résoudre un problème, il faudra impérativement :
@@ -19,43 +43,61 @@ Lorsque l'on demande de fournir un algorithme pour résoudre un problème, il fa
    2. qu'il est bine une solution au problème
 3. en donner (en justifiant) sa complexité
 {% endattention %}
-{% attention %}
-Pour le code python, il faudra impérativement :
-
-- faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande `python -m pytest`
-- votre code doit posséder un programme principal. Même si vous ne faites pas tout le code demandé, faites un programme qui utilise vos fonctions pour résoudre le problème demandé.
-{% endattention %}
-
-> TBD ajouter exemples
-
-## Palindrome
-
-{% note "**Définition**" %}
-Une chaîne de caractères `s`{.language-} de longueur $n > 0$ est un ***palindrome*** si : $s[i] = s[n-1-i]$ pour tout $0 \leq i < n$
-{% endnote %}
 
 ### Problème du palindrome
 
 {% faire %}
 
-1. Explicitez le problème de la reconnaissance d'un palindrome par un problème de décision.
-2. Donnez un algorithme de complexité linéaire (pour la taille de la chaîne en entrée) résolvant le problème le problème de reconnaissance. Cet algorithme sera de signature : `palindrome(s: str) -> bool`{.language-}
-3. Démontrez que la complexité du problème de reconnaissance est linéaire pour la taille de la chaîne en entrée.
+Explicitez le problème de la reconnaissance d'un palindrome par un problème de décision.
 
 {% endfaire %}
 
-### Propriétés
+#### Résolution du problème
 
-> TBD
+{% faire %}
+Proposez un algorithme de complexité linéaire (pour la taille de la chaîne en entrée) résolvant le problème le problème de reconnaissance d'un palindrome.
 
-1. Si une lettre toujours palindrome
-2. si deux lettre pas toujours (explicite non palindrome de taille n)
+Cet algorithme devra être de signature : `palindrome(s: str) -> bool`{.language-}
+{% endfaire %}
 
-1. si pair tout caractère est en nombre pair
-2. si impair tout caractère est en nombre pair saut peut-être 1
-3. ce n'est pas une cns
+#### Complexité du problème
 
-## Sous-palindrome
+{% faire %}
+
+Démontrez que **la complexité du problème de reconnaissance** d'un palindrome est linéaire pour la taille de la chaîne en entrée.
+
+{% endfaire %}
+
+#### Propriétés
+
+Démontrez quelques propriétés qui seront utiles (ou juste intéressante) plus tard :
+
+{% faire %}
+
+1. Démontrez qu'une chaîne de caractères composée uniquement d'un caractère est un palindrome,
+2. Démontrez que pour un palindrome tout caractère, à part peut-être 1, apparaît un nombre pair de fois.
+
+{% endfaire %}
+
+#### Création de palindrome
+
+{% faire %}
+
+Proposez un **algorithme récursif** de signature `aléatoire_palindrome_rec(s: str, n: int) -> bool`{.language-} qui rend un palindrome aléatoire de longueur $n$ formé uniquement avec les caractères de `s`{.language-}.
+
+En supposant que la complexité de concaténation d'une chaîne et d'un caractère soit en $\mathcal{O}(1)$, assurez vous que sa complexité soit en $\mathcal{O}(n)$.
+
+{% endfaire %}
+
+{% faire %}
+
+Proposez un **algorithme itératif** de signature `aléatoire_palindrome_iter(s: str, n: int) -> bool`{.language-} qui rend un palindrome aléatoire de longueur $n$ formé uniquement avec les caractères de `s`{.language-}.
+
+En supposant que la complexité de concaténation d'une chaîne et d'un caractère soit en $\mathcal{O}(1)$, assurez vous que sa complexité soit en $\mathcal{O}(n)$.
+
+{% endfaire %}
+
+### Problème du sous-palindrome
 
 Cette partie est consacrée à l'étude des mots palindromiques d'une chaîne de caractères. Commençons par définir ce qu'est ***un mot*** d'une chaîne de caractères :
 
@@ -73,8 +115,10 @@ $$
 Puis de caractériser les mots palindromiques :
 
 {% note "**Définition**" %}
-Un mot `s[i:j]` ($i < j$) d'une chaîne de caractères `s`{.language-} de longueur $n > 0$ est un ***sous-palindrome de `s`{.language-}*** si : $s[i:j]$ est un palindrome.
+Un mot $s[i:j]$ ($i < j$) d'une chaîne de caractères `s`{.language-} de longueur $n > 0$ est un ***sous-palindrome de `s`{.language-}*** si : $s[i:j]$ est un palindrome.
 {% endnote %}
+
+#### Propriétés des sous-palindromes
 
 Commençons par une propriété triviale :
 
@@ -85,10 +129,34 @@ Montrer que toute chaîne de caractères non vide admet un sous-palindrome.
 Poursuivons par un cas particulier :
 
 {% faire %}
-Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée par au plus 2 caractères différents admet un sous-palindrome de longueur au moins 2.
+Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.
 {% endfaire %}
 
-### Problème des mots palindromiques
+Et enfin la non existence :
+
+{% faire %}
+Montrer que pour tout $n>1$ et tout $m>2$, il existe il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.
+{% endfaire %}
+
+#### Problème des sous-palindromes
+
+On considère le problème d'optimisation suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : max-sous-palindrome
+- **données** : $s$ une chaîne de caractères
+- **question** : Quel est la longueur maximum des sous-palindromes de $s$ ?
+{% endnote %}
+
+Commençons par montrer que c'est bien un problème algorithmique :
+
+{% note "**Problème**" %}
+
+- **nom** : max-sous-palindrome
+- **données** : $s$ une chaîne de caractères de taille $n>0$
+- **question** : Quel est la longueur maximum des sous-palindromes de $s$ ?
+{% endnote %}
 
 1. opti
 2. existe si-et seulement si décision existe
@@ -97,18 +165,10 @@ Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 
 
 {% faire %}
 
-1. Explicitez le problème de la reconnaissance d'un sous-palindrome par un problème de décision.
-2. Donnez un algorithme de complexité linéaire (pour la taille de la chaîne en entrée) résolvant le problème le problème de reconnaissance. Cet algorithme sera de signature : `palindrome(s: str) -> bool`{.language-}
-3. Démontrez que la complexité du problème de reconnaissance est linéaire pour la taille de la chaîne en entrée.
-
+En utilisant l'algorithme linéaire `palindrome(s: str) -> bool`{.language-}, montrer que le problème `max-sous-palindrome` est **un problème algorithmique** en exhibant un algorithme (simple) de complexité $\mathcal{O}(n^3)$ pour le résoudre.
 {% endfaire %}
 
-### propriétés
-
-> TBD
-
-1. il existe toujours un mot palindromique
-2. si 2 lettres et s > 2, il existe toujours un mot palindromique de taille > 1.
+Le but de la fin de la partie algorithmique de ce DM est de montrer que l'on peut résoudre ce problème avc un algorithme de complexité linéaire. Mais commençons par passer de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.
 
 ### Résolution par programmation dynamique
 
@@ -159,6 +219,13 @@ En déduire un algorithme linéaire pour rendre K (pour justifier de la linéari
 
 ## Code
 
+{% attention %}
+Pour le code python, il faudra impérativement :
+
+- faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande `python -m pytest`
+- votre code doit posséder un programme principal. Même si vous ne faites pas tout le code demandé, faites un programme qui utilise vos fonctions pour résoudre le problème demandé.
+{% endattention %}
+
 > TBD
 
 1. créez des mots aléatoires de taille $n$ à partir d'une chaîne alphabet $A$
@@ -173,3 +240,6 @@ En déduire un algorithme linéaire pour rendre K (pour justifier de la linéari
 3. <https://github.com/avian2/unidecode>
 4. supprime espace (ou même garde que les caractères A-Z ?`"".join(filter(lambda x: x.isalpha(), string))`{.language-}. Liste vers chaîne sinon va être trop long. Peut être aussi d'abord voir avec un ensemble tous les caractères, puis les caractères non alphabet)
 5. fonction
+
+> <https://www.arretetonchar.fr/wp-content/uploads/2013/IMG/pdf_Georges_Perec_le_grand_palindrome.pdf>
+
