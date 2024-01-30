@@ -118,7 +118,7 @@ Il existe un cas plus faible que la décidabilité, c'est la ***reconnaissabilit
 {% note "**Définition**" %}
 Un problème de décision est ***reconnaissable*** s'il existe un programme qui prend en paramètres les entrées du problème et :
 
-- s'arrête que pour les réponse OUI en rendant 1
+- s'arrête que pour les réponse OUI
 - ne s'arrête pas les réponses NON
 
 {% endnote %}
