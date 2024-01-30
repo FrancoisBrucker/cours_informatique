@@ -137,10 +137,6 @@ On vous remettra également le premier DM à rendre sur AMeTICE au format Markdo
 
 ### Semaine 3
 
-{% attention %}
-Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
-{% endattention %}
-
 #### Mardi : complexité algorithmique
 
 {% faire "**Prérequis**" %}
@@ -165,6 +161,10 @@ Parties abordées :
 {% endaller %}
 
 #### Vendredi : étude de l'exponentiation
+
+{% attention %}
+Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+{% endattention %}
 
 {% aller %}
 
