@@ -292,6 +292,7 @@ def recherche(t, x):
 Ou encore, complètement en python :
 
 <div id="fonction-recherche"></div>
+
 ```python#
 def recherche(t, x):
     for e in t:
