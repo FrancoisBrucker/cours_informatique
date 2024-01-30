@@ -8,6 +8,8 @@
 
 - système : <https://missing.csail.mit.edu/>
 
+- algorithmie/pseudo-code : ajouter algorithmes itératifs et récursifs. Définition et usage
+
 - mpci l1 but :
     - exercices <https://adventofcode.com/>
       exemple : chaine de caractères, trouver le premier indice tq k chiffres/lettres différents.
