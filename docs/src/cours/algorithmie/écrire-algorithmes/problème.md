@@ -71,13 +71,19 @@ On peut très souvent se restreindre aux problèmes de décision solvable par un
 Un problème de décision est ***décidable*** s'il existe un algorithme pour le résoudre (on dit un ***décideur***), c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
-- répond OUI (1) ou NON (0) selon la véritable réponse à donner.
+- répond OUI ou NON selon la véritable réponse à donner.
 
 {% endnote %}
 
 {% note "**Définition**" %}
-Un ***décideur*** est un algorithme qui pour toute entrée, répond 1 pour *OUI* ou 0 (pour *NON*).
+Un ***décideur*** est un algorithme qui pour toute entrée, répond *OUI* ou *NON*.
 {% endnote %}
+{% info %}
+Vous verrez parfois des décideurs qui à la place de répondre OUI rendent 1 et à la place de répondre NON, rendent 0.
+
+L'important est que la sortie du décideur soit binaire et que l'on puisse associer une sémantique de vérité à la sortie.
+
+{% endinfo %}
 
 En effet, on peut très souvent se ramener à un problème décidable pour prouver qu'un problème est algorithmique. Par exemple le problème maximum peut être associé au problème de décision `maximum-v`{.language-} :
 
