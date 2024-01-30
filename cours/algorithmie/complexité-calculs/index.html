@@ -108,17 +108,22 @@
 <p>Certaines ligne n'on pas le même nombre d'instruction selon comment on compte :</p>
 <ul>
 <li>est-ce que <code class="language-">x = a + 1</code> c'est 1, 2 ou 3 instructions ? Ou plus ?</li>
-<li>quel est le nombre d'instructions de la ligne <code class="language-">pour chaque élément x du tableau T</code> ? Une ou deux ?</li>
+<li>quel est le nombre d'instructions de la ligne <code class="language-">pour chaque élément x du tableau T</code> ? 1, 2 ou plus ?</li>
 </ul>
 <h3>Algorithme équivalents aux comptes très différents</h3>
 <p>De plus, selon l'implémentation, un même algorithme peut avoir plusieurs complexités :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour i allant de 2 à 9:
   affiche à l'écran i
 </code></pre>
-<p>Peut être considéré de complexité $9\cdot 3 = 27$ si l'on considère que :</p>
+<p>Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que :</p>
 <ul>
-<li>la première ligne est uniquement une affectation</li>
-<li>l'affichage nécessite une opération et qu'il faut retrouver la valeur d $i$</li>
+<li>la première ligne est constituée de :
+<ul>
+<li>2 création de bornes</li>
+<li>8 affectations</li>
+</ul>
+</li>
+<li>l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$</li>
 </ul>
 <p>En remplaçant la boucle for par une boucle tant que, on obtient :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i = 2
@@ -126,11 +131,11 @@ tant que i ≤ 9:
   affiche à l'écran i
   i = i + 1
 </code></pre>
-<p>Qui est de complexité : $1 + 9\cdot (2+2+3) = 64$ ce qui semble énorme !</p>
+<p>Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !</p>
 <p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>
 <h3>Dépend du code/pseudo-code</h3>
 <p>En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.</p>
-<p>L'instruction python <code class="language">x = 1</code> prendra certainement plus d'une instruction élémentaire pur l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.</p>
+<p>L'instruction python <code class="language-">x = 1</code> prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.</p>
 <p>Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).</p>
 <p>Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).</p>
 <h3>Beaucoup de calcul pour par grand chose</h3>
