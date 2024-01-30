@@ -27,7 +27,7 @@ Nous avons calculé explicitement des complexité dans la partie précédente. V
 Certaines ligne n'on pas le même nombre d'instruction selon comment on compte :
 
 - est-ce que `x = a + 1`{.language-} c'est 1, 2 ou 3 instructions ? Ou plus ?
-- quel est le nombre d'instructions de la ligne `pour chaque élément x du tableau T`{.language-} ? Une ou deux ?
+- quel est le nombre d'instructions de la ligne `pour chaque élément x du tableau T`{.language-} ? 1, 2 ou plus ?
 
 ### Algorithme équivalents aux comptes très différents
 
@@ -38,10 +38,12 @@ pour i allant de 2 à 9:
   affiche à l'écran i
 ```
 
-Peut être considéré de complexité $9\cdot 3 = 27$ si l'on considère que :
+Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que :
 
-- la première ligne est uniquement une affectation
-- l'affichage nécessite une opération et qu'il faut retrouver la valeur d $i$
+- la première ligne est constituée de :
+  - 2 création de bornes
+  - 8 affectations
+- l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$
 
 En remplaçant la boucle for par une boucle tant que, on obtient :
 
@@ -52,7 +54,7 @@ tant que i ≤ 9:
   i = i + 1
 ```
 
-Qui est de complexité : $1 + 9\cdot (2+2+3) = 64$ ce qui semble énorme !
+Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !
 
 En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.
 
@@ -60,7 +62,7 @@ En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend v
 
 En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.
 
-L'instruction python `x = 1`{.language} prendra certainement plus d'une instruction élémentaire pur l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.
+L'instruction python `x = 1`{.language-} prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.
 
 Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).
 
