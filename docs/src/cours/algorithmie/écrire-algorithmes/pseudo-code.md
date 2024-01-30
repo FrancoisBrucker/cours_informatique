@@ -48,13 +48,15 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 
 Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).
 
-On doit pouvoir ***opérer sur ces objets*** :
+Les instructions liées à ces objets sont de deux ordres. On doit pouvoir  :
 
-- opérations sur les entiers et/ou réels :
-  - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
-  - opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
-  - logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
-- opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
+- ***créer des objets***
+- ***opérer sur ces objets*** :
+  - opérations sur les entiers et/ou réels :
+    - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
+    - opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
+    - logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
+  - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
 
 #### Variables
 
@@ -225,19 +227,22 @@ if ((x > 12) AND (x < 36)):
     z = x * "coucou"
 ```
 
-1. on affecte un objet à x : 1 instruction
-2. Pour faire cette instruction il faut :
+1. Création de l'entier valant 30  : 1 instruction
+2. on affecte l'entier à x : 1 instruction
+3. Pour faire cette instruction il faut :
    - faire `x > 12`{.language-}. Pour cela :
+     - on crée l'entier valant 12 : 1 instruction
      - on récupère la valeur de `x`{.language-} : 1 instruction
      - on effectue la comparaison : 1 instruction
    - faire `x < 36`{.language-}. Pour cela :
+     - on crée l'entier valant 36 : 1 instruction
      - on récupère la valeur de `x`{.language-} : 1 instruction
      - on effectue la comparaison : 1 instruction
    - faire l'instruction `AND`{.language-} : 1 instruction
    - faire le `if`{.language-} : 1 instruction
-3. on commence par récupérer la valeur de `x`{.language-} (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions
+4. on commence par récupérer la valeur de `x`{.language-} (1 instruction), on crée la chaîne (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 4 instructions
 
-Un nombre total d'instructions de 10.
+Un nombre total d'instructions de 14.
 
 ### Nom des termes utilisés ?
 
@@ -344,24 +349,28 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 
 Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :
 
-1. affectation d'un variable : 1 instruction
-2. affectation d'un variable : 1 instruction
+1. création d'un objet et affectation à une variable : 2 instructions
+2. création d'un tableau et affectation à une variable : 2 instructions
 3. affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
    1. affectation des paramètres :
-      - pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction
-      - pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction
-      - affectation du premier paramètre à la variable locale t : 1 instruction
-      - affectation du second paramètre à la variable locale e : 1 instruction
+      1. trouver les objets à mettre en paramètres :
+         - pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction
+         - pour le second paramètre, l'objet est à créer : 1 instruction
+      2. affecter les paramètres aux variables de la fonction :
+         - affectation du premier paramètre à la variable locale t : 1 instruction
+         - affectation du second paramètre à la variable locale e : 1 instruction
    2. une boucle de 3 itérations
    3. un test
       - on trouve les objets associées à t et e : 2 instructions
       - on teste l'égalité : 1 instruction
       - on fait le `if`{.language-} : 1 instruction
    4. on arrive à cette ligne à la troisième itération : 1 instruction
-4. afficher quelque chose à l'écran : 1 instruction
+4. afficher quelque chose à l'écran :
+   - 1 instruction pour trouver l'objet à afficher
+   - 1 instruction pour trouver l'afficher
 
-Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1$
-instructions c'est à dire $20$ instructions.
+Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$
+instructions c'est à dire $24$ instructions.
 
 ### Signature d'une fonction
 
@@ -381,6 +390,8 @@ recherche(t: [int], x: int) -> bool
 ```
 
 {% endinfo %}
+
+On ne peut bien sur utiliser de signature que lorsque les entrées et les sorties sont de types parfaitement définis, ce qui n'est pas toujours le cas.
 
 ### Instructions avancées
 

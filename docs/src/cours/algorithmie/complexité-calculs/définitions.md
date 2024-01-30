@@ -30,8 +30,13 @@ Explicitez les différentes instructions élémentaires pour justifier la valeur
 {% endexercice %}
 {% details "corrigé" %}
 
-Il y a quatre types d'instructions élémentaires :
+Il y a cinq types d'instructions élémentaires :
 
+- les créations :
+  - ligne 1 : un tableau
+  - ligne 2 : un entier
+  - ligne 3 : un entier
+  - ligne 5 : deux entiers
 - les affectations :
   - ligne 1 : on affecte une valeur au tableau
   - ligne 2, 3 : on affecte une valeur à une case du tableau
@@ -46,11 +51,11 @@ Il y a quatre types d'instructions élémentaires :
 
 On en conclut la complexité de chaque ligne :
 
-- ligne 1 : 1 instruction
-- ligne 2 : 1 instruction
-- ligne 3 : 1 instruction
+- ligne 1 : 2 instruction
+- ligne 2 : 2 instructions
+- ligne 3 : 3 instruction
 - ligne 4 : 0 instruction
-- ligne 5 : 1 instruction
+- ligne 5 : 3 instructions la première fois et 1 instruction les autres fois (on ne recrée pas les objets)
 - ligne 6 : 4 instructions
 - ligne 7 : 0 instruction
 - ligne 8 : 2 instructions
@@ -58,7 +63,7 @@ On en conclut la complexité de chaque ligne :
 Comme la ligne 5 et 6 sont exécutées 8 fois, on en conclut que la complexité est :
 
 $$
-1+1+1+0+ 8\cdot(1 + 4) + 0 + 2 = 45
+2+2+3+0+ 2 + 8\cdot(1 + 4) + 0 + 2 = 49
 $$
 {% enddetails %}
 
@@ -76,14 +81,18 @@ fonction fibonacci(n):
   rendre F[n-1]
 ```
 
-Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot(n-1)$ qui dépend de la valeur du paramètre d'entrée.
+Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot n+2$ qui dépend de la valeur du paramètre d'entrée.
 
 {% exercice %}
-Montrez que la complexité est bien de $5\cdot(n-1)$
+Montrez que la complexité est bien de $5\cdot n+2$
 {% endexercice %}
 {% details "corrigé" %}
+Il y a deux différences :
 
-On ne rentre plus 8 fois dans la boucle mais $n-2$ fois. La complexité est alors : $5 + (n-1)\cdot 5 = 5\cdot n-5$.
+- il faut affecter un objet au paramètre $n$
+- on ne rentre plus 8 fois dans la boucle mais $n-2$ fois.
+
+La complexité est alors : $1 + 11 + (n-2)\cdot 5 = 5\cdot n+2$.
 
 {% enddetails %}
 
@@ -97,7 +106,7 @@ fonction est_dans_tableau(valeur, tableau):
     rend NON
 ```
 
-La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 3 lorsque la valeur est le premier élément du tableau (une affectation de $x$, un test et un retour) à $2n + 1$ si la valeur n'est pas dans le tableau ($n$ affectations de $x$, $n$ tests et un retour). La complexité de l'algorithme est alors $C(i) = 2i + 1$ où $i$ est la position de la valeur dans le tableau.
+La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.
 
 ## Complexité d'un algorithme
 
@@ -130,7 +139,7 @@ En prenant en compte les connaissances minimales que l'on a sur les entrées d'u
 ***La complexité $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$***  est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
-En utilisant la définition ci-dessus, la complexité de l'algorithme `est_dans_tableau`{.language-} vaut $2N+1$.
+En utilisant la définition ci-dessus, la complexité de l'algorithme `est_dans_tableau`{.language-} vaut $5N+4$.
 
 Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction `fibonacci(n)`{.language-}, la taille de stockage d'un entier étant de 1 case mémoire.
 
@@ -152,7 +161,7 @@ Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant 
 
 ### Complexité min
 
-Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `est_dans_tableau`{.language-} par exemple), la complexité prend le maximum ($2N+1$ où $N$ est la la taille du tableau en entrée pour l'algorithme `est_dans_tableau`{.language-}) mais il peut être utile de connaître le minimum ($3$ pour l'algorithme `est_dans_tableau`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
+Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `est_dans_tableau`{.language-} par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme `est_dans_tableau`{.language-}) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme `est_dans_tableau`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
 
 {% note "**Définition**" %}
 
@@ -207,7 +216,20 @@ fonction fibonacci_sobre(n):
 
 Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
 
-Sa complexité un peu plus élevée, $8\cdot n-12$, mais reste comparable au premier.
+Sa complexité un peu plus élevée :
+
+1. 1 instruction : affectation du paramètre
+2. 2 instructions : création d'un objet et affectation
+3. 2 instructions : création d'un objet et affectation
+4. -
+5. $n+2$ instructions : $n-2$ affectations de `i`{.language-} et 4 instruction pour la création des bornes (2 créations (entiers 2 et 1) ; une lecture et une opération de soustraction)
+6. $4(n-2)$ instructions : $n-2$ itérations de 2 lectures, une somme et une affectation
+7. $2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation
+8. $2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation
+9. -
+10. 2 instructions : 1 lecture, un retour
+
+Pour un total de $9\cdot n-15$, mais reste comparable au premier.
 
 {% info %}
 Souvent, lors du design de nos algorithmes on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
