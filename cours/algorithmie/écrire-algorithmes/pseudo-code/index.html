@@ -124,7 +124,10 @@
 <li>les caractères</li>
 </ul>
 <p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).</p>
-<p>On doit pouvoir <em><strong>opérer sur ces objets</strong></em> :</p>
+<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir  :</p>
+<ul>
+<li><em><strong>créer des objets</strong></em></li>
+<li><em><strong>opérer sur ces objets</strong></em> :
 <ul>
 <li>opérations sur les entiers et/ou réels :
 <ul>
@@ -134,6 +137,8 @@
 </ul>
 </li>
 <li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
+</ul>
+</li>
 </ul>
 <h4>Variables</h4>
 <p>On doit pouvoir affecter des objets à des <em><strong>variables</strong></em>.</p>
@@ -297,17 +302,20 @@ if ((x > 12) AND (x < 36)):
     z = x * "coucou"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol>
-<li>on affecte un objet à x : 1 instruction</li>
+<li>Création de l'entier valant 30  : 1 instruction</li>
+<li>on affecte l'entier à x : 1 instruction</li>
 <li>Pour faire cette instruction il faut :
 <ul>
 <li>faire <code class="language-">x &gt; 12</code>. Pour cela :
 <ul>
+<li>on crée l'entier valant 12 : 1 instruction</li>
 <li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
 <li>on effectue la comparaison : 1 instruction</li>
 </ul>
 </li>
 <li>faire <code class="language-">x &lt; 36</code>. Pour cela :
 <ul>
+<li>on crée l'entier valant 36 : 1 instruction</li>
 <li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
 <li>on effectue la comparaison : 1 instruction</li>
 </ul>
@@ -316,9 +324,9 @@ if ((x > 12) AND (x < 36)):
 <li>faire le <code class="language-">if</code> : 1 instruction</li>
 </ul>
 </li>
-<li>on commence par récupérer la valeur de <code class="language-">x</code> (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 3 instructions</li>
+<li>on commence par récupérer la valeur de <code class="language-">x</code> (1 instruction), on crée la chaîne (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 4 instructions</li>
 </ol>
-<p>Un nombre total d'instructions de 10.</p>
+<p>Un nombre total d'instructions de 14.</p>
 <h3>Nom des termes utilisés ?</h3>
 <p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.</p>
 <p>Les trois pseudo-code suivant sont ainsi équivalent :</p>
@@ -402,17 +410,25 @@ affiche à l'écran e
 </div>
 <p>Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :</p>
 <ol>
-<li>affectation d'un variable : 1 instruction</li>
-<li>affectation d'un variable : 1 instruction</li>
+<li>création d'un objet et affectation à une variable : 2 instructions</li>
+<li>création d'un tableau et affectation à une variable : 2 instructions</li>
 <li>affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
 <ol>
 <li>affectation des paramètres :
+<ol>
+<li>trouver les objets à mettre en paramètres :
 <ul>
 <li>pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction</li>
-<li>pour le second paramètre, c'est un objet donc il n'y a rien à faire : 0 instruction</li>
+<li>pour le second paramètre, l'objet est à créer : 1 instruction</li>
+</ul>
+</li>
+<li>affecter les paramètres aux variables de la fonction :
+<ul>
 <li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
 <li>affectation du second paramètre à la variable locale e : 1 instruction</li>
 </ul>
+</li>
+</ol>
 </li>
 <li>une boucle de 3 itérations</li>
 <li>un test
@@ -425,10 +441,15 @@ affiche à l'écran e
 <li>on arrive à cette ligne à la troisième itération : 1 instruction</li>
 </ol>
 </li>
-<li>afficher quelque chose à l'écran : 1 instruction</li>
+<li>afficher quelque chose à l'écran :
+<ul>
+<li>1 instruction pour trouver l'objet à afficher</li>
+<li>1 instruction pour trouver l'afficher</li>
+</ul>
+</li>
 </ol>
-<p>Au total on eu besoin de $1+1+1+\underbracket{(1+0+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1$<br>
-instructions c'est à dire $20$ instructions.</p>
+<p>Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$<br>
+instructions c'est à dire $24$ instructions.</p>
 <h3>Signature d'une fonction</h3>
 <p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple <a href="#probl%C3%A8me-recherche">le problème recherche</a> nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <em><strong>les signatures de fonctions</strong></em></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -455,6 +476,7 @@ instructions c'est à dire $20$ instructions.</p>
 </code></pre>
 </div>
 </div>
+<p>On ne peut bien sur utiliser de signature que lorsque les entrées et les sorties sont de types parfaitement définis, ce qui n'est pas toujours le cas.</p>
 <h3>Instructions avancées</h3>
 <p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
 <p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>

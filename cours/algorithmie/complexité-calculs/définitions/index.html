@@ -126,8 +126,16 @@ rendre F[9]
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il y a quatre types d'instructions élémentaires :</p>
+<p>Il y a cinq types d'instructions élémentaires :</p>
 <ul>
+<li>les créations :
+<ul>
+<li>ligne 1 : un tableau</li>
+<li>ligne 2 : un entier</li>
+<li>ligne 3 : un entier</li>
+<li>ligne 5 : deux entiers</li>
+</ul>
+</li>
 <li>les affectations :
 <ul>
 <li>ligne 1 : on affecte une valeur au tableau</li>
@@ -151,18 +159,18 @@ rendre F[9]
 </ul>
 <p>On en conclut la complexité de chaque ligne :</p>
 <ul>
-<li>ligne 1 : 1 instruction</li>
-<li>ligne 2 : 1 instruction</li>
-<li>ligne 3 : 1 instruction</li>
+<li>ligne 1 : 2 instruction</li>
+<li>ligne 2 : 2 instructions</li>
+<li>ligne 3 : 3 instruction</li>
 <li>ligne 4 : 0 instruction</li>
-<li>ligne 5 : 1 instruction</li>
+<li>ligne 5 : 3 instructions la première fois et 1 instruction les autres fois (on ne recrée pas les objets)</li>
 <li>ligne 6 : 4 instructions</li>
 <li>ligne 7 : 0 instruction</li>
 <li>ligne 8 : 2 instructions</li>
 </ul>
 <p>Comme la ligne 5 et 6 sont exécutées 8 fois, on en conclut que la complexité est :</p>
 <p>$$<br>
-1+1+1+0+ 8\cdot(1 + 4) + 0 + 2 = 45<br>
+2+2+3+0+ 2 + 8\cdot(1 + 4) + 0 + 2 = 49<br>
 $$</p>
 </div>
 </details>     
@@ -178,11 +186,11 @@ $$</p>
 
   rendre F[n-1]
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot(n-1)$ qui dépend de la valeur du paramètre d'entrée.</p>
+<p>Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot n+2$ qui dépend de la valeur du paramètre d'entrée.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que la complexité est bien de $5\cdot(n-1)$</p>
+<p>Montrez que la complexité est bien de $5\cdot n+2$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -202,7 +210,12 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On ne rentre plus 8 fois dans la boucle mais $n-2$ fois. La complexité est alors : $5 + (n-1)\cdot 5 = 5\cdot n-5$.</p>
+<p>Il y a deux différences :</p>
+<ul>
+<li>il faut affecter un objet au paramètre $n$</li>
+<li>on ne rentre plus 8 fois dans la boucle mais $n-2$ fois.</li>
+</ul>
+<p>La complexité est alors : $1 + 11 + (n-2)\cdot 5 = 5\cdot n+2$.</p>
 </div>
 </details>     
 </div>
@@ -213,7 +226,7 @@ $$</p>
             rend OUI
     rend NON
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 3 lorsque la valeur est le premier élément du tableau (une affectation de $x$, un test et un retour) à $2n + 1$ si la valeur n'est pas dans le tableau ($n$ affectations de $x$, $n$ tests et un retour). La complexité de l'algorithme est alors $C(i) = 2i + 1$ où $i$ est la position de la valeur dans le tableau.</p>
+<p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.</p>
 <h2>Complexité d'un algorithme</h2>
 <p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour la fonction <code class="language-">est_dans_tableau</code> on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -251,7 +264,7 @@ $$</p>
 <p><em><strong>La complexité $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$</strong></em>  est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
-<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">est_dans_tableau</code> vaut $2N+1$.</p>
+<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">est_dans_tableau</code> vaut $5N+4$.</p>
 <p>Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction <code class="language-">fibonacci(n)</code>, la taille de stockage d'un entier étant de 1 case mémoire.</p>
 <p>Si l'on avait calculé la complexité en regroupant les entrées par taille, on aurait eu qu'une seule classe d'entrée et la complexité aurait été infinie... Il a donc fallu supposer que l'on connaissait la valeur de l'entrée pour calculer une complexité finie.</p>
 <p>Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :</p>
@@ -271,7 +284,7 @@ $$</p>
 <h2>Autres types de Complexité</h2>
 <p>Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant la définition précédente. Il existe cependant d'autres types de complexité que l'on pourra utiliser.</p>
 <h3>Complexité min</h3>
-<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">est_dans_tableau</code> par exemple), la complexité prend le maximum ($2N+1$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">est_dans_tableau</code>) mais il peut être utile de connaître le minimum ($3$ pour l'algorithme <code class="language-">est_dans_tableau</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
+<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">est_dans_tableau</code> par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">est_dans_tableau</code>) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme <code class="language-">est_dans_tableau</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -335,7 +348,28 @@ $$</p>
   rendre b
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
-<p>Sa complexité un peu plus élevée, $8\cdot n-12$, mais reste comparable au premier.</p>
+<p>Sa complexité un peu plus élevée :</p>
+<ol>
+<li>1 instruction : affectation du paramètre</li>
+<li>2 instructions : création d'un objet et affectation</li>
+<li>2 instructions : création d'un objet et affectation</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+<li>$n+2$ instructions : $n-2$ affectations de <code class="language-">i</code> et 4 instruction pour la création des bornes (2 créations (entiers 2 et 1) ; une lecture et une opération de soustraction)</li>
+<li>$4(n-2)$ instructions : $n-2$ itérations de 2 lectures, une somme et une affectation</li>
+<li>$2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation</li>
+<li>$2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation</li>
+<li>
+<ul>
+<li></li>
+</ul>
+</li>
+<li>2 instructions : 1 lecture, un retour</li>
+</ol>
+<p>Pour un total de $9\cdot n-15$, mais reste comparable au premier.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
