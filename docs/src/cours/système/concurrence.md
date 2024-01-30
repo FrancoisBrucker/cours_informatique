@@ -11,7 +11,7 @@ eleventyComputed:
 ---
 
 1. ce qu'est un thread
-2. parralèle pourquoi c'est bien : algo + complexité
+2. parallèle pourquoi c'est bien : algo + complexité
 3. faire ce qui marche si pas partagé :
    1. serveur -> thread
    2. calcul image fractale
@@ -25,7 +25,11 @@ eleventyComputed:
 
 <https://www.classes.cs.uchicago.edu/archive/2018/spring/12300-1/lab6.html>
 
-
+> TBD :
+>
+> - concurrence = de façon indépendante
+> - parallèlisme = en même temps
+>
 ## accès concurrent
 
 atomicité. 

@@ -266,6 +266,7 @@ for (i=0 ; i < 10 ; i++) {
 Le pseudo-code d'un algorithme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie. Par exemple :
 
 <div id="problème-recherche"></div>
+
 ```text
 Nom : recherche
 Entrées :

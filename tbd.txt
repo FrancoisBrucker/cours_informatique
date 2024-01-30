@@ -5,7 +5,9 @@
 - algorithmie :
 	- complexité O : faire des exercices de calcul de O.
 	- ajouter des courbes.
-	
+
+- système : <https://missing.csail.mit.edu/>
+
 - mpci l1 but :
     - exercices <https://adventofcode.com/>
       exemple : chaine de caractères, trouver le premier indice tq k chiffres/lettres différents.
