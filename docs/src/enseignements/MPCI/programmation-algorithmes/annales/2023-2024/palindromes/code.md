@@ -78,13 +78,25 @@ Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [
 
 ## Sous-palindrome
 
-> TBD utiliser pytermgui pour colorier en rouge le max
-
 ### Algorithme
 
-Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome
+{% faire %}
+Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome.
+{% endfaire %}
 
 ### Programme principal
 
 > TBD expliciter tous les sous palindrome de taille >= k
 > Utiliser la partie 2 pour l'appliquer aux textes avec espaces et accents
+>
+> > TBD utiliser pytermgui pour colorier en rouge le max
+
+```
+>>> from pytermgui import tim
+>>> tim.print("hi hi [red]dddd[/] ffff")
+hi hi dddd ffff
+>>> tim.print("un texte [red]change de couleur[/] et deniveau normal.")
+un texte change de couleur et deniveau normal.
+>>> tim.print("un texte [red]change de couleur[/] et de nouveau normal.")
+un texte change de couleur et de nouveau normal.
+```
