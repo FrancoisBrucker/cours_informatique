@@ -7,10 +7,10 @@ title: "Annales 2023/2024"
 
 <!-- début résumé -->
 
-Tests et examens pour l'année scolaire 2022/2023
+Tests et examens pour l'année scolaire 2023/2024
 
 <!-- end résumé -->
 
 ## Devoir Maison
 
-1. [Palindromes](./palindromes){.interne}
+1. [DM 1 : Palindromes](./palindromes){.interne}

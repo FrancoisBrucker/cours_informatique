@@ -1,12 +1,12 @@
 ---
 layout: layout/post.njk
 
-title:  "DM 1 : palindromes"
+title:  "Projet palindromes"
 authors:
     - François Brucker
 ---
 
-Le but de ce DM est de trouver des palindromes dans un texte.
+Le but de ce projet est de trouver des palindromes dans un texte.
 
 {% note "**Définition**" %}
 Une chaîne de caractères $s$ de longueur $n > 0$ est un ***palindrome*** si : $s[i] = s[n-1-i]$ pour tout $0 \leq i < n$
