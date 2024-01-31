@@ -66,7 +66,7 @@ Créer une fonction `prétraitement(s: str) -> str` qui effectue le prétraiteme
 Créez un programme principal nommé `main-phrase-palindrome.py`{.fichier} qui demande à l'utilisateur de donner une chaîne de caractères et le programme répond "oui" si la chaîne est une phrase palindrome et "non" sinon.
 {% endfaire %}
 
-### Bonus
+### Fichier texte
 
 On peut très facilement lire un fichier texte en python en utilisant l'instruction :
 
@@ -84,41 +84,7 @@ Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [
 
 Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome
 
-
-## Fichiers
-
-> TBD juste la base (on fera mieux, peut-être, plus tard)
-
-### Palindromes
-
-> charger fichier texte avec perec
->
-### sous-Palindromes
-
-
-> sous-palindrome faire l'algo en n3 et en n et vérifier la différence de temps complexité pour perec.
-> 
-> Tester avec d'autres fichiers en utf8 des fichier de l'internet. Dire comment lire (prendre en utf8).
-> TBD
-
-1. créez des mots aléatoires de taille $n$ à partir d'une chaîne alphabet $A$
-2. texte :
-   1. téléchargement et lecture (dossier courant)
-   2. trick utf8
-   3. uppercase et suppression espace
-3. palindrome algo
-
-4. télécharge fichier <https://www.gutenberg.org/ebooks/6099> Il faudra peut-être forcer le téléchargement, parfois chrome le bloque
-5. charge fichier texte en python en entier et en une fois (pas plus)
-6. <https://github.com/avian2/unidecode>
-7. supprime espace (ou même garde que les caractères A-Z ?`"".join(filter(lambda x: x.isalpha(), string))`{.language-}. Liste vers chaîne sinon va être trop long. Peut être aussi d'abord voir avec un ensemble tous les caractères, puis les caractères non alphabet)
-8. fonction
-
-> <https://www.arretetonchar.fr/wp-content/uploads/2013/IMG/pdf_Georges_Perec_le_grand_palindrome.pdf>
+### Programme principal
 
 > TBD expliciter tous les sous palindrome de taille >= k
->
-
-
-### Création de palindromes
-
+> Utiliser la partie 2 pour l'appliquer aux textes avec espaces et accents
