@@ -167,16 +167,32 @@
 </code></pre>
 <p>Utilisez cette instruction pour vérifier que le texte contenu dans le fichier <a href="../perec.txt" class="fichier"><code class="fichier">perec.txt</code></a> (cliquez droit sur le lien et choisissez de le télécharger) est une phrase palindrome. On le doit à <a href="https://fr.wikipedia.org/wiki/Georges_Perec">Georges Perec</a> écrivain et poète Français.</p>
 <h2>Sous-palindrome</h2>
-<blockquote>
-<p>TBD utiliser pytermgui pour colorier en rouge le max</p>
-</blockquote>
 <h3>Algorithme</h3>
-<p>Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome.</p>
+</div>
+</div>
 <h3>Programme principal</h3>
 <blockquote>
 <p>TBD expliciter tous les sous palindrome de taille &gt;= k<br>
 Utiliser la partie 2 pour l'appliquer aux textes avec espaces et accents</p>
+<blockquote>
+<p>TBD utiliser pytermgui pour colorier en rouge le max</p>
 </blockquote>
+</blockquote>
+<pre><code>&gt;&gt;&gt; from pytermgui import tim
+&gt;&gt;&gt; tim.print(&quot;hi hi [red]dddd[/] ffff&quot;)
+hi hi dddd ffff
+&gt;&gt;&gt; tim.print(&quot;un texte [red]change de couleur[/] et deniveau normal.&quot;)
+un texte change de couleur et deniveau normal.
+&gt;&gt;&gt; tim.print(&quot;un texte [red]change de couleur[/] et de nouveau normal.&quot;)
+un texte change de couleur et de nouveau normal.
+</code></pre>
 
 
 </article>
