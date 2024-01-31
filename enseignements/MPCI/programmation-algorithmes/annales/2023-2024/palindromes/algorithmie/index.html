@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Résolution du problèmes des (sous-)palindromes</title>
+    <title>Résolution du problème des (sous-)palindromes</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Résolution du problèmes des (sous-)palindromes</h1>
+  <h1>Résolution du problème des (sous-)palindromes</h1>
   <div>
     
 
@@ -105,7 +105,28 @@
 <p>Explicitez le problème de la reconnaissance d'un palindrome par un problème de décision.</p>
 </div>
 </div>
+<h3>Propriétés</h3>
+<p>Démontrez quelques propriétés qui seront utiles (ou juste intéressantes) plus tard :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Démontrez qu'une chaîne de caractères composée uniquement d'un caractère est un palindrome</li>
+<li>Démontrez que si une chaîne de longueur $n$ paire est un palindrome, alors chacun de ses caractères apparaît un nombre pair de fois.</li>
+<li>Démontrez que si une chaîne de longueur $n$ impaire est un palindrome, alors :
+<ol>
+<li>la chaîne $s$ privée de son caractère $s[(n-1)/2]$ est un palindrome,</li>
+<li>au plus 1 de ses caractères apparaît un nombre impair de fois.</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
 <h3>Résolution du problème</h3>
+<p><span id="palindrome_linéaire"></span></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -126,43 +147,8 @@
 <p>Démontrez que <strong>la complexité du problème de reconnaissance</strong> d'un palindrome est linéaire pour la taille de la chaîne en entrée.</p>
 </div>
 </div>
-<h3>Propriétés</h3>
-<p>Démontrez quelques propriétés qui seront utiles (ou juste intéressante) plus tard :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<ol>
-<li>Démontrez qu'une chaîne de caractères composée uniquement d'un caractère est un palindrome,</li>
-<li>Démontrez que pour un palindrome tout caractère, à part peut-être 1, apparaît un nombre pair de fois.</li>
-</ol>
-</div>
-</div>
-<h3>Création de palindromes</h3>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Proposez un <strong>algorithme récursif</strong> de signature <code class="language-">aléatoire_palindrome_rec(s: str, n: int) -&gt; bool</code> qui rend un palindrome aléatoire de longueur $n$ formé uniquement avec les caractères de <code class="language-">s</code>.</p>
-<p>En supposant que la complexité de concaténation d'une chaîne et d'un caractère soit en $\mathcal{O}(1)$, assurez vous que sa complexité soit en $\mathcal{O}(n)$.</p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Proposez un <strong>algorithme itératif</strong> de signature <code class="language-">aléatoire_palindrome_iter(s: str, n: int) -&gt; bool</code> qui rend un palindrome aléatoire de longueur $n$ formé uniquement avec les caractères de <code class="language-">s</code>.</p>
-<p>En supposant que la complexité de concaténation d'une chaîne et d'un caractère soit en $\mathcal{O}(1)$, assurez vous que sa complexité soit en $\mathcal{O}(n)$.</p>
-</div>
-</div>
 <h2>Problème du sous-palindrome</h2>
-<p>Cette partie est consacrée à l'étude des mots palindromiques d'une chaîne de caractères. Commençons par définir ce qu'est <em><strong>un mot</strong></em> d'une chaîne de caractères :</p>
+<p>Cette partie est consacrée à l'étude des mots palindromiques d'une chaîne de caractères. Commençons par définir ce qu'est <em><strong>un mot</strong></em> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -170,7 +156,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un mot $s[i:j]$ ($i &lt; j$) d'une chaîne de caractères $s=s_0\dots s_{n-1}$ est la chaîne :</p>
+<p>Un mot $s[i:j]$ ($0 \leq i &lt; j \leq n$) d'une chaîne de caractères $s=\text{&quot;}s_0\dots s_{n-1}\text{&quot;}$ est la chaîne :</p>
 <div>
 $$
 s[i:j] = s_i \dots s_{j-1}
@@ -186,38 +172,31 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un mot $s[i:j]$ ($i &lt; j$) d'une chaîne de caractères <code class="language-">s</code> de longueur $n &gt; 0$ est un <em><strong>sous-palindrome de <code class="language-">s</code></strong></em> si : $s[i:j]$ est un palindrome.</p>
+<p>Un mot $s[i:j]$ ($0 \leq i &lt; j \leq n$) d'une chaîne de caractères $s$ de longueur $n &gt; 0$ est un <em><strong>sous-palindrome de $s$</strong></em> si $s[i:j]$ est un palindrome.</p>
+</div>
+</div>
+<p>Mettons cette définition en pratique :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Explicitez tous les sous-palindromes de la chaîne : $s = \text{&quot;babba&quot;}$</p>
 </div>
 </div>
 <h3>Propriétés des sous-palindromes</h3>
-<p>Commençons par une propriété triviale :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que toute chaîne de caractères non vide admet un sous-palindrome.</p>
-</div>
-</div>
-<p>Poursuivons par un cas particulier :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.</p>
-</div>
-</div>
-<p>Et enfin la non existence :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Montrer que pour tout $n&gt;1$ et tout $m&gt;2$, il existe il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindromes de longueur strictement supérieure à 1.</p>
+<ol>
+<li>Montrer que toute chaîne de caractères non vide admet un sous-palindrome.</li>
+<li>Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.</li>
+<li>Montrer que pour tout $n&gt;1$ et tout $m&gt;2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.</li>
+</ol>
 </div>
 </div>
 <h3>Problème des sous-palindromes</h3>
@@ -257,29 +236,51 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant l'algorithme linéaire <code class="language-">palindrome(s: str) -&gt; bool</code>, montrer que le problème <code>max-sous-palindrome</code> est <strong>un problème algorithmique</strong> en exhibant un algorithme (simple) de complexité $\mathcal{O}(n^3)$ pour le résoudre.</p>
+<ol>
+<li>En utilisant l'algorithme linéaire <code class="language-">palindrome(s: str) -&gt; bool</code> sur chaque mot de $s$, montrer que le problème <code>max-sous-palindrome</code> est <strong>un problème algorithmique</strong> de complexité $\mathcal{O}(n^3)$.</li>
+<li>Montrer que la complexité du problème <code>max-sous-palindrome</code> est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.</li>
+<li>Déduire de la question précédente un encadrement de la complexité du problème <code>max-sous-palindrome</code>.</li>
+</ol>
 </div>
 </div>
-<p>Et donnez une borne minimum du problème :</p>
+<p>Le but de la fin de la partie algorithmique de cette étude est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressons pas étapes. Commençons par passer d'une complexité de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.</p>
+<h3>Résolution par matrice interposée du problème des sous-palindromes</h3>
+<p>On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une <a href="https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_sup%C3%A9rieures">une matrice carrée triangulaire supérieure</a> qui va expliciter si le mot $s[i:j+1]$ est un sous palindrome ou pas :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M_s$ une matrice carrée à $n$ lignes ($M_s[i]$, $0 \leq i &lt; n$, est un tableau représentant la ligne $i$ et $M_s[i][j]$, $0 \leq i, j &lt; n$, correspond à la case de ligne $i$ et colonne $j$ de $M_s$) et $s$ une chaîne de caractères de longueur $n$.</p>
+<p>La matrice $M_s$ est définie telle que</p>
+<ul>
+<li>pour $0\leq j &lt; i &lt;n$ :
+<ul>
+<li>$M_s[i][j] = 0$</li>
+</ul>
+</li>
+<li>pour $0\leq i \leq j &lt;n$ :
+<ul>
+<li>$M_s[i][j] = 1$ si $s[i:j+1]$ est un sous-palindrome de $s$,</li>
+<li>$M_s[i][j] = 0$ sinon.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>Mettons cette définition en pratique :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que la complexité du problème <code>max-sous-palindrome</code> est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.</p>
+<p>Explicitez $M_s$ pour la chaîne : $s = \text{&quot;babba&quot;}$</p>
 </div>
 </div>
-<p>Le but de la fin de la partie algorithmique de ce DM est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressions pas étapes. Commençons par passer de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.</p>
-<h3>Résolution par matrice interposée du problème des sous-palindromes</h3>
-<p>On suppose que l'on possède <a href="https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_sup%C3%A9rieures">une matrice carrée triangulaire supérieure</a> $P(s)$ à $n$ lignes, associée à la chaîne de caractères $s$ (de longueur $n$), définie telle telle que :</p>
-<ul>
-<li>$P(s)[i][j] = 1$ si $s[i:j+1]$ est un sous-palindrome de $s$ (donc il faut que $i\leq j$)</li>
-<li>$P(s)[i][j] = 0$ sinon</li>
-</ul>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
+<h4>Création de $M_s$</h4>
 <p>On peut facilement calculer les deux premières diagonales :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -287,29 +288,20 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que l'on peut facilement calculer $P(s)[i][i]$ et $P(s)[i][i+1]$ pour tout $i$.</p>
+<p>Soit $s$ une chaîne de caractères de longueur $n$.</p>
+<ol>
+<li>Créez une fonction de complexité $\mathcal{O}(n)$ qui prend en paramètres une matrice $M$ carrée à $n$ ligne et une chaîne de caractères $s$ de longueur $n$ et qui rend <strong>la même matrice $M$</strong> telle que :
+<ul>
+<li>$M[i][i] = M_s[i][i]$ pour $0\leq i &lt; n$</li>
+<li>$M[i][i+1] = M_s[i][i+1]$ pour $0\leq i &lt; n-1$</li>
+</ul>
+</li>
+<li>Créez une fonction de complexité $\mathcal{O}(1)$ qui prend en paramètres $i$, $j$, $s$ et $M_s[i][j]$ et qui rend la valeur de $M_s[i-1][j+1]$ (on a bien sur $0 &lt; i \leq j &lt; n-1$).</li>
+<li>Déduire des deux questions précédentes un algorithme de complexité $\mathcal{O}(n^2)$ qui prend $s$ en paramètre et la matrice $M_s$</li>
+</ol>
 </div>
 </div>
-<p>De plus, il existe une relation simple entre les autres éléments de la matrice :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Montrer que l'on peut facilement calculer (en $\mathcal{O}(1)$) $P(s)[i][j]$ à partir de $P(s)[i+1][j-1]$ si $0 \leq i &lt; j + 1$.</p>
-</div>
-</div>
-<p>En déduire un algorithme de création de la matrice $P(s)$ :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Donner un algorithme qui construit la matrice $P(s)$ en $\mathcal{O}(n^2)$ instructions, avec $n$ la longueur de la chaîne de caractères $s$.</p>
-</div>
-</div>
+<h4>Résolution de <code>max-sous-palindrome</code> avec $M_s$</h4>
 <p>Cette matrice peut ensuite servir à résoudre le problème <code>max-sous-palindrome</code> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -317,12 +309,26 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Déduire des parties précédentes que l'on peut résoudre le problème <code>max-sous-palindrome</code> en $\mathcal{O}(n^2)$ instructions.</p>
+<ol>
+<li>Créez une fonction de complexité $\mathcal{O}(n^2)$ qui prend en paramètre $M_s$ et rend la solution de <code>max-sous-palindrome</code> pour $s$,</li>
+<li>En déduire que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^2)$.</li>
+</ol>
 </div>
 </div>
-<p>Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer de $\mathcal{O}(n^2)$ à $\mathcal{O}(n)$.</p>
+<p>Notez qu'il n'y a pas de contradiction entre la première série de question qui a montré que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^3)$ et celles-ci qui montrent qu'elle est également de complexité $\mathcal{O}(n^2)$ puisque le comparateur asymptotique $\mathcal{O}()$ est un majorant.</p>
+<h4>Pourquoi ?</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Quelle est la raison pour laquelle la création et l'utilisation de la matrice $M_s$ est plus rapide que l'utilisation de la fonction <code>palindrome()</code> pour tous les sous-mots ?</p>
+</div>
+</div>
+<p>Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer d'une complexité de $\mathcal{O}(n^2)$ à de complexité de $\mathcal{O}(n)$. Avant de procéder aux questions suivantes qui vont vous guider vers une solution possible essayez quelque instants de trouver une solution par vous-même.</p>
 <h3>Résolution linéaire du problème des sous-palindromes</h3>
-<p>L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impair. Montrons qu'il est toujours possible de s'y ramener</p>
+<p>L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impair. Montrons qu'il est toujours possible de s'y ramener.</p>
 <h4>De $s$ à $s^\sharp$</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -331,10 +337,10 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $s =s_0 \dots s_{n-1}$ une chaîne de caractères et $\sharp$ un caractère non présent dans $s$. On note $s^\sharp$ la chaîne de caractères de longueur $2n+1$ telle que :</p>
+<p>Soit $s =\text{&quot;}s_0 \dots s_{n-1}\text{&quot;}$ une chaîne de caractères et $\sharp$ un caractère non présent dans $s$. On note $s^\sharp$ la chaîne de caractères de longueur $2n+1$ telle que :</p>
 <div>
 $$
-s^\sharp = \sharp s_0\sharp  \dots s_{i-1} \sharp s_i \sharp s_{i+1} \dots \sharp s_{n-1} \sharp
+s^\sharp = \text{"}\sharp s_0\sharp  \dots s_{i-1} \sharp s_i \sharp s_{i+1} \dots \sharp s_{n-1} \sharp\text{"}
 $$
 </div>
 </div>
@@ -348,27 +354,24 @@ $$
 <div class="pl-8 mr-8">
 <p>Montrer que :</p>
 <ol>
-<li>les sous-palindromes de $s^\sharp$ sont tous de longueurs impaires</li>
-<li>il existe un sous-palindrome de taille $m$ dans $s$ si et seulement si il existe un sous-palindrome de taille $2m + 1$ dans $s^\sharp$</li>
+<li>Les sous-palindromes de $s^\sharp$ sont tous de longueurs impaires.</li>
+<li>Il existe un sous-palindrome de taille $m&gt;0$ dans $s$ si et seulement si il existe un sous-palindrome de taille $2m + 1$ dans $s^\sharp$.</li>
+<li>Déduire des deux questions précédentes que s'il existe un algorithme $A(s)$ de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impair d'une chaîne $s$ de longueur $n$, on peut construire un algorithme de même complexité utilisant $A()$ qui résout <code>max-sous-palindrome</code>.</li>
 </ol>
 </div>
 </div>
-<p>Cette correspondance permet de déduire que :</p>
+<h4>Exemple</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que s'il existe un algorithme de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impair d'une chaîne $s$ de longueur $n$, il existe un autre algorithme de même complexité pour résoudre <code>max-sous-palindrome</code> avec la même complexité.</p>
+<p>En utilisant la chaîne de caractères $s = \text{&quot;babba&quot;}$, explicitez les sous-palindromes de la chaîne $s^\sharp$ de taille strictement supérieure à 1 et associez chacun à un sous-palindrome de $s$.</p>
 </div>
 </div>
 <h4>Mots palindromiques impairs</h4>
-<p>Les palindromes de longueur impair sont centrées autour d'un élément. On appelle <em><strong>rayon</strong></em></p>
-<blockquote>
-<p>TBD faire mieux<br>
-On considère alors le tableau :</p>
-</blockquote>
+<p>Les palindromes de longueur impair sont centrées autour d'un élément :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -376,52 +379,111 @@ On considère alors le tableau :</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $s =s_0 \dots s_{n-1}$ une chaîne de caractères. On note $M_s$ le tableau de taille $n$ tel que $M_s[i]$ soit la taille du plus grand rayon sous-palindrome de taille impair centrée en $s_i$ pour $s$.</p>
+<p>Soit $s[i:j]$ un sous-palindrome de longueur impair de $s$. On appelle :</p>
+<ul>
+<li><em><strong>centre du sous-palindrome</strong></em> l'index $(i+j -1)/2$.</li>
+<li><em><strong>rayon du sous-palindrome</strong></em> le nombre $(j-i -1)/2$.</li>
+</ul>
 </div>
 </div>
-<blockquote>
-<p>TBD exemple</p>
-</blockquote>
-<p>Le tableau $M_s$ possède une propriété très intéressante :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Démontrez que pour tous $i &lt; j \leq i + M_s[i]$, on a :</p>
-<div>
-$$
-M_s[j] \geq \max 
-$$
+<p>Explicitez le le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{&quot;babba&quot;}$.</p>
 </div>
 </div>
+<p>Plutôt que de calculer tous les mot d'une chaîne et de vérifier s'ils sont palindromique on va chercher pour chaque centre le rayon maximal.</p>
+<h4>Tableau $T_s$</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ soit la taille du plus grand rayon sous-palindrome de taille impair centrée en $i$.</p>
 </div>
-<p>palindrome (i,+k)</p>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>en n trouver le palindrome de taille max centré en x</li>
-<li>en déduire n2 qui rend un tableau K ou K[i] est la longueur max du rayon pour i</li>
-<li>en déduire n2 qui rend le nombre de palindromes impairs</li>
+<li>Montrez que cette définition est valide : $T_s[i]$ est bien défini pour tout $s$ et centre $i$.</li>
+<li>Montrez que $s[i-T_s[i]:i+T_s[i]+1]$ est un sous-palindrome de $s$</li>
+<li>Explicitez $T_{s^\sharp}$ pour la chaîne $s = \text{&quot;babba&quot;}$.</li>
+<li>Démontrez que le plus grand élément de $T_{s^\sharp}$ est la réponse au problème <code>max-sous-palindrome</code> pour $s$.</li>
 </ol>
-<p>On peut faire mieux.</p>
-<p>(i, +k) un palindrome impair de taille max et on connaît  (i-u,+k')</p>
-<p>que vaut (i+u,+k'') si :</p>
+</div>
+</div>
+<h4>Propriétés de $T_s$</h4>
+<p>Exhibons la propriété fondamentale de $T_s$ qui va nous permettre de le calculer rapidement.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Montrez que tout tout $k \leq T_s[i]$ on a :</p>
 <ul>
-<li>k' &lt; k-u</li>
-<li>k' &gt; k-u</li>
+<li>$T_s[i + k] = T_s[i-k]$ si $T_s[i-k] \neq T_s[i]-k$</li>
+<li>$T_s[i + k] \geq T_s[i]-k$ sinon.</li>
 </ul>
-<p>Que faire si k' = k-u pour déterminer k''.</p>
-<p>Faire un algo <code class="language-">suivant</code> qui :</p>
+</div>
+</div>
+<h4>Création de $T_s$</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Déduire de la propriété précédente un algorithme de complexité $\mathcal{O}(n)$ permettant de créer $T_s$ à partir de $s$.</p>
+</div>
+</div>
+<h4>Conclusion</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>rend le premier élément i'' tel que k'=k-u ou i + k + 1.</li>
-<li>que vaut K[i'] pour i &lt; i' &lt; i''</li>
-<li>K[i''] &gt;= K[i]</li>
+<li>Donnez un algorithme de complexité $\mathcal{O}(n)$ permettant de résoudre le problème <code>max-sous-palindrome</code> pour une chaîne de caractères de longueur $n&gt;0$.</li>
+<li>En déduire que la complexité du problème <code>max-sous-palindrome</code> est de $\Theta(n)$ pour une chaîne de caractères de longueur $n&gt;0$.</li>
 </ol>
-<p>En déduire un algorithme linéaire pour rendre K (pour justifier de la linéarité, on pourra  remarquer que i'+K[i'] est croissant et $i' &gt; i$ pour chaque sortie de l'algo <code class="language-">suivant(i)</code>)</p>
+</div>
+</div>
 <h2>Nombre de sous-palindromes</h2>
-<blockquote>
-<p>TBD : compter le nombre de sous-palindromes d'une chaine</p>
-</blockquote>
+<p>Un dernier problème pour la route :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>nom</strong> : nombre-sous-palindrome</li>
+<li><strong>données</strong> : $s$ une chaîne de caractères de taille $n&gt;0$</li>
+<li><strong>question</strong> : Quel est le nombre de sous-palindromes de $s$ ?</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>En utilisant l'algorithme linéaire pour calculer $T_s$, Montrer que le problème <code>nombre-sous-palindrome</code> est de complexité $\mathcal{O}(n)$.</p>
+</div>
+</div>
 
 
 </article>
