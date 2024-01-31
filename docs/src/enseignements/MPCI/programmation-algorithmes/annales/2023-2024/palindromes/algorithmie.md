@@ -184,7 +184,7 @@ Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer de $
 
 L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impair. Montrons qu'il est toujours possible de s'y ramener
 
-#### de $s$ à $s^\sharp$
+#### De $s$ à $s^\sharp$
 
 {% note "**Définition**" %}
 Soit $s =s_0 \dots s_{n-1}$ une chaîne de caractères et $\sharp$ un caractère non présent dans $s$. On note $s^\sharp$ la chaîne de caractères de longueur $2n+1$ telle que :
@@ -205,23 +205,37 @@ Montrer que :
 2. il existe un sous-palindrome de taille $m$ dans $s$ si et seulement si il existe un sous-palindrome de taille $2m + 1$ dans $s^\sharp$
 {% endfaire %}
 
-> TBD déduire que s'il existe un algo de complexité x pour impaire il existe un algo de complexité x pour problème général.
+Cette correspondance permet de déduire que :
 
-#### mots palindromiques impairs
+{% faire %}
 
-Les palindromes de longueur impair sont centrées autour d'un élément. On considère alors le tableau :
+Montrer que s'il existe un algorithme de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impair d'une chaîne $s$ de longueur $n$, il existe un autre algorithme de même complexité pour résoudre `max-sous-palindrome` avec la même complexité.
+
+{% endfaire %}
+
+#### Mots palindromiques impairs
+
+Les palindromes de longueur impair sont centrées autour d'un élément. On appelle ***rayon***
+
+> TBD faire mieux
+On considère alors le tableau :
 
 {% note "**Définition**" %}
-Soit $s =s_0 \dots s_{n-1}$ une chaîne de caractères. On note $M_s$ le tableau de taille $n$ tel que $M_s[i]$ soit la taille du plus grand sous-palindrome de taille impair centrée en $s_i$ pour $s$.
+Soit $s =s_0 \dots s_{n-1}$ une chaîne de caractères. On note $M_s$ le tableau de taille $n$ tel que $M_s[i]$ soit la taille du plus grand rayon sous-palindrome de taille impair centrée en $s_i$ pour $s$.
 {% endnote  %}
 
 > TBD exemple
->
 
 Le tableau $M_s$ possède une propriété très intéressante :
 
 {% faire %}
-Démontrez que 
+Démontrez que pour tous $i < j \leq i + M_s[i]$, on a :
+
+<div>
+$$
+M_s[j] \geq \max 
+$$
+</div>
 {% endfaire %}
 
 palindrome (i,+k)
@@ -249,11 +263,6 @@ Faire un algo `suivant`{.language-} qui :
 
 En déduire un algorithme linéaire pour rendre K (pour justifier de la linéarité, on pourra  remarquer que i'+K[i'] est croissant et $i' > i$ pour chaque sortie de l'algo `suivant(i)`{.language-})
 
-### chaîne #s
+## Nombre de sous-palindromes
 
-> ajout de #
-> lien entres mots palindromiques de s et de #s
-> parité des mots palindromiques de #s
-> création de #s à partir de s
-> Algo linéaire pour trouver le palindrome le plus grand
-> Algo linéaire pour trouver le nombre de palindromes
+> TBD : compter le nombre de sous-palindromes d'une chaine
