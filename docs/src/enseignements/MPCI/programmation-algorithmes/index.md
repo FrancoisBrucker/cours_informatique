@@ -132,8 +132,17 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
 
 {% faire %}
-[Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
+[Sujet du DM](./annales/2023-2024/palindromes/)
+
+Il faudra rendre un dossier contenant :
+
+- un dossier contenant le rendu de la partie algorithmie. Il devra être sous la forme d'un fichier markdown et de sa conversion en html.
+- un dossier contenant le rendu de la partie code contenant le projet vscode et les différents programmes.
+
 {% endfaire %}
+{% info %}
+[Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
+{% endinfo %}
 
 ### Semaine 3
 
