@@ -31,17 +31,21 @@ Créez un programme principal nommé `main-palindrome.py`{.fichier} qui demande 
 
 ### Bonus
 
-En bonus. Ne sera pas noté car très dur à trouver sans google.
-
 {% faire %}
-Il y a un moyen en python de savoir si une chaîne de caractères est un palindrome en une instruction et un slice. Explicitez là si vous la trouvez.
+Que fait la fonction mystère écrite ci-dessous :
+
+```python
+def mystère(s):
+   return s == s[::-1]
+```
+
 {% endfaire %}
 
 ## Phrases palindromes
 
-Pour traiter des phrases palindrome à partir d'un texte en français, il faut commencer par pré-traiter le texte pour qu'il ne contienne plus que des lettres non accentuées en majuscules.
-
 ### Prétraitement
+
+Pour traiter des phrases palindrome à partir d'un texte en français, il faut commencer par pré-traiter le texte pour qu'il ne contienne plus que des lettres non accentuées en majuscules.
 
 {% faire %}
 
@@ -56,7 +60,7 @@ Créer une fonction `prétraitement(s: str) -> str` qui effectue le prétraiteme
 
    1. regardant caractère par caractère le troisième paramètre (ici `s`{.language-}).
    2. elle ne conservera que les éléments décrits par le premier paramètre (ici `"[^A-Z]"`{.language-} qui signifie toutes les lettres en majuscules)
-   3. les autres caractères étant remplacés par le second paramètre (ici `""`{.language-}, la chaîne vide)
+   3. les autres caractères sont remplacés par le second paramètre (ici `""`{.language-}, la chaîne vide)
 
 {% endinfo %}
 
@@ -81,29 +85,64 @@ Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [
 ### Algorithme
 
 {% faire %}
-Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome.
+
+1. Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome.
+2. Utilisez la question précédente pour créer une fonction `sous_palindrome(s: str) -> (int, int)`{.language-} qui rend l'indice de début et la longueur d'un plus grand sous-palindrome de `s`{.language-}
+
 {% endfaire %}
 
 ### Programme principal
 
-> TBD expliciter tous les sous palindrome de taille >= k
-> Utiliser la partie 2 pour l'appliquer aux textes avec espaces et accents
+{% faire %}
+Créez un programme principal nommé `main-sous-palindrome.py`{.fichier} qui demande à l'utilisateur de donner une chaîne de caractères et le programme : écrit la phrase entrée en écrivant en rouge le plus grand sous-palindrome
+{% endfaire %}
+{% info %}
+Pour changer de couleur dans un affichage à l'écran, il vous faudra utiliser un module que vous devrez installer. Vous pourrez utiliser [le module `pytermgui`{.language-}](https://pypi.org/project/PyTermGUI/) par exemple qui permet de faire plein de choses.
 
-
->
-> > TBD utiliser pytermgui pour colorier en rouge le max
-
-```
->>> from pytermgui import tim
->>> tim.print("hi hi [red]dddd[/] ffff")
-hi hi dddd ffff
->>> tim.print("un texte [red]change de couleur[/] et deniveau normal.")
-un texte change de couleur et de niveau normal.
->>> tim.print("un texte [red]change de couleur[/] et de nouveau normal.")
-un texte change de couleur et de nouveau normal.
-```
+En lisant [la documentation de sons sous-module tim](https://ptg.bczsalba.com/tim/) vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.
+{% endinfo %}
 
 ### Fichier texte
 
-Le plus grand et 100 caractères avant et après
+{% faire %}
+Créez un programme principal nommé `main-sous-palindrome-fichier.py`{.fichier} qui demande à l'utilisateur le nom d'un fichier texte se trouvant dans le dossier courant. Le programme :
 
+1. lit le fichier texte
+2. transforme le texte en une chaîne utilisable par l'algorithme sous-palindrome en utilisant la fonction `prétraitement`{-language-}
+3. trouve l'indice et la longueur d'un plus grand sous-palindrome
+4. représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédent et le succédant (écrit de façon normale).
+{% endfaire %}
+
+Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <https://www.gutenberg.org/>. Choisissez toujours la version texte brute (*plain text*) en utf-8.
+
+{% info %}
+Par les fleurs du mal de Baudelaire c'est là : <https://www.gutenberg.org/ebooks/6099>
+{% endinfo %}
+
+### Amélioration
+
+Trouver des sous-phrases palindrome d'un texte peut être rigolo, mais sans caractères de ponctuation, il peut être difficile de s'y retrouver.
+
+{% faire %}
+Créez une fonction `correspondance(s12: str, s123:str) -> [int]`{.language-} qui prend deux paramètres :
+
+- une chaîne `s12`{.language-} dont les lettres sont sans accents et en majuscules (résultat des étapes 1 et 2 du prétraitement pour une chaîne `s`{.language-})
+- la chaîne `s123`{.language-} correspondant au prétraitement complet de `s12`{.language-} (`s12`{.language-} auquel on a fait l'étape 3 du prétraitement)
+
+Cette fonction rend un tableau $t$ de correspondance où $t[i]$ correspond à l'indice dans `s12`{.language-} de l'indice `i`{.language-} dans `s123`{.language-}.
+{% endfaire %}
+{% info %}
+On pourra remarquer que :
+
+1. $t[0]$ correspond plus petit indice $i$ tel que `s12[i] == s123[0]`{.language-}
+2. $t[u]$ correspond plus petit indice $i > t[u-1]$ tel que `s12[i] == s123[u]`{.language-}
+
+{% endinfo %}
+
+Par exemple, le résultat de `correspondance("OH LA  LA!", "OHLALA")`{.language-} sera le tableau : `[0, 1, 3, 4, 7, 8]`{.language-}
+
+En remarquant qu'entrée la chaîne initiale `s`{.language-} et la chaîne `s12`{.language-} seules les lettres ont été modifiées (`"ôh la  là!"`{.language-} et `"OH LA  LA!"`{.language-}) :
+
+{% faire %}
+Plutôt que d'afficher à l'écran le sous-palindrome de la chaîne après traitement, utilisez le texte initial en écrivant en rouge la portion de texte qui est le sous-palindrome.
+{% endfaire %}
