@@ -88,6 +88,8 @@ Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire da
 
 > TBD expliciter tous les sous palindrome de taille >= k
 > Utiliser la partie 2 pour l'appliquer aux textes avec espaces et accents
+
+
 >
 > > TBD utiliser pytermgui pour colorier en rouge le max
 
@@ -96,7 +98,12 @@ Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire da
 >>> tim.print("hi hi [red]dddd[/] ffff")
 hi hi dddd ffff
 >>> tim.print("un texte [red]change de couleur[/] et deniveau normal.")
-un texte change de couleur et deniveau normal.
+un texte change de couleur et de niveau normal.
 >>> tim.print("un texte [red]change de couleur[/] et de nouveau normal.")
 un texte change de couleur et de nouveau normal.
 ```
+
+### Fichier texte
+
+Le plus grand et 100 caractères avant et après
+
