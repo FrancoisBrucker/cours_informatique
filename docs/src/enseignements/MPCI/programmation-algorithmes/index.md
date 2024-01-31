@@ -184,9 +184,24 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 
 ### Semaine 4
 
+#### Mardi : complexité en moyenne et tris
+
+{% aller %}
+
+1. [Complexité en moyenne](/cours/algorithmie/complexité_moyenne)
+2. [Problème du tri et algorithmes pour le résoudre](/cours/algorithmie/problème-tris)
+{% endaller %}
+
+#### Vendredi : projet tris
+
+
 {% attention %}
 Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
 {% endattention %}
+
+{% aller %}
+[Projet tri](/cours/algorithmie/problème-tris/implémentation-tris/) 
+{% endaller %}
 
 Semaine consacrée au tris :
 
