@@ -135,7 +135,12 @@ Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus
 
 ### Couverture de code
 
-> TBD code coverage pour que tout soit ok.
+La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (*ie.* couvertes).
+
+{% aller %}
+[Couverture de code](couverture-de-code){.interne}
+{% endaller %}
+
 
 ## Stockage des données
 

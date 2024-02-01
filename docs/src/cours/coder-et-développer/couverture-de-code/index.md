@@ -2,9 +2,6 @@
 layout: layout/post.njk
 
 title: "Couverture de code"
-tags: ['tutoriel', 'python']
-authors:
-    - François Brucker
 
 eleventyComputed:
     eleventyNavigation:
@@ -13,21 +10,14 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-Couverture de code.
+Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée. Les tests nous permette d'avoir confiance dans la qualité du code, mais il est parfois compliqué d'être sur que nos tests vérifient bien toutes les lignes écrites (testent-ils bien tous les blocs `si/alors/sinon`{.language-} ?).
 
-<!-- end résumé -->
-
-Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée.
-
-Les tests nous permette d'avoir confiance dans la qualité du code. Mais il est parfois compliqué d'être sur que nos tests vérifient bien tous les cas possibles (passent bien par tous les blocs `si/alors/sinon`{.language-} du code par exemple).
-
-Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier quelles sont les lignes qui ont été vues pour ces tests.
+Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.org/wiki/Couverture_de_code). On exécute les tests et on regarde, fichier par fichier, quelles sont les lignes qui ont été vues pour ces tests.
 
 {% faire %}
 
-Installez l'outils de couverture de code en suivant le [tutoriel d'installation de *code coverage*]({{ "/tutoriels/vsc-python-modules-supplémentaires/code-coverage"  }}){.interne}.
+Installez l'outil de couverture de code en suivant [le tutoriel d'installation de *code coverage*](../éditeur-vscode/extensions/python/code-coverage){.interne}.
 
 {% endfaire %}
 
@@ -37,7 +27,61 @@ Dans vos futurs projets, faites en sorte d'avoir toujours 100% de couverture de 
 
 ## Fichiers exemple
 
-Pour les besoin de cet exemple, prenons [les 2 fichiers]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' }}#code-final){.interne} du cours sur les classes et les objets.
+Pour les besoin de cet exemple, prenons [le compteur (final) du cours coder ses objets](../programmation-objet/coder-ses-objets/){.interne} du cours sur les classes et les objets.
+
+ Fichier `compteur.py`{.fichier} :
+
+```python
+class Compteur:
+    def __init__(self, pas=1, valeur=0):
+        self.valeur = valeur
+        self.pas = pas
+
+    def __str__(self):
+        return "Compteur(pas=" + str(self.pas) + ", valeur=" + str(self.valeur) + ")"
+
+    def __lt__(self, other):
+        return self.valeur < other.valeur
+
+    def __gt__(self, other):
+        return other.valeur < self.valeur
+
+    def __eq__(self, other):
+        return other.valeur == self.valeur
+
+    def incrémente(self):
+        self.valeur = self.valeur + self.pas
+
+```
+
+Implémentons lui 1 test dans le fichier `test_compteur.py`{.fichier} :
+
+```python
+from compteur import Compteur
+
+
+def test_lt():
+    assert Compteur(valeur=3) < Compteur(valeur=4)
+
+```
+
+Et utilisons la classe dans un fichier `main.py`{.fichier} :
+
+```python
+from compteur import Compteur
+
+c1 = Compteur(3)
+c2 = Compteur()
+c1.incrémente()
+c2.incrémente()
+c1.incrémente()
+
+print(c1.valeur, c1)
+print(c2.valeur, c2)
+
+print(c1 < c2)
+
+```
 
 ## Utilisation directe
 
@@ -113,22 +157,7 @@ Vérifiez que vous avez la même chose pour votre projet.
 
 ## Utilisation via `pytest`
 
-L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests.
-
-Pour voir ce fonctionnement, commençons par ajouter un fichier de test à notre projet.
-
-Fichier `test_compteur.py`{.fichier} :
-
-```python
-from compteur import Compteur
-
-
-def test_lt():
-    Compteur(valeur=3) < Compteur(valeur=4)
-
-```
-
-Exécutons les tests en même temps que coverage avec le l'extension `pytest-cov` que nous venons d'installer :
+L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests. Exécutons les tests en même temps que coverage avec le l'extension `pytest-cov` que nous venons d'installer :
 
 1. on exécute les tests dans le terminal en ajoutant l'extension coverage  `python -m pytest --cov=.`
 2. le résultat est donné dans le terminal.
@@ -148,7 +177,7 @@ test_compteur.py .                                                              
 ---------- coverage: platform darwin, python 3.9.13-final-0 ----------
 Name               Stmts   Miss  Cover
 --------------------------------------
-compteur.py           14      4    69%
+compteur.py           14      4    71%
 main.py                9      9     0%
 test_compteur.py       3      0   100%
 --------------------------------------
