@@ -60,6 +60,40 @@ Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la 
 Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !
 {% endattention %}
 
+## Opérations sur les conteneurs
+
+On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.
+
+Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $K$ objets est usuellement de complexité en $\mathcal{O}(K)$.
+
+Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. COmme dans le cas suivant :
+
+```python
+x = [1, 2, 3]
+```
+
+Mais si $K$ n'est pas ue constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :
+
+```python
+def duplique(x):
+  return list(x)
+```
+
+La complexité de la fonction `duplique(x: list) -> list`{.language-} n'est **pas** $\mathcal{O}(1)$ mais bien $\mathcal{O}(\text{len}(x))$.
+
+{% attention %}
+La complexité des opérations créant des conteneurs dépend toujours de leurs tailles.
+{% endattention %}
+
+De là :
+
+- la création d'un conteneur contenant tous les éléments d'un autre conteneur, comme `list(x)`{.language-}, , est de complexité $\mathcal{O}(n) + C$ où :
+  - $n$ est la taille du conteneur dupliqué
+  - $C$ la complexité de créer un conteneur vide (souvent $\mathcal{O}(1)$)
+- la création d'un conteneur résultant de la concaténation de deux conteurs, comme $x + y$si $x$ et $y$ sont de conteneurs, est de complexité $\mathcal{O}(n_1 + n_2) + C$ où :
+  - $n_1$ et $n_2$ sont les tailles des deux conteneurs
+  - $C$ la complexité de créer un conteneur vide (souvent $\mathcal{O}(1)$)
+
 ## Fonctions et méthodes données
 
 Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
