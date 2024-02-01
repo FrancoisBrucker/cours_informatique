@@ -116,18 +116,9 @@ La programmation évènementielle est un principe de développement très utilis
 [Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}
 
-## Programmation par les tests
+### Programmation par les tests
 
-On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (*Test Driven Development*, ou *TDD*)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après
-
-### Projet TDD
-
-La programmation part les tests n'est pas quelque chose d'instinctif. Elle nécessite :
-
-1. un apprentissage (au départ on se sent nul et comme on aime pas ça on blame la méthode)
-2. d'être appréhendée de façon non dogmatique (on ne test pas tout avant, on utilise juste la fonctionnalité que l'on va coder pour nous permettre de mieux la définir)
-
-Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus vous en passer.
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (*Test Driven Development*, ou *TDD*)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
 
 {% aller %}
 [Projet de programmation par les tests](projet-TDD){.interne}

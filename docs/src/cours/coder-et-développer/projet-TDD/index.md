@@ -9,7 +9,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons dans cette séance suivre ici le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
+La programmation part les tests n'est pas quelque chose d'instinctif. Elle nécessite :
+
+1. un apprentissage (au départ on se sent nul et comme on aime pas ça on blame la méthode)
+2. d'être appréhendée de façon non dogmatique (on ne test pas tout avant, on utilise juste la fonctionnalité que l'on va coder pour nous permettre de mieux la définir)
+
+Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus vous en passer.
+
+Nous allons suivre le livre [TDD by example](https://www.amazon.fr/Test-Driven-Development-Kent-Beck/dp/0321146530/ref=sr_1_1?ie=UTF8&qid=1538720480&sr=8-1&keywords=test+driven+development+by+example) de Kent Beck (Suivez son [twitter](https://twitter.com/kentbeck), ses posts sont souvent rigolos et toujours utiles). Initialement écrit pour le java, nous allons appliquer ses enseignements au python. Vous allez apprendre à écrire du code par les tests et pourquoi cela permet permet d'atteindre plus facilement ***le but de la programmation*** :
 
 {% note "**Définition**" %}
 Le ***But de la programmation*** est de créer du code **propre** qui **fonctionne** (*clean code that works* en version originale).
