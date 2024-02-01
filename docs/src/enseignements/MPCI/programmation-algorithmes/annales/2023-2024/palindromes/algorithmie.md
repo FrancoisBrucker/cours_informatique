@@ -154,7 +154,7 @@ Soit $s$ une chaîne de caractères de longueur $n$.
    - $M[i][i] = M_s[i][i]$ pour $0\leq i < n$
    - $M[i][i+1] = M_s[i][i+1]$ pour $0\leq i < n-1$
 2. Créez une fonction de complexité $\mathcal{O}(1)$ qui prend en paramètres $i$, $j$, $s$ et $M_s[i][j]$ et qui rend la valeur de $M_s[i-1][j+1]$ (on a bien sur $0 < i \leq j < n-1$).
-3. Déduire des deux questions précédentes un algorithme de complexité $\mathcal{O}(n^2)$ qui prend $s$ en paramètre et la matrice $M_s$
+3. Déduire des deux questions précédentes un algorithme de complexité $\mathcal{O}(n^2)$ qui prend $s$ en paramètre et rend la matrice $M_s$
 
 {% endfaire %}
 
