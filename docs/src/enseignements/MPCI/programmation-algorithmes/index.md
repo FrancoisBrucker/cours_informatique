@@ -132,7 +132,7 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
 
 {% faire %}
-[Sujet du DM](./annales/2023-2024/palindromes/)
+[Sujet du DM](./annales/2023-2024/palindromes/){.interne}
 
 Il faudra rendre un dossier contenant :
 

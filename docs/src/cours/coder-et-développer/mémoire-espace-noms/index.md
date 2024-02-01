@@ -115,6 +115,11 @@ Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets)
 
 La figure ci-dessus montre alors une variable (*verte*) représentant un objet entier (*orange*) : elle contient l'indice du tableau de la mémoire contenant le premier élément de l'objet (sa référence, $i^\star$ dans la figure).
 
+{% info %}
+Les ordinateurs actuels codent une adresse mémoire sur 64bit, ce qui permet d'allouer $2^{64}\text{O} \simeq 18446744\text{TO}$, ce qui est largement plus que la mémoire courante qui est d'environ $32\text{GO} = 0.03\text{TO}$ pour une machine de bureau.
+
+{% endinfo %}
+
 Les bénéfices de cette méthode sont énormes :
 
 * les objets sont uniques, en écrivant `i = j`{.language-} les deux variables ont le même objet en référence
