@@ -253,7 +253,7 @@ Exhibons la propriété fondamentale de $T_s$ qui va nous permettre de le calcul
 
 Montrez que pour tout $k \leq T_s[i]$ on a :
 
-- $T_s[i + k] = T_s[i-k]$ si $T_s[i-k] \neq T_s[i]-k$
+- $T_s[i + k] = \min(T_s[i-k], T_s[i]-k)$ si $T_s[i-k] \neq T_s[i]-k$
 - $T_s[i + k] \geq T_s[i]-k$ sinon.
 
 {% endfaire %}
