@@ -201,6 +201,14 @@
 <p>Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets) de RAM. L'indice de notre tableau de mémoire va alors de $0$ à $10^9-1$ : il faut 4 octets pour stocker un indice en mémoire.</p>
 <p><img src="m%C3%A9moire-r%C3%A9f%C3%A9rence.png" alt="référence"></p>
 <p>La figure ci-dessus montre alors une variable (<em>verte</em>) représentant un objet entier (<em>orange</em>) : elle contient l'indice du tableau de la mémoire contenant le premier élément de l'objet (sa référence, $i^\star$ dans la figure).</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les ordinateurs actuels codent une adresse mémoire sur 64bit, ce qui permet d'allouer $2^{64}\text{O} \simeq 18446744\text{TO}$, ce qui est largement plus que la mémoire courante qui est d'environ $32\text{GO} = 0.03\text{TO}$ pour une machine de bureau.</p>
+</div>
+</div>
 <p>Les bénéfices de cette méthode sont énormes :</p>
 <ul>
 <li>les objets sont uniques, en écrivant <code class="language-">i = j</code> les deux variables ont le même objet en référence</li>
