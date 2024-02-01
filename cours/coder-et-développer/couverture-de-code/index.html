@@ -230,12 +230,12 @@ TOTAL            23      2    91%
 <li>le résultat est donné dans le terminal.</li>
 </ol>
 <p>J'obtiens :</p>
-<pre><code>» python -m pytest --cov=.                                                                                        1 ↵
+<pre><code>» python -m pytest --cov=.                                                                            1 ↵
 ===================================== test session starts =====================================
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                                                                                             
+collected 1 item                                                                                  
 
 test_compteur.py .                                                                          [100%]
 
@@ -261,13 +261,13 @@ TOTAL                 26     14    50%
 </div>
 <p>On voit que l'exécution des tests a eu besoin d'utiliser 100% du fichier <code class="fichier">test_compteur.py</code> (ce qui est normal) mais seulement 69% du fichier <code class="fichier">compteur.py</code>. Le fichier <code class="fichier">main.py</code> n'a quant à lui pas été utilisé du tout (aucune des 9 lignes non vides n'a été vue), ce qui est normal.</p>
 <p>Cinq lignes de <code>compteur.py</code> n'ont pas été vues. Pour savoir exactement les quelles, la commande <code>python -m pytest --cov=. --cov-report term-missing</code> donne :</p>
-<pre><code>» python -m pytest --cov=.  --cov-report term-missing                                                           130 ↵
+<pre><code>» python -m pytest --cov=.  --cov-report term-missing                                               130 ↵
 
 ===================================== test session starts =====================================
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                                                                                             
+collected 1 item 
 
 test_compteur.py .                                                                       [100%]
 
