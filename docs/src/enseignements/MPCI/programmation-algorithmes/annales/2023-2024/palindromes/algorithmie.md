@@ -10,7 +10,7 @@ Lorsque l'on demande de fournir un algorithme pour résoudre un problème, il fa
 1. en donner le pseudo-code
 2. démontrer :
    1. sa finitude
-   2. qu'il est bine une solution au problème
+   2. qu'il est bien une solution au problème
 3. en donner (en justifiant) sa complexité
 {% endattention %}
 
@@ -86,9 +86,9 @@ Explicitez tous les sous-palindromes de la chaîne : $s = \text{"babba"}$
 
 {% faire %}
 
-1. Montrer que toute chaîne de caractères non vide admet un sous-palindrome.
-2. Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.
-3. Montrer que pour tout $n>1$ et tout $m>2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.
+1. Montrez que toute chaîne de caractères non vide admet un sous-palindrome.
+2. Montrez que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.
+3. Montrez que pour tout $n>1$ et tout $m>2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.
 
 {% endfaire %}
 
@@ -100,7 +100,7 @@ On considère le problème d'optimisation suivant :
 
 - **nom** : max-sous-palindrome
 - **données** : $s$ une chaîne de caractères
-- **question** : Quel est la longueur maximum des sous-palindromes de $s$ ?
+- **question** : quelle est la longueur maximum des sous-palindromes de $s$ ?
 {% endnote %}
 
 Commençons par montrer que c'est bien un problème algorithmique :
@@ -109,21 +109,21 @@ Commençons par montrer que c'est bien un problème algorithmique :
 
 - **nom** : max-sous-palindrome
 - **données** : $s$ une chaîne de caractères de taille $n>0$
-- **question** : Quel est la longueur maximum des sous-palindromes de $s$ ?
+- **question** : quelle est la longueur maximum des sous-palindromes de $s$ ?
 {% endnote %}
 
 {% faire %}
 
-1. En utilisant l'algorithme linéaire `palindrome(s: str) -> bool`{.language-} sur chaque mot de $s$, montrer que le problème `max-sous-palindrome` est **un problème algorithmique** de complexité $\mathcal{O}(n^3)$.
-2. Montrer que la complexité du problème `max-sous-palindrome` est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.
-3. Déduire de la question précédente un encadrement de la complexité du problème `max-sous-palindrome`.
+1. En utilisant l'algorithme linéaire `palindrome(s: str) -> bool`{.language-} sur chaque mot de $s$, montrez que le problème `max-sous-palindrome` est **un problème algorithmique** de complexité $\mathcal{O}(n^3)$.
+2. Montrez que la complexité du problème `max-sous-palindrome` est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.
+3. Déduisez de la question précédente un encadrement de la complexité du problème `max-sous-palindrome`.
 {% endfaire %}
 
-Le but de la fin de la partie algorithmique de cette étude est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressons pas étapes. Commençons par passer d'une complexité de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.
+Le but de la fin de la partie algorithmique de cette étude est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressons par étapes. Commençons par passer d'une complexité de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.
 
 ### Résolution par matrice interposée du problème des sous-palindromes
 
-On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une [une matrice carrée triangulaire supérieure](https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_supérieures) qui va expliciter si le mot $s[i:j+1]$ est un sous palindrome ou pas :
+On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une [une matrice carrée triangulaire supérieure](https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_supérieures) qui va expliciter si le mot $s[i:j+1]$ est un sous-palindrome ou pas :
 
 {% note "**Définition**" %}
 Soit $M_s$ une matrice carrée à $n$ lignes ($M_s[i]$, $0 \leq i < n$, est un tableau représentant la ligne $i$ et $M_s[i][j]$, $0 \leq i, j < n$, correspond à la case de ligne $i$ et colonne $j$ de $M_s$) et $s$ une chaîne de caractères de longueur $n$.
@@ -165,11 +165,11 @@ Cette matrice peut ensuite servir à résoudre le problème `max-sous-palindrome
 {% faire %}
 
 1. Créez une fonction de complexité $\mathcal{O}(n^2)$ qui prend en paramètre $M_s$ et rend la solution de `max-sous-palindrome` pour $s$,
-2. En déduire que le problème `max-sous-palindrome` est de complexité $\mathcal{O}(n^2)$.
+2. Déduisez-en que le problème `max-sous-palindrome` est de complexité $\mathcal{O}(n^2)$.
 
 {% endfaire %}
 
-Notez qu'il n'y a pas de contradiction entre la première série de question qui a montré que le problème `max-sous-palindrome` est de complexité $\mathcal{O}(n^3)$ et celles-ci qui montrent qu'elle est également de complexité $\mathcal{O}(n^2)$ puisque le comparateur asymptotique $\mathcal{O}()$ est un majorant.
+Notez qu'il n'y a pas de contradiction entre la première série de questions qui a montré que le problème `max-sous-palindrome` est de complexité $\mathcal{O}(n^3)$ et celles-ci qui montrent qu'elle est également de complexité $\mathcal{O}(n^2)$ puisque le comparateur asymptotique $\mathcal{O}()$ est un majorant.
 
 #### Pourquoi ?
 
@@ -177,11 +177,11 @@ Notez qu'il n'y a pas de contradiction entre la première série de question qui
 Quelle est la raison pour laquelle la création et l'utilisation de la matrice $M_s$ est plus rapide que l'utilisation de la fonction `palindrome()` pour tous les sous-mots ?
 {% endfaire %}
 
-Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer d'une complexité de $\mathcal{O}(n^2)$ à de complexité de $\mathcal{O}(n)$. Avant de procéder aux questions suivantes qui vont vous guider vers une solution possible essayez quelque instants de trouver une solution par vous-même.
+Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer d'une complexité de $\mathcal{O}(n^2)$ à de complexité de $\mathcal{O}(n)$. Avant de procéder aux questions suivantes qui vont vous guider vers une solution possible essayez quelques instants de trouver une solution par vous-même.
 
 ### Résolution linéaire du problème des sous-palindromes
 
-L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impair. Montrons qu'il est toujours possible de s'y ramener.
+L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impaire. Montrons qu'il est toujours possible de s'y ramener.
 
 #### De $s$ à $s^\sharp$
 
@@ -198,11 +198,11 @@ $$
 Les sous-palindromes de $s$ et $s^\sharp$ sont liés :
 
 {% faire %}
-Montrer que :
+Montrez que :
 
 1. Les sous-palindromes de $s^\sharp$ sont tous de longueurs impaires.
 2. Il existe un sous-palindrome de taille $m>0$ dans $s$ si et seulement si il existe un sous-palindrome de taille $2m + 1$ dans $s^\sharp$.
-3. Déduire des deux questions précédentes que s'il existe un algorithme $A(s)$ de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impair d'une chaîne $s$ de longueur $n$, on peut construire un algorithme de même complexité utilisant $A()$ qui résout `max-sous-palindrome`.
+3. Déduisez des deux questions précédentes que s'il existe un algorithme $A(s)$ de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impaire d'une chaîne $s$ de longueur $n$, on peut construire un algorithme de même complexité utilisant $A()$ qui résout `max-sous-palindrome`.
 
 {% endfaire %}
 
@@ -214,10 +214,10 @@ En utilisant la chaîne de caractères $s = \text{"babba"}$, explicitez les sous
 
 #### Mots palindromiques impairs
 
-Les palindromes de longueur impair sont centrées autour d'un élément :
+Les palindromes de longueur impaire sont centrés autour d'un élément :
 
 {% note "**Définition**" %}
-Soit $s[i:j]$ un sous-palindrome de longueur impair de $s$. On appelle :
+Soit $s[i:j]$ un sous-palindrome de longueur impaire de $s$. On appelle :
 
 - ***centre du sous-palindrome*** l'index $(i+j -1)/2$.
 - ***rayon du sous-palindrome*** le nombre $(j-i -1)/2$.
@@ -225,7 +225,7 @@ Soit $s[i:j]$ un sous-palindrome de longueur impair de $s$. On appelle :
 {% endnote %}
 
 {% faire %}
-Explicitez le le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{"babba"}$.
+Explicitez le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{"babba"}$.
 {% endfaire %}
 
 Plutôt que de calculer tous les mot d'une chaîne et de vérifier s'ils sont palindromique on va chercher pour chaque centre le rayon maximal.
@@ -233,12 +233,12 @@ Plutôt que de calculer tous les mot d'une chaîne et de vérifier s'ils sont pa
 #### Tableau $T_s$
 
 {% note "**Définition**" %}
-Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ soit la taille du plus grand rayon sous-palindrome de taille impair centrée en $i$.
+Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ est la taille du plus grand rayon d'un sous-palindrome de taille impaire centré en $i$.
 {% endnote  %}
 
 {% faire %}
 
-1. Montrez que cette définition est valide : $T_s[i]$ est bien défini pour tout $s$ et centre $i$.
+1. Montrez que cette définition est valide : $T_s[i]$ est bien défini pour tout $s$ et tout centre $i$.
 2. Montrez que $s[i-T_s[i]:i+T_s[i]+1]$ est un sous-palindrome de $s$
 3. Explicitez $T_{s^\sharp}$ pour la chaîne $s = \text{"babba"}$.
 4. Démontrez que le plus grand élément de $T_{s^\sharp}$ est la réponse au problème `max-sous-palindrome` pour $s$.
@@ -251,7 +251,7 @@ Exhibons la propriété fondamentale de $T_s$ qui va nous permettre de le calcul
 
 {% faire %}
 
-Montrez que tout tout $k \leq T_s[i]$ on a :
+Montrez que pour tout $k \leq T_s[i]$ on a :
 
 - $T_s[i + k] = T_s[i-k]$ si $T_s[i-k] \neq T_s[i]-k$
 - $T_s[i + k] \geq T_s[i]-k$ sinon.
@@ -262,7 +262,7 @@ Montrez que tout tout $k \leq T_s[i]$ on a :
 
 {% faire %}
 
-Déduire de la propriété précédente un algorithme de complexité $\mathcal{O}(n)$ permettant de créer $T_s$ à partir de $s$.
+Déduisez de la propriété précédente un algorithme de complexité $\mathcal{O}(n)$ permettant de créer $T_s$ à partir de $s$.
 
 {% endfaire %}
 
@@ -271,7 +271,7 @@ Déduire de la propriété précédente un algorithme de complexité $\mathcal{O
 {% faire %}
 
 1. Donnez un algorithme de complexité $\mathcal{O}(n)$ permettant de résoudre le problème `max-sous-palindrome` pour une chaîne de caractères de longueur $n>0$.
-2. En déduire que la complexité du problème `max-sous-palindrome` est de $\Theta(n)$ pour une chaîne de caractères de longueur $n>0$.
+2. Déduisez-en que la complexité du problème `max-sous-palindrome` est de $\Theta(n)$ pour une chaîne de caractères de longueur $n>0$.
 
 {% endfaire %}
 
@@ -283,11 +283,11 @@ Un dernier problème pour la route :
 
 - **nom** : nombre-sous-palindrome
 - **données** : $s$ une chaîne de caractères de taille $n>0$
-- **question** : Quel est le nombre de sous-palindromes de $s$ ?
+- **question** : quel est le nombre de sous-palindromes de $s$ ?
 {% endnote %}
 
 {% faire %}
 
-En utilisant l'algorithme linéaire pour calculer $T_s$, Montrer que le problème `nombre-sous-palindrome` est de complexité $\mathcal{O}(n)$.
+En utilisant l'algorithme linéaire pour calculer $T_s$, montrez que le problème `nombre-sous-palindrome` est de complexité $\mathcal{O}(n)$.
 
 {% endfaire %}
