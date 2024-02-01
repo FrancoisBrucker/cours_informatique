@@ -76,7 +76,7 @@
 
   
 
-  <p>Nous allons ici mettre en oeuvre des algorithmes de reconnaissances de phrases palindromes. Vous serez certainement amené à coder quelques-uns des algorithmes que vous avez forgé dans <a href="../algorithmie">la partie algorithmie</a> de ce projet.</p>
+  <p>Nous allons ici mettre en oeuvre des algorithmes de reconnaissance de phrases palindromes. Vous serez certainement amené à coder quelques-uns des algorithmes que vous avez forgés dans <a href="../algorithmie">la partie algorithmie</a> de ce projet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -85,7 +85,7 @@
 <p>Pour le code python, il faudra impérativement :</p>
 <ul>
 <li>faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande <code>python -m pytest</code></li>
-<li>organisez votre code en autant de fichiers que nécessaire.</li>
+<li>organiser votre code en autant de fichiers que nécessaire.</li>
 </ul>
 </div>
 </div>
@@ -125,18 +125,18 @@
 </div>
 <h2>Phrases palindromes</h2>
 <h3>Prétraitement</h3>
-<p>Pour traiter des phrases palindrome à partir d'un texte en français, il faut commencer par pré-traiter le texte pour qu'il ne contienne plus que des lettres non accentuées en majuscules.</p>
+<p>Pour traiter des phrases palindromes à partir d'un texte en français, il faut commencer par pré-traiter le texte pour qu'il ne contienne plus que des lettres non accentuées en majuscules.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créer une fonction <code>prétraitement(s: str) -&gt; str</code> qui effectue le prétraitement d'une chaîne de caractères. Pour cela vous pourrez utiliser, dans l'ordre :</p>
+<p>Créez une fonction <code>prétraitement(s: str) -&gt; str</code> qui effectue le prétraitement d'une chaîne de caractères. Pour cela vous pourrez utiliser, dans l'ordre :</p>
 <ol>
 <li>le module <a href="https://pypi.org/project/Unidecode/"><code class="language-">unidecode</code></a> (qu'il vous faudra installer avec <code>pip</code>) qui permet de supprimer les accents des caractères</li>
 <li><a href="https://docs.python.org/fr/3/library/stdtypes.html#str.upper">la méthode <code class="language-">upper</code></a> des chaînes de caractères qui majuscule les lettres</li>
-<li>d'utiliser l'instruction <code class="language-">re.sub(&quot;[^A-Za-z]&quot;,&quot;&quot;,s)</code> (<code class="language-">sub</code> est une fonction <a href="https://docs.python.org/fr/3/library/re.html">du module <code>re</code></a> de python) qui qui rend une chaîne ne possédant que les caractères alphabétique de <code class="language-">s</code>.</li>
+<li>l'instruction <code class="language-">re.sub(&quot;[^A-Za-z]&quot;,&quot;&quot;,s)</code> (<code class="language-">sub</code> est une fonction <a href="https://docs.python.org/fr/3/library/re.html">du module <code>re</code></a> de python) qui rend une chaîne ne possédant que les caractères alphabétiques de <code class="language-">s</code>.</li>
 </ol>
 </div>
 </div>
@@ -145,7 +145,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/re.html">le module <code>re</code></a> de python permet de filtrer une chaîne de caractère selon <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">une expression régulière</a>. Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots <code class="language-">re.sub(&quot;[^A-Z]&quot;,&quot;&quot;,s)</code> va rendre une nouvelle chaîne de caractères en :</p>
+<p><a href="https://docs.python.org/fr/3/library/re.html">le module <code>re</code></a> de python permet de filtrer une chaîne de caractères selon <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">une expression régulière</a>. Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots <code class="language-">re.sub(&quot;[^A-Z]&quot;,&quot;&quot;,s)</code> va rendre une nouvelle chaîne de caractères en :</p>
 <ol>
 <li>regardant caractère par caractère le troisième paramètre (ici <code class="language-">s</code>).</li>
 <li>elle ne conservera que les éléments décrits par le premier paramètre (ici <code class="language-">&quot;[^A-Z]&quot;</code> qui signifie toutes les lettres en majuscules)</li>
@@ -189,7 +189,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un programme principal nommé <code class="fichier">main-sous-palindrome.py</code> qui demande à l'utilisateur de donner une chaîne de caractères et le programme : écrit la phrase entrée en écrivant en rouge le plus grand sous-palindrome</p>
+<p>Créez un programme principal nommé <code class="fichier">main-sous-palindrome.py</code> qui demande à l'utilisateur de donner une chaîne de caractères et le programme : écrit la phrase entrée en écrivant en rouge le plus grand sous-palindrome.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -198,7 +198,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour changer de couleur dans un affichage à l'écran, il vous faudra utiliser un module que vous devrez installer. Vous pourrez utiliser <a href="https://pypi.org/project/PyTermGUI/">le module <code class="language-">pytermgui</code></a> par exemple qui permet de faire plein de choses.</p>
-<p>En lisant <a href="https://ptg.bczsalba.com/tim/">la documentation de sons sous-module tim</a> vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.</p>
+<p>En lisant <a href="https://ptg.bczsalba.com/tim/">la documentation de son sous-module tim</a> vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.</p>
 </div>
 </div>
 <h3>Fichier texte</h3>
@@ -213,7 +213,7 @@
 <li>lit le fichier texte</li>
 <li>transforme le texte en une chaîne utilisable par l'algorithme sous-palindrome en utilisant la fonction <code -language-="">prétraitement</code></li>
 <li>trouve l'indice et la longueur d'un plus grand sous-palindrome</li>
-<li>représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédent et le succédant (écrit de façon normale).</li>
+<li>représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédant et le succédant (écrits de façon normale).</li>
 </ol>
 </div>
 </div>
@@ -223,11 +223,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Par les fleurs du mal de Baudelaire c'est là : <a href="https://www.gutenberg.org/ebooks/6099">https://www.gutenberg.org/ebooks/6099</a></p>
+<p>Pour les fleurs du mal de Baudelaire c'est là : <a href="https://www.gutenberg.org/ebooks/6099">https://www.gutenberg.org/ebooks/6099</a></p>
 </div>
 </div>
 <h3>Amélioration</h3>
-<p>Trouver des sous-phrases palindrome d'un texte peut être rigolo, mais sans caractères de ponctuation, il peut être difficile de s'y retrouver.</p>
+<p>Trouver des sous-phrases palindromes d'un texte peut être rigolo, mais sans caractères de ponctuation, il peut être difficile de s'y retrouver.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -249,13 +249,13 @@
 <div class="pl-8 mr-8">
 <p>On pourra remarquer que :</p>
 <ol>
-<li>$t[0]$ correspond plus petit indice $i$ tel que <code class="language-">s12[i] == s123[0]</code></li>
-<li>$t[u]$ correspond plus petit indice $i &gt; t[u-1]$ tel que <code class="language-">s12[i] == s123[u]</code></li>
+<li>$t[0]$ correspond au plus petit indice $i$ tel que <code class="language-">s12[i] == s123[0]</code></li>
+<li>$t[u]$ correspond au plus petit indice $i &gt; t[u-1]$ tel que <code class="language-">s12[i] == s123[u]</code></li>
 </ol>
 </div>
 </div>
 <p>Par exemple, le résultat de <code class="language-">correspondance(&quot;OH LA  LA!&quot;, &quot;OHLALA&quot;)</code> sera le tableau : <code class="language-">[0, 1, 3, 4, 7, 8]</code></p>
-<p>En remarquant qu'entrée la chaîne initiale <code class="language-">s</code> et la chaîne <code class="language-">s12</code> seules les lettres ont été modifiées (<code class="language-">&quot;ôh la  là!&quot;</code> et <code class="language-">&quot;OH LA  LA!&quot;</code>) :</p>
+<p>En remarquant qu'entre la chaîne initiale <code class="language-">s</code> et la chaîne <code class="language-">s12</code> seules les lettres ont été modifiées (<code class="language-">&quot;ôh la  là!&quot;</code> et <code class="language-">&quot;OH LA  LA!&quot;</code>) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
