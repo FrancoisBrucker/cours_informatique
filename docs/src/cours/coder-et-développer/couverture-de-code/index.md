@@ -165,12 +165,12 @@ L'exécution directe de coverage nous permet de voir s'il y a des fonction codé
 J'obtiens :
 
 ```
-» python -m pytest --cov=.                                                                                        1 ↵
+» python -m pytest --cov=.                                                                            1 ↵
 ===================================== test session starts =====================================
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                                                                                             
+collected 1 item                                                                                  
 
 test_compteur.py .                                                                          [100%]
 
@@ -197,13 +197,13 @@ On voit que l'exécution des tests a eu besoin d'utiliser 100% du fichier `test_
 Cinq lignes de `compteur.py` n'ont pas été vues. Pour savoir exactement les quelles, la commande `python -m pytest --cov=. --cov-report term-missing` donne :
 
 ```
-» python -m pytest --cov=.  --cov-report term-missing                                                           130 ↵
+» python -m pytest --cov=.  --cov-report term-missing                                               130 ↵
 
 ===================================== test session starts =====================================
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                                                                                             
+collected 1 item 
 
 test_compteur.py .                                                                       [100%]
 
