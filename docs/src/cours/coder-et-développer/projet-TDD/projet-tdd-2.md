@@ -16,13 +16,13 @@ On rappelle le principe du TDD :
 {% note "**Principe du TDD**" %}
 
 1. **rouge** :
-   * écrire *rapidement* un *petit* test
-   * lancer les tests et les voir planter, voir même  ne correspondre à aucun code.
+   - écrire *rapidement* un *petit* test
+   - lancer les tests et les voir planter, voir même  ne correspondre à aucun code.
 2. **vert** :
-   * écrire le code *minimal* qui permet de faire passer le test
-   * lancer les tests et les voir tous réussir
+   - écrire le code *minimal* qui permet de faire passer le test
+   - lancer les tests et les voir tous réussir
 3. **code/refactor** :
-   * élimine les duplications tout en conservant la validité des tests.
+   - élimine les duplications tout en conservant la validité des tests.
 
 La partie refactor, qui est la partie réelle où l'on code ne se fait **que sur du vert** : on est assuré de ne pas casser le code puisque les tests passent.
 {% endnote %}
@@ -35,10 +35,10 @@ Cela permet, en plus d'avoir un feedback immédiat en cas d'erreur (les tests ne
 
 On reprend la todo list de la fin de la partie 1 :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
 ## 6 -  les Francs
 
@@ -48,18 +48,18 @@ Cela semble bien trop ambitieux pour une seule étape. On va la découper, en co
 
 ### <span id="todo-list-6.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* **[-] 5 CHF * 2 = 10CHF**
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- **[-] 5 CHF * 2 = 10CHF**
 
 ### <span id="faire-6.1"></span> Faire
 
 On est habitué depuis la première partie, on commence par faire un test. Ici, on ne va pas trop s'embêter : on va dupliquer le test des dollars pour les Francs.
 
-* heureusement qu'on a un peu modifier les tests avant, non ?
-* on a le droit de commettre les pires péchés pour faire marcher le projet (*that works*), ensuite on fait les choses bien (*clean code*)
+- heureusement qu'on a un peu modifier les tests avant, non ?
+- on a le droit de commettre les pires péchés pour faire marcher le projet (*that works*), ensuite on fait les choses bien (*clean code*)
 
 Fichier `test_monnaie.py`{.fichier} :
 
@@ -111,14 +111,14 @@ class Franc:
 
 Tous les péchés qui ont été commis pour faire passer le test doivent être expiés. Pour s'en rappeler, on rajoute  ce qu'il faut corriger dans la todo list.
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [ ] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [ ] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
 
 Notez que même s'il n'y pas de duplication proprement dite entre les deux méthode `__mul__`{.language-} elles sont trop semblable pour être honnêtes. On rajoute donc un item dans la todo list pour voir si à un moment donné il ne faudra pas les unifier.
 
@@ -126,14 +126,14 @@ Notez que même s'il n'y pas de duplication proprement dite entre les deux méth
 
 ### <span id="todo-list-7.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* **[-] même `==`{.language-} (code identique dans 2 classes différentes)**
-* [ ] `*` presque identique
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- **[-] même `==`{.language-} (code identique dans 2 classes différentes)**
+- [ ] `*` presque identique
 
 ### <span id="faire-7.1"></span> Faire
 
@@ -245,15 +245,15 @@ Ajoutez la comparaison entre franc et dollar dans la todo list
 
 ### <span id="todo-list-7.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* **[-] même `==`{.language-} (code identique dans 2 classes différentes)**
-* [ ] `*`{.language-} presque identique
-* [ ] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- **[-] même `==`{.language-} (code identique dans 2 classes différentes)**
+- [ ] `*`{.language-} presque identique
+- [ ] compare `Franc`{.language-} et `Dollar`{.language-}
 
 ### <span id="faire-7.2"></span> Faire
 
@@ -289,15 +289,15 @@ class Franc(Monnaie):
 
 ### <span id="todo-list-7.3"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [ ] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [ ] compare `Franc`{.language-} et `Dollar`{.language-}
 
 ## 8 -  Franc et Dollar
 
@@ -305,15 +305,15 @@ On peut maintenant s'occuper de la tâche que l'on vient de rajouter.
 
 ### <span id="todo-list-8.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* **[-] compare `Franc`{.language-} et `Dollar`{.language-}**
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- **[-] compare `Franc`{.language-} et `Dollar`{.language-}**
 
 ### <span id="faire-8.1"></span> Faire
 
@@ -378,31 +378,31 @@ On rajoute donc un item dans la todo list pour montrer que cela nous embête tou
 
 ### <span id="todo-list-8.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [ ] utilisation de devises plutôt que de classes ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] utilisation de devises plutôt que de classes ?
 
 ### 9 -  Duplication Franc/Dollar
 
 ### <span id="todo-list-9.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* **[-] duplication Franc/dollar**
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [ ] utilisation de devises plutôt que de classes ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- **[-] duplication Franc/dollar**
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] utilisation de devises plutôt que de classes ?
 
 ### <span id="faire-9.1"></span> Faire
 
@@ -557,17 +557,17 @@ Avant de faire la même chose pour `Franc`{.language-}, posons nous la question 
 
 ### <span id="todo-list-9.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* **[-] duplication Franc/dollar**
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [ ] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- **[-] duplication Franc/dollar**
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ### <span id="faire-9.4"></span> Faire
 
@@ -645,17 +645,17 @@ On va pouvoir passer à la suite qui consiste à les supprimer également dans l
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [ ] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [ ] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ## 10 - devises
 
@@ -665,17 +665,17 @@ Pour pouvoir supprimer les deux classes `Franc`{.language-} et `Dollar`{.languag
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* **[-] utilisation de devises plutôt que de classes ?**
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- **[-] utilisation de devises plutôt que de classes ?**
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ### <span id="faire-10.1"></span> Faire
 
@@ -891,8 +891,8 @@ Pour cela, on rend **identique** la méthode dans chacune des sous-classes puis 
 
 Puisque si les constructeurs sont identique, on pourra facilement créer nos objets avec `Monnaie`{.language-} plutôt qu'avec `Franc`{.language-} ou `Dollar`{.language-}. C'est encore impossible pour l'instant car les constructeurs sont :
 
-* `__init__(self, montant)`{.language-} pour `Franc`{.language-} et `Dollar`{.language-}
-* `def __init__(self, montant, devise)`{.language-} pour `Devise`{.language-}
+- `__init__(self, montant)`{.language-} pour `Franc`{.language-} et `Dollar`{.language-}
+- `def __init__(self, montant, devise)`{.language-} pour `Devise`{.language-}
 
 On va petit à petit modifier les constructeurs (et les effets de bords dans le code) pour les rendre identique.
 
@@ -1103,17 +1103,17 @@ Les testes passent : tout est prêt pour maintenant supprimer les sous-classes.
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [ ] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [X] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [ ] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [X] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ### 11 - unification de `*`{.language-}
 
@@ -1123,17 +1123,17 @@ Tout est prêt pour unifier les `__mul__`{.language-} et ainsi faire disparaîtr
 
 Il reste des duplications entre Franc et Dollar, mais pour les supprimer il faut passer par quelque chose qui les remplace. Il est donc plus judicieux de faire un autre item de notre liste.
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [ ] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* **[-] `*`{.language-} presque identique**
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [X] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [ ] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- **[-] `*`{.language-} presque identique**
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [X] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ### <span id="faire-11.1"></span> Faire
 
@@ -1304,17 +1304,17 @@ Jusqu'à présent tout va bien. On est toujours vert.
 
 On a fini un item (`__mul__`{.language-}) et on peut directement enchaîner sur le suivant :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* **[-] duplication Franc/dollar**
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [X] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [X] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- **[-] duplication Franc/dollar**
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [X] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [X] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc`{.language-} ?
 
 ### <span id="faire-11.2"></span> Faire
 
@@ -1349,17 +1349,17 @@ Supprimez les classes `Dollar`{.language-} et `Franc`{.language-}.
 
 ### <span id="todo-list-11.3"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [X] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [X] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [X] utilisation de devises plutôt que de classes ?
-* [ ] supprimer les tests de `Franc{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [X] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [X] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [X] utilisation de devises plutôt que de classes ?
+- [ ] supprimer les tests de `Franc{.language-} ?
 
 ## Fin de Partie
 
@@ -1404,17 +1404,17 @@ def test_devise():
 
 ### <span id="todo-list-fin"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] 5 CHF * 2 = 10CHF
-* [X] duplication Franc/dollar
-* [X] même `==`{.language-} (code identique dans 2 classes différentes)
-* [X] `*`{.language-} presque identique
-* [X] compare `Franc`{.language-} et `Dollar`{.language-}
-* [X] utilisation de devises plutôt que de classes ?
-* [X] supprimer les tests de `Franc`{.language-} ?
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] 5 CHF * 2 = 10CHF
+- [X] duplication Franc/dollar
+- [X] même `==`{.language-} (code identique dans 2 classes différentes)
+- [X] `*`{.language-} presque identique
+- [X] compare `Franc`{.language-} et `Dollar`{.language-}
+- [X] utilisation de devises plutôt que de classes ?
+- [X] supprimer les tests de `Franc`{.language-} ?
 
 ## Bilan
 
@@ -1426,10 +1426,10 @@ Si vous aviez codés sans tests, cela aurait été impossible de réaliser cette
 
 En supprimant les items effectués, il nous reste à faire ;
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
 ### Code
 

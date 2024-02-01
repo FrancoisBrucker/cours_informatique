@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Projet : objets cartes"
 
-eleventyNavigation:
-    order: 4
-    prerequis:
-        - "../projet-objets-dés/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -34,15 +29,6 @@ Un ***value object*** est un objet ne pouvant pas être modifié une fois créé
 Créez un dossier `projet-cartes`{.fichier} sur votre ordinateur et ouvrez leu avec visual studio code pour un faire votre projet.
 {% endfaire %}
 
-{% faire %}
-
-En créant des fichiers *jouets* dans votre projet, vérifier que :
-
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
-{% endfaire %}
-
 ### Programme principal & User stories
 
 Le but du projet est de pouvoir jouer à une variante de [la bataille](https://fr.wikipedia.org/wiki/Bataille_(jeu)) :
@@ -66,7 +52,7 @@ Proposez une modélisation UML d'une classe Carte pour notre projet
 {% endexercice %}
 {% details "solution" %}
 
-Un constructeur, un formattage en chaîne de caracatère pour affichage à l'écran et des opérateurs de comparaison :
+Un constructeur, un formatage en chaîne de caractères pour affichage à l'écran et des opérateurs de comparaison :
 
 ![carte UML](./carte_uml.png)
 {% enddetails %}
@@ -79,10 +65,10 @@ Je vous en propose une ci-après qui exhibe la capacité à créer un jeu de 32 
 
 {% note "**User Story**" %}
 
-* Nom : "Voyance"
-* Utilisateur : un voyant extralucide.
-* Story : On veut pouvoir tirer les cartes
-* Actions :
+- Nom : "Voyance"
+- Utilisateur : un voyant extralucide.
+- Story : On veut pouvoir tirer les cartes
+- Actions :
   1. créer un paquet de 32 cartes (sans joker)
   2. prendre au hasard 3 cartes du paquet
   3. afficher à l'écran les trois cartes, dans l'ordre où elles ont été tirées
@@ -99,10 +85,10 @@ En affichant 10 cartes tirées avec remise dans l'ordre où elles ont été tir�
 {% endexercice %}
 {% details "corrigé" %}
 
-* Nom : "Ordonnancement"
-* Utilisateur : un adepte de réussite
-* Story : On veut pouvoir ranger les cartes par ordre croissant
-* Actions :
+- Nom : "Ordonnancement"
+- Utilisateur : un adepte de réussite
+- Story : On veut pouvoir ranger les cartes par ordre croissant
+- Actions :
   1. choisir 10 cartes au hasard (on peut avoir les mêmes cartes)
   2. afficher à l'écran les 10 cartes, dans l'ordre où elles ont été tirées
   3. afficher à l'écran les 10 cartes, dans l'ordre croissant
@@ -128,8 +114,8 @@ Créez les deux fichiers de story.
 {% faire %}
 Créez les fichiers qui nous permettront de coder la carte :
 
-* `carte.py`{.fichier}
-* `test_carte.py`{.fichier}
+- `carte.py`{.fichier}
+- `test_carte.py`{.fichier}
 
 {% endfaire %}
 
@@ -145,21 +131,21 @@ quelles sont les possibilités admissibles pour construire une carte ?
 
 Par exemple, pour les valeurs :
 
-* `"sept"`{.language-}
-* `"huit"`{.language-}
-* `"neuf"`{.language-}
-* `"dix"`{.language-}
-* `"valet"`{.language-}
-* `"dame"`{.language-}
-* `"roi"`{.language-}
-* `"as"`{.language-}
+- `"sept"`{.language-}
+- `"huit"`{.language-}
+- `"neuf"`{.language-}
+- `"dix"`{.language-}
+- `"valet"`{.language-}
+- `"dame"`{.language-}
+- `"roi"`{.language-}
+- `"as"`{.language-}
 
 Pour les couleurs :
 
-* `"pique"`{.language-}
-* `"cœur"`{.language-}
-* `"carreau"`{.language-}
-* `"trèfle"`{.language-}
+- `"pique"`{.language-}
+- `"cœur"`{.language-}
+- `"carreau"`{.language-}
+- `"trèfle"`{.language-}
 
 {% enddetails %}
 
@@ -213,8 +199,8 @@ On utilise souvent `repr()`{.language-} pour du débogage (donc de l'affichage d
 
 {% note %}
 
-* on utilise `str(objet)` (crée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
-* on utilise `repr(objet)` (crée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
+- on utilise `str(objet)` (crée avec la méthode `__str__`{.language-}) pour un affichage à l'écran. On transforme l'objet en un texte.
+- on utilise `repr(objet)` (crée avec la méthode `__repr__`{.language-}) pour représenter l'objet sous la forme d'une chaîne de caractères. On doit pouvoir reconstruire un objet identique avec la commande [`eval`{.language-}](https://docs.python.org/fr/3/library/functions.html#eval) (`eval(repr(objet))`{.language-} doit rendre un objet similaire à `objet`{.language-}.
 
 {% endnote %}
 
@@ -249,8 +235,8 @@ La solution communément utilisée pour cela est de créer des constantes :
 {% faire %}
 Créez les constantes :
 
-* `SEPT`{.language-}, `HUIT`{.language-}, `NEUF`{.language-}, `DIX`{.language-}, `VALET`{.language-}, `DAME`{.language-}, `ROI`{.language-}, `AS`{.language-}
-* `PIQUE`{.language-}, `COEUR`{.language-}, `CARREAU`{.language-}, `TREFLE`{.language-}
+- `SEPT`{.language-}, `HUIT`{.language-}, `NEUF`{.language-}, `DIX`{.language-}, `VALET`{.language-}, `DAME`{.language-}, `ROI`{.language-}, `AS`{.language-}
+- `PIQUE`{.language-}, `COEUR`{.language-}, `CARREAU`{.language-}, `TREFLE`{.language-}
 
 En leur associant les chaînes de caractères adéquates.
 {% endfaire %}
@@ -272,8 +258,8 @@ Enfin, pour grouper ces constantes, vous pourrez :
 
 Créer deux autres constantes, qui rassemblent les couleurs et les valeurs entre elles :
 
-* `VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]`{.language-}
-* `COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]`{.language-}
+- `VALEURS = [SEPT, HUIT, NEUF, DIX, VALET, DAME, ROI, AS]`{.language-}
+- `COULEURS = [TREFLE, CARREAU, COEUR, PIQUE]`{.language-}
 
 {% endfaire %}
 {% info %}
@@ -287,8 +273,8 @@ Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Hors pour l'
 
 Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 attributs valeur et couleur. Cela permet :
 
-* d'accéder aux attribut
-* une tentative de modification produira une erreur
+- d'accéder aux attribut
+- une tentative de modification produira une erreur
 
 {% faire %}
 
@@ -314,12 +300,12 @@ Vous pourrez utiliser la fonction [`random.sample`{.language-}](https://docs.pyt
 {% faire %}
 Codez et testez les [opérateurs de comparaisons](../classes-et-objets/#comparaison){.interne} :
 
-* `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
-* `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}
-* `<`{.language-} qui correspond a à la méthode `__lt__`{.language-}
-* `>`{.language-} qui correspond a à la méthode `__gt__`{.language-}
-* `<=`{.language-} qui correspond a à la méthode `__le__`{.language-}
-* `>=`{.language-} qui correspond a à la méthode `__ge__`{.language-}
+- `==`{.language-} qui correspond a à la méthode `__eq__`{.language-}
+- `!=`{.language-} qui correspond a à la méthode `__ne__`{.language-}
+- `<`{.language-} qui correspond a à la méthode `__lt__`{.language-}
+- `>`{.language-} qui correspond a à la méthode `__gt__`{.language-}
+- `<=`{.language-} qui correspond a à la méthode `__le__`{.language-}
+- `>=`{.language-} qui correspond a à la méthode `__ge__`{.language-}
 
 {% endfaire %}
 {% info %}

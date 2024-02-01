@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Héritage"
 
-eleventyNavigation:
-    order: 9
-    prerequis:
-        - "../composition-agrégation/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,23 +9,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Présentation du mécanisme d'héritage qui permet de factoriser du code entre classes.
-
-<!-- end résumé -->
-
-## Principe de l'héritage
-
 Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
 
 ![classes héritage](héritage-classes.png)
 
 Dans la figure précédente :
 
-* la classe `object` est la *racine* de la hiérarchie, c'est la classe la plus haute
-* la `classe 1` est la *classe mère* de la `classe 2`
-* la `classe 2` est une *classe fille* de la `classe 1`
+- la classe `object` est la *racine* de la hiérarchie, c'est la classe la plus haute
+- la `classe 1` est la *classe mère* de la `classe 2`
+- la `classe 2` est une *classe fille* de la `classe 1`
 
 La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
 
@@ -93,8 +80,8 @@ La composition et l'agrégation permettent de factoriser des fonctionnalités al
 
 Il y a cependant des cas où l'héritage est très utile :
 
-* lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère
-* lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
+- lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère
+- lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
 
 La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
 
@@ -114,22 +101,22 @@ On présente ici un premier exemple d'utilisation de l'héritage, en combinaison
 
 On veut manipuler des polygones. On veut pouvoir :
 
-* créer un polygone à partir d'une liste de sommets donnée
-* calculer l'aire du polygone
-* calculer le périmètre du polygone
+- créer un polygone à partir d'une liste de sommets donnée
+- calculer l'aire du polygone
+- calculer le périmètre du polygone
 
 ### classes Point et Polygone
 
 Pour cela, on va créer une classe `Point`{.language-} et une classe `Polygone`{.language-} :
 
-* classe `Point`{.language-} :
-  * on se restreint à la 2D
-  * coordonnées cartésiennes
-  * distance à un autre point pour pouvoir plus facilement calculer le périmètre ensuite
-* classe `Polygone`{.language-} :
-  * création avec une liste de Point
-  * calcul du périmètre
-  * calcul de l'aire
+- classe `Point`{.language-} :
+  - on se restreint à la 2D
+  - coordonnées cartésiennes
+  - distance à un autre point pour pouvoir plus facilement calculer le périmètre ensuite
+- classe `Polygone`{.language-} :
+  - création avec une liste de Point
+  - calcul du périmètre
+  - calcul de l'aire
 
 On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
 
@@ -285,11 +272,11 @@ On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par cré
 
 Le personnage générique doit :
 
-* avoir un score d'attaque
-* avoir des points de vie
-* pouvoir modifier son score d'attaque et ses points de vie
-* taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d'attaque)
-* se faire taper par un autre personnage
+- avoir un score d'attaque
+- avoir des points de vie
+- pouvoir modifier son score d'attaque et ses points de vie
+- taper un autre personnage (lui faire perdre un nombre de point de vie égale à son score d'attaque)
+- se faire taper par un autre personnage
 
 #### UML du personnage
 
@@ -347,9 +334,9 @@ class Guerrière(Personnage):
 
 Comprenez bien le code :
 
-* On commence par appeler le constructeur de la classe mère (`super().__init__()`{.language-}) puis on applique le cas particulier de notre classe (`self.blocage = blocage`{.language-}).
-* on ajoute un attribut à la guerrière par rapport au personnage normal,
-* la méthode `se_faire_taper(personnage)`{.language-} utilise la méthode `se_faire_taper`{.language-} de la classe `Personnage`{.language-} seulement si la guerrière ne bloque pas le coup. Le `super().méthode_de_la_mere()`{.language-} permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
+- On commence par appeler le constructeur de la classe mère (`super().__init__()`{.language-}) puis on applique le cas particulier de notre classe (`self.blocage = blocage`{.language-}).
+- on ajoute un attribut à la guerrière par rapport au personnage normal,
+- la méthode `se_faire_taper(personnage)`{.language-} utilise la méthode `se_faire_taper`{.language-} de la classe `Personnage`{.language-} seulement si la guerrière ne bloque pas le coup. Le `super().méthode_de_la_mere()`{.language-} permet d'accéder à la méthode de la classe mère même de même nom qu'une méthode (différente) de la classe fille.
 
 {% attention %}
 
@@ -423,9 +410,9 @@ Quelques petit tests qui ne servent à rien en pratique mais qui permettent de v
 {% exercice %}
 Comment faire une classe `A`{.language-} qui a :
 
-* un attribut `a`{.language-}
-* une méthode `truc_que_fait_a()`{.language-} qui affiche "Truc défini dans la classe mère"
-* une méthode `autre_truc()`{.language-} qui affiche "Autre truc dans la classe mère"
+- un attribut `a`{.language-}
+- une méthode `truc_que_fait_a()`{.language-} qui affiche "Truc défini dans la classe mère"
+- une méthode `autre_truc()`{.language-} qui affiche "Autre truc dans la classe mère"
 {% endexercice %}
 {% details "solution" %}
 
@@ -446,10 +433,10 @@ class A:
 {% exercice %}
 Écrivez une classe `B`{.language-} qui hérite de `A`{.language-} et qui a :
 
-* un attribut `b`{.language-}
-* le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l'autre initialisé dans B (b)
-* une méthode `autre_truc()`{.language-} qui affiche "C'est mon autre truc à moi"
-* une méthode `que_de_b()`{.language-} qui affiche "Méthode seulement de la classe fille"
+- un attribut `b`{.language-}
+- le constructeur à 2 paramètres (a et b), un qui est initialisé dans la classe A (a), l'autre initialisé dans B (b)
+- une méthode `autre_truc()`{.language-} qui affiche "C'est mon autre truc à moi"
+- une méthode `que_de_b()`{.language-} qui affiche "Méthode seulement de la classe fille"
 {% endexercice %}
 {% details "solution" %}
 
@@ -498,8 +485,8 @@ class A:
 {% exercice %}
 Ajoutez :
 
-* dans la  classe `A`{.language-} : une méthode `j_hérite(x)`{.language-} qui prend un paramètre `x`{.language-} qui est une chaîne de caractère et affiche la valeur de x
-* dans la  classe `B`{.language-} : une méthode `j_hérite(x)`{.language-} qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
+- dans la  classe `A`{.language-} : une méthode `j_hérite(x)`{.language-} qui prend un paramètre `x`{.language-} qui est une chaîne de caractère et affiche la valeur de x
+- dans la  classe `B`{.language-} : une méthode `j_hérite(x)`{.language-} qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules
 {% endexercice %}
 {% details "solution" %}
 

@@ -16,8 +16,8 @@ Première partie du projet TDD.
 
 Commençons par noter ce qu'il faut faire pour que notre application de change fonctionne :
 
-* il faut plusieurs devises (ici CHF et $)
-* il faut multiplier les devises par des nombres (nombre d'actions * prix)
+- il faut plusieurs devises (ici CHF et $)
+- il faut multiplier les devises par des nombres (nombre d'actions * prix)
 
 Cette todo-list (ou *backlog*) nous indique :
 
@@ -37,8 +37,8 @@ Cette todo-list (ou *backlog*) nous indique :
 
 Première todo list :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] \\$5 * 2 = \\$10
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] \\$5 * 2 = \\$10
 
 ### <span id="faire-1.2"></span> Faire
 
@@ -52,8 +52,8 @@ La bonne question n'est donc pas "que fait-on en premier" mais :
 
 La deuxième ligne semble la plus simple. Donc allons-y, mettons en **gras** l'item de la todo list qu'on veut faire :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* **[-] \\$5 * 2 = \\$10**
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- **[-] \\$5 * 2 = \\$10**
 
 Puis :
 
@@ -84,11 +84,11 @@ L'écriture de notre test (un cas d'utilisation de la classe dollar qui valide l
 
 Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* **[-] \\$5 * 2 = \\$10**
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- **[-] \\$5 * 2 = \\$10**
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
 
 ### <span id="faire-1.3"></span> Faire
 
@@ -329,11 +329,11 @@ Nos tests continuent de passer et nous n'avons plus de duplication: on peut supp
 
 Le test nous pose quelques questions quand à l'utilisation de la classe dollar. Notre todo list devient :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [ ] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
 
 #### <span id="bilan-1"></span> Bilan
 
@@ -379,11 +379,11 @@ Que faire maintenant ?
 
 On choisit **toujours** l'élément le plus simple à faire dans la todo list. Ici, le quatrième item semble le facilement implémentable :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* **[-] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable**
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- **[-] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable**
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
 
 ### <span id="faire-2.1"></span> Faire
 
@@ -494,11 +494,11 @@ On a en même temps fait passer le test et fini l'implémentation.
 
 ### <span id="todo-list-2.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
 
 ## 3 - `==`{.language-}
 
@@ -506,12 +506,12 @@ Pour vérifier que deux objets sont égaux, on ne va pas passer son temps à vé
 
 ### <span id="todo-list-3.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* **[-] `==`{.language-}**
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- **[-] `==`{.language-}**
 
 ### <span id="faire-3.1"></span> Faire
 
@@ -619,21 +619,21 @@ On peut maintenant re-exécuter le test, qui passe.
 
 Ce traitement de l'égalité est frustre, on ne vérifie pas :
 
-* si l'objet `other`{.language-} a la propriété `montant`{.language-}
-* voir même si l'objet existe (`cinq == None`{.language-} va planter plutôt que de répondre `False`{.language-})
+- si l'objet `other`{.language-} a la propriété `montant`{.language-}
+- voir même si l'objet existe (`cinq == None`{.language-} va planter plutôt que de répondre `False`{.language-})
 
 On va pas s'embêter avec ça pour l'instant, mais on va tout de même le rajouter à notre todo list.
 
 ### <span id="todo-list-3.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [X] `==`{.language-}
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [X] `==`{.language-}
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
 ## 4 - `__mul__`{.language-}
 
@@ -643,15 +643,15 @@ Commençons par implémenter [`__mul__`{.language-}](https://docs.python.org/3/l
 
 ### <span id="todo-list-4.1"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [X] `==`{.language-}
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* **[-] `__mul__`{.language-}**
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [X] `==`{.language-}
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- **[-] `__mul__`{.language-}**
 
 ### <span id="faire-4.1"></span> Faire
 
@@ -699,15 +699,15 @@ class Dollar:
 
 ### <span id="todo-list-4.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [X] `==`{.language-}
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] `__mul__`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [ ] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [X] `==`{.language-}
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] `__mul__`{.language-}
 
 ## 5 - privacy
 
@@ -715,15 +715,15 @@ Tout est prêt pour travailler sur l'attribut `montant`{.language-}.
 
 ### <span id="todo-list-5.1"></span>  Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* **[-] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))**
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [X] `==`{.language-}
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] `__mul__`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- **[-] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))**
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [X] `==`{.language-}
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] `__mul__`{.language-}
 
 ### <span id="faire-5.1"></span> Faire
 
@@ -777,15 +777,15 @@ On fait petit à petit disparaître des tests les références explicites à l'i
 
 ### <span id="todo-list-5.2"></span> Todo list
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [X] \\$5 * 2 = \\$10
-* [X] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
-* [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [X] `==`{.language-}
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
-* [X] `__mul__`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [X] \\$5 * 2 = \\$10
+- [X] utiliser `montant`{.language-} ? Le rendre privé (le cacher à l'utilisateur (ici les tests))
+- [X] `cinq == $10`{.language-} (ce n'est pas vraiment super car nos \\$5 initiaux valent maintenant \\$10). rendre `Dollar`{.language-} non modifiable
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [X] `==`{.language-}
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [X] `__mul__`{.language-}
 
 ## Fin de la partie 1
 
@@ -793,10 +793,10 @@ On fait petit à petit disparaître des tests les références explicites à l'i
 
 On peut épurer notre todo list en supprimant les items déjà résolus. On obtient :
 
-* [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
-* [ ] gestion des arrondis (lorsque les montants seront des réels)
-* [ ] `== None`{.language-}
-* [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
+- [ ] \\$5 + 2.5CHF = \\$10 si le taux de change est 1:.5
+- [ ] gestion des arrondis (lorsque les montants seront des réels)
+- [ ] `== None`{.language-}
+- [ ] `==`{.language-} avec autre chose qu'un `Dollar`{.language-}
 
 ### <span id="code-fin-1"></span> Code
 

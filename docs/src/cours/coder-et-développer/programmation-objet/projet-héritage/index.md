@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Projet : héritage"
 
-eleventyNavigation:
-    order: 10
-    prerequis:
-        - "../héritage/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,11 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
 Mise en œuvre du mécanisme d'héritage.
-
-<!-- end résumé -->
 
 ## Donjons et dragons
 
@@ -38,9 +30,9 @@ Créez (et testez) les classes personnage, magicien et guerrière.
 
 Créez un programme qui demande à l'utilisateur :
 
-* les caractéristiques d'une guerrière (points de vie, attaque et score de défense
-* les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
-* les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
+- les caractéristiques d'une guerrière (points de vie, attaque et score de défense
+- les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
+- les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
 Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.
 
@@ -62,10 +54,10 @@ On commence par créer une user story sur la fonctionnalité que l'on veut ajout
 
 {% note "**User Story**" %}
 
-* Nom : "Statistiques descriptives"
-* Utilisateur : un joueur
-* Story : On veut compter les moyennes de jets de dés
-* Actions :
+- Nom : "Statistiques descriptives"
+- Utilisateur : un joueur
+- Story : On veut compter les moyennes de jets de dés
+- Actions :
   1. effectuer 10 jets de dé
   2. calculer la moyenne de ces jets
 
@@ -87,9 +79,9 @@ Implémentez la classe `StatDé`{.language-} qui hérite de `Dé`{.language-}, e
 
 Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 
-* la méthode `__init__`{.language-} sans oublier d'appeler le constructeur de la classe mère,
-* un nouveau mutateur `position`{.language-} qui utilise le mutateur de la classe parent et met à jour les décomptes de lancers du dé
-* une méthode `stats`{.language-} qui renvoie les nombres d'apparition de chaque valeur
+- la méthode `__init__`{.language-} sans oublier d'appeler le constructeur de la classe mère,
+- un nouveau mutateur `position`{.language-} qui utilise le mutateur de la classe parent et met à jour les décomptes de lancers du dé
+- une méthode `stats`{.language-} qui renvoie les nombres d'apparition de chaque valeur
 
 {% endfaire %}
 
@@ -98,8 +90,8 @@ La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en pyth
 
 Supposons que c'est l'attribut `valeur`{.language-} auquel vous accédez par `@property`{.language-}. Pour appeler :
 
-* l'accesseur de la classe mère dans une classe fille on peut utiliser : `super().valeur`{.language-}
-* le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
+- l'accesseur de la classe mère dans une classe fille on peut utiliser : `super().valeur`{.language-}
+- le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
 
 C'est un peu compliqué et vient de l'implémentation de `super()`{.language-} en python.
 
@@ -107,8 +99,8 @@ Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu
 {% endattention %}
 {% lien %}
 
-* [documentation de `super()`{.language-}](https://docs.python.org/3/library/functions.html#super)
-* [héritage d'accesseur et mutateur en python](https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79)
+- [documentation de `super()`{.language-}](https://docs.python.org/3/library/functions.html#super)
+- [héritage d'accesseur et mutateur en python](https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79)
 
 {% endlien %}
 
@@ -138,16 +130,16 @@ $$
 
 Où :
 
-* $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)
-* $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé a eu la position $i$)
-* $T_i$ est le nombre de cas **théoriques** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
+- $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)
+- $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé a eu la position $i$)
+- $T_i$ est le nombre de cas **théoriques** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
 
 Plus ce nombre est petit, plus l'expérience est conforme à la théorie.
 
 De façon formelle :
 
-* si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $I-1$ degrés de libertés (ici 5 degrés de libertés)
-* la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.
+- si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $I-1$ degrés de libertés (ici 5 degrés de libertés)
+- la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.
 
 Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaître ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
 

@@ -2,12 +2,6 @@
 layout: layout/post.njk 
 title: Coder ses objets
 
-eleventyNavigation:
-    order: 2
-    prerequis:
-        - "../classes-et-objets/"
-        - "../../projet-pourcentages/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -23,7 +17,11 @@ Exemple complet d'utilisation de vscode pour créer des objets en python en pren
 
 ## Création du projet
 
-On suit les directives du [projet pourcentages](../../projet-pourcentages#mise-en-place){.interne} pour créer un nouveau projet :
+{% info %}
+Cette partie est un rappel de tout ce qu'on a vu sur la création de projet et le codage
+{% endinfo %}
+
+On suit les directives du [projet pourcentages](../../développement/projet-pourcentages#mise-en-place){.interne} pour créer un nouveau projet :
 
 1. on crée un dossier `coder-objets`{.fichier} dans un explorateur de fichier
 2. on ouvre le dossier `coder-objets`{.fichier} avec vscode, ce qui crée notre projet
@@ -39,7 +37,7 @@ Vous devriez obtenir quelque chose du genre :
 ![exécution python](./exécution-python.png)
 
 {% info %}
-Lisez le tutorial [vsc et python]({{ '/tutoriels/vsc-python'  }}#exécuter-programme){.interne} pour en savoir plus sur l'exécution de programmes python avec vscode.
+Relisez le tutorial [vsc et python](../../éditeur-vscode/python/#exécuter-programme){.interne} pour se rappeler l'exécution de programmes python avec vscode.
 {% endinfo %}
 
 ## Coder ses objets : le compteur
@@ -78,8 +76,8 @@ class Compteur:
 
 {% note "**Conventions**" %}
 
-* les **noms** de classe commencent par une **majuscule**
-* l'implémentation de la classe est placée dans un **fichier** de même nom mais avec une **minuscule**
+- les **noms** de classe commencent par une **majuscule**
+- l'implémentation de la classe est placée dans un **fichier** de même nom mais avec une **minuscule**
 
 {% endnote %}
 
@@ -116,8 +114,8 @@ Les deux points ci-dessus impliquent que :
 
 {% note %}
 
-* tester ses classes est une nécessité
-* il faut conserver ses tests pour ne pas avoir à les re-écrire à chaque fois
+- tester ses classes est une nécessité
+- il faut conserver ses tests pour ne pas avoir à les re-écrire à chaque fois
 
 {% endnote %}
 
@@ -171,8 +169,8 @@ True
 
 Notre vérification est juste :
 
-* notre vérification rend `True`{.language-} si l'objet crée est de la classe compteur
-* notre vérification rend `False`{.language-} sinon
+- notre vérification rend `True`{.language-} si l'objet crée est de la classe compteur
+- notre vérification rend `False`{.language-} sinon
 
 {% attention %}
 Ne confondez pas `Compteur`{.language-}, **la classe** et `Compteur()`{.language-} qui est le **résultat** de l'exécution de la classe, c'est à dire un objet.

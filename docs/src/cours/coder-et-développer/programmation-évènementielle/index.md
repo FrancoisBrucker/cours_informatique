@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Programmation évènementielle"
 
-eleventyNavigation:
-    order: 9
-    prerequis:
-        - "../programmation-objet/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -16,23 +11,11 @@ eleventyComputed:
 
 ---
 
-<!-- début résumé -->
-
-Coder des programmes grâce à la programmation évènementielle en utilisant pyglet.
-
-<!-- end résumé -->
-
 Nous utiliserons la bibliothèque [pyglet](http://pyglet.org/) pour ce projet. Commencez par l'installer :
 
 ```
 python -m pip install pyglet
 ```
-
-{% attention %}
-Utiliser votre interpréteur pour installer [pyglet](http://pyglet.org/). Ce n'est pas forcément juste `python`.
-
-Référez vous au tutoriel [quel interpréteur python ?]({{ "/tutoriels/vsc-python" }}#quel-python){.interne}
-{% endattention %}
 
 Une fois la bibliothèque installée, on peut créer notre projet :
 {% faire %}
@@ -103,9 +86,9 @@ En revanche, le texte `c'est fini !`{.language-} ne devrait apparaître dans le 
 
 {% faire "**Comprenez**" %}
 
-* comment fonctionne le programme
-* l'héritage de la classe `Window`{.language-} de pyglet
-* la fonction de la ligne `pyglet.app.run()`{.language-}
+- comment fonctionne le programme
+- l'héritage de la classe `Window`{.language-} de pyglet
+- la fonction de la ligne `pyglet.app.run()`{.language-}
 
 {% endfaire %}
 {% attention %}
@@ -233,9 +216,9 @@ print("c'est fini !")
 
 {% note "**On récapitule**" %}
 
-* l'ajout d'un paramètre lors de l'appel au construction de `Window`{.language-} qui rend la fenêtre redimensionnable
-* l'ajout d'un `print`{.language-} dans la méthode `on_draw`{.language-}
-* lorsque l'on change la taille de la fenêtre, la méthode `on_draw`{.language-} est exécutée
+- l'ajout d'un paramètre lors de l'appel au construction de `Window`{.language-} qui rend la fenêtre redimensionnable
+- l'ajout d'un `print`{.language-} dans la méthode `on_draw`{.language-}
+- lorsque l'on change la taille de la fenêtre, la méthode `on_draw`{.language-} est exécutée
 
 {% endnote %}
 
@@ -284,8 +267,8 @@ En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, 
 
 {% exercice %}
 
-* déduire l'origine de la fenêtre en utilisant le redimensionnement de la fenêtre.
-* utiliser l’événement `on_resize(width, height)`{.language-} pour replacer le label à la bonne position après chaque redimensionnement en modifiant ses attributs `x`{.language-} et `y`{.language-}.
+- déduire l'origine de la fenêtre en utilisant le redimensionnement de la fenêtre.
+- utiliser l’événement `on_resize(width, height)`{.language-} pour replacer le label à la bonne position après chaque redimensionnement en modifiant ses attributs `x`{.language-} et `y`{.language-}.
 
 {% endexercice %}
 {% attention %}
@@ -317,8 +300,8 @@ class HelloWorldWindow(pyglet.window.Window):
 
 On utilise deux événements pour gérer le clavier :
 
-* `on_key_press(symbol, modifiers)`{.language-} qui s'active lorsque qu'une touche est appuyée
-* `on_key_release(symbol, modifiers)`{.language-} qui s'active lorsque qu'une touche est relâchée
+- `on_key_press(symbol, modifiers)`{.language-} qui s'active lorsque qu'une touche est appuyée
+- `on_key_release(symbol, modifiers)`{.language-} qui s'active lorsque qu'une touche est relâchée
 
 Le paramètre `symbol`{.language-} est un entier qui correspond au code de la touche et `modifiers`{.language-} gère les touches comme `shift`, `control` ou encore `alt`.
 
@@ -343,10 +326,10 @@ Nous n'avons pas utilisé de `super`{.language-} pour appeler la méthode de la 
 
 {% faire "**Exécutez le code précédent et remarquez**" %}
 
-* que chaque touche a bien un code, ainsi que les touches de modification
-* shift gauche et shift droit sont discernables
-* qu'après chaque touche appuyée ou relâchée l'évènement `on_draw`{.language-} est lancé
-* que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press`{.language-} qui est lancé.
+- que chaque touche a bien un code, ainsi que les touches de modification
+- shift gauche et shift droit sont discernables
+- qu'après chaque touche appuyée ou relâchée l'évènement `on_draw`{.language-} est lancé
+- que même si on laisse appuyé la touche longtemps, il n'y a qu'un seul événement `on_key_press`{.language-} qui est lancé.
 
 {% endfaire %}
 
@@ -400,8 +383,8 @@ Avec cette technique, on ne peut se déplacer que d'un cran par appui sur la tou
 
 Les touches de modifications sont gérées par un [bit field](https://en.wikipedia.org/wiki/Bit_field) : une touche de modification correspond à un bit qui est positionné à 1 si la touche est enfoncée et à 0 sinon. Ceci permet :
 
-* de gérer plusieurs modificateurs avec un seul entier
-* de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.
+- de gérer plusieurs modificateurs avec un seul entier
+- de savoir rapidement avec des traitements logiques si tel ou tel touches de modification est enfoncée.
 
 Les différents modificateurs [sont donnés](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers)
  :
@@ -519,9 +502,9 @@ Faites en sorte que qu'un texte avance de 10 pixels toutes les 0.5s si une touch
 
 Pour cela on ne va pas modifier la position du label dans `on_key_press`{.language-} mais dans update :
 
-* créez deux attributs `dx`{.language-} et `dy`{.language-} à notre objet `HelloWorldWindow`{.language-}. Par défaut ces deux attributs vaudront 0
-* à chaque appelle de `update`{.language-}, bougez la position du label de `self.dx`{.language-} et `self.dy`{.language-}
-* gérez les valeurs de `self.dx`{.language-} et `self.dy`{.language-} dans `on_key_press`{.language-} et `on_key_release`{.language-} (par exemple `self.dx = -10`{.language-} lorsque l'on appuie sur la flèche gauche et `self.dx = 0`{.language-} lorsque la flèche gauche est relâchée)
+- créez deux attributs `dx`{.language-} et `dy`{.language-} à notre objet `HelloWorldWindow`{.language-}. Par défaut ces deux attributs vaudront 0
+- à chaque appelle de `update`{.language-}, bougez la position du label de `self.dx`{.language-} et `self.dy`{.language-}
+- gérez les valeurs de `self.dx`{.language-} et `self.dy`{.language-} dans `on_key_press`{.language-} et `on_key_release`{.language-} (par exemple `self.dx = -10`{.language-} lorsque l'on appuie sur la flèche gauche et `self.dx = 0`{.language-} lorsque la flèche gauche est relâchée)
 
 {% endexercice %}
 {% details "solution" %}
@@ -735,9 +718,9 @@ Testez l'exemple ci-dessus et comprenez ce qu'il fait.
 
 Les couleurs sont décrites au [format RGB](https://fr.wikipedia.org/wiki/Rouge_vert_bleu) sous la forme de 3 entiers allant de 0 à 255 en base 10 :
 
-* le premier décrit la composante rouge
-* le second la composante verte
-* le dernier la composante bleue
+- le premier décrit la composante rouge
+- le second la composante verte
+- le dernier la composante bleue
 
 On a souvent coutume (dans le monde du web par exemple) de représenter ces 3 nombres par un nombre hexadécimal de 6 chiffres (2 par composante, chaque composante étant codée par un nombre allant de 00 à FF). Par exemple, le nombre `#F58318`{.language-} correspond à la couleur ayant F5 en rouge, 83 en vert et 18 en bleu, les 3 nombres étant en codage hexadécimal. Ce qui en python donne avec un tuple de 3 coordonnées : `(0xF5, 0x83, 0x18)`{.language-}, ou `(245, 131, 24)`{.language-} en base 10 (un nombre écrit en hexadécimal en python commence par `0x`).
 

@@ -98,13 +98,51 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Déboguer son code](debugger){.interne}
 {% endaller %}
 
+### Programmation objet
+
+La programmation objet est un principe de programmation utilisé par la quasi-totalité des langages de programmation. Nes nuances existent bien sur, la programmation objet en rust n'est pas la même qu'en java par exemple, mais quelques principes fondateurs sont utilisés partout.
+
+Nous allons dans cette partie du cours nous atteler à montrer ces principes et leur utilité dans le cadre du langage python.
+
+{% aller %}
+[Programmation objet](programmation-objet){.interne}
+{% endaller %}
+
+### Programmation évènementielle
+
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des *réactions* qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un *évènement*) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+
+{% aller %}
+[Programmation évènementielle](programmation-évènementielle){.interne}
+{% endaller %}
+
+## Programmation par les tests
+
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (*Test Driven Development*, ou *TDD*)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après
+
+### Projet TDD
+
+La programmation part les tests n'est pas quelque chose d'instinctif. Elle nécessite :
+
+1. un apprentissage (au départ on se sent nul et comme on aime pas ça on blame la méthode)
+2. d'être appréhendée de façon non dogmatique (on ne test pas tout avant, on utilise juste la fonctionnalité que l'on va coder pour nous permettre de mieux la définir)
+
+Bref, prenez la comme une voie à suivre. Une fois habitué vous ne pourrez plus vous en passer.
+
+{% aller %}
+[Projet de programmation par les tests](projet-TDD){.interne}
+{% endaller %}
+
+### Couverture de code
+
+> TBD code coverage pour que tout soit ok.
+
 ## Stockage des données
 
 > TBD tout est nombre. type historique du C.
 > TBD python permet d'abstraire ça avec la notion de variable et d'objet.
 
-### En mémoire
-
+### Structures de données
 
 Exemple des textes :
 
@@ -112,27 +150,19 @@ Exemple des textes :
 [Chaînes de caractères](chaîne-de-caractères){.interne}
 {% endaller %}
 
-## Sur des fichiers
+### Sur des fichiers
 
-### Manipuler des fichiers en python
+#### Manipuler des fichiers en python
 
 {% aller %}
 [Fichiers](fichiers){.interne}
 {% endaller %}
 
-### Stocker ses données
+#### Stocker ses données
 
 {% aller %}
 [fichiers pour stocker des données](projet-données-texte){.interne}
 {% endaller %}
-
-## Programmation objet
-
-> TBD cours
-
-## Programmation évènementielle
-
-> TBD cours
 
 ## Un interpréteur par projet
 

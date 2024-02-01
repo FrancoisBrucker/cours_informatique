@@ -3,9 +3,7 @@ layout: layout/post.njk
 title: "Projet agrégation : cartes"
 
 eleventyNavigation:
-    order: 7
     prerequis:
-        - "../composition-agrégation/"
         - "../projet-objets-cartes/"
 
 eleventyComputed:
@@ -15,19 +13,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+Nous allons ici continuer ce que nous avons commencé lors du projet cartes et utiliser l'agrégation pour pouvoir jouer aux cartes.
 
-Projet utilisant l'agrégation d'objets pour jouer aux cartes.
-
-<!-- end résumé -->
-
-Nous allons ici continuer ce que nous avons commencé lors du projet cartes. Donc si vous ne l'avez pas déjà fait, commencez par le faire :
-
-{% aller %}
-[Projet objets : cartes](../projet-objets-cartes/){.interne}
-{% endaller %}
-
-Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
+Pour les besoin de ce projet, nous allons présupposer que vous avez une classe `Carte`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
 
 {% details "**une implémentation de la classe `Carte`{.language-}**" %}
 

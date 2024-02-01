@@ -3,9 +3,7 @@ layout: layout/post.njk
 title: "Projet composition d'objets : dés"
 
 eleventyNavigation:
-    order: 6
     prerequis:
-        - "../composition-agrégation/"
         - "../projet-objets-dés/"
 
 eleventyComputed:
@@ -15,23 +13,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+Dans [le premier projets dés](../projet-objets-dés/){.interne}, vous avez codé des classes toutes seules. Dans cette parties on va coder plusieurs classes enchevêtrées.
 
-Classes et objets, vers l'infini et au-delà (carrément !). Nous allons ici combiner des objets que l'on a créé dans d'autres objets que l'on a également créé.
-
-<!-- end résumé -->
-
-Dans les premiers projets objets, vous avez codé des classes toutes seules. Le but de ces projets introductifs étaient de vous montrer comment rassembler les différentes parties d'un concept en un tout appelé classe et l'utiliser *via* des objets.
-
-Cette partie est la suite du projet dés. Donc si vous ne l'avez pas déjà fait, commencez par le faire :
-
-{% aller %}
-[Projet objets : dés](../projet-objets-dés/){.interne}
-{% endaller %}
-
-Pour les besoin de ce TD, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
+Pour les besoins de ce projet, nous allons présupposer que vous avez une classe `Dé`{.language-} qui fonctionne. La version minimale que nous allons utiliser ici est disponible ci-après. Mais ne vous sentez pas obliger de l'utiliser.
 
 <span id="code-Dé"></span>
+
 {% details "**une implémentation de la classe `Dé`{.language-}**" %}
 
 fichier `dé.py`{.fichier} :
@@ -122,10 +109,10 @@ Pour illustrer cette étape et progresser dans notre projet de jeu, faisons une 
 
 {% note "**User Story**" %}
 
-* Nom : "jets de dés"
-* Utilisateur : un joueur compulsif
-* Story : On veut pouvoir lancer des dés et voir le résultat
-* Actions :
+- Nom : "jets de dés"
+- Utilisateur : un joueur compulsif
+- Story : On veut pouvoir lancer des dés et voir le résultat
+- Actions :
   1. créer une liste
   2. créer 5 dés que l'on ajoute un à un à la liste
   3. lancer les 5 dés
@@ -145,9 +132,9 @@ L'utilisation d'une liste permet de groper les 5 dés, mais il faut toujours les
 
 On aimerait avoir une structure, nommée `TapisVert`{.language-}, qui :
 
-* crée et stocke 5 dés
-* permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language-}
-* rendre les dés contenus dans sa structure via une liste ou un tuple
+- crée et stocke 5 dés
+- permette de lancer les dés stockés en une fois avec une méthode `lancer`{.language-}
+- rendre les dés contenus dans sa structure via une liste ou un tuple
 
 {% faire %}
 
@@ -182,9 +169,9 @@ Ajoutez le code de la classe `TapisVert`{.language-} dans le fichier `dé.py`{.f
 
 Ajoutez les test de cette nouvelle classe au fichier `test_dé.py`{.fichier}. Vous pourrez par exemple tester  :
 
-* qu'après la création d'un objet `TapisVert`{.language-} on dispose bien de 5 dés positionnés sur 1.
-* qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.
-* que `TapisVert`{.language-} donne bien ses dés et non une copie de ceux-ci. Pour réaliser ceci vous pourrez implémenter le test suivant :
+- qu'après la création d'un objet `TapisVert`{.language-} on dispose bien de 5 dés positionnés sur 1.
+- qu'après avoir lancé les dés, leurs positions sont toujours cohérentes avec le nombre de faces.
+- que `TapisVert`{.language-} donne bien ses dés et non une copie de ceux-ci. Pour réaliser ceci vous pourrez implémenter le test suivant :
    1. demander les dés d'un objet de type `TapisVert`{.language-}
    2. modifier la position d'un dé
    3. redemander les dés de l'objet de type `TapisVert`{.language-} et vérifier que la position du dé est bien celle modifiée
@@ -269,10 +256,10 @@ Pour jouer au poker d'as, il nous faudra reconnaître des formes de jets de dés
 
 {% note "**User Story**" %}
 
-* Nom : "formes de jets"
-* Utilisateur : un joueur compulsif
-* Story : On veut pouvoir savoir quelles formes de dés sont présentes
-* Actions :
+- Nom : "formes de jets"
+- Utilisateur : un joueur compulsif
+- Story : On veut pouvoir savoir quelles formes de dés sont présentes
+- Actions :
   1. jeter 5 dés
   2. vérifier s'il y a une paire, un brelan ou un carré
   3. recommencer en 1
@@ -296,7 +283,7 @@ Ajoutez dans `TapisVert`{.language-} les méthodes nécessaires et testez-les en
 
 Pour coder cela de façon simple, vous pourrez coder deux méthodes supports :
 
-* une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)
-* une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
+- une méthode qui rend une liste $L$ de taille 7 telle que $L[i]$ donne le nombre de dés ayant la position $i$ ($1 \leq i \leq 6$)
+- une méthode qui prend en paramètre un nombre $n$ et qui rend `True`{.language-} s'il existe au moins $n$ dés ayant la même position. Ceci permettra de coder de la même manières les différentes fonctions demandées.
 
 {% endinfo %}

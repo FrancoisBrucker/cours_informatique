@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: Composition et agrégation
 
-eleventyNavigation:
-    order: 5
-    prerequis:
-        - "../classes-et-objets/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -14,16 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-Le but de cette séance est de consolider les concepts fondamentaux de classe et d'objet et d'ajouter les notions de
-composition, d'agrégation et d'attributs de classe.
-
-<!-- end résumé -->
-
-## Liens entre classes
-
-Composition et agrégation permettent de lier des classes ensembles, et plus principalement lorsqu'une classe admet comme attribut des objets de l'autre classe.
+Composition et agrégation permettent de lier des classes entres elles et plus principalement lorsqu'une classe admet comme attribut des objets de l'autre classe.
 
 Ce qui les distingue :
 

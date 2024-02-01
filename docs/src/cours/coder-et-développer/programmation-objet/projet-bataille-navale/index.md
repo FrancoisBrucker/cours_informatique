@@ -2,24 +2,12 @@
 layout: layout/post.njk 
 title: "Projet : bataille navale"
 
-eleventyNavigation:
-    order: 8
-    prerequis:
-        - "../coder-ses-objets/"
-        - "../composition-agrégation/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
-<!-- début résumé -->
-
-Projet sur le codage d'objets en python.
-
-<!-- end résumé -->
 
 Vous allez coder une version simplifiée de la [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)).
 
@@ -43,34 +31,25 @@ Le fichier `main.py`{.fichier} contiendra le jeu en lui même.
 
 Nous voulons coder un jeu de [bataille navale](https://fr.wikipedia.org/wiki/Bataille_navale_(jeu)). Nous n'allons pas coder le jeu à deux joueurs, mais créer une interface pour un joueur. Il faut donc avoir à notre disposition :
 
-* une grille de C colonnes et L lignes représentant notre terrain. Il faut pouvoir
-  * tirer sur une case de la grille
-  * afficher la grille
-* des bateaux à placer sur la grille
-  * chaque bateau à une longueur et il doit être placé sur la grille de façon horizontale ou verticale.
-  * les bateaux placés sur la grille ne peuvent :
-    * pas dépasser de la grille
-    * se chevaucher
-* on doit pouvoir marquer une case de la grille comme :
-  * vierge
-  * frappée d'un tir
-* pour chaque bateau on doit pouvoir :
-  * savoir s'il a été touché et si oui où
-  * savoir s'il est coulé on non
+- une grille de C colonnes et L lignes représentant notre terrain. Il faut pouvoir
+  - tirer sur une case de la grille
+  - afficher la grille
+- des bateaux à placer sur la grille
+  - chaque bateau à une longueur et il doit être placé sur la grille de façon horizontale ou verticale.
+  - les bateaux placés sur la grille ne peuvent :
+    - pas dépasser de la grille
+    - se chevaucher
+- on doit pouvoir marquer une case de la grille comme :
+  - vierge
+  - frappée d'un tir
+- pour chaque bateau on doit pouvoir :
+  - savoir s'il a été touché et si oui où
+  - savoir s'il est coulé on non
 
 ### Vscode
 
 {% faire %}
 Créez un dossier `projet-bataille-navale`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour en faire votre projet.
-{% endfaire %}
-
-{% faire %}
-
-En créant des fichiers *jouets* dans votre projet, vérifier que :
-
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
 {% endfaire %}
 
 ### UML
@@ -92,10 +71,10 @@ Créons une user story permettant de valider la grille :
 
 {% note "**User Story**" %}
 
-* Nom : "Plouf dans l'eau"
-* Utilisateur : un joueur
-* Story : On veut pouvoir gérer les tirs de l'adversaire
-* Actions :
+- Nom : "Plouf dans l'eau"
+- Utilisateur : un joueur
+- Story : On veut pouvoir gérer les tirs de l'adversaire
+- Actions :
   1. créer une grille à 5 lignes et 8 colonnes
   2. afficher la grille à l'écran
   3. demande à l'utilisateur de rentrer deux coordonnées x et y
@@ -137,8 +116,8 @@ Il faut stocker, en plus de la grille, le nombre de colonnes de la grille :
 
 Nous allons utiliser la grille pour stocker la position de nos bateau, là où l'ennemi a tiré et pour l'affichage. Nous allons donc utiliser un codage par caractère :
 
-* sur une case vierge, on placera le caractère `'∿'`{.language-} (stockez ce caractère dans un attribut nommé `vide`{.language-})
-* sur une case où l'adversaire a tiré, on placera le caractère `'x'`{.language-}
+- sur une case vierge, on placera le caractère `'∿'`{.language-} (stockez ce caractère dans un attribut nommé `vide`{.language-})
+- sur une case où l'adversaire a tiré, on placera le caractère `'x'`{.language-}
 
 {% exercice %}
 Ajoutez ces informations au diagramme UML pour se souvenir de tout ça.
@@ -216,8 +195,8 @@ Codez une méthode `Bateau.positions()`{.language-} qui rend une liste des diff�
 
 Vous pourrez tester le fait que :
 
-* `Bateau(2, 3, longueur=3).positions()`{.language-} vaut `[(2, 3), (2, 4), (2, 5)]`{.language-}
-* `Bateau(2, 3, longueur=3, vertical=True).positions()`{.language-} vaut `[(2, 3), (3, 3), (4, 3)]`{.language-}
+- `Bateau(2, 3, longueur=3).positions()`{.language-} vaut `[(2, 3), (2, 4), (2, 5)]`{.language-}
+- `Bateau(2, 3, longueur=3, vertical=True).positions()`{.language-} vaut `[(2, 3), (3, 3), (4, 3)]`{.language-}
 
 {% endfaire %}
 
@@ -231,10 +210,10 @@ Testons la fonctionnalité grâce à la user story suivante :
 
 {% note "**User Story**" %}
 
-* Nom : "chevauchement"
-* Utilisateur : un joueur
-* Story : Positionner des bateaux sans chevauchement
-* Actions :
+- Nom : "chevauchement"
+- Utilisateur : un joueur
+- Story : Positionner des bateaux sans chevauchement
+- Actions :
   1. créer un bateau `b1`{.language-}
   2. créer un bateau `b2`{.language-}
   3. Vérifier si les deux bateaux se chevauchent
@@ -254,8 +233,8 @@ Ajoutez une méthode `Grille.ajoute(bateau)`{.language-} qui place un bateau sur
 
 Testez que la méthode fonctionne. Par exemple, vous pourrez vérifier que pour une grille `g`{.language-} de 2 lignes et 3 colonnes :
 
-* la grille devient égale à `["∿", "∿", "∿", "⛵", "⛵", "∿"]`{.language-} après l'appel `g.ajoute(Bateau(1, 0, longueur=2, vertical=False))`{.language-}
-* la grille est inchangée (elle reste égale à  `["∿", "∿", "∿", "∿", "∿", "∿"]`{.language}) après les appels aux méthodes : `g.ajoute(Bateau(1, 0, longueur=2, vertical=True))`{.language-} et `g.ajoute(Bateau(1, 0, longueur=4, vertical=True))`{.language-}
+- la grille devient égale à `["∿", "∿", "∿", "⛵", "⛵", "∿"]`{.language-} après l'appel `g.ajoute(Bateau(1, 0, longueur=2, vertical=False))`{.language-}
+- la grille est inchangée (elle reste égale à  `["∿", "∿", "∿", "∿", "∿", "∿"]`{.language}) après les appels aux méthodes : `g.ajoute(Bateau(1, 0, longueur=2, vertical=True))`{.language-} et `g.ajoute(Bateau(1, 0, longueur=4, vertical=True))`{.language-}
 
 {% endfaire %}
 
@@ -295,9 +274,9 @@ Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.
 
 Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :
 
-* un porte avion de longueur 4 et de type "🚢"
-* un croiseur de longueur 3 et de type "⛴"
-* un torpilleur de longueur 2 et de type "🚣"
-* un sous-marin de longueur 2 et de type "🐟"
+- un porte avion de longueur 4 et de type "🚢"
+- un croiseur de longueur 3 et de type "⛴"
+- un torpilleur de longueur 2 et de type "🚣"
+- un sous-marin de longueur 2 et de type "🐟"
 
 Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.

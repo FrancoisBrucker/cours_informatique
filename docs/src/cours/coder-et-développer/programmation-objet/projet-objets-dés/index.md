@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Projet : objets dés"
 
-eleventyNavigation:
-      order: 3
-      prerequis:
-         - "../coder-ses-objets/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -26,10 +21,10 @@ Lorsque l'on crée un objet qui correspond à un objet réel, il faut faire en s
 
 Nous allons montrer le principe précédent en créant petit à petit une classe permettant de jouer aux dés. La classe `Dé`{.language-} doit être capable de :
 
-* créer un objet sans paramètre (sa position est alors 1),
-* créer un objet avec une position initiale différente de 1,
-* connaître et donner la position du dé,
-* lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la position du dé de façon aléatoire.
+- créer un objet sans paramètre (sa position est alors 1),
+- créer un objet avec une position initiale différente de 1,
+- connaître et donner la position du dé,
+- lancer un dé en utilisant une méthode nommée `lancer()`{.language-} qui ne rend **rien**, mais change la position du dé de façon aléatoire.
 
 La position du dé doit être un entier entre 1 et 6.
 
@@ -37,10 +32,10 @@ La position du dé doit être un entier entre 1 et 6.
 
 1. Proposez une modélisation UML de la classe `Dé`{.language-}.
 2. Donnez des exemples de code qui manipulent des objets de cette classe, comme :
-   * créer un objet
-   * afficher sa position à l'écran
-   * modifier la valeur de sa position
-   * lancer le dé
+   - créer un objet
+   - afficher sa position à l'écran
+   - modifier la valeur de sa position
+   - lancer le dé
 
 {% endfaire %}
 
@@ -52,15 +47,6 @@ Faites en particulier attention à la façon dont vous voulez lancer le dé.
 Créez un dossier `projet-dés`{.fichier} sur votre ordinateur et ouvrez-le avec visual studio code pour un faire votre projet.
 {% endfaire %}
 
-{% faire %}
-
-En créant des fichiers *jouets* dans votre projet, vérifier que :
-
-* le [linter]({{ "/tutoriels/vsc-python-modules-supplémentaires/pycodestyle" }}#black){.interne}  est activé
-* [black]({{ "/tutoriels/vsc-python-modules-supplémentaires/black" }}){.interne} fonctionne
-* vous pouvez faire du [code coverage]({{ "/tutoriels/couverture-de-code" }}){.interne}
-{% endfaire %}
-
 ### User stories
 
 {% note "Définition" %}
@@ -70,13 +56,13 @@ Une [user story](https://fr.wikipedia.org/wiki/R%C3%A9cit_utilisateur) est un r�
 L'idée est d'écrire une succession d'actions faites par un utilisateur typique afin de réaliser une tâche précise avec notre programme. Par exemple :
 {% note "**User story**" %}
 
-* Nom : "Aléatoire ?"
-* Utilisateur : un professeur.
-* Story : On vérifie que le lancé de dé ressemble à de l'aléatoire.
-* Actions :
+- Nom : "Aléatoire ?"
+- Utilisateur : un professeur.
+- Story : On vérifie que le lancé de dé ressemble à de l'aléatoire.
+- Actions :
   1. créer un dé sans paramètre
   2. afficher à l'écran sa position (ça doit être 1)
-  3. lancer le dé 10 fois et affiche la position du dé après chaque lancé. Quelle est la probabilité que le dé ne change jamais ?).
+  3. lancer le dé 10 fois et affiche la position du dé après chaque lancé. Quelle est la probabilité que le dé ne change jamais ?.
 
 {% endnote %}
 
@@ -120,14 +106,14 @@ La user story fait office de **test fonctionnel** qui permet de vérifier que le
 {% note %}
 Un programme aura :
 
-* **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire) car ils garantissent que ce que vous avez codé est correct
-* **très souvent** des [tests fonctionnels](https://en.wikipedia.org/wiki/Functional_testing) car ils garantissent que ce que vous avez codé pourra être utile
+- **toujours** des [tests unitaires](https://fr.wikipedia.org/wiki/Test_unitaire) car ils garantissent que ce que vous avez codé est correct
+- **très souvent** des [tests fonctionnels](https://en.wikipedia.org/wiki/Functional_testing) car ils garantissent que ce que vous avez codé pourra être utile
 
 On exécutera la batterie de tests unitaires à chaque fois que l'on code ou que l'on modifie une fonction, les tests fonctionnels sont exécutés a chaque fois que l'on achève une fonctionnalité.
 
 {% endnote %}
 {% info %}
-Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI]({{ "../../coder"  }}#YAGNI){.interne}.
+Les fonctionnalités développées doivent toutes faire parti d'au moins une user story, sinon c'est [YAGNI](../../développement/coder/#YAGNI){.interne}.
 {% endinfo %}
 
 ## Code
@@ -163,8 +149,8 @@ Faites en sorte que l'on puisse choisir la position initiale du dé dans le cons
 {% info %}
 Dans la documentation et lorsque l'on décrit une méthode, som nom de la méthode est toujours accolé au nom de la classe qui la définit. Par exemple :  `Dé.lancer()`{.language-} signifie :
 
-* la méthode `lancer`{.language-} de la classe `Dé`{.language-}
-* cette méthode ne prend pas de paramètre.
+- la méthode `lancer`{.language-} de la classe `Dé`{.language-}
+- cette méthode ne prend pas de paramètre.
 
 {% endinfo %}
 {% attention %}
@@ -204,26 +190,26 @@ Vous pouvez maintenant voir si la user story fonctionne :
 Dé-commentez la dernière partie de la user story et vérifiez qu'elle fonctionne.
 {% endfaire %}
 
-### Couverture de code
+## Programme principal
 
 Avant de coder le programme principal :
 
 {% faire %}
 
 1. vérifiez que les tests unitaires fonctionnent
-2. vérifiez que vous avez bien 100% de [couverture de code]({{ "/tutoriels/couverture-de-code" }}){.interne}.
-3. vérifiez que vos user stories sont toutes fonctionnelles
+2. vérifiez que vos user stories sont toutes fonctionnelles
 
 {% endfaire %}
 
-## Programme principal
+Une fois tout ok, on peut commencer à créer le code du `main.py`{.fichier} :
 
 {% faire %}
+
 Créez un fichier `main.py`{.fichier} qui :
 
 1. demande à l'utilisateur :
-   * la position initiale du dé
-   * la valeur pour laquelle arrêter les lancers
+   - la position initiale du dé
+   - la valeur pour laquelle arrêter les lancers
 2. lance le dé jusqu'à tant que la valeur demandée par l’utilisateur soit trouvée.
 3. le programme affiche le nombre de lancer nécessaire (cela peut être 0)
 
@@ -233,13 +219,13 @@ Créez un fichier `main.py`{.fichier} qui :
 
 Pour l'instant, l'utilisation de la méthode `lancer`{.language-} est laborieuse :
 
-* pour connaître la nouvelle position du dé il faut d'abord lancer le dé puis regarder sa position
-* pour lancer deux fois le dé, il faut faire deux lignes
+- pour connaître la nouvelle position du dé il faut d'abord lancer le dé puis regarder sa position
+- pour lancer deux fois le dé, il faut faire deux lignes
 
 Ce serait tellement bien si on pouvait faire quelques chose du style :
 
-* `print(dé.lancer().position)`{.language-} pour lancer le dé puis retrouver sa position dans la même ligne
-* `dé.lancer().lancer()`{.language-} pour lancer le dé deux fois de suite.
+- `print(dé.lancer().position)`{.language-} pour lancer le dé puis retrouver sa position dans la même ligne
+- `dé.lancer().lancer()`{.language-} pour lancer le dé deux fois de suite.
 
 {% exercice %}
 Comment réaliser cela ?
@@ -402,8 +388,8 @@ class MaClasse:
 
 Ce qu'on a fait :
 
-* on *décore* la première méthode `MaClasse.toto()`{.language-} par le décorateur `@property`{.language-} pour lui signifier que cette méthode est l'accesseur de l'attribut `toto`{.language-}
-* on *décore* la seconde méthode `MaClasse.toto()`{.language-} par le décorateur `@toto.setter`{.language-} pour signifier que cette méthode est le mutateur de l'attribut `toto`{.language-}
+- on *décore* la première méthode `MaClasse.toto()`{.language-} par le décorateur `@property`{.language-} pour lui signifier que cette méthode est l'accesseur de l'attribut `toto`{.language-}
+- on *décore* la seconde méthode `MaClasse.toto()`{.language-} par le décorateur `@toto.setter`{.language-} pour signifier que cette méthode est le mutateur de l'attribut `toto`{.language-}
 
 L'utilisation est alors pratique comme un attribut public et safe comme un attribut privé :
 
@@ -424,8 +410,8 @@ Modifiez tous les tests et les programmes principaux.
 {% faire %}
 Vérifier que tout fonctionne :
 
-* les tests
-* la user story
-* le programme principal
+- les tests
+- la user story
+- le programme principal
 
 {% endfaire %}
