@@ -87,7 +87,7 @@
 <li>démontrer :
 <ol>
 <li>sa finitude</li>
-<li>qu'il est bine une solution au problème</li>
+<li>qu'il est bien une solution au problème</li>
 </ol>
 </li>
 <li>en donner (en justifiant) sa complexité</li>
@@ -193,9 +193,9 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Montrer que toute chaîne de caractères non vide admet un sous-palindrome.</li>
-<li>Montrer que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.</li>
-<li>Montrer que pour tout $n&gt;1$ et tout $m&gt;2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.</li>
+<li>Montrez que toute chaîne de caractères non vide admet un sous-palindrome.</li>
+<li>Montrez que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.</li>
+<li>Montrez que pour tout $n&gt;1$ et tout $m&gt;2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.</li>
 </ol>
 </div>
 </div>
@@ -211,7 +211,7 @@ $$
 <ul>
 <li><strong>nom</strong> : max-sous-palindrome</li>
 <li><strong>données</strong> : $s$ une chaîne de caractères</li>
-<li><strong>question</strong> : Quel est la longueur maximum des sous-palindromes de $s$ ?</li>
+<li><strong>question</strong> : quelle est la longueur maximum des sous-palindromes de $s$ ?</li>
 </ul>
 </div>
 </div>
@@ -226,7 +226,7 @@ $$
 <ul>
 <li><strong>nom</strong> : max-sous-palindrome</li>
 <li><strong>données</strong> : $s$ une chaîne de caractères de taille $n&gt;0$</li>
-<li><strong>question</strong> : Quel est la longueur maximum des sous-palindromes de $s$ ?</li>
+<li><strong>question</strong> : quelle est la longueur maximum des sous-palindromes de $s$ ?</li>
 </ul>
 </div>
 </div>
@@ -237,15 +237,15 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>En utilisant l'algorithme linéaire <code class="language-">palindrome(s: str) -&gt; bool</code> sur chaque mot de $s$, montrer que le problème <code>max-sous-palindrome</code> est <strong>un problème algorithmique</strong> de complexité $\mathcal{O}(n^3)$.</li>
-<li>Montrer que la complexité du problème <code>max-sous-palindrome</code> est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.</li>
-<li>Déduire de la question précédente un encadrement de la complexité du problème <code>max-sous-palindrome</code>.</li>
+<li>En utilisant l'algorithme linéaire <code class="language-">palindrome(s: str) -&gt; bool</code> sur chaque mot de $s$, montrez que le problème <code>max-sous-palindrome</code> est <strong>un problème algorithmique</strong> de complexité $\mathcal{O}(n^3)$.</li>
+<li>Montrez que la complexité du problème <code>max-sous-palindrome</code> est en $\Omega(n)$, avec $n$ la taille de la chaîne passée en entrée.</li>
+<li>Déduisez de la question précédente un encadrement de la complexité du problème <code>max-sous-palindrome</code>.</li>
 </ol>
 </div>
 </div>
-<p>Le but de la fin de la partie algorithmique de cette étude est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressons pas étapes. Commençons par passer d'une complexité de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.</p>
+<p>Le but de la fin de la partie algorithmique de cette étude est de montrer que la complexité du problème est linéaire. Mais ne boudons pas notre plaisir et progressons par étapes. Commençons par passer d'une complexité de $\mathcal{O}(n^3)$ à $\mathcal{O}(n^2)$.</p>
 <h3>Résolution par matrice interposée du problème des sous-palindromes</h3>
-<p>On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une <a href="https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_sup%C3%A9rieures">une matrice carrée triangulaire supérieure</a> qui va expliciter si le mot $s[i:j+1]$ est un sous palindrome ou pas :</p>
+<p>On va associer à la chaîne $s$ dont on veut trouver le plus grand sous-palindrome une <a href="https://fr.wikipedia.org/wiki/Matrice_triangulaire#Matrices_triangulaires_sup%C3%A9rieures">une matrice carrée triangulaire supérieure</a> qui va expliciter si le mot $s[i:j+1]$ est un sous-palindrome ou pas :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -311,11 +311,11 @@ $$
 <div class="pl-8 mr-8">
 <ol>
 <li>Créez une fonction de complexité $\mathcal{O}(n^2)$ qui prend en paramètre $M_s$ et rend la solution de <code>max-sous-palindrome</code> pour $s$,</li>
-<li>En déduire que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^2)$.</li>
+<li>Déduisez-en que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^2)$.</li>
 </ol>
 </div>
 </div>
-<p>Notez qu'il n'y a pas de contradiction entre la première série de question qui a montré que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^3)$ et celles-ci qui montrent qu'elle est également de complexité $\mathcal{O}(n^2)$ puisque le comparateur asymptotique $\mathcal{O}()$ est un majorant.</p>
+<p>Notez qu'il n'y a pas de contradiction entre la première série de questions qui a montré que le problème <code>max-sous-palindrome</code> est de complexité $\mathcal{O}(n^3)$ et celles-ci qui montrent qu'elle est également de complexité $\mathcal{O}(n^2)$ puisque le comparateur asymptotique $\mathcal{O}()$ est un majorant.</p>
 <h4>Pourquoi ?</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -326,9 +326,9 @@ $$
 <p>Quelle est la raison pour laquelle la création et l'utilisation de la matrice $M_s$ est plus rapide que l'utilisation de la fonction <code>palindrome()</code> pour tous les sous-mots ?</p>
 </div>
 </div>
-<p>Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer d'une complexité de $\mathcal{O}(n^2)$ à de complexité de $\mathcal{O}(n)$. Avant de procéder aux questions suivantes qui vont vous guider vers une solution possible essayez quelque instants de trouver une solution par vous-même.</p>
+<p>Et maintenant, le clou du spectacle, prouvons l'impossible : on peut passer d'une complexité de $\mathcal{O}(n^2)$ à de complexité de $\mathcal{O}(n)$. Avant de procéder aux questions suivantes qui vont vous guider vers une solution possible essayez quelques instants de trouver une solution par vous-même.</p>
 <h3>Résolution linéaire du problème des sous-palindromes</h3>
-<p>L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impair. Montrons qu'il est toujours possible de s'y ramener.</p>
+<p>L'algorithme que nous allons développer dans cette partie nécessite de n'avoir que des sous-palindromes de longueur impaire. Montrons qu'il est toujours possible de s'y ramener.</p>
 <h4>De $s$ à $s^\sharp$</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -352,11 +352,11 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que :</p>
+<p>Montrez que :</p>
 <ol>
 <li>Les sous-palindromes de $s^\sharp$ sont tous de longueurs impaires.</li>
 <li>Il existe un sous-palindrome de taille $m&gt;0$ dans $s$ si et seulement si il existe un sous-palindrome de taille $2m + 1$ dans $s^\sharp$.</li>
-<li>Déduire des deux questions précédentes que s'il existe un algorithme $A(s)$ de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impair d'une chaîne $s$ de longueur $n$, on peut construire un algorithme de même complexité utilisant $A()$ qui résout <code>max-sous-palindrome</code>.</li>
+<li>Déduisez des deux questions précédentes que s'il existe un algorithme $A(s)$ de complexité $C(n)$ pour trouver le plus grand sous-palindrome de longueur impaire d'une chaîne $s$ de longueur $n$, on peut construire un algorithme de même complexité utilisant $A()$ qui résout <code>max-sous-palindrome</code>.</li>
 </ol>
 </div>
 </div>
@@ -371,7 +371,7 @@ $$
 </div>
 </div>
 <h4>Mots palindromiques impairs</h4>
-<p>Les palindromes de longueur impair sont centrées autour d'un élément :</p>
+<p>Les palindromes de longueur impaire sont centrés autour d'un élément :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -379,7 +379,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $s[i:j]$ un sous-palindrome de longueur impair de $s$. On appelle :</p>
+<p>Soit $s[i:j]$ un sous-palindrome de longueur impaire de $s$. On appelle :</p>
 <ul>
 <li><em><strong>centre du sous-palindrome</strong></em> l'index $(i+j -1)/2$.</li>
 <li><em><strong>rayon du sous-palindrome</strong></em> le nombre $(j-i -1)/2$.</li>
@@ -392,7 +392,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Explicitez le le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{&quot;babba&quot;}$.</p>
+<p>Explicitez le sous-palindrome $s^\sharp[2:11]$ ainsi que son centre et son rayon pour chaîne $s = \text{&quot;babba&quot;}$.</p>
 </div>
 </div>
 <p>Plutôt que de calculer tous les mot d'une chaîne et de vérifier s'ils sont palindromique on va chercher pour chaque centre le rayon maximal.</p>
@@ -404,7 +404,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ soit la taille du plus grand rayon sous-palindrome de taille impair centrée en $i$.</p>
+<p>Soit $s$ une chaîne de caractères. On note $T_s$ le tableau de taille $n$ tel que $T_s[i]$ est la taille du plus grand rayon d'un sous-palindrome de taille impaire centré en $i$.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -414,7 +414,7 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Montrez que cette définition est valide : $T_s[i]$ est bien défini pour tout $s$ et centre $i$.</li>
+<li>Montrez que cette définition est valide : $T_s[i]$ est bien défini pour tout $s$ et tout centre $i$.</li>
 <li>Montrez que $s[i-T_s[i]:i+T_s[i]+1]$ est un sous-palindrome de $s$</li>
 <li>Explicitez $T_{s^\sharp}$ pour la chaîne $s = \text{&quot;babba&quot;}$.</li>
 <li>Démontrez que le plus grand élément de $T_{s^\sharp}$ est la réponse au problème <code>max-sous-palindrome</code> pour $s$.</li>
@@ -429,7 +429,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrez que tout tout $k \leq T_s[i]$ on a :</p>
+<p>Montrez que pour tout $k \leq T_s[i]$ on a :</p>
 <ul>
 <li>$T_s[i + k] = T_s[i-k]$ si $T_s[i-k] \neq T_s[i]-k$</li>
 <li>$T_s[i + k] \geq T_s[i]-k$ sinon.</li>
@@ -443,7 +443,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Déduire de la propriété précédente un algorithme de complexité $\mathcal{O}(n)$ permettant de créer $T_s$ à partir de $s$.</p>
+<p>Déduisez de la propriété précédente un algorithme de complexité $\mathcal{O}(n)$ permettant de créer $T_s$ à partir de $s$.</p>
 </div>
 </div>
 <h4>Conclusion</h4>
@@ -455,7 +455,7 @@ $$
 <div class="pl-8 mr-8">
 <ol>
 <li>Donnez un algorithme de complexité $\mathcal{O}(n)$ permettant de résoudre le problème <code>max-sous-palindrome</code> pour une chaîne de caractères de longueur $n&gt;0$.</li>
-<li>En déduire que la complexité du problème <code>max-sous-palindrome</code> est de $\Theta(n)$ pour une chaîne de caractères de longueur $n&gt;0$.</li>
+<li>Déduisez-en que la complexité du problème <code>max-sous-palindrome</code> est de $\Theta(n)$ pour une chaîne de caractères de longueur $n&gt;0$.</li>
 </ol>
 </div>
 </div>
@@ -471,7 +471,7 @@ $$
 <ul>
 <li><strong>nom</strong> : nombre-sous-palindrome</li>
 <li><strong>données</strong> : $s$ une chaîne de caractères de taille $n&gt;0$</li>
-<li><strong>question</strong> : Quel est le nombre de sous-palindromes de $s$ ?</li>
+<li><strong>question</strong> : quel est le nombre de sous-palindromes de $s$ ?</li>
 </ul>
 </div>
 </div>
@@ -481,7 +481,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant l'algorithme linéaire pour calculer $T_s$, Montrer que le problème <code>nombre-sous-palindrome</code> est de complexité $\mathcal{O}(n)$.</p>
+<p>En utilisant l'algorithme linéaire pour calculer $T_s$, montrez que le problème <code>nombre-sous-palindrome</code> est de complexité $\mathcal{O}(n)$.</p>
 </div>
 </div>
 
