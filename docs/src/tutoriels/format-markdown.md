@@ -96,10 +96,10 @@ En markdown, un bloc commence et finit par une ligne vide.
 
 Plusieurs symboles peuvent être utilisées :
 
-- [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage `python` lorsque j'écris un algorithme en python) :
+- [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) :
 
     \`\`\`
-    print("coucou !")
+    ls -la
     \`\`\`
 
 - [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1) :
