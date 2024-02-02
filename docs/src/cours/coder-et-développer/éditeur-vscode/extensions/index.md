@@ -2,10 +2,6 @@
 layout: layout/post.njk
 
 title: Outils Complémentaires
-tags: ['tutoriel', 'éditeur', 'vsc', 'python']
-authors:
-    - François Brucker
-
 
 eleventyComputed:
     eleventyNavigation:
@@ -19,5 +15,11 @@ VScode étant IDE très utilisé, il possède de nombreuses extensions permettan
 ## Python
 
 {% aller %}
-[extensions pour python](./python)
+[extensions pour python](./python){.interne}
+{% endaller %}
+
+## Markdown
+
+{% aller %}
+[extensions pour utiliser markdown](./markdown){.interne}
 {% endaller %}
