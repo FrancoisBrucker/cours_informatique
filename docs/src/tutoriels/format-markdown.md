@@ -162,21 +162,21 @@ Il y a deux façon d'écrire du code en markdown :
 - en mettant le caractère "\`" avant et après le code :``print("du code")``. Le code écrit de cette façon s'insère dans la phrase
 - en mode bloc en commençant et en finissant le bloc par une ligne "\`\`\`".
 
-En mode bloc, le texte suivant :
+Exemple de code en mode bloc :
 
 \`\`\`
 for l in "MPCI":
     print("Donnez moi un :", l, "!")
 \`\`\`
 
-S'affiche :
+Il se compilera en :
 
 ```
 for l in "MPCI":
     print("Donnez moi un :", l, "!")
 ```
 
-On a l'habitude de préciser le langage de programmation utilisé. On écrira donc :
+On a l'habitude de préciser le langage de programmation utilisé. On écrit donc :
 
 \`\`\`python
 for l in "MPCI":
