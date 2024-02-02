@@ -22,7 +22,7 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ### Extension vscode
 
-Pour utiliser black directement avec vscode, installez l'extension vscode [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*black formatter*" développé par microsoft.
+Pour utiliser black directement avec vscode, **installez [l'extension vscode](../../../prise-en-main#extensions){.interne}** nommée "*black formatter*" développé par microsoft.
 
 ### Module python
 

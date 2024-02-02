@@ -24,7 +24,7 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ### Extension vscode
 
-Pour utiliser le linter avec vscode, installez l'extension vscode [l'extension vscode](../../../prise-en-main#extensions){.interne} nommée "*flake8*" développé par microsoft.
+Pour utiliser le linter avec vscode, **installez [l'extension vscode](../../../prise-en-main#extensions){.interne}** nommée "*flake8*" développé par microsoft.
 
 ### Module python
 

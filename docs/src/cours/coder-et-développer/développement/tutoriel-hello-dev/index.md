@@ -20,9 +20,9 @@ Un projet informatique a un début, lorsque l'on crée le dossier qui va le cont
 
 De ces deux constatations, on en déduit trois règles fondamentales d'un code utile. Il faut qu'il soit :
 
-* juste pour des utilisateurs puissent s'en servir
-* facilement modifiable pour que l'ajout et la correction de fonctionnalités soient aisés
-* lisible pour soi et pour les autres membres de l'équipe de développement
+- juste pour des utilisateurs puissent s'en servir
+- facilement modifiable pour que l'ajout et la correction de fonctionnalités soient aisés
+- lisible pour soi et pour les autres membres de l'équipe de développement
 
 Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres éditeurs en lisant la doc.
 
@@ -95,8 +95,8 @@ En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](../../
 {% faire %}
 Exécutez le code de deux manières différentes :
 
-* avec le terminal
-* avec le petit triangle
+- avec le terminal
+- avec le petit triangle
 
 {% endfaire %}
 
@@ -168,9 +168,9 @@ Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vs
 
 {% note "Un projet c'est trois choses d'égale importance :" %}
 
-* le code : les fonctions utilisées
-* le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
-* les tests : ce qui garantit que le code fonctionne
+- le code : les fonctions utilisées
+- le main : le programme principal, c'est ce qu'on exécute lorsque veut faire marcher le projet
+- les tests : ce qui garantit que le code fonctionne
 
 {% endnote %}
 
@@ -317,9 +317,9 @@ Exécutez le fichier `test_projet.py`{.fichier}.
 
 Pour tester la somme, j'ai décidé de faire 3 tests :
 
-* le cas le plus simple où il ne se passe rien (`0 + 0 = 0`{.language-})
-* un cas simple (`0 + 1 = 1`{.language-})
-* un cas général (`1 + 2 = 3`{.language-})
+- le cas le plus simple où il ne se passe rien (`0 + 0 = 0`{.language-})
+- un cas simple (`0 + 1 = 1`{.language-})
+- un cas général (`1 + 2 = 3`{.language-})
 
 Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 
@@ -351,8 +351,8 @@ La raison est que `test_projet.py`{.fichier} définit des fonctions mais **il ne
 
 On a donc 2 choix :
 
-* exécuter les fonctions dans le fichier après les avoir définies
-* utiliser un module que le fait pour nous
+- exécuter les fonctions dans le fichier après les avoir définies
+- utiliser un module que le fait pour nous
 
 Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pytest.org).
 

@@ -54,7 +54,7 @@ Pour ce tutoriel, vous allez :
 
 {% endfaire %}
 
-Vous devez obtenir quelque chose du style (pris sous mac mais ça devrait être quasi-pareil sous linux et windows) :
+Vous devez obtenir quelque chose du style (pris sous mac mais ça devrait être quasi-pareil sous Linux et windows) :
 ![vsc-depart](premier-projet.png)
 
 Nous venons de créer un nouveau projet, que vscode appelle un [workspace](https://code.visualstudio.com/docs/editor/workspaces#_how-do-i-open-a-vs-code-workspace).
@@ -71,13 +71,13 @@ Un *workspace* est un endroit pour lequel on peut avoir ses propres préférence
 
 La barre d'activité de la fenêtre vscode (les icônes sur la gauche de la fenêtre), vous permet de choisir une icône qui correspond (de haut en bas) :
 
-* aux fichiers et sous-dossiers de votre workspace (pour l'instant il n'y a rien)
-* à une recherche de texte dans votre projet
-* à la gestion des sources
-* au débogage
-* à la gestion des extensions de vscode
-* à la gestion des comptes
-* aux préférences de vscode
+- aux fichiers et sous-dossiers de votre workspace (pour l'instant il n'y a rien)
+- à une recherche de texte dans votre projet
+- à la gestion des sources
+- au débogage
+- à la gestion des extensions de vscode
+- à la gestion des comptes
+- aux préférences de vscode
 
 {% info %}
 Les différentes parties de l'interface de la fenêtre vscode sont expliquées [dans la doc](https://code.visualstudio.com/docs/getstarted/userinterface).
@@ -100,11 +100,11 @@ Vscode à compris que c'était du texte, il l'écrit dans la barre de statut (la
 {% note %}
 La barre de statut est très utile, elle regroupe plein d'infos relative au fichier courant :
 
-* où on est : Ln 1; Col 1
-* l'[encodage des caractères](https://www.w3.org/International/questions/qa-what-is-encoding.fr) : [UTF-8](https://fr.wikipedia.org/wiki/UTF-8). Vous ne **devez jamais** avoir autre chose lorsque vous écrivez du texte.
-* l'[encodage des fin de ligne](https://fr.wikipedia.org/wiki/Fin_de_ligne) : LF (sous unix/mac) ou CRLF (sous windows). On ne s'en occupe pas trop, vscode gère tout ça pour nous
-* le langage : ici texte brut
-* d'autres trucs selon les extensions que vous avez ajouté.
+- où on est : Ln 1; Col 1
+- l'[encodage des caractères](https://www.w3.org/International/questions/qa-what-is-encoding.fr) : [UTF-8](https://fr.wikipedia.org/wiki/UTF-8). Vous ne **devez jamais** avoir autre chose lorsque vous écrivez du texte.
+- l'[encodage des fin de ligne](https://fr.wikipedia.org/wiki/Fin_de_ligne) : LF (sous unix/mac) ou CRLF (sous windows). On ne s'en occupe pas trop, vscode gère tout ça pour nous
+- le langage : ici texte brut
+- d'autres trucs selon les extensions que vous avez ajouté.
 {% endnote %}
 
 ### Créer et sauver des fichiers
@@ -177,8 +177,8 @@ Taper *>spell* dans la palette de commande. Toutes les commandes commençant par
 
 La [documentation de vscode sur les paramètres](https://code.visualstudio.com/docs/getstarted/settings) est très bien faite. On retiendra que l'on peut modifier les paramètres de deux façons :
 
-* par "Utilisateur" (*user*), ce sera les valeurs par défaut des paramètres
-* par "Espace de travail" (*workspace*), spécifiques au projet courant
+- par "Utilisateur" (*user*), ce sera les valeurs par défaut des paramètres
+- par "Espace de travail" (*workspace*), spécifiques au projet courant
 
 {% note %}
 Par défaut, modifiez les paramètres "Utilisateur".
@@ -196,11 +196,11 @@ Allez dans les préférences de vscode : *icône engrenage (en bas à gauche de 
 
 Un onglet nommé *Paramètre* s'ouvre Il contient :
 
-* une barre de recherche
-* deux panels : *Utilisateur* et *Espace de travail*. Par défaut, on est positionné sur *Utilisateur* (c'est en sur-brillance).
+- une barre de recherche
+- deux panels : *Utilisateur* et *Espace de travail*. Par défaut, on est positionné sur *Utilisateur* (c'est en sur-brillance).
 
 {% faire %}
-Dans le panel *Utilisateur* choisissez *Editeur de texte > Fichiers* puis cherchez *Auto Save*.
+Dans le panel *Utilisateur* choisissez *Éditeur de texte > Fichiers* puis cherchez *Auto Save*.
 {% endfaire %}
 
 On peut ensuite régler ce paramètre :
