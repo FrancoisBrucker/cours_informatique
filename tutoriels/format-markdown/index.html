@@ -142,10 +142,10 @@ Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte édita
 
 ### style
 
-* peut écrire en *italique*
-* ou en **gras**
-* du `code` 
-* des équations latex comme $2 \pi + \frac{1}{2}$
+- peut écrire en *italique*
+- ou en **gras**
+- du `code` 
+- des équations latex comme $2 \pi + \frac{1}{2}$
 
 ### bloc
 
@@ -184,7 +184,7 @@ On peut aussi écrire des blocs de code, comme :
 <ul>
 <li>
 <p><a href="https://www.markdownguide.org/extended-syntax/#fenced-code-blocks">code</a>. Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage <code>python</code> lorsque j'écris un algorithme en python) :</p>
-<p>```python<br>
+<p>```<br>
 print(&quot;coucou !&quot;)<br>
 ```</p>
 </li>
@@ -202,8 +202,8 @@ print(&quot;coucou !&quot;)<br>
 <ul>
 <li>
 <p><a href="https://www.markdownguide.org/basic-syntax/#unordered-lists">non ordonnées</a>. Chaque item peut commencer par un <code>*</code>, un <code>-</code> ou encore un <code>+</code>. Choisissez en un et tenez vous y dans tout le document :</p>
-<p>* premier élément<br>
-* deuxième élément</p>
+<p>- premier élément<br>
+- deuxième élément</p>
 </li>
 <li>
 <p><a href="https://www.markdownguide.org/basic-syntax/#ordered-lists">ordonnées</a></p>
@@ -257,6 +257,31 @@ print(&quot;coucou !&quot;)<br>
 <p>Il existe des extensions de markdown, comme <a href="https://spec.commonmark.org/">commonMark</a> utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.</p>
 </div>
 </div>
+<h2>Code</h2>
+<p>Il y a deux façon d'écrire du code en markdown :</p>
+<ul>
+<li>en mettant le caractère &quot;`&quot; avant et après le code :<code>print(&quot;du code&quot;)</code>. Le code écrit de cette façon s'insère dans la phrase</li>
+<li>en mode bloc en commençant et en finissant le bloc par une ligne &quot;```&quot;.</li>
+</ul>
+<p>En mode bloc, le texte suivant :</p>
+<p>```<br>
+for l in &quot;MPCI&quot;:<br>
+print(&quot;Donnez moi un :&quot;, l, &quot;!&quot;)<br>
+```</p>
+<p>S'affiche :</p>
+<pre><code>for l in &quot;MPCI&quot;:
+    print(&quot;Donnez moi un :&quot;, l, &quot;!&quot;)
+</code></pre>
+<p>On a l'habitude de préciser le langage de programmation utilisé. On écrira donc :</p>
+<p>```python<br>
+for l in &quot;MPCI&quot;:<br>
+print(&quot;Donnez moi un :&quot;, l, &quot;!&quot;)<br>
+```</p>
+<p>Qui, selon le compilateur markdown utilisé, pourra être affiché/compilé avec la coloration syntaxique :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> l <span class="token keyword">in</span> <span class="token string">"MPCI"</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Donnez moi un :"</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Préférez toujours cette dernière façon d'écrire du code. C'est plus clair à la lecture et plus joli à la compilation</p>
 <h2>Formules mathématiques</h2>
 <p>Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.</p>
 <h3><span id="latex"></span> Formules en Latex</h3>
