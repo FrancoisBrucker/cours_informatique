@@ -45,10 +45,10 @@ Le [Markdown](https://fr.wikipedia.org/wiki/Markdown) est un format texte édita
 
 ### style
 
-* peut écrire en *italique*
-* ou en **gras**
-* du `code` 
-* des équations latex comme $2 \pi + \frac{1}{2}$
+- peut écrire en *italique*
+- ou en **gras**
+- du `code` 
+- des équations latex comme $2 \pi + \frac{1}{2}$
 
 ### bloc
 
@@ -83,12 +83,12 @@ Un saut de ligne est nécessaire pour commencer un nouveau paragraphe. Aller à 
 
 Dans le flot du texte, on peut mettre en exergue des parties de texte :
 
-* *en italique* : `*texte*`{.language-}
-* **en gras** : `**texte**`{.language-}
-* ***en gras et en italique*** : `***texte***`{.language-}
-* ~~barré~~ : `~~texte~~`{.language-}
-* `code` : `` `texte` ``{.language-}
-* équations : `$\LaTeX$`{.language-}
+- *en italique* : `*texte*`{.language-}
+- **en gras** : `**texte**`{.language-}
+- ***en gras et en italique*** : `***texte***`{.language-}
+- ~~barré~~ : `~~texte~~`{.language-}
+- `code` : `` `texte` ``{.language-}
+- équations : `$\LaTeX$`{.language-}
 
 #### Style bloc
 
@@ -96,17 +96,17 @@ En markdown, un bloc commence et finit par une ligne vide.
 
 Plusieurs symboles peuvent être utilisées :
 
-* [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage `python` lorsque j'écris un algorithme en python) :
+- [code](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks). Mettez le langage utilisé pour activer la coloration syntaxique (par défaut, je mets comme langage `python` lorsque j'écris un algorithme en python) :
 
-    \`\`\`python
+    \`\`\`
     print("coucou !")
     \`\`\`
 
-* [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1) :
+- [remarques](https://www.markdownguide.org/basic-syntax/#blockquotes-1) :
 
     \> Pierre qui roule n'amasse pas mousse.
 
-* [latex](./#latex){.interne} :
+- [latex](./#latex){.interne} :
 
     \\$\\$ \\\frac\{1\}\{2\} \\$\\$
 
@@ -114,12 +114,12 @@ Plusieurs symboles peuvent être utilisées :
 
 Comme chaque bloc, les listes commencent et finissent toujours par une ligne vide. Il y a deux types de listes :
 
-* [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut commencer par un `*`, un `-` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document :
+- [non ordonnées](https://www.markdownguide.org/basic-syntax/#unordered-lists). Chaque item peut commencer par un `*`, un `-` ou encore un `+`. Choisissez en un et tenez vous y dans tout le document :
 
-    \* premier élément
-    \* deuxième élément
+    \- premier élément
+    \- deuxième élément
 
-* [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
+- [ordonnées](https://www.markdownguide.org/basic-syntax/#ordered-lists)
 
     1. on met le bon numéro
     2. on met le bon numéro
@@ -128,8 +128,8 @@ Comme chaque bloc, les listes commencent et finissent toujours par une ligne vid
 
 Il y a plusieurs possibilités :
 
-* via un nom : `[nom](lien)`{.language-}. Par exemple `[LMGTFY](https://www.google.fr)`{.language-} qui se compile en : [LMGTFY](https://www.google.fr)
-* lien direct : `<https://www.google.fr>`{.language-} qui se compile en : <https://www.google.fr>.
+- via un nom : `[nom](lien)`{.language-}. Par exemple `[LMGTFY](https://www.google.fr)`{.language-} qui se compile en : [LMGTFY](https://www.google.fr)
+- lien direct : `<https://www.google.fr>`{.language-} qui se compile en : <https://www.google.fr>.
 
 On utilise les liens pour les images, il suffit de rajouter un `!` avant. Par exemple `![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)`{.language-} qui se compile en : ![ada lovelace](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ada_lovelace.jpg)
 
@@ -155,6 +155,43 @@ En markdown un tableau a forcément des noms de colonnes. Les deux premières li
 Il existe des extensions de markdown, comme [commonMark](https://spec.commonmark.org/) utilisé pour ce site. qui permettent de faire beaucoup plus de choses avec des tableaux.
 {% endinfo %}
 
+## Code
+
+Il y a deux façon d'écrire du code en markdown :
+
+- en mettant le caractère "\`" avant et après le code :``print("du code")``. Le code écrit de cette façon s'insère dans la phrase
+- en mode bloc en commençant et en finissant le bloc par une ligne "\`\`\`".
+
+En mode bloc, le texte suivant :
+
+\`\`\`
+for l in "MPCI":
+    print("Donnez moi un :", l, "!")
+\`\`\`
+
+S'affiche :
+
+```
+for l in "MPCI":
+    print("Donnez moi un :", l, "!")
+```
+
+On a l'habitude de préciser le langage de programmation utilisé. On écrira donc :
+
+\`\`\`python
+for l in "MPCI":
+    print("Donnez moi un :", l, "!")
+\`\`\`
+
+Qui, selon le compilateur markdown utilisé, pourra être affiché/compilé avec la coloration syntaxique :
+
+```python
+for l in "MPCI":
+    print("Donnez moi un :", l, "!")
+```
+
+Préférez toujours cette dernière façon d'écrire du code. C'est plus clair à la lecture et plus joli à la compilation
+
 ## Formules mathématiques
 
 Lorsque l'on écrit des textes scientifiques, vient inévitablement la question de l'écriture des équations.
@@ -177,15 +214,15 @@ $$
 
 Quelques aides :
 
-* Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibilités
-* un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
+- Un [résumé](http://tug.ctan.org/info/undergradmath/undergradmath.pdf) des possibilités
+- un [tuto](https://www.science-emergence.com/Articles/Formules-math%C3%A9matiques-sous-LaTeX/) Latex contenant aussi des instructions pour les équations.
 
 ### Formules en markdown
 
 On peut écrire en markdown les équations latex.
 
-* pour une équation dans le texte, on dit *inline* on entoure notre équation  par des `$`{.language-}
-* pour équation au milieu de la page, on dit *display*, on entoure notre équation par des `$$`{.language-} et on saute une ligne avant et après les `$$`{.language-}. comme dans l'exemple ci-après.
+- pour une équation dans le texte, on dit *inline* on entoure notre équation  par des `$`{.language-}
+- pour équation au milieu de la page, on dit *display*, on entoure notre équation par des `$$`{.language-} et on saute une ligne avant et après les `$$`{.language-}. comme dans l'exemple ci-après.
 
 Equation en mode inline :
 
@@ -213,14 +250,14 @@ Lorsque vous faites de l'exportation en html, les mathématiques sont représent
 
 ### Guides
 
-* base markdown et latex : <https://ashki23.github.io/markdown-latex.html>
-* base markdown : <https://www.markdownguide.org/> par exemple
-* [Mathjax et latex](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
+- base markdown et latex : <https://ashki23.github.io/markdown-latex.html>
+- base markdown : <https://www.markdownguide.org/> par exemple
+- [Mathjax et latex](https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference)
 
 ### Variantes de markdown
 
 Le format markdown est basique. Il possède plein de variantes qui permettent d'étendre ses possibilités. Deux d'entre elles sont devenus des standard de fait :
 
-* [commonMark](https://spec.commonmark.org/) utilisé pour ce site.
-* [github flavored markdown](https://guides.github.com/features/mastering-markdown/).
-* [kramdown](https://kramdown.gettalong.org/documentation.html).
+- [commonMark](https://spec.commonmark.org/) utilisé pour ce site.
+- [github flavored markdown](https://guides.github.com/features/mastering-markdown/).
+- [kramdown](https://kramdown.gettalong.org/documentation.html).
