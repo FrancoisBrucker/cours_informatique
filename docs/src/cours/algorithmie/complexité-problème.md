@@ -252,13 +252,13 @@ On a alors la propriété suivante :
 Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$
 {% endnote %}
 
-Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité supérieure à à $\mathcal{O}(\ln(n + 1)) = \mathcal{O}(\ln(n))$ opérations.
+Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 
 Au final, le problème de la *"recherche ordonnée"* pour un tableau à $n$ éléments :
 
-- une borne minimale de complexité égal à $\mathcal{O}(\ln(n))$
+- une borne minimale de complexité égal à $\Omega(\ln(n))$
 - la complexité de l'algorithme `recherche_dichotomique`{.language-} est en $\mathcal{O}(\ln(n))$
 
 {% note "**Proposition**" %}
-La complexité du problème de la *"recherche ordonnée"* est en $\mathcal{O}(\ln(n))$ où $n$ est la taille du tableau.
+La complexité du problème de la *"recherche ordonnée"* est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.
 {% endnote %}
