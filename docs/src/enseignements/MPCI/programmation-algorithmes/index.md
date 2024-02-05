@@ -13,10 +13,6 @@ eleventyComputed:
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 
-  prerequis:
-    - /cours/utiliser-python/
-    - https://ametice.univ-amu.fr/course/view.php?id=97114
-
 ---
 
 Ce cours intitulé *Programmation et algorithmes* est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=119143)). Il s'appuie sur le  cours de *Programmation* donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=113169)).
@@ -67,7 +63,7 @@ Le cours est disponible via le site d'AMeTICE et en suivant les liens de chaque 
 
 Ce cours est composée de plusieurs parties :
 
-- Notion d'Algorithmie
+- Notion d'algorithmie
 - Complexité d'un complexité
 - Structures de données
 - Programmation objet
