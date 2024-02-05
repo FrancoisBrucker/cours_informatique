@@ -165,10 +165,10 @@
 <h2>Opérations sur les conteneurs</h2>
 <p>On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.</p>
 <p>Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $K$ objets est usuellement de complexité en $\mathcal{O}(K)$.</p>
-<p>Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. COmme dans le cas suivant :</p>
+<p>Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 </code></pre>
-<p>Mais si $K$ n'est pas ue constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :</p>
+<p>Mais si $K$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">duplique</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 </code></pre>

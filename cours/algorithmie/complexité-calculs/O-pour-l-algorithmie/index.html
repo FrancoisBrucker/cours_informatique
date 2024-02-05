@@ -206,7 +206,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <li>$\sum_{i=0}^na_i x^i = \mathcal{O}(\sum_{i=0}^na_i x^i)$</li>
 <li>la règle des constantes multiplicative liée à la règle des polynômes montre que $\mathcal{O}(a_ix^i) = \mathcal{O}(a_jx^j)$ pour tout $i \leq j$.</li>
 <li>on peut alors appliquer itérativement la règle des sommes négligeables pour montrer que $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(\sum_{i=j}^na_i x^i)$ pour tout $j \leq n$</li>
-<li>pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(x^n)$</li>
+<li>pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(a_nx^n) = \mathcal{O}(x^n)$</li>
 <li>Donc $\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)$</li>
 </ol>
 </div>
@@ -234,7 +234,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
 <h2>Usage de $\Omega$ et $\Theta$</h2>
 <p>On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.</p>
-<p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me">problèmes algorithmiques</a> ou il faudra comparer plusieurs algorithmes entre eux.</p>
+<p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me" class="interne">problèmes algorithmiques</a> ou il faudra comparer plusieurs algorithmes entre eux.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Prenons par exemple l'algorithme suivant, écrit en python :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
