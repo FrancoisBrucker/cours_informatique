@@ -66,13 +66,13 @@ On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau
 
 Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $K$ objets est usuellement de complexité en $\mathcal{O}(K)$.
 
-Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. COmme dans le cas suivant :
+Si $K$ est une constante la complexité de création est bien $\mathcal{O}(1)$. Comme dans le cas suivant :
 
 ```python
 x = [1, 2, 3]
 ```
 
-Mais si $K$ n'est pas ue constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :
+Mais si $K$ n'est pas une constante, comme dans le cas ci-après, on ne peut plus assimiler $\mathcal{O}(K)$ à $\mathcal{O}(1)$ :
 
 ```python
 def duplique(x):

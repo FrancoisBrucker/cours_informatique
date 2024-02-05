@@ -52,6 +52,15 @@ $$
 
 Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.
 
+Exemple :
+
+```python
+total = 0
+de i = 1 à n - 1 faire:
+    total = total + 1
+Rendre total
+```
+
 En conclusion :
 
 {% note "**À retenir**"%}

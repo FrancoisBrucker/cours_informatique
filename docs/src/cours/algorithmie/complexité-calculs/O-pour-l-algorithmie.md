@@ -85,7 +85,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 1. $\sum_{i=0}^na_i x^i = \mathcal{O}(\sum_{i=0}^na_i x^i)$
 2. la règle des constantes multiplicative liée à la règle des polynômes montre que $\mathcal{O}(a_ix^i) = \mathcal{O}(a_jx^j)$ pour tout $i \leq j$.  
 3. on peut alors appliquer itérativement la règle des sommes négligeables pour montrer que $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(\sum_{i=j}^na_i x^i)$ pour tout $j \leq n$
-4. pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(x^n)$
+4. pour $j=n$ on a $\mathcal{O}(\sum_{i=0}^na_i x^i) \Rightarrow \mathcal{O}(a_nx^n) = \mathcal{O}(x^n)$
 5. Donc $\sum_{i=0}^na_i x^i = \mathcal{O}(x^n)$
 {% enddetails %}
 
@@ -110,7 +110,7 @@ Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(
 
 On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.
 
-En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de [problèmes algorithmiques](../../écrire-algorithmes/problème) ou il faudra comparer plusieurs algorithmes entre eux.
+En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de [problèmes algorithmiques](../../écrire-algorithmes/problème){.interne} ou il faudra comparer plusieurs algorithmes entre eux.
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
