@@ -88,7 +88,7 @@ Explicitez tous les sous-palindromes de la chaîne : $s = \text{"babba"}$
 
 1. Montrez que toute chaîne de caractères non vide admet un sous-palindrome.
 2. Montrez que toute chaîne de caractères de longueur supérieure ou égale à 3 composée d'au plus 2 caractères différents admet un sous-palindrome de longueur supérieure ou égale 2.
-3. Montrez que pour tout $n>1$ et tout $m>2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.
+3. Montrez que pour tous $n\geq m>2$, il existe une chaîne de caractères de longueur $n$ et de $m$ caractères différents ne contenant aucun sous-palindrome de longueur strictement supérieure à 1.
 
 {% endfaire %}
 
