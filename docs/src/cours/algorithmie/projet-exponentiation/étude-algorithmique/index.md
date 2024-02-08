@@ -641,7 +641,7 @@ Terminons cette partie en montrant que la longueur minimale d'une suite multipli
 En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
-Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le nombre $b // 2^i$ est impair si $b_i = 1$.
+Un nombre est impair si le premier bit de sa représentation binaire vaut 1. Le nombre $b // 2^i$ est impair si $b_i = 1$.
 
 On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur `c`{.language-} vaut soit :
 
@@ -660,7 +660,7 @@ $$
 avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
 {% endexercice %}
 {% details "solution" %}
-Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.
+Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajoutés à chaque fois que le compteur est impair.
 {% enddetails %}
 
 En notant $l(n)$ la taille minimale d'une suite calculant $x^n$, on a alors :
