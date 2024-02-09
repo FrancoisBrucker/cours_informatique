@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title:  "sujet Test 1 : code"
+title:  "sujet Test 2 : preuve"
 authors:
     - François Brucker
 ---

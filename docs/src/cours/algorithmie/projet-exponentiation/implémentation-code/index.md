@@ -61,7 +61,6 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
   - vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
-  - vérifiez que les cas particuliers avec l'exposant et/ou nombre valant 1 fonctionnent
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
@@ -75,7 +74,7 @@ Organisation des tests :
 
 - un fichier de test par fichier de code. Chaque fichier de test sea nommé : `test_[nom du fichier de code].py`{.fichier} où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
 - chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
-- un unique `assert`{.language-} par fonction de test : on ne doit tester qu'**une seule chose** par test
+- un test doit tester **une unique chose**. On peut se permettre d'avoir plusieurs `assert`{.language-} par fonction de test du moment que ce qu'on test peut être qualifié.
 
 {% endnote %}
 
