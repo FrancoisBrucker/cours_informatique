@@ -2,6 +2,11 @@
 layout: layout/post.njk 
 title: Projet exponentiation
 
+eleventyNavigation:
+  prerequis:
+    - /cours/coder-et-développer/bases-python/
+    - /cours/coder-et-développer/développement/
+    
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -10,7 +15,8 @@ eleventyComputed:
 ---
 
 
-On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement.
+On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.
+
 
 ## Mise en place
 
@@ -38,18 +44,20 @@ On se force, jusqu'à que cela devienne un automatisme, à écrire du code styl�
 
 ### Bibliothèques
 
-Nous aurons besoin d'utiliser deux bibliothèques ([matplotlib](https://matplotlib.org/) pour l'affichage des courbes de complexité et [pytest](https://docs.pytest.org/en/6.2.x/) por nos tests). Gérer les bibliothèques python se fait avec l'utilitaire pip que l'on utilise pour interpréteur donné comme ça : `python -m pip`.
+En plus de [pytest](https://docs.pytest.org/en/6.2.x/) pour les tests, nous aurons besoin d'utiliser la bibliothèque [Matplotlib](https://matplotlib.org/) pour l'affichage des courbes de complexité.
 
 {% faire %}
 Dans un terminal :
 
 1. vérifiez les bibliothèques déjà installées pour votre interpréteur : `python -m pip list` (remarquez bien qu'ici `list` est un paramètre de `pip` et non de `python`)
-2. si besoin installez [matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`) et [pytest](https://docs.pytest.org/en/6.2.x/) : `python -m pip install pytest`
+2. si besoin installez [Matplotlib](https://matplotlib.org/) (`python -m pip install matplotlib`)
 {% endfaire %}
 
-{% info %}
-L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. Retrouvez son nom exact en utilisant [le tutoriel vscode et python]({{ "/tutoriels/vsc-python#quel-python" }}){.interne}
-{% endinfo %}
+Utiliser cette bibliothèque ne s'improvise pas :
+
+{% faire %}
+Suivez le [tutoriel Matplotlib](/tutoriels/matplotlib){.interne}. Il est fait pour être utilisé avec un notebook, mais vous devriez pouvoir facilement convertir les exemples pour pouvoir les utiliser dans un fichier python normal.
+{% endfaire %}
 
 ## Le code
 
@@ -60,9 +68,9 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 - dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
-  - vérifiez qu'un cas général est ok (comme $2^3$ par exemple)
+  - vérifiez qu'un cas général est correct (comme $2^3$ par exemple)
 
-Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
+Vérifier que vos tests se lancent bien dans le terminal.
 
 {% endfaire %}
 
@@ -74,7 +82,7 @@ Organisation des tests :
 
 - un fichier de test par fichier de code. Chaque fichier de test sea nommé : `test_[nom du fichier de code].py`{.fichier} où *[nom du fichier de code]* sera le nom du fichier (ne mettez pas les *[]*)
 - chaque test sera nommé en 3 parties : `test_[nom de la fonction_testée]_[ce que l'on teste]`{.language-} où `[nom de la fonction_testée]`{.language-} est le nom de la fonction testée (ne mettez pas les `[]`) et `[ce que l'on teste]`{.language-} une description succincte (en 1 ou 2 mots max) de ce que l'on teste.
-- un test doit tester **une unique chose**. On peut se permettre d'avoir plusieurs `assert`{.language-} par fonction de test du moment que ce qu'on test peut être qualifié.
+- un test doit tester **une unique chose**. On peut se permettre d'avoir plusieurs `assert`{.language-} par fonction de test du moment que ce qu'on test peut être qualifié par un nom précis (la partie `[ce que l'on teste]`{.language-} du nom de la fonction de test)
 
 {% endnote %}
 
@@ -85,7 +93,7 @@ Organisation des tests :
 - dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`{.language-}
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
 
-Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
+Vérifier que vos tests se lancent bien dans le terminal.
 
 {% endfaire %}
 
@@ -150,7 +158,7 @@ print("Temps d'attente :", delta)
 On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.
 {% endinfo %}
 
-Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter) qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (youtube, instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
+Le code précédent utilise une fonction du module [`time`{.language-}](https://docs.python.org/fr/3/library/time.html) : [`perf_counter`{.language-}](https://docs.python.org/3/library/time.html#time.perf_counter) qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (Youtube, Instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)
 
 {% faire %}
 
@@ -160,8 +168,9 @@ Le code précédent utilise une fonction du module [`time`{.language-}](https://
    - le minimum maximum de calcul
    - le temps moyen de calcul
 
-Conclusion ?
 {% endfaire %}
+
+Voua devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.
 
 ### Expérimentations
 
@@ -169,7 +178,7 @@ Conclusion ?
 
 {% faire %}
 
-Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande à l'utilisateur un exposant $y$. Ce programme donne ensuite le temps mis pour exécuter $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
+Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite le temps mis pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.
 
 {% endfaire %}
 
@@ -177,9 +186,8 @@ Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande 
 
 {% faire %}
 
-Trouver $K$ tel que $n = 2^K$ soit la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^n$ dure plus de 1 seconde.
+Créer dans un fichier nommé `main_temps.py`{.fichier} un programme permettant de trouver $K$ tel que $n = 2^K$ soit la première puissance de 2 pour laquelle le temps mis pour exécuter l’exponentiation naïve de $3^n$ dure plus de 1 seconde.
 
-Vous pourrez crê® votre programme dans un fichier nommé `main_temps.py`{.fichier}
 
 {% endfaire %}
 {% info %}
@@ -209,16 +217,18 @@ while delta < temps:
 
 #### <span id="mesure-temps"></span> Liste de temps
 
-On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $2^0=1$ à $2^K$ (avec le $K$ calculé dans la partie précédente). Commençons par créer un tableau d'exposants à calculer :
+On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $2^0=1$ à $2^K$ (avec le $K$ calculé dans la partie précédente). Ceci nous permettra d'avoir quelques points de contrôles espacés dans le temps et nécessitant chacun peu de temps de calcul (moins d'une seconde pour chaque mesure).
+
+Commençons par créer les points de contrôles sous la forme d'un tableau d'exposants à calculer :
 
 {% faire %}
 Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec la valeur de $K$ calculée précédemment).
 {% endfaire %}
 
-Puis calculons le temps pris pour calculer $3^{\text{exposant}[i]}$, pour $0 \leq i \leq k$ :
+Puis mesurons le temps pris pour calculer $3^{\text{exposant}[i]}$, pour $0 \leq i \leq K$ :
 
 {% faire %}
-Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez deux nouvelles listes :
+Ajoutez au programme du fichier `temps_exponentiation.py`{.fichier} deux nouvelles listes :
 
 - la liste `mesures_temps_naif`{.language-} de taille $K+1$ telle que `mesures_temps_naif[i]`{.language-} corresponde au temps mis pour exécuter la fonction calculer `puissance_naif(3, exposant[i])`{.language-}
 - la liste `mesures_temps_rapide`{.language-}corresponde au temps mis pour exécuter la fonction calculer `puissance_rapide(3, exposant[i])`{.language-}
@@ -227,16 +237,13 @@ Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez 
 La complexité de l'algorithme naif doit être linéaire et celui de l'algorithme rapide logarithmique, donc :
 
 {% faire %}
-Vérifiez que le rapport `mesures_temps_naif[i] / mesures_temps_rapide[i]`{.language-} augmente lorsque $i$ augmente.
+Vérifiez que le rapport `mesures_temps_naif[i] / mesures_temps_rapide[i]`{.language-} augmente lorsque $i$ augmente (il doit tendre vers l'infini).
 {% endfaire %}
 
 ## Graphique de la complexité temporelle
 
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
-{% faire %}
-Suivez le [tutoriel Matplotlib](/tutoriels/matplotlib){.interne} pour comprendre mieux comment fonctionne cette bibliothèque.
-{% endfaire %}
 
 ### Temps naïf
 
@@ -283,7 +290,7 @@ Vous pourrez également changer la couleur d'un des dessins en remplaçant le pa
 
 {% endfaire %}
 
-Terminons cette introduction à matplotlib et remarquant que comme l'on multiplie par 2 car abscisse, il pourrait être utile d'utiliser une échelle logarithmique pour l'axe des abscisses.
+Terminons cette partie en remarquant que  comme l'on multiplie l'exposant par 2 à chaque pas (de $2^0$ à $2^K$), il pourrait être utile d'utiliser une échelle logarithmique pour l'axe des abscisses pour espacer régulièrement chaque pas.
 
 {% faire %}
 Ajoutez la ligne `plt.xscale('log')`{.language-} à votre graphique pour obtenir une échelle logarithmique. Vos points se retrouveront espacés du même espace.
