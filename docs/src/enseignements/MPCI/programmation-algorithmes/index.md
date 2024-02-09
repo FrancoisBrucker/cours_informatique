@@ -188,7 +188,7 @@ Parties abordées dans le cours :
 
 {% aller %}
 
-1. [Complexité en moyenne](/cours/algorithmie/complexité_moyenne){.interne}
+1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne){.interne}
 2. [Problème du tri et algorithmes pour le résoudre](/cours/algorithmie/problème-tris){.interne}
 {% endaller %}
 
@@ -212,3 +212,5 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 ## Annales
 
 Les [annales des tests et contrôles](./annales){.interne} de ce cours
+
+

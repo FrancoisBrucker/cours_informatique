@@ -60,7 +60,7 @@ L'interpréteur python utilisé par vscode n'est pas forcément juste `python`. 
 - dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
-  - vérifiez qu'un cas général est ok (comme $2^4$ par exemple)
+  - vérifiez qu'un cas général est ok (comme $2^3$ par exemple)
 
 Vérifier que vos tests se lancent bien avec l'erlenmeyer et dans le terminal.
 
@@ -177,28 +177,31 @@ Créer un programme principal (dans le fichier `main.py`{.fichier}) qui demande 
 
 {% faire %}
 
-Créer un programme principal (dans le fichier `main_temps.py`{.fichier}) qui demande à l'utilisateur un temps en secondes $s$. Ce programme donne ensuite l'entier $y=2^k$ qui est la première puissance de 2 dont le temps mis pour exécuter $3^y$ avec l'algorithme naïf est supérieur à $s$, puis affiche le temps d'exécution du calcul de $3^y$ avec l'algorithme naïf et avec l'algorithme rapide.
+Trouver $K$ tel que $n = 2^K$ soit la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^n$ dure plus de 1 seconde.
+
+Vous pourrez crê® votre programme dans un fichier nommé `main_temps.py`{.fichier}
 
 {% endfaire %}
+{% info %}
+On trouve que $K$ vaut de l'ordre de 20.
+{% endinfo %}
 {% details "solution" %}
 
 ```python
-y = 1
+temps = 1
 
-t1 = time.perf_counter()
-puissance_naif(3, y)
-t2 = time.perf_counter()
-
-delta = t2 - t1
+delta = 0 # valeur par défaut pour rentrer dans la boucle while
+K = 0
+n = 1
 
 while delta < temps:
-    y *= 2
-
     t1 = time.perf_counter()
-    puissance_naif(3, y)
+    puissance_naif(3, n)
     t2 = time.perf_counter()
 
     delta = t2 - t1
+    K += 1
+    n *= 2
 
 ```
 
@@ -206,28 +209,36 @@ while delta < temps:
 
 #### <span id="mesure-temps"></span> Liste de temps
 
+On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $2^0=1$ à $2^K$ (avec le $K$ calculé dans la partie précédente). Commençons par créer un tableau d'exposants à calculer :
+
 {% faire %}
-Trouver $2^K$ la première puissance de 2 tel que le temps mis pour exécuter l’exponentiation naïve de $3^y$ dure plus de 1 seconde.
+Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec la valeur de $K$ calculée précédemment).
 {% endfaire %}
 
-{% faire %}
-Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez trois listes :
+Puis calculons le temps pris pour calculer $3^{\text{exposant}[i]}$, pour $0 \leq i \leq k$ :
 
-- la liste `exposant`{.language-} valant $[1, 2, 2^2, \dots, 2^K]$ (avec $K$ calculé précédemment)
-- la liste `temps_naif`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-}
-- la liste `temps_rapide`{.language-} dont la valeur à l'indice $i$ correspond au temps mis pour calculer `puissance_rapide(3, exposant[i])`{.language-}
+{% faire %}
+Créez un fichier `temps_exponentiation.py`{.fichier} dans lequel vous créerez deux nouvelles listes :
+
+- la liste `mesures_temps_naif`{.language-} de taille $K+1$ telle que `mesures_temps_naif[i]`{.language-} corresponde au temps mis pour exécuter la fonction calculer `puissance_naif(3, exposant[i])`{.language-}
+- la liste `mesures_temps_rapide`{.language-}corresponde au temps mis pour exécuter la fonction calculer `puissance_rapide(3, exposant[i])`{.language-}
 {% endfaire %}
 
-{% faire %}
-Vérifiez que le rapport `temps_naif[i] / temps_rapide[i]`{.language-} tend vers l'infini lorsque $y$ augmente.
+La complexité de l'algorithme naif doit être linéaire et celui de l'algorithme rapide logarithmique, donc :
 
+{% faire %}
+Vérifiez que le rapport `mesures_temps_naif[i] / mesures_temps_rapide[i]`{.language-} augmente lorsque $i$ augmente.
 {% endfaire %}
 
 ## Graphique de la complexité temporelle
 
 On veut maintenant voir l'évolution de la complexité selon la taille de l'exposant. On va pour cela représenter graphiquement cette évolution en utilisant [matplotlib](https://matplotlib.org/).
 
-### temps naïf
+{% faire %}
+Suivez le [tutoriel Matplotlib](/tutoriels/matplotlib){.interne} pour comprendre mieux comment fonctionne cette bibliothèque.
+{% endfaire %}
+
+### Temps naïf
 
 {% faire %}
 Ajoutez le code suivant au code du fichier `temps_exponentiation.py`{.fichier} pour afficher le temps mis pour afficher le temps mis pour calculer `puissance_naif(3, exposant[i])`{.language-} en fonction de `exposant[i]`{.language-}.
@@ -236,14 +247,15 @@ Est-ce conforme à ce qui était attendu ?
 {% endfaire %}
 
 ```python
+import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(20, 5))
 
 ax.set_title("complexités temporelles")
-ax.set_xlabel('y')
-ax.set_ylabel('temps')
+ax.set_xlabel("valeur de l'exposant")
+ax.set_ylabel("temps de calcul")
 
-ax.plot(exposant, temps_naif, 'o-')
+ax.plot(exposant, mesures_temps_naif, 'o-')
 
 plt.show()
 ```

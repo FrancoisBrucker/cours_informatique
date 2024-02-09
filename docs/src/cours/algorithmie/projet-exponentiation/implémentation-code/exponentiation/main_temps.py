@@ -18,33 +18,29 @@ while not correct:
         print("ce n'est pas un réel positif. Essayez encore une fois.")
 
 
-y = 1
-
-t1 = time.perf_counter()
-puissance_naif(3, y)
-t2 = time.perf_counter()
-
-delta = t2 - t1
+delta = 0
+K = 0
+n = 1
 
 while delta < temps:
-    y *= 2
-
     t1 = time.perf_counter()
-    puissance_naif(3, y)
+    puissance_naif(3, n)
     t2 = time.perf_counter()
 
     delta = t2 - t1
+    K += 1
+    n *= 2
 
 
-print("pour exécuter puissance_naif(3, y) en ", temps, "secondes, il faut y = ", y)
+print("pour exécuter puissance_naif(3, y) en ", temps, "secondes, il faut K = ", K)
 
 t1 = time.perf_counter()
-puissance_naif(3, y)
+puissance_naif(3, 2 ** K)
 t2 = time.perf_counter()
 
 delta = t2 - t1
 
-print("Temps mis pour exécuter puissance_naif(3,", y, ") est", delta, "secondes")
+print("Temps mis pour exécuter puissance_naif(3, 2 ** ", K, ") est", delta, "secondes")
 
 t1 = time.perf_counter()
 puissance_rapide(3, temps)
