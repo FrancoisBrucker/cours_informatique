@@ -95,6 +95,91 @@
 <p>Vous avez 15min pour faire le test.</p>
 </div>
 </div>
+<h2>Rendu</h2>
+<p>On vous rappelle que toute fonction (hors du programme principal) doit être testée.</p>
+<h3>Type de rendu</h3>
+<p>Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si nécessaire). Commencez donc par créer un projet dans un dossier que vous appellerez <code class="fichier">test1</code>.</p>
+<h3>Éléments de notation</h3>
+<ol>
+<li>3 fichiers dans un projet :
+<ul>
+<li>le programme principal <code class="fichier">main.py</code>,</li>
+<li>les fonctions utilisées <code class="fichier">fonctions.py</code>,</li>
+<li>les tests des fonctions <code class="fichier">test_fonctions.py</code>.</li>
+</ul>
+</li>
+<li>Du joli code :
+<ul>
+<li>0 warning,</li>
+<li>le code doit être passé par black.</li>
+</ul>
+</li>
+<li>Bons noms :
+<ul>
+<li>de fichiers,</li>
+<li>de variables.</li>
+</ul>
+</li>
+<li>Tests unitaires : toute fonction non testée ne sera pas corrigée.</li>
+</ol>
+<h2>1. Création du programme principal</h2>
+<p>Créer le fichier <code class="fichier">main.py</code> qui va contenir le programme principal. Celui-ci consistera à :</p>
+<ol>
+<li>Demander à l'utilisateur une chaîne de caractères que l'on nommera <code class="language-">chaine_entrée</code> (en utilisant <a href="https://docs.python.org/fr/3/library/functions.html#input">la fonction <code class="language-">input([prompt: str]) -&gt; str</code></a>)</li>
+<li>Demander à l'utilisateur un caractère que l'on nommera <code class="language-">caractère_entrée</code> (vous ne ferez aucune vérification de type)</li>
+<li>Afficher
+<ol>
+<li>Le plus petit indice (ou -1) de <code class="language-">chaine_entrée</code> valant <code class="language-">caractère_entrée</code> (vous pourrez utiliser <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.find">la méthode <code class="language-">find</code></a> des chaines de caractères)</li>
+</ol>
+</li>
+<li>Retour en 1., à part si <code class="language-">chaîne_entrée</code> valait <code class="language-">&quot;sortie&quot;</code></li>
+</ol>
+<h2>2. Prochain indice</h2>
+<h3>Fonction <code class="language-">donne_prochain_indice(chaine:str, indice:int) -&gt; int</code></h3>
+<p>Créer la fonction <code class="language-">donne_prochain_indice(chaine:str, indice:int) -&gt; int</code> qui rend :</p>
+<ul>
+<li>Le plus petit indice $j$ strictement plus grand que le paramètre <code class="language-">indice</code> tel que <code class="language-">chaine[j] == chaine[indice]</code>,</li>
+<li><code class="language-">None</code> si cet indice n'existe pas.</li>
+</ul>
+<h3>Tests de <code class="language-">donne_prochain_indice(chaine:str, indice:int) -&gt; int</code></h3>
+<p>Vous pourrez tester que :</p>
+<ul>
+<li><code class="language-">donne_prochain_indice(&quot;bxaaxaaaxax, 4)</code> rende 8</li>
+<li><code class="language-">donne_prochain_indice(&quot;bxaaxaaaxax, 0)</code> rende <code class="language-">None</code></li>
+</ul>
+<h3>Programme principal</h3>
+<p>Ajouter à la partie afficher du programme principal :</p>
+<ol start="2">
+<li>Afficher<br>
+2. Si <code class="language-">caractère_entrée</code> est présent plus d'une fois dans <code class="language-">chaine_entrée</code></li>
+</ol>
+<h2>3. Compte</h2>
+<h3>Fonction <code class="language-">compte_caractère(chaine: str, indice: int) -&gt; int</code></h3>
+<p>Créer la fonction <code class="language-">compte_caractère(chaine: str, caractère: str) -&gt; int</code> qui rend le nombre de fois où le paramètre <code class="language-">caractère</code> est présent dans le paramètre <code class="language-">chaine</code></p>
+<h3>Tests de <code class="language-">compte_caractère(chaine: str, indice: int) -&gt; int</code></h3>
+<p>Vous pourrez tester avec :</p>
+<ul>
+<li>Un caractère non présent dans la chaine</li>
+<li>Un caractère présent plusieurs fois dans la chaine</li>
+</ul>
+<h3>Programme principal</h3>
+<p>Ajouter à la partie afficher du programme principal :</p>
+<ol start="2">
+<li>Afficher<br>
+3. Le résultat de <code class="language-">compte_caractère(chaine_entrée, indice_caractère_entrée)</code> si <code class="language-">caractère_entrée</code> est dans <code class="language-">chaine_entrée</code> (<code class="language-">indice_caractère_entrée</code> est le premier indice où <code class="language-">caractère_entrée</code> est dans <code class="language-">chaine_entrée</code>)</li>
+</ol>
+<h2>4. Maximum</h2>
+<h3>Fonction <code class="language-">donne_max_doublon(chaine: str) -&gt; str</code></h3>
+<p>Créer la fonction  <code class="language-">donne_max_doublon(chaine: str) -&gt; str</code> qui rend le caractère de <code class="language-">chaine</code> apparaissant le plus de fois.</p>
+<h3>Tests</h3>
+<p>Vous pourrez tester avec une chaine admettant plusieurs caractères répétés un nombre différent de fois.</p>
+<h3>Programme principal</h3>
+<p>Ajouter dans le programme principal :</p>
+<ol start="2">
+<li>Afficher<br>
+4. Le résultat de <code class="language-">donne_max_doublon(chaine)</code> pour la chaîne rentrée par l'utilisateur<br>
+5. Afficher un message de victoire si <code class="language-">caractère_entrée</code> réalise ce maximum.</li>
+</ol>
 
 
 </article>
