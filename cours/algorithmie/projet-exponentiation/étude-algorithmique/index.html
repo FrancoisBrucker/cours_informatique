@@ -107,7 +107,7 @@
 </div>
 </div>
 <h2><span id="algo-naif"></span> Algorithme naïf</h2>
-<p>Le calcul <em>naïf</em> de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n$,  par l'équation suivante :</p>
+<p>Le calcul <em>naïf</em> de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n$,  par l'équation suivante :</p>
 <div>
 $$
 x^n = \left\{
@@ -153,7 +153,7 @@ $$
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
 <p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exponentiation
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -241,7 +241,7 @@ Programme :
 <p>En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il calcule bien l'exponentiation.</p>
 <h4><span id="finitude-naif"></span> Finitude</h4>
 <ul>
-<li><code class="language-">c</code> diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0</li>
+<li><code class="language-">c</code> est un entier qui diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0.</li>
 <li>condition : il faut que <code class="language-">c</code> soit un nombre positif pour que l'algorithme s'arrête. Donc <code class="language-">n</code> doit être un nombre strictement positif.</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -259,7 +259,7 @@ Programme :
 </div>
 </div>
 <h4>Preuve de l'algorithme</h4>
-<p>Le fonctionnement de l'algorithme est <em>à peu prêt</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
+<p>Le fonctionnement de l'algorithme est <em>à peu près</em> clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une <em>jolie</em> preuve en exhibant un invariant de boucle.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -360,7 +360,7 @@ $$
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre
-    <span class="token keyword">elif</span> compteur <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">elif</span> exposant <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> puissance<span class="token punctuation">(</span>nombre <span class="token operator">*</span> nombre<span class="token punctuation">,</span> exposant <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
@@ -368,7 +368,7 @@ $$
 </code></pre>
 <p>On a utilisé deux choses :</p>
 <ul>
-<li>L'opérateur <code class="language-">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si <code class="language-">compteur</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
+<li>L'opérateur <code class="language-">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si <code class="language-">exposant</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
 <li>la division entière <code class="language-">//</code> pour s'assurer que exposant reste un entier. Le type de <code class="language-">4 / 2</code> en python est un réel alors que le type de <code class="language-">4 // 2</code> est un entier.</li>
 </ul>
 <p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
@@ -377,7 +377,7 @@ $$
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :</p>
 <p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Factorielle-indienne
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exponentiation-indienne
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -560,7 +560,7 @@ $$
 <p>Cet exemple est traité dans le volume 2, partie 4.6.3, de <em>The Art of Computer Programming</em> de Knuth.</p>
 </div>
 </div>
-<p>Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :</p>
+<p>Peut-on faire mieux que l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :</p>
 <ul>
 <li>$n$ multiplications pour l'algorithme naïf itératif</li>
 <li>$\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne</li>
@@ -697,8 +697,8 @@ $$
 </div>
 </details>     
 </div>
-<p>L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !</p>
-<p>Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :</p>
+<p>L'exponentiation indienne n'a donc pas exactement le nombre minimum de multiplications possible !</p>
+<p>Sous l'angle du nombre de multiplications, le calcul d'une exponentielle $x^n$ peut s'écrire comme :</p>
 <p><span id="suite-multiplicative"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -772,7 +772,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change <strong>et</strong> le résultat <strong>et</strong> la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avoir à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).</p>
+<p>Les éléments de la suite correspondent aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change <strong>et</strong> le résultat <strong>et</strong> la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avoir à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).</p>
 <p>Cette suite est bien multiplicative :</p>
 <ul>
 <li>$a_0 = x$</li>
@@ -843,15 +843,15 @@ $$
 <li>$a_4 = x^2$</li>
 <li>$a_5 = x^{10}$</li>
 </ul>
-<p>On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.</p>
+<p>On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplications pour $n=10$.</p>
 </div>
 </details>     
 </div>
-<p>On peut maintenant montrer que toute suite multiplicative pour $x^n$ possède au moins $\log_2(n)$ éléments. On commence par remarquer que :</p>
+<p>On peut maintenant montrer que toute suite multiplicative pour $x^n$ possède au moins $\log_2(n)$ éléments. On commence par remarquer et prouver par récurrence le résultat suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez par récurrence que pour toute suite multiplicative pour $x^n$ on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)</p>
+<p>Pour toute suite multiplicative $(a_i)_{0\leq i \leq r}$ pour $x^n$, on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -872,7 +872,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On le montre par récurrence.</p>
-<p>C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} \cdot x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.</p>
+<p>C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vraie pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$. Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} \cdot x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.</p>
 </div>
 </details>     
 </div>
@@ -909,7 +909,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.</p>
+<p>Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui donne, en passant au log : $\log_2(n) \leq r$.</p>
 </div>
 </details>     
 </div>
@@ -921,7 +921,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Tout algorithme calculant l'exponentiel $x^n$ est en $\Omega(\ln(n))$</p>
+<p>Tout algorithme calculant l'exponentielle $x^n$ est en $\Omega(\ln(n))$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -945,7 +945,7 @@ $$
 </div>
 </details>     
 </div>
-<p>L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais sont ordre de grandeur est optimal !</p>
+<p>L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal !</p>
 <p>Terminons cette partie en montrant que la longueur minimale d'une suite multiplicative pour $x^n$ est <strong>toujours</strong> en $\mathcal{O}(\ln(n))$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -970,7 +970,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le nombre $b // 2^i$ est impair si $b_i = 1$.</p>
+<p>Un nombre est impair si le premier bit de sa représentation binaire vaut 1. Le nombre $b // 2^i$ est impair si $b_i = 1$.</p>
 <p>On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur <code class="language-">c</code> vaut soit :</p>
 <ul>
 <li>$b // 2^i$ si ce nombre est pair</li>
@@ -1006,7 +1006,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i &lt; x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.</p>
+<p>Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i &lt; x^n$), les derniers éléments étant ajoutés à chaque fois que le compteur est impair.</p>
 </div>
 </details>     
 </div>
@@ -1023,7 +1023,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut aller plus loin et montrer que $l(n) = \Theta(\log_2)$, nous ne ferons cependant pas la preuve ici.</p>
+<p>On peut aller plus loin et montrer que $l(n) = \Theta(\log_2 (n))$, nous ne ferons cependant pas la preuve ici.</p>
 </div>
 </div>
 <h2>Conclusions</h2>
@@ -1031,7 +1031,7 @@ $$</p>
 <li>la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme</li>
 <li>il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle</li>
 <li>un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace</li>
-<li>On peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.</li>
+<li>on peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.</li>
 </ul>
 
 
