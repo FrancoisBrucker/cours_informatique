@@ -25,12 +25,12 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
     - les fonctions utilisées `fonctions.py`{.fichier},
     - les tests des fonctions `test_fonctions.py`{.fichier}.
 2. Du joli code : 
-    - 0 warning 
-    - Le code doit être passé par black
+    - 0 warning, 
+    - le code doit être passé par black.
 3. Bons noms :
-    - De fichiers
-    - De variables
-4. Tests unitaires : toute fonction non testée ne sera pas corrigée
+    - de fichiers,
+    - de variables.
+4. Tests unitaires : toute fonction non testée ne sera pas corrigée.
 
 ## 1. Création du programme principal
 
@@ -49,7 +49,7 @@ Créer le fichier `main.py`{.fichier} qui va contenir le programme principal. Ce
 Créer la fonction `donne_prochain_indice(chaine:str, indice:int) -> int`{.language-} qui rend :
 
 - Le plus petit indice $j$ strictement plus grand que le paramètre `indice`{.language-} tel que `chaine[j] == chaine[indice]`{.language-},
-- `None`{.language-} si cet indice n'existe pas
+- `None`{.language-} si cet indice n'existe pas.
 
 ### Tests de `donne_prochain_indice(chaine:str, indice:int) -> int`{.language-}
 

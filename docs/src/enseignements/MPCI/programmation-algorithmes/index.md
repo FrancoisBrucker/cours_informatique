@@ -173,9 +173,9 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 {% faire %}
 [Sujet du test 1](annales/2023-2024/1_test_sujet_code){.interne}
 {% endfaire %}
-{% aller %}
-
 Parties abordées dans le cours :
+
+{% aller %}
 
 1. [Calculer $x^y$](/cours/algorithmie/projet-exponentiation){.interne}
 2. Pour aller plus loin : [Les suites additives](/cours/algorithmie/projet-suite-additive){.interne}
