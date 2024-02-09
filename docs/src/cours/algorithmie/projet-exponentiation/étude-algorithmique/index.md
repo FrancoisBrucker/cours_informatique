@@ -511,7 +511,7 @@ une ***suite multiplicative pour $x^n$*** est une suite finie $(a_i)_{0\leq i \l
 
 - $a_0 = x$
 - $a_r = x^n$
-- $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
+- pour tout $i>0$, il existe $j$ et $k$ tels que $a_i = a_j \cdot a_k$ avec $0 \leq j \leq k < i$
 
 {% endnote %}
 
@@ -633,12 +633,22 @@ Tout algorithme calculant l'exponentielle $x^n$ est en $\Omega(\ln(n))$
 Il faut toujours au moins $\log_2(n)$ multiplications donc la complexité est forcément supérieure à ce nombre.
 {% enddetails %}
 
-L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal !
+L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal ! 
+
+Ceci nous permet d'écrire :
+
+
+{% note "**Proposition**" %}
+La complexité du problème de l'exponentiation est en $\Theta(\log_2 (n))$.
+{% endnote %}
+{% details "preuve", "open" %}
+Comme la complexité de l'algorithme de l'exponentiation indienne est en $\mathcal{O}(\ln(n))$, la proposition précédente permet de conclure.
+{% enddetails %}
 
 Terminons cette partie en montrant que la longueur minimale d'une suite multiplicative pour $x^n$ est **toujours** en $\mathcal{O}(\ln(n))$.
 
 {% exercice %}
-En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
+En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair dans l'algorithme de l'exponentiation indienne est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
 Un nombre est impair si le premier bit de sa représentation binaire vaut 1. Le nombre $b // 2^i$ est impair si $b_i = 1$.
@@ -657,7 +667,7 @@ $$
 \lfloor\log_2(n)\rfloor + b(n-1) + 1
 $$
 
-avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
+Avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
 {% endexercice %}
 {% details "solution" %}
 Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajoutés à chaque fois que le compteur est impair.
@@ -675,9 +685,7 @@ $$
 \log_2(n) \leq l(n) \leq 2 \log_2(n) + 1
 $$
 
-{% info %}
-On peut aller plus loin et montrer que $l(n) = \Theta(\log_2 (n))$, nous ne ferons cependant pas la preuve ici.
-{% endinfo %}
+L'encadrement ci-dessus est déjà très bon, il n'y a qu'un facteur 2 entre le minorant et le majorant. On peut même aller plus loin et montrer que $l(n) = o(\log_2 (n))$, nous ne ferons cependant pas la preuve ici (elle est longue et pas évidente du tout).
 
 ## Conclusions
 
