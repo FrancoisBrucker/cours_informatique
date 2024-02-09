@@ -685,7 +685,7 @@ $$
 \log_2(n) \leq l(n) \leq 2 \log_2(n) + 1
 $$
 
-L'encadrement ci-dessus est déjà très bon, il n'y a qu'un facteur 2 entre le minorant et le majorant. On peut même aller plus loin et montrer que $l(n) = o(\log_2 (n))$, nous ne ferons cependant pas la preuve ici (elle est longue et pas évidente du tout).
+L'encadrement ci-dessus est déjà très bon, il n'y a qu'un facteur 2 entre le minorant et le majorant. On peut même aller plus loin et montrer que $l(n) \sim \log_2 (n)$, nous ne ferons cependant pas la preuve ici (elle est longue et pas évidente du tout).
 
 ## Conclusions
 
