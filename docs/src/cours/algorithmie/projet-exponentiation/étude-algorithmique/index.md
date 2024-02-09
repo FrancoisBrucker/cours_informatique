@@ -21,7 +21,7 @@ On utilisera le python comme langage de pseudo-code
 
 ## <span id="algo-naif"></span> Algorithme naïf
 
-Le calcul *naïf* de l'exponentiel est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$,  par l'équation suivante :
+Le calcul *naïf* de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$,  par l'équation suivante :
 
 <div>
 $$
@@ -57,7 +57,7 @@ Pour cette étude, nous allons uniquement utiliser des algorithmes non récursif
 <span id="pseudo-code-naif"></span>
 
 ```text
-Nom : Factorielle
+Nom : Exponentiation
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -125,7 +125,7 @@ En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il ca
 
 #### <span id="finitude-naif"></span> Finitude
 
-- `c`{.language-} diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0
+- `c`{.language-} est un entier qui diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0.
 - condition : il faut que `c`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `n`{.language-} doit être un nombre strictement positif.
 
 {% note "**À retenir**" %}
@@ -138,7 +138,7 @@ Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus p
 
 #### Preuve de l'algorithme
 
-Le fonctionnement de l'algorithme est *à peu prêt* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
+Le fonctionnement de l'algorithme est *à peu près* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
 
 {% note "**Invariant de boucle**" %}
 Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle :
@@ -222,7 +222,7 @@ $$
 def puissance(nombre, exposant):
     if exposant == 1:
         return nombre
-    elif compteur % 2 != 0:
+    elif exposant % 2 != 0:
         return nombre * puissance(nombre, exposant - 1)
     else:
         return puissance(nombre * nombre, exposant // 2)
@@ -231,7 +231,7 @@ def puissance(nombre, exposant):
 
 On a utilisé deux choses :
 
-- L'opérateur `%`{.language-} signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `compteur`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
+- L'opérateur `%`{.language-} signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `exposant`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
 - la division entière `//`{.language-} pour s'assurer que exposant reste un entier. Le type de `4 / 2`{.language-} en python est un réel alors que le type de `4 // 2`{.language-} est un entier.
 
 Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
@@ -243,7 +243,7 @@ Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. E
 <span id="pseudo-code-naif"></span>
 
 ```text
-Nom : Factorielle-indienne
+Nom : Exponentiation-indienne
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -422,7 +422,7 @@ Cette différence va aller exponentiellement lorsque compteur augmente, par exem
 Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer Programming* de Knuth.
 {% endlien %}
 
-Peut-on faire mieux l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :
+Peut-on faire mieux que l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :
 
 - $n$ multiplications pour l'algorithme naïf itératif
 - $\mathcal{O}(\log_2(n))$ multiplications pour l'algorithme de l'exponentiation indienne
@@ -500,9 +500,9 @@ Montrez que l'on peut calculer $x^{15}$ en uniquement 5 multiplications.
 
 {% enddetails %}
 
-L'exponentiation indienne n'a donc pas exactement le minimum de multiplications possible !
+L'exponentiation indienne n'a donc pas exactement le nombre minimum de multiplications possible !
 
-Sous l'angle du nombre de multiplications, le calcul d'une exponentiel $x^n$ peut s'écrire comme :
+Sous l'angle du nombre de multiplications, le calcul d'une exponentielle $x^n$ peut s'écrire comme :
 
 <span id="suite-multiplicative"></span>
 {% note "**Définition**" %}
@@ -535,7 +535,7 @@ Montrez que l'algorithme de l'exponentiation indienne peut s'écrire sous forme 
 {% endexercice %}
 {% details "solution" %}
 
-Les éléments de la suite correspondant aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change **et** le résultat **et** la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avoir à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).
+Les éléments de la suite correspondent aux valeurs successives de $r$. Cependant contrairement à l'exponentiation naïve qui change à chaque fois le résultat, l'exponentiation indienne change **et** le résultat **et** la valeur $x$. Pour être conforme à la définition (chaque élément de la suite dépend d'un élément précédent), il faut donc avoir à sa disposition les différentes valeurs de $x$ calculées par l'algorithme. Ces valeurs correspondent aux puissances $x^{2^i}$ pour $i=0$ à $i = \lfloor\log_2(n)\rfloor$ (partie entière (inférieure)).
 
 Cette suite est bien multiplicative :
 
@@ -592,19 +592,19 @@ Pour n=10 :
 - $a_4 = x^2$
 - $a_5 = x^{10}$
 
-On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplication pour $n=10$.
+On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplications pour $n=10$.
 
 {% enddetails %}
 
-On peut maintenant montrer que toute suite multiplicative pour $x^n$ possède au moins $\log_2(n)$ éléments. On commence par remarquer que :
+On peut maintenant montrer que toute suite multiplicative pour $x^n$ possède au moins $\log_2(n)$ éléments. On commence par remarquer et prouver par récurrence le résultat suivant :
 
 {% exercice %}
-Montrez par récurrence que pour toute suite multiplicative pour $x^n$ on a $(a_i)_{0\leq i \leq r}$ calculant $x^n$ on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)
+Pour toute suite multiplicative $(a_i)_{0\leq i \leq r}$ pour $x^n$, on a toujours : $a_i \leq x^{2^i}$ (avec $2^0 = 1$)
 {% endexercice %}
 {% details "solution" %}
 On le montre par récurrence.
 
-C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$ Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} \cdot x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.
+C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vraie pour tout $j \leq i$ et on considère $i+1$. On a $a_{i+1} = a_j \cdot a_k$. Comme $k \leq j \leq i$, l'hypothèse de récurrence est satisfaite pour $a_j$ et $a_k$, donc : $a_{i+1} = a_j \cdot a_k \leq x^{2^j} \cdot x^{2^k} \leq x^{2^{i}} \cdot x^{2^{i}} = x^{2^{i+1}}$. Ce qui conclut la récurrence.
 
 {% enddetails %}
 
@@ -620,20 +620,20 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui en passant au log donne : $\log_2(n) \leq r$.
+Comme $a_r = x^n$, on a $n \leq 2^r$ ce qui donne, en passant au log : $\log_2(n) \leq r$.
 {% enddetails %}
 
 Ceci permet de dire que :
 
 {% note "**Proposition**" %}
-Tout algorithme calculant l'exponentiel $x^n$ est en $\Omega(\ln(n))$
+Tout algorithme calculant l'exponentielle $x^n$ est en $\Omega(\ln(n))$
 {% endnote %}
 {% details "preuve", "open" %}
 
 Il faut toujours au moins $\log_2(n)$ multiplications donc la complexité est forcément supérieure à ce nombre.
 {% enddetails %}
 
-L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais sont ordre de grandeur est optimal !
+L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal !
 
 Terminons cette partie en montrant que la longueur minimale d'une suite multiplicative pour $x^n$ est **toujours** en $\mathcal{O}(\ln(n))$.
 
@@ -641,7 +641,7 @@ Terminons cette partie en montrant que la longueur minimale d'une suite multipli
 En remarquant que si $b = b_0\dots b_k$ est la représentation binaire d'un nombre alors la représentation binaire de $b/2$ est $b / 2 = b_1\dots b_k$, déduire que le nombre de fois où le compteur est impair est égal au nombre de 1 de la représentation binaire de $n-1$, noté $b(n-1)$.
 {% endexercice %}
 {% details "solution" %}
-Un nombre est impair si le premier bit de sa représentation binaire vaut 1 Le nombre $b // 2^i$ est impair si $b_i = 1$.
+Un nombre est impair si le premier bit de sa représentation binaire vaut 1. Le nombre $b // 2^i$ est impair si $b_i = 1$.
 
 On conclut la preuve en remarquant que tout au long de l'algorithme, le compteur `c`{.language-} vaut soit :
 
@@ -660,7 +660,7 @@ $$
 avec $\lfloor x\rfloor$ la partie entière inférieure de $x$ et $b(x)$ le nombre de bits à 1 de la représentation binaire de $x$.
 {% endexercice %}
 {% details "solution" %}
-Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajouté à chaque fois que le compteur est impair.
+Les premiers éléments de la suite sont au nombre de $\lfloor\log_2(n)\rfloor + 1$ (les $a_i = x^{2^i}$ tant que $a_i < x^n$), les derniers éléments étant ajoutés à chaque fois que le compteur est impair.
 {% enddetails %}
 
 En notant $l(n)$ la taille minimale d'une suite calculant $x^n$, on a alors :
@@ -676,7 +676,7 @@ $$
 $$
 
 {% info %}
-On peut aller plus loin et montrer que $l(n) = \Theta(\log_2)$, nous ne ferons cependant pas la preuve ici.
+On peut aller plus loin et montrer que $l(n) = \Theta(\log_2 (n))$, nous ne ferons cependant pas la preuve ici.
 {% endinfo %}
 
 ## Conclusions
@@ -684,4 +684,4 @@ On peut aller plus loin et montrer que $l(n) = \Theta(\log_2)$, nous ne ferons c
 - la procédure utilisée pour l'étude de ces deux algorithmes est générale, vous pouvez (et devez) l'appliquer à l'étude de tout nouvel algorithme
 - il ne faut jamais penser que l'on ne peut pas faire mieux pour un algorithme. Si vous ne connaissiez pas l'exponentiation indienne, il vous aurait été difficile de penser que l'on peut faire mieux que l'algorithme naïf pour calculer une exponentielle
 - un informaticien ferait beaucoup de sacrifices pour obtenir une complexité en $\mathcal{O}(\ln(n))$ tellement c'est efficace
-- On peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.
+- on peut chercher la complexité minimale pour résoudre un problème et la comparer à des algorithmes connus.
