@@ -141,15 +141,34 @@ Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus p
 Le fonctionnement de l'algorithme est *à peu près* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
 
 {% note "**Invariant de boucle**" %}
-Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle :
-$$
-r \cdot x^c = x^n
-$$
+Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle : $ r \cdot x^c = x^n $
 {% endnote %}
+{% details "Comment trouver cet invariant", "open" %}
+Un invariant doit capturer en une phrase le but de la boucle. En regardant notre boucle on remarque qu'à chaque itération :
+
+- $r$ est multiplié par $x$
+- $c$ est décrémenté de 1
+
+Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : "à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$". 
+
+Ceci pourrait être un invariant tout ce qu'il y a de plus correct, mais on peut faire plus élégant en injectant $i = n-c-1$, la première égalité, dans la seconde :
+
+<div>
+$$
+r = x^{n-c-1+1} = x^{n-c}
+$$
+</div>
+
+Ce qui donne l'invariant $r \cdot x^c = x^n$ qui tient en une ligne et n'a plus besoin de la variable auxiliaire $i$ qui compte le nombre d'itérations effectuées.
+
+{%enddetails %}
+{% info %}
+L'invariant est joli car il n'a pas besoin du nombre d'itérations passées pour l'exprimer. Ce ne sera pas toujours le cas.
+{% endinfo %}
 
 Prouvons cet invariant.
 
-Juste avant la première itération de la boucle, `r = x`{.language-} et `c = n-1`{.language-} notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un `'` aux variable après l'itération :
+Juste avant la première itération de la boucle, `r = x`{.language-} et `c = n-1`{.language-} notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes](../preuve-algorithme), on met un `'` aux variable après l'itération :
 
 - `x' = x`{.language-}
 - `n' = n`{.language-}
