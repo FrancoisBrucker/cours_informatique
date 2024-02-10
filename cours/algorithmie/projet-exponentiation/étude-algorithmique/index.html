@@ -267,14 +267,52 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Invariant de boucle</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers strictement positifs, on a l'invariant de boucle :<br>
-$$<br>
-r \cdot x^c = x^n<br>
-$$</p>
+<p>Si <code class="language-">x</code> et <code class="language-">n</code> sont des entiers strictement positifs, on a l'invariant de boucle : $ r \cdot x^c = x^n $</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>Comment trouver cet invariant</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Un invariant doit capturer en une phrase le but de la boucle. En regardant notre boucle on remarque qu'à chaque itération :</p>
+<ul>
+<li>$r$ est multiplié par $x$</li>
+<li>$c$ est décrémenté de 1</li>
+</ul>
+<p>Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : &quot;à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$&quot;.</p>
+<p>Ceci pourrait être un invariant tout ce qu'il y a de plus correct, mais on peut faire plus élégant en injectant $i = n-c-1$, la première égalité, dans la seconde :</p>
+<div>
+$$
+r = x^{n-c-1+1} = x^{n-c}
+$$
+</div>
+<p>Ce qui donne l'invariant $r \cdot x^c = x^n$ qui tient en une ligne et n'a plus besoin de la variable auxiliaire $i$ qui compte le nombre d'itérations effectuées.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'invariant est joli car il n'a pas besoin du nombre d'itérations passées pour l'exprimer. Ce ne sera pas toujours le cas.</p>
 </div>
 </div>
 <p>Prouvons cet invariant.</p>
-<p>Juste avant la première itération de la boucle, <code class="language-">r = x</code> et <code class="language-">c = n-1</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les [preuves d'algorithmes]../preuve-algorithme), on met un <code>'</code> aux variable après l'itération :</p>
+<p>Juste avant la première itération de la boucle, <code class="language-">r = x</code> et <code class="language-">c = n-1</code> notre invariant est donc vérifié. On suppose l'invariant vrai au début de la boucle $i$. Comme expliqué dans la partie sur les <a href="../preuve-algorithme">preuves d'algorithmes</a>, on met un <code>'</code> aux variable après l'itération :</p>
 <ul>
 <li><code class="language-">x' = x</code></li>
 <li><code class="language-">n' = n</code></li>
