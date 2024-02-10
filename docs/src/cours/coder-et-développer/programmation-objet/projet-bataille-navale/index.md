@@ -272,7 +272,7 @@ Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale
 
 Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.
 
-Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :
+Ensuite, vous créerez 4 bateaux placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau) :
 
 - un porte avion de longueur 4 et de type "🚢"
 - un croiseur de longueur 3 et de type "⛴"
@@ -280,3 +280,7 @@ Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléato
 - un sous-marin de longueur 2 et de type "🐟"
 
 Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.
+
+{% info %}
+Pour rendre l'interface de jeu sympathique, vous pourrez utiliser [le module pytermgui](https://github.com/bczsalba/pytermgui) pour gréer une interface textuelle complète.
+{% endinfo %}
