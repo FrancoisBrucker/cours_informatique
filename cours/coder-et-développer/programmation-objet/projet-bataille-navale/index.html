@@ -496,7 +496,7 @@
 <h2>Bataille navale</h2>
 <p>Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.</p>
 <p>Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.</p>
-<p>Ensuite, vous créerez 4 bateaux (vous n'êtes pas obligé de les placer aléatoirement) de façon à ce qu'ils ne se chevauchent pas :</p>
+<p>Ensuite, vous créerez 4 bateaux placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau) :</p>
 <ul>
 <li>un porte avion de longueur 4 et de type &quot;🚢&quot;</li>
 <li>un croiseur de longueur 3 et de type &quot;⛴&quot;</li>
@@ -504,6 +504,14 @@
 <li>un sous-marin de longueur 2 et de type &quot;🐟&quot;</li>
 </ul>
 <p>Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour rendre l'interface de jeu sympathique, vous pourrez utiliser <a href="https://github.com/bczsalba/pytermgui">le module pytermgui</a> pour gréer une interface textuelle complète.</p>
+</div>
+</div>
 
 
 </article>
