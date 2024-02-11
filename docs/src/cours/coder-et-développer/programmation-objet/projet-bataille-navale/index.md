@@ -191,7 +191,7 @@ Vous testerez que les paramètres par défaut sont bien placés.
 Pour pouvoir plus tard lier bateau et grille, ajoutons une méthode `Bateau.positions()`{.language-} :
 
 {% faire %}
-Codez une méthode `Bateau.positions()`{.language-} qui rend une liste des différentes positions prisent par le bateau sur la grille. Cette liste doit être rangée par lignes (si le bateau est à la verticale) ou colonnes (si le bateau est à ll'horizontale) croissantes.
+Codez une méthode `Bateau.positions()`{.language-} qui rend une liste des différentes positions prisent par le bateau sur la grille. Cette liste doit être rangée par lignes (si le bateau est à la verticale) ou colonnes (si le bateau est à l'horizontale) croissantes.
 
 Vous pourrez tester le fait que :
 
@@ -238,27 +238,9 @@ Testez que la méthode fonctionne. Par exemple, vous pourrez vérifier que pour 
 
 {% endfaire %}
 
-La méthode `Grille.ajoute(bateau)`{.language-} nous permet d'ajouter des bateaux à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.
+### Touché / coulé 
 
-{% faire %}
-Ajoutez une méthode `coulé`{.language-} à la classe `Bateau`{.language-} qui vérifie s'il est coulé. La méthode `coulé`{.language-} prendra un paramètre la grille (on vérifiera s'il y a des `'x'`{.language-} sur toutes les cases du bateau).
-
-Vous testerez cette méthode.
-{% endfaire %}
-
-### Personnalisation
-
-Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux, on va assigner un identifiant à chaque bateau :
-
-{% faire %}
-Ajoutez un cinquième paramètre au constructeur de bateau. Par défaut ce paramètre vaudra le caractère `"⛵"`{.language-}.
-
-C'est ce caractère qui sera utilisé lors de l'ajout du bateau à la grille.
-
-Vous testerez que le type est bien pris en compte lors de l'ajout d'un bateau à la grille.
-{% endfaire %}
-
-Enfin, lorsque l'on touche un bateau, il faut que l'utilisateur le sache :
+Lorsque l'on touche un bateau, il faut que l'utilisateur le sache :
 
 {% faire %}
 
@@ -266,20 +248,46 @@ Ajoutez un paramètre `touche`{.language-} à la méthode `Grille.tirer(ligne, c
 
 {% endfaire %}
 
+Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.
+
+{% faire %}
+Ajoutez une méthode `coulé`{.language-} à la classe `Bateau`{.language-} qui vérifie s'il est coulé. La méthode `coulé`{.language-} prendra un paramètre la grille (on vérifiera s'il y a des `'x'`{.language-} sur toutes les cases du bateau).
+
+Vous testerez cette méthode.
+{% endfaire %}
+
+
+### Types de bateaux
+
+Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux on va créer des sous-classes, une par type de bateau. Chaque bateau aura une longueur spécifique et une marque qui lui est propre.
+
+On suppose qu'il y a 4 types différents :
+
+- un porte avion de longueur 4 et de marque "🚢" sur la grille
+- un croiseur de longueur 3 et de marque "⛴" sur la grille
+- un torpilleur de longueur 2 et de marque "🚣" sur la grille
+- un sous-marin de longueur 2 et de marque "🐟" sur la grille
+
+{% faire %}
+
+Créez une classe fille par type de bateau. Le constructeur de chaque classe aura 3 paramètres (ligne, colonne et vertical).
+
+Vous testerez que le type est bien pris en compte lors de l'ajout d'un bateau à la grille.
+{% endfaire %}
+
+
 ## Bataille navale
 
-Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.
+Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale. Le jeu sera constitué :
 
-Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.
+- d'une grille de 8 lignes et 10 colonnes.
+- d'une liste de 4 bateaux, un de chaque type.
 
-Ensuite, vous créerez 4 bateaux placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau) :
+Les bateaux sont initialement placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau).
 
-- un porte avion de longueur 4 et de type "🚢"
-- un croiseur de longueur 3 et de type "⛴"
-- un torpilleur de longueur 2 et de type "🚣"
-- un sous-marin de longueur 2 et de type "🐟"
+Vous affichez ensuite la grille et laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte avec sa marque (vous pouvez aussi ajouter un message qui sera affiché lorsqu'un bateau est coulé, ce message étant spécifique au type de bateau coulé). 
 
-Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère "💣") et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.
+Vous recommencez cette boucle de gameplay jusqu'à destruction de tous les bateaux de la liste. Une fois le jeu fini, vous indiquerez le nombre de coups qu'il a fallu au joueur pour en venir à bout.
 
 {% info %}
 Pour rendre l'interface de jeu sympathique, vous pourrez utiliser [le module pytermgui](https://github.com/bczsalba/pytermgui) pour gréer une interface textuelle complète.

@@ -29,3 +29,4 @@ eleventyComputed:
 >
 > pb vérifiable ont toujours une solution (une MT qui résout le problème) s'il existe un nombre infini de solutions possible (ie. s'il existe toujours une solution/certificat plus grand).
 
+<https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf>
