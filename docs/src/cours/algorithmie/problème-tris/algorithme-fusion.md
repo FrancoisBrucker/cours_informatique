@@ -19,7 +19,7 @@ Un algorithme de la forme ***diviser pour régner*** fonctionne en deux parties 
 1. **résoudre** $k$ sous-problèmes du problème initial
 2. **combiner** les $k$ solutions des sous-problèmes en une solution du problème initial
 
-Puisqu'il suffit de s'utiliser lui-pour résoudre les sous-problèmes sa forme générale est :
+Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme générale est :
 
 ```text
 def algorithme(données):
@@ -165,7 +165,7 @@ C(n) \leq a \cdot C(\frac{n}{b}) + n^d
 $$
 </div>
 
-On en conclut que si $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ alors $C'(n) \leq C(n)$ pour tout $n$ et donc si $C'(n)$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.
+On en conclut que si $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ alors $C(n) \leq C'(n)$ pour tout $n$ et donc si $C'(n)$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.
 
 <div>
 $$
@@ -197,7 +197,7 @@ C'(n) = K \cdot n^d + n^d \cdot \sum_{i=0}^{\log_b(n)}1 = n^d(\log_b(n) + K) = \
 $$
 </div>
 
-Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^k(x^k) = \frac{x^{k+1} -1}{x-1}$ pour obtenir :
+Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^kx^k = \frac{x^{k+1} -1}{x-1}$ (cette formule  se démontre aisément par récurrence  sur $k$ et est super utile dans plein de calculs de complexité, il est bon de la connaître) pour obtenir :
 
 <div>
 $$

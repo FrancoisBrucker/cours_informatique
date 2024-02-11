@@ -13,14 +13,17 @@ eleventyComputed:
 Lorsque le nombre d'opérations d'un algorithme dépend non seulement de la taille de ses entrées mais également de la structure de celles-ci, on a coutume de calculer sa complexité en moyenne :
 
 {% note "**Définition**" %}
-La ***complexité en moyenne*** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à une taille fixée de ses entrées.
+La ***complexité en moyenne*** d'un algorithme est le nombre moyen d'opérations nécessaires pour se terminer par rapport à toutes les entrées de même paramètres.
 {% endnote %}
+{% info %}
+Si le paramètre de calcul de la complexité est la taille des entrées de l'algorithme, ce que est presque toujours le cas, la complexité en moyenne sera le nombre moyen d'opérations utilisées pour toutes les données de même taille.
+{% endinfo %}
 
 Cette mesure est très utile en pratique car si la complexité maximale et minimale d'un algorithme est très différente, cela permet de savoir le nombre d'opérations espéré pour un tableau quelconque de taille donné.
 
 ## Calcul de la complexité en moyenne
 
-Pour un algorithme $A$ donné, soit $\mathcal{E}$ l'ensemble contenant toutes ses entrées de taille $n$ (c'est à dire qu'il faut $n$ cases mémoires pour stocker une entrée). S'il faut $C(e)$ opérations pour exécuter l'algorithme avec l'entrée $e$, on a que :
+Pour un algorithme $A$ donné on veut calculer sa complexité par rapport à la taille de ses données. Soit alors $\mathcal{E}$ l'ensemble contenant toutes ses entrées de taille $n$ (c'est à dire qu'il faut $n$ cases mémoires pour stocker une entrée). S'il faut $C(e)$ opérations pour exécuter l'algorithme avec l'entrée $e$, on a que :
 
 - la complexité $C^n_\max$ de l'algorithme vaut $C^n_\max = \max \\{C(e) \mid e \in \mathcal{E}\\}$
 - la complexité minimum $C^n_\min$ de l'algorithme vaut $C^n_\min = \min \\{C(e) \mid e \in \mathcal{E}\\}$
@@ -63,10 +66,10 @@ Si l'on note $\mathcal{E}$ l'ensemble de tous les tableau de taille $n$, il y en
 - si `valeur`{.language-} est à l'indice $1$ du tableau, il faudra deux fois plus d'opérations que s'il était à l'indice $0$, donc  $2 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 - si `valeur`{.language-} est à l'indice $2$ du tableau, il faudra trois fois plus d'opérations que s'il était à l'indice $0$, donc  $3 \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `valeur`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(i+1) \cdot \mathcal{O}(1) = \mathcal{O}(i + 1)$ opérations pour exécuter l'algorithme
+- si `valeur`{.language-} est à l'indice $i$ du tableau, il faudra $i+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(i+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 - ...
-- si `valeur`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc  $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$ opérations pour exécuter l'algorithme
-- si `valeur`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(n+1) \cdot \mathcal{O}(1) = \mathcal{O}(n+1)$ opérations pour exécuter l'algorithme
+- si `valeur`{.language-} est à l'indice $n-1$ du tableau, il faudra $n$ fois plus d'opérations que s'il était à l'indice $0$, donc  $n \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
+- si `valeur`{.language-} n'est pas dans le tableau, il faudra $n+1$ fois plus d'opérations que s'il était à l'indice $0$, donc  $(n+1) \cdot \mathcal{O}(1)$ opérations pour exécuter l'algorithme
 
 L'ensemble $\mathcal{E}$ de tous les tableaux de taille $n$ peut alors se segmenter en $n+1$ ensembles :
 
@@ -80,7 +83,7 @@ $$
 \begin{array}{lcl}
 C & = & \sum_{e \in \mathcal{E}} p_e \cdot C(e) \\
 &=& \sum_{0 \leq i \leq n} (\sum_{e \in \mathcal{E}_i} p_e \cdot C(e)) \\
-&=& \sum_{0 \leq i \leq n} ((\sum_{e \in \mathcal{E}_i} p_e) \cdot \mathcal{O}(i+1)) \\
+&=& \sum_{0 \leq i \leq n} ((\sum_{e \in \mathcal{E}_i} p_e) \cdot (i+1)\cdot \mathcal{O}(1)) \\
 \end{array}
 $$
 </div>
@@ -98,18 +101,18 @@ Ce qui donne :
 <div>
 $$
 \begin{array}{lcl}
-C & = & \sum_{0 \leq i \leq n} (p_i \cdot \mathcal{O}(i+1)) \\
+C & = & \sum_{0 \leq i \leq n} (p_i \cdot (i+1)\cdot \mathcal{O}(1)) \\
 \end{array}
 $$
 </div>
 
 Pour pouvoir calculer $C$ effectivement, il faut connaître les $p_i$. Comme on a pas de modèle a priori, on va considérer que chaque tableau de taille $n$ à la même probabilité d'être choisie et donc que la position de `valeur`{.language-} dans tableau est équiprobable : $p_i = \frac{1}{n + 1}$ :
 
-$$C =  (\sum_{i=0}^{i = n}\frac{1}{n + 1} \mathcal{O}(i+1)) = \mathcal{O}(\frac{\sum_{i=0}^{i = n}(i +1)}{n +1})$$
+$$C =  \sum_{i=0}^{i = n}\frac{i+1}{n + 1} \mathcal{O}(1) = \frac{\sum_{i=0}^{i = n}(i +1)}{n +1}\mathcal{O}(1)$$
 
 Comme $\sum_{i=0}^{i = n}(i + 1) = \frac{(n + 2)(n + 1)}{2}$ on en déduit que :
 
-$$C = \mathcal{O}(\frac{n+1}{2}) = \mathcal{O(n)}$$
+$$C = \frac{n+2}{2}\mathcal{O}(1) = \mathcal{O(n)}$$
 
 {% note "**Proposition**" %}
 La **complexité en moyenne** de l'algorithme `est_dans_tableau`{.language-} est la même que la complexité maximale.
