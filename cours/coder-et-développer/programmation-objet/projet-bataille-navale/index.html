@@ -394,7 +394,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Codez une méthode <code class="language-">Bateau.positions()</code> qui rend une liste des différentes positions prisent par le bateau sur la grille. Cette liste doit être rangée par lignes (si le bateau est à la verticale) ou colonnes (si le bateau est à ll'horizontale) croissantes.</p>
+<p>Codez une méthode <code class="language-">Bateau.positions()</code> qui rend une liste des différentes positions prisent par le bateau sur la grille. Cette liste doit être rangée par lignes (si le bateau est à la verticale) ou colonnes (si le bateau est à l'horizontale) croissantes.</p>
 <p>Vous pourrez tester le fait que :</p>
 <ul>
 <li><code class="language-">Bateau(2, 3, longueur=3).positions()</code> vaut <code class="language-">[(2, 3), (2, 4), (2, 5)]</code></li>
@@ -459,7 +459,18 @@
 </ul>
 </div>
 </div>
-<p>La méthode <code class="language-">Grille.ajoute(bateau)</code> nous permet d'ajouter des bateaux à la grille. Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.</p>
+<h3>Touché / coulé</h3>
+<p>Lorsque l'on touche un bateau, il faut que l'utilisateur le sache :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ajoutez un paramètre <code class="language-">touche</code> à la méthode <code>Grille.tirer(ligne, colonne, touche)</code> qui vaut par défaut <code class="language-">'x'</code> et personnalise l'impact du tir sur la grille.</p>
+</div>
+</div>
+<p>Il nous reste à savoir si un bateau est coulé pour avoir le matériel nécessaire au codage du jeu.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -470,40 +481,34 @@
 <p>Vous testerez cette méthode.</p>
 </div>
 </div>
-<h3>Personnalisation</h3>
-<p>Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux, on va assigner un identifiant à chaque bateau :</p>
+<h3>Types de bateaux</h3>
+<p>Pour une bataille navale qui se respecte, il faut plusieurs types de bateaux. Afin de permettre de particulariser les bateaux on va créer des sous-classes, une par type de bateau. Chaque bateau aura une longueur spécifique et une marque qui lui est propre.</p>
+<p>On suppose qu'il y a 4 types différents :</p>
+<ul>
+<li>un porte avion de longueur 4 et de marque &quot;🚢&quot; sur la grille</li>
+<li>un croiseur de longueur 3 et de marque &quot;⛴&quot; sur la grille</li>
+<li>un torpilleur de longueur 2 et de marque &quot;🚣&quot; sur la grille</li>
+<li>un sous-marin de longueur 2 et de marque &quot;🐟&quot; sur la grille</li>
+</ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez un cinquième paramètre au constructeur de bateau. Par défaut ce paramètre vaudra le caractère <code class="language-">&quot;⛵&quot;</code>.</p>
-<p>C'est ce caractère qui sera utilisé lors de l'ajout du bateau à la grille.</p>
+<p>Créez une classe fille par type de bateau. Le constructeur de chaque classe aura 3 paramètres (ligne, colonne et vertical).</p>
 <p>Vous testerez que le type est bien pris en compte lors de l'ajout d'un bateau à la grille.</p>
 </div>
 </div>
-<p>Enfin, lorsque l'on touche un bateau, il faut que l'utilisateur le sache :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ajoutez un paramètre <code class="language-">touche</code> à la méthode <code>Grille.tirer(ligne, colonne, touche)</code> qui vaut par défaut <code class="language-">'x'</code> et personnalise l'impact du tir sur la grille.</p>
-</div>
-</div>
 <h2>Bataille navale</h2>
-<p>Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale.</p>
-<p>Pour cela il faudra tout d'abord créer une grille de 8 lignes et 10 colonnes.</p>
-<p>Ensuite, vous créerez 4 bateaux placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau) :</p>
+<p>Nous avons tout le matériel nécessaire pour jouer au jeu de la bataille navale. Le jeu sera constitué :</p>
 <ul>
-<li>un porte avion de longueur 4 et de type &quot;🚢&quot;</li>
-<li>un croiseur de longueur 3 et de type &quot;⛴&quot;</li>
-<li>un torpilleur de longueur 2 et de type &quot;🚣&quot;</li>
-<li>un sous-marin de longueur 2 et de type &quot;🐟&quot;</li>
+<li>d'une grille de 8 lignes et 10 colonnes.</li>
+<li>d'une liste de 4 bateaux, un de chaque type.</li>
 </ul>
-<p>Puis vous laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte. Lorsque les 4 bateaux sont détruits, vous stoppez le jeu en indiquant le nombre de coups qu'il a fallu pour en venir à bout.</p>
+<p>Les bateaux sont initialement placés de façon aléatoire sur la grille de façon à ce qu'ils ne se chevauchent pas (vous pourrez placer les bateau un à un, chaque bateau réduisant les possibilités de placement du prochain. A chaque placement, calculez tous les couples (case, orientation) ne produisant pas un chevauchement puis choisissez en un aléatoirement pour placer le bateau).</p>
+<p>Vous affichez ensuite la grille et laissez l'utilisateur tirer un coup. Si un bateau est touché vous l'indiquez (utilisez le caractère &quot;💣&quot;) et si un bateau est coulé vous affichez le bateau sur la carte avec sa marque (vous pouvez aussi ajouter un message qui sera affiché lorsqu'un bateau est coulé, ce message étant spécifique au type de bateau coulé).</p>
+<p>Vous recommencez cette boucle de gameplay jusqu'à destruction de tous les bateaux de la liste. Une fois le jeu fini, vous indiquerez le nombre de coups qu'il a fallu au joueur pour en venir à bout.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
