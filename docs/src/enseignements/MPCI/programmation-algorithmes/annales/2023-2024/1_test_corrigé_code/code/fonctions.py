@@ -1,8 +1,8 @@
 def donne_prochain_indice(chaine, indice):
-    possible_suivant = chaine[indice + 1 :].find(chaine[indice])
+    possible_suivant = chaine.find(chaine[indice], indice + 1)
 
     if possible_suivant > -1:
-        return indice + 1 + possible_suivant
+        return possible_suivant
     return None
 
 
