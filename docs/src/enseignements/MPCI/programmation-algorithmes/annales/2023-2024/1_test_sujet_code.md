@@ -34,7 +34,7 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 
 ## 1. Création du programme principal
 
-Créer le fichier `main.py`{.fichier} qui va contenir le programme principal. Celui-ci consistera à demander à l'utilisateur une chaine de caractères et un caractère et l'on cherchera à savoir combien de fois apparait le caractère dans la chaîne. Nous allon srépondre à cette question en 3 questions.
+Créer le fichier `main.py`{.fichier} qui va contenir le programme principal. Celui-ci consistera à demander à l'utilisateur une chaine de caractères et un caractère et l'on cherchera à savoir combien de fois apparait le caractère dans la chaîne. Nous allons répondre à cette question en 3 questions.
 
 {% faire %}
 Créer dans le fichier `main.py`{.fichier} le code permettant d'exécuter les 4 étapes de l'algorithme suivant :
@@ -48,7 +48,7 @@ Créer dans le fichier `main.py`{.fichier} le code permettant d'exécuter les 4 
 
 ## 2. Prochain indice
 
-On veut savoir si le caractère `caractère_entrée`{.language-} apparait plusieurs fois dans la chaine `chaine_entrée`{.language-}. Comme on connait déjà le remier indice où il apparait, on cherche s'il apparait aussi plus tard.
+On veut savoir si le caractère `caractère_entrée`{.language-} apparait plusieurs fois dans la chaine `chaine_entrée`{.language-}. Comme on connait déjà le premier indice où il apparait, on cherche s'il apparait aussi plus tard.
 
 ### Fonction `donne_prochain_indice(chaine:str, indice:int) -> int`{.language-}
 
@@ -64,8 +64,8 @@ Créer la fonction `donne_prochain_indice(chaine:str, indice:int) -> int`{.langu
 
 Vous pourrez tester que :
 
-- `donne_prochain_indice("bxaaxaaaxax, 4)`{.language-} rende 8
-- `donne_prochain_indice("bxaaxaaaxax, 0)`{.language-} rende `None`{.language-}
+- `donne_prochain_indice("bxaaxaaaxax", 4)`{.language-} rende 8
+- `donne_prochain_indice("bxaaxaaaxax", 0)`{.language-} rende `None`{.language-}
 
 ### Ajout de question 2 au programme principal
 
@@ -102,7 +102,7 @@ Vous pourrez tester avec :
 ### Ajout de question 3 au programme principal
 
 {% faire %}
-Dans l'étape 3. de l'algorithme du programme principal, ajouter un affichage qui indique le nombre de fois où  `caractère_entrée`{.language-} apparaitdans `chaine_entrée`{.language-}.
+Dans l'étape 3. de l'algorithme du programme principal, ajouter un affichage qui indique le nombre de fois où  `caractère_entrée`{.language-} apparait dans `chaine_entrée`{.language-}.
 {% endfaire %}
 {% info %}
 L'étape 3. du programme principal sera alors constitué de trois actions :
