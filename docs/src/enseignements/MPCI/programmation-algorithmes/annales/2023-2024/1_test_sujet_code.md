@@ -20,12 +20,12 @@ Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si n
 
 ### Éléments de notation
 
-1. 3 fichiers dans un projet : 
-    - le programme principal `main.py`{.fichier}, 
+1. 3 fichiers dans un projet :
+    - le programme principal `main.py`{.fichier},
     - les fonctions utilisées `fonctions.py`{.fichier},
     - les tests des fonctions `test_fonctions.py`{.fichier}.
-2. Du joli code : 
-    - 0 warning, 
+2. Du joli code :
+    - 0 warning,
     - le code doit être passé par black.
 3. Bons noms :
     - de fichiers,
