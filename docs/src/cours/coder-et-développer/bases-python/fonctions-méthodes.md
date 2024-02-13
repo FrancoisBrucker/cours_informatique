@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur les objets ou de créer de nouveaux objets. La puissance d'un langage de programmation vient aussi du fait ds nombreuses fonctions et méthodes mises à la dispositions de ses utilisateurs.
+Les fonctions et les méthodes sont des moyens d'effectuer des opérations sur les objets ou de créer de nouveaux objets. La puissance d'un langage de programmation vient aussi du fait des nombreuses fonctions et méthodes mises à la dispositions de ses utilisateurs.
 
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
@@ -85,9 +85,13 @@ Si votre fenêtre est trop petite, l'affichage peut être différent.
 
 {% enddetails %}
 
-### Paramètres d'une fonction
+### <span id="paramètres"></span> Paramètres d'une fonction
 
-En regardant l'aide de la fonction `print`{.language-}, on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
+{% note "**Important**" %}
+Savoir lire la documentation d'une fonction est très important. Cela fait gagner un temps fou de pouvoir utiliser à bon escient tous les paramètres d'une fonction.
+{% endnote %}
+
+En regardant [la documentation de la fonction `print`{.language-}](https://docs.python.org/fr/3/library/functions.html#print), on remarque que les premiers paramètres sont sans noms (value, ...) puis les paramètres ont des noms (`sep`{.language-}, `end`{.language-}, `file`{.language-}, `flush`{.language-}) suivi d'une valeur. Ce sont des paramètres qui ont une valeur par défaut (par défaut `sep` vaut `" "`{.language-}).
 
 {% note %}
 Les paramètres sans valeurs par défaut sont **obligatoires** lorsque l'on appelle une fonction, les paramètres ayant une valeur par défaut sont **optionnels**.
