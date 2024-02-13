@@ -72,7 +72,7 @@ Vous pourrez tester que :
 On ajoute notre fonction au programme principal :
 
 {% faire %}
-Dans l'étape 3. de l'algorithme du programme principal, ajouter un affichage qui indique si `caractère_entrée`{.language-} apparait plusieurs fois dans `chaine_entrée`{.language-} ou pas.
+Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction que vous venez de coder** pour ajouter un affichage qui indique si `caractère_entrée`{.language-} apparait plusieurs fois dans `chaine_entrée`{.language-} ou pas.
 {% endfaire %}
 {% info %}
 L'étape 3. du programme principal sera alors constitué de deux actions :
@@ -102,7 +102,7 @@ Vous pourrez tester avec :
 ### Ajout de question 3 au programme principal
 
 {% faire %}
-Dans l'étape 3. de l'algorithme du programme principal, ajouter un affichage qui indique le nombre de fois où  `caractère_entrée`{.language-} apparait dans `chaine_entrée`{.language-}.
+Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction que vous venez de coder** pour ajouter un affichage qui indique le nombre de fois où  `caractère_entrée`{.language-} apparait dans `chaine_entrée`{.language-}.
 {% endfaire %}
 {% info %}
 L'étape 3. du programme principal sera alors constitué de trois actions :
@@ -132,7 +132,7 @@ Vous pourrez tester avec une chaine admettant plusieurs caractères répétés u
 ### Ajout de question 4 au programme principal
 
 {% faire %}
-Dans l'étape 3. de l'algorithme du programme principal, ajouter un affichage qui le nombre maximum de répétition d'un caractère, et affichez un message de victoire si `caractère_entrée`{.language-} réalise ce maximum.
+Dans l'étape 3. de l'algorithme du programme principal, **utilisez la fonction que vous venez de coder** pour  ajouter un affichage qui le nombre maximum de répétition d'un caractère, et affichez un message de victoire si `caractère_entrée`{.language-} réalise ce maximum.
 {% endfaire %}
 {% info %}
 L'étape 3. du programme principal sera alors constitué de quatre actions :
