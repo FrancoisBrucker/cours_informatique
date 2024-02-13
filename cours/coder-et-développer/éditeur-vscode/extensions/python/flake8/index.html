@@ -100,6 +100,20 @@
 <h2><span id="installation-flake8"></span> Installation</h2>
 <h3>Extension vscode</h3>
 <p>Pour utiliser le linter avec vscode, <strong>installez <a href="../../../prise-en-main#extensions" class="interne">l'extension vscode</a></strong> nommée &quot;<em>flake8</em>&quot; développé par microsoft.</p>
+<p>Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères (<a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">l'erreur 501</a>), qui est une règle plus ou moins obsolète.</p>
+<ol>
+<li>aller <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-editor">dans les paramètres</a> : cliquez sur l'engrenage &gt; paramètres <img src="vscode-param%C3%A8tres.png" alt="paramètres vscode"></li>
+<li>en prenant garde d'ètre dans l'onglet utilisateur, tapez <code>flake8</code> dans la bvarre de recherche</li>
+<li>dans la liste d'options, trouver la ligne <code>Flake8: args</code> et ajouter la ligne <code>--ignore=E501</code> <img src="flake8-param%C3%A8tres.png" alt="paramètres flake8"></li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreuir 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il <strong>faut</strong> que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.</p>
+</div>
+</div>
 <h3>Module python</h3>
 <p>Dans <a href="../../../../ordinateur-d%C3%A9veloppement/terminal" class="interne">un terminal</a>, qui peut être celui de vscode, tapez la commande :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> flake8
