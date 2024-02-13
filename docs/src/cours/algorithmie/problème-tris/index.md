@@ -42,6 +42,9 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 [Reconnaissance d'un tableau trié](./reconnaissance){.interne}
 {% endaller %}
 
+> TBD : permet de ne pas tricher si on donne un résultat au tri : c'est un certificat que l'algorithme de tri a donné une bonne solution. 
+> TBD : on y reviendra
+
 ## Algorithmes Tris simples
 
 Deux Algorithmes simples pour trier un tableau.

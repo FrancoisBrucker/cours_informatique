@@ -91,27 +91,13 @@ $$
 $$
 </div>
 
-Poursuivons en triturant $\ln(\frac{n}{2})$ :
-
-<div>
-$$
-\begin{array}{lclr}
-\ln(\frac{n}{2}) &= &\frac{1}{2}\ln(\frac{n}{2}) + \frac{1}{2}\ln(\frac{n}{2})&\\
-\ln(\frac{n}{2}) &\geq& \frac{1}{2}\ln(\frac{4}{2}) + \frac{1}{2}\ln(\frac{n}{2}) & (\mbox{pour } n \geq 4)\\
-\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(2) + \ln(\frac{n}{2})) & (\mbox{pour } n \geq 4)\\
-\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(2\cdot \frac{n}{2})) & (\mbox{pour } n \geq 4)\\
-\ln(\frac{n}{2}) &\geq& \frac{1}{2}(\ln(n)) & (\mbox{pour } n \geq 4)\\
-\end{array}
-$$
-</div>
-
-On combine cette inégalité à notre encadrement précédent pour trouver (pour $n \geq 4$):
+Poursuivons en remarquant que puisque  $\ln(a\cdot x) = \ln(a) + \ln(x)$, on a $\ln(ax) \geq a\cdot \ln(x)$ si $\frac{\ln(a)}{a-1} \geq \ln(x)$, et donc $\ln(n/2) \geq \ln(n)/2$ pour $n \geq 2\ln(2)$. On combine cette inégalité à notre encadrement précédent pour trouver (pour $n \geq 2\ln(2)$) :
 
 $$
 \frac{n}{2}(\frac{1}{2}(\ln(n))) \leq \ln(n!) \leq n\ln(n)
 $$
 
-Ce qui se dérive directement, pour $n \geq 4$, en :
+Ce qui se dérive directement, pour $n \geq 4 \geq 2\ln(2)$, en :
 
 $$\frac{1}{4} \leq \frac{\ln(n!)}{n\ln(n)} \leq 1$$
 
