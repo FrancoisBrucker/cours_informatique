@@ -23,21 +23,21 @@ Cette mesure est très utile en pratique car si la complexité maximale et minim
 
 ## Calcul de la complexité en moyenne
 
-Pour un algorithme $A$ donné on veut calculer sa complexité par rapport à la taille de ses données. Soit alors $\mathcal{E}$ l'ensemble contenant toutes ses entrées de taille $n$ (c'est à dire qu'il faut $n$ cases mémoires pour stocker une entrée). S'il faut $C(e)$ opérations pour exécuter l'algorithme avec l'entrée $e$, on a que :
+Soit $A$ un algorithme dont on veut calculer sa complexité par rapport à la taille $n$ de ses données. Si $\mathcal{E}$ est l'ensemble contenant toutes ses entrées de taille $n$ et s'il faut $N(e)$ opérations pour exécuter l'algorithme $A$ avec l'entrée $e$, on a que :
 
-- la complexité $C^n_\max$ de l'algorithme vaut $C^n_\max = \max \\{C(e) \mid e \in \mathcal{E}\\}$
-- la complexité minimum $C^n_\min$ de l'algorithme vaut $C^n_\min = \min \\{C(e) \mid e \in \mathcal{E}\\}$
+- la complexité $C_\max(n)$ de l'algorithme vaut $C_\max(n) = \max \\{N(e) \mid e \in \mathcal{E}\\}$
+- la complexité minimum $C_\min(n)$ de l'algorithme vaut $C_\min(n) = \min \\{N(e) \mid e \in \mathcal{E}\\}$
 
-L'espérance de la complexité, c'est à dire la complexité *normale* si l'algorithme est exécutée pour une entrée au hasard, est appelée **complexité en moyenne**.
+L'espérance de la complexité, c'est à dire la complexité *attendue* ou *normale* si l'algorithme est exécutée pour une entrée au hasard, est appelée **complexité en moyenne**.
 
 Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître ainsi le modèle probabiliste associé aux données :
 
 {% note "**À retenir**"%}
 La ***complexité en moyenne*** de l'algorithme $A$ pour une entrée de taille $n$ est :
 
-$$C = \sum_{e \in \mathcal{E}} p_e \cdot C(e)$$
+$$C_{\text{moyenne}}(n) = \sum_{e \in \mathcal{E}} p_e \cdot N(e)$$
 
-Avec $\mathcal{E}$ l'ensemble des données de taille $n$, $p_e$ la probabilité d'exécuter l'algorithme avec l'entrée $e \in \mathcal{E}$ et $C(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.
+Avec $\mathcal{E}$ l'ensemble des données de taille $n$, $p_e$ la probabilité d'exécuter l'algorithme avec l'entrée $e \in \mathcal{E}$ et $N(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.
 
 {% endnote %}
 

@@ -72,7 +72,7 @@ Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `while
 {% note "**Invariant de la boucle `while`{.language-}**" %}
 Chaque itération de la boucle `while`{.language-} va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :
 
-> A la fin de chaque itération de la boucle `while`{.language-} $T[j] \leq T[j+1]$ si $j <i$
+A la fin de chaque itération de la boucle `while`{.language-} $T[j] \leq T[j+1]$ si $j <i$
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -84,7 +84,7 @@ Cet invariant est clairement vérifié.
 On peut donc maintenant démontrer l'invariant de la boucle `for`{.language-} :
 
 {% note "**Invariant de la boucle `for`{.language-}**" %}
-> A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -119,27 +119,27 @@ Ligne à ligne :
 2. $n-1$ itérations, avec $n$ la taille du tableau
 3. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 4. affectation d'une variable : $\mathcal{O}(1)$
-5. $K$ itérations ($K$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération
+5. $K_i$ itérations ($K_i$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération
 6. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 7. une soustraction et une affectation : $\mathcal{O}(1)$
 8. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 
-Comme $K$ n'est pas constant pour chaque itération de la boucle `for`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
+Comme $K_i$ n'est pas constant pour chaque itération de la boucle `for`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
 
 - si le tableau est déjà trié : on ne rentre jamais dans la boucle `while`{.language-} : $K = 0$ pour chaque itération.
 - si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `for`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `while`{.language-}).
 
 On a donc 2 cas extrêmes pour le calcul :
 
-1. $K = 0$ à chaque itération
-2. $K$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité
+1. $K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable
+2. $K_i$ croit de $1$ à $n-1$ à chaque itération : [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable
 
 Ce qui donne une complexité de :
 
 <div>
 $$
 \begin{array}{lcl}
-C & = & \mathcal{O}(1) + \\
+C(n) & = & \mathcal{O}(1) + \\
 && (n-1) \cdot (\\
 && \mathcal{O}(1) + \\
 && \mathcal{O}(1) + \\
@@ -157,8 +157,8 @@ $$
 {%note %}
 La complexité de l'algorithme `insertion`{.language-} est ($n$ est la taille du tableau passé en entrée) :
 
-- la **complexité min** est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
-- la **complexité (max)** est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
+- la **complexité min** est atteinte pour $K=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$
+- la **complexité (max)** est atteinte pour $K=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$
 
 {% endnote %}
 
@@ -167,26 +167,31 @@ Pour savoir ce que veut dire *standard*, il faut déterminer le modèle de donn�
 
 Cela signifie que pour chaque itération $i$ :
 
-- `T[i]`{.language-} sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux
-- `T[i]`{.language-} devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+- `T[i]`{.language-} sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux et on aura $K_i = \mathcal{O}(1)$ pour ceux-ci.
+- `T[i]`{.language-} devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = 2\cdot\mathcal{O}(1)$ pour ceux-ci.
 - ...
-- `T[i]`{.language-} devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux,
+- `T[i]`{.language-} devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = j\cdot\mathcal{O}(1)$ pour ceux-ci.
 - ...
-- `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux.
+- `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = i\cdot\mathcal{O}(1)$ pour ceux-ci.
 
-La complexité en moyenne sera donc égale à :
+{% note "**De façon intuitive**" %}
+Si les données sont équiprobables, la boucle while remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$
+{% endnote %}
+{% details "de façon formelle", "open" %}
+On calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :
 
 <div>
 $$
 \begin{array}{lcl}
-C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mbox{complexité boucle while}))\\
-&=& \mathcal{O}(1) + \sum_{i=1}^{n-1} (\mathcal{O}(1) + i \cdot \mathcal{O}(1))\\
-&=& \mathcal{O}(1) \cdot \sum_{i=1}^{n-1} i \\
-&=& \mathcal{O}(1) \cdot \frac{n(n-1)}{2} \\
-&=& \mathcal{O}(n^2)\\
+\widehat{K_i} &=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
+&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2})\\
+&=& \frac{i}{2}\\
 \end{array}
 $$
 </div>
+{% enddetails %}
+
+On en conclut que le nombre moyen d'itérations dans la boucle `while`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
 
 {% note %}
 La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
