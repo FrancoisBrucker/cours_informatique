@@ -157,9 +157,7 @@
 <p><strong>Invariant de la boucle <code class="language-">while</code></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Chaque itération de la boucle <code class="language-">while</code> va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :</p>
-<blockquote>
 <p>A la fin de chaque itération de la boucle <code class="language-">while</code> $T[j] \leq T[j+1]$ si $j &lt;i$</p>
-</blockquote>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -191,9 +189,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Invariant de la boucle <code class="language-">for</code></strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
 <p>A la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
-</blockquote>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -243,26 +239,26 @@
 <li>$n-1$ itérations, avec $n$ la taille du tableau</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 <li>affectation d'une variable : $\mathcal{O}(1)$</li>
-<li>$K$ itérations ($K$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération</li>
+<li>$K_i$ itérations ($K_i$ inconnu) et deux tests en $\mathcal{O}(1)$ pour chaque itération</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 <li>une soustraction et une affectation : $\mathcal{O}(1)$</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Comme $K$ n'est pas constant pour chaque itération de la boucle <code class="language-">for</code> il faut regarder les valeurs extrêmes que peut prendre $K$ :</p>
+<p>Comme $K_i$ n'est pas constant pour chaque itération de la boucle <code class="language-">for</code> il faut regarder les valeurs extrêmes que peut prendre $K$ :</p>
 <ul>
 <li>si le tableau est déjà trié : on ne rentre jamais dans la boucle <code class="language-">while</code> : $K = 0$ pour chaque itération.</li>
 <li>si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle <code class="language-">for</code>, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle <code class="language-">while</code>).</li>
 </ul>
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
-<li>$K = 0$ à chaque itération</li>
-<li>$K$ croit de $1$ à $n-1$ à chaque itération : <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> nous indique qu'on peut considérer que $k=n-1$ pour le calcul de la complexité</li>
+<li>$K_i = 0$ à chaque itération et on peut considérer que $K_i = K=0$ pour tout $i$ dans le cas le plus favorable</li>
+<li>$K_i$ croit de $1$ à $n-1$ à chaque itération : <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> nous indique qu'on peut considérer que $K_i = K=n-1$ pour tout $i$ dans le cas le moins favorable</li>
 </ol>
 <p>Ce qui donne une complexité de :</p>
 <div>
 $$
 \begin{array}{lcl}
-C & = & \mathcal{O}(1) + \\
+C(n) & = & \mathcal{O}(1) + \\
 && (n-1) \cdot (\\
 && \mathcal{O}(1) + \\
 && \mathcal{O}(1) + \\
@@ -283,8 +279,8 @@ $$
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">insertion</code> est ($n$ est la taille du tableau passé en entrée) :</p>
 <ul>
-<li>la <strong>complexité min</strong> est atteinte pour $k=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$</li>
-<li>la <strong>complexité (max)</strong> est atteinte pour $k=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$</li>
+<li>la <strong>complexité min</strong> est atteinte pour $K=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$</li>
+<li>la <strong>complexité (max)</strong> est atteinte pour $K=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$</li>
 </ul>
 </div>
 </div>
@@ -292,25 +288,54 @@ $$
 Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle de données : prenons le équiprobable.</p>
 <p>Cela signifie que pour chaque itération $i$ :</p>
 <ul>
-<li><code class="language-">T[i]</code> sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux</li>
-<li><code class="language-">T[i]</code> devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux,</li>
+<li><code class="language-">T[i]</code> sera bien placé pour une proportion de $\frac{1}{i + 1}$ tableaux et on aura $K_i = \mathcal{O}(1)$ pour ceux-ci.</li>
+<li><code class="language-">T[i]</code> devra être positionné en $i-1$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = 2\cdot\mathcal{O}(1)$ pour ceux-ci.</li>
 <li>...</li>
-<li><code class="language-">T[i]</code> devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux,</li>
+<li><code class="language-">T[i]</code> devra être positionné en $i-j$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = j\cdot\mathcal{O}(1)$ pour ceux-ci.</li>
 <li>...</li>
-<li><code class="language-">T[i]</code> devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux.</li>
+<li><code class="language-">T[i]</code> devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = i\cdot\mathcal{O}(1)$ pour ceux-ci.</li>
 </ul>
-<p>La complexité en moyenne sera donc égale à :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>De façon intuitive</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si les données sont équiprobables, la boucle while remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>de façon formelle</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :</p>
 <div>
 $$
 \begin{array}{lcl}
-C_m &=& \mbox{complexité hors boucle for} + \sum_{i=1}^{n-1}(\mbox{complexité hors boucle while} + i \cdot (\mbox{complexité boucle while}))\\
-&=& \mathcal{O}(1) + \sum_{i=1}^{n-1} (\mathcal{O}(1) + i \cdot \mathcal{O}(1))\\
-&=& \mathcal{O}(1) \cdot \sum_{i=1}^{n-1} i \\
-&=& \mathcal{O}(1) \cdot \frac{n(n-1)}{2} \\
-&=& \mathcal{O}(n^2)\\
+\widehat{K_i} &=& \sum_{j=0}^{i}(\frac{1}{i+1}\cdot j)\\
+&=& \frac{1}{i+1}\cdot \frac{(i+1)\cdot i}{2})\\
+&=& \frac{i}{2}\\
 \end{array}
 $$
 </div>
+</div>
+</details>     
+</div>
+<p>On en conclut que le nombre moyen d'itérations dans la boucle <code class="language-">while</code>, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
