@@ -73,6 +73,7 @@ Vous ne perdez pas de temps à comprendre et lire de la documentation. Votre cod
 Pour lire une documentation, en particulier savoir quels sont les paramètres d'une fonction lisez [cette partie du cours](/cours/coder-et-développer/bases-python/fonctions-méthodes/#paramètres). 
 {% endnote %}
 
+Enfin, on utilise les fonctions testées dans le programme principal. On vous demande de coder des fonctions (et de les tester), ce n'est pas pour rien... Utilisez les !
 ### Ne pas exécuter son code
 
 De nombreuses erreurs auraient pu être évitées si vous aviez exécuté votre code : programme principal et surtout tests ! L'interpréteur et surtout `pytest` sont meilleurs que l'esprit humain pour voir rapidement les erreurs : cela plante ou rend un résultat incohérent.
