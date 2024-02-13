@@ -26,6 +26,16 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 Pour utiliser le linter avec vscode, **installez [l'extension vscode](../../../prise-en-main#extensions){.interne}** nommée "*flake8*" développé par microsoft.
 
+Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères ([l'erreur 501](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes)), qui est une règle plus ou moins obsolète.
+
+1. aller [dans les paramètres](https://code.visualstudio.com/docs/getstarted/settings#_settings-editor) : cliquez sur l'engrenage > paramètres ![paramètres vscode](./vscode-paramètres.png)
+2. en prenant garde d'ètre dans l'onglet utilisateur, tapez `flake8` dans la bvarre de recherche
+3. dans la liste d'options, trouver la ligne `Flake8: args` et ajouter la ligne `--ignore=E501` ![paramètres flake8](./flake8-paramètres.png)
+
+{% info %}
+Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreuir 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il **faut** que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.
+{% endinfo %}
+
 ### Module python
 
 Dans [un terminal](../../../../ordinateur-développement/terminal){.interne}, qui peut être celui de vscode, tapez la commande :
