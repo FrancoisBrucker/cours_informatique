@@ -36,14 +36,13 @@ Commençons par définir le problème :
 
 ## Reconnaissance
 
-Commençons par travailler sur un problème connexe au problème du tri, celui de savoir si un tableau d'entiers est trié ou non.
+Commençons par travailler sur un problème connexe au problème du tri, celui de savoir si un tableau d'entiers est trié ou non. Le problème du tri présuppose en effet que l'on sache ce qu'est un tableau trié et, en creux, qu'on puisse vérifier (rapidement) qu'un tableau est trié ou non.
 
 {% aller %}
 [Reconnaissance d'un tableau trié](./reconnaissance){.interne}
 {% endaller %}
 
-> TBD : permet de ne pas tricher si on donne un résultat au tri : c'est un certificat que l'algorithme de tri a donné une bonne solution. 
-> TBD : on y reviendra
+Pouvoir vérifier qu'une solution à un problème en est vraiment une est un point crucial en algorithmie. Nous y reviendrons intensivement lorsque nous parlerons de classes de problèmes.
 
 ## Algorithmes Tris simples
 
