@@ -13,3 +13,11 @@ Vous avez 15min pour faire le test.
 ## Barème
 
 > TBD avec 1 question parfaite on a 9
+>
+> TBD ventilation des notes
+>
+
+## Erreurs fréquemment rencontrées
+
+## Corrigé
+
