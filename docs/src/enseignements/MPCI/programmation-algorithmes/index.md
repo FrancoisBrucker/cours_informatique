@@ -195,7 +195,7 @@ Parties abordées dans le cours :
 #### Vendredi : projet tris
 
 {% attention %}
-Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+Test de 15min en début de cours. Il faudra rendre une feuille de papier avec des choses écrites dessus.
 {% endattention %}
 
 {% aller %}
@@ -204,13 +204,22 @@ Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (co
 
 ### Semaine 5
 
-- mardi :
-  - début de la partie programmation objet
-  - rendu du premier DM
-- Vendredi : Premier DS sur table de 3h.
+{% info %}
+Le DM1 est à rendre pour le vendredi 23/02/24 à 23h59
+{% endinfo %}
+
+#### Mardi : Révision
+
+Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices.
+
+#### Vendredi : DS1
+
+Au programme tout ce qu'on a vu en algorithmie jusque là. Sur feuille.
+
+{% info %}
+De 9h à 12h en amphi CARTAN.
+{% endinfo %}
 
 ## Annales
 
 Les [annales des tests et contrôles](./annales){.interne} de ce cours
-
-
