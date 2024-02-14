@@ -11,22 +11,22 @@ authors:
 Une note sur 4 répartie comme suit :
 
 - 1 point de note de style répartit en :
-    - 1/4 point si trois fichiers utilisés : `main.py`{.language-} pour le programme principal, `fonctions.py`{.language-} pour le code des fonctions utilisées dans le programme principal et `test_fonctions.py`{.language-} pour les tests des fonctions de `fonctions.py`{.language-}
-    - 1/4 point pour le choix de noms de variables explicites
-    - 1/4 point si les tests passent et/ou sont cohérent avec le code
-    - 1/4 point si black a été utilisé pour que le code soit agréable à lire
+  - 1/4 point si trois fichiers utilisés : `main.py`{.language-} pour le programme principal, `fonctions.py`{.language-} pour le code des fonctions utilisées dans le programme principal et `test_fonctions.py`{.language-} pour les tests des fonctions de `fonctions.py`{.language-}
+  - 1/4 point pour le choix de noms de variables explicites
+  - 1/4 point si les tests passent et/ou sont cohérent avec le code
+  - 1/4 point si black a été utilisé pour que le code soit agréable à lire
 - 1 point pour la question 1 répartit en :
-    - 1/3 point pour la gestion du `while`{.language-}
-    - 1/3 point pour l'utilisation de la fonction `find`{.language-} ou du recodage de sa fonctionnalité
-    - 1/3 point pour le reste (`input`{.language-}, ...)
+  - 1/3 point pour la gestion du `while`{.language-}
+  - 1/3 point pour l'utilisation de la fonction `find`{.language-} ou du recodage de sa fonctionnalité
+  - 1/3 point pour le reste (`input`{.language-}, ...)
 - 1 point pour la question 2 répartit en :
-    - 1/3 point pour le code de la fonction
-    - 1/3 point pour les tests de la fonction
-    - 1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)
+  - 1/3 point pour le code de la fonction
+  - 1/3 point pour les tests de la fonction
+  - 1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)
 - 1 point pour la question 3 répartit en :
-    - 1/3 point pour le code de la fonction
-    - 1/3 point pour les tests de la fonction
-    - 1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)
+  - 1/3 point pour le code de la fonction
+  - 1/3 point pour les tests de la fonction
+  - 1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)
 
 La question 4 n'a été abordée par personne.
 
@@ -35,10 +35,11 @@ La note sur $20$ finale est obtenue en multipliant la note sur 4 par $5$
 {% note "**Objectif du test**" %}
 
 En 15 minutes :
-*
-* **un élève *normal*** doit parvenir à faire la première question sans le `while`{.language-} et le code/test de la deuxième question. Ce qui lui permet d'avoir 2.333333 points sur 4, soit 11.66666/20
-* **un bon élève** doit parvenir à réussir les 2 premières questions. Ce qui lui permet d'avoir 3/4 et donc 15/20
-* **un très bon élève** fait plus que les 2 premières questions.
+
+- **un élève *normal*** doit parvenir à faire la première question sans le `while`{.language-} et le code/test de la deuxième question. Ce qui lui permet d'avoir 2.333333 points sur 4, soit 11.66666/20
+- **un bon élève** doit parvenir à réussir les 2 premières questions. Ce qui lui permet d'avoir 3/4 et donc 15/20
+- **un très bon élève** fait plus que les 2 premières questions.
+
 {% endnote %}
 
 La ventilation des notes est :
@@ -50,9 +51,9 @@ La ventilation des notes est :
 |rang min | 42 | 39         | 31         | 25           | 16          | 10          | 6         |  2           |  1  |
 | # <     |  0 |  4         |  7         | 15           | 21          | 30          | 36        | 40           |  44 |
 
-* moyenne : 11.1/20 (2.22/4)
-* écart-type : 3.57/20 (0.71/4)
-* médiane : 11.67/20 (2.33/4)
+- moyenne : 11.1/20 (2.22/4)
+- écart-type : 3.57/20 (0.71/4)
+- médiane : 11.67/20 (2.33/4)
 
 Je suis globalement content de vous, vous avez globalement tous travaillé pour le test et la plupart des notes en dessous de 10 sont dues à un manque d'expérience. Quelques notes sont cependant préoccupantes et il faudra vraiment travailler sa production de code et comprendre comment tout ceci fonctionne ensemble.
 
@@ -61,7 +62,7 @@ Je suis globalement content de vous, vous avez globalement tous travaillé pour 
 Je n'ai pas vraiment eu d'erreurs surprenantes. Ce sont des erreurs de débutant et elles sont de deux types :
 
 - une mauvaise compréhension des mécanismes : ça se travaille et vient avec l'expérience
-- croire que l'on peut produire du code de qualité et qui marche sans l'exécuter : l'humilité s'apprend aussi avec l'expérience 
+- croire que l'on peut produire du code de qualité et qui marche sans l'exécuter : l'humilité s'apprend aussi avec l'expérience
 
 ### Recoder des fonctions
 
@@ -70,10 +71,11 @@ La majorité d'entre vous n'avez pas lu la documentation de la méthode `find`. 
 Vous ne perdez pas de temps à comprendre et lire de la documentation. Votre code sera plus clair, plus facile à utiliser et avec moins de bug si vous utilisez les fonctions et méthodes que python met à votre disposition. Apprendre à lire de la documentation vous fera gagner un temps fou !
 
 {% note %}
-Pour lire une documentation, en particulier savoir quels sont les paramètres d'une fonction lisez [cette partie du cours](/cours/coder-et-développer/bases-python/fonctions-méthodes/#paramètres). 
+Pour lire une documentation, en particulier savoir quels sont les paramètres d'une fonction lisez [cette partie du cours](/cours/coder-et-développer/bases-python/fonctions-méthodes/#paramètres).
 {% endnote %}
 
 Enfin, on utilise les fonctions testées dans le programme principal. On vous demande de coder des fonctions (et de les tester), ce n'est pas pour rien... Utilisez les !
+
 ### Ne pas exécuter son code
 
 De nombreuses erreurs auraient pu être évitées si vous aviez exécuté votre code : programme principal et surtout tests ! L'interpréteur et surtout `pytest` sont meilleurs que l'esprit humain pour voir rapidement les erreurs : cela plante ou rend un résultat incohérent.
@@ -98,7 +100,7 @@ Préférez définir vos fonctions sans le typage :
 
 Le typage a bien sur son utilité dans la documentation ou lorsque l'on veut définir précisément les paramètres (pour un test par exemple), mais dans le code où la fonction va être utilisée tout de suite après c'est inutile et rend la définition plus dure à lire.
 
-### Erreurs rares 
+### Erreurs rares
 
 Mais qu'il faut tout de suite arrêter de faire :
 
@@ -223,8 +225,6 @@ def test_donne_max_doublon():
 
 On ajoute à la fin du fichier `main.py`{.fichier} les lignes suivantes, dans le bloc `while`{.language-} :
 
-
-
 ```python
     if index_caractère > -1:
         if index_caractère == donne_max_doublon(chaine_entrée):
@@ -312,4 +312,3 @@ while chaine_entrée != "sortie":
             print("c'est le max !")
 
 ```
-
