@@ -1,9 +1,8 @@
 ---
 layout: layout/post.njk
 
-title:  "Palindromes : le code"
+title: "Palindromes : le code"
 ---
-
 
 Nous allons ici mettre en oeuvre des algorithmes de reconnaissance de phrases palindromes. Vous serez certainement amené à coder quelques-uns des algorithmes que vous avez forgés dans [la partie algorithmie](../algorithmie) de ce projet.
 
@@ -12,14 +11,14 @@ Pour le code python, il faudra impérativement :
 
 - faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande `python -m pytest`
 - organiser votre code en autant de fichiers que nécessaire.
-{% endattention %}
+  {% endattention %}
 
 ## Palindromes
 
 ### Algorithme palindrome
 
 {% faire %}
-Implémentez [l'algorithme  `palindrome(s: str) -> bool`{.language-} linéaire de la partie algorithmie](../algorithmie/#palindrome_linéaire){.language-}
+Implémentez [l'algorithme `palindrome(s: str) -> bool`{.language-} linéaire de la partie algorithmie](../algorithmie/#palindrome_linéaire){.language-}
 
 {% endfaire %}
 
@@ -54,9 +53,9 @@ Créez une fonction `prétraitement(s: str) -> str` qui effectue le prétraiteme
 1. le module [`unidecode`{.language-}](https://pypi.org/project/Unidecode/) (qu'il vous faudra installer avec `pip`) qui permet de supprimer les accents des caractères
 2. [la méthode `upper`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.upper) des chaînes de caractères qui majuscule les lettres
 3. l'instruction `re.sub("[^A-Za-z]","",s)`{'.language-} (`sub`{.language-} est une fonction [du module `re`](https://docs.python.org/fr/3/library/re.html) de python) qui rend une chaîne ne possédant que les caractères alphabétiques de `s`{.language-}.
-{% endfaire %}
-{% info %}
-[le module `re`](https://docs.python.org/fr/3/library/re.html) de python permet de filtrer une chaîne de caractères selon [une expression régulière](https://fr.wikipedia.org/wiki/Expression_régulière). Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots `re.sub("[^A-Z]","",s)`{'.language-} va rendre une nouvelle chaîne de caractères en :
+   {% endfaire %}
+   {% info %}
+   [le module `re`](https://docs.python.org/fr/3/library/re.html) de python permet de filtrer une chaîne de caractères selon [une expression régulière](https://fr.wikipedia.org/wiki/Expression_régulière). Ceci dépasse le cadre de ce cours d'algorithmie mais en deux mots `re.sub("[^A-Z]","",s)`{'.language-} va rendre une nouvelle chaîne de caractères en :
 
    1. regardant caractère par caractère le troisième paramètre (ici `s`{.language-}).
    2. elle ne conservera que les éléments décrits par le premier paramètre (ici `"[^A-Z]"`{.language-} qui signifie toutes les lettres en majuscules)
@@ -75,7 +74,7 @@ Créez un programme principal nommé `main-phrase-palindrome.py`{.fichier} qui d
 On peut très facilement lire un fichier texte en python en utilisant l'instruction :
 
 ```python
-s = open(nom_du_fichier).read()
+s = open(nom_du_fichier, encoding="utf-8").read()
 ```
 
 Utilisez cette instruction pour vérifier que le texte contenu dans le fichier [`perec.txt`{.fichier}](../perec.txt){.fichier} (cliquez droit sur le lien et choisissez de le télécharger) est une phrase palindrome. On le doit à [Georges Perec](https://fr.wikipedia.org/wiki/Georges_Perec) écrivain et poète Français.
@@ -111,9 +110,9 @@ Créez un programme principal nommé `main-sous-palindrome-fichier.py`{.fichier}
 2. transforme le texte en une chaîne utilisable par l'algorithme sous-palindrome en utilisant la fonction `prétraitement`{-language-}
 3. trouve l'indice et la longueur d'un plus grand sous-palindrome
 4. représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédant et le succédant (écrits de façon normale).
-{% endfaire %}
+   {% endfaire %}
 
-Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <https://www.gutenberg.org/>. Choisissez toujours la version texte brute (*plain text*) en utf-8.
+Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <https://www.gutenberg.org/>. Choisissez toujours la version texte brute (_plain text_) en utf-8.
 
 {% info %}
 Pour les fleurs du mal de Baudelaire c'est là : <https://www.gutenberg.org/ebooks/6099>

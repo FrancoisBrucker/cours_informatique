@@ -12,3 +12,4 @@ def test_compte_caractère():
 
 def test_donne_max_doublon():
     assert donne_max_doublon("bxaaxaaaxax") == 6
+
