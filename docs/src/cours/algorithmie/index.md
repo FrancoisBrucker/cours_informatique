@@ -2,9 +2,9 @@
 layout: layout/post.njk
 
 title: Algorithmie
-tags: ['cours', 'algorithmie']
+tags: ["cours", "algorithmie"]
 authors:
-    - François Brucker
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -16,7 +16,7 @@ eleventyComputed:
 Cours d'algorithmie.
 
 {% info %}
-*L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes* [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
+_L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer).
@@ -77,6 +77,8 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}
 
+## On s'entraîne : exercices de complexité et de preuve
+
 ## Classes de Problèmes Algorithmiques
 
 > TBD on a vu avec exponentiation que l'on ne sait pas à priori la meilleurs complexité d'un algorithme résolvant un problème.
@@ -104,4 +106,3 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% endaller %}
 
 > TBD nombre aléatoires
-

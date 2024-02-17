@@ -16,7 +16,7 @@ Parties [bases](/cours/coder-et-développer/#bases){.interne} et [développer](/
 
 {% endprerequis %}
 
-Étude du problème du tri et implémentation de quelques algorithmes pour *voir* les différentes façon de trier et leurs complexités.
+Étude du problème du tri et implémentation de quelques algorithmes pour _voir_ les différentes façon de trier et leurs complexités.
 
 Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
 
@@ -74,7 +74,7 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 
 ### Tri fusion
 
-Le tri fusion utilise une technique de création d'algorithme classique nommée *diviser pour régner* et nous utiliserons le très utile master Theorem pour en calculer la complexité.
+Le tri fusion utilise une technique de création d'algorithme classique nommée _diviser pour régner_ et nous utiliserons le très utile master Theorem pour en calculer la complexité.
 
 {% aller %}
 [Algorithme du tri fusion](./algorithme-fusion){.interne}
