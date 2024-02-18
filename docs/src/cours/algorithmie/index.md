@@ -79,6 +79,10 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## On s'entraîne : exercices de complexité et de preuve
 
+{% aller %}
+[Algorithmes classiques](./projet-classiques){.interne}
+{% endaller %}
+
 ## Classes de Problèmes Algorithmiques
 
 > TBD on a vu avec exponentiation que l'on ne sait pas à priori la meilleurs complexité d'un algorithme résolvant un problème.
