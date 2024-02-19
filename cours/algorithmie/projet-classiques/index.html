@@ -94,10 +94,17 @@
 
   <p>Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),<br>
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).</p>
-<h2>QCM</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<h2>Récursion et complexité</h2>
+<p>On considère le code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ma_fonction</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span>
+    <span class="token keyword">return</span> ma_function<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> ma_fonction<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>Quelle est la complexité de cet algorithme ? $\mathcal{O}(1)$, $\mathcal{O}(2^n)$ ou $\mathcal{O}(n)$ ? Justifiez votre réponse.</li>
+<li>Donnez une version itérative de l'algorithme</li>
+</ul>
 <h2>Tour de Hanoï</h2>
 <p>Les <em>tours de Hanoï</em> sont un célèbre casse tête inventé par Édouard Lucas qui consiste à déplacer $n$ disques de diamètres différents d'une tour de <em>&quot;départ&quot;</em> à une tour d' <em>&quot;arrivée&quot;</em> en passant par une tour <em>&quot;intermédiaire&quot;</em>, tout en respectant les règles suivantes :</p>
 <ul>
@@ -174,8 +181,11 @@ $$
 </div>
 <ul>
 <li>Donnez un pseudo-code récursif et itératif de cette fonction.</li>
-<li>Donnez de la complexité temporelle et en mémoire des 2 fonctions.</li>
+<li>Donnez le nombres d'appels récursif du calcul de A(n, n).</li>
 </ul>
+<blockquote>
+<p>TBD calculs de A(m, n) avec les puissances itérées de Knuth.</p>
+</blockquote>
 <h2>Méthodes de tri</h2>
 <h3>Tri par base</h3>
 <p>Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Le principe de ce tri est très simple :</p>
