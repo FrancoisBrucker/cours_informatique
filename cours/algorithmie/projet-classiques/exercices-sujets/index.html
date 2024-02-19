@@ -217,19 +217,26 @@ $$
 </blockquote>
 <h2>Méthodes de tri</h2>
 <h3>Tri par base</h3>
-<p>Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Le principe de ce tri est très simple :</p>
+<p>Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Notre entrée est une liste de listes composées de 0 et de 1. Par exemple : T = [[1, 0, 0, 1], [1, 1, 1, 0], [0, 0, 0, 1]] qui correspond aux nombres [9, 14, 1] On supposera également que toutes les listes ont même longueur. Le principe de ce tri est très simple :</p>
 <ul>
-<li>On considère d'abord le bit de poids le plus faible (<em>ie.</em> le plus à droite) et on répartit l'ensemble à trier en deux sous ensembles :
+<li>On considère d'abord le bit de poids le plus faible (<em>ie.</em> le plus à droite). On crée alors deux listes L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
 <ul>
-<li>les entiers dont le bit de poids le plus faible est 0</li>
-<li>les entiers dont le bit de poids le plus faible est 1</li>
+<li>les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0</li>
+<li>les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1</li>
 </ul>
 </li>
-<li>On concatène les deux sous-ensembles, en commençant par celui des bits à 0.</li>
+<li>On concatène les deux sous-listes T = L0 + L1</li>
 <li>On recommence sur le bit à gauche de celui qu'on vient de traiter.</li>
 <li>...</li>
 </ul>
-<p>Les parcours d'ensembles se font, toujours, de la gauche vers la droite.</p>
+<p>Les parcours des liste T se font, toujours, de la gauche vers la droite.</p>
+<p>Pour notre exemple :</p>
+<ol>
+<li>après premiere boucle : [[1,1,1,0], [1, 0, 0, 1], [0, 0, 0, 1]]</li>
+<li>après deuxième boucle : [[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]</li>
+<li>après troisième boucle :[[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]</li>
+<li>après quatrième boucle : [[0, 0, 0, 1], [1, 0, 0, 1], , [1,1,1,0]]</li>
+</ol>
 <p>Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera que l'on dispose d'une fonction qui, étant donnés deux entiers $n$ et $i$, donne le $i^{me}$ bit de $n$).</p>
 <p>Rappelez la complexité minimale du tri (dans le cas le pire). Commentaires.</p>
 <h3>Tri par monotonies</h3>
