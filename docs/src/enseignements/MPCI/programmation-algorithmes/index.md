@@ -1,8 +1,8 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "S2 : Programmation et Algorithmes"
 
-tags: ['formation', 'MPCI']
+tags: ["formation", "MPCI"]
 
 eleventyNavigation:
   order: 2
@@ -12,10 +12,9 @@ eleventyComputed:
     key: "{{ page.url }}"
     title: "{{ title }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
 ---
 
-Ce cours intitulé *Programmation et algorithmes* est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=119143)). Il s'appuie sur le  cours de *Programmation* donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=113169)).
+Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=119143)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=113169)).
 
 Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
 
@@ -34,7 +33,7 @@ $$
 Avec :
 
 - $CC = \frac{1}{2}(TUT + TEST)$ où :
-  - $TUT$  est la moyenne formée des 2 notes de tutorats
+  - $TUT$ est la moyenne formée des 2 notes de tutorats
   - $TEST$ est la moyenne des tests de débuts de séances ($6$ tests).
 - $DS$ est la moyenne des deux devoirs surveillées (DS1 et DS2)
 - $ET$ est l'examen terminal
@@ -118,8 +117,7 @@ Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-no
 
 {% aller %}
 
-1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} :
-   3. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
+1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} : 3. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
 2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
 3. Pour aller plus loin : annales test code des années précédentes.
 
@@ -149,10 +147,10 @@ Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin
 
 1. [définition de la complexité](/cours/algorithmie/complexité-calculs/définitions){.interne}
 2. [comparaisons asymptotiques](/cours/algorithmie/complexité-calculs/comparaisons-asymptotiques){.interne}
-{% endfaire  %}
-{% info %}
-N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
-{% endinfo %}
+   {% endfaire  %}
+   {% info %}
+   N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
+   {% endinfo %}
 
 Parties abordées :
 
@@ -190,7 +188,7 @@ Parties abordées dans le cours :
 
 1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne){.interne}
 2. [Problème du tri et algorithmes pour le résoudre](/cours/algorithmie/problème-tris){.interne}
-{% endaller %}
+   {% endaller %}
 
 #### Vendredi : projet tris
 
@@ -211,6 +209,11 @@ Le DM1 est à rendre pour le vendredi 23/02/24 à 23h59
 #### Mardi : Révision
 
 Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices.
+
+{% aller %}
+[Exercices](/cours/algorithmie/projet-classiques){.interne}
+
+{% endaller %}
 
 #### Vendredi : DS1
 
