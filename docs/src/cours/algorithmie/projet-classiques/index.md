@@ -13,9 +13,19 @@ eleventyComputed:
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-## QCM
+## Récursion et complexité
 
-> TBD
+On considère le code suivant :
+
+```python
+def ma_fonction(n):
+    if n < 5:
+        return 2
+    return ma_function(n-1) + 2 * ma_fonction(n-4)
+```
+
+- Quelle est la complexité de cet algorithme ? $\mathcal{O}(1)$, $\mathcal{O}(2^n)$ ou $\mathcal{O}(n)$ ? Justifiez votre réponse.
+- Donnez une version itérative de l'algorithme
 
 ## Tour de Hanoï
 
@@ -109,7 +119,9 @@ $$
 </div>
     
 - Donnez un pseudo-code récursif et itératif de cette fonction.
-- Donnez de la complexité temporelle et en mémoire des 2 fonctions.
+- Donnez le nombres d'appels récursif du calcul de A(n, n).
+
+> TBD calculs de A(m, n) avec les puissances itérées de Knuth.
 
 ## Méthodes de tri
 
