@@ -174,16 +174,23 @@ $$
 
 ### Tri par base
 
-Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Le principe de ce tri est très simple :
+Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Notre entrée est une liste de listes composées de 0 et de 1. Par exemple : T = [[1, 0, 0, 1], [1, 1, 1, 0], [0, 0, 0, 1]] qui correspond aux nombres [9, 14, 1] On supposera également que toutes les listes ont même longueur. Le principe de ce tri est très simple :
 
-- On considère d'abord le bit de poids le plus faible (_ie._ le plus à droite) et on répartit l'ensemble à trier en deux sous ensembles :
-  - les entiers dont le bit de poids le plus faible est 0
-  - les entiers dont le bit de poids le plus faible est 1
-- On concatène les deux sous-ensembles, en commençant par celui des bits à 0.
+- On considère d'abord le bit de poids le plus faible (_ie._ le plus à droite). On crée alors deux listes L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
+  - les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0
+  - les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1
+- On concatène les deux sous-listes T = L0 + L1
 - On recommence sur le bit à gauche de celui qu'on vient de traiter.
 - ...
 
-Les parcours d'ensembles se font, toujours, de la gauche vers la droite.
+Les parcours des liste T se font, toujours, de la gauche vers la droite.
+
+Pour notre exemple :
+
+1. après premiere boucle : [[1,1,1,0], [1, 0, 0, 1], [0, 0, 0, 1]]
+1. après deuxième boucle : [[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]
+1. après troisième boucle :[[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]
+1. après quatrième boucle : [[0, 0, 0, 1], [1, 0, 0, 1], , [1,1,1,0]]
 
 Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera que l'on dispose d'une fonction qui, étant donnés deux entiers $n$ et $i$, donne le $i^{me}$ bit de $n$).
 
