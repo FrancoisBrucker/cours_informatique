@@ -54,7 +54,7 @@ La valeur d'[une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_
 
 ### Valeur de $F(n)$
 
-Montrez que :
+Montrez (par récurrence) que :
 
 <div>
 $$
@@ -92,7 +92,7 @@ def fibo_rec2(n, a=1, b=1):
     elif n <= 2:
         return a
     else:
-        return fibo_rec2(n-1, a+b, a)
+        return fibo_rec2(n - 1, a + b, a)
 ```
 
 ## Noob trap
@@ -103,14 +103,14 @@ On considère le code suivant :
 def f(n):
     if n < 2:
         return 1
-    return f(n//2) * f(n // 4)
+    return f(n // 2) * f(n // 4)
 ```
 
-Quelle est l'équation de récurence de la complexité :
+Quelle est l'équation de récurrence de la complexité :
 
-1. $C(n) = C(n//2) * c(n//4)$
-2. $C(n) = \mathcal{O}(1) + C(n//2) * c(n//4)$
-3. $C(n) = \mathcal{O}(1) + C(n//2) + c(n//4)$
+1. $C(n) = C(n/2) * c(n/4)$
+2. $C(n) = \mathcal{O}(1) + C(n/2) * c(n/4)$
+3. $C(n) = \mathcal{O}(1) + C(n/2) + c(n/4)$
 
 Déduire de la bonne réponse que la complexité de l'exécution de la fonction est linéaire.
 
@@ -202,7 +202,7 @@ On vous demande de créer un algorithme :
 
 En entier écrit sous forme binaire peut s'écrire comme une liste $x$ composées de 0 et de 1. Par exemple l'entier 19 s'écrira $[1, 0, 0, 1, 1]$
 
-On vous demande d'écrire la fonction `succ(n)` qui prend en paramétre un entier écrit sous sa forme binaire et qui **le modifie** pour que sa valeure soit l'entier suivant. On supposera que l'on n'augmente pas sa taille et donc que `succ([1, 1, 1, 1])` change la liste ne entrée en `[0, 0, 0, 0]`.
+On vous demande d'écrire la fonction `succ(n)`{.language-} qui prend en paramètre un entier écrit sous sa forme binaire et qui **le modifie** pour que sa valeur soit l'entier suivant. On supposera que l'on n'augmente pas sa taille et donc que `succ([1, 1, 1, 1])`{.language-} change la liste ne entrée en `[0, 0, 0, 0]`{.language-}.
 
 Cette fonction permet d'écrire le code suivant :
 
@@ -252,9 +252,9 @@ Conclure en utilisant le fait que $\sum_{i=1}^N i \cdot \frac{1}{2^{i+1}}$ tent 
 
 ### Vérification
 
-Que le nombre moyen d'itération vale 1 est assez contre-intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :
+Que le nombre moyen d'itération vale 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :
 
-- on a bien ciclé sur tous les éléments
+- on a bien cyclé sur tous les éléments
 - en moyenne le nombre d'itération dans la boucle vaut bien 1.
 
 ## Cols
@@ -267,7 +267,7 @@ Un **_col_** d'un tableau d'entiers $T$ de taille $n > 1$ est un indice $0 \leq 
 - soit $i = 0$ et $T[i] \leq T[1]$
 - soit $i = n-1$ et $T[i] \leq T[n-2]$
 - soit $0 < i < n-1$ et $T[i] \leq \min(T[i-1], T[i+1])$
-{% endnote %}
+  {% endnote %}
 
 ### Existence
 
@@ -290,7 +290,7 @@ Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'enti
 def trouve_vite(T):
     if T[0] <= T[1]:
         return 0
-    
+
     if T[-1] <= T[-2]:
         return len(T) - 1
 
@@ -301,7 +301,7 @@ def trouve_vite(T):
         milieu = (fin + début) // 2
         if T[milieu] <= min(T[milieu - 1], T[milieu + 1]):
             return milieu
-        
+
         if T[milieu] > T[milieu - 1]:
             fin = milieu
         else:
