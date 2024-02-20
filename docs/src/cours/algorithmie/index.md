@@ -97,7 +97,8 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Structure avancée
 
-> TBD : liste, dictionnaires et comparaison avec le tableau
+> TBD : liste (comparaison avec le tableau), pile, file et polynômes.
+> TBD : dictionnaires et comparaison avec le tableau
 
 ## Méthode de design d'algorithmes
 

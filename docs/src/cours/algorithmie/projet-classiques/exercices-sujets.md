@@ -15,6 +15,8 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 
 ## Récursion et complexité
 
+> TBD à déplacer dans complexité
+
 ### Exercice 1
 
 On considère le code suivant :
@@ -58,43 +60,6 @@ Les _tours de Hanoï_ sont un célèbre casse tête inventé par Édouard Lucas 
 On suppose que cette dernière règle est également respectée dans la configuration de départ.
 
 Donnez un algorithme récursif permettant de résoudre le problème. Quelle est sa complexité ? Peut-on faire mieux ?
-
-## Polynômes
-
-Un polynôme peut être vu comme une liste de ses coefficients. Le polynôme $P(x) = 1 + 3x^2$ s'écrira ainsi avec la liste $[1, 0, 3]$ et plus généralement, le polynôme $P(x) = \sum_{i=0}^n a_ix^i$ s'écrira sous la forme d'une liste $L$ à $n+1$ éléments telle que $L[i] = a_i$.
-
-Manipulons cette structure.
-
-### Écrivez une fonction _somme_
-
-Écrivez une fonction permettant de rendre le polynôme $R(x) = P(x) + Q(x)$, somme des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.
-
-Vous pourrez utiliser la méthode `append`{.language-} des listes qui ajoute un élément en fin de liste (si `l= [1, 2]`{.language-}, l'instruction `l.append(3)`{.language-} **modifie** `l`{.language-}, pour qu'elle soit égale à `l= [1, 2, 3]`{.language-})
-
-### Écrivez une fonction _produit_
-
-Écrivez une fonction permettant de rendre le produit le polynôme $R(x) = P(x) \cdot Q(x)$, produit des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.
-
-### Écrivez une fonction _valeur_
-
-Écrivez une fonction prenant un polynôme $P(x)$ et un réel $r$ et rendant l'évaluation $P(r)$ de $P(x)$ en $r$.
-
-Vous pourrez utiliser le fait que `x ** i`{.language-} en python soit égal à $x^i$
-
-L'exonentiation est une opération couteuse en multiplications. Combien en avez-vous eu besoin pour exécuter votre fonction ?
-
-### Amélioration
-
-Si on note :
-
-- $A(x) = a_0$
-- $X(x) = x$
-- $P(x) = \sum_{i=0}^n a_ix^i$
-- $Q(x) = \sum_{i=0}^{n-1} a_{i+1}x^i$
-
-On a clairement que : $P(x) = A(x) + X(x) \cdot R(x)$.
-
-En déduire une méthode d'évaluation de polynômes moins gourmande en multiplications.
 
 ## Suppression de valeurs
 

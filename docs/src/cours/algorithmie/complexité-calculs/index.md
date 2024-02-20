@@ -24,7 +24,7 @@ Nous avons calculé explicitement des complexité dans la partie précédente. V
 
 ### Ligne au compte incertain
 
-Certaines ligne n'on pas le même nombre d'instruction selon comment on compte :
+Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte :
 
 - est-ce que `x = a + 1`{.language-} c'est 1, 2 ou 3 instructions ? Ou plus ?
 - quel est le nombre d'instructions de la ligne `pour chaque élément x du tableau T`{.language-} ? 1, 2 ou plus ?
@@ -62,7 +62,7 @@ En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend v
 
 En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.
 
-L'instruction python `x = 1`{.language-} prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.
+L'instruction python `x = 1`{.language-} prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abord créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.
 
 Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).
 
@@ -81,7 +81,7 @@ Les coefficients multiplicatifs et additifs constants sont négligeable par rapp
 Comme il est impossible de connaître le nombre exact d’instructions et qu'au final on s'en fiche puisque seule la forme générale et asymptotique est importante, on utilise des [comparaisons asymptotiques](https://fr.wikipedia.org/wiki/Comparaison_asymptotique). Avant de les utiliser en algorithmie, commençons par les définir formellement.
 
 {% aller %}
-[*fonctions* de comparaisons asymptotiques](./comparaisons-asymptotiques){.interne}
+[_fonctions_ de comparaisons asymptotiques](./comparaisons-asymptotiques){.interne}
 {% endaller %}
 
 {% aller %}
@@ -97,3 +97,15 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
+
+## Exercices
+
+> TBD
+
+### Itératif
+
+> exo ?
+
+### Récursif
+
+- rec de exo classiques

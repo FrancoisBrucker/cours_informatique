@@ -13,15 +13,9 @@ eleventyComputed:
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-## Exercices
-
 {% aller %}
 [sujets](exercices-sujets){.interne}
 {% endaller %}
 {% details "corrigé", "open" %}
 [corrigés](exercices-corrigés){.interne}
 {% enddetails %}
-
-## Problèmes
-
-> TBD
