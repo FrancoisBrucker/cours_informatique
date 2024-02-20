@@ -95,15 +95,36 @@
   <p>Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),<br>
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).</p>
 <h2>Récursion et complexité</h2>
+<h3>Exercice 1</h3>
 <p>On considère le code suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ma_fonction</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">2</span>
-    <span class="token keyword">return</span> ma_function<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> ma_fonction<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> ma_function<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> ma_fonction<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">)</span>
 </code></pre>
 <ul>
 <li>Quelle est la complexité de cet algorithme ? $\mathcal{O}(1)$, $\mathcal{O}(2^n)$ ou $\mathcal{O}(n)$ ? Justifiez votre réponse.</li>
 <li>Donnez une version itérative de l'algorithme</li>
+</ul>
+<h3>Exercice 2</h3>
+<p>On considère le code suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ma_fonction</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">2</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">4</span> <span class="token operator">+</span> ma_function<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">*</span> ma_fonction<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li>
+<p>Quelle est l'équation de complexité vérifiée par ce algorithme ?</p>
+<ul>
+<li>$t(n)= \mathcal{O}(1) + t(n/2) + 2 \cdot t(n/4)$</li>
+<li>$t(n)= \mathcal{O}(1) + t(n/2) + t(n/4)$</li>
+<li>$t(n) = t(n/2) \cdot t(n/4)$</li>
+</ul>
+</li>
+<li>
+<p>Calculez la complexité de l'algorithme</p>
+</li>
 </ul>
 <h2>Tour de Hanoï</h2>
 <p>Les <em>tours de Hanoï</em> sont un célèbre casse tête inventé par Édouard Lucas qui consiste à déplacer $n$ disques de diamètres différents d'une tour de <em>&quot;départ&quot;</em> à une tour d' <em>&quot;arrivée&quot;</em> en passant par une tour <em>&quot;intermédiaire&quot;</em>, tout en respectant les règles suivantes :</p>
@@ -184,6 +205,8 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 </ul>
 <h2>Suite de Fibonacci</h2>
 <ul>
+<li>F(n) = 1/sqrt(5)(phi^n - phi'^n) = ou` racines de x^2 = x + 1 (phi = nombre d'or, phi'=-1/phi)</li>
+<li>F(n+1)/F(n) -&gt; phi</li>
 <li>récursif, algorithme et complexité</li>
 <li>itératif, algorithme et complexité</li>
 <li>récursif en temps linéaire (en montée)</li>
