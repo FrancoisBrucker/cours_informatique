@@ -92,7 +92,7 @@
     
   
 
-  <h2>Fibinacci</h2>
+  <h2>Fibonacci</h2>
 <h3>Récursif</h3>
 <p>En notant $A(n)$ le nombre d'appels à la fonction, on a :</p>
 <ul>
@@ -175,9 +175,16 @@ $$
 </div>
 <p>La fin est facile en utilisant le fait que $\sum_{i=0}^{K}2^i = 2^{K+1} - 1$</p>
 <h3>Valeur de $F(n)$</h3>
-<blockquote>
-<p>TBD : il faut juste calculer</p>
-</blockquote>
+<p>On prouve la propriété par récurrence.</p>
+<p>Initialisation :</p>
+<ul>
+<li>$F(1) = 1 = \frac{1}{\sqrt{5}}(\frac{1+\sqrt{5}}{2} - \frac{1-\sqrt{5}}{2}) = \frac{1}{\sqrt{5}}(\varphi - \frac{1}{-\varphi})$</li>
+<li>$F(2) = \frac{1}{\sqrt{5}}(\varphi^2-\frac{1}{(-\varphi)^2}) = \frac{1}{\sqrt{5}}(\varphi + 1 -(\frac{1}{(-\varphi)} + 1) = \frac{1}{\sqrt{5}}(\varphi + \frac{1}{\varphi}) = F(1)$</li>
+</ul>
+<p>On suppose la propriété vrai jusqu'à $n-1$. Pour $n$ :</p>
+<p>$F(n) = F(n-1) + F(n-2) = \frac{1}{\sqrt{5}}(\varphi^{n-1}-\frac{1}{(-\varphi)^{n-1}}) + \frac{1}{\sqrt{5}}(\varphi^{n-2}-\frac{1}{(-\varphi)^{n-2}}) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(1 + \varphi) - \frac{1}{(-\varphi)^{n-2}}(1+ \frac{1}{\varphi}))$</p>
+<p>Comme $\varphi$ et $-\frac{1}{\varphi}$ sont les racines du polynôme $P(X) = X^2 - X -1$ on a :</p>
+<p>$F(n) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(\varphi^2) - \frac{1}{(-\varphi)^{n-2}}(\frac{1}{\varphi^2})) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})$</p>
 <h3>Itératif</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_iter</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     a <span class="token operator">=</span> <span class="token number">1</span>
@@ -187,9 +194,12 @@ $$
     <span class="token keyword">return</span> a
 </code></pre>
 <h3>Récursif terminal</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>La complexité étant terminale, il y a $\mathcal{O}(n)$ appels récursifs. Comme le reste de la fonction est en $\mathcal{O}(1)$ la complexité totale est en $\mathcal{O}(n)$.</p>
+<p>Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que <code>fibo_rec2(n, a, b)</code> rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.</p>
+<ul>
+<li>Initialisation : <code>fibo_rec2(1, a, b) = b</code> et <code>fibo_rec2(2, a, b) = a</code></li>
+<li>On suppose la propriété vraie pour <code>fibo_rec2(n-1, a, b)</code>. Comme <code>fibo_rec2(n, a, b) = fibo_rec2(n-1,a+b , a)</code>, la propriété est vérifiée.</li>
+</ul>
 <h2>Noob trap</h2>
 <p>C'est bien la troisième proposition qui est la bonne !</p>
 <p>La troisième ligne de l'algorithme a pour complexité :</p>
@@ -201,13 +211,13 @@ $$
 <p>En reprenant ce que l'on a fait pour Fibonacci, on a l'inégalité :</p>
 <div>
 $$
-C(n) \leq \mathcal{O}(1) + 2 \cdot C(n//2)
+C(n) \leq \mathcal{O}(1) + 2 \cdot C(n/2)
 $$
 </div>
 <p>Ce qui donne en réitérant cette inégalité :</p>
 <div>
 $$
-C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n//2^K)
+C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n/2^K)
 $$
 </div>
 <p>Comme la seule complexité que l'on connait est $C(1) = \mathcal{O}(1)$, on doit prendre $K$ tel que $2^K \simeq n$, c'est à dire $k = \log_2(n)$. On a alors :</p>
@@ -294,20 +304,33 @@ Programme :
             ajoute x à la fin de L2
     Retour L2
 </code></pre>
-<h4>complexité</h4>
+<h4>complexité de l'algorithme 1</h4>
 <p>On considère que la création d'une liste et l'ajout d'un élément en fin de liste sont des opérations en $\mathcal{O}(1)$ opérations. De là, notre algorithme est en $\mathcal{O}(n)$ opérations où $n$ st la taille de la liste <code class="language-">L</code>.</p>
-<h4>preuve</h4>
-<p>L'algorithme va parcourir la liste et ajouter un à un à L2 tous les éléments de <code class="language-">L</code> différents de <code class="language-">val</code>. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ L2 est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>.</p>
+<h4>preuve de l'algorithme 1</h4>
+<p>L'algorithme va parcourir la liste et ajouter un à un à <code class="language-">L2</code> tous les éléments de <code class="language-">L</code> différents de <code class="language-">val</code>. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>.</p>
 <ul>
 <li><strong>initialisation</strong> : à la fin de la première itération ($i=1$), <code class="language-">L2</code> est vide si <code class="language-">x = L[0]</code> vaut <code class="language-">val</code> et vaut <code class="language-">[x]</code> sinon. Ok.</li>
 <li><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. L'itération $i+1$ a considéré $x = L[i]$. Notons <code class="language-">L2'</code> la valeur de <code class="language-">L2</code> à la fin de l'itération $i+1$. Au début de l'itération $i+1$, par hypothèse de récurrence, <code class="language-">L2</code> est la restriction de <code class="language-">L[:i]</code> aux valeurs différentes de <code class="language-">val</code>. La restriction de <code class="language-">L[:i+1]</code> aux valeurs différentes de <code class="language-">val</code> est alors soit égal à <code class="language-">L2</code> si <code class="language-">L[i] = val</code> soit <code class="language-">L2 + L[i]</code> sinon. C'est exactement ce que vaut <code class="language-">L2'</code>.</li>
 </ul>
 <p>A la fin de la dernière itération, <code class="language-">L2</code> vaut donc la restriction de <code class="language-">L[:n]</code> (avec <code class="language-">n = len(L)</code>) aux valeurs différentes de val.</p>
 <h3>Suppression d'une valeur in-place</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
 <p>On échange l'élément à supprimer avec le dernier de la liste puis on pop.</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Algorithme-1'
+Entrées :
+    val : une valeur
+    L : une liste de n valeurs
+Programme :
+    i = 0
+    k = n - 1
+    tant que i <= k:
+    si L[i] == val
+        échange L[i] et L[k]
+        supprime le dernier élément de L
+        k = k - 1
+    sinon:
+        i = i + 1
+</code></pre>
+<p>La preuve et la complexité de l'algorithme 1' est identique à celle de l'algorithme 1.</p>
 <h2>Suppression de doublons</h2>
 <p>Même structure que pour l'exercice précédent.</p>
 <p>La structure de donnée utilisée ici est la <strong><em>liste</em></strong>. On considérera que :</p>
@@ -328,7 +351,7 @@ Programme :
         L = algorithme-1(L, x)
     Retour L2
 </code></pre>
-<h4>complexité algorithme 2</h4>
+<h4>complexité de l'algorithme 2</h4>
 <p>Commençons par compter le nombre de fois où la boucle <code class="language-">tant que</code> sera exécutée. <code class="language-">L</code> est modifiée à chaque fin de boucle <code class="language-">L = algorithme-1(L, x)</code> avec <code class="language-">x = L[0]</code>. Comme l'algorithme de la question 1 rend la restriction de de <code class="language-">L</code> aux valeurs différentes de <code class="language-">x</code>, elle va forcément être strictement plus petite (puisque <code class="language-">x=L[0]</code> il est forcément dans la liste) : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de <code class="language-">L</code> initiale fois.</p>
 <p>La seule ligne de l'algorithme qui n'est pas de complexité $\mathcal{O}(1)$ est : <code class="language-">L = algorithme-1(L, x)</code>. Sa complexité est égale à une affectation ($\mathcal{O}(1)$) plus la complexité de l'algorithme de la question 1, qui vaut de l'ordre de la taille de la liste passée en entrée.</p>
 <p>Cette taille diminue strictement à chaque itération : on peut utiliser l'astuce du cours pour ne garder que la complexité la plus importante, c'est à dire $\mathcal{O}(len(L))$ avec <code class="language-">L</code> la liste initiale.</p>
@@ -357,14 +380,23 @@ Programme :
 </ul>
 <p>A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots, v_k]$</p>
 <h3>Suppression de doublon d'une liste ordonnée</h3>
-<blockquote>
-<p>TBD : on ajoute l'élément que s'il est différent de celui d'avant</p>
-</blockquote>
+<p>Il suffit de parcourir tous les éléments de <code class="language-">L</code> dans l'ordre :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Algorithme-2'
+Entrées :
+    L : une liste de n valeurs
+Programme :
+    création d’une liste L2 contenant le premier élément de L
+    pour i allant de 1 à n-1:
+        si L[i] != L[i-1]:
+            ajoute L[i] à la fin de L2
+    Retour L2
+</code></pre>
+<h4>complexité de l'algorithme 2'</h4>
+<p>Clairement en $\mathcal{O}(n)$</p>
+<h4>preuve de l'algorithme 2'</h4>
+<p>L'invariant de boucle et sa preuve est identique à celle de la preuve de l'algorithme 2 en tenant compte du fait que <code class="language-">L</code> est trié.</p>
 <h3>Suppression de doublon d'une liste sans ordre</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<p>On commence par trier puis on supprime</p>
+<p>On commence par trier la liste on utilise l'algorithme de la question précédente. Ceci fait passer la complexité de $\mathcal{O}(len(L)^2)$ à $\mathcal{O}(len(L)\log(len(L)))$</p>
 <h2>Triangle de Pascal</h2>
 <h3>Coefficient binomiaux récursif</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">comb_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -375,7 +407,7 @@ Programme :
         <span class="token keyword">return</span> comb_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> comb_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span>
 </code></pre>
 <h3>Coefficient binomiaux itératif et $\mathcal{O}(n^2)$ en mémoire</h3>
-<p>On stocke une matrice triangulaire inférieure. C</p>
+<p>On stocke une matrice triangulaire inférieure que l'on construit ligne à ligne.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">comb_iter</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">:</span>
     C <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 
@@ -401,32 +433,29 @@ Programme :
 
     <span class="token keyword">return</span> C<span class="token punctuation">[</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
-<blockquote>
-<p>TBD : un dessin</p>
-</blockquote>
 <h2>Compteur binaire</h2>
-<p>La complexité va dépendre du nombre d'élements dans la liste en entré. Notons $N = len(n)$.</p>
+<p>La complexité va dépendre du nombre d'éléments dans la liste en entré. Notons $N = len(n)$.</p>
 <p>On remarque (facilement) que cette complexité vaut $C(N) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle.</p>
 <ul>
 <li>complexité max : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(N)$</li>
 <li>complexité min : parcourt 1 seul élément de la liste (pour une liste se terminant par un 0): $\mathcal{O}(1)$</li>
 </ul>
-<p>Séparons les $2^N$ nombres possibles en classes selon le nombre d'iérations dans la boucle :</p>
+<p>Séparons les $2^N$ nombres possibles en classes selon le nombre d'itérations dans la boucle :</p>
 <ul>
 <li>dernier élément vaut 0 : 0 itération. Vrai pour $2^N/2$ nombres. Probabilité de 1/2.</li>
-<li>derniers éléments valents [0, 1] : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.</li>
-<li>derniers éléments valents [0, 1, 1] : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.</li>
+<li>derniers éléments valent <code class="language-">[0, 1]</code> : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.</li>
+<li>derniers éléments valent <code class="language-">[0, 1, 1]</code> : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.</li>
 <li>...</li>
-<li>derniers éléments valents [0] + i *[1] : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.</li>
+<li>derniers éléments valent <code class="language-">[0] + i *[1]</code> : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.</li>
 <li>le premier élément vaut 0 et tous les autres valent 1 : $N-1$ itérations Vrai pour 1 nombre. Probabilité de 1/2^{N}.</li>
 </ul>
-<p>Le nombre moyen d'iérations dans la boucle vaut alors :</p>
+<p>Le nombre moyen d'itérations dans la boucle vaut alors :</p>
 <div>
 $$
 W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
 $$
 </div>
-<h3>Vérification exprérimentale</h3>
+<h3>Vérification expérimentale</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     K <span class="token operator">=</span> <span class="token number">0</span>
 
@@ -532,7 +561,7 @@ $$</p>
 
 </code></pre>
 <h3>Rapidité</h3>
-<p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$  tel que $k$ soit un col de la matrice.</p>
+<p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$ tel que $k$ soit un col de la matrice.</p>
 <p>L'invariant de boucle de la boucle <code class="language-">while</code> est alors :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -553,7 +582,7 @@ $$</p>
 </ul>
 </div>
 </div>
-<p>A la fin de la première itération,  on a soit :</p>
+<p>A la fin de la première itération, on a soit :</p>
 <ul>
 <li><code class="language-">T[milieu] &lt;= min(T[milieu - 1], T[milieu + 1])</code> et <code class="language-">milieu</code> est un col</li>
 <li><code class="language-">fin' = milieu</code> et <code class="language-">début' = début</code> si <code class="language-">T[milieu] &gt; T[milieu -1]</code>. Comme initialement <code class="language-">0 = début + 1 &lt; fin = len(T) - 1</code> on a également <code class="language-">milieu - 1 &gt; début</code> puisque <code class="language-">T[0] &gt; T[1]</code> et l'invariant est vérifié.</li>
