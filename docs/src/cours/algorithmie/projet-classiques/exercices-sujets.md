@@ -15,17 +15,38 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 
 ## Récursion et complexité
 
+### Exercice 1
+
 On considère le code suivant :
 
 ```python
 def ma_fonction(n):
     if n < 5:
         return 2
-    return ma_function(n-1) + 2 * ma_fonction(n-4)
+    return ma_function(n-1) + ma_fonction(n-4)
 ```
 
 - Quelle est la complexité de cet algorithme ? $\mathcal{O}(1)$, $\mathcal{O}(2^n)$ ou $\mathcal{O}(n)$ ? Justifiez votre réponse.
 - Donnez une version itérative de l'algorithme
+
+### Exercice 2
+
+On considère le code suivant :
+
+```python
+def ma_fonction(n):
+    if n < 3:
+        return 2
+    return (4 + ma_function(n // 2))) * 2 * ma_fonction(n // 4)
+```
+
+- Quelle est l'équation de complexité vérifiée par ce algorithme ?
+
+  - $t(n)= \mathcal{O}(1) + t(n/2) + 2 \cdot t(n/4)$
+  - $t(n)= \mathcal{O}(1) + t(n/2) + t(n/4)$
+  - $t(n) = t(n/2) \cdot t(n/4)$
+
+- Calculez la complexité de l'algorithme
 
 ## Tour de Hanoï
 
@@ -138,6 +159,8 @@ On compte précisément les comparaisons (comme on l'a fait en comptant les mult
 
 ## Suite de Fibonacci
 
+- F(n) = 1/sqrt(5)(phi^n - phi'^n) = ou` racines de x^2 = x + 1 (phi = nombre d'or, phi'=-1/phi)
+- F(n+1)/F(n) -> phi
 - récursif, algorithme et complexité
 - itératif, algorithme et complexité
 - récursif en temps linéaire (en montée)

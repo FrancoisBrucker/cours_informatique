@@ -18,7 +18,7 @@ On considère le code suivant :
 def ma_fonction(n):
     if n < 5:
         return 2
-    return ma_function(n-1) + 2 * ma_fonction(n-4)
+    return ma_function(n-1) + ma_fonction(n-4)
 ```
 
 ### Complexité de l'algorithme
@@ -57,7 +57,7 @@ Et donc que $C(n) = \Omega(2^n)$.
 def ma_fonction(n):
     C = [2, 2, 2, 2]
     for i in range(4, n):
-        C = [C[0] + 2 * C[-1]] + C[:-1]
+        C = [C[0] + C[-1]] + C[:-1]
 
     return C[0]
 ```
