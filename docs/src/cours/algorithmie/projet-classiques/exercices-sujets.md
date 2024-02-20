@@ -13,42 +13,106 @@ eleventyComputed:
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-## Récursion et complexité
+## Suite de Fibonacci
 
-> TBD à déplacer dans complexité
+[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci) est définie par l'équation de récurence :
 
-### Exercice 1
+<div>
+$$
+F(n) = F(n-1) + F(n-2)
+$$
+</div>
 
-On considère le code suivant :
+Si $n > 2$ et $F(1) = F(2) = 1$
 
-```python
-def ma_fonction(n):
-    if n < 5:
-        return 2
-    return ma_function(n-1) + ma_fonction(n-4)
-```
+Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs
 
-- Quelle est la complexité de cet algorithme ? $\mathcal{O}(1)$, $\mathcal{O}(2^n)$ ou $\mathcal{O}(n)$ ? Justifiez votre réponse.
-- Donnez une version itérative de l'algorithme
-
-### Exercice 2
-
-On considère le code suivant :
+### Fibonacci récursif
 
 ```python
-def ma_fonction(n):
+def fibonacci_rec(n):
     if n < 3:
-        return 2
-    return (4 + ma_function(n // 2))) * 2 * ma_fonction(n // 4)
+        return 1
+    return fibonacci_rec(n-1) + fibonacci_rec(n-2)
 ```
 
-- Quelle est l'équation de complexité vérifiée par ce algorithme ?
+Cette partie vous donne le principe général lorsque l'on calcule des complexités d'algorithmes récursifs.
 
-  - $t(n)= \mathcal{O}(1) + t(n/2) + 2 \cdot t(n/4)$
-  - $t(n)= \mathcal{O}(1) + t(n/2) + t(n/4)$
-  - $t(n) = t(n/2) \cdot t(n/4)$
+1. Donnez l'équation de récurrence permettant de calculer le nombre $A(n)$ d'appels à la fonction dans l'exécution de `fibonacci_rec(n)`. Montrer que cette valeur est égale à $F(n)$.
+2. Donnez l'équation de récurrence permettant de calculer la complexité $C(n)$ de l'exécution de `ma_fonction(n)`.
+3. Montrez que $\mathcal{O}(1) + 2\cdot C(n-2) \leq C(n) \leq \mathcal{O}(1) + 2\cdot C(n-1)$
+4. En déduire que :
+   1. $C(n) \leq \mathcal{O}(1)\cdot (\sum_{i=0}^{n-3}2^i) + 2^{n-2} \cdot C(2)$
+   2. $C(n) \geq  \mathcal{O}(1)\cdot (\sum_{i=0}^{(n-4)/2}2^i) + {(\sqrt{2})}^{n-2} \cdot C(2)$
+5. en conclure que :
+   1. $C(n) =\mathcal{O}(2^n)$
+   2. $C(n) =\Omega((\sqrt{2})^n)$
 
-- Calculez la complexité de l'algorithme
+{% info %}
+La valeur d'[une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique) est à connaitre. On en a souvent besoin en algorithmie.
+{% endinfo %}
+
+### Valeur de $F(n)$
+
+Montrez que :
+
+<div>
+$$
+F(n) = \frac{1}{\sqrt{5}}(\varphi^n+\frac{1}{\varphi^n})
+$$
+</div>
+
+Où $\varphi = \frac{1+\sqrt{5}}{2}$ qui est le nombre d'or et une racine du polynôme $X^2 - X - 1$ (l'autre racine étant $-\frac{1}{\varphi}$)
+
+{% info %}
+C'est hors programme, mais c'est la façon de résoudre [les suite linéaires récurrentes](https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire)
+{% endinfo %}
+
+En déduire que le nombre d'appels de la fonction récursive de la partie précédente vaut : $A(n) = \Theta(\varphi^n)$
+
+### Itératif
+
+Donnez un algorithme it´ratif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$
+
+### Récursif terminal
+
+L'algorithme récursif est sous-optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.
+
+L'algorithme itératif ne fait pas la même chose car il stocke les valeurs intermédiaires. Une technique puissante pour accéder à la même chose récursivement est de passer les variables en paramètres :
+
+Démontrer que :
+
+- `fibo_rec_terminal(n, 1, 1)`{.language-} calcule bien $F(n)$ :
+- sa complexité est $\mathcal{O}(n)$
+
+```python
+def fibo_rec2(n, a=1, b=1):
+    if n <= 1:
+        return b
+    elif n <= 2:
+        return a
+    else:
+        return fibo_rec2(n-1, a+b, a)
+```
+
+## Noob trap
+
+On considère le code suivant :
+
+```python#
+def f(n):
+    if n < 2:
+        return 1
+    return f(n//2) * f(n // 4)
+```
+
+Quelle est l'équation de récurence de la complexité :
+
+1. $C(n) = C(n//2) * c(n//4)$
+2. $C(n) = \mathcal{O}(1) + C(n//2) * c(n//4)$
+3. $C(n) = \mathcal{O}(1) + C(n//2) + c(n//4)$
+
+Déduire de la bonne réponse que la complexité de l'exécution de la fonction est linéaire.
 
 ## Tour de Hanoï
 
@@ -114,199 +178,146 @@ Même question que précédemment, mais on considère que la liste `L`{.language
 
 Si l'ordre des éléments de `L_2`{.language-} n'est pas important, proposez une meilleure solution à la deuxième question.
 
-## Min et max d'un tableau d'entiers
-
-On compte précisément les comparaisons (comme on l'a fait en comptant les multiplications avec le problème de l'exponentiation)
-
-- juste min
-- juste max
-- faire les deux ensemble
-
-## Suite de Fibonacci
-
-- F(n) = 1/sqrt(5)(phi^n - phi'^n) = ou` racines de x^2 = x + 1 (phi = nombre d'or, phi'=-1/phi)
-- F(n+1)/F(n) -> phi
-- récursif, algorithme et complexité
-- itératif, algorithme et complexité
-- récursif en temps linéaire (en montée)
-
 ## Triangle de Pascal
 
-- récursif, algorithme et complexité
-- itératif, algorithme et complexité
-- itératif avec une complexité en mémoire de $\mathcal{O}(n)$
+Le calcul du coefficient binomial se fait en utilisant [le triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal).
 
-## Ackermann
-
-La fonction d'Ackermann se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :
+Pour $n > p > 0$ :
 
 <div>
 $$
-A(m,n) =
-\left\{
-\begin{array}{lll}
- & n + 1 &\mbox{ si } m = 0\\
-& A(m - 1, 1) &\mbox{ si } n = 0, m>0\\
-& A(m - 1, A(m, n - 1)) &\mbox{ sinon }\\
-\end{array}
-\right.
+C(n, p) = C(n-1, p-1) + C(n-1, p)
 $$
 </div>
-    
-- Donnez un pseudo-code récursif et itératif de cette fonction.
-- Donnez le nombres d'appels récursif du calcul de A(n, n).
 
-> TBD calculs de A(m, n) avec les puissances itérées de Knuth.
+et $C(n, 1) = C(n, n) = 1$
 
-## Méthodes de tri
+On vous demande de créer un algorithme :
 
-### Tri par base
-
-Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Notre entrée est une liste de listes composées de 0 et de 1. Par exemple : T = [[1, 0, 0, 1], [1, 1, 1, 0], [0, 0, 0, 1]] qui correspond aux nombres [9, 14, 1] On supposera également que toutes les listes ont même longueur. Le principe de ce tri est très simple :
-
-- On considère d'abord le bit de poids le plus faible (_ie._ le plus à droite). On crée alors deux listes L0 et L1 initialement vides et on va itérativement considérer chaque élément de la liste à trier :
-  - les entiers dont le bit de poids le plus faible est 0 sont ajoutés à la fin de L0
-  - les entiers dont le bit de poids le plus faible est 1 sont ajoutés à la fin de L1
-- On concatène les deux sous-listes T = L0 + L1
-- On recommence sur le bit à gauche de celui qu'on vient de traiter.
-- ...
-
-Les parcours des liste T se font, toujours, de la gauche vers la droite.
-
-Pour notre exemple :
-
-1. après premiere boucle : [[1,1,1,0], [1, 0, 0, 1], [0, 0, 0, 1]]
-1. après deuxième boucle : [[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]
-1. après troisième boucle :[[1, 0, 0, 1], [0, 0, 0, 1], [1,1,1,0]]
-1. après quatrième boucle : [[0, 0, 0, 1], [1, 0, 0, 1], , [1,1,1,0]]
-
-Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera que l'on dispose d'une fonction qui, étant donnés deux entiers $n$ et $i$, donne le $i^{me}$ bit de $n$).
-
-Rappelez la complexité minimale du tri (dans le cas le pire). Commentaires.
-
-### Tri par monotonies
-
-Étant donné un tableau $T$, **_une monotonie_** est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :
-si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.
-
-Donnez un algorithme qui, étant donné un tableau $T$ construit une liste (de listes) $L$, chaque élément de $L$ étant une monotonie de $T$ (et vice versa). À partir de notre exemple, on obtient :
-$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$.
-
-Donnez un algorithme qui fusionne deux monotonies ; par exemple, à partir de $[2,6]$ et $[1,3,3,5]$, on obtient $[1,2,3,3,5,6]$ (ceci est aussi une question de cours).
-
-Donnez un algorithme qui, étant donnée une liste $L$ de monotonies, les fusionne deux-à-deux (en en laissant éventuellement une ``toute seule" à la fin) et met le résultat dans une liste (de listes) $L'$. Par exemple, à partir de
-$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$, on obtient $L' = [[1,2,3,3,5,6], [2,4,6],[0,1,1,3,8,9], [0,1,2], [0]]$.
-
-En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur et dans le cas
-le pire.
-
-Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
+1. récursif pour calculer $C(n, p)$, et d'en donner la complexité.
+2. itératif pour calculer $C(n, p)$ en utilisant une variable matricielle $M[i][j]$ qui stoque toutes les valeurs de $C(i, j)$ intermédiaires, et d'en donner la complexité en mémoire et en nombre d'opérations.
+3. itératif avec une complexité en mémoire de $\mathcal{O}(n)$ en remarquant qu'il suffit de conserver une seule ligne de a matrice.
 
 ## Compteur binaire
 
-- suivant
-- tous
-- calcul de la complexité de tous
-- en déduire la complexité en moyenne de suivant.
+En entier écrit sous forme binaire peut s'écrire comme une liste $x$ composées de 0 et de 1. Par exemple l'entier 19 s'écrira $[1, 0, 0, 1, 1]$
 
-## Jets de dés
+On vous demande d'écrire la fonction `succ(n)` qui prend en paramétre un entier écrit sous sa forme binaire et qui **le modifie** pour que sa valeure soit l'entier suivant. On supposera que l'on n'augmente pas sa taille et donc que `succ([1, 1, 1, 1])` change la liste ne entrée en `[0, 0, 0, 0]`.
 
-- algorithme itératif (généralisation du compteur binaire)
-- algorithme récursif. Complexité en mémoire ?
-
-On considère l'algorithme suivant:
+Cette fonction permet d'écrire le code suivant :
 
 ```python
-def LaFonction (L, n):
-    if n == 0:
-        print(L)
-    else:
-        for i in range(6):
-            LaFonction(L + [i + 1], n -  1)
-
+n = [1, 0, 0, 1, 1]
+succ(n)
+print(n)
 ```
 
-On rappelle que, appliqué à des listes, le $+$ est la concaténation. On supposera que l'appel initial se fait avec la liste L vide. Que fait cet algorithme ? Quelle est sa complexité ? Quelle place mémoire consomme-t-il ?
+Qui affichera `[1, 0, 1, 0, 0]`{.language-}
 
-## Chaînes de caractères
+{% info %}
+Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
+{% endinfo %}
 
-### Sous-séquence
+### L'algorithme
 
-Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante
+```python#
+def successeur(n):
+    i = len(n) - 1
 
-$$
-f : \{0,\ldots, len(S_2)-1\} \longrightarrow \{0,\ldots, len(S_1)-1\}
-$$
+    while (i >= 0) and (n[i] == 1):
+        n[i] = 0
+        i -= 1
 
-Telle que $S_1[f(j)] = S_2[ j]$ pour tout $j$ de $\{0,\ldots, len(S_2)-1\}$.
-
-Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_2$ est une sous-séquence de $S_1$.
-
-### Sous-mot
-
-Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est un **_sous-mot_** de $S_1$ s'il existe un indice $i$ tel que $S_2[j] = S_1[i + j]$ pour tout $j$ de $0$ à $len(S_2) - 1$.
-
-- Proposez, prouver et donner la complexité d'un algorithme qui détermine si $S_2$ est un sous-mot de $S_1$.
-- Si toutes les lettres de $S_2$ sont deux à deux différentes, donnez un algorithme en $\mathcal{O}(len(S_1))$ pour résoudre ce problème.
-
-## Algorithme mystère
-
-L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.
-
-```python
-def mystère(tab):
-    k = max(tab)
-    tempo = [0] * (k + 1)
-    sortie = [0] * len(tab)
-
-    for i in range(len(tab)):
-        tempo[tab[i]] += 1
-    for i in range(1, k + 1):
-        tempo[i] += tempo[i - 1]
-
-    for i in range(n):
-        sortie[i] = tempo[tab[i]] - 1
-        tempo[tab[i]] -= 1
-
-    return sortie
-
+    if i >= 0:
+        n[i] = 1
 ```
 
-- Donnez la complexité de cet algorithme.
-- Dites ce qu'il fait et prouvez le (_indication_: après chacune des deux premières boucles, que contient tempo ?).
-- Commentaires ?
+Démontrez que l'algorithme précédent répond à la question.
+
+### Complexités min et max
+
+Que valent les complexités min et max de cet algorithme ?
+
+### Complexité en moyenne
+
+Analysez selon le nombre en entrée le nombre d'itérations dans la boucle while. En déduire que le nombre moyen d'itérations de la boucle while vaut :
+
+<div>
+$$
+W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
+$$
+</div>
+
+Conclure en utilisant le fait que $\sum_{i=1}^N i \cdot \frac{1}{2^{i+1}}$ tent vers 1 lorsque $N$ tend vers l'infini que l'algorithme va en moyenne ne faire qu'une seule itération et donc que la complexité en moyenne de l'algorithme vaut $\mathcal{O}(1)$.
+
+### Vérification
+
+Que le nombre moyen d'itération vale 1 est assez contre-intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :
+
+- on a bien ciclé sur tous les éléments
+- en moyenne le nombre d'itération dans la boucle vaut bien 1.
 
 ## Cols
 
-- d'une liste (max ou min local). Trouver un algorithme en log
-- d'une matrice (min ligne et max colonne) avec un algorithme linéaire en la taille de la matrice (pourquoi le log ne marche-t-il pas ?)
+Le but de cet exercice est d'étudier les **_cols_** d'un tableau.
 
-## Permutation circulaire
+{% note "**Définition**" %}
+Un **_col_** d'un tableau d'entiers $T$ de taille $n > 1$ est un indice $0 \leq i < n$ tel que :
 
-Étant donné un liste $L$ de longueur $n$ et un entier $k$, le problème est de transformer $L$ par permutation circulaire en décalant (circulairement) tous les éléments de $L$ de $k$ places. Par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $L' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.
+- soit $i = 0$ et $T[i] \leq T[1]$
+- soit $i = n-1$ et $T[i] \leq T[n-2]$
+- soit $0 < i < n-1$ et $T[i] \leq \min(T[i-1], T[i+1])$
+{% endnote %}
 
-- Donnez un algorithme $\text{Permut}(L, k)$ qui, avec une liste $L$ et un entier $k$ en entrées, construit une nouvelle liste $L'$, permutation circulaire de $L$.
-- Si on veut transformer $L$ en $\text{Permut}(L,k)$, montrez que la place mémoire utilisée (en plus de celle des données du problème ($L$)) par votre algorithme est $O(n)$.
+### Existence
 
-On veut maintenant faire une permutation circulaire sur site, _ie._ sans utiliser plus que $O(1)$ place mémoire supplémentaire (il arrive (par exemple quand on étudie le génome) que $n$ soit très grand). Il faut pour cela
-remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières lettres de $L$ et à les mettre en tête. On note $L^R$ la liste $L$ **_renversée_** (par exemple, si $L =\text{Couché}$, $L^R = \text{éhcuoC}$).
+Montrer que tout tableau d'entiers $T$ de taille $n > 1$ contient au moins 1 col.
 
-- Donnez un algorithme en $O(n)$ et utilisant $O(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
-- Montrez que, si on note $L = AB$, où $B$ est de longueur $k$ (par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, $A =\text{LongtempsJeMeSuisCouchéDeBonneH}$ et $B =\text{eure}), alors \text{Permut}(L, k) = (A^RB^R)^R$.
-- Déduisez-en un algorithme de complexité $O(n)$ qui permute une liste (de longueur $n$), _ie._ qui transforme $L$ en $\text{Permut}(L,k)$, en utilisant $O(1)$ espace mémoire supplémentaire.
+### Découverte
 
-## Algorithmes arithmétique
+Donnez un algorithme nommé `trouve(T)`{.language-} permettant de trouver un col d'un tableau d'entiers $T$ de taille $n > 1$ passé en paramètre en $\mathcal{O}(n)$ opérations.
 
-- addition de listes de chiffres
-- multiplications de listes de chiffres
+Vous expliciterez :
 
-(- [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba))
+- que la complexité de votre algorithme est bien celle demandée,
+- qu'il trouve bien un col.
 
-## Matrices
+### Rapidité
 
-- structure
-- addition
-- produit par un scalaire
-- produit naïf
+Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'entiers $T$ de taille $n > 1$ passé en paramètre.
 
-(- [produit de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)}
+```python#
+def trouve_vite(T):
+    if T[0] <= T[1]:
+        return 0
+    
+    if T[-1] <= T[-2]:
+        return len(T) - 1
+
+    début = 0
+    fin = len(T) - 1
+
+    while True:
+        milieu = (fin + début) // 2
+        if T[milieu] <= min(T[milieu - 1], T[milieu + 1]):
+            return milieu
+        
+        if T[milieu] > T[milieu - 1]:
+            fin = milieu
+        else:
+            début = milieu
+
+```
+
+On a utilisé dans le code précédent le fait que :
+
+- `T[-1]`{.language-} soit le dernier élément du tableau et `T[-2]`{.language-} l'avant dernier.
+- `a // b`{.language-} rende la division entière de `a`{.language-} par `b`{.language-}
+
+### Complexité
+
+Donnez la complexité de l'algorithme `trouve_vite(T)`{.language-}.
+
+### complexité du problème
+
+Après avoir formalisé le problème de la recherche d'un col dans un tableau, vous démontrerez que sa complexité est égale à la complexité de l'algorithme `trouve_vite(T)`{.language-} de la question 3.

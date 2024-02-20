@@ -10,7 +10,6 @@ authors:
 Vous avez 15min pour faire le test.
 {% endattention %}
 
-
 Toute fonction écrite doit être testée :
 
 {% note %}

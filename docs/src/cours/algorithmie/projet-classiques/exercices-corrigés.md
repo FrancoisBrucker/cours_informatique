@@ -10,59 +10,170 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Récursion et complexité
+## Fibinacci
 
-On considère le code suivant :
+### Récursif
 
-```python
-def ma_fonction(n):
-    if n < 5:
-        return 2
-    return ma_function(n-1) + ma_fonction(n-4)
-```
+En notant $A(n)$ le nombre d'appels à la fonction, on a :
 
-### Complexité de l'algorithme
+- l'appel proprement dit,
+- le nombre d'appel à `fibonacci_rec(n-1)`{.language-}
+- le nombre d'appel à `fibonacci_rec(n-2)`{.language-}
+
+Ce qui donne l'équation suivante :
+
+<div>
+$$
+A(n) = 1 + A(n-1) + A(n-2)
+$$
+</div>
 
 En notant $C(n)$ la complexité de la fonction, on a l'équation de récurrence suivante :
 
 <div>
 $$
-C(n) = \mathcal{O}(1) + C(n-1) + C(n-4)
+C(n) = \mathcal{O}(1) + C(n-1) + C(n-2)
 $$
 </div>
 
-Et la condition limite : $C(n) = \mathcal{O}(1)$ pour $n < 5$.
-
-L'équation montre alors clairement que :
+La complexité étant croissante, on a que : $C(n-1) \geq C(n-2)$ et on a bien l'inégalité :
 
 <div>
 $$
-\mathcal{O}(1) + C(n-4) + C(n-4) \leq C(n) \leq \mathcal{O}(1) + C(n-1) + C(n-1)= \mathcal{O}(1) + 2 \cdot C(n-1)
+\mathcal{O}(1) + 2 \cdot C(n-2) \leq C(n) \leq \mathcal{O}(1) + 2 \cdot C(n-1)
 $$
 </div>
-
-Ce qui donne :
 
 <div>
 $$
-K \cdot \mathcal{O}(1) + 2^K \cdot C(n-4\cdot K) \leq C(n) \leq K \cdot \mathcal{O}(1) + 2^K \cdot C(n-K)
+\begin{array}{ccll}
+C(n) &\leq & \mathcal{O}(1) + 2 \cdot C(n-1)&\\
+     &\leq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-2)) & \text{en réapplicant l'inégalité pour } C(n-1)\\
+     &\leq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot C(n-2)&\\
+     &\leq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-3)) & \text{en réapplicant l'inégalité pour } C(n-2)\\
+     &\leq & \mathcal{O}(1)\cdot (1 + 2 + 4) + 8 \cdot C(n-3)&\\
+\end{array}
 $$
 </div>
 
-Et donc que $C(n) = \Omega(2^n)$.
+On peut reappliquer l'inégalité de récurrence autant de fois que l'on veut ce qui donne, en l'appliquant $K$ fois :
 
-### Version itérative
+<div>
+$$
+\begin{array}{ccll}
+C(n) &\leq & \mathcal{O}(1)\cdot (\sum_{i=0}^{K-1}2^i) + 2^K \cdot C(n-K)&\\
+\end{array}
+$$
+</div>
+
+Les seules valeurs de $C(n)$ connues sont celles pour $n=1$ ou $n=2$. Il faut donc appliquer notre formule pour $K=n-2$, ce qui donne l'inégalité :
+
+<div>
+$$
+\begin{array}{ccll}
+C(n) &\leq & \mathcal{O}(1)\cdot (\sum_{i=0}^{n-3}2^i) + 2^{n-2} \cdot C(2)&\\
+\end{array}
+$$
+</div>
+
+De même, en utilisant l'inégalité $\mathcal{O}(1) + 2 \cdot C(n-2) \leq C(n)$, on obtient :
+
+<div>
+$$
+\begin{array}{ccll}
+C(n) &\geq & \mathcal{O}(1) + 2 \cdot C(n-2)&\\
+     &\geq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-4)) & \text{en réapplicant l'inégalité pour } C(n-2)\\
+     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot C(n-4)&\\
+     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-6)) & \text{en réapplicant l'inégalité pour } C(n-4)\\
+     &\geq & \mathcal{O}(1)\cdot (1 + 2 + 4) + 8 \cdot C(n-6)&\\
+\end{array}
+$$
+</div>
+
+De même que précédemment, en applicant l'inégalité de récurrence $K$ fois :
+
+<div>
+$$
+\begin{array}{ccll}
+C(n) &\geq & \mathcal{O}(1)\cdot (\sum_{i=0}^{K-1}2^i) + 2^K \cdot C(n-2\cdot K)&\\
+\end{array}
+$$
+</div>
+
+Les seules valeurs de $C(n)$ connues sont celles pour $n=1$ ou $n=2$. Il faut donc appliquer notre formule pour $K=\frac{n-2}{2}$, ce qui donne l'inégalité :
+
+<div>
+$$
+\begin{array}{ccll}
+C(n) &\geq & \mathcal{O}(1)\cdot (\sum_{i=0}^{(n-4)/2}2^i) + {(\sqrt{2})}^{n-2} \cdot C(2)&\\
+\end{array}
+$$
+</div>
+
+La fin est facile en utilisant le fait que $\sum_{i=0}^{K}2^i = 2^{K+1} - 1$
+
+### Valeur de $F(n)$
+
+> TBD : il faut juste calculer
+
+### Itératif
 
 ```python
-def ma_fonction(n):
-    C = [2, 2, 2, 2]
-    for i in range(4, n):
-        C = [C[0] + C[-1]] + C[:-1]
-
-    return C[0]
+def fibo_iter(n):
+    a = 1
+    b = 1
+    for i in rang(n):
+        a, b = a+b, a
+    return a
 ```
 
-La complexité est en $\mathcal{O}(n)$ car elle ne recalcule jamais deux fois la même chose.
+### Récursif terminal
+
+> TBD
+
+## Noob trap
+
+C'est bien la troisième proposition qui est la bonne ! 
+
+La troisième ligne de l'algorithme a pour complexité :
+
+- le calcul de $f(n//2)$
+- le calcul de $f(n//4)$
+- la multiplication des deux valeurs obtenues
+
+En reprenant ce que l'on a fait pour Fibonacci, on a l'inégalité :
+
+<div>
+$$
+C(n) \leq \mathcal{O}(1) + 2 \cdot C(n//2)
+$$
+</div>
+
+Ce qui donne en réitérant cette inégalité :
+
+<div>
+$$
+C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n//2^K)
+$$
+</div>
+
+Comme la seule complexité que l'on connait est $C(1) = \mathcal{O}(1)$, on doit prendre $K$ tel que $2^K \simeq n$, c'est à dire $k = \log_2(n)$. On a alors :
+
+<div>
+$$
+C(n) \leq \mathcal{O}(1)(\sum_{i=0}^{\log_2(n)}2^i) + 2^{\log_2(n)} \cdot C(1)
+$$
+</div>
+
+Et donc :
+
+<div>
+$$
+C(n) \leq \mathcal{O}(1)(2^{\log_2(n) +1}) + 2^{\log_2(n)} \cdot C(1)
+$$
+</div>
+
+Et comme $2^{\log_2(n)} = n$, on trouve bien $C(n) \leq \mathcal{O}(n)$.
 
 ## Tours de Hanoï
 
@@ -121,97 +232,6 @@ $$
 </div>
 
 La somme des $n>0$ premières puissances de 2 est à savoir facilement retrouver (c'est [une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique#Terme_g%C3%A9n%C3%A9ral)) et vaut $2^{n+1}-2$.
-
-## Polynômes
-
-L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
-
-Un polynôme est défini mathématiquement par la fonction :
-
-$$
-P(x) = \sum_{i=0}^n a_i x^i
-$$
-
-Et informatiquement par une liste à $n+1$ éléments.
-
-$$
-[a_0, \dots, a_n]
-$$
-
-### $P(x) + Q(x)$
-
-```python
-def somme(coefficients1, coefficients2):
-    longueur1 = len(coefficients1)
-    longueur2 = len(coefficients2)
-
-    résultat = []
-    for i in range(max(longueur1, longueur2)):
-        résultat.append(0)
-
-    for i in range(longueur1):
-        résultat[i] += coefficients1[i]
-    for i in range(longueur2):
-        résultat[i] += coefficients2[i]
-
-    return résultat
-
-```
-
-### $P(x) \cdot Q(x)$
-
-```python
-def produit(coefficients1, coefficients2):
-    longueur1 = len(coefficients1)
-    longueur2 = len(coefficients2)
-
-    résultat = []
-
-    for k in range(longueur1 + longueur2 - 1):
-        i = min(longueur1 - 1, k)
-        j = max(k - i, 0)
-
-        valeur_k = 0
-        while (i >= 0) and (j < longueur2):
-            valeur_k += coefficients1[i] * coefficients2[j]
-            i -= 1
-            j += 1
-        résultat.append(valeur_k)
-
-    return résultat
-
-```
-
-### $P(A)$
-
-```python
-def valeur(coefficients, x):
-    résultat = 0
-
-    for i in range(len(coefficients)):
-        résultat += coefficients[i] * x ** i
-    return résultat
-
-```
-
-En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
-
-### Méthode de Horner
-
-L'optimisation proposée est dite [de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point). Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i < j$.
-
-En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
-i
-
-```python
-def evaluation(P, v):
-    eval = P[-1]
-
-    for i in range(len(P) - 2, -1, -1):
-        eval = P[i] + v * eval
-
-    return eval
-```
 
 ## Suppression de valeurs
 
@@ -319,63 +339,9 @@ A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots
 
 On commence par trier puis on supprime
 
-## Min et max d'un tableau d'entiers
-
-> TBD
-
-Si on fait les deux à la suite on a 2n comparaisons.
-
-On commence par trier les éléments $T[i]$ et $T[i+1]$ pour tout $i$ ($n/2$ comparaisons)
-
-Puis on cherche le min sur les $T[[2i]$ ($n/2$ comparaisons) et le max sur les $T[[2i +1]$ ($n/2$ comparaisons)
-
-## Suite de Fibonacci
-
-### Récursif
-
-```python
-
-def fibo_rec_1(n):
-    if n <= 2:
-        return 1
-    else:
-        return fibo_rec(n-1) + fibo_rec(n-2)
-```
-
-### Itératif
-
-```python
-def fibo_iter(n):
-    a = 1
-    b = 1
-    for i in rang(n):
-        a, b = a+b, a
-    return a
-```
-
-### Récursif terminal
-
-```python
-def fibo_rec2(n, a=1, b=1):
-    if n <= 1:
-        return a
-    else:
-        return fibo_rec2(n-1, a+b, a)
-```
-
 ## Triangle de Pascal
 
-Pour $n > p > 0$ :
-
-<div>
-$$
-C(n, p) = C(n-1, p-1) + C(n-1, p)
-$$
-</div>
-
-et $C(n, 1) = C(n, n) = 1$
-
-### Récursif
+### Coefficient binomiaux récursif
 
 ```python
 def comb_rec(n, p):
@@ -386,7 +352,7 @@ def comb_rec(n, p):
         return comb_rec(n-1, p-1) + comb_rec(n-1, k)
 ```
 
-### Itératif et $\mathcal{O}(n^2)$ en mémoire
+### Coefficient binomiaux itératif et $\mathcal{O}(n^2)$ en mémoire
 
 On stocke une matrice triangulaire inférieure. C
 
@@ -403,7 +369,7 @@ def comb_iter(n, p):
     return C[-1][p-1]
 ```
 
-### Itératif et $\mathcal{O}(n)$ en mémoire
+### Coefficient binomiaux itératif et $\mathcal{O}(n)$ en mémoire
 
 On remarque que seule la dernière ligne est importante dans le calcul.
 
@@ -423,162 +389,59 @@ def comb_iter2(n, p):
 
 > TBD : un dessin
 
-## Ackermann
-
-La fonction d'Ackermann se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :
-
-<div>
-$$
-A(m,n) =
-\left\{
-\begin{array}{lll}
- & n + 1 &\mbox{ si } m = 0\\
-& A(m - 1, 1) &\mbox{ si } n = 0, m>0\\
-& A(m - 1, A(m, n - 1)) &\mbox{ sinon }\\
-\end{array}
-\right.
-$$
-</div>
-    
-- Donnez un pseudo-code récursif et itératif de cette fonction.
-- Donnez le nombres d'appels récursif du calcul de A(n, n).
-
-> TBD calculs de A(m, n) avec les puissances itérées de Knuth.
-
-## Méthodes de tri
-
-### Tri par base
-
-Ce tri s'applique uniquement aux entiers positifs, que l'on considère écrits en base 2. Le principe de ce tri est très simple :
-
-- On considère d'abord le bit de poids le plus faible (_ie._ le plus à droite) et on répartit l'ensemble à trier en deux sous ensembles :
-  - les entiers dont le bit de poids le plus faible est 0
-  - les entiers dont le bit de poids le plus faible est 1
-- On concatène les deux sous-ensembles, en commençant par celui des bits à 0.
-- On recommence sur le bit à gauche de celui qu'on vient de traiter.
-- ...
-
-Les parcours d'ensembles se font, toujours, de la gauche vers la droite.
-
-Donnez le pseudo-code, la preuve et la complexité de cet algorithme (on supposera que l'on dispose d'une fonction qui, étant donnés deux entiers $n$ et $i$, donne le $i^{me}$ bit de $n$).
-
-Rappelez la complexité minimale du tri (dans le cas le pire). Commentaires.
-
-### Tri par monotonies
-
-Étant donné un tableau $T$, **_une monotonie_** est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :
-si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.
-
-Donnez un algorithme qui, étant donné un tableau $T$ construit une liste (de listes) $L$, chaque élément de $L$ étant une monotonie de $T$ (et vice versa). À partir de notre exemple, on obtient :
-$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$.
-
-Donnez un algorithme qui fusionne deux monotonies ; par exemple, à partir de $[2,6]$ et $[1,3,3,5]$, on obtient $[1,2,3,3,5,6]$ (ceci est aussi une question de cours).
-
-Donnez un algorithme qui, étant donnée une liste $L$ de monotonies, les fusionne deux-à-deux (en en laissant éventuellement une ``toute seule" à la fin) et met le résultat dans une liste (de listes) $L'$. Par exemple, à partir de
-$L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$, on obtient $L' = [[1,2,3,3,5,6], [2,4,6],[0,1,1,3,8,9], [0,1,2], [0]]$.
-
-En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur et dans le cas
-le pire.
-
-Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
-
 ## Compteur binaire
 
-### Suivant
+La complexité va dépendre du nombre d'élements dans la liste en entré. Notons $N = len(n)$.
 
-```python#
-def successeur(N):
-    i = len(N) - 1
+On remarque (facilement) que cette complexité vaut $C(N) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle.
 
-    while (i >= 0) and (N[i] == 1):
-        N[i] = 0
-        i -= 1
+- complexité max : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(N)$
+- complexité min : parcourt 1 seul élément de la liste (pour une liste se terminant par un 0): $\mathcal{O}(1)$
 
-    if i >= 0:
-        N[i] = 1
-```
+Séparons les $2^N$ nombres possibles en classes selon le nombre d'iérations dans la boucle :
 
-### Tous
-
-```python
-def tous(n):
-
-    N = [0] * n
-
-    for i in range(2 ** n):
-        successeur(N)
-        print(N)
-```
-
-De façon naive $n\cdot 2^n$
-
-On remarque que la complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
-
-- le dernier bit de $N$ est modifié à chaque appel
-- l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
-- l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels
+- dernier élément vaut 0 : 0 itération. Vrai pour $2^N/2$ nombres. Probabilité de 1/2.
+- derniers éléments valents [0, 1] : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.
+- derniers éléments valents [0, 1, 1] : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.
 - ...
-- le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels
-- ...
-- le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels
+- derniers éléments valents [0] + i *[1] : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.
+- le premier élément vaut 0 et tous les autres valent 1 : $N-1$ itérations Vrai pour 1 nombre. Probabilité de 1/2^{N}.
 
-La complexité totale des $2^n$ appels à `successeur(N)`{.language-} vaut donc :
+Le nombre moyen d'iérations dans la boucle vaut alors :
 
 <div>
 $$
-\begin{array}{rcl}
-C &=& 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}}\\
-&=& \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i})\\
-&=& 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}\\
-&=&2^{n+1} \cdot (1-\frac{1}{2^n})
-\end{array}
+W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}}
 $$
 </div>
 
-### Complexité en moyenne
-
-La complexité totale est (on l'a calculée de deux façon différentes) :
-
-$$
-C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}
-$$
-
-En supposant que les entrées de successeur sur prisent de façon uniforme, le nombre moyen d'opérations effectuée est alors :
-
-$$
-\frac{C}{2^n} \leq 2
-$$
-
-Le nombre moyen de modifications de bits est inférieur à deux.
-
-{% exercice %}
-Vérifiez expérimentalement qu'en moyenne, sur tous les appels de `successeur(N)`{.language-} pour l'algorithme `tous(n)`{.language-}, le nombre de bits changé est inférieur à 2.
-{% endexercice %}
-{% details "solution" %}
+### Vérification exprérimentale
 
 ```python
-def successeur(N):
-    i = len(N) - 1
+def successeur(n):
+    K = 0
 
-    while i >= 0 and (N[i] == 1):
-        N[i] = 0
+    while i >= 0 and (n[i] == 1):
+        K += 1
+
+        n[i] = 0
         i -= 1
 
     if i >= 0:
-        N[i] = 1
+        n[i] = 1
 
-    return len(N) - i
+    return K
 
 
-def tous(n):
+def tous(N):
 
-    N = [0] * n
+    n = [0] * N
     total = 0
-    for i in range(2**n):
-        total += successeur(N)
-        print(N)
+    for i in range(2**N):
+        total += successeur(n)
+        print(n)
 
-    return total / 2**n
+    return total / 2 ** N
 
 
 x = tous(5)
@@ -586,106 +449,120 @@ print(x)
 
 ```
 
-{% enddetails %}
-
-## Jets de dés
-
-- algorithme itératif (généralisation du compteur binaire)
-- algorithme récursif. Complexité en mémoire ?
-
-On considère l'algorithme suivant:
-
-```python
-def LaFonction (L, n):
-    if n == 0:
-        print(L)
-    else:
-        for i in range(6):
-            LaFonction(L + [i + 1], n -  1)
-
-```
-
-On rappelle que, appliqué à des listes, le $+$ est la concaténation. On supposera que l'appel initial se fait avec la liste L vide. Que fait cet algorithme ? Quelle est sa complexité ? Quelle place mémoire consomme-t-il ?
-
-## Chaînes de caractères
-
-### Sous-séquence
-
-Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante
-
-$$
-f : \{0,\ldots, len(S_2)-1\} \longrightarrow \{0,\ldots, len(S_1)-1\}
-$$
-
-Telle que $S_1[f(j)] = S_2[ j]$ pour tout $j$ de $\{0,\ldots, len(S_2)-1\}$.
-
-Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_2$ est une sous-séquence de $S_1$.
-
-### Sous-mot
-
-Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est un **_sous-mot_** de $S_1$ s'il existe un indice $i$ tel que $S_2[j] = S_1[i + j]$ pour tout $j$ de $0$ à $len(S_2) - 1$.
-
-- Proposez, prouver et donner la complexité d'un algorithme qui détermine si $S_2$ est un sous-mot de $S_1$.
-- Si toutes les lettres de $S_2$ sont deux à deux différentes, donnez un algorithme en $\mathcal{O}(len(S_1))$ pour résoudre ce problème.
-
-## Algorithme mystère
-
-L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.
-
-```python
-def mystère(tab):
-    k = max(tab)
-    tempo = [0] * (k + 1)
-    sortie = [0] * len(tab)
-
-    for i in range(len(tab)):
-        tempo[tab[i]] += 1
-    for i in range(1, k + 1):
-        tempo[i] += tempo[i - 1]
-
-    for i in range(n):
-        sortie[i] = tempo[tab[i]] - 1
-        tempo[tab[i]] -= 1
-
-    return sortie
-
-```
-
-- Donnez la complexité de cet algorithme.
-- Dites ce qu'il fait et prouvez le (_indication_: après chacune des deux premières boucles, que contient tempo ?).
-- Commentaires ?
-
 ## Cols
 
-- d'une liste (max ou min local). Trouver un algorithme en log
-- d'une matrice (min ligne et max colonne) avec un algorithme linéaire en la taille de la matrice (pourquoi le log ne marche-t-il pas ?)
+### Existence
 
-## Permutation circulaire
+On donne trois preuves possibles
 
-Étant donné un liste $L$ de longueur $n$ et un entier $k$, le problème est de transformer $L$ par permutation circulaire en décalant (circulairement) tous les éléments de $L$ de $k$ places. Par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $L' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.
+#### En reprenant la définition
 
-- Donnez un algorithme $\text{Permut}(L, k)$ qui, avec une liste $L$ et un entier $k$ en entrées, construit une nouvelle liste $L'$, permutation circulaire de $L$.
-- Si on veut transformer $L$ en $\text{Permut}(L,k)$, montrez que la place mémoire utilisée (en plus de celle des données du problème ($L$)) par votre algorithme est $O(n)$.
+Si la première condition ($i=0$) est vérifiée, le tableau contient un col. On la suppose donc non vérifiée : $T[0] > T[1]$. De même, si la seconde condition ($i=n-1$) est vérifiée, le tableau contient également un col. Supposons la donc également non vérifiée : $T[n-2] < T[n-1]$.
 
-On veut maintenant faire une permutation circulaire sur site, _ie._ sans utiliser plus que $O(1)$ place mémoire supplémentaire (il arrive (par exemple quand on étudie le génome) que $n$ soit très grand). Il faut pour cela
-remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières lettres de $L$ et à les mettre en tête. On note $L^R$ la liste $L$ **_renversée_** (par exemple, si $L =\text{Couché}$, $L^R = \text{éhcuoC}$).
+Les deux conditions précédentes montrent qu'il existe $n-1 > i^\star > 0$ le plus petit indice tel que $T[i^\star] \leq T[i^\star +1]$. On a alors : $T[i^\star -1] > T[i^\star ] \leq T[i^\star +1]$ et $i^\star$ est un col.
 
-- Donnez un algorithme en $O(n)$ et utilisant $O(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.
-- Montrez que, si on note $L = AB$, où $B$ est de longueur $k$ (par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, $A =\text{LongtempsJeMeSuisCouchéDeBonneH}$ et $B =\text{eure}), alors \text{Permut}(L, k) = (A^RB^R)^R$.
-- Déduisez-en un algorithme de complexité $O(n)$ qui permute une liste (de longueur $n$), _ie._ qui transforme $L$ en $\text{Permut}(L,k)$, en utilisant $O(1)$ espace mémoire supplémentaire.
+#### Une astuce
 
-## Algorithmes arithmétique
+Un tableau d'entier possède forcément un élément minimum. Il existe donc $i^\star$ tel que $T[i^\star] \leq T[i]$ pour tout $0 \leq i < n$. De là :
 
-- addition de listes de chiffres
-- multiplications de listes de chiffres
+- soit $i^\star = 0$ et $T[i^\star] \leq T[1]$
+- soit $i^\star = n-1$ et $T[i^\star] \leq T[n-2]$
+- soit $0 < i^\star < n-1$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$
 
-(- [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba))
+Simple et efficace, non ?
 
-## Matrices
+#### Par récurrence
 
-- structure
-- addition
-- produit par un scalaire
-- produit naïf
+On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un col.
 
-(- [produit de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen)}
+1. Initialisation. Si $n=2$ soit $T[0] \leq T[1]$ soit $T[0] \geq T[1]$ (ce qui est équivalent pour $n=2$ à $T[n-1] \leq T[n-2]$). Ces deux cas correspondent aux deux premières possibilités pour un col
+2. on suppose la propriété vrai pour $n \geq 2$. Et on se donne un tableau $T$ de taille $n+1$.
+3. l'hypothèse de récurrence stipule que le tableau $T'$ constitué des $n$ premières cases de $T$ ($T'= T[:-1]$) possède un col, disons à l'indice $i^\star$. 3 cas sont possibles :
+   1. $i^\star = 0$ et $T'[0] \leq T'[1]$ ce qui implique $T[0] \leq T[1]$ : $i^\star$ est aussi un col pour $T$
+   2. $0 < i^\star < n-1$ et $T'[i^\star] \leq \min(T'[i-1], T'[i+1])$ ce qui implique $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$
+   3. $i^\star = n-1$ et $T'[n-1] \leq T'[n-2]$ ce qui implique $T[n-1] \leq T[n-2]$. On conclut en remarquant que :
+      1. soit $T[n] \geq T[n-1]$ et $T[i^\star] \leq \min(T[i^\star-1], T[i^\star+1])$ : $i^\star$ est aussi un col pour $T$
+      2. soit $T[n] < T[n-1]$ et $n$ est un col pour $T$.
+
+### Découverte
+
+La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
+
+```python#
+def trouve(T):
+    if T[0] <= T[1]:
+        return 0
+
+    if T[-1] <= T[-2]:
+        return len(T) - 1
+
+    for i in range(1, len(T) - 1):
+        if T[i] <= min(T[i-1], T[i + 1]):
+            return i
+
+```
+
+Sa complexité dans le cas le pire a lieu pour les tableaux dont le premier et seul col se trouve à l'avant dernier indice (comme pour la liste $[5, 4, 3, 2, 1, 2]$ par exemple), forçant l'algorithme à :
+
+- faire échouer le 1er test de la ligne 2 en $\mathcal{O}(1)$ opérations
+- faire échouer le 2er test de la ligne 5 en $\mathcal{O}(1)$ opérations
+- faire les $\mathcal{O}(n)$ itérations de la boucle for en :
+  - faisant échouer tous les tests sauf le dernier $\mathcal{O}(1)$ opérations
+  - réussissant le dernier test et en faisant un retour de fonction en $\mathcal{O}(1)$ opérations
+
+La complexité totale maximale est alors :
+
+$$
+C(n) = \mathcal{O}(1) + \mathcal{O}(1) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1)) = \mathcal{O}(n)
+$$
+
+On peut aussi utiliser la preuve précédente et _simplifier_ la boucle `for`{.language-} en gardant la même complexité :
+
+```python
+def trouve(T):
+    if T[0] <= T[1]:
+        return 0
+
+    if T[-1] <= T[-2]:
+        return len(T) - 1
+
+    for i in range(1, len(T) - 1):
+        if T[i] <= T[i + 1]:
+            return i
+
+```
+
+### Rapidité
+
+La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ et $T[j] > T[j-1]$, alors il existe un indice $i < k < j$  tel que $k$ soit un col de la matrice.
+
+L'invariant de boucle de la boucle `while`{.language-} est alors :
+
+{% note "**invariant**" %}
+A la fin de chaque itération de la boucle `while`{.language-}, soit :
+
+- `T[milieu]`{.language-} est un col
+- `T[milieu]`{.language-} n'est pas un col et :
+  - `début + 1 < fin`{.language-}
+  - `T[début] > T[début+1]`{.language-} et `T[fin] > T[fin-1]`{.language-}
+{% endnote %}
+
+A la fin de la première itération,  on a soit :
+
+- `T[milieu] <= min(T[milieu - 1], T[milieu + 1])`{.language-} et `milieu`{.language-} est un col
+- `fin' = milieu`{.language-} et `début' = début`{.language-} si `T[milieu] > T[milieu -1]`{.language-}. Comme initialement `0 = début + 1 < fin = len(T) - 1`{.language-} on a également `milieu - 1 > début`{.language-} puisque `T[0] > T[1]`{.language-} et l'invariant est vérifié.
+- `fin' = fin`{.language-} et `début' = milieu`{.language-} si `T[milieu] <= T[milieu -1]`{.language-} et `T[milieu] > T[milieu + 1]`{.language-}. Comme `0 = début + 1 < fin = len(T) - 1`{.language-} on a également `milieu + 1 < fin`{.language-} puisque `T[-1] > T[-2]`{.language-} et l'invariant est vérifié.
+
+La même démonstration fonctionne à l'identique à la fin de l'itération $i+1$ si l'invariant est vrai à la fin de l'itération $i$.
+
+Comme `fin - début >= 0` et diminue strictement à chaque itération de la boucle `while`{.language-}, il arrivera **forcément** un moment où `milieu`{.language-} sera un col.
+
+### Complexité
+
+La procédure de la boucle `while`{.language-} est identique à la recherche dichotomique puisque l'on se place toujours au milieu de l'espace de recherche. Le cours nous indiquant que la complexité de la recherche dichotomique est $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$, on en conclut que l'algorithme `trouve_vite(T)`{.language-} est également en $\mathcal{O}(\ln(n))$ opérations.
+
+### Complexité du problème
+
+Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i < n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.
+
+Comme l'algorithme `trouve_vite(T)`{.language-} est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.

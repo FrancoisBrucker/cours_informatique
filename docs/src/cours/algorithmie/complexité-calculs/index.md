@@ -98,14 +98,3 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
 
-## Exercices
-
-> TBD
-
-### Itératif
-
-> exo ?
-
-### Récursif
-
-- rec de exo classiques
