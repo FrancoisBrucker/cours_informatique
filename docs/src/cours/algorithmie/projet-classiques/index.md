@@ -14,8 +14,29 @@ Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de j
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
 {% aller %}
-[sujets](exercices-sujets){.interne}
+[Suite de Fibonacci](fibonacci){.interne}
 {% endaller %}
-{% details "corrigé", "open" %}
-[corrigés](exercices-corrigés){.interne}
-{% enddetails %}
+
+{% aller %}
+[Noob trap](noob-trap){.interne}
+{% endaller %}
+
+{% aller %}
+[Tours de Hanoi](tours-hanoi){.interne}
+{% endaller %}
+
+{% aller %}
+[Suppression de valeurs](suppression-valeurs){.interne}
+{% endaller %}
+
+{% aller %}
+[Suppression des doublons](suppression-doublons){.interne}
+{% endaller %}
+
+{% aller %}
+[Compteur binaire](compteur-binaire){.interne}
+{% endaller %}
+
+{% aller %}
+[Cols de listes](cols){.interne}
+{% endaller %}
