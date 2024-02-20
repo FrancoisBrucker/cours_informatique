@@ -484,10 +484,109 @@ Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
 
 ## Compteur binaire
 
-- suivant
-- tous
+### Suivant
 
-> TBD. Avec calcul de complexité naif et exact.
+```python#
+def successeur(N):
+    i = len(N) - 1
+
+    while (i >= 0) and (N[i] == 1):
+        N[i] = 0
+        i -= 1
+
+    if i >= 0:
+        N[i] = 1
+```
+
+### Tous
+
+```python
+def tous(n):
+
+    N = [0] * n
+
+    for i in range(2 ** n):
+        successeur(N)
+        print(N)
+```
+
+De façon naive $n\cdot 2^n$
+
+On remarque que la complexité d'une exécution de `successeur(N)`{.language-} est égale au nombre de bits qu'elle a modifié dans `N`{.language-}. Comme les $2^n$ exécutions de `successeur(N)`{.language-} vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :
+
+- le dernier bit de $N$ est modifié à chaque appel
+- l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels
+- l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels
+- ...
+- le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels
+- ...
+- le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels
+
+La complexité totale des $2^n$ appels à `successeur(N)`{.language-} vaut donc :
+
+<div>
+$$
+\begin{array}{rcl}
+C &=& 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}}\\
+&=& \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i})\\
+&=& 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}\\
+&=&2^{n+1} \cdot (1-\frac{1}{2^n})
+\end{array}
+$$
+</div>
+
+### Complexité en moyenne
+
+La complexité totale est (on l'a calculée de deux façon différentes) :
+
+$$
+C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}
+$$
+
+En supposant que les entrées de successeur sur prisent de façon uniforme, le nombre moyen d'opérations effectuée est alors :
+
+$$
+\frac{C}{2^n} \leq 2
+$$
+
+Le nombre moyen de modifications de bits est inférieur à deux.
+
+{% exercice %}
+Vérifiez expérimentalement qu'en moyenne, sur tous les appels de `successeur(N)`{.language-} pour l'algorithme `tous(n)`{.language-}, le nombre de bits changé est inférieur à 2.
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def successeur(N):
+    i = len(N) - 1
+
+    while i >= 0 and (N[i] == 1):
+        N[i] = 0
+        i -= 1
+
+    if i >= 0:
+        N[i] = 1
+
+    return len(N) - i
+
+
+def tous(n):
+
+    N = [0] * n
+    total = 0
+    for i in range(2**n):
+        total += successeur(N)
+        print(N)
+
+    return total / 2**n
+
+
+x = tous(5)
+print(x)
+
+```
+
+{% enddetails %}
 
 ## Jets de dés
 

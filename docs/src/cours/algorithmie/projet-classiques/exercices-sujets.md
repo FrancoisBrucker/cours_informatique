@@ -241,8 +241,8 @@ Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
 
 - suivant
 - tous
-
-> TBD. Avec calcul de complexité naif et exact.
+- calcul de la complexité de tous
+- en déduire la complexité en moyenne de suivant.
 
 ## Jets de dés
 
