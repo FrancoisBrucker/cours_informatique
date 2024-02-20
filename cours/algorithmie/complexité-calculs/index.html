@@ -105,7 +105,7 @@
 <h2>Problème du comptage exhaustif de la complexité</h2>
 <p>Nous avons calculé explicitement des complexité dans la partie précédente. Vous avez du vous en rendre compte, c'est assez pénible car plusieurs problèmes surviennent.</p>
 <h3>Ligne au compte incertain</h3>
-<p>Certaines ligne n'on pas le même nombre d'instruction selon comment on compte :</p>
+<p>Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte :</p>
 <ul>
 <li>est-ce que <code class="language-">x = a + 1</code> c'est 1, 2 ou 3 instructions ? Ou plus ?</li>
 <li>quel est le nombre d'instructions de la ligne <code class="language-">pour chaque élément x du tableau T</code> ? 1, 2 ou plus ?</li>
@@ -135,7 +135,7 @@ tant que i ≤ 9:
 <p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>
 <h3>Dépend du code/pseudo-code</h3>
 <p>En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.</p>
-<p>L'instruction python <code class="language-">x = 1</code> prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abort créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.</p>
+<p>L'instruction python <code class="language-">x = 1</code> prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abord créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.</p>
 <p>Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).</p>
 <p>Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).</p>
 <h3>Beaucoup de calcul pour par grand chose</h3>
@@ -183,6 +183,18 @@ tant que i ≤ 9:
 <p><a href="m%C3%A9thodes-structures-calcul" class="interne">Complexité de méthodes et de structures</a></p>
 </div>
 </div>
+<h2>Exercices</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h3>Itératif</h3>
+<blockquote>
+<p>exo ?</p>
+</blockquote>
+<h3>Récursif</h3>
+<ul>
+<li>rec de exo classiques</li>
+</ul>
 
 
 </article>

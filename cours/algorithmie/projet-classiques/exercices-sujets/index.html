@@ -95,6 +95,9 @@
   <p>Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),<br>
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).</p>
 <h2>Récursion et complexité</h2>
+<blockquote>
+<p>TBD à déplacer dans complexité</p>
+</blockquote>
 <h3>Exercice 1</h3>
 <p>On considère le code suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ma_fonction</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -134,28 +137,6 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 </ul>
 <p>On suppose que cette dernière règle est également respectée dans la configuration de départ.</p>
 <p>Donnez un algorithme récursif permettant de résoudre le problème. Quelle est sa complexité ? Peut-on faire mieux ?</p>
-<h2>Polynômes</h2>
-<p>Un polynôme peut être vu comme une liste de ses coefficients. Le polynôme $P(x) = 1 + 3x^2$ s'écrira ainsi avec la liste $[1, 0, 3]$ et plus généralement, le polynôme $P(x) = \sum_{i=0}^n a_ix^i$ s'écrira sous la forme d'une liste $L$ à $n+1$ éléments telle que $L[i] = a_i$.</p>
-<p>Manipulons cette structure.</p>
-<h3>Écrivez une fonction <em>somme</em></h3>
-<p>Écrivez une fonction permettant de rendre le polynôme $R(x) = P(x) + Q(x)$, somme des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.</p>
-<p>Vous pourrez utiliser la méthode <code class="language-">append</code> des listes qui ajoute un élément en fin de liste (si <code class="language-">l= [1, 2]</code>, l'instruction <code class="language-">l.append(3)</code> <strong>modifie</strong> <code class="language-">l</code>, pour qu'elle soit égale à <code class="language-">l= [1, 2, 3]</code>)</p>
-<h3>Écrivez une fonction <em>produit</em></h3>
-<p>Écrivez une fonction permettant de rendre le produit le polynôme $R(x) = P(x) \cdot Q(x)$, produit des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.</p>
-<h3>Écrivez une fonction <em>valeur</em></h3>
-<p>Écrivez une fonction prenant un polynôme $P(x)$ et un réel $r$ et rendant l'évaluation $P(r)$ de $P(x)$ en $r$.</p>
-<p>Vous pourrez utiliser le fait que <code class="language-">x ** i</code> en python soit égal à $x^i$</p>
-<p>L'exonentiation est une opération couteuse en multiplications. Combien en avez-vous eu besoin pour exécuter votre fonction ?</p>
-<h3>Amélioration</h3>
-<p>Si on note :</p>
-<ul>
-<li>$A(x) = a_0$</li>
-<li>$X(x) = x$</li>
-<li>$P(x) = \sum_{i=0}^n a_ix^i$</li>
-<li>$Q(x) = \sum_{i=0}^{n-1} a_{i+1}x^i$</li>
-</ul>
-<p>On a clairement que : $P(x) = A(x) + X(x) \cdot R(x)$.</p>
-<p>En déduire une méthode d'évaluation de polynômes moins gourmande en multiplications.</p>
 <h2>Suppression de valeurs</h2>
 <p>La structure de donnée utilisée ici est la <strong><em>liste</em></strong>. On considérera que :</p>
 <ul>
