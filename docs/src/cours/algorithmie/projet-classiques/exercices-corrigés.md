@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Fibinacci
+## Fibonacci
 
 ### Récursif
 
@@ -114,7 +114,20 @@ La fin est facile en utilisant le fait que $\sum_{i=0}^{K}2^i = 2^{K+1} - 1$
 
 ### Valeur de $F(n)$
 
-> TBD : il faut juste calculer
+On prouve la propriété par récurrence.
+
+Initialisation :
+
+- $F(1) = 1 = \frac{1}{\sqrt{5}}(\frac{1+\sqrt{5}}{2} - \frac{1-\sqrt{5}}{2}) = \frac{1}{\sqrt{5}}(\varphi - \frac{1}{-\varphi})$
+- $F(2) = \frac{1}{\sqrt{5}}(\varphi^2-\frac{1}{(-\varphi)^2}) = \frac{1}{\sqrt{5}}(\varphi + 1 -(\frac{1}{(-\varphi)} + 1) = \frac{1}{\sqrt{5}}(\varphi + \frac{1}{\varphi}) = F(1)$
+
+On suppose la propriété vrai jusqu'à $n-1$. Pour $n$ :
+
+$F(n) = F(n-1) + F(n-2) = \frac{1}{\sqrt{5}}(\varphi^{n-1}-\frac{1}{(-\varphi)^{n-1}}) + \frac{1}{\sqrt{5}}(\varphi^{n-2}-\frac{1}{(-\varphi)^{n-2}}) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(1 + \varphi) - \frac{1}{(-\varphi)^{n-2}}(1+ \frac{1}{\varphi}))$
+
+Comme $\varphi$ et $-\frac{1}{\varphi}$ sont les racines du polynôme $P(X) = X^2 - X -1$ on a :
+
+$F(n) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(\varphi^2) - \frac{1}{(-\varphi)^{n-2}}(\frac{1}{\varphi^2})) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})$
 
 ### Itératif
 
@@ -129,11 +142,16 @@ def fibo_iter(n):
 
 ### Récursif terminal
 
-> TBD
+La complexité étant terminale, il y a $\mathcal{O}(n)$ appels récursifs. Comme le reste de la fonction est en $\mathcal{O}(1)$ la complexité totale est en $\mathcal{O}(n)$.
+
+Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que `fibo_rec2(n, a, b)` rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.
+
+- Initialisation : `fibo_rec2(1, a, b) = b` et `fibo_rec2(2, a, b) = a`
+- On suppose la propriété vraie pour `fibo_rec2(n-1, a, b)`. Comme `fibo_rec2(n, a, b) = fibo_rec2(n-1,a+b , a)`, la propriété est vérifiée.
 
 ## Noob trap
 
-C'est bien la troisième proposition qui est la bonne ! 
+C'est bien la troisième proposition qui est la bonne !
 
 La troisième ligne de l'algorithme a pour complexité :
 
@@ -145,7 +163,7 @@ En reprenant ce que l'on a fait pour Fibonacci, on a l'inégalité :
 
 <div>
 $$
-C(n) \leq \mathcal{O}(1) + 2 \cdot C(n//2)
+C(n) \leq \mathcal{O}(1) + 2 \cdot C(n/2)
 $$
 </div>
 
@@ -153,7 +171,7 @@ Ce qui donne en réitérant cette inégalité :
 
 <div>
 $$
-C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n//2^K)
+C(n) \leq \mathcal{O}(1)(\sum_{i=0}^K2^i) + 2^K \cdot C(n/2^K)
 $$
 </div>
 
@@ -256,13 +274,13 @@ Programme :
     Retour L2
 ```
 
-#### complexité
+#### complexité de l'algorithme 1
 
 On considère que la création d'une liste et l'ajout d'un élément en fin de liste sont des opérations en $\mathcal{O}(1)$ opérations. De là, notre algorithme est en $\mathcal{O}(n)$ opérations où $n$ st la taille de la liste `L`{.language-}.
 
-#### preuve
+#### preuve de l'algorithme 1
 
-L'algorithme va parcourir la liste et ajouter un à un à L2 tous les éléments de `L`{.language-} différents de `val`{.language-}. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ L2 est la restriction de `L[:i]`{.language-} aux valeurs différentes de `val`{.language-}.
+L'algorithme va parcourir la liste et ajouter un à un à `L2`{.language-} tous les éléments de `L`{.language-} différents de `val`{.language-}. Notre invariant de boucle pourrait donc être : à la fin de l'itération $i$ `L2`{.language-} est la restriction de `L[:i]`{.language-} aux valeurs différentes de `val`{.language-}.
 
 - **initialisation** : à la fin de la première itération ($i=1$), `L2`{.language-} est vide si `x = L[0]`{.language-} vaut `val`{.language-} et vaut `[x]`{.language-} sinon. Ok.
 - **récurrence** : On suppose la propriété vraie à la fin de l'itération $i$. L'itération $i+1$ a considéré $x = L[i]$. Notons `L2'`{.language-} la valeur de `L2`{.language-} à la fin de l'itération $i+1$. Au début de l'itération $i+1$, par hypothèse de récurrence, `L2`{.language-} est la restriction de `L[:i]`{.language-} aux valeurs différentes de `val`{.language-}. La restriction de `L[:i+1]`{.language-} aux valeurs différentes de `val`{.language-} est alors soit égal à `L2`{.language-} si `L[i] = val`{.language-} soit `L2 + L[i]`{.language-} sinon. C'est exactement ce que vaut `L2'`{.language-}.
@@ -271,9 +289,26 @@ A la fin de la dernière itération, `L2`{.language-} vaut donc la restriction d
 
 ### Suppression d'une valeur in-place
 
-> TBD
-
 On échange l'élément à supprimer avec le dernier de la liste puis on pop.
+
+```text
+Nom : Algorithme-1'
+Entrées :
+    val : une valeur
+    L : une liste de n valeurs
+Programme :
+    i = 0
+    k = n - 1
+    tant que i <= k:
+    si L[i] == val
+        échange L[i] et L[k]
+        supprime le dernier élément de L
+        k = k - 1
+    sinon:
+        i = i + 1
+```
+
+La preuve et la complexité de l'algorithme 1' est identique à celle de l'algorithme 1.
 
 ## Suppression de doublons
 
@@ -300,7 +335,7 @@ Programme :
     Retour L2
 ```
 
-#### complexité algorithme 2
+#### complexité de l'algorithme 2
 
 Commençons par compter le nombre de fois où la boucle `tant que`{.language-} sera exécutée. `L`{.language-} est modifiée à chaque fin de boucle `L = algorithme-1(L, x)`{.language-} avec `x = L[0]`{.language-}. Comme l'algorithme de la question 1 rend la restriction de de `L`{.language-} aux valeurs différentes de `x`{.language-}, elle va forcément être strictement plus petite (puisque `x=L[0]`{.language-} il est forcément dans la liste) : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de `L`{.language-} initiale fois.
 
@@ -331,13 +366,31 @@ A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots
 
 ### Suppression de doublon d'une liste ordonnée
 
-> TBD : on ajoute l'élément que s'il est différent de celui d'avant
+Il suffit de parcourir tous les éléments de `L`{.language-} dans l'ordre :
+
+```text
+Nom : Algorithme-2'
+Entrées :
+    L : une liste de n valeurs
+Programme :
+    création d’une liste L2 contenant le premier élément de L
+    pour i allant de 1 à n-1:
+        si L[i] != L[i-1]:
+            ajoute L[i] à la fin de L2
+    Retour L2
+```
+
+#### complexité de l'algorithme 2'
+
+Clairement en $\mathcal{O}(n)$
+
+#### preuve de l'algorithme 2'
+
+L'invariant de boucle et sa preuve est identique à celle de la preuve de l'algorithme 2 en tenant compte du fait que `L`{.language-} est trié.
 
 ### Suppression de doublon d'une liste sans ordre
 
-> TBD
-
-On commence par trier puis on supprime
+On commence par trier la liste on utilise l'algorithme de la question précédente. Ceci fait passer la complexité de $\mathcal{O}(len(L)^2)$ à $\mathcal{O}(len(L)\log(len(L)))$
 
 ## Triangle de Pascal
 
@@ -354,7 +407,7 @@ def comb_rec(n, p):
 
 ### Coefficient binomiaux itératif et $\mathcal{O}(n^2)$ en mémoire
 
-On stocke une matrice triangulaire inférieure. C
+On stocke une matrice triangulaire inférieure que l'on construit ligne à ligne.
 
 ```python
 def comb_iter(n, p):
@@ -387,27 +440,25 @@ def comb_iter2(n, p):
     return C[p-1]
 ```
 
-> TBD : un dessin
-
 ## Compteur binaire
 
-La complexité va dépendre du nombre d'élements dans la liste en entré. Notons $N = len(n)$.
+La complexité va dépendre du nombre d'éléments dans la liste en entré. Notons $N = len(n)$.
 
 On remarque (facilement) que cette complexité vaut $C(N) = K \cdot \mathcal{O}(1)$ où $K$ est le nombre de fois où l'on rentre dans la boucle.
 
 - complexité max : parcourt toute la liste (pour une liste uniquement constituée): $\mathcal{O}(N)$
 - complexité min : parcourt 1 seul élément de la liste (pour une liste se terminant par un 0): $\mathcal{O}(1)$
 
-Séparons les $2^N$ nombres possibles en classes selon le nombre d'iérations dans la boucle :
+Séparons les $2^N$ nombres possibles en classes selon le nombre d'itérations dans la boucle :
 
 - dernier élément vaut 0 : 0 itération. Vrai pour $2^N/2$ nombres. Probabilité de 1/2.
-- derniers éléments valents [0, 1] : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.
-- derniers éléments valents [0, 1, 1] : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.
+- derniers éléments valent `[0, 1]`{.language-} : 1 itération. Vrai pour $(2^N/2)/2 = 2^N/4$ nombres. Probabilité de 1/4.
+- derniers éléments valent `[0, 1, 1]`{.language-} : 2 itérations. Vrai pour $(2^N/4)/2 = 2^N/8$ nombres. Probabilité de 1/8.
 - ...
-- derniers éléments valents [0] + i *[1] : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.
+- derniers éléments valent `[0] + i *[1]`{.language-} : i itérations. Vrai pour $(2^N/4)/2 = 2^N/2^{i+1}$ nombres. Probabilité de 1/2^{i+1}.
 - le premier élément vaut 0 et tous les autres valent 1 : $N-1$ itérations Vrai pour 1 nombre. Probabilité de 1/2^{N}.
 
-Le nombre moyen d'iérations dans la boucle vaut alors :
+Le nombre moyen d'itérations dans la boucle vaut alors :
 
 <div>
 $$
@@ -415,7 +466,7 @@ W_\text{moy}(N) = \mathcal{O}(1) \cdot \sum_{i=0}^{N-1} i \cdot \frac{1}{2^{i+1}
 $$
 </div>
 
-### Vérification exprérimentale
+### Vérification expérimentale
 
 ```python
 def successeur(n):
@@ -534,7 +585,7 @@ def trouve(T):
 
 ### Rapidité
 
-La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ et $T[j] > T[j-1]$, alors il existe un indice $i < k < j$  tel que $k$ soit un col de la matrice.
+La preuve d'existence du 1 montre que pour tout $i + 1 < j$, si $T[i] > T[i+1]$ et $T[j] > T[j-1]$, alors il existe un indice $i < k < j$ tel que $k$ soit un col de la matrice.
 
 L'invariant de boucle de la boucle `while`{.language-} est alors :
 
@@ -545,9 +596,9 @@ A la fin de chaque itération de la boucle `while`{.language-}, soit :
 - `T[milieu]`{.language-} n'est pas un col et :
   - `début + 1 < fin`{.language-}
   - `T[début] > T[début+1]`{.language-} et `T[fin] > T[fin-1]`{.language-}
-{% endnote %}
+    {% endnote %}
 
-A la fin de la première itération,  on a soit :
+A la fin de la première itération, on a soit :
 
 - `T[milieu] <= min(T[milieu - 1], T[milieu + 1])`{.language-} et `milieu`{.language-} est un col
 - `fin' = milieu`{.language-} et `début' = début`{.language-} si `T[milieu] > T[milieu -1]`{.language-}. Comme initialement `0 = début + 1 < fin = len(T) - 1`{.language-} on a également `milieu - 1 > début`{.language-} puisque `T[0] > T[1]`{.language-} et l'invariant est vérifié.

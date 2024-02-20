@@ -58,11 +58,11 @@ Montrez (par récurrence) que :
 
 <div>
 $$
-F(n) = \frac{1}{\sqrt{5}}(\varphi^n+\frac{1}{\varphi^n})
+F(n) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})
 $$
 </div>
 
-Où $\varphi = \frac{1+\sqrt{5}}{2}$ qui est le nombre d'or et une racine du polynôme $X^2 - X - 1$ (l'autre racine étant $-\frac{1}{\varphi}$)
+Où $\varphi = \frac{1+\sqrt{5}}{2}$ qui est le nombre d'or et une racine du polynôme $P(X) = X^2 - X - 1$. Vous pourrez utiliser le fait que $-\frac{1}{\varphi}= \frac{1-\sqrt{5}}{2}$ et est l'autre racine de $P(X)$.
 
 {% info %}
 C'est hors programme, mais c'est la façon de résoudre [les suite linéaires récurrentes](https://fr.wikipedia.org/wiki/Suite_r%C3%A9currente_lin%C3%A9aire)
@@ -72,11 +72,11 @@ En déduire que le nombre d'appels de la fonction récursive de la partie préc�
 
 ### Itératif
 
-Donnez un algorithme it´ratif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$
+Donnez un algorithme itératif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$
 
 ### Récursif terminal
 
-L'algorithme récursif est sous-optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.
+L'algorithme récursif est sous optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.
 
 L'algorithme itératif ne fait pas la même chose car il stocke les valeurs intermédiaires. Une technique puissante pour accéder à la même chose récursivement est de passer les variables en paramètres :
 
@@ -108,9 +108,9 @@ def f(n):
 
 Quelle est l'équation de récurrence de la complexité :
 
-1. $C(n) = C(n/2) * c(n/4)$
-2. $C(n) = \mathcal{O}(1) + C(n/2) * c(n/4)$
-3. $C(n) = \mathcal{O}(1) + C(n/2) + c(n/4)$
+1. $C(n) = C(n/2) * C(n/4)$
+2. $C(n) = \mathcal{O}(1) + C(n/2) * C(n/4)$
+3. $C(n) = \mathcal{O}(1) + C(n/2) + C(n/4)$
 
 Déduire de la bonne réponse que la complexité de l'exécution de la fonction est linéaire.
 
