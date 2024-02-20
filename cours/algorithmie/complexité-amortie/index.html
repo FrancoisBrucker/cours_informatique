@@ -112,8 +112,8 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>analyse amortie</strong></em> est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.</p>
-<p>La <em><strong>complexité amortie</strong></em> de cet algorithme est alors $\frac{C}{m}$.</p>
+<p>L'<strong><em>analyse amortie</em></strong> est regroupe un ensemble des techniques permettant de calculer globalement la complexité maximale $C$ de $m$ exécutions successives d'un algorithme.</p>
+<p>La <strong><em>complexité amortie</em></strong> de cet algorithme est alors $\frac{C}{m}$.</p>
 </div>
 </div>
 <p>Il ne faut pas le confondre avec la complexité en moyenne, c'est bien $n$ fois la complexité maximale que l'on considère lorsque l'on effectue les opération successivement.</p>
@@ -178,7 +178,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.</p>
 <p>A l'issue de la boucle <code class="language-">while</code> de la ligne 4, $i$ vaut :</p>
 <ul>
-<li>$-1$ si  $N$ valait initialement $N = [1, \dots, 1]$</li>
+<li>$-1$ si $N$ valait initialement $N = [1, \dots, 1]$</li>
 <li>le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)</li>
 </ul>
 <p>Note algorithme calcule donc :</p>
@@ -222,11 +222,11 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong><a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a></strong></em> est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :</p>
+<p>Une <strong><em><a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a></em></strong> est une une structure de donnée informatique fondamentale. Qui possède 3 opérations :</p>
 <ul>
 <li>une méthode <code class="language-">push(x)</code> qui ajoute l'élément <code class="language-">x</code> à la structure en $\mathcal{O}(1)$ opérations</li>
-<li>une méthode  <code class="language-">pop()</code> qui supprime l'élément le plus <strong>récemment</strong> ajouté à la structure  en $\mathcal{O}(1)$ opérations et le renvoie</li>
-<li>une fonction  <code class="language-">len(P)</code> qui renvoie le nombre d'éléments de la pile <code class="language-">P</code> en $\mathcal{O}(1)$ opérations</li>
+<li>une méthode <code class="language-">pop()</code> qui supprime l'élément le plus <strong>récemment</strong> ajouté à la structure en $\mathcal{O}(1)$ opérations et le renvoie</li>
+<li>une fonction <code class="language-">len(P)</code> qui renvoie le nombre d'éléments de la pile <code class="language-">P</code> en $\mathcal{O}(1)$ opérations</li>
 </ul>
 </div>
 </div>
@@ -282,14 +282,14 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <span class="token number">0</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token number">2</span>
-<span class="token operator">>></span><span class="token operator">></span> 
+<span class="token operator">>></span><span class="token operator">></span>
 </code></pre>
 </div>
 </details>     
 </div>
 <p>On crée la fonction suivante, dont la complexité de la fonction <code class="language-">K-pop(k, P)</code> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : k-pop
-Entrées : 
+Entrées :
     k : un entier
     P : une pile
 Programme :
@@ -301,7 +301,7 @@ Programme :
     Retour L
 
 </code></pre>
-<p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">K-pop(k, P)</code> est  $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">K-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>
+<p>Si $k = 0$ ou <code class="language-">P</code> est vide la complexité de <code class="language-">K-pop(k, P)</code> est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de <code class="language-">K-pop(k, P)</code> est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et <code class="language-">P</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8  mb-2 mr-8">
@@ -315,7 +315,7 @@ Programme :
 <p>On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations <code class="language-">len</code>, <code class="language-">push</code> et <code class="language-">k-pop</code> donc $\mathcal{O}(m^2)$.</p>
 <p>On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :</p>
 <ul>
-<li>Pour que <code class="language-">k-pop</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">push</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-pop</code>  avec cette grande complexité</li>
+<li>Pour que <code class="language-">k-pop</code> ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations <code class="language-">push</code> avant. On ne peut donc pas avoir beaucoup d'opérations <code class="language-">k-pop</code> avec cette grande complexité</li>
 <li>Après une exécution de <code class="language-">k-pop</code> avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de <code class="language-">k-pop</code> seront de complexité très faible.</li>
 </ul>
 <h2>Analyse par Agrégat</h2>
@@ -324,12 +324,12 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La technique de <em><strong>l'analyse par agrégat</strong></em> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
+<p>La technique de <strong><em>l'analyse par agrégat</em></strong> consiste à considérer l'ensemble des $m$ exécutions comme un <strong>tout</strong>.</p>
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
 </div>
 </div>
 <h3><span id="compteur-agrégat"></span> Exemple du compteur</h3>
-<p>out d'abord, on remarque que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
+<p>Tout d'abord, on remarque que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
 <ul>
 <li>si <code class="language-">N</code> finit par la liste <code class="language-">[0]</code> il faut de l'ordre de 1 opération à successeur (la boucle <code class="language-">while</code> de la ligne 4 fait un test et aucune itération)</li>
 <li>si <code class="language-">N</code> finit par la liste <code class="language-">[0, 1]</code> il faut de l'ordre de 2 opérations à successeur (la boucle <code class="language-">while</code> de la ligne 4 fait une itération)</li>
@@ -379,93 +379,10 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 \end{array}
 $$
 </div>
-<h4>Compte des modifications</h4>
-<p>De façon alternative, on peut aussi remarquer que la complexité d'une exécution de <code class="language-">successeur(N)</code> est égale au nombre de bits qu'elle a modifié dans <code class="language-">N</code>. Comme les $2^n$ exécutions de <code class="language-">successeur(N)</code> vont parcourir une et une seule fois tous les nombre de 0 à $2^n$ on en conclut que :</p>
-<ul>
-<li>le dernier bit de $N$ est modifié à chaque appel</li>
-<li>l'avant-dernier bit de $N$ est modifié que si le dernier bit de $N$ valait $1$ : il est modifié tous les 2 appels</li>
-<li>l'avant-avant-dernier bit de $N$ est modifié que si les deux derniers bits de $N$ valaient $1$ : il est modifié tous les $2^2 = 4$ appels</li>
-<li>...</li>
-<li>le $i$ bit avant la fin de $N$ est modifié que si les $i-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{i-1}$ appels</li>
-<li>...</li>
-<li>le premier bit de $N$ est modifié que si les $n-1$ derniers bits de $N$ valaient $1$ : il est modifié tous les $2^{n-1}$ appels</li>
-</ul>
-<p>La complexité totale des $2^n$ appels à <code class="language-">successeur(N)</code> vaut donc :</p>
-<div>
-$$
-\begin{array}{rcl}
-C &=& 2^n + \frac{2^n}{2} + \frac{2^n}{2^2} + \dots + \frac{2^n}{2^{n-1}}\\
-&=& \sum_{i=0}^{n-1}(2^n \cdot \frac{1}{2^i})\\
-&=& 2^n \cdot  \sum_{i=0}^{n-1}\frac{1}{2^i}\\
-&=&2^{n+1} \cdot (1-\frac{1}{2^n})
-\end{array}
-$$
-</div>
-<p>On retrouve bien la même valeur, ouf.</p>
-<h4>Complexité en moyenne</h4>
-<p>La complexité totale est (on l'a calculée de deux façon différentes) :</p>
-<p>$$<br>
-C = 2^n \cdot  (2 - \frac{1}{2^{n-1}}) \leq 2^{n+1}<br>
-$$</p>
-<p>En supposant que les entrées de successeur sur prisent de façon uniforme, le nombre moyen d'opérations effectuée est alors :</p>
-<p>$$<br>
-\frac{C}{2^n} \leq 2<br>
-$$</p>
-<p>Le nombre moyen de modifications de bits est inférieur à deux.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Vérifiez expérimentalement qu'en moyenne, sur tous les appels de <code class="language-">successeur(N)</code> pour l'algorithme <code class="language-">tous(n)</code>, le nombre de bits changé est inférieur à 2.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-        i <span class="token operator">-=</span> <span class="token number">1</span>
-
-    <span class="token keyword">if</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-
-    <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span> <span class="token operator">-</span> i
-
-
-<span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
-    total <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">**</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        total <span class="token operator">+=</span> successeur<span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> total <span class="token operator">/</span> <span class="token number">2</span><span class="token operator">**</span>n
-
-
-x <span class="token operator">=</span> tous<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-</code></pre>
-</div>
-</details>     
-</div>
+<blockquote>
+<p>TBD on retrouve ce qu'on a fait dans l'exercice, ouf.<br>
+TBD complexite en moyenne aussi.</p>
+</blockquote>
 <h3><span id="pile-agrégat"></span> Exemple de la pile</h3>
 <p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
 <ul>
@@ -486,7 +403,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La <em><strong>méthode comptable</strong></em> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <em><strong>coût amorti</strong></em> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
+<p>La <strong><em>méthode comptable</em></strong> pour calculer la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>coût amorti</em></strong> $\hat{c_i}$ tel que pour tout $1 \leq k \leq m$ :</p>
 <p>$$<br>
 \sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}<br>
 $$</p>
@@ -521,8 +438,8 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'<em><strong>analyse par potentiel</strong></em> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <em><strong>potentiel</strong></em> $\Omega(i)$ tel que $\Omega(i) &gt; \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
-<p>Le <em><strong>coût amorti</strong></em> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
+<p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) &gt; \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
+<p>Le <strong><em>coût amorti</em></strong> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
 <p>$$<br>
 \widehat{c_i} = c_i + \Omega(i) - \Omega(i-1)<br>
 $$</p>
@@ -534,7 +451,7 @@ $$</p>
 </div>
 <p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
 <p>En informatique, le potentiel sera souvent associer à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
-<p>Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant  en sorte que la différence de potentiel absorbe les variations de coût réel.</p>
+<p>Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant en sorte que la différence de potentiel absorbe les variations de coût réel.</p>
 <h3><span id="compteur-potentiel"></span> Exemple du compteur</h3>
 <p>Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Prenons cette mesure comme potentiel (on a $\Omega(0) = 0$, ce qui garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$).</p>
 <p>A chaque exécution de <code class="language-">successeur</code> on a :</p>
