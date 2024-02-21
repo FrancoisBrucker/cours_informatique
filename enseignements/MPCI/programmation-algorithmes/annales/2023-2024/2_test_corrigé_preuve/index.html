@@ -87,9 +87,48 @@
 
   
 
-  <blockquote>
-<p>TBD</p>
-</blockquote>
+  <h2>Barème</h2>
+<h2>Corrigé</h2>
+<h3>1. Présence</h3>
+<p>La fonction <code class="language-">est_présent_rec(chaine, caractère, indice)</code> est de signature : <code class="language-">est_présent_rec(chaine: str, caractère: str, indice: int) -&gt; bool</code>.</p>
+<h4>Terminaison</h4>
+<p>Elle n'a pas d'appel récursif si <code class="language-">indice</code> est plus grand ou égal à la taille de la chaîne et si elle en a un il a la même chaine en paramètre et un indice strictement plus grand : la récursion va forcément s'arrêter. La fonction <code class="language-">est_présent_rec(chaine, caractère, indice)</code> est donc un algorithme ce qui implique que la fonction <code class="language-">est_présent(chaine, caractère, indice)</code> en est un également.</p>
+<h4>Preuve</h4>
+<p>On montre par récurrence que la fonction <code class="language-">est_présent_rec(chaine, caractère, indice)</code> rend :</p>
+<ul>
+<li><code class="language-">True</code> s'il existe un indice <code class="language-">i</code>  plus grand ou égal à indice tel que <code class="language-">chaine[i] == caractère</code></li>
+<li><code class="language-">False</code> sinon.</li>
+</ul>
+<ol>
+<li>La propriété est trivialement vraie pour <code class="language-">indice &gt; len(chaine) - 1</code></li>
+<li>Si la propriété est vraie pour <code class="language-">indice+1</code> la structure de la fonction fait qu'elle est vraie pour <code class="language-">indice</code></li>
+</ol>
+<p>Les deux points ci-dessus montrent la propriété par récurrence.</p>
+<p>On en déduit que la fonction <code class="language-">est_présent(chaine, caractère)</code> rend :</p>
+<ul>
+<li><code class="language-">True</code> s'il existe un indice <code class="language-">i</code> tel que <code class="language-">chaine[i] == caractère</code></li>
+<li><code class="language-">False</code> sinon.</li>
+</ul>
+<h4>Complexité</h4>
+<p>La complexité de la fonction <code class="language-">est_présent(chaine, caractère)</code> est égale à la complexité de la fonction <code class="language-">est_présent_rec(chaine, caractère, 0)</code></p>
+<p>On a l'équation de récurrence suivante pour la complexité de la fonction <code class="language-">est_présent_rec(chaine, caractère, indice)</code> en notant $n$ la différence entre la longueur de chaine et indice :</p>
+<p>$$<br>
+C(n) = \mathcal{O}(1) + C(n-1)<br>
+$$</p>
+<p>Ce qui donne une complexité de $C(n) = \mathcal{O}(n)$, et on en déduit que la complexité de <code class="language-">est_présent(chaine, caractère)</code> est en $\mathcal{O}(\text{len(chaine)})$.</p>
+<h3>2. Lettre dupliquée</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> possède_caractère_dupliqué<span class="token punctuation">(</span>chaine<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chaine<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> est_présent_rec<span class="token punctuation">(</span>chaine<span class="token punctuation">,</span> chaine<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+</code></pre>
+<p>Clair de part la définition de la fonctjion <code class="language-">est_présent_rec</code>.</p>
+<p>La complexité de la fonction <code class="language-">est_présent_rec</code>. est en $ \mathcal{O}(n)$ où la différence entre la longueur de chaine et i. <code class="language-">possède_caractère_dupliqué</code> est donc composée de deux boucles imbriquées dépendantes l'une de l'autre mais dont la seconde est strictement décroissante. Le cours donne alors comme complexité le produit des nombres max d'itérations fois la complexité de la boucle intérieure donc $\mathcal{O}(\text{len(chaine)}^2)$ ici.</p>
+<p>Si les deux premiers caractères sont identique, <code class="language-">est_présent_rec</code> ne va pas faire de récursions et dans ce cas là il faut $\mathcal{O}(1)$ opérations pour exécuter l'algorithme.</p>
+<h3>3. Bit dupliqué</h3>
+<p>La chaine qui commence par &quot;0&quot; puis ne possède que des 1 va nécessiter $\mathcal{O}(\text{len(chaine)})$ opérations. Toute chaine ne peut en avoir plus puisque sur les 3 premiers éléments (&quot;000&quot;, &quot;001&quot;, &quot;010&quot;, &quot;011&quot;, et les complémentaires), il y aura forcément une répétition.</p>
+<p>La complexité de l'algorithme pour des chaines ne possédant qu'au plus 2 caractères différents est donc de $\mathcal{O}(\text{len(chaine)})$.</p>
 
 
 </article>
