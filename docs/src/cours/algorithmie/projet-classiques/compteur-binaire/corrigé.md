@@ -85,3 +85,17 @@ x = tous(5)
 print(x)
 
 ```
+
+## Récursif
+
+### Preuve
+
+Chaque récursion crée une liste avec un élément supplémentaire, cette élément valant d'abord 0, puis 1 lorsque l'on reviendra à cette fonction après la récursion.
+
+### Complexité en mémoire
+
+La complexité en mémoire est de $N^2$, car chaque récursion (il y en a $N$ simultanées au maximum) garde en mémoire une liste d'au plus $N$ éléments.
+
+## Généralisation
+
+En utilisant la version récursive, il suffit de change le 2 en 6 à la ligne 5.

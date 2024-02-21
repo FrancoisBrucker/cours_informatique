@@ -66,7 +66,32 @@ Conclure en utilisant le fait que $\sum_{i=1}^N i \cdot \frac{1}{2^{i+1}}$ tent 
 
 ### Vérification
 
-Que le nombre moyen d'itération vale 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :
+Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :
 
 - on a bien cyclé sur tous les éléments
 - en moyenne le nombre d'itération dans la boucle vaut bien 1.
+  Pour cela vous pouvez :
+
+1. modifier l'algorithme `successeur`{.language-} pour qu'il rende le nombre d'itération dans la boucle effectuer pour calculer le successeur.
+2. parcourir tous les nombres possible (en partant de $[0] * N$ afficher itérativement les successeurs)
+3. une fois tous les nombres vus, afficher le nombre moyens d'itération de la boucle while de l'algorithme `successeur`{.language-}.
+
+### Récursif
+
+Montrez que l'algorithme ci-dessous est une façon (récursive d'afficher tous les nombres binaires à $N$ bits.
+
+```python#
+def compteur(n, N):
+    if N == 0:
+        print(n)
+    else:
+        for i in range(2):
+            compteur(n + [i], N -  1)
+
+```
+
+Quelle est la complexité en mémoire de cet algorithme ?
+
+### Généralisation
+
+Comment modifier les algorithmes de compteur pour afficher l'ensemble des jet de $N$ dés à 6 faces ?

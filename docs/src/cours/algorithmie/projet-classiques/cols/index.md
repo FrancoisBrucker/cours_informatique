@@ -76,3 +76,11 @@ Donnez la complexité de l'algorithme `trouve_vite(T)`{.language-}.
 ## complexité du problème
 
 Après avoir formalisé le problème de la recherche d'un col dans un tableau, vous démontrerez que sa complexité est égale à la complexité de l'algorithme `trouve_vite(T)`{.language-} de la question 3.
+
+## Généralisation
+
+On appelle col d'une matrice un élément minimum local de sa ligne et maximum local de sa colonne.
+
+1. montrez qu'il n'existe pas forcément de col à une matrice
+2. donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe
+3. montrer que l'optimisation utilisée sur la ligne ne fonctionne pas sur les matrices.

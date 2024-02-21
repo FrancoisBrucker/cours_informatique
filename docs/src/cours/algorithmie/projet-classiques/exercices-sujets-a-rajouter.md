@@ -12,7 +12,6 @@ eleventyComputed:
 
 > TBD a ajouter plus tard.
 
-
 ## Min et max d'un tableau d'entiers
 
 On compte précisément les comparaisons (comme on l'a fait en comptant les multiplications avec le problème de l'exponentiation)
@@ -75,25 +74,6 @@ $$
 
 > TBD calculs de A(m, n) avec les puissances itérées de Knuth.
 
-## Jets de dés
-
-- algorithme itératif (généralisation du compteur binaire)
-- algorithme récursif. Complexité en mémoire ?
-
-On considère l'algorithme suivant:
-
-```python
-def LaFonction (L, n):
-    if n == 0:
-        print(L)
-    else:
-        for i in range(6):
-            LaFonction(L + [i + 1], n -  1)
-
-```
-
-On rappelle que, appliqué à des listes, le $+$ est la concaténation. On supposera que l'appel initial se fait avec la liste L vide. Que fait cet algorithme ? Quelle est sa complexité ? Quelle place mémoire consomme-t-il ?
-
 ## Chaînes de caractères
 
 ### Sous-séquence
@@ -141,10 +121,6 @@ def mystère(tab):
 - Donnez la complexité de cet algorithme.
 - Dites ce qu'il fait et prouvez le (_indication_: après chacune des deux premières boucles, que contient tempo ?).
 - Commentaires ?
-
-## Cols d'une matrice
-
-- d'une matrice (min ligne et max colonne) avec un algorithme linéaire en la taille de la matrice (pourquoi le log ne marche-t-il pas ?)
 
 ## Permutation circulaire
 
@@ -219,3 +195,4 @@ En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur 
 le pire.
 
 Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
+

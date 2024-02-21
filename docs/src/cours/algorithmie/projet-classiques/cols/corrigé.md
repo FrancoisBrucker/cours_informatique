@@ -125,3 +125,20 @@ La procédure de la boucle `while`{.language-} est identique à la recherche dic
 Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i < n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.
 
 Comme l'algorithme `trouve_vite(T)`{.language-} est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.
+
+## Généralisation
+
+### Existence
+
+Une matrice avec ses lignes croissantes et ses colonnes décroissantes n'a pas de col.
+
+### Algorithme
+
+On parcourt chaque élément et on vérifie si c'est un col.
+
+### Optimisation impossible
+
+L'optimisation trouve un col de ligne, mais pas forcément le bon pour la matrice.
+
+1. montrez qu'il n'existe pas forcément de col à une matrice
+2. donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe
