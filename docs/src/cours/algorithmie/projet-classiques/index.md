@@ -38,5 +38,9 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 {% endaller %}
 
 {% aller %}
-[Cols de listes](cols){.interne}
+[Cols de listes et de matrices](cols){.interne}
+{% endaller %}
+
+{% aller %}
+[Tris spéciaux](tris-spéciaux){.interne}
 {% endaller %}
