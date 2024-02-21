@@ -158,6 +158,13 @@ x <span class="token operator">=</span> tous<span class="token punctuation">(</s
 <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
 </code></pre>
+<h2>Récursif</h2>
+<h3>Preuve</h3>
+<p>Chaque récursion crée une liste avec un élément supplémentaire, cette élément valant d'abord 0, puis 1 lorsque l'on reviendra à cette fonction après la récursion.</p>
+<h3>Complexité en mémoire</h3>
+<p>La complexité en mémoire est de $N^2$, car chaque récursion (il y en a $N$ simultanées au maximum) garde en mémoire une liste d'au plus $N$ éléments.</p>
+<h2>Généralisation</h2>
+<p>En utilisant la version récursive, il suffit de change le 2 en 6 à la ligne 5.</p>
 
 
 </article>

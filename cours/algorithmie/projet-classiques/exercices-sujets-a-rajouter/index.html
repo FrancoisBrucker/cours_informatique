@@ -151,21 +151,6 @@ $$
 <blockquote>
 <p>TBD calculs de A(m, n) avec les puissances itérées de Knuth.</p>
 </blockquote>
-<h2>Jets de dés</h2>
-<ul>
-<li>algorithme itératif (généralisation du compteur binaire)</li>
-<li>algorithme récursif. Complexité en mémoire ?</li>
-</ul>
-<p>On considère l'algorithme suivant:</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">LaFonction</span> <span class="token punctuation">(</span>L<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            LaFonction<span class="token punctuation">(</span>L <span class="token operator">+</span> <span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n <span class="token operator">-</span>  <span class="token number">1</span><span class="token punctuation">)</span>
-
-</code></pre>
-<p>On rappelle que, appliqué à des listes, le $+$ est la concaténation. On supposera que l'appel initial se fait avec la liste L vide. Que fait cet algorithme ? Quelle est sa complexité ? Quelle place mémoire consomme-t-il ?</p>
 <h2>Chaînes de caractères</h2>
 <h3>Sous-séquence</h3>
 <p>Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante</p>
@@ -203,10 +188,6 @@ $$</p>
 <li>Donnez la complexité de cet algorithme.</li>
 <li>Dites ce qu'il fait et prouvez le (<em>indication</em>: après chacune des deux premières boucles, que contient tempo ?).</li>
 <li>Commentaires ?</li>
-</ul>
-<h2>Cols d'une matrice</h2>
-<ul>
-<li>d'une matrice (min ligne et max colonne) avec un algorithme linéaire en la taille de la matrice (pourquoi le log ne marche-t-il pas ?)</li>
 </ul>
 <h2>Permutation circulaire</h2>
 <p>Étant donné un liste $L$ de longueur $n$ et un entier $k$, le problème est de transformer $L$ par permutation circulaire en décalant (circulairement) tous les éléments de $L$ de $k$ places. Par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $L' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.</p>

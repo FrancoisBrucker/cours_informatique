@@ -200,6 +200,17 @@ $$</p>
 <h2>Complexité du problème</h2>
 <p>Il existe des tableaux ayant tous un unique col en position $i$ pour tout $0 \leq i &lt; n$ (prenez les tableaux $[0, -1, \dots, -i, -i+1, -i +2, \dots, -i + (n - i - 1)]$). Tout algorithme trouvant les col des tableaux doit donc pouvoir distinguer parmi $n$ cas : il est au moins de complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$.</p>
 <p>Comme l'algorithme <code class="language-">trouve_vite(T)</code> est de complexité $\mathcal{O}(\ln(n))$, c'est borne min est atteinte.</p>
+<h2>Généralisation</h2>
+<h3>Existence</h3>
+<p>Une matrice avec ses lignes croissantes et ses colonnes décroissantes n'a pas de col.</p>
+<h3>Algorithme</h3>
+<p>On parcourt chaque élément et on vérifie si c'est un col.</p>
+<h3>Optimisation impossible</h3>
+<p>L'optimisation trouve un col de ligne, mais pas forcément le bon pour la matrice.</p>
+<ol>
+<li>montrez qu'il n'existe pas forcément de col à une matrice</li>
+<li>donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe</li>
+</ol>
 
 
 </article>

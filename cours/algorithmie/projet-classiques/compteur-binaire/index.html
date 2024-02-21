@@ -139,11 +139,30 @@ $$
 </div>
 <p>Conclure en utilisant le fait que $\sum_{i=1}^N i \cdot \frac{1}{2^{i+1}}$ tent vers 1 lorsque $N$ tend vers l'infini que l'algorithme va en moyenne ne faire qu'une seule itération et donc que la complexité en moyenne de l'algorithme vaut $\mathcal{O}(1)$.</p>
 <h3>Vérification</h3>
-<p>Que le nombre moyen d'itération vale 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :</p>
+<p>Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :</p>
 <ul>
 <li>on a bien cyclé sur tous les éléments</li>
-<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.</li>
+<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.<br>
+Pour cela vous pouvez :</li>
 </ul>
+<ol>
+<li>modifier l'algorithme <code class="language-">successeur</code> pour qu'il rende le nombre d'itération dans la boucle effectuer pour calculer le successeur.</li>
+<li>parcourir tous les nombres possible (en partant de $[0] * N$ afficher itérativement les successeurs)</li>
+<li>une fois tous les nombres vus, afficher le nombre moyens d'itération de la boucle while de l'algorithme <code class="language-">successeur</code>.</li>
+</ol>
+<h3>Récursif</h3>
+<p>Montrez que l'algorithme ci-dessous est une façon (récursive d'afficher tous les nombres binaires à $N$ bits.</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">compteur</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> N<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            compteur<span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> N <span class="token operator">-</span>  <span class="token number">1</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Quelle est la complexité en mémoire de cet algorithme ?</p>
+<h3>Généralisation</h3>
+<p>Comment modifier les algorithmes de compteur pour afficher l'ensemble des jet de $N$ dés à 6 faces ?</p>
 
 
 </article>
