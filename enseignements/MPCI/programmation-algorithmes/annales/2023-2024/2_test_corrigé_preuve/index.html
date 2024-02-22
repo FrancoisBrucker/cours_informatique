@@ -88,6 +88,98 @@
   
 
   <h2>Barème</h2>
+<p>Une note sur 4 répartie comme suit :</p>
+<ul>
+<li>2 points pour la question 1 répartit en :
+<ul>
+<li>1/2 point pour la terminaison du programme</li>
+<li>1 point pour la preuve</li>
+<li>1/2 point pour le calcul et la justification de la complexité</li>
+</ul>
+</li>
+<li>1.5 point pour la question 2 répartit en :
+<ul>
+<li>1/2 point pour le pseudo-code</li>
+<li>1/2 point pour la preuve</li>
+<li>1/2 point pour la complexité min</li>
+<li>1/2 point pour la complexité max</li>
+</ul>
+</li>
+<li>.5 point pour la question 3 répartit en :</li>
+</ul>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 4 par $5$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire la première question et à entamer la seconde ce qui permet d'avoir plus de 10.</li>
+<li><strong>un bon élève</strong> doit parvenir à finir les 2 premières questions sans trop de fautes.</li>
+<li><strong>un très bon élève</strong> fait les 2 premières questions parfaitement.</li>
+</ul>
+</div>
+</div>
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/4</th>
+<th>[0, 1.5]</th>
+<th>[1.75, 2]</th>
+<th>]2, 2.5]</th>
+<th>]2.5, 3]</th>
+<th>]3,4[</th>
+<th>4</th>
+</tr>
+<tr>
+<th>note/20</th>
+<th>[0, 7.5]</th>
+<th>[8.8, 10]</th>
+<th>[12.8, 15]</th>
+<th>[11.7, 12.5]</th>
+<th>[17.5, 19]</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>6</td>
+<td>16</td>
+<td>6</td>
+<td>9</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>40</td>
+<td>24</td>
+<td>18</td>
+<td>9</td>
+<td>5</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 11.8/20 (2.36/4)</li>
+<li>écart-type : 4.23/20 (0.85/4)</li>
+<li>médiane : 10.63/20 (2.13/4)</li>
+</ul>
+<p>Je suis globalement content de vous, vous avez globalement tous travaillé pour le test et la plupart des notes en dessous de 10 sont dues à un manque de rapidité. Vous n'avez pas fait d'erreurs manifeste dans vos réponses.</p>
+<h2>Erreurs fréquemment rencontrées</h2>
+<h3>Un algorithme</h3>
+<p>Un algorithme etst un programme qui s'arrête. Lorsque l'on vous demande de justifier que c'est un algorithme, il suffit de dire que c'est du pseudo-code et de démontrer la terminaison de celui-ci.</p>
+<h3>Justifications trop longues</h3>
+<p>Beaucop de personnes brodent leurs justifications car ils ne savent pas ce qu'il est important à dire. La jsutification d'un algorithme doit doit être clair et concise. Allez directement à l'essentiel vous fera gagner en rapidité et donc augmentera votre note drastiquement.</p>
+<p>Dans le doute, rappelez vous cette règle immuable vraie dans les duels aux pisolets (voir <a href="https://www.youtube.com/watch?v=sXE_tPTK1VI">cette séquence mémorable, éclairante et très vraie du Bon, la Brute et le Truand</a>) et en informatique : Quand on justifie un algorithme, on raconte pas sa vie.</p>
+<h3>Attentions aux indices</h3>
+<p>Souvent, vous oubliez de vérifier que les deux indices sont différents dans l'algorithme de la question 2. Si on avait codé le tout, un simple test nous l'aurait fait découvrir mais sur feuille, il faut être très attentif à ce genre d'erreurs d'indice.</p>
 <h2>Corrigé</h2>
 <h3>1. Présence</h3>
 <p>La fonction <code class="language-">est_présent_rec(chaine, caractère, indice)</code> est de signature : <code class="language-">est_présent_rec(chaine: str, caractère: str, indice: int) -&gt; bool</code>.</p>
