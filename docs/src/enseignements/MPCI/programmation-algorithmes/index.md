@@ -147,10 +147,12 @@ Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin
 
 1. [définition de la complexité](/cours/algorithmie/complexité-calculs/définitions){.interne}
 2. [comparaisons asymptotiques](/cours/algorithmie/complexité-calculs/comparaisons-asymptotiques){.interne}
-   {% endfaire  %}
-   {% info %}
-   N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
-   {% endinfo %}
+  
+{% endfaire  %}
+
+{% info %}
+N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
+{% endinfo %}
 
 Parties abordées :
 
@@ -223,8 +225,83 @@ Au programme tout ce qu'on a vu en algorithmie jusque là. Sur feuille.
 De 9h à 12h en amphi CARTAN.
 {% endinfo %}
 
-### Semaine 7
+### Semaine 6 : Classes et objets
 
+Début du temps 2 de cette UE, consacré à la programmation objet.
+
+{% aller %}
+[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
+{% endaller %}
+
+On vous donne aussi le sujet du DM à rendre pour le 29 mars.
+
+{% faire %}
+[Sujet du DM](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/){.interne}
+
+Il faudra rendre un dossier contenant le projet vscode et les différents programmes.
+
+{% endfaire %}
+
+### Semaine 6.5 : Composition et agrégation
+
+**Il y a un prérequis pour la séance d'après les vacances**.
+
+{% faire %}
+Lire et comprendre la partie [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}, le test de début de cours portera dessus.
+{% endfaire  %}
+
+### Semaine 7 : projet composition et agrégation
+
+{% attention %}
+Test de 15min en début de cours consacré aux **prérequis composition et agréagation**. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+{% endattention %}
+
+{% aller %}
+
+- [Projet composition d'objets : dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
+- [Projet agrégation : cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
+
+{% endaller %}
+
+### Semaine 8
+
+#### Mardi : Héritage
+
+{% aller %}
+[Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
+{% endaller %}
+
+#### Vendredi : Projet Héritage
+
+{% attention %}
+Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+{% endattention %}
+{% aller %}
+[Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
+{% endaller %}
+
+### Semaine 9
+
+{% info %}
+Le DM1 est à rendre pour le vendredi 29/03/24 à 23h59
+{% endinfo %}
+
+#### Mardi : principes de la programmation évènementielle
+
+{% aller %}
+[Principes de la programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/principes/){.interne}
+{% endaller %}
+
+#### Vendredi : projet Arkanoid
+
+{% aller %}
+[Projet Arkanoid](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne}
+{% endaller %}
+
+### Semaine 10
+
+2h
++DS
 
 ## Annales
 

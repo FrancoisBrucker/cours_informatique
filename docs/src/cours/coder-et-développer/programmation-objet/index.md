@@ -25,7 +25,7 @@ Le but de la programmation objet est d'écrire du code :
   
 Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'UTILISEZ PAS**. C'est souvent vrai pour l'héritage qui n'a d'utilité que dans des cas très précis...
 
-## Classes et objets
+## <span id="classes-objets"></span>Classes et objets
 
 La base de la programmation objet, c'est les classes et comment elles permettent de construire (on dira instancier) des objets.
 
