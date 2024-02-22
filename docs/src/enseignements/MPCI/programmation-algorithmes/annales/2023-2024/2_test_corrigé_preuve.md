@@ -8,6 +8,60 @@ authors:
 
 ## Barème
 
+Une note sur 4 répartie comme suit :
+
+- 2 points pour la question 1 répartit en :
+  - 1/2 point pour la terminaison du programme
+  - 1 point pour la preuve
+  - 1/2 point pour le calcul et la justification de la complexité
+- 1.5 point pour la question 2 répartit en :
+  - 1/2 point pour le pseudo-code
+  - 1/2 point pour la preuve
+  - 1/2 point pour la complexité min
+  - 1/2 point pour la complexité max
+- .5 point pour la question 3 répartit en :
+
+La note sur $20$ finale est obtenue en multipliant la note sur 4 par $5$
+
+{% note "**Objectif du test**" %}
+
+En 15 minutes :
+
+- **un élève *normal*** doit parvenir à faire la première question et à entamer la seconde ce qui permet d'avoir plus de 10.
+- **un bon élève** doit parvenir à finir les 2 premières questions sans trop de fautes.
+- **un très bon élève** fait les 2 premières questions parfaitement.
+
+{% endnote %}
+
+La ventilation des notes est :
+
+|note/4   | [0, 1.5]   | [1.75, 2]  | ]2, 2.5]     | ]2.5, 3]     | ]3,4[      | 4  |
+|note/20  | [0, 7.5]   | [8.8, 10]  | [12.8, 15]   | [11.7, 12.5]| [17.5, 19]  | 20 |
+|---------|------------|------------|--------------|-------------|-------------|----|
+|nombre   |  6         |  16        |  6           |  9          | 4           | 4  |
+|rang min | 40         | 24         | 18           | 9           | 5           | 1  |
+
+- moyenne : 11.8/20 (2.36/4)
+- écart-type : 4.23/20 (0.85/4)
+- médiane : 10.63/20 (2.13/4)
+
+Je suis globalement content de vous, vous avez globalement tous travaillé pour le test et la plupart des notes en dessous de 10 sont dues à un manque de rapidité. Vous n'avez pas fait d'erreurs manifeste dans vos réponses.
+
+## Erreurs fréquemment rencontrées
+
+### Un algorithme
+
+Un algorithme etst un programme qui s'arrête. Lorsque l'on vous demande de justifier que c'est un algorithme, il suffit de dire que c'est du pseudo-code et de démontrer la terminaison de celui-ci.
+
+### Justifications trop longues
+
+Beaucop de personnes brodent leurs justifications car ils ne savent pas ce qu'il est important à dire. La jsutification d'un algorithme doit doit être clair et concise. Allez directement à l'essentiel vous fera gagner en rapidité et donc augmentera votre note drastiquement.
+
+Dans le doute, rappelez vous cette règle immuable vraie dans les duels aux pisolets (voir [cette séquence mémorable, éclairante et très vraie du Bon, la Brute et le Truand](https://www.youtube.com/watch?v=sXE_tPTK1VI)) et en informatique : Quand on justifie un algorithme, on raconte pas sa vie.
+
+### Attentions aux indices
+
+Souvent, vous oubliez de vérifier que les deux indices sont différents dans l'algorithme de la question 2. Si on avait codé le tout, un simple test nous l'aurait fait découvrir mais sur feuille, il faut être très attentif à ce genre d'erreurs d'indice.
 
 ## Corrigé
 
