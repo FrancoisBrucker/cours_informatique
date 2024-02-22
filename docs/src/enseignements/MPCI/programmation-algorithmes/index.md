@@ -242,7 +242,7 @@ Il faudra rendre un dossier contenant le projet vscode et les différents progra
 
 {% endfaire %}
 
-### Semaine 6.5 : Composition et agrégation
+### Semaine 6.5 (semaine de vacances): Composition et agrégation
 
 **Il y a un prérequis pour la séance d'après les vacances**.
 
@@ -253,7 +253,7 @@ Lire et comprendre la partie [Composition et agrégation](/cours/coder-et-dével
 ### Semaine 7 : projet composition et agrégation
 
 {% attention %}
-Test de 15min en début de cours consacré aux **prérequis composition et agréagation**. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+Test de 15min en début de cours consacré aux **prérequis composition et agrégation**. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
 {% endattention %}
 
 {% aller %}
