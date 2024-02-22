@@ -35,15 +35,15 @@ En 15 minutes :
 
 La ventilation des notes est :
 
-|note/4   | [0, 1.5]   | [1.75, 2]  | ]2, 2.5]     | ]2.5, 3]     | ]3,4[      | 4  |
-|note/20  | [0, 7.5]   | [8.8, 10]  | [12.8, 15]   | [11.7, 12.5]| [17.5, 19]  | 20 |
+|note/4   | ]1, 1.5]   | [1.75, 2]  | ]2, 2.5]     | ]2.5, 3]    | ]3,4[       | 4  |
+|note/20  | [6.3, 7.5] | [8.8, 10]  | [12.8, 15]   | [11.7, 12.5]| [17.5, 19]  | 20 |
 |---------|------------|------------|--------------|-------------|-------------|----|
-|nombre   |  6         |  16        |  6           |  9          | 4           | 4  |
+|nombre   |  5         |  16        |  6           |  9          | 4           | 4  |
 |rang min | 40         | 24         | 18           | 9           | 5           | 1  |
 
-- moyenne : 11.8/20 (2.36/4)
-- écart-type : 4.23/20 (0.85/4)
-- médiane : 10.63/20 (2.13/4)
+- moyenne : 12.7/20 (2.41/4)
+- écart-type : 3.78/20 (0.76/4)
+- médiane : 11.25/20 (2.25/4)
 
 Je suis globalement content de vous, vous avez globalement tous travaillé pour le test et la plupart des notes en dessous de 10 sont dues à un manque de rapidité. Vous n'avez pas fait d'erreurs manifeste dans vos réponses.
 

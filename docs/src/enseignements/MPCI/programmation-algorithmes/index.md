@@ -223,6 +223,9 @@ Au programme tout ce qu'on a vu en algorithmie jusque là. Sur feuille.
 De 9h à 12h en amphi CARTAN.
 {% endinfo %}
 
+### Semaine 7
+
+
 ## Annales
 
 Les [annales des tests et contrôles](./annales){.interne} de ce cours
