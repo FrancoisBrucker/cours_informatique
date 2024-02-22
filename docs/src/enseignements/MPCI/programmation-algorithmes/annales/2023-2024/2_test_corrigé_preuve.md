@@ -57,7 +57,9 @@ Un algorithme etst un programme qui s'arrête. Lorsque l'on vous demande de just
 
 Beaucop de personnes brodent leurs justifications car ils ne savent pas ce qu'il est important à dire. La jsutification d'un algorithme doit doit être clair et concise. Allez directement à l'essentiel vous fera gagner en rapidité et donc augmentera votre note drastiquement.
 
-Dans le doute, rappelez vous cette règle immuable vraie dans les duels aux pisolets (voir [cette séquence mémorable, éclairante et très vraie du Bon, la Brute et le Truand](https://www.youtube.com/watch?v=sXE_tPTK1VI)) et en informatique : Quand on justifie un algorithme, on raconte pas sa vie.
+Dans le doute, rappelez vous cette règle immuable vraie dans les duels aux pisolets (voir [cette séquence mémorable, éclairante et très vraie du Bon, la Brute et le Truand](https://www.youtube.com/watch?v=sXE_tPTK1VI)) et en informatique : 
+
+> Quand on justifie un algorithme, on raconte pas sa vie.
 
 ### Attentions aux indices
 
