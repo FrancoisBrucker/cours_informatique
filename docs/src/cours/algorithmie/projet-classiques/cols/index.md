@@ -79,7 +79,7 @@ Après avoir formalisé le problème de la recherche d'un col dans un tableau, v
 
 ## Généralisation
 
-On appelle col d'une matrice un élément minimum local de sa ligne et maximum local de sa colonne.
+On appelle col d'une matrice un élément minimum **global** de sa ligne et maximum **global** de sa colonne.
 
 1. montrez qu'il n'existe pas forcément de col à une matrice
 2. donnez un algorithme linéaire en la taille de la matrice pour trouver un col s'il existe

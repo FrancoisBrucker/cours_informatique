@@ -134,7 +134,7 @@ Une matrice avec ses lignes croissantes et ses colonnes décroissantes n'a pas d
 
 ### Algorithme
 
-On parcourt chaque élément et on vérifie si c'est un col.
+On peut stocker les maximaux des colonnes et les minimaux des lignes dans deux listes puis parcourir chaque élément de la matrice et vérifier s'il est égal au maximum de la colonne et au minimum de la ligne.
 
 ### Optimisation impossible
 
