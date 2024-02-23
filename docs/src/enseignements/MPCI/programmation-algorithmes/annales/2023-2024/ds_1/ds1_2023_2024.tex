@@ -1,0 +1,331 @@
+\documentclass{article}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{listingsutf8}
+\lstset{%
+    inputencoding=utf8,
+    literate=
+        {é}{{\'e}}{1}%
+        {è}{{\`e}}{1}%
+        {à}{{\`a}}{1}%
+        {â}{{\^a}}{1}%
+        {ç}{{\c{c}}}{1}%
+        {œ}{{\oe}}{1}%
+        {ù}{{\`u}}{1}%
+        {É}{{\'E}}{1}%
+        {È}{{\`E}}{1}%
+        {À}{{\`A}}{1}%
+        {Ç}{{\c{C}}}{1}%
+        {Œ}{{\OE}}{1}%
+        {Ê}{{\^E}}{1}%
+        {ê}{{\^e}}{1}%
+        {î}{{\^i}}{1}%
+        {ï}{{\"i}}{1}%
+        {ô}{{\^o}}{1}%
+        {û}{{\^u}}{1}%
+}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{todonotes}
+\usepackage{amsthm}
+\usepackage[french, frenchkw, boxed, linesnumbered]{algorithm2e}
+
+\newtheoremstyle{exostyle}% style name
+{10pt}% above space
+{10pt}% below space
+{}% body font
+{}% indent amount
+{\scshape\bfseries\large}% head font
+{\hfill\vspace{5pt}\newline}% post head punctuation
+{0pt}% Space after theorem head
+{\hfill\thmname{#1}\thmnumber{ #2} -- \thmnote{ #3}}% head spec
+
+\newtheoremstyle{partiestyle}% style name
+{1em}% above space
+{1em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{\vspace{.5em}\newline}% post head punctuation
+{0em}% Space after theorem head
+{\thmnumber{#2} \thmnote{ #3}}% head spec
+
+\newtheoremstyle{questionstyle}% style name
+{.5em}% above space
+{.5em}% below space
+{}% body font
+{}% indent amount
+{\bfseries}% head font
+{}% post head punctuation
+{0em}% Space after theorem head
+{Question \thmnumber{#2 }}% head spec
+
+\theoremstyle{exostyle}
+\newtheorem{exo}{Exercice}
+
+\theoremstyle{partiestyle}
+\newtheorem{partie}{}[exo]
+
+\theoremstyle{questionstyle}
+\newtheorem{question}{Question}[exo]
+\newtheorem{questionpartie}{Question}[partie]
+
+\title{Devoir Surveillé 1 Programmation et Algorithmes}
+\author{L1 MPCI}
+\date{23 février 2024 - Durée: 3h}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+{\em\bf Lorsque l'on vous demande d'écrire de décrire ou de donner un algorithme cela signifiera toujours en donner un pseudo-code, justifier de son exactitude et de sa complexité}
+
+~\\
+
+{\em On rappelle qu'aucun document ni équipement électrique ou électronique n'est autorisé. }
+\end{center}
+
+\vspace*{1cm}
+Le but de ce devoir est de résoudre de quatre façons différentes {\bf le problème de trouver l'élément majoritaire}.
+
+\paragraph*{Définition.}\'Etant donné un tableau $T$, un {\it\bf élément majoritaire (de $T$)} est une valeur $x$ telle que strictement plus de la moitié des éléments de $T$ sont égaux à $x$.
+
+\paragraph*{}Par exemple :
+\begin{itemize}
+    \item le tableau $[2,4,5,4,5,4, 5, 4, 4]$ admet $4$ comme élément majoritaire,
+    \item le tableau $[2,2,3,6,4,3,2,2,3,3,2,2]$ n'a pas d'élément majoritaire. 
+\end{itemize}
+    
+
+\paragraph*{Les exercices :}
+\begin{itemize}
+\item sont au nombre de 4;
+\item sont indépendants;
+\item ont un début plus facile que la fin.
+\end{itemize}
+
+\vspace*{2cm}
+\begin{center}
+    {\em\bf\sc\Large Pour préserver la santé mentale du correcteur rendez une copie par exercice.}
+    
+\end{center}
+
+\clearpage
+
+\begin{exo}[Encadrement du problème]
+
+\begin{partie}[Préliminaire]
+Combien d'éléments majoritaires peut avoir un tableau ? Prouvez-le rigoureusement.
+\end{partie}
+\begin{partie}[Borne minimum]
+\begin{questionpartie}
+    Montrez que quelle que soit la taille $n > 2$ du tableau et quel que soit $0 \leq i < n$, il existe un tableau $T$ d'élément majoritaire $e$ tel que $T[i] \neq e$.
+\end{questionpartie}
+\begin{questionpartie}
+    Montrez que quelle que soit la taille $n \geq 1$ du tableau et quel que soit $0 \leq i < n$, il existe un tableau $T$ d'élément majoritaire $e$ tel que $T[i] = e$.
+\end{questionpartie}
+\begin{questionpartie}
+    Montrez que quels que soient $n>2$ et $0 \leq i < n$, il existe toujours deux tableaux d'entiers $T$ et $T'$ de taille $n$ tels que :
+    \begin{itemize}
+        \item $T[j] = T'[j]$ pour tout $j \neq i$,
+        \item $T$ admet un élément majoritaire,
+        \item $T'$ n'admet pas d'élément majoritaire.
+    \end{itemize}
+\end{questionpartie}
+\begin{questionpartie}
+    Déduisez-en que la complexité du problème de l'élément majoritaire est en $\Omega(n)$, avec $n$ la taille du tableau (il n'existe pas d'algorithme permettant de résoudre le problème de l'élément majoritaire en strictement moins de $n$ opérations pour tout $n > N_0$).
+\end{questionpartie}
+\end{partie}
+\begin{partie}[Borne maximum]
+
+\begin{questionpartie}
+    Donnez le pseudo-code et la preuve d'une fonction $\textsc{compte}$ de complexité $\mathcal{O}(n)$ telle que $\textsc{compte}(T, x)$ est le nombre d'occurrences de $x$ dans $T$ (si $x\notin T, \textsc{compte}(T, x) = 0$).
+\end{questionpartie}
+\begin{questionpartie}
+    \label{naif}
+    Utilisez la question précédente pour créer algorithme en $\mathcal{O}(n^2)$ pour résoudre le problème. Vous en donnerez le pseudo-code et la preuve.
+\end{questionpartie}
+\begin{questionpartie}
+    Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé. 
+\end{questionpartie}            
+\begin{questionpartie}
+    En déduire que la complexité du problème de l'élément majoritaire est en $\mathcal{O}(n^2)$
+\end{questionpartie}
+\end{partie}
+
+\end{exo}
+
+
+\clearpage
+\begin{exo}[Tris]
+    On va maintenant utiliser le tri pour résoudre le problème.
+    
+    \begin{partie}[Tris]
+        \begin{questionpartie}
+            Donnez le nom d'un algorithme de tri ayant une complexité de $\mathcal{O}(n\ln(n))$ avec $n$ la taille du tableau à trier. Vous expliciterez son fonctionnement en quelques phrases.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Justifiez en quelques phrases que le problème du tri est en $\Omega(n\ln(n))$.
+        \end{questionpartie}
+
+        \begin{questionpartie}
+            Déduisez-en que le problème du tri est en $\Theta(n\ln(n))$.
+        \end{questionpartie}
+        \end{partie}
+    
+        \begin{partie}[Élément  majoritaire]
+            On suppose que l'on possède un algorithme permettant de trier un tableau de $n$ entiers en $\mathcal{O}(n \log(n))$ opérations.
+            \begin{questionpartie}
+                Si $T$ est trié, démontrez l'existence d'un indice $i$ (que vous expliciterez) tel que, si $T$ admet un élément majoritaire $x$, alors $x=T[i]$. 
+            \end{questionpartie}
+            \begin{questionpartie}
+                Déduisez-en un algorithme itératif, dont vous donnerez le pseudo-code et la preuve, plus efficace que celui de l'exercice~\ref{naif} pour résoudre le problème de l'élément majoritaire.            
+            \end{questionpartie}
+            \begin{questionpartie}
+                Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.
+            \end{questionpartie}            
+        \end{partie}   
+    \end{exo}
+
+\begin{exo}[Diviser pour régner]
+
+\begin{partie}[Principe]
+
+    Expliciter le principe algorithmique de {\it diviser pour régner}
+
+\end{partie}
+\begin{partie}[La taille du tableau est une puissance de 2]
+    On suppose dans cet exercice que $n$ est une puissance de 2. On appelle $T_1$ le tableau constitué des $n/2$ premiers éléments de $T$ (en Python, $T_1 = T[0:n/2]$), et $T_2$ le tableau constitué des $n/2$ derniers (en Python, $T_2 = T[n/2 : n]$).
+\begin{questionpartie}
+Montrez que si $T$ admet un élément majoritaire $x$, alors $x$ est un élément majoritaire de $T_1$ ou $T_2$.
+\end{questionpartie}
+\begin{questionpartie}
+    Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$ (ou $T_2$), si $x$ est un élément majoritaire de $T$.
+\end{questionpartie}
+\begin{questionpartie}
+    Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice~\ref{naif}, pour résoudre le problème.
+\end{questionpartie}
+\end{partie}
+\begin{partie}[La taille du tableau est quelconque]
+    \begin{questionpartie}
+        Reprenez cet exercice sans supposer que $n$ est une puissance de 2. Que faut-il changer pour que l'algorithme continue de fonctionner ?
+    \end{questionpartie} 
+    \begin{questionpartie}
+        Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.
+    \end{questionpartie}     
+\end{partie}
+\end{exo}
+
+\clearpage
+\begin{exo}[Piles]
+        Une pile est un type de données dont on peut créer un objet en $\mathcal{O}(1)$ opérations et possédant deux méthodes :
+        \begin{itemize}
+            \item \verb|empile(élément, pile)| qui ajoute un élément différent de \verb|None| à la structure en $\mathcal{O}(1)$ opérations (on considère que tenter d'empiler \verb|None| ne va pas provoquer d'erreurs et ne va rien ajouter à la structure).
+            \item \verb|dépile(pile)| qui {\bf rend} et supprime de la structure le dernier élément à avoir été empilé en $\mathcal{O}(1)$ opérations. Si la pile est vide cette fonction va rendre \verb|None|
+        \end{itemize}
+        
+
+        L'algorithme suivant va par exemple afficher à l'écran \verb|3|, \verb|1|, \verb|2|, \verb|4| puis \verb|None| :
+        \begin{verbatim}
+            crée une pile vide de nom P
+            empile 4 dans P
+            empile 3 dans P
+            empile None dans P
+            x = dépile(P)
+            affiche à l'écran la variable x
+            empile 2 dans P
+            empile 1 dans P
+            x = dépile(P)
+            affiche à l'écran la variable x
+            x = dépile(P)
+            affiche à l'écran la variable x
+            x = dépile(P)
+            affiche à l'écran la variable x
+            x = dépile(P)
+            affiche à l'écran la variable x
+        \end{verbatim}
+
+        La pile est une structure permettant de garder en mémoire des choses à faire (en empilant) et de toujours effectuer la tâche la plus récente non réalisée (en dépilant).
+        
+    \begin{partie}[Structure de pile]
+
+            Proposez une implémentation avec des listes de la structure de pile en python. Vous implémenterez les fonctions :
+            \begin{itemize}
+                \item \verb|crée_pile_vide() -> list|
+                \item \verb|empile(x: int or None, pile: list|                
+                \item \verb|dépile(pile:list) -> int or None|    
+            \end{itemize}            
+                
+    
+    \end{partie}
+    \begin{partie}[Pile et élément majoritaire]
+    
+        On considère l'algorithme \textsc{Majorité} ci après.
+            %\nocaptionofalgo
+        \begin{algorithm}[h!]
+            \DontPrintSemicolon
+        \Entree{Un tableau d'entiers $T$}
+        \Deb{
+            Soient $P_1$ et $P_2$ deux piles vides.\;
+            \PourCh{ $x$ de $T$}{
+                $y= \textsl{dépile}(P_1)$ \;
+                $\textsl{empile}(y, P_1)$ \;
+                \eSi{y == None {\bf ou} y $\neq$ x}
+                {
+                    $\textsl{empile}(x, P_1)$ \;
+                }
+                {
+                    $z=\textsl{dépile}(P_2)$ \;
+                    \eSi {z == None {\bf ou} z == x}
+                    {   
+                        $\textsl{empile}(z, P_2)$ \;
+                        $\textsl{empile}(x, P_2)$ \;                        
+                    }
+                    {
+                        $\textsl{empile}(z, P_1)$ \;
+                        $\textsl{empile}(x, P_1)$ \;
+                    }
+                }
+            }
+        }
+        \caption{algorithme \textsc{Majorité}}
+        \end{algorithm}
+
+        \begin{questionpartie}
+                Que vaut $y$ à la ligne 6 par rapport à $P_1$ ?
+        \end{questionpartie}
+        \begin{questionpartie}
+            Montrez qu'à chaque itération de la boucle for, $x$ est empilé soit dans $P_1$, soit dans $P_2$.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Donnez le contenu des deux piles $P_1$ et $P_2$ {\bf à la fin de l'algorithme} si, en entrée, on lui donne les deux exemples du début de l'énoncé.
+        \end{questionpartie}
+        \begin{questionpartie}
+            Quelle est la complexité de l'algorithme~?
+        \end{questionpartie}
+        \begin{questionpartie}
+            Montrez que tous les éléments de la pile $P_2$ sont identiques à la fin de l'algorithme. 
+        \end{questionpartie}
+        \begin{questionpartie}
+            Montrez qu'à la fin de l'algorithme, deux éléments consécutifs de la pile $P_1$ sont toujours différents.        
+        \end{questionpartie}
+        \begin{questionpartie}
+        
+            Déduisez-en qu'un élément majoritaire, s'il en existe, ne peut être que le dernier élément stocké dans $P_2$ ou le dernier élément stocké dans $P_1$.
+        \end{questionpartie}
+    \end{partie}
+    \begin{partie}[Conclutions]        
+        \begin{questionpartie}
+            Déduisez de la partie précédente un algorithme linéaire en la taille du tableau en entrée pour résoudre le problème de l'élément majoritaire
+        \end{questionpartie}             
+        \begin{questionpartie}
+            Quelle est la complexité du problème de l'élément majoritaire ?
+        \end{questionpartie}             
+    \end{partie}
+
+\end{exo}
+\end{document}
