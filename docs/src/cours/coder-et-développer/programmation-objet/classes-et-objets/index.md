@@ -1,6 +1,10 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Classes et objets
+
+eleventyNavigation:
+  prerequis:
+    - "../../mémoire-espace-noms/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,7 +18,7 @@ Un objet est un bout de code auquel est associé :
 - des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
 - des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
 
-Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa *classe*. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../mémoire-espace-noms#espace-noms){.interne} (*namespaces*). Cela lui permet de réutiliser le même code pour plusieurs objets.
+Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../mémoire-espace-noms#espace-noms){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
 
 ## Classes et objets
 
@@ -23,9 +27,9 @@ Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les ent
 De façon générale, on peut définir un objet et une classe comme :
 
 {% note %}
-Un ***objet*** est une structure de données (les champs de la structure de donnée sont appelés ***attributs***) sur laquelle on peut effectuer des opérations (appelées ***méthodes***).
+Un **_objet_** est une structure de données (les champs de la structure de donnée sont appelés **_attributs_**) sur laquelle on peut effectuer des opérations (appelées **_méthodes_**).
 
-Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des ***classes*** comme patron de ces objets.
+Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des **_classes_** comme patron de ces objets.
 
 {% endnote %}
 
@@ -41,7 +45,7 @@ Un objet issu d'une certaine classe :
 
 ### But
 
-La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de *coder objet* car :
+La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de _coder objet_ car :
 
 - cela favorise la factorisation du code ([on ne se répète pas](../../développement/coder#DRY){.interne}) : on ne définit ses méthodes qu'une seule fois dans les classes
 - lisibilité avec la notation `.`{.language-} : on sait clairement à qui s'applique telle ou telle méthode
@@ -91,7 +95,7 @@ C'est la méthode définie dans la classe `str`{.language-} qui s'appelle `upper
 
 Le résultat est différent lorsque l'on applique la méthode `upper`{.language-} à la chaîne de caractères `"bonjour"`{.language-} ou à la chaîne de caractères `"toi"`{.language-} car ces deux chaînes de caractères, bien que de la même classe (`str`{.language-}), sont différents : dans l'un il y a la chaîne "bonjour", dans l'autres la chaîne "toi".
 
-Un objet `str`{.language-} est bien plus que juste ses caractères !  C'est aussi un ensemble de méthodes permettant de les manipuler.
+Un objet `str`{.language-} est bien plus que juste ses caractères ! C'est aussi un ensemble de méthodes permettant de les manipuler.
 
 #### Entiers
 
@@ -116,9 +120,9 @@ Remarquez que l'opération `+`{.language-} n'est pas identique pour `1 + 2`{.lan
 ### Créer des objets
 
 {% note %}
-Pour créer des objets d'une classe, on utilise un ***constructeur***.
+Pour créer des objets d'une classe, on utilise un **_constructeur_**.
 
-En python, le retour de l'***exécution d'une classe*** (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :
+En python, le retour de l'**_exécution d'une classe_** (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :
 
 ```python
 NomDeLaClasse(paramètre_1, ..., paramètre_n)
@@ -128,9 +132,9 @@ NomDeLaClasse(paramètre_1, ..., paramètre_n)
 
 Ainsi :
 
-- `list()`{.language-} : crée un objet de type `list`{.language-} (une liste),  sans paramètre.
-- `int()`{.language-} : crée un objet de type  `int`{.language-} (un entier) sans paramètre (c'est 0).
-- `int(3.1415)`{.language-} : crée un un objet de type  `int`{.language-} avec un paramètre, valant le réel 3.1415 (c'est 3)
+- `list()`{.language-} : crée un objet de type `list`{.language-} (une liste), sans paramètre.
+- `int()`{.language-} : crée un objet de type `int`{.language-} (un entier) sans paramètre (c'est 0).
+- `int(3.1415)`{.language-} : crée un un objet de type `int`{.language-} avec un paramètre, valant le réel 3.1415 (c'est 3)
 - `float("3.1415")`{.language-} : crée un objet de type `float`{.language-} (un réel) avec un paramètre valant la chaîne de caractères `"3.1415"`{.language-}.
 - `list(range(5))`{.language-} : crée un objet de type `list`{.language-} avec comme unique paramètre le résultat de la fonction `range`
 
@@ -140,7 +144,7 @@ Certains objets se créent juste avec leur valeur comme les entiers, les réels 
 
 ## Outils
 
-On va utiliser un outil *papier* (l'[UML](https://fr.wikipedia.org/wiki/UML_(informatique))) et un outil clavier (le python) pour écrire nos classes.
+On va utiliser un outil _papier_ (l'[UML](<https://fr.wikipedia.org/wiki/UML_(informatique)>)) et un outil clavier (le python) pour écrire nos classes.
 
 ### UML
 
@@ -154,7 +158,7 @@ L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme u
 
 ![une classe UML](classes-1.png)
 
-- pour chaque attribut on pourra préciser le *type* (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important
+- pour chaque attribut on pourra préciser le _type_ (entier, chaîne de caractères, une classe particulière d'objet, ...) si c'est important
 - pour chaque méthode on donnera sa [signature](https://developer.mozilla.org/fr/docs/Glossaire/Signature/Fonction) complète (son nom et ses paramètres) pour que l'on puisse l'utiliser.
 
 ### Python
@@ -181,7 +185,7 @@ La gestion des noms en python se fait via des [espaces de noms](../../mémoire-e
 
 #### Processus de création d'un objet
 
-En python, on construit et rend un objet en ***appelant sa classe***. Par exemple pour créer un objet de la classe `MaClasse`{.language-}, on exécute l'instruction :
+En python, on construit et rend un objet en **_appelant sa classe_**. Par exemple pour créer un objet de la classe `MaClasse`{.language-}, on exécute l'instruction :
 
 ```python
 mon_objet = MaClasse(paramètre 1, ..., paramètre n)
@@ -191,7 +195,7 @@ Python exécute cette instruction en :
 
 1. créant un objet vide `o`{.language-} de type `MaClasse`{.language-}
 2. il associe à l'objet un espace de nom dont le parent est l'espace de nom de sa classe
-3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que   la méthode `__init__`{.language-} n'a pas de retour)
+3. il exécute le constructeur `__init__`{.language-} sur l'objet : `MaClasse.__init__(o, paramètre 1, ..., paramètre n)`{.language-} (c'est pour ça que la méthode `__init__`{.language-} n'a pas de retour)
 4. il rend l'objet `o`{.language-}
 
 ## Premier exemple : le Compteur
@@ -207,11 +211,11 @@ A partir d'un exemple de code, on va essayer de :
 
 ### Code d'utilisation
 
- Cette modélisation doit être capable de répondre au code suivant, dans le fichier `main.py`{.fichier} :
+Cette modélisation doit être capable de répondre au code suivant, dans le fichier `main.py`{.fichier} :
 
 ```python#
 from compteur import Compteur
-    
+
 c1 = Compteur()
 c2 = Compteur()
 c1.incrémente()
@@ -240,11 +244,11 @@ En résumé :
 
 - les noms de variables, de fonctions et de méthodes sont écrites :
   - tout en minuscules
-  - utilisent le [*Snake case*](https://fr.wikipedia.org/wiki/Snake_case) où les mots sont séparés par des *underscores* (`_`{.language-})
+  - utilisent le [_Snake case_](https://fr.wikipedia.org/wiki/Snake_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
 - les constantes sont écrites tout en majuscule
 - le noms de classes sont écrites :
   - avec une majuscule
-  - utilisent le [*Camel case*](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont séparés par des *underscores* (`_`{.language-})
+  - utilisent le [_Camel case_](https://fr.wikipedia.org/wiki/Camel_case) où les mots sont séparés par des _underscores_ (`_`{.language-})
 - les noms commençant par `__` et se finissant par `__` (comme `__name__`) ont des significations précises
 
 {% endnote %}
@@ -252,7 +256,7 @@ En résumé :
 Toutes les [conventions de nommages de python](https://peps.python.org/pep-0008/#prescriptive-naming-conventions).
 {% endlien %}
 
-On suppose donc que `Compteur`{.language-} est une *classe*, par conséquent son exécution correspond à la création d'objets : `c1`{.language-} et `c2`{.language-} des objets de type `Compteur`{.language-}.
+On suppose donc que `Compteur`{.language-} est une _classe_, par conséquent son exécution correspond à la création d'objets : `c1`{.language-} et `c2`{.language-} des objets de type `Compteur`{.language-}.
 
 De là, `incrémente`{.language-} est une méthode de la classe `Compteur`{.language-} et `valeur`{.language-} un attribut des objets `c1`{.language-} et `c2`{.language-}
 
@@ -267,7 +271,7 @@ Un code dont les objets sont bien nommés doit pouvoir se lire et être interpr�
 
 #### Exécution du programme
 
-A la lecture du code, on a donc *envie* que le code :
+A la lecture du code, on a donc _envie_ que le code :
 
 1. création de deux compteurs
 2. en incrémente un deux fois et l'autre qu'une seule fois
@@ -293,7 +297,7 @@ On a donc ce qu'il faut pour notre classe :
 1. on commence toujours par le nom de la classe
 2. on explicite ses méthodes, c'est à dire comment on va utiliser les objets (ici incrémenter un compteur).
 3. on crée la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).
-{% endnote %}
+   {% endnote %}
 
 Ce qui donne le diagramme UML du compteur :
 
@@ -303,14 +307,14 @@ Ce qui donne le diagramme UML du compteur :
 
 La classe python qui correspond à l'UML précédent est celle-ci, contenu dans le fichier `compteur.py`{.fichier}, placé dans le même dossier que le fichier `main.py`{.fichier} :
 
-``` python
+```python
 class Compteur:
     def __init__(self):
         self.valeur = 0
-           
+
     def incrémente(self):
         self.valeur = self.valeur + 1
-    
+
 ```
 
 La définition d'une classe est un bloc python :
@@ -361,7 +365,7 @@ Par exemple, considérons la ligne de code `"coucou".upper().count("U")`{.langua
 1. on exécute la méthode `count`{.language-} de l'objet à gauche du `.`, c'est à dire `"coucou".upper()`{.language-}. **Attention** C'est bien toute la partie gauche, pas seulement jusqu'au `.`{.language-} suivant.
 2. l'objet `"coucou".upper()`{.language-} est le résultat de la méthode `upper`{.language-} appliquée à l'objet à gauche du `.`, c'est à dire la chaîne de caractères `"coucou"`{.language-}.
 3. le résultat de `"coucou".upper()`{.language-} est ainsi égal à l'objet `"COUCOU"`{.language-}
-4. donc  `"coucou".upper().count("U")`{.language-} est égal à `"COUCOU".count("U")`{.language-} qui vaut 2
+4. donc `"coucou".upper().count("U")`{.language-} est égal à `"COUCOU".count("U")`{.language-} qui vaut 2
 
 ### Exécution du code
 
@@ -400,11 +404,11 @@ Reprenons le code de `main.py`{.fichier}, et exécutons le ligne à ligne :
    - `Compteur()`{.language-} Exécuter une classe revient à :
      - créer un objet vide et lui associer un espace de noms vierge
      - chercher la méthode `__init__`{.language-} de la classe et l'exécuter en passant le nouvel objet en premier paramètre :
-        - pour exécuter une fonction on crée un namespace pour elle.
-        - on place le nom `self`{.language-} qui vaut ici le nouveau namespace créé
-        - la première ligne crée le nom `valeur`{.language-} dans l'espace de noms de l'objet `self`{.language-}
-        - la fonction étant terminée, on supprime l'espace de noms de la fonction (qui contenait le nom `self`{.language-})
-        - on rend l'objet
+       - pour exécuter une fonction on crée un namespace pour elle.
+       - on place le nom `self`{.language-} qui vaut ici le nouveau namespace créé
+       - la première ligne crée le nom `valeur`{.language-} dans l'espace de noms de l'objet `self`{.language-}
+       - la fonction étant terminée, on supprime l'espace de noms de la fonction (qui contenait le nom `self`{.language-})
+       - on rend l'objet
    - l'objet créé est associé au nom `c1`{.language-} dans le namespace `global`
 4. idem que la ligne précédente avec un nouvel objet
 5. `c1.incrémente()`{.language-} : python cherche le nom `incrémente`{.language-} dans l'espace de noms de l'objet nommé `c1`{.language-}.
@@ -437,7 +441,7 @@ class Compteur:
         self.valeur = 0
         self.pas = pas
 
-# ...           
+# ...
 ```
 
 Il faut alors changer le code pour construire les objets avec ce nouveau paramètre :
@@ -446,7 +450,7 @@ Fichier `main.py`{.fichier} :
 
 ```python
 from compteur import Compteur
-    
+
 c1 = Compteur(3)
 c2 = Compteur(1)
 
@@ -509,12 +513,12 @@ On peut utiliser deux fois le même nom `pas`{.language-} car ils sont dans des 
 
 - un dans l'espace de noms de la fonction (créé lorsque l'on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)
 - un dans l'objet lui-même.
-  
+
 Le code final de `main.py`{.fichier} pourra alors être :
 
 ```python
 from compteur import Compteur
-    
+
 c1 = Compteur(3)
 c2 = Compteur()
 c1.incrémente()
@@ -574,9 +578,9 @@ Vous devriez obtenir quelque chose comme :
 <__main__.Compteur object at 0x107149100>
 ```
 
-La fonction `print`{.language-} appelle la méthode `__str__`{.language-} de notre classe. En effet, `print`{.language-} affiche à l'écran une chaîne de caractères. L'objet à afficher est donc converti en `str`{.language-} avant.  
+La fonction `print`{.language-} appelle la méthode `__str__`{.language-} de notre classe. En effet, `print`{.language-} affiche à l'écran une chaîne de caractères. L'objet à afficher est donc converti en `str`{.language-} avant.
 
- Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.
+Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.
 
 On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractères :
 
@@ -615,10 +619,10 @@ TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'
 ```
 
 Python vous explique qu'il ne connaît pas l'opérateur `<`{.language-} pour les objets de notre classe. Pour pouvoir utiliser
-directement les opérateurs `<`{.language-} et `>`{.language-}, il faut définir respectivement les méthodes `__lt__(self, other)`{.language-} (*lower than*) et
-`__gt__(self, other)`{.language-} (*greater than*). On pourra aussi ajouter `__eq__(self, other)`{.language-} pour tester l'égalité.
+directement les opérateurs `<`{.language-} et `>`{.language-}, il faut définir respectivement les méthodes `__lt__(self, other)`{.language-} (_lower than_) et
+`__gt__(self, other)`{.language-} (_greater than_). On pourra aussi ajouter `__eq__(self, other)`{.language-} pour tester l'égalité.
 
-Par exemple pour ajouter la comparaison *strictement plus petit que*, on ajoute la méthode :
+Par exemple pour ajouter la comparaison _strictement plus petit que_, on ajoute la méthode :
 
 ```python
 class Compteur
