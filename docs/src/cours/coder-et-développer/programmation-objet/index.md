@@ -1,8 +1,8 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Programmation Objet
 
-authors: 
+authors:
   - François Brucker
   - Célia Châtel
 
@@ -22,7 +22,7 @@ Le but de la programmation objet est d'écrire du code :
 - facile à lire
 - maintenable
 - facile à étendre en ajoutant des fonctionnalités
-  
+
 Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'UTILISEZ PAS**. C'est souvent vrai pour l'héritage qui n'a d'utilité que dans des cas très précis...
 
 ## <span id="classes-objets"></span>Classes et objets
@@ -34,6 +34,9 @@ La base de la programmation objet, c'est les classes et comment elles permettent
 {% endaller %}
 {% aller %}
 [Coder ses objets](coder-ses-objets){.interne}
+{% endaller %}
+{% aller %}
+[Améliorer ses objets](améliorer-ses-objets){.interne}
 {% endaller %}
 
 On s'entraîne à la création d'objets :
