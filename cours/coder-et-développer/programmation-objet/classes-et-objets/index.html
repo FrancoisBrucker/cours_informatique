@@ -118,7 +118,7 @@
   <p>Un objet est un bout de code auquel est associé :</p>
 <ul>
 <li>des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe</li>
-<li>des choses à lui tout seul (des attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.</li>
+<li>des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.</li>
 </ul>
 <p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../m%C3%A9moire-espace-noms#espace-noms" class="interne">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
 <h2>Classes et objets</h2>
@@ -281,7 +281,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.</p>
 </div>
 </div>
-<p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tuto python sur les classes de python</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
+<p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tutoriel de python sur ses classes</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
 <h4>Constructeur</h4>
 <p>En python, le constructeur d'une classe sera <strong>toujours</strong> la méthode : <code class="language-">__init__</code>. C'est une méthode spéciale.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -305,7 +305,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <li>il exécute le constructeur <code class="language-">__init__</code> sur l'objet : <code class="language-">MaClasse.__init__(o, paramètre 1, ..., paramètre n)</code> (c'est pour ça que la méthode <code class="language-">__init__</code> n'a pas de retour)</li>
 <li>il rend l'objet <code class="language-">o</code></li>
 </ol>
-<h2>Premier exemple : le Compteur</h2>
+<h2>Exemple : le Compteur</h2>
 <p>On souhaite créer un objet <code class="language-">Compteur</code> qui retient le compte de quelque chose et est capable d'ajouter 1 à son compte quand on le lui demande.</p>
 <p>On va tenter de proposer une modélisation UML de cet objet simple, puis de le coder en python.</p>
 <p>A partir d'un exemple de code, on va essayer de :</p>
@@ -371,7 +371,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Toutes les <a href="https://peps.python.org/pep-0008/#prescriptive-naming-conventions">conventions de nommages de python</a>.</p>
+<p>Toutes les <a href="https://peps.python.org/pep-0008/#prescriptive-naming-conventions">conventions de nommage de python</a>.</p>
 </div>
 </div>
 <p>On suppose donc que <code class="language-">Compteur</code> est une <em>classe</em>, par conséquent son exécution correspond à la création d'objets : <code class="language-">c1</code> et <code class="language-">c2</code> des objets de type <code class="language-">Compteur</code>.</p>
@@ -563,233 +563,6 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <p><code class="language-">objet.nom</code> est <strong>toujours</strong> résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe.</p>
 </div>
 </div>
-<h2><span id="deuxième-exemple"></span> Deuxième exemple : Compteur à pas choisi</h2>
-<p>On souhaite maintenant pouvoir choisir le pas de notre compteur (c'est-à-dire ajouter 2 à chaque fois plutôt que 1 par exemple).</p>
-<p>Pour faire cela on va ajouter un paramètre dans le constructeur.</p>
-<h3>Ajout d'un paramètre dans le constructeur</h3>
-<p>Nous allons ajouter un paramètre dans le constructeur pour que chaque compteur puisse connaître son pas :</p>
-<p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
-
-<span class="token comment"># ...</span>
-</code></pre>
-<p>Il faut alors changer le code pour construire les objets avec ce nouveau paramètre :</p>
-<p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
-
-c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-<span class="token comment">#...</span>
-</code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez bien que le premier paramètre de la définition de la classe est <strong>TOUJOURS</strong> self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.</p>
-</div>
-</div>
-<p>Et il faut modifier la méthode <code class="language-">incrémente(self)</code> pour qu'elle prenne en compte le pas :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token comment"># ...</span>
-    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
-    <span class="token comment"># ...</span>
-</code></pre>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On définira <strong>toujours</strong> les différents attributs de l'objet dans le constructeur <code class="language-">__init__</code>.<br>
-On le fera de cette façon :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">self<span class="token punctuation">.</span>nom_attribut <span class="token operator">=</span> valeur_attribut
-</code></pre>
-</div>
-</div>
-<p>Cette façon de faire :</p>
-<ul>
-<li>attributs dans les objets</li>
-<li>méthodes (fonctions) dans les classes</li>
-</ul>
-<p>permet à chaque objet (le paramètre <code class="language-">self</code>) d'être différent tout en utilisant les mêmes méthodes.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
-</div>
-</div>
-<h3>Paramètres par défaut</h3>
-<p>Le souci avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code>, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
-<p>En python cela donne (fichier <code class="fichier">compteur.py</code>) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
-        self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
-
-    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
-
-</code></pre>
-<p>On peut utiliser deux fois le même nom <code class="language-">pas</code> car ils sont dans des espaces de noms différents :</p>
-<ul>
-<li>un dans l'espace de noms de la fonction (créé lorsque l'on exécute la fonction et détruit à la fin. Attention : on détruit les noms pas les objets)</li>
-<li>un dans l'objet lui-même.</li>
-</ul>
-<p>Le code final de <code class="fichier">main.py</code> pourra alors être :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
-
-c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-</code></pre>
-<h3>Valeur initiale</h3>
-<p>Finissons cette partie en ajoutant une valeur initiale à notre compteur :</p>
-<p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
-        self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
-
-    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
-
-</code></pre>
-<p>On peut créer de compteur de plein de façon différente maintenant. Par exemple :</p>
-<ul>
-<li><code class="language-">Compteur()</code> : créera un compteur de <code class="language-">valeur=0</code> et de <code class="language-">pas=1</code>,</li>
-<li><code class="language-">Compteur(3)</code> : créera un compteur de <code class="language-">valeur=0</code> et de <code class="language-">pas=3</code>,</li>
-<li><code class="language-">Compteur(3, 12)</code> : créera un compteur de <code class="language-">valeur=12</code> et de <code class="language-">pas=3</code>,</li>
-<li><code class="language-">Compteur(pas=3)</code> : créera un compteur de <code class="language-">valeur=0</code> et de <code class="language-">pas=3</code>,</li>
-<li><code class="language-">Compteur(valeur=12)</code> : créera un compteur de <code class="language-">valeur=12</code> et de <code class="language-">pas=1</code></li>
-</ul>
-<h3><span id="méthodes-spéciales"></span> Méthodes spéciales</h3>
-<p>Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant une syntaxe particulière. On a déjà vu <code class="language-">__init__</code>, mais il y en a d'autres.</p>
-<p>Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).</p>
-<p>Vous en trouverez une liste<br>
-exhaustive dans la <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">documentation officielle</a>. Nous allons<br>
-en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme <code class="language-">__nom_de_la_méthode__</code></p>
-<h4>Représentation</h4>
-<p>Essayez de taper dans le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
-</code></pre>
-<p>Vous devriez obtenir quelque chose comme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">&lt;</span>__main__<span class="token punctuation">.</span>Compteur <span class="token builtin">object</span> at <span class="token number">0x107149100</span><span class="token operator">></span>
-</code></pre>
-<p>La fonction <code class="language-">print</code> appelle la méthode <code class="language-">__str__</code> de notre classe. En effet, <code class="language-">print</code> affiche à l'écran une chaîne de caractères. L'objet à afficher est donc converti en <code class="language-">str</code> avant.</p>
-<p>Comme nous n'avons pas défini cette méthode, c'est donc la méthode par défaut de tous les objets python qui est appelée. Comme vous le constatez, elle n'est pas très intéressante pour nous. Il faut donc la définir dans notre classe.</p>
-<p>On va faire en sorte de pouvoir lire les valeur de notre objet sous la forme d'une chaîne de caractères :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span>
-    <span class="token comment"># ...</span>
-    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">"Compteur(pas="</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>pas<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", valeur="</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")"</span>
-</code></pre>
-<p>Avec cette nouvelle méthode, le code précédent donne :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">Compteur<span class="token punctuation">(</span>pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
-<p>Ce qui est bien plus lisible.</p>
-<h4><span id="comparaison"></span> Comparaison</h4>
-<p>Finissons en essayant de comparer deux compteurs :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
-c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
-c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>c1 <span class="token operator">&lt;</span> c2<span class="token punctuation">)</span>
-
-</code></pre>
-<p>Si on teste ça avec votre code tel qu'il est, on obtiendra :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'
-</code></pre>
-<p>Python vous explique qu'il ne connaît pas l'opérateur <code class="language-">&lt;</code> pour les objets de notre classe. Pour pouvoir utiliser<br>
-directement les opérateurs <code class="language-">&lt;</code> et <code class="language-">&gt;</code>, il faut définir respectivement les méthodes <code class="language-">__lt__(self, other)</code> (<em>lower than</em>) et<br>
-<code class="language-">__gt__(self, other)</code> (<em>greater than</em>). On pourra aussi ajouter <code class="language-">__eq__(self, other)</code> pour tester l'égalité.</p>
-<p>Par exemple pour ajouter la comparaison <em>strictement plus petit que</em>, on ajoute la méthode :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span>
-    <span class="token comment"># ...</span>
-    <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>valeur
-    <span class="token comment"># ...</span>
-</code></pre>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l'attribut valeur.</p>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Ajoutez les comparaisons :</p>
-<ul>
-<li>strictement plus grand que</li>
-<li>égal</li>
-</ul>
-<p>Au compteur.</p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits <a href="https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__">dans la documentation</a>.</p>
-</div>
-</div>
-<h3><span id="code-final"></span> Code</h3>
-<p>Les deux fichiers sont dans le même dossier <code class="fichier">compteur/</code> qui fait office de projet vscode.</p>
-<p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
-        self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
-
-    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token string">"Compteur(pas="</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>pas<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">", valeur="</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">")"</span>
-
-    <span class="token keyword">def</span> <span class="token function">__lt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>valeur <span class="token operator">&lt;</span> other<span class="token punctuation">.</span>valeur
-
-    <span class="token keyword">def</span> <span class="token function">__gt__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> other<span class="token punctuation">.</span>valeur <span class="token operator">&lt;</span> self<span class="token punctuation">.</span>valeur
-
-    <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> other<span class="token punctuation">.</span>valeur <span class="token operator">==</span> self<span class="token punctuation">.</span>valeur
-
-    <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
-
-c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>c1<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> c1<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>c1 <span class="token operator">&lt;</span> c2<span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 </article>
