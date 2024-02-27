@@ -48,6 +48,16 @@ On s'entraîne à la création d'objets :
 [Projet cartes](projet-objets-cartes){.interne}
 {% endaller %}
 
+Améliorer ses objets :
+
+{% aller %}
+[Projet dés accesseurs](projet-objets-dés-accesseur){.interne}
+{% endaller %}
+
+{% aller %}
+[Projet carte value object](projet-objets-cartes-value-object){.interne}
+{% endaller %}
+
 ## Combiner ses objets entre eux
 
 {% aller %}
