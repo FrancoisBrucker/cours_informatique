@@ -21,3 +21,7 @@ Tests et examens pour l'année scolaire 2023/2024
 ## Devoir Maison
 
 1. [DM 1 : Palindromes](./palindromes){.interne}
+
+## Devoirs Surveillés
+
+1. [DS 1](./ds-1){.interne}
