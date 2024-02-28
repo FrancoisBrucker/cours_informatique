@@ -2,7 +2,6 @@
 layout: layout/post.njk
 
 title: Structures linéaires
-tags: ["cours", "algorithmie"]
 
 eleventyComputed:
   eleventyNavigation:
