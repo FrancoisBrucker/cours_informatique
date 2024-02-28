@@ -21,6 +21,13 @@ Vous allez coder une classe `Carte`{.language-}, ce qui permettra par la suite d
 Un ***value object*** est un objet ne pouvant pas être modifié une fois créé : il ne possède aucune méthode lui permettant de changer ses attributs qu'il faut renseigner à sa création.
 {% endnote %}
 
+Ce projet va vous faire utiliser des méthodes d'améliorations d'objets comme :
+
+- l'utilisation de [la fonction spéciale d'affichage `__str__`{.language-}](../améliorer-ses-objets/#représentation){.interne}
+- l'utilisation de [fonctions spéciale de comparaisons](../améliorer-ses-objets/#comparaison){.interne}
+
+Remémorez vous ces parties avant de commencer le projet.
+
 ## Projet
 
 ### Vscode

@@ -48,10 +48,10 @@ On s'entraîne à la création d'objets :
 [Projet cartes](projet-objets-cartes){.interne}
 {% endaller %}
 
-Améliorer ses objets :
+Améliorer ses objets en gérant précisément l'accès aux attributs :
 
 {% aller %}
-[Projet dés accesseurs](projet-objets-dés-accesseur){.interne}
+[Projet dés accesseur](projet-objets-dés-accesseur){.interne}
 {% endaller %}
 
 {% aller %}

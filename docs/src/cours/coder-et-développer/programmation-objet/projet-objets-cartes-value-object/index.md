@@ -13,11 +13,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD
-
-## Value Object
-
-Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Hors pour l'instant on a directement accès aux attributs, donc rien n'interdit de les modifier.
+Une fois la carte créée, il ne faudrait plus pouvoir la modifier. Or pour l'instant on a directement accès aux attributs, donc rien n'interdit de le faire.
 
 Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 attributs valeur et couleur. Cela permet :
 

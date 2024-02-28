@@ -149,7 +149,7 @@ Vous en trouverez une liste
 exhaustive dans la [documentation officielle](https://docs.python.org/3/reference/datamodel.html#special-method-names). Nous allons
 en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme `__nom_de_la_méthode__`{.language-}
 
-### Représentation
+### <span id="représentation"></span>Représentation
 
 Essayez de taper dans le fichier `main.py`{.fichier} :
 
