@@ -78,7 +78,7 @@ permet à chaque objet (le paramètre `self`{.language-}) d'être différent tou
 Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.
 {% endnote %}
 
-## Paramètres par défaut
+### Paramètres par défaut
 
 Le souci avec la méthode précédente, c'est que même si le pas est de `1`{.language-}, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un [paramètre par défaut](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values).
 
@@ -114,7 +114,7 @@ c1.incrémente()
 print(c2.valeur)
 ```
 
-## Valeur initiale
+### Valeur initiale
 
 Finissons cette partie en ajoutant une valeur initiale à notre compteur :
 

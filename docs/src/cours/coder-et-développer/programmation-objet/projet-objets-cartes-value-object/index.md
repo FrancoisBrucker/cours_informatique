@@ -1,10 +1,10 @@
 ---
-layout: layout/post.njk 
-title: "Projet : objets cartes"
+layout: layout/post.njk
+title: "Projet : Amélioration des objets cartes"
 
 eleventyNavigation:
-    prerequis:
-        - "../projet-objets-cartes-value-object/"
+  prerequis:
+    - "../projet-objets-cartes-value-object/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -20,10 +20,15 @@ Pour pallier ça, il suffit de définir un accesseur sans mutateur pour les 2 at
 - d'accéder aux attribut
 - une tentative de modification produira une erreur
 
+On a alors créé un **_value object_** c'est à dire un objet non mutable, comme un entier ou une chaîne de caractères en python.
 {% faire %}
 
-En utilisant [`@property`{.language-}](../projet-objets-dés#property){.interne},
-
-créez et testez des accesseurs pour les attributs valeur et couleur.
+En utilisant [`@property`{.language-}](../projet-objets-dés#property){.interne}, créez et testez des accesseurs pour les attributs valeur et couleur.
 
 {% endfaire %}
+
+Si on a le choix :
+
+{% note "**Méthode de conception**" %}
+Lorsque l'on crée un objet, si on a pas de raison particulière de le rendre modifiable on crée un **_value object_**. Cela évite les effets de bords (et rend la programmation concurrente et parallèle bien plus simple).
+{% endnote %}

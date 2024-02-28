@@ -1,10 +1,10 @@
 ---
-layout: layout/post.njk 
-title: "Projet : objets dés"
+layout: layout/post.njk
+title: "Projet : Amélioration des objets dés"
 
 eleventyNavigation:
-    prerequis:
-        - "../projet-objets-dés-accesseur/"
+  prerequis:
+    - "../projet-objets-dés-accesseur/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,20 +13,20 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous allons améliorer le code du dés pour accéder aux attributs de l'obet de façon indirecte. Lorsqu'un attribut d'un objet est soumis à un contrôle, par exemple position qui ne peut prendre comme valeur des entiers entre 1 et 6, il est de coutume de ne pas accéder directement à celui-ci, mais de passer par des méthodes pour le modifier et y accéder
+Nous allons améliorer le code du dés pour accéder aux attributs de l'objet de façon indirecte. Lorsqu'un attribut d'un objet est soumis à un contrôle, par exemple position qui ne peut prendre comme valeur des entiers entre 1 et 6, il est de coutume de ne pas accéder directement à celui-ci, mais de passer par des méthodes pour le modifier et y accéder
 
-## Mutateur ou *setter*
+## Mutateur ou _setter_
 
 {% note %}
-Un ***mutateur*** (***setter***) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : `set_[nom de l'attribut](nouvelle_valeur)`{.language-}
+Un **_mutateur_** (**_setter_**) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : `set_[nom de l'attribut](nouvelle_valeur)`{.language-}
 {% endnote %}
 
 {% faire %}
 Créez une méthode `Dé.set_position(nouvelle_position)`{.language-} qui modifie la position du dé.
 
-Faites en sorte que la position ne puisse être plus petite que 1 (si `nouvelle_position`{.language-} < 1  alors l'attribut vaut 1) ni plus grande que 6 (si `nouvelle_position`{.language-} > 6  alors l'attribut vaut 6).
+Faites en sorte que la position ne puisse être plus petite que 1 (si `nouvelle_position`{.language-} < 1 alors l'attribut vaut 1) ni plus grande que 6 (si `nouvelle_position`{.language-} > 6 alors l'attribut vaut 6).
 
-Créez un test pour la méthode `Dé.set_position(nouvelle_position)`{.language-} et modifiez, s'ils y en a, les tests qui modifient directement l'attribut positions pour qu'ils utilisent le *setter*.
+Créez un test pour la méthode `Dé.set_position(nouvelle_position)`{.language-} et modifiez, s'ils y en a, les tests qui modifient directement l'attribut positions pour qu'ils utilisent le _setter_.
 
 {% endfaire %}
 
@@ -39,7 +39,7 @@ Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, s
 <span id="mantra-no-magic-numbers"></span>
 {% note "**Coding mantra**" %}
 
-[NO MAGIC NUMBER](https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es)
+[NO MAGIC NUMBER](<https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es>)
 {% endnote %}
 
 {% faire %}
@@ -51,9 +51,9 @@ Changer ses valeurs changera la nature de tous les dés crées.
 
 {% endinfo %}
 
-## Accesseur ou *getter*
+## Accesseur ou _getter_
 
-Si l'on veut accéder à un attribut sans l'utiliser directement, il faut le faire *via* une méthode. Cela peut être pratique si l'attribut n'est pas directement donné dans l'objet mais est construit (par exemple des coordonnées polaires d'un objet point2D où ses attributs sont en réalité ses coordonnées cartésiennes)
+Si l'on veut accéder à un attribut sans l'utiliser directement, il faut le faire _via_ une méthode. Cela peut être pratique si l'attribut n'est pas directement donné dans l'objet mais est construit (par exemple des coordonnées polaires d'un objet point2D où ses attributs sont en réalité ses coordonnées cartésiennes)
 
 {% faire %}
 Créez une méthode `Dé.get_position()`{.language-} qui rend la position du dé.
@@ -64,13 +64,13 @@ Créez un test pour cette méthode.
 Afin de faire disparaître l'existence de l'attribut dans le code :
 
 {% faire %}
- modifiez tous les tests et les codes des programmes qui utilisent directement l'attribut `position`{.language-} pour qu'ils utilisent l'accesseur.
+modifiez tous les tests et les codes des programmes qui utilisent directement l'attribut `position`{.language-} pour qu'ils utilisent l'accesseur.
 {% endfaire %}
 
 On peut maintenant rendre l'attribut `position`{.language-} privé.
 
 {% note "**Définition**" %}
-Un attribut ***privé*** est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit ***public***.
+Un attribut **_privé_** est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit **_public_**.
 
 Tout code voulant accéder ou modifier à cet attribut **doit** passer par son accesseur/mutateur.
 {% endnote %}
@@ -81,11 +81,11 @@ En python, un attribut privé est précédé d'**un** `_`{.language-}. Par exemp
 Rendez l'attribut `position`{.language-} de la classe `Dé`{.language-} privé.
 {% endfaire %}
 
-En python, la notion d'attribut privé ou public n'existe pas vraiment, ce sont juste des conventions entre codeur. Il est ainsi tout à fait possible d'utiliser un attribut privé partout (mais c'est *bad karma*). Le seul endroit où l'utilisation directe d'un attribut privé est autorisé, c'est dans le test de son accesseur.
+En python, la notion d'attribut privé ou public n'existe pas vraiment, ce sont juste des conventions entre codeur. Il est ainsi tout à fait possible d'utiliser un attribut privé partout (mais c'est _bad karma_). Le seul endroit où l'utilisation directe d'un attribut privé est autorisé, c'est dans le test de son accesseur.
 
 ## <span id="property"></span> Property
 
-Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur *comme* si l'on utilisait directement un attribut !
+Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur _comme_ si l'on utilisait directement un attribut !
 
 {% lien %}
 [Le décorateur `@property`{.language-}](https://docs.python.org/fr/3.11/library/functions.html#property)
@@ -104,7 +104,7 @@ class MaClasse:
       self.toto = 0
 
       # ...
-   
+
    # ...
 
 ```
@@ -124,7 +124,7 @@ Si l'on rend cet attribut privé, il faut utiliser des accesseurs/mutateurs :
 class MaClasse:
    def __init__(self):
       self._toto = 0
-   
+
    def get_toto(self):
       return self._toto
 
@@ -148,7 +148,7 @@ Python permet de combiner les deux approches avec les décorateurs `@property`{.
 class MaClasse:
    def __init__(self):
       self._toto = 0
-   
+
    @property
    def toto(self):
       return self._toto
@@ -161,8 +161,8 @@ class MaClasse:
 
 Ce qu'on a fait :
 
-- on *décore* la première méthode `MaClasse.toto()`{.language-} par le décorateur `@property`{.language-} pour lui signifier que cette méthode est l'accesseur de l'attribut `toto`{.language-}
-- on *décore* la seconde méthode `MaClasse.toto()`{.language-} par le décorateur `@toto.setter`{.language-} pour signifier que cette méthode est le mutateur de l'attribut `toto`{.language-}
+- on _décore_ la première méthode `MaClasse.toto()`{.language-} par le décorateur `@property`{.language-} pour lui signifier que cette méthode est l'accesseur de l'attribut `toto`{.language-}
+- on _décore_ la seconde méthode `MaClasse.toto()`{.language-} par le décorateur `@toto.setter`{.language-} pour signifier que cette méthode est le mutateur de l'attribut `toto`{.language-}
 
 L'utilisation est alors pratique comme un attribut public et safe comme un attribut privé :
 

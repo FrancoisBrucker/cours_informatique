@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Coder ses objets
 
 eleventyComputed:
@@ -146,9 +146,9 @@ En exécutant le fichier main, on obtient :
 C'est de la classe `Compteur`{.language-}. Améliorons notre vérification en utilisant la fonction python [`isinstance`{.language-}](https://docs.python.org/fr/3/library/functions.html#isinstance).
 
 {% info %}
-Une *instance* d'une classe est un objet de celle-ci.
+Une _instance_ d'une classe est un objet de celle-ci.
 
-Les termes *objets* et *instance* sont donc équivalents.
+Les termes _objets_ et _instance_ sont donc équivalents.
 {% endinfo %}
 
 Fichier `main.py`{.fichier} :
@@ -289,7 +289,7 @@ L'exécution des tests via le terminal donne alors :
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets/coder-objets
 plugins: dash-1.19.0, cov-3.0.0
-collected 2 items                                                                                                                        
+collected 2 items
 
 test_compteur.py ..                                                                                                                [100%]
 
@@ -370,18 +370,4 @@ Chaque test **ne doit pas** dépendre d'autre chose que lui même. Il ne dot pas
 {% endattention %}
 {% faire %}
 Exécutez les tests pour votre projet et vérifiez que tout fonctionne.
-{% endfaire %}
-
-## Améliorer ses objets
-
-### Le compteur avec paramètres
-
-{% faire %}
-Créer des tests en ajoutant les paramètres par défaut de la construction de l'objet du [cours](../classes-et-objets){.interne}. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
-{% endfaire %}
-
-### Comparer des compteurs
-
-{% faire %}
-Créer des tests en ajoutant les opérations de comparaison (strictement plus grand, strictement plus petit et égal) du [cours](../classes-et-objets){.interne}. Cela vous entraînera à modifier des méthodes puis à mettre en concordance les tests.
 {% endfaire %}
