@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Projet : objets dés</title>
+    <title>Projet : Amélioration des objets dés</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Projet : objets dés</h1>
+  <h1>Projet : Amélioration des objets dés</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/">Projet : objets dés</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/">Projet : Amélioration des objets dés</a>
 
 </div>
 </div>
@@ -105,7 +105,7 @@
       <ul>
               
               <li>
-                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/">Projet : objets dés</a>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/">Projet : Amélioration des objets dés</a>
               </li></ul>
       
 
@@ -115,14 +115,14 @@
     
   
 
-  <p>Nous allons améliorer le code du dés pour accéder aux attributs de l'obet de façon indirecte. Lorsqu'un attribut d'un objet est soumis à un contrôle, par exemple position qui ne peut prendre comme valeur des entiers entre 1 et 6, il est de coutume de ne pas accéder directement à celui-ci, mais de passer par des méthodes pour le modifier et y accéder</p>
+  <p>Nous allons améliorer le code du dés pour accéder aux attributs de l'objet de façon indirecte. Lorsqu'un attribut d'un objet est soumis à un contrôle, par exemple position qui ne peut prendre comme valeur des entiers entre 1 et 6, il est de coutume de ne pas accéder directement à celui-ci, mais de passer par des méthodes pour le modifier et y accéder</p>
 <h2>Mutateur ou <em>setter</em></h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un <em><strong>mutateur</strong></em> (<em><strong>setter</strong></em>) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : <code class="language-">set_[nom de l'attribut](nouvelle_valeur)</code></p>
+<p>Un <strong><em>mutateur</em></strong> (<strong><em>setter</em></strong>) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : <code class="language-">set_[nom de l'attribut](nouvelle_valeur)</code></p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -132,7 +132,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une méthode <code class="language-">Dé.set_position(nouvelle_position)</code> qui modifie la position du dé.</p>
-<p>Faites en sorte que la position ne puisse être plus petite que 1 (si <code class="language-">nouvelle_position</code> &lt; 1  alors l'attribut vaut 1) ni plus grande que 6 (si <code class="language-">nouvelle_position</code> &gt; 6  alors l'attribut vaut 6).</p>
+<p>Faites en sorte que la position ne puisse être plus petite que 1 (si <code class="language-">nouvelle_position</code> &lt; 1 alors l'attribut vaut 1) ni plus grande que 6 (si <code class="language-">nouvelle_position</code> &gt; 6 alors l'attribut vaut 6).</p>
 <p>Créez un test pour la méthode <code class="language-">Dé.set_position(nouvelle_position)</code> et modifiez, s'ils y en a, les tests qui modifient directement l'attribut positions pour qu'ils utilisent le <em>setter</em>.</p>
 </div>
 </div>
@@ -197,7 +197,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un attribut <em><strong>privé</strong></em> est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit <em><strong>public</strong></em>.</p>
+<p>Un attribut <strong><em>privé</em></strong> est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit <strong><em>public</em></strong>.</p>
 <p>Tout code voulant accéder ou modifier à cet attribut <strong>doit</strong> passer par son accesseur/mutateur.</p>
 </div>
 </div>
@@ -232,7 +232,7 @@
       self<span class="token punctuation">.</span>toto <span class="token operator">=</span> <span class="token number">0</span>
 
       <span class="token comment"># ...</span>
-   
+
    <span class="token comment"># ...</span>
 
 </code></pre>
@@ -246,7 +246,7 @@
 <span class="token keyword">class</span> <span class="token class-name">MaClasse</span><span class="token punctuation">:</span>
    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       self<span class="token punctuation">.</span>_toto <span class="token operator">=</span> <span class="token number">0</span>
-   
+
    <span class="token keyword">def</span> <span class="token function">get_toto</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">return</span> self<span class="token punctuation">.</span>_toto
 
@@ -264,7 +264,7 @@
 <span class="token keyword">class</span> <span class="token class-name">MaClasse</span><span class="token punctuation">:</span>
    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       self<span class="token punctuation">.</span>_toto <span class="token operator">=</span> <span class="token number">0</span>
-   
+
    <span class="token decorator annotation punctuation">@property</span>
    <span class="token keyword">def</span> <span class="token function">toto</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">return</span> self<span class="token punctuation">.</span>_toto
