@@ -94,8 +94,18 @@
 
   <p>On vient de le voir : il y a plus de nombres réels que d'algorithmes. Il existe donc forcément des choses que ne peut pas calculer un algorithme.</p>
 <p>Mais avant de voir ce que ne peut pas faire un algorithme, voyons des choses que l'on peut faire avec.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pouvez consulter le lien suivant sur l'émergence en mathématiques de la notion de <strong><em>calculabilité</em></strong> :<br>
+<a href="https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf">https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf</a></p>
+</div>
+</div>
 <h2>Algorithmes et fonctions</h2>
 <p>On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :</p>
+<p><span id="algorithme-fonction"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -109,7 +119,33 @@
 </div>
 </div>
 <p>Remarquez que ceci fonctionne même si un algorithme possède plusieurs entrées. Il suffit de les écrire sous la forme d'une chaîne de caractère où chaque paramètre est séparé par une virgule par exemple et de transcrire cette chaîne en suite de 0 et de 1.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La façon classique de procéder pour transformer $q$ paramètres de $\{0, 1\}^\star$ en un seul paramètre de $\{0, 1\}^\star$ est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
+<ul>
+<li>on code l'information <code class="language-">0</code> en <code class="language-">00</code></li>
+<li>on code l'information <code class="language-">1</code> en <code class="language-">01</code></li>
+<li><code class="language-">11</code> est le caractère de séparation des paramètres</li>
+</ul>
+<p>Ainsi, si un algorithme possède 3 paramètres valant 12, 1 et 6 par exemple on :</p>
+<ol>
+<li>convertit les 3 entiers en binaires : <code class="language-">1100</code> (pour 12), <code class="language-">1</code> (pour 1) et <code class="language-">110</code> (pour 6)</li>
+<li>on utilise la correspondance pour les transformer en : <code class="language-">01010000</code> (pour 12), <code class="language-">01</code> (pour 1) et <code class="language-">010100</code> (pour 6)</li>
+<li>on concatène les 3 paramètres en un seul en utilisant le séparateur <code class="language-">11</code> : <code class="language-">01010000110111010100</code></li>
+</ol>
+<p>La lecture des paramètres dans l'algorithme se fait alors de façon réciproque :</p>
+<ol>
+<li>on trouve les paramètres en découpant la chaîne d'entrée aux endroits où se trouvent le séparateur <code class="language-">11</code></li>
+<li>on reconvertit chaque caractère en binaire en ne prenant qu'un bit sur 2</li>
+<li>on fait le changement de base de binaire à décimal</li>
+</ol>
+</div>
+</div>
 <p>Comme une suite finie de 0 et de 1 est une écriture binaire d'un entier positif on en déduit immédiatement que :</p>
+<p><span id="algorithme-fonction-N"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -123,12 +159,12 @@
 </div>
 <p>Par exemple la fonction identité est un algorithme puis'on peut l'écrire :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : identité
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     rendre n
 </code></pre>
-<p>De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 2n$, $f(n) = 12 \cdot n$ ou encore $f(n) = n^2$ sont des algorithmes ! On dit que ces fonctions sont <em><strong>calculables</strong></em> :</p>
+<p>De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 2n$, $f(n) = 12 \cdot n$ ou encore $f(n) = n^2$ sont des algorithmes ! On dit que ces fonctions sont <strong><em>calculables</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -136,7 +172,7 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est <em><strong>calculable</strong></em> s'il existe un algorithme permet de la calculer.</p>
+<p>Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est <strong><em>calculable</em></strong> s'il existe un algorithme permet de la calculer.</p>
 </div>
 </div>
 <p>Montrons tout de suite que cette notion a un sens :</p>
@@ -171,7 +207,7 @@ Programme :
 <p>Comme les fonctions $f^k: \mathbb{N} \rightarrow \mathbb{N}$ définies telles que $f^k(x) = x + k$ sont deux à deux différentes lorsque $k$ parcourt $\mathbb{N}$, on en déduit qu'il existe au moins autant de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.</p>
 <p>On suppose alors qu'il y en a autant et donc qu'il existe une bijection entre les fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ et les nombres entiers. On peut alors numéroter chaque fonction $f_0$, $f_1$, $\dots$, $f_n$.</p>
 <p>Cet ordre nous permet de construire la fonction $g: \mathbb{N} \rightarrow \mathbb{N}$ telle que $g(i) = f_i(i) + 1$ pour tout $i \in \mathbb{N}$.</p>
-<p>Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.</p>
+<p>Mais ceci est impossible puisque $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.</p>
 </div>
 </details>     
 </div>
@@ -218,7 +254,7 @@ Programme :
 </summary>
 <div class="mx-8 pb-2">
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : somme
-Entrées : 
+Entrées :
     x, y : deux entiers
 Programme :
     c = 0
@@ -243,7 +279,7 @@ Programme :
 </div>
 <p>De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si il existe n "5" consécutifs dans les décimales de π:
@@ -255,14 +291,14 @@ Programme :
 <p>Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.</p>
 <p>Soit existe n &quot;5&quot; consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété <a href="https://fr.wikipedia.org/wiki/Nombre_univers">des nombres univers</a>) et alors le programme devient l'algorithme ci-dessous :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     rend 1
 </code></pre>
 <p>Soit il existe au plus N &quot;5&quot; consécutifs dans les décimales de $\pi$ et le programme devient :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si n < N + 1:
@@ -290,7 +326,7 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un nombre $x$ est <em><strong>calculable</strong></em> s'il existe un algorithme $A$ tel que :</p>
+<p>Un nombre $x$ est <strong><em>calculable</em></strong> s'il existe un algorithme $A$ tel que :</p>
 <ul>
 <li>$A(0)$ rend la partie entière de $x$</li>
 <li>$A(i)$ rend la $i$-ème décimale de $x$, pour tout $i &gt; 0$</li>
@@ -299,7 +335,7 @@ Programme :
 </div>
 <p><strong>Tous les entiers sont calculables</strong> :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Entier i
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si n == i
@@ -350,7 +386,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de  <a href="https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e">la série de Leibniz de $\pi$</a>.</p>
+<p>La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de <a href="https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e">la série de Leibniz de $\pi$</a>.</p>
 <p>De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur <a href="https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries">développement en séries entières</a>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -391,7 +427,7 @@ Programme :
 <p>Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.</p>
 <h2>Fonctions calculables rigolotes</h2>
 <p>On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.</p>
-<p>Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très  gourmandes en temps de calcul.</p>
+<p>Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.</p>
 <h3><span id="fonction-ackermann"></span>Fonction d'Ackermann</h3>
 <p>La <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a>, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles <code class="language-">for</code>. On est obligé d'utiliser soit des boucles <code class="language-">while</code> pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire). Enfin, cette fonction est d'utilité théorique certaine car c'est la première fonction connue à être calculable mais non primitive récursive.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -500,7 +536,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Par récurrence sur $x+y+z= k$.</p>
-<p>Si $x+y+z=0$, on a  $x=y=z=0$ et $\tau(0, 0, 0) = 0$, la récurrence est vérifiée. On suppose la récurrence vraie pour $x+y+z=k$.</p>
+<p>Si $x+y+z=0$, on a $x=y=z=0$ et $\tau(0, 0, 0) = 0$, la récurrence est vérifiée. On suppose la récurrence vraie pour $x+y+z=k$.</p>
 <p>Pour $x+y+z=k+1$, on analyse tous les cas possibles :</p>
 <ul>
 <li>$x \leq y$ : Ok</li>
@@ -514,14 +550,7 @@ $$
 <li>$x &gt; y &gt; z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$
 <ul>
 <li>on a $z-1 &lt; y&lt; x$ et donc $\tau(x, y, z) =  \tau(\tau(x-1, y, z), \tau(y-1, z, x), x)$</li>
-<li>on procède de même que précédemment en analysant tous les cas
-<ul>
-<li>$x-1 &gt; y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$</li>
-<li>$x-1 &gt; y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$</li>
-<li>$x-1 = y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(y, x, x) = x$</li>
-<li>$x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$</li>
-</ul>
-</li>
+<li>on procède de même que précédemment en analysant tous les cas - $x-1 &gt; y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$ - $x-1 &gt; y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$ - $x-1 = y$ et $y-1&gt;z$ : $\tau(x, y, z) = \tau(y, x, x) = x$ - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$</li>
 </ul>
 </li>
 </ul>
@@ -630,7 +659,7 @@ rend n
 <h3>Un nombre non calculable : $\Omega$ de Chaitin</h3>
 <p>Nous allons en montrer un nombre non calculable, dérivé du célèbre <a href="https://fr.wikipedia.org/wiki/Om%C3%A9ga_de_Chaitin">nombre oméga de Chaitin</a>, lui aussi non dénombrable.</p>
 <p>Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.</p>
-<p>Le nombre  $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
+<p>Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :</p>
 <ul>
 <li>égale à 1 si le programme $P_i$ s'arrête</li>
 <li>égale à 0 si le programme $P_i$ se s'arrête pas</li>

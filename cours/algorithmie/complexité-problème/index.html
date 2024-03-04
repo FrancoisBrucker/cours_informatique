@@ -92,7 +92,7 @@
     
   
 
-  <p><a href="../%C3%A9crire-algorithmes/probl%C3%A8me/">Un problème algorithmique</a> est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
+  <p><a href="../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">Un problème algorithmique</a> est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -100,7 +100,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <em><strong>complexité (maximale) d'un problème</strong></em> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.</p>
+<p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.</p>
 </div>
 </div>
 <p>Cette complexité existe toujours car :</p>
@@ -236,7 +236,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 
     <span class="token keyword">while</span> fin <span class="token operator">-</span> debut <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> debut<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
-        
+
         <span class="token keyword">if</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
         <span class="token keyword">elif</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;</span> valeur<span class="token punctuation">:</span>
@@ -252,7 +252,7 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on code la recherche dichotomique, il faut faire <strong>très attention</strong> à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.</p>
-<p>On a utilisé ici le fait que  <code class="language-">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-">(fin + debut) / 2</code>.</p>
+<p>On a utilisé ici le fait que <code class="language-">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-">(fin + debut) / 2</code>.</p>
 </div>
 </div>
 <p>Étudions l'algorithme :</p>
@@ -337,7 +337,7 @@ $$
 <p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations <code>si alors sinon</code>). De là :</p>
 <ul>
 <li>s'il y a 0 test, un algorithme ne peut pas distinguer de cas.</li>
-<li>s'il y a 1 test, un algorithme peut distinguer au plus  2 cas :
+<li>s'il y a 1 test, un algorithme peut distinguer au plus 2 cas :
 <ul>
 <li>1 cas si le test est vrai</li>
 <li>1 cas si le test est faux</li>

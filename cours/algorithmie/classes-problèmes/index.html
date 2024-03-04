@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Problèmes</title>
+    <title>Classes de problèmes</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Problèmes</h1>
+  <h1>Classes de problèmes</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/">Théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/problèmes/">Problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/théorie/problèmes/problèmes-NP/">Problèmes</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/">Classes de problèmes</a>
 
 </div>
 </div>
@@ -92,32 +92,41 @@
     
   
 
-  <blockquote>
-<p>problème NP =  vérifiable = ceux qui sont utiles en pratique</p>
+  <p>On a vu au début de ce cours que certains problèmes <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9" class="interne">ne pouvaient pas être résolu par un algorithme</a> (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si <a href="../complexit%C3%A9-calculs/importance" class="interne">sa complexité est exponentielle</a> le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.</p>
+<p>Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le <a href="../probl%C3%A8me-tris" class="interne">problème du tri</a> est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du <a href="../projet-exponentiation" class="interne">problème de l'exponentiation</a> est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="probl%C3%A8mes-NP" class="interne">Problèmes NP</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD définition de problème, complexité et classes de problèmes.<br>
+TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps</p>
 </blockquote>
-<ol>
-<li>algorithme = résout quelque chose et plein de façon de résoudre</li>
-<li>définition d'un problème</li>
-<li>facile à voir si ok ou pas</li>
-<li>Complexité d'un programme :
-<ol>
-<li>monter que selon la forme log, n n^k et 2^n c'est pas pareil
-<ol>
-<li>nombre max / heure</li>
-<li>nombre max / puissance de machine</li>
-</ol>
-</li>
-<li>déf et parler de O, Theta</li>
-</ol>
-</li>
-<li>ex : SAT
-<ol>
-<li>def et utilisabilité</li>
-<li>SAT et 3-SAT : deux problèmes équivalent</li>
-</ol>
-</li>
-<li>classes de problèmes</li>
-</ol>
+<blockquote>
+<p>pb vérifiable ont toujours une solution (une MT qui résout le problème) s'il existe un nombre infini de solutions possible (ie. s'il existe toujours une solution/certificat plus grand).</p>
+</blockquote>
+<h2>Algorithmes et code binaire</h2>
+<blockquote>
+<p>TBD pour pseudo-code min et théorème de cook.</p>
+</blockquote>
+<p>En remarquant que tout entier peut s'écrire sous sa <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">notation binaire</a>, qui peut être vue comme une suite finie de 0 et de 1 il existe une bijection entre $\mathbb{N}$ et l'ensemble des suite finies de $0$ et de $1$. On en conclut que la forme ultime d'un algorithme est :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un <strong><em>algorithme</em></strong> est une fonction de :</p>
+<p>$$f: \{0, 1\}^\star \rightarrow \{0, 1 \}$$</p>
+<p>Où $\{0, 1\}^\star$ est l'ensemble des suites finies d'éléments de $\{0, 1\}$.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD : entrée, travail et sorties sont deux listes de 0 et 1.</p>
+</blockquote>
 
 
 </article>

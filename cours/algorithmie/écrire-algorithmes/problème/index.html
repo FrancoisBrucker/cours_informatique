@@ -94,7 +94,7 @@
 
   <p>Nous n'avons pour l'instant décrit les algorithmes que comme des fonctions permettant de calculer des nombres. La principale utilité de ceux-ci est cependant ailleurs. Les algorithmes sont utilisés parce ce qu'il permettent de répondre à des questions, de résoudre des problèmes. Bref, le résultat d'un algorithme a un <em>sens</em>.</p>
 <h2>Problème</h2>
-<p>Formalisons cette intuition en définissant la notion de <em><strong>problème</strong></em>.</p>
+<p>Formalisons cette intuition en définissant la notion de <strong><em>problème</em></strong>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -102,7 +102,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>problème</strong></em> est un texte composé de 3 parties :</p>
+<p>Un <strong><em>problème</em></strong> est un texte composé de 3 parties :</p>
 <ul>
 <li><strong>nom</strong> : le nom du problème</li>
 <li><strong>données</strong> : les paramètres dont on a besoin</li>
@@ -125,7 +125,8 @@
 </ul>
 </div>
 </div>
-<p>Une importante classe de problème est <em><strong>les problèmes de décision</strong></em> :</p>
+<p>Une importante classe de problème est <strong><em>les problèmes de décision</em></strong> :</p>
+<p><span id="problème-décision"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -133,9 +134,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>problème un décision</strong></em> est un problème dont la réponse est soit OUI, soit NON.</p>
+<p>Un <strong><em>problème de décision</em></strong> est un problème dont la réponse est soit OUI, soit NON.</p>
 </div>
 </div>
+<p>Par exemple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -163,7 +165,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><em><strong>Un problème est algorithmique</strong></em> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
+<p><strong><em>Un problème est algorithmique</em></strong> s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :</p>
 <ul>
 <li>prend en paramètres les entrées du problème</li>
 <li>donne la réponse à la question.</li>
@@ -180,13 +182,14 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un problème de décision est <em><strong>décidable</strong></em> s'il existe un algorithme pour le résoudre (on dit un <em><strong>décideur</strong></em>), c'est à dire que cet algorithme :</p>
+<p>Un problème de décision est <strong><em>décidable</em></strong> s'il existe un algorithme pour le résoudre (on dit un <strong><em>décideur</em></strong>), c'est à dire que cet algorithme :</p>
 <ul>
 <li>prend en paramètres les entrées du problème</li>
 <li>répond OUI ou NON selon la véritable réponse à donner.</li>
 </ul>
 </div>
 </div>
+<p><span id="décideur"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -194,7 +197,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>décideur</strong></em> est un algorithme qui pour toute entrée, répond <em>OUI</em> ou <em>NON</em>.</p>
+<p>Un <strong><em>décideur</em></strong> est un algorithme qui pour toute entrée, répond <em>OUI</em> ou <em>NON</em>.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -248,7 +251,7 @@
 </div>
 </div>
 <h2>Reconnaissabilité</h2>
-<p>Il existe un cas plus faible que la décidabilité, c'est la <em><strong>reconnaissabilité</strong></em>, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :</p>
+<p>Il existe un cas plus faible que la décidabilité, c'est la <strong><em>reconnaissabilité</em></strong>, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -256,7 +259,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un problème de décision est <em><strong>reconnaissable</strong></em> s'il existe un programme qui prend en paramètres les entrées du problème et :</p>
+<p>Un problème de décision est <strong><em>reconnaissable</em></strong> s'il existe un programme qui prend en paramètres les entrées du problème et :</p>
 <ul>
 <li>s'arrête que pour les réponse OUI</li>
 <li>ne s'arrête pas les réponses NON</li>

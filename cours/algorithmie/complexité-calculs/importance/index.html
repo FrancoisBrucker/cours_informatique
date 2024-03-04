@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Importance de la complexité</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Importance de la complexité</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/importance/">Importance de la complexité</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Nous allons illustrer l'importance pratique de la complexité en considérant 5 allures de complexité : :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On note $C(n)$ la complexité d'un algorithme. On dira de cette complexité que c'est une (avec $K$ et $k$ deux constantes et $\sim$ l'<a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalent mathématique</a>) :</p>
+<ul>
+<li><strong><em>complexité constante</em></strong> si $C(n) \sim K$</li>
+<li><strong><em>complexité logarithmique</em></strong> si $C(n) \sim K\cdot \ln(n)$</li>
+<li><strong><em>complexité linéaire</em></strong> si $C(n) \sim K\cdot n$</li>
+<li><strong><em>complexité polynomiale</em></strong> $C(n) \sim K\cdot n^k$</li>
+<li><strong><em>complexité exponentielle</em></strong> $C(n) \sim K\cdot k^n$</li>
+</ul>
+</div>
+</div>
+<p>Les types de complexités ci-dessus sont rangés par ordre, de la moins grande à la plus grande.</p>
+<p>Remarquez que si $n$ représente la taille des données, un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :</p>
+<ul>
+<li>trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme <code class="language-">est_dans_tableau</code>,</li>
+<li>trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">recherche dichotomique</a></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.</p>
+</div>
+</div>
+<p>Il est crucial de chercher la meilleure complexité pour un algorithme car ses performance seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre <a href="https://en.wikipedia.org/wiki/Computers_and_Intractability">Computer and intractability</a>. Ce qu'il faut retenir :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>il y a une <strong>gigantesque différence</strong> entre complexité logarithmique et complexité linéaire</li>
+<li>il y a une <strong>énorme différence</strong> entre complexité linéaire et complexité polynomiale, mais moins grande qu'entre logarithmique et linéaire</li>
+<li>il y a une <strong>gigantesque différence</strong> entre complexité polynomiale et complexité exponentielle (qu'il ne faut donc jamais avoir si possible)</li>
+</ul>
+</div>
+</div>
+<h2>Temps pour résoudre un problème de taille $n$</h2>
+<p>Exemple d'évolution du temps de calcul par rapport à la complexité. En supposant, que l'on ait un ordinateur qui résout des problèmes de complexité $n$ en 0.01 ms pour des données de taille 10, on peut remplir le tableau ci-après.</p>
+<p>En colonnes le nombre $n$ de données, en lignes les complexités des algorithmes.</p>
+<table>
+<thead>
+<tr>
+<th>complexité</th>
+<th>10</th>
+<th>20</th>
+<th>30</th>
+<th>40</th>
+<th>50</th>
+<th>60</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\ln(n)$</td>
+<td>2 $\mu s$</td>
+<td>3 $\mu s$</td>
+<td>3 $\mu s$</td>
+<td>4 $\mu s$</td>
+<td>4 $\mu s$</td>
+<td>4 $\mu s$</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>0.01 ms</td>
+<td>0.02 ms</td>
+<td>0.03 ms</td>
+<td>0.04 ms</td>
+<td>0.05 ms</td>
+<td>0.06 ms</td>
+</tr>
+<tr>
+<td>$n^2$</td>
+<td>0.1 ms</td>
+<td>0.4 ms</td>
+<td>0.9 ms</td>
+<td>1.6 ms</td>
+<td>2.5 ms</td>
+<td>3.6 ms</td>
+</tr>
+<tr>
+<td>$n^3$</td>
+<td>1 ms</td>
+<td>8 ms</td>
+<td>27 ms</td>
+<td>64 ms</td>
+<td>125 ms</td>
+<td>216 ms</td>
+</tr>
+<tr>
+<td>$n^5$</td>
+<td>1s</td>
+<td>3.2 s</td>
+<td>24.3 s</td>
+<td>1.7 min</td>
+<td>5.2 min</td>
+<td>13 min</td>
+</tr>
+<tr>
+<td>$2^n$</td>
+<td>1 ms</td>
+<td>1s</td>
+<td>17.9 min</td>
+<td>12.7 jours</td>
+<td>35.7 ans</td>
+<td>36600 ans</td>
+</tr>
+<tr>
+<td>$3^n$</td>
+<td>59 ms</td>
+<td>58 min</td>
+<td>6.5 ans</td>
+<td>385500 ans</td>
+<td>$2.27\cdot 10^8$ siècles</td>
+<td>$1.3\cdot 10^{13}$ siècles</td>
+</tr>
+</tbody>
+</table>
+<p>L'évolution est dramatique plus la complexité augmente. Pour une complexité logarithmique, le temps <em>semble</em> constant et pour une complexité polynomiale, la croissance reste maîtrisée même s'il vaut mieux avoir une petite complexité pour traiter plus de données. Pour une complexité exponentielle ($2^n$ et $3^n$) en revanche, la durée est tout simplement rédhibitoire.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour générer le tableau, on voit que le temps $t$ pour exécuter 1 opération est de .001ms (on regarde la ligne de complexité linéaire : pour $n=10$ on prend 0.01 opérations, donc 1 opération nécessite $0.01/10ms$). Le temps pris pour exécuter $f(n)$ opérations avec une entrée de taille de $n$ est alors : $t \cdot f(n)$</p>
+</div>
+</div>
+<h2>Nombre de problèmes résolus par heure</h2>
+<p>En colonne la rapidité de la machine, en ligne la taille maximale d'un problème que l'on peut résoudre en 1heure.</p>
+<table>
+<thead>
+<tr>
+<th>complexité</th>
+<th>machine actuelle</th>
+<th>100x plus rapide</th>
+<th>1000x plus rapide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\ln(n)$</td>
+<td>$N0$</td>
+<td>$e^{100} \cdot N0$</td>
+<td>$e^{1000} \cdot N0$</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>$N1$</td>
+<td>$100 \cdot N1$</td>
+<td>$1000 \cdot N1$</td>
+</tr>
+<tr>
+<td>$n^2$</td>
+<td>$N2$</td>
+<td>$10 \cdot N2$</td>
+<td>$31.6 \cdot N2$</td>
+</tr>
+<tr>
+<td>$n^3$</td>
+<td>$N3$</td>
+<td>$4.64 \cdot N3$</td>
+<td>$10 \cdot N3$</td>
+</tr>
+<tr>
+<td>$n^5$</td>
+<td>$N4$</td>
+<td>$2.5 \cdot N4$</td>
+<td>$3.98 \cdot N4$</td>
+</tr>
+<tr>
+<td>$2^n$</td>
+<td>$N5$</td>
+<td>$N5 + 6.64$</td>
+<td>$N5 + 9.97$</td>
+</tr>
+<tr>
+<td>$3^n$</td>
+<td>$N6$</td>
+<td>$N6 + 4.19$</td>
+<td>$N6 + 6.29$</td>
+</tr>
+</tbody>
+</table>
+<p>La encore, l'évolution est dramatique plus la complexité augmente. Pour des complexités logarithmiques et polynomiales le nombre de problèmes augmente d'un facteur multiplicatif lorsque la vitesse augmente, mais ce n'est pas le cas pour des complexités exponentielles. Pour ces problèmes, augmenter la vitesse de la machine ne change pas fondamentalement le nombre de problèmes que l'on peut résoudre.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour générer le tableau, on suppose que l'on peut résoudre $K$ opérations en 1 heure. On cherche alors $n$ tel que $f(n)$ soit égal à $K$ et donc $n = f^{-1}(K)$. En remarquant que $K$ est égal à la taille maximale d'un problème de complexité linéaire résoluble en 1heure, on la taille maximale $n$ d'un problème de complexité $f(n)$ résoluble en 1 heure pour une machine allant $k$ fois pus vite qu'une machine actuelle vaut $f^{-1}(k \cdot N1)$.</p>
+</div>
+</div>
+<h2>Le cas particulier de $n!$</h2>
+<p>Souvent les étudiants veulent que leurs algorithmes soient de complexité $C(n) = n!$. Ce n'est <strong>presque jamais exact</strong> ! En effet, la <a href="https://fr.wikipedia.org/wiki/Formule_de_Stirling">formule de Stirling</a> donne l'équivalent suivant pour $n!$ :</p>
+<p>$$<br>
+n! \sim \sqrt{2\pi n}(\frac{n}{e})^n<br>
+$$</p>
+<p>On a donc que $n!$ est de l'ordre de $n^{n+1/2}$, qui est vachement plus grand que $2^{n}$ qui est déjà gigantesque.</p>
+<p>Par exemple :</p>
+<ul>
+<li>$10! = 3628800$</li>
+<li>$2^{10} = 1024$</li>
+</ul>
+<p>Et la différence s’accroît exponentiellement avec le nombre :</p>
+<ul>
+<li>$74! = 330788544151938641225953028221253782145683251820934971170611926835411235700971565459250872320000000000000000$</li>
+<li>$2^{74} = 18889465931478580854784$</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous pensez que votre algorithme tout bête est de complexité $C(n) = n!$. Réfléchissez-y à deux fois. C'est presque sûrement une erreur... Et si ce n'est est pas une, votre algorithme est inefficace et devrait sûrement être oublié plutôt que montré à votre enseignant.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
