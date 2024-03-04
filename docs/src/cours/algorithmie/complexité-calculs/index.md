@@ -18,6 +18,10 @@ Le calcul de la complexité d'un algorithme est une part importante de l'algorit
 [Définitions](./définitions){.interne}
 {% endaller %}
 
+{% aller %}
+[Importance](./importance){.interne}
+{% endaller %}
+
 ## Problème du comptage exhaustif de la complexité
 
 Nous avons calculé explicitement des complexité dans la partie précédente. Vous avez du vous en rendre compte, c'est assez pénible car plusieurs problèmes surviennent.
@@ -97,4 +101,3 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
-

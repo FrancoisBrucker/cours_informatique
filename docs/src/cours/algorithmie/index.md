@@ -35,14 +35,6 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
-### Machines de Turing
-
-Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
-
-{% aller %}
-[Machines de Turing](./machine-turing){.interne}
-{% endaller %}
-
 ## Complexités
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
@@ -85,9 +77,23 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Classes de Problèmes Algorithmiques
 
-> TBD on a vu avec exponentiation que l'on ne sait pas à priori la meilleurs complexité d'un algorithme résolvant un problème.
-> TBD définition de problème, complexité et classes de problèmes.
-> TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps
+{% aller %}
+[Classes de problèmes algorithmiques](./classes-problèmes){.interne}
+{% endaller %}
+
+### Logique et algorithmique
+
+> TBD un pseudo code logique
+> TBD modèle de von neuman : logique et paramètres dans des registres.
+> TBD on peut tout faire avec et et ou et un pseudo-code minimal basé sur la logique, donc algo et ordi équivalent
+
+### Machines de Turing
+
+Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
+
+{% aller %}
+[Machines de Turing](./machine-turing){.interne}
+{% endaller %}
 
 ## Complexité amortie
 

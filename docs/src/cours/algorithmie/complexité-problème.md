@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Complexité d'un problème algorithmique"
 
 eleventyComputed:
@@ -9,10 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Un problème algorithmique](../écrire-algorithmes/problème/) est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
+[Un problème algorithmique](../écrire-algorithmes/problème/){.interne} est une question solvable par un algorithme. Un même problème peut cependant avoir plusieurs algorithmes solutions, certains étant meilleurs que d'autres. On peut alors se poser la question de la complexité d'un problème algorithmique. C'est à dire :
 
 {% note "**Définition**" %}
-La ***complexité (maximale) d'un problème*** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.
+La **_complexité (maximale) d'un problème_** algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.
 {% endnote %}
 
 Cette complexité existe toujours car :
@@ -82,7 +82,7 @@ def est_dans_tableau(valeur, tableau):
 
 Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.
 
-Soit alors un tableau $T$ de taille $n$ qui ne contient pas `valeur`. Notre algorithme va répondre NON à la question *"est-ce que valeur est dans $T$ ?"* en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
+Soit alors un tableau $T$ de taille $n$ qui ne contient pas `valeur`. Notre algorithme va répondre NON à la question _"est-ce que valeur est dans $T$ ?"_ en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.
 
 On crée alors un tableau $T'$ de $n$ cases tel que :
 
@@ -129,7 +129,7 @@ Un cas particulier courant de recherche est le problème :
 
 {% endnote %}
 
-Le problème *"recherche ordonnée"* est un sous problème de *"recherche"*, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `est_dans_tableau(T)`{.language-}.
+Le problème _"recherche ordonnée"_ est un sous problème de _"recherche"_, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme `est_dans_tableau(T)`{.language-}.
 
 Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
 
@@ -142,7 +142,7 @@ def recherche_dichotomique(valeur, tableau_trie):
 
     while fin - debut >= 0:
         milieu = (fin + debut) // 2
-        
+
         if tableau_trie[milieu] == valeur:
             return True
         elif tableau_trie[milieu] < valeur:
@@ -156,7 +156,7 @@ def recherche_dichotomique(valeur, tableau_trie):
 {% attention %}
 Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
 
-On a utilisé ici le fait que  `(fin + debut) // 2`{.language-} va donner la valeur entière de `(fin + debut) / 2`{.language-}.
+On a utilisé ici le fait que `(fin + debut) // 2`{.language-} va donner la valeur entière de `(fin + debut) / 2`{.language-}.
 {% endattention %}
 
 Étudions l'algorithme :
@@ -170,7 +170,7 @@ On a utilisé ici le fait que  `(fin + debut) // 2`{.language-} va donner la val
     1. on montre trivialement l'invariant de boucle suivant: si valeur est dans `tableau_trie`{.language-}, alors sa position est plus grande que `debut`{.language-} et plus petite que `fin`{.language-}
     2. si l'on sort de la boucle l'invariant est toujours vérifié mais comme `debut`{.language-} > `fin`{.language-}, valeur ne peut être dans `tableau_trie`{.language-}
 
-Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} résout bien le problème *"recherche ordonnée"*.
+Les remarques ci-dessus prouvent que l'algorithme `recherche_dichotomique`{.language-} résout bien le problème _"recherche ordonnée"_.
 
 Étudions sa complexité. Ligne à ligne :
 
@@ -215,7 +215,7 @@ L'algorithme de la recherche dichotomique résout le problème de la "recherche 
 Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.
 
 {% info %}
-Remarquez bien que la preuve que l'on a donné pour la complexité de *"recherche"* ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.
+Remarquez bien que la preuve que l'on a donné pour la complexité de _"recherche"_ ne fonctionne pas dans le cas de "recherche ordonnée". On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.
 {% endinfo %}
 
 Commençons par remarquer que `valeur`{.language-} peut se trouver à chaque position du tableau. Tout algorithme qui résout "recherche ordonnée" doit ainsi réussir à distinguer parmi $n + 1$ cas :
@@ -229,7 +229,7 @@ Commençons par remarquer que `valeur`{.language-} peut se trouver à chaque pos
 En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations `si alors sinon`). De là :
 
 - s'il y a 0 test, un algorithme ne peut pas distinguer de cas.
-- s'il y a 1 test, un algorithme peut distinguer au plus  2 cas :
+- s'il y a 1 test, un algorithme peut distinguer au plus 2 cas :
   - 1 cas si le test est vrai
   - 1 cas si le test est faux
 - s'il y a 2 tests, un algorithme peut distinguer au plus $2 \cdot 2 = 4$ cas :
@@ -254,11 +254,11 @@ Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\lo
 
 Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.
 
-Au final, le problème de la *"recherche ordonnée"* pour un tableau à $n$ éléments :
+Au final, le problème de la _"recherche ordonnée"_ pour un tableau à $n$ éléments :
 
 - une borne minimale de complexité égal à $\Omega(\ln(n))$
 - la complexité de l'algorithme `recherche_dichotomique`{.language-} est en $\mathcal{O}(\ln(n))$
 
 {% note "**Proposition**" %}
-La complexité du problème de la *"recherche ordonnée"* est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.
+La complexité du problème de la _"recherche ordonnée"_ est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.
 {% endnote %}

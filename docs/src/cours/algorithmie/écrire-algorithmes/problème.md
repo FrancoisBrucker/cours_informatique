@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Problème algorithmique"
 
 eleventyComputed:
@@ -9,14 +9,14 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous n'avons pour l'instant décrit les algorithmes que comme des fonctions permettant de calculer des nombres. La principale utilité de ceux-ci est cependant ailleurs. Les algorithmes sont utilisés parce ce qu'il permettent de répondre à des questions, de résoudre des problèmes. Bref, le résultat d'un algorithme a un *sens*.
+Nous n'avons pour l'instant décrit les algorithmes que comme des fonctions permettant de calculer des nombres. La principale utilité de ceux-ci est cependant ailleurs. Les algorithmes sont utilisés parce ce qu'il permettent de répondre à des questions, de résoudre des problèmes. Bref, le résultat d'un algorithme a un _sens_.
 
 ## Problème
 
-Formalisons cette intuition en définissant la notion de ***problème***.
+Formalisons cette intuition en définissant la notion de **_problème_**.
 
 {% note "**Définition**" %}
-Un ***problème*** est un texte composé de 3 parties :
+Un **_problème_** est un texte composé de 3 parties :
 
 - **nom** : le nom du problème
 - **données** : les paramètres dont on a besoin
@@ -34,12 +34,15 @@ Par exemple :
 
 {% endnote %}
 
-Une importante classe de problème est ***les problèmes de décision*** :
+Une importante classe de problème est **_les problèmes de décision_** :
 
+<span id="problème-décision"></span>
 {% note "**Définition**" %}
-Un ***problème un décision*** est un problème dont la réponse est soit OUI, soit NON.
+Un **_problème de décision_** est un problème dont la réponse est soit OUI, soit NON.
 
 {% endnote %}
+
+Par exemple :
 
 {% note "**Problème de décision**" %}
 
@@ -54,7 +57,7 @@ Un ***problème un décision*** est un problème dont la réponse est soit OUI, 
 On se placera dans ce cours dans un cadre algorithmique. On se posera donc uniquement des questions sérieuses comme la recherche d'un éléments dans un tableau ou l'existence d'un algorithme pour résoudre un problème. On laissera de côté les problèmes futiles comme ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["quel est le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4).
 
 {% note "**Définition**" %}
-***Un problème est algorithmique*** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
+**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
 - donne la réponse à la question.
@@ -68,15 +71,16 @@ Dans la suite de ce cours nous allons nous concentrer sur les problèmes algorit
 On peut très souvent se restreindre aux problèmes de décision solvable par un algorithme :
 
 {% note "**Définition**" %}
-Un problème de décision est ***décidable*** s'il existe un algorithme pour le résoudre (on dit un ***décideur***), c'est à dire que cet algorithme :
+Un problème de décision est **_décidable_** s'il existe un algorithme pour le résoudre (on dit un **_décideur_**), c'est à dire que cet algorithme :
 
 - prend en paramètres les entrées du problème
 - répond OUI ou NON selon la véritable réponse à donner.
 
 {% endnote %}
 
+<span id="décideur"></span>
 {% note "**Définition**" %}
-Un ***décideur*** est un algorithme qui pour toute entrée, répond *OUI* ou *NON*.
+Un **_décideur_** est un algorithme qui pour toute entrée, répond _OUI_ ou _NON_.
 {% endnote %}
 {% info %}
 Vous verrez parfois des décideurs qui à la place de répondre OUI rendent 1 et à la place de répondre NON, rendent 0.
@@ -113,10 +117,10 @@ En revanche le problème de décision suivant n'est pas décidable :
 
 ## Reconnaissabilité
 
-Il existe un cas plus faible que la décidabilité, c'est la ***reconnaissabilité***, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :
+Il existe un cas plus faible que la décidabilité, c'est la **_reconnaissabilité_**, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :
 
 {% note "**Définition**" %}
-Un problème de décision est ***reconnaissable*** s'il existe un programme qui prend en paramètres les entrées du problème et :
+Un problème de décision est **_reconnaissable_** s'il existe un programme qui prend en paramètres les entrées du problème et :
 
 - s'arrête que pour les réponse OUI
 - ne s'arrête pas les réponses NON

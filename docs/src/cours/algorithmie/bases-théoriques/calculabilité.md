@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Calculabilité
 
 eleventyComputed:
@@ -13,10 +13,17 @@ On vient de le voir : il y a plus de nombres réels que d'algorithmes. Il existe
 
 Mais avant de voir ce que ne peut pas faire un algorithme, voyons des choses que l'on peut faire avec.
 
+{% lien %}
+
+Vous pouvez consulter le lien suivant sur l'émergence en mathématiques de la notion de **_calculabilité_** :
+<https://perso.ens-lyon.fr/pierre.lescanne/PUBLICATIONS/calculabilite.pdf>
+{% endlien %}
+
 ## Algorithmes et fonctions
 
 On a vu qu'un algorithme et tout ce qu'il manipulait pouvait être considéré comme une suite finie de 0 et de 1. On en déduit immédiatement la proposition suivante :
 
+<span id="algorithme-fonction"></span>
 {% note "**Proposition**" %}
 Un algorithme est une fonction :
 
@@ -27,8 +34,30 @@ Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies de $0$ et de $1$.
 
 Remarquez que ceci fonctionne même si un algorithme possède plusieurs entrées. Il suffit de les écrire sous la forme d'une chaîne de caractère où chaque paramètre est séparé par une virgule par exemple et de transcrire cette chaîne en suite de 0 et de 1.
 
+{% info %}
+La façon classique de procéder pour transformer $q$ paramètres de $\\{0, 1\\}^\star$ en un seul paramètre de $\\{0, 1\\}^\star$ est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :
+
+- on code l'information `0`{.language-} en `00`{.language-}
+- on code l'information `1`{.language-} en `01`{.language-}
+- `11`{.language-} est le caractère de séparation des paramètres
+
+Ainsi, si un algorithme possède 3 paramètres valant 12, 1 et 6 par exemple on :
+
+1. convertit les 3 entiers en binaires : `1100`{.language-} (pour 12), `1`{.language-} (pour 1) et `110`{.language-} (pour 6)
+2. on utilise la correspondance pour les transformer en : `01010000`{.language-} (pour 12), `01`{.language-} (pour 1) et `010100`{.language-} (pour 6)
+3. on concatène les 3 paramètres en un seul en utilisant le séparateur `11`{.language-} : `01010000110111010100`{.language-}
+
+La lecture des paramètres dans l'algorithme se fait alors de façon réciproque :
+
+1. on trouve les paramètres en découpant la chaîne d'entrée aux endroits où se trouvent le séparateur `11`{.language-}
+2. on reconvertit chaque caractère en binaire en ne prenant qu'un bit sur 2
+3. on fait le changement de base de binaire à décimal
+
+{% endinfo %}
+
 Comme une suite finie de 0 et de 1 est une écriture binaire d'un entier positif on en déduit immédiatement que :
 
+<span id="algorithme-fonction-N"></span>
 {% note "**Proposition**" %}
 Un algorithme est une fonction :
 
@@ -40,16 +69,16 @@ Par exemple la fonction identité est un algorithme puis'on peut l'écrire :
 
 ```text
 Nom : identité
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     rendre n
 ```
 
-De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 2n$, $f(n) = 12 \cdot n$ ou encore $f(n) = n^2$ sont des algorithmes ! On dit que ces fonctions sont ***calculables*** :
+De même, je vous laisse reprendre vos cours de primaire pour le faire, les fonctions $f(n) = 2n$, $f(n) = 12 \cdot n$ ou encore $f(n) = n^2$ sont des algorithmes ! On dit que ces fonctions sont **_calculables_** :
 
 {% note "**Définition**" %}
-Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est ***calculable*** s'il existe un algorithme permet de la calculer.
+Une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$ est **_calculable_** s'il existe un algorithme permet de la calculer.
 
 {% endnote %}
 
@@ -68,7 +97,7 @@ On suppose alors qu'il y en a autant et donc qu'il existe une bijection entre le
 
 Cet ordre nous permet de construire la fonction $g: \mathbb{N} \rightarrow \mathbb{N}$ telle que $g(i) = f_i(i) + 1$ pour tout $i \in \mathbb{N}$.
 
-Mais ceci est impossible puisque  $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
+Mais ceci est impossible puisque $g \neq f_i$ pour tout $i$ ($g(i) \neq f_i(i)$ par définition de $g$) : il existe strictement plus de fonctions $f: \mathbb{N} \rightarrow \mathbb{N}$ que d'entiers.
 
 {% enddetails %}
 
@@ -98,7 +127,7 @@ Créez la fonction $\text{somme}(x, y) \rightarrow x + y$ en utilisant uniquemen
 
 ```text
 Nom : somme
-Entrées : 
+Entrées :
     x, y : deux entiers
 Programme :
     c = 0
@@ -121,7 +150,7 @@ De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable,
 
 ```text
 Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si il existe n "5" consécutifs dans les décimales de π:
@@ -138,7 +167,7 @@ Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on
 
 ```text
 Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     rend 1
@@ -148,7 +177,7 @@ Soit il existe au plus N "5" consécutifs dans les décimales de $\pi$ et le pro
 
 ```text
 Nom : 5-consécutifs
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si n < N + 1:
@@ -168,7 +197,7 @@ Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pa
 ## Nombres calculables
 
 {% note "**définition**" %}
-Un nombre $x$ est ***calculable*** s'il existe un algorithme $A$ tel que :
+Un nombre $x$ est **_calculable_** s'il existe un algorithme $A$ tel que :
 
 - $A(0)$ rend la partie entière de $x$
 - $A(i)$ rend la $i$-ème décimale de $x$, pour tout $i > 0$
@@ -179,7 +208,7 @@ Un nombre $x$ est ***calculable*** s'il existe un algorithme $A$ tel que :
 
 ```text
 Nom : Entier i
-Entrées : 
+Entrées :
     n : un entier
 Programme :
     si n == i
@@ -212,7 +241,7 @@ Comme $u_n$ converge vers $x$, pour tout $i> 0$, il existe $N_i$ tel que $\mid x
 
 {% enddetails %}
 
-La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de  [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e).
+La proposition ci-dessus permet de montrer que nombre de réels connus sont calculables, comme $\pi$ par exemple puisqu'il est la limite de [la série de Leibniz de $\pi$](https://fr.wikipedia.org/wiki/Formule_de_Leibniz#S%C3%A9rie_altern%C3%A9e).
 
 De la même manière, on peut calculer $cos(x)$, $sin(x)$ ou encore $\sqrt{x}$ pour tout $x$ calculable grâce à leur [développement en séries entières](https://fr.wikipedia.org/wiki/Formulaire_de_d%C3%A9veloppements_en_s%C3%A9ries).
 
@@ -243,7 +272,7 @@ Attention cependant à ne pas confondre le réel en tant que tel (non calculable
 
 On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.
 
-Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très  gourmandes en temps de calcul.
+Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
 
 ### <span id="fonction-ackermann"></span>Fonction d'Ackermann
 
@@ -322,7 +351,7 @@ $$
 
 Par récurrence sur $x+y+z= k$.
 
-Si $x+y+z=0$, on a  $x=y=z=0$ et $\tau(0, 0, 0) = 0$, la récurrence est vérifiée. On suppose la récurrence vraie pour $x+y+z=k$.
+Si $x+y+z=0$, on a $x=y=z=0$ et $\tau(0, 0, 0) = 0$, la récurrence est vérifiée. On suppose la récurrence vraie pour $x+y+z=k$.
 
 Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
@@ -333,12 +362,8 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
   - soit $x-1 \leq y$ et alors (par hypothèse de récurrence) $\tau(x-1, y, z) = y$ : $\tau(y, z, ?) = z$ (puisque $y \leq z$)
 - $x > y > z$ : On a $\tau(x, y, z) = \tau(\tau(x-1, y, z), \tau(y-1, z, x), \tau(z-1, x, y))$
   - on a $z-1 < y< x$ et donc $\tau(x, y, z) =  \tau(\tau(x-1, y, z), \tau(y-1, z, x), x)$
-  - on procède de même que précédemment en analysant tous les cas
-    - $x-1 > y$ et $y-1>z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$
-    - $x-1 > y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$
-    - $x-1 = y$ et $y-1>z$ : $\tau(x, y, z) = \tau(y, x, x) = x$
-    - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
-{% enddetails %}
+  - on procède de même que précédemment en analysant tous les cas - $x-1 > y$ et $y-1>z$ : $\tau(x, y, z) = \tau(x-1, x, x) = x$ - $x-1 > y$ et $y-1=z$ : $\tau(x, y, z) = \tau(x-1, z, x) = x$ - $x-1 = y$ et $y-1>z$ : $\tau(x, y, z) = \tau(y, x, x) = x$ - $x-1 = y$ et $y-1=z$ : $\tau(x, y, z) = \tau(y, z, x) = x$
+    {% enddetails %}
 
 Cette fonction montre, encore une fois, qu'il est très difficile de déterminer ce que fait un algorithme sans l'analyser finement (voyez le comme un exemple du [théorème de Rice](../arrêt-rice/#théorème-rice) vu précédemment).
 
@@ -425,7 +450,7 @@ Nous allons en montrer un nombre non calculable, dérivé du célèbre [nombre o
 
 Rangeons, comme on l'a fait pour la complexité de Kolmogorov, tous les programmes sans paramètres dans l'ordre lexicographique. Nommons les programmes selon cet ordre : $P_1$ le premier programme, $P_2$ le second, etc.
 
-Le nombre  $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
+Le nombre $\Omega$ est un réel entre 0 et 1 tel que sa $i$-ème décimal soit :
 
 - égale à 1 si le programme $P_i$ s'arrête
 - égale à 0 si le programme $P_i$ se s'arrête pas
