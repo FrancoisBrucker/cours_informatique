@@ -53,7 +53,7 @@ on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'alg
 
 Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.
 
-## Exemple : recherche d'un élément dans un tableau
+## <span id="recherche"></span>Exemple : recherche d'un élément dans un tableau
 
 On va chercher à résoudre le problème de décision suivant :
 

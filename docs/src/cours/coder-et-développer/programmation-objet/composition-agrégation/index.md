@@ -151,7 +151,7 @@ class Panier:
 
 #### 3ère solution
 
-Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode `ajoute_fruit()`{.language-}. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
+Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, dans les méthodes `ajoute()`{.language-} et `supprime()`{.language-}. On utilise un [tuple](https://python.doctor/page-apprendre-tuples-tuple-python) qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération `+`{.language-} des tuples qui crée un nouvel objet. :
 
 ```python
 class Panier:
@@ -163,10 +163,16 @@ class Panier:
     def ajoute(self, fruit):
         self.stock = self.stock + (fruit,)
     
+    def supprime(self, fruit):
+        stock_temporaire = list(self.stock)
+        stock_temporaire.remove(fruit)
+        self.stock = tuple(stock_temporaire)
+
     #...
+
 ```
 
-Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une au l'autre solution. Mais si on a pas d'idée, on préférera **toujours** la 3ème solution qui est la plus robuste.
+Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera **toujours** la 3ème solution qui est la plus robuste.
 
 Le fait d'avoir des objets qui ne se modifient pas est appelé [value object](https://en.wikipedia.org/wiki/Value_object).
 

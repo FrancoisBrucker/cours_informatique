@@ -22,6 +22,11 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 > pb vérifiable ont toujours une solution (une MT qui résout le problème) s'il existe un nombre infini de solutions possible (ie. s'il existe toujours une solution/certificat plus grand).
 
+### Problèmes NPC
+
+> TBD isomorphisme de graphe : status inconnu.
+> TBD NPC = universel
+
 ## Algorithmes et code binaire
 
 > TBD pour pseudo-code min et théorème de cook.

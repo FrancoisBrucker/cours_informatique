@@ -66,7 +66,7 @@ On se placera dans ce cours dans un cadre algorithmique. On se posera donc uniqu
 
 Dans la suite de ce cours nous allons nous concentrer sur les problèmes algorithmique et voir comment les résoudre le plus vite possible. Mais avant de conclure cette courte partie examinons quelques problèmes non décidables mais informatisable.
 
-## Décidabilité
+## <span id="décidable"></span> Décidabilité
 
 On peut très souvent se restreindre aux problèmes de décision solvable par un algorithme :
 
