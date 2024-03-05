@@ -210,7 +210,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
     <span class="token comment">#...</span>
 </code></pre>
 <h4>3ère solution</h4>
-<p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, par exemple dans la méthode <code class="language-">ajoute_fruit()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération <code class="language-">+</code> des tuples qui crée un nouvel objet. :</p>
+<p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, dans les méthodes <code class="language-">ajoute()</code> et <code class="language-">supprime()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération <code class="language-">+</code> des tuples qui crée un nouvel objet. :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -220,9 +220,15 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
     <span class="token keyword">def</span> <span class="token function">ajoute</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fruit<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>stock <span class="token operator">=</span> self<span class="token punctuation">.</span>stock <span class="token operator">+</span> <span class="token punctuation">(</span>fruit<span class="token punctuation">,</span><span class="token punctuation">)</span>
     
+    <span class="token keyword">def</span> <span class="token function">supprime</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fruit<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        stock_temporaire <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>stock<span class="token punctuation">)</span>
+        stock_temporaire<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>stock_temporaire<span class="token punctuation">)</span>
+
     <span class="token comment">#...</span>
+
 </code></pre>
-<p>Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une au l'autre solution. Mais si on a pas d'idée, on préférera <strong>toujours</strong> la 3ème solution qui est la plus robuste.</p>
+<p>Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera <strong>toujours</strong> la 3ème solution qui est la plus robuste.</p>
 <p>Le fait d'avoir des objets qui ne se modifient pas est appelé <a href="https://en.wikipedia.org/wiki/Value_object">value object</a>.</p>
 <p>Ces objets possèdent des valeurs et des méthodes pour y accéder mais que l'on ne peut pas modifier. La seule façon de changer de valeur c'est de recréer de nouveaux objets. Pour que l'utilisation de ce genre d'objets soit fluide, on fait en sorte qu'ils puissent supporter l'opération <code class="language-">==</code>.</p>
 <p>Vous avez utilisé des value objects bien souvent en python comme : les  entiers, les réels ou encore les chaines de caractères. Enfin de nombreux objets modifiables en python ont leur contrepartie non modifiable comme les <code class="language-">tuple</code> qui sont des listes non modifiables ou encore les <code class="language-">frozenset</code> sont des ensembles non modifiables.</p>
