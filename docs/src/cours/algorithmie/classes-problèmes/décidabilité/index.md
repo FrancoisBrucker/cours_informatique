@@ -9,13 +9,17 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
+> TBD : 
+> algo = décision
+> language = algo
+> complexité aussi haute qu'on veut
+> space < opération < 2^space
 
 ## Algorithmes, décideurs et vérifieurs
 
 Rappelons qu'un algorithme est [dans toute sa généralité](../../bases-théoriques/calculabilité/#algorithme-fonction-N){.interne} une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de _concaténer_ des entiers) et qu'[un décideur](../../écrire-algorithmes/problème/#décideur){.interne} est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).
 
-On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir les trois formes équivalentes d'un algorithme.
+On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir trois formes équivalentes d'un algorithme.
 
 Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection (on pourrait utiliser l'argument de [la partie calculabilité](../../bases-théoriques/calculabilité/#algorithme-fonction) en recodant les différents paramètres mais ne boudons pas notre plaisir en utilisant, et en la démontrant, la bijection classique que l'on doit au mathématicien [Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor)) :
 
@@ -143,15 +147,8 @@ On peut représenter un algorithme sous 3 formes équivalentes utiles en théori
 
 {% endnote %}
 
-## Problèmes utilisables en pratique
+## Décision et Langage
 
-Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne}) puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : la résolution.
-
-![décidable](./NP-décidable.png)
-
-### Problèmes NP
-
-La notion de vérificateur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des [problèmes de décision](../../écrire-algorithmes/problème/#problème-décision){.interne} où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.
 
 De la même manière qu'un algorithme de type _fonction_ peut s'écrire sous la forme d'un algorithme de la forme _décideur_ on peut associer à tout problème décidable un problème de décision.
 
@@ -167,51 +164,9 @@ Considérons par exemple le problème de trouver le maximum d'un tableau. On peu
 
 {% endnote %}
 
-Si ce problème admet un décideur efficace, il suffit de l'appliquer pour $K$ valant itérativement toutes les valeurs de $T$ pour trouver le maximum. Ce nouvel algorithme est également efficace et résout le problème du maximum.
+Si le problème _"plus grand que"_ est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement _"plus grand que"_ pour $K$ valant chaque élément de $T$.
 
-De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).
-
-La remarque ci-dessus nous montre que l'on peut uniquement considérer les problèmes de décision décidables, sans perte de généralité. Dans ce cadre, on peut définir les problèmes de décision utilisable en pratique comme étant ceux tels que :
-
-{% note "**Définition**" %}
-**_Un problème de décision est dit $NP$_** s'il existe un vérificateur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé **_certificat de $e$_** tel que $v(e, t)$ soit vrai.
-
-{% endnote %}
-
-La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe).
-
-Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérificateur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.
-
-Enfin, la taille du certificat est bornée par la complexité du vérificateur (cela ne sert à rien que sa taille soit supérieure, elle ne sera de toute façon pas utilisée lors de l'exécution de l'algorithme) qui est polynomiale en la taille de $e$.
-
-{% note "**À retenir**" %}
-Un problème est dans $NP$ s'il existe un vérificateur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
-
-- On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).
-- On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.
-
-{% endnote %}
-
-Finissons cette partie en notant qu'il existe des problèmes de décisions qui sont décidables mais pas dans $NP$, par exemple le problème de décision suivant (juste en donner une idée de la démonstration nous emmènerait trop loin, croyez moi donc sur parole) :
-
-{% note "**Problème**" %}
-
-- **nom** : Ackerman
-- **données** :
-  - deux entiers $n$ et $m$
-  - un entier $K$
-- **question** : la valeur de [la fonction d'Ackermann](../../bases-théoriques/calculabilité/#fonction-ackermann) en $n$ et $m$ est-elle plus grande que $K$ ?
-
-{% endnote %}
-
-Au final on a le schéma suivant :
-
-![décidable](./NP-NP.png)
-
-Finissons cette partie par une question encore sans réponse actuellement. Est-ce qu'il existe des problèmes de décision de $NP$ qui ne sont pas dans $P$ ? 
-
-La question semble idiote dit comme ça, mais c'est une vraie question et personne n'a de réponse. Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
-
+De façon formelle, 
 
 > TBD langage. Décidabilité du langage. Complexité de calcul.
 

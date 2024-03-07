@@ -115,6 +115,17 @@ En revanche le problème de décision suivant n'est pas décidable :
 
 {% endnote %}
 
+On défini par extension les ***ensembles décidables*** comme étant ceux pouvant être énumérés par un algorithme :
+
+{% note "**Définition**" %}
+
+Un ensemble $E$ d'entiers est ***décidable*** s'il existe un algorithme $A$ qui tel que :
+
+- $A(n)$ vaut OUI si $n \in E$
+- $A(n)$ vaut NON si $n \notin E$
+
+{% endnote %}
+
 ## <span id="reconnaissable"></span>Reconnaissabilité
 
 Il existe un cas plus faible que la décidabilité, c'est la **_reconnaissabilité_**, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :
@@ -127,7 +138,21 @@ Un problème de décision est **_reconnaissable_** s'il existe un programme qui 
 
 {% endnote %}
 
-Il est clair qu'un problème décidable est reconnaissable, il suffit de laisser tourner indéfiniment le décideur plutôt que de lui faire répondre NON, mais la réciproque est fausse, le problème de l'arrêt étant clairement reconnaissable (il suffit de laisser tourner l'algorithme et s'il s'arrête répondre 1).
+Il est clair qu'un problème décidable est reconnaissable, il suffit de laisser tourner indéfiniment le décideur plutôt que de lui faire répondre NON, mais la réciproque est fausse, le problème de l'arrêt étant clairement reconnaissable (il suffit de laisser tourner l'algorithme et s'il s'arrête répondre OUI).
+
+De même que pour les ensembles décidables, on défini par extension les ***ensembles reconnaissables*** comme étant ceux pouvant être énumérés par un programme :
+
+{% note "**Définition**" %}
+
+Un ensemble $E$ d'entiers est ***reconnaissable*** s'il existe un programme $A$ qui tel que :
+
+- $A(n)$ vaut OUI si $n \in E$
+- $A(n)$ ne s'arrête pas si $n \notin E$
+
+{% endnote %}
+
+Il existe bien sur des ensembles reconnaissable et non décidable, par exemple l'ensemble des numéros de programmes qui sont des algorithmes.
+
 
 ## Exemple
 
@@ -165,7 +190,7 @@ Les racine d'un polynôme $P(X) = \sum_{i=0}^na_iX^i$ (avec $a_n \neq 0$) sont b
 
 On va montrer que pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$, on a $\mid P(X)\mid > 0$.
 
-On a en effet la suite d'implications :
+On a en effet la suite d'implications suivantes :
 
 <div>
 $$
@@ -181,7 +206,7 @@ $$
 $$
 </div>
 
-qui prouvent que $\mid P(X) \mid = \mid a_nX^n + \sum_{i=0}^{n-1} a_i X^{i}\mid$ sera toujours non nul et du signe de $a_n$ pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$
+Ce qui prouve que $\mid P(X) \mid = \mid a_nX^n + \sum_{i=0}^{n-1} a_i X^{i}\mid$ sera toujours non nul et du signe de $a_n$ pour tout $\mid X \mid > \max( 1, \frac{\sum_{i=0}^{n-1}\mid a_i\mid}{\mid a_n\mid})$
 {% enddetails %}
 
 {% note "**Corollaire**" %}
@@ -209,9 +234,7 @@ En revanche les choses se corsent pour le problème ci-après, généralisation 
 Le problème `Racine polynôme plusieurs variables`{.language-} est un problème **reconnaissable** mais **indécidable**.
 {% endnote %}
 {% details "éléments de preuve", "open" %}
-Cela a été [démontré en 1970 par Matiiassevitch](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Matiiassevitch) en prouvant que l'on ne pouvait pas borner les racines d'un polynôme à plusieurs variables.
-
-Il n'existe donc pas d'algorithme qui s'arrête au bout d'un temps fini si un polynôme à plusieurs variables n'a pas de racine dans $\mathbb{N}$.
+Cela a été [démontré en 1970 par Matiiassevitch](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Matiiassevitch) en prouvant que tout ensemble reconnaissable peut constituer les racines d'un polynôme à plusieurs variables. De là, si le problème `Racine polynôme plusieurs variables`{.language-} était décidable, tout ensemble reconnaissable le serait aussi, ce qui est impossible.
 
 {% enddetails %}
 
