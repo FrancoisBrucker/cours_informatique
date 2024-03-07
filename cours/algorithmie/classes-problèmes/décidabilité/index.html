@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Problèmes NP</title>
+    <title>Décidabilité et décision</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Problèmes NP</h1>
+  <h1>Décidabilité et décision</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/">Classes de problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/problèmes-NP/">Problèmes NP</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/">Classes de problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/décidabilité/">Décidabilité et décision</a>
 
 </div>
 </div>
@@ -92,8 +92,7 @@
     
   
 
-  <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
-<h2>Algorithmes, décideurs et vérifieurs</h2>
+  <h2>Algorithmes, décideurs et vérifieurs</h2>
 <p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction-N" class="interne">dans toute sa généralité</a> une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de <em>concaténer</em> des entiers) et qu'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cideur" class="interne">un décideur</a> est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).</p>
 <p>On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir les trois formes équivalentes d'un algorithme.</p>
 <p>Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection (on pourrait utiliser l'argument de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction">la partie calculabilité</a> en recodant les différents paramètres mais ne boudons pas notre plaisir en utilisant, et en la démontrant, la bijection classique que l'on doit au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Cantor</a>) :</p>
@@ -302,70 +301,6 @@ $$</p>
 <h2>Problèmes utilisables en pratique</h2>
 <p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a>) puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
-<h3>Problèmes P</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un problème algorithmique est dit <strong><em>polynomial</em></strong> s'il existe un algorithme de complexité polynomiale en la taille de son entrée permettant de le résoudre.</p>
-<p>L'ensemble des problèmes polynomiaux est nommé $P$.</p>
-</div>
-</div>
-<p>On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :</p>
-<ul>
-<li>Trouver le maximum d'un tableau d'entiers dont <a href="../../complexit%C3%A9-probl%C3%A8me/#recherche">on a démontré que sa complexité était linéaire</a>,</li>
-<li>Trier un tableau d'entiers dont <a href="../../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me">on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$</a> où $n$ est la taille du tableau,</li>
-</ul>
-<p><img src="NP-P.png" alt="décidable"></p>
-<p>Le cas du <a href="../../projet-expenentiation/%C3%A9tude-algorithmique">problème de l'exponentiation</a> est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.</p>
-<p>En informatique théorique l'unité d'information est le bit, la taille de l'entrée d'un algorithme est toujours égale au nombre de bits nécessaires pour la stocker. Pour un entier il s'agit donc du logarithme en base 2 de sa valeur et donc le problème de l'exponentiation est bien polynomiale, il est même linéaire en la taille de l'entrée...</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Si pour être rigoureux et formel il est nécessaire de considérer qu'une case mémoire ne peut contenir qu'un seul bit plutôt qu'un entier quelconque, cela alourdit les calculs de complexité sans réel apport.<br>
-En effet l'entier étant la donnée élémentaire, toute opération qui en manipule (c'est à dire presque toutes les opérations) devra lire chaque bits les constituant, ce qui ne fait qu'ajouter un facteur linéaire en la taille des données.</p>
-<p>Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).</p>
-</div>
-</div>
-<h3>Problèmes et vérificateurs efficaces</h3>
-<p>Il existe de nombreux problèmes dont on ne connait pas la complexité, ou dont on ne connait pas d'algorithme polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :</p>
-<ul>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">somme de sous-ensemble</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">sac à dos</a></li>
-<li><a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">isomorphisme de graphes</a></li>
-</ul>
-<p>Si l'on ne connait pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (<em>ie.</em> polynomialement) si une solution en est une ou pas.</p>
-<p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$ et $E'$ :</p>
-<ol>
-<li>On vérifie que $|E'| \leq |E|$ ce qui peut se faire en $\mathcal{O}(|E|)$ opérations en comptant chaque élément de $E'$ et en s'arrêtant soit après avoir compté tous les éléments soit lorsque le compte dépasse strictement $|E|$.</li>
-<li>On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(|E'| \cdot |E|) = \mathcal{O}(|E|^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).</li>
-<li>On somme les éléments de $E'$ et on vérifie que la somme finale vaut $0$, $\mathcal{O}(|E'|) = \mathcal{O}(|E|)$ opérations</li>
-</ol>
-<p>La complexité de l'algorithme est donc de $\mathcal{O}(|E|^2)$ et ne dépend pas du paramètre $E'$.</p>
-<p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérificateur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
-<p>Formalisons cette notion de vérification efficace :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un <strong><em>vérificateur efficace</em></strong> d'un problème décidable $P$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
-<ul>
-<li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $P(e)$</li>
-<li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
-</ul>
-</div>
-</div>
-<p>Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérificateur efficace. Terminons cette partie par deux remarques d'importance.</p>
-<p>Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérificateur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.</p>
-<p>Deuxièmement, tout problème admettant un vérificateur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérificateur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérificateur.</p>
 <h3>Problèmes NP</h3>
 <p>La notion de vérificateur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#probl%C3%A8me-d%C3%A9cision" class="interne">problèmes de décision</a> où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.</p>
 <p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème décidable un problème de décision.</p>
@@ -405,9 +340,6 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a>.</p>
 <p>Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérificateur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.</p>
 <p>Enfin, la taille du certificat est bornée par la complexité du vérificateur (cela ne sert à rien que sa taille soit supérieure, elle ne sera de toute façon pas utilisée lors de l'exécution de l'algorithme) qui est polynomiale en la taille de $e$.</p>
-<blockquote>
-<p>TBD le certificat efficace permet de creer un algorithme resolvant un probleme. La propriété c'est la verification et on fait otus les cas possibles. en 2^f(n).</p>
-</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -447,11 +379,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Finissons cette partie par une question encore sans réponse actuellement. Est-ce qu'il existe des problèmes de décision de $NP$ qui ne sont pas dans $P$ ?</p>
 <p>La question semble idiote dit comme ça, mais c'est une vraie question et personne n'a de réponse. Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
 <blockquote>
-<p>TBD mettre SAT comme exemple de problème de décision</p>
-</blockquote>
-<blockquote>
-<p>TBD co-NP et les conjectures np intersection co=np<br>
-TBD dire qu'on peut aller plus loin et que c'est un champ de recherche. log, poly log. etc</p>
+<p>TBD langage. Décidabilité du langage. Complexité de calcul.</p>
 </blockquote>
 
 
