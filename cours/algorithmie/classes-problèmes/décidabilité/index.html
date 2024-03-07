@@ -92,9 +92,16 @@
     
   
 
-  <h2>Algorithmes, décideurs et vérifieurs</h2>
+  <blockquote>
+<p>TBD :<br>
+algo = décision<br>
+language = algo<br>
+complexité aussi haute qu'on veut<br>
+space &lt; opération &lt; 2^space</p>
+</blockquote>
+<h2>Algorithmes, décideurs et vérifieurs</h2>
 <p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction-N" class="interne">dans toute sa généralité</a> une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de <em>concaténer</em> des entiers) et qu'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cideur" class="interne">un décideur</a> est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).</p>
-<p>On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir les trois formes équivalentes d'un algorithme.</p>
+<p>On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir trois formes équivalentes d'un algorithme.</p>
 <p>Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection (on pourrait utiliser l'argument de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction">la partie calculabilité</a> en recodant les différents paramètres mais ne boudons pas notre plaisir en utilisant, et en la démontrant, la bijection classique que l'on doit au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Cantor</a>) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -298,11 +305,7 @@ $$</p>
 </ul>
 </div>
 </div>
-<h2>Problèmes utilisables en pratique</h2>
-<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a>) puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
-<p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
-<h3>Problèmes NP</h3>
-<p>La notion de vérificateur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#probl%C3%A8me-d%C3%A9cision" class="interne">problèmes de décision</a> où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.</p>
+<h2>Décision et Langage</h2>
 <p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème décidable un problème de décision.</p>
 <p>Considérons par exemple le problème de trouver le maximum d'un tableau. On peut lui associer le problème de décision suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -324,60 +327,8 @@ $$</p>
 </ul>
 </div>
 </div>
-<p>Si ce problème admet un décideur efficace, il suffit de l'appliquer pour $K$ valant itérativement toutes les valeurs de $T$ pour trouver le maximum. Ce nouvel algorithme est également efficace et résout le problème du maximum.</p>
-<p>De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).</p>
-<p>La remarque ci-dessus nous montre que l'on peut uniquement considérer les problèmes de décision décidables, sans perte de généralité. Dans ce cadre, on peut définir les problèmes de décision utilisable en pratique comme étant ceux tels que :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p><strong><em>Un problème de décision est dit $NP$</em></strong> s'il existe un vérificateur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé <strong><em>certificat de $e$</em></strong> tel que $v(e, t)$ soit vrai.</p>
-</div>
-</div>
-<p>La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a>.</p>
-<p>Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérificateur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.</p>
-<p>Enfin, la taille du certificat est bornée par la complexité du vérificateur (cela ne sert à rien que sa taille soit supérieure, elle ne sera de toute façon pas utilisée lors de l'exécution de l'algorithme) qui est polynomiale en la taille de $e$.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un problème est dans $NP$ s'il existe un vérificateur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :</p>
-<ul>
-<li>On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).</li>
-<li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.</li>
-</ul>
-</div>
-</div>
-<p>Finissons cette partie en notant qu'il existe des problèmes de décisions qui sont décidables mais pas dans $NP$, par exemple le problème de décision suivant (juste en donner une idée de la démonstration nous emmènerait trop loin, croyez moi donc sur parole) :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : Ackerman</li>
-<li><strong>données</strong> :
-<ul>
-<li>deux entiers $n$ et $m$</li>
-<li>un entier $K$</li>
-</ul>
-</li>
-<li><strong>question</strong> : la valeur de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#fonction-ackermann">la fonction d'Ackermann</a> en $n$ et $m$ est-elle plus grande que $K$ ?</li>
-</ul>
-</div>
-</div>
-<p>Au final on a le schéma suivant :</p>
-<p><img src="NP-NP.png" alt="décidable"></p>
-<p>Finissons cette partie par une question encore sans réponse actuellement. Est-ce qu'il existe des problèmes de décision de $NP$ qui ne sont pas dans $P$ ?</p>
-<p>La question semble idiote dit comme ça, mais c'est une vraie question et personne n'a de réponse. Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
+<p>Si le problème <em>&quot;plus grand que&quot;</em> est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement <em>&quot;plus grand que&quot;</em> pour $K$ valant chaque élément de $T$.</p>
+<p>De façon formelle,</p>
 <blockquote>
 <p>TBD langage. Décidabilité du langage. Complexité de calcul.</p>
 </blockquote>

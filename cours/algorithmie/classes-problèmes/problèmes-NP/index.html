@@ -93,212 +93,10 @@
   
 
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
-<h2>Algorithmes, décideurs et vérifieurs</h2>
-<p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction-N" class="interne">dans toute sa généralité</a> une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de <em>concaténer</em> des entiers) et qu'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cideur" class="interne">un décideur</a> est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).</p>
-<p>On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir les trois formes équivalentes d'un algorithme.</p>
-<p>Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection (on pourrait utiliser l'argument de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction">la partie calculabilité</a> en recodant les différents paramètres mais ne boudons pas notre plaisir en utilisant, et en la démontrant, la bijection classique que l'on doit au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Cantor</a>) :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Théorème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Remarquons que tout élément de $\mathbb{N}^2$ est un point du plan :</p>
-<p><img src="n2_dans_plan.png" alt="point de n2 dans le plan"></p>
-<p>On peut les parcourir en suivant les diagonales :</p>
-<p><img src="n2_dans_n.png" alt="point de n2 dans le plan"></p>
-<p>On chemine alors comme ça :</p>
-<ol>
-<li>$(0, 0)$</li>
-<li>$(1, 0)$</li>
-<li>$(0, 1)$</li>
-<li>$(2, 0)$</li>
-<li>$(1, 1)$</li>
-<li>$(0, 2)$</li>
-<li>$(3, 0)$</li>
-<li>$(2, 1)$</li>
-<li>$(1, 2)$</li>
-<li>$(0, 3)$</li>
-<li>$(4, 0)$</li>
-<li>...</li>
-</ol>
-<p>Et on associe à un entier $(x, y)$ son ordre de cheminement $O((x, y))$ (par exemple $O((2, 1)) = 8$).</p>
-<p>Ce cheminement est clairement une bijection.</p>
-<p>On peut donc aussi associer un unique entier à tout couple d'entiers avec $O^{-1}$ ($O^{-1}(6) = (0, 2)$ par exemple).</p>
-</div>
-</details>     
-</div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\mathbb{N}^p$ et $\mathbb{N}$ sont en bijection pour tout entier $p$.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La démonstration précédente montre que $\mathbb{N}^p = \mathbb{N}^2 \times \mathbb{N}^{p-2} $ est en bijection avec $\mathbb{N} \times \mathbb{N}^{p-2} = \mathbb{N}^{p-1}$ pour tout $p&gt;2$.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez le pseudo-code de la fonction $O^{-1}$ qui associe un couple $(x, y)$ unique à un entier $i$ passé en paramètre.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : O^{-1}
-Entrée : un entier i
-Programme :
-    x = y = 0
-    k = 0
-    tant que k < i:
-        si x == 0:
-            x = y + 1
-            y = 0
-        sinon:
-            x = x - 1
-            y = y + 1
-    Retour (x, y)
-</code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>À partir du pseudo-code de $O^{-1}$, il est facile d’écrire le pseudo code de $O$ : faites le.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : O
-Entrée :  un couple (u, v) d'entiers
-Programme :
-    x = y = 0
-    i = 0
-    tant que (u, v) ≠ (x, y):
-        i = i + 1
-        si x == 0:
-            x = y + 1
-            y = 0
-        sinon:
-            x = x - 1
-            y = y + 1
-    Retour i
-</code></pre>
-</div>
-</details>     
-</div>
-<p>Comme un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$, on peut lui associer de façon équivalente la fonction $v_f$ ci-dessous :</p>
-<p>$$<br>
-v_f(n, m) = \left\{<br>
-\begin{array}{ll}<br>
-1 &amp; \mbox{si } f(n) = m\\<br>
-0 &amp; \mbox{sinon.}<br>
-\end{array}<br>
-\right.<br>
-$$</p>
-<p>On peut voir l'algorithme $v_f$ comme un vérifieur. Il vérifie que le second paramètre est la sortie du premier paramètre. On reparlera de ces algorithmes dans la suite, pour l'instant ils nous permettent de montrer que l'espace d'arriver d'un algorithme peut être uniquement deux valeurs. Un algorithme peut être vu comme une fonction de :</p>
-<p>$$f: \mathbb{N}^2 \rightarrow \{0, 1 \}$$</p>
-<p>Et comme $\mathbb{N}^2$ est en bijection avec $\mathbb{N}$ :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Un <strong><em>algorithme</em></strong> est une fonction de :</p>
-<p>$$f: \mathbb{N} \rightarrow \{0, 1 \}$$</p>
-</div>
-</div>
-<p>Un décideur est donc une notion a priori plus générale qu'un algorithme puisque l'on peut les écrire sous la forme d'un décideur ! On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des problèmes de décisions puisqu'on pourra les appliquer sans perte de généralité aux autres problèmes.</p>
-<p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (que l'on a montré équivalentes) utiles :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On peut représenter un algorithme sous 3 formes équivalentes utiles en théorie :</p>
-<ul>
-<li>les <strong><em>fonctions</em></strong> : $A(x) = y$, avec $x, y \in \mathbb{N}$ qui permettent le calcul effectif,</li>
-<li>les <strong><em>décideurs</em></strong> : $A(x) = b$, avec $x \in \mathbb{N}$ et $b \in \{0, 1\}$ qui permettent de séparer les entiers en 2, les entiers <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$, et les autres</li>
-<li>les <strong><em>vérifieurs</em></strong> : $A(x, y) = b$, avec $x, y \in \mathbb{N}$ et $b \in \{0, 1\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.</li>
-</ul>
-</div>
-</div>
+<blockquote>
+<p>TBD : se raccrocher aux branches de la partie précédente<br>
+TBD : dire que tout est lié aux complexité.</p>
+</blockquote>
 <h2>Problèmes utilisables en pratique</h2>
 <p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a>) puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
@@ -365,30 +163,13 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 <p>Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérificateur efficace. Terminons cette partie par deux remarques d'importance.</p>
 <p>Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérificateur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.</p>
-<p>Deuxièmement, tout problème admettant un vérificateur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérificateur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérificateur.</p>
+<p>Deuxièmement, tout problème admettant un vérificateur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérificateur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérificateur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
+<p>En effet, si le vérificateur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérificateur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
 <h3>Problèmes NP</h3>
 <p>La notion de vérificateur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#probl%C3%A8me-d%C3%A9cision" class="interne">problèmes de décision</a> où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.</p>
-<p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème décidable un problème de décision.</p>
-<p>Considérons par exemple le problème de trouver le maximum d'un tableau. On peut lui associer le problème de décision suivant :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : plus grand que</li>
-<li><strong>données</strong> :
-<ul>
-<li>un tableau d'entiers $T$</li>
-<li>un entier $K$</li>
-</ul>
-</li>
-<li><strong>question</strong> : $T$ possède-t-il un élément plus grand ou égal à $K$</li>
-</ul>
-</div>
-</div>
+<blockquote>
+<p>TBD : recoller les morceaux</p>
+</blockquote>
 <p>Si ce problème admet un décideur efficace, il suffit de l'appliquer pour $K$ valant itérativement toutes les valeurs de $T$ pour trouver le maximum. Ce nouvel algorithme est également efficace et résout le problème du maximum.</p>
 <p>De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).</p>
 <p>La remarque ci-dessus nous montre que l'on peut uniquement considérer les problèmes de décision décidables, sans perte de généralité. Dans ce cadre, on peut définir les problèmes de décision utilisable en pratique comme étant ceux tels que :</p>
@@ -404,10 +185,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 <p>La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a>.</p>
 <p>Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérificateur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.</p>
-<p>Enfin, la taille du certificat est bornée par la complexité du vérificateur (cela ne sert à rien que sa taille soit supérieure, elle ne sera de toute façon pas utilisée lors de l'exécution de l'algorithme) qui est polynomiale en la taille de $e$.</p>
-<blockquote>
-<p>TBD le certificat efficace permet de creer un algorithme resolvant un probleme. La propriété c'est la verification et on fait otus les cas possibles. en 2^f(n).</p>
-</blockquote>
+<p>Enfin, comme la taille du certificat est bornée par la complexité du vérificateur on peut utiliser le même argument que précédemment pour que tout problème de $NP$ est décidable : il suffit de tester le vérificateur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérificateur).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -422,30 +200,15 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div>
 </div>
-<p>Finissons cette partie en notant qu'il existe des problèmes de décisions qui sont décidables mais pas dans $NP$, par exemple le problème de décision suivant (juste en donner une idée de la démonstration nous emmènerait trop loin, croyez moi donc sur parole) :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Problème</strong></p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><strong>nom</strong> : Ackerman</li>
-<li><strong>données</strong> :
-<ul>
-<li>deux entiers $n$ et $m$</li>
-<li>un entier $K$</li>
-</ul>
-</li>
-<li><strong>question</strong> : la valeur de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#fonction-ackermann">la fonction d'Ackermann</a> en $n$ et $m$ est-elle plus grande que $K$ ?</li>
-</ul>
-</div>
-</div>
 <p>Au final on a le schéma suivant :</p>
-<p><img src="NP-NP.png" alt="décidable"></p>
+<p><img src="NP-NP-1.png" alt="décidable"></p>
+<h2>Inclusion des classes</h2>
+<blockquote>
+<p>TBD : entre décidable et NP il y a du monde et entre NP et P on ne sais pas.</p>
+</blockquote>
 <p>Finissons cette partie par une question encore sans réponse actuellement. Est-ce qu'il existe des problèmes de décision de $NP$ qui ne sont pas dans $P$ ?</p>
 <p>La question semble idiote dit comme ça, mais c'est une vraie question et personne n'a de réponse. Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
+<p><img src="NP-NP-2.png" alt="décidable"></p>
 <blockquote>
 <p>TBD mettre SAT comme exemple de problème de décision</p>
 </blockquote>
