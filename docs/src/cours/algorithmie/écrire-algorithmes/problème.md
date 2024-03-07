@@ -115,7 +115,7 @@ En revanche le problème de décision suivant n'est pas décidable :
 
 {% endnote %}
 
-## Reconnaissabilité
+## <span id="reconnaissable"></span>Reconnaissabilité
 
 Il existe un cas plus faible que la décidabilité, c'est la **_reconnaissabilité_**, qui permet d'utiliser des programmes plutôt que des algorithme pour décider :
 

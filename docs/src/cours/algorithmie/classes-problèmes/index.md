@@ -13,6 +13,11 @@ On a vu au début de ce cours que certains problèmes [ne pouvaient pas être r�
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](../problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](../projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
+
+{% aller %}
+[Algorithmes et langages](./décidabilité){.interne}
+{% endaller %}
+
 {% aller %}
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
@@ -42,3 +47,10 @@ Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies d'éléments de $\\{0, 1
 {% endnote %}
 
 > TBD : entrée, travail et sorties sont deux listes de 0 et 1.
+5. ex : SAT
+   1. def et utilisabilité
+   2. SAT et 3-SAT : deux problèmes équivalent
+6. classes de problèmes
+
+
+> TBD : pour le thm de cook. on peut toujours supposer que le programme n'a pas touché de case mémoire plus loin que sa complexité
