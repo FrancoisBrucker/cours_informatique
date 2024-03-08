@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Décidabilité et décision</title>
+    <title>Décideurs et Décision</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Décidabilité et décision</h1>
+  <h1>Décideurs et Décision</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/">Classes de problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/décidabilité/">Décidabilité et décision</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/">Classes de problèmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/classes-problèmes/décideur-décision/">Décideurs et Décision</a>
 
 </div>
 </div>
@@ -93,11 +93,7 @@
   
 
   <blockquote>
-<p>TBD :<br>
-algo = décision<br>
-language = algo<br>
-complexité aussi haute qu'on veut<br>
-space &lt; opération &lt; 2^space</p>
+<p>TBD : chapeau</p>
 </blockquote>
 <h2>Algorithmes, décideurs et vérifieurs</h2>
 <p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction-N" class="interne">dans toute sa généralité</a> une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de <em>concaténer</em> des entiers) et qu'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cideur" class="interne">un décideur</a> est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).</p>
@@ -278,18 +274,18 @@ v_f(n, m) = \left\{<br>
 $$</p>
 <p>On peut voir l'algorithme $v_f$ comme un vérifieur. Il vérifie que le second paramètre est la sortie du premier paramètre. On reparlera de ces algorithmes dans la suite, pour l'instant ils nous permettent de montrer que l'espace d'arriver d'un algorithme peut être uniquement deux valeurs. Un algorithme peut être vu comme une fonction de :</p>
 <p>$$f: \mathbb{N}^2 \rightarrow \{0, 1 \}$$</p>
-<p>Et comme $\mathbb{N}^2$ est en bijection avec $\mathbb{N}$ :</p>
+<p>Et comme $\mathbb{N}^2$ est en bijection avec $\mathbb{N}$, un algorithme est équivalent à un <em><strong>décideur</strong></em> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un <strong><em>algorithme</em></strong> est une fonction de :</p>
+<p>Un <strong><em>décideur</em></strong> est une fonction de :</p>
 <p>$$f: \mathbb{N} \rightarrow \{0, 1 \}$$</p>
 </div>
 </div>
-<p>Un décideur est donc une notion a priori plus générale qu'un algorithme puisque l'on peut les écrire sous la forme d'un décideur ! On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des problèmes de décisions puisqu'on pourra les appliquer sans perte de généralité aux autres problèmes.</p>
-<p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (que l'on a montré équivalentes) utiles :</p>
+<p>On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des décideurs  puisqu'on pourra les appliquer sans perte de généralité aux autres types d'algorithmes.</p>
+<p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (équivalentes) utiles :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -297,7 +293,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On peut représenter un algorithme sous 3 formes équivalentes utiles en théorie :</p>
+<p>On peut représenter un algorithme sous 3 formes équivalentes :</p>
 <ul>
 <li>les <strong><em>fonctions</em></strong> : $A(x) = y$, avec $x, y \in \mathbb{N}$ qui permettent le calcul effectif,</li>
 <li>les <strong><em>décideurs</em></strong> : $A(x) = b$, avec $x \in \mathbb{N}$ et $b \in \{0, 1\}$ qui permettent de séparer les entiers en 2, les entiers <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$, et les autres</li>
@@ -305,8 +301,8 @@ $$</p>
 </ul>
 </div>
 </div>
-<h2>Décision et Langage</h2>
-<p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème décidable un problème de décision.</p>
+<h2>Problèmes de décision</h2>
+<p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème algorithmique un problème de décision.</p>
 <p>Considérons par exemple le problème de trouver le maximum d'un tableau. On peut lui associer le problème de décision suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -328,10 +324,110 @@ $$</p>
 </div>
 </div>
 <p>Si le problème <em>&quot;plus grand que&quot;</em> est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement <em>&quot;plus grand que&quot;</em> pour $K$ valant chaque élément de $T$.</p>
-<p>De façon formelle,</p>
+<p>L'équivalence entre les algorithmes et les décideurs d'une part et les problèmes algorithmiques et les problèmes de décision d'autres part, qui sont des structures plus simple à manipuler car ayant mois de paramètres en font les objets de prédilection de l'étude théorique des algorithmes.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Étudier les propriétés théoriques des algorithmes et des problèmes algorithmiques se fait, sans perte de généralité, via les décideurs et les problèmes de décision.</p>
+</div>
+</div>
+<h2>Décideur et décision</h2>
+<p>Formalisons les notions de décideurs et des problèmes de décision (décidables) qui leurs sont associés.</p>
+<h3>Langage</h3>
+<p>Un algorithme décideur prend en paramètre un entier (donc de façon équivalente une suite de 0 et de 1, donc de façon équivalente une chaine de caractère, donc de façon équivalente tout ce qu'on veut d'autre de fini...) et répond soit 1 (qu'on assimile à VRAI ou OUI) soit 0 (qu'on assimile à FAUX ou NON) : il sélectionne un ensemble de nombres (donc de façon équivalente un ensemble de suites de 0 et de 1, donc de façon équivalente un ensemble de chaines de caractères, ...).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <em><strong>langage</strong></em> d'un décideur $A$ l'ensemble $A^{-1}(1)$.</p>
+<p>On dira qu'un décideur $A$ <em><strong>accepte le langage $L$</strong></em> si $L = A^{-1}(1)$ et qu'un langage $L$ est <em><strong>décidable</strong></em> s'il existe un algorithme pour l'accepter.</p>
+</div>
+</div>
+<p>La notion de langage est à rapprocher des ensembles décidables et des ensembles reconnaissable que l'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me">on a vus précédemment</a>.</p>
+<h3>Décision</h3>
+<p>Deux décideurs sont équivalents s'ils acceptent le même langage. De façon formelle, un problème de décision est alors un langage qu'il s'agit de reconnaître avec un algorithme de la complexité la plus faible possible. De même que la complexité d'un problème est la complexité la plus faible d'un algorithme que le résout :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La <em><strong>complexité d'un langage (décidable)</strong></em> est la complexité la plus faible d'un algorithme qui l'accepte.</p>
+</div>
+</div>
+<h2>Complexités des décideurs</h2>
+<p>Comme un décideur prend en entrée un entier, sa complexité sera forcément calculé par rapport à lui. Pour un décideur $A$ prenant un entier $n$ en paramètre, on notera dans cette partie :</p>
+<ul>
+<li>$C(n)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9">complexité</a>.</li>
+<li>$S(n)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-spatiale">complexité spatiale</a>,</li>
+</ul>
+<p>Comme on se place d'un point de vue théorique, on supposera que chaque case mémoire ne peut contenir qu'un 0 ou un 1 (un bit) et que chaque instruction aura une complexité linaire en la taille de la donnée, codée au format binaire, qu'il manipule.</p>
+<h3>Complexité spatiale et temporelle</h3>
+<p>On sait que la complexité spatiale d'un algorithme est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout décideur sans instructions inutiles, on a l'encadrement :</p>
+<div>
+$$
+S(n) \leq C(n) \leq \mathcal{O}(S(n) \cdot 2^{S(n)})
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On suppose que le décideur est écrit en pseudo-code, qu'il a $L$ instructions, qu'il ne peut manipuler que des tableaux de bits et que la complexité de chaque instruction est linéaire dans la taille .</p>
+<ol>
+<li>comme le décideur est un algorithme, si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) l'algorithme va forcément boucler indéfiniment. Chaque ligne va donc  être exécutée au maximum $2^{S(n)}$ fois</li>
+<li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$</li>
+</ol>
+<p>La complexité est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ et comme le nombre d'instructions du décideur est une constante on en déduit le résultat demandé.</p>
+</div>
+</details>     
+</div>
+<h3>Hiérarchie des complexités</h3>
+<p>On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.</p>
 <blockquote>
-<p>TBD langage. Décidabilité du langage. Complexité de calcul.</p>
+<p>TBD il existe des complexité pour toute fonction calculable</p>
 </blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe des problèmes algorithmiques de complexités aussi grande ou aussi petite que l'on veut.</p>
+</div>
+</div>
 
 
 </article>

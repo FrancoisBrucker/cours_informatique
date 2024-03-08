@@ -254,6 +254,7 @@ $$</p>
 </ul>
 <h3>Complexité algorithmique</h3>
 <p>En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :</p>
+<div id="complexité"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -304,7 +305,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em t="">La complexité en temps $C</em>(N)$ d'un code $A(p_1, \dots, p_m)$_</strong> est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong>_La complexité en temps $T(N)$ d'un code $A(p_1, \dots, p_m)$_</strong> est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
 <p>Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :</p>
@@ -317,8 +318,9 @@ $$</p>
 </div>
 </div>
 <p>Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.</p>
-<h3>Complexité en mémoire</h3>
+<h3>Complexité spatiale</h3>
 <p>Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.</p>
+<div id="complexité-spatiale"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -326,7 +328,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité en mémoire $C_M(N)$ d'un algorithme $A(p_1, \dots, p_m)$</em></strong> est le nombre maximum de cases mémoires utilisées en même temps pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité spatiale $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$</em></strong> (aussi appelée <strong><em>complexité en mémoire</em></strong>) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
 <p>Par exemple notre fonction <code class="language-">fibonacci(n)</code> nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :</p>
@@ -378,13 +380,13 @@ $$</p>
 <p>Souvent, lors du design de nos algorithmes on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.</p>
 </div>
 </div>
-<p>Complexité et complexité en mémoire sont liées puisque chaque affectation d'une variable prend une instruction :</p>
+<p>Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité en mémoire est toujours inférieure à la complexité.</p>
+<p>La complexité spatiale est toujours inférieure à la complexité.</p>
 </div>
 </div>
 
