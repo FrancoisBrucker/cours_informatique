@@ -135,6 +135,7 @@ Dans la partie pseudo-code on a considéré deux types de données :
 
 En prenant en compte les connaissances minimales que l'on a sur les entrées d'un algorithme, sa complexité est définie comme suit :
 
+<div id="complexité"></div>
 {% note "**Définition**" %}
 
 **_La complexité $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$_** est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
@@ -166,7 +167,7 @@ Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres 
 
 {% note "**Définition**" %}
 
-**_La complexité minimum $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$_** est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
+**_La complexité minimum $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$\_** est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
 ### <span id="complexité-temps"></span>Complexité en temps
@@ -174,7 +175,7 @@ Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres 
 Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exécution. On peut alors définir la **_complexité en temps_** d'exécution d'un code :
 {% note "**Définition**" %}
 
-**_La complexité en temps $C_{t}(N)$ d'un code $A(p_1, \dots, p_m)$_** est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.
+**_La complexité en temps $T(N)$ d'un code $A(p_1, \dots, p_m)$\_** est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
 Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :
@@ -185,13 +186,14 @@ Le temps mis pour un code à être exécuté est proportionnelle à la complexit
 
 Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.
 
-### Complexité en mémoire
+### Complexité spatiale
 
 Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.
 
+<div id="complexité-spatiale"></div>
 {% note "**Définition**" %}
 
-**_La complexité en mémoire $C_M(N)$ d'un algorithme $A(p_1, \dots, p_m)$_** est le nombre maximum de cases mémoires utilisées en même temps pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.
+**_La complexité spatiale $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$_** (aussi appelée **_complexité en mémoire_**) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
 Par exemple notre fonction `fibonacci(n)`{.language-} nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :
@@ -236,8 +238,8 @@ Pour un total de $9\cdot n-15$, mais reste comparable au premier.
 Souvent, lors du design de nos algorithmes on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
 {% endinfo %}
 
-Complexité et complexité en mémoire sont liées puisque chaque affectation d'une variable prend une instruction :
+Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :
 
 {% note %}
-La complexité en mémoire est toujours inférieure à la complexité.
+La complexité spatiale est toujours inférieure à la complexité.
 {% endnote %}

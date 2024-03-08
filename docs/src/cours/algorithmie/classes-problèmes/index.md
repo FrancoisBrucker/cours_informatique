@@ -15,7 +15,7 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 
 {% aller %}
-[Algorithmes et langages](./décidabilité){.interne}
+[Algorithmes et langages](./décideur-décision){.interne}
 {% endaller %}
 
 {% aller %}
@@ -27,7 +27,12 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 > pb vérifiable ont toujours une solution (une MT qui résout le problème) s'il existe un nombre infini de solutions possible (ie. s'il existe toujours une solution/certificat plus grand).
 
+> TBD exemples du probleme sat pour les réductions
+
 ### Problèmes NPC
+
+1. réduction
+2. exemple de SAT vers 3-SAT
 
 > TBD isomorphisme de graphe : status inconnu.
 > TBD NPC = universel

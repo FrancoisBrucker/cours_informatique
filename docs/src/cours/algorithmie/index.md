@@ -117,3 +117,8 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 {% endaller %}
 
 > TBD nombre aléatoires
+
+## Algorithmes et ordinateurs
+
+> TBD modèle de Von Neuman
+> TBD circuit logiques ?
