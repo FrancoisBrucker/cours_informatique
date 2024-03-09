@@ -404,7 +404,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On suppose que le décideur est écrit en pseudo-code, qu'il a $L$ instructions, qu'il ne peut manipuler que des tableaux de bits et que la complexité de chaque instruction est linéaire dans la taille .</p>
+<p>On suppose que le décideur a $L$ instructions.</p>
 <ol>
 <li>comme le décideur est un algorithme, si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) l'algorithme va forcément boucler indéfiniment. Chaque ligne va donc  être exécutée au maximum $2^{S(n)}$ fois</li>
 <li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$</li>
@@ -415,9 +415,52 @@ $$
 </div>
 <h3>Hiérarchie des complexités</h3>
 <p>On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.</p>
-<blockquote>
-<p>TBD il existe des complexité pour toute fonction calculable</p>
-</blockquote>
+<p>La preuve est belle, simple mais atypique.</p>
+<h4>Pseudo-code et entier</h4>
+<p>On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format <a href="Unicode">Unicode</a> : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier, écrit au format binaire, peut alors :</p>
+<ol>
+<li>parfois être vu comme une suite de caractères (si sa représentation binaire possède un multiple de 32 bits)</li>
+<li>moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier 10).</li>
+<li>encore moins souvent ce texte, privé des derniers retour à la ligne est un programme écrit en pseudo-code.</li>
+<li>et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.</li>
+</ol>
+<p>Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code">chaque instruction est autorisée</a>. Il existe donc un algorithme linéaire dans le nombre de caractères du programme permettant de savoir si un nombre est un pseudo-code ou pas. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et on vérifie qu'il est syntaxiquement correct (pas de rouge dans vscode par exemple).</p>
+<p>Si un entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P<a href=".">n</a>$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).</p>
+<h4>Exécution de pseudo-code</h4>
+<p>Considérons le programme suivant, qui prend en paramètre un pseudo-code :</p>
+<pre><code>Nom : Exécution
+Entrées : 
+    - un entier n correspondant à un pseudo-code P[n] à un paramètre
+    - un entier K
+Programme :
+    Exécution du pseudo-code P[n](n) une instruction après l'autre :
+        Avant l'exécution de l'instruction courante, on vérifie que l'instruction est corecte. 
+        Si elle n'est pas correcte alors :
+            Rendre 0
+        Sinon :        
+            on exécute l'instruction courante de P
+        Si l'exécution de l'instruction stoppe P :
+            si le retour de P est 0 :
+                Rendre 1
+            sinon :
+                Rendre 0
+        K = K - 1
+        si K ≤ 0 :
+            Rendre 0
+</code></pre>
+<p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P<a href="n">n</a>$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P<a href="n">n</a>$.</p>
+<p>Enfin, il va rendre :</p>
+<ul>
+<li>1 si $P<a href="n">n</a>$ s'arrête en moins de $K$ instructions et rend la valeur 0</li>
+<li>0 dans tous les autres cas.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
