@@ -219,7 +219,7 @@ $$
 
 {% endnote%}
 {% details "preuve", "open" %}
-On suppose que le décideur est écrit en pseudo-code, qu'il a $L$ instructions, qu'il ne peut manipuler que des tableaux de bits et que la complexité de chaque instruction est linéaire dans la taille .
+On suppose que le décideur a $L$ instructions.
 
 1. comme le décideur est un algorithme, si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) l'algorithme va forcément boucler indéfiniment. Chaque ligne va donc  être exécutée au maximum $2^{S(n)}$ fois
 2. chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$
@@ -232,8 +232,61 @@ La complexité est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ e
 
 On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.
 
-> TBD il existe des complexité pour toute fonction calculable
+La preuve est belle, simple mais atypique. 
+
+
+#### Pseudo-code et entier
+
+On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format [Unicode](Unicode) : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier, écrit au format binaire, peut alors :
+
+1. parfois être vu comme une suite de caractères (si sa représentation binaire possède un multiple de 32 bits)
+2. moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier 10).
+3. encore moins souvent ce texte, privé des derniers retour à la ligne est un programme écrit en pseudo-code.
+4. et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.
+
+Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code). Il existe donc un algorithme linéaire dans le nombre de caractères du programme permettant de savoir si un nombre est un pseudo-code ou pas. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et on vérifie qu'il est syntaxiquement correct (pas de rouge dans vscode par exemple).
+
+Si un entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P[n]()$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).
+
+
+#### Exécution de pseudo-code
+
+Considérons le programme suivant, qui prend en paramètre un pseudo-code :
+
+```
+Nom : Exécution
+Entrées : 
+    - un entier n correspondant à un pseudo-code P[n] à un paramètre
+    - un entier K
+Programme :
+    Exécution du pseudo-code P[n](n) une instruction après l'autre :
+        Avant l'exécution de l'instruction courante, on vérifie que l'instruction est corecte. 
+        Si elle n'est pas correcte alors :
+            Rendre 0
+        Sinon :        
+            on exécute l'instruction courante de P
+        Si l'exécution de l'instruction stoppe P :
+            si le retour de P est 0 :
+                Rendre 1
+            sinon :
+                Rendre 0
+        K = K - 1
+        si K ≤ 0 :
+            Rendre 0
+```
+
+Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P[n](n)$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P[n](n)$. 
+
+Enfin, il va rendre :
+
+- 1 si $P[n](n)$ s'arrête en moins de $K$ instructions et rend la valeur 0
+- 0 dans tous les autres cas.
+
+{% note %}
+
+{% endnote %}
 
 {% note "**À retenir**"%}
 Il existe des problèmes algorithmiques de complexités aussi grande ou aussi petite que l'on veut.
+
 {% endnote %}

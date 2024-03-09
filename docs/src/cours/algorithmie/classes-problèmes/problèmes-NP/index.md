@@ -121,6 +121,9 @@ Au final on a le schéma suivant :
 
 ![décidable](./NP-NP-1.png)
 
+## Autres classes
+
+co-NP
 ## Inclusion des classes
 
 > TBD : entre décidable et NP il y a du monde et entre NP et P on ne sais pas.
@@ -137,3 +140,4 @@ La question semble idiote dit comme ça, mais c'est une vraie question et person
 
 > TBD co-NP et les conjectures np intersection co=np
 > TBD dire qu'on peut aller plus loin et que c'est un champ de recherche. log, poly log. etc
+
