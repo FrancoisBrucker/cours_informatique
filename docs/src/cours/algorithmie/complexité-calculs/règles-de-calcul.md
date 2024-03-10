@@ -63,9 +63,9 @@ Rendre total
 
 En conclusion :
 
-{% note "**À retenir**"%}
+{% attention "**À retenir**"%}
 Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle
-{% endnote %}
+{% endattention %}
 
 ### Boucles imbriquées indépendantes
 
@@ -105,12 +105,12 @@ La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal
 \]
 </p>
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$.
 
 Une boucle de $n-3$ exécutions pouvant être avantageusement remplacé par $\mathcal{O}(n)$
 
-{% endnote %}
+{% endattention %}
 
 ### <span id="règle-croissance"></span>Boucles dépendantes mais monotones
 
@@ -214,9 +214,9 @@ On retrouve bien le résultat attendu.
 
 Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu'on arrive à une condition d'arrêt qui stope la récursion. On en calcule la complexité en posant une équation qu'il faut résoudre :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
-{% endnote %}
+{% endattention %}
 
 Pour illustrer ce calcul, prenons l'exemple suivant :
 

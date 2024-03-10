@@ -199,11 +199,11 @@ Si on sait ce que l'on veut faire, on peut créer des algorithme (exemple des fo
 
 La conclusion de cette partie est pratique :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Lorsque vous créez des algorithmes, il faut **toujours** :
 
 1. expliciter ce que vous pensez qu'il fait
 2. démontrer qu'il le fait bien
 
 Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme fait ce que l'on pense qu'il fait, et ce quelque soit ce qu'on pense qu'il fait.
-{% endnote %}
+{% endattention %}

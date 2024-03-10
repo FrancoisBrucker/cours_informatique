@@ -35,6 +35,40 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
+### Autres modèles
+
+L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreuses façon d'en écrire. Nous allons en voir 4 toutes équivalentes les unes avec les autres !
+
+#### Langages informatiques
+
+> TBD : le plus clair car le pseudo code s'écrit presque directement, par exemple en python
+> TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <https://docs.python.org/fr/3/library/dis.html>) qui est lui-même exécuté par une machine virtuelle.
+
+#### Modèle de Von Neumann
+
+> TBD : le langage de la machine
+> tout est basé sur les opérations booléennes, logiques.
+
+> TBD circuit logiques ?
+
+#### Machines de Turing
+
+> TBD : ne garder que la machine à 1 ruban ici.
+
+Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
+
+{% aller %}
+[Machines de Turing](./machine-turing){.interne}
+{% endaller %}
+
+#### Lambda calcul
+
+> TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique
+
+#### Équivalence des différentes approches
+
+> TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
+
 ## Complexités
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
@@ -81,20 +115,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-### Logique et algorithmique
-
-> TBD un pseudo code logique
-> TBD modèle de von neuman : logique et paramètres dans des registres.
-> TBD on peut tout faire avec et et ou et un pseudo-code minimal basé sur la logique, donc algo et ordi équivalent
-
-### Machines de Turing
-
-Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
-
-{% aller %}
-[Machines de Turing](./machine-turing){.interne}
-{% endaller %}
-
 ## Complexité amortie
 
 {% aller %}
@@ -118,7 +138,3 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 > TBD nombre aléatoires
 
-## Algorithmes et ordinateurs
-
-> TBD modèle de Von Neuman
-> TBD circuit logiques ?

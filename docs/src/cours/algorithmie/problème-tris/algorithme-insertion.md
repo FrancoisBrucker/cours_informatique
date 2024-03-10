@@ -44,9 +44,9 @@ L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-
 
 Pour garantir que `T[j - 1]`{.language-} soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition `(courant < T[j - 1])`{.language-} de la ligne 5 [la sentinelle](https://en.wikipedia.org/wiki/Sentinel_value) `(j > 0)`{.language-}. Les deux conditions étant liées par un `and`{.language-}, python (et tout autre langage de programmation) n'évaluera la seconde condition **que si la première est vérifiée** (un `and`{.language-} ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le `and`{.language-} soit vrai il est donc inutile de vérifier la seconde condition).
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 La technique [des sentinelles](https://en.wikipedia.org/wiki/Sentinel_value) est très pratique, cela vaut le coup de la connaître.
-{% endnote %}
+{% endattention %}
 
 ## <span id="fonctionnement-insertion"></span> Fonctionnement
 

@@ -32,14 +32,14 @@ L'espérance de la complexité, c'est à dire la complexité *attendue* ou *norm
 
 Elle dépend des entrées de celui-ci et plus précisément du nombre de fois où une entrée donnée peut être choisie. Pour pouvoir la calculer de façon formelle, il faut connaître ainsi le modèle probabiliste associé aux données :
 
-{% note "**À retenir**"%}
+{% attention "**À retenir**"%}
 La ***complexité en moyenne*** de l'algorithme $A$ pour une entrée de taille $n$ est :
 
 $$C_{\text{moyenne}}(n) = \sum_{e \in \mathcal{E}} p_e \cdot N(e)$$
 
 Avec $\mathcal{E}$ l'ensemble des données de taille $n$, $p_e$ la probabilité d'exécuter l'algorithme avec l'entrée $e \in \mathcal{E}$ et $N(e)$ le nombre d'opérations utilisé par l'algorithme pour se terminer avec l'entrée $e$.
 
-{% endnote %}
+{% endattention %}
 
 Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie, $p_e = \frac{1}{\vert \mathcal{E} \vert}$.
 
@@ -126,27 +126,27 @@ Ce n'est pas une preuve, mais ça donne une idée de ce qu'il faut prouver.
 
 Pour tout algorithme, on a les inégalités suivantes :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 $$\mbox{complexité minimale} \leq \mbox{complexité en moyenne} \leq \mbox{complexité (maximale)}$$
 
 La complexité en moyenne nous indique, pour un modèle de données, si les cas extrêmes (complexité minimale et maximale) arrivent fréquemment ou pas.
 
 La complexité en moyenne nous donne ***le nombre d'opérations attendu*** si on exécute l'algorithme (et qu'on a ni beaucoup de chance pour tomber sur la complexité minimale ni pas de chance du tout pour tomber sur la complexité maximale).
-{% endnote %}
+{% endattention %}
 
 Ainsi :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 - si la complexité maximale est égale à la complexité en moyenne alors la complexité maximale arrivera souvent
 - si la complexité minimale est égale à la complexité en moyenne alors la complexité minimale arrivera souvent
 - si les trois complexités sont différentes, les cas minimum et maximum arriveront rarement.
 
-{% endnote %}
+{% endattention %}
 
 La complexité en moyenne est également un moyen rapide et simple d'estimer la complexité d'un code :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Pour estimer la complexité en moyenne d'un algorithme codé, il suffit de mesurer le temps pris par l'algorithme pour s'exécuter pour des données aléatoires et d'en faire la moyenne (c'est [un estimateur sans biais de la moyenne théorique](https://fr.wikipedia.org/wiki/Estimateur_(statistique)#Estimateur_de_la_moyenne_de_Y)).
-{% endnote %}
+{% endattention %}

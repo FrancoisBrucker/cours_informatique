@@ -1,7 +1,7 @@
 - <https://www.youtube.com/watch?v=ifvpTzpA59s&list=PLwp5OpRmcl_FH_mFTO_-HCAjQmdge0PjI&index=3> list de lecture sur la complexité.
 
 - exo sur les piles dans la partie structure.
-
+- exo récursif. S'aider des exercice sur les files en haskell de <https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV>
 - remplacer les * des listes par des -
 
 - graphe : voir ce qu'ils font en terminale/taupe : http://yallouz.arie.free.fr/terminale_cours/graphes/graphes.php 

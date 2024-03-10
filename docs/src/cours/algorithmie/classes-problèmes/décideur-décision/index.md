@@ -134,14 +134,14 @@ On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de l�
 
 Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (équivalentes) utiles :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 On peut représenter un algorithme sous 3 formes équivalentes :
 
 - les **_fonctions_** : $A(x) = y$, avec $x, y \in \mathbb{N}$ qui permettent le calcul effectif,
 - les **_décideurs_** : $A(x) = b$, avec $x \in \mathbb{N}$ et $b \in \\{0, 1\\}$ qui permettent de séparer les entiers en 2, les entiers _vrais pour $A$_ : $\\{ x \vert A(x) = 1 \\}$, et les autres
 - les **_vérifieurs_** : $A(x, y) = b$, avec $x, y \in \mathbb{N}$ et $b \in \\{0, 1\\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.
 
-{% endnote %}
+{% endattention %}
 
 ## Problèmes de décision 
 
@@ -161,15 +161,22 @@ Considérons par exemple le problème de trouver le maximum d'un tableau. On peu
 
 Si le problème _"plus grand que"_ est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement _"plus grand que"_ pour $K$ valant chaque élément de $T$.
 
+De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).
+
 L'équivalence entre les algorithmes et les décideurs d'une part et les problèmes algorithmiques et les problèmes de décision d'autres part, qui sont des structures plus simple à manipuler car ayant mois de paramètres en font les objets de prédilection de l'étude théorique des algorithmes.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Étudier les propriétés théoriques des algorithmes et des problèmes algorithmiques se fait, sans perte de généralité, via les décideurs et les problèmes de décision.
-{% endnote %}
+{% endattention %}
 
 ## Décideur et décision
 
 Formalisons les notions de décideurs et des problèmes de décision (décidables) qui leurs sont associés. 
+
+Langages et problèmes de décisions sont deux notions équivalentes. On utilisera l'une ou l'autre des notions selon le contexte :
+
+- ***langages*** si l'on veut caractériser tous les algorithmes faisant la même chose
+- problèmes de décision si l'on cherche à résoudre une question précise
 
 ### Langage
 
@@ -203,8 +210,6 @@ Comme un décideur prend en entrée un entier, sa complexité sera forcément ca
 
 Comme on se place d'un point de vue théorique, on supposera que chaque case mémoire ne peut contenir qu'un 0 ou un 1 (un bit) et que chaque instruction aura une complexité linaire en la taille de la donnée, codée au format binaire, qu'il manipule.
 
-### Complexité spatiale et temporelle
-
 On sait que la complexité spatiale d'un algorithme est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :
 
 {% note "**Proposition**" %}
@@ -228,65 +233,150 @@ La complexité est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ e
 
 {% enddetails %}
 
-### Hiérarchie des complexités
+## Hiérarchie des complexités
 
 On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.
 
 La preuve est belle, simple mais atypique. 
 
 
-#### Pseudo-code et entier
+### Pseudo-code et entier
 
-On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format [Unicode](Unicode) : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier, écrit au format binaire, peut alors :
+On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format [Unicode](Unicode) : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier $n$, écrit au format binaire, peut alors :
 
 1. parfois être vu comme une suite de caractères (si sa représentation binaire possède un multiple de 32 bits)
 2. moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier 10).
 3. encore moins souvent ce texte, privé des derniers retour à la ligne est un programme écrit en pseudo-code.
 4. et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.
 
-Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code). Il existe donc un algorithme linéaire dans le nombre de caractères du programme permettant de savoir si un nombre est un pseudo-code ou pas. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et on vérifie qu'il est syntaxiquement correct (pas de rouge dans vscode par exemple).
+Si $n$ satisfait la condition 4, alors $P(n)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si [chaque instruction est autorisée](../../écrire-algorithmes/pseudo-code){.interne} et ceci est possible avec un [analyseur lexical](https://fr.wikipedia.org/wiki/Analyse_lexicale) de complexité quadratique dans la taille de la données, c'est à dire ici $\log_2(n)$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).
 
-Si un entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P[n]()$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).
+Le décideur $P(n)$ est ainsi décidable avec une complexité $\mathcal{O}((\log_2(n))^2)$.
+
+Enfin, si l'entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P\[n\]()$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P\[n\]$ sera égal à $P\[n'\]$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).
 
 
-#### Exécution de pseudo-code
+{% attention "**À retenir**"%}
+On peut associer à tout entier $n$ un texte qui peut parfois être du pseudo-code correspondant à un programme à un paramètre $P\[n\]()$.
+{% endattention %}
+
+### Exécution de pseudo-code
 
 Considérons le programme suivant, qui prend en paramètre un pseudo-code :
 
-```
-Nom : Exécution
+```text
+Nom : Exécution (on le notera E(n, K))
 Entrées : 
     - un entier n correspondant à un pseudo-code P[n] à un paramètre
     - un entier K
 Programme :
-    Exécution du pseudo-code P[n](n) une instruction après l'autre :
-        Avant l'exécution de l'instruction courante, on vérifie que l'instruction est corecte. 
-        Si elle n'est pas correcte alors :
-            Rendre 0
-        Sinon :        
-            on exécute l'instruction courante de P
-        Si l'exécution de l'instruction stoppe P :
+    on exécute de programme P[n](n) instruction après instruction :
+        soit I la prochaine instruction de P[n](n)
+
+        si l'exécution de I stoppe P :
             si le retour de P est 0 :
                 Rendre 1
             sinon :
                 Rendre 0
+        
+        exécution de I
+
         K = K - 1
         si K ≤ 0 :
             Rendre 0
 ```
 
-Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P[n](n)$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P[n](n)$. 
+Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P\[n\](n)$, soit si le pseudo-code de $P\[n\]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P\[n\](n)$. 
 
 Enfin, il va rendre :
 
-- 1 si $P[n](n)$ s'arrête en moins de $K$ instructions et rend la valeur 0
+- 1 si $P\[n\](n)$ s'arrête en moins de $K$ instructions et rend la valeur 0
 - 0 dans tous les autres cas.
 
-{% note %}
 
+{% attention "**À retenir**"%}
+Il existe un un algorithme qui permet d'exécuter au plus $K$ instructions d'un programme.
+{% endattention %}
+
+### Décideur final
+
+On a maintenant tous les ingrédients pour créer le décideur, dépendant d'une fonction calculable $f$, qui va nous servir de preuve.
+
+```text
+Nom : complexité-f (on va le noter cf(n))
+Entrée : un entier n
+Programme :
+    K = f(n)
+    Si P(n) vaut 0
+        rendre 0
+    sinon
+        Rendre E(n, K)
+
+```
+
+On a bien affaire à un algorithme puisque :
+
+- $f$ est calculable 
+- $P(n)$ et $E(n, K)$ sont des algorithmes.
+
+On peut donc lui associer :
+
+- sa complexité $C_{cf}(n)$
+- son langage $L_f$
+
+{% note "**Proposition**" %}
+On a : $C_{cf}(n) = \Omega(f(n))$
+{% endnote %}
+{% details "preuve", "open" %}
+Comme tout pseudo-code sera encodé par un entier, il existe $n_0$ l'entier correspondant au programme suivant :
+
+```text
+tant que Vrai:
+    ne rien faire
+```
+
+Qui ne va jamais s'arrêter.
+
+Comme $P\[n\] = P\[2^{32}\cdot n + 10\]$ il va exister une infinité d'entiers avec $P\[n_0\]$ comme pseudo-code associé et que pour ces entiers $E(n, f(n))$ va effectuer $f(n)$ instructions de $P\[n_0\]$ qui boucle à l'infini, on a bien que $C_{cf}(n) = \Omega(f(n))$
+
+{% enddetails %}
+
+On peut être plus précis quand à la complexité de $cf(n)$ :
+
+1. il doit calculer $f(n)$.
+2. il doit savoir si $f(n)$ correspond à un pseudo-code, ce qui peut se faire en carré de la longeur binaire de $f(n)$ : $\mathcal{O}(\log^2(f(n)))$.
+3. il exécute au pire $f(n)$ instructions de a $P\[n\](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\log(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \log(f(n))$ opérations.
+
+La complexité théorique de $cf(n)$ est donc $C_{cf}(n) = \Theta(f(n) \cdot \log(f(n)))$.
+
+Terminons en montrant que le langage de $cf$ est de complexité supérieure à $f(n)$ :
+
+{% note "**Proposition**" %}
+La complexité de $L_f$ est en $\Omega(f(n))$
+{% endnote %}
+{% details "preuve", "open" %}
+Supposons qu'il existe un décideur $B(n)$ de complexité asymptotique $C_B(n)$ strictement inférieure à $f(n)$. Il existe alors $N_0$ tel que $C_B(n) < f(n)$ pour tout $n>N_0$.
+
+Le décideur $B$ pouvant être décrit par un pseudo-code, il existe un entier $n_B$ tel que $P(n_B)$ vaut 1 et $P\[n_B\]$ vaut $B$. En ajoutant assez de retour à la ligne au pseudo-code de $B$, il va exister un entier $n^{\star} > \max(N_0, n_B)$ tel que $P(n^{\star})$ vaut 1 et $P\[n^{\star}\]$ vaut $B$.
+
+Comme $n^{\star} > N_0$, on a que $C_B(n^{\star}) < f(n^{\star})$ et donc que $P\[n^{\star}\](n^{\star}) = P\[n_B\](n^{\star})$ et va être exécuté dans sont intégralité par $cf(n^{\star})$. Ceci amène à une contradiction car :
+
+- soit $n^{\star} \in L_f$ et donc $P\[n_B\](n^{\star})$ vaut 1 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 0 et  $n^{\star} \notin L_f$
+- soit $n^{\star} \notin L_f$ et donc $P\[n_B\](n^{\star})$ vaut 0 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 1 et  $n^{\star} \in L_f$
+
+{% enddetails %}
+
+### Théorème
+
+La proposition précédente montre qu'il existe des langages de complexité aussi grande que l'on veut puisque $f(n)$ est une fonction calculable quelconque. On a donc le théorème suivant :
+
+<div id="hiérarchie-complexité"></div>
+{% note "**Théorème**" %}
+Pour toute fonction calculable $f$, il existe des problèmes de décision de complexité $\Omega(f(n))$.
 {% endnote %}
 
-{% note "**À retenir**"%}
+Comme $2^n$, $n!$ voir la [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann) sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !
+
+{% attention "**À retenir**"%}
 Il existe des problèmes algorithmiques de complexités aussi grande ou aussi petite que l'on veut.
-
-{% endnote %}
+{% endattention %}

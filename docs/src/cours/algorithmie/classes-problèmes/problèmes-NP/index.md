@@ -11,9 +11,6 @@ eleventyComputed:
 
 Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.
 
-> TBD : se raccrocher aux branches de la partie précédente
-> TBD : dire que tout est lié aux complexité.
-
 ## Problèmes utilisables en pratique
 
 Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne}) puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : la résolution.
@@ -46,9 +43,9 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).
 {% endinfo %}
 
-### Problèmes et vérificateurs efficaces
+### Problèmes et vérifieurs efficaces
 
-Il existe de nombreux problèmes dont on ne connait pas la complexité, ou dont on ne connait pas d'algorithme polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
+Il existe de nombreux problèmes dont on ne connait pas la complexité, ou dont on ne connait pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
 
 - [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles)
 - [sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
@@ -64,58 +61,51 @@ Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et q
 
 La complexité de l'algorithme est donc de $\mathcal{O}(|E|^2)$ et ne dépend pas du paramètre $E'$.
 
-Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérificateur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.
+Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.
 
 Formalisons cette notion de vérification efficace :
 
 {% note "**Définition**" %}
-Un **_vérificateur efficace_** d'un problème décidable $P$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
+Un **_vérifieur efficace_** d'un problème décidable $P$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
 
 - $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $P(e)$
 - la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
 
 {% endnote %}
 
-Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérificateur efficace. Terminons cette partie par deux remarques d'importance.
+Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérifieur efficace. Terminons cette partie par deux remarques d'importance.
 
-Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérificateur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.
+Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.
 
-Deuxièmement, tout problème admettant un vérificateur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérificateur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérificateur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
+Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
 
-En effet, si le vérificateur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérificateur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
+En effet, si le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
 ### Problèmes NP
 
-La notion de vérificateur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des [problèmes de décision](../../écrire-algorithmes/problème/#problème-décision){.interne} où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.
+La notion de vérifieur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des [problèmes de décision](../../écrire-algorithmes/problème/#problème-décision){.interne} où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.
 
-> TBD : recoller les morceaux 
-
-
-Si ce problème admet un décideur efficace, il suffit de l'appliquer pour $K$ valant itérativement toutes les valeurs de $T$ pour trouver le maximum. Ce nouvel algorithme est également efficace et résout le problème du maximum.
-
-De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).
-
-La remarque ci-dessus nous montre que l'on peut uniquement considérer les problèmes de décision décidables, sans perte de généralité. Dans ce cadre, on peut définir les problèmes de décision utilisable en pratique comme étant ceux tels que :
+On a vu dans [la partie précédente](../décideur-décision) que l'on peut associer à tout problème un problème de décision et qu'il suffit d'étudier les ces derniers sans perte de généralité. Il faut donc réussir à transposer la notion de vérifieur efficace à ces derniers, et c'est exactement ce que fait la définition ci-dessous :
 
 {% note "**Définition**" %}
-**_Un problème de décision est dit $NP$_** s'il existe un vérificateur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé **_certificat de $e$_** tel que $v(e, t)$ soit vrai.
+**_Un problème de décision est dit $NP$_** s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé **_certificat de $e$_** tel que $v(e, t)$ soit vrai.
 
 {% endnote %}
 
 La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe).
 
-Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérificateur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.
+Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérifieur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.
 
-Enfin, comme la taille du certificat est bornée par la complexité du vérificateur on peut utiliser le même argument que précédemment pour que tout problème de $NP$ est décidable : il suffit de tester le vérificateur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérificateur).
+Enfin, comme la taille du certificat est bornée par la complexité du vérifieur on peut utiliser le même argument que précédemment pour que tout problème de $NP$ est décidable : il suffit de tester le vérifieur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérifieur).
 
 
-{% note "**À retenir**" %}
-Un problème est dans $NP$ s'il existe un vérificateur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
+{% attention "**À retenir**" %}
+Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
 
 - On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).
 - On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.
 
-{% endnote %}
+{% endattention %}
 
 Au final on a le schéma suivant :
 
@@ -123,21 +113,40 @@ Au final on a le schéma suivant :
 
 ## Autres classes
 
-co-NP
+Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :
+
+- la classe des problèmes de complexité poly-logarithmique $\mathcal{O}(\log^k(n))$
+- la classe des problèmes de complexité polynomial en espace $\mathcal{O}(n^k)$
+- la classe des problèmes de décision où l'on cherche à répondre NON plutôt que OUI (on remplace les questions de type _"existe-t-il ?"_ par des question de type _"quelque soit"_). Cette classe de problème, est [nommée $co-NP$](https://fr.wikipedia.org/wiki/Co-NP)
+- ...
+
+{% lien %}
+Le lecteur intéresser pourra consulter [la page wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9) qui en liste certaines.
+{% endlien %}
+
 ## Inclusion des classes
 
-> TBD : entre décidable et NP il y a du monde et entre NP et P on ne sais pas.
+Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ?
+
+De part [le théorème de la hiérarchie des complexité](../décideur-décision/#hiérarchie-complexité) on peut déjà avoir la proposition suivante :
+
+{% note "**Proposition**" %}
+Il existe des problèmes de décision décidables qui ne sont pas dans $NP$.
+{% endnote %}
+{% details "preuve", "open" %}
+
+La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or [le théorème de la hiérarchie des complexité](../décideur-décision/#hiérarchie-complexité) nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.
+
+{% enddetails %}
+
+Nous ne donnons pas d'exemple concret, bien qu'il en existe, car ils demanderaient beaucoup de définitions pour être compris. Retenez seulement que trouver un problème décidable qui n'est pas dans $NP$ est difficile : la très grande majorités des problèmes de décisions que vous rencontrerez seront dans $NP$ et les autres problèmes pourront facilement s'écrire sous la forme d'un problème de décision de $NP$ à résoudre.
 
 
-Finissons cette partie par une question encore sans réponse actuellement. Est-ce qu'il existe des problèmes de décision de $NP$ qui ne sont pas dans $P$ ? 
+En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une  époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
 
-La question semble idiote dit comme ça, mais c'est une vraie question et personne n'a de réponse. Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
-
+Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
 
 ![décidable](./NP-NP-2.png)
 
-> TBD mettre SAT comme exemple de problème de décision
-
-> TBD co-NP et les conjectures np intersection co=np
-> TBD dire qu'on peut aller plus loin et que c'est un champ de recherche. log, poly log. etc
+La partie suivante va étudier tout ça de plus prêt, car même si on ne sait pas s'il existe des problèmes de $NP$ qui ne sont pas dans $P$ on sait tout de même des choses sur la structure de la classe $NP$.
 

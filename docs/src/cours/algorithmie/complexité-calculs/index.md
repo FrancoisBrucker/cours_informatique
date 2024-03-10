@@ -101,3 +101,11 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
+
+## Temps vs espace
+
+> TBD : 
+> - dire que nb instruction = temps
+> - souvent pour un même problème soit rapide mais beaucoup de mémoire soit le contraire
+> - exemple nombres premiers <https://www.youtube.com/watch?v=fwxjMKBMR7>
+> en faire un TP

@@ -13,7 +13,7 @@ eleventyComputed:
 Le [tri fusion](https://fr.wikipedia.org/wiki/Tri_fusion) est un tri de complexité optimale : $\mathcal{O}(n\ln(n))$ opérations où $n$ est la taille de la liste en entrée. Il fonctionne selon principe algorithme de [diviser pour régner](https://fr.wikipedia.org/wiki/Diviser_pour_r%C3%A9gner_(informatique)) :
 
 <span id="diviser-pour-régner"></span>
-{% note "**À retenir**"%}
+{% attention "*À retenir**"%}
 Un algorithme de la forme ***diviser pour régner*** fonctionne en deux parties :
 
 1. **résoudre** $k$ sous-problèmes du problème initial
@@ -32,7 +32,7 @@ def algorithme(données):
     rendre solution
 ```
 
-{% endnote %}
+{% endattention %}
 
 L'intérêt de ces programme est que si la complexité de la fonction `combiner`{.language-} est faible, la complexité de l'`algorithme`{.language-} également.
 

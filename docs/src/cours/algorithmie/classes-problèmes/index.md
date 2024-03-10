@@ -22,40 +22,9 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
 
-> TBD définition de problème, complexité et classes de problèmes.
-> TBD : problème de décision, si structure finie on fait tous les cas et hop on a le résultat... Mais en beaucoup de temps
-
-> pb vérifiable ont toujours une solution (une MT qui résout le problème) s'il existe un nombre infini de solutions possible (ie. s'il existe toujours une solution/certificat plus grand).
-
-> TBD exemples du probleme sat pour les réductions
-
-### Problèmes NPC
-
-1. réduction
-2. exemple de SAT vers 3-SAT
+{% aller %}
+[Problèmes NP complets](./problèmes-NPC){.interne}
+{% endaller %}
 
 > TBD isomorphisme de graphe : status inconnu.
-> TBD NPC = universel
 
-## Algorithmes et code binaire
-
-> TBD pour pseudo-code min et théorème de cook.
-
-En remarquant que tout entier peut s'écrire sous sa [notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire), qui peut être vue comme une suite finie de 0 et de 1 il existe une bijection entre $\mathbb{N}$ et l'ensemble des suite finies de $0$ et de $1$. On en conclut que la forme ultime d'un algorithme est :
-
-{% note %}
-Un **_algorithme_** est une fonction de :
-
-$$f: \\{0, 1\\}^\star \rightarrow \\{0, 1 \\}$$
-
-Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies d'éléments de $\\{0, 1\\}$.
-{% endnote %}
-
-> TBD : entrée, travail et sorties sont deux listes de 0 et 1.
-5. ex : SAT
-   1. def et utilisabilité
-   2. SAT et 3-SAT : deux problèmes équivalent
-6. classes de problèmes
-
-
-> TBD : pour le thm de cook. on peut toujours supposer que le programme n'a pas touché de case mémoire plus loin que sa complexité

@@ -93,7 +93,7 @@ C'est cet algorithme itératif que nous allons étudier maintenant.
 
 On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 On teste toujours ses algorithmes sur de petits nombres en se mettant à la place de l'ordinateur.
 
 - on numérote chaque ligne
@@ -101,7 +101,7 @@ On teste toujours ses algorithmes sur de petits nombres en se mettant à la plac
 - on exécute ligne à ligne en notant les différents résultats
 - à la fin on vérifie que le retour de l'algorithme est bien correct
 
-{% endnote %}
+{% endattention %}
 
 Les cas simples que l'on peut essayer sans peine, et permet de **tester les cas limites** :
 
@@ -128,13 +128,13 @@ En deux temps. On commence par montrer qu'il se termine, puis on prouve qu'il ca
 - `c`{.language-} est un entier qui diminue strictement à chaque boucle et la condition d'arrêt est lorsqu'il vaut 0.
 - condition : il faut que `c`{.language-} soit un nombre positif pour que l'algorithme s'arrête. Donc `n`{.language-} doit être un nombre strictement positif.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus petit que, plus grand que, différent de) plutôt que des conditions d'égalité. Ceci pour deux raisons majeures :
 
 - L'égalité entre réels n'existe pas en informatique, ces conditions ne fonctionneront donc pas avec eux.
 - dans l'exemple ci-dessus mettre des exposants négatifs ou des nombres réels ne fait pas boucler infiniment notre algorithme
 
-{% endnote %}
+{% endattention %}
 
 #### Preuve de l'algorithme
 

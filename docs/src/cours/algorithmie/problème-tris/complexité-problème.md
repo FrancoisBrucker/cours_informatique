@@ -13,9 +13,9 @@ Nous allons nous intéresser à la complexité du problème du tri, indépendamm
 
 Commençons par une remarque d'importance :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 Si les éléments du tableau à trier sont tous différents, les permutations de celui-ci sont toutes différentes et une seule est la solution au problème "tri".
-{% endnote %}
+{% endattention %}
 
 Par exemple, pour un tableau à trois éléments :
 
@@ -28,11 +28,11 @@ Par exemple, pour un tableau à trois éléments :
 
 Quelque soit la forme de l'entrée (de 1 à 6), l'algorithme de tri doit rendre la forme 1 : un algorithme de tri doit pouvoir distinguer parmi toutes les permutations d'un tableau où toutes ses valeurs sont deux à deux différentes.
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 Comme il y a $n!$  permutations différentes pour un tableau de taille $n$ dont les éléments sont deux à deux différents, tout algorithme de tri doit pouvoir distinguer parmi $n!$ choix.
 
-{% endnote %}
+{% endattention %}
 
 ## Borne maximum
 

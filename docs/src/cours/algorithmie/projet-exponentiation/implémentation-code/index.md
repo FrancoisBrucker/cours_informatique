@@ -106,7 +106,7 @@ Mais pour ce qui nous importe, on va dire que c'est pas grave parce que ces _tem
 
 Le protocole de calcul sera alors le suivant :
 
-{% note "**À retenir**" %}
+{% attention "**À retenir**" %}
 
 Pour mesurer le temps d'exécution d'un algorithme :
 
@@ -115,7 +115,7 @@ Pour mesurer le temps d'exécution d'un algorithme :
 3. on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme
 
 La complexité temporelle sera alors : $\Delta = t_2 - t_1$.
-{% endnote %}
+{% endattention %}
 
 ### Comment faire
 
