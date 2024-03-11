@@ -42,7 +42,8 @@ L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreus
 #### Langages informatiques
 
 > TBD : le plus clair car le pseudo code s'écrit presque directement, par exemple en python
-> TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <https://docs.python.org/fr/3/library/dis.html>) qui est lui-même exécuté par une machine virtuelle.
+> TBD pas exécuté directement. Traduit en un autre langage compréhensible par ce qui va l'exécuter. 
+> TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <https://docs.python.org/fr/3/library/dis.html> ou <https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html>) qui est lui-même exécuté par une machine virtuelle.
 
 #### Modèle de Von Neumann
 
@@ -68,6 +69,7 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 #### Équivalence des différentes approches
 
 > TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
+> TBD MTU = langage universel
 
 ## Complexités
 

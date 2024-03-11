@@ -17,4 +17,4 @@ eleventyComputed:
 4. tous les problèmes sont plus simple que SAT : c'est le problème le plus dur de NP. 
 5. la classe NPC des problèmes universels, sans structure.
 
-
+<https://www.cs.princeton.edu/courses/archive/fall05/cos226/lectures/reductions.pdf>
