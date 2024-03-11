@@ -120,7 +120,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 ## Complexité amortie
 
 {% aller %}
-[Analyse et complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
 ## Structure avancée
