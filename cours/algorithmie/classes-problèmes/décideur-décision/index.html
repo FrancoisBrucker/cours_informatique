@@ -286,9 +286,9 @@ $$</p>
 </div>
 <p>On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des décideurs  puisqu'on pourra les appliquer sans perte de généralité aux autres types d'algorithmes.</p>
 <p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (équivalentes) utiles :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -324,10 +324,11 @@ $$</p>
 </div>
 </div>
 <p>Si le problème <em>&quot;plus grand que&quot;</em> est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement <em>&quot;plus grand que&quot;</em> pour $K$ valant chaque élément de $T$.</p>
+<p>De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).</p>
 <p>L'équivalence entre les algorithmes et les décideurs d'une part et les problèmes algorithmiques et les problèmes de décision d'autres part, qui sont des structures plus simple à manipuler car ayant mois de paramètres en font les objets de prédilection de l'étude théorique des algorithmes.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -337,6 +338,11 @@ $$</p>
 </div>
 <h2>Décideur et décision</h2>
 <p>Formalisons les notions de décideurs et des problèmes de décision (décidables) qui leurs sont associés.</p>
+<p>Langages et problèmes de décisions sont deux notions équivalentes. On utilisera l'une ou l'autre des notions selon le contexte :</p>
+<ul>
+<li><em><strong>langages</strong></em> si l'on veut caractériser tous les algorithmes faisant la même chose</li>
+<li>problèmes de décision si l'on cherche à résoudre une question précise</li>
+</ul>
 <h3>Langage</h3>
 <p>Un algorithme décideur prend en paramètre un entier (donc de façon équivalente une suite de 0 et de 1, donc de façon équivalente une chaine de caractère, donc de façon équivalente tout ce qu'on veut d'autre de fini...) et répond soit 1 (qu'on assimile à VRAI ou OUI) soit 0 (qu'on assimile à FAUX ou NON) : il sélectionne un ensemble de nombres (donc de façon équivalente un ensemble de suites de 0 et de 1, donc de façon équivalente un ensemble de chaines de caractères, ...).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -370,7 +376,6 @@ $$</p>
 <li>$S(n)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-spatiale">complexité spatiale</a>,</li>
 </ul>
 <p>Comme on se place d'un point de vue théorique, on supposera que chaque case mémoire ne peut contenir qu'un 0 ou un 1 (un bit) et que chaque instruction aura une complexité linaire en la taille de la donnée, codée au format binaire, qu'il manipule.</p>
-<h3>Complexité spatiale et temporelle</h3>
 <p>On sait que la complexité spatiale d'un algorithme est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -413,57 +418,188 @@ $$
 </div>
 </details>     
 </div>
-<h3>Hiérarchie des complexités</h3>
+<h2>Hiérarchie des complexités</h2>
 <p>On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.</p>
 <p>La preuve est belle, simple mais atypique.</p>
-<h4>Pseudo-code et entier</h4>
-<p>On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format <a href="Unicode">Unicode</a> : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier, écrit au format binaire, peut alors :</p>
+<h3>Pseudo-code et entier</h3>
+<p>On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format <a href="Unicode">Unicode</a> : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier $n$, écrit au format binaire, peut alors :</p>
 <ol>
 <li>parfois être vu comme une suite de caractères (si sa représentation binaire possède un multiple de 32 bits)</li>
 <li>moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier 10).</li>
 <li>encore moins souvent ce texte, privé des derniers retour à la ligne est un programme écrit en pseudo-code.</li>
 <li>et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.</li>
 </ol>
-<p>Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code">chaque instruction est autorisée</a>. Il existe donc un algorithme linéaire dans le nombre de caractères du programme permettant de savoir si un nombre est un pseudo-code ou pas. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et on vérifie qu'il est syntaxiquement correct (pas de rouge dans vscode par exemple).</p>
-<p>Si un entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P<a href=".">n</a>$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).</p>
-<h4>Exécution de pseudo-code</h4>
+<p>Si $n$ satisfait la condition 4, alors $P(n)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">chaque instruction est autorisée</a> et ceci est possible avec un <a href="https://fr.wikipedia.org/wiki/Analyse_lexicale">analyseur lexical</a> de complexité quadratique dans la taille de la données, c'est à dire ici $\log_2(n)$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).</p>
+<p>Le décideur $P(n)$ est ainsi décidable avec une complexité $\mathcal{O}((\log_2(n))^2)$.</p>
+<p>Enfin, si l'entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P[n]()$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On peut associer à tout entier $n$ un texte qui peut parfois être du pseudo-code correspondant à un programme à un paramètre $P[n]()$.</p>
+</div>
+</div>
+<h3>Exécution de pseudo-code</h3>
 <p>Considérons le programme suivant, qui prend en paramètre un pseudo-code :</p>
-<pre><code>Nom : Exécution
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exécution (on le notera E(n, K))
 Entrées : 
     - un entier n correspondant à un pseudo-code P[n] à un paramètre
     - un entier K
 Programme :
-    Exécution du pseudo-code P[n](n) une instruction après l'autre :
-        Avant l'exécution de l'instruction courante, on vérifie que l'instruction est corecte. 
-        Si elle n'est pas correcte alors :
-            Rendre 0
-        Sinon :        
-            on exécute l'instruction courante de P
-        Si l'exécution de l'instruction stoppe P :
+    on exécute de programme P[n](n) instruction après instruction :
+        soit I la prochaine instruction de P[n](n)
+
+        si l'exécution de I stoppe P :
             si le retour de P est 0 :
                 Rendre 1
             sinon :
                 Rendre 0
+        
+        exécution de I
+
         K = K - 1
         si K ≤ 0 :
             Rendre 0
 </code></pre>
-<p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P<a href="n">n</a>$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P<a href="n">n</a>$.</p>
+<p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P[n](n)$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P[n](n)$.</p>
 <p>Enfin, il va rendre :</p>
 <ul>
-<li>1 si $P<a href="n">n</a>$ s'arrête en moins de $K$ instructions et rend la valeur 0</li>
+<li>1 si $P[n](n)$ s'arrête en moins de $K$ instructions et rend la valeur 0</li>
 <li>0 dans tous les autres cas.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe un un algorithme qui permet d'exécuter au plus $K$ instructions d'un programme.</p>
+</div>
+</div>
+<h3>Décideur final</h3>
+<p>On a maintenant tous les ingrédients pour créer le décideur, dépendant d'une fonction calculable $f$, qui va nous servir de preuve.</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : complexité-f (on va le noter cf(n))
+Entrée : un entier n
+Programme :
+    K = f(n)
+    Si P(n) vaut 0
+        rendre 0
+    sinon
+        Rendre E(n, K)
+
+</code></pre>
+<p>On a bien affaire à un algorithme puisque :</p>
+<ul>
+<li>$f$ est calculable</li>
+<li>$P(n)$ et $E(n, K)$ sont des algorithmes.</li>
+</ul>
+<p>On peut donc lui associer :</p>
+<ul>
+<li>sa complexité $C_{cf}(n)$</li>
+<li>son langage $L_f$</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On a : $C_{cf}(n) = \Omega(f(n))$</p>
 </div>
 </div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Comme tout pseudo-code sera encodé par un entier, il existe $n_0$ l'entier correspondant au programme suivant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que Vrai:
+    ne rien faire
+</code></pre>
+<p>Qui ne va jamais s'arrêter.</p>
+<p>Comme $P[n] = P[2^{32}\cdot n + 10]$ il va exister une infinité d'entiers avec $P[n_0]$ comme pseudo-code associé et que pour ces entiers $E(n, f(n))$ va effectuer $f(n)$ instructions de $P[n_0]$ qui boucle à l'infini, on a bien que $C_{cf}(n) = \Omega(f(n))$</p>
+</div>
+</details>     
+</div>
+<p>On peut être plus précis quand à la complexité de $cf(n)$ :</p>
+<ol>
+<li>il doit calculer $f(n)$.</li>
+<li>il doit savoir si $f(n)$ correspond à un pseudo-code, ce qui peut se faire en carré de la longeur binaire de $f(n)$ : $\mathcal{O}(\log^2(f(n)))$.</li>
+<li>il exécute au pire $f(n)$ instructions de a $P[n](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\log(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \log(f(n))$ opérations.</li>
+</ol>
+<p>La complexité théorique de $cf(n)$ est donc $C_{cf}(n) = \Theta(f(n) \cdot \log(f(n)))$.</p>
+<p>Terminons en montrant que le langage de $cf$ est de complexité supérieure à $f(n)$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité de $L_f$ est en $\Omega(f(n))$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons qu'il existe un décideur $B(n)$ de complexité asymptotique $C_B(n)$ strictement inférieure à $f(n)$. Il existe alors $N_0$ tel que $C_B(n) &lt; f(n)$ pour tout $n&gt;N_0$.</p>
+<p>Le décideur $B$ pouvant être décrit par un pseudo-code, il existe un entier $n_B$ tel que $P(n_B)$ vaut 1 et $P[n_B]$ vaut $B$. En ajoutant assez de retour à la ligne au pseudo-code de $B$, il va exister un entier $n^{\star} &gt; \max(N_0, n_B)$ tel que $P(n^{\star})$ vaut 1 et $P[n^{\star}]$ vaut $B$.</p>
+<p>Comme $n^{\star} &gt; N_0$, on a que $C_B(n^{\star}) &lt; f(n^{\star})$ et donc que $P[n^{\star}](n^{\star}) = P[n_B](n^{\star})$ et va être exécuté dans sont intégralité par $cf(n^{\star})$. Ceci amène à une contradiction car :</p>
+<ul>
+<li>soit $n^{\star} \in L_f$ et donc $P[n_B](n^{\star})$ vaut 1 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 0 et  $n^{\star} \notin L_f$</li>
+<li>soit $n^{\star} \notin L_f$ et donc $P[n_B](n^{\star})$ vaut 0 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 1 et  $n^{\star} \in L_f$</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>Théorème</h3>
+<p>La proposition précédente montre qu'il existe des langages de complexité aussi grande que l'on veut puisque $f(n)$ est une fonction calculable quelconque. On a donc le théorème suivant :</p>
+<div id="hiérarchie-complexité"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour toute fonction calculable $f$, il existe des problèmes de décision de complexité $\Omega(f(n))$.</p>
+</div>
+</div>
+<p>Comme $2^n$, $n!$ voir la <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a> sont des fonctions calculables, il existe des problèmes de décision de très grande complexité !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
