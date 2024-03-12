@@ -326,16 +326,30 @@ Ala fin de l'algorithme, les éléments de $T$ sont répartis dans deux listes. 
 Soit alors $x$ dans $P_1$ mais qui n'est pas dans $P_2$. Il ne peut apparaitre qu'au pire `len(P1) // 2 + 1` fois dans $P_1$. On a alors plusieurs cas :
 
 - $P_2$ n'est pas vide (et ne contient pas $x$). De là, $x$ est présent dans $T$ au mieux `len(T) // 2`. Ce ne peut être un élément majoritaire.
-- $P_2$ est vide. Pour que $x$ soit un élément majoritaire de $T$ il faut qu'il apparaisse `len(P1) // 2 + 1` dans $P_1$, donc que ce soit le premier élément de $P_1$.
+- $P_2$ est vide. Pour que $x$ soit un élément majoritaire de $T$ il faut qu'il apparaisse `len(P1) // 2 + 1` dans $P_1$, donc que ce soit le dernier élément ajouté de $P_1$.
 
 On en conclut que si $T$ possède un élément majoritaire, c'est :
 
-- l'élément de $P_2$ si $P_2$ est non vide,
-- le premier élément de $P_1$ si $P_2$ est vide.
+- soit l'élément de $P_2$ si $P_2$ est non vide,
+- soit le dernier élément de $P_1$ si $P_2$ est vide.
 
 #### 4.3.1
 
-> TBD : mais c'est simple.
+```text
+Entrées : Un tableau d'entiers T
+Programme :
+    Soient P1 et P2 les piles issuent de Majorité(T)
+    x = dépile(P2)
+    Si x == None:
+        x = dépile(P1)
+    
+    si x == None ou si compte(T, x) <= len(T) // 2:
+        return None
+    return x
+
+```
+
+L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme `Majorité`{.language-} plus celle de `compte`{.language-} plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.
 
 #### 4.3.2
 
