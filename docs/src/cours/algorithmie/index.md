@@ -66,6 +66,11 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 > TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique
 
+#### Automates cellulaires
+
+> TBD : Jeu de la vie
+> TBD : <https://fr.wikipedia.org/wiki/Automate_cellulaire#R%C3%A8gle_110>
+
 #### Équivalence des différentes approches
 
 > TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
