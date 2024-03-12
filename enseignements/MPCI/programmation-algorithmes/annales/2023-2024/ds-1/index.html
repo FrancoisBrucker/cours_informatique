@@ -357,17 +357,27 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <p>Soit alors $x$ dans $P_1$ mais qui n'est pas dans $P_2$. Il ne peut apparaitre qu'au pire <code>len(P1) // 2 + 1</code> fois dans $P_1$. On a alors plusieurs cas :</p>
 <ul>
 <li>$P_2$ n'est pas vide (et ne contient pas $x$). De là, $x$ est présent dans $T$ au mieux <code>len(T) // 2</code>. Ce ne peut être un élément majoritaire.</li>
-<li>$P_2$ est vide. Pour que $x$ soit un élément majoritaire de $T$ il faut qu'il apparaisse <code>len(P1) // 2 + 1</code> dans $P_1$, donc que ce soit le premier élément de $P_1$.</li>
+<li>$P_2$ est vide. Pour que $x$ soit un élément majoritaire de $T$ il faut qu'il apparaisse <code>len(P1) // 2 + 1</code> dans $P_1$, donc que ce soit le dernier élément ajouté de $P_1$.</li>
 </ul>
 <p>On en conclut que si $T$ possède un élément majoritaire, c'est :</p>
 <ul>
-<li>l'élément de $P_2$ si $P_2$ est non vide,</li>
-<li>le premier élément de $P_1$ si $P_2$ est vide.</li>
+<li>soit l'élément de $P_2$ si $P_2$ est non vide,</li>
+<li>soit le dernier élément de $P_1$ si $P_2$ est vide.</li>
 </ul>
 <h4>4.3.1</h4>
-<blockquote>
-<p>TBD : mais c'est simple.</p>
-</blockquote>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrées : Un tableau d'entiers T
+Programme :
+    Soient P1 et P2 les piles issuent de Majorité(T)
+    x = dépile(P2)
+    Si x == None:
+        x = dépile(P1)
+    
+    si x == None ou si compte(T, x) <= len(T) // 2:
+        return None
+    return x
+
+</code></pre>
+<p>L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme <code class="language-">Majorité</code> plus celle de <code class="language-">compte</code> plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.</p>
 <h4>4.3.2</h4>
 <p>L'algorithme de la question 4.3.1 résoud le problème de l'élément majoriaire en $\mathcal{O}(n)$ opérations et la quesion 1.2.4 a montré qu'il était en $\Omega(n)$, on en déduit donc que la complexité du problème est de $\Theta(n)$.</p>
 
