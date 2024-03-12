@@ -191,7 +191,12 @@ Sa complexité est ramené à la complexité du tri plus une fois la complexité
 
 > Expliciter le principe algorithmique de _diviser pour régner_
 
-Le principe algorithmique _diviser pour régner_ est décrit dans le cours [ici](/cours/algorithmie/problème-tris/algorithme-fusion/#diviser-pour-régner){.interne}.
+Le principe algorithmique _diviser pour régner_ est décrit dans le cours [ici](/cours/algorithmie/problème-tris/algorithme-fusion/#diviser-pour-régner){.interne} :
+
+Un algorithme de la forme **_diviser pour régner_** fonctionne en deux parties :
+
+1. **résoudre** $k$ sous-problèmes du problème initial
+2. **combiner** les $k$ solutions des sous-problèmes en une solution du problème initial
 
 #### 3.2.1
 
