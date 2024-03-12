@@ -240,7 +240,136 @@
 <li>En utilisant le second tableau, son tri va donner le tableau <code class="language-">T = [2, 2, 2, 2, 2, 2, 3, 3, 3, 3,  4, 6]</code> et son milieu <code class="language-">T[6]</code> vaut 3 n'est pas majoritaire : le tableau n'a pas d'élément majoritaire.</li>
 </ul>
 <h3>Exercice 3 : Diviser pour régner</h3>
+<h4>3.1</h4>
+<blockquote>
+<p>Expliciter le principe algorithmique de <em>diviser pour régner</em></p>
+</blockquote>
+<p>Le principe algorithmique <em>diviser pour régner</em> est décrit dans le cours <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-tris/algorithme-fusion/#diviser-pour-r%C3%A9gner" class="interne">ici</a>.</p>
+<h4>3.2.1</h4>
+<blockquote>
+<p>Montrez que si $T$ admet un élément majoritaire $x$, alors $x$ est un élément majoritaire de $T_1$ ou $T_2$.</p>
+</blockquote>
+<p>On suppose que $T$ de taille $n$ contient un élément majoritaire $x$. Si $x$ n'est pas majoritaire dans $T_1$, c'est qu'il est présent $\frac{n}{4}$ fois ou moins dans $T_1$. On le retrouve donc au moins $\frac{n}{4}+1$ fois dans $T_2$ : c'est un élément majoritaire de $T_2$.</p>
+<h4>3.2.2</h4>
+<blockquote>
+<p>Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$, si $x$ est un élément majoritaire de $T$.</p>
+</blockquote>
+<p>Il suffit de regarder si <code>compte(x, T) &gt; len(T) // 2</code> avec <code>x</code> l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de <code>None</code>. Ce qui peut se traduire en pyhton en :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T1<span class="token punctuation">)</span>
+<span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x
+
+x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
+<span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x
+</code></pre>
+<h4>3.2.3</h4>
+<blockquote>
+<p>Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice~\ref{naif}, pour résoudre le problème.</p>
+</blockquote>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<span class="token keyword">def</span> <span class="token function">element_majoritaire</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">:</span>n<span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x
+
+    x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T<span class="token punctuation">[</span>n<span class="token operator">//</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> x
+
+    <span class="token keyword">return</span> <span class="token boolean">None</span>
+</code></pre>
+<p>La condition d'arrêt est pour des tailles de tableaux égales à $1 = 2^0$. Pour laquelle on trouve bien l'élément majoritaire.</p>
+<p>On suppose alors par récurrence que l'algoerithme fonctionne pour $n = 2^i$ et on vérifie qu'il continue de fnctionner pour $n'=2^{i+1}$. Ceci est évidant car on applique directement la condition de 3.2.2</p>
+<p>La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de <code class="language-">compte</code> est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\log(n))$.</p>
+<h4>3.3.1</h4>
+<blockquote>
+<p>Reprenez cet exercice sans supposer que $n$ est une puissance de 2. Que faut-il changer pour que l'algorithme continue de fonctionner ?</p>
+</blockquote>
+<p>La taille de $T_1$ peut maintenant être différente de la taille de $T_2$. Cette différence ne peut cependant pas être plus importante que 1 et cela ne change rien pour leurs éléments majoritaires. Il ne faut donc rien changer, l'algorithme continue de fonctionner.</p>
+<h4>3.3.2</h4>
+<blockquote>
+<p>Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
+</blockquote>
+<p>Pour le premier exemple, le tableau <code class="language-">[2, 4, 5, 4, 5, 4, 5, 4, 4]</code> va être découpé en <code class="language-">[2, 4, 5, 4]</code> et en <code class="language-">[5, 4, 5, 4, 4]</code>. Le second tableau à un élément majoriaire, 4, qui est aussi un élément majoritaire du tableau initial.</p>
+<p>POur le second exemple, le tableau <code class="language-">[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]</code> va être découpé en <code class="language-">[2, 2, 3, 6, 4, 3]</code> et en <code class="language-">[2, 2, 3, 3, 2, 2]</code>.</p>
 <h3>Exercice 4 : Piles</h3>
+<h4>4.1</h4>
+<p>On utilise des liste en python pour simuler des piles, avec les méthodes <code>append</code> et <code>pop</code>.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> crée_pile_vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">empile</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> pile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        pile<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> dépile<span class="token punctuation">(</span>pile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pile<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+        x <span class="token operator">=</span> pile<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+
+</code></pre>
+<h4>4.2.1</h4>
+<p>Si $y$ est <code class="language-">None</code> c'est que la pile $P_1$ est vide et sinon $y$ vut le dernier élément empilé.</p>
+<h4>4.2.2</h4>
+<p>Il y a cinq cas possibles, mutuellement exclusifs :</p>
+<ul>
+<li>soit $y$ est <code class="language-">None</code> : $x$ est empilé dans $P_1$</li>
+<li>soit $y \neq x$ : $x$ est empilé dans $P_1$</li>
+<li>soit $y = x$ et la pile $P_2$ est vide : $x$ est empilé dans $P_2$</li>
+<li>soit $y = x$, la pile $P_2$ est non vide et on la dépile en $z$ et $z = x$ : $z$puis $x$ sont empilés dans $P_2$</li>
+<li>soit $y = x$, la pile $P_2$ est non vide et on la dépile en $z$ et $z \neq x$ : $z$ puis $x$ sont empilés dans $P_1$</li>
+</ul>
+<h4>4.2.3</h4>
+<ul>
+<li>Pour $T = [2, 4, 5, 4, 5, 4, 5, 4, 4]$ on obtient :
+<ul>
+<li>$P_1 = [2, 4, 5, 4, 5, 4, 5, 4]$</li>
+<li>$P_2=[4]$</li>
+</ul>
+</li>
+<li>Pour $T = [2,2,3,6,4,3,2,2,3,3,2,2]$ on obtient :
+<ul>
+<li>$P_1 = [2, 3, 6, 4, 3, 2, 3, 2, 3, 2]$</li>
+<li>$P_2 = [2, 2]$</li>
+</ul>
+</li>
+</ul>
+<h4>4.2.4</h4>
+<p>Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.</p>
+<h4>4.2.5</h4>
+<p>On empile dans $P_2$ que si la pile était vide (le cas <code>z == None</code>) ou si le dernier élément de la pile est égal au nouvel élément (<code>z == x</code>). Tous les éléments de $P_2$ sont identiques.</p>
+<h4>4.2.6</h4>
+<p>On empile dans $P_1$ soit :</p>
+<ul>
+<li>dans le premier <code class="language-">if</code>. dans ce cas là, soit la pile était vide soit le dernier élément de la pile ($y$) est différent de $x$</li>
+<li>dans le second <code class="language-">else</code>. Dans ce cas là le denier élément de la pile ($y$) est différent de $x$ car on est dans le premier else et $z$ est différent de $x$ puisqu'on est dans le second else. On a donc $y \neq x \neq z$ et la proprété est vérifiée.</li>
+</ul>
+<h4>4.2.7</h4>
+<p>Ala fin de l'algorithme, les éléments de $T$ sont répartis dans deux listes. La première, $P_1$, est alternée et la seconde, $P_2$, est composées d'éléments identiques.</p>
+<p>Soit alors $x$ dans $P_1$ mais qui n'est pas dans $P_2$. Il ne peut apparaitre qu'au pire <code>len(P1) // 2 + 1</code> fois dans $P_1$. On a alors plusieurs cas :</p>
+<ul>
+<li>$P_2$ n'est pas vide (et ne contient pas $x$). De là, $x$ est présent dans $T$ au mieux <code>len(T) // 2</code>. Ce ne peut être un élément majoritaire.</li>
+<li>$P_2$ est vide. Pour que $x$ soit un élément majoritaire de $T$ il faut qu'il apparaisse <code>len(P1) // 2 + 1</code> dans $P_1$, donc que ce soit le premier élément de $P_1$.</li>
+</ul>
+<p>On en conclut que si $T$ possède un élément majoritaire, c'est :</p>
+<ul>
+<li>l'élément de $P_2$ si $P_2$ est non vide,</li>
+<li>le premier élément de $P_1$ si $P_2$ est vide.</li>
+</ul>
+<h4>4.3.1</h4>
+<blockquote>
+<p>TBD : mais c'est simple.</p>
+</blockquote>
+<h4>4.3.2</h4>
+<p>L'algorithme de la question 4.3.1 résoud le problème de l'élément majoriaire en $\mathcal{O}(n)$ opérations et la quesion 1.2.4 a montré qu'il était en $\Omega(n)$, on en déduit donc que la complexité du problème est de $\Theta(n)$.</p>
 
 
 </article>
