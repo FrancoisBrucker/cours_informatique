@@ -259,7 +259,7 @@
 <blockquote>
 <p>Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$, si $x$ est un élément majoritaire de $T$.</p>
 </blockquote>
-<p>Il suffit de regarder si <code>compte(x, T) &gt; len(T) // 2</code> avec <code>x</code> l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de <code>None</code>. Ce qui peut se traduire en pyhton en :</p>
+<p>Il suffit de regarder si <code class="language-">compte(x, T) &gt; len(T) // 2</code> avec <code class="language-">x</code> l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de <code class="language-">None</code>. Ce qui peut se traduire en pyhton en :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T1<span class="token punctuation">)</span>
 <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -301,10 +301,10 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <p>Explicitez en quelques phrases le fonctionnement de l'algorithme de la question précédente si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
 </blockquote>
 <p>Pour le premier exemple, le tableau <code class="language-">[2, 4, 5, 4, 5, 4, 5, 4, 4]</code> va être découpé en <code class="language-">[2, 4, 5, 4]</code> et en <code class="language-">[5, 4, 5, 4, 4]</code>. Le second tableau à un élément majoriaire, 4, qui est aussi un élément majoritaire du tableau initial.</p>
-<p>POur le second exemple, le tableau <code class="language-">[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]</code> va être découpé en <code class="language-">[2, 2, 3, 6, 4, 3]</code> et en <code class="language-">[2, 2, 3, 3, 2, 2]</code>.</p>
+<p>Pour le second exemple, le tableau <code class="language-">[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]</code> va être découpé en <code class="language-">[2, 2, 3, 6, 4, 3]</code> et en <code class="language-">[2, 2, 3, 3, 2, 2]</code>.</p>
 <h3>Exercice 4 : Piles</h3>
 <h4>4.1</h4>
-<p>On utilise des liste en python pour simuler des piles, avec les méthodes <code>append</code> et <code>pop</code>.</p>
+<p>On utilise des liste en python pour simuler des piles, avec les méthodes <code class="language-">append</code> et <code class="language-">pop</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> crée_pile_vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
