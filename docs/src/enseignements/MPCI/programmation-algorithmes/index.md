@@ -253,7 +253,7 @@ Lire et comprendre la partie [Composition et agrégation](/cours/coder-et-dével
 ### Semaine 7 : projet composition et agrégation
 
 {% attention %}
-Test de 15min en début de cours consacré aux **prérequis composition et agrégation**. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
+Test de 15min en début de cours consacré aux **prérequis composition et agrégation**. Il sera à rendre sur feuille.
 {% endattention %}
 
 {% aller %}
@@ -273,9 +273,6 @@ Test de 15min en début de cours consacré aux **prérequis composition et agré
 
 #### Vendredi : Projet Héritage
 
-{% attention %}
-Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
-{% endattention %}
 {% aller %}
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
 {% endaller %}
@@ -293,6 +290,10 @@ Le DM1 est à rendre pour le vendredi 29/03/24 à 23h59
 {% endaller %}
 
 #### Vendredi : projet Arkanoid
+
+{% attention %}
+Test de 15min en début de cours consacré à **programmation évènementielle avec pyglet**. Il faudra rendre du code python (code et tests) sur AMeTICE.
+{% endattention %}
 
 {% aller %}
 [Projet Arkanoid](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne}

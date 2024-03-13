@@ -208,7 +208,7 @@ On suppose que $T$ de taille $n$ contient un élément majoritaire $x$. Si $x$ n
 
 > Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$, si $x$ est un élément majoritaire de $T$.
 
-Il suffit de regarder si `compte(x, T) > len(T) // 2` avec `x` l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de `None`. Ce qui peut se traduire en pyhton en :
+Il suffit de regarder si `compte(x, T) > len(T) // 2`{.language-} avec `x`{.language-} l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de `None`{.language-}. Ce qui peut se traduire en pyhton en :
 
 ```python
 
@@ -260,13 +260,13 @@ La taille de $T_1$ peut maintenant être différente de la taille de $T_2$. Cett
 
 Pour le premier exemple, le tableau `[2, 4, 5, 4, 5, 4, 5, 4, 4]`{.language-} va être découpé en `[2, 4, 5, 4]`{.language-} et en `[5, 4, 5, 4, 4]`{.language-}. Le second tableau à un élément majoriaire, 4, qui est aussi un élément majoritaire du tableau initial.
 
-POur le second exemple, le tableau `[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]`{.language-} va être découpé en `[2, 2, 3, 6, 4, 3]`{.language-} et en `[2, 2, 3, 3, 2, 2]`{.language-}.
+Pour le second exemple, le tableau `[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]`{.language-} va être découpé en `[2, 2, 3, 6, 4, 3]`{.language-} et en `[2, 2, 3, 3, 2, 2]`{.language-}.
 
 ### Exercice 4 : Piles
 
 #### 4.1
 
-On utilise des liste en python pour simuler des piles, avec les méthodes `append` et `pop`.
+On utilise des liste en python pour simuler des piles, avec les méthodes `append`{.language-} et `pop`{.language-}.
 
 ```python
 def crée_pile_vide():

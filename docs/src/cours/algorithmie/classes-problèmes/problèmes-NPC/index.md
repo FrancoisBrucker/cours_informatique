@@ -14,6 +14,7 @@ eleventyComputed:
 ## Réduction de problème
 
 ### Définitions
+
 A ≤ B si on peut passer de A à B pour poser le problème puis passer d'une solution de B à A, le tout efficacement (polynomialement).
 
 Ceci permet de résoudre A en utilisant un algorithme permettant de résoudre B.
@@ -21,6 +22,7 @@ Ceci permet de résoudre A en utilisant un algorithme permettant de résoudre B.
 Prenons un exemple un peu idiot mais qui permettra de se fixer les idées
 
 > TBD max tableau ≤ sort
+> TBD recherche doublon et tri (trié = O(n) et sans tri O(n2))
 > TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
 <https://en.wikipedia.org/wiki/Polynomial-time_reduction>
 <https://www.youtube.com/watch?v=eHZifpgyH_4>
