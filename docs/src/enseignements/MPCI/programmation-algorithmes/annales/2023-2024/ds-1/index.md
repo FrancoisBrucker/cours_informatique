@@ -17,6 +17,20 @@ Durée du contrôle : 3h.
 
 ## Corrigé
 
+### Remarques générales
+
+Beaucoup de personnes perdent bêtement des points sur les quesions de cours. Il y avant plus de 6 points à prendre uniquement sur elles ! Il faut que vous connaissiez :
+
+- la définition de la complexité d'un problème
+- comment on calcule un minorant pour le problème de la recherche (c'est le même argument qui est repris partout)
+- la complexité du problème du tri et savoir expliquer pourquoi (avec le minorant et un majorant du cours)
+- connaître le principe algorithmique de diviser. Vous êtes plus de la moitié à avoir oublié qu'après la division il faut recombiner et surotut que c'est cette étape qui est crutiale pour avoir une complexité faible, pas la division.
+- connaître le master theorem et son application pour le problème du tri fusion
+
+Parfois, vos arguments deviennent un peu vaseux quand ce n'est pas clair. La plupart du temps en algoirthmie, il suffit de peu de mots bien choisi pour expliciter ce qu'on fait. Si vous avez besoin de plusieurs paragraphes c'est que soit ce n'est pas clair, soit c'est faux.
+
+Lorsque l'on vous demande de voir ce que fait un algorithme sur des exemples, faites le ! Beaucoup décrivent ce qu'ils pensent que leur algorithme fait et pas ce qu'il fait réllement... Il faut prendre ces questions comme une oportunité de vérifier que ce que vous avez fait est juste.
+
 ### Exercice 1 : encadrement du problême
 
 #### 1.1
@@ -223,7 +237,7 @@ if x != None and (compte(x, T) > n / 2):
 
 #### 3.2.3
 
-> Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice~\ref{naif}, pour résoudre le problème.
+> Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice 1.3.2, pour résoudre le problème.
 
  ```python
 
@@ -266,6 +280,12 @@ Pour le second exemple, le tableau `[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]`{.langu
 
 #### 4.1
 
+> Coder avec des listes de python la structure de pile. Vous coderez les fonctions :
+>
+> - `crée_pile_vide() -> list`{.language-}
+> - `empile(x: int or None, pile: list)`{.language-}
+> - `dépile(pile:list) -> int or None`{.language-}
+
 On utilise des liste en python pour simuler des piles, avec les méthodes `append`{.language-} et `pop`{.language-}.
 
 ```python
@@ -288,9 +308,13 @@ def dépile(pile):
 
 #### 4.2.1
 
+> La valeur de $y$ à la ligne 6 est-elle une valeur de $P_1$ ? Et si oui, laquelle ?
+
 Si $y$ est `None`{.language-} c'est que la pile $P_1$ est vide et sinon $y$ vut le dernier élément empilé.
 
 #### 4.2.2
+
+> Montrez qu'à chaque itération de la boucle for, $x$ est empilé soit dans $P_1$, soit dans $P_2$.
 
 Il y a cinq cas possibles, mutuellement exclusifs :
 
@@ -302,6 +326,8 @@ Il y a cinq cas possibles, mutuellement exclusifs :
 
 #### 4.2.3
 
+> Donnez le contenu des deux piles $P_1$ et $P_2$ {\bf à la fin de l'algorithme} si, en entrée, on lui donne les deux exemples du début de l'énoncé.
+
 - Pour $T = [2, 4, 5, 4, 5, 4, 5, 4, 4]$ on obtient :
   - $P_1 = [2, 4, 5, 4, 5, 4, 5, 4]$
   - $P_2=[4]$
@@ -311,13 +337,18 @@ Il y a cinq cas possibles, mutuellement exclusifs :
 
 #### 4.2.4
 
+> Quelle est la complexité de l'algorithme ?
 Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.
 
 #### 4.2.5
 
+> Montrez que tous les éléments de la pile $P_2$ sont identiques à la fin de l'algorithme.
+
 On empile dans $P_2$ que si la pile était vide (le cas `z == None`) ou si le dernier élément de la pile est égal au nouvel élément (`z == x`). Tous les éléments de $P_2$ sont identiques.
 
 #### 4.2.6
+
+> Montrez qu'à la fin de l'algorithme, deux éléments consécutifs de la pile $P_1$ sont toujours différents.
 
 On empile dans $P_1$ soit :
 
@@ -325,6 +356,8 @@ On empile dans $P_1$ soit :
 - dans le second `else`{.language-}. Dans ce cas là le denier élément de la pile ($y$) est différent de $x$ car on est dans le premier else et $z$ est différent de $x$ puisqu'on est dans le second else. On a donc $y \neq x \neq z$ et la proprété est vérifiée.
 
 #### 4.2.7
+
+> Déduisez-en qu'un élément majoritaire, s'il en existe, ne peut être que le dernier élément stocké dans $P_2$ ou le dernier élément stocké dans $P_1$.
 
 Ala fin de l'algorithme, les éléments de $T$ sont répartis dans deux listes. La première, $P_1$, est alternée et la seconde, $P_2$, est composées d'éléments identiques.
 
@@ -339,6 +372,8 @@ On en conclut que si $T$ possède un élément majoritaire, c'est :
 - soit le dernier élément de $P_1$ si $P_2$ est vide.
 
 #### 4.3.1
+
+> Déduisez de la partie précédente un algorithme linéaire en la taille du tableau en entrée pour résoudre le problème de l'élément majoritaire.
 
 ```text
 Entrées : Un tableau d'entiers T
@@ -357,5 +392,7 @@ Programme :
 L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme `Majorité`{.language-} plus celle de `compte`{.language-} plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.
 
 #### 4.3.2
+
+> Quelle est la complexité du problème de l'élément majoritaire ?
 
 L'algorithme de la question 4.3.1 résoud le problème de l'élément majoriaire en $\mathcal{O}(n)$ opérations et la quesion 1.2.4 a montré qu'il était en $\Omega(n)$, on en déduit donc que la complexité du problème est de $\Theta(n)$.
