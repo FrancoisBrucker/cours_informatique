@@ -92,6 +92,17 @@
 <p>TBD</p>
 </blockquote>
 <h2>Corrigé</h2>
+<h3>Remarques générales</h3>
+<p>Beaucoup de personnes perdent bêtement des points sur les quesions de cours. Il y avant plus de 6 points à prendre uniquement sur elles ! Il faut que vous connaissiez :</p>
+<ul>
+<li>la définition de la complexité d'un problème</li>
+<li>comment on calcule un minorant pour le problème de la recherche (c'est le même argument qui est repris partout)</li>
+<li>la complexité du problème du tri et savoir expliquer pourquoi (avec le minorant et un majorant du cours)</li>
+<li>connaître le principe algorithmique de diviser. Vous êtes plus de la moitié à avoir oublié qu'après la division il faut recombiner et surotut que c'est cette étape qui est crutiale pour avoir une complexité faible, pas la division.</li>
+<li>connaître le master theorem et son application pour le problème du tri fusion</li>
+</ul>
+<p>Parfois, vos arguments deviennent un peu vaseux quand ce n'est pas clair. La plupart du temps en algoirthmie, il suffit de peu de mots bien choisi pour expliciter ce qu'on fait. Si vous avez besoin de plusieurs paragraphes c'est que soit ce n'est pas clair, soit c'est faux.</p>
+<p>Lorsque l'on vous demande de voir ce que fait un algorithme sur des exemples, faites le ! Beaucoup décrivent ce qu'ils pensent que leur algorithme fait et pas ce qu'il fait réllement... Il faut prendre ces questions comme une oportunité de vérifier que ce que vous avez fait est juste.</p>
 <h3>Exercice 1 : encadrement du problême</h3>
 <h4>1.1</h4>
 <blockquote>
@@ -271,7 +282,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 </code></pre>
 <h4>3.2.3</h4>
 <blockquote>
-<p>Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice~\ref{naif}, pour résoudre le problème.</p>
+<p>Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice 1.3.2, pour résoudre le problème.</p>
 </blockquote>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">element_majoritaire</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -304,6 +315,14 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <p>Pour le second exemple, le tableau <code class="language-">[2, 2, 3, 6, 4, 3, 2, 2, 3, 3, 2, 2]</code> va être découpé en <code class="language-">[2, 2, 3, 6, 4, 3]</code> et en <code class="language-">[2, 2, 3, 3, 2, 2]</code>.</p>
 <h3>Exercice 4 : Piles</h3>
 <h4>4.1</h4>
+<blockquote>
+<p>Coder avec des listes de python la structure de pile. Vous coderez les fonctions :</p>
+<ul>
+<li><code class="language-">crée_pile_vide() -&gt; list</code></li>
+<li><code class="language-">empile(x: int or None, pile: list)</code></li>
+<li><code class="language-">dépile(pile:list) -&gt; int or None</code></li>
+</ul>
+</blockquote>
 <p>On utilise des liste en python pour simuler des piles, avec les méthodes <code class="language-">append</code> et <code class="language-">pop</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> crée_pile_vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -322,8 +341,14 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 
 </code></pre>
 <h4>4.2.1</h4>
+<blockquote>
+<p>La valeur de $y$ à la ligne 6 est-elle une valeur de $P_1$ ? Et si oui, laquelle ?</p>
+</blockquote>
 <p>Si $y$ est <code class="language-">None</code> c'est que la pile $P_1$ est vide et sinon $y$ vut le dernier élément empilé.</p>
 <h4>4.2.2</h4>
+<blockquote>
+<p>Montrez qu'à chaque itération de la boucle for, $x$ est empilé soit dans $P_1$, soit dans $P_2$.</p>
+</blockquote>
 <p>Il y a cinq cas possibles, mutuellement exclusifs :</p>
 <ul>
 <li>soit $y$ est <code class="language-">None</code> : $x$ est empilé dans $P_1$</li>
@@ -333,6 +358,9 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <li>soit $y = x$, la pile $P_2$ est non vide et on la dépile en $z$ et $z \neq x$ : $z$ puis $x$ sont empilés dans $P_1$</li>
 </ul>
 <h4>4.2.3</h4>
+<blockquote>
+<p>Donnez le contenu des deux piles $P_1$ et $P_2$ {\bf à la fin de l'algorithme} si, en entrée, on lui donne les deux exemples du début de l'énoncé.</p>
+</blockquote>
 <ul>
 <li>Pour $T = [2, 4, 5, 4, 5, 4, 5, 4, 4]$ on obtient :
 <ul>
@@ -348,16 +376,28 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 </li>
 </ul>
 <h4>4.2.4</h4>
-<p>Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.</p>
+<blockquote>
+<p>Quelle est la complexité de l'algorithme ?<br>
+Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.</p>
+</blockquote>
 <h4>4.2.5</h4>
+<blockquote>
+<p>Montrez que tous les éléments de la pile $P_2$ sont identiques à la fin de l'algorithme.</p>
+</blockquote>
 <p>On empile dans $P_2$ que si la pile était vide (le cas <code>z == None</code>) ou si le dernier élément de la pile est égal au nouvel élément (<code>z == x</code>). Tous les éléments de $P_2$ sont identiques.</p>
 <h4>4.2.6</h4>
+<blockquote>
+<p>Montrez qu'à la fin de l'algorithme, deux éléments consécutifs de la pile $P_1$ sont toujours différents.</p>
+</blockquote>
 <p>On empile dans $P_1$ soit :</p>
 <ul>
 <li>dans le premier <code class="language-">if</code>. dans ce cas là, soit la pile était vide soit le dernier élément de la pile ($y$) est différent de $x$</li>
 <li>dans le second <code class="language-">else</code>. Dans ce cas là le denier élément de la pile ($y$) est différent de $x$ car on est dans le premier else et $z$ est différent de $x$ puisqu'on est dans le second else. On a donc $y \neq x \neq z$ et la proprété est vérifiée.</li>
 </ul>
 <h4>4.2.7</h4>
+<blockquote>
+<p>Déduisez-en qu'un élément majoritaire, s'il en existe, ne peut être que le dernier élément stocké dans $P_2$ ou le dernier élément stocké dans $P_1$.</p>
+</blockquote>
 <p>Ala fin de l'algorithme, les éléments de $T$ sont répartis dans deux listes. La première, $P_1$, est alternée et la seconde, $P_2$, est composées d'éléments identiques.</p>
 <p>Soit alors $x$ dans $P_1$ mais qui n'est pas dans $P_2$. Il ne peut apparaitre qu'au pire <code>len(P1) // 2 + 1</code> fois dans $P_1$. On a alors plusieurs cas :</p>
 <ul>
@@ -370,6 +410,9 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <li>soit le dernier élément de $P_1$ si $P_2$ est vide.</li>
 </ul>
 <h4>4.3.1</h4>
+<blockquote>
+<p>Déduisez de la partie précédente un algorithme linéaire en la taille du tableau en entrée pour résoudre le problème de l'élément majoritaire.</p>
+</blockquote>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrées : Un tableau d'entiers T
 Programme :
     Soient P1 et P2 les piles issuent de Majorité(T)
@@ -384,6 +427,9 @@ Programme :
 </code></pre>
 <p>L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme <code class="language-">Majorité</code> plus celle de <code class="language-">compte</code> plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.</p>
 <h4>4.3.2</h4>
+<blockquote>
+<p>Quelle est la complexité du problème de l'élément majoritaire ?</p>
+</blockquote>
 <p>L'algorithme de la question 4.3.1 résoud le problème de l'élément majoriaire en $\mathcal{O}(n)$ opérations et la quesion 1.2.4 a montré qu'il était en $\Omega(n)$, on en déduit donc que la complexité du problème est de $\Theta(n)$.</p>
 
 
