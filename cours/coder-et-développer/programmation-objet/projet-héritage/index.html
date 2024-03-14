@@ -118,9 +118,9 @@
 <li>les caractéristiques d'un <a href="https://www.aidedd.org/dnd/monstres.php?vf=gobelin">gobelin</a> (points de vie, attaque)</li>
 <li>les caractéristiques d'un magicien (points de vie, attaque et attaque magique)</li>
 </ul>
-<p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.</p>
+<p>Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.</p>
 <p>Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).</p>
-<p>Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (fait un cas où le gobelin survit et un autre ou la guerrière survit).</p>
+<p>Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (faire un cas où le gobelin survit et un autre ou la guerrière survit).</p>
 </div>
 </div>
 <h2>Le dé</h2>
@@ -179,14 +179,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La gestion des accesseurs et des mutateurs hérités est <em>&quot;compliquée&quot;</em> en python. Si vous avez utilisez des <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> pour votre classe <code class="language-">Dé</code>, il faut un peut tricoter pour les utiliser dans la classe <code class="language-">StatDice</code>.</p>
+<p>La gestion des accesseurs et des mutateurs hérités est <em>&quot;compliquée&quot;</em> en Python. Si vous avez utilisé des <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> pour votre classe <code class="language-">Dé</code>, il faut un peu tricoter pour les utiliser dans la classe <code class="language-">StatDé</code>.</p>
 <p>Supposons que c'est l'attribut <code class="language-">valeur</code> auquel vous accédez par <code class="language-">@property</code>. Pour appeler :</p>
 <ul>
 <li>l'accesseur de la classe mère dans une classe fille on peut utiliser : <code class="language-">super().valeur</code></li>
-<li>le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : <code class="language-">super(type(self), type(self)).valeur.fset(self, new_position)</code></li>
+<li>le mutateur de la classe mère dans une classe fille peut être accédé via son nom Python qui est : <code class="language-">super(type(self), type(self)).valeur.fset(self, new_position)</code></li>
 </ul>
-<p>C'est un peu compliqué et vient de l'implémentation de <code class="language-">super()</code> en python.</p>
-<p>Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu'on fait</p>
+<p>C'est un peu compliqué et vient de l'implémentation de <code class="language-">super()</code> en Python.</p>
+<p>Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu'on fait</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -200,7 +200,7 @@
 </ul>
 </div>
 </div>
-<p>On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.</p>
+<p>On pourra stocker le nombre d'apparitions de chaque face dans une liste où l'indice + 1 correspond à la face.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -228,15 +228,15 @@
 $$</p>
 <p>Où :</p>
 <ul>
-<li>$I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)</li>
+<li>$I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés va de 1 à 6)</li>
 <li>$O_i$ est le nombre de cas <strong>observés</strong> pour la modalité $i$ (pour nous c'est le nombre de fois où le dé a eu la position $i$)</li>
 <li>$T_i$ est le nombre de cas <strong>théoriques</strong> que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)</li>
 </ul>
 <p>Plus ce nombre est petit, plus l'expérience est conforme à la théorie.</p>
 <p>De façon formelle :</p>
 <ul>
-<li>si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $I-1$ degrés de libertés (ici 5 degrés de libertés)</li>
-<li>la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.</li>
+<li>si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du $\chi^2$ à $I-1$ degrés de liberté (ici 5 degrés de liberté)</li>
+<li>la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du $\chi^2$ à df degrés de libertés.</li>
 </ul>
 <p>Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaître ces valeurs, on utilise des tables comme <a href="https://people.richland.edu/james/lecture/m170/tbl-chi.html">celle-ci</a>).</p>
 <p>Donc si on trouve un $\chi^2$ plus grand ou égal que $9.206$, il y a moins de 10% de chance d'obtenir ce nombre si l'on suit une loi du chi2 à df degrés de liberté : Il y a moins de 10% de chance de se tromper en supposant que notre expérience ne suit pas la théorie. Dans notre cas, cela signifie qu'il y a moins de 10% de chance de supposer que notre dé n'est pas équilibré.</p>
@@ -246,7 +246,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.</p>
+<p>Le test du $\chi^2$ est très pratique lorsque l'on veut vérifier que nos hypothèses théoriques sont satisfaites expérimentalement.</p>
 </div>
 </div>
 
