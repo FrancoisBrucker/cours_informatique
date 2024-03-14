@@ -34,11 +34,11 @@ Créez un programme qui demande à l'utilisateur :
 - les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
 - les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
-Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux ne meure.
+Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.
 
 Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 
-Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (fait un cas où le gobelin survit et un autre ou la guerrière survit).
+Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se réalise (faire un cas où le gobelin survit et un autre ou la guerrière survit).
 
 {% endfaire %}
 
@@ -86,16 +86,16 @@ Vous devez donc écrire et tester pour la classe `StatDé`{.language-} :
 {% endfaire %}
 
 {% attention %}
-La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en python. Si vous avez utilisez des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property){.interne} pour votre classe `Dé`{.language-}, il faut un peut tricoter pour les utiliser dans la classe `StatDice`{.language-}.
+La gestion des accesseurs et des mutateurs hérités est *"compliquée"* en Python. Si vous avez utilisé des `@property`{.language-} vues dans le [projet objets : Dés](../projet-objets-dés#property){.interne} pour votre classe `Dé`{.language-}, il faut un peu tricoter pour les utiliser dans la classe `StatDé`{.language-}.
 
 Supposons que c'est l'attribut `valeur`{.language-} auquel vous accédez par `@property`{.language-}. Pour appeler :
 
 - l'accesseur de la classe mère dans une classe fille on peut utiliser : `super().valeur`{.language-}
-- le mutateur de la classe mère dans une classe fille peut être accéder via son nom python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
+- le mutateur de la classe mère dans une classe fille peut être accédé via son nom Python qui est : `super(type(self), type(self)).valeur.fset(self, new_position)`{.language-}
 
-C'est un peu compliqué et vient de l'implémentation de `super()`{.language-} en python.
+C'est un peu compliqué et vient de l'implémentation de `super()`{.language-} en Python.
 
-Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu'on fait
+Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu'on fait
 {% endattention %}
 {% lien %}
 
@@ -104,7 +104,7 @@ Vous pouvez consulter les deux liens suivant pour un peut mieux comprendre ce qu
 
 {% endlien %}
 
-On pourra stocker le nombre d'apparition de chaque face dans une liste où l'indice + 1 correspond à la face.
+On pourra stocker le nombre d'apparitions de chaque face dans une liste où l'indice + 1 correspond à la face.
 
 {% faire %}
 Modifiez la user story pour qu'elle utilise la classe `StatDé`{.language-} à la place de `Dé`{.language-}.
@@ -130,7 +130,7 @@ $$
 
 Où :
 
-- $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés pour aller de 1 à 6)
+- $I$ : l'ensemble des possibilités (pour nous $I=6$ puisque la valeur d'un dés va de 1 à 6)
 - $O_i$ est le nombre de cas **observés** pour la modalité $i$ (pour nous c'est le nombre de fois où le dé a eu la position $i$)
 - $T_i$ est le nombre de cas **théoriques** que l'on devrait avoir (dans notre cas $\frac{N}{6}$ si on a lancé $N$ fois notre dé)
 
@@ -138,8 +138,8 @@ Plus ce nombre est petit, plus l'expérience est conforme à la théorie.
 
 De façon formelle :
 
-- si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du chi2 à $I-1$ degrés de libertés (ici 5 degrés de libertés)
-- la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du chi2 à df degrés de libertés.
+- si la théorie est conforme à la réalité, le nombre $\chi^2$  suit une loi du $\chi^2$ à $I-1$ degrés de liberté (ici 5 degrés de liberté)
+- la probabilité $P_{\mbox{df}}(X \geq K)=\alpha$ nous donne la chance d'obtenir $K$ ou plus pour une loi du $\chi^2$ à df degrés de libertés.
 
 Pour nous $df = 5$ et si on prend $\alpha = .1$ on trouve : $P_{5}(X \geq 9.236) = .1$ (pour connaître ces valeurs, on utilise des tables comme [celle-ci](https://people.richland.edu/james/lecture/m170/tbl-chi.html)).
 
@@ -149,5 +149,5 @@ C'est que l'on appelle le [risque de première espèce](https://fr.wikipedia.org
 
 {% info %}
 
-Le test du chi2 est très pratique lorsque l'on veut vérifier nos hypothèse théoriques sont satisfaites expérimentalement.
+Le test du $\chi^2$ est très pratique lorsque l'on veut vérifier que nos hypothèses théoriques sont satisfaites expérimentalement.
 {% endinfo %}
