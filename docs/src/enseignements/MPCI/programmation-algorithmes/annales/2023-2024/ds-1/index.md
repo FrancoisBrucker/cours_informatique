@@ -13,7 +13,81 @@ Durée du contrôle : 3h.
 
 ## Barème
 
-> TBD
+|note/20  | < 5        | [5, 10[    | [10, 11[     | [11, 13[    | [13, 14[  | [14, 18] | ]18, 20] | > 20|
+|---------|------------|------------|--------------|-------------|-----------|----------|----------|-----|
+|nombre   |  4         |  6         |  8           |  7          | 11        | 5        |  3       | 2   |
+|rang min | 43         | 37         | 29           |  22         | 11        | 6        |  3       | 1   |
+
+- moyenne : 12.16/20
+- écart-type : 4.09/20
+- médiane : 12.44/20
+- min : 1.5/20
+- max : 22/20
+
+Vous êtes globalement une bonne promotion, avec 26 étudiants sur 46 entre 10 et 14. Quatre étudiants doivent cependant vraiment apprendre le cours (il était possible d'avoir 7 uniquement avec les questions de cours) et rien n'est perdu pour ceux qui ont entre 8 et 10, il ne manque vraiment pas grand chose (un peu de rigueur et/ou de rapidité) pour accrocher la moyenne. Enfin, comme l'examen était noté sur plus de 20 points, deux étudiants ont eu plus strictement plus que 20.
+
+### Répartition des points par exercice
+
+L'examen était noté sur 25 points.
+
+#### Exercice 1
+
+Sur 7 points au total.
+
+|Question|points|moyenne globale|moyenne de ceux ayant répondu à la question|
+|--------|------|-------|--------|
+|1.1|0,5|0,45|0,49|
+|1.2.1|0,5|0,32|0,38|
+|1.2.2|0,5|0,39|0,48|
+|1.2.3|1|0,31|0,48|
+|1.2.4|1|0,33|0,69|
+|1.3.1|1|0,82|0,94|
+|1.3.2|1|0,73|0,84|
+|1.3.3|0,5|0,38|0,44|
+|1.3.4|1|0,65|0,87|
+
+#### Exercice 2
+
+Sur 6,5 points au total.
+
+|Question|points|moyenne globale|moyenne de ceux ayant répondu à la question|
+|--------|------|-------|--------|
+|2.1.1|1,5|0,67|0,77|
+|2.1.2|1,5|0,30|0,41|
+|2.1.3|1|0,63|0,84|
+|2.2.1|1|0,51|0,63|
+|2.2.2|1|0,49|0,66|
+|2.2.3|0,5|0,27|0,39|
+
+#### Exercice 3
+
+Sur 6,5 points au total.
+
+|Question|points|moyenne globale|moyenne de ceux ayant répondu à la question|
+|--------|------|-------|--------|
+|3.1|1|0,36|0,46|
+|3.2.1|1|0,72|0,91|
+|3.2.2|1|0,35|0,66|
+|3.2.3|2|0,07|0,70|
+|3.3.1|1|0,13|1,00|
+|3.3.2|0,5|0,03|0,31|
+
+#### Exercice 4
+
+Sur 6 points au total.
+
+|Question|points|moyenne globale|moyenne de ceux ayant répondu à la question|
+|--------|------|-------|--------|
+|4.1|1|0,47|0,86|
+|4.2.1|0,5|0,22|0,35|
+|4.2.2|0,5|0,30|0,50|
+|4.2.3|1|0,38|0,79|
+|4.2.4|0,5|0,26|0,50|
+|4.2.5|0,5|0,18|0,50|
+|4.2.6|0,5|0,17|0,47|
+|4.2.7|0,5|0,04|0,25|
+|4.3.1|0,5|0,05|0,39|
+|4.3.2|0,5|0,09|0,40|
 
 ## Corrigé
 
@@ -310,7 +384,7 @@ def dépile(pile):
 
 > La valeur de $y$ à la ligne 6 est-elle une valeur de $P_1$ ? Et si oui, laquelle ?
 
-Si $y$ est `None`{.language-} c'est que la pile $P_1$ est vide et sinon $y$ vut le dernier élément empilé.
+Si $y$ est `None`{.language-} c'est que la pile $P_1$ est vide et sinon $y$ vaut le dernier élément empilé.
 
 #### 4.2.2
 
@@ -326,7 +400,7 @@ Il y a cinq cas possibles, mutuellement exclusifs :
 
 #### 4.2.3
 
-> Donnez le contenu des deux piles $P_1$ et $P_2$ {\bf à la fin de l'algorithme} si, en entrée, on lui donne les deux exemples du début de l'énoncé.
+> Donnez le contenu des deux piles $P_1$ et $P_2$ **à la fin de l'algorithme** si, en entrée, on lui donne les deux exemples du début de l'énoncé.
 
 - Pour $T = [2, 4, 5, 4, 5, 4, 5, 4, 4]$ on obtient :
   - $P_1 = [2, 4, 5, 4, 5, 4, 5, 4]$
@@ -338,13 +412,14 @@ Il y a cinq cas possibles, mutuellement exclusifs :
 #### 4.2.4
 
 > Quelle est la complexité de l'algorithme ?
+
 Puisqu'empiler et dépiler sont en $\mathcal{O}(1)$ opération, la complexité totale de l'algorithme est en $\mathcal{O}(len(T))$ opérations.
 
 #### 4.2.5
 
 > Montrez que tous les éléments de la pile $P_2$ sont identiques à la fin de l'algorithme.
 
-On empile dans $P_2$ que si la pile était vide (le cas `z == None`) ou si le dernier élément de la pile est égal au nouvel élément (`z == x`). Tous les éléments de $P_2$ sont identiques.
+On empile dans $P_2$ que si la pile était vide (le cas `z == None`{.language-}) ou si le dernier élément de la pile est égal au nouvel élément (`z == x`{.language-}). Tous les éléments de $P_2$ sont identiques.
 
 #### 4.2.6
 
