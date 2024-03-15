@@ -4,7 +4,7 @@ title: "Projet : Amélioration des objets dés"
 
 eleventyNavigation:
   prerequis:
-    - "../projet-objets-dés-accesseur/"
+    - "../projet-objets-dés/"
 
 eleventyComputed:
   eleventyNavigation:
