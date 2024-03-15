@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Annales 2023/2024</title>
+    <title>Corrigé Test 3 : Programmation objet</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,47 +67,64 @@
       
 <article>
 
-  <h1>Annales 2023/2024</h1>
-  <div>
+  <h1 class="mb-1">Corrigé Test 3 : Programmation objet</h1>
+  <div class="mb-4">
     
 
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
     
   </div>
 
   
 
-  <!-- début résumé -->
-<p>Tests et examens pour l'année scolaire 2023/2024</p>
-<!-- end résumé -->
-<h2>Tests</h2>
-<ol>
-<li>Test 1 : code
+  <p>Ces questions ont pour bur de vous faire un peu réfléchir sur la prgrammation objet.</p>
+<h2>Question 1</h2>
+<p>Répondez en une phrase maximum et le plus clairement possible.</p>
+<h3>1.1</h3>
+<blockquote>
+<p>Quelle est la différence entre une fonction et une méthode ?</p>
+</blockquote>
+<p>Le premier paramètre d'une méthode est l'objet à gauche du point.</p>
+<h3>1.2</h3>
+<blockquote>
+<p>Quelle est la différence entre une composition et une agrégation ?</p>
+</blockquote>
 <ul>
-<li><a href="1_test_sujet_code" class="interne">sujet</a></li>
-<li><a href="1_test_corrig%C3%A9_code" class="interne">corrigé</a></li>
+<li>une composition est un attribut crée par l'objet</li>
+<li>une agrégation est un attribut dont l'objet n'a pas été créé par l'objet</li>
 </ul>
-</li>
-<li>Test 2 : preuve
+<h3>1.3</h3>
+<blockquote>
+<p>Qu'est-ce qu'un espace de nom ? À quoi cela sert-il ? Explicitez son usage dans l’appel d’une méthode.</p>
+</blockquote>
+<p>Un espace de nom sert à associer des noms à des objets. Lors de l'appel d'une méthode (ou d'une fonction) un espace de nom est créé pour contenir les paramètres de la méthodes et ses variables.</p>
+<p>Un objet possède également un espace de nom utilisable grâce à la notation pointée : <code class="language-">objet.nom</code> cherche <code class="language-">nom</code> dans l'espace de nom de <code class="language-">objet</code>. La notation pointée permet à une méthode d'accéder aux attributs de son premier paramètre <code class="language-">self</code>, qui est l'objet à gauche du point.</p>
+<h2>Question 2</h2>
+<p>Le but des questions suivantes est de vérifier que vous savez :</p>
 <ul>
-<li><a href="2_test_sujet_preuve" class="interne">sujet</a></li>
-<li><a href="2_test_corrig%C3%A9_preuve" class="interne">corrigé</a></li>
+<li>écrire une description UML avec des attributs, des méthodes et leurs signatures</li>
+<li>avoir un tout cohérent : les attributs sont utilisés par les méthodes et leurs types correspondent</li>
+<li>chaque classe a un constructeur</li>
+<li>les liens entre les classes (composition et agrêgation) sont correctement déclarés</li>
 </ul>
-</li>
-<li>Test 3 : programmation objet
-<ul>
-<li><a href="3_test_sujet_objet" class="interne">sujet</a></li>
-<li><a href="3_test_corrig%C3%A9_objet" class="interne">corrigé</a></li>
-</ul>
-</li>
-</ol>
-<h2>Devoir Maison</h2>
-<ol>
-<li><a href="palindromes" class="interne">DM 1 : Palindromes</a></li>
-</ol>
-<h2>Devoirs Surveillés</h2>
-<ol>
-<li><a href="ds-1" class="interne">DS 1</a></li>
-</ol>
+<h3>2.1</h3>
+<blockquote>
+<p>Dessinez-moi un mouton en UML (il faudra qu'il ait un constructeur, au moins deux attributs et trois méthodes).</p>
+</blockquote>
+<h3>2.2</h3>
+<blockquote>
+<p>Créez une classe boîte (en UML) pour ranger le Mouton dedans.  Quelle est la relation entre cette classe et la classe mouton ? On rappelle que cette boîte-là comporte trois trous pour que le mouton respire.</p>
+</blockquote>
 
 
 </article>
