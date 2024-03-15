@@ -19,6 +19,10 @@ A ≤ B si on peut passer de A à B pour poser le problème puis passer d'une so
 
 Ceci permet de résoudre A en utilisant un algorithme permettant de résoudre B.
 
+oui, c'est les problèmes NP complet.
+
+NP-difficile c'est les éléments maximaux pour les décidables.
+
 Prenons un exemple un peu idiot mais qui permettra de se fixer les idées
 
 > TBD max tableau ≤ sort
