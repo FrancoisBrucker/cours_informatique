@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Dans un programme, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
+Dans un langage objet, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
 
 ![classes héritage](héritage-classes.png)
 
@@ -29,16 +29,16 @@ En python, toutes les classes héritent de la classe `object`{.language-}. Par e
 
 L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
 
-1. soit en cherchant dans la hiérarchie des classes l'attribut ou l'objet appelé depuis une classe fille
-2. soit en appelant directement un attribut ou un objet de la classe mère.
+1. soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille
+2. soit en appelant directement un attribut ou une méthode de la classe mère.
 
 #### Chercher dans la hiérarchie
 
 Supposons que j'ai un objet nommé `obj`{.language-} de classe `classe 2` qui veut appeler la méthode 1 : `obj.méthode1()`{.language-}
 
-1. on va chercher `méthode1`{.language-} dans l'espace de nom de `obj`{.language-} : il n'y est pas.
-2. on va alors chercher dans sa classe, `classe 2` : elle ne définit pas `méthode1`{.language-}
-3. on cherche alors dans la classe mère de `classe 2`, `classe 1` : `méthode1`{.language-} est définie, on utilise son code.
+1. `méthode1`{.language-} est d'abord cherchée dans l'espace de nom de `obj`{.language-} : elle n'y est pas.
+2. elle est alors cherchée dans sa classe, `classe 2` : celle-ci ne définit pas `méthode1`{.language-}
+3. elle est alors cherchée dans la classe mère de `classe 2`, `classe 1` : `méthode1`{.language-} est définie, c'est son code qui est finalement utilisé.
 
 {% note %}
 Si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom recherché une erreur est lancée.
@@ -46,7 +46,7 @@ Si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom rec
 
 #### Appeler directement une sous/sur-classe
 
-Supposons que dans la définition de `méthode1`{.language-} de la `classe 2'` on particularise la méthode `méthode1`{.language-} de la `classe 1`. On appelle alors la méthode `méthode1`{.language-} de la `classe 1` dans la définition de la `méthode1`{.language-} de la `classe 2'`.
+Supposons que dans la définition de `méthode1`{.language-} de la `classe 2'`, on particularise la méthode `méthode1`{.language-} de la `classe 1`. On peut alors appeler la méthode `méthode1`{.language-} de la `classe 1` dans la définition de la `méthode1`{.language-} de la `classe 2'`.
 
 {% note %}
 
@@ -56,7 +56,7 @@ Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarc
 
 ### Connaître la hiérarchie
 
-En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinée lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()`{.language-} (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`{.language-}.
+En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()`{.language-} (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`{.language-}.
 
 Par exemple, dans un interpréteur :
 
@@ -68,10 +68,10 @@ Par exemple, dans un interpréteur :
 >>> 
 ```
 
-L'ordre dans lequel est examinée les classe pour les chaines de caractères est donc : d'abord la classe `str`{.language-} puis la classe `object`{.language-}
+L'ordre dans lequel sont examinées les classes pour les chaines de caractères est donc : d'abord la classe `str`{.language-} puis la classe `object`{.language-}
 
 {% info %}
-La classe `object`{.language-} est toujours le dernier élément de la liste
+La classe `object`{.language-} est toujours le dernier élément de la liste.
 {% endinfo %}
 
 ### Quand utiliser l'héritage
@@ -80,7 +80,7 @@ La composition et l'agrégation permettent de factoriser des fonctionnalités al
 
 Il y a cependant des cas où l'héritage est très utile :
 
-- lorsque l'on veut spécifier une classe : la nouvelle classe est un cas particulier de la classe mère
+- lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère
 - lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
 
 La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).

@@ -30,11 +30,11 @@ Créez (et testez) les classes personnage, magicien et guerrière.
 
 Créez un programme qui demande à l'utilisateur :
 
-- les caractéristiques d'une guerrière (points de vie, attaque et score de défense
+- les caractéristiques d'une guerrière (points de vie, attaque et score de défense)
 - les caractéristiques d'un [gobelin](https://www.aidedd.org/dnd/monstres.php?vf=gobelin) (points de vie, attaque)
 - les caractéristiques d'un magicien (points de vie, attaque et attaque magique)
 
-Puis,  faites en sorte que la guerrière et le Gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.
+Puis,  faites en sorte que la guerrière et le gobelin se tapent dessus à tour de rôle jusqu'à ce qu'un des deux meure.
 
 Le dernier héros en vie est ensuite tué par le magicien qui le kite en lui jetant des sorts (comme un fourbe), puis le loote pour aller tout revendre au marchand du bourg (mais c'est une autre histoire et d'autres implémentations).
 
