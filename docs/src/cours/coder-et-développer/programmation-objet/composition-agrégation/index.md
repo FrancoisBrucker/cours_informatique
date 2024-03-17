@@ -55,8 +55,8 @@ Pour que l'on puisse faire ces différentes méthodes, il faut que `Panier`{.lan
 
 ### Composition et agrégation
 
-* Le stock est une **composition** : il est créé avec le panier
-* les fruits sont une **agrégation** : ils sont ajoutés par une méthode dans l'objet.
+* Le panier est **composé** d'un stock : il est créé avec le panier
+* le stock **agrège** des fruits : ils sont ajoutés par une méthode dans l'objet.
 
 ### Code python
 

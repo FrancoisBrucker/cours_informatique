@@ -132,6 +132,35 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 [Couverture de code](couverture-de-code){.interne}
 {% endaller %}
 
+## Gestion des dépendances
+
+> TBD C'est un vrai soucis. plusieurs projet avec des modules pythons incompatibles, ou des modules inutiles pour certains projets. 
+> TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaeu projet.
+Environnement d'exécution.
+
+1. bibliothèques et pip
+2. ses propres modules
+3. dépendances dans un projet
+
+### Environnements virtuels
+
+> TBD venv
+
+<https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe>
+> <https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t>
+<https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html>
+<https://python-poetry.org/>
+<https://linuxfr.org/news/python-partie-7-environnements-virtuels>
+
+### Modules
+
+> TBD avant de parler de poetry, il faut parler des `__init__`
+
+### poetry
+
+plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.
+
+> Gestions des dépendances d'un projet.
 
 ## Stockage des données
 
@@ -159,8 +188,4 @@ Exemple des textes :
 {% aller %}
 [fichiers pour stocker des données](projet-données-texte){.interne}
 {% endaller %}
-
-## Un interpréteur par projet
-
-> TBD cours virtualenv, poetry, etc.
 

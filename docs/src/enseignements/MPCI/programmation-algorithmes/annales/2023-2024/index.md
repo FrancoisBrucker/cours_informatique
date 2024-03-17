@@ -17,6 +17,9 @@ Tests et examens pour l'année scolaire 2023/2024
 2. Test 2 : preuve
    - [sujet](./2_test_sujet_preuve){.interne}
    - [corrigé](./2_test_corrigé_preuve){.interne}
+3. Test 3 : programmation objet
+   - [sujet](./3_test_sujet_objet){.interne}
+   - [corrigé](./3_test_corrigé_objet){.interne}
 
 ## Devoir Maison
 

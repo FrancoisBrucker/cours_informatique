@@ -163,41 +163,36 @@ class Point:
 
 class Polygone:
     def __init__(self, points):
-        self._points = tuple(points)
+        self.points = tuple(points)
 
     def périmètre(self):
         d = 0
-        pivot = self._points[0]
-        for point in self._points[1:]:
+        pivot = self.points[0]
+        for point in self.points[1:]:
             d += pivot.distance(point)
             pivot = point
-        d += pivot.distance(self._points[0])
+        d += pivot.distance(self.points[0])
 
         return d
 
     def aire(self):
         a = 0
-        pivot = self._points[0]
-        for point in self._points[1:]:
+        pivot = self.points[0]
+        for point in self.points[1:]:
             a += pivot.x * point.y - pivot.y * point.x
             pivot = point
 
-        point = self._points[0]
+        point = self.points[0]
         a += pivot.x * point.y - pivot.y * point.x
 
         return 0.5 * abs(a)
 
 ```
 
-{% info %}
-On a rendu les attributs des classes privés. La convention en python pour rendre un attribut privé est d'ajouter un `_`{.language-} avant son nom.
-{% endinfo %}
-
 Remarques :
 
-1. Remarquez que l'on utilise toujours les méthodes (si elles existent) pour accéder aux attributs, cela permettra si besoin de changer les attributs de la classes (passer en coordonnées polaires par exemple) sans changer le code des méthodes.
-2. Pour la classe polygone, on recrée une liste de points pour être sûr que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiée à l'extérieur de la classe)
-3. Notez que l'on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone
+1. Dans le constructeur de la classe polygone, on recrée une liste de points pour être sûr que le nombre de points reste constant (la liste est passée en paramètre et peut donc être modifiée à l'extérieur de la classe)
+2. Notez que l'on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone
 
 On peut tester le code avec, par exemple :
 

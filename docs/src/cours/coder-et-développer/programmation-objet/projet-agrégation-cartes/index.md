@@ -4,7 +4,7 @@ title: "Projet agrégation : cartes"
 
 eleventyNavigation:
     prerequis:
-        - "../projet-objets-cartes/"
+        - "../projet-objets-cartes-value-object/"
 
 eleventyComputed:
   eleventyNavigation:
