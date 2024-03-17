@@ -24,6 +24,10 @@ Vous aurez besoin de la bibliothèque [pyglet](https://pyglet.readthedocs.io/en/
 Toutes les informations nécessaires pour ce DS ont été prises du site [hard drop](https://harddrop.com/wiki/Tetris_Wiki) qui contient toutes les ressources nécessaires pour comprendre et devenir meilleur à Tetris.
 {% endinfo %}
 
+
+## Corrigé
+
+Le code complet est disponible [à cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/enseignements/MPCI/programmation-algorithmes/annales/2022-2023/ds_2/tetris)
 ## Question 1
 
 {% faire "**But**" %}

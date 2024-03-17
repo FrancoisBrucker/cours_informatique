@@ -731,5 +731,5 @@ Pour gérer et trouver des couleurs sympathiques, utilisez une roue des couleurs
 ## Code final
 
 {% aller %}
-[code pyglet du cours](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/essais-pyglet)
+[code pyglet du cours](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-%C3%A9v%C3%A8nementielle/principes/essais-pyglet)
 {% endaller %}
