@@ -90,28 +90,6 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../programmation-évènementielle/">../programmation-évènementielle/</a>
-            </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
   <!-- début résumé -->
@@ -217,6 +195,25 @@
 </ul>
 <p><img src="tache-1.png" alt="fenêtre"></p>
 <p>Vous créerez une classe <code class="language-">Fenetre</code> héritant de <code class="language-">pyglet.window.Window</code> contenant les différents contenus. Votre programme principal consistera à créer un objet de la classe <code class="language-">Fenetre</code> et d'exécuter pyglet avec la commande : <code class="language-">pyglet.app.run()</code>.</p>
+<p>À la fin de la tâche 1 vous devriez avoir deux fichiers :</p>
+<ul>
+<li><code class="fichier">fenêtre.py</code> qui contient la classe <code class="language-">Fenêtre</code></li>
+<li><code class="fichier">main.py</code> qui contient le programme principal (qui crée un objet de la classe <code class="language-">Fenêtre</code> puis lance l'interface graphique)</li>
+</ul>
+<p>Le diagramme UML de la classe <code class="language-">Fenêtre</code> devrait être quelque chose du genre :</p>
+<p><img src="tache-1-UML.png" alt="fenêtre"></p>
+<p>Le fichier <code class="language-">main.py</code> ne bougera plus de tout le projet et doit être :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+
+<span class="token keyword">from</span> fenêtre <span class="token keyword">import</span> Fenêtre
+
+window <span class="token operator">=</span> Fenêtre<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ça commence."</span><span class="token punctuation">)</span>
+pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C'est fini !"</span><span class="token punctuation">)</span>
+
+</code></pre>
 <h2>Tâche 2</h2>
 <ul>
 <li>ajout du sol : une <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Line">ligne pyglet</a> à hauteur $50$</li>
@@ -224,11 +221,13 @@
 <li>ajout du vaisseau :
 <ul>
 <li>doit être placé sur le sol</li>
-<li>un rectangle (de hauteur 20 et de longueur 50) de couleur #47B6FF (il faudra faire une conversion pour correspondre au format de couleurs de pyglet)</li>
+<li>sa forme est un <a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">rectangle pyglet</a> (de hauteur 20 et de longueur 50) de couleur #47B6FF (il faudra faire une conversion pour correspondre au format de couleurs de pyglet)</li>
 </ul>
 </li>
 </ul>
 <p><img src="tache-2.png" alt="fenêtre aire de jeu"></p>
+<p>Le diagramme UML de la classe <code class="language-">Fenêtre</code> devrait maintenant être quelque chose du genre :</p>
+<p><img src="tache-2-UML.png" alt="fenêtre"></p>
 <h2>Tâche 3</h2>
 <p>Faire déplacer le vaisseau de gauche à droite sans cogner les bords.</p>
 <p>Comme la gestion des déplacement doit être interne au vaisseau, il faut qu'il puisse avoir sa classe à lui. On va donc réaliser cette tâche en 2 temps.</p>
@@ -244,7 +243,7 @@
 <li>méthode :
 <ul>
 <li><code class="language-">__init__(self, sol, largeur_fenetre)</code> : position du sol et largeur de la fenêtre de jeu</li>
-<li><code class="language-">draw()</code></li>
+<li><code class="language-">draw()</code> : vous appellerez cette méthode depuis la méthode <code class="language-">draw</code> de <code class="language-">Fenêtre</code></li>
 </ul>
 </li>
 </ul>
@@ -253,11 +252,12 @@
 <li>la valeur de <code class="language-">vaisseau.forme.x</code> à sa valeur théorique selon la taille de l'écran.</li>
 <li>la valeur de <code class="language-">vaisseau.forme.y</code> à la hauteur du sol</li>
 </ul>
+<p><img src="tache-31-UML.png" alt="fenêtre"></p>
 <h3>Tâche 3.2</h3>
 <p>Ajout des méthodes et des attributs permettant de déplacer le vaisseau.</p>
 <p>Il nous faut côté <code class="language-">Fenetre</code> :</p>
 <ol>
-<li>modifier la classe fenêtre pour qu'elle prenne en compte les touches &quot;flèche gauche&quot; et &quot;flèche droite&quot;</li>
+<li>modifier la classe fenêtre pour qu'elle prenne en compte les touches &quot;flèche gauche&quot; et &quot;flèche droite&quot; en modifiant un nouveal attribut <code class="language-">direction</code> qui  vaudra -1 lorsque la touche gauche est appuyée ; 1 lorsque c'est la touche droite et 0 sinon</li>
 <li>que l'on change la position du vaisseau à au plus 60 fps (tous les 1/60 secondes)</li>
 </ol>
 <p>On doit gérer les mouvement côté <code class="language-">Vaisseau</code> en ajoutant :</p>
@@ -286,10 +286,11 @@
 <p>Félicitations, votre programme doit pouvoir faire bouger le vaisseau ! Vérifiez le.</p>
 </div>
 </div>
+<p><img src="tache-32-UML.png" alt="fenêtre"></p>
 <h2>Tâche 4</h2>
 <p>Création et gestion de la bille :</p>
 <ul>
-<li>La bille apparaît au milieu de l'écran avec une vitesse initiale.</li>
+<li>la bille apparaît au milieu de l'écran avec une vitesse initiale.</li>
 <li>si elle passe sous le sol, on perd une vie</li>
 <li>à 0 vie, elle réapparait avec une vitesse nulle</li>
 <li>elle rebondit (selon la normale de la surface) sur :
@@ -320,6 +321,7 @@
 <p>Les tests de la bille seront fait dans le fichier <code class="fichier">Arkanoid/test_bille.py</code>. Testez que la position initiale de la bille est bien correcte.</p>
 <p>Ajoutez la bille à l'interface :</p>
 <p><img src="tache-41.png" alt="bille"></p>
+<p><img src="tache-41-UML.png" alt="fenêtre"></p>
 <h3>Tâche 4.2</h3>
 <p>Ajoutons une première version du déplacement de la bille :</p>
 <ul>
@@ -328,11 +330,12 @@
 </ul>
 <p>Les tests de la bille seront fait dans le fichier <code class="fichier">Arkanoid/test_bille.py</code>. Pour tester la méthode <code class="language-">bouge</code>, vous pourrez faire 1 test <code class="language-">test_bouge()</code> qui vérifie que pour <code class="language-">dt=2</code> et une vitesse <code class="language-">(2, 5)</code>, le déplacement de la bille est bien correct. N'hésitez pas à changer directement les attributs dans votre test.</p>
 <p>Ajoutez la bille dans le jeu, avec une vitesse initiale de (0, -100)</p>
+<p><img src="tache-42-UML.png" alt="fenêtre"></p>
 <h3>Tâche 4.3</h3>
 <p>Ajoutons le fait que si la bille sort de la fenêtre par le bas (sa position <code class="language-">y</code> est inférieure à la hauteur du sol),  elle réapparait au milieu de l'écran avec la même vitesse.</p>
 <p>Testez cette fonctionnalité.</p>
 <h3>Tâche 4.4</h3>
-<p>Faite maintenant rebondir la bille sur les murs. Cela peut se faire en changeant la direction d'une des coordonnées du vecteur vitesse (cette coordonnée change selon le mur) dans <code class="language-">update</code> si la bille devait dépasser le mur.</p>
+<p>Faite maintenant rebondir la bille sur les murs. Cela peut se faire en changeant la direction d'une des coordonnées du vecteur vitesse (cette coordonnée change selon le mur) dans la méthode <code class="language-">bouge</code> de la bille si celle-ci devait dépasser le mur.</p>
 <p>Testez ces fonctionnalités avec un test par mur en :</p>
 <ol>
 <li>vous plaçant juste avant l'impact</li>
@@ -343,8 +346,8 @@
 <p>Le vaisseau doit se comporter comme un mur lorsque la bille le touche. Pour cela il faut gérer les collisions entre éléments du jeu.</p>
 <p>Nous allons gérer ceci en plusieurs temps.</p>
 <h3>Tâche 5.1</h3>
-<p>Ajoutez une méthode <code class="language-">collision(bille)</code> au Vaisseau. Cette méthode doit répondre <code class="language-">True</code> si la bille touche le vaisseau, et <code>False</code> sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> hauteur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<p>Ajoutez une méthode <code class="language-">collision(bille)</code> au vaisseau. Cette méthode doit répondre <code class="language-">True</code> si la bille touche le vaisseau, et <code>False</code> sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision_disque_rectangle</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> hauteur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         dist_x <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>
             <span class="token punctuation">(</span>x0 <span class="token operator">-</span> x1<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">,</span>
             <span class="token punctuation">(</span>x0 <span class="token operator">-</span> x1 <span class="token operator">-</span> largeur<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">,</span>
@@ -359,13 +362,14 @@
         <span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
         <span class="token keyword">elif</span> x1 <span class="token operator">&lt;=</span> x0 <span class="token operator">&lt;=</span> x1 <span class="token operator">+</span> largeur<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> dist_y <span class="token operator">&lt;</span> rayon<span class="token operator">**</span><span class="token number">2</span>
+            <span class="token keyword">return</span> dist_y <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span>
         <span class="token keyword">elif</span> y1 <span class="token operator">&lt;=</span> y0 <span class="token operator">&lt;=</span> y1 <span class="token operator">+</span> hauteur<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> dist_x <span class="token operator">&lt;</span> rayon<span class="token operator">**</span><span class="token number">2</span>
+            <span class="token keyword">return</span> dist_x <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon<span class="token operator">**</span><span class="token number">2</span>
+            <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span>
 </code></pre>
 <p>Testez cette méthode.</p>
+<p><img src="tache-51-UML.png" alt="fenêtre"></p>
 <h3>Tâche 5.2</h3>
 <p>Après la mise à jour des position dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et le vaisseau. Si oui, faite rebondir la bille.</p>
 <h2>Tâche 6</h2>
@@ -377,7 +381,7 @@
 <p>Pour gérer facilement la vie vous pouvez :</p>
 <ul>
 <li>faire réapparaître la bille avec une position nulle</li>
-<li>après la mise à our des positions, si la vitesse de la bille est nulle c'est que l'on est mort. Décrémentez alors le nombre de vie. Si ce nombre reste positif, redonner de la vitesse à la bille.</li>
+<li>après la mise à jour des positions, si la vitesse de la bille est nulle c'est que l'on est mort. Décrémentez alors le nombre de vie. Si ce nombre reste positif, redonner de la vitesse à la bille.</li>
 </ul>
 <h2>Tâche 7</h2>
 <p>Une brique doit se comporter comme le vaisseau lorsque la bille la touche (elle rebondit), puis disparaître. Commençons par dessiner les briques</p>
@@ -394,10 +398,12 @@
 </li>
 </ul>
 <p>Dans <code class="language-">Fenetre</code> créez une liste <code class="language-">self.briques</code> et ajoutez y un mur de briques à notre interface. On pourra créer 5 rangées de 12 briques, par exemple.</p>
+<p><img src="tache-7-UML.png" alt="fenêtre"></p>
 <h2>Tâche 8</h2>
 <p>Pour finir, il reste à mettre en place la gestion des collisions entre a bille et les briques. Il n'y a presque rien à faire car tout va se passer comme pour le vaisseau.</p>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> à la classe <code class="language-">Brique</code>. Cette méthode doit répondre <code class="language-">True</code> si la bille touche la brique, et <code class="language-">False</code> sinon (il faut que le centre de la bille soit dans le rectangle du vaisseau augmenté du rayon de la bille, tout comme pour le vaisseau).</p>
 <p>Après la mise à jour des positions dans la méthode <code class="language-">update</code>, testez s'il y a collision entre la bille et une brique. Si oui, augmentez le score de 5, faite rebondir la bille et supprimez cette brique de la liste des briques.</p>
+<p><img src="tache-8-UML.png" alt="fenêtre"></p>
 
 
 </article>
