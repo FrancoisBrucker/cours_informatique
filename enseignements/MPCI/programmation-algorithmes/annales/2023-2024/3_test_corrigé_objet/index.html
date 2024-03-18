@@ -94,7 +94,10 @@
 <blockquote>
 <p>Quelle est la différence entre une fonction et une méthode ?</p>
 </blockquote>
-<p>Le premier paramètre d'une méthode est l'objet à gauche du point.</p>
+<ol>
+<li>Création : une méthode est définie dans une classe.</li>
+<li>Appel : le premier paramètre d'une méthode est l'objet à gauche du point.</li>
+</ol>
 <h3>1.2</h3>
 <blockquote>
 <p>Quelle est la différence entre une composition et une agrégation ?</p>
@@ -108,23 +111,40 @@
 <p>Qu'est-ce qu'un espace de nom ? À quoi cela sert-il ? Explicitez son usage dans l’appel d’une méthode.</p>
 </blockquote>
 <p>Un espace de nom sert à associer des noms à des objets. Lors de l'appel d'une méthode (ou d'une fonction) un espace de nom est créé pour contenir les paramètres de la méthodes et ses variables.</p>
-<p>Un objet possède également un espace de nom utilisable grâce à la notation pointée : <code class="language-">objet.nom</code> cherche <code class="language-">nom</code> dans l'espace de nom de <code class="language-">objet</code>. La notation pointée permet à une méthode d'accéder aux attributs de son premier paramètre <code class="language-">self</code>, qui est l'objet à gauche du point.</p>
+<p>En programmation objet les espaces de noms courants sont :</p>
+<ul>
+<li>l'espace de nom de la classe qui contient tout ce qui est défini dans le bloc de la classe, c'est à dire essentiellement les méthodes</li>
+<li>l'espace de nom de chaque objet utilisable grâce à la notation pointée et qui permet de stocker les noms de ses attributs.</li>
+</ul>
+<p>Lorsqu'un nom n'est pas trouvé dans l'espace de nom de l'objet, il est cherché dans l'espace de nom de la classe.</p>
 <h2>Question 2</h2>
 <p>Le but des questions suivantes est de vérifier que vous savez :</p>
 <ul>
 <li>écrire une description UML avec des attributs, des méthodes et leurs signatures</li>
 <li>avoir un tout cohérent : les attributs sont utilisés par les méthodes et leurs types correspondent</li>
 <li>chaque classe a un constructeur</li>
-<li>les liens entre les classes (composition et agrêgation) sont correctement déclarés</li>
+<li>les liens entre les classes (composition et agrégation) sont correctement déclarés</li>
 </ul>
 <h3>2.1</h3>
 <blockquote>
 <p>Dessinez-moi un mouton en UML (il faudra qu'il ait un constructeur, au moins deux attributs et trois méthodes).</p>
 </blockquote>
+<p>Il faut qu'il y ait :</p>
+<ul>
+<li>un diagramme UML correct avec le nom en haut, puis les attributs et enfin des méthodes</li>
+<li>un constructeur</li>
+<li>un ou plusieurs attributs (cohérents)</li>
+<li>une ou plusieurs méthodes</li>
+</ul>
 <h3>2.2</h3>
 <blockquote>
 <p>Créez une classe boîte (en UML) pour ranger le Mouton dedans.  Quelle est la relation entre cette classe et la classe mouton ? On rappelle que cette boîte-là comporte trois trous pour que le mouton respire.</p>
 </blockquote>
+<ul>
+<li>Il faut que les 3 trous soient présent sous la forme d'un attribut et qu'ils ne soient pas un paramètre du constructeur</li>
+<li>on doit pouvoir faire rentrer/sortir un mouton de la boîte.</li>
+<li>le lien entre la classe Mouton et Boîte doit être de l'agrégation</li>
+</ul>
 
 
 </article>
