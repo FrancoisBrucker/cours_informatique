@@ -30,22 +30,162 @@ En python, toutes les classes héritent de la classe `object`{.language-}. Par e
 
 Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus *spécifiques* que ceux de la classe mère. Quelques exemples qui seront dévelopés par la suite:
 
+- dans un contexte de base de données pour gérer une université, on peut envisager
+    - une classe mère `Personne`{.language-} comprenant les attributs prénom, nom, date de naissance et une méthode permettant de calculer l'age.
+    - des classe filles `Étudiant`{.language-} et `EnseignantChercheur`{.language-} ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres.
 - dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers: triangle, quadrilatère, pentagone, etc. On peut donc concevoir 
     - une classe mère `Polygone`{.language-} composée d'une liste de sommets et de méthodes pour calculer le périmètre, l'aire, etc.
     - des classes filles `Triangle`{.language-}, `Quadrilatère`{.language-}, `Pentagone`{.language-}, etc. La classe `Triangle`{.language-} est plus spécifique, et dispose à ce titre de méthodes spécifiques, supplémentaires, qui calculent l'orthocentre, tracent le cercle circonscrit et le cercle inscrit, détermine si le triangle est rectangle, isocèle, équilatéral, etc.
 - dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
     - la classe mère `Personnage`{.language-} définit des points de vie, un score d'attaque, etc.
     - les classes filles `Magicien`{.language-}, `Guerrière`{.language-}, `Gobelin`{.language-} y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.
-- dans un contexte de base de données pour gérer une université, on peut envisager
-    - une classe mère `Personne`{.language-} comprenant des attributs tels que le prénom, le nom, etc.
-    - des classe filles `Étudiant`{.language-} et `EnseignantChercheur`{.language-} ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres, etc.
 
+## Exemple 1 : personnel de l'université
+
+Ce premier exemple va nous permettre de comprendre le mécanisme mis en œuvre dans l'héritage.
+
+Le diagramme UML représentant sa description dans l'introduction est celle-ci :
+
+![personnel de l'université](personnel_université_UML.png)
+
+Les relations d'héritages sont explicités par une flèche spéciale :
+
+{% note %}
+La flèche qui montre la relation d'héritage est :
+![flèche héritage](flèche_héritage.png)
+{% endnote %}
+
+Toutes les classes filles  ***héritent*** des propriétés (attributs et méthodes des parents), en supposant le code des classes écrites dans le fichier `personnel.py`{.fichier} on peut alors très bien écrire :
+
+```python
+from datetime import date
+from personnel import EnseignantChercheur
+
+
+prof_info = EnseignantChercheur("Turing", "Alan", "Mathématiques de Cambridge", date(1936, 6, 23))
+print(prof_info.donne_age())
+
+```
+
+Alors que la méthode `donne_age`{.language-} n'est pas définie dans la classe `EnseignantChercheur`{.language-}.
+
+### Code de la classe mère
+
+Ce code est classique :
+
+```python
+from  datetime import date
+
+
+class Personne:
+    def __init__(self, nom, prénom, date_naissance):
+        self.nom = nom
+        self.prénom = prénom
+        self.date_naissance = date_naissance
+
+    def donne_age(self):
+        return int(abs((self.date_naissance - date.today()).days / 365))
+
+```
+
+{% info %}
+On a utilisé [le module `datetime`{.language-} de python](https://docs.python.org/fr/3/library/datetime.html#) qui est fait pour gérer les dates. Utilisez **toujours** des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.
+{% endinfo %}
+
+### Classes filles
+
+Pour écrire le code des classes filles il faut pouvoir faire deux choses :
+
+1. expliciter le fait qu'une classe hérite de l'autre
+2. utiliser le code de la classe mère dans une classe fille
+
+Voyons comment tout ça est fait en python (on ajoute les classes filles dans le fichier contenant la classe mère) :
+
+```python#
+class Étudiant(Personne):
+    def __init__(self, nom, prénom, date_naissance, numéro_étudiant):
+        super().__init__(nom, prénom, date_naissance)
+        self.numéro_étudiant = numéro_étudiant
+
+
+class EnseignantChercheur(Personne):
+    def __init__(self, nom, prénom, date_naissance, laboratoire):
+        super().__init__(nom, prénom, laboratoire)
+        self.laboratoire = laboratoire
+
+```
+### Définir la classe mère
+
+On définit la classe mère d'une classe en faisant suivre le nom de la classe fille, lors de sa définition, par le nom de la classe mère entre parenthèses :
+
+```python
+class Fille(Mère):
+    ...
+
+```
+
+### Appels de fonctions de la classe mère
+
+Utiliser une méthode de la classe mère dans la classe fille on utilise le mot clé `super()`{.language-} suivi du nom de la méthode à utiliser. Dans l'exemple, le constructeur de la classe fille appelle le constructeur de la classe mère. Remarquez que l'on utilise la méthode `__init__`{.language-} sans utiliser le premier paramètre (`self`{.language-}) qui est implicitement l'objet courant.
+
+{% lien %}
+Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
+{% endlien %}
+
+
+### Appels de méthodes
+
+L'appel de méthodes se fait en "remontant" la hiérarchie jusqu'à trouver la méthode à exécuter. Lors de l'exécution de la ligne `print(prof_info.donne_age())`{.language-}, celà se passe ainsi :
+
+1. l'interpréteur python regarde si le nom `donne_age`{.language-} est défini dans l'objet de nom `prof_info`{.language-} : ce n'est pas le cas
+2. il remonte alors d'un étage dans la hiérarchie et regarde si le nom `donne_age`{.language-} est présent dans la classe de `prof_info`{.language-}, `EnseignantChercheur`{.language-} : ce n'est toujours pas le cas
+3. on peut encore remonter d'un cran et regarder la classe mère de `EnseignantChercheur`{.language-}, `Personne`{.language-}. Bingo : le nom `donne_age`{.language-} est présent et il est exécuté.
+
+## TBD
+
+L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 9 dans le code de définition de la classe `EnseignantChercheur`{.language-} exécuter la ligne :
+
+```python
+print(prof_info.donne_age())
+```
+
+On aurait en effet l'
+
+
+Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`{.language-}) :
+
+```python
+[<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
+```
+
+> TBD : classe object.
+
+> TBD : super et héritage   
+
+> TBD : issinstance, mro et classe object. C'est là que se cache les définitions par défaut de str, de __init__ par exemple.
+
+
+> TBD surcharge avec super (spécifique) et sans super (changement).
+> TBD : pour le thésard, super avec un paramètre <https://stackoverflow.com/questions/57945407/what-is-the-difference-between-super-with-arguments-and-without-arguments>
+> TBD : attention super n'est pas automatiquement appelé.
+> TBD : héritage multiple ok si classes très différentes.
 ### Utilisation de l'héritage
 
 L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
 
 1. soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille
 2. soit en appelant directement un attribut ou une méthode de la classe mère.
+
+### Quand utiliser l'héritage
+
+La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.
+
+Il y a cependant des cas où l'héritage est très utile :
+
+- lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère
+- lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
+
+La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
 
 #### Chercher dans la hiérarchie
 
@@ -89,17 +229,6 @@ L'ordre dans lequel sont examinées les classes pour les chaines de caractères 
 La classe `object`{.language-} est toujours le dernier élément de la liste.
 {% endinfo %}
 
-### Quand utiliser l'héritage
-
-La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.
-
-Il y a cependant des cas où l'héritage est très utile :
-
-- lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère
-- lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
-
-La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
-
 ### Héritage multiple
 
 Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance), mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe **toujours** une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.
@@ -134,6 +263,8 @@ Pour cela, on va créer une classe `Point`{.language-} et une classe `Polygone`{
   - calcul de l'aire
 
 On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
+
+> TBD : on ne change pas le nombre de points.
 
 #### Uml
 
@@ -212,6 +343,9 @@ Comment modéliser une classe triangle ?
 
 Comme un triangle **est un** polygone simple, on peut utiliser l'héritage pour cela.
 
+> TBD méthodes spécifiques comme est_rectangle, est_isocèle
+
+
 #### Modélisation UML
 
 Elle est très simple :
@@ -231,18 +365,6 @@ class Triangle(Polygone):
     def __init__(self, point1, point2, point3):
         super().__init__([point1, point2, point3])
 ```
-
-Le mot clé `super()`{.language-} désigne la classe parente, ici `Polygone`{.language-}. Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici `__init__`{.language-}. Remarquez que l'on utilise la méthode `__init__`{.language-} sans utiliser le premier paramètre (`self`{.language-}) qui est implicitement l'objet courant.
-
-Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`{.language-}) :
-
-```python
-[<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
-```
-
-{% lien %}
-Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
-{% endlien %}
 
 On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de `Triangle`{.language-} appelle directement le constructeur de `Polygone`{.language-} : à la fin du constructeur, il existera une liste de points dans le triangle.
 
@@ -274,7 +396,12 @@ True
 
 {% endnote %}
 
-## <span id="exemple-D&D"></span> Exemple 2 : donjons et dragons
+## Exemple 2 : héritage et composition
+
+> TBD personne, enseignant et thésard
+> TBD héritage multiple pas forcément bien car c'est un mix, pas une union -> Faire une composition et choisir ce que l'on garde.
+
+## <span id="exemple-D&D"></span> Exemple 3 : donjons et dragons
 
 On va simuler des personnage d'*heroic fantasy*. Pour cela, on commence par créer une classe `Personnage`{.language-} qui sera particularisée petit à petit.
 

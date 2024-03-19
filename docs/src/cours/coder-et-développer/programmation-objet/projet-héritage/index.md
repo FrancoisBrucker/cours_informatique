@@ -42,6 +42,11 @@ Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se r
 
 {% endfaire %}
 
+
+## Comptes bancaires
+
+> TBD
+
 ## Le dé
 
 Nous allons ici encore une fois réutiliser la classe `Dé`{.language-} entamée lors du [projet objets : dés](../projet-objets-dés){.interne}. Pour être sûr de repartir sur de bonnes bases, utilisez l'implémentation minimale utilisée lors du [projet composition : dés](../projet-composition-dés/#code-Dé){.interne}.
