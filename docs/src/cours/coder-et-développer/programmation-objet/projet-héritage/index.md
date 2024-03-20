@@ -12,6 +12,95 @@ eleventyComputed:
 
 Mise en œuvre du mécanisme d'héritage.
 
+## Comptes bancaires
+
+Vous allez construire une hiérarchie de produits bancaires.
+
+### Compte (générique)
+
+{% faire %}
+Créez et testez une classe `Compte`{.language-} qui servira de classe mère. Cette classe doit :
+
+- posséder un titulaire (on suppose que c'est une chaine de caractères) et être crée sans argent de déposé.
+- permettre de retirer et de déposer de l'argent (on suppose que l'on peut être à découvert).
+
+{% endfaire %}
+
+### Compte courant
+
+
+{% faire %}
+Créez et testez une classe `CompteCourant`{.language-}. Cette classe doit :
+
+- être un `Compte`{.language-}
+- avoir un découvert autorisé fixé à la création
+
+{% endfaire %}
+
+Vous implémenterez également la user story suivante :
+
+1. je possède un compte courant avec un découvert autorisé de 1000 euros
+2. je dépose 100 euros puis je consulte mon solde
+3. je retire 700 euros puis je consulte mon solde
+3. je retire 600 euros puis je consulte mon solde
+
+### Compte épargne
+
+{% faire %}
+Créez et testez une classe `CompteEpargne`{.language-}. Cette classe doit :
+
+- être un `Compte`{.language-}
+- avoir un taux d'intérêt
+- avoir une somme plafond que l'on peut posséder
+- on doit pouvoir connaître les intérêt selon son solde (c'est le taux fois son solde)
+
+{% endfaire %}
+
+### Livret A
+
+{% faire %}
+Créez et testez une classe `LivretA`{.language-}. Cette classe doit :
+
+- être un `CompteEpargne`{.language-}
+- avoir un taux d'intérêt de 3% et un plafond de 22950 euros
+
+{% endfaire %}
+
+Vous implémenterez également la user story suivante :
+
+1. je possède un livret A
+2. je dépose 1000 euros puis je consulte mon solde
+3. je dépose 25000 euros puis je consulte mon solde
+4. je calcule mes intérêts
+5. je retire 15000 euros puis je consulte mon solde
+6. je retire 15000 euros puis je consulte mon solde
+
+### PEL
+
+{% faire %}
+Créez et testez une classe `PEL`{.language-}. Cette classe doit :
+
+- être un `CompteEpargne`{.language-}
+- avoir un taux d'intérêt de 2% et un plafond de 61200 euros
+
+{% endfaire %}
+
+La particularité du PEL est que l'on ne peut plus déposer d'argent dessus après 10 ans. Il faut donc tenir trace de son année de création et de l'année où l'on veut faire des dépôts. Le code de la user story suivante le fait. Faites en sorte que votre code permette de l'exécuter :
+
+```python
+p = PEL("Mme Z", année_ouverture=2011)
+
+print("Dépot (2017)", p.dépose(1000, 2017))
+print(p.solde)
+print("Dépot (2022)", p.dépose(1000, 2022))
+print(p.solde)
+print("Intérêts", p.calcule_intérêts())
+print(p.solde)
+print("Retrait", p.retire(700))
+print(p.solde)
+print("Retrait", p.retire(700))
+print(p.solde)
+```
 ## Donjons et dragons
 
 ### Personnages
@@ -43,9 +132,6 @@ Vous donnerez le nombre de tours nécessaires pour que toute cette histoire se r
 {% endfaire %}
 
 
-## Comptes bancaires
-
-> TBD
 
 ## Le dé
 

@@ -12,21 +12,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Dans un langage objet, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
-
-![classes héritage](héritage-classes.png)
-
-Dans la figure précédente :
-
-- la classe `object` est la *racine* de la hiérarchie, c'est la classe la plus haute
-- la `classe 1` est la *classe mère* de la `classe 2`
-- la `classe 2` est une *classe fille* de la `classe 1`
-
-La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
-
-{% info %}
-En python, toutes les classes héritent de la classe `object`{.language-}. Par exemple `issubclass(list, object)`{.language-} répond `True`{.language-}.
-{% endinfo %}
 
 Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus *spécifiques* que ceux de la classe mère. Quelques exemples qui seront dévelopés par la suite:
 
@@ -39,6 +24,21 @@ Le mécanisme d'héritage permet d'organiser les classes entre elles et de réut
 - dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
     - la classe mère `Personnage`{.language-} définit des points de vie, un score d'attaque, etc.
     - les classes filles `Magicien`{.language-}, `Guerrière`{.language-}, `Gobelin`{.language-} y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.
+
+## Utilisation de l'héritage
+
+L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
+
+1. soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille
+2. soit en appelant directement un attribut ou une méthode de la classe mère.
+
+
+L'héritage permet de factoriser du code entre classes similaires :
+
+- lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère
+- lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
+
+La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
 
 ## Exemple 1 : personnel de l'université
 
@@ -55,7 +55,7 @@ La flèche qui montre la relation d'héritage est :
 ![flèche héritage](flèche_héritage.png)
 {% endnote %}
 
-Toutes les classes filles  ***héritent*** des propriétés (attributs et méthodes des parents), en supposant le code des classes écrites dans le fichier `personnel.py`{.fichier} on peut alors très bien écrire :
+Toutes les classes filles  ***héritent*** des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier `personnel.py`{.fichier} on peut alors très bien écrire le code suivant bien que la méthode `donne_age`{.language-} ne soit pas définie dans la classe `EnseignantChercheur`{.language-} :
 
 ```python
 from datetime import date
@@ -67,7 +67,7 @@ print(prof_info.donne_age())
 
 ```
 
-Alors que la méthode `donne_age`{.language-} n'est pas définie dans la classe `EnseignantChercheur`{.language-}.
+Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères.
 
 ### Code de la classe mère
 
@@ -110,7 +110,7 @@ class Étudiant(Personne):
 
 class EnseignantChercheur(Personne):
     def __init__(self, nom, prénom, date_naissance, laboratoire):
-        super().__init__(nom, prénom, laboratoire)
+        super().__init__(nom, prénom, date_naissance)
         self.laboratoire = laboratoire
 
 ```
@@ -132,6 +132,7 @@ Utiliser une méthode de la classe mère dans la classe fille on utilise le mot 
 Un petit tuto sur [la fonction super](https://he-arc.github.io/livre-python/super/index.html )
 {% endlien %}
 
+L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 3 dans le code de définition de la classe `Étudiant`{.language-}, ces derniers n'auraient pas d'attributs `nom`{.language-} `prénom`{.language-}, ni `année_naissance`{.language-} définis dans le constructeur de la classe mère, `Personne`{.language-}.
 
 ### Appels de méthodes
 
@@ -141,53 +142,28 @@ L'appel de méthodes se fait en "remontant" la hiérarchie jusqu'à trouver la m
 2. il remonte alors d'un étage dans la hiérarchie et regarde si le nom `donne_age`{.language-} est présent dans la classe de `prof_info`{.language-}, `EnseignantChercheur`{.language-} : ce n'est toujours pas le cas
 3. on peut encore remonter d'un cran et regarder la classe mère de `EnseignantChercheur`{.language-}, `Personne`{.language-}. Bingo : le nom `donne_age`{.language-} est présent et il est exécuté.
 
-## TBD
 
-L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 9 dans le code de définition de la classe `EnseignantChercheur`{.language-} exécuter la ligne :
+## Hiérarchie des classes
 
-```python
-print(prof_info.donne_age())
-```
+Dans un langage objet, les classes sont organisées hiérarchiquement, la classe *racine* étant la classe la plus haute (ici elle s'appelle `object`).
 
-On aurait en effet l'
+![classes héritage](héritage-classes.png)
 
+Dans la figure précédente :
 
-Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande `Triangle.mro()`{.language-}) :
+- la classe `object` est la *racine* de la hiérarchie, c'est la classe la plus haute
+- la `classe 1` est la *classe mère* de la `classe 2`
+- la `classe 2` est une *classe fille* de la `classe 1`
 
-```python
-[<class '__main__.Triangle'>, <class '__main__.Polygone'>, <class 'object'>]
-```
+La figure montre également la désignation UML de l'héritage : une flèche avec un triangle vide.
 
-> TBD : classe object.
+{% info %}
+En python, toutes les classes héritent de la classe `object`{.language-}. Par exemple `issubclass(list, object)`{.language-} répond `True`{.language-}.
+{% endinfo %}
 
-> TBD : super et héritage   
+Le fait que toutes les classes héritent d'`object`{.language-} est très pratique puisque cela permet de créer des comportements par défaut à tous les objets : si une méthode existe dans la classe alors qu'on ne l'a pas définie explicitement, c'est qu'elle est définie dans la classe `object`{.language-}. C'est le cas de la méthode `__str__`{.language-} par exemple.
 
-> TBD : issinstance, mro et classe object. C'est là que se cache les définitions par défaut de str, de __init__ par exemple.
-
-
-> TBD surcharge avec super (spécifique) et sans super (changement).
-> TBD : pour le thésard, super avec un paramètre <https://stackoverflow.com/questions/57945407/what-is-the-difference-between-super-with-arguments-and-without-arguments>
-> TBD : attention super n'est pas automatiquement appelé.
-> TBD : héritage multiple ok si classes très différentes.
-### Utilisation de l'héritage
-
-L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :
-
-1. soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille
-2. soit en appelant directement un attribut ou une méthode de la classe mère.
-
-### Quand utiliser l'héritage
-
-La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.
-
-Il y a cependant des cas où l'héritage est très utile :
-
-- lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère
-- lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.
-
-La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).
-
-#### Chercher dans la hiérarchie
+### Chercher dans la hiérarchie
 
 Supposons que j'ai un objet nommé `obj`{.language-} de classe `classe 2` qui veut appeler la méthode 1 : `obj.méthode1()`{.language-}
 
@@ -199,7 +175,7 @@ Supposons que j'ai un objet nommé `obj`{.language-} de classe `classe 2` qui ve
 Si l'on arrive jusqu'à la classe `object` et qu'elle ne contient pas le nom recherché une erreur est lancée.
 {% endnote %}
 
-#### Appeler directement une sous/sur-classe
+### Appeler directement une sous/sur-classe
 
 Supposons que dans la définition de `méthode1`{.language-} de la `classe 2'`, on particularise la méthode `méthode1`{.language-} de la `classe 1`. On peut alors appeler la méthode `méthode1`{.language-} de la `classe 1` dans la définition de la `méthode1`{.language-} de la `classe 2'`.
 
@@ -211,16 +187,11 @@ Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarc
 
 ### Connaître la hiérarchie
 
-En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()`{.language-} (pour "method resolution order") des classes. Cette méthode regarde l'attribut `__mro__`{.language-}.
-
-Par exemple, dans un interpréteur :
+En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode `mro()`{.language-}. Par exemple, dans un interpréteur :
 
 ```python
 >>> str.mro()
 [<class 'str'>, <class 'object'>]
->>> str.__mro__
-(<class 'str'>, <class 'object'>)
->>> 
 ```
 
 L'ordre dans lequel sont examinées les classes pour les chaines de caractères est donc : d'abord la classe `str`{.language-} puis la classe `object`{.language-}
@@ -229,21 +200,28 @@ L'ordre dans lequel sont examinées les classes pour les chaines de caractères 
 La classe `object`{.language-} est toujours le dernier élément de la liste.
 {% endinfo %}
 
-### Héritage multiple
+Notez bien que la méthode `mro`{.language-} est appliquée **à la classe** et nom à l'objet. Par exemple pour la classe `EnseignantChercheur`{.language-} de l'exemple 1, on aurait :
 
-Python autorise l'[héritage multiple](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance), mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe **toujours** une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.
+```python
+>>> EnseignantChercheur.mro()
+[<class '__main__.EnseignantChercheur'>, <class '__main__.Personne'>, <class 'object'>]
+```
 
-D'ailleurs, certains langages, comme le java par exemple, interdisent carrément l'héritage multiple.
+Alors qu'avec un objet :
 
-{% info %}
-Si cela vous intéresse, python utilise la règle [de linéarisation C3](https://en.wikipedia.org/wiki/C3_linearization) pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant) en héritage multiple.
-{% endinfo %}
+```python
+>>> prof_info.mro()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'EnseignantChercheur' object has no attribute 'mro'
+```
 
-## Exemple 1 : héritage simple
 
-On présente ici un premier exemple d'utilisation de l'héritage, en combinaison d'une composition.
+## Exemple 2 : héritage simple
 
-On veut manipuler des polygones. On veut pouvoir :
+L'héritage est une technique objet qui n'est pas utilisée indépendamment du reste. On l'utilise souvent en combinaison d'autres techniques comme la composition.
+
+On va ici manipuler des polygones. On veut pouvoir :
 
 - créer un polygone à partir d'une liste de sommets donnée
 - calculer l'aire du polygone
@@ -264,9 +242,11 @@ Pour cela, on va créer une classe `Point`{.language-} et une classe `Polygone`{
 
 On va supposer que le [polygone est simple](https://fr.wikipedia.org/wiki/Polygone_simple) pour simplifier le calcul de l'aire...
 
-> TBD : on ne change pas le nombre de points.
-
 #### Uml
+
+{% attention %}
+Comme un point n'est **pas** un cas particulier de polygone, ni réciproquement, ces deux classes ne peuvent pas avoir de lien d'héritage.
+{% endattention %}
 
 Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :
 
@@ -343,9 +323,6 @@ Comment modéliser une classe triangle ?
 
 Comme un triangle **est un** polygone simple, on peut utiliser l'héritage pour cela.
 
-> TBD méthodes spécifiques comme est_rectangle, est_isocèle
-
-
 #### Modélisation UML
 
 Elle est très simple :
@@ -395,11 +372,6 @@ True
 ```
 
 {% endnote %}
-
-## Exemple 2 : héritage et composition
-
-> TBD personne, enseignant et thésard
-> TBD héritage multiple pas forcément bien car c'est un mix, pas une union -> Faire une composition et choisir ce que l'on garde.
 
 ## <span id="exemple-D&D"></span> Exemple 3 : donjons et dragons
 
@@ -537,6 +509,54 @@ class Personnage:
 ```
 
 {% enddetails %}
+
+## Héritage multiple
+
+{% lien %}
+[Héritage multiple en Pyton](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance)
+{% endlien %}
+
+Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe `Thésard`{.language-} qui serait **à la fois** `Étudiant`{.language-} et `EnseignantChercheur`{.language-} :
+
+![thésard](thésard.png)
+
+
+Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :
+
+```python#
+class Thésard(Étudiant, EnseignantChercheur):
+    def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
+        ...  
+```
+
+Ceci pose toutefois une foultitude de possibles problèmes lorsque la même méthode ou attribut est définie dans plusieurs classes mères. 
+
+
+Python règle le problème en ordonnant les classes mères grace au mro :
+
+```python
+>>> Thésard.mro()
+[<class '__main__.Thésard'>, <class '__main__.Étudiant'>, <class '__main__.EnseignantChercheur'>, <class '__main__.Personne'>, <class 'object'>]
+
+```
+
+Python suit cet ordre et s'arrête à la première classe définissant le nom recherché.
+
+{% info %}
+Les problèmes d'ordre en héritage multiple sont décrits sous le nom de [problème du diamant](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant).
+{% endinfo %}
+
+Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple [cette étude](https://realpython.com/python-super/#super-in-multiple-inheritance)), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :
+
+```python#
+class Thésard:
+    def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
+        self.étudiant = Étudiant(nom, prénom, date_naissance, numéro_étudiant)
+        self.enseignant_chercheur = EnseignantChercheur(nom, prénom, date_naissance, laboratoire)
+
+```
+
+L'exemple précédent nécessitera toutefois de redéfinir toutes les méthodes, et -- surtout -- le nom et le prénom sont dupliqués. Lorsque ce genre de chose arrive c'est souvent le signe qu'il faut redesigner notre programme et déconstruire ses classes pour séparer clairement les responsabilités et supprimer les duplications.
 
 ## On vérifie qu'on a compris
 
