@@ -16,6 +16,11 @@ Mise en œuvre du mécanisme d'héritage.
 
 Vous allez construire une hiérarchie de produits bancaires.
 
+
+{% faire %}
+Commencez par lire tout l'énoncé et créez la représentation UML des différentes classes.
+{% endfaire %}
+
 ### Compte (générique)
 
 {% faire %}
@@ -52,6 +57,7 @@ Créez et testez une classe `CompteEpargne`{.language-}. Cette classe doit :
 - être un `Compte`{.language-}
 - avoir un taux d'intérêt
 - avoir une somme plafond que l'on peut posséder
+- être toujours positif ou nul (on ne peut être à découvert)
 - on doit pouvoir connaître les intérêt selon son solde (c'est le taux fois son solde)
 
 {% endfaire %}
@@ -78,10 +84,11 @@ Vous implémenterez également la user story suivante :
 ### PEL
 
 {% faire %}
-Créez et testez une classe `PEL`{.language-}. Cette classe doit :
+Créez et testez une classe `PEL`{.language-}. Cette classe :
 
-- être un `CompteEpargne`{.language-}
-- avoir un taux d'intérêt de 2% et un plafond de 61200 euros
+- doit être un `CompteEpargne`{.language-}
+- doit avoir un taux d'intérêt de 2% et un plafond de 61200 euros
+- ne permet pas de faire de retrait
 
 {% endfaire %}
 

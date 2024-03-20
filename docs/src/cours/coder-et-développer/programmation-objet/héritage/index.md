@@ -516,15 +516,15 @@ class Personnage:
 [Héritage multiple en Pyton](https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance)
 {% endlien %}
 
-Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe `Thésard`{.language-} qui serait **à la fois** `Étudiant`{.language-} et `EnseignantChercheur`{.language-} :
+Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe `Doctorant`{.language-} qui serait **à la fois** `Étudiant`{.language-} et `EnseignantChercheur`{.language-} :
 
-![thésard](thésard.png)
+![doctorant](thésard.png)
 
 
 Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :
 
 ```python#
-class Thésard(Étudiant, EnseignantChercheur):
+class Doctorant(Étudiant, EnseignantChercheur):
     def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
         ...  
 ```
@@ -535,8 +535,8 @@ Ceci pose toutefois une foultitude de possibles problèmes lorsque la même mét
 Python règle le problème en ordonnant les classes mères grace au mro :
 
 ```python
->>> Thésard.mro()
-[<class '__main__.Thésard'>, <class '__main__.Étudiant'>, <class '__main__.EnseignantChercheur'>, <class '__main__.Personne'>, <class 'object'>]
+>>> Doctorant.mro()
+[<class '__main__.Doctorant'>, <class '__main__.Étudiant'>, <class '__main__.EnseignantChercheur'>, <class '__main__.Personne'>, <class 'object'>]
 
 ```
 
@@ -549,7 +549,7 @@ Les problèmes d'ordre en héritage multiple sont décrits sous le nom de [probl
 Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple [cette étude](https://realpython.com/python-super/#super-in-multiple-inheritance)), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :
 
 ```python#
-class Thésard:
+class Doctorant:
     def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
         self.étudiant = Étudiant(nom, prénom, date_naissance, numéro_étudiant)
         self.enseignant_chercheur = EnseignantChercheur(nom, prénom, date_naissance, laboratoire)
