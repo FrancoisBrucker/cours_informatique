@@ -105,7 +105,131 @@
     
   
 
-  <p>Dans un langage objet, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (ici elle s'appelle <code>object</code>).</p>
+  <p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère. Quelques exemples qui seront dévelopés par la suite:</p>
+<ul>
+<li>dans un contexte de base de données pour gérer une université, on peut envisager
+<ul>
+<li>une classe mère <code class="language-">Personne</code> comprenant les attributs prénom, nom, date de naissance et une méthode permettant de calculer l'age.</li>
+<li>des classe filles <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres.</li>
+</ul>
+</li>
+<li>dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers: triangle, quadrilatère, pentagone, etc. On peut donc concevoir
+<ul>
+<li>une classe mère <code class="language-">Polygone</code> composée d'une liste de sommets et de méthodes pour calculer le périmètre, l'aire, etc.</li>
+<li>des classes filles <code class="language-">Triangle</code>, <code class="language-">Quadrilatère</code>, <code class="language-">Pentagone</code>, etc. La classe <code class="language-">Triangle</code> est plus spécifique, et dispose à ce titre de méthodes spécifiques, supplémentaires, qui calculent l'orthocentre, tracent le cercle circonscrit et le cercle inscrit, détermine si le triangle est rectangle, isocèle, équilatéral, etc.</li>
+</ul>
+</li>
+<li>dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
+<ul>
+<li>la classe mère <code class="language-">Personnage</code> définit des points de vie, un score d'attaque, etc.</li>
+<li>les classes filles <code class="language-">Magicien</code>, <code class="language-">Guerrière</code>, <code class="language-">Gobelin</code> y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.</li>
+</ul>
+</li>
+</ul>
+<h2>Utilisation de l'héritage</h2>
+<p>L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
+<ol>
+<li>soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille</li>
+<li>soit en appelant directement un attribut ou une méthode de la classe mère.</li>
+</ol>
+<p>L'héritage permet de factoriser du code entre classes similaires :</p>
+<ul>
+<li>lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère</li>
+<li>lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.</li>
+</ul>
+<p>La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
+<h2>Exemple 1 : personnel de l'université</h2>
+<p>Ce premier exemple va nous permettre de comprendre le mécanisme mis en œuvre dans l'héritage.</p>
+<p>Le diagramme UML représentant sa description dans l'introduction est celle-ci :</p>
+<p><img src="personnel_universit%C3%A9_UML.png" alt="personnel de l'université"></p>
+<p>Les relations d'héritages sont explicités par une flèche spéciale :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La flèche qui montre la relation d'héritage est :<br>
+<img src="fl%C3%A8che_h%C3%A9ritage.png" alt="flèche héritage"></p>
+</div>
+</div>
+<p>Toutes les classes filles  <em><strong>héritent</strong></em> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
+<span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
+
+
+prof_info <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span><span class="token string">"Turing"</span><span class="token punctuation">,</span> <span class="token string">"Alan"</span><span class="token punctuation">,</span> <span class="token string">"Mathématiques de Cambridge"</span><span class="token punctuation">,</span> date<span class="token punctuation">(</span><span class="token number">1936</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>prof_info<span class="token punctuation">.</span>donne_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+<p>Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères.</p>
+<h3>Code de la classe mère</h3>
+<p>Ce code est classique :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
+
+
+<span class="token keyword">class</span> <span class="token class-name">Personne</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>nom <span class="token operator">=</span> nom
+        self<span class="token punctuation">.</span>prénom <span class="token operator">=</span> prénom
+        self<span class="token punctuation">.</span>date_naissance <span class="token operator">=</span> date_naissance
+
+    <span class="token keyword">def</span> <span class="token function">donne_age</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>date_naissance <span class="token operator">-</span> date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>days <span class="token operator">/</span> <span class="token number">365</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a utilisé <a href="https://docs.python.org/fr/3/library/datetime.html#">le module <code class="language-">datetime</code> de python</a> qui est fait pour gérer les dates. Utilisez <strong>toujours</strong> des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.</p>
+</div>
+</div>
+<h3>Classes filles</h3>
+<p>Pour écrire le code des classes filles il faut pouvoir faire deux choses :</p>
+<ol>
+<li>expliciter le fait qu'une classe hérite de l'autre</li>
+<li>utiliser le code de la classe mère dans une classe fille</li>
+</ol>
+<p>Voyons comment tout ça est fait en python (on ajoute les classes filles dans le fichier contenant la classe mère) :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> Étudiant<span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>numéro_étudiant <span class="token operator">=</span> numéro_étudiant
+
+
+<span class="token keyword">class</span> <span class="token class-name">EnseignantChercheur</span><span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>laboratoire <span class="token operator">=</span> laboratoire
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3>Définir la classe mère</h3>
+<p>On définit la classe mère d'une classe en faisant suivre le nom de la classe fille, lors de sa définition, par le nom de la classe mère entre parenthèses :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fille</span><span class="token punctuation">(</span>Mère<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+</code></pre>
+<h3>Appels de fonctions de la classe mère</h3>
+<p>Utiliser une méthode de la classe mère dans la classe fille on utilise le mot clé <code class="language-">super()</code> suivi du nom de la méthode à utiliser. Dans l'exemple, le constructeur de la classe fille appelle le constructeur de la classe mère. Remarquez que l'on utilise la méthode <code class="language-">__init__</code> sans utiliser le premier paramètre (<code class="language-">self</code>) qui est implicitement l'objet courant.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
+</div>
+</div>
+<p>L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 3 dans le code de définition de la classe <code class="language-">Étudiant</code>, ces derniers n'auraient pas d'attributs <code class="language-">nom</code> <code class="language-">prénom</code>, ni <code class="language-">année_naissance</code> définis dans le constructeur de la classe mère, <code class="language-">Personne</code>.</p>
+<h3>Appels de méthodes</h3>
+<p>L'appel de méthodes se fait en &quot;remontant&quot; la hiérarchie jusqu'à trouver la méthode à exécuter. Lors de l'exécution de la ligne <code class="language-">print(prof_info.donne_age())</code>, celà se passe ainsi :</p>
+<ol>
+<li>l'interpréteur python regarde si le nom <code class="language-">donne_age</code> est défini dans l'objet de nom <code class="language-">prof_info</code> : ce n'est pas le cas</li>
+<li>il remonte alors d'un étage dans la hiérarchie et regarde si le nom <code class="language-">donne_age</code> est présent dans la classe de <code class="language-">prof_info</code>, <code class="language-">EnseignantChercheur</code> : ce n'est toujours pas le cas</li>
+<li>on peut encore remonter d'un cran et regarder la classe mère de <code class="language-">EnseignantChercheur</code>, <code class="language-">Personne</code>. Bingo : le nom <code class="language-">donne_age</code> est présent et il est exécuté.</li>
+</ol>
+<h2>Hiérarchie des classes</h2>
+<p>Dans un langage objet, les classes sont organisées hiérarchiquement, la classe <em>racine</em> étant la classe la plus haute (ici elle s'appelle <code>object</code>).</p>
 <p><img src="h%C3%A9ritage-classes.png" alt="classes héritage"></p>
 <p>Dans la figure précédente :</p>
 <ul>
@@ -122,34 +246,8 @@
 <p>En python, toutes les classes héritent de la classe <code class="language-">object</code>. Par exemple <code class="language-">issubclass(list, object)</code> répond <code class="language-">True</code>.</p>
 </div>
 </div>
-<p>Le mécanisme d'héritage permet d'organiser les classes entre elles et de réutiliser certaines parties du code sans les réécrire: le code est factorisé. Il faut considérer qu'une classe fille désigne des objets plus <em>spécifiques</em> que ceux de la classe mère. Quelques exemples qui seront dévelopés par la suite:</p>
-<ul>
-<li>dans un contexte mathématique, un polygone est une notion générale avec des cas particuliers: triangle, quadrilatère, pentagone, etc. On peut donc concevoir
-<ul>
-<li>une classe mère <code class="language-">Polygone</code> composée d'une liste de sommets et de méthodes pour calculer le périmètre, l'aire, etc.</li>
-<li>des classes filles <code class="language-">Triangle</code>, <code class="language-">Quadrilatère</code>, <code class="language-">Pentagone</code>, etc. La classe <code class="language-">Triangle</code> est plus spécifique, et dispose à ce titre de méthodes spécifiques, supplémentaires, qui calculent l'orthocentre, tracent le cercle circonscrit et le cercle inscrit, détermine si le triangle est rectangle, isocèle, équilatéral, etc.</li>
-</ul>
-</li>
-<li>dans un contexte de jeu, un personnage est une notion générique qui se décline en plusieurs catégories spécifiques: magicien, guerrière, gobelin, etc.:
-<ul>
-<li>la classe mère <code class="language-">Personnage</code> définit des points de vie, un score d'attaque, etc.</li>
-<li>les classes filles <code class="language-">Magicien</code>, <code class="language-">Guerrière</code>, <code class="language-">Gobelin</code> y ajoutent des comportements spécifiques à chaque catégorie (sorts, défense, etc.</li>
-</ul>
-</li>
-<li>dans un contexte de base de données pour gérer une université, on peut envisager
-<ul>
-<li>une classe mère <code class="language-">Personne</code> comprenant des attributs tels que le prénom, le nom, etc.</li>
-<li>des classe filles <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> ayant des attributs spécifiques: numéro d'étudiant pour les uns, laboratoire de rattachement pour les autres, etc.</li>
-</ul>
-</li>
-</ul>
-<h3>Utilisation de l'héritage</h3>
-<p>L'héritage permet d'utiliser les attributs et méthodes créées dans les classes mères de façon simple :</p>
-<ol>
-<li>soit en cherchant dans la hiérarchie des classes l'attribut ou la méthode appelé depuis une classe fille</li>
-<li>soit en appelant directement un attribut ou une méthode de la classe mère.</li>
-</ol>
-<h4>Chercher dans la hiérarchie</h4>
+<p>Le fait que toutes les classes héritent d'<code class="language-">object</code> est très pratique puisque cela permet de créer des comportements par défaut à tous les objets : si une méthode existe dans la classe alors qu'on ne l'a pas définie explicitement, c'est qu'elle est définie dans la classe <code class="language-">object</code>. C'est le cas de la méthode <code class="language-">__str__</code> par exemple.</p>
+<h3>Chercher dans la hiérarchie</h3>
 <p>Supposons que j'ai un objet nommé <code class="language-">obj</code> de classe <code>classe 2</code> qui veut appeler la méthode 1 : <code class="language-">obj.méthode1()</code></p>
 <ol>
 <li><code class="language-">méthode1</code> est d'abord cherchée dans l'espace de nom de <code class="language-">obj</code> : elle n'y est pas.</li>
@@ -164,7 +262,7 @@
 <p>Si l'on arrive jusqu'à la classe <code>object</code> et qu'elle ne contient pas le nom recherché une erreur est lancée.</p>
 </div>
 </div>
-<h4>Appeler directement une sous/sur-classe</h4>
+<h3>Appeler directement une sous/sur-classe</h3>
 <p>Supposons que dans la définition de <code class="language-">méthode1</code> de la <code>classe 2'</code>, on particularise la méthode <code class="language-">méthode1</code> de la <code>classe 1</code>. On peut alors appeler la méthode <code class="language-">méthode1</code> de la <code>classe 1</code> dans la définition de la <code class="language-">méthode1</code> de la <code>classe 2'</code>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -175,13 +273,9 @@
 </div>
 </div>
 <h3>Connaître la hiérarchie</h3>
-<p>En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-">mro()</code> (pour &quot;method resolution order&quot;) des classes. Cette méthode regarde l'attribut <code class="language-">__mro__</code>.</p>
-<p>Par exemple, dans un interpréteur :</p>
+<p>En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-">mro()</code>. Par exemple, dans un interpréteur :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>__mro__
-<span class="token punctuation">(</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> 
 </code></pre>
 <p>L'ordre dans lequel sont examinées les classes pour les chaines de caractères est donc : d'abord la classe <code class="language-">str</code> puis la classe <code class="language-">object</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -192,28 +286,19 @@
 <p>La classe <code class="language-">object</code> est toujours le dernier élément de la liste.</p>
 </div>
 </div>
-<h3>Quand utiliser l'héritage</h3>
-<p>La composition et l'agrégation permettent de factoriser des fonctionnalités alors que l'héritage factorise du code. On va donc toujours favoriser la composition à l'héritage si c'est possible.</p>
-<p>Il y a cependant des cas où l'héritage est très utile :</p>
-<ul>
-<li>lorsque l'on veut rendre plus spécifique une classe : la nouvelle classe est un cas particulier de la classe mère</li>
-<li>lors de l'utilisation de bibliothèques : on particularise à nos besoins une classe générique donnée par un module que l'on n'a pas écrit.</li>
-</ul>
-<p>La règle est que lorsque l'héritage doit ré-écrire toutes les méthodes de sa classe mère pour qu'il n'y ait pas de conflit, alors il faut changer d'approche. Une classe et sa classe mère doivent partager beaucoup de méthodes (ou que les méthodes soient des cas particuliers).</p>
-<h3>Héritage multiple</h3>
-<p>Python autorise l'<a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">héritage multiple</a>, mais sans très bonne raison il est plus que recommandé de ne pas l'utiliser. Il existe <strong>toujours</strong> une solution utilisant l'héritage simple qui sera plus facile à comprendre et surtout à maintenir dans le temps.</p>
-<p>D'ailleurs, certains langages, comme le java par exemple, interdisent carrément l'héritage multiple.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Si cela vous intéresse, python utilise la règle <a href="https://en.wikipedia.org/wiki/C3_linearization">de linéarisation C3</a> pour réaliser l'ordre de priorité des classes (le mro), ceci permet de résoudre le <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a> en héritage multiple.</p>
-</div>
-</div>
-<h2>Exemple 1 : héritage simple</h2>
-<p>On présente ici un premier exemple d'utilisation de l'héritage, en combinaison d'une composition.</p>
-<p>On veut manipuler des polygones. On veut pouvoir :</p>
+<p>Notez bien que la méthode <code class="language-">mro</code> est appliquée <strong>à la classe</strong> et nom à l'objet. Par exemple pour la classe <code class="language-">EnseignantChercheur</code> de l'exemple 1, on aurait :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> EnseignantChercheur<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
+</code></pre>
+<p>Alors qu'avec un objet :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> prof_info<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+AttributeError<span class="token punctuation">:</span> <span class="token string">'EnseignantChercheur'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'mro'</span>
+</code></pre>
+<h2>Exemple 2 : héritage simple</h2>
+<p>L'héritage est une technique objet qui n'est pas utilisée indépendamment du reste. On l'utilise souvent en combinaison d'autres techniques comme la composition.</p>
+<p>On va ici manipuler des polygones. On veut pouvoir :</p>
 <ul>
 <li>créer un polygone à partir d'une liste de sommets donnée</li>
 <li>calculer l'aire du polygone</li>
@@ -239,6 +324,14 @@
 </ul>
 <p>On va supposer que le <a href="https://fr.wikipedia.org/wiki/Polygone_simple">polygone est simple</a> pour simplifier le calcul de l'aire...</p>
 <h4>Uml</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme un point n'est <strong>pas</strong> un cas particulier de polygone, ni réciproquement, ces deux classes ne peuvent pas avoir de lien d'héritage.</p>
+</div>
+</div>
 <p>Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :</p>
 <p><img src="h%C3%A9ritage_point_poly.png" alt="point polygone"></p>
 <h4>Code python</h4>
@@ -313,18 +406,6 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> point1<span class="token punctuation">,</span> point2<span class="token punctuation">,</span> point3<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">[</span>point1<span class="token punctuation">,</span> point2<span class="token punctuation">,</span> point3<span class="token punctuation">]</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Le mot clé <code class="language-">super()</code> désigne la classe parente, ici <code class="language-">Polygone</code>. Ce mot clé permet d'utiliser toutes les méthodes de la classe parente, ici <code class="language-">__init__</code>. Remarquez que l'on utilise la méthode <code class="language-">__init__</code> sans utiliser le premier paramètre (<code class="language-">self</code>) qui est implicitement l'objet courant.</p>
-<p>Si on regarde l'ordre dans lequel est examiné les espaces de nom, on a (c'est la commande <code class="language-">Triangle.mro()</code>) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Triangle'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Polygone'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
-</code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
-</div>
-</div>
 <p>On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de <code class="language-">Triangle</code> appelle directement le constructeur de <code class="language-">Polygone</code> : à la fin du constructeur, il existera une liste de points dans le triangle.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">triangle <span class="token operator">=</span> Triangle<span class="token punctuation">(</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>triangle<span class="token punctuation">.</span>périmètre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -352,7 +433,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </code></pre>
 </div>
 </div>
-<h2><span id="exemple-D&D"></span> Exemple 2 : donjons et dragons</h2>
+<h2><span id="exemple-D&D"></span> Exemple 3 : donjons et dragons</h2>
 <p>On va simuler des personnage d'<em>heroic fantasy</em>. Pour cela, on commence par créer une classe <code class="language-">Personnage</code> qui sera particularisée petit à petit.</p>
 <h3>Classe Personnage</h3>
 <p>Le personnage générique doit :</p>
@@ -481,6 +562,45 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div>
 </details>     
 </div>
+<h2>Héritage multiple</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">Héritage multiple en Pyton</a></p>
+</div>
+</div>
+<p>Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe <code class="language-">Thésard</code> qui serait <strong>à la fois</strong> <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> :</p>
+<p><img src="th%C3%A9sard.png" alt="thésard"></p>
+<p>Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Th</span>ésard<span class="token punctuation">(</span>Étudiant<span class="token punctuation">,</span> EnseignantChercheur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Ceci pose toutefois une foultitude de possibles problèmes lorsque la même méthode ou attribut est définie dans plusieurs classes mères.</p>
+<p>Python règle le problème en ordonnant les classes mères grace au mro :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> Thésard<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Thésard'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Étudiant'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
+
+</code></pre>
+<p>Python suit cet ordre et s'arrête à la première classe définissant le nom recherché.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les problèmes d'ordre en héritage multiple sont décrits sous le nom de <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a>.</p>
+</div>
+</div>
+<p>Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple <a href="https://realpython.com/python-super/#super-in-multiple-inheritance">cette étude</a>), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Th</span>ésard<span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>étudiant <span class="token operator">=</span> Étudiant<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>enseignant_chercheur <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>L'exemple précédent nécessitera toutefois de redéfinir toutes les méthodes, et -- surtout -- le nom et le prénom sont dupliqués. Lorsque ce genre de chose arrive c'est souvent le signe qu'il faut redesigner notre programme et déconstruire ses classes pour séparer clairement les responsabilités et supprimer les duplications.</p>
 <h2>On vérifie qu'on a compris</h2>
 <p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu'on a bien compris.</p>
 <h3>Héritage de méthodes</h3>
