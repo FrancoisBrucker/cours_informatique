@@ -6,7 +6,34 @@ authors:
   - François Brucker
 ---
 
-Ces questions ont pour bur de vous faire un peu réfléchir sur la prgrammation objet.
+Ces questions ont pour but de vous faire un peu réfléchir sur la programmation objet.
+
+## Barème
+
+Une note sur 5, un point par question.
+
+{% note "**Objectif du test**" %}
+
+En 15 minutes il était possible de répondre aux 5 questions. L'objectif est donc d'avoir 5 pour tout le monde.
+{% endnote %}
+
+La ventilation des notes est :
+
+|note/4   | [0, 2.5[   | [2.5, 3]  | ]3, 4]     | ]4, 5[    | 5  |
+|note/20  | [0, 10[    | [10, 12]  | [13, 16]   | [17, 19]| | 20 |
+|---------|------------|-----------|------------|-----------|----|
+|nombre   |  6         |  12        |  16       |  7        | 4  |
+|rang min | 39         | 27         | 11        | 5         | 1  |
+
+- moyenne : 13.49/20 (3.37/4)
+- écart-type : 4.26/20 (1.06/4)
+- médiane : 14/20 (3.5/4)
+
+## Bilan
+
+Encore une fois je suis globalement content de vous (attention, je vais commencer à m'y habituer :)). Je suis aussi content de moi puisque ma correction correspond à peut prêt aux votre.
+
+J'ai mis en commentaire de votre récapitulatif les 2 notes que vous avez eu avec la correction par vos camarades, mais votre note correspond à la mienne. Notez que dans la très grande majorité des cas, la deuxième correction correspond au niveau réel de votre copie et est souvent 1/4 de point inférieure à ma propre notation.
 
 ## Question 1
 
