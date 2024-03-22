@@ -152,18 +152,6 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 
         <span class="token keyword">return</span> self
 
-    <span class="token decorator annotation punctuation">@property</span>
-    <span class="token keyword">def</span> <span class="token function">position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>_position
-
-    <span class="token decorator annotation punctuation">@position<span class="token punctuation">.</span>setter</span>
-    <span class="token keyword">def</span> <span class="token function">position</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nouvelle_position<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> nouvelle_position <span class="token operator">&lt;</span> MIN_VALEUR<span class="token punctuation">:</span>
-            nouvelle_position <span class="token operator">=</span> MIN_VALEUR
-        <span class="token keyword">elif</span> nouvelle_position <span class="token operator">></span> MAX_VALEUR<span class="token punctuation">:</span>
-            nouvelle_position <span class="token operator">=</span> MAX_VALEUR
-
-        self<span class="token punctuation">.</span>_position <span class="token operator">=</span> nouvelle_position
 </code></pre>
 <p>fichier <code class="fichier">test_dé.py</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> MIN_VALEUR<span class="token punctuation">,</span> MAX_VALEUR
@@ -178,23 +166,6 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 <span class="token keyword">def</span> <span class="token function">test_lancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> MIN_VALEUR <span class="token operator">&lt;=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>position <span class="token operator">&lt;=</span> MAX_VALEUR
 
-<span class="token keyword">def</span> <span class="token function">test_set_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    dé<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
-    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>position <span class="token operator">==</span> <span class="token number">4</span>
-
-    dé<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">12</span>
-    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>position <span class="token operator">==</span> MAX_VALEUR
-
-    dé<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
-    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>position <span class="token operator">==</span> MIN_VALEUR
-
-<span class="token keyword">def</span> <span class="token function">test_get_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    dé<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
-    <span class="token keyword">assert</span> dé<span class="token punctuation">.</span>position <span class="token operator">==</span> dé<span class="token punctuation">.</span>_position
 
 </code></pre>
 </div>
