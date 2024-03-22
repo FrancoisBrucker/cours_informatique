@@ -98,15 +98,23 @@ La particularité du PEL est que l'on ne peut plus déposer d'argent dessus apr�
 ```python
 p = PEL("Mme Z", année_ouverture=2011)
 
-print("Dépot (2017)", p.dépose(1000, 2017))
+print("Dépot (2017)") 
+p.dépose(1000, 2017)
 print(p.solde)
-print("Dépot (2022)", p.dépose(1000, 2022))
+
+print("Dépot (2022)")
+p.dépose(1000, 2022)
 print(p.solde)
+
 print("Intérêts", p.calcule_intérêts())
 print(p.solde)
-print("Retrait", p.retire(700))
+
+print("Retrait")
+p.retire(700)
 print(p.solde)
-print("Retrait", p.retire(700))
+
+print("Retrait")
+p.retire(700)
 print(p.solde)
 ```
 ## Donjons et dragons
