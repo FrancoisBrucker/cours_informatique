@@ -7,18 +7,10 @@ class Personnage:
         self.attaque = attaque
 
     def se_faire_taper(self, personnage):
-        self.set_vie(self.get_vie() - personnage.attaque)
+        self.vie = max(0, self.vie - personnage.attaque)
 
     def taper(self, personnage):
         personnage.se_faire_taper(self)
-
-    def get_vie(self):
-        return self.vie
-
-    def set_vie(self, valeur):
-        self.vie = valeur
-        if self.vie <= 0:
-            self.vie = 0
 
 
 class Guerriere(Personnage):
@@ -37,4 +29,26 @@ class Magicien(Personnage):
         self.attaque_magique = attaque_magique
 
     def lancer_sort(self, personnage):
-        personnage.set_vie(personnage.get_vie() - self.attaque_magique)
+        personnage.vie = max(0, self.vie - self.attaque_magique)
+
+
+xena = Guerriere(10, 2, 50)
+peon = Personnage(5, 1)
+gandalf = Magicien(4, 1, 3)
+
+while xena.vie > 0 and peon.vie > 0:
+    print("xena : ", xena.vie, " peon : ", peon.vie)
+    xena.taper(peon)
+    peon.taper(xena)
+
+
+print("xena : ", xena.vie, " peon : ", peon.vie)
+
+if xena.vie > 0:
+    surviant = xena
+else:
+    surviant = peon
+
+while surviant.vie > 0:
+    print("survivant : ", surviant.vie)
+    gandalf.lancer_sort(surviant)

@@ -248,8 +248,8 @@ Il faudra rendre un dossier contenant le projet vscode et les différents progra
 
 {% faire %}
 1. Terminer les deux projets et leurs améliorations :
-    - [projet dé](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne} et son amélioration [projet dé accesseur](/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/){.interne} 
-    - [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne} et son amélioration [projet cartes *value object*](/cours/coder-et-développer/programmation-objet/projet-objets-cartes-value-object/){.interne} 
+    - [projet dé](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
+    - [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
 2. Lire et comprendre la partie [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}, le test de début de cours portera dessus.
 {% endfaire  %}
 
@@ -279,6 +279,9 @@ Test de 15min en début de cours consacré aux **prérequis composition et agré
 {% aller %}
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
 {% endaller %}
+{% details "corrigé" %}
+[Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
+{% enddetails %}
 
 ### Semaine 9
 

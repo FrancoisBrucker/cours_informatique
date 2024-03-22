@@ -2,36 +2,32 @@ import random
 
 
 class Dice:
-    NUMBER_FACES = 6
+    NOMBRE_FACES = 6
 
     def __init__(self, position=1):
-        self._position = position
+        self.position = position
 
-    @property
-    def position(self):
-        return self._position
-
-    @position.setter
-    def position(self, new_position):
-        self._position = new_position
-
-    def roll(self):
-        self.position = random.randint(1, self.NUMBER_FACES)
+    def lancer(self):
+        self.position = random.randint(1, self.NOMBRE_FACES)
 
 
 class StatDice(Dice):
     def __init__(self, position=1):
         super().__init__(position)
-        self.mémoire = [0] * (self.NUMBER_FACES)
+        self.historique = []
 
-    @property
-    def position(self):
-        return super().position
+    def lancer(self):
+        self.position = random.randint(1, self.NOMBRE_FACES)
+        super().lancer()
+        self.historique.append(self.position)
 
-    @position.setter
-    def position(self, new_position):
-        super(type(self), type(self)).position.fset(self, new_position)
-        self.mémoire[new_position - 1] += 1
+    def moyenne(self):
+        return sum(self.historique) / max(1, len(self.historique))
 
-    def stats(self):
-        return tuple(self.mémoire)
+
+dice = StatDice()
+
+for i in range(1000):
+    dice.lancer()
+
+print('1000 lancers :', dice.moyenne())

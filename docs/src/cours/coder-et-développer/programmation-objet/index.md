@@ -86,6 +86,10 @@ Reprenons nos objets et combinons les avec d'autres :
 
 > TBD : les `_` et les `__`
 
+### Getter et setters
+
+> TBD
+
 ### Accesseurs
 
 Améliorer ses objets en gérant précisément l'accès aux attributs :
