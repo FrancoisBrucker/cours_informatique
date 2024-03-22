@@ -189,3 +189,6 @@ Exemple des textes :
 [fichiers pour stocker des données](projet-données-texte){.interne}
 {% endaller %}
 
+## Design pattern
+
+> TBD

@@ -40,18 +40,6 @@ class Dé:
 
         return self
 
-    @property
-    def position(self):
-        return self._position
-
-    @position.setter
-    def position(self, nouvelle_position):
-        if nouvelle_position < MIN_VALEUR:
-            nouvelle_position = MIN_VALEUR
-        elif nouvelle_position > MAX_VALEUR:
-            nouvelle_position = MAX_VALEUR
-
-        self._position = nouvelle_position
 ```
 
 fichier `test_dé.py`{.fichier} :
@@ -69,23 +57,6 @@ def test_position():
 def test_lancer():
     assert MIN_VALEUR <= Dé().lancer().position <= MAX_VALEUR
 
-def test_set_position():
-    dé = Dé()
-
-    dé.position = 4
-    assert dé.position == 4
-
-    dé.position = 12
-    assert dé.position == MAX_VALEUR
-
-    dé.position = -1
-    assert dé.position == MIN_VALEUR
-
-def test_get_position():
-    dé = Dé()
-
-    dé.position = 4
-    assert dé.position == dé._position
 
 ```
 
