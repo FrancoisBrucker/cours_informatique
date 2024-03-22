@@ -77,7 +77,7 @@ Vous implémenterez également la user story suivante :
 
 1. je possède un livret A
 2. je dépose 1000 euros puis je consulte mon solde
-3. je dépose 25000 euros puis je consulte mon solde
+3. je dépose 20000 euros puis je consulte mon solde
 4. je calcule mes intérêts
 5. je retire 15000 euros puis je consulte mon solde
 6. je retire 15000 euros puis je consulte mon solde
