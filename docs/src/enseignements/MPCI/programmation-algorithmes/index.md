@@ -295,7 +295,7 @@ Le DM1 est à rendre pour le vendredi 29/03/24 à 23h59
 #### Vendredi : projet Arkanoid
 
 {% attention %}
-Test de 15min en début de cours consacré à **programmation évènementielle avec pyglet**. Il faudra rendre du code python (code et tests) sur AMeTICE.
+Test de 15min en début de cours consacré à **programmation objet**. Il faudra rendre du code python (code et tests) sur AMeTICE.
 {% endattention %}
 
 {% aller %}
