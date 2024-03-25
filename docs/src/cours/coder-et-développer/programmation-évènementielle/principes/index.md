@@ -632,6 +632,46 @@ class HelloWorldWindow(pyglet.window.Window):
 Lorsque vous cliquez sur un bouton de la souris puis que vous le relâchez, vous devriez voir affiché à l'écran la position du curseur ainsi que le numéro du bouton de la souris qui a servi à cliquer.
 
 Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris sur le label, cela devrait vous l'indiquer.
+### Boutons
+
+Se fait comme pour les modificateurs de touches, avec un _bit field_. Les valeurs des bits concernés sont définis 
+par les constantes suivantes, accessibles après l'import `from pyglet.window impoirt mouse`{.language-}
+:
+
+- `mouse.LEFT`{.language-}
+- `mouse.MIDDLE`{.language-}
+- `mouse.RIGHT`{.language-}
+
+{% exercice %}
+
+Modifiez le code précédent pour que l'on ne prenne en compte l'appuie dans le label que si l'on a cliqué avec le bouton de gauche.
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+from pyglet.window import mouse
+
+class HelloWorldWindow(pyglet.window.Window):
+    # ...
+
+    def on_mouse_press(self, x, y, button, modifiers):
+        print("press:", x, y, button)
+
+        if not (button & mouse.LEFT):
+            return
+
+        if (abs(self.label.x - x) <= self.label.content_width / 2) and (
+            abs(self.label.y - y) <= self.label.content_height / 2
+        ):
+            print("clique dans le label")
+
+    # ...
+
+```
+
+{% enddetails %}
+### Mouvements
 
 {% exercice %}
 

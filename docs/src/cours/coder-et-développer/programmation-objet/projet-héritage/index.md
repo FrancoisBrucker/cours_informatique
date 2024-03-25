@@ -12,6 +12,12 @@ eleventyComputed:
 
 Mise en œuvre du mécanisme d'héritage.
 
+{% details "corrigé" %}
+Faites les exercices vous même avant de regarder la solution. 
+
+[Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
+{% enddetails %}
+
 ## Comptes bancaires
 
 Vous allez construire une hiérarchie de produits bancaires.

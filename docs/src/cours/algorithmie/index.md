@@ -39,6 +39,8 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 
 L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreuses façon d'en écrire. Nous allons en voir 4 toutes équivalentes les unes avec les autres !
 
+> TBD : séparer modèle et MTU qui permet de simuler dans le modèle. C'est le principe d'un ordinateur.
+
 #### Langages informatiques
 
 > TBD : le plus clair car le pseudo code s'écrit presque directement, par exemple en python

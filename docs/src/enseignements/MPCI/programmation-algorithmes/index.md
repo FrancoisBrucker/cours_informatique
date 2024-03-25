@@ -279,9 +279,6 @@ Test de 15min en début de cours consacré aux **prérequis composition et agré
 {% aller %}
 [Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
 {% endaller %}
-{% details "corrigé" %}
-[Corrigé du code](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/programmation-objet/projet-h%C3%A9ritage/projet-heritage)
-{% enddetails %}
 
 ### Semaine 9
 
