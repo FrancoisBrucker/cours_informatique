@@ -635,7 +635,7 @@ Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris 
 ### Boutons
 
 Se fait comme pour les modificateurs de touches, avec un _bit field_. Les valeurs des bits concernés sont définis 
-par les constantes suivantes, accessibles après l'import `from pyglet.window impoirt mouse`{.language-}
+par les constantes suivantes, accessibles après l'import `from pyglet.window import mouse`{.language-}
 :
 
 - `mouse.LEFT`{.language-}
@@ -671,6 +671,7 @@ class HelloWorldWindow(pyglet.window.Window):
 ```
 
 {% enddetails %}
+
 ### Mouvements
 
 {% exercice %}
