@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Design Patterns</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Design Patterns</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/design-patterns/">Design Patterns</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Les <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.<br>
+Il existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le terme de <em>design pattern</em> a été initialement donné dans le livre <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns: Elements of Reusable Object-Oriented Software</a> pour le langage C++.</p>
+</div>
+</div>
+<p>On classe habituellement les designs patterns en trois types :</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Creational_pattern"><strong>les types creational</strong></a> qui créent des objets.</li>
+<li><a href="https://en.wikipedia.org/wiki/Structural_pattern"><strong>les types structural</strong></a> qui mettent les objets en relation.</li>
+<li><a href="https://en.wikipedia.org/wiki/Behavioral_pattern"><strong>les types behavioural</strong></a> qui regroupent les objets ayant même comportement.</li>
+</ul>
+<p>Ils permettent de résoudre de façon efficace des problèmes courants en programmation. Il est utile de connaitre une liste actuelle de design patterns (certains de la liste originelle, comme <a href="https://fr.wikipedia.org/wiki/Singleton_(patron_de_conception)">singleton</a> ne sont plus utilisés et d'autres, comme <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter">MVP</a> sont apparus), car ils donnent souvent de bonnes idées pour résoudre les problèmes que l'on se pose. Le site suivant contient une liste actualisée de design patterns :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://refactoring.guru/design-patterns">Refactoring GURU : design pattern</a></p>
+</div>
+</div>
+<p>Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaitre une liste actualisée d'anti-pattern, comme par exemple :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">Quelques anti patterns</a></p>
+</div>
+</div>
+<p>Nous allons, encore une fois, utiliser la classe <code class="language-">Dé</code> et l'<em>améliorer</em> selon le problème posé.</p>
+<h2>Les bases</h2>
+<blockquote>
+<p>Un dé avec les faces initiales choisies + la position initiale.</p>
+</blockquote>
+<p>On se rappelle comment bien commencer un projet, avec trois fichiers :</p>
+<ul>
+<li>le code</li>
+<li>les tests</li>
+<li>le programme</li>
+</ul>
+<p>On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.</p>
+<p>Fichier <code class="fichier">main.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+
+d6 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> etape <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>Fichier <code class="fichier">choices.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+
+
+<span class="token keyword">class</span> <span class="token class-name">Choice</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> choices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>choices <span class="token operator">=</span> choices
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_position</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>position
+
+    <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span> self
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Regardez le code de la méthode <code>roll</code> pourquoi rendre <code>self</code> ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>undefined</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour vouvoir chainer nos opérations. En rendant self, on peut écrire des choses du genre :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">choice <span class="token operator">=</span> Choices<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>choice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
+<p>Fichier <code class="fichier">tests.py</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+
+
+<span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>choices <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_initial_position</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+
+
+<span class="token keyword">def</span> <span class="token function">test_roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
+</code></pre>
+<h2>Première amélioration</h2>
+<p>Choice prend l'objet <code>choices</code> et le garde. Cela pose plusieurs problèmes. En particulier :</p>
+<ul>
+<li>si on modifie l'objet passé en paramètre, cela change le comportement de choice.</li>
+<li>on expose l'attribut <code>choices</code> par un attribut public.</li>
+</ul>
+<p>Pour résoudre ces soucis on va copier l'objet <code>choices</code> et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en  lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.</p>
+<p>On commence par écrire un petit test :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_copy_choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    initial_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span>initial_list<span class="token punctuation">)</span>
+    initial_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"CHANGE"</span>
+    d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"a"</span>
+</code></pre>
+<p>Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.</p>
+<p>Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut  <code>choices</code> est non mutable. Il cherche à produire une erreur : modifier un élément <a href="https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747">non mutable</a>.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pytest 
+
+<span class="token keyword">def</span> <span class="token function">test_no_modification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        d1<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+</code></pre>
+<p>La façon dont pytest gère les erreurs est décrite <a href="https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions">ici</a> : le test précédent est vrai si le code plante et produit une erreur. essayer de comprendre la structure de ce test.</p>
+<h2>pattern factory</h2>
+<p><a href="https://refactoring.guru/fr/design-patterns/factory-method">Le pattern factory</a> en est un exemple, il permet de créer des objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu'avec un constructeur avec des milliers de paramètres</p>
+<blockquote>
+<p>faire avec les fonctions et constantes dans le fichier<br>
+en amélioration, mettre les constantes en attributs de classes (les valeurs des dés) et en méthodes de classes (les factory)<br>
+Un dé 6, un dé 20 et un dé avec ce qu'on veut.</p>
+</blockquote>
+<h3>Premières expérimentations</h3>
+<p>Commencez par créer dans le fichier <code>main.py</code> un objet simulant 1 dé à six faces (dont les faces valent 1, 2, 3, 4, 5 ou 6). On ne va pas faire de test pour cela, car nos tests sont censés couvrir ce genre d'usage.</p>
+<p>En revanche, on peut calculer les probabilités d'apparitions de chaque face :</p>
+<ol>
+<li>lancez N fois le dé (N = 1000)</li>
+<li>comparez les probabilités d'apparition de chaque face par rapport à la théorie (1/6)</li>
+</ol>
+<p>Pour aller vite, on pourra utiliser la classe <code>Counter</code> du module <code>collections</code> de python (voir <a href="https://docs.python.org/3.7/library/collections.html#collections.Counter">la définition</a>, ou <a href="https://data-flair.training/blogs/python-counter/">des exemples</a>). Le module <a href="https://docs.python.org/3.7/library/collections.html#module-collections">collections</a> de python, c'est plein de bonnes choses.</p>
+<blockquote>
+<p>N'hésitez pas à regarder les différents modules de la <a href="https://docs.python.org/3.7/library/index.html">bibliothèque standard</a> de python avant de recoder la roue...</p>
+</blockquote>
+<blockquote>
+<p><strong>Nota Bene :</strong> On prendra soin de créer une constante N, pour éviter l'anti-pattern &quot;magic number&quot;</p>
+</blockquote>
+<p>Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet <code>Choice</code>.</p>
+<h3>On place le tout dans le fichier de la classe</h3>
+<p>Une fois que vous êtes satisfait de vos fonctions, ajoutez les dans le fichier <code>choices.py</code>, ce qui rajoutera des fonctions de créations d'objets et modifiez votre <code>main.py</code> pour utiliser ces nouvelles fonctions.</p>
+<p>Comme maintenant ce sont des fonctions de votre programme et non plus une utilisation de votre code, il faut ajouter des tests pour ces deux fonctions. Faites le.</p>
+<blockquote>
+<p><strong>Nota Bene :</strong> Pour que vos tests ne soient pas trop fastidieux, vous pouvez vérifier que les possibilités correspondent aux comptes que vous avez effectués avec les objets Counter (du module collections).</p>
+</blockquote>
+<h2>Composite</h2>
+<blockquote>
+<p><a href="https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)">https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)</a><br>
+enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/</p>
+</blockquote>
+<h2>Memento</h2>
+<blockquote>
+<p><a href="https://refactoring.guru/fr/design-patterns/memento">https://refactoring.guru/fr/design-patterns/memento</a></p>
+</blockquote>
+<blockquote>
+<p>premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/<br>
+behavioural pattern</p>
+</blockquote>
+<blockquote>
+<p>un dé et une autre classe, la liste avec un save du test. . avec et sans</p>
+</blockquote>
+<h3>Adaptation des objets au pattern</h3>
+<p>Le pattern memento nécessite de pouvoir changer la valeur de nos objets. On va donc rajouter une méthode <code>set_position</code> à nos objets choice.</p>
+<p>On sait maintenant comment faire :</p>
+<ol>
+<li>faites un test vérifiant que <code>set_position</code> existe et fonctionne,</li>
+<li>regardez le planter,</li>
+<li>ajouter une méthode <code>set_position</code> à <code>Choice</code>,</li>
+<li>regardez le test réussir.</li>
+</ol>
+<p>Pour l'instant, on fera une méthode <code>set_position</code> la plus simple possible car elle ne sera utilisée que pour le memento. En particulier, on ne vérifiera pas la validité de la valeur remise dans choice, ce n'est pas utile maintenant. Le coder serait du codage préventif et c'est <a href="https://fr.wikipedia.org/wiki/YAGNI">YAGNI</a>.</p>
+<p>Attention cependant. Pour respecter le <a href="https://fr.wikipedia.org/wiki/Ne_vous_r%C3%A9p%C3%A9tez_pas">DRY</a> la modification d'un attribut ne doit se faire qu'à un seul endroit : ici la méthode <code>set_position</code>. Il faut donc modifier la méthode <code>roll</code> pour qu'elle l'utilise.</p>
+<h3>Création d'un memento</h3>
+<p>Créez la classe <code>Memento</code> dans le fichier <code>memento.py</code> et ses tests dans le fichier :<code>test_memento.py</code>.</p>
+<p>La classe Memento doit avoir :</p>
+<ul>
+<li>un objet comme paramètre du constructeur ayant les méthodes <code>get_position</code> et <code>set_position</code>. Ici un <code>Choice</code>.</li>
+<li>une méthode <code>restore()</code> qui permet à l'objet sauvé de reprendre la valeur qu'il avait à la création du memento.</li>
+</ul>
+<p>Vous pouvez par exemple transformer le code ci-après en test(s) :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> choice 
+
+dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+memento <span class="token operator">=</span> Memento<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+memento<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># doit valoir 2</span>
+</code></pre>
+<h3>Undo list</h3>
+<p>Nous pouvons maintenant créer une classe <code>Undo</code> (dans le fichier <code>undo.py</code>) qui va nous permettre de sauver des dés (et leurs valeurs) et de les restaurer à la demande. Cette classe doit pouvoir :</p>
+<ul>
+<li>sauver un dé avec la méthode : <code>save(dice)</code> (un <code>Memento</code> sera créé dans la méthode <code>save</code> exemple comme ça : <code>Memento(dice)</code>)</li>
+<li>restaurer la dernière valeur sauvée avec la méthode <code>restore()</code></li>
+<li>connaître le nombre d'items sauvegardés avec une méthode <code>nb_undos()</code></li>
+</ul>
+<p>Bien sur vous créerez un fichier de tests <code>test_undo.py</code> qui testera les 3 fonctionnalités ci-dessus. Une façon d'utiliser les différents objets est décrite ci-après :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> choice 
+<span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+
+dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span>
+undo<span class="token punctuation">.</span>save<span class="token punctuation">(</span>dice<span class="token punctuation">)</span>
+dice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># dès que l'on change la valeur (ici possiblement différent de 5)</span>
+
+
+undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span>
+</code></pre>
+<h3>Un undo dans dice</h3>
+<p>Pour ne pas toujours avoir à sauver le dé avant un roll, on pourra utiliser une classe fille de <code>Choice</code> dont le <code>set_position</code> sauve l'état dans un undo avant de modifier la position. L'objet undo devant être unique dans le programme, il faudrait que le code suivant fonctionne :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+<span class="token keyword">from</span> choiceUndo <span class="token keyword">import</span> ChoiceUndo
+
+undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+d <span class="token operator">=</span> ChoiceUndo<span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">,</span> undo<span class="token punctuation">)</span>
+
+d<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
+d<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 4</span>
+undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
+</code></pre>
+<p>Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe <code>ChoiceUndo</code> qui hérite de <code>Choice</code> et qui ne diffère de celle-ci que par la méthode <code>set_position</code> (et le constructeur bien sûr).</p>
+<p>Faites le même essai avec 10 utilisations de la méthode <code>roll()</code>.</p>
+<h2>Observer</h2>
+<blockquote>
+<p>base de la programmation évènementielle<br>
+savoir lorsqu'un dé change. S'abonner à la valeur ?</p>
+</blockquote>
+<blockquote>
+<p>seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/<br>
+<a href="https://en.wikipedia.org/wiki/Observer_pattern">https://en.wikipedia.org/wiki/Observer_pattern</a></p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
