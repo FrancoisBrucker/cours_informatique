@@ -122,3 +122,9 @@ Vous pouvez consulter les deux liens suivants pour un peu mieux comprendre ce qu
 - [héritage d'accesseur et mutateur en python](https://gist.github.com/Susensio/979259559e2bebcd0273f1a95d7c1e79)
 
 {% endlien %}
+
+## Design Pattern
+
+{% aller %}
+[Design Patterns](design-patterns){.interne}
+{% endaller %}
