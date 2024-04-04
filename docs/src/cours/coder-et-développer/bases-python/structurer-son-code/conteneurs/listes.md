@@ -458,7 +458,7 @@ Que vaut `y`{.language-} ?
 
 {% enddetails %}
 
-## Liste de listes
+## <span id="matrices"></span> Liste de listes
 
 On peut créer des matrices facilement en utilisant des listes de listes. Considérez l'exemple suivant :
 

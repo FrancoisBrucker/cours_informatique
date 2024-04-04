@@ -20,6 +20,9 @@ Tests et examens pour l'année scolaire 2023/2024
 3. Test 3 : programmation objet
    - [sujet](./3_test_sujet_objet){.interne}
    - [corrigé](./3_test_corrigé_objet){.interne}
+3. Test 4 : programmation objet, le retour
+   - [sujet](./4_test_sujet_objet){.interne}
+   - [corrigé](./4_test_corrigé_objet){.interne}
 
 ## Devoir Maison
 
@@ -28,3 +31,4 @@ Tests et examens pour l'année scolaire 2023/2024
 ## Devoirs Surveillés
 
 1. [DS 1](./ds-1){.interne}
+1. [DS 2](./ds-2){.interne}

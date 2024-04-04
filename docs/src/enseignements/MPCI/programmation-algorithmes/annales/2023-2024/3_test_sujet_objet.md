@@ -6,7 +6,7 @@ authors:
   - François Brucker
 ---
 
-Ces questions ont pour bur de vous faire un peu réfléchir sur la prgrammation objet.
+Ces questions ont pour bur de vous faire un peu réfléchir sur la programmation objet.
 
 ## Question 1
 
