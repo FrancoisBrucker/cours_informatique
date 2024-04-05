@@ -36,9 +36,7 @@ Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solut
 [Quelques anti patterns](http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html)
 {% endlien %}
 
-
 Nous allons, encore une fois, utiliser la classe `Dé`{.language-} et l'*améliorer* selon le problème posé.
-
 
 ## Les bases
 

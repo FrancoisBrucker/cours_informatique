@@ -220,11 +220,11 @@ Lorsque l'on appuie sur une flèche de direction, les cases de valeurs stricteme
 
 Une case ne peut se déplacer que si la case vers la quelle elle se déplace est vide (de valeur 1) ou de même valeur qu'elle même.
 
-### Déplacement d'une case
+### Déplacement vers une case adjacente
 
-Commencez par gérer le déplacement d'une seule case dans la direction souhaitée en utilisant l'évènement `on_key_press(self, symbol, modifiers)`. 
+Commencez par gérer le déplacement vers une case **adjacente** dans la direction souhaitée en utilisant l'évènement `on_key_press(self, symbol, modifiers)`. 
 
-Vous tenterez de déplacer toute les cases (une à une dans le bon ordre) **d'une seule case** dans la direction souhaitée. Par exemple si la matrice contient les valeurs suivante :
+Vous tenterez de déplacer toutes les cases, une à une dans le bon ordre, **d'une seule case** dans la direction souhaitée. Par exemple si la matrice contient les valeurs suivante :
 
 
 ```
@@ -248,8 +248,6 @@ L'appui sur une touche de direction produira les matrices :
 2141            2114            1214
 4211  < gauche  2221  droite >  1222
 1111            1111            1111
-1411            1141            1114
-
                 bas
                  v
 
@@ -280,9 +278,9 @@ La dernière étape.
 
 ### Déplacement de plusieurs cases
 
-Les cases peuvent se déplacer de plusieurs cases vide, si possible. La façon la plus simple de réaliser cette opération est d'effectuer l'opération de déplacement d'une case 3 fois de suite.
+Les cases peuvent se déplacer de plusieurs cases vides, si possible. La façon la plus simple de réaliser cette opération est d'effectuer l'opération de déplacement précédente (déplacements vers une case adjacente) 3 fois de suite.
 
-### Nombre d'incrémentation
+### Nombre d'incrémentations
 
 Une même case ne peut s'incrémenter qu'une seule fois par déplacement. Par exemple un déplacement vers la droite de la ligne : `1224` donne `1144` et non pas `1118`.
 

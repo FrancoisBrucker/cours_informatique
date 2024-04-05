@@ -118,25 +118,48 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
 
+## Structures linéaires
+
+### Tableau
+
+> TBD : mémoire, complexité
+> TBD : polynômes.
+
+### Pile/file
+
+> TBD
+
+### Listes
+
+> def structure
+
+### Dictionnaires
+
+> TBD : fonctions de hashage
+> TBD : dictionnaires
+
+## Complexité amortie
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
+## Design d'algorithmes
+
+### Programmation dynamique
+
+> TBD
+
+### Algorithmes gloutons
+
+> TBD
+
 ## Classes de Problèmes Algorithmiques
 
 {% aller %}
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-## Complexité amortie
-
-{% aller %}
-{% endaller %}
-
-## Structure avancée
-
-> TBD : liste (comparaison avec le tableau), pile, file et polynômes.
-> TBD : dictionnaires et comparaison avec le tableau
-
-## Méthode de design d'algorithmes
-
-> TBD
 
 ## Désordre et hasard
 
