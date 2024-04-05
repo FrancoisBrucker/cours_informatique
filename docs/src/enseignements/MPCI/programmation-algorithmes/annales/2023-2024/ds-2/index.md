@@ -105,7 +105,9 @@ L'attribut `cases`{.language-} de la grille est une matrice de `Carré`{.languag
 
 ## Étape 2
 
-Pour pouvoir manipuler les cases de la grille, nous allons ajouter plusieurs méthodes. Commençons par pouvoir cliquer sur une case précise.
+Pour pouvoir manipuler les cases de la grille, nous allons ajouter plusieurs méthodes. On ne pourra tester nos méthodes qu'à la toute fin de l'étape, lorsque l'on utilisera l'évènement qui gère les cliques de souris.
+
+Commençons par pouvoir cliquer sur une case précise.
 
 ### Méthode `intérieur(x, y)`{.language-} pour les `Carré`{.language-}
 
