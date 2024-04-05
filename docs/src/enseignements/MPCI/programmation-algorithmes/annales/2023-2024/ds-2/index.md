@@ -274,7 +274,7 @@ Vous pourrez utiliser les méthodes suivantes [du module random de python](https
 
 ## Étape 6
 
-La dernière étape. 
+Déplacement complet.
 
 ### Déplacement de plusieurs cases
 
