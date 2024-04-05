@@ -250,7 +250,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">vide<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> taille<span class="token punctuation">)</span>
 </code></pre>
 <h3>Vérification</h3>
-<p>Lors de la création de la fenêtre, modifiez la case de la ligne d'indice 2 et de colonne 1  de la matrice pour que ce soit un objet de la classe <code class="language-">Case</code> de valeur 512 (vous pourrez tester plusieurs valeurs pour vérifier que tout fonctionne)</p>
+<p>Lors de la création de la fenêtre, modifiez la case de la ligne d'indice 2 et de colonne 1 de la matrice pour que ce soit un objet de la classe <code class="language-">Case</code> de valeur 512 (vous pourrez tester plusieurs valeurs pour vérifier que tout fonctionne)</p>
 <h2>Étape 4</h2>
 <p>Nous allons préparer la modification dynamique des cases en utilisant l'évènement <code class="language-">on_mouse_press(self, x, y, button, modifiers)</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -265,7 +265,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Le jeu du 2048 passe son temps à modifier les valeurs des cases. Implémentez une une méthode <code class="language-">set_valeur(v)</code> à la classe <code class="language-">Case</code> dont la fonction est de modifier la valeur de la case puis de changer son fond et son label en conséquence.</p>
 <p>Utilisez cette méthode dans le constructeur de <code class="language-">Case</code>.</p>
 <h3>Méthodes <code class="language-">incrémente()</code> et <code class="language-">décrémente()</code> de la classe <code class="language-">Case</code></h3>
-<p>Ajoutez les méthodes <code class="language-">incrémente()</code> et <code class="language-">décrémente()</code> à la classe <code class="language-">Valeur</code> dont le rôle est de modifier la valeur de la case en l'augmentant (on multiplie la valeur par 2 si elle ne vaut pas 2048) ou la diminuant (on divise la valeur par 2 si elle ne vaut pas 1).</p>
+<p>Ajoutez les méthodes <code class="language-">incrémente()</code> et <code class="language-">décrémente()</code> à la classe <code class="language-">Case</code> dont le rôle est de modifier la valeur de la case en l'augmentant (on multiplie la valeur par 2 si elle ne vaut pas 2048) ou la diminuant (on divise la valeur par 2 si elle ne vaut pas 1).</p>
 <h3>Cliques gauche et clique droit</h3>
 <p>Modifiez la gestion du clique de souris pour que :</p>
 <ul>
@@ -299,7 +299,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 1141
 </code></pre>
 <p>L'appui sur une touche de direction produira les matrices ci-dessous :</p>
-<pre><code>                4224               
+<pre><code>                4224
                 1111
                 1141
                 1111
@@ -325,7 +325,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Si l'appui sur une touche de direction a effectivement déplacé une case de valeur strictement plus grande que 1, une case de valeur 1 est choisie aléatoirement puis :</p>
 <ul>
 <li>80% du temps elle est incrémentée une fois (ce qui est equivalent à ajouter une case de valeur 2)</li>
-<li>20% du temps elle est incrémentée deux fois  (ce qui est equivalent à ajouter une case de valeur 4)</li>
+<li>20% du temps elle est incrémentée deux fois (ce qui est equivalent à ajouter une case de valeur 4)</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
