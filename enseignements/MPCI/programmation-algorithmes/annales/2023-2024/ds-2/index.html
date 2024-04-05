@@ -161,6 +161,14 @@ window <span class="token operator">=</span> DeuxMilleQuaranteHuit<span class="t
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Vous modifierez la classe <code class="language-">DeuxMilleQuaranteHuit</code> lorsque vous aurez besoin de gérer les évènements.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>C'est dans la classe <code class="language-">DeuxMilleQuaranteHuit</code> que vous placerez les fonctions de gestion des évènements comme <code class="language-">on_mouse_press(self, x, y, button, modifiers)</code> à l'étape 2 ou <code class="language-">on_key_press(self, symbol, modifiers)</code> à l'étape 5.</p>
+</div>
+</div>
 <h3>La classe <code class="language-">Grille</code></h3>
 <p>Implémentez les classes <code class="language-">Grille</code> et <code class="language-">Carré</code> en respectant le diagramme UML suivant :</p>
 <p><img src="grille-1.png" alt="grille 1"></p>
@@ -199,7 +207,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li><code class="language-">None</code> si le point n'est dans aucune case de la matrice <code class="language-">cases</code>.</li>
 </ul>
 <h3>Cliquer sur une case de la matrice</h3>
-<p>Utilisez l'évènement <code class="language-">on_mouse_press(self, x, y, button, modifiers)</code> pour afficher à l'écran :</p>
+<p>Utilisez l'évènement <code class="language-">on_mouse_press(self, x, y, button, modifiers)</code> pour afficher sur le terminal avec la fonction <code class="language-">print</code> :</p>
 <ul>
 <li>&quot;je suis dans la case de coordonnée i, j&quot; si le point de coordonnée $(x, y)$ est dans <code class="language-">cases[i][j]</code>,</li>
 <li>&quot;je ne suis pas dans une case de la matrice&quot; si l'on a pas cliqué sur une case.</li>
@@ -282,7 +290,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 <p>Une case ne peut se déplacer que si la case vers la quelle elle se déplace est vide (de valeur 1) ou de même valeur qu'elle même.</p>
 <h3>Déplacement vers une case adjacente</h3>
-<p>Commencez par gérer le déplacement vers une case <strong>adjacente</strong> dans la direction souhaitée en utilisant l'évènement <code>on_key_press(self, symbol, modifiers)</code>.</p>
+<p>Commencez par gérer le déplacement vers une case <strong>adjacente</strong> dans la direction souhaitée en utilisant l'évènement <code class="language-">on_key_press(self, symbol, modifiers)</code>.</p>
 <p>Vous tenterez de déplacer toutes les cases, une à une dans le bon ordre, <strong>d'une seule case</strong> dans la direction souhaitée. Par exemple si la matrice contient les valeurs suivante :</p>
 <pre><code>2114
 2221
@@ -345,7 +353,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </div>
 </div>
 <h2>Étape 7</h2>
-<p>Détectez après un déplacement si la partie est terminée et affichez à l'écran si le jeu est fini.</p>
+<p>Détectez après un déplacement si la partie est terminée et affichez à sur le terminal avec la fonction <code class="language-">print</code> si le jeu est fini.</p>
 
 
 </article>
