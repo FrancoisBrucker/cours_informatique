@@ -257,6 +257,8 @@ L'appui sur une touche de direction produira les matrices :
                 1141
 ```
 
+Toutes les cases de valeurs strictement plus grandes que 1 se sont déplacés si possible, soit vers une case libre adjacente soit vers une case de même valeur et ont fusionné.
+
 ### Ajout d'une nouvelle case
 
 Si l'appui sur une touche de direction a effectivement déplacé une case de valeur strictement plus grande que 1, une case de valeur 1 est choisie aléatoirement puis :
