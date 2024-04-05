@@ -85,6 +85,9 @@ pyglet.app.run()
 
 Vous modifierez la classe `DeuxMilleQuaranteHuit`{.language-} lorsque vous aurez besoin de gérer les évènements.
 
+{% info %}
+C'est dans la classe `DeuxMilleQuaranteHuit`{.language-} que vous placerez les fonctions de gestion des évènements comme `on_mouse_press(self, x, y, button, modifiers)`{.language-} à l'étape 2 ou `on_key_press(self, symbol, modifiers)`{.language-} à l'étape 5.
+{% endinfo %}
 ### La classe `Grille`{.language-}
 
 Implémentez les classes `Grille`{.language-} et `Carré`{.language-} en respectant le diagramme UML suivant :
@@ -127,7 +130,7 @@ Ajoutez une méthode `intérieur(x, y)`{.language-} à la classe `Grille`{.langu
 
 ### Cliquer sur une case de la matrice
 
-Utilisez l'évènement `on_mouse_press(self, x, y, button, modifiers)`{.language-} pour afficher à l'écran :
+Utilisez l'évènement `on_mouse_press(self, x, y, button, modifiers)`{.language-} pour afficher sur le terminal avec la fonction `print`{.language-} :
 
 - "je suis dans la case de coordonnée i, j" si le point de coordonnée $(x, y)$ est dans `cases[i][j]`{.language-},
 - "je ne suis pas dans une case de la matrice" si l'on a pas cliqué sur une case.   
@@ -222,7 +225,7 @@ Une case ne peut se déplacer que si la case vers la quelle elle se déplace est
 
 ### Déplacement vers une case adjacente
 
-Commencez par gérer le déplacement vers une case **adjacente** dans la direction souhaitée en utilisant l'évènement `on_key_press(self, symbol, modifiers)`. 
+Commencez par gérer le déplacement vers une case **adjacente** dans la direction souhaitée en utilisant l'évènement `on_key_press(self, symbol, modifiers)`{.language-}. 
 
 Vous tenterez de déplacer toutes les cases, une à une dans le bon ordre, **d'une seule case** dans la direction souhaitée. Par exemple si la matrice contient les valeurs suivante :
 
@@ -296,4 +299,4 @@ Une case ne peut fusionner qu'avec une case de même valeur et dont ce nouvel at
 
 ## Étape 7
 
-Détectez après un déplacement si la partie est terminée et affichez à l'écran si le jeu est fini.
+Détectez après un déplacement si la partie est terminée et affichez à sur le terminal avec la fonction `print`{.language-} si le jeu est fini.
