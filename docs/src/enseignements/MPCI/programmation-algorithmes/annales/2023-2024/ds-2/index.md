@@ -211,7 +211,7 @@ Si vous avez un mac, vous pouvez soit simuler le clique droit soit l'activer en 
 
 Tout est en place pour implémenter la mécanique de jeu.
 
-Lorsque l'on appuie sur une flèche de direction, les cases de valeurs strictement plus grande que 1 se déplacent, une à une, dans le sens de la flèche. L'ordre dans lequel les cases se déplacent est important :
+Lorsque l'on appuie sur une flèche de direction, les cases de valeurs strictement plus grandes que 1 se déplacent, une à une, dans le sens de la flèche. L'ordre dans lequel les cases se déplacent est important :
 
 - lorsque l'on appuie sur la flèche de droite, pour chaque ligne, on déplace les cases en commençant par celle le plus à droite
 - lorsque l'on appuie sur la flèche de gauche, pour chaque ligne, on déplace les cases en commençant par celle le plus à gauche
