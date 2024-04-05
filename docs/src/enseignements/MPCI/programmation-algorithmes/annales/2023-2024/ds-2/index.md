@@ -239,7 +239,7 @@ Vous tenterez de déplacer toutes les cases, une à une dans le bon ordre, **d'u
 1141
 ```
 
-L'appui sur une touche de direction produira les matrices :
+L'appui sur une touche de direction produira les matrices ci-dessous :
 
 ```
                 4224               
