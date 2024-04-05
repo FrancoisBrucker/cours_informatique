@@ -137,9 +137,9 @@ Utilisez l'évènement `on_mouse_press(self, x, y, button, modifiers)`{.language
 Gestion des valeurs des cases.
 
 
-### Classe `Valeur`{.language-}
+### Classe `Case`{.language-}
 
-Implémentez la classe `Valeur`{.language-} d'UML suivant :
+Implémentez la classe `Case`{.language-} d'UML suivant :
 
 ![valeur 1](valeur-1.png)
 
