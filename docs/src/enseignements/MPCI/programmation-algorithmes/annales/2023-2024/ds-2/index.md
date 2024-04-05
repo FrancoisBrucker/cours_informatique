@@ -199,7 +199,7 @@ Utilisez cette méthode dans le constructeur de `Case`{.language-}.
 
 ### Méthodes `incrémente()`{.language-} et `décrémente()`{.language-} de la classe `Case`{.language-}
 
-Ajoutez les méthodes `incrémente()`{.language-} et `décrémente()`{.language-} à la classe `Valeur`{.language-} dont le rôle est de modifier la valeur de la case en l'augmentant (on multiplie la valeur par 2 si elle ne vaut pas 2048) ou la diminuant (on divise la valeur par 2 si elle ne vaut pas 1).
+Ajoutez les méthodes `incrémente()`{.language-} et `décrémente()`{.language-} à la classe `Case`{.language-} dont le rôle est de modifier la valeur de la case en l'augmentant (on multiplie la valeur par 2 si elle ne vaut pas 2048) ou la diminuant (on divise la valeur par 2 si elle ne vaut pas 1).
 
 ### Cliques gauche et clique droit
 
