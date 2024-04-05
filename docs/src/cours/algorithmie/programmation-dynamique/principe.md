@@ -18,7 +18,13 @@ eleventyComputed:
 Le principe de la programmation dynamique est simple :
 
 {% note "**Principe**" %}
-
+Une solution optimale est constituée de sous-solutions elles-mêmes optimales.
 {% endnote  %}
+
+Illustrons ce principe avec la recherche de chemins le plus rapide.
+
+
+> TBD : dessin du chemin
+
 faire le sac à dos. sera le fil rouge : glouton puis NP-dur
 

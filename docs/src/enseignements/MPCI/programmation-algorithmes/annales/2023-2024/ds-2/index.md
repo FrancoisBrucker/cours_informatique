@@ -253,13 +253,15 @@ L'appui sur une touche de direction produira les matrices :
 2141            2114            1214
 4211  < gauche  2221  droite >  1222
 1111            1111            1111
+1411            1141            1114
+
                 bas
                  v
 
                 1111
                 2114
                 2221
-                1141
+                1111
 ```
 
 Toutes les cases de valeurs strictement plus grandes que 1 se sont déplacés si possible, soit vers une case libre adjacente soit vers une case de même valeur et ont fusionné.
