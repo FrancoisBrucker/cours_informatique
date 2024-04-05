@@ -10,11 +10,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD chapeau
+La programmation dynamique est un principe de création d'algorithme très général permettant de résoudre de nombreux problèmes de façon efficace, voir même optimale.
 
 ## Principe
-
-> TBD chapeau
 
 {% aller %}
 [Principe](./principe){.interne}
@@ -22,7 +20,7 @@ eleventyComputed:
 
 ## Exemple de l'alignement de séquences
 
-> TBD chapeau
+Le problème de l'alignement de séquences et l'utilisation de la programmation dynamique pour le résoudre est un classique indémodable.
 
 {% aller %}
 [Alignement de séquences](./alignement-séquences){.interne}

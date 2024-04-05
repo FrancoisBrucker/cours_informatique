@@ -13,8 +13,6 @@ eleventyComputed:
 [Page Wikipedia](https://fr.wikipedia.org/wiki/Alignement_de_s%C3%A9quences)
 {% endlien %}
 
-> Chapeau
-
 ## Étude algorithmique du problème
 
 {% aller %}

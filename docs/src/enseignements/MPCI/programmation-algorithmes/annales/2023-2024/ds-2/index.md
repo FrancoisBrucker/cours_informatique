@@ -55,7 +55,7 @@ Les couleurs (au format [RGBA](https://fr.wikipedia.org/wiki/RVBA), le dernier p
 - le fond : `(185, 173, 161, 255)`
 - les cases : `(202, 193, 181, 255)`
 
-Les cases sont séparées par des marges de 4% de la taille du fond (32 pixels de marge pour une taille de 800 pixels par exemple).
+Les 16 cases de la grille (une matrice 4x4) sont séparées par des marges de 4% de la taille du fond (32 pixels de marge pour une taille de 800 pixels par exemple).
 
 ![grille 2](grille-2.png)
 

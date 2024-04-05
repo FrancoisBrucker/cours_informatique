@@ -31,6 +31,10 @@ Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du 
 Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/linux/bases-linux/post-installation/){.interne}
 {% endinfo %}
 
+## Utiliser le réseau
+
+> TBD : comment utiliser eduroam.
+
 ## Programmation en python
 
 Vous aurez besoin d'installer python et un logiciel pour programmer :
