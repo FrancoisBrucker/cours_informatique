@@ -1,27 +1,15 @@
 ---
-layout: layout/post.njk 
-title: "Étude : alignement de séquences"
-
-
-eleventyNavigation:
-    order: 13
-    prerequis:
-        - "../structure-de-données/chaîne-de-caractères/"
+layout: layout/post.njk
+title: "Étude"
 
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-
 ---
 
-<!-- début résumé -->
-
 Nous allons voir dans cette étude comment définir/calculer une distance entre 2 chaînes de caractères. Nous utiliserons la [distance d'édition](https://fr.wikipedia.org/wiki/Distance_de_Levenshtein), très utilisée.
-
-<!-- end résumé -->
 
 ## Distance entre chaines ?
 
@@ -34,7 +22,7 @@ $$
 </div>
 
 {% info %}
-La distance entre *"MISO"* et *"SILO"* est de 2 différences.
+La distance entre _"MISO"_ et _"SILO"_ est de 2 différences.
 {% endinfo %}
 
 {% note %}
@@ -44,11 +32,11 @@ Son nom commun est [Distance de Hamming ou distance L1](https://fr.wikipedia.org
 
 {% endnote %}
 {% exercice %}
-Montrez que la distance de Hamming est une *vraie* distance :
+Montrez que la distance de Hamming est une _vraie_ distance :
 
-* elle est symétrique et positive
-* elle vaut 0 si $a=b$
-* elle respecte l'inégalité triangulaire
+- elle est symétrique et positive
+- elle vaut 0 si $a=b$
+- elle respecte l'inégalité triangulaire
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -87,9 +75,9 @@ $$
 {% enddetails %}
 Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.
 
-Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère *vide* et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OU`  correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
+Pour cela, on va ajouter un caractère noté `-` qui correspond à un caractère _vide_ et dont le but est d'allonger artificiellement une chaîne. Par exemple : `MEROU` et `ME-R-OU` correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.
 
-On peut donc maintenant comparer `MEROU` et `MARLOU` via un *allongement* de `MEROU`. Par exemple comparer `MERO-U` et `MARLOU`, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des `|` entre les lettres identiques :
+On peut donc maintenant comparer `MEROU` et `MARLOU` via un _allongement_ de `MEROU`. Par exemple comparer `MERO-U` et `MARLOU`, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des `|` entre les lettres identiques :
 
 ```text
 MERO-U
@@ -99,26 +87,26 @@ MARLOU
 
 La distance est donc égale :
 
-* au nombre de lettres différentes
-* à la longueur des mots moins le nombre de lettres identiques
+- au nombre de lettres différentes
+- à la longueur des mots moins le nombre de lettres identiques
 
 Ceci pose cependant deux (gros) problèmes :
 
 1. selon l'allongement choisi, la distance n'est pas la même :
 
-    ```text
-    MER-OU
-    | | ||
-    MARLOU
-    ```
+   ```text
+   MER-OU
+   | | ||
+   MARLOU
+   ```
 
 2. on peut utiliser l'allongement pour changer la distance de 2 chaînes de mêmes longueurs :
 
-    ```text
-    MEROUS       MER-OUS
-    | |      ≠   | | || 
-    MARLOU       MARLOU-
-    ```
+   ```text
+   MEROUS       MER-OUS
+   | |      ≠   | | ||
+   MARLOU       MARLOU-
+   ```
 
 Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'**alignement**. entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.
 
@@ -127,11 +115,11 @@ Il faut donc tout refaire... Une solution pour unifier les deux approches est de
 {% note %}
 Un alignement entre la chaîne $a =a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ est un couple $(a^\star, b^\star)$ tel que :
 
-* $a^\star =a^\star_0\dots a^\star_{L-1}$
-* $b^\star =b^\star_0\dots b^\star_{L-1}$
-* chaque caractère de $a^\star$ et $b^\star$ est soit `-` soit un caractère de la chaîne initiale
-* $(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i < L$
-* $a^\star$ (respectivement $b^\star$) privé des caractères `-` est égal à $a$ (*resp.* $b$)
+- $a^\star =a^\star_0\dots a^\star_{L-1}$
+- $b^\star =b^\star_0\dots b^\star_{L-1}$
+- chaque caractère de $a^\star$ et $b^\star$ est soit `-` soit un caractère de la chaîne initiale
+- $(a^\star_i, b^\star_i) \neq (-, -)$ pour tout $0 \leq i < L$
+- $a^\star$ (respectivement $b^\star$) privé des caractères `-` est égal à $a$ (_resp._ $b$)
 
 {% endnote %}
 
@@ -157,9 +145,9 @@ $$
 
 Notez que $H$ est bien une distance :
 
-* elle est symétrique et positive
-* $d(a^\star, a^\star) = 0$
-* elle vérifie l'inégalité triangulaire
+- elle est symétrique et positive
+- $d(a^\star, a^\star) = 0$
+- elle vérifie l'inégalité triangulaire
 
 ### Evolution d'une séquence en l'autre
 
@@ -167,7 +155,7 @@ Un alignement permet de simuler le passage d'une séquence à l'autre. Par exemp
 
 ```text
 MER-OUS
-| | || 
+| | ||
 MARLOU-
 ```
 
@@ -219,15 +207,15 @@ On peut remarquer que ce nombre ne dépend que de la longueur des chaines $a$ et
 
 Comme un alignement ne peut finir sur $(-, -)$, on ne peut qu'avoir 3 possibilités :
 
-* $(a_{n-1}, b_{m-1})$
-* $(a_{n-1}, -)$
-* $(-, b_{m-1})$
+- $(a_{n-1}, b_{m-1})$
+- $(a_{n-1}, -)$
+- $(-, b_{m-1})$
 
 Aligner $a$ et $b$ revient alors soit à aligner :
 
-* $a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$ et ajouter $(a_{n-1}, b_{m-1})$ à la fin de cet alignement
-* aligner $a_0\dots a_{n-2}$ et $b$ et ajouter $(a_{n-1}, -)$ à la fin de cet alignement
-* aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement
+- $a_0\dots a_{n-2}$ et $b_0\dots b_{m-2}$ et ajouter $(a_{n-1}, b_{m-1})$ à la fin de cet alignement
+- aligner $a_0\dots a_{n-2}$ et $b$ et ajouter $(a_{n-1}, -)$ à la fin de cet alignement
+- aligner $a$ et $b_0\dots b_{m-2}$ et ajouter $(-, b_{m-1})$ à la fin de cet alignement
 
 Ce qui donne l'équation de récurrence générale suivante :
 
@@ -239,9 +227,9 @@ $$
 
 Avec les conditions aux limites :
 
-* $f(1, 1) = 3$
-* $f(n, 0) = 1$ pour tous $n \geq 1$
-* $f(0, m) = 1$ pour tout $m \geq 1$
+- $f(1, 1) = 3$
+- $f(n, 0) = 1$ pour tous $n \geq 1$
+- $f(0, m) = 1$ pour tout $m \geq 1$
 
 {% info %}
 Notez que $f(0, 0)$ ne peut exister puisque l'alignement $(-, -)$ n'existe pas.
@@ -257,9 +245,9 @@ $$
 
 Ce qui donne :
 
-* $f(10, 10) \sim 34537380$
-* $f(100, 100) \sim 8.67 \cdot 10^{75}$
-* $f(200, 200) \sim 2.2 \cdot 10^{152}$
+- $f(10, 10) \sim 34537380$
+- $f(100, 100) \sim 8.67 \cdot 10^{75}$
+- $f(200, 200) \sim 2.2 \cdot 10^{152}$
 
 {% info %}
 Il n'y a qu'environ $10^{80}$ particules dans l'univers.
@@ -273,15 +261,15 @@ On remarque que pour calculer $f(n, m)$ on a besoin que de $f(n-1, m-1)$, $f(n-1
 
 On peut représenter ces dépendances de façon matricielle :
 
-|          | 0     | 1      | ... | j-1                |  j                   | ... | m        |
-| -------- | ----- | ------ | --- | ------------------ | -------------------- | --- |--------- |
-| 0        | -1    | $1$    |     | $1$                | $1$                  |     |$1$       |
-| 1        | $1$   | $1$    |     |                    |                      |     |          |
-| ...      |       |        |     |                    |                      |     |          |
-| i-1      | $1$   |        |     | $f(i-1, j-1)$      | $f(i-1, j)$          |     |          |
-| i        | $1$   |        |     | $f(i, j-1)$        | $f(i, j)$            |     |          |
-| ...      |       |        |     |                    |                      |     |          |
-| n        | $1$   |        |     |                    |                      |     | $f(n,m)$ |
+|     | 0   | 1   | ... | j-1           | j           | ... | m        |
+| --- | --- | --- | --- | ------------- | ----------- | --- | -------- |
+| 0   | -1  | $1$ |     | $1$           | $1$         |     | $1$      |
+| 1   | $1$ | $1$ |     |               |             |     |          |
+| ... |     |     |     |               |             |     |          |
+| i-1 | $1$ |     |     | $f(i-1, j-1)$ | $f(i-1, j)$ |     |          |
+| i   | $1$ |     |     | $f(i, j-1)$   | $f(i, j)$   |     |          |
+| ... |     |     |     |               |             |     |          |
+| n   | $1$ |     |     |               |             |     | $f(n,m)$ |
 
 En notant $F$ cette matrice on a alors :
 
@@ -307,16 +295,16 @@ On a utilisé l'astuce de placer $F[0][0] = 1$ pour que $F[1][1]$ puisse être c
 {% details "M pour n=m=10" %}
 
 ```python
-[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
- [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21], 
- [1, 5, 13, 25, 41, 61, 85, 113, 145, 181, 221], 
- [1, 7, 25, 63, 129, 231, 377, 575, 833, 1159, 1561], 
- [1, 9, 41, 129, 321, 681, 1289, 2241, 3649, 5641, 8361], 
- [1, 11, 61, 231, 681, 1683, 3653, 7183, 13073, 22363, 36365], 
- [1, 13, 85, 377, 1289, 3653, 8989, 19825, 40081, 75517, 134245], 
- [1, 15, 113, 575, 2241, 7183, 19825, 48639, 108545, 224143, 433905], 
- [1, 17, 145, 833, 3649, 13073, 40081, 108545, 265729, 598417, 1256465], 
- [1, 19, 181, 1159, 5641, 22363, 75517, 224143, 598417, 1462563, 3317445], 
+[[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+ [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21],
+ [1, 5, 13, 25, 41, 61, 85, 113, 145, 181, 221],
+ [1, 7, 25, 63, 129, 231, 377, 575, 833, 1159, 1561],
+ [1, 9, 41, 129, 321, 681, 1289, 2241, 3649, 5641, 8361],
+ [1, 11, 61, 231, 681, 1683, 3653, 7183, 13073, 22363, 36365],
+ [1, 13, 85, 377, 1289, 3653, 8989, 19825, 40081, 75517, 134245],
+ [1, 15, 113, 575, 2241, 7183, 19825, 48639, 108545, 224143, 433905],
+ [1, 17, 145, 833, 3649, 13073, 40081, 108545, 265729, 598417, 1256465],
+ [1, 19, 181, 1159, 5641, 22363, 75517, 224143, 598417, 1462563, 3317445],
  [1, 21, 221, 1561, 8361, 36365, 134245, 433905, 1256465, 3317445, 8097453]]
 ```
 
@@ -326,8 +314,8 @@ On voit que l'approximation précédente n'est pas encore trop valide lorsque $n
 
 La complexité de l'algorithme de calcul précédent :
 
-* nécessite $\mathcal{O}(nm)$ opérations
-* nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
+- nécessite $\mathcal{O}(nm)$ opérations
+- nécessite le stockage d'une matrice de taille $m \cdot n$ en mémoire, il est donc de complexité spatiale $\mathcal{O}(nm)$
 
 {% exercice %}
 Proposez un algorithme nécessitant uniquement une complexité spatiale de $\mathcal{O}(m)$ pour calculer $f(n, m)$.
@@ -388,9 +376,9 @@ $$
 
 De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :
 
-* $(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$
-* $(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$
-* $(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$
+- $(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$
+- $(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$
+- $(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$
 
 De là, si l'alignement $(a^\star, b^\star)$ est celui réalisant la distance ($D(a, b) = H(a^\star, b^\star)$), le cas réalisant le minimum est forcément également une distance.
 
@@ -416,9 +404,9 @@ C'est le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/
 
 Donc si l'on connaît :
 
-* $D(a[:-1], b[:-1])$
-* $D(a[:-1], b)$
-* $D(a, b[:-1])$
+- $D(a[:-1], b[:-1])$
+- $D(a[:-1], b)$
+- $D(a, b[:-1])$
 
 on a :
 
@@ -476,7 +464,7 @@ La distance entre $a$ et $b$ qui correspond à un alignement de distance minimal
 Distance de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 {% exercice %}
-Créez la matrice d'édition *vierge* à utiliser
+Créez la matrice d'édition _vierge_ à utiliser
 {% endexercice %}
 {% details "solution" %}
 
@@ -543,7 +531,7 @@ C'est $M[-1][-1]$ et cela vaut 4
 
 ### Alignement et distance d'édition
 
-Avec la matrice d'édition, il est facile de retrouver un alignement qui a réalisé la distance minimale en *remontant* dans la matrice.
+Avec la matrice d'édition, il est facile de retrouver un alignement qui a réalisé la distance minimale en _remontant_ dans la matrice.
 
 1. on pose $i=-1$ et $j=-1$
 2. on pose $A = []$, c'est le tableau qui va contenir notre alignement
@@ -627,27 +615,27 @@ $$
 
 Comme $a^\star_i$ et $b^\star_j$ sont soit des caractères de l'alphabet soit le caractère vide $-$, on peut définir $\delta$ tel que :
 
-* $\delta(u, u) = 0$ pour tout caractère $u$
-* $\delta(u, v) = 1$ si $u$ et $v$ sont deux caractères différents
-* $\delta(u, -) = \delta(-, u) = 1$
+- $\delta(u, u) = 0$ pour tout caractère $u$
+- $\delta(u, v) = 1$ si $u$ et $v$ sont deux caractères différents
+- $\delta(u, -) = \delta(-, u) = 1$
 
 Il peut parfois être intéressant d'affiner un peu cette distance. Par exemple, si l'on cherche à trouver les erreurs de frappe, on pourra tenter de supposer que deux mots sont proches si les lettres qui les composent sont proches sur le clavier.
 
 {% info %}
-*"ORNE"* sera plus proche de *"ORBE"* que de *"URNE"* si l'on compte l'éloignement des touches sur le clavier.
+_"ORNE"_ sera plus proche de _"ORBE"_ que de _"URNE"_ si l'on compte l'éloignement des touches sur le clavier.
 {%endinfo %}
 
 On pourra alors utiliser la distance :
 
-* $\delta'(u, u) = 0$ pour tout caractère $u$
-* $\delta'(u, v)$ vaut la distance entre les touches $u$ et $v$ sur le clavier
-* $\delta'(u, -) = \delta'(-, u) = K$, une constante.
+- $\delta'(u, u) = 0$ pour tout caractère $u$
+- $\delta'(u, v)$ vaut la distance entre les touches $u$ et $v$ sur le clavier
+- $\delta'(u, -) = \delta'(-, u) = K$, une constante.
 
-De façon général, on définit alors un coût entre caractères défini tel que  
+De façon général, on définit alors un coût entre caractères défini tel que
 
-* $d(x, -)$ est appelé **coût de suppression**,
-* $d(-, x)$ est appelé **coût d'insertion** et est égal à $d(x, -)$
-* $d(x, y)$ est nommé **coût de substitution**
+- $d(x, -)$ est appelé **coût de suppression**,
+- $d(-, x)$ est appelé **coût d'insertion** et est égal à $d(x, -)$
+- $d(x, y)$ est nommé **coût de substitution**
 
 ### définition du cas général
 
@@ -684,7 +672,7 @@ $$
 Et le terme général de la matrice d'édition :
 
 ```python
-M[i + 1][j + 1] = min(M[i][j] + d(a[j], b[i]), 
+M[i + 1][j + 1] = min(M[i][j] + d(a[j], b[i]),
                       M[i + 1][j] + d(-, b[i]),
                       M[i][j + 1] + d(a[j], -))
 ```
@@ -704,7 +692,7 @@ Considérons le coût :
 Aller de `ACTGATT` (horizontal) à `GCTAATCG` (vertical).
 
 {% exercice %}
-Créez la matrice d'édition *vierge* à utiliser
+Créez la matrice d'édition _vierge_ à utiliser
 {% endexercice %}
 {% details "solution" %}
 

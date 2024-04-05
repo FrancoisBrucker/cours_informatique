@@ -1,12 +1,10 @@
 ---
-layout: layout/post.njk 
-title: "Projet : alignement de séquences"
+layout: layout/post.njk
+title: "Projet"
 
 eleventyNavigation:
-    order: 11
-    prerequis:
-        - "../../algorithme/étude-alignement-séquences/"
-        - "../programmation-objet/héritage/"
+  prerequis:
+    - "/cours/coder-et-développer/programmation-objet/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,35 +13,33 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie précédente.
 
-Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie [étude](../../algorithme/étude-alignement-séquences){.interne}.
-
-On considérera pour ce projet que le caractère *"-"* ne fait **pas** parti de l'alphabet $\mathcal{A}$ utilisé.
+On considérera pour ce projet que le caractère _"-"_ ne fait **pas** parti de l'alphabet $\mathcal{A}$ utilisé.
 
 ## Alignement
 
 On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star)$ tels que :
 
-* $a^\star$ et $b^\star$ soient de même longueur $L$
-* chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
-* $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
+- $a^\star$ et $b^\star$ soient de même longueur $L$
+- chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
+- $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
-1. Représentez *graphiquement* l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../../algorithme/étude-alignement-séquences#distance-entre-chaines-){.interne})
-2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../../algorithme/étude-alignement-séquences#évolution-dune-séquence-en-lautre){.interne}
+1. Représentez _graphiquement_ l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../étude/#distance-entre-chaines-){.interne})
+2. pour un alignement $(a^\star, b^\star)$ donné, rendez les listes de chaînes de caractères permettant de passer de $a$ à $b$, comme fait dans l'[étude](../étude/#évolution-dune-séquence-en-lautre){.interne}
 
 Pour cela :
 
 {% faire %}
 Vous créerez une classe `Alignement`{.language-} telle que :
 
-* le constructeur prend les deux chaînes $a^\star$ et $b^\star$
-* cette classe doit contenir les méthodes suivantes :
-  * `a()`{.language-} qui rend $a$
-  * `b()`{.language-} qui rend $b$
-  * `affiche()`{.language-} qui affiche l'alignement
-  * `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
-{% endfaire %}
+- le constructeur prend les deux chaînes $a^\star$ et $b^\star$
+- cette classe doit contenir les méthodes suivantes :
+  - `a()`{.language-} qui rend $a$
+  - `b()`{.language-} qui rend $b$
+  - `affiche()`{.language-} qui affiche l'alignement
+  - `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
+    {% endfaire %}
 
 ## Distance élémentaire
 
@@ -58,25 +54,25 @@ Pour cela :
 {% faire %}
 Vous créerez une classe `DistanceElem`{.language-} telle que :
 
-* le constructeur prend les deux chaînes $a$ et $b$
-* cette classe doit contenir les méthodes suivantes :
-  * `matrice()`{.language-} qui rend la matrice d'édition en utilisant la distance élémentaire
-  * `dist()`{.language-} qui rend la distance d'édition associée à la matrice
-  * `alignement()`{.language-} qui rend un alignement associé à la matrice.
-{% endfaire %}
+- le constructeur prend les deux chaînes $a$ et $b$
+- cette classe doit contenir les méthodes suivantes :
+  - `matrice()`{.language-} qui rend la matrice d'édition en utilisant la distance élémentaire
+  - `dist()`{.language-} qui rend la distance d'édition associée à la matrice
+  - `alignement()`{.language-} qui rend un alignement associé à la matrice.
+    {% endfaire %}
 
 Vous vérifierez bien que les 3 alignements suivants sont corrects :
 
-* "ACTGATT" et "GCTAATCG"
-* "ACTGATT" et "-"
-* "-" et "GCTAATCG"
+- "ACTGATT" et "GCTAATCG"
+- "ACTGATT" et "-"
+- "-" et "GCTAATCG"
 
 ## Cas général
 
 On suppose que le coût est défini par une fonction dont la signature est `coût(x, y=None)`{.language-} :
 
-* si on renseigne `x`{.language-} et `y`{.language-} la fonction rend le coût de substitution entre `x`{.language-} et `y`{.language-}
-* si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de `x`{.language-}
+- si on renseigne `x`{.language-} et `y`{.language-} la fonction rend le coût de substitution entre `x`{.language-} et `y`{.language-}
+- si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de `x`{.language-}
 
 {% faire %}
 Définissez la fonction de coût pour l'exemple du cas général de l'étude
@@ -87,8 +83,8 @@ On peut maintenant créer l'alignement général :
 {% faire %}
 En héritant de la classe `DistanceElem`{.language-}, créez la classe `Distance`{.language-} qui réalise un alignement.
 
-* le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût
-* cette classe doit contenir les même méthodes que la classe `DistanceElem`{.language-}.
+- le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût
+- cette classe doit contenir les même méthodes que la classe `DistanceElem`{.language-}.
 
 Arrangez vous pour conserver le plus de code possible entre les deux classes.
 {% endfaire %}
@@ -142,8 +138,8 @@ BLOSUM_MATRIX = [
 
 {% attention %}
 
-* pour la transformer en matrice de coût, il faut prendre l'opposé de sa valeur !
-* l'identité n'est plus de coût nul.
+- pour la transformer en matrice de coût, il faut prendre l'opposé de sa valeur !
+- l'identité n'est plus de coût nul.
 
 {% endattention %}
 

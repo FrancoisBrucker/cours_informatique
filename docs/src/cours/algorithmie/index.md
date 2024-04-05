@@ -127,7 +127,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ### Pile/file
 
-> TBD
+> TBD : bornées
+> TBD : circulaires
+
 
 ### Listes
 
@@ -137,6 +139,7 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 > TBD : fonctions de hashage
 > TBD : dictionnaires
+> TBD : ensembles
 
 ## Complexité amortie
 
@@ -146,9 +149,17 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Design d'algorithmes
 
+### Divide and conquer
+
+> TBD. Dire qu'on a vue ça dans les tris. 
+> TBD Reprendre le master theorem et le démontrer ici. 
+> TBD autres exemples 
+
 ### Programmation dynamique
 
-> TBD
+{% aller %}
+[Programmation dynamique](./programmation-dynamique){.interne}
+{% endaller %}
 
 ### Algorithmes gloutons
 
