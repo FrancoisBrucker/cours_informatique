@@ -185,7 +185,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </div>
 </div>
 <h2>Étape 2</h2>
-<p>Pour pouvoir manipuler les cases de la grille, nous allons ajouter plusieurs méthodes. Commençons par pouvoir cliquer sur une case précise.</p>
+<p>Pour pouvoir manipuler les cases de la grille, nous allons ajouter plusieurs méthodes. On ne pourra tester nos méthodes qu'à la toute fin de l'étape, lorsque l'on utilisera l'évènement qui gère les cliques de souris.</p>
+<p>Commençons par pouvoir cliquer sur une case précise.</p>
 <h3>Méthode <code class="language-">intérieur(x, y)</code> pour les <code class="language-">Carré</code></h3>
 <p>Ajoutez une méthode <code class="language-">intérieur(x, y)</code> à la classe <code class="language-">Carré</code> qui rend :</p>
 <ul>
@@ -297,7 +298,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 1111
 1141
 </code></pre>
-<p>L'appui sur une touche de direction produira les matrices :</p>
+<p>L'appui sur une touche de direction produira les matrices ci-dessous :</p>
 <pre><code>                4224               
                 1111
                 1141
@@ -309,13 +310,15 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 2141            2114            1214
 4211  &lt; gauche  2221  droite &gt;  1222
 1111            1111            1111
+1411            1141            1114
+
                 bas
                  v
 
                 1111
                 2114
                 2221
-                1141
+                1111
 </code></pre>
 <p>Toutes les cases de valeurs strictement plus grandes que 1 se sont déplacés si possible, soit vers une case libre adjacente soit vers une case de même valeur et ont fusionné.</p>
 <h3>Ajout d'une nouvelle case</h3>
