@@ -146,7 +146,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ### Algorithmes gloutons
 
-> TBD
+{% aller %}
+[Algorithmes gloutons](./algorithmes-gloutons){.interne}
+{% endaller %}
 
 ## Classes de Problèmes Algorithmiques
 

@@ -1,11 +1,6 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Fonction de hash"
-
-eleventyNavigation:
-    order: 4
-    prerequis:
-        - "../fonctions/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,18 +9,10 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Les fonctions de hachage. De la définition mathématique à son utilité en informatique.
-
-<!-- end résumé -->
-
-## Définition
-
-Dans notre cas, en informatique, on peut définir une [fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
+On peut définir une [fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
 
 {% note "**Définition**" %}
-Une ***fonction de hachage*** est une fonction $f$ :
+Une **_fonction de hachage_** est une fonction $f$ :
 
 <div>
 $$
@@ -33,21 +20,19 @@ f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[
 $$
 </div>
 
-où $m$  est un entier positif.
+où $m$ est un entier positif.
 {% endnote %}
 
 Une définition alternative, également souvent utilisée, est :
 
 {% note "**Définition**" %}
-Une ***fonction de hachage*** est une fonction $f$  qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$.
-
-Avec $k$  est un entier positif.
+Une **_fonction de hachage_** est une fonction $f$ qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$. Avec $k$ est un entier positif.
 {% endnote %}
 
 Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :
 
 {% note "**Définition**" %}
-Une ***fonction de hachage*** est une fonction qui associe à tout **objet** soit :
+Une **_fonction de hachage_** est une fonction qui associe à tout **objet** soit :
 
 - un entier entre 0 et $m$
 - un mot de $\\{0, 1\\}^k$ ($k > 0$)
@@ -82,15 +67,15 @@ $$
 
 {% endnote %}
 
-Une fonction de hachage permet de partitionner les entiers (*ie.* les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une *bonne* fonction de hachage d'avoir en plus les propriétés suivantes :
+Une fonction de hachage permet de partitionner les entiers (_ie._ les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une _bonne_ fonction de hachage d'avoir en plus les propriétés suivantes :
 
 {% note %}
 
-Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit ***utile***, elle doit avoir les 3 propriétés suivantes :
+Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit **_utile_**, elle doit avoir les 3 propriétés suivantes :
 
 1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage.
 2. elle doit être **facilement calculable**
-3. elle doit être  **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
+3. elle doit être **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
 
 {% endnote %}
 
@@ -132,7 +117,7 @@ Sous certaines conditions, elle respecte bien les 3 propriétés d'une fonction 
 
 #### Déterministe
 
-Comme $a \mod m$  est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.
+Comme $a \mod m$ est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.
 
 #### Facilement calculable
 
@@ -146,7 +131,7 @@ Par exemple :
 - $7 \mod 3 = (4 \mod 3) + (3 \mod 3) = 1 + 0 = 1$
 - $4 \times 3 \mod 3 = (4 \mod 3) \times (3 \mod 3) = 1 \times 0 = 0$
 
-Ce qui permet de calculer le modulo *par morceau*.
+Ce qui permet de calculer le modulo _par morceau_.
 
 Per exemple, prenons un objet $n$, qui est représenté en mémoire par une suite de $k \times l$ $0$ et $1$ :
 
@@ -156,7 +141,7 @@ n = \underbracket{0 \cdots 1}_{k \times l}
 $$
 </div>
 
-On peut alors le découper en paquets de $k$ bits (souvent $k = 256$) :
+On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme [sha-2](https://fr.wikipedia.org/wiki/SHA-2)) :
 
 <div>
 $$
@@ -172,7 +157,7 @@ Par exemple, en notant $n_i$ le nombre associé aux $i$ème $k$ bits de $n$ on a
 $$
 \begin{array}{lcl}
 n &=& n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0\\
-& & \sum_{i=0}^l n_i2^{ki}
+&=& \sum_{i=0}^l n_i2^{ki}
 \end{array}
 $$
 </div>
@@ -180,19 +165,20 @@ $$
 De la un pseudo-code du calcul du modulo de $n$ est alors :
 
 ```python
-exp = (2 ** k) mod k
-res = n_0 mod k
-for 1 <= i <= k:
-    c = (exp * i) mod k
-    c = (c * n_i) mod k
-    res = (res + c) mod k
+e = (2 ** k) mod m
+exp = 1
+res = n_0 mod m
+for 1 <= i <= l:
+    exp = (exp * e) mod m
+    c = (exp * n_i) mod m
+    res = (res + c) mod m
 ```
 
 Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
 
 #### Équiprobable
 
-Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$.
+Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \\{k\cdot m+i \\mid k \geq 0\\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2).
 
 Attention cependant :
 
@@ -213,13 +199,12 @@ Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utilis
 
 L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en.wikipedia.org/wiki/SipHash)
 
-> TBD : décrire <https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html>
+{% lien %}
 
-{% aller %}
+- [déscription](https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html)
+- [Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash)
 
-[Implémentation de SipHash par un de ses créateurs](https://github.com/veorq/SipHash)
-
-{% endaller %}
+{% endlien %}
 
 ## Hash de structures composées
 
@@ -237,12 +222,12 @@ pour chaque élément e du tuple:
 Ceci assure :
 
 - d'avoir un hash facile à calculer si le chaque de chaque élément l'est
-- de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va *mélanger* le tout à chaque fois
+- de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va _mélanger_ le tout à chaque fois
 
 ## Collisions
 
 {% note "**Définition**" %}
-Une ***collision*** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
+Une **_collision_** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
 {% endnote %}
 
 Le but est — bien sûr — de minimiser les collisions.
@@ -353,7 +338,7 @@ Faites le test !
 Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirages de :
 
 $$
-n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}} 2^{80}
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}}= 2^{80}
 $$
 
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
@@ -369,7 +354,7 @@ Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 
 On l'a vu, si la taille du hachage est grand, il faut a priori un grand nombre d'objet pour espérer avoir une collision. C'est pourquoi on considère souvent que :
 
 {% note %}
-*En pratique* une fonction de hachage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$  selon la fonction utilisée
+_En pratique_ une fonction de hachage utile est une **injection** de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.}\,{.} } m]$ ou $\\{0, 1\\}^k$ selon la fonction utilisée
 {% endnote %}
 
 Cette propriété permet d'utiliser les fonctions de hachage pour :
@@ -377,7 +362,7 @@ Cette propriété permet d'utiliser les fonctions de hachage pour :
 - proposer des résumés d'un objet (c'est comme ça que git stocke ses objets) : deux objets sont considérés identiques si'l ont le même hash, ce qui est bien plus rapide que de comparer bit à bit les 2 objets.
 - créer des structures de données avancées comme les dictionnaires
 
-Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) qui assurent qu'il est *difficile* :
+Les fonctions de hachages sont même utilisées pour stocker les mots de passe sur votre ordinateur, mais pour que ne soit pas (ou très difficilement) piratable, il faut utiliser des [fonctions de hachage cryptographiques](https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique) qui assurent qu'il est _difficile_ :
 
 - de trouver $m$ à partir de $h$ tel que $f(m) = h$
 - de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$

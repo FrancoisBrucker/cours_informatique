@@ -1,20 +1,12 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Le dictionnaire"
-
-eleventyNavigation:
-    order: 5
-    prerequis:
-        - "../../../théorie/fonctions-hash/"
-        - "../../complexités/moyenne/"
 
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
-
 ---
 
 <!-- début résumé -->
@@ -23,7 +15,7 @@ Mise en œuvre de la structure de dictionnaire qui est une structure fondamental
 
 <!-- end résumé -->
 
-Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../../../théorie/fonctions-hash){.interne}.
+Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../fonctions-hash){.interne}.
 
 Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.
 
@@ -33,12 +25,12 @@ Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une list
 
 Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :
 
-* pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
+- pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
   1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
   2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
      2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
-* pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
+- pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
   1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
   2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on rend $b$
@@ -46,9 +38,9 @@ Si la fonction n'est pas injective, chaque élément de la liste $L$ est une lis
 
 Pour ces deux opérations, la complexité est alors la somme des complexités :
 
-* du calcul du hash de l'objet $c$ : $f(c)$
-* du nombre d'éléments de $L[f(c)]$
-* du temps pour vérifier l'égalité entre 2 objets.
+- du calcul du hash de l'objet $c$ : $f(c)$
+- du nombre d'éléments de $L[f(c)]$
+- du temps pour vérifier l'égalité entre 2 objets.
 
 Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(c)$ se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet $c$ à tous les premiers éléments de $L[f(c)]$, ce qui correspond à la complexité $K(c)$ de l'opérateur `==`{.language-} de l'objet $c$ multiplié par la longueur de $L[f(c)]$.
 
@@ -60,7 +52,7 @@ Si la taille maximale des objets est connue, on a coutume de considérer que $K(
 
 ## Taille de la structure
 
-Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise sha-1 pour fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...
+Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise [sha-2](https://fr.wikipedia.org/wiki/SHA-2) comme fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...
 
 C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hash dont on peut maîtriser la taille :
 
@@ -70,18 +62,18 @@ Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathr
 
 Une structure de dictionnaire est alors un couple :
 
-* $L$ : la liste principale de taille $m$
-* $f_m$ une fonction d'adressage.
+- $L$ : la liste principale de taille $m$
+- $f_m$ une fonction d'adressage.
 
 Pour associer et rechercher une valeur on procède alors comme suit :
 
-* pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
+- pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
   1. on cherche le hash $f(c)$ de la clé $c$.
   2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
   3. Soit $L'= L[i_c]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
      1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
      2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
-* pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
+- pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
   1. on cherche le hash $f(c)$ de la clé $c$.
   2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
   3. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
@@ -94,13 +86,13 @@ La fonction d'adressage permet de choisir $m$ pas trop grand. De plus, on peut c
 
 On va estimer la complexité des opérations suivantes :
 
-* création de la structure
-* suppression de la structure (liste de liste)
-* ajout d'un élément à la structure
-* recherche d'un élément à la structure
-* suppression d'un élément à la structure
+- création de la structure
+- suppression de la structure (liste de liste)
+- ajout d'un élément à la structure
+- recherche d'un élément à la structure
+- suppression d'un élément à la structure
 
-On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice  $L[f_m(f(c))]$.
+On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $L[f_m(f(c))]$.
 
 ### Création de la structure
 
@@ -126,9 +118,9 @@ Les complexités sont identiques car cela revient à chercher si la clé $c$ est
 
 Cette complexité peut aller de :
 
-* cas le meilleurs : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $L[f_m(f(c))]$ est vide
-* cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$
-* cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.
+- cas le meilleurs : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $L[f_m(f(c))]$ est vide
+- cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = \mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$
+- cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.
 
 Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.
 
@@ -150,12 +142,18 @@ Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une l
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
 
-## Exercice
+## Manipuler des dictionnaires
 
-* données :  
-  * une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
-  * un crédit : $C$
-* Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None`{.language-} si cela n'existe pas.
+{% info %}
+[Dictionnaires python](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/){.interne}
+{% endinfo %}
+
+Faisons cet exercice en aliant connaissances algorithmique et language python. Si vous ne savez pas bien utiliser les dictionnaires en python, consultez le lien précédent.
+
+- données :
+  - une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
+  - un crédit : $C$
+- Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None`{.language-} si cela n'existe pas.
 
 On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
 
@@ -198,7 +196,7 @@ def recherche(p):
             i += 1
         else:
             j -= 1
-        
+
         if i > j:
             return None
     return (i, j)

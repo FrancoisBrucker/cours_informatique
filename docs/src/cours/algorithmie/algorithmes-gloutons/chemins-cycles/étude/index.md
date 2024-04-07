@@ -1,11 +1,6 @@
 ---
-layout: layout/post.njk 
-title: "Étude : chemins et cycles"
-
-eleventyNavigation:
-    order: 15
-    prerequis:
-        - "../algorithmes-gloutons/"
+layout: layout/post.njk
+title: Étude
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,12 +8,6 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
-<!-- début résumé -->
-
-Utilisation d'algorithmes gloutons pour résoudre des problèmes de cheminement.
-
-<!-- end résumé -->
 
 {% info %}
 Les différents algorithmes que nous allons voir sont pour la plupart des cas particuliers d'algorithmes plus généraux de la théorie des graphes.
@@ -118,111 +107,26 @@ Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nul
 La raison fondamentale de cette hypothèse est que :
 
 {% note %}
-Si $P$ est un ensemble de points en ***position générale***, alors pour toute paire de points $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.
+Si $P$ est un ensemble de points en **_position générale_**, alors pour toute paire de points $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.
 {% endnote %}
 
 Ceci va simplifier nombre de preuves de ce qui va suivre.
 
-## Routes chemins et Connexité
-
-Nous devons créer un réseau routier entre les villes pour les relier. Nous avons seulement besoin de créer des segments entre villes, ce qui minimisera le nombre de kilomètres de routes.
-
-{% note "**définition**" %}
-
-Une ***route*** est le segment entre $x$ et $y$. Un ***réseau routier*** est un ensemble de routes (segments).
-
-{% endnote %}
-
-Analysons un peu ce que nous pouvons faire.
-
-### Chemins
-
-{% note "**définition**" %}
-
-Un ***chemin*** entre deux villes $x$ et $y$ est soit :
-
-* la ***route*** entre $x$ et $y$
-* soit une suite $v_1\dots v_{i-1}v_i\dots v_n$ tel que :
-  * $v_1 = x$, $v_n = y$
-  * les villes $v_{i-1}$ et $v_{i}$ sont différentes et reliées par une route pour tout $1 < i \leq n$
-  * pour un chemin $v_1\dots v_{i-1}v_i\dots v_n$ entre $v_1$ et $v_n$ les villes $v_2$ à $v_{n-1}$ sont dites ***villes de passage***
-{% endnote %}
-
-La notion de chemin s'écrit très bien sous la forme d'une relation $C$ sur un ensemble $V$ de villes. On dira que $xCy$ s'il existe un chemin entre $x$ et $y$. Cette relation est une [relation d'équivalence](https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence) car elle est :
-
-* réflexive $xCx$ (le singleton $x$ permet de relier $x$ à lui-même)
-* symétrique $xCy$ implique $yCx$ (les routes sont à double sens)
-* transitive $xCy$ et $yCz$ implique $xCz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)
-
-L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :
-
-1. en considérant la relation $R$ des routes du réseau routier ($xRy$ s'il existe une route entre $x$ et $y$ dans le réseau)
-2. en fermant cette relation par transitivité
-
-À première vue créer $C$ à partir de $R$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall)) montre qu'on peut le faire très simplement en utilisant le principe de la [programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique).
-
-{% exercice %}
-Soit $V = \\{ v_1, \dots v_n \\}$ les villes d'un réseau routier et $R$ sa relation route associée.
-
-Montrez que si on note $V_i = \\{ v_1, \dots v_i \\}$, un chemin entre les villes $x$ et$y$ ayant comme villes de passage uniquement des éléments de $V_{i}$ peut de déduire de chemins ayant uniquement des villes de $V_{i-1}$ comme villes de passage.
-{% endexercice %}
-{% details "corrigé" %}
-Il existe un chemin entre $x$ et $y$ ayant comme villes de passage uniquement des éléments de $V_{i}$ si :
-
-* soit il existe un chemin entre $x$ et $y$ ayant comme villes de passage uniquement des éléments de $V_{i-1}$
-* soit il existe les deux chemins suivants :
-  * un chemin entre $x$ et $v_i$  ayant comme villes de passage uniquement des éléments de $V_{i-1}$
-  * un chemin entre $v_i$ et $y$  ayant comme villes de passage uniquement des éléments de $V_{i-1}$
-
-{% enddetails %}
-
-{% exercice %}
-Déduire de l'exercice précédent un algorithme en $\mathcal{O}(n^3)$ permettant de trouver la relation chemin à partir de la relation route.
-{% endexercice %}
-{% details "corrigé" %}
-
-On utilise la représentation matricielle des relations. On dira que $R[i][j]$ (*resp.* $C[i][j]$) est vrai s'il existe une route (*resp.* un chemin) entre $v_i$ et $v_j$ dans le réseau et que $R[i][j]$ (*resp.* $C[i][j]$) est faux sinon.
-
-L'équation précédente s'écrit alors :
-
-$C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :
-
-* $C_{k-1}[i][j]$ est vrai
-* $C_{k-1}[i][k]$ et $C_{k-1}[k][j]$ sont vrais
-
-Qui se résume en :
-
-$$
-C_k[i][j] = C_{k-1}[i][j] \text{ ou } (C_{k-1}[i][k] \text{ et } C_{k-1}[k][j])$$
-
-Ce que l'on peut écrire en ré-écrivant sur la même relation :
-
-```python
-for i in range(n):
-    for j in range(n):
-        C[i][j] = R[i][j]
-
-for k in range(n):
-    for i in range(n):
-        for j in range(n):
-            C[i][j] = C[i][j] or (C[i][k] and C[k][j])
-```
-
-{% enddetails %}
+> TBD : voir partie prog dynamique. Et appeler ça troncons
 
 ### Connexité
 
 Le but final est d'obtenir un réseau routier où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseau routiers déjà constitués
 
 {% note %}
-Un réseau routier de villes est ***connexe*** si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.
+Un réseau routier de villes est **_connexe_** si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.
 
 {% endnote %}
 
 Le fait que la notion de chemin (la relation $C$ de la partie précédente) soient une relation d'équivalence montre que le réseau routier est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).
 
 {% note "**définition**" %}
-Si $C$ est une relation d'équivalence sur $V$, la ***classe d'équivalence*** de $x \in V$ est :
+Si $C$ est une relation d'équivalence sur $V$, la **_classe d'équivalence_** de $x \in V$ est :
 
 $$
 C(x) = \\{ y | xCy, y \in V \\}
@@ -230,7 +134,7 @@ $$
 
 {% endnote %}
 
-Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation chemin donnent les ***composantes connexes*** du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :
+Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation chemin donnent les **_composantes connexes_** du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :
 
 ![2 composantes connexes](./2-composantes-connexes.png)
 
@@ -239,8 +143,8 @@ Notez que :
 {% note %}
 Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau routier alors :
 
-* $V_1 \cap V_2 = \emptyset$
-* si on ajoute **une** route entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau
+- $V_1 \cap V_2 = \emptyset$
+- si on ajoute **une** route entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau
 
 {% endnote %}
 
@@ -305,12 +209,12 @@ A la fin de l'algorithme composantes connexes les villes ayant même valeur de $
 
 On le prouve par récurrence sur le nombre de segments examinés :
 
-> Apres $k$ routes examinés,  les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$
+> Apres $k$ routes examinés, les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$
 
 1. Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide
 2. À chaque fois que l'on ajoute une route :
-   * soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe
-   * soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant
+   - soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe
+   - soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant
 
 {% enddetails %}
 
@@ -331,8 +235,8 @@ Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la conditi
 
 {% note "**définition**" %}
 
-* le ***coût de construction*** d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
-* le ***coût de construction*** d'un réseau routier est la somme des coûts de construction des routes qui le composent.
+- le **_coût de construction_** d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
+- le **_coût de construction_** d'un réseau routier est la somme des coûts de construction des routes qui le composent.
 
 {% endnote %}
 
@@ -372,7 +276,7 @@ On suppose que l'algorithme de Kruskal nous rend une liste `routes`{.language-} 
 Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la [fonction `plot`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html).
 
 {% info %}
- On en a aussi profité pour changer de couleur en utilisant [cette documentation](https://matplotlib.org/stable/gallery/color/named_colors.html)
+On en a aussi profité pour changer de couleur en utilisant [cette documentation](https://matplotlib.org/stable/gallery/color/named_colors.html)
 {% endinfo %}
 
 ```python
@@ -432,7 +336,7 @@ L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fa
 
 1. On suppose que l'algorithme n'est pas optimal
 2. On se donne une solution optimale qui coincide le plus longtemps possible avec la solution donnée par l'algorithme glouton
-3. on prouve que l'on peut échanger un élément de la solution optimale  par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci
+3. on prouve que l'on peut échanger un élément de la solution optimale par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci
 4. contradiction
 
 Soit $[r_1, \dots, r_{n-1}]$ la liste des routes choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.
@@ -441,13 +345,13 @@ Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemp
 
 On commence par remarquer que :
 
-* $m \geq n-1$ sinon le réseau ne peut être connexe
-* si $r_i = r'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.
+- $m \geq n-1$ sinon le réseau ne peut être connexe
+- si $r_i = r'_i$ pour $1\leq i \leq n-1$ alors le réseau optimal ne l'est pas puisque la solution donnée par Kruskal est connexe.
 
 Les deux remarques précédentes nous indiquent qu'il existe $1 \leq i^\star < n-1$ tel que :
 
-* $r_i = r'_i$ pour $1\leq i < i^\star$
-* $r_{i^\star} \neq r'_{i^\star}$
+- $r_i = r'_i$ pour $1\leq i < i^\star$
+- $r_{i^\star} \neq r'_{i^\star}$
 
 <div>
 $$
@@ -477,9 +381,9 @@ Tout ce qui précède montre que l'on peut supprimer la route $(u, v)$ du résea
 
 Au final, on obtient :
 
-* un réseau connexe
-* de coût inférieur au réseau optimal
-* qui coincide plus longtemps avec l'algorithme obtenu pas Kruskal
+- un réseau connexe
+- de coût inférieur au réseau optimal
+- qui coincide plus longtemps avec l'algorithme obtenu pas Kruskal
 
 Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps avec celui obtenu par Kruskal.
 
@@ -501,9 +405,9 @@ En supprimant le segment $(x, y)$ du réseau on déconnecte $x$ de $y$. Les deux
 
 On en conclut que les 3 segments $(x, u)$, $(x, v)$ et $(y, u)$ ne font pas partie du réseau et qu'en supprimant les segments $(x, y)$ et $(u, v)$ de celui-ci on obtient 3 composantes connexes :
 
-* la composante connexe $A$ contenant $x$
-* la composante connexe $B$ contenant $u$
-* la composante connexe $C$ contenant $y$ et $v$
+- la composante connexe $A$ contenant $x$
+- la composante connexe $B$ contenant $u$
+- la composante connexe $C$ contenant $y$ et $v$
 
 ![croisement](./croisement-segment-connexe.png)
 
@@ -524,8 +428,8 @@ Cet algorithme doit être récursif. Il doit parcourir toutes les routes et se r
 
 Cet algorithme doit donc avoir comme paramètre :
 
-* la ville courante
-* la ville précédente (pour éviter de rebrousser chemin)
+- la ville courante
+- la ville précédente (pour éviter de rebrousser chemin)
 
 {% endexercice %}
 {% details "corrigé" %}
@@ -570,11 +474,11 @@ En utilisant le réseau exemple, et en partant de 0, on peut par exemple parcour
 [ '0', '28', '93', '31', '88', '68', '20', '30', '43', '61', '36', '18',
   '3', '52', '14',  '5', '80', '66', '85', '87', '25', '60', '90', '16',
   '4', '97', '15', '11', '81', '78', '82', '47', '73', '48', '58', '44',
- '72', '22', '63',  '8', '53', '27', '89', '76', '74', '56', '35', '37', 
- '62', '34', '67', '13', '75', '19', '69',  '9', '45', '57', '41', '59', 
+ '72', '22', '63',  '8', '53', '27', '89', '76', '74', '56', '35', '37',
+ '62', '34', '67', '13', '75', '19', '69',  '9', '45', '57', '41', '59',
   '6', '84', '77', '10', '38', '83', '32', '29', '39', '17', '40', '26',
- '71', '49', '23',  '1', '95', '12', '64', '33', '70', '96', '24',  '7', 
- '98', '46', '42', '21',  '2', '94', '55', '54', '65', '79', '99', '51', 
+ '71', '49', '23',  '1', '95', '12', '64', '33', '70', '96', '24',  '7',
+ '98', '46', '42', '21',  '2', '94', '55', '54', '65', '79', '99', '51',
  '91', '92', '86', '50']
 ```
 
@@ -600,7 +504,7 @@ fonction routes_rec(précédente, courante, chemin):
 L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :
 
 ```text
-chemin = [] 
+chemin = []
 route_rec(1, 1, chemin)
 affiche à l'écran : chemin
 ```
@@ -620,11 +524,11 @@ La pile de récursion (les algorithmes lancés mais pas encore terminés) contie
 
 Par exemple :
 
-* commencer comme précédemment par un chemin vide
-* ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide et contient juste lq destination) puis sortir de l'algorithme
-* à chaque retour de récursion (la ligne suivant un appel de récursion), si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.
-{% endexercice %}
-{% details "corrigé" %}
+- commencer comme précédemment par un chemin vide
+- ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide et contient juste lq destination) puis sortir de l'algorithme
+- à chaque retour de récursion (la ligne suivant un appel de récursion), si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.
+  {% endexercice %}
+  {% details "corrigé" %}
 
 ```text
 fonction routes_rec(précédente, courante, destination, chemin):
@@ -643,7 +547,7 @@ fonction routes_rec(précédente, courante, destination, chemin):
 Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme avec :
 
 ```text
-chemin = [] 
+chemin = []
 route_rec(1, 1, 4, chemin)
 affiche à l'écran : chemin
 ```
@@ -759,7 +663,7 @@ On peut donc écrire :
 ```text
     pour chaque I de E:
         pour chaque l de [1..n] qui n'est pas dans I:
-            pour chaque j de [1..n] qui n'est pas dans I et qui n'est pas l:                        
+            pour chaque j de [1..n] qui n'est pas dans I et qui n'est pas l:
                 m = C(I, l) + c(v_l, v_j)
                 si C(I + {l}, j) n'existe pas:
                     C(I + {l}, j) = m
@@ -768,9 +672,11 @@ On peut donc écrire :
 ```
 
 La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :
+
 $$
 \mathcal{O}(2^k(n-k)^2)
 $$
+
 {% enddetails %}
 
 {% exercice %}

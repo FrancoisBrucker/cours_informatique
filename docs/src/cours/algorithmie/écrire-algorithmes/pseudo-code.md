@@ -92,7 +92,7 @@ Les chaînes de caractères sont non mutables :
 On ne peut pas changer un caractère d'une chaîne de caractères.
 {% endattention %}
 
-#### <span id="tableaux"></span>Tableau
+#### <span id="tableaux"></span>Tableaux
 
 Un ***tableau*** est un objet qui en contient d'autres.
 

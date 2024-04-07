@@ -1,12 +1,6 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "La liste"
-
-eleventyNavigation:
-    order: 3
-    prerequis:
-        - "../../complexités/moyenne/"
-        - "../tableau/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -15,35 +9,37 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
-Mise en œuvre de la structure de liste, qui est une amélioration du de la structure de tableau.
-
-<!-- end résumé -->
-
-Une liste est une amélioration de la [structure de données tableau](../tableau){.interne} qui, on l'a vu, possède les complexité de manipulation suivantes :
-
-* la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
-* la complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
-* la complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$
-* impossibilité de modifier la structure sans la recopier en $\mathcal{O}(n)$
-
-Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître *a priori* le nombre maximum d'éléments.
-
-## Liste
-
-Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un *indice*, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
+Une liste est une amélioration de la [structure de tableau](../../écrire-algorithmes/pseudo-code/#tableaux){.interne} et sont les conteneurs de base du langage python.
+Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
-Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes]({{ "/cours/utiliser-python/listes"  }}) du cours sur les bases du code.
+Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/){.interne} du cours sur les bases du code.
 {% endinfo %}
+
+## Tableau
+
+On considérera ici qu'un tableau $T$ est une structure composée de deux attributs :
+
+- le tableau $t$ en lui-même
+- le nombre $n$ d'éléments du tableau
+
+Pour simplifier, on écrira $T[i]$ plutôt que $T.t[i]$.
+Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :
+
+- la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
+- la complexité dans le cas le pire pour trouver l'élément d'index $i$ : $\mathcal{O}(1)$
+- la complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$
+- impossibilité de modifier la structure sans la recopier en $\mathcal{O}(n)$
+
+Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître _a priori_ le nombre maximum d'éléments, ce qui n'est pas le cas pour les listes.
 
 ## Structure d'un liste
 
-En simplifiant un peu, une liste $t$ est une structure composée trois champs :
+En simplifiant un peu, une liste $t$ est une structure composée deux attributs :
 
-* un entier $n$ donnant le nombre d'élément actuellement dans la structure
-* un tableau $t$ à $t.n$ éléments
+- un entier $n$ donnant le nombre d'élément actuellement dans la structure
+- un tableau $t$ à $t.n$ éléments, avec $n \leq t.n$
 
 Le $i$ème élément de la liste $l$, noté $l[i]$ est $t[i]$, le $i$ème élément du tableau contenu dans sa structure.
 
@@ -71,22 +67,20 @@ Si l'on insère un élément au milieu de la liste, on commence par faire l'algo
 Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :
 
 ```python
-n = n-1
+n = n - 1
 ```
 
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$
-
-Enfin, lorsque la taille effective du tableau est deux fois plus grande que le nombre effectif d'éléments dans la liste, tout comme pour l'ajout, on recrée un tableau avec 2 fois moins d'élément et on recopie les éléments. Ceci permet de gagner de la place mémoire.
 
 ## Complexités
 
 Dans le cas le pire :
 
-* La complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
-* La complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
-* La complexité dans le cas le pire de l'ajout d'un élément à la fin de la structure : $\mathcal{O}(n)$
-* La complexité dans le cas le pire de la suppression d'un élément de la structure : $\mathcal{O}(1)$
-* La complexité dans le cas le pire de la suppression du dernier élément de la structure : $\mathcal{O}(1)$
+- La complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$
+- La complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$
+- La complexité dans le cas le pire de l'ajout d'un élément à la fin de la structure : $\mathcal{O}(n)$
+- La complexité dans le cas le pire de la suppression d'un élément de la structure : $\mathcal{O}(1)$
+- La complexité dans le cas le pire de la suppression du dernier élément de la structure : $\mathcal{O}(1)$
 
 La seule complexité maximale non constante et l'ajout d'un élément à la fin de la structure. Cependant sa complexité dans le meilleurs des cas est en $\mathcal{O}(1)$. De plus, la complexité dans le cas le pire n'arrive que très rarement. Calculons ça précisément en ajoutant successivement $N$ éléments à la structure.
 
@@ -104,17 +98,17 @@ L'ajout de $N$ éléments à une liste initialement vide prend $\mathcal{O}(N)$ 
 
 Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure.
 
-* lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en  $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations
-* l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
-* ...
-* l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
-* l'ajout du $\frac{N}{2}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{2})$ opérations
-* l'ajout du $\frac{N}{2}-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
-* ...
-* l'ajout du $\frac{N}{4} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
-* l'ajout du $\frac{N}{4}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{4})$ opérations
-* ...
-* le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
+- lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations
+- l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+- ...
+- l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+- l'ajout du $\frac{N}{2}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{2})$ opérations
+- l'ajout du $\frac{N}{2}-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+- ...
+- l'ajout du $\frac{N}{4} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations
+- l'ajout du $\frac{N}{4}$ ème élément s'est fait en créant un nouveau tableau et à donc nécessité au total $\mathcal{O}(\frac{N}{4})$ opérations
+- ...
+- le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
 
 La complexité totale du remplissage de la liste en parant de la liste vide est donc la somme de tout ça :
 
@@ -143,13 +137,14 @@ $$
 Le calcul est toujours vrai si l'on part d'une liste non vide au départ.
 {% endinfo %}
 
-Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la [complexité amortie](../../complexités/amortie){.interne} pour donner sa complexité :
-
 {% note %}
-La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(\frac{N}{N}) = 1$ opérations.
+Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations. On peut considérer sans erreur que la complexité de l'ajout d'un élément en fin de liste vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.
+
 {% endnote %}
 
-La structure de liste est un cas *simple* où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
+On appelle ce genre de raisonnement de [la complexité amortie](../../../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes.
+
+La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
 {% note %}
 Dans nos calculs de complexité on pourra utiliser $\mathcal{O}(1)$ comme complexité d'ajout d'un élément en fin de liste sans erreur puisque c'est sa complexité amortie.
@@ -161,8 +156,8 @@ De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'o
 
 Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : `l = l + [x]`{.language-}. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode `append`{.language-} :
 
-* complexité de `l = l + [x]`{.language-} : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !
-* complexité de : `l.append(x)`{.language-} : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante
+- complexité de `l = l + [x]`{.language-} : $\mathcal{O}(\mbox{len}(l))$ car on crée une nouvelle liste !
+- complexité de : `l.append(x)`{.language-} : $\mathcal{O}(1)$ car on ajoute à la fin d'une liste déjà existante
 
 ## Amélioration pour gagner de la place
 
@@ -181,3 +176,11 @@ $N$ utilisations successives des méthodes d'ajout ou de suppression du dernier 
 {% enddetails %}
 
 La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
+
+
+## Bilan
+
+Quand utiliser cette structure : à chaque fois que l'on pourrait utiliser un tableau **et** que l'on est pas contraint  par la taille mémoire (on peut allouer/désallouer de la mémoire et l'endroit de la mémoire où est stocké la liste importe peu).
+
+En effet, la complexité des opérations de la liste commune avec un tableau (lecture écriture à index fixé) est de même complexité et on peut ajouter/supprimer des éléments se fait en $\mathcal{O}(1)$ en amorti.
+
