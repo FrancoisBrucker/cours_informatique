@@ -92,12 +92,9 @@
     
   
 
-  <blockquote>
-<p>TBD : structure &quot;linéaire&quot; permettant de contenir des données.</p>
-</blockquote>
-<blockquote>
-<p>plus que des tableaux</p>
-</blockquote>
+  <p>La <a href="../%C3%A9crire-algorithmes/pseudo-code/#tableaux" class="interne">structure de tableau</a> est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un.</p>
+<p>Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité.</p>
+<p>Nous allons commencer par aborder la première extension des tableaux, les listes dont le coût est presque tout le temps négligeable (c'est pourquoi certains langages comme le python utilisent cette structure en lieu et place des tableaux).</p>
 <h2>Listes</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -109,9 +106,11 @@
 </div>
 <h3>Dérivés</h3>
 <blockquote>
-<p>pile/files<br>
+<p>listes chainées très utilisé en système et en algo lorsque l'on a besoin uniquement d'accéder au suivant<br>
+TBD : pile/files<br>
 TBD : bornées<br>
-TBD : circulaires</p>
+TBD : circulaires<br>
+TBD : faire gain/perte</p>
 </blockquote>
 <h2>Tableau associatifs</h2>
 <p>Aussi appelé dictionnaires</p>

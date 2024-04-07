@@ -124,70 +124,100 @@
 <p><img src="../opti-3.png" alt="opti A-C˜B"></p>
 <p>Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.</p>
 <p>Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien <a href="https://fr.wikipedia.org/wiki/Richard_Bellman">Richard Bellman</a>. C'est ce que nous allons tout de suite découvrir.</p>
-<h2>Premier exemple : chemin le plus rapide</h2>
+<h2>Premier exemple : chemin le plus rapide à partir d'une ville</h2>
 <p>Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre deux données (le plus rapide, le moins cher, ...). Nous allons ici utiliser comme données un réseau ferré et utiliser la méthode utilisée par Bellman lui-même et qui à donné le nom à la méthode générale.</p>
 <p>Cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford"><em>&quot;algorithme de Bellman-Ford&quot;</em></a>, est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.</p>
 <h3>Données</h3>
 <p>On va utiliser un réseau ferré comme données. Il est constitué d'une liste de tronçons reliant deux gares, et chaque tronçon ne contient pas de gares intermédiaires. Aller d'une gare à une autre revient  à suivre une suite de tronçons.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>chemin</em></strong> entre deux gares $x$ et $y$ est soit :</p>
+<ul>
+<li>le <strong><em>tronçon</em></strong> entre $x$ et $y$</li>
+<li>soit une suite $g_1\dots g_{i-1}g_i\dots g_n$ telle que :
+<ul>
+<li>$g_1 = x$, $g_n = y$</li>
+<li>les gares $g_{i-1}$ et $g_{i}$ sont différentes et reliées par un tronçon pour tout $1 &lt; i \leq n$</li>
+<li>pour un chemin $g_1\dots g_{i-1}g_i\dots g_n$ entre $g_1$ et $g_n$ les gares $g_2$ à $g_{n-1}$ sont dites <strong><em>gares de passage</em></strong></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h3>Problème à résoudre</h3>
+<p>On cherche à connaitre le temps minimal de trajet entre une gare $A$ (donnée) et chaque autre gare.</p>
 <h3>Méthode de résolution</h3>
 <p>Le principe de la programmation dynamique stipule que tout chemin optimal est constitué de sous-chemins eux aussi optimaux pour des sous-problèmes. La principale difficulté lorsque l'on cherche à modéliser un algorithme utilisant la programmation dynamique pour résoudre un problème est de déterminer ce que sont ces sous-problèmes.</p>
 <h4>Détermination des sous-problèmes</h4>
-<p>Dans le cas des chemins ferrés, on classer les chemins par rapport au nombre de leurs tronçons et là, un chemin optimal de $k$ tronçons entre la gare $A$ et la gare $B$ est constitué :</p>
-<ul>
-<li>d'un chemin optimal de $k-1$ tronçons de la gare $A$ à une gare $C$</li>
-<li>du tronçon entre la gare $C$ et la gare $B$</li>
-</ul>
-<p>Si l'on connait les chemins optimaux de longueurs $k-1$ entre $A$ et toutes les autres gare $C$ on peut créer un chemin optimal entre $A$ et $B$ de $k$ tronçons.</p>
+<p>Dans le cas des chemins ferrés, on peut classer les chemins partant de $A$ par rapport à leur nombre de tronçons. De là un chemin optimal de $k$ tronçons entre la gare $A$ et une gare $x$ est constitué :</p>
+<ol>
+<li>d'un chemin optimal de $k-1$ tronçons de la gare $A$ à une gare $y$</li>
+<li>du tronçon entre la gare $y$ et la gare $x$</li>
+</ol>
+<p>Si l'on connait les chemins optimaux de longueurs $k-1$ entre $A$ et toutes les autres gares $y$ on peut créer un chemin optimal entre $A$ et $x$ de $k$ tronçons.</p>
 <p>On a alors l'équation de récurrence suivante :</p>
 <div>
 $$
-T_k(x, y) = \min (\{ T_{k-1}(x, y), \min (\{T_{k-1}(x, z) + T_1(z, y) \mid z \in G \}\}))
+C_k(x, y) = \min (\{ C_{k-1}(x, y), \min (\{C_{k-1}(x, z) + C_1(z, y) \mid z \in G \}\}))
 $$
 </div>
 <p>Avec :</p>
 <ul>
 <li>$G$ l'ensemble des gares</li>
-<li>$T_1(u, v)$ valant soit le temps de parcourt pour le tronçon allant de $u$ à  $v$, soit $+\infty$ si le tronçon entre $u$ et $v$ n'existe pas.</li>
+<li>$C_1(u, v)$ valant soit le temps de parcourt pour le tronçon allant de $u$ à  $v$, soit $+\infty$ si le tronçon entre $u$ et $v$ n'existe pas.</li>
 </ul>
-<p>Le temps minimum entre deux gares $x$ et $y$ est donné par $T_{|G|}(x, y)$.</p>
-<p><strong>Attention</strong>, il est bien nécessaire d'aller jusqu'à  $T_{|G|}(x, y)$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (<em>ie.</em> le temps devient fini) :</p>
+<p>Le temps minimum entre deux gares $x$ et $y$ est donné par $C_{|G|}(x, y)$.</p>
+<p><strong>Attention</strong>, il est bien nécessaire d'aller jusqu'à  $C_{|G|}(x, y)$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (<em>ie.</em> le temps devient fini) :</p>
 <ul>
-<li>$T_1(A, B) = 10$</li>
-<li>$T_1(A, C) = 1$</li>
-<li>$T_1(C, B) = 1$</li>
+<li>$C_1(A, b) = 10$</li>
+<li>$C_1(A, c) = 1$</li>
+<li>$C_1(c, b) = 1$</li>
 </ul>
-<p>Et on a $T_2(A, B) = 2 &lt; T_1(A, B) = 10$.</p>
+<p>Et on a $C_2(A, b) = 2 &lt; C_1(A, b) = 10$.</p>
 <h4>Stockage des solutions intermédiaires</h4>
 <p>La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.</p>
-<p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à $k-1$ tronçons entre la gare de départ et toutes les autres gare.</p>
+<p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gare.</p>
 <h4>Algorithme final</h4>
 <p>On suppose que :</p>
 <ul>
-<li>l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $T$.</li>
+<li>l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $C$.</li>
 <li>les tronçons sont stockés dans une matrice symétrique valant le temps entre la gare $i$ et $j$ si le tronçon existe et $+\infty$ sinon</li>
 </ul>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> inf
 
-<span class="token keyword">def</span> <span class="token function">bellman</span><span class="token punctuation">(</span>tronçons<span class="token punctuation">,</span> n<span class="token punctuation">,</span> gare_départ<span class="token punctuation">,</span> gare_arrivée<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    T <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
+<span class="token keyword">def</span> <span class="token function">bellman</span><span class="token punctuation">(</span>tronçons<span class="token punctuation">,</span> n<span class="token punctuation">,</span> gare_départ<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    C <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
 
     <span class="token keyword">for</span> g <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> tronçons<span class="token punctuation">[</span>gare_départ<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span>
+        C<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> tronçons<span class="token punctuation">[</span>gare_départ<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>g<span class="token punctuation">]</span><span class="token punctuation">,</span> 
-                   <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>T<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> tronçons<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        D <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
 
-    <span class="token keyword">return</span> T<span class="token punctuation">[</span>gare_arrivée<span class="token punctuation">]</span> 
+        <span class="token keyword">for</span> g <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            D<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>C<span class="token punctuation">[</span>g<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>C<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> tronçons<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        C <span class="token operator">=</span> D
+
+    <span class="token keyword">return</span> C 
 </code></pre>
+<p>L'algorithme rend le tableau de temps intermédiaires qui contient le temps minimal entre la ville de départ et une gare $x$ quelconque. S'il n'existe pas de chemins entre la gare de départ et une gare $x$, alors $C[x]$ vaut $+\infty$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé <a href="https://docs.python.org/fr/3/library/math.html#math.inf"><code class="language-">inf</code> qui représente l'infini</a></p>
+<ul>
+<li>On a utilisé <a href="https://docs.python.org/fr/3/library/math.html#math.inf"><code class="language-">inf</code> qui représente l'infini</a></li>
+<li>l'utilisation de $D$ permet d'éviter les effets de bord</li>
+</ul>
 </div>
 </div>
+<p>La complexité de cet algorithme</p>
 <h2>Méthode de résolution</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -199,7 +229,7 @@ $$
 <p>Pour résoudre un problème d'optimisation en utilisant la programmation dynamique se fait en 3 étapes :</p>
 <ol>
 <li><strong>choix</strong> des sous-problèmes</li>
-<li>**détermination ** de l'équation de récurrence liant les sous-problèmes entre eux</li>
+<li><strong>détermination</strong> de l'équation de récurrence liant les sous-problèmes entre eux</li>
 <li>résolution de l'équation en <strong>stockant</strong> les résultats intermédiaires (très souvent les solutions optimales des sous-problèmes) pour éviter de les recalculer</li>
 </ol>
 </div>
@@ -210,6 +240,119 @@ $$
 <li>le nombre de sous-problèmes à stocker est faible.</li>
 </ol>
 <p>Enfin, la programmation dynamique nous assure de trouver <strong>un</strong> chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.</p>
+<h2>Deuxième exemple : existence de route entre deux villes quelconques</h2>
+<p>Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$. On pourrait utiliser cet algorithme pour savoir s'il existe un chemin entre deux gares quelconque, mais cela prendrait $\mathcal{O}(n^4)$ opérations.</p>
+<p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.</p>
+<p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ sur un ensemble $V$ de villes. On dira que $xCy$ s'il existe un chemin entre $x$ et $y$. Cette relation est une <a href="https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence">relation d'équivalence</a> car elle est :</p>
+<ul>
+<li>réflexive $xCx$ (le singleton $x$ permet de relier $x$ à lui-même)</li>
+<li>symétrique $xCy$ implique $yCx$ (les routes sont à double sens)</li>
+<li>transitive $xCy$ et $yCz$ implique $xCz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)</li>
+</ul>
+<p>L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :</p>
+<ol>
+<li>en considérant la relation $T$ des tronçons ($xTy$ s'il existe un tronçon entre les gares $x$ et $y$)</li>
+<li>en fermant cette relation par transitivité</li>
+</ol>
+<p>À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Warshall">Algorithme de Roy</a>) montre qu'on peut le faire très simplement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Soit $G = \{ g_1, \dots g_n \}$ les gares d'un réseau routier et $T$ sa relation tronçon.</p>
+<p>Montrez que si on note $G_i = \{ g_1, \dots g_i \}$, un chemin entre les gares $x$ et$y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut de déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il existe un chemin entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ si :</p>
+<ul>
+<li>soit il existe un chemin entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
+<li>soit il existe les deux chemins suivants :
+<ul>
+<li>un chemin entre $x$ et $v_i$ ayant comme villes de passage uniquement des éléments de $G_{i-1}$</li>
+<li>un chemin entre $v_i$ et $y$ ayant comme villes de passage uniquement des éléments de $G_{i-1}$</li>
+</ul>
+</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>Ici, le sous problème revient à restreindre le nombre de gare possible ! On a plus de relation de récurrence, mais un lien entre les chemins ne passant que par les éléments de  $G_{i-1}$ et ceux passant passant par $G_{i}$. On peut ainsi reprendre la méthode de résolution du premier exemple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduire de l'exercice précédent un algorithme utilisant la programmation dynamique en $\mathcal{O}(n^3)$ permettant de trouver la relation chemin à partir de la relation tronçon.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise la représentation matricielle des relations. On dira que $T[i][j]$ (<em>resp.</em> $C[i][j]$) est vrai s'il existe un tronçon (<em>resp.</em> un chemin) entre $g_i$ et $g_j$ dans le réseau et que $T[i][j]$ (<em>resp.</em> $C[i][j]$) est faux sinon.</p>
+<p>L'équation précédente s'écrit alors :</p>
+<p>$C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :</p>
+<ul>
+<li>$C_{k-1}[i][j]$ est vrai</li>
+<li>$C_{k-1}[i][k]$ et $C_{k-1}[k][j]$ sont vrais</li>
+</ul>
+<p>Qui se résume en :</p>
+<p>$$<br>
+C_k[i][j] = C_{k-1}[i][j] \text{ OU } (C_{k-1}[i][k] \text{ ET } C_{k-1}[k][j])<br>
+$$</p>
+<p>Ce que l'on peut écrire en ré-écrivant sur la même relation :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    D <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token boolean">False</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            D<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token keyword">and</span> C<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    C <span class="token operator">=</span> D
+</code></pre>
+<p>Comme il ne peut y avoir d'effet de bord (une fois que la case de la matrice devient vraie, elle ne bouge plus), on peut même se passer de $D$ :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+
+<span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token keyword">and</span> C<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+</div>
+</details>     
+</div>
 <h2>Stockage des résultats intermédiaires</h2>
 <p>Il existe deux approches pour le stockage des résultats intermédiaires : <a href="https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante"><em><strong>l'approche bottom-up</strong></em></a> et la <a href="https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation"><em><strong>mémoïsation</strong></em></a>. Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :</p>
 <p>$$<br>
@@ -225,7 +368,7 @@ $$</p>
 </code></pre>
 <p>Sa complexité est rédhibitoire (on l'a vu, elle est exponentielle).</p>
 <h3>Approche bottom-up</h3>
-<p>La première optimisation possible est l'approche bottom-up, qui consiste à commencer par les conditions aux limites de la récurrence puis de remonter petit à petit l'équation de récurrence jusqu'à arriver au problème initial.</p>
+<p>La première optimisation possible est l'approche bottom-up, qui consiste à commencer par les conditions aux limites de la récurrence puis de remonter petit à petit l'équation de récurrence jusqu'à arriver au problème initial. C'est la méthode que l'on a utilisé pour les deux premiers exemples.</p>
 <p>Pour la suite de Fibonacci cela donne :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">F</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     a <span class="token operator">=</span> <span class="token number">1</span>
@@ -260,10 +403,11 @@ $$</p>
 <li>la complexité est en $\mathcal{O}(n)$</li>
 <li>la complexité spatiale est également en $\mathcal{O}(n)$ (le tableau de mémoïsation)</li>
 </ul>
-<h2>Exemples classiques</h2>
+<h2>Autres exemples classiques</h2>
 <p>Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulé ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution brut force.</p>
 <blockquote>
-<p>TBD : <a href="http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/ProgrammationDynamique.pdf">http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/ProgrammationDynamique.pdf</a><br>
+<p>TBD : faire de la mémoïsation.<br>
+TBD : <a href="http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/ProgrammationDynamique.pdf">http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/ProgrammationDynamique.pdf</a><br>
 TBD : voyageur de commerce + sac à dos : <a href="https://scheid.perso.math.cnrs.fr/Enseignement/GRO/pdyn.pdf">https://scheid.perso.math.cnrs.fr/Enseignement/GRO/pdyn.pdf</a></p>
 </blockquote>
 <h3>Sous-suite croissantes max</h3>

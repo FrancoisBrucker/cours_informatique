@@ -83,41 +83,17 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons/">Algorithmes gloutons</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/algorithmes-gloutons/">Algorithmes gloutons</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/algorithmes-gloutons/principe/">Algorithmes gloutons</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../algorithme/complexités/max-min/">../../algorithme/complexités/max-min/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
 
-  <!-- début résumé -->
-<p>Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
-<!-- end résumé -->
-<p>On va voir la construction et la preuve des algorithmes gloutons à l'aide d'exemples, de plus en plus complexes :</p>
+  <p>Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.</p>
+<p>On va voir la construction et la preuve d'algorithmes gloutons pour résoudre des problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :</p>
 <ol>
 <li><a href="#exemple-le-rendu-de-pi%C3%A8ces" class="interne">le rendu de pièce</a></li>
 <li><a href="#exemple-allocation-de-salles-de-cin%C3%A9ma" class="interne">l'allocation de ressources</a></li>
@@ -134,7 +110,7 @@
 </div>
 <p>On voit en creux que ce type d'algorithmes :</p>
 <ol>
-<li>va être utilisé dans des problèmes d'optimisation, où l'on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
+<li>va être utilisé dans des problèmes d'optimisation où l'on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
 <li>l'ordre des étapes est primordial</li>
 </ol>
 <p>Ils sont très utilisés car :</p>
@@ -236,11 +212,11 @@
 
     rendu <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> v <span class="token keyword">in</span> pieces<span class="token punctuation">:</span>
-        p <span class="token operator">=</span> R <span class="token operator">//</span> v        
+        p <span class="token operator">=</span> R <span class="token operator">//</span> v
         R <span class="token operator">-=</span> p <span class="token operator">*</span> v
 
         rendu<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    
+
     <span class="token keyword">return</span> rendu
 </code></pre>
 </div>
@@ -262,7 +238,7 @@
 <p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
 <ul>
 <li>exemple 1, 3, 4. Pour rendre 6 il donne 4 + 1 + 1 alors que c'est 3 + 3 le mieux.</li>
-<li>1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i &gt; v_1 + \dots + v_{i-1}$ pour tout $i &gt;1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante   permettent un rendu de pièces optimal avec l'algorithme glouton.</li>
+<li>1, 6, 11, 19 ne fonctionne pas non plus pour 22 par exemple, alors que le système de pièce forme une suite super-croissante ($v_i &gt; v_1 + \dots + v_{i-1}$ pour tout $i &gt;1$). De quoi tordre le coup à une légende urbaine persistante qui stipule en effet que les suites super-croissante permettent un rendu de pièces optimal avec l'algorithme glouton.</li>
 </ul>
 <p>Remarques :</p>
 <ul>
@@ -464,7 +440,7 @@ boucle <code class="language-">for</code>.</li>
     <span class="token keyword">for</span> produit <span class="token keyword">in</span> liste_produit<span class="token punctuation">:</span>
         <span class="token keyword">if</span> produits_est_compatible<span class="token punctuation">(</span>ensemble_max <span class="token operator">+</span> <span class="token punctuation">[</span>produit<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             ensemble_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>produit<span class="token punctuation">)</span>
-    
+
     <span class="token keyword">return</span> ensemble_max
 </code></pre>
 </div>

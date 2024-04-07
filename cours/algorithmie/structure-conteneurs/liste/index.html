@@ -90,59 +90,38 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../complexités/moyenne/">../../complexités/moyenne/</a>
-            </li>
-            <li>
-              <a href="../tableau/">../tableau/</a>
-            </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
-  <!-- début résumé -->
-<p>Mise en œuvre de la structure de liste, qui est une amélioration du de la structure de tableau.</p>
-<!-- end résumé -->
-<p>Une liste est une amélioration de la <a href="../tableau" class="interne">structure de données tableau</a> qui, on l'a vu, possède les complexité de manipulation suivantes :</p>
-<ul>
-<li>la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$</li>
-<li>la complexité dans le cas le pire pour trouver l'élément d'indice $i$ : $\mathcal{O}(1)$</li>
-<li>la complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$</li>
-<li>impossibilité de modifier la structure sans la recopier en $\mathcal{O}(n)$</li>
-</ul>
-<p>Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître <em>a priori</em> le nombre maximum d'éléments.</p>
-<h2>Liste</h2>
-<p>Les listes de python se comportent de manières différentes. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>indice</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
+  <p>Une liste est une amélioration de la <a href="../../%C3%A9crire-algorithmes/pseudo-code/#tableaux" class="interne">structure de tableau</a> et sont les conteneurs de base du langage python.<br>
+Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie <a href="/cours_informatique/cours/utiliser-python/listes">listes</a> du cours sur les bases du code.</p>
+<p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/" class="interne">listes</a> du cours sur les bases du code.</p>
 </div>
 </div>
+<h2>Tableau</h2>
+<p>On considérera ici qu'un tableau $T$ est une structure composée de deux attributs :</p>
+<ul>
+<li>le tableau $t$ en lui-même</li>
+<li>le nombre $n$ d'éléments du tableau</li>
+</ul>
+<p>Pour simplifier, on écrira $T[i]$ plutôt que $T.t[i]$.<br>
+Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :</p>
+<ul>
+<li>la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$</li>
+<li>la complexité dans le cas le pire pour trouver l'élément d'index $i$ : $\mathcal{O}(1)$</li>
+<li>la complexité dans le cas le pire de la suppression de la structure : $\mathcal{O}(1)$</li>
+<li>impossibilité de modifier la structure sans la recopier en $\mathcal{O}(n)$</li>
+</ul>
+<p>Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître <em>a priori</em> le nombre maximum d'éléments, ce qui n'est pas le cas pour les listes.</p>
 <h2>Structure d'un liste</h2>
-<p>En simplifiant un peu, une liste $t$ est une structure composée trois champs :</p>
+<p>En simplifiant un peu, une liste $t$ est une structure composée deux attributs :</p>
 <ul>
 <li>un entier $n$ donnant le nombre d'élément actuellement dans la structure</li>
-<li>un tableau $t$ à $t.n$ éléments</li>
+<li>un tableau $t$ à $t.n$ éléments, avec $n \leq t.n$</li>
 </ul>
 <p>Le $i$ème élément de la liste $l$, noté $l[i]$ est $t[i]$, le $i$ème élément du tableau contenu dans sa structure.</p>
 <h3>Création</h3>
@@ -159,10 +138,9 @@
 <p>Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du i ème et enfin on affecte le nouvel élément à $t[i]$.</p>
 <h3>Suppression d'un élément</h3>
 <p>Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">n <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span>
 </code></pre>
 <p>Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$</p>
-<p>Enfin, lorsque la taille effective du tableau est deux fois plus grande que le nombre effectif d'éléments dans la liste, tout comme pour l'ajout, on recrée un tableau avec 2 fois moins d'élément et on recopie les éléments. Ceci permet de gagner de la place mémoire.</p>
 <h2>Complexités</h2>
 <p>Dans le cas le pire :</p>
 <ul>
@@ -204,7 +182,7 @@
 <div class="mx-8 pb-2">
 <p>Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la structure.</p>
 <ul>
-<li>lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en  $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations</li>
+<li>lors de l'ajout du $N$ ème élément, un nouveau tableau de taille $2\cdot N$ est créé en $\mathcal{O}(1)$ puis les $N-1$ éléments de l'ancien tableau sont copiés dans le nouveau en $\mathcal{O}(N)$ opérations enfin, l'élément final est ajouté à la liste en $\mathcal{O}(1)$ opérations. Tout ceci à pris $\mathcal{O}(N)$ opérations</li>
 <li>l'ajout du $N-1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations</li>
 <li>...</li>
 <li>l'ajout du $\frac{N}{2} + 1$ ème élément s'est fait sans créer de nouveau tableau et à donc nécessité que $\mathcal{O}(1)$ opérations</li>
@@ -245,15 +223,15 @@ $$
 <p>Le calcul est toujours vrai si l'on part d'une liste non vide au départ.</p>
 </div>
 </div>
-<p>Comme la complexité d'ajout d'un élément à une liste n'est pas constante, on utilise la <a href="../../complexit%C3%A9s/amortie" class="interne">complexité amortie</a> pour donner sa complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité amortie de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(\frac{N}{N}) = 1$ opérations.</p>
+<p>Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations. On peut considérer sans erreur que la complexité de l'ajout d'un élément en fin de liste vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.</p>
 </div>
 </div>
+<p>On appelle ce genre de raisonnement de <a href="../../../complexit%C3%A9-amortie/" class="interne">la complexité amortie</a> et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes.</p>
 <p>La structure de liste est un cas <em>simple</em> où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -306,6 +284,9 @@ $$
 </details>     
 </div>
 <p>La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.</p>
+<h2>Bilan</h2>
+<p>Quand utiliser cette structure : à chaque fois que l'on pourrait utiliser un tableau <strong>et</strong> que l'on est pas contraint  par la taille mémoire (on peut allouer/désallouer de la mémoire et l'endroit de la mémoire où est stocké la liste importe peu).</p>
+<p>En effet, la complexité des opérations de la liste commune avec un tableau (lecture écriture à index fixé) est de même complexité et on peut ajouter/supprimer des éléments se fait en $\mathcal{O}(1)$ en amorti.</p>
 
 
 </article>

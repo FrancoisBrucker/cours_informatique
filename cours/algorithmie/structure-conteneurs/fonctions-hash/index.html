@@ -90,35 +90,9 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../fonctions/">../fonctions/</a>
-            </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
-  <!-- début résumé -->
-<p>Les fonctions de hachage. De la définition mathématique à son utilité en informatique.</p>
-<!-- end résumé -->
-<h2>Définition</h2>
-<p>Dans notre cas, en informatique, on peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
+  <p>On peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -126,13 +100,13 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>fonction de hachage</strong></em> est une fonction $f$ :</p>
+<p>Une <strong><em>fonction de hachage</em></strong> est une fonction $f$ :</p>
 <div>
 $$
 f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[
 $$
 </div>
-<p>où $m$  est un entier positif.</p>
+<p>où $m$ est un entier positif.</p>
 </div>
 </div>
 <p>Une définition alternative, également souvent utilisée, est :</p>
@@ -143,8 +117,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>fonction de hachage</strong></em> est une fonction $f$  qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^k$.</p>
-<p>Avec $k$  est un entier positif.</p>
+<p>Une <strong><em>fonction de hachage</em></strong> est une fonction $f$ qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^k$. Avec $k$ est un entier positif.</p>
 </div>
 </div>
 <p>Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :</p>
@@ -155,7 +128,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>fonction de hachage</strong></em> est une fonction qui associe à tout <strong>objet</strong> soit :</p>
+<p>Une <strong><em>fonction de hachage</em></strong> est une fonction qui associe à tout <strong>objet</strong> soit :</p>
 <ul>
 <li>un entier entre 0 et $m$</li>
 <li>un mot de $\{0, 1\}^k$ ($k &gt; 0$)</li>
@@ -192,11 +165,11 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m]$ soit <em><strong>utile</strong></em>, elle doit avoir les 3 propriétés suivantes :</p>
+<p>Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m]$ soit <strong><em>utile</em></strong>, elle doit avoir les 3 propriétés suivantes :</p>
 <ol>
 <li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage.</li>
 <li>elle doit être <strong>facilement calculable</strong></li>
-<li>elle doit être  <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
+<li>elle doit être <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
 </ol>
 </div>
 </div>
@@ -226,7 +199,7 @@ $$
 <p>est une fonction de hachage.</p>
 <p>Sous certaines conditions, elle respecte bien les 3 propriétés d'une fonction de hachage utile.</p>
 <h4>Déterministe</h4>
-<p>Comme $a \mod m$  est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.</p>
+<p>Comme $a \mod m$ est égal au reste de la division entière de $a$ par $m$ son calcul est bien déterministe.</p>
 <h4>Facilement calculable</h4>
 <p>Même lorsque les objets deviennent grand, le calcul du modulo peut se faire aisément. En effet le fait que :</p>
 <ul>
@@ -245,7 +218,7 @@ $$
 n = \underbracket{0 \cdots 1}_{k \times l}
 $$
 </div>
-<p>On peut alors le découper en paquets de $k$ bits (souvent $k = 256$) :</p>
+<p>On peut alors le découper en paquets de $k$ bits (souvent $k = 256$, voir par exemple l'algorithme <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a>) :</p>
 <div>
 $$
 n = \underbracket{0 \cdots 1}_{k} \cdots \underbracket{1 \cdots 0}_{k} \cdots \underbracket{1 \cdots 1}_{k}
@@ -257,21 +230,22 @@ $$
 $$
 \begin{array}{lcl}
 n &=& n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0\\
-& & \sum_{i=0}^l n_i2^{ki}
+&=& \sum_{i=0}^l n_i2^{ki}
 \end{array}
 $$
 </div>
 <p>De la un pseudo-code du calcul du modulo de $n$ est alors :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">exp <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod k
-res <span class="token operator">=</span> n_0 mod k
-<span class="token keyword">for</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> i <span class="token operator">&lt;=</span> k<span class="token punctuation">:</span>
-    c <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> i<span class="token punctuation">)</span> mod k
-    c <span class="token operator">=</span> <span class="token punctuation">(</span>c <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod k
-    res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod k
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
+exp <span class="token operator">=</span> <span class="token number">1</span>
+res <span class="token operator">=</span> n_0 mod m
+<span class="token keyword">for</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> i <span class="token operator">&lt;=</span> l<span class="token punctuation">:</span>
+    exp <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
+    c <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
+    res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m
 </code></pre>
 <p>Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
 <h4>Équiprobable</h4>
-<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$.</p>
+<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2).</p>
 <p>Attention cependant :</p>
 <p>$$<br>
 (k \times p) \mod (p \times q) = (k \mod q) \times p<br>
@@ -289,15 +263,15 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 </div>
 <h3>Hash de python</h3>
 <p>L'algorithme utilisé par python pour effectuer le hash est <a href="https://en.wikipedia.org/wiki/SipHash">sipHash</a></p>
-<blockquote>
-<p>TBD : décrire <a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html">https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html</a></p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p><a href="https://github.com/veorq/SipHash">Implémentation de SipHash par un de ses créateurs</a></p>
+<ul>
+<li><a href="https://cs108.epfl.ch/archive/17/e/SIPH/SIPH.html">déscription</a></li>
+<li><a href="https://github.com/veorq/SipHash">Implémentation de SipHash par un de ses créateurs</a></li>
+</ul>
 </div>
 </div>
 <h2>Hash de structures composées</h2>
@@ -321,7 +295,7 @@ pour chaque élément e du tuple:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>collision</strong></em> pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$</p>
+<p>Une <strong><em>collision</em></strong> pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$</p>
 </div>
 </div>
 <p>Le but est — bien sûr — de minimiser les collisions.</p>
@@ -487,7 +461,7 @@ $$
 </div>
 <p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
 <p>$$<br>
-n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}} 2^{80}<br>
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}}= 2^{80}<br>
 $$</p>
 <p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !</p>
 <p>De ce qui découle on en déduit une règle universelle de toute fonction de hash :</p>
@@ -508,7 +482,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$  selon la fonction utilisée</p>
+<p><em>En pratique</em> une fonction de hachage utile est une <strong>injection</strong> de l'ensemble des objets utilisés dans le programme dans $[0 \mathrel{ {.},{.} } m]$ ou $\{0, 1\}^k$ selon la fonction utilisée</p>
 </div>
 </div>
 <p>Cette propriété permet d'utiliser les fonctions de hachage pour :</p>
