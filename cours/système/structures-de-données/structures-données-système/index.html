@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Algorithme</title>
+    <title>Structures de données</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Algorithme</h1>
+  <h1>Structures de données</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/">Algorithme, code et théorie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithme-code-théorie/algorithme/">Algorithme</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/structures-de-données/">Structure de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/structures-de-données/structures-données-système/">Structures de données</a>
 
 </div>
 </div>
@@ -92,16 +92,51 @@
     
   
 
-  <!-- début résumé -->
-<p>Création, preuve et complexité des algorithmes.</p>
-<!-- fin résumé -->
-<div class="interne">
-<ul><li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/aleatoire/">Nombres Aléatoires</a><ul><li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/aleatoire/lfsr/">Registres à décalage</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/aleatoire/modulo/">Générer des nombres</a></li></ul></li>
-<li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/algorithmes-gloutons/">Algorithmes gloutons</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/étude-chemins-cycles/">Étude : chemins et cycles</a></li>
-<li><a href="/cours_informatique/cours/algorithme-code-théorie/algorithme/enveloppes-convexes/">Algorithmes de calcul d'enveloppe convexe</a></li></ul>
-</div>
+  <blockquote>
+<p>TBD à faire bien : problème et structure de donnée solution</p>
+</blockquote>
+<ul>
+<li>pile/tas</li>
+<li>tableau (évite la faute de cache)
+<ul>
+<li>temporalité spatiale</li>
+<li>tableau de tableaux en une dimension (ligne, index des caches)</li>
+<li>flags (dirty bit)</li>
+</ul>
+</li>
+<li>bitmap
+<ul>
+<li>utilité : une information booléenne oui/non, activé/non activé, ...</li>
+<li>où :
+<ul>
+<li>file system (bloc, inode)</li>
+<li>flags</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>liste chaînée :
+<ul>
+<li>utilité : ordre linéaire ou un élément peut bouger</li>
+<li>où :
+<ul>
+<li>FAT</li>
+<li>ordonnancement</li>
+</ul>
+</li>
+<li>attention : faute de cache</li>
+</ul>
+</li>
+<li>arbre :
+<ul>
+<li>de recherche nombre</li>
+<li>arbre associatif pour mapper des données</li>
+<li>arbre stockage de données</li>
+</ul>
+</li>
+<li>file (FIFO) : gestion des communications, lecture/écriture fichier</li>
+<li>pile (LIFO) : stockage des variables</li>
+</ul>
 
 
 </article>

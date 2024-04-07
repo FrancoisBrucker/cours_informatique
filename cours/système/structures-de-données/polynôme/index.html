@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Structures linéaires</title>
+    <title>Polynômes</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Structures linéaires</h1>
+  <h1>Polynômes</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-linéaire/">Structures linéaires</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/structures-de-données/">Structure de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/structures-de-données/polynôme/">Polynômes</a>
 
 </div>
 </div>
@@ -93,26 +93,24 @@
   
 
   <blockquote>
-<p>TBD</p>
+<p>TBD : faire bien.</p>
 </blockquote>
-<h2>Pile et file</h2>
-<h2>Polynômes</h2>
 <blockquote>
 <p>TBD : attention aux polynômes creux</p>
 </blockquote>
-<h3>questions</h3>
+<h2>questions</h2>
 <p>Un polynôme peut être vu comme une liste de ses coefficients. Le polynôme $P(x) = 1 + 3x^2$ s'écrira ainsi avec la liste $[1, 0, 3]$ et plus généralement, le polynôme $P(x) = \sum_{i=0}^n a_ix^i$ s'écrira sous la forme d'une liste $L$ à $n+1$ éléments telle que $L[i] = a_i$.</p>
 <p>Manipulons cette structure.</p>
-<h3>Écrivez une fonction <em>somme</em></h3>
+<h2>Écrivez une fonction <em>somme</em></h2>
 <p>Écrivez une fonction permettant de rendre le polynôme $R(x) = P(x) + Q(x)$, somme des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.</p>
 <p>Vous pourrez utiliser la méthode <code class="language-">append</code> des listes qui ajoute un élément en fin de liste (si <code class="language-">l= [1, 2]</code>, l'instruction <code class="language-">l.append(3)</code> <strong>modifie</strong> <code class="language-">l</code>, pour qu'elle soit égale à <code class="language-">l= [1, 2, 3]</code>)</p>
-<h3>Écrivez une fonction <em>produit</em></h3>
+<h2>Écrivez une fonction <em>produit</em></h2>
 <p>Écrivez une fonction permettant de rendre le produit le polynôme $R(x) = P(x) \cdot Q(x)$, produit des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.</p>
-<h3>Écrivez une fonction <em>valeur</em></h3>
+<h2>Écrivez une fonction <em>valeur</em></h2>
 <p>Écrivez une fonction prenant un polynôme $P(x)$ et un réel $r$ et rendant l'évaluation $P(r)$ de $P(x)$ en $r$.</p>
 <p>Vous pourrez utiliser le fait que <code class="language-">x ** i</code> en python soit égal à $x^i$</p>
 <p>L'exonentiation est une opération couteuse en multiplications. Combien en avez-vous eu besoin pour exécuter votre fonction ?</p>
-<h3>Amélioration</h3>
+<h2>Amélioration</h2>
 <p>Si on note :</p>
 <ul>
 <li>$A(x) = a_0$</li>
@@ -122,7 +120,7 @@
 </ul>
 <p>On a clairement que : $P(x) = A(x) + X(x) \cdot R(x)$.</p>
 <p>En déduire une méthode d'évaluation de polynômes moins gourmande en multiplications.</p>
-<h3>réponses</h3>
+<h2>réponses</h2>
 <p>L'exercice portait sur la structure de <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynômes</a>.</p>
 <p>Un polynôme est défini mathématiquement par la fonction :</p>
 <p>$$<br>
@@ -149,7 +147,7 @@ $$</p>
     <span class="token keyword">return</span> résultat
 
 </code></pre>
-<h3>$P(x) \cdot Q(x)$</h3>
+<h2>$P(x) \cdot Q(x)$</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     longueur1 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">)</span>
     longueur2 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients2<span class="token punctuation">)</span>
@@ -170,7 +168,7 @@ $$</p>
     <span class="token keyword">return</span> résultat
 
 </code></pre>
-<h3>$P(A)$</h3>
+<h2>$P(A)$</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     résultat <span class="token operator">=</span> <span class="token number">0</span>
 
@@ -180,7 +178,7 @@ $$</p>
 
 </code></pre>
 <p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
-<h3>Méthode de Horner</h3>
+<h2>Méthode de Horner</h2>
 <p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
 <p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.<br>
 i</p>
