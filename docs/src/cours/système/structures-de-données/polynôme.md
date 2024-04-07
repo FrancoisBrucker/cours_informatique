@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Structures linéaires
+title: Polynômes
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,31 +10,27 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD
-
-## Pile et file
-
-## Polynômes
+> TBD : faire bien.
 
 > TBD : attention aux polynômes creux
 
-### questions
+## questions
 
 Un polynôme peut être vu comme une liste de ses coefficients. Le polynôme $P(x) = 1 + 3x^2$ s'écrira ainsi avec la liste $[1, 0, 3]$ et plus généralement, le polynôme $P(x) = \sum_{i=0}^n a_ix^i$ s'écrira sous la forme d'une liste $L$ à $n+1$ éléments telle que $L[i] = a_i$.
 
 Manipulons cette structure.
 
-### Écrivez une fonction _somme_
+## Écrivez une fonction _somme_
 
 Écrivez une fonction permettant de rendre le polynôme $R(x) = P(x) + Q(x)$, somme des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.
 
 Vous pourrez utiliser la méthode `append`{.language-} des listes qui ajoute un élément en fin de liste (si `l= [1, 2]`{.language-}, l'instruction `l.append(3)`{.language-} **modifie** `l`{.language-}, pour qu'elle soit égale à `l= [1, 2, 3]`{.language-})
 
-### Écrivez une fonction _produit_
+## Écrivez une fonction _produit_
 
 Écrivez une fonction permettant de rendre le produit le polynôme $R(x) = P(x) \cdot Q(x)$, produit des 2 polynômes $P(x)$ et $Q(x)$ passés en paramètres.
 
-### Écrivez une fonction _valeur_
+## Écrivez une fonction _valeur_
 
 Écrivez une fonction prenant un polynôme $P(x)$ et un réel $r$ et rendant l'évaluation $P(r)$ de $P(x)$ en $r$.
 
@@ -42,7 +38,7 @@ Vous pourrez utiliser le fait que `x ** i`{.language-} en python soit égal à $
 
 L'exonentiation est une opération couteuse en multiplications. Combien en avez-vous eu besoin pour exécuter votre fonction ?
 
-### Amélioration
+## Amélioration
 
 Si on note :
 
@@ -55,7 +51,7 @@ On a clairement que : $P(x) = A(x) + X(x) \cdot R(x)$.
 
 En déduire une méthode d'évaluation de polynômes moins gourmande en multiplications.
 
-### réponses
+## réponses
 
 L'exercice portait sur la structure de [polynômes](https://fr.wikipedia.org/wiki/Polyn%C3%B4me).
 
@@ -91,7 +87,7 @@ def somme(coefficients1, coefficients2):
 
 ```
 
-### $P(x) \cdot Q(x)$
+## $P(x) \cdot Q(x)$
 
 ```python
 def produit(coefficients1, coefficients2):
@@ -115,7 +111,7 @@ def produit(coefficients1, coefficients2):
 
 ```
 
-### $P(A)$
+## $P(A)$
 
 ```python
 def valeur(coefficients, x):
@@ -129,7 +125,7 @@ def valeur(coefficients, x):
 
 En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 
-### Méthode de Horner
+## Méthode de Horner
 
 L'optimisation proposée est dite [de Horner](https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point). Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i < j$.
 

@@ -304,8 +304,33 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 
 ### Semaine 10
 
-2h
-+DS
+#### Mardi : Design patterns
+
+> TBD
+
+#### Vendredi : DS 2
+
+{% aller %}
+[Sujet](./annales/2023-2024/ds-2/){.interne}
+{% endaller %}
+
+### Semaine 11
+
+#### Mardi : Structures de données Linéaires
+
+{% aller %}
+[Structures de données "linéaires"](/cours/algorithmie/structure-conteneurs/)
+{% endaller %}
+
+{% aller %}
+[Complexité amortie](/cours/algorithmie/complexité-amortie/)
+{% endaller %}
+
+#### Vendredi : Programmation dynamique
+
+{% aller %}
+[Programmation dynamique](/cours/algorithmie/programmation-dynamique/){.interne}
+{% endaller %}
 
 ## Annales
 

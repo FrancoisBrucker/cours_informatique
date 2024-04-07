@@ -120,26 +120,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Structures linéaires
 
-### Tableau
-
-> TBD : mémoire, complexité
-> TBD : polynômes.
-
-### Pile/file
-
-> TBD : bornées
-> TBD : circulaires
-
-
-### Listes
-
-> def structure
-
-### Dictionnaires
-
-> TBD : fonctions de hashage
-> TBD : dictionnaires
-> TBD : ensembles
+{% aller %}
+[Conteneurs](./structure-conteneurs){.interne}
+{% endaller %}
 
 ## Complexité amortie
 

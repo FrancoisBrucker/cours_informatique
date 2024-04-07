@@ -17,7 +17,7 @@ eleventyComputed:
   - temporalité spatiale
   - tableau de tableaux en une dimension (ligne, index des caches)
   - flags (dirty bit)
-- bitmatructure-de-donnéetructures-de-données/
+- bitmap
   - utilité : une information booléenne oui/non, activé/non activé, ...
   - où :
     - file system (bloc, inode)

@@ -65,6 +65,7 @@ Les documentations techniques que l'on donnera ici seront toujours en anglais. F
 {% endinfo %}
 
 > TBD : structures de données utiles. Ajouter :
+> dire que c'est de l'algorithmie "terrain". Tout est compté au bit pres.
 >
 > - fifo (communication)
 > - tcp : communication sécurisé incertain
