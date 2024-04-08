@@ -101,7 +101,16 @@
 <p>Les algorithmes présentés sont de plus pas forcément les meilleurs en terme de complexité.</p>
 </div>
 </div>
-<p>Le problème que nous voulons résoudre est :</p>
+<p>Le problème que nous voulons résoudre est la création d'un réseau ferré. On reprend les notations utilisées lors de la partie consacrée à la programmation dynamique :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#donn%C3%A9es" class="interne">Données du réseau ferré</a></p>
+</div>
+</div>
+<p>Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -109,18 +118,18 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de route proportionnelle au kilomètre comment relier les villes entres-elles au prix le plus bas ?</p>
+<p>Étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de tronçon entre deux gares proportionnelle au kilomètre, comment relier les gares des villes entres-elles au prix le plus bas ?</p>
 </div>
 </div>
 <p>Par exemple les 5 villes ci-dessous :</p>
 <p><img src="5-villes-discret.png" alt="5 villes"></p>
-<p>Aucune route n'a été construite et on ne peut voyager de ville en ville.</p>
-<p>Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construites.</p>
+<p>Aucun tronçon n'a été construit et on ne peut voyager de ville en ville.</p>
+<p>Dans la figure ci-dessous un réseau ferré a été construit. À gauche toutes les tronçons possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de tronçons entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau ferré ont été construites.</p>
 <p><img src="5-villes-complet-arbre.png" alt="5 villes arbres"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Pourquoi est-on sur que la figure de droite possède le nombre minimum de routes ?</p>
+<p>Pourquoi est-on sur que la figure de droite possède le nombre minimum de tronçons ?</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -140,8 +149,8 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si on supprime une route (n'importe laquelle) dans la figure de droite, on déconnecte le réseau en deux.</p>
-<p>Alors que dans la figure de gauche on peu au minimum supprimer 4 routes (tous les routes partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).</p>
+<p>Si on supprime une tronçon (n'importe laquelle) dans la figure de droite, on déconnecte le réseau en deux.</p>
+<p>Alors que dans la figure de gauche on peu au minimum supprimer 4 tronçons (tous les tronçons partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).</p>
 </div>
 </details>     
 </div>
@@ -230,20 +239,26 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div>
 </div>
 <p>Ceci va simplifier nombre de preuves de ce qui va suivre.</p>
-<blockquote>
-<p>TBD : voir partie prog dynamique. Et appeler ça troncons</p>
-</blockquote>
 <h3>Connexité</h3>
-<p>Le but final est d'obtenir un réseau routier où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseau routiers déjà constitués</p>
+<p>Le but final est d'obtenir un réseau ferré où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseaux ferrés déjà constitués</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un réseau routier de villes est <strong><em>connexe</em></strong> si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.</p>
+<p>Un réseau ferré de villes est <strong><em>connexe</em></strong> si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.</p>
 </div>
 </div>
-<p>Le fait que la notion de chemin (la relation $C$ de la partie précédente) soient une relation d'équivalence montre que le réseau routier est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).</p>
+<p>On reprend la relation $C$ du deuxième exemple de la partie consacrée à la programmation dynamique :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#relation-C" class="interne">La relation <em>chemin</em></a></p>
+</div>
+</div>
+<p>Le fait que la relation <em>chemin</em>  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -253,11 +268,11 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </div><div class="pl-8 mr-8">
 <p>Si $C$ est une relation d'équivalence sur $V$, la <strong><em>classe d'équivalence</em></strong> de $x \in V$ est :</p>
 <p>$$<br>
-C(x) = \{ y | xCy, y \in V \}<br>
+C(x) = \{ y | C[x][y] == \text{Vrai}, y \in V \}<br>
 $$</p>
 </div>
 </div>
-<p>Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation chemin donnent les <strong><em>composantes connexes</em></strong> du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :</p>
+<p>Si un réseau ferré n'est pas connexe, les classes d'équivalences de la relation chemin donnent les <strong><em>composantes connexes</em></strong> du réseau ferré. Le réseau ferré de la figure suivante contient 2 composantes connexes :</p>
 <p><img src="2-composantes-connexes.png" alt="2 composantes connexes"></p>
 <p>Notez que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -265,21 +280,21 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau routier alors :</p>
+<p>Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau ferré alors :</p>
 <ul>
 <li>$V_1 \cap V_2 = \emptyset$</li>
-<li>si on ajoute <strong>une</strong> route entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau</li>
+<li>si on ajoute <strong>un</strong> tronçon entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau</li>
 </ul>
 </div>
 </div>
-<p>Par exemple, en ajoutant la route entre B et P, on obtient un réseau routier connexe :</p>
+<p>Par exemple, en ajoutant le tronçon entre B et P, on obtient un réseau ferré connexe :</p>
 <p><img src="1-composantes-connexes.png" alt="1 partie connexe"></p>
-<p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau routier uniquement à partir de sa relation route.</p>
+<p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau ferré uniquement à partir de sa relation tronçon.</p>
 <p>Algorithme composante connexe :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
-pour chaque route (x, y):
+pour chaque tronçon (x, y):
     si R(x) ≠ R(y):
-        pour chaque ville z telle que R(z) = R(y):
+        pour chaque gare z telle que R(z) = R(y):
             R(z) = R(x)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -330,9 +345,9 @@ pour chaque ville u:
 </div>
 <p>Cet algorithme fonctionne grâce à la marque R qui définit le représentant de chaque ville. Montrons ça sur un exemple en reprenant le réseau ci-après et en affectant une couleur à chaque ville comme représentant :</p>
 <p><img src="algo-connexe-d%C3%A9but.png" alt="2 composantes connexes"></p>
-<p>Et en étudiant les routes dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :</p>
+<p>Et en étudiant les tronçons dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :</p>
 <p><img src="algo-connexe.png" alt="Algorithmes composantes connexes"></p>
-<p>Notez que l'étude de la route $(L, P)$ ne produit aucun changement dans les représentants car la couleur de $L$ est déjà égale à la couleur de $P$.</p>
+<p>Notez que l'étude du tronçon $(L, P)$ ne produit aucun changement dans les représentants car la couleur de $L$ est déjà égale à la couleur de $P$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -360,14 +375,14 @@ pour chaque ville u:
 <div class="mx-8 pb-2">
 <p>On le prouve par récurrence sur le nombre de segments examinés :</p>
 <blockquote>
-<p>Apres $k$ routes examinés, les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$</p>
+<p>Après $k$ tronçons examinés, les composantes connexes du réseau formé de ces $k$ tronçons sont les ensembles de villes ayant même valeur de $R$</p>
 </blockquote>
 <ol>
-<li>Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide</li>
-<li>À chaque fois que l'on ajoute une route :
+<li>Lorsqu'il n'y a aucun tronçon examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide</li>
+<li>À chaque fois que l'on ajoute un tronçon :
 <ul>
 <li>soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe</li>
-<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant</li>
+<li>soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout du tronçon regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant</li>
 </ul>
 </li>
 </ol>
@@ -428,7 +443,7 @@ pour chaque ville u:
 </div>
 </details>     
 </div>
-<h2>Création du réseau routier</h2>
+<h2>Création du réseau ferré</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -437,8 +452,8 @@ pour chaque ville u:
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>le <strong><em>coût de construction</em></strong> d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
-<li>le <strong><em>coût de construction</em></strong> d'un réseau routier est la somme des coûts de construction des routes qui le composent.</li>
+<li>le <strong><em>coût de construction</em></strong> d'un tronçon entre deux gares $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
+<li>le <strong><em>coût de construction</em></strong> d'un réseau ferré est la somme des coûts de construction des tronçons qui le composent.</li>
 </ul>
 </div>
 </div>
@@ -450,23 +465,23 @@ pour chaque ville u:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Trouver un réseau routier de coût de construction minimum pour notre ensemble de villes.</p>
+<p>Trouver un réseau ferré de coût de construction minimum pour notre ensemble de villes.</p>
 </div>
 </div>
-<p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les routes.</p>
-<p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les routes par coût croissant.</p>
+<p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les tronçons.</p>
+<p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.</p>
 <p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a> :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
-pour chaque route (x, y) examiné par distance croissante:
+pour chaque tronçon (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
-        on ajoute (x, y) aux routes choisis
+        on ajoute (x, y) aux tronçons choisis
         pour chaque ville z telle que R(z) = R(y):
             R(z) = R(x)
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>L'étude précédente nous indique d'ores et déjà que :</p>
 <ol>
-<li>on choisira exactement $n-1$ routes</li>
-<li>le reseau routier formé des routes choisies sera connexe</li>
+<li>on choisira exactement $n-1$ tronçons</li>
+<li>le reseau ferré formé des tronçons choisies sera connexe</li>
 </ol>
 <p>Pour nos 100 villes, on trouve :</p>
 <p><img src="kruskal.png" alt="kruskal"></p>
@@ -487,7 +502,7 @@ pour chaque route (x, y) examiné par distance croissante:
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On suppose que l'algorithme de Kruskal nous rend une liste <code class="language-">routes</code> dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.</p>
+<p>On suppose que l'algorithme de Kruskal nous rend une liste <code class="language-">tronçons</code> dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.</p>
 <p>Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">fonction <code>plot</code></a>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -521,7 +536,7 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> label<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> routes<span class="token punctuation">:</span>
+<span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> tronçons<span class="token punctuation">:</span>
     ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>
         <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -540,7 +555,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Propriété</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le réseau routier donné par l'algorithme de Kruskal ne contient pas de cycle.</p>
+<p>Le réseau ferré donné par l'algorithme de Kruskal ne contient pas de cycle.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -560,7 +575,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>S'il contenait un cycle, lors de l'ajout de la dernière route $(x, y)$ on aurait $R(x) = R(v)$ ce qui est impossible.</p>
+<p>S'il contenait un cycle, lors de l'ajout du dernier tronçon $(x, y)$ on aurait $R(x) = R(v)$ ce qui est impossible.</p>
 </div>
 </details>     
 </div>
@@ -597,7 +612,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <li>on prouve que l'on peut échanger un élément de la solution optimale par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci</li>
 <li>contradiction</li>
 </ol>
-<p>Soit $[r_1, \dots, r_{n-1}]$ la liste des routes choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.</p>
+<p>Soit $[r_1, \dots, r_{n-1}]$ la liste des tronçons choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau ferré de coût de construction strictement plus petit.</p>
 <p>Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[r'_1, \dots, r'_m]$</p>
 <p>On commence par remarquer que :</p>
 <ul>
@@ -622,9 +637,9 @@ $$
 <p><img src="kruskal-1.png" alt="Kruskal 1"></p>
 <p>Chaque ville est donc soit dans la composante connexe $X$ soit dans la composante connexe $Y$. En représentant ceci dans le réseau optimal on a :</p>
 <p><img src="kruskal-2.png" alt="Kruskal 2"></p>
-<p>Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, <strong>mais</strong> en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe une route dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).</p>
-<p>Notons cette route $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les routes sont de même couleur, à par pour la route $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
-<p>Tout ce qui précède montre que l'on peut supprimer la route $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter la route $(x, y)$ pour le reconnecter :</p>
+<p>Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, <strong>mais</strong> en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe un tronçon dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).</p>
+<p>Notons cet tronçon $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, ce tronçon ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les tronçons sont de même couleur, à par pour le tronçon $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.</p>
+<p>Tout ce qui précède montre que l'on peut supprimer le tronçon $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter le tronçon $(x, y)$ pour le reconnecter :</p>
 <p><img src="kruskal-3.png" alt="Kruskal 3"></p>
 <p>Au final, on obtient :</p>
 <ul>
@@ -642,7 +657,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Un réseau routier de coût de construction minimal n'a pas d'intersection de segments</p>
+<p>Un réseau ferré de coût de construction minimal n'a pas d'intersection de segments</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -683,8 +698,8 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Il devra afficher à l'écran la ville où l'on se trouve.</p>
-<p>Cet algorithme doit être récursif. Il doit parcourir toutes les routes et se relancer dès qu'il trouve une route permettant de progresser, c'est à dire une route dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.</p>
+<p>En utilisant la méthode du <a href="https://en.wikipedia.org/wiki/Backtracking">backtracking</a> (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.</p>
+<p>Cet algorithme doit être récursif. Il doit parcourir toutes les tronçons et se relancer dès qu'il trouve un tronçon permettant de progresser, c'est à dire un tronçon dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.</p>
 <p>Cet algorithme doit donc avoir comme paramètre :</p>
 <ul>
 <li>la ville courante</li>
@@ -709,11 +724,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante):
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante):
     affiche à l'écran : courante
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v)
+                tronçons_rec(u, v)
 </code></pre>
 <p>Prenons par exemple le réseau ci-dessous :</p>
 <p><img src="performance-garantie-1.png" alt="réseau"></p>
@@ -798,15 +813,15 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante, chemin):
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante, chemin):
     ajoute courante à la fin du chemin
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v, chemin)
+                tronçons_rec(u, v, chemin)
 </code></pre>
 <p>L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = []
-route_rec(1, 1, chemin)
+tronçons_rec(1, 1, chemin)
 affiche à l'écran : chemin
 </code></pre>
 <p>L'algorithme va afficher l'ordre de passage de chaque ville. Si cet ordre est identique à l'exercice précédent il affichera :</p>
@@ -845,13 +860,13 @@ affiche à l'écran : chemin
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction routes_rec(précédente, courante, destination, chemin):
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante, destination, chemin):
     si courante == destination:
         ajoute courante à la fin de chemin
         retour
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v, destination, chemin)
+                tronçons_rec(u, v, destination, chemin)
                 si chemin est non vide:
                     ajoute courante à la fin de chemin
                     retour
@@ -859,7 +874,7 @@ affiche à l'écran : chemin
 </code></pre>
 <p>Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme avec :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = []
-route_rec(1, 1, 4, chemin)
+tronçons_rec(1, 1, 4, chemin)
 affiche à l'écran : chemin
 </code></pre>
 <p>Il affichera :</p>
@@ -871,7 +886,7 @@ affiche à l'écran : chemin
 <p>On affiche le chemin entre les villes 0 et 1 de l'exemple :</p>
 <p><img src="chemin-0-1.png" alt="chemins"></p>
 <h2>Cycles</h2>
-<p>Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Une seule route de bloquée et le réseau n'est plus connexe.</p>
+<p>Le réseau ferré de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Un seul tronçon de bloqué et le réseau n'est plus connexe.</p>
 <p>L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.</p>
 <p>Ce problème est cependant souvent vu sous un autre angle, celui d'un <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a> voulant visiter toutes les villes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1199,9 +1214,9 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 </details>     
 </div>
 <h3>Du réseau au cycle</h3>
-<p>L'idée est de reprendre le réseau optimal et de le parcourir entièrement en suivant ses routes. Par exemple, en considérant le réseau ci-dessous :</p>
+<p>L'idée est de reprendre le réseau optimal et de le parcourir entièrement en suivant ses tronçons. Par exemple, en considérant le réseau ci-dessous :</p>
 <p><img src="performance-garantie-1.png" alt="performance garantie 1"></p>
-<p>On peut le parcourir en suivant ses routes de cette façon par exemple :</p>
+<p>On peut le parcourir en suivant ses tronçons de cette façon par exemple :</p>
 <p><img src="performance-garantie-2.png" alt="performance garantie 2"></p>
 <p>Ce qui donne le cycle :</p>
 <p>$$<br>

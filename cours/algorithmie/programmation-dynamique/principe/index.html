@@ -128,8 +128,25 @@
 <h2>Premier exemple : chemin le plus rapide à partir d'une ville</h2>
 <p>Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre deux données (le plus rapide, le moins cher, ...). Nous allons ici utiliser comme données un réseau ferré et utiliser la méthode utilisée par Bellman lui-même et qui à donné le nom à la méthode générale.</p>
 <p>Cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford"><em>&quot;algorithme de Bellman-Ford&quot;</em></a>, est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.</p>
-<h3>Données</h3>
-<p>On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare intermédiaire. Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :</p>
+<h3><span id="données"></span>Données</h3>
+<p>On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare de passage.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>tronçon</em></strong> entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gares intermédiaire.</p>
+<p>Pour un ensemble de gares $G$, on note $T$ la relation (une matrice symétrique) telle que :</p>
+<ul>
+<li>$T[x][y]$ est le temps pour relier les gares $x$ et $y$ s'il existe un tronçon entre elles,</li>
+<li>$T[x][y]$ vaut $+\infty$ s'il n'existe pas de tronçon entre les gares $x$ et $y$,</li>
+<li>$T[x][x]$ vaut 0 pour toute gare $x$</li>
+</ul>
+</div>
+</div>
+<p>Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -151,7 +168,7 @@
 </div>
 </div>
 <h3>Problème à résoudre</h3>
-<p>On cherche à connaitre le temps minimal de trajet $C[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.</p>
+<p>On cherche à connaitre le temps minimal de trajet $M[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.</p>
 <h3>Méthode de résolution</h3>
 <p>Le principe de la programmation dynamique stipule que tout chemin optimal est constitué de sous-chemins eux aussi optimaux pour des sous-problèmes. La principale difficulté lorsque l'on cherche à modéliser un algorithme utilisant la programmation dynamique pour résoudre un problème est de déterminer ce que sont ces sous-problèmes.</p>
 <h4>Détermination des sous-problèmes</h4>
@@ -164,48 +181,48 @@
 <p>On a alors l'équation de récurrence suivante :</p>
 <div>
 $$
-C_k[x] = \min (\{ C_{k-1}[x], \min (\{C_{k-1}[y] + T[y][x] \mid y \in G \}\}))
+M_k[x] = \min (\{ M_{k-1}[x], \min (\{M_{k-1}[y] + T[y][x] \mid y \in G \}\}))
 $$
 </div>
 <p>Avec :</p>
 <ul>
 <li>$G$ l'ensemble des gares</li>
 <li>$T[u][v]$ valant soit le temps de parcourt du tronçon allant de $u$ à $v$, soit $+\infty$ si le tronçon n'existe pas</li>
-<li>$C_k[u]$ le temps minimum d'un chemin entre $A$ et $u$ en au plus $k$ tronçons</li>
+<li>$M_k[u]$ le temps minimum d'un chemin entre $A$ et $u$ en au plus $k$ tronçons</li>
 </ul>
-<p>Le temps minimum entre les deux gares $A$ et $x$ est donné par $C[x] = C_{|G|}[x]$.</p>
-<p><strong>Attention</strong>, il est bien nécessaire d'aller jusqu'à $C_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (<em>ie.</em> dès que le temps devient fini) :</p>
+<p>Le temps minimum entre les deux gares $A$ et $x$ est donné par $M[x] = M_{|G|}[x]$.</p>
+<p><strong>Attention</strong>, il est bien nécessaire d'aller jusqu'à $M_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (<em>ie.</em> dès que le temps devient fini) :</p>
 <ul>
 <li>$T[A][b] = 10$</li>
 <li>$T[A][c] = 1$</li>
 <li>$T[c][b] = 1$</li>
 </ul>
-<p>Et on a $C_2[b] = 2 &lt; T[A][b] = 10$.</p>
+<p>Et on a $M_2[b] = 2 &lt; T[A][b] = 10$.</p>
 <h4>Stockage des solutions intermédiaires</h4>
 <p>La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.</p>
 <p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gare. On a pas besoin de tout conserver, juste les valeurs précédentes suffisent.</p>
 <h4>Algorithme final</h4>
 <p>On suppose que :</p>
 <ul>
-<li>l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $C$.</li>
+<li>l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $M$.</li>
 <li>les tronçons sont stockés dans une matrice symétrique valant le temps entre la gare $i$ et $j$ si le tronçon existe et $+\infty$ sinon</li>
 </ul>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> inf
 
 <span class="token keyword">def</span> <span class="token function">bellman</span><span class="token punctuation">(</span>tronçons<span class="token punctuation">,</span> n<span class="token punctuation">,</span> gare_départ<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    C <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
+    M <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
 
     <span class="token keyword">for</span> g <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        C<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> tronçons<span class="token punctuation">[</span>gare_départ<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span>
+        M<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> tronçons<span class="token punctuation">[</span>gare_départ<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        D <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
+        M2 <span class="token operator">=</span> <span class="token punctuation">[</span>inf<span class="token punctuation">]</span> <span class="token operator">*</span> n
 
         <span class="token keyword">for</span> g <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            D<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>C<span class="token punctuation">[</span>g<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>C<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> tronçons<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        C <span class="token operator">=</span> D
+            M2<span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>g<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>M<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">+</span> tronçons<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>g<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        M <span class="token operator">=</span> M2
 
-    <span class="token keyword">return</span> C
+    <span class="token keyword">return</span> M
 </code></pre>
 <p>L'algorithme rend le tableau de temps intermédiaires qui contient le temps minimal entre la ville de départ et une gare $x$ quelconque. S'il n'existe pas de chemins entre la gare de départ et une gare $x$, alors $C[x]$ vaut $+\infty$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -242,9 +259,24 @@ $$
 <li>le nombre de sous-problèmes à stocker est faible.</li>
 </ol>
 <p>Enfin, la programmation dynamique nous assure de trouver <strong>un</strong> chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.</p>
-<h2>Deuxième exemple : existence de route entre deux villes quelconques</h2>
-<p>En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ sur notre ensemble de gares telle que $C[x][y]$ s'il existe un chemin entre $x$ et $y$.</p>
-<p>Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pourt chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.</p>
+<h2><span id="relation-C"></span>Deuxième exemple : existence de route entre deux villes quelconques</h2>
+<p>En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ nous permettant de savoir si l'on peut voyager de la gare $x$ à la gare $y$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour un ensemble de gares $G$, on note $C$ <strong><em>la relation chemin</em></strong> (une matrice symétrique) telle que :</p>
+<ul>
+<li>$C[x][y]$ est <strong>vrai</strong> s'il existe un chemin entre les gares $x$ et $y$</li>
+<li>$C[x][y]$ est <strong>faux</strong> s'il n'existe pas de chemin entre les gares $x$ et $y$</li>
+<li>$C[x][x]$ est <strong>vrai</strong> pour toute gare $x$</li>
+</ul>
+</div>
+</div>
+<p>Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.</p>
 <p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.</p>
 <p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car c'est <a href="https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence">une relation d'équivalence</a>. Elle est en effet :</p>
 <ul>
@@ -261,7 +293,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Soit $G = \{ g_1, \dots g_n \}$ les gares d'un réseau routier et $T$ sa relation tronçon.</p>
+<p>Soit $G = \{ g_1, \dots g_n \}$ les gares d'un réseau ferré et $T$ sa relation tronçon.</p>
 <p>Montrez que si on note $G_i = \{ g_1, \dots g_i \}$, un chemin entre les gares $x$ et$y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut de déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.</p>
 </div>
 </div>
@@ -362,7 +394,7 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Modifiez l'algorithme précédent pour que $C[i][j]$ donne le temps minimum du chemin entre la gare $i$ et la gare $j$.</p>
+<p>Modifiez l'algorithme précédent pour remplacer la création de la matrice $C$ par la matrice $M[i][j]$ qui donne, comme pour le premier exemple) le temps minimum du chemin entre la gare $i$ et la gare $j$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -397,31 +429,31 @@ $$</p>
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
 
 <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    D <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>inf <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
+    M2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>inf <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            D<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> C<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    C <span class="token operator">=</span> D
+            M2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> M<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    M <span class="token operator">=</span> M2
 
-<span class="token keyword">return</span> C
+<span class="token keyword">return</span> M
 </code></pre>
-<p>De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $D$ et écrire l'algorithme sous la forme :</p>
+<p>De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $M2$ et écrire l'algorithme sous la forme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> inf
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+        M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
 
 <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> C<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span><span class="token punctuation">[</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+</span> M<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token keyword">return</span> C
+<span class="token keyword">return</span> M
 </code></pre>
 </div>
 </details>     
