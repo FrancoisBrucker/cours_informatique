@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Le dictionnaire"
+title: "Tableaux associatifs"
 
 eleventyComputed:
   eleventyNavigation:

@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Fonction de hash"
+title: "Fonction de hachage"
 
 eleventyComputed:
   eleventyNavigation:
