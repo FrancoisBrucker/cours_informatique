@@ -319,9 +319,13 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 #### Mardi : Structures de données Linéaires
 
 {% aller %}
-[Structures de données "linéaires"](/cours/algorithmie/structure-conteneurs/){.interne}
+[Listes](/cours/algorithmie/structure-conteneurs/liste){.interne}
 {% endaller %}
-
+{% aller %}
+1. [fonction de hachage](/cours/algorithmie/structure-conteneurs/fonctions-hash){.interne}
+2. [tableau associatif](/cours/algorithmie/structure-conteneurs/tableau-associatif){.interne}
+3. [Dictionnaires de python](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/){.interne}
+{% endaller %}
 {% aller %}
 [Complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
 {% endaller %}

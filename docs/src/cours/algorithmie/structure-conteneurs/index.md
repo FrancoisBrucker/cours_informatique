@@ -37,7 +37,7 @@ Aussi appelé dictionnaires
 [fonction de hachage](fonctions-hash){.interne}
 {% endaller %}
 {% aller %}
-[dictionnaires](dictionnaire){.interne}
+[tableau associatif](tableau-associatif){.interne}
 {% endaller %}
 
 ### Dérivés
