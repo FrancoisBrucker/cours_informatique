@@ -15,29 +15,34 @@ Les différents algorithmes que nous allons voir sont pour la plupart des cas pa
 Les algorithmes présentés sont de plus pas forcément les meilleurs en terme de complexité.
 {% endinfo %}
 
-Le problème que nous voulons résoudre est :
+Le problème que nous voulons résoudre est la création d'un réseau ferré. On reprend les notations utilisées lors de la partie consacrée à la programmation dynamique :
+{% aller %}
+[Données du réseau ferré](/cours/algorithmie/programmation-dynamique/principe/#données){.interne}
+{% endaller %}
+
+Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.
 
 {% note "**Problème**" %}
-étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de route proportionnelle au kilomètre comment relier les villes entres-elles au prix le plus bas ?
+Étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de tronçon entre deux gares proportionnelle au kilomètre, comment relier les gares des villes entres-elles au prix le plus bas ?
 {% endnote %}
 
 Par exemple les 5 villes ci-dessous :
 
 ![5 villes](./5-villes-discret.png)
 
-Aucune route n'a été construite et on ne peut voyager de ville en ville.
+Aucun tronçon n'a été construit et on ne peut voyager de ville en ville.
 
-Dans la figure ci-dessous un réseau routier a été construit. À gauche toutes les routes possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de routes entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau routier ont été construites.
+Dans la figure ci-dessous un réseau ferré a été construit. À gauche toutes les tronçons possibles ont été construites, ce qui est pratique si ont veut voyager vite entre deux villes mais c'est beaucoup trop cher (et dangereux, regardez le nombre de croisements !). À droite seul le nombre minimum de tronçons entre villes voisines pour pouvoir aller de n'importe quelle ville à n'importe quelle autre ville en suivant le réseau ferré ont été construites.
 
 ![5 villes arbres](5-villes-complet-arbre.png)
 
 {% exercice %}
-Pourquoi est-on sur que la figure de droite possède le nombre minimum de routes ?
+Pourquoi est-on sur que la figure de droite possède le nombre minimum de tronçons ?
 {% endexercice %}
 {% details "corrigé" %}
-Si on supprime une route (n'importe laquelle) dans la figure de droite, on déconnecte le réseau en deux.
+Si on supprime une tronçon (n'importe laquelle) dans la figure de droite, on déconnecte le réseau en deux.
 
-Alors que dans la figure de gauche on peu au minimum supprimer 4 routes (tous les routes partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).
+Alors que dans la figure de gauche on peu au minimum supprimer 4 tronçons (tous les tronçons partant d'une ville) et au mieux 6 (pour arriver à la figure de droite).
 {% enddetails %}
 
 ## Nuages de points
@@ -112,55 +117,58 @@ Si $P$ est un ensemble de points en **_position générale_**, alors pour toute 
 
 Ceci va simplifier nombre de preuves de ce qui va suivre.
 
-> TBD : voir partie prog dynamique. Et appeler ça troncons
-
 ### Connexité
 
-Le but final est d'obtenir un réseau routier où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseau routiers déjà constitués
+Le but final est d'obtenir un réseau ferré où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseaux ferrés déjà constitués
 
 {% note %}
-Un réseau routier de villes est **_connexe_** si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.
+Un réseau ferré de villes est **_connexe_** si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.
 
 {% endnote %}
 
-Le fait que la notion de chemin (la relation $C$ de la partie précédente) soient une relation d'équivalence montre que le réseau routier est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).
+On reprend la relation $C$ du deuxième exemple de la partie consacrée à la programmation dynamique :
+{% aller %}
+[La relation *chemin*](/cours/algorithmie/programmation-dynamique/principe/#relation-C){.interne}
+{% endaller %}
+
+Le fait que la relation *chemin*  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).
 
 {% note "**définition**" %}
 Si $C$ est une relation d'équivalence sur $V$, la **_classe d'équivalence_** de $x \in V$ est :
 
 $$
-C(x) = \\{ y | xCy, y \in V \\}
+C(x) = \\{ y | C[x][y] == \text{Vrai}, y \in V \\}
 $$
 
 {% endnote %}
 
-Si un réseau routier n'est pas connexe, les classes d'équivalences de la relation chemin donnent les **_composantes connexes_** du réseau routier. Le réseau routier de la figure suivante contient 2 composantes connexes :
+Si un réseau ferré n'est pas connexe, les classes d'équivalences de la relation chemin donnent les **_composantes connexes_** du réseau ferré. Le réseau ferré de la figure suivante contient 2 composantes connexes :
 
 ![2 composantes connexes](./2-composantes-connexes.png)
 
 Notez que :
 
 {% note %}
-Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau routier alors :
+Si $V_1$ et $V_2$ sont deux composantes connexes d'un réseau ferré alors :
 
 - $V_1 \cap V_2 = \emptyset$
-- si on ajoute **une** route entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau
+- si on ajoute **un** tronçon entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau
 
 {% endnote %}
 
-Par exemple, en ajoutant la route entre B et P, on obtient un réseau routier connexe :
+Par exemple, en ajoutant le tronçon entre B et P, on obtient un réseau ferré connexe :
 
 ![1 partie connexe](./1-composantes-connexes.png)
 
-La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau routier uniquement à partir de sa relation route.
+La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau ferré uniquement à partir de sa relation tronçon.
 
 Algorithme composante connexe :
 
 ```text#
 pour chaque ville v : R(v) = v
-pour chaque route (x, y):
+pour chaque tronçon (x, y):
     si R(x) ≠ R(y):
-        pour chaque ville z telle que R(z) = R(y):
+        pour chaque gare z telle que R(z) = R(y):
             R(z) = R(x)
 ```
 
@@ -196,11 +204,11 @@ Cet algorithme fonctionne grâce à la marque R qui définit le représentant de
 
 ![2 composantes connexes](./algo-connexe-début.png)
 
-Et en étudiant les routes dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :
+Et en étudiant les tronçons dans l'ordre $(L, S)$, $(B, M)$, $(P, S)$ et enfin $(L, P)$ on obtient :
 
 ![Algorithmes composantes connexes](./algo-connexe.png)
 
-Notez que l'étude de la route $(L, P)$ ne produit aucun changement dans les représentants car la couleur de $L$ est déjà égale à la couleur de $P$.
+Notez que l'étude du tronçon $(L, P)$ ne produit aucun changement dans les représentants car la couleur de $L$ est déjà égale à la couleur de $P$.
 
 {% note %}
 A la fin de l'algorithme composantes connexes les villes ayant même valeur de $R$ forment une composante connexe.
@@ -209,12 +217,12 @@ A la fin de l'algorithme composantes connexes les villes ayant même valeur de $
 
 On le prouve par récurrence sur le nombre de segments examinés :
 
-> Apres $k$ routes examinés, les composantes connexes du réseau formé de ces $k$ routes sont les ensembles de villes ayant même valeur de $R$
+> Après $k$ tronçons examinés, les composantes connexes du réseau formé de ces $k$ tronçons sont les ensembles de villes ayant même valeur de $R$
 
-1. Lorsqu'il n'y aucune route examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide
-2. À chaque fois que l'on ajoute une route :
+1. Lorsqu'il n'y a aucun tronçon examinée chaque ville a un représentant différent ce qui représente bien les composantes connexes d'un réseau vide
+2. À chaque fois que l'on ajoute un tronçon :
    - soit les deux villes ont même représentant et l'hypothèse de récurrence stipule qu'elles sont dans la même composante connexe
-   - soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout de la route regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant
+   - soit les deux villes ont un représentant différent et l'hypothèse de récurrence stipule qu'elles sont dans des composantes connexes différentes. L'ajout du tronçon regroupe les deux composantes en une seule, ce que l'on fait en leur associant un même représentant
 
 {% enddetails %}
 
@@ -231,47 +239,47 @@ En déduire que la complexité d l'algorithme est en $\mathcal{O}(n^2)$
 Il y a au pire $\frac{n(n-1)}{2}$ segments (un pour chaque couple) et la condition de la ligne 3 n'est vrai qu'au maximum $n-1$ fois.
 {% enddetails %}
 
-## Création du réseau routier
+## Création du réseau ferré
 
 {% note "**définition**" %}
 
-- le **_coût de construction_** d'une route entre deux villes $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
-- le **_coût de construction_** d'un réseau routier est la somme des coûts de construction des routes qui le composent.
+- le **_coût de construction_** d'un tronçon entre deux gares $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$
+- le **_coût de construction_** d'un réseau ferré est la somme des coûts de construction des tronçons qui le composent.
 
 {% endnote %}
 
 On peut maintenant reformuler notre problème d'optimisation :
 
 {% note "**Problème**" %}
-Trouver un réseau routier de coût de construction minimum pour notre ensemble de villes.
+Trouver un réseau ferré de coût de construction minimum pour notre ensemble de villes.
 {% endnote %}
 
-L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme "composante connexe" en choisissant l'ordre dans lequel examiner les routes.
+L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme "composante connexe" en choisissant l'ordre dans lequel examiner les tronçons.
 
-Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les routes par coût croissant.
+Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.
 
 Commençons par écrire cet algorithme, initialement proposé par [Kruskal](https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal) :
 
 ```text#
 pour chaque ville v : R(v) = v
-pour chaque route (x, y) examiné par distance croissante:
+pour chaque tronçon (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
-        on ajoute (x, y) aux routes choisis
+        on ajoute (x, y) aux tronçons choisis
         pour chaque ville z telle que R(z) = R(y):
             R(z) = R(x)
 ```
 
 L'étude précédente nous indique d'ores et déjà que :
 
-1. on choisira exactement $n-1$ routes
-2. le reseau routier formé des routes choisies sera connexe
+1. on choisira exactement $n-1$ tronçons
+2. le reseau ferré formé des tronçons choisies sera connexe
 
 Pour nos 100 villes, on trouve :
 
 ![kruskal](./kruskal.png)
 {% details "code python de l'affichage" %}
 
-On suppose que l'algorithme de Kruskal nous rend une liste `routes`{.language-} dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.
+On suppose que l'algorithme de Kruskal nous rend une liste `tronçons`{.language-} dont les éléments sont des couples $(v1, v2)$ avec $v1$ et $v2$ des noms de villes.
 
 Pour les prendre en compte dans le graphique, il faut créer des segments de coordonnées utilisable par la [fonction `plot`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html).
 
@@ -304,7 +312,7 @@ ax.scatter(x, y)
 for i in range(len(x)):
     ax.text(x[i], y[i], label[i])
 
-for x, y in routes:
+for x, y in tronçons:
     ax.plot(
         [villes[x][0], villes[y][0]],
         [villes[x][1], villes[y][1]],
@@ -318,10 +326,10 @@ plt.show()
 Avant de montrer que l'algorithme de Kruskal est optimal, commençons par montrer une propriété intéressante de ce réseau :
 
 {% note "**Propriété**" %}
-Le réseau routier donné par l'algorithme de Kruskal ne contient pas de cycle.
+Le réseau ferré donné par l'algorithme de Kruskal ne contient pas de cycle.
 {% endnote %}
 {% details "preuve" %}
-S'il contenait un cycle, lors de l'ajout de la dernière route $(x, y)$ on aurait $R(x) = R(v)$ ce qui est impossible.
+S'il contenait un cycle, lors de l'ajout du dernier tronçon $(x, y)$ on aurait $R(x) = R(v)$ ce qui est impossible.
 
 {% enddetails %}
 
@@ -339,7 +347,7 @@ L'algorithme de Kruskal est un algorithme glouton, prouver son optimalité se fa
 3. on prouve que l'on peut échanger un élément de la solution optimale par le choix du glouton pour forger une solution optimale coïncidant plus longtemps avec celle-ci
 4. contradiction
 
-Soit $[r_1, \dots, r_{n-1}]$ la liste des routes choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau routier de coût de construction strictement plus petit.
+Soit $[r_1, \dots, r_{n-1}]$ la liste des tronçons choisies par Kruskal dans cet ordre. On suppose que ce n'est pas optimal et qu'il existe un réseau ferré de coût de construction strictement plus petit.
 
 Parmi tous les réseaux optimaux, on en choisit un qui coincide le plus longtemps possible avec notre algorithme glouton : $[r'_1, \dots, r'_m]$
 
@@ -371,11 +379,11 @@ Chaque ville est donc soit dans la composante connexe $X$ soit dans la composant
 
 ![Kruskal 2](./kruskal-2.png)
 
-Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, **mais** en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe une route dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).
+Les éléments de $X$ (en orange) et de $Y$ (en bleu) ne forment pas des composantes connexes dans le réseau optimal, **mais** en considérant le chemin allant de $x$ à $y$ dans ce réseau il existe un tronçon dont une dés extrémités est dans $X$ et l'autre dans $Y$ (puisque $x$ est orange et $y$ est bleu il y a bien un moment où les couleurs vont se croiser).
 
-Notons cette route $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, cette route ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les routes sont de même couleur, à par pour la route $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
+Notons cet tronçon $(u, v)$ (avec $u \in X$ et $v \in Y$). Par construction, ce tronçon ne peut être dans la solution obtenue par l'algorithme de Kruskal (les extrémités de toutes les tronçons sont de même couleur, à par pour le tronçon $(x, y)$). De plus lors du choix de $r_{i^\star}$, on avait $R(u) \neq R(v)$ (sinon il existerait un chemin reliant $u$ à $v$ pour le réseau de Kruskal ne passant pas par $(x, y)$ ce qui est impossible) : si l'algorithme a choisi $(x, y)$ plutôt que $(u, v)$ c'est que $d(u, v) \geq d(x, y)$.
 
-Tout ce qui précède montre que l'on peut supprimer la route $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter la route $(x, y)$ pour le reconnecter :
+Tout ce qui précède montre que l'on peut supprimer le tronçon $(u, v)$ du réseau optimal (on le déconnecte en 2 parties $U$ et $V$ avec $u, x \in U$ et $v, y \in V$) puis y ajouter le tronçon $(x, y)$ pour le reconnecter :
 
 ![Kruskal 3](./kruskal-3.png)
 
@@ -392,7 +400,7 @@ Ce qui est une contradiction puisque le nouveau réseau coïncide plus longtemps
 Le réseau obtenu par l'algorithme de Kruskal est optimal ! Il a alors la propriété de ne pas contenir de croisements (de segments qui s'intersectent).
 
 {% note %}
-Un réseau routier de coût de construction minimal n'a pas d'intersection de segments
+Un réseau ferré de coût de construction minimal n'a pas d'intersection de segments
 {% endnote %}
 {% details "preuve", "open" %}
 Supposons que le segment $(u, v)$ croise le segment $(x, y)$ dans une solution optimale. On se retrouve alors dans le cadre de la figure ci-dessous :
@@ -422,9 +430,9 @@ Le réseau de coût de construction minimal est connexe et ne contient pas de cy
 L'algorithme que l'on va créer dans les exercices suivants et qui permet soit de visiter toutes les villes soit de trouver un chemin entre deux villes est connu sous le nom de [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur). Il est très efficace et utilisé dans de nombreuses occasions.
 
 {% exercice %}
-En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les routes. Il devra afficher à l'écran la ville où l'on se trouve.
+En utilisant la méthode du [backtracking](https://en.wikipedia.org/wiki/Backtracking) (on va le plus loin possible et dès que l'on se retrouve dans une impasse on rebrousse chemin), décrivez un algorithme permettant, à partir d'une ville de départ, de parcourir tout le réseau en suivant uniquement les tronçons. Il devra afficher à l'écran la ville où l'on se trouve.
 
-Cet algorithme doit être récursif. Il doit parcourir toutes les routes et se relancer dès qu'il trouve une route permettant de progresser, c'est à dire une route dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.
+Cet algorithme doit être récursif. Il doit parcourir toutes les tronçons et se relancer dès qu'il trouve un tronçon permettant de progresser, c'est à dire un tronçon dont une des extrémités est la ville courante et l'autre extrémité n'est pas la ville d'où l'on vient.
 
 Cet algorithme doit donc avoir comme paramètre :
 
@@ -435,11 +443,11 @@ Cet algorithme doit donc avoir comme paramètre :
 {% details "corrigé" %}
 
 ```text
-fonction routes_rec(précédente, courante):
+fonction tronçons_rec(précédente, courante):
     affiche à l'écran : courante
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v)
+                tronçons_rec(u, v)
 ```
 
 Prenons par exemple le réseau ci-dessous :
@@ -494,18 +502,18 @@ Il est indispensable que l'objet soit modifié et non recréer pour que toutes l
 {% details "corrigé" %}
 
 ```text
-fonction routes_rec(précédente, courante, chemin):
+fonction tronçons_rec(précédente, courante, chemin):
     ajoute courante à la fin du chemin
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v, chemin)
+                tronçons_rec(u, v, chemin)
 ```
 
 L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :
 
 ```text
 chemin = []
-route_rec(1, 1, chemin)
+tronçons_rec(1, 1, chemin)
 affiche à l'écran : chemin
 ```
 
@@ -531,13 +539,13 @@ Par exemple :
   {% details "corrigé" %}
 
 ```text
-fonction routes_rec(précédente, courante, destination, chemin):
+fonction tronçons_rec(précédente, courante, destination, chemin):
     si courante == destination:
         ajoute courante à la fin de chemin
         retour
-    pour chaque route (u, v) du réseau routier:
+    pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                routes_rec(u, v, destination, chemin)
+                tronçons_rec(u, v, destination, chemin)
                 si chemin est non vide:
                     ajoute courante à la fin de chemin
                     retour
@@ -548,7 +556,7 @@ Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme a
 
 ```text
 chemin = []
-route_rec(1, 1, 4, chemin)
+tronçons_rec(1, 1, 4, chemin)
 affiche à l'écran : chemin
 ```
 
@@ -566,7 +574,7 @@ On affiche le chemin entre les villes 0 et 1 de l'exemple :
 
 ## Cycles
 
-Le réseau routier de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Une seule route de bloquée et le réseau n'est plus connexe.
+Le réseau ferré de coût de construction minimum est parfait pour relier les villes à moindre coût. En revanche, il n'est pas robuste aux pannes ou aux blocages. Un seul tronçon de bloqué et le réseau n'est plus connexe.
 
 L'idée est alors de chercher un cycle reliant toutes les villes. Pour tout couple de ville, il existe alors deux chemins disjoints permettant de les relier.
 
@@ -785,11 +793,11 @@ Le cycle est est réseau connexe, son coût est donc forcément plus important.
 
 ### Du réseau au cycle
 
-L'idée est de reprendre le réseau optimal et de le parcourir entièrement en suivant ses routes. Par exemple, en considérant le réseau ci-dessous :
+L'idée est de reprendre le réseau optimal et de le parcourir entièrement en suivant ses tronçons. Par exemple, en considérant le réseau ci-dessous :
 
 ![performance garantie 1](./performance-garantie-1.png)
 
-On peut le parcourir en suivant ses routes de cette façon par exemple :
+On peut le parcourir en suivant ses tronçons de cette façon par exemple :
 
 ![performance garantie 2](./performance-garantie-2.png)
 

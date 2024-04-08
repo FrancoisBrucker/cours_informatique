@@ -49,9 +49,22 @@ Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre 
 
 Cet algorithme, appelé [_"algorithme de Bellman-Ford"_](https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford), est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.
 
-### Données
+### <span id="données"></span>Données
 
-On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare intermédiaire. Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :
+On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare de passage.
+
+{% note "**Définition**" %}
+
+Un **_tronçon_** entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gares intermédiaire.
+
+Pour un ensemble de gares $G$, on note $T$ la relation (une matrice symétrique) telle que :
+
+- $T[x][y]$ est le temps pour relier les gares $x$ et $y$ s'il existe un tronçon entre elles,
+- $T[x][y]$ vaut $+\infty$ s'il n'existe pas de tronçon entre les gares $x$ et $y$,
+- $T[x][x]$ vaut 0 pour toute gare $x$
+{% endnote %}
+
+Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :
 
 {% note "**Définition**" %}
 
@@ -67,7 +80,7 @@ Un **_chemin_** entre deux gares $x$ et $y$ est soit :
 
 ### Problème à résoudre
 
-On cherche à connaitre le temps minimal de trajet $C[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.
+On cherche à connaitre le temps minimal de trajet $M[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.
 
 ### Méthode de résolution
 
@@ -86,7 +99,7 @@ On a alors l'équation de récurrence suivante :
 
 <div>
 $$
-C_k[x] = \min (\{ C_{k-1}[x], \min (\{C_{k-1}[y] + T[y][x] \mid y \in G \}\}))
+M_k[x] = \min (\{ M_{k-1}[x], \min (\{M_{k-1}[y] + T[y][x] \mid y \in G \}\}))
 $$
 </div>
 
@@ -94,17 +107,17 @@ Avec :
 
 - $G$ l'ensemble des gares
 - $T[u][v]$ valant soit le temps de parcourt du tronçon allant de $u$ à $v$, soit $+\infty$ si le tronçon n'existe pas
-- $C_k[u]$ le temps minimum d'un chemin entre $A$ et $u$ en au plus $k$ tronçons
+- $M_k[u]$ le temps minimum d'un chemin entre $A$ et $u$ en au plus $k$ tronçons
 
-Le temps minimum entre les deux gares $A$ et $x$ est donné par $C[x] = C_{|G|}[x]$.
+Le temps minimum entre les deux gares $A$ et $x$ est donné par $M[x] = M_{|G|}[x]$.
 
-**Attention**, il est bien nécessaire d'aller jusqu'à $C_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ dès que le temps devient fini) :
+**Attention**, il est bien nécessaire d'aller jusqu'à $M_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ dès que le temps devient fini) :
 
 - $T[A][b] = 10$
 - $T[A][c] = 1$
 - $T[c][b] = 1$
 
-Et on a $C_2[b] = 2 < T[A][b] = 10$.
+Et on a $M_2[b] = 2 < T[A][b] = 10$.
 
 #### Stockage des solutions intermédiaires
 
@@ -116,26 +129,26 @@ Dans le cas de notre problème l'équation de récurrence montre que pour trouve
 
 On suppose que :
 
-- l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $C$.
+- l'on associe à chaque gare un numéro allant de $0$ à $n-1$ ($|G| = n$), ce qui nous permet de stocker les temps intermédiaires dans un tableau $M$.
 - les tronçons sont stockés dans une matrice symétrique valant le temps entre la gare $i$ et $j$ si le tronçon existe et $+\infty$ sinon
 
 ```python
 from math import inf
 
 def bellman(tronçons, n, gare_départ):
-    C = [inf] * n
+    M = [inf] * n
 
     for g in range(n):
-        C[g] = tronçons[gare_départ][g]
+        M[g] = tronçons[gare_départ][g]
 
     for k in range(n):
-        D = [inf] * n
+        M2 = [inf] * n
 
         for g in range(n):
-            D[g] = min(C[g], min([C[x] + tronçons[x][g] for x in range(n)])
-        C = D
+            M2[g] = min(M[g], min([M[x] + tronçons[x][g] for x in range(n)])
+        M = M2
 
-    return C
+    return M
 ```
 
 L'algorithme rend le tableau de temps intermédiaires qui contient le temps minimal entre la ville de départ et une gare $x$ quelconque. S'il n'existe pas de chemins entre la gare de départ et une gare $x$, alors $C[x]$ vaut $+\infty$.
@@ -167,11 +180,19 @@ Le gain algorithmique de l'utilisation de la programmation dynamique résulte da
 
 Enfin, la programmation dynamique nous assure de trouver **un** chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.
 
-## Deuxième exemple : existence de route entre deux villes quelconques
+## <span id="relation-C"></span>Deuxième exemple : existence de route entre deux villes quelconques
 
-En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ sur notre ensemble de gares telle que $C[x][y]$ s'il existe un chemin entre $x$ et $y$.
+En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ nous permettant de savoir si l'on peut voyager de la gare $x$ à la gare $y$ :
 
-Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pourt chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.
+{% note "**Définition**" %}
+Pour un ensemble de gares $G$, on note $C$ **_la relation chemin_** (une matrice symétrique) telle que :
+
+- $C[x][y]$ est **vrai** s'il existe un chemin entre les gares $x$ et $y$
+- $C[x][y]$ est **faux** s'il n'existe pas de chemin entre les gares $x$ et $y$
+- $C[x][x]$ est **vrai** pour toute gare $x$
+
+{% endnote %}
+Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.
 
 Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.
 
@@ -189,7 +210,7 @@ L'intérêt de cette formalisation est qu'elle montre que la relation des chemin
 À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall)) montre qu'on peut le faire très simplement :
 
 {% exercice %}
-Soit $G = \\{ g_1, \dots g_n \\}$ les gares d'un réseau routier et $T$ sa relation tronçon.
+Soit $G = \\{ g_1, \dots g_n \\}$ les gares d'un réseau ferré et $T$ sa relation tronçon.
 
 Montrez que si on note $G_i = \\{ g_1, \dots g_i \\}$, un chemin entre les gares $x$ et$y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut de déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.
 {% endexercice %}
@@ -260,7 +281,7 @@ Vous aurez certainement remarqué qu'on peut le faire, mais explicitez le :
 
 
 {% exercice %}
-Modifiez l'algorithme précédent pour que $C[i][j]$ donne le temps minimum du chemin entre la gare $i$ et la gare $j$.
+Modifiez l'algorithme précédent pour remplacer la création de la matrice $C$ par la matrice $M[i][j]$ qui donne, comme pour le premier exemple) le temps minimum du chemin entre la gare $i$ et la gare $j$.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -278,20 +299,20 @@ from math import inf
 
 for i in range(n):
     for j in range(n):
-        C[i][j] = T[i][j]
+        M[i][j] = T[i][j]
 
 for k in range(n):
-    D = [[inf for i in range(n)] for j in range(n)]
+    M2 = [[inf for i in range(n)] for j in range(n)]
 
     for i in range(n):
         for j in range(n):
-            D[i][j] = min([C[i][j], C[i][k] + C[k][j]])
-    C = D
+            M2[i][j] = min([M[i][j], M[i][k] + M[k][j]])
+    M = M2
 
-return C
+return M
 ```
 
-De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $D$ et écrire l'algorithme sous la forme :
+De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $M2$ et écrire l'algorithme sous la forme :
 
 
 ```python
@@ -299,14 +320,14 @@ from math import inf
 
 for i in range(n):
     for j in range(n):
-        C[i][j] = T[i][j]
+        M[i][j] = T[i][j]
 
 for k in range(n):
     for i in range(n):
         for j in range(n):
-            C[i][j] = min([C[i][j], C[i][k] + C[k][j]])
+            M[i][j] = min([M[i][j], M[i][k] + M[k][j]])
 
-return C
+return M
 ```
 {% enddetails %}
 

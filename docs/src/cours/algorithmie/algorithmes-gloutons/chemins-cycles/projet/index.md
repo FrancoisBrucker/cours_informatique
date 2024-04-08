@@ -2,11 +2,6 @@
 layout: layout/post.njk 
 title: "Projet : chemins cycles"
 
-eleventyNavigation:
-    order: 12
-    prerequis:
-        - "../../algorithme/étude-chemins-cycles/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

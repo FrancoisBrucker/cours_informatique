@@ -336,6 +336,20 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 [Programmation dynamique](/cours/algorithmie/programmation-dynamique/){.interne}
 {% endaller %}
 
+### Semaine 12
+
+#### Mardi : Algorithmes gloutons
+
+{% aller %}
+[Algorithmes gloutons](/cours/algorithmie/algorithmes-gloutons/principe/){.interne}
+{% endaller %}
+
+#### Vendredi : Sac à dos
+
+{% aller %}
+[Problème du sac à dos](/cours/algorithmie/algorithmes-gloutons/sac-à-dos/){.interne}
+{% endaller %}
+
 ## Annales
 
 Les [annales des tests et contrôles](./annales){.interne} de ce cours
