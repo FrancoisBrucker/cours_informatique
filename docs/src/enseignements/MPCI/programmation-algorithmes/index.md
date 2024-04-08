@@ -319,11 +319,11 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 #### Mardi : Structures de données Linéaires
 
 {% aller %}
-[Structures de données "linéaires"](/cours/algorithmie/structure-conteneurs/)
+[Structures de données "linéaires"](/cours/algorithmie/structure-conteneurs/){.interne}
 {% endaller %}
 
 {% aller %}
-[Complexité amortie](/cours/algorithmie/complexité-amortie/)
+[Complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
 {% endaller %}
 
 #### Vendredi : Programmation dynamique

@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 {% lien %}
 [Page Wikipedia sur la programmation dynamique](https://fr.wikipedia.org/wiki/Programmation_dynamique)
 {% endlien %}
@@ -36,12 +35,13 @@ Alors :
 
 En effet, s'il existait par exemple un chemin plus rapide entre A et C (le chemin rouge) :
 
-
 ![opti A-C˜B](../opti-3.png)
 
 Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.
 
 Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien [Richard Bellman](https://fr.wikipedia.org/wiki/Richard_Bellman). C'est ce que nous allons tout de suite découvrir.
+
+Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulé ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution brut force.
 
 ## Premier exemple : chemin le plus rapide à partir d'une ville
 
@@ -51,7 +51,7 @@ Cet algorithme, appelé [_"algorithme de Bellman-Ford"_](https://fr.wikipedia.or
 
 ### Données
 
-On va utiliser un réseau ferré comme données. Il est constitué d'une liste de tronçons reliant deux gares, et chaque tronçon ne contient pas de gares intermédiaires. Aller d'une gare à une autre revient  à suivre une suite de tronçons.
+On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare intermédiaire. Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :
 
 {% note "**Définition**" %}
 
@@ -67,7 +67,7 @@ Un **_chemin_** entre deux gares $x$ et $y$ est soit :
 
 ### Problème à résoudre
 
-On cherche à connaitre le temps minimal de trajet entre une gare $A$ (donnée) et chaque autre gare.
+On cherche à connaitre le temps minimal de trajet $C[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.
 
 ### Méthode de résolution
 
@@ -80,37 +80,37 @@ Dans le cas des chemins ferrés, on peut classer les chemins partant de $A$ par 
 1. d'un chemin optimal de $k-1$ tronçons de la gare $A$ à une gare $y$
 2. du tronçon entre la gare $y$ et la gare $x$
 
-Si l'on connait les chemins optimaux de longueurs $k-1$ entre $A$ et toutes les autres gares $y$ on peut créer un chemin optimal entre $A$ et $x$ de $k$ tronçons.
+Si l'on connait les chemins optimaux ayant au plus $k-1$ tronçons entre $A$ et toutes les autres gares $y$ on peut créer un chemin optimal entre $A$ et $x$ d'au plus $k$ tronçons en ajontant le tronçon entre $A$ et $x$.
 
 On a alors l'équation de récurrence suivante :
 
 <div>
 $$
-C_k(x, y) = \min (\{ C_{k-1}(x, y), \min (\{C_{k-1}(x, z) + C_1(z, y) \mid z \in G \}\}))
+C_k[x] = \min (\{ C_{k-1}[x], \min (\{C_{k-1}[y] + T[y][x] \mid y \in G \}\}))
 $$
 </div>
 
 Avec :
 
 - $G$ l'ensemble des gares
-- $C_1(u, v)$ valant soit le temps de parcourt pour le tronçon allant de $u$ à  $v$, soit $+\infty$ si le tronçon entre $u$ et $v$ n'existe pas.
+- $T[u][v]$ valant soit le temps de parcourt du tronçon allant de $u$ à $v$, soit $+\infty$ si le tronçon n'existe pas
+- $C_k[u]$ le temps minimum d'un chemin entre $A$ et $u$ en au plus $k$ tronçons
 
+Le temps minimum entre les deux gares $A$ et $x$ est donné par $C[x] = C_{|G|}[x]$.
 
-Le temps minimum entre deux gares $x$ et $y$ est donné par $C_{|G|}(x, y)$.
+**Attention**, il est bien nécessaire d'aller jusqu'à $C_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ dès que le temps devient fini) :
 
-**Attention**, il est bien nécessaire d'aller jusqu'à  $C_{|G|}(x, y)$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ le temps devient fini) :
+- $T[A][b] = 10$
+- $T[A][c] = 1$
+- $T[c][b] = 1$
 
-- $C_1(A, b) = 10$
-- $C_1(A, c) = 1$
-- $C_1(c, b) = 1$
-
-Et on a $C_2(A, b) = 2 < C_1(A, b) = 10$.
+Et on a $C_2[b] = 2 < T[A][b] = 10$.
 
 #### Stockage des solutions intermédiaires
 
 La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.
 
-Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gare.
+Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gare. On a pas besoin de tout conserver, juste les valeurs précédentes suffisent.
 
 #### Algorithme final
 
@@ -135,17 +135,19 @@ def bellman(tronçons, n, gare_départ):
             D[g] = min(C[g], min([C[x] + tronçons[x][g] for x in range(n)])
         C = D
 
-    return C 
+    return C
 ```
 
 L'algorithme rend le tableau de temps intermédiaires qui contient le temps minimal entre la ville de départ et une gare $x$ quelconque. S'il n'existe pas de chemins entre la gare de départ et une gare $x$, alors $C[x]$ vaut $+\infty$.
 
 {% info %}
+
 - On a utilisé [`inf`{.language-} qui représente l'infini](https://docs.python.org/fr/3/library/math.html#math.inf)
 - l'utilisation de $D$ permet d'éviter les effets de bord
-{% endinfo %}
+  {% endinfo %}
 
-La complexité de cet algorithme 
+La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ le nombre de gares.
+
 ## Méthode de résolution
 
 {% note "**Méthode**" %}
@@ -158,32 +160,33 @@ Pour résoudre un problème d'optimisation en utilisant la programmation dynamiq
 
 {% endnote %}
 
-Le gain algorithmique de l'utilisation de la programmation dynamique résulte dans le fait de stocker les résultats intermédiaires (les sous-problèmes optimaux) pour ne pas avoir à les recalculer. Cette approche est d'autant plus efficace que : 
+Le gain algorithmique de l'utilisation de la programmation dynamique résulte dans le fait de stocker les résultats intermédiaires (les sous-problèmes optimaux) pour ne pas avoir à les recalculer. Cette approche est d'autant plus efficace que :
 
 1. l'équation de récurrence est simple à calculer,
 2. le nombre de sous-problèmes à stocker est faible.
 
 Enfin, la programmation dynamique nous assure de trouver **un** chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.
 
-
 ## Deuxième exemple : existence de route entre deux villes quelconques
 
-Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$. On pourrait utiliser cet algorithme pour savoir s'il existe un chemin entre deux gares quelconque, mais cela prendrait $\mathcal{O}(n^4)$ opérations.
+En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ sur notre ensemble de gares telle que $C[x][y]$ s'il existe un chemin entre $x$ et $y$.
+
+Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pourt chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.
 
 Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.
 
-La notion de chemin s'écrit très bien sous la forme d'une relation $C$ sur un ensemble $V$ de villes. On dira que $xCy$ s'il existe un chemin entre $x$ et $y$. Cette relation est une [relation d'équivalence](https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence) car elle est :
+La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car c'est [une relation d'équivalence](https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence). Elle est en effet :
 
-- réflexive $xCx$ (le singleton $x$ permet de relier $x$ à lui-même)
-- symétrique $xCy$ implique $yCx$ (les routes sont à double sens)
-- transitive $xCy$ et $yCz$ implique $xCz$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)
+- réflexive $C[x][y]$ (le singleton $x$ permet de relier $x$ à lui-même)
+- symétrique $C[x][y]$ implique $C[x][y]$ (les routes sont à double sens)
+- transitive $C[x][y]$ et $C[x][y]$ implique $C[x][y]$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)
 
 L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :
 
-1. en considérant la relation $T$ des tronçons ($xTy$ s'il existe un tronçon entre les gares $x$ et $y$)
+1. en considérant la relation $T$ des tronçons ($T[x][y]$ s'il existe un tronçon entre les gares $x$ et $y$)
 2. en fermant cette relation par transitivité
 
-À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall)) montre qu'on peut le faire très simplement : 
+À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de [Algorithme de Roy](https://fr.wikipedia.org/wiki/Algorithme_de_Warshall)) montre qu'on peut le faire très simplement :
 
 {% exercice %}
 Soit $G = \\{ g_1, \dots g_n \\}$ les gares d'un réseau routier et $T$ sa relation tronçon.
@@ -195,23 +198,19 @@ Il existe un chemin entre $x$ et $y$ ayant comme gares de passage uniquement des
 
 - soit il existe un chemin entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
 - soit il existe les deux chemins suivants :
-  - un chemin entre $x$ et $v_i$ ayant comme villes de passage uniquement des éléments de $G_{i-1}$
-  - un chemin entre $v_i$ et $y$ ayant comme villes de passage uniquement des éléments de $G_{i-1}$
+  - un chemin entre $x$ et $v_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
+  - un chemin entre $v_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
 
 {% enddetails %}
 
-Ici, le sous problème revient à restreindre le nombre de gare possible ! On a plus de relation de récurrence, mais un lien entre les chemins ne passant que par les éléments de  $G_{i-1}$ et ceux passant passant par $G_{i}$. On peut ainsi reprendre la méthode de résolution du premier exemple.
+Ici, le sous problème revient à restreindre le nombre de gares possible ! On a plus de relation de récurrence, mais un lien entre les chemins ne passant que par les éléments de $G_{i-1}$ et ceux passant passant par $G_{i}$. On peut ainsi reprendre la méthode de résolution du premier exemple :
 
 {% exercice %}
-Déduire de l'exercice précédent un algorithme utilisant la programmation dynamique en $\mathcal{O}(n^3)$ permettant de trouver la relation chemin à partir de la relation tronçon.
+Déduire un algorithme utilisant la programmation dynamique en $\mathcal{O}(n^3)$ permettant de trouver la relation chemin à partir de la relation tronçon.
 {% endexercice %}
 {% details "corrigé" %}
 
-On utilise la représentation matricielle des relations. On dira que $T[i][j]$ (_resp._ $C[i][j]$) est vrai s'il existe un tronçon (_resp._ un chemin) entre $g_i$ et $g_j$ dans le réseau et que $T[i][j]$ (_resp._ $C[i][j]$) est faux sinon.
-
-L'équation précédente s'écrit alors :
-
-$C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :
+En notant $C_k[i][j]$ la relation telle que les gares $i$ et $j$ sont reliées par un chemins de gares de passage plus petites ou égale à $k$, $C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :
 
 - $C_{k-1}[i][j]$ est vrai
 - $C_{k-1}[i][k]$ et $C_{k-1}[k][j]$ sont vrais
@@ -222,7 +221,7 @@ $$
 C_k[i][j] = C_{k-1}[i][j] \text{ OU } (C_{k-1}[i][k] \text{ ET } C_{k-1}[k][j])
 $$
 
-Ce que l'on peut écrire en ré-écrivant sur la même relation :
+Ce qui donne l'algorithme :
 
 ```python
 for i in range(n):
@@ -236,9 +235,12 @@ for k in range(n):
         for j in range(n):
             D[i][j] = C[i][j] or (C[i][k] and C[k][j])
     C = D
+
+return C
 ```
 
-Comme il ne peut y avoir d'effet de bord (une fois que la case de la matrice devient vraie, elle ne bouge plus), on peut même se passer de $D$ :
+Notez que comme il ne peut pas y avoir d'effets de bord (une fois que la valeur est vrai, elle ne bouge plus), on peut se passer de la matrice $D$ et écrire l'algorithme :
+
 
 ```python
 for i in range(n):
@@ -249,13 +251,78 @@ for k in range(n):
     for i in range(n):
         for j in range(n):
             C[i][j] = C[i][j] or (C[i][k] and C[k][j])
+
+return C
+```
+{% enddetails %}
+
+Vous aurez certainement remarqué qu'on peut le faire, mais explicitez le :
+
+
+{% exercice %}
+Modifiez l'algorithme précédent pour que $C[i][j]$ donne le temps minimum du chemin entre la gare $i$ et la gare $j$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Le temps de trajet minimum entre deux gares $x$ et $y$  ayant comme gares de passage uniquement des éléments de $G_{i}$ est :
+
+- soit le temps de trajet minimum entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
+- soit la somme des temps de trajet minimum entre :
+  - $x$ et $v_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
+  - $v_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$
+
+On peut donc écrire l'algorithme :
+
+```python
+from math import inf
+
+for i in range(n):
+    for j in range(n):
+        C[i][j] = T[i][j]
+
+for k in range(n):
+    D = [[inf for i in range(n)] for j in range(n)]
+
+    for i in range(n):
+        for j in range(n):
+            D[i][j] = min([C[i][j], C[i][k] + C[k][j]])
+    C = D
+
+return C
 ```
 
+De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $D$ et écrire l'algorithme sous la forme :
+
+
+```python
+from math import inf
+
+for i in range(n):
+    for j in range(n):
+        C[i][j] = T[i][j]
+
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            C[i][j] = min([C[i][j], C[i][k] + C[k][j]])
+
+return C
+```
+{% enddetails %}
+
+L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connut sous le nom d'algorithme de [Roy-Floyd-Warshall](https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall). Mais se pose alors la question : 
+
+
+{% exercice %}
+Quel est l'intérêt de l'algorithme du premier exemple (algorithme de Bellman-Ford) par rapport au second (algorithme de Roy-Floyd-Warshall) ?
+{% endexercice %}
+{% details "corrigé" %}
+Les complexités temporelles sont les même mais pas la complexité spatiale. Le second algorithme doit conserver toute une matrice de chemins, alors que le premier ne conserve qu'une ligne, celle concernant la gare de départ.
 {% enddetails %}
 
 ## Stockage des résultats intermédiaires
 
-Il existe deux approches pour le stockage des résultats intermédiaires : [***l'approche bottom-up***](https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante) et la [***mémoïsation***](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation). Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :
+Il existe deux approches pour le stockage des résultats intermédiaires : [**_l'approche bottom-up_**](https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante) et la [**_mémoïsation_**](https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation). Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :
 
 $$
 F(n) = F(n-1) + F(n-2)
@@ -310,7 +377,7 @@ def F(n):
 
     if n <= 2:
         f = 1
-    else:  
+    else:
         f = F(n - 1) + F(n - 2)
 
     cache[n] = f
@@ -321,22 +388,106 @@ Le fait que $F(n - 2)$ ne soit appelé qu'une fois que $F(n - 1)$ le soit, fait 
 
 Il n'y a donc que $n$ appels récursifs, le second élément ayant été mémoïsé :
 
-- la complexité est en $\mathcal{O}(n)$ 
+- la complexité est en $\mathcal{O}(n)$
 - la complexité spatiale est également en $\mathcal{O}(n)$ (le tableau de mémoïsation)
 
-## Autres exemples classiques
+## Troisième exemple : sous-suite croissante maximum
 
-Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulé ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution brut force.
 
-> TBD : faire de la mémoïsation. 
-> TBD : <http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/ProgrammationDynamique.pdf>
-> TBD : voyageur de commerce + sac à dos : <https://scheid.perso.math.cnrs.fr/Enseignement/GRO/pdyn.pdf>
+Le problème est le suivant :
 
-### Sous-suite croissantes max
+{% note "**Problème**" %}
+Soit $T$ un tableau à $n$ éléments. On cherche la longueur de la suite ${(s\_i)}\_{i\geq 0}$ strictement croissante la plus grande possible telle que $T[s_i] < T[s_{i+1}]$ pour tout $i$.
+{% endnote %}
 
-> TBD
+Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximal de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).
 
-### Carré vides maximaux
 
-> TBD
+{% exercice %}
+Si $n$ et la taille de $T$, montrez que :
 
+- $N[i] \geq 1$ pour tout $0\leq i < n$ 
+- $N[n-1] = 1$ 
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Clair.
+
+{% enddetails %}
+
+Les constatations préliminaires précédentes permettent de trouver une relation de récurrence entre les $N[i]$ :
+
+{% exercice %}
+Déterminez une une relation de de récurrence entre $N[i]$ et les $N[j]$ pour les $j>i$ tels que $T[i] < T[j]$.
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+N[i] = 1 + \max(\{0, \max(\{ N[j] \mid j>i, T[j] > T[i]\}) \}) 
+$$
+</div>
+
+{% enddetails %}
+
+La relation de récurrence précédente permet de créer des algorithmes de résolution. Vous allez en créer deux :
+
+
+{% exercice %}
+Proposez un algorithme récursif et utilisant la mémoïsation pour résoudre le problème.
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour une taille de tableau plus petite que $N$, on a :
+
+```python
+cache = [None] * N
+
+def sous_suite(T, i):
+    if cache[i] != None:
+        return cache[i]
+
+    if i >= len(T) -1:
+        v = 1
+    else:
+        v = 1 + max([
+                     0,
+                     max([sous_suite(T, j) for j in range(i + 1, len(T)) if T[j] > T[i]])
+                    ])
+
+    cache[i] = v
+    return v
+
+print(sous_suite(T, 0))
+```
+
+Tout comme pour la mémoïsation de la suite de Fibonacci, on ne calcule `sous_suite(T, i)`{.language-} qu'une seule fois. 
+Chaque calcul peut demander le calcul de tous les `sous_suite(T, j)`{.language-}, pour tous les $j>i$, donc une complexité de $\mathcal{O}(n)$ lorsque tous les résultats seront dans le cache. La complexité totale de `sous_suite(T, 0)`{.language-} est donc de $\mathcal{O}(n^2)$.
+
+{% enddetails %}
+
+{% exercice %}
+Proposez un algorithme itératif et bottom-up pour résoudre le problème.
+{% endexercice %}
+{% details "corrigé" %}
+Il faut partir de ce que l'on connait, $N[n-1]$, puis redescendre itérativement vers $N[0]$.
+
+```python
+def sous_suite(T):
+    N = [1] * len(T)
+
+    for i in range(len(T) - 2, -1, -1):
+        N[i] = 1 + max([
+                        0,
+                        max([N[j] for j in range(i + 1, len(T)) if T[j] > T[i]])
+                       ])
+
+    return N[0]
+
+print(sous_suite(T))
+```
+
+La complexité est clairement en $\mathcal{O}(n^2)$. 
+
+{% enddetails %}
