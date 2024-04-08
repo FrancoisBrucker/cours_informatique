@@ -92,7 +92,10 @@
     
   
 
-  <p>On peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
+  <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>.</p>
+<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les <a href="../tableau-associatif" class="interne">tableaux ssociatifs</a>.</p>
+<h2>Définitions</h2>
+<p>On peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -234,6 +237,15 @@ n &=& n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0\\
 \end{array}
 $$
 </div>
+<p>Et donc :</p>
+<div>
+$$
+\begin{array}{lcl}
+n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
+&=& (\sum_{i=0}^l ((n_i \mod m)\cdot ((2^{k} \mod m)^i \mod m) \mod m)) \mod m
+\end{array}
+$$
+</div>
 <p>De la un pseudo-code du calcul du modulo de $n$ est alors :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
 exp <span class="token operator">=</span> <span class="token number">1</span>
@@ -307,7 +319,7 @@ pour chaque élément e du tuple:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$) est :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$) est :</p>
 <p>$$<br>
 p(n, m) = \left(1-\frac{1}{m}\right)^n<br>
 $$</p>
@@ -342,7 +354,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres au hasard sans avoir de collisions est de :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :</p>
 <p>$$<br>
 \bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})<br>
 $$</p>
