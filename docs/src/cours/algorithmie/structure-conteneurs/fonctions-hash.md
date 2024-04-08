@@ -9,6 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm).
+
+On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les [tableaux ssociatifs](../tableau-associatif){.interne}.
+
+## Définitions
+
 On peut définir une [fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
 
 {% note "**Définition**" %}
@@ -162,6 +168,17 @@ n &=& n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0\\
 $$
 </div>
 
+Et donc :
+
+<div>
+$$
+\begin{array}{lcl}
+n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
+&=& (\sum_{i=0}^l ((n_i \mod m)\cdot ((2^{k} \mod m)^i \mod m) \mod m)) \mod m
+\end{array}
+$$
+</div>
+
 De la un pseudo-code du calcul du modulo de $n$ est alors :
 
 ```python
@@ -235,7 +252,7 @@ Le but est — bien sûr — de minimiser les collisions.
 On va distinguer deux types de collisions, celle d'obtenir un nombre précis :
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$) est :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$) est :
 
 $$
 p(n, m) = \left(1-\frac{1}{m}\right)^n
@@ -249,7 +266,7 @@ $$
 Et cell d'obtenir deux fois le même nombre :
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres au hasard sans avoir de collisions est de :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :
 
 $$
 \bar{p}(n, m) = \prod_{i=1}^{n}(1-\frac{i-1}{m})
