@@ -839,4 +839,8 @@ Ce qui après optimisation (100 passes) devient :
 
 L'[algorithme de Christofides](https://fr.wikipedia.org/wiki/Algorithme_de_Christofides) est une amélioration de l'algorithme précédent. On peut montrer qu'il est au pire 1.5 fos plus mauvais que le cycle optimal.
 
-C'est d plus la meilleure approximation connue.
+C'est de plus la meilleure approximation connue. Son étude nécessite cependant des connaissance en théorie des graphes que nous n'avons (pour l'instant) pas.
+
+## Autre parcours 
+
+> cycle bitonique exo 9 <https://wkerl.me/cours/ouv_td.pdf>

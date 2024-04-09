@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD : diagramme UML propre.
+
 <!-- début résumé -->
 
 Mise en œuvre de la structure de dictionnaire qui est une structure fondamentale en code.
