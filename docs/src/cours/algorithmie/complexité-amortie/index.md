@@ -54,6 +54,7 @@ Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exempl
 
 ### <span id="compteur-binaire"></span>Compteur binaire
 
+
 Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à $n$ éléments. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $1$ et $N = [1, 1, 0]$ à 6.
 
 Soit lors l'algorithme suivant, écrit en python :
@@ -72,28 +73,7 @@ def successeur(N):
 
 A un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
 
-{% exercice %}
-Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N < 2^n - 1$.
-
-Quel est le successeur de $N = [1, \dots, 1]$ ?
-{% endexercice %}
-{% details "solution" %}
-
-A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.
-
-A l'issue de la boucle `while`{.language-} de la ligne 4, $i$ vaut :
-
-- $-1$ si $N$ valait initialement $N = [1, \dots, 1]$
-- le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)
-
-Note algorithme calcule donc :
-
-- le successeur de $N$ si $0 \leq N < 2^N - 1$
-- $[0, \dots 0]$ si $N = 2^n - 1$
-
-{% enddetails %}
-
-L'algorithme suivant affiche à l'écran tous les entiers écrit sous la forme binaire :
+On a déjà vu ce problème dans [la partie exercice](/cours/algorithmie/projet-classiques/compteur-binaire/){.interne} où on a calculé la complexité max et en moyenne d'une de ses exécutions. Nous allons ici exécuter cet algorithme pour afficher tous les entiers :
 
 ```python
 def tous(n):
@@ -271,9 +251,6 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 $$
 </div>
 
-> TBD on retrouve ce qu'on a fait dans l'exercice, ouf.
-> TBD complexite en moyenne aussi.
-
 ### <span id="pile-agrégat"></span> Exemple de la pile
 
 Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
@@ -340,7 +317,7 @@ $$
 Cette méthode de calcul est une généralisation des deux méthodes précédentes.
 
 {% note %}
-L'**_analyse par potentiel_** calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_potentiel_** $\Omega(i)$ tel que $\Omega(i) > \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)
+L'**_analyse par potentiel_** calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un **_potentiel_** $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)
 
 Le **_coût amorti_** $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :
 
@@ -358,7 +335,7 @@ $$
 
 Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.
 
-En informatique, le potentiel sera souvent associer à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).
+En informatique, le potentiel sera souvent associé à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).
 
 Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant en sorte que la différence de potentiel absorbe les variations de coût réel.
 
@@ -376,7 +353,7 @@ On en déduit que :
 - la complexité d'exécution est de k + 1
 - la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$
 
-Le coût amorti d'une exécution de successeur vaut alors $\widehat(c_i) = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.
+Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.
 
 on a donc :
 
@@ -399,3 +376,4 @@ Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
 $$
 C \geq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$
+

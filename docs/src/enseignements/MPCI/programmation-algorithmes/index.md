@@ -333,7 +333,7 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 #### Vendredi : Programmation dynamique
 
 {% aller %}
-[Programmation dynamique](/cours/algorithmie/programmation-dynamique/){.interne}
+[Programmation dynamique](/cours/algorithmie/design-algorithmes/programmation-dynamique/){.interne}
 {% endaller %}
 
 ### Semaine 12
@@ -341,14 +341,34 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 #### Mardi : Algorithmes gloutons
 
 {% aller %}
-[Algorithmes gloutons](/cours/algorithmie/algorithmes-gloutons/principe/){.interne}
+[Algorithmes gloutons](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/){.interne}
 {% endaller %}
 
-#### Vendredi : Sac à dos
+#### Vendredi : Exercices
 
 {% aller %}
-[Problème du sac à dos](/cours/algorithmie/algorithmes-gloutons/sac-à-dos/){.interne}
+[Exercices sur les algorithmes gloutons](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/exercices/){.interne}
 {% endaller %}
+
+### Semaine 13
+
+#### Mardi : Sac à dos
+
+> TBD
+
+#### Vendredi : Classes de problèmes
+
+> TBD
+
+### Semaine 14/15
+
+#### Mardi : Chaines de caractères
+
+> TBD
+
+#### Vendredi : Enveloppes convexes
+
+> TBD
 
 ## Annales
 

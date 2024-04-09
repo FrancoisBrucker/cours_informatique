@@ -17,15 +17,9 @@ Les algorithmes gloutons sont au coeur de nombreux algorithmes. Leur design est 
 [Principe](./principe){.interne}
 {% endaller %}
 
-## Exemples
-
-### Projet sac à dos
+## Exercices
 
 {% aller %}
-[Sac à dos](./sac-à-dos){.interne}
+[Exercices](./exercices){.interne}
 {% endaller %}
-### Projet chemins et des cycles
 
-{% aller %}
-[Chemins et cycles](./chemins-cycles){.interne}
-{% endaller %}

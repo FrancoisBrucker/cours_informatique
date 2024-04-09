@@ -132,22 +132,15 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Design d'algorithmes
 
-### Divide and conquer
-
-> TBD. Dire qu'on a vue ça dans les tris. 
-> TBD Reprendre le master theorem et le démontrer ici. 
-> TBD autres exemples 
-
-### Programmation dynamique
-
 {% aller %}
-[Programmation dynamique](./programmation-dynamique){.interne}
+[Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
-### Algorithmes gloutons
+
+## Projet "sac à dos"
 
 {% aller %}
-[Algorithmes gloutons](./algorithmes-gloutons){.interne}
+[Problème du sac à dos](./projet-sac-à-dos){.interne}
 {% endaller %}
 
 ## Classes de Problèmes Algorithmiques
