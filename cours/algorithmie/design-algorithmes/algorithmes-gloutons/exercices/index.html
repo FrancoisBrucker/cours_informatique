@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Exercices gloutons</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Exercices gloutons</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/">Algorithmes gloutons</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/exercices/">Exercices gloutons</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p><a href="https://www.techiedelight.com/minimum-number-of-platforms-needed-avoid-delay-arrival-train/">https://www.techiedelight.com/minimum-number-of-platforms-needed-avoid-delay-arrival-train/</a><br>
+<a href="https://www.techiedelight.com/shortest-superstring-problem/">https://www.techiedelight.com/shortest-superstring-problem/</a></p>
+</blockquote>
+<h2>réservation SNCF</h2>
+<p>On suppose que $n$ personnes veulent voyager en train un<br>
+jour donné. La personne $i$ veut prendre le train train[i].</p>
+<p>Il y a $k$ trains qui partent dans la journée, le train $j$ partant avant le train $j+1$, chaque train ne pouvant contenir plus de $K$ passagers.</p>
+<h3>solution possible ?</h3>
+<p>Proposez un algorithme qui vérifie que pour un nombre de train donné et une liste de trains choisi, il est possible de faire voyager tout le monde.</p>
+<h3>solution approchée</h3>
+<p>On suppose maintenant que la personne $i$, si elle ne peut<br>
+pas prendre le train train[i] parce qu’il est complet, accepte<br>
+de prendre un des trains suivants (s’il y en a un).</p>
+<p>Proposez un algorithme minimisant l'attente globale pour faire voyager tous les voyageurs.</p>
+<h2>Recouvrement</h2>
+<p><a href="https://algo.gricad-pages.univ-grenoble-alpes.fr/L3I-S5-algo/TD1-10-corrige.pdf">https://algo.gricad-pages.univ-grenoble-alpes.fr/L3I-S5-algo/TD1-10-corrige.pdf</a></p>
+<blockquote>
+<p>recouvrement de points par des intervalles exo 3</p>
+</blockquote>
+<h2>Une quête d'essence</h2>
+<p>Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est rangée dans la liste <code class="language-">d</code> (la station $i$ est à <code class="language-">d[i]</code> kilomètres du départ). Le but est d'atteindre la dernière station de la route.</p>
+<h3>Admissibilité</h3>
+<p>Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse parcourir toute la route jusqu'à la dernière station service.</p>
+<h3>Algorithmes</h3>
+<p>Écrivez deux algorithmes :</p>
+<ul>
+<li>le premier qui vérifie, à partir d'une liste <code class="language-">d</code> de stations et d'un nombre maximum de kilomètres <code class="language-">r</code> possibles que le problème admet une solution.</li>
+<li>le second qui vérifie, à partir d'une liste <code class="language-">s</code> d'indices de stations (que l'on supposera croissante) où faire le plein, d'une liste <code class="language-">d</code> de stations et d'un nombre maximum de kilomètres <code class="language-">r</code> si <code class="language-">s</code> est une solution (ou pas) du problème</li>
+</ul>
+<p>Exemple :</p>
+<ul>
+<li>Pour une liste <code class="language-">d</code> de stations valant : <code class="language-">d = [2, 5, 6, 10, 12, 13]</code>, le premier algorithme devra répondre Oui pour un <code class="language-">r</code> valant $4$ et None pour <code class="language-">r = 3</code>.</li>
+<li>Pour une liste <code class="language-">d</code> de stations valant : <code class="language-">d = [2, 5, 6, 10, 12, 13]</code>, un réservoir de <code>r = 4</code> et une liste <code class="language-">s = [0, 2, 3, 4]</code> il devra répondre <code class="language-">True</code> et pour une liste <code class="language-">d</code> et un réservoir identique, il devra répondre <code class="language-">False</code> pour <code class="language-">s = [0, 1, 3, 4]</code>.</li>
+</ul>
+<h2>Reservoir vide</h2>
+<p>On suppose que chaque litre d'essence permet de parcourir 1km et chaque station $i$ vend 1l d'essence à un prix $p_i$. On essaye de minimiser le coût d'achat d'essence.</p>
+<h3>Nombre de stations minimum</h3>
+<ol>
+<li>Montrer qu'il existe une solution de coût minimal qui minimise aussi le nombre d'arrêt.</li>
+<li>Montrer à partir d'un exemple qu'il peut exister des solutions à coût minimal ayant plus d'arrêt que le nombre minimal.</li>
+</ol>
+<h3>Algorithme</h3>
+<p>Écrivez un algorithme qui, à partir d'une liste <code class="language-">d</code> de stations et d'un nombre maximum de kilomètres <code class="language-">r</code> possible rend une liste <code class="language-">s</code> de couples <code class="language-">(station, litre)</code> qui contient un nombre minimal de stations où acheter de l'essence ainsi que le nombre de litres à y acheter pour minimiser le coût du trajet.</p>
+<h2>Partage d'information</h2>
+<p><a href="http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/TDAlgorithmesGloutons.pdf">http://www-desir.lip6.fr/~spanjaard/pmwiki/uploads/TDAlgorithmesGloutons.pdf</a></p>
+<p>exo 2</p>
+<h2>Temps d'attente</h2>
+<p>exo 5 imag</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

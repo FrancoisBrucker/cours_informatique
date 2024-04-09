@@ -151,45 +151,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
         N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>A un nombre <code class="language-">N</code> écrit au format binaire donné, <code class="language-">successeur(N)</code> va l'incrémenter de 1.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Prouver que l'algorithme précédent trouve bien le successeur d'un nombre $0 \leq N &lt; 2^n - 1$.</p>
-<p>Quel est le successeur de $N = [1, \dots, 1]$ ?</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>A tout entier binaire $N= [a_0, \dots, a_{n-1}]$ son successeur vaut $N' = [a_0, \dots, a_{i-1}, 1, 0 \dots, 0]$ où $i$ est l'indice maximum tel que $a_i = 0$.</p>
-<p>A l'issue de la boucle <code class="language-">while</code> de la ligne 4, $i$ vaut :</p>
-<ul>
-<li>$-1$ si $N$ valait initialement $N = [1, \dots, 1]$</li>
-<li>le plus grand indice tel que $N[i] = 0$ (avec $N$ la valeur initial de l'entier)</li>
-</ul>
-<p>Note algorithme calcule donc :</p>
-<ul>
-<li>le successeur de $N$ si $0 \leq N &lt; 2^N - 1$</li>
-<li>$[0, \dots 0]$ si $N = 2^n - 1$</li>
-</ul>
-</div>
-</details>     
-</div>
-<p>L'algorithme suivant affiche à l'écran tous les entiers écrit sous la forme binaire :</p>
+<p>On a déjà vu ce problème dans <a href="/cours_informatique/cours/algorithmie/projet-classiques/compteur-binaire/" class="interne">la partie exercice</a> où on a calculé la complexité max et en moyenne d'une de ses exécutions. Nous allons ici exécuter cet algorithme pour afficher tous les entiers :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">tous</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
@@ -379,10 +341,6 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 \end{array}
 $$
 </div>
-<blockquote>
-<p>TBD on retrouve ce qu'on a fait dans l'exercice, ouf.<br>
-TBD complexite en moyenne aussi.</p>
-</blockquote>
 <h3><span id="pile-agrégat"></span> Exemple de la pile</h3>
 <p>Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :</p>
 <ul>
@@ -438,7 +396,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) &gt; \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
+<p>L'<strong><em>analyse par potentiel</em></strong> calcule la complexité totale de $m$ exécutions successives d'un même algorithme consiste à associer à la $i$ème exécution de coût réel $c_i$ un <strong><em>potentiel</em></strong> $\Omega(i)$ tel que $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$ (on prend généralement $\Omega(0) = 0$)</p>
 <p>Le <strong><em>coût amorti</em></strong> $\widehat{c_i}$ de la $i$ème exécution est alors défini tel que :</p>
 <p>$$<br>
 \widehat{c_i} = c_i + \Omega(i) - \Omega(i-1)<br>
@@ -450,7 +408,7 @@ $$</p>
 </div>
 </div>
 <p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
-<p>En informatique, le potentiel sera souvent associer à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
+<p>En informatique, le potentiel sera souvent associé à la structure de donnée générale sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
 <p>Pour utiliser cette technique de façon efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant, en faisant en sorte que la différence de potentiel absorbe les variations de coût réel.</p>
 <h3><span id="compteur-potentiel"></span> Exemple du compteur</h3>
 <p>Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Prenons cette mesure comme potentiel (on a $\Omega(0) = 0$, ce qui garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$).</p>
@@ -464,7 +422,7 @@ $$</p>
 <li>la complexité d'exécution est de k + 1</li>
 <li>la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$</li>
 </ul>
-<p>Le coût amorti d'une exécution de successeur vaut alors $\widehat(c_i) = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
+<p>Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
 <p>on a donc :</p>
 <p>$$<br>
 C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)<br>
