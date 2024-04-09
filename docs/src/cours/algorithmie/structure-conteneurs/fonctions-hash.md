@@ -11,7 +11,7 @@ eleventyComputed:
 
 Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm).
 
-On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les [tableaux ssociatifs](../tableau-associatif){.interne}.
+On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les [tableaux ssociatifs](../tableau-associatif){.interne}).
 
 ## Définitions
 
@@ -179,7 +179,9 @@ n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
 $$
 </div>
 
-De la un pseudo-code du calcul du modulo de $n$ est alors :
+Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
+
+De la un pseudo-code du calcul du modulo de $n$ :
 
 ```python
 e = (2 ** k) mod m
@@ -191,11 +193,9 @@ for 1 <= i <= l:
     res = (res + c) mod m
 ```
 
-Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
-
 #### Équiprobable
 
-Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \\{k\cdot m+i \\mid k \geq 0\\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2).
+Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \\{k\cdot m+i \\mid k \geq 0\\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2, sont disjoints et recouvrent tous les entier: un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$).
 
 Attention cependant :
 
@@ -242,24 +242,23 @@ Ceci assure :
 - de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va _mélanger_ le tout à chaque fois
 
 ## Collisions
+Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.
 
 {% note "**Définition**" %}
 Une **_collision_** pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$
 {% endnote %}
 
-Le but est — bien sûr — de minimiser les collisions.
-
 On va distinguer deux types de collisions, celle d'obtenir un nombre précis :
 
 {% note "**Proposition**" %}
-Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$) est :
+Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
 
 $$
 p(n, m) = \left(1-\frac{1}{m}\right)^n
 $$
 
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 À chaque tirage, la probabilité que la fonction de hash soit égale à $h$ est $\frac{1}{m}$, la probabilité de ne pas être égale à $h$ est donc $1-\frac{1}{m}$. Les tirages étant équiprobables, la probabilité est bien celle demandée.
 {% enddetails %}
 
@@ -273,7 +272,7 @@ $$
 $$
 
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit différent de ceux des tirages précédents. Au $i$ème essai il y a donc une probabilité de $\frac{i-1}{m}$ de tomber sur un hash déjà vu et une probabilité de $1-\frac{i-1}{m}$ d'en obtenir un nouveau.
 
@@ -355,7 +354,7 @@ Faites le test !
 Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par [git](https://fr.wikipedia.org/wiki/Git), qui rend un mot de $\\{0, 1\\}^{160}$ (git utilise la fonction de hachage [sha-1](https://fr.wikipedia.org/wiki/SHA-1)), il faudrait avoir un nombre de tirages de :
 
 $$
-n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}}= 2^{80}
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}
 $$
 
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !

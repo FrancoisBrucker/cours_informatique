@@ -19,6 +19,8 @@ Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoi
 
 ## Tableau
 
+> TBD UML
+
 On considérera ici qu'un tableau $T$ est une structure composée de deux attributs :
 
 - le tableau $t$ en lui-même
@@ -35,6 +37,8 @@ Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :
 Cette structure est adaptée lorsque l'on ne doit pas supprimer/ajouter des éléments en milieu de structures. Cependant, on doit connaître _a priori_ le nombre maximum d'éléments, ce qui n'est pas le cas pour les listes.
 
 ## Structure d'un liste
+
+> TBD UML
 
 En simplifiant un peu, une liste $t$ est une structure composée deux attributs :
 
@@ -110,13 +114,14 @@ Dans le cas le pire le dernier ajout entraîne un doublement de la taille de la 
 - ...
 - le $\log_2(N)$ tableau précédent était de taille $\frac{N}{2^{\log_2(N)}} = 1$ et son remplissage a pris un nombre d'opérations de $\mathcal{O}(\frac{N}{2^{\log_2(N)}}) = \mathcal{O}(1)$ opérations
 
-La complexité totale du remplissage de la liste en parant de la liste vide est donc la somme de tout ça :
+La complexité totale du remplissage de la liste en partant de la liste vide est donc la somme de tout ça :
 
 <div>
 $$
 \begin{array}{lcl}
 C(N) &=& \mathcal{O}(N + \underbracket{1 + \cdot + 1}_{N/2 - 1} + \frac{N}{2} + \underbracket{1 + \cdot + 1}_{N/4 - 1} + \frac{N}{4} + \cdot + \frac{N}{2^{\log_2(N)}})\\
-& \leq &\mathcal{O}(2 \cdot N + 2 \cdot \frac{N}{2} + 2 \cdot \frac{N}{4} + \cdot + 2 \cdot \frac{N}{2^{\log_2(N)}})\\
+& \leq &\mathcal{O}(N + 2 \cdot \frac{N}{2} + 2 \cdot \frac{N}{4} + \cdot + 2 \cdot \frac{N}{2^{\log_2(N)}})\\
+& \leq & \mathcal{O}(N + N \cdot \sum_{i=1}^{\log_2(N)}{\frac{1}{2^i}})\\
 & \leq & \mathcal{O}(N \cdot \sum_{i=0}^{\log_2(N)}{\frac{1}{2^i}})
 \end{array}
 $$
@@ -142,7 +147,7 @@ Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathca
 
 {% endnote %}
 
-On appelle ce genre de raisonnement de [la complexité amortie](../../../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes.
+On appelle ce genre de raisonnement [analyse en complexité amortie](../../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.
 
 La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
