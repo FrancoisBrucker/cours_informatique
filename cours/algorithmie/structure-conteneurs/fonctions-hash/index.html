@@ -93,7 +93,7 @@
   
 
   <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>.</p>
-<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les <a href="../tableau-associatif" class="interne">tableaux ssociatifs</a>.</p>
+<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les <a href="../tableau-associatif" class="interne">tableaux ssociatifs</a>).</p>
 <h2>Définitions</h2>
 <p>On peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -246,7 +246,8 @@ n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
 \end{array}
 $$
 </div>
-<p>De la un pseudo-code du calcul du modulo de $n$ est alors :</p>
+<p>Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
+<p>De la un pseudo-code du calcul du modulo de $n$ :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
 exp <span class="token operator">=</span> <span class="token number">1</span>
 res <span class="token operator">=</span> n_0 mod m
@@ -255,9 +256,8 @@ res <span class="token operator">=</span> n_0 mod m
     c <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
     res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m
 </code></pre>
-<p>Comme accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est très facile pour un ordinateur, on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
 <h4>Équiprobable</h4>
-<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2).</p>
+<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2, sont disjoints et recouvrent tous les entier: un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$).</p>
 <p>Attention cependant :</p>
 <p>$$<br>
 (k \times p) \mod (p \times q) = (k \mod q) \times p<br>
@@ -300,6 +300,7 @@ pour chaque élément e du tuple:
 <li>de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va <em>mélanger</em> le tout à chaque fois</li>
 </ul>
 <h2>Collisions</h2>
+<p>Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -310,7 +311,6 @@ pour chaque élément e du tuple:
 <p>Une <strong><em>collision</em></strong> pour une fonction de hachage $h$ est deux nombre $a$ et $b$ telle que $f(a) = f(b)$</p>
 </div>
 </div>
-<p>Le but est — bien sûr — de minimiser les collisions.</p>
 <p>On va distinguer deux types de collisions, celle d'obtenir un nombre précis :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -319,14 +319,14 @@ pour chaque élément e du tuple:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$) est :</p>
+<p>Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.},{.} } m[$ uniforme, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
 <p>$$<br>
 p(n, m) = \left(1-\frac{1}{m}\right)^n<br>
 $$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -361,7 +361,7 @@ $$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -473,7 +473,7 @@ $$
 </div>
 <p>Si l'on prend un exemple réaliste de fonction de hash, par exemple celle utilisée par <a href="https://fr.wikipedia.org/wiki/Git">git</a>, qui rend un mot de $\{0, 1\}^{160}$ (git utilise la fonction de hachage <a href="https://fr.wikipedia.org/wiki/SHA-1">sha-1</a>), il faudrait avoir un nombre de tirages de :</p>
 <p>$$<br>
-n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq \sqrt{2^{160}}= 2^{80}<br>
+n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}<br>
 $$</p>
 <p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !</p>
 <p>De ce qui découle on en déduit une règle universelle de toute fonction de hash :</p>
