@@ -92,126 +92,36 @@
     
   
 
-  <h2>réservation SNCF</h2>
-<p>On suppose que $n$ personnes veulent voyager en train un<br>
-jour donné. La personne $i$ veut prendre le train train[i].</p>
-<p>Il y a $k$ trains qui partent dans la journée, le train $j$ partant avant le train $j+1$, chaque train ne pouvant contenir plus de $K$ passagers.</p>
+  <h2>Glouton optimal</h2>
+<h2>Recouvrement</h2>
+<p><a href="https://algo.gricad-pages.univ-grenoble-alpes.fr/L3I-S5-algo/TD1-10-corrige.pdf">https://algo.gricad-pages.univ-grenoble-alpes.fr/L3I-S5-algo/TD1-10-corrige.pdf</a></p>
+<blockquote>
+<p>recouvrement de points par des intervalles exo 3</p>
+</blockquote>
+<h2>réservation SNCF</h2>
 <h3>solution possible ?</h3>
-<p>Proposez un algorithme qui vérifie que pour un nombre de train donné et une liste de trains choisi, il est possible de faire voyager tout le monde.</p>
 <h3>solution approchée</h3>
-<p>On suppose maintenant que la personne $i$, si elle ne peut<br>
-pas prendre le train train[i] parce qu’il est complet, accepte<br>
-de prendre un des trains suivants (s’il y en a un).</p>
-<p>Proposez un algorithme minimisant l'attente globale pour faire voyager tous les voyageurs.</p>
-<h2>Le plein de sens</h2>
-<h2>2. Algorithme glouton</h2>
-<p>Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est rangée dans la liste <code>d</code> (la station $i$ est à <code>d[i]</code> kilomètres du départ). Le but est d'atteindre la dernière station de la route.</p>
-<h3>écart</h3>
-<p>Ecrivez un algorithme qui, à partir de la liste <code>d</code> des stations rend une liste <code>delta</code> où :</p>
-<ul>
-<li><code>delta[0]</code> est la distance du départ de la station $0$,</li>
-<li><code>delta[i]</code> pour $i &gt; 0$ est la distance de la station $i-1$ à la station $i$.</li>
-</ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ecart</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    delta <span class="token operator">=</span> <span class="token punctuation">[</span>d<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        delta<span class="token punctuation">.</span>append<span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> delta
-</code></pre>
-<h4>complexité</h4>
-<p>Une boucle en $\mathcal{O}(len(d))$, les autres lignes sont en $\mathcal{O}(1)$ puisqu'elles consistent à trouver un élément d'indice donné dans une liste, faire des opérations arithmétiques et à ajouter des éléments à la fin d'une liste.</p>
-<p>La complexité totale de l'algorithme est donc de : $\mathcal{O}(len(d))$</p>
-<h4>preuve</h4>
-<p>A la fin de l'étape $i$ de la boucle, on prouve que <code>delta[j]</code> vaut la distance entre les stations d'indice $j$ et $j-1$ quelque soit $0&lt;j \leq i$.</p>
-<ul>
-<li><em>initialisation</em>. A la fin de la première itération, on a bien $delta[1] = d[1] -d[0]$, et $delta$ est une liste à 2 éléments.</li>
-<li><em>récurrence</em>. On suppose la propriété vraie pour $i$. Pour $i + 1$, on a bien ajouté un élément à <code>delta</code>, il y a donc $i + 2$ éléments (par hypothèse de récurrence, il y en a $i + 1$ à la fin de l'étape $i$) et le dernier élément est bien $d[i+1] - d[i]$.</li>
-</ul>
-<h3>Reservoir plein</h3>
-<p>Un automobiliste prend le départ de la route avec une voiture dont le réservoir d’essence est plein. Sa voiture<br>
-est capable de parcourir une distance r (mais pas plus !) avec un plein.</p>
-<p>On cherche une liste <code>s</code> d'indices croissante de station telle que si l'on fait le plein à chacune de ces stations on peut parcourir toute la route.</p>
-<h4>Admissibilité</h4>
-<p>Il faut et il suffit que $delta[i] \leq r$ quelque soit $i$ :</p>
-<ul>
-<li>si $delta[i] \leq r$ quelque soit i, on peut faire le plein à chaque station et on arrive au bout de la route</li>
-<li>s'il existe $j$ tel que $delta[j] &gt; r$, on ne pourra jamais atteindre la station j à partir de la station j-1.</li>
-</ul>
-<h5>Algorithme 1</h5>
-<p>Algorithme qui vérifie, à partir d'une liste <code>d</code> de stations et d'un nombre maximum de kilomètres <code>r</code> possible que le problème admet une solution.</p>
-<p>exemple : Pour une liste <code>d</code> de stations valant : <code>d = [2, 5, 6, 10, 12, 13]</code>, il devra répondre <code>True</code> pour un <code>r = 4</code> et <code>False</code> pour <code>r = 3</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">admissible</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    delta <span class="token operator">=</span> ecart<span class="token punctuation">(</span>d<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> delta<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> x <span class="token operator">></span> r<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-</code></pre>
-<p>L'algorithme vérifie clairement que la condition nécessaire et suffisante précédente est vérifieé. Sa complexité est gale à la création de la liste <code>delta</code>, en $\mathcal{O}(len(d))$, plus une boucle qui parcourt la liste <code>delta</code>, donc également en $\mathcal{O}(len(d))$. Au final, la complexité est en $\mathcal{O}(len(d))$.</p>
-<h5>Algorithme 2</h5>
-<p>Algorithme qui vérifie, à partir d'une liste <code>s</code> d'indices de stations (que l'on supposera croissante) où faire le plein, d'une liste <code>d</code> de stations et d'un nombre maximum de kilomètres par plein <code>r</code>, si <code>s</code> est une solution (ou pas) du problème</p>
-<p>exemple : Pour une liste <code>d</code> de stations valant : <code>d = [2, 5, 6, 10, 12, 13]</code>, un réservoir de <code>r = 4</code> et une liste <code>s = [0, 2, 3, 4]</code> il devra répondre <code>True</code> et pour une liste <code>d</code> et un réservoir identique, il devra répondre <code>False</code> pour <code>s = [0, 1, 3, 4]</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_solution</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> s<span class="token punctuation">:</span>
-        d2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    d2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>d<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> admissible<span class="token punctuation">(</span>d2<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
-</code></pre>
-<p>La complexité est en $\mathcal{O}(len(s))$ : il y a une boucle en $\mathcal{O}(len(s))$, l'utilisation de l'algorithme <code>admissible</code> qui est également en $\mathcal{O}(len(s))$ et le reste des lignes est en $\mathcal{O}(1)$.</p>
-<p>Le problème revient à vérifier sur un sous ensemble de <code>d</code> (les station de <code>s</code> plus la dernière station de <code>d</code> à ne pas oublier) si la solution est admissible.</p>
-<h4>algorithme</h4>
-<p>Écrivez un algorithme qui, à partir d'un liste <code>d</code> de stations et d'un nombre maximum de kilomètres <code>r</code> possibles rend une liste <code>s</code> de stations où faire le plein de longueur minimale.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">soution_minimale</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token keyword">not</span> admissible<span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    station_precedente <span class="token operator">=</span> <span class="token number">0</span>
-    s <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> station_precedente <span class="token operator">></span> r<span class="token punctuation">:</span>
-            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            station_precedente <span class="token operator">=</span> d<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
-    <span class="token keyword">return</span> s
-</code></pre>
-<p>L'algorithme commence par vérifier s'il existe une solution admissible ($\mathcal{O}(len(d))$) puis dans une boucle (répétée $\mathcal{O}(len(d))$ fois) on compare des valeurs et on ajoute des éléments à la fin d'une liste qui sont des opérations en $\mathcal{O}(1)$. La complexité de cet algorithme est donc en $\mathcal{O}(len(d))$.</p>
-<p>On peut montrer facilement par récurrence sur $i$ que le <code>s</code> rendu par l'algorithme possède les trois propriétés suivantes :</p>
-<ul>
-<li><code>s[0]</code> est le plus grand indice $j$ de $d$ tel que $d[j] \leq r$</li>
-<li>les éléments de <code>s</code> sont rangés par ordre strictement croissant</li>
-<li>pour tout indice <code>j &gt; 0</code> on a $d[s[j]] - d[s[j-1]] \leq r$ et $d[s[j] + 1] - d[s[j-1]] &gt; r$. Donc pour tout indice $k &gt; s[j]$ on a $d[k] - d[s[j-1]] &gt; r$.</li>
-</ul>
-<p>On montre maintenant que la solution donnée par l'algorithme est minimale en nombre de stations. Soit <code>s'</code> une solution minimale en nombre de station et qui coïncide avec <code>s</code> le plus longtemps possible. On suppose que <code>s</code> n'est pas minimale, il existe donc <code>j</code>, le premier indice tel que $s[j] \neq s'[j]$.</p>
-<p>Tout d'abord on a $s[j] &gt; s'[j]$, car :</p>
-<ul>
-<li>si j = 0 $s[0]$ est l'indice $i$ le plus grand tel que $d[i] &lt;= r$ et donc on aurait $d[s'[0]] &gt; r$ ce qui est impossible</li>
-<li>si j &gt; 0 : $d[s[j]] - d[s[j-1]] \leq r$ et $d[k] - d[s[j-1]] &gt; r$ pour $k &gt; s[j]$ et donc on aurait $d[s'[j]] - d[s'[j-1]] &gt; r$ ce qui est impossible.</li>
-</ul>
-<p>On note alors <code>j'</code> le premier indice de <code>s'</code> tel que $s'[j'] &gt; s[j]$ on a alors que la liste <code>s'' = s'[:j] + [s[j]] + s'[j':]</code> est une solution au problème car $r \geq d[s'[j']] - d[s[j' - 1]] \geq d[s'[j']] - d[s[j]]$ puisque $s[j' - 1] \leq s[j]$.</p>
-<p>Ceci est impossible car <code>s''</code> a au plus un nombre de station égal à <code>s'</code> et elle coïncide plus longtemps avec <code>s</code> que <code>s'</code>. Notre hypothèse était fausse, la solution <code>s</code> est optimale.</p>
-<h3>Reservoir vide</h3>
-<p>On suppose que chaque litre d'essence permet de parcourir 1km. On essaye de minimiser le coût d'achat d'essence</p>
-<h4>Nombre de stations minimale</h4>
-<p>Comme le prix de l'essence est constant, la station où l'on fait le plein n'est pas importante. De plus, le nombre minimum d'essence que l'on peut mettre correspond à la distance de la route.</p>
-<p>De là si on a une solution optimale, il suffit de mettre assez d'essence pour atteindre la station suivante : on aura mis juste assez d'essence pour parcourir toute la route.</p>
-<h4>Algorithme</h4>
-<p>Il suffit d'utiliser l'algorithme solution optimale et de mettre juste assez d'essence pour atteindre la station suivante :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">soution_minimale_essence</span><span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> solution_minimale<span class="token punctuation">(</span>d<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
-
-    s2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        s2<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    s2<span class="token punctuation">.</span>append<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> s2
-</code></pre>
+<h2>Ordonnancement, la variante</h2>
+<blockquote>
+<p>introduction à l'algorithmique p392</p>
+</blockquote>
+<h2>Ordonnancement, le retour</h2>
+<blockquote>
+<p>introduction à l'algorithmique p393</p>
+</blockquote>
+<h3>Formalisation du problème</h3>
+<h3>Algorithme</h3>
+<h3>Dates de disponibilité</h3>
+<h3>Interruption de tâches</h3>
+<h2>Une quête d'essence</h2>
+<p>Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.</p>
+<p>Le but est d'atteindre la dernière station de la route avec un réservoir de $L$ litres d'essence, en considérant qu'un litre d'essence permet de faire 1 kilomètre.</p>
+<h3>Admissibilité</h3>
+<p>Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse parcourir toute la route jusqu'à la dernière station service.</p>
+<h3>Algorithme</h3>
+<p>Écrivez un algorithme glouton qui donne le nombre minimum de stations auxquelles il faut mettre de l'essence dans le réservoir pour arriver à destination, en supposant que le réservoir est initialement vide.</p>
+<h3>Prix fluctuant</h3>
+<h2>Glouton comme heuristique</h2>
 
 
 </article>
