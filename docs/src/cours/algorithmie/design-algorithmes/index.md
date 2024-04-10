@@ -9,15 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## Divide and conquer
+## Diviser pour régner
 
-> TBD. Dire qu'on a vue ça dans les tris. 
-> TBD Reprendre le master theorem et le démontrer ici. 
-> TBD autres exemples 
-
-> TBD exo <https://wkerl.me/#teaching>
-
-> tbd : médiane. 
+{% aller %}
+[Diviser pour régner](./diviser-régner){.interne}
+{% endaller %}
 
 ## Programmation dynamique
 
