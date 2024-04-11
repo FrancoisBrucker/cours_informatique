@@ -124,9 +124,9 @@
 <p><img src="../opti-3.png" alt="opti A-C˜B"></p>
 <p>Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.</p>
 <p>Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien <a href="https://fr.wikipedia.org/wiki/Richard_Bellman">Richard Bellman</a>. C'est ce que nous allons tout de suite découvrir.</p>
-<p>Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulé ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution brut force.</p>
+<p>Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulés ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution <em>brut force</em> (énumérer et analyser tous les cas possibles).</p>
 <h2>Premier exemple : chemin le plus rapide à partir d'une ville</h2>
-<p>Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre deux données (le plus rapide, le moins cher, ...). Nous allons ici utiliser comme données un réseau ferré et utiliser la méthode utilisée par Bellman lui-même et qui à donné le nom à la méthode générale.</p>
+<p>Il existe de nombreux algorithmes permettant de trouver un chemin optimal entre deux données (le plus rapide, le moins cher, ...). Nous allons ici utiliser comme données un réseau ferré et utiliser la méthode introduite par Bellman lui-même et qui à donné le nom à l'algorithme.</p>
 <p>Cet algorithme, appelé <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford"><em>&quot;algorithme de Bellman-Ford&quot;</em></a>, est un algorithme très général de théorie des graphes. Nous allons en voir ici une version simplifiée dont le but est de vous faire sentir le principe général de la programmation dynamique et surtout comment l'utiliser comme un principe de résolution de problème.</p>
 <h3><span id="données"></span>Données</h3>
 <p>On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de tronçons reliant deux gares, chaque tronçon ne contenant aucune gare de passage.</p>
@@ -137,7 +137,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>tronçon</em></strong> entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gares intermédiaire.</p>
+<p>Un <strong><em>tronçon</em></strong> entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gare intermédiaire.</p>
 <p>Pour un ensemble de gares $G$, on note $T$ la relation (une matrice symétrique) telle que :</p>
 <ul>
 <li>$T[x][y]$ est le temps pour relier les gares $x$ et $y$ s'il existe un tronçon entre elles,</li>
@@ -160,8 +160,8 @@
 <li>soit une suite $g_1\dots g_{i-1}g_i\dots g_n$ telle que :
 <ul>
 <li>$g_1 = x$, $g_n = y$</li>
-<li>les gares $g_{i-1}$ et $g_{i}$ sont différentes et reliées par un tronçon pour tout $1 &lt; i \leq n$</li>
-<li>pour un chemin $g_1\dots g_{i-1}g_i\dots g_n$ entre $g_1$ et $g_n$ les gares $g_2$ à $g_{n-1}$ sont dites <strong><em>gares de passage</em></strong></li>
+<li>les gares $g_{i-1}$ et $g_{i}$ sont différentes et reliées par un tronçon pour tout $2 &lt; i \leq n$</li>
+<li>pour un chemin $g_1\dots g_{i-1}g_i\dots g_n$ entre $g_1$ et $g_n$, les gares $g_2$ à $g_{n-1}$ sont dites <strong><em>gares de passage</em></strong></li>
 </ul>
 </li>
 </ul>
@@ -172,9 +172,9 @@
 <h3>Méthode de résolution</h3>
 <p>Le principe de la programmation dynamique stipule que tout chemin optimal est constitué de sous-chemins eux aussi optimaux pour des sous-problèmes. La principale difficulté lorsque l'on cherche à modéliser un algorithme utilisant la programmation dynamique pour résoudre un problème est de déterminer ce que sont ces sous-problèmes.</p>
 <h4>Détermination des sous-problèmes</h4>
-<p>Dans le cas des chemins ferrés, on peut classer les chemins partant de $A$ par rapport à leur nombre de tronçons. De là un chemin optimal de $k$ tronçons entre la gare $A$ et une gare $x$ est constitué :</p>
+<p>Dans le cas des chemins ferrés, on peut classer les chemins partant de $A$ par rapport à leur nombre de tronçons. De là un chemin optimal d'au plus $k$ tronçons entre la gare $A$ et une gare $x$ est constitué :</p>
 <ol>
-<li>d'un chemin optimal de $k-1$ tronçons de la gare $A$ à une gare $y$</li>
+<li>d'un chemin optimal d'au plus $k-1$ tronçons de la gare $A$ à une gare $y$</li>
 <li>du tronçon entre la gare $y$ et la gare $x$</li>
 </ol>
 <p>Si l'on connait les chemins optimaux ayant au plus $k-1$ tronçons entre $A$ et toutes les autres gares $y$ on peut créer un chemin optimal entre $A$ et $x$ d'au plus $k$ tronçons en ajontant le tronçon entre $A$ et $x$.</p>
@@ -200,7 +200,7 @@ $$
 <p>Et on a $M_2[b] = 2 &lt; T[A][b] = 10$.</p>
 <h4>Stockage des solutions intermédiaires</h4>
 <p>La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.</p>
-<p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gare il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gare. On a pas besoin de tout conserver, juste les valeurs précédentes suffisent.</p>
+<p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gares il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gares. On n'a pas besoin de tout conserver, juste les valeurs précédentes suffisent.</p>
 <h4>Algorithme final</h4>
 <p>On suppose que :</p>
 <ul>
@@ -260,7 +260,7 @@ $$
 </ol>
 <p>Enfin, la programmation dynamique nous assure de trouver <strong>un</strong> chemin optimal. Ce n'est très souvent pas un problème car on est généralement intéressé par une solution et pas par toutes les solutions possibles, mais il faut en être contient.</p>
 <h2><span id="relation-C"></span>Deuxième exemple : existence de route entre deux villes quelconques</h2>
-<p>En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconque. On aimerait avoir une relation $C$ nous permettant de savoir si l'on peut voyager de la gare $x$ à la gare $y$ :</p>
+<p>En reprenant les données du premier exemple, la liste de tronçons pour un ensemble de gares, on se pose la question de savoir s'il existe un chemin entre deux gares quelconques. On aimerait avoir une relation $C$ nous permettant de savoir si l'on peut voyager de la gare $x$ à la gare $y$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -280,13 +280,13 @@ $$
 <p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.</p>
 <p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car c'est <a href="https://fr.wikipedia.org/wiki/Relation_d%27%C3%A9quivalence">une relation d'équivalence</a>. Elle est en effet :</p>
 <ul>
-<li>réflexive $C[x][y]$ (le singleton $x$ permet de relier $x$ à lui-même)</li>
-<li>symétrique $C[x][y]$ implique $C[x][y]$ (les routes sont à double sens)</li>
-<li>transitive $C[x][y]$ et $C[x][y]$ implique $C[x][y]$ (on colle la suite allant de $x$ à $y$ à la suite allant de $y$ à $z$)</li>
+<li>réflexive: pour tout $x$, on a $C[x][x]$ (le singleton $x$ permet de relier $x$ à lui-même)</li>
+<li>symétrique: pour tout $x, y$, on a $C[x][y]$ implique $C[x][y]$ (les routes sont à double sens)</li>
+<li>transitive: pour tout $x, y, z$, on a $C[x][y]$ et $C[y][z]$ implique $C[x][z]$ (on colle le chemin allant de $x$ à $y$ au chemin allant de $y$ à $z$)</li>
 </ul>
 <p>L'intérêt de cette formalisation est qu'elle montre que la relation des chemins $C$ se crée :</p>
 <ol>
-<li>en considérant la relation $T$ des tronçons ($T[x][y]$ s'il existe un tronçon entre les gares $x$ et $y$)</li>
+<li>en considérant la relation $T$ des tronçons ($C[x][y]$ s'il existe un tronçon entre les gares $x$ et $y$)</li>
 <li>en fermant cette relation par transitivité</li>
 </ol>
 <p>À première vue créer $C$ à partir de $T$ semble compliqué, mais l'exercice ci-après (qui explicite l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Warshall">Algorithme de Roy</a>) montre qu'on peut le faire très simplement :</p>
@@ -294,7 +294,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Soit $G = \{ g_1, \dots g_n \}$ les gares d'un réseau ferré et $T$ sa relation tronçon.</p>
-<p>Montrez que si on note $G_i = \{ g_1, \dots g_i \}$, un chemin entre les gares $x$ et$y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut de déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.</p>
+<p>Montrez que si on note $G_i = \{ g_1, \dots g_i \}$, un chemin entre les gares $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut se déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -319,15 +319,15 @@ $$
 <li>soit il existe un chemin entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
 <li>soit il existe les deux chemins suivants :
 <ul>
-<li>un chemin entre $x$ et $v_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
-<li>un chemin entre $v_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
+<li>un chemin entre $x$ et $g_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
+<li>un chemin entre $g_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
 </ul>
 </li>
 </ul>
 </div>
 </details>     
 </div>
-<p>Ici, le sous problème revient à restreindre le nombre de gares possible ! On a plus de relation de récurrence, mais un lien entre les chemins ne passant que par les éléments de $G_{i-1}$ et ceux passant passant par $G_{i}$. On peut ainsi reprendre la méthode de résolution du premier exemple :</p>
+<p>Ici, le sous problème revient à restreindre le nombre de gares possible ! On a plus d'équation récurrente, mais un lien entre les chemins ne passant que par les éléments de $G_{i-1}$ et ceux passant passant par $G_{i}$. On peut ainsi reprendre la méthode de résolution du premier exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -351,7 +351,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>En notant $C_k[i][j]$ la relation telle que les gares $i$ et $j$ sont reliées par un chemins de gares de passage plus petites ou égale à $k$, $C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivant est vrai :</p>
+<p>En notant $C_k[i][j]$ la relation telle que les gares $i$ et $j$ sont reliées par un chemins de gares de passage plus petites ou égale à $k$, $C_k[i][j]$ est vrai si l'une ou l'autre des assertions suivantes est vrai :</p>
 <ul>
 <li>$C_{k-1}[i][j]$ est vrai</li>
 <li>$C_{k-1}[i][k]$ et $C_{k-1}[k][j]$ sont vrais</li>
@@ -375,7 +375,7 @@ $$</p>
 
 <span class="token keyword">return</span> C
 </code></pre>
-<p>Notez que comme il ne peut pas y avoir d'effets de bord (une fois que la valeur est vrai, elle ne bouge plus), on peut se passer de la matrice $D$ et écrire l'algorithme :</p>
+<p>Notez que comme il ne peut pas y avoir d'effets de bord (une fois que la valeur est vraie, elle ne bouge plus), on peut se passer de la matrice $D$ et écrire l'algorithme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span>
@@ -419,8 +419,8 @@ $$</p>
 <li>soit le temps de trajet minimum entre $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
 <li>soit la somme des temps de trajet minimum entre :
 <ul>
-<li>$x$ et $v_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
-<li>$v_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
+<li>$x$ et $g_i$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
+<li>$g_i$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i-1}$</li>
 </ul>
 </li>
 </ul>
@@ -441,7 +441,7 @@ $$</p>
 
 <span class="token keyword">return</span> M
 </code></pre>
-<p>De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcourt négatif), on peut se passer de la matrice $M2$ et écrire l'algorithme sous la forme :</p>
+<p>De même que pour l'exercice précédent, il ne peut y avoir d'effet de bord, les temps de chemins ne faisant que diminuer (cela marche même si l'on à des temps de parcours négatifs), on peut se passer de la matrice $M2$ et écrire l'algorithme sous la forme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> inf
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -458,7 +458,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connut sous le nom d'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a>. Mais se pose alors la question :</p>
+<p>L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connu sous le nom d'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a>. Mais se pose alors la question :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -482,7 +482,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les complexités temporelles sont les même mais pas la complexité spatiale. Le second algorithme doit conserver toute une matrice de chemins, alors que le premier ne conserve qu'une ligne, celle concernant la gare de départ.</p>
+<p>Les complexités temporelles sont les mêmes mais pas la complexité spatiale. Le second algorithme doit conserver toute une matrice de chemins, alors que le premier ne conserve qu'une ligne, celle concernant la gare de départ.</p>
 </div>
 </details>     
 </div>
@@ -501,7 +501,7 @@ $$</p>
 </code></pre>
 <p>Sa complexité est rédhibitoire (on l'a vu, elle est exponentielle).</p>
 <h3>Approche bottom-up</h3>
-<p>La première optimisation possible est l'approche bottom-up, qui consiste à commencer par les conditions aux limites de la récurrence puis de remonter petit à petit l'équation de récurrence jusqu'à arriver au problème initial. C'est la méthode que l'on a utilisé pour les deux premiers exemples.</p>
+<p>La première optimisation possible est l'approche bottom-up, qui consiste à commencer par les conditions aux limites de la récurrence puis de remonter petit à petit l'équation de récurrence jusqu'à arriver au problème initial. C'est la méthode que l'on a utilisée pour les deux premiers exemples.</p>
 <p>Pour la suite de Fibonacci cela donne :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">F</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     a <span class="token operator">=</span> <span class="token number">1</span>
@@ -514,7 +514,7 @@ $$</p>
 <h3>Mémoïsation</h3>
 <p>La mémoïsation est le fait de stocker les résultats d'une fonction pour ne pas avoir à la rappeler plus tard et utiliser directement le résultat. C'est ce qui est mis en oeuvre dans les techniques de cache comme <a href="https://fr.wikipedia.org/wiki/Cache_web">le cache web</a> ou encore <a href="https://fr.wikipedia.org/wiki/M%C3%A9moire_cache">la mémoire cache</a>.</p>
 <p>C'est très utile si on a une équation de récurrence compliquée ou qu'on ne contrôle pas ce que l'on cherche.</p>
-<p>La mémoïsation est un principe fondamental en algorithmie qui permet d'échanger de la complexité en nombre d'instruction par de la complexité spatiale : on échange du temps par de l'espace. Ce n'est pas toujours un échange profitable, savoir s'il faut utiliser la programmation dynamique se fait donc au cas par cas.</p>
+<p>La mémoïsation est un principe fondamental en algorithmie qui permet d'échanger de la complexité temporelle (nombre d'instructions) en complexité spatiale : on échange du temps par de l'espace. Ce n'est pas toujours un échange profitable, savoir s'il faut utiliser la programmation dynamique se fait donc au cas par cas.</p>
 <p>Pour le calcul de la suite de Fibonacci, cela donne si $n$ est plus petit que $N$ :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">cache <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">None</span><span class="token punctuation">]</span> <span class="token operator">*</span> N
 
@@ -530,7 +530,7 @@ $$</p>
     cache<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> f
     <span class="token keyword">return</span> f
 </code></pre>
-<p>Le fait que $F(n - 2)$ ne soit appelé qu'une fois que $F(n - 1)$ le soit, fait que son résultat a été mémoïsé puisqu'il a fallu le calculer lors de l'appel de $F(n - 1)$.</p>
+<p>Le fait que $F(n - 2)$ ne soit appelé qu'une fois que $F(n - 1)$ l'ait été, fait que son résultat a été mémoïsé puisqu'il a fallu le calculer lors de l'appel de $F(n - 1)$.</p>
 <p>Il n'y a donc que $n$ appels récursifs, le second élément ayant été mémoïsé :</p>
 <ul>
 <li>la complexité est en $\mathcal{O}(n)$</li>
@@ -548,11 +548,11 @@ $$</p>
 <p>Soit $T$ un tableau à $n$ éléments. On cherche la longueur de la suite ${(s_i)}_{i\geq 0}$ strictement croissante la plus grande possible telle que $T[s_i] &lt; T[s_{i+1}]$ pour tout $i$.</p>
 </div>
 </div>
-<p>Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximal de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).</p>
+<p>Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximale de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Si $n$ et la taille de $T$, montrez que :</p>
+<p>Si $n$ est la taille de $T$, montrez que :</p>
 <ul>
 <li>$N[i] \geq 1$ pour tout $0\leq i &lt; n$</li>
 <li>$N[n-1] = 1$</li>
@@ -584,7 +584,7 @@ $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Déterminez une une relation de de récurrence entre $N[i]$ et les $N[j]$ pour les $j&gt;i$ tels que $T[i] &lt; T[j]$.</p>
+<p>Déterminez une relation de récurrence entre $N[i]$ et les $N[j]$ pour les $j&gt;i$ tels que $T[i] &lt; T[j]$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
