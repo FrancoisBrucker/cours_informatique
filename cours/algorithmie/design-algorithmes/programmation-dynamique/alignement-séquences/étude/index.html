@@ -219,7 +219,7 @@ MARLOU       MARLOU-
 </div>
 <p>On remarque que : $\max(n, m) - 1 \leq L &lt; n + m$.</p>
 <h3>Distance</h3>
-<p>Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance :</p>
+<p>Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance de Hamming :</p>
 <div>
 $$
 H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i)
@@ -231,12 +231,6 @@ $$
 \delta(a^\star_i, b^\star_i) = \begin{cases} 0 & \text{si } a^\star_i = b^\star_i\\ 1 & \text{sinon}\end{cases}
 $$
 </div>
-<p>Notez que $H$ est bien une distance :</p>
-<ul>
-<li>elle est symétrique et positive</li>
-<li>$d(a^\star, a^\star) = 0$</li>
-<li>elle vérifie l'inégalité triangulaire</li>
-</ul>
 <h3>Evolution d'une séquence en l'autre</h3>
 <p>Un alignement permet de simuler le passage d'une séquence à l'autre. Par exemple en considérant l'alignement suivant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MER-OUS
@@ -1151,7 +1145,7 @@ $$
 <li>$M[i][j-1] + 1$</li>
 </ol>
 </li>
-<li>le minimum de l'étape 3 nous donne une partie de l'alignement à ajouter :
+<li>le minimum de l'étape 4 nous donne une partie de l'alignement à ajouter :
 <ol>
 <li>on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$</li>
 <li>on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$</li>
