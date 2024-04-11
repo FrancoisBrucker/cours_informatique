@@ -419,12 +419,17 @@ Il n'y a donc que $n$ appels récursifs, le second élément ayant été mémoï
 
 ## Troisième exemple : sous-suite croissante maximum
 
+{% lien %}
+[Problème de la sous-suite croissante maximum](https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante)
+{% endlien %}
 
 Le problème est le suivant :
 
 {% note "**Problème**" %}
 Soit $T$ un tableau à $n$ éléments. On cherche la longueur de la suite ${(s\_i)}\_{i\geq 0}$ strictement croissante la plus grande possible telle que $T[s_i] < T[s_{i+1}]$ pour tout $i$.
 {% endnote %}
+
+En reprenant l'exemple de wikipediam la suite $(6, 1, 4, 9, 5, 11)$ posède plusieurs sous-suites croissantes, comme $(6, 9, 11)$, $(1, 4, 9, 11)$ ou encore $(1,4, 5, 11)$. Les plus longues sous-suites étant de longueur 4.
 
 Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximale de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).
 
