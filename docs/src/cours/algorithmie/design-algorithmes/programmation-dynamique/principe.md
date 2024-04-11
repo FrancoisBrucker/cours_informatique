@@ -111,7 +111,7 @@ Avec :
 
 Le temps de trajet minimum entre les deux gares $A$ et $x$ est donné par $M[x] = M_{|G|-1}[x]$.
 
-**Attention**, il est bien nécessaire d'aller jusqu'à $M_{|G|}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ dès que le temps devient fini) :
+**Attention**, il est bien nécessaire d'aller jusqu'à $M_{|G| - 1}[x]$, on ne peut pas s'arrêter dès que l'on atteint la gare d'arrivée (_ie._ dès que le temps devient fini) :
 
 - $T[A][b] = 10$
 - $T[A][c] = 1$
