@@ -200,7 +200,7 @@ MARLOU       MARLOU-
 </code></pre>
 </li>
 </ol>
-<p>Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'<strong>alignement</strong>. entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.</p>
+<p>Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'<strong>alignement</strong> entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.</p>
 <h2>Alignement</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -369,7 +369,7 @@ $$
 <tbody>
 <tr>
 <td>0</td>
-<td>-1</td>
+<td>$1$</td>
 <td>$1$</td>
 <td></td>
 <td>$1$</td>
@@ -380,7 +380,7 @@ $$
 <tr>
 <td>1</td>
 <td>$1$</td>
-<td>$1$</td>
+<td>$3$</td>
 <td></td>
 <td></td>
 <td></td>
@@ -443,7 +443,7 @@ $$
 <p>$$<br>
 F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]<br>
 $$</p>
-<p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne ligne à ligne :</p>
+<p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne à ligne :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">F <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 1ère ligne</span>
     ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
@@ -559,12 +559,12 @@ $$
 </div>
 <p>De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :</p>
 <ul>
-<li>$(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$</li>
-<li>$(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$</li>
-<li>$(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$</li>
+<li>$(a_{n-1}, b_{m-1})$ et donc $((a^\star_0\dots a^\star_{L-2}), (b^\star_0\dots b^\star_{L-2}))$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$</li>
+<li>$(a_{n-1}, -)$ et donc $((a^\star_0\dots a^\star_{L-2}), (b^\star_0\dots b^\star_{L-1}))$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$</li>
+<li>$(-, b_{m-1})$ et donc $((a^\star_0\dots a^\star_{L-1}), (b^\star_0\dots b^\star_{L-2}))$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$</li>
 </ul>
 <p>De là, si l'alignement $(a^\star, b^\star)$ est celui réalisant la distance ($D(a, b) = H(a^\star, b^\star)$), le cas réalisant le minimum est forcément également une distance.</p>
-<p>Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors non seulement :</p>
+<p>Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-1}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-1}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors non seulement :</p>
 <p>$$<br>
 H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})<br>
 $$</p>
@@ -1469,10 +1469,10 @@ $$
 </ul>
 <h3>définition du cas général</h3>
 <p>Tout ce qu'on a fait précédemment est toujours applicable !</p>
-<p>Sachant un coût $d$, on peut définir la distance $D_d$ pour un alignement $(a^\star, b^\star)$:</p>
+<p>Sachant un coût $d$, on peut définir la distance $S_d$ pour un alignement $(a^\star, b^\star)$:</p>
 <div>
 $$
-D_d(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
+S_d(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
 $$
 </div>
 <p>Ce qui nous permet de définir la distance entre deux séquences pour un coût $d$ :</p>
