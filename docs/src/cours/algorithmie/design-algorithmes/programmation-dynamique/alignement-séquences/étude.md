@@ -541,7 +541,7 @@ Avec la matrice d'édition, il est facile de retrouver un alignement qui a réal
    2. $M[i-1][j-1] + 1$ si $a[j] \neq b[i]$
    3. $M[i-1][j] + 1$
    4. $M[i][j-1] + 1$
-5. le minimum de l'étape 3 nous donne une partie de l'alignement à ajouter :
+5. le minimum de l'étape 4 nous donne une partie de l'alignement à ajouter :
    1. on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$
    2. on ajoute $(a[j], b[i])$ au début de $A$ et on pose $i=i-1$ et $j=j-1$
    3. on ajoute $(-, b[i])$ au début de $A$ et on pose $i=i-1$

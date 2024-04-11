@@ -11,49 +11,42 @@ eleventyComputed:
 
 ## Glouton optimal
 
-## Recouvrement
+### Recouvrement
 
 <https://algo.gricad-pages.univ-grenoble-alpes.fr/L3I-S5-algo/TD1-10-corrige.pdf>
 > recouvrement de points par des intervalles exo 3
-## réservation SNCF
+### réservation SNCF
 
-### solution possible ?
+#### solution possible ?
 
-### solution approchée
+Une solution en $\mathcal{O}(n+K)$ : 
 
-## Ordonnancement, la variante
+```python
+d = [0] * K
 
-> introduction à l'algorithmique p392
+for i in range(n):
+    d[t[i]] += 1
 
-## Ordonnancement, le retour
+for t in range(K):
+    if d[t] > P:
+        print("le train", t, "contient", d[t] - P, "passagers de trop.")
+```
+
+#### solution approchée
+
+### Ordonnancement, la variante
+
+C'est pareil. Il suffit de dire que la perte est un gain et de maximiser le gain.
+
+### Ordonnancement, le retour
 
 > introduction à l'algorithmique p393
 
-### Formalisation du problème
+#### Formalisation du problème
 
-### Algorithme
+#### Algorithme
 
-### Dates de disponibilité
+#### Dates de disponibilité
 
-### Interruption de tâches
-
-
-## Une quête d'essence
-
-Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.
-
-Le but est d'atteindre la dernière station de la route avec un réservoir de $L$ litres d'essence, en considérant qu'un litre d'essence permet de faire 1 kilomètre.
-
-### Admissibilité
-
-Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse parcourir toute la route jusqu'à la dernière station service.
-
-### Algorithme
-
-Écrivez un algorithme glouton qui donne le nombre minimum de stations auxquelles il faut mettre de l'essence dans le réservoir pour arriver à destination, en supposant que le réservoir est initialement vide. 
-
-### Prix fluctuant 
-
-## Glouton comme heuristique
-
+#### Interruption de tâches
 

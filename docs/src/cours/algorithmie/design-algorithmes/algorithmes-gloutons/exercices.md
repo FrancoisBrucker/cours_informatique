@@ -11,7 +11,7 @@ eleventyComputed:
 
 Exercices de créations d'algorithmes gloutons pour résoudre divers problèmes d'optimisation. On a séparé les exercices en deux grandes parties : la première où la stratégie gloutonne est optimale (et où il faut le démontrer), la seconde où elle ne l'est pas mais dont on peut garantir les performances.
 
-> TBD Attention souvent pas de garanties du tout. Beaucoup d'algorithmes gloutons sont juste des heuristiques qui peuvent être aussi mauvaises que possible. Les utiliser dépend alors de la nature des données. Et au final, les étudiants ont rarement besoin des prof pour écrire des algorithmes non optimaux et sans garanties...
+Attention, souvent les algorithmes gloutons n'ont pas de garanties du tout. Beaucoup d'algorithmes gloutons sont juste des heuristiques qui peuvent être aussi mauvaises que possible, les utiliser dépend alors de la nature des données. Nous n'en parlons cependant pas ici car, en général, les étudiants ont rarement besoin de profs pour écrire des algorithmes non optimaux et sans garanties...
 
 ## Gloutons optimal
 
@@ -30,9 +30,9 @@ On suppose que $n$ personnes veulent voyager en train un jour donné. La personn
 
 Les données du problème sont :
 
-- $k$ trains qui partent dans la journée, 
+- $K$ trains partent dans la journée, 
 - le train $j$ part avant le train $j+1$,
-- chaque train ne peut contenir plus de $K$ passagers.
+- chaque train ne peut contenir plus de $P$ passagers.
 
 {% exercice "**Solution possible ?**" %}
 Proposez un algorithme qui vérifie que pour un nombre de trains donné et une liste de trains choisis, il est possible de faire voyager tout le monde.
@@ -47,7 +47,7 @@ Proposez un algorithme minimisant l'attente globale pour faire voyager tous les 
 
 ### Ordonnancement, la variante
 
-On reprend [le problème d'ordonnancement du cours](../principes/#exemple-ordonnancement){.interne}, mais avec des pénalités et pas des gains : ne pas réaliser une tâche $i$ coûte une pénalité $p_i$.
+On reprend [le problème d'ordonnancement du cours](../principe/#exemple-ordonnancement){.interne}, mais avec des pénalités et pas des gains : ne pas réaliser une tâche $i$ coûte une pénalité $p_i$.
 
 
 {% exercice %}
@@ -58,14 +58,19 @@ Proposez un algorithme glouton permettant de trouver un ordre d'exécution des t
 
 On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il l'a termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
 
-On veut minimiser la date de fin de réalisation des tâches.
+On veut minimiser la somme des fin de réalisations des tâches.
 
-#### Formalisation du problème
+{% exercice  "**Formalisation du problème **" %}
+En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
 
-En supposant que l'on a effectué les tâches dans l'ordre croissant :
+1. donnez le temps de départ de la tâche $\sigma_1$
+2. en déduire que la valeur de la somme totale des fins de tâches vaut $\sum_i(n-i)p_{\sigma_i}$
+{% endexercice %}
 
-- donnez la valeur de la moyenne de réalisation des fins de tâches
-- donner la valeur optimale si l'on a trois tâches de temps de réalisation 3, 1 et 5.
+{% exercice  "**Formalisation du problème **" %}
+Quel est l'ordre d'exécution des tâches minimisant la somme des fins de tiaches pour trois tâches de temps de réalisation 1, 3 et 5.
+{% endexercice %}
+
 
 #### Algorithme
 
