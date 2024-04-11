@@ -127,7 +127,7 @@ On remarque que : $\max(n, m) - 1 \leq L < n + m$.
 
 ### Distance
 
-Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance :
+Étant donné un alignement $(a^\star, b^\star)$, on peut alors définir sa distance de Hamming :
 
 <div>
 $$
@@ -142,12 +142,6 @@ $$
 \delta(a^\star_i, b^\star_i) = \begin{cases} 0 & \text{si } a^\star_i = b^\star_i\\ 1 & \text{sinon}\end{cases}
 $$
 </div>
-
-Notez que $H$ est bien une distance :
-
-- elle est symétrique et positive
-- $d(a^\star, a^\star) = 0$
-- elle vérifie l'inégalité triangulaire
 
 ### Evolution d'une séquence en l'autre
 
