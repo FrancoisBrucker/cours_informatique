@@ -13,16 +13,16 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le but de ce projet est de coder les différents algorithmes d'alignements de séquences vus dans la partie précédente.
+Le but de ce projet est de coder les différents algorithmes d'alignement de séquences vus dans la partie précédente.
 
-On considérera pour ce projet que le caractère _"-"_ ne fait **pas** parti de l'alphabet $\mathcal{A}$ utilisé.
+On considérera pour ce projet que le caractère _"-"_ ne fait **pas** partie de l'alphabet $\mathcal{A}$ utilisé.
 
 ## Alignement
 
 On rappelle qu'un alignement est un couple de deux séquences $(a^\star, b^\star)$ tels que :
 
-- $a^\star$ et $b^\star$ soient de même longueur $L$
-- chaque caractère de $a^\star$ et $b^\star$ soit dans $\mathcal{A} \cup \{ - \}$
+- $a^\star$ et $b^\star$ sont de même longueur $L$
+- chaque caractère de $a^\star$ et $b^\star$ est dans $\mathcal{A} \cup \{ - \}$
 - $(a^\star_i, b^\star_i) \neq (-,-)$ pour tout $0 \leq i < L$
 
 1. Représentez _graphiquement_ l'alignement (les 2 chaînes l'une sous l'autre avec les `|`, comme dans l'[étude](../étude/#distance-entre-chaines-){.interne})
@@ -71,8 +71,8 @@ Vous vérifierez bien que les 3 alignements suivants sont corrects :
 
 On suppose que le coût est défini par une fonction dont la signature est `coût(x, y=None)`{.language-} :
 
-- si on renseigne `x`{.language-} et `y`{.language-} la fonction rend le coût de substitution entre `x`{.language-} et `y`{.language-}
-- si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression de `x`{.language-}
+- si on renseigne deux caractères `x`{.language-} et `y`{.language-} la fonction rend le coût de substitution entre `x`{.language-} et `y`{.language-}
+- si on ne donne qu'un paramètre, la fonction rend le coût d'insertion/suppression du caractère `x`{.language-}
 
 {% faire %}
 Définissez la fonction de coût pour l'exemple du cas général de l'étude
@@ -86,7 +86,7 @@ En héritant de la classe `DistanceElem`{.language-}, créez la classe `Distance
 - le constructeur prend les deux chaînes $a$ et $b$ et la fonction de coût
 - cette classe doit contenir les même méthodes que la classe `DistanceElem`{.language-}.
 
-Arrangez vous pour conserver le plus de code possible entre les deux classes.
+Arrangez-vous pour conserver le plus de code possible entre les deux classes.
 {% endfaire %}
 
 ## Pour aller plus loin : étude biologique
