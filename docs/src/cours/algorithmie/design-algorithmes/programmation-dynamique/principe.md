@@ -57,7 +57,7 @@ On va utiliser un réseau ferré comme donnée. Il est constitué d'une liste de
 
 Un **_tronçon_** entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gare intermédiaire.
 
-Pour un ensemble de gares $G$, on note $T$ la relation (une matrice symétrique) telle que :
+Pour un ensemble de gares $G$, on note $T$ la relation telle que :
 
 - $T[x][y]$ est le temps pour relier la gare $x$ à la gare $y$ s'il existe un tronçon entre elles,
 - $T[x][y]$ vaut $+\infty$ s'il n'existe pas de tronçon entre la gare $x$ et la gare $y$,
