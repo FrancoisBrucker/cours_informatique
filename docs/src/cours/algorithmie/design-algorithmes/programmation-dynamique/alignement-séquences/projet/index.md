@@ -91,9 +91,6 @@ Arrangez-vous pour conserver le plus de code possible entre les deux classes.
 
 ## Pour aller plus loin : étude biologique
 
-{% info %}
-Cette partie nécessite de connaître les dictionnaires python.
-{% endinfo %}
 
 Le fichier texte [pro-opsines.edi](./pro-opsines.edi) contient le code (sous la formes d'acides aminées) de 3 protéines d'[opsines](https://fr.wikipedia.org/wiki/Opsine) qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.
 
@@ -146,3 +143,6 @@ BLOSUM_MATRIX = [
 {% faire %}
 Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée.
 {% endfaire %}
+{% info %}
+Vous pourrez utiliser un dictionnaire pour créer la distance entre deux acides aminés.
+{% endinfo %}
