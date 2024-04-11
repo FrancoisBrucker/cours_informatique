@@ -108,7 +108,7 @@ Ceci pose cependant deux (gros) problèmes :
    MARLOU       MARLOU-
    ```
 
-Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'**alignement**. entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.
+Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'**alignement** entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.
 
 ## Alignement
 
@@ -263,8 +263,8 @@ On peut représenter ces dépendances de façon matricielle :
 
 |     | 0   | 1   | ... | j-1           | j           | ... | m        |
 | --- | --- | --- | --- | ------------- | ----------- | --- | -------- |
-| 0   | -1  | $1$ |     | $1$           | $1$         |     | $1$      |
-| 1   | $1$ | $1$ |     |               |             |     |          |
+| 0   | $1$ | $1$ |     | $1$           | $1$         |     | $1$      |
+| 1   | $1$ | $3$ |     |               |             |     |          |
 | ... |     |     |     |               |             |     |          |
 | i-1 | $1$ |     |     | $f(i-1, j-1)$ | $f(i-1, j)$ |     |          |
 | i   | $1$ |     |     | $f(i, j-1)$   | $f(i, j)$   |     |          |
@@ -277,7 +277,7 @@ $$
 F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]
 $$
 
-Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne ligne à ligne :
+Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne à ligne :
 
 ```python
 F = []
@@ -376,13 +376,13 @@ $$
 
 De la même façon que l'on a fait pour établir l'équation de récurrence pour déterminer le nombre d'alignements, on a que $(a^\star_{L-1}, b^\star_{L-1})$ peut être égal à :
 
-- $(a_{n-1}, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$
-- $(a_{n-1}, -)$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$
-- $(-, b_{m-1})$ et donc $(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2})$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$
+- $(a_{n-1}, b_{m-1})$ et donc $((a^\star_0\dots a^\star_{L-2}), (b^\star_0\dots b^\star_{L-2}))$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b[:-1] = b_0\dots b_{m-2}$
+- $(a_{n-1}, -)$ et donc $((a^\star_0\dots a^\star_{L-2}), (b^\star_0\dots b^\star_{L-1}))$ est un alignement des séquences $a[:-1] = a_0\dots a_{n-2}$ et $b$
+- $(-, b_{m-1})$ et donc $((a^\star_0\dots a^\star_{L-1}), (b^\star_0\dots b^\star_{L-2}))$ est un alignement des séquences $a$ et $b[:-1] = b_0\dots b_{m-2}$
 
 De là, si l'alignement $(a^\star, b^\star)$ est celui réalisant la distance ($D(a, b) = H(a^\star, b^\star)$), le cas réalisant le minimum est forcément également une distance.
 
-Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors non seulement :
+Par exemple, si $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})$ est plus petit que $H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-1}) + \delta(a_{n-1}, -)$ et que $H(a^\star_0\dots a^\star_{L-1}, b^\star_0\dots b^\star_{L-2}) + \delta(-, b_{m-1})$, alors non seulement :
 
 $$
 H(a^\star, b^\star) = H(a^\star_0\dots a^\star_{L-2}, b^\star_0\dots b^\star_{L-2}) + \delta(a_{n-1}, b_{m-1})
@@ -641,11 +641,11 @@ De façon général, on définit alors un coût entre caractères défini tel qu
 
 Tout ce qu'on a fait précédemment est toujours applicable !
 
-Sachant un coût $d$, on peut définir la distance $D_d$ pour un alignement $(a^\star, b^\star)$:
+Sachant un coût $d$, on peut définir la distance $S_d$ pour un alignement $(a^\star, b^\star)$:
 
 <div>
 $$
-D_d(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
+S_d(a^\star, b^\star) = \sum_{i=0}^{L-1} d(a^\star_i, b^\star_i)
 $$
 </div>
 
