@@ -439,11 +439,11 @@ F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]<br>
 $$</p>
 <p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne à ligne :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">F <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># 1ère ligne</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># matrice de 1</span>
     ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     F<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ligne après ligne</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ligne après ligne àn partir de la seconde</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
@@ -541,10 +541,10 @@ $$
 H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) + \delta(a^\star_{L-1}, b^\star_{L-1})
 $$
 </div>
-<p>Ce qui, pour la distance élémentaire donne :</p>
+<p>Ce qui, pour la distance élémentaire, donne :</p>
 <div>
 $$
-H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
+H(a^\star, b^\star) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
 \begin{cases}
 0 & \text{si } a^\star_{L-1} = b^\star_{L-1}\\
 1 & \text{sinon}
