@@ -66,14 +66,6 @@ Vous vérifierez bien que les 3 alignements suivants sont corrects :
 - "ACTGATT" et "-"
 - "-" et "GCTAATCG"
 
-## Evolution
-
-On veut visualiser l'évolution permettant d'aller de $a^\star$ à $b^\star$ :
-
-{% faire %}
-Dans la classe `Alignement`{.language-} ajoutez une méthode `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
-    {% endfaire %}
-
 ## Cas général
 
 On suppose que le coût est défini par une fonction dont la signature est `coût(x, y=None)`{.language-} :
