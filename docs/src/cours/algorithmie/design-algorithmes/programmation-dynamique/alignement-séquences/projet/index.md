@@ -38,8 +38,7 @@ Vous créerez une classe `Alignement`{.language-} telle que :
   - `a()`{.language-} qui rend $a$
   - `b()`{.language-} qui rend $b$
   - `affiche()`{.language-} qui affiche l'alignement
-  - `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
-    {% endfaire %}
+ {% endfaire %}
 
 ## Distance élémentaire
 
@@ -59,13 +58,21 @@ Vous créerez une classe `DistanceElem`{.language-} telle que :
   - `matrice()`{.language-} qui rend la matrice d'édition en utilisant la distance élémentaire
   - `dist()`{.language-} qui rend la distance d'édition associée à la matrice
   - `alignement()`{.language-} qui rend un alignement associé à la matrice.
-    {% endfaire %}
+ {% endfaire %}
 
 Vous vérifierez bien que les 3 alignements suivants sont corrects :
 
 - "ACTGATT" et "GCTAATCG"
 - "ACTGATT" et "-"
 - "-" et "GCTAATCG"
+
+## Evolution
+
+On veut visualiser l'évolution permettant d'aller de $a^\star$ à $b^\star$ :
+
+{% faire %}
+Dans la classe `Alignement`{.language-} ajoutez une méthode `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
+    {% endfaire %}
 
 ## Cas général
 

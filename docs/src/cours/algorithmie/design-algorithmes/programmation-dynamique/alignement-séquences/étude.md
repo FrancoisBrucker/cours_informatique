@@ -275,11 +275,11 @@ Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisém
 
 ```python
 F = []
-for i in range(n+1):  # 1ère ligne
+for i in range(n+1):  # matrice de 1
     ligne = [1] * (m + 1)
     F.append(ligne)
 
-for i in range(1, n + 1):  # ligne après ligne
+for i in range(1, n + 1):  # ligne après ligne àn partir de la seconde
     for j in range(1, m + 1):
         F[i][j] = F[i - 1][j] + F[i][j - 1] + F[i - 1][j - 1]
 ```
@@ -356,11 +356,11 @@ H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}
 $$
 </div>
 
-Ce qui, pour la distance élémentaire donne :
+Ce qui, pour la distance élémentaire, donne :
 
 <div>
 $$
-H(a^\star, b^\star) = \sum_{i=0}^{L-1} \delta(a^\star_i, b^\star_i) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
+H(a^\star, b^\star) = \sum_{i=0}^{L-2} \delta(a^\star_i, b^\star_i) +
 \begin{cases}
 0 & \text{si } a^\star_{L-1} = b^\star_{L-1}\\
 1 & \text{sinon}
