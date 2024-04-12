@@ -123,7 +123,7 @@ Un alignement entre la chaîne $a =a_0\dots a_{n-1}$ et $b = b_0\dots b_{m-1}$ e
 
 {% endnote %}
 
-On remarque que : $\max(n, m) - 1 \leq L < n + m$.
+On remarque que : $\max(n, m) \leq L < n + m$.
 
 ### Distance
 
