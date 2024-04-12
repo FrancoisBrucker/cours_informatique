@@ -148,6 +148,19 @@
 </ul>
 </div>
 </div>
+<p>Par exemple, on doit être capable d'exécuter le cod suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> alignement <span class="token keyword">import</span> Alignement
+
+un_alignement <span class="token operator">=</span> Alignement<span class="token punctuation">(</span><span class="token string">"MER-OUS"</span><span class="token punctuation">,</span> <span class="token string">"MARLOU-"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>un_alignement<span class="token punctuation">.</span>a<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># qui doit afficher "MEROUS"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>un_alignement<span class="token punctuation">.</span>b<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># qui doit afficher "MARLOU"</span>
+
+un_alignement<span class="token punctuation">.</span>affiche<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># aui doit afficher les 3 lignes suivantes</span>
+<span class="token comment"># MER-OUS</span>
+<span class="token comment"># | | || </span>
+<span class="token comment"># MARLOU-</span>
+
+</code></pre>
 <h2>Distance élémentaire</h2>
 <p>Pour deux séquences $a$ et $b$ il faut maintenant pouvoir calculer la distance d'édition avec la distance élémentaire :</p>
 <ol>
@@ -181,6 +194,39 @@
 <li>&quot;ACTGATT&quot; et &quot;-&quot;</li>
 <li>&quot;-&quot; et &quot;GCTAATCG&quot;</li>
 </ul>
+<h2>Evolution</h2>
+<p>On veut visualiser l'évolution permettant d'aller de $a^\star$ à $b^\star$ :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans la classe <code class="language-">Alignement</code> ajoutez une méthode <code class="language-">evolution()</code> qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$</p>
+</div>
+</div>
+<p>Le code python suivant doit pouvoir s'exécuter :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> alignement <span class="token keyword">import</span> Alignement
+
+un_alignement <span class="token operator">=</span> Alignement<span class="token punctuation">(</span><span class="token string">"MER-OUS"</span><span class="token punctuation">,</span> <span class="token string">"MARLOU-"</span><span class="token punctuation">)</span>
+un_alignement<span class="token punctuation">.</span>evolution<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># qui doit afficher les lignes suivantes</span>
+
+<span class="token comment"># MEROUS</span>
+<span class="token comment"># ^</span>
+<span class="token comment"># MAROUS</span>
+<span class="token comment">#  ^</span>
+<span class="token comment"># MAROUS</span>
+<span class="token comment">#   ^</span>
+<span class="token comment"># MARLOUS</span>
+<span class="token comment">#    ^</span>
+<span class="token comment"># MARLOUS</span>
+<span class="token comment">#     ^</span>
+<span class="token comment"># MARLOUS</span>
+<span class="token comment">#      ^</span>
+<span class="token comment"># MARLOU</span>
+<span class="token comment">#       ^</span>
+
+</code></pre>
 <h2>Cas général</h2>
 <p>On suppose que le coût est défini par une fonction dont la signature est <code class="language-">coût(x, y=None)</code> :</p>
 <ul>
