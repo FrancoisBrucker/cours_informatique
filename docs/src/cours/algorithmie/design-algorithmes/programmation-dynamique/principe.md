@@ -155,7 +155,8 @@ L'algorithme rend le tableau de temps intermédiaires qui contient le temps mini
 
 - On a utilisé [`inf`{.language-} qui représente l'infini](https://docs.python.org/fr/3/library/math.html#math.inf)
 - l'utilisation de $D$ permet d'éviter les effets de bord
-  {% endinfo %}
+
+{% endinfo %}
 
 La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ le nombre de gares.
 

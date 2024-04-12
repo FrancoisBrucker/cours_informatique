@@ -34,6 +34,7 @@ for t in range(K):
 
 #### solution approchée
 
+
 ### Ordonnancement, la variante
 
 C'est pareil. Il suffit de dire que la perte est un gain et de maximiser le gain.
