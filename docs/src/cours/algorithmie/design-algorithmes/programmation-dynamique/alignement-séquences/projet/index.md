@@ -40,6 +40,22 @@ Vous créerez une classe `Alignement`{.language-} telle que :
   - `affiche()`{.language-} qui affiche l'alignement
  {% endfaire %}
 
+
+Par exemple, on doit être capable d'exécuter le cod suivant :
+
+```python
+from alignement import Alignement
+
+un_alignement = Alignement("MER-OUS", "MARLOU-")
+print(un_alignement.a())  # qui doit afficher "MEROUS"
+print(un_alignement.b())  # qui doit afficher "MARLOU"
+
+un_alignement.affiche() # aui doit afficher les 3 lignes suivantes
+# MER-OUS
+# | | || 
+# MARLOU-
+
+```
 ## Distance élémentaire
 
 Pour deux séquences $a$ et $b$ il faut maintenant pouvoir calculer la distance d'édition avec la distance élémentaire :
@@ -65,6 +81,39 @@ Vous vérifierez bien que les 3 alignements suivants sont corrects :
 - "ACTGATT" et "GCTAATCG"
 - "ACTGATT" et "-"
 - "-" et "GCTAATCG"
+
+## Evolution
+
+On veut visualiser l'évolution permettant d'aller de $a^\star$ à $b^\star$ :
+
+{% faire %}
+Dans la classe `Alignement`{.language-} ajoutez une méthode `evolution()`{.language-} qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$
+{% endfaire %}
+
+Le code python suivant doit pouvoir s'exécuter :
+
+```python
+from alignement import Alignement
+
+un_alignement = Alignement("MER-OUS", "MARLOU-")
+un_alignement.evolution() # qui doit afficher les lignes suivantes
+
+# MEROUS
+# ^
+# MAROUS
+#  ^
+# MAROUS
+#   ^
+# MARLOUS
+#    ^
+# MARLOUS
+#     ^
+# MARLOUS
+#      ^
+# MARLOU
+#       ^
+
+```
 
 ## Cas général
 

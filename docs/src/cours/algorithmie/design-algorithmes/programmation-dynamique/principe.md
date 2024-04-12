@@ -142,7 +142,7 @@ def bellman(tronçons, n, gare_départ):
     for k in range(n - 1):
         M2 = [inf] * n
 
-        for g in range(n - 1):
+        for g in range(n):
             M2[g] = min(M[g], min([M[x] + tronçons[x][g] for x in range(n)])
         M = M2
 
