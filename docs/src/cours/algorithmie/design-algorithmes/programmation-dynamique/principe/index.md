@@ -22,11 +22,11 @@ Une solution optimale à un problème est constituée de solutions optimales de 
 
 Il s'applique aux problèmes d'optimisations et en particulier ceux que l'on peut écrire sous une forme récursive. Illustrons le avec la recherche de chemins le plus rapide. Supposons que le chemin le plus rapide entre la ville A et la ville B soit celui ci-dessous :
 
-![opti A˜B](../opti-1.png)
+![opti A˜B](./opti-1.png)
 
 Prenons une ville sur ce chemin, par exemple la ville C :
 
-![opti A˜C˜B](../opti-2.png)
+![opti A˜C˜B](./opti-2.png)
 
 Alors :
 
@@ -35,7 +35,7 @@ Alors :
 
 En effet, s'il existait par exemple un chemin plus rapide entre A et C (le chemin rouge) :
 
-![opti A-C˜B](../opti-3.png)
+![opti A-C˜B](./opti-3.png)
 
 Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.
 
@@ -119,6 +119,37 @@ Le temps de trajet minimum entre les deux gares $A$ et $x$ est donné par $M[x] 
 
 Et on a $M_2[b] = 2 < T[A][b] = 10$.
 
+#### Exemple
+
+On considère les tronçons suivants :
+
+![tronçons](./tronçons.png)
+
+Ce qui donne la suite de liste suivante :
+
+k | A | b | c | d | e | f | g 
+==|===|===|===|===|===|===|===
+0 | 0 |   |   |   |   |   |  
+1 | 0 | 2 | 1 |   |   |   |   
+2 | 0 | 2 | 1 | 11| 7 |   |
+3 | 0 | 2 | 1 | 10| 7 |   | 8
+4 | 0 | 2 | 1 | 10| 7 | 9 | 8
+5 | 0 | 2 | 1 | 10| 7 | 9 | 8
+
+Pour revenir en arrière et retrouver le chemin, on peu stocker le tronçon qui a rendu le chemin minimum (on a choisi ici plus petit ou égal. On privilégie les chemins minimaux les pus long) :
+
+
+k | A | b | c | d | e | f | g 
+==|===|===|===|===|===|===|===
+0 | A |   |   |   |   |   |  
+1 | A | A | A |   |   |   |   
+2 | A | A | A | c | c |   |
+3 | A | A | A | e | c |   | e
+4 | A | A | A | e | c | g | e
+5 | A | A | A |*f*| c | g | e
+
+On peut ensuite _remonter_ pour retrouver le chemin. Pour aller de Q à d on est passé en sens inverse par d, f, g, e, c, A.
+
 #### Stockage des solutions intermédiaires
 
 La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.
@@ -160,10 +191,6 @@ L'algorithme rend le tableau de temps intermédiaires qui contient le temps mini
 
 La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ le nombre de gares.
 
-{% info %}
-On peut très facilement modifier l'algorithme précédent pour qu'il conserve le chemin permettant de réaliser le temps de trajet minium.
-{% endinfo %}
-
 ## Méthode de résolution
 
 {% note "**Méthode**" %}
@@ -198,7 +225,7 @@ Pour un ensemble de gares $G$, on note $C$ **_la relation chemin_**  telle que :
 
 Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.
 
-Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.
+Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique, mais en changeant les sous-problèmes considérés. Ceci montre que les sous-problèmes que l'on peut considérer sont multiples, et peuvent conduire à complexités différentes. 
 
 La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car elle est :
 
