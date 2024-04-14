@@ -112,16 +112,16 @@
 </div>
 </div>
 <p>Il s'applique aux problèmes d'optimisations et en particulier ceux que l'on peut écrire sous une forme récursive. Illustrons le avec la recherche de chemins le plus rapide. Supposons que le chemin le plus rapide entre la ville A et la ville B soit celui ci-dessous :</p>
-<p><img src="../opti-1.png" alt="opti A˜B"></p>
+<p><img src="opti-1.png" alt="opti A˜B"></p>
 <p>Prenons une ville sur ce chemin, par exemple la ville C :</p>
-<p><img src="../opti-2.png" alt="opti A˜C˜B"></p>
+<p><img src="opti-2.png" alt="opti A˜C˜B"></p>
 <p>Alors :</p>
 <ul>
 <li>Le chemin le plus court entre la ville A et la ville C est le bout de chemin entre A et C sur le chemin le plus court entre A et B</li>
 <li>Le chemin le plus court entre la ville C et la ville B est le bout de chemin entre C et B sur le chemin le plus court entre A et B</li>
 </ul>
 <p>En effet, s'il existait par exemple un chemin plus rapide entre A et C (le chemin rouge) :</p>
-<p><img src="../opti-3.png" alt="opti A-C˜B"></p>
+<p><img src="opti-3.png" alt="opti A-C˜B"></p>
 <p>Il suffirait de passer par lui pour aller de A à C puis reprendre le chemin noir pour aller de C à B pour avoir un chemin encore plus rapide, ce qui est impossible par hypothèse.</p>
 <p>Cet exemple est fondamental car c'est de lui qu'est né le principe de programmation dynamique par le mathématicien <a href="https://fr.wikipedia.org/wiki/Richard_Bellman">Richard Bellman</a>. C'est ce que nous allons tout de suite découvrir.</p>
 <p>Il existe de nombreux cas d'applications de la programmation dynamique, beaucoup de problèmes pouvant s'écrire sous forme récursive, même s'ils ne sont pas initialement formulés ainsi. Ce n'est cependant une solution universelle car le nombre de sous-problèmes à considérer peut être énorme et donc ne pas donner d'avantage algorithmique clair par rapport à la solution <em>brut force</em> (énumérer et analyser tous les cas possibles).</p>
@@ -198,6 +198,158 @@ $$
 <li>$T[c][b] = 1$</li>
 </ul>
 <p>Et on a $M_2[b] = 2 &lt; T[A][b] = 10$.</p>
+<h4>Exemple</h4>
+<p>On considère les tronçons suivants :</p>
+<p><img src="tron%C3%A7ons.png" alt="tronçons"></p>
+<p>Ce qui donne la suite de liste suivante :</p>
+<table>
+<thead>
+<tr>
+<th>k</th>
+<th>A</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>11</td>
+<td>7</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>10</td>
+<td>7</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>10</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>10</td>
+<td>7</td>
+<td>9</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<p>Pour revenir en arrière et retrouver le chemin, on peu stocker le tronçon qui a rendu le chemin minimum (on a choisi ici plus petit ou égal. On privilégie les chemins minimaux les pus long) :</p>
+<table>
+<thead>
+<tr>
+<th>k</th>
+<th>A</th>
+<th>b</th>
+<th>c</th>
+<th>d</th>
+<th>e</th>
+<th>f</th>
+<th>g</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>c</td>
+<td>c</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>e</td>
+<td>c</td>
+<td></td>
+<td>e</td>
+</tr>
+<tr>
+<td>4</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>e</td>
+<td>c</td>
+<td>g</td>
+<td>e</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td><em>f</em></td>
+<td>c</td>
+<td>g</td>
+<td>e</td>
+</tr>
+</tbody>
+</table>
+<p>On peut ensuite <em>remonter</em> pour retrouver le chemin. Pour aller de Q à d on est passé en sens inverse par d, f, g, e, c, A.</p>
 <h4>Stockage des solutions intermédiaires</h4>
 <p>La partie précédente nous a permis de dégager une équation de récurrence permettant de lier des sous-problèmes entre eux. Pour éviter d'avoir sans cesse à recalculer ces solutions il faut les stocker.</p>
 <p>Dans le cas de notre problème l'équation de récurrence montre que pour trouver un chemin optimal à au plus $k$ tronçons entre deux gares il faut connaitre tous les chemins optimaux à au plus $k-1$ tronçons entre la gare de départ et toutes les autres gares. On n'a pas besoin de tout conserver, juste les valeurs précédentes suffisent.</p>
@@ -235,14 +387,6 @@ $$
 </div>
 </div>
 <p>La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ le nombre de gares.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut très facilement modifier l'algorithme précédent pour qu'il conserve le chemin permettant de réaliser le temps de trajet minium.</p>
-</div>
-</div>
 <h2>Méthode de résolution</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -283,7 +427,7 @@ $$
 </div>
 </div>
 <p>Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.</p>
-<p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique.</p>
+<p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique, mais en changeant les sous-problèmes considérés. Ceci montre que les sous-problèmes que l'on peut considérer sont multiples, et peuvent conduire à complexités différentes.</p>
 <p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car elle est :</p>
 <ul>
 <li>réflexive: pour tout $x$, on a $C[x][x]$ (le singleton $x$ permet de relier $x$ à lui-même)</li>

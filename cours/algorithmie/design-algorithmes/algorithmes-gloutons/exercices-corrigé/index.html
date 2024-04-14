@@ -98,6 +98,14 @@
 <blockquote>
 <p>recouvrement de points par des intervalles exo 3</p>
 </blockquote>
+<p>On classe les réels par ordre croissants puis pour chaque réel $x_i$, s'il n'est pas couvert par un intervalle on ajoute l'intervalle $[x_i, x_i + 1]$.</p>
+<h4>Initialisation de la récurrence</h4>
+<p>Il existe bien une solution optimale avec $[x_1, x_1 +1]$ comme plus petit intervalle :<br>
+- $x_1$ est couvert et soit l'intervalle le plus à gauche aui le couvre. Il n'y a aucun réel à gauche de $x_1$ donc aucun intervalle nécessaire à gauche de cet intervalle<br>
+- si l'intervalle min ne commence pas en $x_1$ on le remplace par $[x_1, x_1 +1]$ et la solution continue d'être optimale</p>
+<h4>Récurrence</h4>
+<p>Soit $[x_i, x_i +1]$ le plus petit intervalle qui n'est pas dans la solution optimale.</p>
+<p>Comme $x_i$ doit être couvert, il existe un intervalle qui le couvre. Comme tout $x_j$, avec $j &lt; i$ est couvert (les deux solutions coincident), on peut remplacer l'intervalle le plus à gauche couvrant $x_i$ dans la solution optimale par $[x_i, x_i +1]$ et la solution reste optimale.</p>
 <h3>réservation SNCF</h3>
 <h4>solution possible ?</h4>
 <p>Une solution en $\mathcal{O}(n+K)$ :</p>
@@ -111,16 +119,58 @@
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"le train"</span><span class="token punctuation">,</span> t<span class="token punctuation">,</span> <span class="token string">"contient"</span><span class="token punctuation">,</span> d<span class="token punctuation">[</span>t<span class="token punctuation">]</span> <span class="token operator">-</span> P<span class="token punctuation">,</span> <span class="token string">"passagers de trop."</span><span class="token punctuation">)</span>
 </code></pre>
 <h4>solution approchée</h4>
-<h3>Ordonnancement, la variante</h3>
-<p>C'est pareil. Il suffit de dire que la perte est un gain et de maximiser le gain.</p>
-<h3>Ordonnancement, le retour</h3>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> d<span class="token punctuation">[</span>t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">></span> P<span class="token punctuation">:</span>
+        d<span class="token punctuation">[</span>t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+        t<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>A la fin de l'itération, les passagers surnuméraires ont été déplacés dans le premier train disponible.</p>
+<p>Cette solution est optimale pour la fonction $\sum_{i\geq 1}(t'[i] - t[i])$ où $t'[i]$ est le train effectivement pris par le passager $i$.</p>
+<h3>Une quête d'essence</h3>
 <blockquote>
-<p>introduction à l'algorithmique p393</p>
+<p>TBD<br>
+la seconde partie ressemble au recouvrement.</p>
 </blockquote>
+<h2>Problèmes d'ordonnancements</h2>
+<h3>Ordonnancement avec pénalité</h3>
+<p>Tout pareil. On dit que la pénalité est un gain cu'on cherche à maximiser : on réalisera en priorité les tâches avec la plus grande pénalité et donc on minimisera les pénalités des tâches non effectuées.</p>
+<h3>Ordonnancement avec départ différé</h3>
 <h4>Formalisation du problème</h4>
+<ul>
+<li>la tâche $\sigma_1$ a commencé en 0 et a finie en $p_{\sigma_1}$</li>
+<li>la tâche $\sigma_2$ a commencé en $p_{\sigma_1}$ et a finie en $p_{\sigma_1} + p_{\sigma_2}$</li>
+<li>la tâche $\sigma_3$ a commencé en $p_{\sigma_1} + p_{\sigma_2}$ et a finie en $p_{\sigma_1} + p_{\sigma_2} + p_{\sigma_3}$</li>
+</ul>
+<p>On a donc la formule suivante pour donner la somme de toutes les fins de tâches :</p>
+<div>
+$$
+   T = \sum_{1\leq i \leq n}( \sum_{1\leq j < i}p_{\sigma_j}) = \sum_i(n-i)p_{\sigma_i}
+$$
+</div>
+<p>Pour 3 tâches, il y a 6 ordonnancements possibles qui donnent respectivement :</p>
+<ul>
+<li>1 puis 3 puis 5 : $T = 2 \cdot 1 + 2 \cdot 3 = 5$</li>
+<li>1 puis 5 puis 3 : $T = 2 \cdot 1 + 2 \cdot 5 = 12$</li>
+<li>3 puis 1 puis 5 : $T = 2 \cdot 3 + 2 \cdot 1 = 8$</li>
+<li>3 puis 5 puis 1 : $T = 2 \cdot 3 + 2 \cdot 5 = 16$</li>
+<li>5 puis 1 puis 3 : $T = 2 \cdot 5 + 2 \cdot 1 = 12$</li>
+<li>5 puis 3 puis 1 : $T = 2 \cdot 5 + 2 \cdot 3 = 16$</li>
+</ul>
 <h4>Algorithme</h4>
+<p>Minimiser la valeur moyenne des débuts de réalisation minimise $T/n$. Il suffit donc de minimiser $T$.</p>
+<p>L'ordre selon lequel il faut ordonner les tâches est par début décroissant. S'il existait en effet $i &lt; j$ tel que $p_{\sigma_i} &gt; p_{\sigma_j}$ changer les deux tâches diminuerait strictement $T$ puisque $n-i &gt; n-j$. Cet ordre donne directement l'algorithme glouton :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">On trie les tâches par temps croissant
+pour chache tache dans cet ordre:
+    réalise cette tache
+</code></pre>
 <h4>Dates de disponibilité</h4>
+<p>Le même raisonnement que précédemment montre que l'on peut ordonner les les tâches par $d_i + p_i$ croissants.</p>
 <h4>Interruption de tâches</h4>
+<p>On peut à chaque unité réaliser une unité de temps de la tâche qui se finie au plus tôt parmi les tâches que l'on peut réaliser. Ceci garanti que les tâches sont bien réalisées par de la plus rapide à la plus lente.</p>
+<h3>Ordonnancement avec retard</h3>
+<blockquote>
+<p>TBD</p>
+</blockquote>
 
 
 </article>

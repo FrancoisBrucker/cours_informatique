@@ -128,15 +128,27 @@
 <p>Proposez un algorithme minimisant l'attente globale pour faire voyager tous les voyageurs.</p>
 </div>
 </div>
-<h3>Ordonnancement, la variante</h3>
-<p>On reprend <a href="../principe/#exemple-ordonnancement" class="interne">le problème d'ordonnancement du cours</a>, mais avec des pénalités et pas des gains : ne pas réaliser une tâche $i$ coûte une pénalité $p_i$.</p>
+<h3>Une quête d'essence</h3>
+<p>Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.</p>
+<p>Le but est d'atteindre la dernière station de la route avec un réservoir de $L$ litres d'essence, en considérant qu'un litre d'essence permet de faire 1 kilomètre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Proposez un algorithme glouton permettant de trouver un ordre d'exécution des tâches permettant de minimiser la somme totale des pénalités.</p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Admissibilité</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse parcourir toute la route jusqu'à la dernière station service.</p>
 </div>
 </div>
-<h3>Ordonnancement, le retour</h3>
+<h4>Algorithme</h4>
+<p>Écrivez un algorithme glouton qui donne le nombre minimum de stations auxquelles il faut mettre de l'essence dans le réservoir pour arriver à destination, en supposant que le réservoir est initialement vide.</p>
+<h4>Prix fluctuant</h4>
+<p>On suppose que le prix de l'essence à la station $i$ vaut $p_i$.</p>
+<p>Donnez un algorithme glouton optimal permettant de réaliser le parcours au prix minimum.</p>
+<h2>Problèmes d'ordonnancements</h2>
+<p>Les problèmes d'ordonnancements sont très important car nombre de problèmes courant peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemplex où l'approche gloutonne est optimale.</p>
+<h3>Ordonnancement avec pénalité</h3>
+<p>Comme dans le cours mais chaque tâche a un cout si on ne la réalise pas à temps. Le but est de minimiser la somme des pénalités.</p>
+<h3>Ordonnancement avec départ différé</h3>
 <p>On suppose que l'on a $n$ tâches à réaliser par <strong>un unique</strong> ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il l'a termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.</p>
 <p>On veut minimiser la somme des fin de réalisations des tâches.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -146,45 +158,108 @@
 </div><div class="pl-8 mr-8">
 <p>En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :</p>
 <ol>
-<li>donnez le temps de départ de la tâche $\sigma_1$</li>
-<li>en déduire que la valeur de la somme totale des fins de tâches vaut $\sum_i(n-i)p_{\sigma_i}$</li>
+<li>donnez le temps minimum de départ et de fin des tâches $\sigma_1$, $\sigma_2$ et $\sigma_3$</li>
+<li>en déduire que la valeur de la somme totale des temps de départ des tâches vaut $\sum_i(n-i)p_{\sigma_i}$</li>
 </ol>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8  mb-2 mr-8">
-<p>**Formalisation du problème **</p>
+<p><strong>Exemple</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Quel est l'ordre d'exécution des tâches minimisant la somme des fins de tiaches pour trois tâches de temps de réalisation 1, 3 et 5.</p>
+<p>Quel est l'ordre d'exécution des tâches minimisant la somme des fins de tâches pour trois tâches de temps de réalisation 1, 3 et 5.</p>
 </div>
 </div>
-<h4>Algorithme</h4>
-<p>Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches pour minimiser la valeur moyenne de fin de réalisation.</p>
-<h4>Dates de disponibilité</h4>
+<p>L'exemple précédent a du vous donner une idée de l'ordre associé au glouton :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Ordre d'exécution des tâches</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches pour minimiser la valeur moyenne des débuts de réalisations.</p>
+</div>
+</div>
 <p>On suppose maintenant que toutes les tâches ne sont pas immédiatement disponibles. Chaque tâche $i$ a maintenant une date $d_i$ à partir de la quelle elle peut être réalisée.</p>
-<p>Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches.</p>
-<h4>Interruption de tâches</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Départs différés</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal minimisant la valeur moyenne des débuts de réalisations.</p>
+</div>
+</div>
 <p>On suppose maintenant que l'ouvrier peut mettre en pause la réalisation du tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.</p>
-<p>Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal d'exécution des tâches.</p>
-<h3>Ordonnancement</h3>
-<blockquote>
-<p>et 20/21</p>
-</blockquote>
-<h3>Une quête d'essence</h3>
-<p>Une route comporte $n$ stations services numérotées dans l’ordre du parcours, de $0$ à $n-1$. La distance du départ de la station $i$ est de $d_i$ kilomètres et on considère que $d[0] = 0$.</p>
-<p>Le but est d'atteindre la dernière station de la route avec un réservoir de $L$ litres d'essence, en considérant qu'un litre d'essence permet de faire 1 kilomètre.</p>
-<h4>Admissibilité</h4>
-<p>Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse parcourir toute la route jusqu'à la dernière station service.</p>
-<h4>Algorithme</h4>
-<p>Écrivez un algorithme glouton qui donne le nombre minimum de stations auxquelles il faut mettre de l'essence dans le réservoir pour arriver à destination, en supposant que le réservoir est initialement vide.</p>
-<h4>Prix fluctuant</h4>
-<p>On suppose que le prix de l'essence à la station $i$ vaut $p_i$.</p>
-<p>Donnez un algorithme glouton optimal permettant de réaliser le parcours au prix minimum.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Tâches fragmentables</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez (et prouvez) la méthode permettant de minimiser la moyenne des fins de chaque tâches.</p>
+</div>
+</div>
+<h3>Ordonnancement avec retard</h3>
+<p>On suppose que pour mener à bien un projet, on doit réaliser $n$ tâches où chaque tâche $t_i$ a :</p>
+<ul>
+<li>une durée de réalisation : $d_i$,</li>
+<li>un temps de fin conseillé : $f_i$.</li>
+</ul>
+<p>Si on note $s_i$ le début de la réalisation de la tâche $t_i$ on définit son retard par :</p>
+<div>
+$$
+    r_i = \max(0, s_i + d_i - f_i)
+$$
+</div>
+<p>Si $r_i &gt; 0$ la tâche $t_i$ est en retard. Le but du problème est de trouver un algorithme glouton qui affecte à chaque tache son début et qui minimise le retard maximum : $$R = \max_{1\leq i \leq n} r_i$$</p>
+<p>Comme on a qu'un seul ouvrier pour réaliser les tâches, on ne peut créer qu'une tâche à la fois.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Premières propriétés</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li>Montrez que le retard d'une solution ne peut pas augmenter si l'on supprime les temps d'inactivité de celle-ci : l'ouvrier enchaîne les tâches sans s'arrêter jusqu'à ce que toutes les tâches aient été réalisées.</li>
+<li>En déduire que la solution de notre problème est un ordonnancement des tâches selon un ordre particulier : c'est un algorithme glouton sans étape de choix (toutes les tâches sont dans la solution).</li>
+</ol>
+</div>
+</div>
+<p>On suppose que les tâches $(t_i)_{1\leq i \leq n}$ sont rangées dans un certain ordre. Écrivez l'algorithme qui calcule le retard maximum pour cet ordre. Quel est sa complexité ?</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Mauvais ordres</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Montrez que les ordres suivants ne sont pas optimaux :</p>
+<ul>
+<li>item Les tâches triées par durée décroissante.</li>
+<li>Les tâches triées par durée croissante.</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Ordre optimal</strong></p>
+</div><div class="pl-8 mr-8">
+<p>-Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} &gt; f_{i+1}$, les échanger n'augmente pas le retard.</p>
+<ul>
+<li>Montrez que si une solution ne possède aucunes tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} &gt; f_{i+1}$, alors les tâches sont rangées par temps de fin conseillé croissante.</li>
+<li>En déduire que l'ordre optimal est réalisé pour l'ordre des temps de fin conseillé croissante.</li>
+</ul>
+</div>
+</div>
 <h2>Glouton pas optimal mais pas mal</h2>
-<blockquote>
-<p>A performance garanties.</p>
-</blockquote>
+<p>Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer qu'ils permettent tout de même de n'être pas trop éloigné de celle-ci.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un algorithme est <strong><em>à performance garantie</em></strong> si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.</p>
+</div>
+</div>
 <h3>Équilibrage de charge</h3>
 <blockquote>
 <p>exam 21/22</p>
