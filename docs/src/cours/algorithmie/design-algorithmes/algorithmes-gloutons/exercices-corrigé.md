@@ -62,8 +62,62 @@ Cette solution est optimale pour la fonction $\sum_{i\geq 1}(t'[i] - t[i])$ où 
 
 ### Une quête d'essence
 
-> TBD
-> la seconde partie ressemble au recouvrement.
+#### Admissibilité
+
+Il faut et il suffit que les stations services soient éloignées de moins de $L$ kilomètres.
+#### Algorithme
+
+Il faut aller le plus loin possible à chaque fois : la prochaine station est la station la plus éloignée dont la istance est inférieure à $L$. 
+
+Soit $s_i$ la première station d'une solution optimale qui ne correspond pas avec la station $g_i$ choisie par le glouton . On a :
+
+- $i>1$ puisque la première station est la station de départ
+- $s_{i-1} = g_{i-1}$
+
+On en conclut que $s_i < g_i$ et que l'on peut choisir $g_i$ comme $i$ ème choix pour la solution optimale et que, comme justement la solution est optimale, $s_{i+1} > g_i$ sinon on aurait pu s'en passer.
+
+Le raisonnement précédent montre que l'on peut construire une solution optimale qui coïncide avec le glouton : le glouton est optimal.
+
+#### Prix fluctuants
+
+On considère les stations par prix croissants et on leur associe à chacune un recouvrement de taille $L$. 
+
+Dans l'exemple ci-dessous on considère que l'ordre de prix croissant est le nombre, que chaque case fait 1km et que $L=10$ :
+
+```text
+1111111111
+               2222222222
+      3333333333
+         4444444444
+1     3  4     2        5   : ordre des prix
+1     2  3     4        5   : ordre dans le parcours
+```
+
+On découpe ensuite les intervalles pour qu'ils partitionnent l'espace en ne conservant que la partie la plus petite.
+
+```
+On suppose que les intervalles I[i] sont rangés par prix croissant
+
+pour i allant de 1 à n-1:
+    pour j allant de i+1 à n-1:
+        I[j] = I[j] privé de I[i]
+```
+
+L'intervalle restant est la quantité d'essence mettre dans le réservoir :
+
+
+```text
+1111111111
+               2222222222
+          33333 
+                   
+1     3  4     2        5
+1     2  3     4        5
+```
+
+On voit dans l'exemple que la station 4 est inutile et qu'il faut tout de même mettre de l'essence en passant à la station 3.
+
+La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ permet de faire la distance allant de $d_i$ à $d_i + L$. On a gardé que les kilomètres ne pouvant pas être couvert par une station ayant un prix inférieur.
 
 ## Problèmes d'ordonnancements
 
@@ -120,4 +174,25 @@ On peut à chaque unité réaliser une unité de temps de la tâche qui se finie
 
 
 ### Ordonnancement avec retard
- > TBD
+
+#### Premières propriétés
+
+Si l'on réduit l'inactivité de l'ouvrier, les tâches vont commencer plut tôt, donc $s_i$ va diminuer et donc $r_i$ aussi : $R$ ne peut que diminuer.
+
+La remarque précédente nous indique que l'ouvrier doit commencer une nouvelle tâche immédiatement après avoir fini la précédente.
+
+#### Mauvais ordres
+
+Durée croissante : 
+
+- $d_1 = 1$, $f_1 = 11$
+- $d_2 = 10$, $f_2 = 10$
+
+Durée décroissante : 
+
+- $d_1 = 10$, $f_1 = 11$
+- $d_2 = 1$, $f_2 = 1$
+
+#### Ordre optimal
+
+

@@ -60,7 +60,7 @@ Donnez une condition nécessaire et suffisante pour que l'automobiliste puisse p
 
 Écrivez un algorithme glouton qui donne le nombre minimum de stations auxquelles il faut mettre de l'essence dans le réservoir pour arriver à destination, en supposant que le réservoir est initialement vide. 
 
-#### Prix fluctuant 
+#### Prix fluctuants 
 
 On suppose que le prix de l'essence à la station $i$ vaut $p_i$. 
 
@@ -80,7 +80,7 @@ On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaq
 
 On veut minimiser la somme des fin de réalisations des tâches.
 
-{% exercice  "**Formalisation du problème **" %}
+{% exercice  "**Formalisation du problème**" %}
 En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
 
 1. donnez le temps minimum de départ et de fin des tâches $\sigma_1$, $\sigma_2$ et $\sigma_3$
@@ -118,8 +118,8 @@ Donnez (et prouvez) la méthode permettant de minimiser la moyenne des fins de c
 
 On suppose que pour mener à bien un projet, on doit réaliser $n$ tâches où chaque tâche $t_i$ a :
 
-- une durée de réalisation : $d_i$,
-- un temps de fin conseillé : $f_i$.
+- une durée de réalisation : $d_i$
+- un temps de fin conseillé : $f_i$
 
 Si on note $s_i$ le début de la réalisation de la tâche $t_i$ on définit son retard par : 
 
@@ -151,6 +151,7 @@ Montrez que les ordres suivants ne sont pas optimaux :
 {% endexercice  %}
 
 {% exercice  "**Ordre optimal**" %}
+
 -Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} > f_{i+1}$, les échanger n'augmente pas le retard.
 - Montrez que si une solution ne possède aucunes tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} > f_{i+1}$, alors les tâches sont rangées par temps de fin conseillé croissante.
 - En déduire que l'ordre optimal est réalisé pour l'ordre des temps de fin conseillé croissante.
