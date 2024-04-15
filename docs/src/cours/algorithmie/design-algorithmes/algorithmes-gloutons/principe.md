@@ -352,7 +352,7 @@ Si une solution ne contient pas l'élément de prix maximum on l'échange avec l
 
 #### <span id="récurrence-optimisation"></span> Récurrence
 
-Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris sont deux les solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
+Si une solution optimale et la solution gloutonne coïncident au bout de $i$ étapes (les éléments pris le sont pour les deux solutions et les éléments écartés le sont aussi pour les deux solutions), à l'étape $i+1$ on a deux cas :
 
 - on écarte ce produit car la solution n'est plus compatible pour la solution gloutonne. Comme La solution optimale contenait jusqu'à présent tous les éléments de la solution gloutonne, le produit de l'étape $i+1$ n'est pas on plus compatible avec la solution optimale.
 - on ajoute le produit à la solution gloutonne. Si la solution optimale ne contient pas ce produit on peut échanger n'importe quel autre élément que les $i-1$ premiers éléments de la solution avec celui-ci pour augmenter le profit.
