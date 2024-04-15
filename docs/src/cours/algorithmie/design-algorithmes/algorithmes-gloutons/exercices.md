@@ -72,7 +72,11 @@ Les problèmes d'ordonnancements sont très important car nombre de problèmes c
 
 ### Ordonnancement avec pénalité
 
-Comme dans le cours mais chaque tâche a un cout si on ne la réalise pas à temps. Le but est de minimiser la somme des pénalités.
+[Comme dans le cours](../principe/#exemple-ordonnancement){.interne} mais chaque tâche a un cout si on ne la réalise pas à temps. 
+
+{% exercice %}
+Le but est de minimiser la somme des pénalités.
+{% endexercice %}
 
 ### Ordonnancement avec départ différé
 
@@ -152,10 +156,9 @@ Montrez que les ordres suivants ne sont pas optimaux :
 
 {% exercice  "**Ordre optimal**" %}
 
--Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} > f_{i+1}$, les échanger n'augmente pas le retard.
-- Montrez que si une solution ne possède aucunes tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} > f_{i+1}$, alors les tâches sont rangées par temps de fin conseillé croissante.
-- En déduire que l'ordre optimal est réalisé pour l'ordre des temps de fin conseillé croissante.
+Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} > f_{i+1}$, les échanger n'augmente pas le retard.
 
+En déduire l'ordre optimal.
 {% endexercice  %}
 
 ## Glouton pas optimal mais pas mal
@@ -168,7 +171,46 @@ Un algorithme est **_à performance garantie_** si sa solution est plus grande q
 
 ### Équilibrage de charge
 
-> exam 21/22
+On appelle **_équilibrage de charge_** le problème suivant : 
+
+- On possède $m$ machines et $n$ tâches à effectuer.
+- Chaque tâche $j$ nécessite $t_j$ unités de temps pour être effectuée par une machine.
+- Pour chaque machine $i$, on associe l'ensemble $M_i$ des tâches effectuées par celles-ci, et on note $T_i$ le temps passé à effectuer ses tâches : $T_i = \sum_{j \in M_i} t_j$.
+
+On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité : $\max_{1\leq i \leq m} T_i$. On note $T^\star$ ce minimum.
+
+{% exercice  "**Quelques propriétés**" %}
+1. montrez que l'on a $T^\star \geq \max_{1 \leq j\leq n} t_j$.
+2. Montrez que l'on a $T^\star \geq \frac{1}{m}\sum_{1 \leq j\leq n} t_j$ (**attention**, c'est bien $\frac{1}{m}$ et non $\frac{1}{n}$).
+
+{% endexercice  %}
+
+{% exercice  "**Un algorithme glouton**" %}
+- Proposez un algorithme glouton permettant de résoudre le problème. Cet algorithme glouton ajoutera itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.
+- Dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.
+- Montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.
+{% endexercice %}
+
+
+On considère une réalisation de l'algorithme. Soit $i^\star$ la machine réalisant $T_{i^\star} = \max_{1\leq i \leq m} T_i$ à la fin de l'algorithme, et $j$ l'indice de la dernière tâche qui lui a été assignée au cours de l'exécution de l'algorithme.
+
+{% exercice  "**Propriétés**" %}
+
+1. Montrez qu'à la fin de l'algorithme, on a $T_{i^\star} -t_j \leq T_k$ pour tout $k$.
+2. En déduire que $T_{i ^\star} - t_j \leq \frac{1}{m}\sum_{1\leq k\leq m}T_k$.
+3. Déduire de la déduction que $T_{i ^\star} - t_j \leq T^\star$.
+4. Puis que $T_{i ^\star} \leq 2 \cdot T^\star$.
+
+{% endexercice %}
+
+Les propriétés précédentes nous permettent de déduire que l'algorithme glouton est à performance garantie :
+
+{% exercice  "**Performances**" %}
+
+- En utilisant 2.3.4, montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.
+- Montrer que cette performance est atteinte quelque soit l'ordre des tâches utilisé.
+{% endexercice %}
+
 
 ### Plan de tables
 

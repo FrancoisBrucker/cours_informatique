@@ -195,4 +195,15 @@ Durée décroissante :
 
 #### Ordre optimal
 
+On a $r_{i+1} = s_{i+1} + d_{i+1} - f_{i+1} = s_{i} + d_{i} + d_{i+1} - f_{i+1}$, donc :
 
+- $r_{i+1} \geq s_{i} + d_{i+1} - f_{i+1}$
+- $r_{i+1} \geq s_{i} + d_{i+1} + d_{i} - f_{i}$, si $f_{i}> f_{i+1}$
+
+L'échange des deux tâches n'augmente pas le retard maximal.
+
+Si l'on range les élément par taille de fin demandée croissante, on est alors minimal car $f_{i}< f_{i+1}$ pour tout $i$ est  équivalent à $f_{i}< f_{j}$ pour tout $i<j$.
+
+## Glouton pas optimal mais pas mal
+
+### Équilibrage de charge
