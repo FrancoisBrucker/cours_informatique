@@ -217,6 +217,15 @@ pour chache tache dans cet ordre:
 <li>$d_2 = 1$, $f_2 = 1$</li>
 </ul>
 <h4>Ordre optimal</h4>
+<p>On a $r_{i+1} = s_{i+1} + d_{i+1} - f_{i+1} = s_{i} + d_{i} + d_{i+1} - f_{i+1}$, donc :</p>
+<ul>
+<li>$r_{i+1} \geq s_{i} + d_{i+1} - f_{i+1}$</li>
+<li>$r_{i+1} \geq s_{i} + d_{i+1} + d_{i} - f_{i}$, si $f_{i}&gt; f_{i+1}$</li>
+</ul>
+<p>L'échange des deux tâches n'augmente pas le retard maximal.</p>
+<p>Si l'on range les élément par taille de fin demandée croissante, on est alors minimal car $f_{i}&lt; f_{i+1}$ pour tout $i$ est  équivalent à $f_{i}&lt; f_{j}$ pour tout $i&lt;j$.</p>
+<h2>Glouton pas optimal mais pas mal</h2>
+<h3>Équilibrage de charge</h3>
 
 
 </article>

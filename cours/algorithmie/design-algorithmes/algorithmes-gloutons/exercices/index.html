@@ -147,7 +147,13 @@
 <h2>Problèmes d'ordonnancements</h2>
 <p>Les problèmes d'ordonnancements sont très important car nombre de problèmes courant peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemplex où l'approche gloutonne est optimale.</p>
 <h3>Ordonnancement avec pénalité</h3>
-<p>Comme dans le cours mais chaque tâche a un cout si on ne la réalise pas à temps. Le but est de minimiser la somme des pénalités.</p>
+<p><a href="../principe/#exemple-ordonnancement" class="interne">Comme dans le cours</a> mais chaque tâche a un cout si on ne la réalise pas à temps.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Le but est de minimiser la somme des pénalités.</p>
+</div>
+</div>
 <h3>Ordonnancement avec départ différé</h3>
 <p>On suppose que l'on a $n$ tâches à réaliser par <strong>un unique</strong> ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il l'a termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.</p>
 <p>On veut minimiser la somme des fin de réalisations des tâches.</p>
@@ -241,11 +247,8 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Ordre optimal</strong></p>
 </div><div class="pl-8 mr-8">
-<p>-Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} &gt; f_{i+1}$, les échanger n'augmente pas le retard.</p>
-<ul>
-<li>Montrez que si une solution ne possède aucunes tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} &gt; f_{i+1}$, alors les tâches sont rangées par temps de fin conseillé croissante.</li>
-<li>En déduire que l'ordre optimal est réalisé pour l'ordre des temps de fin conseillé croissante.</li>
-</ul>
+<p>Montrez que si une solution possède deux tâches successives $t_{i}$ et $t_{i+1}$ telles que $f_{i} &gt; f_{i+1}$, les échanger n'augmente pas le retard.</p>
+<p>En déduire l'ordre optimal.</p>
 </div>
 </div>
 <h2>Glouton pas optimal mais pas mal</h2>
@@ -261,9 +264,62 @@ $$
 </div>
 </div>
 <h3>Équilibrage de charge</h3>
-<blockquote>
-<p>exam 21/22</p>
-</blockquote>
+<p>On appelle <strong><em>équilibrage de charge</em></strong> le problème suivant :</p>
+<ul>
+<li>On possède $m$ machines et $n$ tâches à effectuer.</li>
+<li>Chaque tâche $j$ nécessite $t_j$ unités de temps pour être effectuée par une machine.</li>
+<li>Pour chaque machine $i$, on associe l'ensemble $M_i$ des tâches effectuées par celles-ci, et on note $T_i$ le temps passé à effectuer ses tâches : $T_i = \sum_{j \in M_i} t_j$.</li>
+</ul>
+<p>On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité : $\max_{1\leq i \leq m} T_i$. On note $T^\star$ ce minimum.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Quelques propriétés</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li>montrez que l'on a $T^\star \geq \max_{1 \leq j\leq n} t_j$.</li>
+<li>Montrez que l'on a $T^\star \geq \frac{1}{m}\sum_{1 \leq j\leq n} t_j$ (<strong>attention</strong>, c'est bien $\frac{1}{m}$ et non $\frac{1}{n}$).</li>
+</ol>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Un algorithme glouton</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Proposez un algorithme glouton permettant de résoudre le problème. Cet algorithme glouton ajoutera itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.</li>
+<li>Dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.</li>
+<li>Montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.</li>
+</ul>
+</div>
+</div>
+<p>On considère une réalisation de l'algorithme. Soit $i^\star$ la machine réalisant $T_{i^\star} = \max_{1\leq i \leq m} T_i$ à la fin de l'algorithme, et $j$ l'indice de la dernière tâche qui lui a été assignée au cours de l'exécution de l'algorithme.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Propriétés</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li>Montrez qu'à la fin de l'algorithme, on a $T_{i^\star} -t_j \leq T_k$ pour tout $k$.</li>
+<li>En déduire que $T_{i ^\star} - t_j \leq \frac{1}{m}\sum_{1\leq k\leq m}T_k$.</li>
+<li>Déduire de la déduction que $T_{i ^\star} - t_j \leq T^\star$.</li>
+<li>Puis que $T_{i ^\star} \leq 2 \cdot T^\star$.</li>
+</ol>
+</div>
+</div>
+<p>Les propriétés précédentes nous permettent de déduire que l'algorithme glouton est à performance garantie :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Performances</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>En utilisant 2.3.4, montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.</li>
+<li>Montrer que cette performance est atteinte quelque soit l'ordre des tâches utilisé.</li>
+</ul>
+</div>
+</div>
 <h3>Plan de tables</h3>
 <blockquote>
 <p>ET 22/23</p>
