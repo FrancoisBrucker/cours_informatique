@@ -263,6 +263,64 @@ $$
 <p>Un algorithme est <strong><em>à performance garantie</em></strong> si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.</p>
 </div>
 </div>
+<h3>Empaquetage</h3>
+<p>On veut faire une partition de $n$ entiers en $m$ ensembles tel que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$entiers et la borne $K$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Applications</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez quelques cas d'application concret de ce problème.</p>
+</div>
+</div>
+<p>Commencez par montrer la propriété suivante :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Solution optimale</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le nombre minimum d'ensemble est plus grand que la somme de tous les entiers divisé par $K$.</p>
+</div>
+</div>
+<p>On va utiliser l'algorithme glouton suivant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Es = []
+E = []
+pour chaque entier ni:
+    si somme(E) + ni ≤ K:
+        ajoute ni à E
+    sinon:
+        ajoute E à Es
+        E = [ni]
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Propriété</strong></p>
+</div><div class="pl-8 mr-8">
+<ol>
+<li>Montrez que la somme des entiers de deux éléments successifs de <code class="language-">Es</code> est strictement plus grand que $K$</li>
+<li>en déduire que la somme de tous les entiers est plus grande que $K \cdot \frac{m}{2}$</li>
+</ol>
+</div>
+</div>
+<p>Les deux propriétés précédentes doivent vous permettre de prouver :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Performance garantie</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Montrez que l'algorithme précédent trouve au maximum 2 fois la solution optimale.</p>
+</div>
+</div>
+<p>Cet algorithme permet d'être utilisé même si l'on ne connait pas tous les entiers. En revanche, il peut être très mauvais :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Cas le pire</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Donnez un exemple où l'algorithme rend une solution valant$2M-2$ où $M$ est le nombre minimum d'ensembles.</p>
+</div>
+</div>
 <h3>Équilibrage de charge</h3>
 <p>On appelle <strong><em>équilibrage de charge</em></strong> le problème suivant :</p>
 <ul>
@@ -282,13 +340,13 @@ $$
 </ol>
 </div>
 </div>
+<p>L'algorithme glouton que l'on utilisera pour résoudre le problème consistera à ajouter itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Un algorithme glouton</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>Proposez un algorithme glouton permettant de résoudre le problème. Cet algorithme glouton ajoutera itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.</li>
 <li>Dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.</li>
 <li>Montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.</li>
 </ul>
@@ -315,22 +373,106 @@ $$
 <p><strong>Performances</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>En utilisant 2.3.4, montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.</li>
+<li>Montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.</li>
 <li>Montrer que cette performance est atteinte quelque soit l'ordre des tâches utilisé.</li>
 </ul>
 </div>
 </div>
 <h3>Plan de tables</h3>
-<blockquote>
-<p>ET 22/23</p>
-</blockquote>
-<h3>Empaquetage</h3>
-<p>Bon glouton pas forcément bon tout le temps.</p>
-<blockquote>
-<p><a href="https://ics.uci.edu/~goodrich/teach/cs165/notes/BinPacking.pdf">https://ics.uci.edu/~goodrich/teach/cs165/notes/BinPacking.pdf</a><br>
-<a href="https://en.wikipedia.org/wiki/Bin_packing_problem">https://en.wikipedia.org/wiki/Bin_packing_problem</a><br>
-<a href="https://www.dil.univ-mrs.fr/~gcolas/algo-licence/slides/gloutons.pdf">https://www.dil.univ-mrs.fr/~gcolas/algo-licence/slides/gloutons.pdf</a></p>
-</blockquote>
+<p>Une de vos cousines se marie et vous a demandé de faire le plan de table du repas de noces. Pour maximiser la convivialité du repas elle vous demande :</p>
+<ul>
+<li>de ne mettre à chaque table que des personnes qui s'entendent;</li>
+<li>d'avoir un petit nombre de tables.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne demande pas que le nombre de tables soit minimum.</p>
+</div>
+</div>
+<h4>Modélisation</h4>
+<p>Un plan de table $P$ est une structure de données contenant :</p>
+<ul>
+<li>une liste $\verb|NOMS|$ contenant le nom de tous les invités;</li>
+<li>une liste $\verb|IC|$ d'incompatibilités où $\verb|IC[i]|$ contient un ensemble d'indices tel que si $\verb|j|$ est dans $\verb|IC[i]|$ alors $\verb|NOMS[i]|$ ne peut être à la même table que $\verb|NOMS[j]|$.</li>
+</ul>
+<p>On suppose de plus que la relation d'incompatibilité est symétrique (si $\verb|j|$ est dans $\verb|IC[i]|$ alors $\verb|i|$ est dans $\verb|IC[j]|$). Par exemple si les invités sont : <em>&quot;tata Guillemette&quot;</em>, <em>&quot;cousin Valentin&quot;</em>, <em>&quot;tonton Julien&quot;</em>, <em>&quot;papy François&quot;</em> et <em>&quot;soeur Manon&quot;</em> et que les relations sont :</p>
+<ul>
+<li><em>&quot;tata Guillemette&quot;</em> aime bien tout le monde</li>
+<li><em>&quot;papy François&quot;</em> n'aime personne à part <em>&quot;tata Guillemette&quot;</em></li>
+<li><em>&quot;cousin Valentin&quot;</em> ne supporte pas <em>&quot;soeur Manon&quot;</em></li>
+</ul>
+<p>On a la structure de données suivante (où $\verb|{...}|$ représente des ensembles) :</p>
+<ul>
+<li>$\verb|NOMS = [&quot;tonton Julien&quot;, &quot;papy François&quot;, &quot;tata Guillemette&quot;, &quot;cousin Valentin&quot;, &quot;soeur Manon&quot;]|$</li>
+<li>$\verb|IC = [{1}, {0, 3, 4}, {}, {1, 4}, {3, 1} ]|$</li>
+</ul>
+<p>Résoudre le problème revient à trouver un plan de table (chaque invité est associé à une table unique) valide (deux invités à une même table ne doivent pas avoir d'incompatibilité), c'est-à-dire créer une liste $\verb|tables|$ telle que :</p>
+<ul>
+<li>chaque élément de $\verb|tables|$ est un ensemble d'indices tel que si $i \in \mbox{tables}[k]$ alors l'invité $\verb|NOMS[i]|$ est placé à la table numéro $k$</li>
+<li>pour tout indice $i\geq 0$ strictement plus petit que le nombre d'invités, il existe un unique $k$ tel que $i \in \mbox{tables}[k]$</li>
+<li>si $i, j \in \mbox{tables}[k]$ alors $j \notin \mbox{IC}[i]$</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Montrez que quelles que soient les incompatibilités et le nombre d'invités, il existe un plan de table valide.</li>
+<li>Justifiez que pour l'exemple, le nombre minium de tables est 3.</li>
+<li>Combien de solutions à 3 tables différentes existe-t-il ?</li>
+<li>Montrez que si l'on supprime l'incompatibilité entre <em>&quot;papy François&quot;</em> et <em>&quot;soeur Manon&quot;</em> dans l'exemple alors il existe une solution à 2 tables.</li>
+</ol>
+</div>
+</div>
+<p>Trouvons le nombre minimum de tables d'un plan de table valide pour un cas particulier de plan de table.<br>
+On se place dans le cas où la relation d'incompatibilité est <strong><em>anti-transitive</em></strong>, c'est-à-dire que si l'invité $A$ est incompatible avec l'invité $B$ et l'invité $B$ incompatible avec l'invité $C$, alors l'invité $A$ est <strong><em>compatible</em></strong> avec l'invité $C$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que s'il existe une solution à 2 tables alors la relation d'incompatibilité est anti-transitive.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que si la relation d'incompatibilité est anti-transitive alors il existe une solution à 2 tables.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Déduire de la question précédente un algorithme permettant de rendre un plan de table valide à deux tables lorsque la relation d'incompatibilité est anti-transitive.</p>
+</div>
+</div>
+<p>On se propose d'écrire un algorithme glouton permettant de résoudre le problème dans le cas général (on ne suppose pas les relations anti-transitives). La structure de cet algorithme est la suivante :</p>
+<ol>
+<li>créer une liste $\verb|ordre|$ contenant les indices de tous les convives;</li>
+<li>créer une liste vide $\verb|tables|$</li>
+<li>pour chaque élément $\verb|i|$ de $\verb|ordre|$, ajouter $\verb|i|$ à la première table de $\verb|tables|$ possible (la première table ne contenant aucune de ses incompatibilités) si elle existe ou en créer une nouvelle sinon.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Pourquoi l'algorithme précédent est-il glouton ?</li>
+<li>Démontrez qu'il donne bien une réponse au problème quel que soit $\verb|ordre|$. Quel ordre utiliseriez-vous par défaut pour résoudre le problème ? Et pourquoi ?</li>
+<li>Cet algorithme est efficace mais on va voir qu'il dépend fortement de la liste $\verb|ordre|$. Montrez que l'algorithme peut rendre un nombre de tables strictement plus grand que 2 pour une relation anti-transitive.</li>
+</ol>
+</div>
+</div>
+<p>En utilisant la structure de l'algorithme glouton :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>démontrez que le nombre minimum de tables ne peut excéder le nombre maximum d'incompatibilités pour une personne plus 1;</li>
+<li>donnez un cas où cette borne est atteinte;</li>
+<li>donnez un cas où on peut faire strictement mieux que cette borne.</li>
+</ul>
+</div>
+</div>
 
 
 </article>
