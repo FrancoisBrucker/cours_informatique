@@ -69,6 +69,10 @@ Certains problèmes cependant permettent d'être résolus en construisant petit 
 
 ### Condition nécessaire et suffisante d'optimalité
 
+{% note %}
+On peut parfois prouver directement qu'un algorithme glouton est optimal, et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente, il existe toujours  la preuve par récurrence : on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.
+{% endnote %}
+
 Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
 
 - **initialisation** : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme
