@@ -156,7 +156,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On peut parfois prouver directement qu'un algorithme glouton est optimal, et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente, il existe toujours  la preuve par récurrence : on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.</p>
+<p>On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.</p>
 </div>
 </div>
 <p>Pour qu'un algorithme glouton <strong>trouve une solution optimale</strong> il faut :</p>
@@ -231,8 +231,7 @@
 </details>     
 </div>
 <h3>Preuve d'optimalité pour un système de pièce valant 1, 2 et 5</h3>
-<h4>Initialisation</h4>
-<p>Il faut montrer qu'il existe une solution optimale qui continent notre choix, c'est à dire la division entière de $R$ par 5.</p>
+<p>On a pas besoin ici de preuve par récurrence. On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.</p>
 <p>Considérons une solution optimale. Elle ne <strong>peut pas</strong> contenir :</p>
 <ul>
 <li><strong>plus de 2 pièces de 2</strong>, sinon on pourrait rendre moins de pièces en échangeant 3 pièces de 2 par 1 pièce de 5 et une pièce de 1 ce qui diminuerait strictement le nombre de pièces rendues.</li>
@@ -240,8 +239,7 @@
 </ul>
 <p>Enfin, cette solution optimale ne <strong>peut pas avoir exactement 2 pièces de 2 et une pièce de 1</strong>, sinon on les échangeraient pour une pièce de 5...</p>
 <p>On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.</p>
-<h4>Récurrence</h4>
-<p>Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a donc pas à proprement parler de récurrence à faire ici, juste à démontrer que l'algorithme glouton donnera une solution optimale lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre (ce qui est évident).</p>
+<p>Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.</p>
 <h3>Système de pièces quelconque ?</h3>
 <p>On peut démontrer que le système de pièce européen fonctionne avec les pièces et billets de : 1, 2, 5, 10, 20, 50, 100 et 200. Mais attention, cela ne marche pas pour tous les systèmes de pièces :</p>
 <ul>
