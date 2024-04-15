@@ -169,6 +169,47 @@ Les algorithmes gloutons suivants ne sont pas optimaux, mais on peut démontrer 
 Un algorithme est **_à performance garantie_** si sa solution est plus grande que $\alpha \cdot P(e)$ où $P(e)$ est la solution optimale pour une entrée $e$.
 {% endnote %}
 
+### Empaquetage
+
+On veut faire une partition de $n$ entiers en $m$ ensembles tel que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$entiers et la borne $K$.
+
+{% exercice "**Applications**" %}
+Donnez quelques cas d'application concret de ce problème.
+{% endexercice %}
+
+Commencez par montrer la propriété suivante :
+{% exercice "**Solution optimale**" %}
+Le nombre minimum d'ensemble est plus grand que la somme de tous les entiers divisé par $K$.
+{% endexercice %}
+
+On va utiliser l'algorithme glouton suivant :
+
+```text
+Es = []
+E = []
+pour chaque entier ni:
+    si somme(E) + ni ≤ K:
+        ajoute ni à E
+    sinon:
+        ajoute E à Es
+        E = [ni]
+```
+
+{% exercice "**Propriété**" %}
+1. Montrez que la somme des entiers de deux éléments successifs de `Es`{.language-} est strictement plus grand que $K$
+2. en déduire que la somme de tous les entiers est plus grande que $K \cdot \frac{m}{2}$
+{% endexercice %}
+Les deux propriétés précédentes doivent vous permettre de prouver :
+{% exercice "**Performance garantie**" %}
+Montrez que l'algorithme précédent trouve au maximum 2 fois la solution optimale.
+{% endexercice %}
+
+Cet algorithme permet d'être utilisé même si l'on ne connait pas tous les entiers. En revanche, il peut être très mauvais : 
+
+{% exercice "**Cas le pire**" %}
+Donnez un exemple où l'algorithme rend une solution valant$2M-2$ où $M$ est le nombre minimum d'ensembles. 
+{% endexercice %}
+
 ### Équilibrage de charge
 
 On appelle **_équilibrage de charge_** le problème suivant : 
@@ -185,8 +226,9 @@ On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité :
 
 {% endexercice  %}
 
+L'algorithme glouton que l'on utilisera pour résoudre le problème consistera à ajouter itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.
+
 {% exercice  "**Un algorithme glouton**" %}
-- Proposez un algorithme glouton permettant de résoudre le problème. Cet algorithme glouton ajoutera itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.
 - Dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.
 - Montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.
 {% endexercice %}
@@ -207,19 +249,86 @@ Les propriétés précédentes nous permettent de déduire que l'algorithme glou
 
 {% exercice  "**Performances**" %}
 
-- En utilisant 2.3.4, montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.
+- Montrez que la solution proposée par l'algorithme glouton est au pire 2 fois moins bonne que la solution optimale.
 - Montrer que cette performance est atteinte quelque soit l'ordre des tâches utilisé.
 {% endexercice %}
 
 
 ### Plan de tables
 
-> ET 22/23
+Une de vos cousines se marie et vous a demandé de faire le plan de table du repas de noces. Pour maximiser la convivialité du repas elle vous demande :
 
-### Empaquetage
+- de ne mettre à chaque table que des personnes qui s'entendent;
+- d'avoir un petit nombre de tables.
 
-Bon glouton pas forcément bon tout le temps.
-> 
-> <https://ics.uci.edu/~goodrich/teach/cs165/notes/BinPacking.pdf>
-> <https://en.wikipedia.org/wiki/Bin_packing_problem>
-> <https://www.dil.univ-mrs.fr/~gcolas/algo-licence/slides/gloutons.pdf>
+{% attention %}
+On ne demande pas que le nombre de tables soit minimum.
+{% endattention %}
+
+#### Modélisation
+
+Un plan de table $P$ est une structure de données contenant :
+
+- une liste $\verb|NOMS|$ contenant le nom de tous les invités;
+- une liste $\verb|IC|$ d'incompatibilités où $\verb|IC[i]|$ contient un ensemble d'indices tel que si $\verb|j|$ est dans $\verb|IC[i]|$ alors $\verb|NOMS[i]|$ ne peut être à la même table que $\verb|NOMS[j]|$.
+
+On suppose de plus que la relation d'incompatibilité est symétrique (si $\verb|j|$ est dans $\verb|IC[i]|$ alors $\verb|i|$ est dans $\verb|IC[j]|$). Par exemple si les invités sont : _"tata Guillemette"_, _"cousin Valentin"_, _"tonton Julien"_, _"papy François"_ et _"soeur Manon"_ et que les relations sont :
+
+- _"tata Guillemette"_ aime bien tout le monde
+- _"papy François"_ n'aime personne à part _"tata Guillemette"_
+- _"cousin Valentin"_ ne supporte pas _"soeur Manon"_
+
+On a la structure de données suivante (où $\verb|{...}|$ représente des ensembles) :
+
+- $\verb|NOMS = ["tonton Julien", "papy François", "tata Guillemette", "cousin Valentin", "soeur Manon"]|$
+- $\verb|IC = [{1}, {0, 3, 4}, {}, {1, 4}, {3, 1} ]|$
+
+Résoudre le problème revient à trouver un plan de table (chaque invité est associé à une table unique) valide (deux invités à une même table ne doivent pas avoir d'incompatibilité), c'est-à-dire créer une liste $\verb|tables|$ telle que :
+
+- chaque élément de $\verb|tables|$ est un ensemble d'indices tel que si $i \in \mbox{tables}[k]$ alors l'invité $\verb|NOMS[i]|$ est placé à la table numéro $k$
+- pour tout indice $i\geq 0$ strictement plus petit que le nombre d'invités, il existe un unique $k$ tel que $i \in \mbox{tables}[k]$
+- si $i, j \in \mbox{tables}[k]$ alors $j \notin \mbox{IC}[i]$
+
+{% exercice %}
+1. Montrez que quelles que soient les incompatibilités et le nombre d'invités, il existe un plan de table valide.
+2. Justifiez que pour l'exemple, le nombre minium de tables est 3.
+3. Combien de solutions à 3 tables différentes existe-t-il ?
+4. Montrez que si l'on supprime l'incompatibilité entre _"papy François"_ et _"soeur Manon"_ dans l'exemple alors il existe une solution à 2 tables.
+{% endexercice %}
+
+Trouvons le nombre minimum de tables d'un plan de table valide pour un cas particulier de plan de table.
+On se place dans le cas où la relation d'incompatibilité est **_anti-transitive_**, c'est-à-dire que si l'invité $A$ est incompatible avec l'invité $B$ et l'invité $B$ incompatible avec l'invité $C$, alors l'invité $A$ est **_compatible_** avec l'invité $C$.
+
+
+{% exercice %}
+Démontrez que s'il existe une solution à 2 tables alors la relation d'incompatibilité est anti-transitive.
+{% endexercice %}
+
+{% exercice %}
+Démontrez que si la relation d'incompatibilité est anti-transitive alors il existe une solution à 2 tables.
+{% endexercice %}
+
+{% exercice %}
+Déduire de la question précédente un algorithme permettant de rendre un plan de table valide à deux tables lorsque la relation d'incompatibilité est anti-transitive.
+
+{% endexercice %}
+
+On se propose d'écrire un algorithme glouton permettant de résoudre le problème dans le cas général (on ne suppose pas les relations anti-transitives). La structure de cet algorithme est la suivante :
+
+1. créer une liste $\verb|ordre|$ contenant les indices de tous les convives;
+2. créer une liste vide $\verb|tables|$
+3. pour chaque élément $\verb|i|$ de $\verb|ordre|$, ajouter $\verb|i|$ à la première table de $\verb|tables|$ possible (la première table ne contenant aucune de ses incompatibilités) si elle existe ou en créer une nouvelle sinon.
+
+{% exercice %}
+1. Pourquoi l'algorithme précédent est-il glouton ?
+2. Démontrez qu'il donne bien une réponse au problème quel que soit $\verb|ordre|$. Quel ordre utiliseriez-vous par défaut pour résoudre le problème ? Et pourquoi ?
+3. Cet algorithme est efficace mais on va voir qu'il dépend fortement de la liste $\verb|ordre|$. Montrez que l'algorithme peut rendre un nombre de tables strictement plus grand que 2 pour une relation anti-transitive.
+{% endexercice %}
+
+En utilisant la structure de l'algorithme glouton :
+{% exercice %}
+- démontrez que le nombre minimum de tables ne peut excéder le nombre maximum d'incompatibilités pour une personne plus 1;
+- donnez un cas où cette borne est atteinte;
+- donnez un cas où on peut faire strictement mieux que cette borne.
+{% endexercice %}
+

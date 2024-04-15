@@ -166,11 +166,9 @@ pour chache tache dans cet ordre:
 
 Le même raisonnement que précédemment montre que l'on peut ordonner les les tâches par $d_i + p_i$ croissants.
 
-
 #### Interruption de tâches
 
 On peut à chaque unité réaliser une unité de temps de la tâche qui se finie au plus tôt parmi les tâches que l'on peut réaliser. Ceci garanti que les tâches sont bien réalisées par de la plus rapide à la plus lente.
-
 
 
 ### Ordonnancement avec retard
@@ -204,6 +202,71 @@ L'échange des deux tâches n'augmente pas le retard maximal.
 
 Si l'on range les élément par taille de fin demandée croissante, on est alors minimal car $f_{i}< f_{i+1}$ pour tout $i$ est  équivalent à $f_{i}< f_{j}$ pour tout $i<j$.
 
+
 ## Glouton pas optimal mais pas mal
 
+### Empaquetage
+
+#### Applications
+
+Le transport de marchandises, le déchargement d'un cargo dans des camions, ...
+
+#### Solution optimale
+
+Si l'on a $m$ ensembles, on peut ranger au maximum une somme valant $K\cdot m$ qui doit donc être supérieure à la somme de tous les entiers.
+
+#### Propriétés
+
+
+On crée un nouvel ensemble que si l'entier courant ne tient pas dans l'ensemble considéré : la somme de ces deux ensembles consécutifs est donc strictement plus grande que $K$.
+
+Dans le cas où $m$ est pair on a alors :
+
+- `somme(E[0]) + somme(E[1]) > K`{.language-}
+- `somme(E[2]) + somme(E[3]) > K`{.language-}
+- `somme(E[4]) + somme(E[5]) > K`{.language-}
+- ...
+
+Et on en déduit, si $m$ est pair, que : `somme(E[0]) + ... + somme(E[m-1]) > K * m / 2`{.language-}. Le calcul est identique si $m$ est impair.
+
+#### Performance garantie
+
+Clair en utilisant les 2 questions précédentes.
+
+De plus ceci montre  que c'est vrai quelque soit l'ordre utilisé
+
+#### Cas le pire
+
+On suppose une alternance d'entiers valant $\frac{K}{2}$ et $1$.
+
 ### Équilibrage de charge
+
+#### Quelques propriétés
+
+La première inégalité vient du fait que toute tâche doit être effectuée par une machine : la machine $i$ qui réalisera la tâche de plus longue durée aura un $T_i$ plus grand que cette durée.
+
+La seconde inégalité découle du fait que $\min T_i \leq \frac{1}{m}\sum_i T_i \leq \max_i T_i$, et que $\sum_i T_i = \sum_j t_j$. L'inégalité est ainsi vraie pour tout assignation donc également pour l'assignation optimale.
+
+#### Un algorithme glouton
+
+Il vaut mieux répartir les tâches longues sur plusieurs machines, par exemples pour trois machines la répartition $[(4,), (4,), (1, 1, 1)]$ est préférable à la répartition $[(1, 4), (1, 4), (1,)]$ de 5 tâches de durée 4, 4, 1, 1 et 1.
+
+On rangera donc les tâches par durée décroissantes.
+
+Il est clair que s'il y a moins de $m$ tâches à ranger chaque machine aura au plus 1 tâche : la répartition sera optimale.
+
+#### Propriétés
+
+1. avant l'affectation de la tâche $j$ à la machine, son temps total était le plus faible. S'il y a eu des tâches d'affectées après la tâche $j$ elles l'ont été à d'autres machines qui ont augmenté leur temps total d'exécution, la propriété est donc toujours vrai à la fin de l'algorithme.
+2. En sommant l'inégalité précédente pour toutes les machines on obtient : $m\cdot(T_{i^\star} -t_j)\leq \sum_{1\leq k\leq m}T_k$
+3. vient directement du fait que $T^\star \geq \frac{1}{m}\sum_{1 \leq j\leq n} t_j$
+4. clair puisque $t_j \leq \max t_k \leq T^\star$
+
+##### Performances 
+
+La première partie est évidente et comme les inégalités ne dépendent pas de l'ordre choisit la seconde également.
+
+### Plan de tables
+
+> TBD
+
