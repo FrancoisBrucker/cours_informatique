@@ -70,7 +70,7 @@ Certains problèmes cependant permettent d'être résolus en construisant petit 
 ### Condition nécessaire et suffisante d'optimalité
 
 {% note %}
-On peut parfois prouver directement qu'un algorithme glouton est optimal, et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente, il existe toujours  la preuve par récurrence : on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.
+On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.
 {% endnote %}
 
 Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
@@ -128,9 +128,7 @@ def rendu(R, pieces=(1, 2, 5)):
 
 ### Preuve d'optimalité pour un système de pièce valant 1, 2 et 5
 
-#### Initialisation
-
-Il faut montrer qu'il existe une solution optimale qui continent notre choix, c'est à dire la division entière de $R$ par 5.
+On a pas besoin ici de preuve par récurrence. On va analyser les propriétés d'une solution optimale et montrer que la solution de l'algorithme glouton les satisfait.
 
 Considérons une solution optimale. Elle ne **peut pas** contenir :
 
@@ -141,9 +139,7 @@ Enfin, cette solution optimale ne **peut pas avoir exactement 2 pièces de 2 et 
 
 On en déduit donc que la somme d'argent rendu en pièce de 2 et de 1 pour une solution optimale ne peut dépasser 4, ce qui est exactement la division entière de $R$ par 5 et est le premier choix de l'algorithme glouton.
 
-#### Récurrence
-
-Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a donc pas à proprement parler de récurrence à faire ici, juste à démontrer que l'algorithme glouton donnera une solution optimale lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre (ce qui est évident).
+Après le premier choix (les pièces de 5), il ne reste à rendre qu'une somme inférieure ou égale à 4. Il n'y a plus qu'à montrer que pour les 5 cas possibles (lorsqu'il y a 0, 1, 2, 3 ou 4 à rendre) le glouton est optimal, ce qui est évident.
 
 ### Système de pièces quelconque ?
 

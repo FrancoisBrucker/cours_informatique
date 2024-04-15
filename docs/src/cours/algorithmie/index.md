@@ -137,10 +137,10 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% endaller %}
 
 
-## Projet "sac à dos"
+## Problème du "sac à dos"
 
 {% aller %}
-[Problème du sac à dos](./projet-sac-à-dos){.interne}
+[Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
 ## Classes de Problèmes Algorithmiques
