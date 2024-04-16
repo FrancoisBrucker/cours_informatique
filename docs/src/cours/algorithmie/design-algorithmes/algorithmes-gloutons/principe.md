@@ -76,12 +76,12 @@ On peut parfois prouver directement qu'un algorithme glouton est optimal et c'es
 Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
 
 - **initialisation** : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme
-- **récurrence** : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution
+- **récurrence** : montrer que la première différence entre une solution optimale et la solution de l'algorithme (l'élément étudié par le glouton à l'étape $i$ est : soit refusé par le glouton et présent dans la solution optimale ; soit accepté par le glouton et non présent dans la solution optimale) ne peut résulter en une meilleure solution
 
 On pourra également utiliser la technique de preuve suivante :
 
 - on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci
-- on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal
+- on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ : l'algorithme glouton est optimal
 
 ## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
