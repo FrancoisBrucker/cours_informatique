@@ -162,12 +162,12 @@
 <p>Pour qu'un algorithme glouton <strong>trouve une solution optimale</strong> il faut :</p>
 <ul>
 <li><strong>initialisation</strong> : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme</li>
-<li><strong>récurrence</strong> : montrer que la première différence entre une solution optimale et la solution de l'algorithme ne peut résulter en une meilleure solution</li>
+<li><strong>récurrence</strong> : montrer que la première différence entre une solution optimale et la solution de l'algorithme (l'élément étudié par le glouton à l'étape $i$ est : soit refusé par le glouton et présent dans la solution optimale ; soit accepté par le glouton et non présent dans la solution optimale) ne peut résulter en une meilleure solution</li>
 </ul>
 <p>On pourra également utiliser la technique de preuve suivante :</p>
 <ul>
 <li>on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci</li>
-<li>on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ: l'algorithme glouton est optimal</li>
+<li>on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ : l'algorithme glouton est optimal</li>
 </ul>
 <h2><span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces</h2>
 <p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.</p>
