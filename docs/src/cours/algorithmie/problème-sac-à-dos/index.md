@@ -217,7 +217,7 @@ Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
 - la solution du sac à dos fractionnel associé est : $\sum_{i < i^\star} p_i + (\frac{K-\sum_{i < i^\star} k_i}{k_{i^\star}}) \cdot p_{i^\star}$
 
-Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tout les aliments rentre dans le sac) :
+Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les aliments rentrent dans le sac) :
 
 1. on trie tous les aliments par valeur nutritionnelle au kilo décroissante
 2. on note $i^\star$ le premier élément dans cet ordre tel que $\sum_{i \leq i^\star} k_i > K$
