@@ -9,6 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD donner des exemples du discours de la méthode (cf. poly PP)
+
 ## Diviser pour régner
 
 {% aller %}
@@ -26,6 +28,15 @@ eleventyComputed:
 {% aller %}
 [Algorithmes gloutons](./algorithmes-gloutons){.interne}
 {% endaller %}
+
+## Recherche exhaustive
+
+> TBD
+
+> Backtracking
+> Branch and bound : si on a des infos en plus
+
+
 
 ## Projet Chemin et cycles
 

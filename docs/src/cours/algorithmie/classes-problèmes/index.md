@@ -27,4 +27,5 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 {% endaller %}
 
 > TBD isomorphisme de graphe : status inconnu.
+> TBD organiser ça sous l'angle de $\leq$ de problèmes
 

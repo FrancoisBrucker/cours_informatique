@@ -23,6 +23,17 @@ On va voir la construction et la preuve d'algorithmes gloutons pour résoudre de
 Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
 {% endnote %}
 
+Leur schéma général d'un algorithme glouton est alors le suivant :
+
+```text
+Ordonner E en (x_0, x_1, ..., x_n)
+S = {}
+
+pour chaque i de 1 à n:
+    si S union {x_i} est une solution possible :
+        ajouter x_i à S
+```
+
 On voit en creux que ce type d'algorithmes :
 
 1. va être utilisé dans des problèmes d'optimisation où l'on cherche la _meilleure solution_ parmi un ensemble de possibilités.
