@@ -108,6 +108,14 @@
 <p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
 </div>
 </div>
+<p>Leur schéma général d'un algorithme glouton est alors le suivant :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Ordonner E en (x_0, x_1, ..., x_n)
+S = {}
+
+pour chaque i de 1 à n:
+    si S union {x_i} est une solution possible :
+        ajouter x_i à S
+</code></pre>
 <p>On voit en creux que ce type d'algorithmes :</p>
 <ol>
 <li>va être utilisé dans des problèmes d'optimisation où l'on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
