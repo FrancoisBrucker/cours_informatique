@@ -20,7 +20,7 @@ Comme toujours lorsque l'on crée un algorithme glouton, la principale difficult
 ### Recouvrement
 
 {% exercice %}
-Donnez un algorithme glouton exhibant un nombre minimal $K$ d'intervalles unités $I_k = [u_i, u_{i+1}]$ ($1\leq i \leq K$) permettant de recouvrir $n$ réels donnés $x_1, \dots, x_n$.
+Donnez un algorithme glouton exhibant un nombre minimal $K$ d'intervalles unités $I_i = [u_i, u_i+1]$ ($1\leq i \leq K$) permettant de recouvrir $n$ réels donnés $x_1, \dots, x_n$.
 
 {% endexercice %}
 
@@ -68,11 +68,11 @@ Donnez un algorithme glouton optimal permettant de réaliser le parcours au prix
 
 ## Problèmes d'ordonnancements
 
-Les problèmes d'ordonnancements sont très important car nombre de problèmes courant peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemplex où l'approche gloutonne est optimale.
+Les problèmes d'ordonnancements sont très importants car nombre de problèmes courants peuvent s'écrire sous cette forme. Nous allons voir dans cette partie quelques exemples où l'approche gloutonne est optimale.
 
 ### Ordonnancement avec pénalité
 
-[Comme dans le cours](../principe/#exemple-ordonnancement){.interne} mais chaque tâche a un cout si on ne la réalise pas à temps. 
+[Comme dans le cours](../principe/#exemple-ordonnancement){.interne} mais chaque tâche a un coût si on ne la réalise pas à temps. 
 
 {% exercice %}
 Le but est de minimiser la somme des pénalités.
@@ -80,9 +80,9 @@ Le but est de minimiser la somme des pénalités.
 
 ### Ordonnancement avec départ différé
 
-On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il l'a termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
+On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il la termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
 
-On veut minimiser la somme des fin de réalisations des tâches.
+On veut minimiser la somme des fins de réalisations des tâches.
 
 {% exercice  "**Formalisation du problème**" %}
 En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
@@ -95,7 +95,7 @@ En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \si
 Quel est l'ordre d'exécution des tâches minimisant la somme des fins de tâches pour trois tâches de temps de réalisation 1, 3 et 5.
 {% endexercice %}
 
-L'exemple précédent a du vous donner une idée de l'ordre associé au glouton :
+L'exemple précédent a dû vous donner une idée de l'ordre associé au glouton :
 
 
 {% exercice  "**Ordre d'exécution des tâches**" %}
@@ -103,17 +103,17 @@ Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal 
 
 {% endexercice %}
 
-On suppose maintenant que toutes les tâches ne sont pas immédiatement disponibles. Chaque tâche $i$ a maintenant une date $d_i$ à partir de la quelle elle peut être réalisée.
+On suppose maintenant que toutes les tâches ne sont pas immédiatement disponibles. Chaque tâche $i$ a maintenant une date $d_i$ à partir de laquelle elle peut être réalisée.
 
 {% exercice  "**Départs différés**" %}
 Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal minimisant la valeur moyenne des débuts de réalisations.
 
 {% endexercice %}
 
-On suppose maintenant que l'ouvrier peut mettre en pause la réalisation du tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.
+On suppose maintenant que l'ouvrier peut mettre en pause la réalisation d'une tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.
 
 {% exercice  "**Tâches fragmentables**" %}
-Donnez (et prouvez) la méthode permettant de minimiser la moyenne des fins de chaque tâches.
+Donnez (et prouvez) la méthode permettant de minimiser la moyenne des fins de chaque tâche.
 
 {% endexercice %}
 
@@ -133,9 +133,9 @@ $$
 $$
 </div>
 
-Si $r_i > 0$ la tâche $t_i$ est en retard. Le but du problème est de trouver un algorithme glouton qui affecte à chaque tache son début et qui minimise le retard maximum : $$R = \max_{1\leq i \leq n} r_i$$ 
+Si $r_i > 0$ la tâche $t_i$ est en retard. Le but du problème est de trouver un algorithme glouton qui affecte à chaque tâche son début et qui minimise le retard maximum : $$R = \max_{1\leq i \leq n} r_i$$ 
 
-Comme on a qu'un seul ouvrier pour réaliser les tâches, on ne peut créer qu'une tâche à la fois.
+Comme on n'a qu'un seul ouvrier pour réaliser les tâches, on ne peut créer qu'une tâche à la fois.
 
 
 {% exercice  "**Premières propriétés**" %}
@@ -145,11 +145,11 @@ Comme on a qu'un seul ouvrier pour réaliser les tâches, on ne peut créer qu'u
 
 {% endexercice  %}
 
-On suppose que les tâches $(t_i)_{1\leq i \leq n}$ sont rangées dans un certain ordre. Écrivez l'algorithme qui calcule le retard maximum pour cet ordre. Quel est sa complexité ?
+On suppose que les tâches $(t_i)_{1\leq i \leq n}$ sont rangées dans un certain ordre. Écrivez l'algorithme qui calcule le retard maximum pour cet ordre. Quelle est sa complexité ?
 
 {% exercice  "**Mauvais ordres**" %}
 Montrez que les ordres suivants ne sont pas optimaux :
-- item Les tâches triées par durée décroissante.
+- Les tâches triées par durée décroissante.
 - Les tâches triées par durée croissante.
 
 {% endexercice  %}
@@ -171,7 +171,7 @@ Un algorithme est **_à performance garantie_** si sa solution est plus grande q
 
 ### Empaquetage
 
-On veut faire une partition de $n$ entiers en $m$ ensembles tel que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$entiers et la borne $K$.
+On veut faire une partition de $n$ entiers en $m$ ensembles telle que la somme des entiers dans chaque ensemble ne dépasse pas $K$. Le but est de minimiser $m$ sachant les $n$ entiers et la borne $K$.
 
 {% exercice "**Applications**" %}
 Donnez quelques cas d'application concret de ce problème.
@@ -179,7 +179,7 @@ Donnez quelques cas d'application concret de ce problème.
 
 Commencez par montrer la propriété suivante :
 {% exercice "**Solution optimale**" %}
-Le nombre minimum d'ensemble est plus grand que la somme de tous les entiers divisé par $K$.
+Le nombre minimum d'ensembles est plus grand que la somme de tous les entiers divisée par $K$.
 {% endexercice %}
 
 On va utiliser l'algorithme glouton suivant :
@@ -196,8 +196,8 @@ pour chaque entier ni:
 ```
 
 {% exercice "**Propriété**" %}
-1. Montrez que la somme des entiers de deux éléments successifs de `Es`{.language-} est strictement plus grand que $K$
-2. en déduire que la somme de tous les entiers est plus grande que $K \cdot \frac{m}{2}$
+1. Montrez que la somme des entiers de deux éléments successifs de `Es`{.language-} est strictement plus grand que $K$.
+2. En déduire que la somme de tous les entiers est plus grande que $K \cdot \frac{m}{2}$
 {% endexercice %}
 Les deux propriétés précédentes doivent vous permettre de prouver :
 {% exercice "**Performance garantie**" %}
@@ -207,7 +207,7 @@ Montrez que l'algorithme précédent trouve au maximum 2 fois la solution optima
 Cet algorithme permet d'être utilisé même si l'on ne connait pas tous les entiers. En revanche, il peut être très mauvais : 
 
 {% exercice "**Cas le pire**" %}
-Donnez un exemple où l'algorithme rend une solution valant$2M-2$ où $M$ est le nombre minimum d'ensembles. 
+Donnez un exemple où l'algorithme rend une solution valant $2M-2$ où $M$ est le nombre minimum d'ensembles. 
 {% endexercice %}
 
 ### Équilibrage de charge
@@ -216,12 +216,12 @@ On appelle **_équilibrage de charge_** le problème suivant :
 
 - On possède $m$ machines et $n$ tâches à effectuer.
 - Chaque tâche $j$ nécessite $t_j$ unités de temps pour être effectuée par une machine.
-- Pour chaque machine $i$, on associe l'ensemble $M_i$ des tâches effectuées par celles-ci, et on note $T_i$ le temps passé à effectuer ses tâches : $T_i = \sum_{j \in M_i} t_j$.
+- Pour chaque machine $i$, on associe l'ensemble $M_i$ des tâches effectuées par celles-ci, et on note $T_i$ le temps passé à effectuer ces tâches : $T_i = \sum_{j \in M_i} t_j$.
 
 On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité : $\max_{1\leq i \leq m} T_i$. On note $T^\star$ ce minimum.
 
 {% exercice  "**Quelques propriétés**" %}
-1. montrez que l'on a $T^\star \geq \max_{1 \leq j\leq n} t_j$.
+1. Montrez que l'on a $T^\star \geq \max_{1 \leq j\leq n} t_j$.
 2. Montrez que l'on a $T^\star \geq \frac{1}{m}\sum_{1 \leq j\leq n} t_j$ (**attention**, c'est bien $\frac{1}{m}$ et non $\frac{1}{n}$).
 
 {% endexercice  %}
@@ -229,7 +229,7 @@ On cherche à trouver les ensembles $M_i$ permettant de minimiser la quantité :
 L'algorithme glouton que l'on utilisera pour résoudre le problème consistera à ajouter itérativement une tâche à la machine $i$ réalisant $T_i = \min_{1\leq j \leq m} T_j$.
 
 {% exercice  "**Un algorithme glouton**" %}
-- Dans quel ordre proposez vous de ranger les tâches ? Justifiez votre réponse.
+- Dans quel ordre proposez-vous de ranger les tâches ? Justifiez votre réponse.
 - Montrez que s'il y a $m$ tâches ou moins à classer, l'algorithme glouton trouve la solution optimale.
 {% endexercice %}
 
