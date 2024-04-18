@@ -230,6 +230,13 @@ En utilisant le fait que $a + b \leq 2\cdot \max(a, b)$, montrer la la solution 
 {% endexercice %}
 {% details "solution" %}
 > TBD
+On sait que la solution optimale est :
+
+- plus grande que la solution trouvée par notre algorithme
+- plus petite que $\sum_{i < i^\star} p_i + p_{i^\star}$
+
+Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$, le rapport entre la solution optimale et la solution de l'algorithe est bien plus petite que 2.
+
 {% enddetails %}
 
 ## TBD
