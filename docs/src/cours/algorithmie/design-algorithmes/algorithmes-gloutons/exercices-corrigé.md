@@ -67,7 +67,7 @@ Cette solution est optimale pour la fonction $\sum_{i\geq 1}(t'[i] - t[i])$ où 
 Il faut et il suffit que les stations services soient éloignées de moins de $L$ kilomètres.
 #### Algorithme
 
-Il faut aller le plus loin possible à chaque fois : la prochaine station est la station la plus éloignée dont la istance est inférieure à $L$. 
+Il faut aller le plus loin possible à chaque fois : la prochaine station est la station la plus éloignée dont la distance est inférieure à $L$. 
 
 Soit $s_i$ la première station d'une solution optimale qui ne correspond pas avec la station $g_i$ choisie par le glouton . On a :
 
@@ -123,17 +123,17 @@ La preuve de l'optimalité vient du fait que l'essence mise à la station $i$ pe
 
 ### Ordonnancement avec pénalité
 
-Tout pareil. On dit que la pénalité est un gain cu'on cherche à maximiser : on réalisera en priorité les tâches avec la plus grande pénalité et donc on minimisera les pénalités des tâches non effectuées.
+Tout pareil. On dit que la pénalité est un gain qu'on cherche à maximiser : on réalisera en priorité les tâches avec la plus grande pénalité et donc on minimisera les pénalités des tâches non effectuées.
 
 ### Ordonnancement avec départ différé
 
 #### Formalisation du problème
 
-- la tâche $\sigma_1$ a commencé en 0 et a finie en $p_{\sigma_1}$
-- la tâche $\sigma_2$ a commencé en $p_{\sigma_1}$ et a finie en $p_{\sigma_1} + p_{\sigma_2}$
-- la tâche $\sigma_3$ a commencé en $p_{\sigma_1} + p_{\sigma_2}$ et a finie en $p_{\sigma_1} + p_{\sigma_2} + p_{\sigma_3}$
+- la tâche $\sigma_1$ a commencé en 0 et a fini en $p_{\sigma_1}$
+- la tâche $\sigma_2$ a commencé en $p_{\sigma_1}$ et a fini en $p_{\sigma_1} + p_{\sigma_2}$
+- la tâche $\sigma_3$ a commencé en $p_{\sigma_1} + p_{\sigma_2}$ et a fini en $p_{\sigma_1} + p_{\sigma_2} + p_{\sigma_3}$
 
-On a donc la formule suivante pour donner la somme de toutes les fins de tâches :
+On a donc la formule suivante pour donner la somme de toutes les débuts de tâches :
 
 <div>
 $$
@@ -158,24 +158,24 @@ L'ordre selon lequel il faut ordonner les tâches est par début décroissant. S
 
 ```text
 On trie les tâches par temps croissant
-pour chache tache dans cet ordre:
-    réalise cette tache
+Pour chaque tâche dans cet ordre:
+    réaliser cette tache
 ```
 
 #### Dates de disponibilité
 
-Le même raisonnement que précédemment montre que l'on peut ordonner les les tâches par $d_i + p_i$ croissants.
+Le même raisonnement que précédemment montre que l'on peut ordonner les tâches par $d_i + p_i$ croissants.
 
 #### Interruption de tâches
 
-On peut à chaque unité réaliser une unité de temps de la tâche qui se finie au plus tôt parmi les tâches que l'on peut réaliser. Ceci garanti que les tâches sont bien réalisées par de la plus rapide à la plus lente.
+On peut à chaque unité réaliser une unité de temps de la tâche qui se finit au plus tôt parmi les tâches que l'on peut réaliser. Ceci garantit que les tâches sont bien réalisées de la plus rapide à la plus lente.
 
 
 ### Ordonnancement avec retard
 
 #### Premières propriétés
 
-Si l'on réduit l'inactivité de l'ouvrier, les tâches vont commencer plut tôt, donc $s_i$ va diminuer et donc $r_i$ aussi : $R$ ne peut que diminuer.
+Si l'on réduit l'inactivité de l'ouvrier, les tâches vont commencer plus tôt, donc $s_i$ va diminuer et donc $r_i$ aussi : $R$ ne peut que diminuer.
 
 La remarque précédente nous indique que l'ouvrier doit commencer une nouvelle tâche immédiatement après avoir fini la précédente.
 
@@ -200,7 +200,7 @@ On a $r_{i+1} = s_{i+1} + d_{i+1} - f_{i+1} = s_{i} + d_{i} + d_{i+1} - f_{i+1}$
 
 L'échange des deux tâches n'augmente pas le retard maximal.
 
-Si l'on range les élément par taille de fin demandée croissante, on est alors minimal car $f_{i}< f_{i+1}$ pour tout $i$ est  équivalent à $f_{i}< f_{j}$ pour tout $i<j$.
+Si l'on range les éléments par taille de fin demandée croissante, on est alors minimal car $f_{i}< f_{i+1}$ pour tout $i$ est  équivalent à $f_{i}< f_{j}$ pour tout $i<j$.
 
 
 ## Glouton pas optimal mais pas mal
@@ -233,7 +233,7 @@ Et on en déduit, si $m$ est pair, que : `somme(E[0]) + ... + somme(E[m-1]) > K 
 
 Clair en utilisant les 2 questions précédentes.
 
-De plus ceci montre  que c'est vrai quelque soit l'ordre utilisé
+De plus ceci montre  que c'est vrai quel que soit l'ordre utilisé
 
 #### Cas le pire
 
@@ -245,13 +245,13 @@ On suppose une alternance d'entiers valant $\frac{K}{2}$ et $1$.
 
 La première inégalité vient du fait que toute tâche doit être effectuée par une machine : la machine $i$ qui réalisera la tâche de plus longue durée aura un $T_i$ plus grand que cette durée.
 
-La seconde inégalité découle du fait que $\min T_i \leq \frac{1}{m}\sum_i T_i \leq \max_i T_i$, et que $\sum_i T_i = \sum_j t_j$. L'inégalité est ainsi vraie pour tout assignation donc également pour l'assignation optimale.
+La seconde inégalité découle du fait que $\min T_i \leq \frac{1}{m}\sum_i T_i \leq \max_i T_i$, et que $\sum_i T_i = \sum_j t_j$. L'inégalité est ainsi vraie pour toute assignation donc également pour l'assignation optimale.
 
 #### Un algorithme glouton
 
 Il vaut mieux répartir les tâches longues sur plusieurs machines, par exemples pour trois machines la répartition $[(4,), (4,), (1, 1, 1)]$ est préférable à la répartition $[(1, 4), (1, 4), (1,)]$ de 5 tâches de durée 4, 4, 1, 1 et 1.
 
-On rangera donc les tâches par durée décroissantes.
+On rangera donc les tâches par durées décroissantes.
 
 Il est clair que s'il y a moins de $m$ tâches à ranger chaque machine aura au plus 1 tâche : la répartition sera optimale.
 

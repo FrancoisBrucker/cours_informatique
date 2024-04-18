@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.
+L'objectif est de montrer l'intérêt des algorithmes gloutons, la façon de les construire et de prouver qu'ils fonctionnent. On s'attachera dans ce cours à prouver qu'ils rendent une solution optimale à un problème donné.
 
 On va voir la construction et la preuve d'algorithmes gloutons pour résoudre des problèmes d'optimisation. On utilisera trois exemples, de plus en plus complexes :
 
@@ -23,7 +23,7 @@ On va voir la construction et la preuve d'algorithmes gloutons pour résoudre de
 Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.
 {% endnote %}
 
-Leur schéma général d'un algorithme glouton est alors le suivant :
+Le schéma général d'un algorithme glouton est alors le suivant :
 
 ```text
 Ordonner E en (x_0, x_1, ..., x_n)
