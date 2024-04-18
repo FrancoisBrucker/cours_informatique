@@ -247,6 +247,11 @@ Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star}
 > TBD : peut se reécrire de plein de façons. 
 
 > TBD tres bien car il y a tout et bien d'autrers choses pour resoudre ce probleme.
+:q
+
+
+
+
 
 > <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 

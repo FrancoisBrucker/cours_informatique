@@ -82,7 +82,7 @@ Le but est de minimiser la somme des pénalités.
 
 On suppose que l'on a $n$ tâches à réaliser par **un unique** ouvrier et chaque tâche $1\leq i \leq n$ met $p_i$ unités de temps à être effectuée. Une fois que l'ouvrier commence une tâche, il la termine : s'il effectue la tâche $i$, il ne fait rien d'autre pendant $p_i$ unités de temps.
 
-On veut minimiser la somme des fins de réalisations des tâches.
+On veut minimiser la somme des débuts de réalisations des tâches.
 
 {% exercice  "**Formalisation du problème**" %}
 En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \sigma_n$ :
@@ -92,7 +92,7 @@ En supposant que l'on a effectué les tâches dans l'ordre $\sigma_1, \dots, \si
 {% endexercice %}
 
 {% exercice  "**Exemple**" %}
-Quel est l'ordre d'exécution des tâches minimisant la somme des fins de tâches pour trois tâches de temps de réalisation 1, 3 et 5.
+Quel est l'ordre d'exécution des tâches minimisant la somme des débuts de tâches pour trois tâches de temps de réalisation $p_1 = 1$, $p_2 = 3$ et $p_3 =5$.
 {% endexercice %}
 
 L'exemple précédent a dû vous donner une idée de l'ordre associé au glouton :
@@ -113,7 +113,7 @@ Donnez (et prouvez) un algorithme glouton permettant de trouver l'ordre optimal 
 On suppose maintenant que l'ouvrier peut mettre en pause la réalisation d'une tâche puis la reprendre ultérieurement. Par exemple il peut commencer la tâche $i$ de temps de réalisation $p_i = 5$, la réaliser pendant 2 unités de temps, puis la mettre en pause pour réaliser la tâche $j$ puis, une fois la tâche $j$ terminée, reprendre la tâche $i$ et la finir en y passant les 3 unités de temps restantes.
 
 {% exercice  "**Tâches fragmentables**" %}
-Donnez (et prouvez) la méthode permettant de minimiser la moyenne des fins de chaque tâche.
+Donnez (et prouvez) la méthode permettant de minimiser la moyenne des débuts de chaque tâche.
 
 {% endexercice %}
 

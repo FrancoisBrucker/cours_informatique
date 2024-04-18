@@ -143,21 +143,21 @@ $$
 
 Pour 3 tâches, il y a 6 ordonnancements possibles qui donnent respectivement :
 
-- 1 puis 3 puis 5 : $T = 2 \cdot 1 + 2 \cdot 3 = 5$
-- 1 puis 5 puis 3 : $T = 2 \cdot 1 + 2 \cdot 5 = 12$
-- 3 puis 1 puis 5 : $T = 2 \cdot 3 + 2 \cdot 1 = 8$
-- 3 puis 5 puis 1 : $T = 2 \cdot 3 + 2 \cdot 5 = 16$
-- 5 puis 1 puis 3 : $T = 2 \cdot 5 + 2 \cdot 1 = 12$
-- 5 puis 3 puis 1 : $T = 2 \cdot 5 + 2 \cdot 3 = 16$
+- 1 puis 3 puis 5 : $T = 2 \cdot 1 + 1 \cdot 3 = 5$
+- 1 puis 5 puis 3 : $T = 2 \cdot 1 + 1 \cdot 5 = 7$
+- 3 puis 1 puis 5 : $T = 2 \cdot 3 + 1 \cdot 1 = 7$
+- 3 puis 5 puis 1 : $T = 2 \cdot 3 + 1 \cdot 5 = 11$
+- 5 puis 1 puis 3 : $T = 2 \cdot 5 + 1 \cdot 1 = 11$
+- 5 puis 3 puis 1 : $T = 2 \cdot 5 + 1 \cdot 3 = 13$
 
 #### Algorithme
 
 Minimiser la valeur moyenne des débuts de réalisation minimise $T/n$. Il suffit donc de minimiser $T$.
 
-L'ordre selon lequel il faut ordonner les tâches est par début décroissant. S'il existait en effet $i < j$ tel que $p_{\sigma_i} > p_{\sigma_j}$ changer les deux tâches diminuerait strictement $T$ puisque $n-i > n-j$. Cet ordre donne directement l'algorithme glouton :
+L'ordre selon lequel il faut ordonner les tâches est par durée décroissante. S'il existait en effet $i < j$ tel que $p_{\sigma_i} > p_{\sigma_j}$ changer les deux tâches diminuerait strictement $T$ puisque $n-i > n-j$. Cet ordre donne directement l'algorithme glouton :
 
 ```text
-On trie les tâches par temps croissant
+On trie les tâches par durée croissante
 Pour chaque tâche dans cet ordre:
     réaliser cette tache
 ```
