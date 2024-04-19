@@ -251,7 +251,7 @@ La seconde inégalité découle du fait que $\min T_i \leq \frac{1}{m}\sum_i T_i
 
 Il vaut mieux répartir les tâches longues sur plusieurs machines, par exemples pour trois machines la répartition $[(4,), (4,), (1, 1, 1)]$ est préférable à la répartition $[(1, 4), (1, 4), (1,)]$ de 5 tâches de durée 4, 4, 1, 1 et 1.
 
-On rangera donc les tâches par durées décroissantes.
+On rangera donc les tâches par **durées décroissantes**.
 
 Il est clair que s'il y a moins de $m$ tâches à ranger chaque machine aura au plus 1 tâche : la répartition sera optimale.
 
