@@ -251,7 +251,7 @@ Pour chaque tâche dans cet ordre:
 <p>La seconde inégalité découle du fait que $\min T_i \leq \frac{1}{m}\sum_i T_i \leq \max_i T_i$, et que $\sum_i T_i = \sum_j t_j$. L'inégalité est ainsi vraie pour toute assignation donc également pour l'assignation optimale.</p>
 <h4>Un algorithme glouton</h4>
 <p>Il vaut mieux répartir les tâches longues sur plusieurs machines, par exemples pour trois machines la répartition $[(4,), (4,), (1, 1, 1)]$ est préférable à la répartition $[(1, 4), (1, 4), (1,)]$ de 5 tâches de durée 4, 4, 1, 1 et 1.</p>
-<p>On rangera donc les tâches par durées décroissantes.</p>
+<p>On rangera donc les tâches par <strong>durées décroissantes</strong>.</p>
 <p>Il est clair que s'il y a moins de $m$ tâches à ranger chaque machine aura au plus 1 tâche : la répartition sera optimale.</p>
 <h4>Propriétés</h4>
 <ol>
