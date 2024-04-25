@@ -232,32 +232,9 @@ Ajoutez à la classe \verb+PlanDeTable+ une méthode \verb|est_valide(tables)| p
 
 \end{partie}
 
-\begin{partie}[Cas particulier des relations anti-transitives]
+\begin{partie}[Algorithme glouton]
 
-Trouvons le nombre minimum de tables d'un plan de table valide pour un cas particulier de plan de table.
-On se place dans le cas où la relation d'incompatibilité est {\em \bf anti-transitive}, c'est-à-dire que si l'invité $A$ est incompatible avec l'invité $B$ et l'invité $B$ incompatible avec l'invité $C$, alors l'invité $A$ est {\bf compatible} avec l'invité $C$.
-
-\begin{questionpartie}
-Ajoutez une méthode \verb|est_AT()| sans paramètre à la classe \verb+PlanDeTable+. Cette méthode rend \verb|True| si la relation d'incompatibilité est anti-transitive et \verb|False| sinon.
-\end{questionpartie}
-
-\begin{questionpartie}
-Démontrez que s'il existe une solution à 2 tables alors la relation d'incompatibilité est anti-transitive.
-\end{questionpartie}
-
-\begin{questionpartie}
-Démontrez que si la relation d'incompatibilité est anti-transitive alors il existe une solution à 2 tables.
-\end{questionpartie}
-
-\begin{questionpartie}
-Déduire de la question précédente un algorithme permettant de rendre un plan de table valide à deux tables lorsque la relation d'incompatibilité est anti-transitive.
-\end{questionpartie}
-
-\end{partie}
-
-\begin{partie}[Cas général: algorithme glouton]
-
-On se propose d'écrire un algorithme glouton permettant de résoudre le problème dans le cas général (on ne suppose pas les relations anti-transitives). La structure de cet algorithme est la suivante :
+On se propose d'écrire un algorithme glouton permettant de résoudre le problème. La structure de cet algorithme est la suivante :
 
 \begin{enumerate}
 \item créer une liste \verb|ordre| contenant les indices de tous les convives;
@@ -278,7 +255,7 @@ Ajoutez une méthode \verb|résolution()| sans paramètre à la classe \verb+Pla
 \end{questionpartie}
 
 \begin{questionpartie}
-Cet algorithme est efficace mais on va voir qu'il dépend fortement de la liste \verb|ordre|. Montrez que l'algorithme peut rendre un nombre de tables strictement plus grand que 2 pour une relation anti-transitive.
+Cet algorithme est efficace mais on va voir qu'il dépend fortement de la liste \verb|ordre|. Montrez que l'algorithme peut rendre un nombre de tables strictement plus grand que 2 alors qu'il existe une solution à 2 tables.
 \end{questionpartie}
 
 \begin{questionpartie}

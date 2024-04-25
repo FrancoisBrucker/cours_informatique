@@ -20,6 +20,6 @@ Les algorithmes gloutons sont au coeur de nombreux algorithmes. Leur design est 
 ## Exercices
 
 {% aller %}
-[Exercices](./exercices){.interne} (et [un corrigé](./exercices-corrigé){.interne})
+[Exercices](./exercices){.interne}
 {% endaller %}
 

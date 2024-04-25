@@ -25,6 +25,8 @@ Un [algorithme glouton](https://fr.wikipedia.org/wiki/Algorithme_glouton) choisi
 
 Le schéma général d'un algorithme glouton est alors le suivant :
 
+<div id="schéma-algo"></div>
+
 ```text
 Ordonner E en (x_0, x_1, ..., x_n)
 S = {}
@@ -80,19 +82,30 @@ Certains problèmes cependant permettent d'être résolus en construisant petit 
 
 ### Condition nécessaire et suffisante d'optimalité
 
-{% note %}
-On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale.
+On peut parfois prouver directement qu'un algorithme glouton est optimal et c'est parfois la solution la plus simple. Mais si l'approche directe n'est pas évidente il existe toujours une preuve par récurrence où on essaie de montrer que chaque étape du glouton peut mener à une solution optimale : 
+
+En reprenant le [schéma générique de l'algorithme glouton](,/#schéma-algo) on prouve qu'il existe une solution optimale qui a fait à chaque étape du glouton les mêmes choix que lui :
+
+- si `S union {x_i}`{.language-} était une solution possible alors `x_i`{.language-} est aussi dans la solution optimale considérée
+- si `S union {x_i}`{.language-} n'était pas une solution possible alors `x_i`{.language-} n'est pas dans la solution optimale considérée
+
+Ce qui prouvera l'optimalité de notre algorithme glouton.
+
+### Preuve par l'absurde
+
+On prouve couramment l'optimalité du glouton par l'absurde : 
+
+{% note "schéma de preuve d'optimalité par l'absurde" %}
+1. on suppose que la solution donnée par l'algorithme glouton n'est pas optimale
+2. pour toute solution optimale il existe donc une étape $i$ où le glouton a :
+    - soit choisi `x_i`{.language-} alors qu'il n'est pas dans la solution optimale considérée
+    - soit refusé `x_i`{.language-} alors qu'il est dans la solution optimale considérée.
+3. On choisi alors la solution optimale qui coïncide **le plus longtemps possible** avec l'algorithme glouton et on considère l'étape $i$ où leur choix a divergé :
+    - jusqu'à l'étape $i-1$ les choix ont été identiques entre cette solution optimale et le glouton
+    - pour toute autre solution optimale, la première divergence s'est passé à l'étape $i$ ou avant
+4. On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.
+
 {% endnote %}
-
-Pour qu'un algorithme glouton **trouve une solution optimale** il faut :
-
-- **initialisation** : montrer qu'il existe une solution optimale contenant le 1er choix de l'algorithme
-- **récurrence** : montrer que la première différence entre une solution optimale et la solution de l'algorithme (l'élément étudié par le glouton à l'étape $i$ est : soit refusé par le glouton et présent dans la solution optimale ; soit accepté par le glouton et non présent dans la solution optimale) ne peut résulter en une meilleure solution
-
-On pourra également utiliser la technique de preuve suivante :
-
-- on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère une solution optimale coïncidant le plus longtemps possible avec la solution donnée par celui-ci
-- on démontre que l'on peut cependant construire une solution optimale coïncidant plus longtemps avec l'algorithme glouton ce qui invalide notre hypothèse de départ : l'algorithme glouton est optimal
 
 ## <span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces
 
