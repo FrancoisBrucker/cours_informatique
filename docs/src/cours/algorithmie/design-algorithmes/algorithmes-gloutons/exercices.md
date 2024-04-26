@@ -596,6 +596,7 @@ En utilisant la structure de l'algorithme glouton :
 - donnez un cas où on peut faire strictement mieux que cette borne.
 {% endexercice %}
 {% details "corrigé" %}
+
 - A chaque étape le convive sera placé à la première table possible. Le cas le pire arrivant si toutes ses incompatibilités ont déjà été placées à des tables différentes. 
 - La borne est atteinte si tout le monde déteste tout le monde.
 - Si tout le monde aime tout le monde il suffit d'une table

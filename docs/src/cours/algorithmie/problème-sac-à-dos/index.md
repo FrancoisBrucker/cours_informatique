@@ -229,15 +229,104 @@ Cette simple modification permet de garantir la solution obtenue :
 En utilisant le fait que $a + b \leq 2\cdot \max(a, b)$, montrer la la solution de l'algorithme ne peut pas être moins que 2 fois moins bonne que la solution optimale.
 {% endexercice %}
 {% details "solution" %}
-> TBD
-On sait que la solution optimale est :
+On sait que la solution optimale (notée $\text{OPT}$ est :
 
-- plus grande que la solution trouvée par notre algorithme
+- plus grande que la solution trouvée par notre algorithme (notée $\text{SOL}$)
 - plus petite que $\sum_{i < i^\star} p_i + p_{i^\star}$
 
-Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$, le rapport entre la solution optimale et la solution de l'algorithe est bien plus petite que 2.
+Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$, on a : 
+$$
+\frac{1}{2}\cdot \text{OPT} \leq \text{SOL} \leq \text{OPT}
+$$
 
 {% enddetails %}
+
+## Solution par énumération
+
+Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un [problème d'optimisation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) :
+
+
+{% note "**Problème du sac à dos sous la forme d'un problème de programmation linéaire**" %}
+- **_Les données_** sont :
+    - les qualités nutritives $p_i$ ($1\leq i \leq n$)
+    - les poids des aliments $k_i$ ($1\leq i \leq n$)
+    - la contenance en kilo $K$ du sac à dos
+- **_les variables_** du problème sont constituées de $n$ variables $x_i$ ($1\leq i \leq n$)
+- le but est de **_maximiser la fonction objectif_** : $\sum_{1\leq i \leq n}x_i\cdot p_i$
+- sous **_les contraintes_** :
+    - $x_i \in \\{0, 1\\}$ pour tout $1\leq i \leq n$
+    - $\sum_{1\leq i \leq n}x_i\cdot k_i \leq K$
+
+{% endnote %}
+
+### Énumération exhaustive
+
+Énumérer toutes les solutions possibles du sac à dos revient à choisir pour chaque $x_i$ s'il vaut 0 ou 1 puis de vérifier pour cette affectation :
+
+- si elle est **réalisable**, c'est à dire que les aliments choisis tiennent tous dans le sac à dos
+- si la fonction objectif est maximale par rapport aux affectations déjà faite
+
+Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
+
+L'algorithme peut alors être :
+
+```python
+affectation = [0] * n
+
+affectation_max = list(affectation)
+objectif_max = 0
+
+while affectation != [1] * n:
+    successeur(affectation)
+
+    if sum(x * y for x, y in zip(affectation, poids)) <= K:
+        objectif_courant = sum(x * y for x, y in zip(affectation, qualités_nutritives))
+        if objectif_courant > objectif_max:
+            objectif_max = objectif_courant
+            affectation_max = list(affectation)
+```
+{% attention %}
+Si vous faites `affectation_max = affectation`{.language-} plutôt que `affectation_max = list(affectation)`{.language-} vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste `affectation`{.language-} ce qui est problématique puisque `successeur`{.language-} la modifie. 
+{% endattention %} 
+{% info %}
+On a utilisé [la fonction `zip`{.language-} de python](https://docs.python.org/fr/3/library/functions.html#zip) qu'il est très utile de connaitre.
+{% endinfo %}
+
+La complexité de l'algorithme est la somme de :
+
+- la complexité totale de tous les appels à `successeur`{.language-} et que l'on a déterminé (à de multiple reprise) dans [la partie consacrée à la complexité amortie](../complexité-amortie/){.interne} étant égale à $\mathcal{O}(2^n)$
+- la complexité du calcul de la fonction objectif et de l'admissibilité ($\mathcal{O}(n)$ pour les 2 calculs) pour chaque affectation (il y en a $\mathcal{O}(n)$) : $\mathcal{O}(n \cdot 2^n)$
+- le stockage de l'affectation ($\mathcal{O}(n)$) possiblement pour chaque affectation (il y en a $\mathcal{O}(n)$) : $\mathcal{O}(n \cdot 2^n)$
+
+On obtient une complexité totale de $\mathcal{O}(n \cdot 2^n)$. La complexité est exponentielle, mais c'est du au fait qu'il y a beaucoup de cas à voir. L'analyse d'une affectation particulière est simple.
+
+### Branch and bound
+
+{% lien %}
+[Lien Wikipédia sur le _Branch and Bound_](https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation)
+{% endlien %}
+
+La méthode du **_Branch and Bound_** (ou **_Séparation et évaluation_** en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.
+
+Cette méthode est particulièrement bien adaptée au problème du sac à dos.
+
+#### Borne supérieure
+
+> TBD sac à dos fractionnaire contient le sac à dos.
+> si sol du frac est entier, c'est aussi la solution de l'entier
+
+#### Sous-problème
+
+> TBD fixe des variable = nouveau sac à dos
+> algo successeur avec correspondances pour les fixés.
+
+#### Algorithme
+
+> borne max et min
+> complexité ne change rien dans le cas le pire mais en pratique peut être une bonne heuristique si l'on choisit bien le prochain élément à regarder.
+## Solution par programmation dynamique
+
+> complexité. diff de la recherche exhaustive n vs K. est-ce mieux ?
 
 ## TBD
 
@@ -245,9 +334,7 @@ Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star}
 > TBD subset sum
 
 > TBD : peut se reécrire de plein de façons. 
-
 > TBD tres bien car il y a tout et bien d'autrers choses pour resoudre ce probleme.
-:q
 
 
 
@@ -284,3 +371,6 @@ branch and bound : <https://www.youtube.com/watch?v=E7hJXsywOdA>
 ## TP
 
 <https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf>
+> TBD : sac à dos multiple
+> TBD : super croissant.
+> TBD : quand est-ce que l'énumération est mieux que la programmation dynamique. Souvent prog dynamique chouette car pas beaucoup de choix pour K

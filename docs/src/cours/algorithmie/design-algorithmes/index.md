@@ -35,8 +35,8 @@ eleventyComputed:
 
 > Backtracking
 > Branch and bound : si on a des infos en plus
-
-
+> <https://www.youtube.com/watch?v=2zKCQ03JzOY>
+> reprendre des choses du sac à dos pour les mettre ici.
 
 ## Projet Chemin et cycles
 

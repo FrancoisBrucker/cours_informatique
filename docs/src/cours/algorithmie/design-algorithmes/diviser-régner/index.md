@@ -16,3 +16,4 @@ eleventyComputed:
 
 > TBD exo <https://wkerl.me/#teaching>
 > TBD médiane en temps liénaire en mouyenne. en vrai.
+> <https://wkerl.me/cours/ouv_td.pdf>

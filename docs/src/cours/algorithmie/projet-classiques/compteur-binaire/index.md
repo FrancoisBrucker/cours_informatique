@@ -32,7 +32,7 @@ Qui affichera `[1, 0, 1, 0, 0]`{.language-}
 Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
 {% endinfo %}
 
-### L'algorithme
+### <span id="successeur"></span>L'algorithme
 
 ```python#
 def successeur(n):
