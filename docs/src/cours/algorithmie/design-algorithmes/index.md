@@ -35,8 +35,10 @@ eleventyComputed:
 
 > Backtracking
 > Branch and bound : si on a des infos en plus
+> branch and bound exemple : <https://www.baeldung.com/cs/branch-and-bound>
 > <https://www.youtube.com/watch?v=2zKCQ03JzOY>
 > reprendre des choses du sac à dos pour les mettre ici.
+
 
 ## Projet Chemin et cycles
 
