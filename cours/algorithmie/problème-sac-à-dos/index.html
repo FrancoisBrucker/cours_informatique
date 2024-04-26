@@ -121,7 +121,7 @@
 <p>Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 9€ le kilo</li>
-<li>poudre 2 : 2kg et un prix de 16€ le kilo</li>
+<li>poudre 2 : 2kg et un prix de 15€ le kilo</li>
 <li>poudre 3 : 4kg et un prix de 8€ le kilo</li>
 <li>poudre 4 : 1kg et un prix de 6€ le kilo</li>
 <li>poudre 5 : 6kg et un prix de 3€ le kilo</li>
@@ -144,17 +144,17 @@
         prix<span class="token punctuation">,</span> kilo<span class="token punctuation">,</span> nom <span class="token operator">=</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
         <span class="token keyword">if</span> masse_total <span class="token operator">>=</span> kilo<span class="token punctuation">:</span>
-            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> kilo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
             masse_totale <span class="token operator">-=</span> kilo
         <span class="token keyword">else</span><span class="token punctuation">:</span>
-            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> masse_totale <span class="token operator">/</span> kilo<span class="token punctuation">)</span><span class="token punctuation">)</span>
             masse_totale <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">return</span> sac_a_dos
 </code></pre>
 <ul>
 <li>entrée : liste de produits, chaque produit étant une liste [prix au kilo, kg, nom]</li>
-<li>sortie : liste de produits [nom, kilo] où nom est le nom du produit dans la liste d'entrée et kilo, le nombre de kilo pris.</li>
+<li>sortie : liste de produits [nom, fracrion] où nom est le nom du produit dans la liste d'entrée et fraction, la fraction de poudre pris (strictement plus grand que 0 et inférieure ou égal à 1).</li>
 </ul>
 <p>On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode <code class="language-">reverse()</code>) pour avoir les produit triés par prix au kilo décroissant.</p>
 <p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle for est en temps constant.</p>
@@ -274,14 +274,14 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <p>On a ici trié les aliment par valeur nutritive par kilo décroissante.</p>
 <p>Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une fraction de poudre :</p>
 <ul>
-<li>poudre 1 : 15kg et un prix de 135€, prix de 9€ le kilo</li>
-<li>poudre 2 : 2kg et un prix de 28€, prix de 16€ le kilo</li>
-<li>poudre 3 : 4kg et un prix de 32€, prix de 8€ le kilo</li>
-<li>poudre 4 : 1kg et un prix de 6€, prix de 6€ le kilo</li>
-<li>poudre 5 : 6kg et un prix de 18€, prix de 3€ le kilo</li>
-<li>poudre 6 : 80kg et un prix de 800€, prix de 10€ le kilo</li>
+<li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
+<li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
+<li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
+<li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
+<li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
+<li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime cet aliment puisqu'il ne rentre pas dans le sac.</li>
 </ul>
-<p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 157€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.</p>
+<p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.</p>
 <p>On peut même montrer que l'algorithme glouton ne possède pas de garantie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -471,6 +471,20 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <li>le stockage de l'affectation ($\mathcal{O}(n)$) possiblement pour chaque affectation (il y en a $\mathcal{O}(n)$) : $\mathcal{O}(n \cdot 2^n)$</li>
 </ul>
 <p>On obtient une complexité totale de $\mathcal{O}(n \cdot 2^n)$. La complexité est exponentielle, mais c'est du au fait qu'il y a beaucoup de cas à voir. L'analyse d'une affectation particulière est simple.</p>
+<p>Reprenons l'exemple. On a un sac à dos de $K=20$ et 5 aliments :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€</li>
+<li>poudre 2 : 2kg et un prix de 30€</li>
+<li>poudre 3 : 4kg et un prix de 32€</li>
+<li>poudre 4 : 1kg et un prix de 6€</li>
+<li>poudre 5 : 6kg et un prix de 18€</li>
+</ul>
+<p>Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximales sont :</p>
+<ul>
+<li>poudres 1, 2, 4 de valeur 171€</li>
+<li>poudres 1, 3, 4 de valeur 173€</li>
+<li>poudres 2, 3, 4, 5 de valeur 86€</li>
+</ul>
 <h3>Branch and bound</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -482,24 +496,260 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 </div>
 <p>La méthode du <strong><em>Branch and Bound</em></strong> (ou <strong><em>Séparation et évaluation</em></strong> en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.</p>
 <p>Cette méthode est particulièrement bien adaptée au problème du sac à dos.</p>
-<h4>Borne supérieure</h4>
-<blockquote>
-<p>TBD sac à dos fractionnaire contient le sac à dos.<br>
-si sol du frac est entier, c'est aussi la solution de l'entier</p>
-</blockquote>
+<h4>Bornes supérieure et inférieure</h4>
+<p>On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque aliment soit tout soit rien) on peut :</p>
+<ul>
+<li>majorer la solution du sac à dos par la valeur optimale du sac à dos fractionnel,</li>
+<li><strong>si</strong> la solution du sac à dos fractionnel est aussi une solution du sac à dos <strong>alors</strong> c'est aussi la solution optimale du sac à dos.</li>
+</ul>
+<p>Si l'on reprend l'exemple en supprimant la poudre 6 qui ne rentre pas en entier dans le sac, on obtient une solution du sac à dos fractionnel valant :</p>
+<ul>
+<li>15kg de poudre 1 (l'entièreté)</li>
+<li>2kg de poudre 2 (l'entièreté)</li>
+<li>3/4 de la poudre 3</li>
+</ul>
+<p>Pour un profit de 174€ qui est bien strictement plus grand que le profit max du sac à dos (qui vaut 173€). Remarquez que l'on ne <strong>peut pas déduire la solution entière à partir de la solution fractionnelle</strong> : elle contient la poudre 2 qui n'est pas dans la solution optimale.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Borne supérieure</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une borne supérieure à un problème du sac à dos peut être trouvé en relâchant la contrainte d'intégrité des variables et de considérer le problème comme un sac à dos fractionnel.</p>
+<p>La valeur optimale du sac à dos fractionnel associé est appelée <strong><em>borne supérieure</em></strong> du problème du sac à dos.</p>
+</div>
+</div>
+<p>On peut de la même manière associer une borne minimum à un problème du sac à dos puisqu'il suffit d'utiliser le glouton !</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Borne inférieure</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une borne inférieure à un problème du sac à dos peut être trouvé en utilisant l'algorithme glouton précédent.</p>
+<p>La valeur donnée par l'algorithme glouton est appelée <strong><em>borne inférieure</em></strong> du problème du sac à dos.</p>
+</div>
+</div>
+<p>On pourrait bien sur choisir d'autres bornes, mais l'intérêt de prendre les valeurs des 2 algorithmes gloutons est que leurs complexité est faible. D'autant plus qu'ils dépendent tous 2 du même ordre que l'on peut calculer une fois pour toute et réutiliser pour tous les sous-problèmes.</p>
 <h4>Sous-problème</h4>
-<blockquote>
-<p>TBD fixe des variable = nouveau sac à dos<br>
-algo successeur avec correspondances pour les fixés.</p>
-</blockquote>
-<h4>Algorithme</h4>
-<blockquote>
-<p>borne max et min<br>
-complexité ne change rien dans le cas le pire mais en pratique peut être une bonne heuristique si l'on choisit bien le prochain élément à regarder.</p>
-</blockquote>
+<p>Si on fixe une variable pour un problème du sac à dos, on se ramène à un sac à dos plus petit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Sous-problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).</p>
+<p>Si l'on fixe $x_1$ à :</p>
+<ul>
+<li>$x_1= 0$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K$</li>
+<li>$x_1= 1$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K-p_1$</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a choisi de fixer $x_1$, mais il est évident à une renumérotation prêt, que l'on peut fixer n'importe quelle variable.</p>
+</div>
+</div>
+<p>On peut ainsi fixer n'importe quel sous-ensemble de variables et toujours avoir à résoudre un problème de sac à dos.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).</p>
+<p>Une <strong><em>solution ouverte</em></strong> est une suite $y_i$ ($1\leq i \leq n$) telle que :</p>
+<ul>
+<li>$y_i$ ne peut prendre que 3 valeurs -1, 0 ou 1</li>
+<li>$\sum_{i \in I} y_i \cdot k_i \leq K$ avec $I$ l'ensemble des indices $i$ tels que $y_i \neq -1$</li>
+</ul>
+<p>Une solution ouverte permet de définir un <strong><em>sous-problème associé</em></strong> où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.</p>
+</div>
+</div>
+<p>Une solution ouverte possède encore des inconnues que l'on peut fixer et possède une borne supérieure et inférieure.</p>
+<h4>Déroulement de l'algorithme</h4>
+<p>L'algorithme du Branch and bound est alors très simple. Le principe est le suivant : on ne va explorer de solutions ouvertes que si cela peut apporter quelque chose.</p>
+<p>On initialise l'algorithme en utilisant la solution ouverte où tous les $y_i$ valent -1 et on calcule :</p>
+<ul>
+<li>sa borne inférieure avec l'algorithme glouton et on stocke sa valeur ainsi que le sac à dos qui le réalise</li>
+<li>sa borne supérieure avec le sac à dos fractionnel et on stocke sa valeur ainsi que le sac à dos fractionnel qui le réalise</li>
+</ul>
+<p>Si par chance le résultat du sac à dos fractionnel est entier on peut s'arrêter puisque c'est la solution. Sinon on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à un ensemble de solutions ouvertes possibles.</p>
+<p>Ceci permet d'initier l'algorithme qui considère itérativement une solution ouverte de l'ensemble des solutions ouvertes possibles et on calcule sa borne supérieure avec le sac à dos fractionnel :</p>
+<ul>
+<li>si sa valeur est inférieure ou égale à la borne inférieure stockée, cette solution ouverte est inutile.</li>
+<li>Si le résultat est entier, on compare sa valeur avec la borne inférieure stockée :
+<ul>
+<li>Si elle est supérieure on a une nouvelle borne inférieure que l'on stocke</li>
+<li>Si elle est inférieure cette solution ouverte est inutile.</li>
+</ul>
+</li>
+<li>Si le résultat du sac à dos fractionnel n'est pas entier, il faut continuer à explorer les sous-problème de cette solution potentielle. Pour cela :
+<ul>
+<li>on calcule sa borne inférieure et on met à jour la borne inférieure stockée si elle est supérieure</li>
+<li>on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à l'ensemble des solutions ouvertes possibles.</li>
+</ul>
+</li>
+</ul>
+<p>On continue de choisir une solution ouverte tant que c'est possible. Une fois cet ensemble vide, la borne inférieure est la solution optimale du sac à dos.</p>
+<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 aliments :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
+<li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
+<li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
+<li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
+<li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
+</ul>
+<p>On commence par la solution ouverte $y = [-1, -1, -1, -1, -1]$ elle a comme borne supérieure 189 et comme borne inférieure 171. La borne supérieure est réalisée avec le sac à dos fractionnel $x = [1, 1, 3/4, 0, 0]$ et la borne inférieure avec le sac à dos $x = [1, 1, 0, 1, 0]$.</p>
+<p>On a coutume de représenter les différents choix par un arbre. Après cette étape d'initialisation on a :</p>
+<p><img src="bb-1.png" alt="branch and bound 1"></p>
+<p>La première valeur ne correspondant pas à un sac à dos est la troisième puisque $x_3 = 3 &lt; 4 = k_3$. On choisit alors d'ajouter aux solutions possible les solutions ouvertes  $[-1, -1, 0, -1, -1]$ et $[-1, -1, 1, -1, -1]$</p>
+<p>Après cette étape d'initialisation, on a :</p>
+<ul>
+<li>2 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$ et $[-1, -1, 0, -1, -1]$</li>
+<li>les bornes minimales et maximales du problème sont 171 et 189,</li>
+<li>la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.</li>
+</ul>
+<p>Ce qui donne graphiquement :</p>
+<p><img src="bb-2.png" alt="branch and bound 1"></p>
+<p>On entame maintenant la boucle principale en prenant une solution ouverte de l'ensemble des solutions possibles. Prenons la solution ouverte $[-1, -1, 0, -1, -1]$. Sa borne supérieure vaut 177 et est fractionnelle ($x = [1, 1, 0, 1, 1/3]$). Il faut donc continuer d'explorer :</p>
+<ul>
+<li>sa borne inférieure vaut 171 et ne donc pas d'augmenter la borne inférieure stockée</li>
+<li>on ajoute aux solutions possibles les solutions ouvertes $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.</li>
+</ul>
+<p>Après cette étape, on a :</p>
+<ul>
+<li>3 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$, $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.</li>
+<li>les bornes minimales et maximales du problème sont 171 et 189,</li>
+<li>la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.</li>
+</ul>
+<p><img src="bb-3.png" alt="branch and bound 1"></p>
+<p>On recommence avec une solutions possible, on peut a priori choisir n'importe laquelle : choisissons $[-1, -1, 0, -1, 0]$. Sa borne supérieure est égale à la borne inférieure stockée, cette solution ouverte est donc inutile.</p>
+<p><img src="bb-4.png" alt="branch and bound 1"></p>
+<p>On continue par $[-1, -1, 0, -1, 1]$. Sa borne supérieure vaut 156, cette solution aussi est inutile.</p>
+<p><img src="bb-5.png" alt="branch and bound 1"></p>
+<p>Il ne reste plus qu'une solution ouverte possible $[-1, -1, 1, -1, -1]$ :</p>
+<ul>
+<li>sa borne supérieure vaut 188 et est réalisée pour $x = [14/15, 1, 1, 0, 0]$. On peut remarquer que cette borne supérieure est la nouvelle borne puisque toutes les prochaines solutions possible vont découler de celle-ci.</li>
+<li>sa borne inférieure vaut 86, ce qui est ridicule.</li>
+</ul>
+<p>On ajoute les deux solutions ouvertes $[0, -1, 1, -1, -1]$ et $[1, -1, 1, -1, -1]$</p>
+<p><img src="bb-6.png" alt="branch and bound 1"></p>
+<p>La solution suivante,  $[0, -1, 1, -1, -1]$, donne une borne supérieure de 86 donc on l'oublie :</p>
+<p><img src="bb-7.png" alt="branch and bound 1"></p>
+<p>Il ne nous reste à nouveau plus qu'une solution ouverte possible $[1, -1, 1, -1, -1]$  de borne supérieure 173 réalisée par $x = [1, 0, 1, 1, 0]$ qui est entier. On ne rajoute donc pas de nouvelles solutions ouvertes puisque toute solution issue de celle ci ne pourrait que moins bonne. De plus on met à jour la borne inférieure stockée pour obtenir :</p>
+<p><img src="bb-8.png" alt="branch and bound 1"></p>
+<p>Il n'y a plus de solutions ouverte possible, l'algorithme s'arrête. L'optimum est réalisé pour la borne inférieure stockée : 173 pour $x = [1, 0, 1, 1, 0]$. On a eu besoin d'explorer uniquement 7 des $2^5 = 32$ possibilité, ce qui est un bon gain.</p>
+<h3>Algorithme</h3>
+<p>On suppose que l'on possède deux algorithmes :</p>
+<ul>
+<li><code class="language-">fractionnel_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte et les données du problème rend le couple <code class="language-">(borne_max, solution_max)</code>.</li>
+<li><code class="language-">glouton_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte rend le couple <code class="language-">(borne_inf, solution_inf)</code>.</li>
+</ul>
+<p>Pour notre exemple, on aurait ainsi que :</p>
+<ul>
+<li><code class="language-">fractionnel_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(188, [0.933333, 1, 1, 0, 0])</code></li>
+<li><code class="language-">glouton_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(86, [0, 1, 1, 1, 1])</code></li>
+</ul>
+<p>Il nous faut aussi une fonction utilitaire <code class="language-">fraction(tableau)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :</p>
+<ul>
+<li><code class="language-">fraction([1, 0.3, 1, 1, 0])</code> aurait rendu 1</li>
+<li><code class="language-">fraction([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
+</ul>
+<p>L'algorithme ci-après est une version simplifiée de l'algorithme puisqu'il ne met pas à jour la borne maximale.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+ouverte <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+
+possibles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>solution_max<span class="token punctuation">)</span>
+<span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    ouverte_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+    ouverte_1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+    ouverte_0 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+    ouverte_0<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+
+    possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_1<span class="token punctuation">)</span>
+    possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_0<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> possibles<span class="token punctuation">:</span>
+    ouverte <span class="token operator">=</span> possibles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    possible_borne_max<span class="token punctuation">,</span> possible_solution_max <span class="token operator">=</span> fractionnel_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+    possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> possible_borne_max <span class="token operator">></span> borne_inf<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_inf<span class="token punctuation">:</span>
+            borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf
+
+        i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>possible_solution_max<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_max<span class="token punctuation">:</span>
+                borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_max<span class="token punctuation">,</span> possible_solution_max
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            ouverte_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+            ouverte_1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+            ouverte_0 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+            ouverte_0<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        
+            possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_1<span class="token punctuation">)</span>
+            possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_0<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Conclusion</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et esrt en pratique extrêmement efficace.</p>
+</div>
+</div>
 <h2>Solution par programmation dynamique</h2>
+<p>Les sous problèmes associés au problème du sac à dos sont les même que pour le branch and bond ! En effet, soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :</p>
+<ul>
+<li>soit la solution optimale contient l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
+<li>soit la solution optimale ne contient pas l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$</li>
+</ul>
+<p>La remarque ci-dessus permet de définir, tout comme pour <a href="../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/">l'alignement de séquence</a>, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :</p>
+<div>
+$$
+M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
+$$
+</div>
+<p>Avec comme condition d'initialisation :</p>
+<ul>
+<li>$M[1][j] = 0$ si $j &lt; k_1$</li>
+<li>$M[1][j] = p_1$ si $j \geq k_1$</li>
+</ul>
+<p>La complexité de cet algorithme est $\mathcal{O}(n\codt K)$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité de l'algorithme par programmation dynamique n'est <strong>pas</strong> meilleure celle par branch and bound car $K$ peut être très grand : s'il est plus grand que $2^n$ il est moins bon.</p>
+</div>
+</div>
 <blockquote>
-<p>complexité. diff de la recherche exhaustive n vs K. est-ce mieux ?</p>
+<p>TBD exemple</p>
+</blockquote>
+<blockquote>
+<p>TBD quand utiliser quoi. tout aussi exponentiel l'un que l'autre mais pas pour le même paramètre.</p>
 </blockquote>
 <h2>TBD</h2>
 <blockquote>
@@ -525,21 +775,7 @@ TBD tres bien car il y a tout et bien d'autrers choses pour resoudre ce probleme
 branch and bound : <a href="https://www.youtube.com/watch?v=E7hJXsywOdA">https://www.youtube.com/watch?v=E7hJXsywOdA</a></p>
 <blockquote>
 <p>suite super croissante, c'est facile<br>
-<a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/sacados#google_vignette">https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/sacados#google_vignette</a> algo ? <a href="https://laure.gonnord.org/pro/teaching/MIF30/guillet_yombi_rapport.pdf">https://laure.gonnord.org/pro/teaching/MIF30/guillet_yombi_rapport.pdf</a> &lt;<a href="https://laure.gonnord.org/pro/teaching/MIF30/projets2009/guillet_yombi_expose.pdf">https://laure.gonnord.org/pro/teaching/MIF30/projets2009/guillet_yombi_expose.pdf</a></p>
-</blockquote>
-<h2>Sac à dos entier</h2>
-<blockquote>
-<p>glouton marche pas<br>
-programmation dynamique<br>
-attention à la complexité</p>
-</blockquote>
-<blockquote>
-<p>programmation en 0/1 vs programmation linéaire : écrire les matrices</p>
-</blockquote>
-<h2>Heuristique</h2>
-<blockquote>
-<p>performance garantie<br>
-branch and bound ? génétique ?</p>
+<a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/sacados#google_vignette">https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/sacados#google_vignette</a> algo ? <a href="https://laure.gonnord.org/pro/teaching/MIF30/guillet_yombi_rapport.pdf">https://laure.gonnord.org/pro/teaching/MIF30/guillet_yombi_rapport.pdf</a> <a href="https://laure.gonnord.org/pro/teaching/MIF30/projets2009/guillet_yombi_expose.pdf">https://laure.gonnord.org/pro/teaching/MIF30/projets2009/guillet_yombi_expose.pdf</a></p>
 </blockquote>
 <h2>TP</h2>
 <p><a href="https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf">https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf</a></p>
