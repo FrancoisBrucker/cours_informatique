@@ -23,20 +23,19 @@ Commençons par une version simplifiée du problème, dit du **_sac à dos fract
 On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant être fractionné), chaque poudre $i$ étant décrite par :
 
 - sa quantité disponible en kilo : $k_i$
-- son prix au kilo : $p_i$
+- son prix total : $p_i$
 
 On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudre permettant de maximiser la valeur du sac.
 {% endnote %}
 
 Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :
 
-
-- poudre 1 : 15kg et un prix de 9€ le kilo
-- poudre 2 : 2kg et un prix de 15€ le kilo
-- poudre 3 : 4kg et un prix de 8€ le kilo
-- poudre 4 : 1kg et un prix de 6€ le kilo
-- poudre 5 : 6kg et un prix de 3€ le kilo
-- poudre 6 : 80kg et un prix de 10€ le kilo
+- poudre 1 : 15kg et un prix de 135€ (9€ le kilo)
+- poudre 2 : 2kg et un prix de 30€ (15€ le kilo)
+- poudre 3 : 4kg et un prix de 32€ (8€ le kilo)
+- poudre 4 : 1kg et un prix de 6€ (6€ le kilo)
+- poudre 5 : 6kg et un prix de 18€ (3€ le kilo)
+- poudre 6 : 80kg et un prix de 800€ (10€ le kilo).
 
 Le sac peut contenir soit :
 
@@ -53,15 +52,18 @@ On obtient donc in fine l'algorithme suivant, écrit en python :
 
 ```python
 def sac_a_dos_fractionnel(produits, masse_totale):
-    produits.sort(key=lambda x: -x["prix_kg"])
+    ordre = list(range(len(produits)))
+    ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
-    sac_a_dos = []
-    for x in produits:
+    sac_a_dos = [0] * len(produits)
+
+    for i in ordre:
+        x = produits[i]
         if masse_totale >= x["kg"]:
-            sac_a_dos.append((x, 1))
+            sac_a_dos[i] = 1
             masse_totale -= x["kg"]
         elif masse_totale > 0:
-            sac_a_dos.append((x, masse_totale / x["kg"]))
+            sac_a_dos[i] = masse_totale / x["kg"]
             masse_totale = 0
         else:
             break
@@ -69,18 +71,14 @@ def sac_a_dos_fractionnel(produits, masse_totale):
     return sac_a_dos
 ```
 
-- entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix_kg"`{.language-} et `"kg"`{.language-}
-- sortie : une liste de couples `(produit, fraction)`{.language-} où `produit`{.language-} est un produit et `fraction`{.language-} la fraction de poudre prise (strictement plus grande que 0 et inférieure ou égale à 1).
-
-On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode `reverse()`{.language-}) pour avoir les produit triés par prix au kilo décroissant.
-
-La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle `for`{.language-} est en temps constant.
+- entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix"`{.language-} et `"kg"`{.language-}
+- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos. 
 
 {% info %}
-- Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique). Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)
-- attention, les méthodes de liste `sort`{.language-} et `reverse`{.language-} ne rendent rien. Elles modifient la liste. De là `l.sort().reverse()`{.language-} **ne fonctionne pas** puisque cette commande signifie que l'on applique la méthode `reverse` à l'objet donné en retour de `l.sort()`{.language-}. Or comme `l.sort()`{.language-} ne rend rien elle retourne l'objet `None`{.language-} (l'objet _rien du tout_ en python) qui ne possède pas de méthode `reverse`{.language-}. C'est ce que dit le message d'erreur quand on essaie de le faire : `AttributeError: 'NoneType' object has no attribute 'reverse'`{.language-} (le type de l'objet `None`{.language-} (comme le tpe des entier est `int`{.language-} ou le type des réels est `float`{.language-}) est `NoneType`{.language-} (il a un type à lui)).
-
+On trie la liste dans le code en utilisant un liste tampon.
 {% endinfo %}
+
+La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle `for`{.language-} est en temps constant.
 
 Testons cet algorithme sur l'exemple. Si on devait coder les données de l'exemple, on aurait quelque chose du genre :
 
@@ -89,32 +87,32 @@ EXEMPLE = [
     {
         "nom": "poudre 1",
         "kg": 15,
-        "prix_kg": 9,
+        "prix": 135,
     },
     {
         "nom": "poudre 2",
         "kg": 2,
-        "prix_kg": 15,
+        "prix": 30,
     },
     {
         "nom": "poudre 3",
         "kg": 4,
-        "prix_kg": 8,
+        "prix": 32,
     },
     {
         "nom": "poudre 4",
         "kg": 1,
-        "prix_kg": 6,
+        "prix": 6,
     },
     {
         "nom": "poudre 5",
         "kg": 6,
-        "prix_kg": 3,
+        "prix": 18,
     },
     {
         "nom": "poudre 6",
         "kg": 80,
-        "prix_kg": 10,
+        "prix": 800,
     },
 ]
 
@@ -123,7 +121,7 @@ EXEMPLE = [
 Notez que l'on a ajouté une clé `"nom"`{.language-} pour retrouver l'objet dans le sac à dos.
 
 {% exercice %}
-Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton.
+Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton. 
 
 On a un sac à dos de $K=20$ et 6 aliments :
 
@@ -152,7 +150,7 @@ Cet algorithme glouton est même optimal !
 L'algorithme glouton précédent rend un sac à dos fractionnel optimal.
 {% endnote %}
 {% details "Preuve", "open" %}
-On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac-à-dos .
+On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos .
 
 Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l'ordre de choix de l'algorithme glouton.
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i <n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(k_0, \dots, k_{i-1}, k'_i, \dots, k'_n)$.
@@ -208,23 +206,26 @@ Comme les solutions du sac à dos sont des solutions admissible du sac à dos fr
 
 ```python
 def sac_a_dos_glouton(aliments, masse_totale):
-    aliments.sort(key=lambda x: -x[0] / x[1])
-    sac_a_dos = []
+    ordre = list(range(len(aliments)))
+    ordre.sort(key=lambda i: -aliments[i]["prix"] / aliments[i]["kg"])
 
-    for i in range(len(aliments)):
-        p, k, nom = aliments[i]
+    sac_a_dos = [0] * len(aliments)
 
-        if masse_total >= k:
-            sac_a_dos.append(nom)
-            masse_totale -= k
+    for i in ordre:
+        x = aliments[i]
+        if masse_totale >= x["kg"]:
+            sac_a_dos[i] = 1
+            masse_totale -= x["kg"]
 
     return sac_a_dos
 ```
 
-- entrée : liste d'aliments, chaque aliment étant une liste [prix, kg, nom]
-- sortie : liste de noms d'aliments choisis pour être dans le sac à dos 
+- entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix"`{.language-} et `"kg"`{.language-}
+- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos. 
 
-On a ici trié les aliment par valeur nutritive par kilo décroissante.
+{% info %}
+La structure de l'algorithme est identique à celle du sac à dos fractionnel.
+{% endinfo %}
 
 Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une fraction de poudre :
 

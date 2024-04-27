@@ -2,15 +2,18 @@ import données
 
 
 def sac_a_dos_fractionnel(produits, masse_totale):
-    produits.sort(key=lambda x: -x["prix_kg"])
+    ordre = list(range(len(produits)))
+    ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
-    sac_a_dos = []
-    for x in produits:
+    sac_a_dos = [0] * len(produits)
+
+    for i in ordre:
+        x = produits[i]
         if masse_totale >= x["kg"]:
-            sac_a_dos.append((x, 1))
+            sac_a_dos[i] = 1
             masse_totale -= x["kg"]
         elif masse_totale > 0:
-            sac_a_dos.append((x, masse_totale / x["kg"]))
+            sac_a_dos[i] = masse_totale / x["kg"]
             masse_totale = 0
         else:
             break
@@ -18,8 +21,8 @@ def sac_a_dos_fractionnel(produits, masse_totale):
     return sac_a_dos
 
 
-def profit(sac):
-    return sum(données.prix(produit) * fraction for produit, fraction in sac)
+def profit(sac, produits):
+    return sum(fraction * produit["prix"] for fraction, produit in zip(sac, produits))
 
 
 print("Données :")
@@ -30,7 +33,7 @@ print("Sac à dos fractionnel optimal :")
 
 sac_à_dos = sac_a_dos_fractionnel(données.EXEMPLE, 20)
 
-for x in sac_à_dos:
-    print(x)
+for i in range(len(sac_à_dos)):
+    print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
 
-print("Profit :", profit(sac_à_dos))
+print("Profit :", profit(sac_à_dos, données.EXEMPLE))
