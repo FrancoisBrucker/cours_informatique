@@ -113,19 +113,19 @@
 <p>On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant être fractionné), chaque poudre $i$ étant décrite par :</p>
 <ul>
 <li>sa quantité disponible en kilo : $k_i$</li>
-<li>son prix au kilo : $p_i$</li>
+<li>son prix total : $p_i$</li>
 </ul>
 <p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudre permettant de maximiser la valeur du sac.</p>
 </div>
 </div>
 <p>Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :</p>
 <ul>
-<li>poudre 1 : 15kg et un prix de 9€ le kilo</li>
-<li>poudre 2 : 2kg et un prix de 15€ le kilo</li>
-<li>poudre 3 : 4kg et un prix de 8€ le kilo</li>
-<li>poudre 4 : 1kg et un prix de 6€ le kilo</li>
-<li>poudre 5 : 6kg et un prix de 3€ le kilo</li>
-<li>poudre 6 : 80kg et un prix de 10€ le kilo</li>
+<li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
+<li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
+<li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
+<li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
+<li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
+<li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo).</li>
 </ul>
 <p>Le sac peut contenir soit :</p>
 <ul>
@@ -138,15 +138,18 @@
 <p>Le problème du sac à dos fractionnel peut se résoudre par un algorithme glouton : à chaque étape on ajoute une poudre et on essaie d'en mettre le plus possible. Comme on veut maximiser le profit, on trie les poudres par prix au kilo décroissant.</p>
 <p>On obtient donc in fine l'algorithme suivant, écrit en python :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_fractionnel</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    produits<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x<span class="token punctuation">[</span><span class="token string">"prix_kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> produits<span class="token punctuation">:</span>
+    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> ordre<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         <span class="token keyword">if</span> masse_totale <span class="token operator">>=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            sac_a_dos<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
             masse_totale <span class="token operator">-=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span>
         <span class="token keyword">elif</span> masse_totale <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> masse_totale <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            sac_a_dos<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> masse_totale <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span>
             masse_totale <span class="token operator">=</span> <span class="token number">0</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
@@ -154,53 +157,49 @@
     <span class="token keyword">return</span> sac_a_dos
 </code></pre>
 <ul>
-<li>entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés <code class="language-">&quot;prix_kg&quot;</code> et <code class="language-">&quot;kg&quot;</code></li>
-<li>sortie : une liste de couples <code class="language-">(produit, fraction)</code> où <code class="language-">produit</code> est un produit et <code class="language-">fraction</code> la fraction de poudre prise (strictement plus grande que 0 et inférieure ou égale à 1).</li>
+<li>entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés <code class="language-">&quot;prix&quot;</code> et <code class="language-">&quot;kg&quot;</code></li>
+<li>sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.</li>
 </ul>
-<p>On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode <code class="language-">reverse()</code>) pour avoir les produit triés par prix au kilo décroissant.</p>
-<p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle <code class="language-">for</code> est en temps constant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<ul>
-<li>Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre lexicographique</a>. Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)</li>
-<li>attention, les méthodes de liste <code class="language-">sort</code> et <code class="language-">reverse</code> ne rendent rien. Elles modifient la liste. De là <code class="language-">l.sort().reverse()</code> <strong>ne fonctionne pas</strong> puisque cette commande signifie que l'on applique la méthode <code>reverse</code> à l'objet donné en retour de <code class="language-">l.sort()</code>. Or comme <code class="language-">l.sort()</code> ne rend rien elle retourne l'objet <code class="language-">None</code> (l'objet <em>rien du tout</em> en python) qui ne possède pas de méthode <code class="language-">reverse</code>. C'est ce que dit le message d'erreur quand on essaie de le faire : <code class="language-">AttributeError: 'NoneType' object has no attribute 'reverse'</code> (le type de l'objet <code class="language-">None</code> (comme le tpe des entier est <code class="language-">int</code> ou le type des réels est <code class="language-">float</code>) est <code class="language-">NoneType</code> (il a un type à lui)).</li>
-</ul>
+<p>On trie la liste dans le code en utilisant un liste tampon.</p>
 </div>
 </div>
+<p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle <code class="language-">for</code> est en temps constant.</p>
 <p>Testons cet algorithme sur l'exemple. Si on devait coder les données de l'exemple, on aurait quelque chose du genre :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">EXEMPLE <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 1"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">135</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 2"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 3"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">32</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 4"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 5"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 6"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">80</span><span class="token punctuation">,</span>
-        <span class="token string">"prix_kg"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span>
 
@@ -276,7 +275,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac-à-dos .</p>
+<p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos .</p>
 <p>Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l'ordre de choix de l'algorithme glouton.<br>
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(k_0, \dots, k_{i-1}, k'_i, \dots, k'_n)$.</p>
 <p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $k_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $k_{i-1}$.</p>
@@ -357,23 +356,31 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <h2>Algorithme glouton</h2>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_glouton</span><span class="token punctuation">(</span>aliments<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    aliments<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> nom <span class="token operator">=</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span>
 
-        <span class="token keyword">if</span> masse_total <span class="token operator">>=</span> k<span class="token punctuation">:</span>
-            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nom<span class="token punctuation">)</span>
-            masse_totale <span class="token operator">-=</span> k
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> ordre<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> masse_totale <span class="token operator">>=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            sac_a_dos<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+            masse_totale <span class="token operator">-=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span>
 
     <span class="token keyword">return</span> sac_a_dos
 </code></pre>
 <ul>
-<li>entrée : liste d'aliments, chaque aliment étant une liste [prix, kg, nom]</li>
-<li>sortie : liste de noms d'aliments choisis pour être dans le sac à dos</li>
+<li>entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés <code class="language-">&quot;prix&quot;</code> et <code class="language-">&quot;kg&quot;</code></li>
+<li>sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.</li>
 </ul>
-<p>On a ici trié les aliment par valeur nutritive par kilo décroissante.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La structure de l'algorithme est identique à celle du sac à dos fractionnel.</p>
+</div>
+</div>
 <p>Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une fraction de poudre :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
