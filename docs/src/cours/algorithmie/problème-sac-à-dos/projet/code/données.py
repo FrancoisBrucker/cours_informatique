@@ -31,3 +31,6 @@ EXEMPLE = [
     },
 ]
 
+
+def profit(sac, produits):
+    return sum(fraction * produit["prix"] for fraction, produit in zip(sac, produits))

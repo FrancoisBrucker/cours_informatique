@@ -19,14 +19,9 @@ Créez un projet vscode pour mettre toutes vos programmes.
 ## Données
 
 {% faire %}
-Créez un fichier `données.py`{.fichier} où vous stockerez tout ce qui est relatif aux données.
-{% endfaire %}
-{% faire %}
-Reprenez l'exemple du cours et placez la constante suivante dans le fichier `données.py`{.fichier}.
-
+Créez un fichier `données.py`{.fichier} et placez y l'exemple du cours sous la forme d'une constante.
 {% endfaire %}
 
-Nous aurons besoin plus tard de connaitre le prix total d'une poudre, donc créons une fonction pour le calculer :
 
 ## Algorithmes gloutons
 
@@ -35,7 +30,7 @@ Nous aurons besoin plus tard de connaitre le prix total d'une poudre, donc créo
 {% faire %}
 Créez un fichier `fractionnel.py`{.fichier} où vous écrirez le code de l'algorithme glouton trouvant le sac à dos fractionnel optimal.
 
-Vous testerez votre code avec 2 produits.
+Vous testerez votre code dans le fichier `test_fractionnel.py`{.fichier}
 {% endfaire %}
 
 
@@ -49,15 +44,75 @@ Exécutez l'algorithme glouton fractionnel avec l'`EXEMPLE`{.language-} du fichi
 Pour vérifier que le profit est bien celui attendu, créons une fonction :
 
 {% faire %}
-Ajoutez au fichier `fractionnel.py`{.fichier} une fonction `profit(sac_à_dos, produits)`{.language-} qui rend le profit réalisé pour le sac à dos en entrée.
+Ajoutez au fichier `données.py`{.fichier} une fonction `profit(sac_à_dos, produits)`{.language-} qui rend le profit réalisé pour le sac à dos et les produits en entrée.
 
-Vous testerez votre code avec un sac à dos fictif puis, une fois le code testé vous l'utiliserez pour vérifier que l'`EXEMPLE`{.language-} du fichier `données.py`{.fichier} donne un résultat correct.
+Vous testerez cette fonction dans le fichier  `test_données.py`{.fichier}.
+
+{% endfaire %}
+
+Enfin :
+
+{% faire %}
+Faites en sorte que l'exécution du fichier `fractionnel.py`{.fichier} rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
+
+```text
+Données :
+{'nom': 'poudre 1', 'kg': 15, 'prix': 135}
+{'nom': 'poudre 2', 'kg': 2, 'prix': 30}
+{'nom': 'poudre 3', 'kg': 4, 'prix': 32}
+{'nom': 'poudre 4', 'kg': 1, 'prix': 6}
+{'nom': 'poudre 5', 'kg': 6, 'prix': 18}
+{'nom': 'poudre 6', 'kg': 80, 'prix': 800}
+
+Sac à dos fractionnel optimal :
+0 poudre 1
+1 poudre 2
+0 poudre 3
+0 poudre 4
+0 poudre 5
+0.225 poudre 6
+
+Profit : 210.0
+
+```
 
 {% endfaire %}
 
 ### Sac à dos glouton
 
-> TBD
+{% faire %}
+Créez un fichier `sac_a_dos.py`{.fichier} où vous écrirez le code de l'algorithme glouton trouvant le sac à dos.
+
+Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
+{% endfaire %}
+
+Pour comparer les résultats par rapport au problème du sac à dos fractionnel :
+
+{% faire %}
+Faites en sorte que l'exécution du fichier `sac_a_dos.py`{.fichier} rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
+
+```text
+Données :
+{'nom': 'poudre 1', 'kg': 15, 'prix': 135}
+{'nom': 'poudre 2', 'kg': 2, 'prix': 30}
+{'nom': 'poudre 3', 'kg': 4, 'prix': 32}
+{'nom': 'poudre 4', 'kg': 1, 'prix': 6}
+{'nom': 'poudre 5', 'kg': 6, 'prix': 18}
+{'nom': 'poudre 6', 'kg': 80, 'prix': 800}
+
+Sac à dos fractionnel optimal :
+0 poudre 1
+1 poudre 2
+0 poudre 3
+0 poudre 4
+0 poudre 5
+0.225 poudre 6
+
+Profit : 210.0
+
+```
+
+{% endfaire %}
 
 ## Expérimentation aléatoire
 

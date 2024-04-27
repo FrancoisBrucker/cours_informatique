@@ -51,7 +51,7 @@ Le problème du sac à dos fractionnel peut se résoudre par un algorithme glout
 On obtient donc in fine l'algorithme suivant, écrit en python :
 
 ```python
-def sac_a_dos_fractionnel(produits, masse_totale):
+def glouton(produits, masse_totale):
     ordre = list(range(len(produits)))
     ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
@@ -205,7 +205,7 @@ La solution optimale du problème du sac à dos est une solution admissible au p
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :
 
 ```python
-def sac_a_dos_glouton(aliments, masse_totale):
+def glouton(aliments, masse_totale):
     ordre = list(range(len(aliments)))
     ordre.sort(key=lambda i: -aliments[i]["prix"] / aliments[i]["kg"])
 

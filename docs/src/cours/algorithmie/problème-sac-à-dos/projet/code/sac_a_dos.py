@@ -1,29 +1,32 @@
+import données
+from données import profit
+
+
 def glouton(aliments, masse_totale):
-    aliments.sort(key=lambda x: -x["prix"] / x["kg"])
-    sac_a_dos = []
+    ordre = list(range(len(aliments)))
+    ordre.sort(key=lambda i: -aliments[i]["prix"] / aliments[i]["kg"])
 
-    for i in range(len(aliments)):
-        p, k, nom = aliments[i]
+    sac_a_dos = [0] * len(aliments)
 
-        if masse_total >= k:
-            sac_a_dos.append(nom)
-            masse_totale -= k
+    for i in ordre:
+        x = aliments[i]
+        if masse_totale >= x["kg"]:
+            sac_a_dos[i] = 1
+            masse_totale -= x["kg"]
 
     return sac_a_dos
-
-def profit(sac):
-    return sum(données.prix(produit) * fraction for produit, fraction in sac)
-
 
 print("Données :")
 for x in données.EXEMPLE:
     print(x)
 
+print()
 print("Sac à dos fractionnel optimal :")
 
-sac_à_dos = sac_a_dos_fractionnel(données.EXEMPLE, 20)
+sac_à_dos = glouton(données.EXEMPLE, 20)
 
-for x in sac_à_dos:
-    print(x)
+for i in range(len(sac_à_dos)):
+    print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
 
-print("Profit :", profit(sac_à_dos))
+print()
+print("Profit :", profit(sac_à_dos, données.EXEMPLE))

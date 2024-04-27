@@ -1,7 +1,8 @@
 import données
+from données import profit
 
 
-def sac_a_dos_fractionnel(produits, masse_totale):
+def glouton(produits, masse_totale):
     ordre = list(range(len(produits)))
     ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
@@ -21,19 +22,17 @@ def sac_a_dos_fractionnel(produits, masse_totale):
     return sac_a_dos
 
 
-def profit(sac, produits):
-    return sum(fraction * produit["prix"] for fraction, produit in zip(sac, produits))
-
-
 print("Données :")
 for x in données.EXEMPLE:
     print(x)
 
+print()
 print("Sac à dos fractionnel optimal :")
 
-sac_à_dos = sac_a_dos_fractionnel(données.EXEMPLE, 20)
+sac_à_dos = glouton(données.EXEMPLE, 20)
 
 for i in range(len(sac_à_dos)):
     print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
 
+print()
 print("Profit :", profit(sac_à_dos, données.EXEMPLE))
