@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Étude</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Étude</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-sac-à-dos/">Problème du sac à dos</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-sac-à-dos/étude/">Étude</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le problème du sac à dos est un problème fondamental en algorithmie, nombre de problèmes courant pouvant se modéliser sous cette forme.</p>
+<h2>Sac à dos fractionnel</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos#Variables_continues">sac à dos fractionnel</a></p>
+</div>
+</div>
+<p>Commençons par une version simplifiée du problème, dit du <strong><em>sac à dos fractionnel</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant être fractionné), chaque poudre $i$ étant décrite par :</p>
+<ul>
+<li>sa quantité disponible en kilo : $k_i$</li>
+<li>son prix au kilo : $p_i$</li>
+</ul>
+<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudre permettant de maximiser la valeur du sac.</p>
+</div>
+</div>
+<p>Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 9€ le kilo</li>
+<li>poudre 2 : 2kg et un prix de 15€ le kilo</li>
+<li>poudre 3 : 4kg et un prix de 8€ le kilo</li>
+<li>poudre 4 : 1kg et un prix de 6€ le kilo</li>
+<li>poudre 5 : 6kg et un prix de 3€ le kilo</li>
+<li>poudre 6 : 80kg et un prix de 10€ le kilo</li>
+</ul>
+<p>Le sac peut contenir soit :</p>
+<ul>
+<li>20kg de la poudre 6, pour un profit de 200€,</li>
+<li>14kg de la poudre 1 et 6kg de la poudre 5, pour un profit de 114€,</li>
+<li>1kg de la poudre 1 à 5 et le reste (15kg) en poudre 6, pour un profit de 192€,</li>
+<li>...</li>
+</ul>
+<h3>Algorithme glouton</h3>
+<p>Le problème du sac à dos fractionnel peut se résoudre par un algorithme glouton : à chaque étape on ajoute une poudre et on essaie d'en mettre le plus possible. Comme on veut maximiser le profit, on trie les poudres par prix au kilo décroissant.</p>
+<p>On obtient donc in fine l'algorithme suivant, écrit en python :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_fractionel</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    produits<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        prix<span class="token punctuation">,</span> kilo<span class="token punctuation">,</span> nom <span class="token operator">=</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+        <span class="token keyword">if</span> masse_total <span class="token operator">>=</span> kilo<span class="token punctuation">:</span>
+            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            masse_totale <span class="token operator">-=</span> kilo
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> masse_totale <span class="token operator">/</span> kilo<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            masse_totale <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token keyword">return</span> sac_a_dos
+</code></pre>
+<ul>
+<li>entrée : liste de produits, chaque produit étant une liste [prix au kilo, kg, nom]</li>
+<li>sortie : liste de produits [nom, fracrion] où nom est le nom du produit dans la liste d'entrée et fraction, la fraction de poudre pris (strictement plus grand que 0 et inférieure ou égal à 1).</li>
+</ul>
+<p>On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode <code class="language-">reverse()</code>) pour avoir les produit triés par prix au kilo décroissant.</p>
+<p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle for est en temps constant.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'<a href="https://fr.wikipedia.org/wiki/Ordre_lexicographique">ordre lexicographique</a>. Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)</li>
+<li>attention, les méthodes de liste <code class="language-">sort</code> et <code class="language-">reverse</code> ne rendent rien. Elles modifient la liste. De là <code class="language-">l.sort().reverse()</code> <strong>ne fonctionne pas</strong> puisque cette commande signifie que l'on applique la méthode <code>reverse</code> à l'objet donné en retour de <code class="language-">l.sort()</code>. Or comme <code class="language-">l.sort()</code> ne rend rien elle retourne l'objet <code class="language-">None</code> (l'objet <em>rien du tout</em> en python) qui ne possède pas de méthode <code class="language-">reverse</code>. C'est ce que dit le message d'erreur quand on essaie de le faire : <code class="language-">AttributeError: 'NoneType' object has no attribute 'reverse'</code> (le type de l'objet <code class="language-">None</code> (comme le tpe des entier est <code class="language-">int</code> ou le type des réels est <code class="language-">float</code>) est <code class="language-">NoneType</code> (il a un type à lui)).</li>
+</ul>
+</div>
+</div>
+<p>En reprenant l'exemple, l'algorithme rend comme composition du sac à dos :</p>
+<ul>
+<li>les 2kg de la poudre 2</li>
+<li>18kg de la poudre 6</li>
+</ul>
+<p>Pour un profit de 208€</p>
+<h3>Preuve d'optimalité</h3>
+<p>Cet algorithme glouton est même optimal !</p>
+<p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac-à-dos .</p>
+<p>Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l'ordre de choix de l'algorithme glouton.<br>
+On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(k_0, \dots, k_{i-1}, k'_i, \dots, k'_n)$.</p>
+<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $k_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $k_{i-1}$.</p>
+<p>Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d'indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $k'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $k_i$.</p>
+<p>Donc :</p>
+<ul>
+<li>soit $k'_j = 0$ pour tout $j &gt; i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,</li>
+<li>soit il existe $k'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer d'un kilo $k_j'$ pour augmenter d'un kilo $k_i'$ et obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
+</ul>
+<p>Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.</p>
+<h2>Problème du sac à dos</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">Problème du sac à dos</a></p>
+</div>
+</div>
+<p>Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On possède $n$ aliments (de 1 à $n$), chacun décrit par :</p>
+<ul>
+<li>sa quantité nutritive : $p_i$ ($1 \leq i \leq n$)</li>
+<li>sa masse en kilo : $k_i$ ($1 \leq i \leq n$)</li>
+</ul>
+<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la quantité nutritive emmenée.</p>
+</div>
+</div>
+<p>Ce problème se décline de plein de façons pratique :</p>
+<ul>
+<li>en remplaçant la masse par le volume on peut remplir un camion de déménagement au maximum théorique</li>
+<li>mais aussi le stockage de fichiers (les aliments) sur un disque dur (le sac à dos) de capacité limité (la quantité nutritive est la taille de chaque fichier)</li>
+<li>ou encore maximiser la charge d'un générateur</li>
+<li>...</li>
+</ul>
+<p>Comme on ne peut pas découper les aliments au contraire du sac à dos fractionnel, on a le résultat suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La solution optimale d'un problème du sac à dos est inférieure à la solution optimale des mêmes données appliquée au problème du sac à dos fractionnel</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La solution optimale du problème du sac à dos est une solution admissible au problème du sac à dos fractionnel, son optimum est donc nécessairement plus grand.</p>
+</div>
+</details>     
+</div>
+<h2>Algorithme glouton</h2>
+<p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_glouton</span><span class="token punctuation">(</span>aliments<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    aliments<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token operator">-</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> nom <span class="token operator">=</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+        <span class="token keyword">if</span> masse_total <span class="token operator">>=</span> k<span class="token punctuation">:</span>
+            sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nom<span class="token punctuation">)</span>
+            masse_totale <span class="token operator">-=</span> k
+
+    <span class="token keyword">return</span> sac_a_dos
+</code></pre>
+<ul>
+<li>entrée : liste d'aliments, chaque aliment étant une liste [prix, kg, nom]</li>
+<li>sortie : liste de noms d'aliments choisis pour être dans le sac à dos</li>
+</ul>
+<p>On a ici trié les aliment par valeur nutritive par kilo décroissante.</p>
+<p>Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une fraction de poudre :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
+<li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
+<li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
+<li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
+<li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
+<li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime cet aliment puisqu'il ne rentre pas dans le sac.</li>
+</ul>
+<p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.</p>
+<p>On peut même montrer que l'algorithme glouton ne possède pas de garantie :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que pour 2 aliments seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on prend les aliments :</p>
+<ul>
+<li>aliment 1 : de valeur nutritive 2 et de poids 1,</li>
+<li>aliment 2 : de valeur nutritive K et de poids K, qui correspond à la masse totale que peut contenir le sac à dos.</li>
+</ul>
+<p>Le glouton privilégiera toujours l'aliment 1 alors que c'est l'aliment 2 qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
+</div>
+</details>     
+</div>
+<p>On peu alors vouloir modifier l'algorithme glouton pour considérer la valeur nutritive totale et pas celle au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que le rapport entre la solution optimale et la solution de l'algorithme glouton modifiée peut-être aussi grand que l'on veut.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si l'on prend $K+1$ aliments :</p>
+<ul>
+<li>aliment 1 : de valeur nutritive 2 et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.</li>
+<li>aliment 2 à $K+1$ : de valeur nutritive 1 et de poids 1</li>
+</ul>
+<p>Le glouton privilégiera toujours l'aliment 1 alors que c'est les aliments 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
+</div>
+</details>     
+</div>
+<p>Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie.</p>
+<h2>Algorithme à performance garantie</h2>
+<p>Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que l'aliment ne peut pas être ajouté dans le sac. On a alors :</p>
+<ul>
+<li>$\sum_{i &lt; i^\star} k_i \leq K$</li>
+<li>$\sum_{i &lt; i^\star} k_i + k_{i^\star} &gt; K$</li>
+<li>la solution du sac à dos fractionnel associé est : $\sum_{i &lt; i^\star} p_i + (\frac{K-\sum_{i &lt; i^\star} k_i}{k_{i^\star}}) \cdot p_{i^\star}$</li>
+</ul>
+<p>Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les aliments rentrent dans le sac) :</p>
+<ol>
+<li>on trie tous les aliments par valeur nutritionnelle au kilo décroissante</li>
+<li>on note $i^\star$ le premier élément dans cet ordre tel que $\sum_{i \leq i^\star} k_i &gt; K$</li>
+<li>l'algorithme rend $\max(\sum_{i &lt; i^\star} p_i, p_{i^\star})$.</li>
+</ol>
+<p>Cette simple modification permet de garantir la solution obtenue :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En utilisant le fait que $a + b \leq 2\cdot \max(a, b)$, montrer la la solution de l'algorithme ne peut pas être moins que 2 fois moins bonne que la solution optimale.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On sait que la solution optimale (notée $\text{OPT}$ est :</p>
+<ul>
+<li>plus grande que la solution trouvée par notre algorithme (notée $\text{SOL}$)</li>
+<li>plus petite que $\sum_{i &lt; i^\star} p_i + p_{i^\star}$</li>
+</ul>
+<p>Comme $\sum_{i &lt; i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$, on a :<br>
+$$<br>
+\frac{1}{2}\cdot \text{OPT} \leq \text{SOL} \leq \text{OPT}<br>
+$$</p>
+</div>
+</details>     
+</div>
+<h2>Solution par énumération</h2>
+<p>Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">problème d'optimisation linéaire en nombre entier</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème du sac à dos sous la forme d'un problème de programmation linéaire</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong><em>Les données</em></strong> sont :
+<ul>
+<li>les qualités nutritives $p_i$ ($1\leq i \leq n$)</li>
+<li>les poids des aliments $k_i$ ($1\leq i \leq n$)</li>
+<li>la contenance en kilo $K$ du sac à dos</li>
+</ul>
+</li>
+<li><strong><em>les variables</em></strong> du problème sont constituées de $n$ variables $x_i$ ($1\leq i \leq n$)</li>
+<li>le but est de <strong><em>maximiser la fonction objectif</em></strong> : $\sum_{1\leq i \leq n}x_i\cdot p_i$</li>
+<li>sous <strong><em>les contraintes</em></strong> :
+<ul>
+<li>$x_i \in \{0, 1\}$ pour tout $1\leq i \leq n$</li>
+<li>$\sum_{1\leq i \leq n}x_i\cdot k_i \leq K$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h3>Énumération exhaustive</h3>
+<p>Énumérer toutes les solutions possibles du sac à dos revient à choisir pour chaque $x_i$ s'il vaut 0 ou 1 puis de vérifier pour cette affectation :</p>
+<ul>
+<li>si elle est <strong>réalisable</strong>, c'est à dire que les aliments choisis tiennent tous dans le sac à dos</li>
+<li>si la fonction objectif est maximale par rapport aux affectations déjà faite</li>
+</ul>
+<p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
+<p>L'algorithme peut alors être :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">affectation <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+
+affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
+objectif_max <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">while</span> affectation <span class="token operator">!=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">:</span>
+    successeur<span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> poids<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> K<span class="token punctuation">:</span>
+        objectif_courant <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> qualités_nutritives<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> objectif_courant <span class="token operator">></span> objectif_max<span class="token punctuation">:</span>
+            objectif_max <span class="token operator">=</span> objectif_courant
+            affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous faites <code class="language-">affectation_max = affectation</code> plutôt que <code class="language-">affectation_max = list(affectation)</code> vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste <code class="language-">affectation</code> ce qui est problématique puisque <code class="language-">successeur</code> la modifie.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a utilisé <a href="https://docs.python.org/fr/3/library/functions.html#zip">la fonction <code class="language-">zip</code> de python</a> qu'il est très utile de connaitre.</p>
+</div>
+</div>
+<p>La complexité de l'algorithme est la somme de :</p>
+<ul>
+<li>la complexité totale de tous les appels à <code class="language-">successeur</code> et que l'on a déterminé (à de multiple reprise) dans <a href="../../complexit%C3%A9-amortie/" class="interne">la partie consacrée à la complexité amortie</a> étant égale à $\mathcal{O}(2^n)$</li>
+<li>la complexité du calcul de la fonction objectif et de l'admissibilité ($\mathcal{O}(n)$ pour les 2 calculs) pour chaque affectation (il y en a $\mathcal{O}(n)$) : $\mathcal{O}(n \cdot 2^n)$</li>
+<li>le stockage de l'affectation ($\mathcal{O}(n)$) possiblement pour chaque affectation (il y en a $\mathcal{O}(n)$) : $\mathcal{O}(n \cdot 2^n)$</li>
+</ul>
+<p>On obtient une complexité totale de $\mathcal{O}(n \cdot 2^n)$. La complexité est exponentielle, mais c'est du au fait qu'il y a beaucoup de cas à voir. L'analyse d'une affectation particulière est simple.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Reprenez l'exemple et donnez la solution optimale par recherche exhaustive.</p>
+<p>On a un sac à dos de $K=20$ et 5 aliments :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€</li>
+<li>poudre 2 : 2kg et un prix de 30€</li>
+<li>poudre 3 : 4kg et un prix de 32€</li>
+<li>poudre 4 : 1kg et un prix de 6€</li>
+<li>poudre 5 : 6kg et un prix de 18€</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximales sont :</p>
+<ul>
+<li>poudres 1, 2, 4 de valeur 171€</li>
+<li>poudres 1, 3, 4 de valeur 173€</li>
+<li>poudres 2, 3, 4, 5 de valeur 86€</li>
+</ul>
+</div>
+</details>     
+</div>
+<h3>Branch and bound</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/S%C3%A9paration_et_%C3%A9valuation">Lien Wikipédia sur le <em>Branch and Bound</em></a></p>
+</div>
+</div>
+<p>La méthode du <strong><em>Branch and Bound</em></strong> (ou <strong><em>Séparation et évaluation</em></strong> en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.</p>
+<p>Cette méthode est particulièrement bien adaptée au problème du sac à dos.</p>
+<h4>Bornes supérieure et inférieure</h4>
+<p>On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque aliment soit tout soit rien) on peut :</p>
+<ul>
+<li>majorer la solution du sac à dos par la valeur optimale du sac à dos fractionnel,</li>
+<li><strong>si</strong> la solution du sac à dos fractionnel est aussi une solution du sac à dos <strong>alors</strong> c'est aussi la solution optimale du sac à dos.</li>
+</ul>
+<p>Si l'on reprend l'exemple en supprimant la poudre 6 qui ne rentre pas en entier dans le sac, on obtient une solution du sac à dos fractionnel valant :</p>
+<ul>
+<li>15kg de poudre 1 (l'entièreté)</li>
+<li>2kg de poudre 2 (l'entièreté)</li>
+<li>3/4 de la poudre 3</li>
+</ul>
+<p>Pour un profit de 174€ qui est bien strictement plus grand que le profit max du sac à dos (qui vaut 173€). Remarquez que l'on ne <strong>peut pas déduire la solution entière à partir de la solution fractionnelle</strong> : elle contient la poudre 2 qui n'est pas dans la solution optimale.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Borne supérieure</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une borne supérieure à un problème du sac à dos peut être trouvé en relâchant la contrainte d'intégrité des variables et de considérer le problème comme un sac à dos fractionnel.</p>
+<p>La valeur optimale du sac à dos fractionnel associé est appelée <strong><em>borne supérieure</em></strong> du problème du sac à dos.</p>
+</div>
+</div>
+<p>On peut de la même manière associer une borne minimum à un problème du sac à dos puisqu'il suffit d'utiliser le glouton !</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Borne inférieure</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une borne inférieure à un problème du sac à dos peut être trouvé en utilisant l'algorithme glouton précédent.</p>
+<p>La valeur donnée par l'algorithme glouton est appelée <strong><em>borne inférieure</em></strong> du problème du sac à dos.</p>
+</div>
+</div>
+<p>On pourrait bien sur choisir d'autres bornes, mais l'intérêt de prendre les valeurs des 2 algorithmes gloutons est que leurs complexité est faible. D'autant plus qu'ils dépendent tous 2 du même ordre que l'on peut calculer une fois pour toute et réutiliser pour tous les sous-problèmes.</p>
+<h4>Sous-problème</h4>
+<p>Si on fixe une variable pour un problème du sac à dos, on se ramène à un sac à dos plus petit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Sous-problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).</p>
+<p>Si l'on fixe $x_1$ à :</p>
+<ul>
+<li>$x_1= 0$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K$</li>
+<li>$x_1= 1$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K-p_1$</li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a choisi de fixer $x_1$, mais il est évident à une renumérotation prêt, que l'on peut fixer n'importe quelle variable.</p>
+</div>
+</div>
+<p>On peut ainsi fixer n'importe quel sous-ensemble de variables et toujours avoir à résoudre un problème de sac à dos.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'un sac à dos à $n$ variables $x_i$ ($1\leq i \leq n$).</p>
+<p>Une <strong><em>solution ouverte</em></strong> est une suite $y_i$ ($1\leq i \leq n$) telle que :</p>
+<ul>
+<li>$y_i$ ne peut prendre que 3 valeurs -1, 0 ou 1</li>
+<li>$\sum_{i \in I} y_i \cdot k_i \leq K$ avec $I$ l'ensemble des indices $i$ tels que $y_i \neq -1$</li>
+</ul>
+<p>Une solution ouverte permet de définir un <strong><em>sous-problème associé</em></strong> où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.</p>
+</div>
+</div>
+<p>Une solution ouverte possède encore des inconnues que l'on peut fixer et possède une borne supérieure et inférieure.</p>
+<h4>Déroulement de l'algorithme</h4>
+<p>L'algorithme du Branch and bound est alors très simple. Le principe est le suivant : on ne va explorer de solutions ouvertes que si cela peut apporter quelque chose.</p>
+<p>On initialise l'algorithme en utilisant la solution ouverte où tous les $y_i$ valent -1 et on calcule :</p>
+<ul>
+<li>sa borne inférieure avec l'algorithme glouton et on stocke sa valeur ainsi que le sac à dos qui le réalise</li>
+<li>sa borne supérieure avec le sac à dos fractionnel et on stocke sa valeur ainsi que le sac à dos fractionnel qui le réalise</li>
+</ul>
+<p>Si par chance le résultat du sac à dos fractionnel est entier on peut s'arrêter puisque c'est la solution. Sinon on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à un ensemble de solutions ouvertes possibles.</p>
+<p>Ceci permet d'initier l'algorithme qui considère itérativement une solution ouverte de l'ensemble des solutions ouvertes possibles et on calcule sa borne supérieure avec le sac à dos fractionnel :</p>
+<ul>
+<li>si sa valeur est inférieure ou égale à la borne inférieure stockée, cette solution ouverte est inutile.</li>
+<li>Si le résultat est entier, on compare sa valeur avec la borne inférieure stockée :
+<ul>
+<li>Si elle est supérieure on a une nouvelle borne inférieure que l'on stocke</li>
+<li>Si elle est inférieure cette solution ouverte est inutile.</li>
+</ul>
+</li>
+<li>Si le résultat du sac à dos fractionnel n'est pas entier, il faut continuer à explorer les sous-problème de cette solution potentielle. Pour cela :
+<ul>
+<li>on calcule sa borne inférieure et on met à jour la borne inférieure stockée si elle est supérieure</li>
+<li>on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à l'ensemble des solutions ouvertes possibles.</li>
+</ul>
+</li>
+</ul>
+<p>On continue de choisir une solution ouverte tant que c'est possible. Une fois cet ensemble vide, la borne inférieure est la solution optimale du sac à dos.</p>
+<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 aliments :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
+<li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
+<li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
+<li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
+<li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
+</ul>
+<p>On commence par la solution ouverte $y = [-1, -1, -1, -1, -1]$ elle a comme borne supérieure 189 et comme borne inférieure 171. La borne supérieure est réalisée avec le sac à dos fractionnel $x = [1, 1, 3/4, 0, 0]$ et la borne inférieure avec le sac à dos $x = [1, 1, 0, 1, 0]$.</p>
+<p>On a coutume de représenter les différents choix par un arbre. Après cette étape d'initialisation on a :</p>
+<p><img src="bb-1.png" alt="branch and bound 1"></p>
+<p>La première valeur ne correspondant pas à un sac à dos est la troisième puisque $x_3 = 3 &lt; 4 = k_3$. On choisit alors d'ajouter aux solutions possible les solutions ouvertes  $[-1, -1, 0, -1, -1]$ et $[-1, -1, 1, -1, -1]$</p>
+<p>Après cette étape d'initialisation, on a :</p>
+<ul>
+<li>2 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$ et $[-1, -1, 0, -1, -1]$</li>
+<li>les bornes minimales et maximales du problème sont 171 et 189,</li>
+<li>la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.</li>
+</ul>
+<p>Ce qui donne graphiquement :</p>
+<p><img src="bb-2.png" alt="branch and bound 1"></p>
+<p>On entame maintenant la boucle principale en prenant une solution ouverte de l'ensemble des solutions possibles. Prenons la solution ouverte $[-1, -1, 0, -1, -1]$. Sa borne supérieure vaut 177 et est fractionnelle ($x = [1, 1, 0, 1, 1/3]$). Il faut donc continuer d'explorer :</p>
+<ul>
+<li>sa borne inférieure vaut 171 et ne donc pas d'augmenter la borne inférieure stockée</li>
+<li>on ajoute aux solutions possibles les solutions ouvertes $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.</li>
+</ul>
+<p>Après cette étape, on a :</p>
+<ul>
+<li>3 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$, $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.</li>
+<li>les bornes minimales et maximales du problème sont 171 et 189,</li>
+<li>la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.</li>
+</ul>
+<p><img src="bb-3.png" alt="branch and bound 1"></p>
+<p>On recommence avec une solutions possible, on peut a priori choisir n'importe laquelle : choisissons $[-1, -1, 0, -1, 0]$. Sa borne supérieure est égale à la borne inférieure stockée, cette solution ouverte est donc inutile.</p>
+<p><img src="bb-4.png" alt="branch and bound 1"></p>
+<p>On continue par $[-1, -1, 0, -1, 1]$. Sa borne supérieure vaut 156, cette solution aussi est inutile.</p>
+<p><img src="bb-5.png" alt="branch and bound 1"></p>
+<p>Il ne reste plus qu'une solution ouverte possible $[-1, -1, 1, -1, -1]$ :</p>
+<ul>
+<li>sa borne supérieure vaut 188 et est réalisée pour $x = [14/15, 1, 1, 0, 0]$. On peut remarquer que cette borne supérieure est la nouvelle borne puisque toutes les prochaines solutions possible vont découler de celle-ci.</li>
+<li>sa borne inférieure vaut 86, ce qui est ridicule.</li>
+</ul>
+<p>On ajoute les deux solutions ouvertes $[0, -1, 1, -1, -1]$ et $[1, -1, 1, -1, -1]$</p>
+<p><img src="bb-6.png" alt="branch and bound 1"></p>
+<p>La solution suivante,  $[0, -1, 1, -1, -1]$, donne une borne supérieure de 86 donc on l'oublie :</p>
+<p><img src="bb-7.png" alt="branch and bound 1"></p>
+<p>Il ne nous reste à nouveau plus qu'une solution ouverte possible $[1, -1, 1, -1, -1]$  de borne supérieure 173 réalisée par $x = [1, 0, 1, 1, 0]$ qui est entier. On ne rajoute donc pas de nouvelles solutions ouvertes puisque toute solution issue de celle ci ne pourrait que moins bonne. De plus on met à jour la borne inférieure stockée pour obtenir :</p>
+<p><img src="bb-8.png" alt="branch and bound 1"></p>
+<p>Il n'y a plus de solutions ouverte possible, l'algorithme s'arrête. L'optimum est réalisé pour la borne inférieure stockée : 173 pour $x = [1, 0, 1, 1, 0]$. On a eu besoin d'explorer uniquement 7 des $2^5 = 32$ possibilité, ce qui est un bon gain.</p>
+<h3>Algorithme</h3>
+<p>On suppose que l'on possède deux algorithmes :</p>
+<ul>
+<li><code class="language-">fractionnel_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte et les données du problème rend le couple <code class="language-">(borne_max, solution_max)</code>.</li>
+<li><code class="language-">glouton_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte rend le couple <code class="language-">(borne_inf, solution_inf)</code>.</li>
+</ul>
+<p>Pour notre exemple, on aurait ainsi que :</p>
+<ul>
+<li><code class="language-">fractionnel_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(188, [0.933333, 1, 1, 0, 0])</code></li>
+<li><code class="language-">glouton_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(86, [0, 1, 1, 1, 1])</code></li>
+</ul>
+<p>Il nous faut aussi une fonction utilitaire <code class="language-">fraction(tableau)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :</p>
+<ul>
+<li><code class="language-">fraction([1, 0.3, 1, 1, 0])</code> aurait rendu 1</li>
+<li><code class="language-">fraction([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
+</ul>
+<p>L'algorithme ci-après est une version simplifiée de l'algorithme puisqu'il ne met pas à jour la borne maximale.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+ouverte <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+
+possibles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>solution_max<span class="token punctuation">)</span>
+<span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+    ouverte_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+    ouverte_1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+    ouverte_0 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+    ouverte_0<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+
+    possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_1<span class="token punctuation">)</span>
+    possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_0<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> possibles<span class="token punctuation">:</span>
+    ouverte <span class="token operator">=</span> possibles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    possible_borne_max<span class="token punctuation">,</span> possible_solution_max <span class="token operator">=</span> fractionnel_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+    possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> possible_borne_max <span class="token operator">></span> borne_inf<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_inf<span class="token punctuation">:</span>
+            borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf
+
+        i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>possible_solution_max<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_max<span class="token punctuation">:</span>
+                borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_max<span class="token punctuation">,</span> possible_solution_max
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            ouverte_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+            ouverte_1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+
+            ouverte_0 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
+            ouverte_0<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+        
+            possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_1<span class="token punctuation">)</span>
+            possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_0<span class="token punctuation">)</span>
+
+</code></pre>
+<p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Conclusion</strong></p>
+</div><div class="pl-8 mr-8">
+<p>L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et esrt en pratique extrêmement efficace.</p>
+</div>
+</div>
+<h2>Solution par programmation dynamique</h2>
+<p>Les sous problèmes associés au problème du sac à dos sont les même que pour le branch and bond ! En effet, soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :</p>
+<ul>
+<li>soit la solution optimale contient l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
+<li>soit la solution optimale ne contient pas l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$</li>
+</ul>
+<p>La remarque ci-dessus permet de définir, tout comme pour <a href="../../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/" class="interne">l'alignement de séquences</a>, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :</p>
+<div>
+$$
+M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
+$$
+</div>
+<p>Avec comme condition d'initialisation la première ligne :</p>
+<ul>
+<li>$M[1][j] = 0$ si $j &lt; k_1$</li>
+<li>$M[1][j] = p_1$ si $j \geq k_1$</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Reprenez l'exemple et donnez la matrice associée.</p>
+<p>On a un sac à dos de $K=20$ et 5 aliments :</p>
+<ul>
+<li>poudre 1 : 15kg et un prix de 135€</li>
+<li>poudre 2 : 2kg et un prix de 30€</li>
+<li>poudre 3 : 4kg et un prix de 32€</li>
+<li>poudre 4 : 1kg et un prix de 6€</li>
+<li>poudre 5 : 6kg et un prix de 18€</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut créer une matrice à 5 lignes et 20 colonnes :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>0</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>135</td>
+<td>135</td>
+<td>165</td>
+<td>165</td>
+<td>165</td>
+<td>165</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>0</td>
+<td>30</td>
+<td>30</td>
+<td>32</td>
+<td>32</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>135</td>
+<td>135</td>
+<td>165</td>
+<td>165</td>
+<td>167</td>
+<td>167</td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>6</td>
+<td>30</td>
+<td>36</td>
+<td>36</td>
+<td>38</td>
+<td>62</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>135</td>
+<td>141</td>
+<td>165</td>
+<td>171</td>
+<td>171</td>
+<td>173</td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>6</td>
+<td>30</td>
+<td>36</td>
+<td>36</td>
+<td>38</td>
+<td>62</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>135</td>
+<td>141</td>
+<td>165</td>
+<td>171</td>
+<td>171</td>
+<td>173</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<p>Une fois la matrice complete, de la même manière que pour <a href="../../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/" class="interne">l'alignement de séquences</a>, on remonte la matrice pour trouver le sac à dos.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les aliment à emporter dans le sac à dos.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On remonte depuis la dernière case en reprenant le chemin inverse pour la créer :</p>
+<ol>
+<li>$M[5][20] = \max(M[4][20 - 6] + 18, M[4][20]) = M[4][20]$ ($M[4][16] = 141$) : on ne prend pas la poudre 5</li>
+<li>$M[4][20] = \max(M[3][20 - 1] + 6, M[3][20]) = M[3][19] + 6$ ($M[3][20] = 167$) : on prend la poudre 4</li>
+<li>$M[3][19] = \max(M[2][19 - 4] + 32, M[2][19]) = M[2][15] + 32$ ($M[2][19] = 165$) : on prend la poudre 3</li>
+<li>$M[2][15] = \max(M[1][15 - 2] + 30, M[1][15]) = M[1][15] $ ($M[1][13] = 0$) : on ne prend pas la poudre 2</li>
+<li>$M[1][15] = 135$ : on prend la poudre 1</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1</strong></td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><em>0</em></td>
+<td>0</td>
+<td><strong>135</strong></td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+<td>135</td>
+</tr>
+<tr>
+<td><strong>2</strong></td>
+<td>0</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td>30</td>
+<td><strong>135</strong></td>
+<td>135</td>
+<td>165</td>
+<td>165</td>
+<td><em>165</em></td>
+<td>165</td>
+</tr>
+<tr>
+<td><strong>3</strong></td>
+<td>0</td>
+<td>30</td>
+<td>30</td>
+<td>32</td>
+<td>32</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>62</td>
+<td>135</td>
+<td>135</td>
+<td>165</td>
+<td>165</td>
+<td><strong>167</strong></td>
+<td><em>167</em></td>
+</tr>
+<tr>
+<td><strong>4</strong></td>
+<td>6</td>
+<td>30</td>
+<td>36</td>
+<td>36</td>
+<td>38</td>
+<td>62</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>135</td>
+<td><em>141</em></td>
+<td>165</td>
+<td>171</td>
+<td>171</td>
+<td><strong>173</strong></td>
+</tr>
+<tr>
+<td><strong>5</strong></td>
+<td>6</td>
+<td>30</td>
+<td>36</td>
+<td>36</td>
+<td>38</td>
+<td>62</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>68</td>
+<td>135</td>
+<td>141</td>
+<td>165</td>
+<td>171</td>
+<td>171</td>
+<td><strong>173</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>     
+</div>
+<p>La complexité de cet algorithme est $\mathcal{O}(n\cdot K)$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité de l'algorithme par programmation dynamique n'est <strong>pas</strong> meilleure celle par branch and bound car $K$ peut être très grand : s'il est plus grand que $2^n$ il est moins bon.</p>
+</div>
+</div>
+<p>La mise en garde précédente est fondamentale, les deux algorithmes analyses tous les 2 toutes les possibilités pour une partie des données :</p>
+<ul>
+<li>l'algorithme de recherche exhaustive examine tous les contenus de sac à dos possible pour un contenant de $K$ et il y en a $2^n$</li>
+<li>l'algorithme de programmation dynamique examine tous les contenant de sacs à dos possible pour un contenu de $n$ objets et il y en a $K$</li>
+</ul>
+<p>Enfin, si l'on s'intéresse uniquement à la complexité, comme il faut $\log_2(K)$ bits pour stocker $K$ <strong>les 2 algorithmes sont exponentiels !</strong></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Souvent $K$ est petit devant le nombre d'objets et il est plus avantageux d'utiliser la programmation dynamique que le branch and bound mais ce n'est pas universel.</p>
+</div>
+</div>
+<h2>Heuristique génétique</h2>
+<blockquote>
+<p>TBD voir :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=MacVqujSXWE">https://www.youtube.com/watch?v=MacVqujSXWE</a></li>
+<li><a href="https://leria-info.univ-angers.fr/~jeanmichel.richer/uco_opt_combi_sac_a_dos.php">https://leria-info.univ-angers.fr/~jeanmichel.richer/uco_opt_combi_sac_a_dos.php</a> (6.2)</li>
+</ul>
+</blockquote>
+<h2>Pour ne pas conclure</h2>
+<p>Le problème du sac à dos est un joli problème pouvant se résoudre de multiples manières, tant approchées avec une performance garantie qu'exact si les données le permettent (que l'exponentiel théorique n'est pas atteint). Il permet aussi de toucher du doigt un problème de complexité fin : les algorithmes dont on mesure la complexité avec des valeurs sont exponentiels par rapport à la taille de stockage de la valeur.</p>
+<p>De plus, le problème du sac à dos est un problème très courant en pratique puisqu'il est à la base de nombreux problèmes en <a href="https://fr.wikipedia.org/wiki/Recherche_op%C3%A9rationnelle">recherche opérationnelle</a> comme :</p>
+<ul>
+<li>les problèmes de découpe (on maximise le nombre de pièces de dimensions fixés que l'on peut produire à partir d'un tissu)</li>
+<li>les problèmes d'équilibrage de charge</li>
+<li>...</li>
+</ul>
+<p>Et il se généralise à plusieurs dimensions.</p>
+<p>Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">l'optimisation linéaire</a> d'une part (qui admet des algorithmes polynomiaux de résolution) et à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">la programmation linéaire en nombre entier</a> d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque aliments.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
