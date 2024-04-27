@@ -52,28 +52,29 @@ Le problème du sac à dos fractionnel peut se résoudre par un algorithme glout
 On obtient donc in fine l'algorithme suivant, écrit en python :
 
 ```python
-def sac_a_dos_fractionel(produits, masse_totale):
-    produits.sort(key=lambda x: -x[0])
-    sac_a_dos = []
-    for i in range(len(produits)):
-        prix, kilo, nom = produits[i]
+def sac_a_dos_fractionnel(produits, masse_totale):
+    produits.sort(key=lambda x: -x["prix_kg"])
 
-        if masse_total >= kilo:
-            sac_a_dos.append((nom, 1))
-            masse_totale -= kilo
-        else:
-            sac_a_dos.append((nom, masse_totale / kilo))
+    sac_a_dos = []
+    for x in produits:
+        if masse_totale >= x["kg"]:
+            sac_a_dos.append((x, 1))
+            masse_totale -= x["kg"]
+        elif masse_totale > 0:
+            sac_a_dos.append((x, masse_totale / x["kg"]))
             masse_totale = 0
+        else:
+            break
 
     return sac_a_dos
 ```
 
-- entrée : liste de produits, chaque produit étant une liste [prix au kilo, kg, nom]
-- sortie : liste de produits [nom, fracrion] où nom est le nom du produit dans la liste d'entrée et fraction, la fraction de poudre pris (strictement plus grand que 0 et inférieure ou égal à 1).
+- entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix_kg"`{.language-} et `"kg"`{.language-}
+- sortie : une liste de couples `(produit, fraction)`{.language-} où `produit`{.language-} est un produit et `fraction`{.language-} la fraction de poudre prise (strictement plus grande que 0 et inférieure ou égale à 1).
 
 On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode `reverse()`{.language-}) pour avoir les produit triés par prix au kilo décroissant.
 
-La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle for est en temps constant.
+La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle `for`{.language-} est en temps constant.
 
 {% info %}
 - Astuce du tri : lorsque l'on trie une liste de liste, python utilise l'[ordre lexicographique](https://fr.wikipedia.org/wiki/Ordre_lexicographique). Cela permet ici de trier sur les prix volumique tout en conservant l'indice du tableau d'origine (le deuxième élément de la liste n'intervient dans le tri que si les 2 premiers éléments sont identique, ce qui ne change pas le tri par prix volumique)
@@ -81,12 +82,69 @@ La complexité de cet algorithme est déterminée par le tri, puisque l'intérie
 
 {% endinfo %}
 
-En reprenant l'exemple, l'algorithme rend comme composition du sac à dos :
+Testons cet algorithme sur l'exemple. Si on devait coder les données de l'exemple, on aurait quelque chose du genre :
+
+```python
+EXEMPLE = [
+    {
+        "nom": "poudre 1",
+        "kg": 15,
+        "prix_kg": 9,
+    },
+    {
+        "nom": "poudre 2",
+        "kg": 2,
+        "prix_kg": 15,
+    },
+    {
+        "nom": "poudre 3",
+        "kg": 4,
+        "prix_kg": 8,
+    },
+    {
+        "nom": "poudre 4",
+        "kg": 1,
+        "prix_kg": 6,
+    },
+    {
+        "nom": "poudre 5",
+        "kg": 6,
+        "prix_kg": 3,
+    },
+    {
+        "nom": "poudre 6",
+        "kg": 80,
+        "prix_kg": 10,
+    },
+]
+
+```
+
+Notez que l'on a ajouté une clé `"nom"`{.language-} pour retrouver l'objet dans le sac à dos.
+
+{% exercice %}
+Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton.
+
+On a un sac à dos de $K=20$ et 6 aliments :
+
+- poudre 1 : 15kg et un prix de 9€ le kilo
+- poudre 2 : 2kg et un prix de 15€ le kilo
+- poudre 3 : 4kg et un prix de 8€ le kilo
+- poudre 4 : 1kg et un prix de 6€ le kilo
+- poudre 5 : 6kg et un prix de 3€ le kilo
+- poudre 6 : 80kg et un prix de 10€ le kilo
+
+{% endexercice %}
+{% details "corrigé" %}
+Les poudres sont examinées dans l'ordre 2, 6, 1, 3, 4, 5. On obtient :
 
 - les 2kg de la poudre 2
 - 18kg de la poudre 6
 
-Pour un profit de 208€
+Pour un profit de 210€
+{% enddetails %}
+
+Remarquez que l'algorithme prendra toujours toute la poudre disponible à part peut-être la dernière.
 
 ### Preuve d'optimalité
 
