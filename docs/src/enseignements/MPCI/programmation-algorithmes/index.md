@@ -349,23 +349,25 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 
 ### Semaine 13
 
-#### Mardi : Sac à dos
+#### Mardi : Problème du Sac à dos
 
-> TBD
+{% aller %}
+[Étude du problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/étude){.interne}
+{% endaller %}
 
-#### Vendredi : Classes de problèmes
+#### Vendredi : Sac à dos, projet
 
-> TBD
+{% aller %}
+[Projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
+{% endaller %}
 
-### Semaine 14/15
+### Semaine 14
 
-#### Mardi : Chaines de caractères
+> TBD : classes de problèmes
 
-> TBD
+### Semaine 15
 
-#### Vendredi : Enveloppes convexes
-
-> TBD
+> TBD révision, chaines de caractère ou enveloppe convexes au choix
 
 ## Annales
 
