@@ -146,10 +146,12 @@ Pour un profit de 210€
 
 Remarquez que l'algorithme prendra toujours toute la poudre disponible à part peut-être la dernière.
 
-### Preuve d'optimalité
-
 Cet algorithme glouton est même optimal !
 
+{% note "**Proposition**" %}
+L'algorithme glouton précédent rend un sac à dos fractionnel optimal.
+{% endnote %}
+{% details "Preuve", "open" %}
 On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac-à-dos .
 
 Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l'ordre de choix de l'algorithme glouton.
@@ -165,6 +167,7 @@ Donc :
 - soit il existe $k'_j >0$ pour un $j>i$. On peut alors diminuer d'un kilo $k_j'$ pour augmenter d'un kilo $k_i'$ et obtenir une solution strictement meilleure que la solution optimale : c'est impossible.
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
+{% enddetails %}
 
 ## Problème du sac à dos
 

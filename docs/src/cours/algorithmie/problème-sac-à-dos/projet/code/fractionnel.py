@@ -18,14 +18,19 @@ def sac_a_dos_fractionnel(produits, masse_totale):
     return sac_a_dos
 
 
+def profit(sac):
+    return sum(données.prix(produit) * fraction for produit, fraction in sac)
+
+
 print("Données :")
 for x in données.EXEMPLE:
     print(x)
 
 print("Sac à dos fractionnel optimal :")
-profit = 0
 
-for x in sac_a_dos_fractionnel(données.EXEMPLE, 20):
+sac_à_dos = sac_a_dos_fractionnel(données.EXEMPLE, 20)
+
+for x in sac_à_dos:
     print(x)
-    profit += données.prix(x[0]) * x[1]
-print("Profit :", profit)
+
+print("Profit :", profit(sac_à_dos))
