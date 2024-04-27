@@ -39,6 +39,21 @@ eleventyComputed:
 > <https://www.youtube.com/watch?v=2zKCQ03JzOY>
 > reprendre des choses du sac à dos pour les mettre ici.
 
+branch and bound : <https://www.youtube.com/watch?v=E7hJXsywOdA>
+
+## Méta-heuristiques
+
+Méthode générale de création d'algorithmes heuristiques sans garantie de performance mais souvent efficace en pratique. Un peu oublié de part la prépondérance des méthodes à base de réseau de neurones, mais peut-être utile si on ne peut pas entrainer un réseau et certaines méthodes sont très efficaces.
+
+> <https://fr.wikipedia.org/wiki/M%C3%A9taheuristique>
+> <https://www.techno-science.net/glossaire-definition/Probleme-du-sac-a-dos-page-4.html>
+> <https://fr.wikipedia.org/wiki/M%C3%A9taheuristique>
+
+- recuit simulé
+- tabou
+- algorithme génétiques
+- fourmi
+
 
 ## Projet Chemin et cycles
 

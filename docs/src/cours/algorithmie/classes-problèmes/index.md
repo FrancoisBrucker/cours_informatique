@@ -28,4 +28,4 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 > TBD isomorphisme de graphe : status inconnu.
 > TBD organiser ça sous l'angle de $\leq$ de problèmes
-
+> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
