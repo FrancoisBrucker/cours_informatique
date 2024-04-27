@@ -109,19 +109,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Créez un fichier <code class="fichier">données.py</code> où vous stockerez tout ce qui est relatif aux données.</p>
+<p>Créez un fichier <code class="fichier">données.py</code> et placez y l'exemple du cours sous la forme d'une constante.</p>
 </div>
 </div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Reprenez l'exemple du cours et placez la constante suivante dans le fichier <code class="fichier">données.py</code>.</p>
-</div>
-</div>
-<p>Nous aurons besoin plus tard de connaitre le prix total d'une poudre, donc créons une fonction pour le calculer :</p>
 <h2>Algorithmes gloutons</h2>
 <h3>Sac à dos fractionnel</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -131,7 +121,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">fractionnel.py</code> où vous écrirez le code de l'algorithme glouton trouvant le sac à dos fractionnel optimal.</p>
-<p>Vous testerez votre code avec 2 produits.</p>
+<p>Vous testerez votre code dans le fichier <code class="fichier">test_fractionnel.py</code></p>
 </div>
 </div>
 <p>Une fois que vous êtes assuré du bon fonctionnement de votre algorithme :</p>
@@ -151,14 +141,79 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ajoutez au fichier <code class="fichier">fractionnel.py</code> une fonction <code class="language-">profit(sac_à_dos, produits)</code> qui rend le profit réalisé pour le sac à dos en entrée.</p>
-<p>Vous testerez votre code avec un sac à dos fictif puis, une fois le code testé vous l'utiliserez pour vérifier que l'<code class="language-">EXEMPLE</code> du fichier <code class="fichier">données.py</code> donne un résultat correct.</p>
+<p>Ajoutez au fichier <code class="fichier">données.py</code> une fonction <code class="language-">profit(sac_à_dos, produits)</code> qui rend le profit réalisé pour le sac à dos et les produits en entrée.</p>
+<p>Vous testerez cette fonction dans le fichier  <code class="fichier">test_données.py</code>.</p>
+</div>
+</div>
+<p>Enfin :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faites en sorte que l'exécution du fichier <code class="fichier">fractionnel.py</code> rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Données :
+{'nom': 'poudre 1', 'kg': 15, 'prix': 135}
+{'nom': 'poudre 2', 'kg': 2, 'prix': 30}
+{'nom': 'poudre 3', 'kg': 4, 'prix': 32}
+{'nom': 'poudre 4', 'kg': 1, 'prix': 6}
+{'nom': 'poudre 5', 'kg': 6, 'prix': 18}
+{'nom': 'poudre 6', 'kg': 80, 'prix': 800}
+
+Sac à dos fractionnel optimal :
+0 poudre 1
+1 poudre 2
+0 poudre 3
+0 poudre 4
+0 poudre 5
+0.225 poudre 6
+
+Profit : 210.0
+
+</code></pre>
 </div>
 </div>
 <h3>Sac à dos glouton</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un fichier <code class="fichier">sac_a_dos.py</code> où vous écrirez le code de l'algorithme glouton trouvant le sac à dos.</p>
+<p>Vous testerez votre code dans le fichier <code class="fichier">test_sac_a_dos.py</code></p>
+</div>
+</div>
+<p>Pour comparer les résultats par rapport au problème du sac à dos fractionnel :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Faites en sorte que l'exécution du fichier <code class="fichier">sac_a_dos.py</code> rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Données :
+{'nom': 'poudre 1', 'kg': 15, 'prix': 135}
+{'nom': 'poudre 2', 'kg': 2, 'prix': 30}
+{'nom': 'poudre 3', 'kg': 4, 'prix': 32}
+{'nom': 'poudre 4', 'kg': 1, 'prix': 6}
+{'nom': 'poudre 5', 'kg': 6, 'prix': 18}
+{'nom': 'poudre 6', 'kg': 80, 'prix': 800}
+
+Sac à dos fractionnel optimal :
+0 poudre 1
+1 poudre 2
+0 poudre 3
+0 poudre 4
+0 poudre 5
+0.225 poudre 6
+
+Profit : 210.0
+
+</code></pre>
+</div>
+</div>
 <h2>Expérimentation aléatoire</h2>
 <blockquote>
 <p>TBD : création de données<br>
