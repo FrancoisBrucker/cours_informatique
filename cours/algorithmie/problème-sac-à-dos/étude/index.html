@@ -209,7 +209,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton.</p>
-<p>On a un sac à dos de $K=20$ et 6 aliments :</p>
+<p>On a un sac à dos de $K=20$ et 6 produits :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 9€ le kilo</li>
 <li>poudre 2 : 2kg et un prix de 15€ le kilo</li>
@@ -306,22 +306,23 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On possède $n$ aliments (de 1 à $n$), chacun décrit par :</p>
+<p>On possède $n$ produits (de 1 à $n$), chacun décrit par :</p>
 <ul>
-<li>sa quantité nutritive : $p_i$ ($1 \leq i \leq n$)</li>
+<li>son prix : $p_i$ ($1 \leq i \leq n$)</li>
 <li>sa masse en kilo : $k_i$ ($1 \leq i \leq n$)</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la quantité nutritive emmenée.</p>
+<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la somme des prix des produits contenus dans le sac.</p>
 </div>
 </div>
 <p>Ce problème se décline de plein de façons pratique :</p>
 <ul>
+<li>en remplaçant le prix par la quantité nutritive et maximiser un <em>road trip</em></li>
 <li>en remplaçant la masse par le volume on peut remplir un camion de déménagement au maximum théorique</li>
-<li>mais aussi le stockage de fichiers (les aliments) sur un disque dur (le sac à dos) de capacité limité (la quantité nutritive est la taille de chaque fichier)</li>
+<li>mais aussi le stockage de fichiers (les produits) sur un disque dur (le sac à dos) de capacité limité (le prix est la taille de chaque fichier)</li>
 <li>ou encore maximiser la charge d'un générateur</li>
 <li>...</li>
 </ul>
-<p>Comme on ne peut pas découper les aliments au contraire du sac à dos fractionnel, on a le résultat suivant :</p>
+<p>Comme on ne peut pas découper les produits au contraire du sac à dos fractionnel, on a le résultat suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -355,14 +356,14 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </div>
 <h2>Algorithme glouton</h2>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>aliments<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>aliments<span class="token punctuation">)</span>
+    sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> ordre<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> aliments<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        x <span class="token operator">=</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         <span class="token keyword">if</span> masse_totale <span class="token operator">>=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             sac_a_dos<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
             masse_totale <span class="token operator">-=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span>
@@ -388,14 +389,14 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <li>poudre 3 : 4kg et un prix de 32€ (8€ le kilo)</li>
 <li>poudre 4 : 1kg et un prix de 6€ (6€ le kilo)</li>
 <li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
-<li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime cet aliment puisqu'il ne rentre pas dans le sac.</li>
+<li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime ce produit puisqu'il ne rentre pas dans le sac.</li>
 </ul>
 <p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.</p>
 <p>On peut même montrer que l'algorithme glouton ne possède pas de garantie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrer que pour 2 aliments seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.</p>
+<p>Montrer que pour 2 produits seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -415,16 +416,16 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si l'on prend les aliments :</p>
+<p>Si l'on prend les produits :</p>
 <ul>
-<li>aliment 1 : de valeur nutritive 2 et de poids 1,</li>
-<li>aliment 2 : de valeur nutritive K et de poids K, qui correspond à la masse totale que peut contenir le sac à dos.</li>
+<li>produit 1 : de prix 2 et de poids 1,</li>
+<li>produit 2 : de prix $K$ et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.</li>
 </ul>
-<p>Le glouton privilégiera toujours l'aliment 1 alors que c'est l'aliment 2 qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
+<p>Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
 </div>
 </details>     
 </div>
-<p>On peu alors vouloir modifier l'algorithme glouton pour considérer la valeur nutritive totale et pas celle au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :</p>
+<p>On peu alors vouloir modifier l'algorithme glouton pour considérer le prix total et pas celui au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -448,26 +449,26 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si l'on prend $K+1$ aliments :</p>
+<p>Si l'on prend $K+1$ produits :</p>
 <ul>
-<li>aliment 1 : de valeur nutritive 2 et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.</li>
-<li>aliment 2 à $K+1$ : de valeur nutritive 1 et de poids 1</li>
+<li>produit 1 : de prix 2 et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.</li>
+<li>produit 2 à $K+1$ : de prix 1 et de poids 1</li>
 </ul>
-<p>Le glouton privilégiera toujours l'aliment 1 alors que c'est les aliments 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
+<p>Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.</p>
 </div>
 </details>     
 </div>
 <p>Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie.</p>
 <h2>Algorithme à performance garantie</h2>
-<p>Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que l'aliment ne peut pas être ajouté dans le sac. On a alors :</p>
+<p>Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que le produit ne peut pas être ajouté dans le sac. On a alors :</p>
 <ul>
 <li>$\sum_{i &lt; i^\star} k_i \leq K$</li>
 <li>$\sum_{i &lt; i^\star} k_i + k_{i^\star} &gt; K$</li>
 <li>la solution du sac à dos fractionnel associé est : $\sum_{i &lt; i^\star} p_i + (\frac{K-\sum_{i &lt; i^\star} k_i}{k_{i^\star}}) \cdot p_{i^\star}$</li>
 </ul>
-<p>Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les aliments rentrent dans le sac) :</p>
+<p>Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les produits rentrent dans le sac) :</p>
 <ol>
-<li>on trie tous les aliments par valeur nutritionnelle au kilo décroissante</li>
+<li>on trie tous les produits par prix au kilo décroissante</li>
 <li>on note $i^\star$ le premier élément dans cet ordre tel que $\sum_{i \leq i^\star} k_i &gt; K$</li>
 <li>l'algorithme rend $\max(\sum_{i &lt; i^\star} p_i, p_{i^\star})$.</li>
 </ol>
@@ -519,8 +520,8 @@ $$</p>
 <ul>
 <li><strong><em>Les données</em></strong> sont :
 <ul>
-<li>les qualités nutritives $p_i$ ($1\leq i \leq n$)</li>
-<li>les poids des aliments $k_i$ ($1\leq i \leq n$)</li>
+<li>les prix $p_i$ ($1\leq i \leq n$)</li>
+<li>les poids des produits $k_i$ ($1\leq i \leq n$)</li>
 <li>la contenance en kilo $K$ du sac à dos</li>
 </ul>
 </li>
@@ -538,11 +539,11 @@ $$</p>
 <h3>Énumération exhaustive</h3>
 <p>Énumérer toutes les solutions possibles du sac à dos revient à choisir pour chaque $x_i$ s'il vaut 0 ou 1 puis de vérifier pour cette affectation :</p>
 <ul>
-<li>si elle est <strong>réalisable</strong>, c'est à dire que les aliments choisis tiennent tous dans le sac à dos</li>
+<li>si elle est <strong>réalisable</strong>, c'est à dire que les produits choisis tiennent tous dans le sac à dos</li>
 <li>si la fonction objectif est maximale par rapport aux affectations déjà faite</li>
 </ul>
 <p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
-<p>L'algorithme peut alors être :</p>
+<p>L'algorithme peut alors être, en supposant que l'on ait une liste <code class="language-">kg</code> et  <code class="language-">prix</code>:</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">affectation <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
 
 affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
@@ -551,8 +552,8 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <span class="token keyword">while</span> affectation <span class="token operator">!=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">:</span>
     successeur<span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
 
-    <span class="token keyword">if</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> poids<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> K<span class="token punctuation">:</span>
-        objectif_courant <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> qualités_nutritives<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> kg<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> K<span class="token punctuation">:</span>
+        objectif_courant <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> prix<span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token keyword">if</span> objectif_courant <span class="token operator">></span> objectif_max<span class="token punctuation">:</span>
             objectif_max <span class="token operator">=</span> objectif_courant
             affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
@@ -584,7 +585,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Reprenez l'exemple et donnez la solution optimale par recherche exhaustive.</p>
-<p>On a un sac à dos de $K=20$ et 5 aliments :</p>
+<p>On a un sac à dos de $K=20$ et 5 produits :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€</li>
 <li>poudre 2 : 2kg et un prix de 30€</li>
@@ -632,7 +633,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <p>La méthode du <strong><em>Branch and Bound</em></strong> (ou <strong><em>Séparation et évaluation</em></strong> en Français) est une méthode générale permettant d'accélérer la recherche de l'optimum d'un problème d'optimisation par recherche exhaustive si l'on peut trouver facilement une borne supérieure à un sous-problème où certaines affectation (mais pas toutes) ont déjà été faites.</p>
 <p>Cette méthode est particulièrement bien adaptée au problème du sac à dos.</p>
 <h4>Bornes supérieure et inférieure</h4>
-<p>On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque aliment soit tout soit rien) on peut :</p>
+<p>On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque produit soit tout soit rien) on peut :</p>
 <ul>
 <li>majorer la solution du sac à dos par la valeur optimale du sac à dos fractionnel,</li>
 <li><strong>si</strong> la solution du sac à dos fractionnel est aussi une solution du sac à dos <strong>alors</strong> c'est aussi la solution optimale du sac à dos.</li>
@@ -736,7 +737,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 </li>
 </ul>
 <p>On continue de choisir une solution ouverte tant que c'est possible. Une fois cet ensemble vide, la borne inférieure est la solution optimale du sac à dos.</p>
-<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 aliments :</p>
+<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 produits :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
 <li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
@@ -857,8 +858,8 @@ i <span class="token operator">=</span> fraction<span class="token punctuation">
 <h2>Solution par programmation dynamique</h2>
 <p>Les sous problèmes associés au problème du sac à dos sont les même que pour le branch and bond ! En effet, soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :</p>
 <ul>
-<li>soit la solution optimale contient l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
-<li>soit la solution optimale ne contient pas l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$</li>
+<li>soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
+<li>soit la solution optimale ne contient pas le produit $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$</li>
 </ul>
 <p>La remarque ci-dessus permet de définir, tout comme pour <a href="../../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/" class="interne">l'alignement de séquences</a>, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :</p>
 <div>
@@ -875,7 +876,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Reprenez l'exemple et donnez la matrice associée.</p>
-<p>On a un sac à dos de $K=20$ et 5 aliments :</p>
+<p>On a un sac à dos de $K=20$ et 5 produits :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€</li>
 <li>poudre 2 : 2kg et un prix de 30€</li>
@@ -1054,7 +1055,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les aliment à emporter dans le sac à dos.</p>
+<p>Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les produits à emporter dans le sac à dos.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1269,7 +1270,7 @@ $$
 <li>...</li>
 </ul>
 <p>Et il se généralise à plusieurs dimensions.</p>
-<p>Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">l'optimisation linéaire</a> d'une part (qui admet des algorithmes polynomiaux de résolution) et à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">la programmation linéaire en nombre entier</a> d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque aliments.</p>
+<p>Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">l'optimisation linéaire</a> d'une part (qui admet des algorithmes polynomiaux de résolution) et à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">la programmation linéaire en nombre entier</a> d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.</p>
 
 
 </article>
