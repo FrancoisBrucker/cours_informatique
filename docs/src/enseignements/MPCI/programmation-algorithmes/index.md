@@ -361,13 +361,9 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 [Projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
 {% endaller %}
 
-### Semaine 14
+### Semaine 14 et 15
 
-> TBD : classes de problèmes
-
-### Semaine 15
-
-> TBD révision, chaines de caractère ou enveloppe convexes au choix
+Chaines de caractères et fichiers.
 
 ## Annales
 
