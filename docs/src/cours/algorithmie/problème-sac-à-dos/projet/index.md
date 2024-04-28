@@ -132,23 +132,38 @@ Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le 
 
 {% faire %}
 Dans un fichier `efficace.py`{.fichier} créez une fonction `branch_and_bound(produits, masse_totale)` qui utilise le _branch and bound_ pour trouver le sac à dos optimal. 
-
-- Vous modifierez les algorithmes gloutons pour
 {% endfaire %}
 
 On peut maintenant comparer les résultats :
 
 {% faire %}
-Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
 {% endfaire %}
+
 ### Programmation dynamique
+
+{% faire %}
+Dans un fichier `efficace.py`{.fichier} créez une fonction `programmation_dynamique(produits, masse_totale)` qui utilise la programmation dynamique pour trouver le sac à dos optimal. 
+
+{% endfaire %}
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+{% endfaire %}
+Améliorons la complexité :
+
+{% faire %}
+- Faites en sorte de commencer avec le résultat de l'algorithme glouton plutôt que le sac à dos vide
+- Faites le tri des produits une fois pour toute au début de la fonction `branch_and_bound`{.language-} et pas à chaque appel du glouton fractionnel.
+{% endfaire %}
 
 ## Expérimentation aléatoire
 
 > TBD : création de données
-> TBD : test sur gloutons.
-> TBD : temps
-
+> TBD : test sur gloutons. Différence entre optimal, optimal fractionnel et glouton
+> TBD : implémenter le performance garantie et voir si effectivement c'est ok
+> TBD : temps entre les 2 méthodes efficaces. S'arranger pour faire se croiser les courbes.
 
 ## Pour conclure
 

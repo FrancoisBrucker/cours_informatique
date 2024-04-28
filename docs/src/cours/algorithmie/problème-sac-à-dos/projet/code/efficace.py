@@ -1,6 +1,7 @@
 import données
 from données import profit
 
+
 def borne_supérieure(ouverte, produits, ordre, masse_totale):
     sac_a_dos = [0] * len(produits)
 
@@ -50,10 +51,10 @@ def branch_and_bound(produits, masse_totale):
     while solutions_ouvertes_possibles:
         solution_ouverte = solutions_ouvertes_possibles.pop()
 
-        sac_à_dos_fractionnel = borne_supérieure(solution_ouverte, produits, ordre, masse_totale)
-        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits) 
-
-        print(solution_ouverte, sac_à_dos_fractionnel, profit_sac_à_dos_fractionnel)
+        sac_à_dos_fractionnel = borne_supérieure(
+            solution_ouverte, produits, ordre, masse_totale
+        )
+        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits)
 
         if profit_sac_à_dos_fractionnel > profit_sac_à_dos:
             i = première_valeur_fractionnelle(sac_à_dos_fractionnel)
@@ -64,9 +65,55 @@ def branch_and_bound(produits, masse_totale):
                 for v in [0, 1]:
                     nouvelle_solution_ouverte = list(solution_ouverte)
                     nouvelle_solution_ouverte[i] = v
-                    if (sum(x["kg"] for x, o in zip(produits, nouvelle_solution_ouverte) if o == 1) <= masse_totale):
+                    if (
+                        sum(
+                            x["kg"]
+                            for x, o in zip(produits, nouvelle_solution_ouverte)
+                            if o == 1
+                        )
+                        <= masse_totale
+                    ):
                         solutions_ouvertes_possibles.append(nouvelle_solution_ouverte)
     return sac_à_dos
+
+
+def programmation_dynamique(produits, masse_totale):
+    M = []
+    S = []
+
+    M.append([None] * (masse_totale+1))
+    S.append([None] * (masse_totale+1))
+
+    for j in range(masse_totale + 1):
+        if produits[0]["kg"] > j:
+            M[-1][j] = 0
+            S[-1][j] = [0] * len(produits)
+        else:
+            M[-1][j] = produits[0]["prix"]
+            S[-1][j] = [1] + [0] * (len(produits)-1)
+
+    M.append([0] * (masse_totale+1))
+    S.append([None] * (masse_totale+1))
+    S[1][0] = [0] * len(produits)
+
+    for i in range(1, len(produits)):
+        print(S[0])
+        for j in range(1, masse_totale + 1):
+            if produits[i]["kg"] > j:
+                M[-1][j] = M[-2][j]
+                S[-1][j] = list(S[-2][j])
+            elif M[-2][j] < M[-2][j - produits[i]["kg"]] + produits[i]["prix"]:
+                M[-1][j] = M[-2][j - produits[i]["kg"]] + produits[i]["prix"]
+                S[-1][j] = list((S[-2][j - produits[i]["kg"]]))
+                S[-1][j][i] = 1
+            else:
+                M[-1][j] =M[-2][j]
+                S[-1][j] =list(S[-2][j])
+        M[0], M[1] = M[1], [0] * (masse_totale+1)
+        S[0], S[1] = S[1], [None] * (masse_totale+1)
+        S[1][0] = [0] * len(produits)
+
+    return S[0][-1]
 
 
 print("Données :")
@@ -74,9 +121,20 @@ for x in données.EXEMPLE:
     print(x)
 
 print()
-print("Sac à dos optimal :")
+print("Sac à dos optimal (branch and bound) :")
 
 sac_à_dos = branch_and_bound(données.EXEMPLE, 20)
+
+for i in range(len(sac_à_dos)):
+    print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
+
+print()
+print("Profit :", profit(sac_à_dos, données.EXEMPLE))
+
+print()
+print("Sac à dos optimal (programmation dynamique) :")
+
+sac_à_dos = programmation_dynamique(données.EXEMPLE, 20)
 
 for i in range(len(sac_à_dos)):
     print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
