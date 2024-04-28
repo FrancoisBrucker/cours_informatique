@@ -556,29 +556,28 @@ Il n'y a plus de solutions ouverte possible, l'algorithme s'arrête. L'optimum e
 
 On suppose que l'on possède deux algorithmes :
 
-- `fractionnel_possible(ouverte, p, k, K)`{.language-} qui à partir d'une solution ouverte et les données du problème rend le couple `(borne_max, solution_max)`{.language-}.
-- `glouton_possible(ouverte, p, k, K)`{.language-} qui à partir d'une solution ouverte rend le couple `(borne_inf, solution_inf)`{.language-}.
+- `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte et les données du problème rend le couple `(borne_max, solution_max)`{.language-} en utilisant le glouton fractionnel.
+- `borne_inférieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte rend le couple `(borne_inf, solution_inf)`{.language-} en utilisant le glouton du sac à dos.
 
 Pour notre exemple, on aurait ainsi que :
 
-- `fractionnel_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)`{.language-} vaudrait  `(188, [0.933333, 1, 1, 0, 0])`{.language-}
-- `glouton_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)`{.language-} vaudrait  `(86, [0, 1, 1, 1, 1])`{.language-}
+- `borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `(188, [0.933333, 1, 1, 0, 0])`{.language-}
+- `borne_inférieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `(86, [0, 1, 1, 1, 1])`{.language-}
 
-Il nous faut aussi une fonction utilitaire `fraction(tableau)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :
+Il nous faut aussi une fonction utilitaire `première_valeur_fractionnelle(sac_à_dos_fractionnel)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :
 
-- `fraction([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 
-- `fraction([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-} 
+- `première_valeur_fractionnelle([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 
+- `première_valeur_fractionnelle([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-} 
 
 L'algorithme ci-après est une version simplifiée de l'algorithme puisqu'il ne met pas à jour la borne maximale.
 
 ```python
 
 ouverte = [-1] * n
-borne_inf, solution_inf = glouton_possible(ouverte, p, k, K)
-
+borne_inf, solution_inf = borne_inférieure(ouverte, produits, masse_totale)
 possibles = []
 
-i = fraction(solution_max)
+i = première_valeur_fractionnelle(solution_max)
 if i is not None:
     ouverte_1 = list(ouverte)
     ouverte_1[i] = 1
@@ -592,14 +591,17 @@ if i is not None:
 while possibles:
     ouverte = possibles.pop()
 
-    possible_borne_max, possible_solution_max = fractionnel_possible(ouverte, p, k, K)
-    possible_borne_inf, possible_solution_inf = glouton_possible(ouverte, p, k, K)
-
+    possible_borne_max, possible_solution_max = borne_supérieure(
+        ouverte, produits, masse_totale
+    )
+    possible_borne_inf, possible_solution_inf = borne_inférieure(
+        ouverte, produits, masse_totale
+    )
     if possible_borne_max > borne_inf:
         if borne_inf < possible_borne_inf:
             borne_inf, solution_inf = possible_borne_inf, possible_solution_inf
 
-        i = fraction(possible_solution_max)
+        i = première_valeur_fractionnelle(possible_solution_max)
         if i is None:
             if borne_inf < possible_borne_max:
                 borne_inf, solution_inf = possible_borne_max, possible_solution_max
@@ -609,9 +611,11 @@ while possibles:
 
             ouverte_0 = list(ouverte)
             ouverte_0[i] = 0
-        
+
             possibles.append(ouverte_1)
             possibles.append(ouverte_0)
+
+sac_à_dos = solution_inf
 
 ```
 

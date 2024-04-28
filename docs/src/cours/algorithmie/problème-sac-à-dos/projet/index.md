@@ -22,7 +22,6 @@ Créez un projet vscode pour mettre toutes vos programmes.
 Créez un fichier `données.py`{.fichier} et placez y l'exemple du cours sous la forme d'une constante.
 {% endfaire %}
 
-
 ## Algorithmes gloutons
 
 ### Sac à dos fractionnel
@@ -115,6 +114,8 @@ Profit : 171
 
 ## Énumération exhaustive
 
+### Tous les sac à dos
+
 {% faire %}
 Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumèration(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
 
@@ -127,9 +128,20 @@ On peut maintenant comparer les résultats :
 Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
 {% endfaire %}
 
+### Branch and Bound
 
-### Tous les sac à dos
+{% faire %}
+Dans un fichier `efficace.py`{.fichier} créez une fonction `branch_and_bound(produits, masse_totale)` qui utilise le _branch and bound_ pour trouver le sac à dos optimal. 
 
+- Vous modifierez les algorithmes gloutons pour
+{% endfaire %}
+
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+{% endfaire %}
+### Programmation dynamique
 
 ## Expérimentation aléatoire
 
