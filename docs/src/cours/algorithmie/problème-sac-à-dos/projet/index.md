@@ -100,24 +100,42 @@ Données :
 {'nom': 'poudre 5', 'kg': 6, 'prix': 18}
 {'nom': 'poudre 6', 'kg': 80, 'prix': 800}
 
-Sac à dos fractionnel optimal :
-0 poudre 1
+Sac à dos glouton :
+1 poudre 1
 1 poudre 2
 0 poudre 3
-0 poudre 4
+1 poudre 4
 0 poudre 5
-0.225 poudre 6
+0 poudre 6
 
-Profit : 210.0
-
+Profit : 171
 ```
 
 {% endfaire %}
+
+## Énumération exhaustive
+
+{% faire %}
+Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumèration(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
+
+Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
+{% endfaire %}
+
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+{% endfaire %}
+
+
+### Tous les sac à dos
+
 
 ## Expérimentation aléatoire
 
 > TBD : création de données
 > TBD : test sur gloutons.
+> TBD : temps
 
 
 ## Pour conclure

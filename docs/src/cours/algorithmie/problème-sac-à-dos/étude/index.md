@@ -123,7 +123,7 @@ Notez que l'on a ajouté une clé `"nom"`{.language-} pour retrouver l'objet dan
 {% exercice %}
 Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton. 
 
-On a un sac à dos de $K=20$ et 6 aliments :
+On a un sac à dos de $K=20$ et 6 produits :
 
 - poudre 1 : 15kg et un prix de 9€ le kilo
 - poudre 2 : 2kg et un prix de 15€ le kilo
@@ -176,22 +176,23 @@ Notre hypothèse arrivant à une contradiction, elle était fausse : la solution
 Le fait de pouvoir fractionner les éléments est un cas particulier heureux, mais ce n'est pas la norme, pensez à un déménagement : les déménageurs ne peuvent prendre qu'un bout du canapé sous prétexte qu'il ne rentre pas en entier dans le camion... La formalisation classique du sac à dos ne permet pas de scinder des objets :
 
 {% note "**Problème**" %}
-On possède $n$ aliments (de 1 à $n$), chacun décrit par :
+On possède $n$ produits (de 1 à $n$), chacun décrit par :
 
-- sa quantité nutritive : $p_i$ ($1 \leq i \leq n$)
+- son prix : $p_i$ ($1 \leq i \leq n$)
 - sa masse en kilo : $k_i$ ($1 \leq i \leq n$)
 
-On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la quantité nutritive emmenée.
+On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la somme des prix des produits contenus dans le sac.
 {% endnote %}
 
 Ce problème se décline de plein de façons pratique :
 
+- en remplaçant le prix par la quantité nutritive et maximiser un _road trip_
 - en remplaçant la masse par le volume on peut remplir un camion de déménagement au maximum théorique
-- mais aussi le stockage de fichiers (les aliments) sur un disque dur (le sac à dos) de capacité limité (la quantité nutritive est la taille de chaque fichier)
+- mais aussi le stockage de fichiers (les produits) sur un disque dur (le sac à dos) de capacité limité (le prix est la taille de chaque fichier)
 - ou encore maximiser la charge d'un générateur
 - ...
 
-Comme on ne peut pas découper les aliments au contraire du sac à dos fractionnel, on a le résultat suivant :
+Comme on ne peut pas découper les produits au contraire du sac à dos fractionnel, on a le résultat suivant :
 
 {% note "**Proposition**" %}
 La solution optimale d'un problème du sac à dos est inférieure à la solution optimale des mêmes données appliquée au problème du sac à dos fractionnel
@@ -205,14 +206,14 @@ La solution optimale du problème du sac à dos est une solution admissible au p
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :
 
 ```python
-def glouton(aliments, masse_totale):
-    ordre = list(range(len(aliments)))
-    ordre.sort(key=lambda i: -aliments[i]["prix"] / aliments[i]["kg"])
+def glouton(produits, masse_totale):
+    ordre = list(range(len(produits)))
+    ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
-    sac_a_dos = [0] * len(aliments)
+    sac_a_dos = [0] * len(produits)
 
     for i in ordre:
-        x = aliments[i]
+        x = produits[i]
         if masse_totale >= x["kg"]:
             sac_a_dos[i] = 1
             masse_totale -= x["kg"]
@@ -234,26 +235,26 @@ Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une frac
 - poudre 3 : 4kg et un prix de 32€ (8€ le kilo)
 - poudre 4 : 1kg et un prix de 6€ (6€ le kilo)
 - poudre 5 : 6kg et un prix de 18€ (3€ le kilo)
-- poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime cet aliment puisqu'il ne rentre pas dans le sac.
+- poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime ce produit puisqu'il ne rentre pas dans le sac.
 
 En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.
 
 On peut même montrer que l'algorithme glouton ne possède pas de garantie :
 
 {% exercice %}
-Montrer que pour 2 aliments seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.
+Montrer que pour 2 produits seulement, le rapport entre la solution optimale et la solution de l'algorithme glouton peut-être aussi grand que l'on veut.
 {% endexercice %}
 {% details "corrigé" %}
 
-Si l'on prend les aliments :
+Si l'on prend les produits :
 
-- aliment 1 : de valeur nutritive 2 et de poids 1,
-- aliment 2 : de valeur nutritive K et de poids K, qui correspond à la masse totale que peut contenir le sac à dos.
+- produit 1 : de prix 2 et de poids 1,
+- produit 2 : de prix $K$ et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.
 
-Le glouton privilégiera toujours l'aliment 1 alors que c'est l'aliment 2 qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
+Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
 {% enddetails %}
 
-On peu alors vouloir modifier l'algorithme glouton pour considérer la valeur nutritive totale et pas celle au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :
+On peu alors vouloir modifier l'algorithme glouton pour considérer le prix total et pas celui au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :
 
 
 {% exercice %}
@@ -261,27 +262,27 @@ Montrer que le rapport entre la solution optimale et la solution de l'algorithme
 {% endexercice %}
 {% details "corrigé" %}
 
-Si l'on prend $K+1$ aliments :
+Si l'on prend $K+1$ produits :
 
-- aliment 1 : de valeur nutritive 2 et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.
-- aliment 2 à $K+1$ : de valeur nutritive 1 et de poids 1
+- produit 1 : de prix 2 et de poids $K$, qui correspond à la masse totale que peut contenir le sac à dos.
+- produit 2 à $K+1$ : de prix 1 et de poids 1
 
-Le glouton privilégiera toujours l'aliment 1 alors que c'est les aliments 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
+Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 à $K+1$ qu'il faut choisir. Comme on peut faire grossir la capacité du sac, le rapport entre la valeur optimale et celle donnée par le glouton peut être aussi grand que l'on veut.
 {% enddetails %}
 
 Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie.
 
 ## Algorithme à performance garantie
 
-Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que l'aliment ne peut pas être ajouté dans le sac. On a alors :
+Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que le produit ne peut pas être ajouté dans le sac. On a alors :
 
 - $\sum_{i < i^\star} k_i \leq K$
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
 - la solution du sac à dos fractionnel associé est : $\sum_{i < i^\star} p_i + (\frac{K-\sum_{i < i^\star} k_i}{k_{i^\star}}) \cdot p_{i^\star}$
 
-Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les aliments rentrent dans le sac) :
+Des constatations ci-dessus on peut alors constituer l'algorithme suivant (en supposant sans perte de généralité que $k_i \leq K$ pour tout $i$ donc que tous les produits rentrent dans le sac) :
 
-1. on trie tous les aliments par valeur nutritionnelle au kilo décroissante
+1. on trie tous les produits par prix au kilo décroissante
 2. on note $i^\star$ le premier élément dans cet ordre tel que $\sum_{i \leq i^\star} k_i > K$
 3. l'algorithme rend $\max(\sum_{i < i^\star} p_i, p_{i^\star})$.
 
@@ -310,8 +311,8 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 
 {% note "**Problème du sac à dos sous la forme d'un problème de programmation linéaire**" %}
 - **_Les données_** sont :
-    - les qualités nutritives $p_i$ ($1\leq i \leq n$)
-    - les poids des aliments $k_i$ ($1\leq i \leq n$)
+    - les prix $p_i$ ($1\leq i \leq n$)
+    - les poids des produits $k_i$ ($1\leq i \leq n$)
     - la contenance en kilo $K$ du sac à dos
 - **_les variables_** du problème sont constituées de $n$ variables $x_i$ ($1\leq i \leq n$)
 - le but est de **_maximiser la fonction objectif_** : $\sum_{1\leq i \leq n}x_i\cdot p_i$
@@ -325,12 +326,12 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 
 Énumérer toutes les solutions possibles du sac à dos revient à choisir pour chaque $x_i$ s'il vaut 0 ou 1 puis de vérifier pour cette affectation :
 
-- si elle est **réalisable**, c'est à dire que les aliments choisis tiennent tous dans le sac à dos
+- si elle est **réalisable**, c'est à dire que les produits choisis tiennent tous dans le sac à dos
 - si la fonction objectif est maximale par rapport aux affectations déjà faite
 
 Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
 
-L'algorithme peut alors être :
+L'algorithme peut alors être, en supposant que l'on ait une liste `kg`{.language-} et  `prix`{.language-}:
 
 ```python
 affectation = [0] * n
@@ -341,12 +342,13 @@ objectif_max = 0
 while affectation != [1] * n:
     successeur(affectation)
 
-    if sum(x * y for x, y in zip(affectation, poids)) <= K:
-        objectif_courant = sum(x * y for x, y in zip(affectation, qualités_nutritives))
+    if sum(x * y for x, y in zip(affectation, kg)) <= K:
+        objectif_courant = sum(x * y for x, y in zip(affectation, prix))
         if objectif_courant > objectif_max:
             objectif_max = objectif_courant
             affectation_max = list(affectation)
 ```
+
 {% attention %}
 Si vous faites `affectation_max = affectation`{.language-} plutôt que `affectation_max = list(affectation)`{.language-} vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste `affectation`{.language-} ce qui est problématique puisque `successeur`{.language-} la modifie. 
 {% endattention %} 
@@ -365,7 +367,7 @@ On obtient une complexité totale de $\mathcal{O}(n \cdot 2^n)$. La complexité 
 {% exercice %}
 Reprenez l'exemple et donnez la solution optimale par recherche exhaustive. 
 
-On a un sac à dos de $K=20$ et 5 aliments :
+On a un sac à dos de $K=20$ et 5 produits :
 
 - poudre 1 : 15kg et un prix de 135€
 - poudre 2 : 2kg et un prix de 30€
@@ -394,7 +396,7 @@ Cette méthode est particulièrement bien adaptée au problème du sac à dos.
 
 #### Bornes supérieure et inférieure
 
-On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque aliment soit tout soit rien) on peut :
+On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque produit soit tout soit rien) on peut :
 
 - majorer la solution du sac à dos par la valeur optimale du sac à dos fractionnel,
 - **si** la solution du sac à dos fractionnel est aussi une solution du sac à dos **alors** c'est aussi la solution optimale du sac à dos.
@@ -479,7 +481,7 @@ Ceci permet d'initier l'algorithme qui considère itérativement une solution ou
 
 On continue de choisir une solution ouverte tant que c'est possible. Une fois cet ensemble vide, la borne inférieure est la solution optimale du sac à dos.
 
-Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 aliments :
+Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 produits :
 
 - poudre 1 : 15kg et un prix de 135€ (9€ le kilo)
 - poudre 2 : 2kg et un prix de 30€ (15€ le kilo)
@@ -623,8 +625,8 @@ L'utilisation du principe du branch and bound est donc profitable au problème d
 
 Les sous problèmes associés au problème du sac à dos sont les même que pour le branch and bond ! En effet, soient $[p_1, \dots, p_n]$, $[k_1, \dots, k_n]$ et $K$ les données d'un problème du sac à dos et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K)$ sa valeur optimale. Alors de deux choses l'une :
 
-- soit la solution optimale contient l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$
-- soit la solution optimale ne contient pas l'aliment $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$
+- soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$
+- soit la solution optimale ne contient pas le produit $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$
 
 La remarque ci-dessus permet de définir, tout comme pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :
 
@@ -642,7 +644,7 @@ Avec comme condition d'initialisation la première ligne :
 {% exercice %}
 Reprenez l'exemple et donnez la matrice associée.
 
-On a un sac à dos de $K=20$ et 5 aliments :
+On a un sac à dos de $K=20$ et 5 produits :
 
 - poudre 1 : 15kg et un prix de 135€
 - poudre 2 : 2kg et un prix de 30€
@@ -669,7 +671,7 @@ Il faut créer une matrice à 5 lignes et 20 colonnes :
 Une fois la matrice complete, de la même manière que pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, on remonte la matrice pour trouver le sac à dos.
 
 {% exercice %}
-Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les aliment à emporter dans le sac à dos.
+Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exercice précédent et déduisez en les produits à emporter dans le sac à dos.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -726,5 +728,5 @@ De plus, le problème du sac à dos est un problème très courant en pratique p
 
 Et il se généralise à plusieurs dimensions.
 
-Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque aliments.
+Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.
 
