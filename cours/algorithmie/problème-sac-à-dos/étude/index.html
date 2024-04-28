@@ -830,7 +830,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <li>soit la solution optimale contient le produit$x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K-k_n) + p_n$</li>
 <li>soit la solution optimale ne contient pas le produit $x_n$ et $V([p_1, \dots, p_n], [k_1, \dots, k_n], K) = V([p_1, \dots, p_{n-1}], [k_1, \dots, k_{n-1}], K)$</li>
 </ul>
-<p>La remarque ci-dessus permet de définir, tout comme pour <a href="../../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/" class="interne">l'alignement de séquences</a>, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :</p>
+<p>La remarque ci-dessus permet de définir, tout comme pour <a href="../../design-algorithmes/programmation-dynamique/alignement-s%C3%A9quences/%C3%A9tude/" class="interne">l'alignement de séquences</a>, le terme général $M[i][j]$ d'une matrice à $n$ lignes et $K+1$ colonnes représentant $V([p_1, \dots, p_i], [k_1, \dots, k_i], j)$ :</p>
 <div>
 $$
 M[i][j] = \max(M[i-1][j-k_i] + p_i, M[i-1][j])
@@ -872,11 +872,12 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il faut créer une matrice à 5 lignes et 20 colonnes :</p>
+<p>Il faut créer une matrice à 5 lignes et 21 colonnes :</p>
 <table>
 <thead>
 <tr>
 <th></th>
+<th>0</th>
 <th>1</th>
 <th>2</th>
 <th>3</th>
@@ -916,6 +917,7 @@ $$
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td>135</td>
 <td>135</td>
 <td>135</td>
@@ -925,6 +927,7 @@ $$
 </tr>
 <tr>
 <td><strong>2</strong></td>
+<td>0</td>
 <td>0</td>
 <td>30</td>
 <td>30</td>
@@ -949,6 +952,7 @@ $$
 <tr>
 <td><strong>3</strong></td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>30</td>
 <td>32</td>
@@ -971,6 +975,7 @@ $$
 </tr>
 <tr>
 <td><strong>4</strong></td>
+<td>0</td>
 <td>6</td>
 <td>30</td>
 <td>36</td>
@@ -994,6 +999,7 @@ $$
 </tr>
 <tr>
 <td><strong>5</strong></td>
+<td>0</td>
 <td>6</td>
 <td>30</td>
 <td>36</td>
@@ -1056,6 +1062,7 @@ $$
 <thead>
 <tr>
 <th></th>
+<th>0</th>
 <th>1</th>
 <th>2</th>
 <th>3</th>
@@ -1093,6 +1100,7 @@ $$
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>0</td>
 <td><em>0</em></td>
 <td>0</td>
 <td><strong>135</strong></td>
@@ -1104,6 +1112,7 @@ $$
 </tr>
 <tr>
 <td><strong>2</strong></td>
+<td>0</td>
 <td>0</td>
 <td>30</td>
 <td>30</td>
@@ -1128,6 +1137,7 @@ $$
 <tr>
 <td><strong>3</strong></td>
 <td>0</td>
+<td>0</td>
 <td>30</td>
 <td>30</td>
 <td>32</td>
@@ -1150,6 +1160,7 @@ $$
 </tr>
 <tr>
 <td><strong>4</strong></td>
+<td>0</td>
 <td>6</td>
 <td>30</td>
 <td>36</td>
@@ -1173,6 +1184,7 @@ $$
 </tr>
 <tr>
 <td><strong>5</strong></td>
+<td>0</td>
 <td>6</td>
 <td>30</td>
 <td>36</td>
