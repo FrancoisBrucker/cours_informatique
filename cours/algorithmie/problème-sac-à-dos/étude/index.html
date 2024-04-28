@@ -788,27 +788,26 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <h3>Algorithme</h3>
 <p>On suppose que l'on possède deux algorithmes :</p>
 <ul>
-<li><code class="language-">fractionnel_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte et les données du problème rend le couple <code class="language-">(borne_max, solution_max)</code>.</li>
-<li><code class="language-">glouton_possible(ouverte, p, k, K)</code> qui à partir d'une solution ouverte rend le couple <code class="language-">(borne_inf, solution_inf)</code>.</li>
+<li><code class="language-">borne_supérieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte et les données du problème rend le couple <code class="language-">(borne_max, solution_max)</code> en utilisant le glouton fractionnel.</li>
+<li><code class="language-">borne_inférieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte rend le couple <code class="language-">(borne_inf, solution_inf)</code> en utilisant le glouton du sac à dos.</li>
 </ul>
 <p>Pour notre exemple, on aurait ainsi que :</p>
 <ul>
-<li><code class="language-">fractionnel_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(188, [0.933333, 1, 1, 0, 0])</code></li>
-<li><code class="language-">glouton_possible([-1, -1, 1, -1, -1], [135, 15, 32, 6, 18], [15, 2,  4, 1, 6], 20)</code> vaudrait  <code class="language-">(86, [0, 1, 1, 1, 1])</code></li>
+<li><code class="language-">borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)</code> vaudrait  <code class="language-">(188, [0.933333, 1, 1, 0, 0])</code></li>
+<li><code class="language-">borne_inférieure([-1, -1, 1, -1, -1], EXEMPLE, 20)</code> vaudrait  <code class="language-">(86, [0, 1, 1, 1, 1])</code></li>
 </ul>
-<p>Il nous faut aussi une fonction utilitaire <code class="language-">fraction(tableau)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :</p>
+<p>Il nous faut aussi une fonction utilitaire <code class="language-">première_valeur_fractionnelle(sac_à_dos_fractionnel)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :</p>
 <ul>
-<li><code class="language-">fraction([1, 0.3, 1, 1, 0])</code> aurait rendu 1</li>
-<li><code class="language-">fraction([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
+<li><code class="language-">première_valeur_fractionnelle([1, 0.3, 1, 1, 0])</code> aurait rendu 1</li>
+<li><code class="language-">première_valeur_fractionnelle([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
 </ul>
 <p>L'algorithme ci-après est une version simplifiée de l'algorithme puisqu'il ne met pas à jour la borne maximale.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 ouverte <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
-borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
-
+borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> borne_inférieure<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span>
 possibles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>solution_max<span class="token punctuation">)</span>
+i <span class="token operator">=</span> première_valeur_fractionnelle<span class="token punctuation">(</span>solution_max<span class="token punctuation">)</span>
 <span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
     ouverte_1 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
     ouverte_1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
@@ -822,14 +821,17 @@ i <span class="token operator">=</span> fraction<span class="token punctuation">
 <span class="token keyword">while</span> possibles<span class="token punctuation">:</span>
     ouverte <span class="token operator">=</span> possibles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    possible_borne_max<span class="token punctuation">,</span> possible_solution_max <span class="token operator">=</span> fractionnel_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
-    possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf <span class="token operator">=</span> glouton_possible<span class="token punctuation">(</span>ouverte<span class="token punctuation">,</span> p<span class="token punctuation">,</span> k<span class="token punctuation">,</span> K<span class="token punctuation">)</span>
-
+    possible_borne_max<span class="token punctuation">,</span> possible_solution_max <span class="token operator">=</span> borne_supérieure<span class="token punctuation">(</span>
+        ouverte<span class="token punctuation">,</span> produits<span class="token punctuation">,</span> masse_totale
+    <span class="token punctuation">)</span>
+    possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf <span class="token operator">=</span> borne_inférieure<span class="token punctuation">(</span>
+        ouverte<span class="token punctuation">,</span> produits<span class="token punctuation">,</span> masse_totale
+    <span class="token punctuation">)</span>
     <span class="token keyword">if</span> possible_borne_max <span class="token operator">></span> borne_inf<span class="token punctuation">:</span>
         <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_inf<span class="token punctuation">:</span>
             borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_inf<span class="token punctuation">,</span> possible_solution_inf
 
-        i <span class="token operator">=</span> fraction<span class="token punctuation">(</span>possible_solution_max<span class="token punctuation">)</span>
+        i <span class="token operator">=</span> première_valeur_fractionnelle<span class="token punctuation">(</span>possible_solution_max<span class="token punctuation">)</span>
         <span class="token keyword">if</span> i <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> borne_inf <span class="token operator">&lt;</span> possible_borne_max<span class="token punctuation">:</span>
                 borne_inf<span class="token punctuation">,</span> solution_inf <span class="token operator">=</span> possible_borne_max<span class="token punctuation">,</span> possible_solution_max
@@ -839,9 +841,11 @@ i <span class="token operator">=</span> fraction<span class="token punctuation">
 
             ouverte_0 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>ouverte<span class="token punctuation">)</span>
             ouverte_0<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-        
+
             possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_1<span class="token punctuation">)</span>
             possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ouverte_0<span class="token punctuation">)</span>
+
+sac_à_dos <span class="token operator">=</span> solution_inf
 
 </code></pre>
 <p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
