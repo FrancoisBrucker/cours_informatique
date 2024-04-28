@@ -140,17 +140,6 @@ On peut maintenant comparer les résultats :
 Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
 {% endfaire %}
 
-### Programmation dynamique
-
-{% faire %}
-Dans un fichier `efficace.py`{.fichier} créez une fonction `programmation_dynamique(produits, masse_totale)` qui utilise la programmation dynamique pour trouver le sac à dos optimal. 
-
-{% endfaire %}
-On peut maintenant comparer les résultats :
-
-{% faire %}
-Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
-{% endfaire %}
 Améliorons la complexité :
 
 {% faire %}
@@ -158,25 +147,40 @@ Améliorons la complexité :
 - Faites le tri des produits une fois pour toute au début de la fonction `branch_and_bound`{.language-} et pas à chaque appel du glouton fractionnel.
 {% endfaire %}
 
-## Expérimentation aléatoire
-
-> TBD : création de données
-> TBD : test sur gloutons. Différence entre optimal, optimal fractionnel et glouton
-> TBD : implémenter le performance garantie et voir si effectivement c'est ok
-> TBD : temps entre les 2 méthodes efficaces. S'arranger pour faire se croiser les courbes.
-
-## Pour conclure
-
-Nous avons utilisé des dictinnaires et des fonctions annexes pour les gérer. On ne fait habituellement pas ça : seules les données brutes sont stockées sous la forme d'un dictionnaire (le plus souvent [un fichier JSON](https://fr.wikipedia.org/wiki/JavaScript_Object_Notation) que l'on peut facilement importer en python) tout le reste est géré par des classes.
+### Programmation dynamique
 
 {% faire %}
-Reprenez votre code et utilisez une classe `Produit`{.language-} permettant de gérer une poudre ou un aliment.
+Dans un fichier `efficace.py`{.fichier} créez une fonction `programmation_dynamique(produits, masse_totale)` qui utilise la programmation dynamique pour trouver la valeur du sac à dos optimal. 
+
+{% endfaire %}
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien la bonne valeur.
 {% endfaire %}
 
-## TBD
+ Vous pouvez, si vous le désirez, aller plus loin et rendre le sac à dos en utilisant _une remontée_ avec la programmation dynamique.
 
-> <https://tarakc02.github.io/branch-and-bound/>
-<https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf>
-> TBD : sac à dos multiple
-> TBD : super croissant.
-> TBD : quand est-ce que l'énumération est mieux que la programmation dynamique. Souvent prog dynamique chouette car pas beaucoup de choix pour K
+## Expérimentation aléatoire
+
+{% faire %}
+Dans le fichier `données.py`{.language-} créez une fonction `sac_à_dos(n, prix, K)`{.language-} qui génère aléatoirement un jeu de $n$ données où chaque donnée a un prix inférieure au paramètre `prix`{.language-} et un poids inférieur à `K`{.language-}
+{% endfaire %}
+
+Commencez par tester un peu vos algorithmes :
+
+{% faire %}
+Dans un fichier `aléatoire.py`{.language-} testez pour plusieurs jeux de donnés les différences entre :
+
+- la valeur de la solution fractionnelle optimale,
+- la valeur du glouton
+- la valeur de la solution optimale (utilisez des vlaeurs de $K$ pas trop grande pour que le calcul par programmation dynamique soit possible en temps raisonnable)
+{% endfaire %}
+
+Enfin, pour finir :
+
+{% faire %}
+Implémentez l'algorithme à performance garantie et vérifiez que l'on est bien au pire deux fois moins bon que la solution optimale.
+Comparez son résultat à la solution optimale (calculée par branch and bound) et au résultat du glouton.
+{% endfaire %}
+

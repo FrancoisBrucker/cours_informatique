@@ -22,3 +22,12 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 {% aller %}
 [Projet](./projet){.interne}
 {% endaller %}
+
+
+
+## TBD
+
+> TBD <https://tarakc02.github.io/branch-and-bound/>
+> TBD <https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf>
+> TBD : sac à dos multiple = programmation en nombre entier
+> TBD : super croissant.
