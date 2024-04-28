@@ -1,9 +1,31 @@
-def borne_inférieure(ouverte, produits, masse_totale):
-    pass
+import données
+from données import profit
 
+def borne_supérieure(ouverte, produits, ordre, masse_totale):
+    sac_a_dos = [0] * len(produits)
 
-def borne_supérieure(ouverte, produits, masse_totale):
-    pass
+    for i in ordre:
+        x = produits[i]
+
+        if ouverte[i] == 1:
+            sac_a_dos[i] = 1
+            masse_totale -= x["kg"]
+
+    for i in ordre:
+        if ouverte[i] != -1:
+            continue
+
+        x = produits[i]
+        if masse_totale >= x["kg"]:
+            sac_a_dos[i] = 1
+            masse_totale -= x["kg"]
+        elif masse_totale > 0:
+            sac_a_dos[i] = masse_totale / x["kg"]
+            masse_totale = 0
+        else:
+            break
+
+    return sac_a_dos
 
 
 def première_valeur_fractionnelle(sac_à_dos):
@@ -14,49 +36,50 @@ def première_valeur_fractionnelle(sac_à_dos):
 
 
 def branch_and_bound(produits, masse_totale):
+    ordre = list(range(len(produits)))
+    ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
+
     n = len(produits)
 
-    ouverte = [-1] * n
-    borne_inf, solution_inf = borne_inférieure(ouverte, produits, masse_totale)
-    possibles = []
+    sac_à_dos = [0] * n
+    profit_sac_à_dos = 0
 
-    i = première_valeur_fractionnelle(solution_max)
-    if i is not None:
-        ouverte_1 = list(ouverte)
-        ouverte_1[i] = 1
+    solution_ouverte = [-1] * n
+    solutions_ouvertes_possibles = [solution_ouverte]
 
-        ouverte_0 = list(ouverte)
-        ouverte_0[i] = 0
+    while solutions_ouvertes_possibles:
+        solution_ouverte = solutions_ouvertes_possibles.pop()
 
-        possibles.append(ouverte_1)
-        possibles.append(ouverte_0)
+        sac_à_dos_fractionnel = borne_supérieure(solution_ouverte, produits, ordre, masse_totale)
+        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits) 
 
-    while possibles:
-        ouverte = possibles.pop()
+        print(solution_ouverte, sac_à_dos_fractionnel, profit_sac_à_dos_fractionnel)
 
-        possible_borne_max, possible_solution_max = borne_supérieure(
-            ouverte, produits, masse_totale
-        )
-        possible_borne_inf, possible_solution_inf = borne_inférieure(
-            ouverte, produits, masse_totale
-        )
-        if possible_borne_max > borne_inf:
-            if borne_inf < possible_borne_inf:
-                borne_inf, solution_inf = possible_borne_inf, possible_solution_inf
-
-            i = première_valeur_fractionnelle(possible_solution_max)
+        if profit_sac_à_dos_fractionnel > profit_sac_à_dos:
+            i = première_valeur_fractionnelle(sac_à_dos_fractionnel)
             if i is None:
-                if borne_inf < possible_borne_max:
-                    borne_inf, solution_inf = possible_borne_max, possible_solution_max
+                sac_à_dos = sac_à_dos_fractionnel
+                profit_sac_à_dos = profit_sac_à_dos_fractionnel
             else:
-                ouverte_1 = list(ouverte)
-                ouverte_1[i] = 1
-
-                ouverte_0 = list(ouverte)
-                ouverte_0[i] = 0
-
-                possibles.append(ouverte_1)
-                possibles.append(ouverte_0)
-
-    sac_à_dos = solution_inf
+                for v in [0, 1]:
+                    nouvelle_solution_ouverte = list(solution_ouverte)
+                    nouvelle_solution_ouverte[i] = v
+                    if (sum(x["kg"] for x, o in zip(produits, nouvelle_solution_ouverte) if o == 1) <= masse_totale):
+                        solutions_ouvertes_possibles.append(nouvelle_solution_ouverte)
     return sac_à_dos
+
+
+print("Données :")
+for x in données.EXEMPLE:
+    print(x)
+
+print()
+print("Sac à dos optimal :")
+
+sac_à_dos = branch_and_bound(données.EXEMPLE, 20)
+
+for i in range(len(sac_à_dos)):
+    print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
+
+print()
+print("Profit :", profit(sac_à_dos, données.EXEMPLE))

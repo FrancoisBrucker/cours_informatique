@@ -394,7 +394,7 @@ La méthode du **_Branch and Bound_** (ou **_Séparation et évaluation_** en Fr
 
 Cette méthode est particulièrement bien adaptée au problème du sac à dos.
 
-#### Bornes supérieure et inférieure
+#### Bornes supérieure
 
 On peut toujours considérer un problème de sac à dos comme un problème de sac à dos fractionnel que l'on peut facilement résoudre. Comme les solutions d'un sac à dos sont contenus dans les solution d'un sac à dos fractionnel (on prend pour chaque produit soit tout soit rien) on peut :
 
@@ -414,17 +414,6 @@ Une borne supérieure à un problème du sac à dos peut être trouvé en relâc
 
 La valeur optimale du sac à dos fractionnel associé est appelée **_borne supérieure_** du problème du sac à dos.
 {% endnote %}
-
-On peut de la même manière associer une borne minimum à un problème du sac à dos puisqu'il suffit d'utiliser le glouton !
-
-{% note "**Borne inférieure**" %}
-Une borne inférieure à un problème du sac à dos peut être trouvé en utilisant l'algorithme glouton précédent. 
-
-La valeur donnée par l'algorithme glouton est appelée **_borne inférieure_** du problème du sac à dos.
-{% endnote %}
-
-
-On pourrait bien sur choisir d'autres bornes, mais l'intérêt de prendre les valeurs des 2 algorithmes gloutons est que leurs complexité est faible. D'autant plus qu'ils dépendent tous 2 du même ordre que l'on peut calculer une fois pour toute et réutiliser pour tous les sous-problèmes.
 
 #### Sous-problème
 
@@ -456,30 +445,18 @@ Une **_solution ouverte_** est une suite $y_i$ ($1\leq i \leq n$) telle que :
 Une solution ouverte permet de définir un **_sous-problème associé_** où l'on les variables $x_i$ sont fixées à $y_i$ si $y_i \neq -1$.
 {% endnote %}
 
-Une solution ouverte possède encore des inconnues que l'on peut fixer et possède une borne supérieure et inférieure.
+Une solution ouverte ne possédant que des -1 correspond au problème général du sac à dos et les solutions ouvertes ayant des 0 et des 1 correspondent à un sous-problème.
 
 #### Déroulement de l'algorithme
 
-L'algorithme du Branch and bound est alors très simple. Le principe est le suivant : on ne va explorer de solutions ouvertes que si cela peut apporter quelque chose.
+L'algorithme du Branch and bound est alors très simple : il va énumérer toutes les solutions ouvertes mais ne va les explorer que si cela en vaut le coup, c'est à dire s'il est possible de trouver une solution meilleure que celle qu'on a déjà.
 
-On initialise l'algorithme en utilisant la solution ouverte où tous les $y_i$ valent -1 et on calcule :
-
-- sa borne inférieure avec l'algorithme glouton et on stocke sa valeur ainsi que le sac à dos qui le réalise
-- sa borne supérieure avec le sac à dos fractionnel et on stocke sa valeur ainsi que le sac à dos fractionnel qui le réalise
-
-Si par chance le résultat du sac à dos fractionnel est entier on peut s'arrêter puisque c'est la solution. Sinon on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à un ensemble de solutions ouvertes possibles.
-
-Ceci permet d'initier l'algorithme qui considère itérativement une solution ouverte de l'ensemble des solutions ouvertes possibles et on calcule sa borne supérieure avec le sac à dos fractionnel :
-
-- si sa valeur est inférieure ou égale à la borne inférieure stockée, cette solution ouverte est inutile.
-- Si le résultat est entier, on compare sa valeur avec la borne inférieure stockée : 
-    - Si elle est supérieure on a une nouvelle borne inférieure que l'on stocke
-    - Si elle est inférieure cette solution ouverte est inutile.
-- Si le résultat du sac à dos fractionnel n'est pas entier, il faut continuer à explorer les sous-problème de cette solution potentielle. Pour cela :
-    - on calcule sa borne inférieure et on met à jour la borne inférieure stockée si elle est supérieure
-    - on choisit la première variable de la solution fractionnelle qui ne correspond pas à un sac à dos (on a pris qu'une fraction strictement positive) et on ajoute les solutions ouvertes où l'on fixe cette valeur à 0 et à 1 à l'ensemble des solutions ouvertes possibles.
-
-On continue de choisir une solution ouverte tant que c'est possible. Une fois cet ensemble vide, la borne inférieure est la solution optimale du sac à dos.
+- initialisation : on commence avec un sac à dos vide et la solution ouverte ne contenant que des -1.
+- tant que : il existe une solution ouverte non explorée, on calcule la valeur de son sac à dos fractionnel optimal.
+    - Si cette valeur est inférieure à celle du sac à dos courant, il est inutile de l'explorer car on ne pourra trouver que des solutions moins bonnes.
+    - Sinon :
+        - si le sac à dos fractionnel optimal est un sac à dos on compare sa valeur au sac à dos stocké et on le met à jour si cette nouvelle solution est meilleure
+        - sinon, il faut explorer de nouveaux sous-problème en fixant la valeur fractionnelle de la solution optimale à 0 et à 1. On ajoute ces deux sous problèmes aux solutions ouvertes à explorer.
 
 Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 produits :
 
@@ -488,138 +465,106 @@ Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un
 - poudre 3 : 4kg et un prix de 32€ (8€ le kilo)
 - poudre 4 : 1kg et un prix de 6€ (6€ le kilo)
 - poudre 5 : 6kg et un prix de 18€ (3€ le kilo)
+- poudre 6 : 80kg et un prix de 800€ (10€ le kilo)
 
-On commence par la solution ouverte $y = [-1, -1, -1, -1, -1]$ elle a comme borne supérieure 189 et comme borne inférieure 171. La borne supérieure est réalisée avec le sac à dos fractionnel $x = [1, 1, 3/4, 0, 0]$ et la borne inférieure avec le sac à dos $x = [1, 1, 0, 1, 0]$.
+On commence par la solution ouverte $y = [-1, -1, -1, -1, -1, -1]$ de solution fractionnelle optimale $[0, 1, 0, 0, 0, 0.225]$ et le sac à dos vide $x = [0, 0, 0, 0, 0, 0]$.
 
 On a coutume de représenter les différents choix par un arbre. Après cette étape d'initialisation on a :
 
 ![branch and bound 1](bb-1.png)
 
-La première valeur ne correspondant pas à un sac à dos est la troisième puisque $x_3 = 3 < 4 = k_3$. On choisit alors d'ajouter aux solutions possible les solutions ouvertes  $[-1, -1, 0, -1, -1]$ et $[-1, -1, 1, -1, -1]$  
-
-Après cette étape d'initialisation, on a :
-
-- 2 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$ et $[-1, -1, 0, -1, -1]$ 
-- les bornes minimales et maximales du problème sont 171 et 189,
-- la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.
-
-Ce qui donne graphiquement :
+Le sac à dos fractionnel n'est pas un sac à dos. On ajoute donc potentiellement les solutions ouvertes $[-1, -1, -1, -1, -1, 1]$ et $[-1, -1, -1, -1, -1, 0]$ aux solutions à explorer. Comme $[-1, -1, -1, -1, -1, 1]$ ne peut pas donner de sac à dos valide, on se retrouve avec les solutions ouvertes à explorer suivantes :
 
 ![branch and bound 1](bb-2.png)
 
-On entame maintenant la boucle principale en prenant une solution ouverte de l'ensemble des solutions possibles. Prenons la solution ouverte $[-1, -1, 0, -1, -1]$. Sa borne supérieure vaut 177 et est fractionnelle ($x = [1, 1, 0, 1, 1/3]$). Il faut donc continuer d'explorer :
-
-- sa borne inférieure vaut 171 et ne donc pas d'augmenter la borne inférieure stockée
-- on ajoute aux solutions possibles les solutions ouvertes $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.
-
-Après cette étape, on a :
-
-- 3 solutions ouverte possibles : $[-1, -1, 1, -1, -1]$, $[-1, -1, 0, -1, 0]$ et $[-1, -1, 0, -1, 1]$.
-- les bornes minimales et maximales du problème sont 171 et 189,
-- la borne minimale est réalisée pour $x = [1, 1, 0, 1, 0]$.
+La solution à explorer est $[-1, -1, -1, -1, -1, 0]$ de solution fractionnelle optimale $[1, 1, 0.75, 0, 0, 0]$ et de valeur 189.0 qui est strictement supérieure à notre sac à dos stocké. On explore cette solution pour obtenir :
 
 ![branch and bound 1](bb-3.png)
 
-On recommence avec une solutions possible, on peut a priori choisir n'importe laquelle : choisissons $[-1, -1, 0, -1, 0]$. Sa borne supérieure est égale à la borne inférieure stockée, cette solution ouverte est donc inutile.
-
+L'analyse de la solution ouverte $[-1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[0.9333333333333333, 1, 1, 0, 0, 0]$ et de valeur 188, ce qui fait que l'on continue l'exploration : 
 
 ![branch and bound 1](bb-4.png)
 
-On continue par $[-1, -1, 0, -1, 1]$. Sa borne supérieure vaut 156, cette solution aussi est inutile.
+
+L'analyse de la solution ouverte $[1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[1, 0.5, 1, 0, 0, 0]$ et de valeur 182, ce qui fait que l'on continue encore :
 
 ![branch and bound 1](bb-5.png)
 
-Il ne reste plus qu'une solution ouverte possible $[-1, -1, 1, -1, -1]$ :
+Notez que la solution ouverte $[1, 1, 1, -1, -1, 0]$ de donne pas de sac à dos viable, elle est donc directement éliminée.
 
-- sa borne supérieure vaut 188 et est réalisée pour $x = [14/15, 1, 1, 0, 0]$. On peut remarquer que cette borne supérieure est la nouvelle borne puisque toutes les prochaines solutions possible vont découler de celle-ci. 
-- sa borne inférieure vaut 86, ce qui est ridicule.
-
-
-On ajoute les deux solutions ouvertes $[0, -1, 1, -1, -1]$ et $[1, -1, 1, -1, -1]$
+Lors de l'analyse de la solution ouverte  $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :
 
 
 ![branch and bound 1](bb-6.png)
 
-La solution suivante,  $[0, -1, 1, -1, -1]$, donne une borne supérieure de 86 donc on l'oublie :
+L'analyse de la solution ouverte $[0, -1, 1, -1, -1, 0]$ donnt une solution optimale $[0, 1, 1, 1, 1, 0]$ de valeur 86 ce qui est moins bon que notre sac à dos stocké : inutile d'explorer. On a :
+
 
 ![branch and bound 1](bb-7.png)
 
-
-Il ne nous reste à nouveau plus qu'une solution ouverte possible $[1, -1, 1, -1, -1]$  de borne supérieure 173 réalisée par $x = [1, 0, 1, 1, 0]$ qui est entier. On ne rajoute donc pas de nouvelles solutions ouvertes puisque toute solution issue de celle ci ne pourrait que moins bonne. De plus on met à jour la borne inférieure stockée pour obtenir :
-
+{% exercice %}
+Finissez l'exploration et donnez l'arbre final.
+{% endexercice %}
+{% details "corrigé" %}
 
 ![branch and bound 1](bb-8.png)
 
-Il n'y a plus de solutions ouverte possible, l'algorithme s'arrête. L'optimum est réalisé pour la borne inférieure stockée : 173 pour $x = [1, 0, 1, 1, 0]$. On a eu besoin d'explorer uniquement 7 des $2^5 = 32$ possibilité, ce qui est un bon gain.
+Avec :
+
+- $[-1, -1, 0, -1, -1, 0]$ de sac à dos fractionnel $[1, 1, 0, 1, 0.33, 0]$ de valeur 177.0 : on continue d'explorer
+- $[-1, -1, 0, -1, 1, 0]$ de sac à dos fractionnel  $[0.8, 1, 0, 0, 1, 0]$ de valeur 156.0, donc inutile de continuer l'exploration de cette solution ouverte
+- $[-1, -1, 0, -1, 0, 0]$ de sac à dos fractionnel  $[1, 1, 0, 1, 0, 0]$ 171, donc inutile de continuer l'exploration de cette solution ouverte
+
+{% enddetails  %}
+
+Remarquer que cette algorithme est bien plus efficace en pratique que l'énumération exhaustive, on a parcouru que que 11 des 32 sac à dos possibles.
 
 ### Algorithme
 
-On suppose que l'on possède deux algorithmes :
+On suppose que l'on possède l'algorithme `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que `borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `[0.933333, 1, 1, 0, 0]`{.language-}
 
-- `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte et les données du problème rend le couple `(borne_max, solution_max)`{.language-} en utilisant le glouton fractionnel.
-- `borne_inférieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte rend le couple `(borne_inf, solution_inf)`{.language-} en utilisant le glouton du sac à dos.
+Il nous faut aussi deux fonctions utilitaires :
 
-Pour notre exemple, on aurait ainsi que :
+- `première_valeur_fractionnelle(sac_à_dos_fractionnel)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : `première_valeur_fractionnelle([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 et `première_valeur_fractionnelle([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-} 
+- `profit(sac_à_dos_fractionnel, produits)`{.language-} qui rend le profit associé au sac à dos fractionnel passé en entrée 
 
-- `borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `(188, [0.933333, 1, 1, 0, 0])`{.language-}
-- `borne_inférieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `(86, [0, 1, 1, 1, 1])`{.language-}
-
-Il nous faut aussi une fonction utilitaire `première_valeur_fractionnelle(sac_à_dos_fractionnel)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que :
-
-- `première_valeur_fractionnelle([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 
-- `première_valeur_fractionnelle([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-} 
-
-L'algorithme ci-après est une version simplifiée de l'algorithme puisqu'il ne met pas à jour la borne maximale.
 
 ```python
+def branch_and_bound(produits, masse_totale):
+    ordre = list(range(len(produits)))
+    ordre.sort(key=lambda i: -produits[i]["prix"] / produits[i]["kg"])
 
-ouverte = [-1] * n
-borne_inf, solution_inf = borne_inférieure(ouverte, produits, masse_totale)
-possibles = []
+    n = len(produits)
 
-i = première_valeur_fractionnelle(solution_max)
-if i is not None:
-    ouverte_1 = list(ouverte)
-    ouverte_1[i] = 1
+    sac_à_dos = [0] * n
+    profit_sac_à_dos = 0
 
-    ouverte_0 = list(ouverte)
-    ouverte_0[i] = 0
+    solution_ouverte = [-1] * n
+    solutions_ouvertes_possibles = [solution_ouverte]
 
-    possibles.append(ouverte_1)
-    possibles.append(ouverte_0)
+    while solutions_ouvertes_possibles:
+        solution_ouverte = solutions_ouvertes_possibles.pop()
 
-while possibles:
-    ouverte = possibles.pop()
+        sac_à_dos_fractionnel = borne_supérieure(solution_ouverte, produits, masse_totale)
+        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits) 
 
-    possible_borne_max, possible_solution_max = borne_supérieure(
-        ouverte, produits, masse_totale
-    )
-    possible_borne_inf, possible_solution_inf = borne_inférieure(
-        ouverte, produits, masse_totale
-    )
-    if possible_borne_max > borne_inf:
-        if borne_inf < possible_borne_inf:
-            borne_inf, solution_inf = possible_borne_inf, possible_solution_inf
-
-        i = première_valeur_fractionnelle(possible_solution_max)
-        if i is None:
-            if borne_inf < possible_borne_max:
-                borne_inf, solution_inf = possible_borne_max, possible_solution_max
-        else:
-            ouverte_1 = list(ouverte)
-            ouverte_1[i] = 1
-
-            ouverte_0 = list(ouverte)
-            ouverte_0[i] = 0
-
-            possibles.append(ouverte_1)
-            possibles.append(ouverte_0)
-
-sac_à_dos = solution_inf
-
+        if profit_sac_à_dos_fractionnel > profit_sac_à_dos:
+            i = première_valeur_fractionnelle(sac_à_dos_fractionnel)
+            if i is None:
+                sac_à_dos = sac_à_dos_fractionnel
+                profit_sac_à_dos = profit_sac_à_dos_fractionnel
+            else:
+                for v in [0, 1]:
+                    nouvelle_solution_ouverte = list(solution_ouverte)
+                    nouvelle_solution_ouverte[i] = v
+                    if (sum(x["kg"] for x, o in zip(produits, nouvelle_solution_ouverte) if o == 1) <= masse_totale):
+                        solutions_ouvertes_possibles.append(nouvelle_solution_ouverte)
+    return sac_à_dos
 ```
 
-Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive. 
+Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
+
+Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.
 
 {% note "**Conclusion**" %}
 L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et esrt en pratique extrêmement efficace.
