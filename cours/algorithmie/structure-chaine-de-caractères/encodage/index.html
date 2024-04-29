@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>La chaîne de caractères</title>
+    <title>Encodage des caractères</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>La chaîne de caractères</h1>
+  <h1>Encodage des caractères</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/chaîne-de-caractères/">La chaîne de caractères</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/">Structure chaine de caractères</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/encodage/">Encodage des caractères</a>
 
 </div>
 </div>
@@ -92,10 +92,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Qu'est-ce qu'une chaîne de caractères et comment peut-on en utiliser?</p>
-<!-- end résumé -->
-<p>En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'ont donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.</p>
+  <p>En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'ont donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -105,8 +102,12 @@
 </div>
 </div>
 <h2>Codage des caractères</h2>
+<blockquote>
+<p>TBD un nombre pour un caractère</p>
+</blockquote>
+<h3>ASCII et avatars</h3>
 <p>Le premier codage utilisé était le code <a href="http://fr.wikipedia.org/wiki/ASCII">ASCII</a> dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage <a href="http://fr.wikipedia.org/wiki/ISO_8859-1">ISO-8859-1</a> où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.</p>
-<p>Il y en a eu une foultitude d'autres jusqu'à arriver à l'encodage actuel : <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>.</p>
+<p>Il y en a eu une foultitude d'autres jusqu'à arriver au standard actuel.</p>
 <p>A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères &quot;j'écris en Français&quot; se code :</p>
 <ul>
 <li><code>6A27E96372697320656E204672616EE7616973</code> dans le format <a href="https://fr.wikipedia.org/wiki/ISO/CEI_8859-1">ISO-8859-1</a> aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.</li>
@@ -154,6 +155,9 @@
 </div>
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
 <h2><span id="utf8"></span>utf-8</h2>
+<blockquote>
+<p>TBD : l'encodage actuel : <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a>.</p>
+</blockquote>
 <p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.</p>
 <p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il  permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
 <p>Il existe plusieurs format utf, mais c'est <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui s'est imposé.</p>
