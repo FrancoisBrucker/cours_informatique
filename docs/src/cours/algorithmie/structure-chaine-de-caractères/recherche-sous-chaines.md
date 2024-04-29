@@ -11,39 +11,35 @@ eleventyComputed:
 
 > TBD horspool. qui est pus simple que knuth morris pratt
 
-> TBD horspool. qui est pus simple que knuth morris pratt
 
 Nous allons dans cette partie analyser le problème de la _recherche d'une sous-chaîne_ :
 
-> **Problème de la recherche d'une sous-chaîne** :
->
-> - **Données** :
->   - une chaîne de caractère de $a$ de longueur $n$
->   - une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$
-> - **question** :
->   - $b$ est-il une _sous-chaîne_ de $a$ ?
-> - **réponse** :
->   - oui ou non.
->     {.note}
+{% note "**Problème de la recherche d'une sous-chaîne**" %}
+- **Données** :
+  - une chaîne de caractère de $a$ de longueur $n$
+  - une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$
+- **question** : $b$ est-il une _sous-chaîne_ de $a$ ?
+- **réponse** : l'indice d'un début de $b$ dans $a$ si $b$ est une sous chaine de $a$ et $-1$ sinon
+{% endnote %}
 
 Une définition formelle de _sous-chaîne_ étant :
 
-> Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement.
->
-> La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$ :
->
-> $$
-> b[j] = a[i + j]
-> $$
->
-> {.note}
+{% note "**Définition**" %}
+Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement.
 
-## algorithme naïf
+La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$ :
+
+$$
+b[j] = a[i + j]
+$$
+
+{% endnote %}
+
+## Algorithme naïf
 
 La première idée pour résoudre le problème de _la recherche d'une sous-chaîne_ est de vérifier pour pour tout $0 \leq i < n$ si la définition est correcte :
 
 ```python#
-
 def sous_chaine_naif(a, b):
     for i in range(len(a) - len(b) + 1):
         trouvé = True
@@ -53,10 +49,9 @@ def sous_chaine_naif(a, b):
         if trouvé:
             return True
     return False
-
 ```
 
-### pièges
+### Pièges
 
 L'algorithme semble une application directe de la définition, et pourtant... Attention aux multiples pièges de ce genre d'algorithme. Il faut **toujours** vérifier très consciencieusement :
 
@@ -65,9 +60,13 @@ L'algorithme semble une application directe de la définition, et pourtant... At
 
 Essayez de comprendre pourquoi les solutions suivantes ne fonctionnent pas en exhibant un contre-exemple.
 
-#### limites de boucles
+#### Limites de boucles
 
-Attention aux limites des boucles `for` ! Il faut **toujours** vérifier les bornes.
+Attention aux limites des boucles `for`{.language-} ! Il faut **toujours** vérifier les bornes.
+
+{% exercice %}
+
+Le programme suivant contient une erreur, laquelle ?
 
 ```python
 def sous_chaine_naif_FAUX_1(a, b):
@@ -81,10 +80,16 @@ def sous_chaine_naif_FAUX_1(a, b):
     return False
 ```
 
-{% details "quelle est l'erreur ?" %}
-Pas de sentinelle sur le positionnement. On peut avoir $i + j \geq m$ et donc `a[i + j]` provoquer une erreur. Par exemple `sous_chaine_naif("aaa", "ca")`
-
+{% endexercice %}
+{% details "corrigé" %}
+Pas de sentinelle sur le positionnement. On peut avoir $i + j \geq m$ et donc `a[i + j]`{.language-} provoquer une erreur. Par exemple `sous_chaine_naif("aaa", "ca")`{.language-}
 {% enddetails %}
+
+Allez, une autre :
+
+{% exercice %}
+
+Le programme suivant contient une erreur, laquelle ?
 
 ```python
 def sous_chaine_naif_FAUX_2(a, b):
@@ -97,15 +102,19 @@ def sous_chaine_naif_FAUX_2(a, b):
             return True
     return False
 ```
-
-{% details "quelle est l'erreur ?" %}
-On ne va pas assez loin. Par exemple `sous_chaine_naif("ab", "b")`
+{% endexercice %}
+{% details "corrigé" %}
+On ne va pas assez loin. Par exemple `sous_chaine_naif("ab", "b")`{.language-}
 
 {% enddetails %}
 
-#### conditions d'arrêt
+#### Conditions d'arrêt
 
 Une erreur classique :
+
+{% exercice %}
+
+Le programme suivant contient une erreur, laquelle ?
 
 ```python
 def sous_chaine_naif_FAUX_3(a, b):
@@ -115,16 +124,19 @@ def sous_chaine_naif_FAUX_3(a, b):
                 return False
     return True
 ```
+{% endexercice %}
+{% details "corrigé" %}
+Ce n'est pas parce que l'on ne trouve pas la sous-chaine en $i=$ que ce n'est pas vrai pour $i=1$...
 
-{% details "quelle est l'erreur ?" %}
-Ce n'est pas parce que l'on ne trouve pas la sous-chaine en $i=$ que ce n'et pas vrai pour $i=1$...
-
-Exemple : `sous_chaine_naif("ab", "b")`
+Exemple : `sous_chaine_naif("ab", "b")`{.language-}
 
 {% enddetails %}
 
 Une variation sur l'erreur précédente :
 
+{% exercice %}
+
+Le programme suivant contient une erreur, laquelle ?
 ```python
 def sous_chaine_naif_FAUX_4(a, b):
     trouvé = True
@@ -134,16 +146,16 @@ def sous_chaine_naif_FAUX_4(a, b):
                 trouvé = False
     return trouvé
 ```
+{% endexercice %}
+{% details "corrigé" %}
 
-{% details "quelle est l'erreur ?" %}
-
-Erreur inverse du cas précédent. Il suffit que l'on ne trouve pas le sous-mot à une position pour que l'algorithme réponde faux : `sous_chaine_naif("ba", "b")`.
+Erreur inverse du cas précédent. Il suffit que l'on ne trouve pas le sous-mot à une position pour que l'algorithme réponde faux : `sous_chaine_naif("ba", "b")`{.language-}.
 
 {% enddetails %}
 
-### complexité
+### Complexité
 
-#### complexité maximale
+#### Complexité maximale
 
 Calculons la complexité ligne à ligne :
 
@@ -157,24 +169,24 @@ Calculons la complexité ligne à ligne :
 8. retour de fonction : $\mathcal{O}(1)$ opérations
 9. retour de fonction : $\mathcal{O}(1)$ opérations
 
-On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for` imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.
+On en conclut que la complexité totale se niche dans l'exécution des deux boucles `for`{.language-} imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.
 
-#### complexité minimale
+#### Complexité minimale
 
 La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i=0$. Dans ce cas là, il aura fallu $\mathcal{O}(m)$ opérations.
 
-#### complexité en moyenne
+#### Complexité en moyenne
 
-On pourrait envisager deux calculs possible :
+On pourrait envisager deux calculs possibles :
 
 - complexité en moyenne lorsque $b$ est une sous-chaine de $a$
 - complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$
 
-Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la _structure_ de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)
+Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la _structure_ de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'applications où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)
 
 Le second cas est le cas le pire et à un nombre constant d'opérations : $\mathcal{O}(nm)$.
 
-#### attention
+#### Attention
 
 Attention ! L'algorithme suivant, qui utilise la comparaison de listes en python, n'est **pas** de complexité inférieure.
 
@@ -188,11 +200,11 @@ def sous_chaine_naif_2(a, b):
 
 En effet, la complexité de l'égalité entre deux liste est égale à la taille de la plus petite des listes.
 
-### une amélioration subtile
+### Une amélioration subtile
 
-La boucle en $j$ (lignes 4-6) de l'algorithme `sous_chaine_naif` pourrait être améliorée en l'arrêtant dès que `trouvé` est mis à `False`.
+La boucle en $j$ (lignes 4-6) de l'algorithme `sous_chaine_naif`{.language-} pourrait être améliorée en l'arrêtant dès que `trouvé`{.language-} est mis à `False`.
 
-On peut pour cela utiliser l'instruction `break` qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la [documentation](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops) à ce sujet, elle est éclairante.
+On peut pour cela utiliser l'instruction `break`{.language-} qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la [documentation](https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops) à ce sujet, elle est éclairante.
 
 On a alors l'algorithme suivant :
 
@@ -211,9 +223,9 @@ def sous_chaine_naif_amélioré(a, b):
 
 Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.
 
-#### `break`, `continue` et `while`
+#### `break`{.language-}, `continue`{.language-} et `while`{.language-}
 
-L'instruction `break` de l'algorithme `sous_chaine_naif_amélioré` aurait très bien pu s'écrire avec une boucle `while` :
+L'instruction `break`{.language-} de l'algorithme `sous_chaine_naif_amélioré`{.language-} aurait très bien pu s'écrire avec une boucle `while`{.language-} :
 
 ```python
 def sous_chaine_naif_amélioré_sans_break(a, b):
@@ -234,13 +246,13 @@ def sous_chaine_naif_amélioré_sans_break(a, b):
 **Mais** la lecture aurait été moins aisée. L'utilisation de l'instruction `break` permet :
 
 - d'expliciter le cas général (la boucle for)
-- le cas particulier : le `break`.
+- le cas particulier : le `break`{.language-}.
 
-Le pendant l'instruction `break` est l'instruction `continue` qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.
+Le pendant de l'instruction `break`{.language-} est l'instruction `continue`{.language-} qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.
 
 Comparez par exemple ces 2 implémentations d'un même algorithme dont le but est à partir d'une liste d'entiers $L$ de faire un traitement uniquement si l'élément est non nul.
 
-Sans utilisation de `continue`, le cas général est traité dans un bloc `if` :
+Sans utilisation de `continue`{.language-}, le cas général est traité dans un bloc `if`{.language-} :
 
 ```python
 for element in L:
@@ -248,7 +260,7 @@ for element in L:
         # ...
 ```
 
-Utilisation de `continue`, le cas particulier est évacué directement.
+Utilisation de `continue`{.language-}, le cas particulier est évacué directement.
 
 ```python
 for element in L:
@@ -260,10 +272,11 @@ for element in L:
 
 Le second cas est bien plus clair.
 
-> L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
-> {.note}
+{% note "**Bonne pratique algorithmique**" %}
+L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
+{% endnote %}
 
-#### calcul de la complexité en moyenne
+#### Calcul de la complexité en moyenne
 
 On suppose que l'on ait dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.
 
@@ -281,20 +294,20 @@ Cette probabilité devient vite très faible. Par exemple, si on a un alphabet �
 
 De là, la probabilité que l'on s'arrête après :
 
-- 1 itérations de la boucle `for` en $j$ est égale à $(1-p)$
-- 2 itérations de la boucle `for` en $j$ est égale à $p(1-p)$
+- 1 itérations de la boucle `for`{.language-} en $j$ est égale à $(1-p)$
+- 2 itérations de la boucle `for`{.language-} en $j$ est égale à $p(1-p)$
 - ...
-- $j$ itérations de la boucle `for` en $j$ est égale à $p^{j-1}(1-p)$
+- $j$ itérations de la boucle `for`{.language-} en $j$ est égale à $p^{j-1}(1-p)$
 - ...
-- $m$ itérations de la boucle `for` en $j$ est égale à $p^{m-1}(1-p)$
+- $m$ itérations de la boucle `for`{.language-} en $j$ est égale à $p^{m-1}(1-p)$
 
-Le nombre moyens d'itérations de la boucle `for` en $j$ est alors :
+Le nombre moyens d'itérations de la boucle `for`{.language-} en $j$ est alors :
 
 $$
 1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k
 $$
 
-Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle `for` en $j$ vaut :
+Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle `for`{.language-} en $j$ vaut :
 
 $$
 \mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)
@@ -306,7 +319,7 @@ $$
 \sum_{k=1}^mk\cdot p^k = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
 $$
 
-{% details preuve %}
+{% details "preuve" %}
 
 Si l'on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f'_m(p)$. De là, une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$. Ainsi :
 
@@ -340,12 +353,13 @@ Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ it�
 
 Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l'algorithme est de complexité $\mathcal{O}(n)$ :
 
-> la complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.
-> {.note}
+{% note %}
+La complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.
+{% endnote %}
 
-Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
+Un simple `break`{.language-} a rendu linéaire la complexité en moyenne de l'algorithme.
 
-### trouver toutes les sous-chaines
+### Trouver toutes les sous-chaines
 
 Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :
 
@@ -363,18 +377,20 @@ def sous_chaine_naif_tous(a, b):
     return indices
 ```
 
+{% exercice %}
 Donnez les complexités de ce nouvel algorithme.
+{% endexercice %}
 {% details "solution" %}
 
-Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mahtcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.
+Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mathcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.
 
 {% enddetails %}
 
-## améliorations
+## Améliorations
 
-it autour de la boucle for en `i` qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
+it autour de la boucle `for`{.language-} en `i`{.language-} qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.
 
-Par exemple si on cherche la chaine `b=CGT` dans la chaine `a=CGACGACGACGA` $i+j$ vaudra :
+Par exemple si on cherche la chaine `b=CGT`{.language-} dans la chaine `a=CGACGACGACGA`{.language-} $i+j$ vaudra :
 
 1. $i+j=0+0 = 0$
 2. $i+j=0+1 = 1$
@@ -389,11 +405,11 @@ Chaque élément de $a$ sera vu $m$ fois.
 
 Accélérer l'algorithme revient à faire en sorte que le nombre $i+j$ soit croissant le plus souvent possible.
 
-### prétraitement utilisant $a$
+### Prétraitement utilisant $a$
 
 Une première idée que l'on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l'index $i$ si $a[i] \neq b[0]$.
 
-Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant `sous_chaine_naif_tous(a, b[0])`. On utilise ensuite ces indices dans notre algorithme accéléré :
+Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant `sous_chaine_naif_tous(a, b[0])`{.language-}. On utilise ensuite ces indices dans notre algorithme accéléré :
 
 ```python
 def sous_chaine_naif_acceleration_1(a, b):
@@ -417,7 +433,7 @@ L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i
 
 Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.
 
-### prétraitement sur $b$
+### Prétraitement sur $b$
 
 Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne travaillant que sur $b$ ?
 
@@ -553,7 +569,7 @@ Plus il y a de 0 dans $T_b$ plus les décalages seront importants
 
 Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition.
 
-### amélioration de l'amélioration
+### Amélioration de l'amélioration
 
 L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p > 0$ tel que $b[0] = b[p]$ — si $j > p$. Plaçons nous dans ce cas là :
 
@@ -601,26 +617,26 @@ On a alors deux choix :
 
 Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d'amélioration :
 
-> si :
->
-> - $j > 0$
-> - $a[i + k] = b[k]$ pour tout $0 \leq k < j$
-> - $a[i + j] \neq b[j]$
->
-> Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$).
-> Alors en notant :
->
-> - $i' = i + j - k$
-> - $j' = k$
->
-> On a que :
->
-> - $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$
-> - $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
->
-> On a de plus l'égalité : $i + j = i' + j'$
->
-> {.note}
+{% note %}
+Si :
+
+- $j > 0$
+- $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+- $a[i + j] \neq b[j]$
+
+Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$).
+Alors en notant :
+
+- $i' = i + j - k$
+- $j' = k$
+
+On a que :
+
+- $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$
+- $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
+
+On a de plus l'égalité : $i + j = i' + j'$
+{% endnote %}
 
 Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ **et** $j$ de sorte que la somme $i+j$ soit croissante.
 
@@ -632,7 +648,7 @@ L'algorithme de [Knuth, Morris et Pratt](https://fr.wikipedia.org/wiki/Algorithm
 
 Nous allons procéder par étape pour essayer de le comprendre.
 
-### décalage adapté
+### Décalage adapté
 
 L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
 
@@ -661,12 +677,13 @@ Le tableau $T_b$ vaudra alors : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 
 Formalisons ça.
 
-> Soit $T_b$ un tableau de longueur $m-1$
->
-> - T_b[0] = 0
-> - pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
->
-> {.note}
+{% note %}
+Soit $T_b$ un tableau de longueur $m-1$
+
+- T_b[0] = 0
+- pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
+
+{% endnote %}
 
 On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.
 
@@ -688,7 +705,7 @@ def algo_naif_construction_t(b):
 
 La complexité de cet algorithme est cependant assez grande, puisqu'elle est en $\mathcal{O}(m^3)$.
 
-### algorithme
+### Algorithme
 
 Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l'optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.
 
@@ -758,11 +775,13 @@ def sous_chaine_KMP(a, b):
     return False
 ```
 
-> par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.
+{% info %}
+Par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.
+{% endinfo %}
 
 Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction `cree_tableau(b)`
 
-### création de la table de décalage
+### Création de la table de décalage
 
 L'algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n'est pas vraiment optimal. L'algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu'il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !
 
@@ -827,10 +846,11 @@ On en déduit qu'il a donc également au plus $m$ étapes où $k$ diminue.
 
 Le nombre total d'étape est en $\mathcal{O(m)}$.
 
-> La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.
->
-> La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
-> {.note}
+{% note "**Proposition**" %}
+La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.
+
+La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
+{% endnote %}
 
 ## Autres algorithmes
 
@@ -840,9 +860,9 @@ Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donn
   - plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
   - la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable.
 - [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
-- [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
+- [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leur propre algorithme).
 
-## vers les expressions régulières
+## Vers les expressions régulières
 
 La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :
 
