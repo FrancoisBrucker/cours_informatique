@@ -121,6 +121,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 ## Structures linéaires
 
 {% aller %}
+[Chaines de caractères](./structure-chaine-de-caractères){.interne}
+{% endaller %}
+{% aller %}
 [Conteneurs](./structure-conteneurs){.interne}
 {% endaller %}
 

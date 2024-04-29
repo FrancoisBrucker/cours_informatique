@@ -25,9 +25,7 @@ Le problème du sac à dos est un problème fondamental en algorithmie, nombre d
 
 
 
-## TBD
+## Pour aller plus loin
 
-> TBD <https://tarakc02.github.io/branch-and-bound/>
-> TBD <https://informatique.ens-lyon.fr/concours-info/2011/sujet-jour5-2011.pdf>
-> TBD : sac à dos multiple = programmation en nombre entier
-> TBD : super croissant.
+> TBD : cas particuliers simple : super croissant.
+> TBD : sac à dos avec répétition = programmation en nombre entier != de fractionnel car que desentiers comme découpage

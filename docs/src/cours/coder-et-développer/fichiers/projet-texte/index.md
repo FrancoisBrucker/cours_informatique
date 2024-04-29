@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Projet : fichiers"
 
 eleventyComputed:
@@ -24,15 +24,12 @@ Mise en place de votre projet :
 
 {% endfaire %}
 
+Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et d'utiliser au maximum les méthodes de listes de python :
+
+{% lien %}
+
+{% endlien %}
 ## Jouons sur les mots
-
-On vous demande d'utiliser python pour [télécharger directement un fichier](../fichiers/dossiers-et-chemins#fichiers-distants){.interne} puis de le traiter.
-
-{% attention %}
-Vous ne téléchargerez le fichier depuis internet qu'une seule fois.
-{% endattention %}
-
-### En Français
 
 [Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
 
@@ -40,7 +37,7 @@ Vous ne téléchargerez le fichier depuis internet qu'une seule fois.
 
 1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
-{% endexercice %}
+   {% endexercice %}
 
 Le fichier contient une liste de mots, un mot par ligne.
 
@@ -88,15 +85,15 @@ Avec ce fichier :
 {% endfaire %}
 {% info %}
 
-* Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères pour découper le texte. Il ne faudra **pas** donner explicitement de séparateur. Pourquoi ?
-* Si vous voulez des mots différents, les ensembles sont fait pour ça.
+- Vous pourrez utiliser la méthode [split](https://docs.python.org/fr/3/library/stdtypes.html#str.split) des chaînes de caractères pour découper le texte. Il ne faudra **pas** donner explicitement de séparateur. Pourquoi ?
+- Si vous voulez des mots différents, les ensembles sont fait pour ça.
 
 {% endinfo %}
 {% details "Nombres à trouver", "open" %}
 
-* nombre de caractères :  105
-* nombre de mots :  134712
-* nombre de mots différents :  12244
+- nombre de caractères : 105
+- nombre de mots : 134712
+- nombre de mots différents : 12244
 
 {% enddetails %}
 
@@ -113,34 +110,34 @@ Comptons en utilisant ce que l'on a fait précédemment :
 {% endfaire %}
 {% details "Nombres à trouver", "open" %}
 
-* Nombre de "Marseille" : 84
-* Mot le plus fréquent :
-  * (4790, 'de')
-  * (2946, 'le')
-  * (2940, 'et')
-  * (2855, 'la')
-  * (2731, 'à')
-  * (2555, 'il')
-* Mots de longueur différentes :
-  * (4790, 'de')
-  * (2731, 'à')
-  * (1923, 'que')
-  * (1543, 'vous')
-  * (872, 'était')
-  * (777, 'Dantès')
-  * (291, 'monsieur')
-  * (258, 'Villefort')
-  * (219, 'Caderousse')
-  * (161, 'Fernand')
-  * (26, 'prisonniers')
-  * (22, 'bonapartiste')
-  * (20, 'contrebandiers')
-  * (11, 'véritablement')
-  * (10, 'malheureusement')
-  * (3, 'particulièrement')
-  * (1, 'révolutionnairement')
-  * (1, 'imperceptiblement')
-{% enddetails %}
+- Nombre de "Marseille" : 84
+- Mot le plus fréquent :
+  - (4790, 'de')
+  - (2946, 'le')
+  - (2940, 'et')
+  - (2855, 'la')
+  - (2731, 'à')
+  - (2555, 'il')
+- Mots de longueur différentes :
+  - (4790, 'de')
+  - (2731, 'à')
+  - (1923, 'que')
+  - (1543, 'vous')
+  - (872, 'était')
+  - (777, 'Dantès')
+  - (291, 'monsieur')
+  - (258, 'Villefort')
+  - (219, 'Caderousse')
+  - (161, 'Fernand')
+  - (26, 'prisonniers')
+  - (22, 'bonapartiste')
+  - (20, 'contrebandiers')
+  - (11, 'véritablement')
+  - (10, 'malheureusement')
+  - (3, 'particulièrement')
+  - (1, 'révolutionnairement')
+  - (1, 'imperceptiblement')
+    {% enddetails %}
 
 Suites de mots :
 

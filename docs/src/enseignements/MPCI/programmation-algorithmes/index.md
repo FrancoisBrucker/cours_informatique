@@ -361,9 +361,17 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 [Projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
 {% endaller %}
 
-### Semaine 14 et 15
+### Semaine 14 : chaine de caractères
 
-Chaines de caractères et fichiers.
+{% aller %}
+[Chaine de caractères](/cours/algorithmie/structure-chaine-de-caractères/){.interne}
+{% endaller %}
+
+### Semaine 15 : fichiers
+
+{% aller %}
+[Fichiers](/cours/coder-et-développer/fichiers/){.interne}
+{% endaller %}
 
 ## Annales
 

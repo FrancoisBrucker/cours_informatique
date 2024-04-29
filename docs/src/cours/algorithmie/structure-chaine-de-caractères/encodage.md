@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title: "La chaîne de caractères"
+title: "Encodage des caractères"
 
 eleventyComputed:
   eleventyNavigation:
@@ -8,12 +8,6 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
-<!-- début résumé -->
-
-Qu'est-ce qu'une chaîne de caractères et comment peut-on en utiliser?
-
-<!-- end résumé -->
 
 En informatique tout est nombre. La base étant l'octet (équivalent à un byte, 8bits, 0xFF en hexadécimal, 255 en décimal). Texte et caractères n'ont donc pas vraiment de sens intrinsèque en informatique : ce sont des octets et on les fait correspondre à des caractères.
 
@@ -23,9 +17,12 @@ On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)
 
 ## Codage des caractères
 
+> TBD un nombre pour un caractère
+
+### ASCII et avatars
 Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII) dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1) où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.
 
-Il y en a eu une foultitude d'autres jusqu'à arriver à l'encodage actuel : [utf-8](https://fr.wikipedia.org/wiki/UTF-8).
+Il y en a eu une foultitude d'autres jusqu'à arriver au standard actuel.
 
 A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères "j'écris en Français" se code :
 
@@ -69,6 +66,10 @@ Unicode permet d'unifier tous les encodages de caractères en associant à tout 
 Cependant Unicode n'est **pas** un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.
 
 ## <span id="utf8"></span>utf-8
+
+> TBD : l'encodage actuel : [utf-8](https://fr.wikipedia.org/wiki/UTF-8).
+
+
 
 On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.
 

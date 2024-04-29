@@ -25,7 +25,7 @@ Qu'est-ce qu'un fichier et comment l'utiliser.
 {% endaller %}
 
 {% aller %}
-[projet fichiers texte](fichiers-binaire){.interne}
+[projet fichiers texte](projet-texte){.interne}
 {% endaller %}
 
 ## Fichiers binaire

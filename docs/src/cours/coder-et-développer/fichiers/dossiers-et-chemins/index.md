@@ -12,11 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Comment trouver efficacement un fichier dans le système de fichier de l'ordinateur.
-
-<!-- end résumé -->
 
 Par défaut python va chercher les fichiers à ouvrir dans le dossier du fichier python en train d'être exécuté. On peut facilement chercher un fichier dans un dossier spécifique en python.
 
@@ -96,10 +92,10 @@ On suppose que la variable `__file__`{.language-} corresponde au chemin `/Users/
 
 Le module [pathlib](https://docs.python.org/fr/3/library/pathlib.html) permet d'avoir une approche objet de la manipulation des fichiers.
 
-{% aller %}
+{% lien %}
 [Ce tutoriel](https://jefftriplett.com/2017/pathlib-is-wonderful/) est parfait pour vous montrer comment l'utiliser.
 
-{% endaller %}
+{% endlien %}
 
 ## <span id="fichiers-distants"></span>Fichiers distants
 

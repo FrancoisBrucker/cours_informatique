@@ -31,7 +31,10 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    2. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
    3. [Structures de données utiles](./structures-données-système){.interne}
    4. [Linux](linux){.interne}
-2. [langage **C**](./langage-c){.interne}
+2. Langages
+    1. [langage **C**](./langage-c){.interne}
+    2. assembleur
+    3. ABI
 3. Gestion des fichiers
    1. [Fichiers en **C**](fichiers-C){.interne}
    2. [Memory mapping](memory-mapping){.interne}

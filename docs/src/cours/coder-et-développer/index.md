@@ -164,16 +164,14 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 
 ## Stockage des données
 
+### En mémoire
+
+> on l'a déjà vu un peu dans la partie espace de noms
+> TBD séparer espace de noms de mémoire à mettre ici.
+
 > TBD tout est nombre. type historique du C.
 > TBD python permet d'abstraire ça avec la notion de variable et d'objet.
 
-### Structures de données
-
-Exemple des textes :
-
-{% aller %}
-[Chaînes de caractères](chaîne-de-caractères){.interne}
-{% endaller %}
 
 ### Sur des fichiers
 
