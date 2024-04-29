@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Recherche de sous chaines"
 
 eleventyComputed:
@@ -9,53 +9,41 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> [Algorithme, code et théorie]({% link cours/algorithme-code-théorie/index.md %}) / [algorithmie]({% link cours/algorithme-code-théorie/algorithme/index.md %}) / [étude : recherche de sous-chaines]({% link cours/algorithme-code-théorie/algorithme/Étude-recherche-sous-chaines.md %})
->
-> prérequis :
->
-> * [complexité en moyenne]({% link cours/algorithme-code-théorie/algorithme/complexités/moyenne.md %})
-> * [structure : chaîne de caractères]({% link cours/algorithme-code-théorie/algorithme/structure-de-données/chaîne-de-caractères.md %})
-> * [fonctions de hash]({% link cours/algorithme-code-théorie/théorie/fonctions-hash.md %})
->
-{.chemin}
+> TBD horspool. qui est pus simple que knuth morris pratt
 
-Nous allons dans cette partie analyser le problème de la *recherche d'une sous-chaîne* :
+> TBD horspool. qui est pus simple que knuth morris pratt
+
+Nous allons dans cette partie analyser le problème de la _recherche d'une sous-chaîne_ :
 
 > **Problème de la recherche d'une sous-chaîne** :
 >
-> * **Données** :
->   * une chaîne de caractère de $a$ de longueur $n$
->   * une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$
-> * **question** :
->   * $b$ est-il une *sous-chaîne* de $a$ ?
-> * **réponse** :
->   * oui ou non.
-{.note}
+> - **Données** :
+>   - une chaîne de caractère de $a$ de longueur $n$
+>   - une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$
+> - **question** :
+>   - $b$ est-il une _sous-chaîne_ de $a$ ?
+> - **réponse** :
+>   - oui ou non.
+>     {.note}
 
-Une définition formelle de *sous-chaîne* étant :
+Une définition formelle de _sous-chaîne_ étant :
 
 > Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m <n$ respectivement.
 >
-> La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$  :
->  
+> La chaîne $b$ est une **sous-chaîne** de $a$ s'il existe $0 \leq i < n$ tel que l'on ait pour tout $0 \leq j < m$ :
+>
 > $$
 > b[j] = a[i + j]
 > $$
 >
-{.note}
+> {.note}
 
 ## algorithme naïf
 
-La première idée pour résoudre le problème de *la recherche d'une sous-chaîne* est de vérifier pour pour tout $0 \leq i < n$ si la définition est correcte :
+La première idée pour résoudre le problème de _la recherche d'une sous-chaîne_ est de vérifier pour pour tout $0 \leq i < n$ si la définition est correcte :
 
-<style>
-    table, td, tr, th, pre {
-        padding:0;
-        margin:0;
-        border:none
-    }
-</style>
-{% highlight python linenos %}
+```python#
+
 def sous_chaine_naif(a, b):
     for i in range(len(a) - len(b) + 1):
         trouvé = True
@@ -65,14 +53,15 @@ def sous_chaine_naif(a, b):
         if trouvé:
             return True
     return False
-{% endhighlight %}
+
+```
 
 ### pièges
 
 L'algorithme semble une application directe de la définition, et pourtant... Attention aux multiples pièges de ce genre d'algorithme. Il faut **toujours** vérifier très consciencieusement :
 
-* les limites de boucles
-* les conditions d'arrêt
+- les limites de boucles
+- les conditions d'arrêt
 
 Essayez de comprendre pourquoi les solutions suivantes ne fonctionnent pas en exhibant un contre-exemple.
 
@@ -92,8 +81,8 @@ def sous_chaine_naif_FAUX_1(a, b):
     return False
 ```
 
-{% details quelle est l'erreur ? %}
-Pas de sentinelle sur le positionnement. On peut avoir  $i + j \geq m$ et donc `a[i + j]` provoquer une erreur. Par exemple `sous_chaine_naif("aaa", "ca")`
+{% details "quelle est l'erreur ?" %}
+Pas de sentinelle sur le positionnement. On peut avoir $i + j \geq m$ et donc `a[i + j]` provoquer une erreur. Par exemple `sous_chaine_naif("aaa", "ca")`
 
 {% enddetails %}
 
@@ -109,7 +98,7 @@ def sous_chaine_naif_FAUX_2(a, b):
     return False
 ```
 
-{% details quelle est l'erreur ? %}
+{% details "quelle est l'erreur ?" %}
 On ne va pas assez loin. Par exemple `sous_chaine_naif("ab", "b")`
 
 {% enddetails %}
@@ -127,7 +116,7 @@ def sous_chaine_naif_FAUX_3(a, b):
     return True
 ```
 
-{% details quelle est l'erreur ? %}
+{% details "quelle est l'erreur ?" %}
 Ce n'est pas parce que l'on ne trouve pas la sous-chaine en $i=$ que ce n'et pas vrai pour $i=1$...
 
 Exemple : `sous_chaine_naif("ab", "b")`
@@ -146,7 +135,7 @@ def sous_chaine_naif_FAUX_4(a, b):
     return trouvé
 ```
 
-{% details quelle est l'erreur ? %}
+{% details "quelle est l'erreur ?" %}
 
 Erreur inverse du cas précédent. Il suffit que l'on ne trouve pas le sous-mot à une position pour que l'algorithme réponde faux : `sous_chaine_naif("ba", "b")`.
 
@@ -178,10 +167,10 @@ La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i
 
 On pourrait envisager deux calculs possible :
 
-* complexité en moyenne lorsque $b$ est une sous-chaine de $a$
-* complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$
+- complexité en moyenne lorsque $b$ est une sous-chaine de $a$
+- complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$
 
-Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la *structure* de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il  y a très peu d'application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)
+Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la _structure_ de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)
 
 Le second cas est le cas le pire et à un nombre constant d'opérations : $\mathcal{O}(nm)$.
 
@@ -244,8 +233,8 @@ def sous_chaine_naif_amélioré_sans_break(a, b):
 
 **Mais** la lecture aurait été moins aisée. L'utilisation de l'instruction `break` permet :
 
-* d'expliciter le cas général (la boucle for)
-* le cas particulier : le `break`.
+- d'expliciter le cas général (la boucle for)
+- le cas particulier : le `break`.
 
 Le pendant l'instruction `break` est l'instruction `continue` qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.
 
@@ -265,14 +254,14 @@ Utilisation de `continue`, le cas particulier est évacué directement.
 for element in L:
     if element == 0:
         continue
-    
+
     # ...
 ```
 
 Le second cas est bien plus clair.
 
 > L'utilisation de `break` et de `continue` permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)
-{.note}
+> {.note}
 
 #### calcul de la complexité en moyenne
 
@@ -292,12 +281,12 @@ Cette probabilité devient vite très faible. Par exemple, si on a un alphabet �
 
 De là, la probabilité que l'on s'arrête après :
 
-* 1 itérations de la boucle `for` en $j$  est égale à $(1-p)$
-* 2 itérations de la boucle `for` en $j$  est égale à $p(1-p)$
-* ...
-* $j$ itérations de la boucle `for` en $j$  est égale à $p^{j-1}(1-p)$
-* ...
-* $m$ itérations de la boucle `for` en $j$  est égale à $p^{m-1}(1-p)$
+- 1 itérations de la boucle `for` en $j$ est égale à $(1-p)$
+- 2 itérations de la boucle `for` en $j$ est égale à $p(1-p)$
+- ...
+- $j$ itérations de la boucle `for` en $j$ est égale à $p^{j-1}(1-p)$
+- ...
+- $m$ itérations de la boucle `for` en $j$ est égale à $p^{m-1}(1-p)$
 
 Le nombre moyens d'itérations de la boucle `for` en $j$ est alors :
 
@@ -324,6 +313,7 @@ Si l'on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot 
 $$
 \sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
 $$
+
 {% enddetails %}
 
 Comme $p < 1$, on a que :
@@ -351,7 +341,7 @@ Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ it�
 Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l'algorithme est de complexité $\mathcal{O}(n)$ :
 
 > la complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.
-{.note}
+> {.note}
 
 Un simple `break` a rendu linéaire la complexité en moyenne de l'algorithme.
 
@@ -374,7 +364,7 @@ def sous_chaine_naif_tous(a, b):
 ```
 
 Donnez les complexités de ce nouvel algorithme.
-{% details solution %}
+{% details "solution" %}
 
 Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mahtcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.
 
@@ -419,10 +409,10 @@ def sous_chaine_naif_acceleration_1(a, b):
 
 Il faut maintenant tenir compte du prétraitement dans le calcul de la complexité.
 
-* ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations
-* ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.
+- ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations
+- ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.
 
-Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver. 
+Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver.
 L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.
 
 Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.
@@ -436,27 +426,27 @@ Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :
 On débute une recherche en comparant $a[i + 0]$ à $b[0] :
 
 ```text
-             i  
+             i
 a:     ...aaa?aaaaaaaa....
-b:           bbbbbb         
+b:           bbbbbb
              j
 ```
 
 Si $a[i] = b[0]$ alors on décale $j$ d'un cran :
 
 ```text
-             i  
+             i
 a:     ...aaab?aaaaaaa....
-b:           bbbbbb         
+b:           bbbbbb
               j
 ```
 
 Sinon, on a pas vraiment d'autre choix que de décaler i de 1 :
 
 ```text
-              i  
+              i
 a:     ...aaaa?aaaaaaa....
-b:            bbbbbb         
+b:            bbbbbb
               j
 ```
 
@@ -465,9 +455,9 @@ Il n'y a pas vraiment de moyen de gagner des opérations dans ce cas là.
 Supposons maintenant que l'on ait un peu avancé :
 
 ```text
-             i  
+             i
 a:     ...aaabbb?aaaaa....
-b:           bbbbbb         
+b:           bbbbbb
                 j
 ```
 
@@ -475,37 +465,37 @@ On a $a[i + k] = b[k]$ pour tout $0 \leq k < j$. Et on compare $a[i + j]$ à $b[
 
 Si $a[i + j] = b[j]$ alors on décale $j$ d'un cran et on recommence si $j < m$ et sinon on s'arrête puisque l'on a trouvé $b$ dans $a$. Mais si $a[i + j] \neq b[j]$ on replace $j$ à 0 et on augmente $i$. Cette augmentation peut être de 1 à $j$ :
 
-* augmentation de 1 (comme pour le l'algorithme naïf)
+- augmentation de 1 (comme pour le l'algorithme naïf)
 
-    ```text
-                 i  
-    a:     ...aaabbb?aaaaa....
-    b:            bbbbbb         
+  ```text
+               i
+  a:     ...aaabbb?aaaaa....
+  b:            bbbbbb
+                j
+  ```
+
+- augmentation max :
+
+  ```text
+                  i
+  a:     ...aaabbb?aaaaa....
+  b:              bbbbbb
                   j
-    ```
+  ```
 
-* augmentation max :
+- augmentation entre les deux :
 
-    ```text
-                    i  
-    a:     ...aaabbb?aaaaa....
-    b:              bbbbbb         
-                    j
-    ```
-
-* augmentation entre les deux :
-
-    ```text
-                   i  
-    a:     ...aaabbb?aaaaa....
-    b:             bbbbbb         
-                   j
-    ```
+  ```text
+                 i
+  a:     ...aaabbb?aaaaa....
+  b:             bbbbbb
+                 j
+  ```
 
 En réutilisant la partie précédente, on a clairement que l'augmentation minimale de $i$ que l'on peut avoir est :
 
-* $i=i+j$ s'il n'existe pas $0 < k < j$ tel que $a[i+k] = b[j]$
-* $i=i+k$ avec $0 < k \leq j$ le plus petit entier tel que $a[i+k] = b[0]$, sinon
+- $i=i+j$ s'il n'existe pas $0 < k < j$ tel que $a[i+k] = b[j]$
+- $i=i+k$ avec $0 < k \leq j$ le plus petit entier tel que $a[i+k] = b[0]$, sinon
 
 Comme on sait que $a[i:i+j]$ vaut $b[:j]$ on peut précalculer ces déplacements !
 
@@ -513,19 +503,19 @@ On commence par chercher le premier endroit où $b[0]$ est répété dans $b$. O
 
 Ensuite, si :
 
-* $a[i + k] = b[k]$ pour tout $0 \leq k < j$
-* $a[i + j] \neq b[j]$
+- $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+- $a[i + j] \neq b[j]$
 
 On peut déplacer $i$ de :
 
-* 1 si $j=0$
-* $p$ si $p < j$
-* $j$ sinon
+- 1 si $j=0$
+- $p$ si $p < j$
+- $j$ sinon
 
 Pour préparer la suite, on va ranger ces informations dans un tableau $T_b$ de longueur $m-1$ tel que :
 
-* $T_b[j-1] = 0$  pour tout $1 \leq j \leq p$
-* $T_b[j-1] = j - p$  pour tout $p < j \leq m-1$
+- $T_b[j-1] = 0$ pour tout $1 \leq j \leq p$
+- $T_b[j-1] = j - p$ pour tout $p < j \leq m-1$
 
 Par exemple, pour $b=ACATGA$, on aurait : $T_b = [0, 0, 1, 2, 3]$
 
@@ -541,7 +531,7 @@ def sous_chaine_naif_acceleration_2(a, b):
     while i + j < len(a):
         if a[i + j] == b[j]:
             j += 1
-        
+
             if j >= len(b):
                 return True
 
@@ -556,81 +546,81 @@ def sous_chaine_naif_acceleration_2(a, b):
 
 On a donc 2 décalages possibles :
 
-* soit on déplace $i$ sur $j$ (on est avant le nouveau début)
-* soit on déplace i pour que a[i] soit un début de b (lorsque l'on a $j \geq p$ et que que l'on connaît le début de $a$)
+- soit on déplace $i$ sur $j$ (on est avant le nouveau début)
+- soit on déplace i pour que a[i] soit un début de b (lorsque l'on a $j \geq p$ et que que l'on connaît le début de $a$)
 
 Plus il y a de 0 dans $T_b$ plus les décalages seront importants
 
-Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition. 
+Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition.
 
 ### amélioration de l'amélioration
 
 L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p > 0$ tel que $b[0] = b[p]$ — si $j > p$. Plaçons nous dans ce cas là :
 
 ```text
-            i  
+            i
 a:     .....abbbaa?aaa....
-b:          bbbbbbbb         
+b:          bbbbbbbb
                 p j
 ```
 
 On a :
 
-* $p>0$ le premier indice tel que $b[0] = b[p]$
-* $a[i + k] = b[k]$ pour tout $0 \leq k < j$
-* $p < j$
-* $a[i + j] \neq b[j]$
+- $p>0$ le premier indice tel que $b[0] = b[p]$
+- $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+- $p < j$
+- $a[i + j] \neq b[j]$
 
 On sait donc aussi que $a[i + p] = b[0]$.
 
-
 L'amélioration précédente revient à poser :
 
-* $i' = i + p$
-* $j' = 0$
+- $i' = i + p$
+- $j' = 0$
 
 On se retrouve alors dans ce cas là :
 
 ```text
-            i  
+            i
                 i'
 a:     .....abbbaa?aaa....
-b:              bbbbbbbb         
-                j' 
+b:              bbbbbbbb
+                j'
                   j
 ```
 
-Avec : 
+Avec :
 
-* $a[i'] = b[0] = b[p]$
-* $a[i' + k] = b[p + k]$ pour tout $k < j-p$
+- $a[i'] = b[0] = b[p]$
+- $a[i' + k] = b[p + k]$ pour tout $k < j-p$
 
 On a alors deux choix :
 
-* soit $b[k] = b[p + k]$ pour tout $k < j-p$ et on peut poser $j' = i + j - p$ (on remet j' au niveau du ?)
-* soit ce n'est pas le cas et ça ne sert à rien de regarder si $b$ commence en $i'$ parce que ce n'est pas possible
+- soit $b[k] = b[p + k]$ pour tout $k < j-p$ et on peut poser $j' = i + j - p$ (on remet j' au niveau du ?)
+- soit ce n'est pas le cas et ça ne sert à rien de regarder si $b$ commence en $i'$ parce que ce n'est pas possible
 
-Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d'amélioration : 
+Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d'amélioration :
 
-> si : 
-> * $j > 0$
-> * $a[i + k] = b[k]$ pour tout $0 \leq k < j$
-> * $a[i + j] \neq b[j]$
+> si :
 >
-> Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$). 
+> - $j > 0$
+> - $a[i + k] = b[k]$ pour tout $0 \leq k < j$
+> - $a[i + j] \neq b[j]$
+>
+> Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$).
 > Alors en notant :
 >
-> * $i' = i + j - k$
-> * $j' = k$
+> - $i' = i + j - k$
+> - $j' = k$
 >
 > On a que :
 >
-> * $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$ 
-> * $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
+> - $i'$ est le prochain indice de $a$ où $b$ peut être une sous-chaine de $a$
+> - $a[i' + l] = b[l]$ pour tout $0 \leq l < j'$
 >
 > On a de plus l'égalité : $i + j = i' + j'$
 >
-{.note}
+> {.note}
 
 Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ **et** $j$ de sorte que la somme $i+j$ soit croissante.
 
@@ -644,7 +634,7 @@ Nous allons procéder par étape pour essayer de le comprendre.
 
 ### décalage adapté
 
-L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$. 
+L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.
 
 Ce tableau permet également d'avancer $i$ plus que l'algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :
 
@@ -663,7 +653,7 @@ Le tableau $T_b$ vaudra alors : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.
 2. $j=2$. On a `b[:3] = "ACG"`. La fin ne correspond à aucun début de $b$ à part $b[:3]$: $T[2] = 0$
 3. $j=3$. On a `b[:4] = "ACGA"`. La fin correspond à `b[:1] = "A"` : $T[3] = 1$
 4. $j=4$. On a `b[:5] = "ACGAG"`. La fin ne correspond à aucun début de $b$ à par $b[:5]$ : $T[4] = 0$
-5. $j=5$. On a `b[:6] = "ACGAGA"`. La fin correspond à `b[:1] = "A"` :  : $T[5] = 1$
+5. $j=5$. On a `b[:6] = "ACGAGA"`. La fin correspond à `b[:1] = "A"` : : $T[5] = 1$
 6. $j=6$. On a `b[:7] = "ACGAGAC"`. La fin correspond à `b[:2] = "AC"` : $T[6] = 2$
 7. $j=7$. On a `b[:8] = "ACGAGACG"`. La fin correspond à `b[:3] = "ACG"` : $T[7] = 3$
 8. $j=8$. On a `b[:9] = "ACGAGACGA"`. La fin correspond à `b[:4] = "ACGA"` : $T[8] = 4$
@@ -673,10 +663,10 @@ Formalisons ça.
 
 > Soit $T_b$ un tableau de longueur $m-1$
 >
-> * T_b[0] = 0
-> * pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
+> - T_b[0] = 0
+> - pour tout $1 \leq j < m-1$, on note $T_b[j]$ le plus grand entier $k < j +1$ tel que $b[:k] = b[j+1-k:j+1]$.
 >
-{.note}
+> {.note}
 
 On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.
 
@@ -707,7 +697,7 @@ Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :
 ```text
 i + j :         v
 a:       ....ATATGACT....
-b:           ATATCG          
+b:           ATATCG
 i/j:         i  j
 ```
 
@@ -716,7 +706,7 @@ Comme les caractères $a[i +j]$ et $b[j]$ coïncident, l'étape suivante consist
 ```text
 i + j :          v
 a:       ....ATATGACT....
-b:           ATATCG          
+b:           ATATCG
 i/j:         i   j
 ```
 
@@ -727,7 +717,7 @@ Si en revanche, la comparaison échoue, par exemple dans ce cas là :
 ```text
 i + j :          v
 a:       ....ATATGACT....
-b:           ATATCG          
+b:           ATATCG
 i/j:         i   j
 ```
 
@@ -736,13 +726,13 @@ On peut continuer la comparaison à la même position, mais en décalant $i$ de 
 ```text
 i + j :          v
 a:       ....ATATGACT....
-b:             ATATCG          
+b:             ATATCG
 i/j:           i j
 ```
 
 Le nombre $i+j$ n'augmentera pas, mais $i$ aura augmenté strictement.
 
-En supposant que la fonction  `cree_tableau(b)` crée $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :
+En supposant que la fonction `cree_tableau(b)` crée $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :
 
 ```python
 def sous_chaine_KMP(a, b):
@@ -754,7 +744,7 @@ def sous_chaine_KMP(a, b):
     while i + j < len(a):
         if a[i + j] == b[j]:
             j += 1
-        
+
             if j >= len(b):
                 return True
 
@@ -780,16 +770,18 @@ Décrivons l'idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli
 
 On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :
 
-1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec  $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
-2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec  $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
-    * $k \leq 1$ (et $b[k] \neq c$) : on a $T_b[j-1] = 0$
-    * $k > 1$ (et $b[k] \neq c$). Ce problème est équivalent à trouver :
-        * le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:(j-1)-1]$
-        * et tel que $b[k' + 1] = c$
+1. on peut continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] = c$ avec $T_b[(j-1)-1] = k$. Dans ce cas là $T_b[j-1] = k + 1$
+2. on ne peut pas continuer la chaine commencée avec $j-1$. Ceci se passe si $b[k] \neq c$ avec $T_b[(j-1) -1] = k$. On a alors 2 sous-cas :
 
-        On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$.
+   - $k \leq 1$ (et $b[k] \neq c$) : on a $T_b[j-1] = 0$
+   - $k > 1$ (et $b[k] \neq c$). Ce problème est équivalent à trouver :
 
-        On peut donc poser $j = k + 1$ et continuer l'algorithme.
+     - le plus grand $k'$ possible tel que début de $b$ qui coïncide avec la fin de $b[1:(j-1)-1]$
+     - et tel que $b[k' + 1] = c$
+
+     On a déjà fait une grande partie du travail puisque : $k'$ est aussi le plus grand entier tel que la fin de $b[1:k + 1]$ coincide avec le début de $b$.
+
+     On peut donc poser $j = k + 1$ et continuer l'algorithme.
 
 Cette procédure peut s'écrire très simplement avec l'algorithme suivant :
 
@@ -805,7 +797,7 @@ def cree_tableau(b):
 
         if c == b[k]:
             T_b.append(k + 1)
-                        
+
             j = len(T_b) + 1
             c = b[j-1]
         elif k <= 1:
@@ -823,9 +815,9 @@ Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre
 
 À chaque étape :
 
-* soit $k$ reste constant à 0
-* soit $k$ augmente de 1
-* soit $k$ diminue strictement
+- soit $k$ reste constant à 0
+- soit $k$ augmente de 1
+- soit $k$ diminue strictement
 
 Il y a donc au plus autant d'étapes où $k$ diminue que d'étapes où $k$ augmente ou reste constant.
 
@@ -836,25 +828,25 @@ On en déduit qu'il a donc également au plus $m$ étapes où $k$ diminue.
 Le nombre total d'étape est en $\mathcal{O(m)}$.
 
 > La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.
-> 
+>
 > La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.
-{.note}
+> {.note}
 
 ## Autres algorithmes
 
 Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt
 
-* [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
-  * plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
-  * la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable.
-* [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
-* [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
+- [Rabin-Karp](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp). Cet algorithme est intéressant car :
+  - plutôt que de chercher la sous-chaine directement, on passe par une fonction de hashage. On compare donc des valeur de hash plutôt que des sous-chaine ce qui est plus rapide en général
+  - la fonction de hashage utilisée (nommée [empreinte de Rabin](https://fr.wikipedia.org/wiki/Algorithme_de_Rabin-Karp#Empreinte_de_Rabin)) est très facilement itérativement calculable.
+- [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
+- [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).
 
 ## vers les expressions régulières
 
 La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :
 
-* on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)
-* on ne cherche pas de motifs (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
+- on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)
+- on ne cherche pas de motifs (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
 
 Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).
