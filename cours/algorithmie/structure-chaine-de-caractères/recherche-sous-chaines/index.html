@@ -93,7 +93,9 @@
   
 
   <blockquote>
-<p>TBD horspool. qui est pus simple que knuth morris pratt</p>
+<p>TBD rabin karp avec dictionnaire<br>
+TBD horspool en exercice : cf et 21/22<br>
+Mettre le knuth morris praff en pour aller plus loin compleixté linéaire dans le cas le pire.</p>
 </blockquote>
 <p>Nous allons dans cette partie analyser le problème de la <em>recherche d'une sous-chaîne</em> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -927,13 +929,6 @@ i/j:           i j
 <li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique</li>
 <li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c'est dans le même article où ils présentent leur propre algorithme).</li>
 </ul>
-<h2>Vers les expressions régulières</h2>
-<p>La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :</p>
-<ul>
-<li>on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)</li>
-<li>on ne cherche pas de motifs (on appelle cela des <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re">expression régulières</a>)</li>
-</ul>
-<p>Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez <a href="https://docs.python.org/fr/3/howto/regex.html">le tuto python</a> qui y est consacré, ou passez directement à <a href="https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/">O'reilly</a>.</p>
 
 
 </article>
