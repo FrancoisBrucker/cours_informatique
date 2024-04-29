@@ -95,12 +95,14 @@
   <blockquote>
 <p>TBD horspool. qui est pus simple que knuth morris pratt</p>
 </blockquote>
-<blockquote>
-<p>TBD horspool. qui est pus simple que knuth morris pratt</p>
-</blockquote>
 <p>Nous allons dans cette partie analyser le problème de la <em>recherche d'une sous-chaîne</em> :</p>
-<blockquote>
-<p><strong>Problème de la recherche d'une sous-chaîne</strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème de la recherche d'une sous-chaîne</strong></p>
+</div><div class="pl-8 mr-8">
 <ul>
 <li><strong>Données</strong> :
 <ul>
@@ -108,31 +110,29 @@
 <li>une chaîne de caractère de $b$ de longueur $m$, avec $m \leq n$</li>
 </ul>
 </li>
-<li><strong>question</strong> :
-<ul>
-<li>$b$ est-il une <em>sous-chaîne</em> de $a$ ?</li>
+<li><strong>question</strong> : $b$ est-il une <em>sous-chaîne</em> de $a$ ?</li>
+<li><strong>réponse</strong> : l'indice d'un début de $b$ dans $a$ si $b$ est une sous chaine de $a$ et $-1$ sinon</li>
 </ul>
-</li>
-<li><strong>réponse</strong> :
-<ul class="note">
-<li>oui ou non.</li>
-</ul>
-</li>
-</ul>
-</blockquote>
+</div>
+</div>
 <p>Une définition formelle de <em>sous-chaîne</em> étant :</p>
-<blockquote class="note">
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m &lt;n$ respectivement.</p>
 <p>La chaîne $b$ est une <strong>sous-chaîne</strong> de $a$ s'il existe $0 \leq i &lt; n$ tel que l'on ait pour tout $0 \leq j &lt; m$ :</p>
 <p>$$<br>
 b[j] = a[i + j]<br>
 $$</p>
-<p></p>
-</blockquote>
-<h2>algorithme naïf</h2>
+</div>
+</div>
+<h2>Algorithme naïf</h2>
 <p>La première idée pour résoudre le problème de <em>la recherche d'une sous-chaîne</em> est de vérifier pour pour tout $0 \leq i &lt; n$ si la définition est correcte :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -141,17 +141,20 @@ $$</p>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3>pièges</h3>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3>Pièges</h3>
 <p>L'algorithme semble une application directe de la définition, et pourtant... Attention aux multiples pièges de ce genre d'algorithme. Il faut <strong>toujours</strong> vérifier très consciencieusement :</p>
 <ul>
 <li>les limites de boucles</li>
 <li>les conditions d'arrêt</li>
 </ul>
 <p>Essayez de comprendre pourquoi les solutions suivantes ne fonctionnent pas en exhibant un contre-exemple.</p>
-<h4>limites de boucles</h4>
-<p>Attention aux limites des boucles <code>for</code> ! Il faut <strong>toujours</strong> vérifier les bornes.</p>
+<h4>Limites de boucles</h4>
+<p>Attention aux limites des boucles <code class="language-">for</code> ! Il faut <strong>toujours</strong> vérifier les bornes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Le programme suivant contient une erreur, laquelle ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -162,6 +165,8 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -172,17 +177,22 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>quelle est l'erreur ?</p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Pas de sentinelle sur le positionnement. On peut avoir $i + j \geq m$ et donc <code>a[i + j]</code> provoquer une erreur. Par exemple <code>sous_chaine_naif(&quot;aaa&quot;, &quot;ca&quot;)</code></p>
+<p>Pas de sentinelle sur le positionnement. On peut avoir $i + j \geq m$ et donc <code class="language-">a[i + j]</code> provoquer une erreur. Par exemple <code class="language-">sous_chaine_naif(&quot;aaa&quot;, &quot;ca&quot;)</code></p>
 </div>
 </details>     
 </div>
+<p>Allez, une autre :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Le programme suivant contient une erreur, laquelle ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -193,6 +203,8 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -203,19 +215,23 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>quelle est l'erreur ?</p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On ne va pas assez loin. Par exemple <code>sous_chaine_naif(&quot;ab&quot;, &quot;b&quot;)</code></p>
+<p>On ne va pas assez loin. Par exemple <code class="language-">sous_chaine_naif(&quot;ab&quot;, &quot;b&quot;)</code></p>
 </div>
 </details>     
 </div>
-<h4>conditions d'arrêt</h4>
+<h4>Conditions d'arrêt</h4>
 <p>Une erreur classique :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Le programme suivant contient une erreur, laquelle ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -223,6 +239,8 @@ $$</p>
                 <span class="token keyword">return</span> <span class="token boolean">False</span>
     <span class="token keyword">return</span> <span class="token boolean">True</span>
 </code></pre>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -233,19 +251,23 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>quelle est l'erreur ?</p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Ce n'est pas parce que l'on ne trouve pas la sous-chaine en $i=$ que ce n'et pas vrai pour $i=1$...</p>
-<p>Exemple : <code>sous_chaine_naif(&quot;ab&quot;, &quot;b&quot;)</code></p>
+<p>Ce n'est pas parce que l'on ne trouve pas la sous-chaine en $i=$ que ce n'est pas vrai pour $i=1$...</p>
+<p>Exemple : <code class="language-">sous_chaine_naif(&quot;ab&quot;, &quot;b&quot;)</code></p>
 </div>
 </details>     
 </div>
 <p>Une variation sur l'erreur précédente :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Le programme suivant contient une erreur, laquelle ?</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_4</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -254,6 +276,8 @@ $$</p>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
     <span class="token keyword">return</span> trouvé
 </code></pre>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -264,19 +288,19 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>quelle est l'erreur ?</p>
+<p>corrigé</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Erreur inverse du cas précédent. Il suffit que l'on ne trouve pas le sous-mot à une position pour que l'algorithme réponde faux : <code>sous_chaine_naif(&quot;ba&quot;, &quot;b&quot;)</code>.</p>
+<p>Erreur inverse du cas précédent. Il suffit que l'on ne trouve pas le sous-mot à une position pour que l'algorithme réponde faux : <code class="language-">sous_chaine_naif(&quot;ba&quot;, &quot;b&quot;)</code>.</p>
 </div>
 </details>     
 </div>
-<h3>complexité</h3>
-<h4>complexité maximale</h4>
+<h3>Complexité</h3>
+<h4>Complexité maximale</h4>
 <p>Calculons la complexité ligne à ligne :</p>
 <ol>
 <li>définition d'un fonction : $\mathcal{O}(1)$ opérations</li>
@@ -289,18 +313,18 @@ $$</p>
 <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
 <li>retour de fonction : $\mathcal{O}(1)$ opérations</li>
 </ol>
-<p>On en conclut que la complexité totale se niche dans l'exécution des deux boucles <code>for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.</p>
-<h4>complexité minimale</h4>
+<p>On en conclut que la complexité totale se niche dans l'exécution des deux boucles <code class="language-">for</code> imbriquées, et est donc de complexité : $\mathcal{O}((n - m) \cdot m) = \mathcal{O}(nm + m^2) \sim \mathcal{O}(n\cdot m)$ si $n \gg m$ ce qui est généralement le cas.</p>
+<h4>Complexité minimale</h4>
 <p>La complexité minimale est atteinte lorsque la sous-chaine est trouvée dès $i=0$. Dans ce cas là, il aura fallu $\mathcal{O}(m)$ opérations.</p>
-<h4>complexité en moyenne</h4>
-<p>On pourrait envisager deux calculs possible :</p>
+<h4>Complexité en moyenne</h4>
+<p>On pourrait envisager deux calculs possibles :</p>
 <ul>
 <li>complexité en moyenne lorsque $b$ est une sous-chaine de $a$</li>
 <li>complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$</li>
 </ul>
-<p>Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la <em>structure</em> de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'application où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)</p>
+<p>Le premier cas dépend uniquement de la position de la sous-chaine $b$ dans $a$, pas de la <em>structure</em> de $a$ ou de $b$. Il est donc très dépendant de l'application et il n'y a aucune raison de choisir un modèle purement aléatoire (il y a très peu d'applications où il faut chercher si un mot aléatoire est présent dans une chaine également aléatoire)</p>
 <p>Le second cas est le cas le pire et à un nombre constant d'opérations : $\mathcal{O}(nm)$.</p>
-<h4>attention</h4>
+<h4>Attention</h4>
 <p>Attention ! L'algorithme suivant, qui utilise la comparaison de listes en python, n'est <strong>pas</strong> de complexité inférieure.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -309,9 +333,9 @@ $$</p>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
 <p>En effet, la complexité de l'égalité entre deux liste est égale à la taille de la plus petite des listes.</p>
-<h3>une amélioration subtile</h3>
-<p>La boucle en $j$ (lignes 4-6) de l'algorithme <code>sous_chaine_naif</code> pourrait être améliorée en l'arrêtant dès que <code>trouvé</code> est mis à <code>False</code>.</p>
-<p>On peut pour cela utiliser l'instruction <code>break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
+<h3>Une amélioration subtile</h3>
+<p>La boucle en $j$ (lignes 4-6) de l'algorithme <code class="language-">sous_chaine_naif</code> pourrait être améliorée en l'arrêtant dès que <code class="language-">trouvé</code> est mis à <code>False</code>.</p>
+<p>On peut pour cela utiliser l'instruction <code class="language-">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
 <p>On a alors l'algorithme suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -325,8 +349,8 @@ $$</p>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
 <p>Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.</p>
-<h4><code>break</code>, <code>continue</code> et <code>while</code></h4>
-<p>L'instruction <code>break</code> de l'algorithme <code>sous_chaine_naif_amélioré</code> aurait très bien pu s'écrire avec une boucle <code>while</code> :</p>
+<h4><code class="language-">break</code>, <code class="language-">continue</code> et <code class="language-">while</code></h4>
+<p>L'instruction <code class="language-">break</code> de l'algorithme <code class="language-">sous_chaine_naif_amélioré</code> aurait très bien pu s'écrire avec une boucle <code class="language-">while</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré_sans_break<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -344,16 +368,16 @@ $$</p>
 <p><strong>Mais</strong> la lecture aurait été moins aisée. L'utilisation de l'instruction <code>break</code> permet :</p>
 <ul>
 <li>d'expliciter le cas général (la boucle for)</li>
-<li>le cas particulier : le <code>break</code>.</li>
+<li>le cas particulier : le <code class="language-">break</code>.</li>
 </ul>
-<p>Le pendant l'instruction <code>break</code> est l'instruction <code>continue</code> qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.</p>
+<p>Le pendant de l'instruction <code class="language-">break</code> est l'instruction <code class="language-">continue</code> qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.</p>
 <p>Comparez par exemple ces 2 implémentations d'un même algorithme dont le but est à partir d'une liste d'entiers $L$ de faire un traitement uniquement si l'élément est non nul.</p>
-<p>Sans utilisation de <code>continue</code>, le cas général est traité dans un bloc <code>if</code> :</p>
+<p>Sans utilisation de <code class="language-">continue</code>, le cas général est traité dans un bloc <code class="language-">if</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
     <span class="token keyword">if</span> element <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token comment"># ...</span>
 </code></pre>
-<p>Utilisation de <code>continue</code>, le cas particulier est évacué directement.</p>
+<p>Utilisation de <code class="language-">continue</code>, le cas particulier est évacué directement.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
     <span class="token keyword">if</span> element <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">continue</span>
@@ -361,10 +385,17 @@ $$</p>
     <span class="token comment"># ...</span>
 </code></pre>
 <p>Le second cas est bien plus clair.</p>
-<blockquote class="note">
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Bonne pratique algorithmique</strong></p>
+</div><div class="pl-8 mr-8">
 <p>L'utilisation de <code>break</code> et de <code>continue</code> permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
-</blockquote>
-<h4>calcul de la complexité en moyenne</h4>
+</div>
+</div>
+<h4>Calcul de la complexité en moyenne</h4>
 <p>On suppose que l'on ait dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.</p>
 <p>A $i$ fixé, on a alors :</p>
 <ol>
@@ -379,18 +410,18 @@ $$</p>
 <p>Cette probabilité devient vite très faible. Par exemple, si on a un alphabet à 2 caractères (0 et 1), la probabilité de s'arrêter au bout de 10 itérations vaut : $(\frac{1}{2})^10 = 0.1%$.</p>
 <p>De là, la probabilité que l'on s'arrête après :</p>
 <ul>
-<li>1 itérations de la boucle <code>for</code> en $j$ est égale à $(1-p)$</li>
-<li>2 itérations de la boucle <code>for</code> en $j$ est égale à $p(1-p)$</li>
+<li>1 itérations de la boucle <code class="language-">for</code> en $j$ est égale à $(1-p)$</li>
+<li>2 itérations de la boucle <code class="language-">for</code> en $j$ est égale à $p(1-p)$</li>
 <li>...</li>
-<li>$j$ itérations de la boucle <code>for</code> en $j$ est égale à $p^{j-1}(1-p)$</li>
+<li>$j$ itérations de la boucle <code class="language-">for</code> en $j$ est égale à $p^{j-1}(1-p)$</li>
 <li>...</li>
-<li>$m$ itérations de la boucle <code>for</code> en $j$ est égale à $p^{m-1}(1-p)$</li>
+<li>$m$ itérations de la boucle <code class="language-">for</code> en $j$ est égale à $p^{m-1}(1-p)$</li>
 </ul>
-<p>Le nombre moyens d'itérations de la boucle <code>for</code> en $j$ est alors :</p>
+<p>Le nombre moyens d'itérations de la boucle <code class="language-">for</code> en $j$ est alors :</p>
 <p>$$<br>
 1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k<br>
 $$</p>
-<p>Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle <code>for</code> en $j$ vaut :</p>
+<p>Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle <code class="language-">for</code> en $j$ vaut :</p>
 <p>$$<br>
 \mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)<br>
 $$</p>
@@ -408,7 +439,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>undefined</p>
+<p>preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -437,11 +468,16 @@ $$</p>
 <p>Le nombre moyen d'itérations de la boucle for en $j$ est donc toujours plus petit qu'une constante : c'est indépendant de $m$ et ne dépend que de $p$ !</p>
 <p>Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ itération devient très vite très petite, et d'autant plus petite que l'alphabet augmente. On s'arrêtera quasi toujours avant d'arriver à la fin de $b$.</p>
 <p>Ce résultat surprennent amène à un autre résultat tout aussi surprenant : comme le reste de l'algorithme est de complexité $\mathcal{O}(n)$ :</p>
-<blockquote class="note">
-<p>la complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.</p>
-</blockquote>
-<p>Un simple <code>break</code> a rendu linéaire la complexité en moyenne de l'algorithme.</p>
-<h3>trouver toutes les sous-chaines</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.</p>
+</div>
+</div>
+<p>Un simple <code class="language-">break</code> a rendu linéaire la complexité en moyenne de l'algorithme.</p>
+<h3>Trouver toutes les sous-chaines</h3>
 <p>Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_tous</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -455,7 +491,12 @@ $$</p>
             indices<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
     <span class="token keyword">return</span> indices
 </code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
 <p>Donnez les complexités de ce nouvel algorithme.</p>
+</div>
+</div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -473,13 +514,13 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mahtcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.</p>
+<p>Les complexités maximale et en moyenne de l'algorithme n'ont pas changé. Seule la complexité minimale est passé de $\mathcal{O}(m)$ à $\mathcal{O}(n)$ puisque l'on parcours toute la chaine à chaque fois.</p>
 </div>
 </details>     
 </div>
-<h2>améliorations</h2>
-<p>it autour de la boucle for en <code>i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.</p>
-<p>Par exemple si on cherche la chaine <code>b=CGT</code> dans la chaine <code>a=CGACGACGACGA</code> $i+j$ vaudra :</p>
+<h2>Améliorations</h2>
+<p>it autour de la boucle <code class="language-">for</code> en <code class="language-">i</code> qui teste si $b$ est présent à partir de chaque position de $a$. A chaque étape on compare un élément de $b$ à l'élément de l'index $i + j$ de $a$. Le principal soucis de l'algorithme est que le nombre $i+j$ peut diminuer.</p>
+<p>Par exemple si on cherche la chaine <code class="language-">b=CGT</code> dans la chaine <code class="language-">a=CGACGACGACGA</code> $i+j$ vaudra :</p>
 <ol>
 <li>$i+j=0+0 = 0$</li>
 <li>$i+j=0+1 = 1$</li>
@@ -492,9 +533,9 @@ $$</p>
 </ol>
 <p>Chaque élément de $a$ sera vu $m$ fois.</p>
 <p>Accélérer l'algorithme revient à faire en sorte que le nombre $i+j$ soit croissant le plus souvent possible.</p>
-<h3>prétraitement utilisant $a$</h3>
+<h3>Prétraitement utilisant $a$</h3>
 <p>Une première idée que l'on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l'index $i$ si $a[i] \neq b[0]$.</p>
-<p>Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant <code>sous_chaine_naif_tous(a, b[0])</code>. On utilise ensuite ces indices dans notre algorithme accéléré :</p>
+<p>Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant <code class="language-">sous_chaine_naif_tous(a, b[0])</code>. On utilise ensuite ces indices dans notre algorithme accéléré :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> sous_chaine_naif_tous<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -513,7 +554,7 @@ $$</p>
 <p>Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver.<br>
 L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.</p>
 <p>Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.</p>
-<h3>prétraitement sur $b$</h3>
+<h3>Prétraitement sur $b$</h3>
 <p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne travaillant que sur $b$ ?</p>
 <p>Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :</p>
 <p>On débute une recherche en comparant $a[i + 0]$ à $b[0] :</p>
@@ -622,7 +663,7 @@ b:             bbbbbb
 </ul>
 <p>Plus il y a de 0 dans $T_b$ plus les décalages seront importants</p>
 <p>Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition.</p>
-<h3>amélioration de l'amélioration</h3>
+<h3>Amélioration de l'amélioration</h3>
 <p>L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p &gt; 0$ tel que $b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">            i
 a:     .....abbbaa?aaa....
@@ -661,8 +702,12 @@ b:              bbbbbbbb
 <li>soit ce n'est pas le cas et ça ne sert à rien de regarder si $b$ commence en $i'$ parce que ce n'est pas possible</li>
 </ul>
 <p>Remarquez que ceci peut se faire sans $a$. Ceci nous donne une nouvelle possibilité d'amélioration :</p>
-<blockquote class="note">
-<p>si :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si :</p>
 <ul>
 <li>$j &gt; 0$</li>
 <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
@@ -680,14 +725,14 @@ Alors en notant :</p>
 <li>$a[i' + l] = b[l]$ pour tout $0 \leq l &lt; j'$</li>
 </ul>
 <p>On a de plus l'égalité : $i + j = i' + j'$</p>
-<p></p>
-</blockquote>
+</div>
+</div>
 <p>Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ <strong>et</strong> $j$ de sorte que la somme $i+j$ soit croissante.</p>
 <p>C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.</p>
 <h2>Algorithme de Knuth-Morris-Pratt</h2>
 <p>L'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Knuth-Morris-Pratt">Knuth, Morris et Pratt</a> publié en 1977, reprend l'idée de l'optimisation précédente mais la sublime. Il trouve un tableau $T_b$ optimal permettant de trouver un algorithme en $\mathcal{O}(n +m)$, c'est à dire de façon optimale.</p>
 <p>Nous allons procéder par étape pour essayer de le comprendre.</p>
-<h3>décalage adapté</h3>
+<h3>Décalage adapté</h3>
 <p>L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
 <p>Ce tableau permet également d'avancer $i$ plus que l'algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">0123456789    : index
@@ -710,13 +755,18 @@ ACGAGACGACT   : la chaîne b
 <li>$j=9$. On a <code>b[:10] = &quot;ACGAGACGAC&quot;</code>. La fin correspond à <code>b[:1] = &quot;AC&quot;</code> : $T[9] = 2$</li>
 </ol>
 <p>Formalisons ça.</p>
-<blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p>Soit $T_b$ un tableau de longueur $m-1$</p>
-<ul class="note">
+<ul>
 <li>T_b[0] = 0</li>
 <li>pour tout $1 \leq j &lt; m-1$, on note $T_b[j]$ le plus grand entier $k &lt; j +1$ tel que $b[:k] = b[j+1-k:j+1]$.</li>
 </ul>
-</blockquote>
+</div>
+</div>
 <p>On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.</p>
 <p>On peut facilement calculer $T_b$, par exemple avec cet algorithme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">algo_naif_construction_t</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -732,7 +782,7 @@ ACGAGACGACT   : la chaîne b
     <span class="token keyword">return</span> T_b
 </code></pre>
 <p>La complexité de cet algorithme est cependant assez grande, puisqu'elle est en $\mathcal{O}(m^3)$.</p>
-<h3>algorithme</h3>
+<h3>Algorithme</h3>
 <p>Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l'optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.</p>
 <p>Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i + j :         v
@@ -783,11 +833,16 @@ i/j:           i j
                 j <span class="token operator">-=</span> l
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
-<blockquote>
-<p>par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.</p>
-</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.</p>
+</div>
+</div>
 <p>Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction <code>cree_tableau(b)</code></p>
-<h3>création de la table de décalage</h3>
+<h3>Création de la table de décalage</h3>
 <p>L'algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n'est pas vraiment optimal. L'algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu'il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !</p>
 <p>Décrivons l'idée. On commence avec un tableau où seul $T_b[0] = 0$ est rempli (pour $j=1$). On considère que $j \geq 2$ et on note $c = b[j-1]$</p>
 <p>On cherche $i$ tel que $b[:i]$ coïncide avec la fin de la chaîne $b[1:j-1] + [c]$ : il y a 2 cas à considérer :</p>
@@ -849,10 +904,17 @@ i/j:           i j
 <p>Comme $j$ augmente lorsque $k$ reste constant ou augmente, et que l'on s'arrête lorsque $j$ vaut $m-1$, il y a au plus $m$ étapes où $k$ reste constant ou augmente.</p>
 <p>On en déduit qu'il a donc également au plus $m$ étapes où $k$ diminue.</p>
 <p>Le nombre total d'étape est en $\mathcal{O(m)}$.</p>
-<blockquote class="note">
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.</p>
 <p>La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
-</blockquote>
+</div>
+</div>
 <h2>Autres algorithmes</h2>
 <p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt</p>
 <ul>
@@ -863,9 +925,9 @@ i/j:           i j
 </ul>
 </li>
 <li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool">Boyer-Moore-Horspool</a>. Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique</li>
-<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c'est dans le même article où ils présentent leurs propre algorithme).</li>
+<li><a href="https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore">Boyer-Moore</a>. Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à <a href="http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf">Knuth, Morris et Pratt (p343-346)</a> (oui oui, c'est dans le même article où ils présentent leur propre algorithme).</li>
 </ul>
-<h2>vers les expressions régulières</h2>
+<h2>Vers les expressions régulières</h2>
 <p>La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :</p>
 <ul>
 <li>on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)</li>
