@@ -9,7 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD horspool. qui est pus simple que knuth morris pratt
+> TBD rabin karp avec dictionnaire
+> TBD horspool en exercice : cf et 21/22
+> Mettre le knuth morris praff en pour aller plus loin compleixté linéaire dans le cas le pire.
 
 
 Nous allons dans cette partie analyser le problème de la _recherche d'une sous-chaîne_ :
@@ -862,11 +864,3 @@ Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donn
 - [Boyer-Moore-Horspool](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore-Horspool). Intéressant car on compare de la fin au début et la fonction de saut est plus simple à comprendre que celle de Knuth-Morris-Pratt. En revanche, sa complexité est en $\mathcal{O}(mn)$ et n'a donc que peu d'intérêt à part historique
 - [Boyer-Moore](https://fr.wikipedia.org/wiki/Algorithme_de_Boyer-Moore). Algorithme également linéaire. Sa fonction de saut est compliquée à comprendre (presque autant que celle de Knuth-Morris-Pratt). Son intérêt — à part historique — est le calcul de la complexité qui est tout sauf trivial. On la doit à [Knuth, Morris et Pratt (p343-346)](http://static.cs.brown.edu/courses/csci1810/resources/ch2_readings/kmp_strings.pdf) (oui oui, c'est dans le même article où ils présentent leur propre algorithme).
 
-## Vers les expressions régulières
-
-La recherche de sous-chaine n'est presque jamais utilisée en tant que tel en informatique car il faut trouver l'expression exacte :
-
-- on ne cherche pas les formes proches (ce qui est possible en utilisant l'alignement de séquences)
-- on ne cherche pas de motifs (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
-
-Les expressions régulières dépassent de loin le cadre de ce cours mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).

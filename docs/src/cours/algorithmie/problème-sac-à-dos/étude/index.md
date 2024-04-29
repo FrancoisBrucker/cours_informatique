@@ -178,8 +178,8 @@ Le fait de pouvoir fractionner les éléments est un cas particulier heureux, ma
 {% note "**Problème**" %}
 On possède $n$ produits (de 1 à $n$), chacun décrit par :
 
-- son prix : $p_i$ ($1 \leq i \leq n$)
 - sa masse en kilo : $k_i$ ($1 \leq i \leq n$)
+- son prix : $p_i$ ($1 \leq i \leq n$)
 
 On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la somme des prix des produits contenus dans le sac.
 {% endnote %}
@@ -258,7 +258,7 @@ On peu alors vouloir modifier l'algorithme glouton pour considérer le prix tota
 
 
 {% exercice %}
-Montrer que le rapport entre la solution optimale et la solution de l'algorithme glouton modifiée peut-être aussi grand que l'on veut.
+Montrer que le rapport entre la solution optimale et la solution de l'algorithme glouton modifié peut-être aussi grand que l'on veut.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -274,7 +274,7 @@ Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu
 
 ## Algorithme à performance garantie
 
-Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la première étape telle que le produit ne peut pas être ajouté dans le sac. On a alors :
+Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, quiest la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
 
 - $\sum_{i < i^\star} k_i \leq K$
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
@@ -292,7 +292,7 @@ Cette simple modification permet de garantir la solution obtenue :
 En utilisant le fait que $a + b \leq 2\cdot \max(a, b)$, montrer la la solution de l'algorithme ne peut pas être moins que 2 fois moins bonne que la solution optimale.
 {% endexercice %}
 {% details "solution" %}
-On sait que la solution optimale (notée $\text{OPT}$ est :
+On sait que la solution optimale (notée $\text{OPT}$) est :
 
 - plus grande que la solution trouvée par notre algorithme (notée $\text{SOL}$)
 - plus petite que $\sum_{i < i^\star} p_i + p_{i^\star}$
