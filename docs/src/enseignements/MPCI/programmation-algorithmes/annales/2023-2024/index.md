@@ -11,18 +11,21 @@ Tests et examens pour l'année scolaire 2023/2024
 
 ## Tests
 
-1. Test 1 : code
+1. Test 1 : Code
    - [sujet](./1_test_sujet_code){.interne}
    - [corrigé](./1_test_corrigé_code){.interne}
-2. Test 2 : preuve
+2. Test 2 : Preuve
    - [sujet](./2_test_sujet_preuve){.interne}
    - [corrigé](./2_test_corrigé_preuve){.interne}
-3. Test 3 : programmation objet
+3. Test 3 : Programmation objet
    - [sujet](./3_test_sujet_objet){.interne}
    - [corrigé](./3_test_corrigé_objet){.interne}
-3. Test 4 : programmation objet, le retour
+4. Test 4 : Programmation objet, le retour
    - [sujet](./4_test_sujet_objet-2){.interne}
    - [corrigé](./4_test_corrigé_objet-2){.interne}
+5. Test 5 : Algorithmes gloutons
+   - [sujet](./5_test_sujet_glouton){.interne}
+   - [corrigé](./5_test_corrigé_glouton){.interne}
 
 ## Devoir Maison
 

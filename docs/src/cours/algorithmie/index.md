@@ -133,17 +133,16 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-## Design d'algorithmes
-
-{% aller %}
-[Design d'algorithmes](./design-algorithmes){.interne}
-{% endaller %}
-
-
 ## Problème du "sac à dos"
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
+{% endaller %}
+
+## Design d'algorithmes
+
+{% aller %}
+[Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
 ## Classes de Problèmes Algorithmiques

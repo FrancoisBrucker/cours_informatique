@@ -203,6 +203,8 @@ La solution optimale du problème du sac à dos est une solution admissible au p
 
 ## Algorithme glouton
 
+Un algorithme _"glouton"_ ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des lment jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre.
+
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :
 
 ```python

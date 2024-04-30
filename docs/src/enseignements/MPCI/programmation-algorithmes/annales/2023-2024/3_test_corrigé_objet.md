@@ -1,16 +1,12 @@
 ---
 layout: layout/post.njk
 
-title: "Corrigé Test 3 : Programmation objet"
+title: "Corrigé Test 5 : Algorithmes glouton"
 authors:
   - François Brucker
 ---
 
 Ces questions ont pour but de vous faire un peu réfléchir sur la programmation objet.
-
-## Barème
-
-Une note sur 5, un point par question.
 
 {% note "**Objectif du test**" %}
 
