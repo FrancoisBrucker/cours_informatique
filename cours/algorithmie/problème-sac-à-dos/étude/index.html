@@ -355,6 +355,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </details>     
 </div>
 <h2>Algorithme glouton</h2>
+<p>Un algorithme <em>&quot;glouton&quot;</em> ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des lment jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre.</p>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
