@@ -52,7 +52,7 @@ Vous testerez cette fonction dans le fichier  `test_données.py`{.fichier}.
 Enfin :
 
 {% faire %}
-Faites en sorte que l'exécution du fichier `fractionnel.py`{.fichier} rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
+Créez un fichier `main_fractionnel.py`{.fichier} dont l'exécution rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
 
 ```text
 Données :
@@ -88,7 +88,7 @@ Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
 Pour comparer les résultats par rapport au problème du sac à dos fractionnel :
 
 {% faire %}
-Faites en sorte que l'exécution du fichier `sac_a_dos.py`{.fichier} rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
+Créez un fichier `main_sac_a_dos.py`{.fichier} dont l'exécution rende les données, le sac à dos et le profit pour l'exemple. Vous devez avoir quelque chose du genre en sortie :
 
 ```text
 Données :
@@ -112,6 +112,23 @@ Profit : 171
 
 {% endfaire %}
 
+### Expérimentation aléatoire
+
+{% faire %}
+Dans le fichier `données.py`{.language-} créez une fonction `sac_à_dos(n, prix, K)`{.language-} qui génère aléatoirement un jeu de $n$ données où chaque donnée a un prix inférieure au paramètre `prix`{.language-} et un poids inférieur à `K`{.language-}
+{% endfaire %}
+
+Testez un peu vos algorithmes :
+
+{% faire %}
+Dans un fichier `aléatoire_glouton.py`{.language-} testez pour plusieurs jeux de donnés les différences entre :
+
+- la valeur de la solution fractionnelle optimale,
+- la valeur du glouton
+- les différences entre les deux sac à dos
+{% endfaire %}
+
+
 ## Énumération exhaustive
 
 ### Tous les sac à dos
@@ -125,7 +142,7 @@ Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
 On peut maintenant comparer les résultats :
 
 {% faire %}
-Dans le fichier `sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+Dans le fichier `main_sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
 {% endfaire %}
 
 ### Branch and Bound
@@ -137,7 +154,7 @@ Dans un fichier `efficace.py`{.fichier} créez une fonction `branch_and_bound(pr
 On peut maintenant comparer les résultats :
 
 {% faire %}
-Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+Dans le fichier `main_efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
 {% endfaire %}
 
 Améliorons la complexité :
@@ -147,7 +164,19 @@ Améliorons la complexité :
 - Faites le tri des produits une fois pour toute au début de la fonction `branch_and_bound`{.language-} et pas à chaque appel du glouton fractionnel.
 {% endfaire %}
 
-### Programmation dynamique
+### Expérimentation aléatoire
+
+{% faire %}
+Dans un fichier `aléatoire_temps.py`{.language-}, mesurez le temps pris par l'algorithme du branch and bound pour résoudre des problèmes avec :
+
+- de plus en plus d'éléments mais un sac de capacité petite
+- peux d'éléments mais un gros sac à dos (pour que la solution ne soit pas triviale, assurez vous que les poids des éléments soient grand...)
+
+{% endfaire %}
+
+Vous pouvez bien sur comparer par rapport à l'énumération exhaustive, mais le temps va devir très vite prohibitif.
+
+## Programmation dynamique
 
 {% faire %}
 Dans un fichier `efficace.py`{.fichier} créez une fonction `programmation_dynamique(produits, masse_totale)` qui utilise la programmation dynamique pour trouver la valeur du sac à dos optimal. 
@@ -156,31 +185,28 @@ Dans un fichier `efficace.py`{.fichier} créez une fonction `programmation_dynam
 On peut maintenant comparer les résultats :
 
 {% faire %}
-Dans le fichier `efficace.py`{.fichier}, vérifiez que l'exemple donne bien la bonne valeur.
+Dans le fichier `main_efficace.py`{.fichier}, vérifiez que l'exemple donne bien la bonne valeur.
 {% endfaire %}
 
- Vous pouvez, si vous le désirez, aller plus loin et rendre le sac à dos en utilisant _une remontée_ avec la programmation dynamique.
-
-## Expérimentation aléatoire
 
 {% faire %}
-Dans le fichier `données.py`{.language-} créez une fonction `sac_à_dos(n, prix, K)`{.language-} qui génère aléatoirement un jeu de $n$ données où chaque donnée a un prix inférieure au paramètre `prix`{.language-} et un poids inférieur à `K`{.language-}
-{% endfaire %}
-
-Commencez par tester un peu vos algorithmes :
-
-{% faire %}
-Dans un fichier `aléatoire.py`{.language-} testez pour plusieurs jeux de donnés les différences entre :
+Dans un fichier `aléatoire_valeur.py`{.language-} testez pour plusieurs jeux de donnés les différences entre :
 
 - la valeur de la solution fractionnelle optimale,
 - la valeur du glouton
-- la valeur de la solution optimale (utilisez des vlaeurs de $K$ pas trop grande pour que le calcul par programmation dynamique soit possible en temps raisonnable)
+- la valeur de la solution optimale (utilisez des valeurs de $K$ pas trop grande pour que le calcul par programmation dynamique soit possible en temps raisonnable)
 {% endfaire %}
 
-Enfin, pour finir :
+## Pour aller plus loin
 
 {% faire %}
 Implémentez l'algorithme à performance garantie et vérifiez que l'on est bien au pire deux fois moins bon que la solution optimale.
 Comparez son résultat à la solution optimale (calculée par branch and bound) et au résultat du glouton.
 {% endfaire %}
 
+Vous pouvez aussi trouver le sac à dos optimal en remontant la programmation dynamique :
+
+{% faire %}
+Implémentez un algorithme qui, à partir de la matrice rendue par l'algorithme de programmation dynamique, rend le sac à dos optimal associé.
+
+{% endfaire %}

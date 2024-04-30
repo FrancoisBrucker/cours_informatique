@@ -14,11 +14,24 @@ eleventyComputed:
 > implique ordre entre les mots
 
 Différent d'une liste car on ne peut avoir qu'un nombre fini d'éléments à chaque case (un alphabet)
+
 ## Structure algorithmique
 
-> monoide
+> on se restreint à 0, 1 mais marche aussi si alphabet plus gros
+
+> monoide. 
+> mots et langages.
+> on peut représenter l'algorithmique juste par des langages. 
+> automate = expression régulière (déterministe ou pas c'est pareil)
+> définit avec une fonction de transition et une boucle for. Mais souvent représenté par un diagramme. 
+> TBD exemple
+
+> c'est pas tous les algorithmes car palindrome pas reconnaissable par exemple le palindrome
+> pas de variables.
 
 ## Encodage
+
+> en pratique pas que des 0 et des 1, des lettres.
 
 >TBD : pas juste 1 nombre de taille fixe. On module la taille selon l'usage. Plus c'est utilisé plus c'est court. Comment faire ? C'est le principe de unicode
 
@@ -29,12 +42,12 @@ Différent d'une liste car on ne peut avoir qu'un nombre fini d'éléments à ch
 ## Recherche de sous-chaines
 
 {% aller %}
-[Problème de la recherche de sous-chaines](./recherche-sous-chaines){.interne}
+[Problème de la recherche de sous-mots](./recherche-sous-mots){.interne}
 {% endaller %}
 
 ## Autre problèmes
 
-- Recherche de sous-mots
+- Recherche de sous-séquence (pas collé)
 - recherche de motifs 
 - ...
 
