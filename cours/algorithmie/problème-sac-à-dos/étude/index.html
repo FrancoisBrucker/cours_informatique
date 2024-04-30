@@ -115,7 +115,11 @@
 <li>sa quantité disponible en kilo : $k_i$</li>
 <li>son prix total : $p_i$</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudre permettant de maximiser la valeur du sac.</p>
+<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$  à mettre dans le sac telle que :</p>
+<ul>
+<li>on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
+<li>le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+</ul>
 </div>
 </div>
 <p>Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :</p>
@@ -135,7 +139,7 @@
 <li>...</li>
 </ul>
 <h3>Algorithme glouton</h3>
-<p>Le problème du sac à dos fractionnel peut se résoudre par un algorithme glouton : à chaque étape on ajoute une poudre et on essaie d'en mettre le plus possible. Comme on veut maximiser le profit, on trie les poudres par prix au kilo décroissant.</p>
+<p>Un algorithme <em>&quot;glouton&quot;</em> ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des produit jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre et comme on veut maximiser le profit, on choisi de prendre les poudres par prix au kilo décroissant.</p>
 <p>On obtient donc in fine l'algorithme suivant, écrit en python :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -276,14 +280,14 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos .</p>
-<p>Pour notre solution, on note $(k_0, k_1, \dots, k_n)$ les kilos choisis dans l'ordre de choix de l'algorithme glouton.<br>
-On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(k_0, \dots, k_{i-1}, k'_i, \dots, k'_n)$.</p>
-<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $k_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $k_{i-1}$.</p>
-<p>Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d'indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $k'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $k_i$.</p>
+<p>Pour notre solution, on note $(f_1, \dots, f_n)$ les proportions choisis dans l'ordre de choix de l'algorithme glouton.<br>
+On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(f_1, \dots, f_{i-1}, f'_i, \dots, f'_n)$.</p>
+<p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$.</p>
+<p>Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les $i$ premiers produits (les produits d'indices $0$ à $i-1$) avec le même kilo, il reste la même place dans le sac-à-dos et pour notre algorithme et pour la solution optimale. De là, par construction de l'algorithme glouton (on prend à chaque choix soit tout le produit soit juste assez pour finir de remplir tout le sac) les kilos $f'_i$ de la solution optimale pour le produit d'indice $i$ est forcément plus petit strictement que $f_i$.</p>
 <p>Donc :</p>
 <ul>
-<li>soit $k'_j = 0$ pour tout $j &gt; i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,</li>
-<li>soit il existe $k'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer d'un kilo $k_j'$ pour augmenter d'un kilo $k_i'$ et obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
+<li>soit $f'_j = 0$ pour tout $j &gt; i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,</li>
+<li>soit il existe $f'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer  $f_j'$ d'un $\epsilon &gt; 0$ que l'on peut ajouter à  $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
 </ul>
 <p>Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.</p>
 </div>
@@ -306,12 +310,16 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On possède $n$ produits (de 1 à $n$), chacun décrit par :</p>
+<p>On possède $n$ produits différents, décris par :</p>
 <ul>
-<li>sa masse en kilo : $k_i$ ($1 \leq i \leq n$)</li>
-<li>son prix : $p_i$ ($1 \leq i \leq n$)</li>
+<li>sa masse en kilo : $k_i$</li>
+<li>son prix : $p_i$</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche à maximiser la somme des prix des produits contenus dans le sac.</p>
+<p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche les produits à mettre dans le sac, on note $f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon, de façon à ce que :</p>
+<ul>
+<li>les produits choisis tiennent dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
+<li>le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+</ul>
 </div>
 </div>
 <p>Ce problème se décline de plein de façons pratique :</p>
@@ -355,7 +363,6 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </details>     
 </div>
 <h2>Algorithme glouton</h2>
-<p>Un algorithme <em>&quot;glouton&quot;</em> ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des lment jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre.</p>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -725,8 +732,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
 <li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo)</li>
 </ul>
-<p>On commence par la solution ouverte $y = [-1, -1, -1, -1, -1, -1]$ de solution fractionnelle optimale $[0, 1, 0, 0, 0, 0.225]$ et le sac à dos vide $x = [0, 0, 0, 0, 0, 0]$.</p>
-<p>On a coutume de représenter les différents choix par un arbre. Après cette étape d'initialisation on a :</p>
+<p>On commence par la solution ouverte $y = [-1, -1, -1, -1, -1, -1]$ de solution fractionnelle optimale $[0, 1, 0, 0, 0, 0.225]$ et le sac à dos vide $x = [0, 0, 0, 0, 0, 0]$. On a coutume de représenter les différents choix par un arbre. Après cette étape d'initialisation on a :</p>
 <p><img src="bb-1.png" alt="branch and bound 1"></p>
 <p>Le sac à dos fractionnel n'est pas un sac à dos. On ajoute donc potentiellement les solutions ouvertes $[-1, -1, -1, -1, -1, 1]$ et $[-1, -1, -1, -1, -1, 0]$ aux solutions à explorer. Comme $[-1, -1, -1, -1, -1, 1]$ ne peut pas donner de sac à dos valide, on se retrouve avec les solutions ouvertes à explorer suivantes :</p>
 <p><img src="bb-2.png" alt="branch and bound 1"></p>
@@ -739,7 +745,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 <p>Notez que la solution ouverte $[1, 1, 1, -1, -1, 0]$ de donne pas de sac à dos viable, elle est donc directement éliminée.</p>
 <p>Lors de l'analyse de la solution ouverte  $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :</p>
 <p><img src="bb-6.png" alt="branch and bound 1"></p>
-<p>L'analyse de la solution ouverte $[0, -1, 1, -1, -1, 0]$ donnt une solution optimale $[0, 1, 1, 1, 1, 0]$ de valeur 86 ce qui est moins bon que notre sac à dos stocké : inutile d'explorer. On a :</p>
+<p>L'analyse de la solution ouverte $[0, -1, 1, -1, -1, 0]$ donne une solution optimale $[0, 1, 1, 1, 1, 0]$ de valeur 86 ce qui est moins bon que notre sac à dos stocké : inutile d'explorer. On a :</p>
 <p><img src="bb-7.png" alt="branch and bound 1"></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1024,6 +1030,11 @@ $$
 </tr>
 </tbody>
 </table>
+<p>Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3.  Il vaut soit :</p>
+<ul>
+<li>le maximum du sac $M[2][16]$, c'est à dire le sac maximum de masse 16 qui ne contient pas le produit 3</li>
+<li>$M[2][16-2] + 30$ c'est à dire le sac à dos maximum qui contient le produit 3 et pour lequel il reste 16-2 place pour range les produits 1 et 2.</li>
+</ul>
 </div>
 </details>     
 </div>
