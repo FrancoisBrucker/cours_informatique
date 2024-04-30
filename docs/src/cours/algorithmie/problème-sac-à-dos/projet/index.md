@@ -117,7 +117,7 @@ Profit : 171
 ### Tous les sac à dos
 
 {% faire %}
-Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumèration(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
+Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumération(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
 
 Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
 {% endfaire %}
