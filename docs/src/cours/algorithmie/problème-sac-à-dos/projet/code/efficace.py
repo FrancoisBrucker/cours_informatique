@@ -78,11 +78,35 @@ def branch_and_bound(produits, masse_totale):
 
 
 def programmation_dynamique(produits, masse_totale):
+    M = [[None] * (masse_totale + 1)]
+
+    for j in range(masse_totale + 1):
+        if produits[0]["kg"] > j:
+            M[-1][j] = 0
+        else:
+            M[-1][j] = produits[0]["prix"]
+
+    M.append([0] * (masse_totale + 1))
+
+    for i in range(1, len(produits)):
+        for j in range(1, masse_totale + 1):
+            if produits[i]["kg"] > j:
+                M[-1][j] = M[-2][j]
+            elif M[-2][j] < M[-2][j - produits[i]["kg"]] + produits[i]["prix"]:
+                M[-1][j] = M[-2][j - produits[i]["kg"]] + produits[i]["prix"]
+            else:
+                M[-1][j] = M[-2][j]
+        M[0], M[1] = M[1], [0] * (masse_totale + 1)
+
+    return M[0][-1]
+
+
+def programmation_dynamique_sac(produits, masse_totale):
     M = []
     S = []
 
-    M.append([None] * (masse_totale+1))
-    S.append([None] * (masse_totale+1))
+    M.append([None] * (masse_totale + 1))
+    S.append([None] * (masse_totale + 1))
 
     for j in range(masse_totale + 1):
         if produits[0]["kg"] > j:
@@ -90,10 +114,10 @@ def programmation_dynamique(produits, masse_totale):
             S[-1][j] = [0] * len(produits)
         else:
             M[-1][j] = produits[0]["prix"]
-            S[-1][j] = [1] + [0] * (len(produits)-1)
+            S[-1][j] = [1] + [0] * (len(produits) - 1)
 
-    M.append([0] * (masse_totale+1))
-    S.append([None] * (masse_totale+1))
+    M.append([0] * (masse_totale + 1))
+    S.append([None] * (masse_totale + 1))
     S[1][0] = [0] * len(produits)
 
     for i in range(1, len(produits)):
@@ -107,10 +131,10 @@ def programmation_dynamique(produits, masse_totale):
                 S[-1][j] = list((S[-2][j - produits[i]["kg"]]))
                 S[-1][j][i] = 1
             else:
-                M[-1][j] =M[-2][j]
-                S[-1][j] =list(S[-2][j])
-        M[0], M[1] = M[1], [0] * (masse_totale+1)
-        S[0], S[1] = S[1], [None] * (masse_totale+1)
+                M[-1][j] = M[-2][j]
+                S[-1][j] = list(S[-2][j])
+        M[0], M[1] = M[1], [0] * (masse_totale + 1)
+        S[0], S[1] = S[1], [None] * (masse_totale + 1)
         S[1][0] = [0] * len(produits)
 
     return S[0][-1]
@@ -134,7 +158,7 @@ print("Profit :", profit(sac_à_dos, données.EXEMPLE))
 print()
 print("Sac à dos optimal (programmation dynamique) :")
 
-sac_à_dos = programmation_dynamique(données.EXEMPLE, 20)
+sac_à_dos = programmation_dynamique_sac(données.EXEMPLE, 20)
 
 for i in range(len(sac_à_dos)):
     print(sac_à_dos[i], données.EXEMPLE[i]["nom"])
