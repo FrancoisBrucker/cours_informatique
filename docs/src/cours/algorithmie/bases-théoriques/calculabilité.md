@@ -32,28 +32,6 @@ $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$$
 Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies de $0$ et de $1$.
 {% endnote %}
 
-Remarquez que ceci fonctionne même si un algorithme possède plusieurs entrées. Il suffit de les écrire sous la forme d'une chaîne de caractère où chaque paramètre est séparé par une virgule par exemple et de transcrire cette chaîne en suite de 0 et de 1.
-
-{% info %}
-La façon classique de procéder pour transformer $q$ paramètres de $\\{0, 1\\}^\star$ en un seul paramètre de $\\{0, 1\\}^\star$ est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :
-
-- on code l'information `0`{.language-} en `00`{.language-}
-- on code l'information `1`{.language-} en `01`{.language-}
-- `11`{.language-} est le caractère de séparation des paramètres
-
-Ainsi, si un algorithme possède 3 paramètres valant 12, 1 et 6 par exemple on :
-
-1. convertit les 3 entiers en binaires : `1100`{.language-} (pour 12), `1`{.language-} (pour 1) et `110`{.language-} (pour 6)
-2. on utilise la correspondance pour les transformer en : `01010000`{.language-} (pour 12), `01`{.language-} (pour 1) et `010100`{.language-} (pour 6)
-3. on concatène les 3 paramètres en un seul en utilisant le séparateur `11`{.language-} : `01010000110111010100`{.language-}
-
-La lecture des paramètres dans l'algorithme se fait alors de façon réciproque :
-
-1. on trouve les paramètres en découpant la chaîne d'entrée aux endroits où se trouvent le séparateur `11`{.language-}
-2. on reconvertit chaque caractère en binaire en ne prenant qu'un bit sur 2
-3. on fait le changement de base de binaire à décimal
-
-{% endinfo %}
 
 Comme une suite finie de 0 et de 1 est une écriture binaire d'un entier positif on en déduit immédiatement que :
 

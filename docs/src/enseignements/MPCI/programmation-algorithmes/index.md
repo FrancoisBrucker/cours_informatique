@@ -361,16 +361,23 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 [Projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
 {% endaller %}
 
-### Semaine 14 : chaine de caractères
+### Semaine 14 : Fichiers texte
 
 {% aller %}
-[Chaine de caractères](/cours/algorithmie/structure-chaine-de-caractères/){.interne}
+1. [Qu'est-ce qu'un fichier](/cours/coder-et-développer/fichiers/structure){.interne}
+2. [fichiers texte](/cours/coder-et-développer/fichiers/fichiers-texte){.interne}
+3. [Encodage du texte](/cours/coder-et-développer/encodage-unicode/){.interne}
+4. [projet fichiers texte](/cours/coder-et-développer/fichiers/projet-texte){.interne}
 {% endaller %}
 
-### Semaine 15 : fichiers
+### Semaine 15 : Gestion des données
+
+Dernière semaine de cours. Le début de la séance sera consacrée aux questions et retour sur le cours, puis on terminera la séance sur la suite des fichiers.
 
 {% aller %}
-[Fichiers](/cours/coder-et-développer/fichiers/){.interne}
+1. [Dossiers et chemins en python](/cours/coder-et-développer/fichiers/dossiers-et-chemins/){.interne}
+2. [Projet données csv](/cours/coder-et-développer/fichiers/projet-données/projet-données-csv/){.interne}
+3. [Projet données json](/cours/coder-et-développer/fichiers/projet-données/projet-données-json/){.interne}
 {% endaller %}
 
 ## Annales

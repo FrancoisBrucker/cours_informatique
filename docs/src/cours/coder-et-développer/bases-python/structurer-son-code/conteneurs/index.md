@@ -10,17 +10,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent *contenir* d'autres objets.
+En plus des 6 types de bases, python met à notre disposition plusieurs objets qui peuvent _contenir_ d'autres objets.
 
 Un conteneur est un objet itérable et possède l'opérateur `in`{.language-} (comme on l'a déjà vu avec les [chaînes de caractères](../../principes/opérations#chaines-in){.interne}). On pourra ainsi toujours utiliser `x in C`{.language-} pour savoir si l'objet `x`{.language-} est dans le conteneur `C`{.language-}.
 
-Parmi ces conteneurs, la ***liste*** est certainement la plus utilisée :
+Parmi ces conteneurs, la **_liste_** est certainement la plus utilisée.
+
+## Listes
 
 {% aller %}
 [Listes](listes){.interne}
 {% endaller %}
 
-Les deux autres conteneurs à connaître sont les ***ensembles*** et les ***dictionnaires***. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages :
+## Ensembles et dictionnaires
+
+Les deux autres conteneurs à connaître sont les **_ensembles_** et les **_dictionnaires_**. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages :
 
 {% aller %}
 [Ensembles et dictionnaires](ensembles-dictionnaires){.interne}
@@ -67,7 +71,7 @@ while (i != j) and (P[i] + P[j] != C):
         i += 1
     else:
         j -= 1
-    
+
 if i != j:
   print(i, j)
 ```
@@ -87,3 +91,74 @@ for k in d:
 
 Cet exercice est étudié de façon théorique dans la partie algorithmie. Les trois complexités sont de valeurs différentes. Si l'on veut une solution efficace en pratique on utilisera la troisième méthode (qui est linéaire en moyenne) et si on cherche une solution de complexité la plus faible on utilisera la seconde méthode (de complexité égale à celle du tri).
 {% enddetails %}
+
+## Cas particulier des chaines de caractères
+
+Une chaine de caractère peut être vue comme un conteneur non mutable. On peut donc accéder à un caractère particulier comme une liste :
+
+```python
+
+>>> "abcdefghijklmnopqrstuvwxyz"[2]
+'c'
+```
+
+Ou même utiliser des [slices de liste](./listes/#slices){.interne} :
+
+```python
+>>> "abcdefghijklmnopqrstuvwxyz"[2:15:4]
+'cgko'
+```
+
+En reprenant le 27ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) sous sa forme chaine de caractère, `m27 = str(2 ** 44497 - 1)`{.language-}, résolvez les exercices suivants :
+
+{% exercice %}
+Quels sont les 10 premiers chiffres de `m27`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27)[:10]`{.language-}
+
+{% enddetails %}
+
+{% exercice %}
+Quels sont les 10 derniers chiffres de `m27`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27)[-10:]`{.language-}
+
+{% enddetails %}
+
+{% exercice %}
+Est-ce que  `m27`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27) == str(m27)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
+
+{% enddetails %}
+
+En revanche, il est interdit de modifier une chaine de caractère :
+
+```python
+>>> x = "chaine"
+>>> x[0] = "C"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+
+```
+
+Enfin on ne le répètera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants :
+
+{% exercice %}
+Index de la première occurrence de `1234` dans m27. Et de la deuxième ?
+{% endexercice %}
+{% details "solution" %}
+
+- `str(m27).find('1234')`{.language-}
+- `str(m27).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
+- on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`{.language-}
+
+{% enddetails %}
+

@@ -1,11 +1,6 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Formats de données : json"
-
-eleventyNavigation:
-    order: 2
-    prerequis:
-        - "../../../../algorithme/structure-de-données/dictionnaire/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -22,43 +17,39 @@ Utilisation du format json en python.
 
 Le format [json](https://www.json.org/json-fr.html) vient du web. C'est le format idéal pour transférer des données sous la forme d'un texte. Il a de nombreux avantages, citons en deux :
 
-* aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.
-* aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.
+- aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.
+- aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.
 
-Ci-après, un exemple de fichier json contenant des super-héros (pris de la [documentation javascript de Mozilla](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON). Si vous voulez apprendre le web, c'est une bonne adresse) :
+Ci-après, un exemple de fichier json contenant des super-héros (adapté de la [documentation javascript de Mozilla](https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON). Si vous voulez apprendre le web, c'est une bonne adresse), on supposera pour la suite que vous avez dans le dossier du projet courant le fichier `données.csv`{.fichier} contenant :
 
 ```text
 [
   {
-    "name": "Molecule Man",
-    "age": 29,
-    "secretIdentity": "Dan Jukes",
-    "powers": [
-      "Radiation resistance",
-      "Turning tiny",
-      "Radiation blast"
+    "nom": "La Machine",
+    "age": 33,
+    "identitéSecrète": "Alan Turing",
+    "pouvoirs": [
+      "Indécidable",
+      "Ne s'arrête jamais"
     ]
   },
   {
-    "name": "Madame Uppercut",
-    "age": 39,
-    "secretIdentity": "Jane Wilson",
-    "powers": [
-      "Million tonne punch",
-      "Damage resistance",
-      "Superhuman reflexes"
+    "nom": "",
+    "age": 27,
+    "identitéSecrète": "Ada Lovelace",
+    "pouvoirs": [
+      "Calculatrice"
     ]
   }
 ]
 ```
 
-C'est une liste de deux éléments, chaque élément étant composée de *clés* et de *valeurs* comme dans un dictionnaire python. La seule différence est qu'une clé est **toujours** une chaîne de caractère.
+C'est une liste de deux éléments, chaque élément étant composée de _clés_ et de _valeurs_ comme dans un dictionnaire python. La seule différence est qu'une clé est **toujours** une chaîne de caractère.
 
 {% note %}
 Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.
 
-Il en existe de nombreux. J'ai installé le tout simple [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json
-) pour rendre lisible tout fichier json.
+Il en existe de nombreux. J'ai installé le tout simple [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json) pour rendre lisible tout fichier json.
 {% endnote %}
 
 ## Json et dictionnaires en python
@@ -96,10 +87,10 @@ donnees = json.loads(texte_json)
 
 ## Lecture de fichiers
 
-Pour lire un fichier on utilise la méthode  [`json.load`{.language-}](https://docs.python.org/fr/3/library/json.html#json.load) (à ne pas confondre avec `json.loads`{.language-} qui est pour les chaines de caractères).
+Pour lire un fichier on utilise la méthode [`json.load`{.language-}](https://docs.python.org/fr/3/library/json.html#json.load) (à ne pas confondre avec `json.loads`{.language-} qui est pour les chaines de caractères).
 
 ```python
-f = open("data.json", "r")
+f = open("données.json", "r")
 data = json.load(f)
 f.close()
 ```
@@ -108,7 +99,7 @@ Une fois lu, le fichier json est converti en objet python. L'objet `data`{.langu
 
 ## Écriture de fichiers
 
-Pour lire un fichier on utilise la méthode  [`json.dump`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps`{.language-} qui est pour les chaines de caractères).
+Pour lire un fichier on utilise la méthode [`json.dump`{.language-}](https://docs.python.org/fr/3/library/json.html#json.dump) (à ne pas confondre avec `json.dumps`{.language-} qui est pour les chaines de caractères).
 
 ### Json
 

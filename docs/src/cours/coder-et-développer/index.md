@@ -172,18 +172,16 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 > TBD tout est nombre. type historique du C.
 > TBD python permet d'abstraire ça avec la notion de variable et d'objet.
 
+### Chaine de caractères
+
+{% aller %}
+[Encodage Unicode](encodage-unicode){.interne}
+{% endaller %}
 
 ### Sur des fichiers
-
-#### Manipuler des fichiers en python
 
 {% aller %}
 [Fichiers](fichiers){.interne}
 {% endaller %}
 
-#### Stocker ses données
-
-{% aller %}
-[fichiers pour stocker des données](projet-données-texte){.interne}
-{% endaller %}
 

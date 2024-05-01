@@ -27,8 +27,9 @@ Mise en place de votre projet :
 Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et d'utiliser au maximum les méthodes de listes de python :
 
 {% lien %}
-
+[Méthodes de chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
 {% endlien %}
+
 ## Jouons sur les mots
 
 [Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.

@@ -1,10 +1,9 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Formats de données : csv"
 
-
 eleventyNavigation:
-    order: 1
+  order: 1
 
 eleventyComputed:
   eleventyNavigation:
@@ -33,12 +32,12 @@ Gordon, Zola, 10
 {% note %}
 Un fichier csv :
 
-* est un fichier texte
-* chaque ligne du fichier est composée d'une ***donnée***
-* chaque donnée est composée de ***champs*** séparés par un ***délimiteur***
-* chaque donnée à :
-  * le même nombre de champs
-  * le même délimiteur
+- est un fichier texte
+- chaque ligne du fichier est composée d'une **_donnée_**
+- chaque donnée est composée de **_champs_** séparés par un **_délimiteur_**
+- chaque donnée à :
+  - le même nombre de champs
+  - le même délimiteur
 
 {% endnote %}
 
@@ -52,14 +51,14 @@ Il est crucial de toujours soigneusement vérifier le format csv de vos données
 
 Par exemple :
 
-* Le délimiteur est par défaut une `,`{.language-}, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
-* Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de `"`. Mais ce n'est pas toujours le cas
-* la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique), qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
+- Le délimiteur est par défaut une `,`{.language-}, mais peut tout aussi bien être un `;` (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.
+- Pour pouvoir distinguer les chaines de caractères des nombres, par défaut une chaîne de caractères sera entourée de `"`. Mais ce n'est pas toujours le cas
+- la [fin de ligne](https://fr.wikipedia.org/wiki/Retour_chariot#Informatique), qui est un caractère spécial est interprété différents sous unix (`\n`), sous windows (deux caractères `\r\n`) et sous les vieux systèmes mac avant Macos, donc vous n'en croiserez plus souvent (caractère `\r`).
 
 Enfin :
 
-* la première ligne est souvent spéciale car contenant le nom des différents attributs (colonnes)
-* la première colonne peut contenir l'identifiant de la donnée
+- la première ligne est souvent spéciale car contenant le nom des différents attributs (colonnes)
+- la première colonne peut contenir l'identifiant de la donnée
 
 En python, tout ceci est bien sur paramétrable.
 
@@ -95,7 +94,7 @@ import csv
 
 donnees = []
 
-f = open("data.csv", newline='')
+f = open("notes.csv", newline='')
 lecteur = csv.reader(f)
 for ligne in lecteur:
     donnees.append(ligne)
@@ -110,10 +109,10 @@ Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il
 3. placer ce fichier dans un `reader`{.language-} dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.
 4. lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.
 
-Le *reader* python permet de lire une chaîne de caractères et de l'interpréter selon le format csv.  Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) permettant de gérer les multiples cas particuliers. Parmi les plus usités :
+Le _reader_ python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de [nombreuses options](https://docs.python.org/fr/3/library/csv.html#csv-fmt-params) permettant de gérer les multiples cas particuliers. Parmi les plus usités :
 
-* `delimiter`{.language-}. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
-* `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`{.language-}.
+- `delimiter`{.language-}. Par défaut c'est des `','`, mais on verra souvent en France des csv dont le délimiteur est un `';'` (car les virgules sont déjà utilisés pour les nombres réels)
+- `quotechar`{.language-} : pour savoir ce qui est une chaîne de caractères, souvent des `"`{.language-}.
 
 ### Séparer les noms de colonne des données
 
@@ -166,8 +165,8 @@ En utilisant ce fichier csv :
 
 1. Quel est le format de ce fichier ?
 2. Ouvrez ce fichier et déterminez :
-   * A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
-   * donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
+   - A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
+   - donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
 
 {% endfaire %}
 
@@ -183,7 +182,7 @@ Puis triez le tout :
 Classez les départements par nombre de code postal
 {% endfaire %}
 
-Pour trier les éléments d'un tableau selon un autre ordre que l'ordre *naturel* des éléments d'un tableau, vous pourrez adapter le bout de code suivant :
+Pour trier les éléments d'un tableau selon un autre ordre que l'ordre _naturel_ des éléments d'un tableau, vous pourrez adapter le bout de code suivant :
 
 ```python
 def trie(x):
@@ -201,14 +200,14 @@ print(l)
 ### Prénoms
 
 {% faire %}
-En utilisant [cette page](https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262&q=prenoms), récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2021.
+En utilisant [cette page](https://www.insee.fr/fr/statistiques/7633685), récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.
 {% endfaire %}
 
 En utilisant ce fichier :
 
 {% faire %}
 
-1. Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?
+1. Quel le prénom le plus donné chez les garçons et chez les filles l'année de votre naissance ? Et en 2022 ?
 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)
 
 {% endfaire %}
