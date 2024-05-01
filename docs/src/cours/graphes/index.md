@@ -2,16 +2,20 @@
 layout: layout/post.njk
 
 title: Théorie des graphes
-tags: ['cours', 'graphes']
+tags: ["cours", "graphes"]
 authors:
-    - "François Brucker"
+  - "François Brucker"
+
+eleventyNavigation:
+  prerequis:
+    - /cours/algorithmie/complexité-calculs/
+    - /cours/coder-et-développer/
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
-
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 <!-- début résumé -->
@@ -22,20 +26,11 @@ Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cett
 
 Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.
 
-<!-- fin résumé -->
-
-{% prerequis "**Prérequis** :" %}
-
-* [notion de complexité algorithmique]({{"/cours/algorithme-code-théorie/algorithme/complexités/max-min/" }})
-* [bases de python]({{"/cours/utiliser-python/" }}) (également la partie [pour aller plus loin]({{"/cours/utiliser-python/" }}#pour-aller-plus-loin) car nous aurons à installer des packages et à utiliser le terminal) et [list comprehension en python](https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions)
-
-{% endprerequis %}
-
 ## <span id="structure"></span> Structure d'un graphe
 
-1. [Structure d'un graphe](structure)
-2. [Encodage de graphes](encodage)
-3. [Chemins, cycle et connexité](chemins-cycles-connexite)
+1. [Structure d'un graphe](structure){.interne}
+2. [Encodage de graphes](encodage){.interne}
+3. [Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
 
 ## Parcours
 
@@ -43,28 +38,28 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ### Types de parcours
 
-1. [Largeur et profondeur](parcours-largeur-profondeur)
-2. [Eulérien](parcours-eulériens)
-3. [Hamiltonien](parcours-hamiltoniens)
+1. [Largeur et profondeur](parcours-largeur-profondeur){.interne}
+2. [Eulérien](parcours-eulériens){.interne}
+3. [Hamiltonien](parcours-hamiltoniens){.interne}
 
 ### Projets
 
-1. [Mots de Bruijn](projet-mots-bruijn)
-2. [Problème du postier chinois](projet-postier-chinois)
+1. [Mots de Bruijn](projet-mots-bruijn){.interne}
+2. [Problème du postier chinois](projet-postier-chinois){.interne}
 
 ## Chemins de longueur/poids minimum
 
 ### <span id="chemin-problèmes"></span> Problème et algorithmes
 
-1. [Chemin de poids minimum](chemin-poids-min-problème)
-2. [Algorithme de Dijkstra et $A^\star$](chemin-poids-min-positif)
-3. [Algorithmes généraux](chemin-poids-min-cas-général)
+1. [Chemin de poids minimum](chemin-poids-min-problème){.interne}
+2. [Algorithme de Dijkstra et $A^\star$](chemin-poids-min-positif){.interne}
+3. [Algorithmes généraux](chemin-poids-min-cas-général){.interne}
 
 ### <span id="projet-chemin-poids-min"></span> Projets
 
-1. [Projet chemins de poids minimum](projet-chemins-min)
-2. [Projet graphe géographique](projet-graphe-géographique)
-3. [Projet chemins avec hubs](projet-chemins-hub)
+1. [Projet chemins de poids minimum](projet-chemins-min){.interne}
+2. [Projet graphe géographique](projet-graphe-géographique){.interne}
+3. [Projet chemins avec hubs](projet-chemins-hub){.interne}
 
 ## Problèmes de flots
 
@@ -72,13 +67,13 @@ Problèmes de flots. Définition, algorithmes et applications
 
 ### Principes et algorithmes
 
-1. [Les problèmes de flots](flots)
-2. [connectivité](connectivité)
+1. [Les problèmes de flots](flots){.interne}
+2. [connectivité](connectivité){.interne}
 
 ### <span id="projet-flots"></span> Projets
 
-1. [exercices de modélisation](projet-flots-modélisation)
-2. [bataille de la marne](projet-bataille-de-la-marne)
+1. [exercices de modélisation](projet-flots-modélisation){.interne}
+2. [bataille de la marne](projet-bataille-de-la-marne){.interne}
 
 ## Arbres
 
@@ -95,4 +90,4 @@ Un cas particulier d'intérêt : l'arbre et les chemins.
 
 > TBD
 > combien d'arbre ? Encodage prüfer et application à un arbre aléatoire (!= différent de la structure).
-{.note}
+> {.note}

@@ -113,7 +113,7 @@ Ces notions sont bien sûr liées comme le montre les deux propositions ci-desso
 * De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.
 * De tout chemin, chaîne, cycle ou circuit  allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire  allant de $x$ à $y$.
 {% endnote %}
-{% details "Preuve" %}
+{% details "**Preuve**", "open" %}
 Nous n'allons faire la preuve que pour les chemins. Les autres preuves sont équivalentes.
 
 Soit $G=(V, E)$ un graphe et $c=v_0 \dots v_p$ un de ses pseudo-chemins qui n'est pas un chemin. Il existe donc $i < j$ tel que $v_iv_{i+1} = v_jv_{j+1}$ et $c'= v_0\dots v_iv_{j+1}\dots v_k$ est un autre pseudo-chemin allant de $v_0$ à $v_k$ ayant strictement moins de répétition d'arêtes que $c$ : on peut itérativement supprimer les répétitions d'arêtes d'un pseudo-chemin pour obtenir un chemin.
@@ -160,7 +160,7 @@ Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si 
 Si le le graphe est orienté, on a le même résultat en considérant l'ensemble de des composantes fortement connexes.
 
 {% endnote %}
-{% details "Preuve :" %}
+{% details "**Preuve**", "open" %}
 L'union de deux ensemble fortement connexes non disjointes est encore un ensemble fortement connexe : deux composantes fortement connexes sont forcément disjointes.
 {% enddetails %}
 {% attention %}
@@ -195,7 +195,7 @@ Soit $G = (V, E)$ un graphe. S'il existe un entier $k > 1$ tel que $\delta(x) \g
 * il existe un cycle élémentaire de longueur au moins $k+1$,
 
 {% endnote %}
-{% details "preuve" %}
+{% details "**Preuve**", "open" %}
 
 Soit $c = v_0\dots v_i$ un chemin de longueur $i < k$ partant de $x = v_0$ (pour $i = 0< k$, ce chemin est réduit au seul point $x$).
 
@@ -227,7 +227,7 @@ $$
 
 est connexe.
 {% endnote %}
-{% details "preuve" %}
+{% details "**Preuve**", "open" %}
 On montre la preuve par récurrence. Si $n=2$, il faut évidemment avoir $m > 0$ pour que le graphe soit connexe. On suppose la propriété vraie pour $\vert V \vert = n-1$ et on se place à $\vert V \vert = n \geq 2$.
 
 Si le graphe est complet on a $m = \frac{n(n-1)}{2} > \frac{(n-1)(n-2)}{2}$ et le graphe est trivialement connexe. Il existe donc un sommet $x$ de degré $\delta(x) < n-1$. De plus, s'il existait un sommet sans voisin, le nombre d'arêtes serait strictement plus petit $\frac{(n-1)(n-2)}{2}$ ce qui est impossible. On a donc également $\delta(x) \geq 1$.
@@ -436,7 +436,7 @@ S'il existe  un chemin allant de $a$ à $x$ :
 
 Alors il existe un chemin allant de $a$ à $b$ ne passant pas par $x$.
 {% endnote %}
-{% details "preuve" %}
+{% details "**Preuve**", "open" %}
 
 Soit $c= a\dots x = v_0\dots v_p$ le chemin allant de $a$ à $x$ et $c' = a \dots b = w_0\dots w_q$ un chemin allant de $a$ à $b$ passant par $x$.
 

@@ -159,7 +159,7 @@ Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plut�
 
 Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
-* $\vert V\vert = n$ l'***ordre*** de $G$.
+* $\vert V\ver**t = n$ l'***ordre*** de $G$.
 * $\vert E \vert = m$ la ***taille*** de $G$.
 
 A ordre fixe, les graphes de taille maximum son dit ***complet*** :
@@ -236,7 +236,7 @@ Montrez que dans tout graphe (à au moins 2 sommets) il existe au moins deux som
 
 {% endexercice %}
 {% details "solution" %}
-
+C'est une application directe du [principe des tiroirs](https://fr.wikipedia.org/wiki/Principe_des_tiroirs).
 Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soit $n$ possibilités. Si tous les sommets avaient des degrés différents il y en aurait 1 avec 0 voisins et un autre avec $n-1$, ce qui est impossible.
 
 {% enddetails %}
@@ -305,7 +305,7 @@ Pour un graphe $G=(V, E)$, on a :
 $$ \sum_x \delta(x)  = 2\vert E \vert$$
 
 {% endnote %}
-{% details "**Preuve**" %}
+{% details "**Preuve**", "open" %}
 
 Pour un graphe orienté avec boucle, chaque arc $uv$ est unique. Il est compté exactement 1 fois dans la somme $\sum_x \delta^+(x)$ (pour $\delta^+(u)$), donc $\sum_x \delta^+(x) = \mid E \mid$.
 
