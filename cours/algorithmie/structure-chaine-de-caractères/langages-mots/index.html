@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Langages et mots</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Langages et mots</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/">Structure chaine de caractères</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/langages-mots/">Langages et mots</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p>on se restreint à 0, 1 mais marche aussi si alphabet plus gros</p>
+</blockquote>
+<h2>Décideur</h2>
+<p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction" class="interne">dans toute sa généralité</a> une fonction qui prend et rend un mot de $\{0, 1\}$. On peut lui associer de façon équivalente la fonction $v_f : \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ ci-dessous :</p>
+<p>$$<br>
+v_f(n, m) = \left\{<br>
+\begin{array}{ll}<br>
+1 &amp; \mbox{si } f(n) = m\\<br>
+0 &amp; \mbox{sinon.}<br>
+\end{array}<br>
+\right.<br>
+$$</p>
+<p>On peut voir l'algorithme $v_f$ comme un <strong><em>vérifieur</em></strong>. Il vérifie que le second paramètre est la sortie du premier paramètre. On reparlera de ces algorithmes plus tard dans le cours, pour l'instant ils nous permettent de montrer que l'espace d'arrivée d'un algorithme peut être uniquement deux valeurs 0 ou 1. Un algorithme peut ainsi être vu comme une fonction :</p>
+<p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
+<p>De là, on peut combiner les deux mots en entrée en un seul pour arriver à la formulation d'un algorithme qui nous intéressera ici. Pour cela, la façon classique de procéder est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
+<ul>
+<li>on code l'information <code class="language-">0</code> en <code class="language-">00</code></li>
+<li>on code l'information <code class="language-">1</code> en <code class="language-">01</code></li>
+<li><code class="language-">11</code> est le caractère de séparation des paramètres</li>
+</ul>
+<p>Ainsi, si un algorithme possède 2 paramètres valant <code>1001</code>, <code>001</code> par exemple, cela devient le paramètre <code>0100000111000001</code>. on modifie alors l'algorithme pour que la premiètre chose qu'il fasse soit de retrouver les deux paramètres en entrée :</p>
+<ol>
+<li>on trouve les paramètres en découpant la chaîne d'entrée aux endroits où se trouvent le séparateur <code class="language-">11</code></li>
+<li>on reconvertit chaque caractère en binaire en ne prenant qu'un bit sur 2</li>
+</ol>
+<p>Au final on obtient qu'un algorithme est équivalent à un <strong><em>décideur</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un <strong><em>décideur</em></strong> est une fonction de :</p>
+<p>$$f: \{0, 1\}^\star \rightarrow \{0, 1 \}$$</p>
+</div>
+</div>
+<p>On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des décideurs puisqu'on pourra les appliquer sans perte de généralité aux autres types d'algorithmes.</p>
+<p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (équivalentes) utiles :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On peut représenter un algorithme sous 3 formes équivalentes :</p>
+<ul>
+<li>les <strong><em>fonctions</em></strong> : $f: \{0, 1\}^\star \rightarrow \{0, 1 \}^\star$ qui permettent le calcul effectif,</li>
+<li>les <strong><em>décideurs</em></strong> : $d: \{0, 1\}^\star \rightarrow \{0, 1 \}$ qui permettent de séparer les mots en 2 ensembles, ceux qui sont <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$ et les autres</li>
+<li>les <strong><em>vérifieurs</em></strong> : $v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ en entrée est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.</li>
+</ul>
+</div>
+</div>
+<h2>Langages et algorithmes</h2>
+<p>La partie précédente nous a montré qu'un algorithme peut être vu comme un décideur et, les mots qui sont vrais, son langage :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On appelle <strong><em>langage</em></strong> d'un décideur $d$ l'ensemble $d^{-1}(1)$.</p>
+<p>On dira qu'un décideur $d$ <strong><em>accepte le langage $L$</em></strong> si $L = d^{-1}(1)$ et qu'un langage $L$ est <strong><em>décidable</em></strong> s'il existe un algorithme pour l'accepter.</p>
+</div>
+</div>
+<p>Il est donc équivalent de parler de langages ou d'algorithmes, et chaque problème algorithmique est un langage à reconnaitre.</p>
+<p>Tout langage n'est bien sur pas décidable. Le code des algorithmes qui s'arrêtent est bien sur un langage non décidable par exemple. En revanche, le langage des codes écrit correctement en python, par exemple, est décidable.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que l'ensemble des palindromes d'un alphabet $\mathcal{A}$ est décidable.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">parlindrome</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> mot<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> mot<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">return</span> <span class="token boolean">True</span>
+
+</code></pre>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>même distinction entre programme et algorithme : langages reconnaissable si programme (ne s'arrête pas forcément).</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

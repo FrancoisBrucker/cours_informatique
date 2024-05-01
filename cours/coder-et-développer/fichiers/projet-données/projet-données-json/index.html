@@ -83,33 +83,11 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-données-texte/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-données-texte/projet-données-json/">Formats de données : json</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/projet-données-json/">Formats de données : json</a>
 
 </div>
 </div>
 
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../../../../algorithme/structure-de-données/dictionnaire/">../../../../algorithme/structure-de-données/dictionnaire/</a>
-            </li></ul>
-      
-
-</div>
-</div>
 
     
   
@@ -122,26 +100,23 @@
 <li>aisé à lire et modifier sous la forme d'un fichier : pas besoin d'un outil spécial, un simple éditeur de texte suffit.</li>
 <li>aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.</li>
 </ul>
-<p>Ci-après, un exemple de fichier json contenant des super-héros (pris de la <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">documentation javascript de Mozilla</a>. Si vous voulez apprendre le web, c'est une bonne adresse) :</p>
+<p>Ci-après, un exemple de fichier json contenant des super-héros (adapté de la <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">documentation javascript de Mozilla</a>. Si vous voulez apprendre le web, c'est une bonne adresse), on supposera pour la suite que vous avez dans le dossier du projet courant le fichier <code class="fichier">données.csv</code> contenant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[
   {
-    "name": "Molecule Man",
-    "age": 29,
-    "secretIdentity": "Dan Jukes",
-    "powers": [
-      "Radiation resistance",
-      "Turning tiny",
-      "Radiation blast"
+    "nom": "La Machine",
+    "age": 33,
+    "identitéSecrète": "Alan Turing",
+    "pouvoirs": [
+      "Indécidable",
+      "Ne s'arrête jamais"
     ]
   },
   {
-    "name": "Madame Uppercut",
-    "age": 39,
-    "secretIdentity": "Jane Wilson",
-    "powers": [
-      "Million tonne punch",
-      "Damage resistance",
-      "Superhuman reflexes"
+    "nom": "",
+    "age": 27,
+    "identitéSecrète": "Ada Lovelace",
+    "pouvoirs": [
+      "Calculatrice"
     ]
   }
 ]
@@ -176,14 +151,14 @@ texte_json <span class="token operator">=</span> json<span class="token punctuat
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>texte_json<span class="token punctuation">)</span>
 </code></pre>
 <h2>Lecture de fichiers</h2>
-<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.load"><code class="language-">json.load</code></a> (à ne pas confondre avec <code class="language-">json.loads</code> qui est pour les chaines de caractères).</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+<p>Pour lire un fichier on utilise la méthode <a href="https://docs.python.org/fr/3/library/json.html#json.load"><code class="language-">json.load</code></a> (à ne pas confondre avec <code class="language-">json.loads</code> qui est pour les chaines de caractères).</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"données.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
 data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
 f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Une fois lu, le fichier json est converti en objet python. L'objet <code class="language-">data</code> est donc une liste composée de deux dictionnaires.</p>
 <h2>Écriture de fichiers</h2>
-<p>Pour lire un fichier on utilise la méthode  <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code class="language-">json.dump</code></a> (à ne pas confondre avec <code class="language-">json.dumps</code> qui est pour les chaines de caractères).</p>
+<p>Pour lire un fichier on utilise la méthode <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code class="language-">json.dump</code></a> (à ne pas confondre avec <code class="language-">json.dumps</code> qui est pour les chaines de caractères).</p>
 <h3>Json</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

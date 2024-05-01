@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-données-texte/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/projet-données-texte/projet-données-csv/">Formats de données : csv</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/projet-données-csv/">Formats de données : csv</a>
 
 </div>
 </div>
@@ -111,8 +111,8 @@ Gordon, Zola, 10
 <p>Un fichier csv :</p>
 <ul>
 <li>est un fichier texte</li>
-<li>chaque ligne du fichier est composée d'une <em><strong>donnée</strong></em></li>
-<li>chaque donnée est composée de <em><strong>champs</strong></em> séparés par un <em><strong>délimiteur</strong></em></li>
+<li>chaque ligne du fichier est composée d'une <strong><em>donnée</em></strong></li>
+<li>chaque donnée est composée de <strong><em>champs</em></strong> séparés par un <strong><em>délimiteur</em></strong></li>
 <li>chaque donnée à :
 <ul>
 <li>le même nombre de champs</li>
@@ -176,7 +176,7 @@ Gordon, Zola, 10
 
 donnees <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
-f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"notes.csv"</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
 lecteur <span class="token operator">=</span> csv<span class="token punctuation">.</span>reader<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
 <span class="token keyword">for</span> ligne <span class="token keyword">in</span> lecteur<span class="token punctuation">:</span>
     donnees<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
@@ -195,7 +195,7 @@ lecteur <span class="token operator">=</span> csv<span class="token punctuation"
 <li>placer ce fichier dans un <code class="language-">reader</code> dont le but est de lire le fichier et de le structurer en utilisant ses paramètres.</li>
 <li>lire le fichier ligne à ligne. A chaque utilisation vous obtiendrez une liste contenant les différents champs de la ligne lue.</li>
 </ol>
-<p>Le <em>reader</em> python permet de lire une chaîne de caractères et de l'interpréter selon le format csv.  Il possède de <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">nombreuses options</a> permettant de gérer les multiples cas particuliers. Parmi les plus usités :</p>
+<p>Le <em>reader</em> python permet de lire une chaîne de caractères et de l'interpréter selon le format csv. Il possède de <a href="https://docs.python.org/fr/3/library/csv.html#csv-fmt-params">nombreuses options</a> permettant de gérer les multiples cas particuliers. Parmi les plus usités :</p>
 <ul>
 <li><code class="language-">delimiter</code>. Par défaut c'est des <code>','</code>, mais on verra souvent en France des csv dont le délimiteur est un <code>';'</code> (car les virgules sont déjà utilisés pour les nombres réels)</li>
 <li><code class="language-">quotechar</code> : pour savoir ce qui est une chaîne de caractères, souvent des <code class="language-">&quot;</code>.</li>
@@ -305,7 +305,7 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant <a href="https://www.insee.fr/fr/statistiques/2540004?sommaire=4767262&amp;q=prenoms">cette page</a>, récupérez le fichier des naissances en France (hors Mayotte) de 1900 à 2021.</p>
+<p>En utilisant <a href="https://www.insee.fr/fr/statistiques/7633685">cette page</a>, récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.</p>
 </div>
 </div>
 <p>En utilisant ce fichier :</p>
@@ -316,7 +316,7 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Quel le prénom le plus donné chez les garçons et chez les filles en 2020 ?</li>
+<li>Quel le prénom le plus donné chez les garçons et chez les filles l'année de votre naissance ? Et en 2022 ?</li>
 <li>Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)</li>
 </ol>
 </div>
