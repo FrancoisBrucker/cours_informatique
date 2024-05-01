@@ -114,69 +114,82 @@
 
 
     
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/">Mesures de complexités</a>
+              </li>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a>
+              </li></ul>
+      
+
+</div>
+</div>
+
+    
   
 
   <!-- début résumé -->
 <p>Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.</p>
 <p>Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.</p>
 <p>Le cours va être séparé en petites entités qui se suivent pour former un tout que l'on espère cohérent.</p>
-<!-- fin résumé -->
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Prérequis</strong> :</p>
-</div><div class="pl-8 mr-8">
-<ul>
-<li><a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/algorithme/complexit%C3%A9s/max-min/">notion de complexité algorithmique</a></li>
-<li><a href="/cours_informatique/cours/utiliser-python/">bases de python</a> (également la partie <a href="/cours_informatique/cours/utiliser-python/#pour-aller-plus-loin">pour aller plus loin</a> car nous aurons à installer des packages et à utiliser le terminal) et <a href="https://docs.python.org/fr/3/howto/functional.html#generator-expressions-and-list-comprehensions">list comprehension en python</a></li>
-</ul>
-</div>
-</div>
 <h2><span id="structure"></span> Structure d'un graphe</h2>
 <ol>
-<li><a href="structure">Structure d'un graphe</a></li>
-<li><a href="encodage">Encodage de graphes</a></li>
-<li><a href="chemins-cycles-connexite">Chemins, cycle et connexité</a></li>
+<li><a href="structure" class="interne">Structure d'un graphe</a></li>
+<li><a href="encodage" class="interne">Encodage de graphes</a></li>
+<li><a href="chemins-cycles-connexite" class="interne">Chemins, cycle et connexité</a></li>
 </ol>
 <h2>Parcours</h2>
 <p>Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.</p>
 <h3>Types de parcours</h3>
 <ol>
-<li><a href="parcours-largeur-profondeur">Largeur et profondeur</a></li>
-<li><a href="parcours-eul%C3%A9riens">Eulérien</a></li>
-<li><a href="parcours-hamiltoniens">Hamiltonien</a></li>
+<li><a href="parcours-largeur-profondeur" class="interne">Largeur et profondeur</a></li>
+<li><a href="parcours-eul%C3%A9riens" class="interne">Eulérien</a></li>
+<li><a href="parcours-hamiltoniens" class="interne">Hamiltonien</a></li>
 </ol>
 <h3>Projets</h3>
 <ol>
-<li><a href="projet-mots-bruijn">Mots de Bruijn</a></li>
-<li><a href="projet-postier-chinois">Problème du postier chinois</a></li>
+<li><a href="projet-mots-bruijn" class="interne">Mots de Bruijn</a></li>
+<li><a href="projet-postier-chinois" class="interne">Problème du postier chinois</a></li>
 </ol>
 <h2>Chemins de longueur/poids minimum</h2>
 <h3><span id="chemin-problèmes"></span> Problème et algorithmes</h3>
 <ol>
-<li><a href="chemin-poids-min-probl%C3%A8me">Chemin de poids minimum</a></li>
-<li><a href="chemin-poids-min-positif">Algorithme de Dijkstra et $A^\star$</a></li>
-<li><a href="chemin-poids-min-cas-g%C3%A9n%C3%A9ral">Algorithmes généraux</a></li>
+<li><a href="chemin-poids-min-probl%C3%A8me" class="interne">Chemin de poids minimum</a></li>
+<li><a href="chemin-poids-min-positif" class="interne">Algorithme de Dijkstra et $A^\star$</a></li>
+<li><a href="chemin-poids-min-cas-g%C3%A9n%C3%A9ral" class="interne">Algorithmes généraux</a></li>
 </ol>
 <h3><span id="projet-chemin-poids-min"></span> Projets</h3>
 <ol>
-<li><a href="projet-chemins-min">Projet chemins de poids minimum</a></li>
-<li><a href="projet-graphe-g%C3%A9ographique">Projet graphe géographique</a></li>
-<li><a href="projet-chemins-hub">Projet chemins avec hubs</a></li>
+<li><a href="projet-chemins-min" class="interne">Projet chemins de poids minimum</a></li>
+<li><a href="projet-graphe-g%C3%A9ographique" class="interne">Projet graphe géographique</a></li>
+<li><a href="projet-chemins-hub" class="interne">Projet chemins avec hubs</a></li>
 </ol>
 <h2>Problèmes de flots</h2>
 <p>Problèmes de flots. Définition, algorithmes et applications</p>
 <h3>Principes et algorithmes</h3>
 <ol>
-<li><a href="flots">Les problèmes de flots</a></li>
-<li><a href="connectivit%C3%A9">connectivité</a></li>
+<li><a href="flots" class="interne">Les problèmes de flots</a></li>
+<li><a href="connectivit%C3%A9" class="interne">connectivité</a></li>
 </ol>
 <h3><span id="projet-flots"></span> Projets</h3>
 <ol>
-<li><a href="projet-flots-mod%C3%A9lisation">exercices de modélisation</a></li>
-<li><a href="projet-bataille-de-la-marne">bataille de la marne</a></li>
+<li><a href="projet-flots-mod%C3%A9lisation" class="interne">exercices de modélisation</a></li>
+<li><a href="projet-bataille-de-la-marne" class="interne">bataille de la marne</a></li>
 </ol>
 <h2>Arbres</h2>
 <blockquote>
