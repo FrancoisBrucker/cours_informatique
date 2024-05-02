@@ -32,11 +32,11 @@ Plutôt qu'un cours, suivez ces deux projets qui vous permettrons de manipuler l
 ### Fichiers csv
 
 {% aller %}
-[Gérer des données au format csv](projet-données-csv){.interne}
+[Gérer des données au format csv](données-csv){.interne}
 {% endaller %}
 
 ### Fichiers json
 
 {% aller %}
-[Gérer des données au format json](projet-données-json){.interne}
+[Gérer des données au format json](données-json){.interne}
 {% endaller %}
