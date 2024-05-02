@@ -254,7 +254,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>Tapez  la commande python : <code>print(Bonjour monde !)</code> et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.</li>
+<li>Tapez la commande python : <code>print(Bonjour monde !)</code> et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.</li>
 <li>quittez l'interpréteur pour revenir au terminal en tapant la commande <code>quit()</code>.</li>
 </ol>
 </div>
@@ -324,8 +324,8 @@
 </details>     
 </div>
 <p>La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.</p>
-<h2><span id="packages"></span> Packages</h2>
-<p>Python vient avec une <a href="https://docs.python.org/fr/3/library/">liste de packages</a> bien fournie. On peut les utiliser via le mot clé <code>import</code> en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <a href="https://pypi.org/">https://pypi.org/</a></p>
+<h2><span id="modules"></span> Modules</h2>
+<p>Python vient avec une <a href="https://docs.python.org/fr/3/library/">liste de modules</a> bien fournie. On peut les utiliser via le mot clé <code>import</code> en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <a href="https://pypi.org/">https://pypi.org/</a></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -353,45 +353,6 @@
 <pre><code>python -m &lt;nom du module&gt;
 </code></pre>
 <p>Par exemple pour exécuter le module random de python, vous pouvez taper tans un terminal la commande : <code>python -m random</code>. Cette exécution va montrer un panel des possibilités du module random de python.</p>
-<h3>Où sont les packages ?</h3>
-<p>Les dossiers où python va cherchez les packages sont listés dans la variable <code>sys.path</code>.</p>
-<p>vous pouvez le voir en exécutant le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">for</span> dossier <span class="token keyword">in</span> sys<span class="token punctuation">.</span>path<span class="token punctuation">:</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>dossier<span class="token punctuation">)</span>
-</code></pre>
-<p>Chez moi, sur un mac où python est installé avec <a href="https://brew.sh/">brew</a> ce programme rend :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
-/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
-/opt/homebrew/lib/python3.11/site-packages
-/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
-/opt/homebrew/opt/python-tk@3.11/libexec
-</code></pre>
-<p>Il y a plusieurs dossiers :</p>
-<ul>
-<li><code class="fichier">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11</code> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>&quot;<a href="http://random.py">random.py</a>&quot;</em> qui contient le code du package <code>random</code>)</li>
-<li><code class="fichier">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload</code> contient les packages python qui ne sont pas écrit en python mais en C</li>
-<li><code class="fichier">/opt/homebrew/lib/python3.11/site-packages</code> qui contient les packages qui seront installés par pip.</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant <a href="https://opensource.com/article/19/4/managing-python-packages">ce tuto</a>, ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.</p>
-</div>
-</div>
-<h2>Éditeur</h2>
-<p>Il en existe une multitude. Prenez en un qui permettent non seulement d'écrire aisément du code python mais aussi d'exécuter facilement tout ce qui va avec écrire du code :</p>
-<ul>
-<li>coloration syntaxique</li>
-<li>nommage et re-nommage de variables sur tout un projet</li>
-<li>lancer des tests</li>
-<li>...</li>
-</ul>
-<p>Je conseille d'utiliser <a href="https://code.visualstudio.com/">visual studio code</a>, mais il en existe beaucoup d'autres selon vos envies et/ou besoin.</p>
 
 
 </article>
