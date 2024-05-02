@@ -37,7 +37,7 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 Python gère les noms de variables via un concept appelé espace de noms. Il est crucial de comprendre comment cela fonctionne pour ne pas laisser par au doute quand à savoir quelle variable est utilisée quand :
 
 {% aller %}
-[Mémoire et espace de noms](mémoire-espace-noms){.interne}
+[Espace de noms](espace-noms){.interne}
 {% endaller %}
 
 ### Tutoriels
@@ -134,15 +134,25 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 
 ## Gestion des dépendances
 
+On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/), ou encore [pyglet](https://pyglet.readthedocs.io/en/latest/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
+
+### Créer ses propres modules
+
+{% aller %}
+[Modules python](modules-python){.interne}
+{% endaller %}
+
+> TBD avant de parler de poetry, il faut parler des `__init__`
+
+### Modules et projets
+
 > TBD C'est un vrai soucis. plusieurs projet avec des modules pythons incompatibles, ou des modules inutiles pour certains projets. 
 > TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaeu projet.
 Environnement d'exécution.
 
-1. bibliothèques et pip
-2. ses propres modules
-3. dépendances dans un projet
+> dépendances dans un projet
 
-### Environnements virtuels
+#### Environnements virtuels
 
 > TBD venv
 
@@ -152,11 +162,7 @@ Environnement d'exécution.
 <https://python-poetry.org/>
 <https://linuxfr.org/news/python-partie-7-environnements-virtuels>
 
-### Modules
-
-> TBD avant de parler de poetry, il faut parler des `__init__`
-
-### poetry
+#### poetry
 
 plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.
 
@@ -166,6 +172,10 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 
 ### En mémoire
 
+
+{% aller %}
+[Données en mémoire](données-mémoire){.interne}
+{% endaller %}
 > on l'a déjà vu un peu dans la partie espace de noms
 > TBD séparer espace de noms de mémoire à mettre ici.
 

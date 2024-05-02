@@ -1,13 +1,13 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 
 title: Installation d'un interpréteur python
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Nous sommes actuellement (décembre 2023) à la version 3.13 de python. Il n'est souvent pas nécessaire d'avoir la toute dernière version de python pour exécuter un programme, toute version 3 de python pas trop ancienne doit convenir.
@@ -87,7 +87,7 @@ Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne sa
 
 Pour connaître la version spécifique de python, on peut utiliser [la constante `version`du module `sys`de python](https://docs.python.org/fr/3/library/sys.html#sys.version) :
 
-``` python
+```python
 import sys
 print(sys.version)
 ```
@@ -127,7 +127,7 @@ Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'e
 
 {% faire %}
 
-1. Tapez  la commande python : `print(Bonjour monde !)` et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.
+1. Tapez la commande python : `print(Bonjour monde !)` et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.
 2. quittez l'interpréteur pour revenir au terminal en tapant la commande `quit()`.
 
 {% endfaire %}
@@ -178,9 +178,9 @@ which python3
 
 La commande devrait vous rendre l'emplacement sur votre disque dur de votre interpréteur. Vérifiez le avec un explorateur de fichier.
 
-## <span id="packages"></span> Packages
+## <span id="modules"></span> Modules
 
-Python vient avec une [liste de packages](https://docs.python.org/fr/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
+Python vient avec une [liste de modules](https://docs.python.org/fr/3/library/) bien fournie. On peut les utiliser via le mot clé `import` en python. Il en existe une foultitude d'autres qui permettent d'aider à coder rapidement. La liste des différents packages est disponible sur <https://pypi.org/>
 
 {% info %}
 Avec <https://colab.research.google.com> il est même possible d'[installer ses propres modules](https://colab.research.google.com/notebooks-analyse/snippets/importing_libraries.ipynb#scrollTo=kDn_lVxg3Z2G).
@@ -224,47 +224,3 @@ python -m <nom du module>
 
 Par exemple pour exécuter le module random de python, vous pouvez taper tans un terminal la commande : `python -m random`. Cette exécution va montrer un panel des possibilités du module random de python.
 
-### Où sont les packages ?
-
-Les dossiers où python va cherchez les packages sont listés dans la variable `sys.path`.
-
-vous pouvez le voir en exécutant le code :
-
-```python
-import sys
-for dossier in sys.path:
-   print(dossier)
-```
-
-Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend :
-
-```shell
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
-/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
-/opt/homebrew/lib/python3.11/site-packages
-/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
-/opt/homebrew/opt/python-tk@3.11/libexec
-```
-
-Il y a plusieurs dossiers :
-
-* `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11`{.fichier} contient les packages de bibliothèque standard (il contient par exemple un fichier *"random.py"* qui contient le code du package `random`)
-* `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload`{.fichier} contient les packages python qui ne sont pas écrit en python mais en C
-* `/opt/homebrew/lib/python3.11/site-packages`{.fichier} qui contient les packages qui seront installés par pip.
-
-{% attention %}
-La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.
-{% endattention %}
-
-## Éditeur
-
-Il en existe une multitude. Prenez en un qui permettent non seulement d'écrire aisément du code python mais aussi d'exécuter facilement tout ce qui va avec écrire du code :
-
-* coloration syntaxique
-* nommage et re-nommage de variables sur tout un projet
-* lancer des tests
-* ...
-
-Je conseille d'utiliser [visual studio code](https://code.visualstudio.com/), mais il en existe beaucoup d'autres selon vos envies et/ou besoin.
