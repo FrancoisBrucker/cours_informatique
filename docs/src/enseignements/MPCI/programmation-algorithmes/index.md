@@ -377,8 +377,8 @@ Dernière semaine de cours. Le début de la séance sera consacrée aux question
 {% aller %}
 1. [Dossiers et chemins en python](/cours/coder-et-développer/fichiers/dossiers-et-chemins/){.interne}
 2. [Stocker ses données dans un fichier texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
-3. [Projet données csv](/cours/coder-et-développer/fichiers/projet-données/projet-données-csv/){.interne}
-4. [Projet données json](/cours/coder-et-développer/fichiers/projet-données/projet-données-json/){.interne}
+3. [Projet données csv](/cours/coder-et-développer/fichiers/projet-données/projet-données-csv/){.interne}
+4. [Projet données json](/cours/coder-et-développer/fichiers/projet-données/projet-données-json/){.interne}
 {% endaller %}
 
 ## Annales
