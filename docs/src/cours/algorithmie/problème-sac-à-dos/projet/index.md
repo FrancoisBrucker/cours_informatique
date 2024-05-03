@@ -131,54 +131,6 @@ Dans un fichier `aléatoire_glouton.py`{.language-} testez pour plusieurs jeux d
 - les différences entre les deux sac à dos
 {% endfaire %}
 
-
-## Énumération exhaustive
-
-### Tous les sac à dos
-
-{% faire %}
-Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumération(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
-
-Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
-{% endfaire %}
-
-On peut maintenant comparer les résultats :
-
-{% faire %}
-Dans le fichier `main_sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
-{% endfaire %}
-
-### Branch and Bound
-
-{% faire %}
-Dans un fichier `efficace.py`{.fichier} créez une fonction `branch_and_bound(produits, masse_totale)` qui utilise le _branch and bound_ pour trouver le sac à dos optimal. 
-{% endfaire %}
-
-On peut maintenant comparer les résultats :
-
-{% faire %}
-Dans le fichier `main_efficace.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
-{% endfaire %}
-
-Améliorons la complexité :
-
-{% faire %}
-- Faites en sorte de commencer avec le résultat de l'algorithme glouton plutôt que le sac à dos vide
-- Faites le tri des produits une fois pour toute au début de la fonction `branch_and_bound`{.language-} et pas à chaque appel du glouton fractionnel.
-{% endfaire %}
-
-### Expérimentation aléatoire
-
-{% faire %}
-Dans un fichier `aléatoire_temps.py`{.language-}, mesurez le temps pris par l'algorithme du branch and bound pour résoudre des problèmes avec :
-
-- de plus en plus d'éléments mais un sac de capacité petite
-- peux d'éléments mais un gros sac à dos (pour que la solution ne soit pas triviale, assurez vous que les poids des éléments soient grand...)
-
-{% endfaire %}
-
-Vous pouvez bien sur comparer par rapport à l'énumération exhaustive, mais le temps va devir très vite prohibitif.
-
 ## Programmation dynamique
 
 {% faire %}
@@ -199,6 +151,53 @@ Dans un fichier `aléatoire_valeur.py`{.language-} testez pour plusieurs jeux de
 - la valeur du glouton
 - la valeur de la solution optimale (utilisez des valeurs de $K$ pas trop grande pour que le calcul par programmation dynamique soit possible en temps raisonnable)
 {% endfaire %}
+
+## Énumération exhaustive
+
+### Tous les sac à dos
+
+{% faire %}
+Dans le fichier `sac_a_dos.py`{.fichier} créez une fonction `énumération(produits, masse_totale)` qui énumère tous les sac à dos possibles et rend le sac à dos maximum.
+
+Vous testerez votre code dans le fichier `test_sac_a_dos.py`{.fichier}
+{% endfaire %}
+
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `main_sac_a_dos.py`{.fichier}, vérifiez que l'exemple donne bien le bon résultat.
+{% endfaire %}
+
+### Branch and Bound
+
+{% faire %}
+Dans le fichier `énumération.py`{.fichier} créez une fonction `branch_and_bound(produits, masse_totale)` qui utilise le _branch and bound_ pour trouver le sac à dos optimal. 
+{% endfaire %}
+
+On peut maintenant comparer les résultats :
+
+{% faire %}
+Dans le fichier `main_efficace.py`{.fichier}, vérifiez que l'exemple donne bien la même valeure optimale pour le branch and bound et l'énumération.
+{% endfaire %}
+
+Améliorons la complexité :
+
+{% faire %}
+- Faites en sorte de commencer avec le résultat de l'algorithme glouton plutôt que le sac à dos vide
+- Faites le tri des produits une fois pour toute au début de la fonction `branch_and_bound`{.language-} et pas à chaque appel du glouton fractionnel.
+{% endfaire %}
+
+### Expérimentation aléatoire
+
+{% faire %}
+Dans un fichier `aléatoire_temps.py`{.language-}, mesurez le temps pris par l'algorithme du branch and bound pour résoudre des problèmes avec :
+
+- de plus en plus d'éléments mais un sac de capacité petite
+- peux d'éléments mais un gros sac à dos (pour que la solution ne soit pas triviale, assurez vous que les poids des éléments soient grand...)
+
+{% endfaire %}
+
+Vous pouvez bien sur comparer par rapport à l'énumération exhaustive, mais le temps va devir très vite prohibitif.
 
 ## Pour aller plus loin
 

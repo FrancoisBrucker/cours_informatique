@@ -338,22 +338,30 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 
 Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
 
-L'algorithme peut alors être, en supposant que l'on ait une liste `kg`{.language-} (qui vaudrait pour notre exemple `kg = [x["kg"] for x in EXEMPLE]`{.language-}) et `prix`{.language-} (qui vaudrait pour notre exemple `prix = [x["prix"] for x in EXEMPLE]`{.language-}) :
+L'algorithme peut alors être, avec des produits organisés comme l'`EXEMPLE`{.language-} :
+
 
 ```python
-sac_à_dos = [0] * n
+def énumération(produits, K):
+    kg = [x["kg"] for x in produits]
+    prix = [x["prix"] for x in produits]
+    n = len(produits)
 
-sac_à_dos_max = list(sac_à_dos)
-sac_à_dos_profit_max = 0
+    sac_à_dos = [0] * n
 
-while sac_à_dos != [1] * n:
-    successeur(sac_à_dos)
+    sac_à_dos_max = list(sac_à_dos)
+    sac_à_dos_profit_max = 0
 
-    if sum(x * y for x, y in zip(sac_à_dos, kg)) <= K:
-        profit = sum(x * y for x, y in zip(sac_à_dos, prix))
-        if profit > sac_à_dos_profit_max
-            sac_à_dos_profit_max = profit
-            sac_à_dos_max = list(sac_à_dos)
+    while sac_à_dos != [1] * n:
+        successeur(sac_à_dos)
+
+        if sum(x * y for x, y in zip(sac_à_dos, kg)) <= K:
+            profit = sum(x * y for x, y in zip(sac_à_dos, prix))
+            if profit > sac_à_dos_profit_max:
+                sac_à_dos_profit_max = profit
+                sac_à_dos_max = list(sac_à_dos)
+
+    return sac_à_dos_max
 ```
 
 {% attention %}

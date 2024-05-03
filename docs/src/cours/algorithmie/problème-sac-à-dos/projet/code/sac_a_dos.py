@@ -28,25 +28,26 @@ def successeur(n):
         n[i] = 1
 
 
-def énumération(produits, masse_totale):
-    n = len(produits)
+def énumération(produits, K):
     kg = [x["kg"] for x in produits]
     prix = [x["prix"] for x in produits]
+    n = len(produits)
 
-    affectation = [0] * n
+    sac_à_dos = [0] * n
 
-    affectation_max = list(affectation)
-    objectif_max = 0
+    sac_à_dos_max = list(sac_à_dos)
+    sac_à_dos_profit_max = 0
 
-    while affectation != [1] * n:
-        successeur(affectation)
+    while sac_à_dos != [1] * n:
+        successeur(sac_à_dos)
 
-        if sum(x * y for x, y in zip(affectation, kg)) <= masse_totale:
-            objectif_courant = sum(x * y for x, y in zip(affectation, prix))
-            if objectif_courant > objectif_max:
-                objectif_max = objectif_courant
-                affectation_max = list(affectation)
-    return affectation_max
+        if sum(x * y for x, y in zip(sac_à_dos, kg)) <= K:
+            profit = sum(x * y for x, y in zip(sac_à_dos, prix))
+            if profit > sac_à_dos_profit_max:
+                sac_à_dos_profit_max = profit
+                sac_à_dos_max = list(sac_à_dos)
+
+    return sac_à_dos_max
 
 
 print("Données :")
