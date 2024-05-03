@@ -172,15 +172,9 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 
 ### En mémoire
 
-
 {% aller %}
 [Données en mémoire](données-mémoire){.interne}
 {% endaller %}
-> on l'a déjà vu un peu dans la partie espace de noms
-> TBD séparer espace de noms de mémoire à mettre ici.
-
-> TBD tout est nombre. type historique du C.
-> TBD python permet d'abstraire ça avec la notion de variable et d'objet.
 
 ### Chaine de caractères
 

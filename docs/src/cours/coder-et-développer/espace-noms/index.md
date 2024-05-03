@@ -66,16 +66,17 @@ Pour s'y retrouver et avoir une procédure déterministe pour retrouver les obje
 
 ## <span id="espace-noms"></span> Espaces de noms
 
-Les espaces de noms nous permettent d'abstraire ce qu'il se passe en mémoire :
+Les espaces de noms sont des objets de python qui nous permettent de lier variables et objets :
 
-- on considère que les objets sont stockés dans _l'espace des objets_ : cet espace est **unique**
-- on accède aux objets via leurs noms, eux même stockés dans des _espaces de noms_ : il y a de **nombreux** espaces de noms.
+- on considère que les objets sont stockés dans _**l'espace des objets**_ : cet espace est **unique**
+- on accède aux objets via leurs noms, eux même stockés dans des _**espaces de noms**_ qui sont des objets comme les autres : il y a de **nombreux** espaces de noms.
 
 Pour chaque _espace de noms_ :
 
 - il ne peut y avoir 2 noms identiques dans un même espace de noms
 - à chaque nom est associé un objet
 - certains espaces de noms possèdent un parent
+
 
 {% info %}
 Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage python](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces), mais la procédure est similaire pour les autres langages à objets.
@@ -84,7 +85,7 @@ Pour expliciter comment tout ça se passe, on va se concentrer sur le [langage p
 Lorsque l'on exécute un programme, un premier espace de noms est créé :
 
 {% note %}
-Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global`{.language-} est créé.
+Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé `global`{.language-} est créé. C'est à partir de lui que toutes les variables doivent être atteintes.
 {% endnote %}
 
 Au départ, il ne contient rien, à part des noms commençant et finissant par `__`{.language-}, qui sont utilisés par python.
@@ -227,6 +228,15 @@ Il échange les objets référencés par `x`{.language-} et `y`{.language-}.
 Cela marche car on commence par remplacer les variables par les objets (la droite du `=`{.language-}) avant de créer les variables (la gauche du `=`{.language-}).
 {% enddetails %}
 
+
+## Port d'attache d'un espace de noms
+
+Les espaces de noms sont des objets spéciaux qui ne peuvent vivre indépendamment. Il sont toujours rattachés à leur contexte qui est soit :
+
+- le programme principal : c'est le cas de l'espace de nom globals
+- une fonction : crée lors de l'appel d'une fonction pour gérer ses paramètre et variables locales.
+- un module : les espaces de noms crées après un import
+
 ### Fonctions
 
 L'exécution d'une fonction est un moment où un espace de noms est créé. Cela se passe selon le processus suivant :
@@ -315,7 +325,7 @@ La variable `C`{.language-} n'existe pas dans l'espace de noms courant (celui de
 Les variables sont **toujours** créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.
 {% endnote %}
 
-### Import
+### Import de module
 
 Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.
 
