@@ -93,12 +93,50 @@
   
 
   <blockquote>
-<p>reprendre partie module et comment ça marche en cherchant un module python<br>
-montrer le chemin<br>
-on a vu avec un fichier et l'espace de nom associé<br>
+<p>on a vu avec un fichier et l'espace de nom associé<br>
 parfois nested. Travailler avec des dossiers et <code class="fichier">__init__.py</code></p>
 </blockquote>
-<h2>Où sont les modules ?</h2>
+<p>Les modules python sont des fichiers (on l'a vu) ou des dossiers (on le verra) que l'on peut <em>importer</em> dans un fichier en cours d'exécution. Il y a essentiellement 2 manières d'importer un module en python soit directement :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> math
+</code></pre>
+<p>Soit en important un nom du module dans l'espace de nom global :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi
+</code></pre>
+<p>L'importation de module crée. comme on l'a vu <a href="../espace-noms" class="interne">des espaces de noms</a>.</p>
+<h2>Mécanisme d'importation de modules</h2>
+<p>Importer un module revient à exécuter un fichier python et à renommer son espace de nom <code class="langage-">global</code> dans le nom du fichier. Par exemplem supposaons que l'on ait dans le même dossier les fichier <code class="fichier">mon_module.py</code> et <code class="fichier">programme_principal.py</code> tels que :</p>
+<ul>
+<li><code class="fichier">mon_module.py</code> vale :<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span>
+va_variable <span class="token operator">=</span> <span class="token boolean">None</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><code class="fichier">programme_principal.py</code> vale :<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> mon_module
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">.</span>MA_CONSTANTE<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<p>À la fin de l'exécution de la ligne 1 du fichier <code>programme_principal.py</code>, on a les différents espaces de noms suivant :</p>
+<blockquote>
+<p>TBD fire dessin</p>
+</blockquote>
+<blockquote>
+<p>espace de nom<br>
+lié à l'exécution<br>
+différence entre exécution et import -&gt; cout du if name == main</p>
+</blockquote>
+<h2>Modules python</h2>
+<blockquote>
+<p>tout un tas lui même (math, pathlib, etc) et on peut en installer d'autre avec pip.<br>
+aller sur le site de pip pour voir tous les modules installés<br>
+On peut facilement ajouter des modules à pip.</p>
+</blockquote>
+<h3>Installation et usage</h3>
+<blockquote>
+<p>dépendant de l'interpréteur python<br>
+c'est pourquoi on les installe via celui ci et pas directement avec pip qui peut être lié à un tout autre interpréteur.</p>
+</blockquote>
+<h3>Où sont les modules ?</h3>
 <p>Les dossiers où python va cherchez les modules sont listés dans la variable <code>sys.path</code>.</p>
 <p>vous pouvez le voir en exécutant le code :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
@@ -128,31 +166,6 @@ parfois nested. Travailler avec des dossiers et <code class="fichier">__init__.p
 <p>La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant <a href="https://opensource.com/article/19/4/managing-python-packages">ce tuto</a>, ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.</p>
 </div>
 </div>
-<h3>Modules et projets</h3>
-<blockquote>
-<p>TBD C'est un vrai soucis. plusieurs projet avec des modules pythons incompatibles, ou des modules inutiles pour certains projets.<br>
-TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaeu projet.<br>
-Environnement d'exécution.</p>
-</blockquote>
-<blockquote>
-<p>dépendances dans un projet</p>
-</blockquote>
-<h4>Environnements virtuels</h4>
-<blockquote>
-<p>TBD venv</p>
-</blockquote>
-<p><a href="https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe">https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe</a></p>
-<blockquote>
-<p><a href="https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t">https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t</a><br>
-<a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html">https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html</a><br>
-<a href="https://python-poetry.org/">https://python-poetry.org/</a><br>
-<a href="https://linuxfr.org/news/python-partie-7-environnements-virtuels">https://linuxfr.org/news/python-partie-7-environnements-virtuels</a></p>
-</blockquote>
-<h4>poetry</h4>
-<p>plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.</p>
-<blockquote>
-<p>Gestions des dépendances d'un projet.</p>
-</blockquote>
 
 
 </article>
