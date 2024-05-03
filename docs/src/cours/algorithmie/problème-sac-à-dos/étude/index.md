@@ -342,8 +342,6 @@ L'algorithme peut alors être, en supposant que l'on ait une liste `kg`{.languag
 
 ```python
 affectation = [0] * n
-
-affectation_max = list(affectation)
 objectif_max = 0
 
 while affectation != [1] * n:
