@@ -341,19 +341,19 @@ Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne p
 L'algorithme peut alors être, en supposant que l'on ait une liste `kg`{.language-} et  `prix`{.language-}:
 
 ```python
-affectation = [0] * n
+sac_à_dos = [0] * n
 
-affectation_max = list(affectation)
-objectif_max = 0
+sac_à_dos_max = list(sac_à_dos)
+sac_à_dos_profit_max = 0
 
-while affectation != [1] * n:
-    successeur(affectation)
+while sac_à_dos != [1] * n:
+    successeur(sac_à_dos)
 
-    if sum(x * y for x, y in zip(affectation, kg)) <= K:
-        objectif_courant = sum(x * y for x, y in zip(affectation, prix))
-        if objectif_courant > objectif_max:
-            objectif_max = objectif_courant
-            affectation_max = list(affectation)
+    if sum(x * y for x, y in zip(sac_à_dos, kg)) <= K:
+        profit = sum(x * y for x, y in zip(sac_à_dos, prix))
+        if profit > sac_à_dos_profit_max
+            sac_à_dos_profit_max = profit
+            sac_à_dos_max = list(sac_à_dos)
 ```
 
 {% attention %}
@@ -526,7 +526,7 @@ Remarquer que cette algorithme est bien plus efficace en pratique que l'énumér
 
 ### Algorithme
 
-On suppose que l'on possède l'algorithme `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que `borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)`{.language-} vaudrait  `[0.933333, 1, 1, 0, 0]`{.language-}
+On suppose que l'on possède l'algorithme `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que `borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)`{.language-} vaudrait  `[0.933333, 1, 1, 0, 0, 0]`{.language-}
 
 Il nous faut aussi deux fonctions utilitaires :
 
