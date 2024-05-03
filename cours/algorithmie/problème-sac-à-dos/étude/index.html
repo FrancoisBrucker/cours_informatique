@@ -552,19 +552,19 @@ $$</p>
 </ul>
 <p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
 <p>L'algorithme peut alors être, en supposant que l'on ait une liste <code class="language-">kg</code> et  <code class="language-">prix</code>:</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">affectation <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">sac_à_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> n
 
-affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
-objectif_max <span class="token operator">=</span> <span class="token number">0</span>
+sac_à_dos_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">)</span>
+sac_à_dos_profit_max <span class="token operator">=</span> <span class="token number">0</span>
 
-<span class="token keyword">while</span> affectation <span class="token operator">!=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">:</span>
-    successeur<span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
+<span class="token keyword">while</span> sac_à_dos <span class="token operator">!=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> n<span class="token punctuation">:</span>
+    successeur<span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">)</span>
 
-    <span class="token keyword">if</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> kg<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> K<span class="token punctuation">:</span>
-        objectif_courant <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>affectation<span class="token punctuation">,</span> prix<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> objectif_courant <span class="token operator">></span> objectif_max<span class="token punctuation">:</span>
-            objectif_max <span class="token operator">=</span> objectif_courant
-            affectation_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>affectation<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">,</span> kg<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> K<span class="token punctuation">:</span>
+        profit <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>x <span class="token operator">*</span> y <span class="token keyword">for</span> x<span class="token punctuation">,</span> y <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">,</span> prix<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> profit <span class="token operator">></span> sac_à_dos_profit_max
+            sac_à_dos_profit_max <span class="token operator">=</span> profit
+            sac_à_dos_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">)</span>
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -782,7 +782,7 @@ objectif_max <span class="token operator">=</span> <span class="token number">0<
 </div>
 <p>Remarquer que cette algorithme est bien plus efficace en pratique que l'énumération exhaustive, on a parcouru que que 11 des 32 sac à dos possibles.</p>
 <h3>Algorithme</h3>
-<p>On suppose que l'on possède l'algorithme <code class="language-">borne_supérieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que <code class="language-">borne_supérieure([-1, -1, 1, -1, -1], EXEMPLE, 20)</code> vaudrait  <code class="language-">[0.933333, 1, 1, 0, 0]</code></p>
+<p>On suppose que l'on possède l'algorithme <code class="language-">borne_supérieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que <code class="language-">borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)</code> vaudrait  <code class="language-">[0.933333, 1, 1, 0, 0, 0]</code></p>
 <p>Il nous faut aussi deux fonctions utilitaires :</p>
 <ul>
 <li><code class="language-">première_valeur_fractionnelle(sac_à_dos_fractionnel)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : <code class="language-">première_valeur_fractionnelle([1, 0.3, 1, 1, 0])</code> aurait rendu 1 et <code class="language-">première_valeur_fractionnelle([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
