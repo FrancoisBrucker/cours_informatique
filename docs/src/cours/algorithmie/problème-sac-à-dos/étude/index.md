@@ -338,7 +338,7 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 
 Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
 
-L'algorithme peut alors être, en supposant que l'on ait une liste `kg`{.language-} et  `prix`{.language-}:
+L'algorithme peut alors être, en supposant que l'on ait une liste `kg = [x["kg"] for x in EXEMPLE]`{.language-} et  `prix = [x["prix"] for x in EXEMPLE]`{.language-} :
 
 ```python
 sac_à_dos = [0] * n
