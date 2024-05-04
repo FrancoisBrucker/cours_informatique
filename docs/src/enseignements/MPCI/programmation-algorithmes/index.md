@@ -111,9 +111,14 @@ Parties abordées :
 
 {% faire "**Prérequis**" %}
 
-Lire [Mémoire et espace de noms](/cours/coder-et-développer/mémoire-espace-noms/){.interne}
+Lire [Espace de noms](/cours/coder-et-développer/espace-noms/){.interne}
 
 {% endfaire %}
+{% info %}
+[Stockage bas-niveaux des données en mémoire](/cours/coder-et-développer/données-mémoire){.interne}
+{% endinfo %}
+
+Programme de la séance :
 
 {% aller %}
 
