@@ -54,11 +54,21 @@ Le fichier contient une liste de mots, un mot par ligne.
 Il est souvent inutile de conserver **toute la ligne**, par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaine `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin. Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères. Donc :
 
 
-{% faire %}
+{% exercice %}
 
 Faites en sorte que votre tableau ne contiennent que les données au préalabelement _nettoyées_ par un strip.
 
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
+```python
+mots = []
+f = open("mots.txt", "r", encoding="uft-8")
+
+for l in f:
+    mots.append(l.strip())
+f.close()
+```
+{% enddetails %}
 
 Enfin :
 
