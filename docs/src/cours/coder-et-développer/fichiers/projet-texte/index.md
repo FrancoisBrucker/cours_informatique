@@ -127,7 +127,15 @@ Téléchargez [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/179
 Les accès réseau sont toujours coûteux en temps, on a donc coutume de ne télécharger le fichier qu'une fois puis d'utiliser une copie locale pour tous les traitements.
 {% endattention %}
 
-Avec ce fichier :
+Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est iomportant et pas une ligne particulière :
+
+
+{% faire %}
+Récupérez tout le fichier dans une chaine de caractères que vous appellerez `monte_cristo`{.language-}.
+
+{% endfaire %}
+
+Avec cette chaine de caractères :
 
 {% faire %}
 
