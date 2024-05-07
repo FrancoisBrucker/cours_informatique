@@ -15,6 +15,7 @@ Utilisation des fichiers en python.
 
 <!-- end résumé -->
 
+
 Mise en place de votre projet :
 
 {% faire %}
@@ -30,6 +31,9 @@ Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et
 [Méthodes de chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
 {% endlien %}
 
+
+De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variablesm puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.
+
 ## Jouons sur les mots
 
 [Ce repo github](https://github.com/hbenbel/French-Dictionary/tree/master/dictionary) contient plusieurs fichiers csv contenant des mots français.
@@ -42,23 +46,45 @@ Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et
 
 Le fichier contient une liste de mots, un mot par ligne.
 
-{% faire %}
+### Lecture du fichier en une seule fois
 
-1. Combien de mots contient ce fichier ?
-2. Quel est le 42ème mot du dictionnaire ?
-3. Combien de mots finissent par `g` ?
-4. Combien de mots contiennent un `ç`
+{% faire %}
+1. Récupérez tout le fichier dans une chaine de caractères que vous appellerez `texte`{.language-}.
+2. afficher la chaine de caractères à l'écran.
+3. Combien de caractères `"\n"`{.language-} possède ce fichier ?
+
+{% endfaire %}
+{% info %}
+Les caractères `"\n"`{.language-} sont des [retour à la ligne](https://www.dynamic-mess.com/php/signification-retours/) et permettre de délimiter les lignes d'un fichier texte.
+
+{% endinfo %}
+
+### Lecture du fichier ligne à ligne
+
+Notre fichier contient une donnée (un mot) par ligne. Il peut donc être utile de stocker chaque mot dans un tableau :
+
+
+{% faire %}
+1. En utilisant la lecture ligne à ligne d'un fichier. Construisez une liste `mots`{.language-} dont chaque élément est une ligne du fichier.
+2. Affichez la 42ième ligne du texte (l'indice 41 de la liste).
 
 {% endfaire %}
 
-Il est souvent inutile de conserver **toute la ligne**, par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaine `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin. Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères. Donc :
+Vous avez du remarquer que l'affichage de la ligne 42 va 2 fois à la ligne. Ceci s'explique par le fait que :
+
+1. la commande `print`{.language-} termine son affichage par un retour à la ligne
+2. le mot lui même est une ligne du fichier et contient donc également le caractère  `"\n"`{.language-} 
+
+Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de _nettoyer les données_, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères  espaces `" "`{.language-} de début et de fin de ligne. Par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaine `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin.
 
 
-{% exercice %}
+Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères. Donc :
 
-Faites en sorte que votre tableau ne contiennent que les données au préalabelement _nettoyées_ par un strip.
 
-{% endexercice %}
+{% faire %}
+Modifier votre liste `mots`{.language-} pour que chaque élément contienne la version _stripée_ de la ligne.
+
+{% endfaire %}
 {% details "corrigé" %}
 ```python
 mots = []
@@ -70,11 +96,21 @@ f.close()
 ```
 {% enddetails %}
 
+Avec cette nouvelle liste il vous sera plus facile de répondre aux questions suivantes :
+
+{% faire %}
+1. Combien de mots contient ce fichier ?
+2. Quel est le 42ème mot du dictionnaire ?
+3. Combien de mots finissent par `g` ?
+4. Combien de mots contiennent un `ç`
+
+{% endfaire %}
+
 Enfin :
 
 {% faire %}
 
-Répondez à cette question existentielle : `nycthémères` est-il un mot français ? Et si oui, quel est son numéro de ligne ?
+Répondez à cette question existentielle : `nycthémères` est-il un mot français ? Et si oui, quel est son numéro de ligne ? Et quel est la signification de ce mot ?
 
 {% endfaire %}
 

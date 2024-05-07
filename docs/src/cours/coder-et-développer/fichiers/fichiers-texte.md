@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Fichiers texte"
 
 eleventyComputed:
@@ -37,16 +37,16 @@ La plupart des fichiers que vous créerez en python seront des fichiers textes.
 
 ## Objet fichier
 
-En python, on utilise les fichiers *via* un objet `file`{.language-}. On manipule les fichiers en 3 temps :
+En python, on utilise les fichiers _via_ un objet `file`{.language-}. On manipule les fichiers en 3 temps :
 
-1. ouverture : `f = open("mon_fichier.txt", "r")`{.language-}
+1. ouverture : `f = open("haiku.txt", "r", encoding="utf-8")`{.language-}
    Ces objets sont créés par la commande [`open`{.language-}](https://docs.python.org/fr/3/library/functions.html#open) qui ouvre un fichier. Elle a deux paramètres obligatoires :
 
-   * le nom du fichier,
-   * la façon dont on veut l'ouvrir :
-     * `'r'`{.language-} : en lecture. La tête de lecture est placée au début du fichier
-     * `'w'`{.language-} : en écriture. La tête d'écriture est placée au début du fichier. Donc **si le fichier contenait déjà des choses elles sont supprimées**
-     * `'a'`{.language-} : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont **pas** supprimées
+   - le nom du fichier,
+   - la façon dont on veut l'ouvrir :
+     - `'r'`{.language-} : en lecture. La tête de lecture est placée au début du fichier
+     - `'w'`{.language-} : en écriture. La tête d'écriture est placée au début du fichier. Donc **si le fichier contenait déjà des choses elles sont supprimées**
+     - `'a'`{.language-} : en écriture à la fin du fichier. La tête d'écriture est placée à la fin du fichier. Donc si le fichier contenait déjà des choses elles ne sont **pas** supprimées
 
    L'objet renvoyé par `open` est une instance de la classe `file`.
 
@@ -54,10 +54,11 @@ En python, on utilise les fichiers *via* un objet `file`{.language-}. On manipul
 
 2. On manipule ensuite le fichier grâce aux méthodes de la classe `file` :
 
-   * en lecture avec les méthodes :
-     * `read`{.language-} : `texte = f.read()`{.language-} qui lit tout le fichier sous la forme d'une chaîne de caractères
-     * `readline`{.language-} qui lit la ligne suivante d'un fichier
-   * en écriture avec `write`{.language-} :
+   - en lecture avec les méthodes :
+     - `read`{.language-} : `texte = f.read()`{.language-} qui lit tout le fichier sous la forme d'une chaîne de caractères
+     - `readline`{.language-} qui lit la ligne suivante d'un fichier
+   - en écriture avec `write`{.language-} :
+
 3. enfin, on ferme le fichier : `f.close()`{.language-}
 
 {% attention %}
@@ -66,6 +67,25 @@ Si vous ouvrez un fichier en écriture alors qu'il existait déjà, son contenu 
 
 ## Lire un fichier
 
+Pour lire un fichier, il faut commencer par l'ouvrir avec la commande `open`{.language} :
+
+```python
+f = open("haiku.txt", "r", encoding="utf-8")
+```
+
+Le résultat de cette instruciton est la création d'un opbjet de type fichier de nom `f`{.language-}.
+
+{% attention %}
+
+Par défaut, python va lire le fichier au format de lecture `utf-8`, donc la commande suivante devrait suffire :
+
+```python
+f = open("haiku.txt", "r")
+```
+
+Mais certains ordinateurs sous windows nécessite de placer l'encodage explicitement, ce que nous ferons dans la suite.
+{% endattention %}
+
 ### En entier
 
 {% faire %}
@@ -73,23 +93,14 @@ Exécutez le code suivant pour lire le fichier qui doit être dans le même doss
 {% endfaire %}
 
 ```python
-f = open("haiku.txt", "r")  # ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python
+f = open("haiku.txt", "r", encoding="utf-8")  # ouverture d'un fichier texte en lecture  dans le même dossier que le fichier python
 poème = f.read()
 f.close()
 print(poème)
 ```
 
-{% attention %}
-
-Par défaut, python va lire le fichier au format de lecture `utf-8`m mais si vous avez des erreurs, essayer d'extre explicite en spécifiant l'encodage :
-
-```python
-f = open("haiku.txt", "a", encoding="utf-8")
-```
-
-{% endattention %}
-
 Ne confondez pas le nom du fichier et son contenu. Le nom du fichier, ici `haiku.txt`{.fichier}, nous permet de l'ouvrir en lecture grâce à la commande `open`{.language-}. Son contenu est ensuite mis dans la variable `poème`{.language-} grâce à la méthode `read`{.language-}.
+
 ### Ligne à ligne
 
 {% faire %}
@@ -106,10 +117,6 @@ f.close()
 {% info %}
 Notez la ligne vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne, auquel en est ajouté un automatiquement à la fin de l'instruction `print`.
 {% endinfo %}
-
-{% attention %}
-Parfois, il ne vous sera pas nécessaire de spécifier l'encodage.
-{% endattention %}
 
 ## Ajout de texte à un fichier
 
@@ -157,11 +164,11 @@ Une fois ouvert le fichier en écriture tout son contenu précédent est perdu.
 Vous verrez parfois l'utilisation du mot clé python `with`{.language-} qui permet d'écrire :
 
 ```python
-with open("haiku.txt", "a", encoding="utf-8") as f: 
+with open("haiku.txt", "a", encoding="utf-8") as f:
     f.write("\n")
     f.write("1644-1694")
 ```
 
-* au début du bloc `with`{.language-} le résultat de l'ouverture du fichier est appelé `f`{.language-}
-* A la fin du bloc `with`{.language-} on ferme `f`{.language-}
-* s'il y a des erreurs, c'est également le bloc `with`{.language-} qui s'en occupe pour nous.
+- au début du bloc `with`{.language-} le résultat de l'ouverture du fichier est appelé `f`{.language-}
+- A la fin du bloc `with`{.language-} on ferme `f`{.language-}
+- s'il y a des erreurs, c'est également le bloc `with`{.language-} qui s'en occupe pour nous.
