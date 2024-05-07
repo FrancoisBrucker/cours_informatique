@@ -79,14 +79,17 @@ f.close()
 print(poème)
 ```
 
-{% info %}
-Ne confondez pas le nom du fichier et son contenu. Le nom du fichier, ici `haiku.txt`{.fichier}, nous permet de l'ouvrir en lecture grâce à la commande `open`{.language-}. Son contenu est ensuite mis dans la variable `poème`{.language-} grâce à la méthode `read`{.language-}.
-{% endinfo %}
-
 {% attention %}
-Par défaut, python va lire le fichier au format de lecture `utf-8`.
+
+Par défaut, python va lire le fichier au format de lecture `utf-8`m mais si vous avez des erreurs, essayer d'extre explicite en spécifiant l'encodage :
+
+```python
+f = open("haiku.txt", "a", encoding="utf-8")
+```
+
 {% endattention %}
 
+Ne confondez pas le nom du fichier et son contenu. Le nom du fichier, ici `haiku.txt`{.fichier}, nous permet de l'ouvrir en lecture grâce à la commande `open`{.language-}. Son contenu est ensuite mis dans la variable `poème`{.language-} grâce à la méthode `read`{.language-}.
 ### Ligne à ligne
 
 {% faire %}
