@@ -34,7 +34,7 @@ Ci-après, un exemple de fichier json contenant des super-héros (adapté de la 
     ]
   },
   {
-    "nom": "",
+    "nom": "Code girl",
     "age": 27,
     "identitéSecrète": "Ada Lovelace",
     "pouvoirs": [
