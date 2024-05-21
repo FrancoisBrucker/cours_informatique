@@ -52,6 +52,10 @@ from math import *
 print(pi)
 ```
 
+{% lien %}
+[Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html)
+{% endlien %}
+
 ## Mécanisme d'importation de modules
 
 Importer un module revient à exécuter un fichier python et à renommer son espace de nom `global`{.langage-} dans le nom du fichier. Par exemple supposons que l'on ait dans le même dossier les fichier `mon_module.py`{.fichier} et `programme_principal.py`{.fichier} tels que :
@@ -83,19 +87,24 @@ mon_module.MA_CONSTANTE
 
 On cherche le nom `MA_CONSTANTE`{.language-} dans l'espace de nom associé à l'objet de nom `mon_module`{.language-}.
 
-### Type d'un module
+Faite l'exercice ci-dessous pour vous convaincre que l'import exécute bien le fichier importé :
 
-> TBD : `globals()`
+{% faire %}
+Créez les deux fichiers `mon_module.py`{.fichier} et `programme_principal.py`{.fichier} et copiez/collez y leurs codes.
 
-> si module python, parfois un fichier reel : random, parfois un so. math par un réel fichier mais quelque chose de compilé pour aller plus vite
+1. exécutez le fichier `programme_principal.py`{.fichier} pour voir s'afficher `42`{.language-}
+2. Ajouter dans le fichier `mon_module.py`{.fichier} une ligne avec l'instruction `print("coucou de l'import")`{.language-} puis exécutez le fichier `programme_principal.py`{.fichier}.
 
-### Exécution du fichier module
+Vous devriez voir s'afficher `"coucou de l'import"` à l'écran, ce qui prouve que chaque ligne du fichier `mon_module.py`{.fichier} est exécuté à l'import.
+{% endfaire %}
 
-> TBD : mettre un print
-> python -m module
+## Exécution du fichier module
+
+> python -m pip <https://docs.python.org/fr/3/using/cmdline.html>
+> python -m random alors que rien n'est affiché à l'import
 > différence entre exécution et import -> cout du if name == main
 
-## Modules python et dossiers
+## Modules python et _packages_
 
 > on a vu avec un fichier et l'espace de nom associé
 > parfois nested. Travailler avec des dossiers et `__init__.py`{.fichier}
