@@ -48,7 +48,6 @@ On s'entraîne à la création d'objets :
 [Projet cartes](projet-objets-cartes){.interne}
 {% endaller %}
 
-
 ## Combiner ses objets entre eux
 
 {% aller %}

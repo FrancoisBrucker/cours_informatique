@@ -147,7 +147,7 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 ### Modules et projets
 
 > TBD C'est un vrai soucis. plusieurs projet avec des modules pythons incompatibles, ou des modules inutiles pour certains projets. 
-> TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaeu projet.
+> TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaque projet.
 Environnement d'exécution.
 
 > dépendances dans un projet
@@ -176,7 +176,7 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 [Données en mémoire](données-mémoire){.interne}
 {% endaller %}
 
-### Chaine de caractères
+### Chaîne de caractères
 
 {% aller %}
 [Encodage Unicode](encodage-unicode){.interne}
@@ -187,5 +187,3 @@ plutôt que de mettre les python alternatifs dans le projet, il les place tous a
 {% aller %}
 [Fichiers](fichiers){.interne}
 {% endaller %}
-
-
