@@ -116,6 +116,14 @@
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
 </code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/tutorial/modules.html">Documentation python sur les modules</a></p>
+</div>
+</div>
 <h2>Mécanisme d'importation de modules</h2>
 <p>Importer un module revient à exécuter un fichier python et à renommer son espace de nom <code class="langage-">global</code> dans le nom du fichier. Par exemple supposons que l'on ait dans le même dossier les fichier <code class="fichier">mon_module.py</code> et <code class="fichier">programme_principal.py</code> tels que :</p>
 <ul>
@@ -139,20 +147,28 @@ va_variable <span class="token operator">=</span> <span class="token boolean">No
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mon_module<span class="token punctuation">.</span>MA_CONSTANTE
 </code></pre>
 <p>On cherche le nom <code class="language-">MA_CONSTANTE</code> dans l'espace de nom associé à l'objet de nom <code class="language-">mon_module</code>.</p>
-<h3>Type d'un module</h3>
+<p>Faite l'exercice ci-dessous pour vous convaincre que l'import exécute bien le fichier importé :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez les deux fichiers <code class="fichier">mon_module.py</code> et <code class="fichier">programme_principal.py</code> et copiez/collez y leurs codes.</p>
+<ol>
+<li>exécutez le fichier <code class="fichier">programme_principal.py</code> pour voir s'afficher <code class="language-">42</code></li>
+<li>Ajouter dans le fichier <code class="fichier">mon_module.py</code> une ligne avec l'instruction <code class="language-">print(&quot;coucou de l'import&quot;)</code> puis exécutez le fichier <code class="fichier">programme_principal.py</code>.</li>
+</ol>
+<p>Vous devriez voir s'afficher <code>&quot;coucou de l'import&quot;</code> à l'écran, ce qui prouve que chaque ligne du fichier <code class="fichier">mon_module.py</code> est exécuté à l'import.</p>
+</div>
+</div>
+<h2>Exécution du fichier module</h2>
 <blockquote>
-<p>TBD : <code>globals()</code></p>
-</blockquote>
-<blockquote>
-<p>si module python, parfois un fichier reel : random, parfois un so. math par un réel fichier mais quelque chose de compilé pour aller plus vite</p>
-</blockquote>
-<h3>Exécution du fichier module</h3>
-<blockquote>
-<p>TBD : mettre un print<br>
-python -m module<br>
+<p>python -m pip <a href="https://docs.python.org/fr/3/using/cmdline.html">https://docs.python.org/fr/3/using/cmdline.html</a><br>
+python -m random alors que rien n'est affiché à l'import<br>
 différence entre exécution et import -&gt; cout du if name == main</p>
 </blockquote>
-<h2>Modules python et dossiers</h2>
+<h2>Modules python et <em>packages</em></h2>
 <blockquote>
 <p>on a vu avec un fichier et l'espace de nom associé<br>
 parfois nested. Travailler avec des dossiers et <code class="fichier">__init__.py</code></p>
