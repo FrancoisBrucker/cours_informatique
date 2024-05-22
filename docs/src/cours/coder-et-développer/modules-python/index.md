@@ -98,29 +98,123 @@ Créez les deux fichiers `mon_module.py`{.fichier} et `programme_principal.py`{.
 Vous devriez voir s'afficher `"coucou de l'import"` à l'écran, ce qui prouve que chaque ligne du fichier `mon_module.py`{.fichier} est exécuté à l'import.
 {% endfaire %}
 
-## Exécution du fichier module
+## Exécution de modules
 
-> python -m pip <https://docs.python.org/fr/3/using/cmdline.html>
-> python -m random alors que rien n'est affiché à l'import
-> différence entre exécution et import -> cout du if name == main
+### Exécution d'un module comme un programme
+
+On peut utiliser l'interpréteur python pour exécuter un module. Par exemple notre fichier `mon_module.py`{.fichier} précédent :
+
+```shell
+python mon_module.py
+```
+
+Il n'y a pas de différence fondamentale entre un programme et un module en python. C'est juste un programme dont on garde trace de son espace de noms `global`{.language-} après exécution.
+
+### Exécution d'un module python
+
+Pour exécuter un module python, il n'est pas nécessaire de connaître son emplacement, on peut utiliser l'option `-m` de l'interpréteur python.
+
+{% lien %}
+[Option `-m` de l'interpréteur Python](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m)
+{% endlien %}
+
+On l'a déjà fait à de multiples reprises en utilisant le module pip :
+
+```shell
+python -m pip
+```
+
+Le résultat de la commande précédente dans le terminal affichera l'aide de `pip`{.fichier}.
+
+{% faire %}
+Exécutez le module `random`{.language-} de python dans le terminal avec la commande : `python -m random`.
+{% endfaire %}
+
+Si vous exécutez le module python `random`{.language-}, vous verrez s'afficher tout un tas de choses sur l'écran :
+
+```shell
+$ python -m random
+
+0.000 sec, 10000 times random()
+avg 0.498948, stddev 0.285393, min 1.74181e-05, max 0.999923
+
+0.003 sec, 10000 times normalvariate(0.0, 1.0)
+avg -0.00160272, stddev 1.00174, min -3.42565, max 3.90493
+
+0.003 sec, 10000 times lognormvariate(0.0, 1.0)
+avg 1.64736, stddev 2.19193, min 0.0147119, max 65.9514
+
+0.004 sec, 10000 times vonmisesvariate(0.0, 1.0)
+avg 3.11325, stddev 2.28549, min 0.000433248, max 6.28223
+
+0.009 sec, 10000 times binomialvariate(15, 0.6)
+avg 8.9936, stddev 1.89413, min 2, max 15
+
+[...]
+```
+
+Ces lignes montrent le temps mis pour générer des nombres aléatoires selon plusieurs lois de probabilités.
+
+Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?
+
+### Variable `__name__`{.language-}
+
+{% lien %}
+[`__name__`{.language-} et `__main__`{.language-} en python](https://docs.python.org/fr/3.12/library/__main__.html)
+{% endlien %}
+
+Python distingue les deux types d'exécutions d'un programme via la variable spéciale `__name__`{.language-} :
+
+- elle vaut la chaîne de caractères `"__main__"`{.language-} si le fichier est exécuté directement
+- elle vaut le nom du fichier s'il est exécuté via un import
+
+{% faire %}
+Créez un fichier nommé `test_exécution.py`{.fichier} et copiez/collez y le code suivant :
+
+```python
+print(__name__)
+```
+
+Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code `import test_exécution`{.language-}.
+{% endfaire %}
+
+Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :
+
+```python
+# code pouvant être importé
+
+if __name__ == "__main__":
+    # code du programme principal
+```
 
 ## Modules python et _packages_
 
-> on a vu avec un fichier et l'espace de nom associé
-> parfois nested. Travailler avec des dossiers et `__init__.py`{.fichier}
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_.
 
-> tout un tas lui même (math, pathlib, etc) et on peut en installer d'autre avec pip.
-> aller sur le site de pip pour voir tous les modules installés
-> On peut facilement ajouter des modules à pip.
+{% lien %}
+[_package_ en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
+{% endlien %}
 
-### Installation et usage
+Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
 
-> dépendant de l'interpréteur python
-> c'est pourquoi on les installe via celui ci et pas directement avec pip qui peut être lié à un tout autre interpréteur.
+{% note %}
+Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
 
-### Où sont les modules ?
+- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
 
-Les dossiers où python va cherchez les modules sont listés dans la variable `sys.path`.
+- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
+
+{% endnote %}
+
+L'import d'un fichier ou d'un dossier est ainsi résolu de la même manière par python.
+
+## Où sont les modules ?
+
+Les dossiers où python va cherchez les modules sont listés dans la variable `sys.path` et dépendent de l'interpréteur utilisé :
+
+{% attention %}
+Il faut installer les modules en utilisant `python -m pip` et non directement le programme `pip`, car l'interpréteur pour lequel sera installé le module est ainsi explicite.
+{% endattention %}
 
 vous pouvez le voir en exécutant le code :
 

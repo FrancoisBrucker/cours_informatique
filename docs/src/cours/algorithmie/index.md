@@ -47,12 +47,21 @@ L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreus
 > TBD pas exécuté directement. Traduit en un autre langage compréhensible par ce qui va l'exécuter. 
 > TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <https://docs.python.org/fr/3/library/dis.html> ou <https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html>) qui est lui-même exécuté par une machine virtuelle.
 
+#### Circuits logique
+
+> tout est basé sur les opérations booléennes, logiques car algorithme = fonction booléenne.
+
+> <https://people.csail.mit.edu/rrw/week1.pdf>
+> <https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter9.pdf>
+> sert pour la dé-randomisation : <https://www.youtube.com/watch?v=mZck0N_T9Cs>
+> 
+> Gros : <https://en.wikipedia.org/wiki/Circuit_complexity#History>
+> TBD circuit logiques ?
+
 #### Modèle de Von Neumann
 
 > TBD : le langage de la machine
-> tout est basé sur les opérations booléennes, logiques.
-
-> TBD circuit logiques ?
+>
 
 #### Machines de Turing
 
@@ -77,6 +86,7 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 > TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
 > TBD MTU = langage universel
+> TBD : brainfuck et interpréteur en python. Permet de parler de machine de turing universelle
 
 ## Complexités
 

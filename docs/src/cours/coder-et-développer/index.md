@@ -142,31 +142,11 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 [Modules python](modules-python){.interne}
 {% endaller %}
 
-> TBD avant de parler de poetry, il faut parler des `__init__`
-
 ### Modules et projets
 
-> TBD C'est un vrai soucis. plusieurs projet avec des modules pythons incompatibles, ou des modules inutiles pour certains projets. 
-> TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaque projet.
-Environnement d'exécution.
-
-> dépendances dans un projet
-
-#### Environnements virtuels
-
-> TBD venv
-
-<https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe>
-> <https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t>
-<https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html>
-<https://python-poetry.org/>
-<https://linuxfr.org/news/python-partie-7-environnements-virtuels>
-
-#### poetry
-
-plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.
-
-> Gestions des dépendances d'un projet.
+{% aller %}
+[Modules et projets](modules-projets){.interne}
+{% endaller %}
 
 ## Stockage des données
 
