@@ -134,16 +134,7 @@
 <p>Il faut installer un interpréteur spécifique pour chaque projet python. On appelle ceci un <a href="https://en.wikipedia.org/wiki/Virtual_environment_software">environnement virtuel</a></p>
 </div>
 </div>
-<h3>module <code class="language-">venv</code></h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/venv.html">Module <code class="language-">venv</code></a></p>
-</div>
-</div>
-<p>Il existe plusieurs modules permettant de créer et/ou gérer des environnements virtuels, nous allons utiliser ici celui fourni par python : <code class="language-">venv</code>.</p>
+<p>On va montrer comment installer puis utiliser un environnement virtuel. Pour cela, créons un projet vscode qui nous permettra de tester tout ça.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -165,10 +156,24 @@
 </div>
 </div>
 <p>Vous pouvez exécuter le fichier <code class="fichier">main.py</code> pour connaître le chemin vers l'interpréteur utilisé. Dans mon cas, lorsque j'exécute le fichier via un terminal j'obtiens :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python main.py
-/opt/homebrew/opt/python@3.12/bin/python3.12
-
-</code></pre>
+<p><img src="virt-1.png" alt="code exécution"></p>
+<p>Si j'utilise l'interpréteur de vscode, j'obtiens en appuyant sur le triangle d'exécution :</p>
+<p><img src="vs-code-1.png" alt="code exécution"></p>
+<p>Remarquez que :</p>
+<ul>
+<li>un nouveau terminal a été crée par vscode pour ses exécutions</li>
+<li>que le nom correspond à celui du bas.</li>
+</ul>
+<h3>Création</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/library/venv.html">Module <code class="language-">venv</code></a></p>
+</div>
+</div>
+<p>Il existe plusieurs modules permettant de créer et/ou gérer des environnements virtuels, nous allons utiliser ici celui fourni par python : <code class="language-">venv</code>.</p>
 <p>Installons un nouvel interpréteur dans le dossier du projet.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,10 +208,7 @@
 </div>
 </div>
 <p>Dans mon cas, j'obtiens :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ venv/bin/python main.py
-/Users/fbrucker/Documents/projets/environnement_virtuel/venv/bin/python
-
-</code></pre>
+<p><img src="virt-2.png" alt="code exécution"></p>
 <p>Ce n'est bien plus le même interpréteur qui a exécuté notre fichier.</p>
 <p>Les packages installés sont visible en utilisant le module pip pour le nouvel interpréteur :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ venv/bin/python <span class="token parameter variable">-m</span> pip list
@@ -233,29 +235,115 @@ wcwidth           <span class="token number">0.2</span>.13
 wheel             <span class="token number">0.43</span>.0
 
 </code></pre>
-<blockquote>
-<p>TBD activate avec le terminal ou vscode.</p>
-</blockquote>
-<blockquote>
-<p>liste des packages pour s'en rappeler et ne donner que cette liste et le code, pas l'environnement virtuel.</p>
-<p>dire qu'on peut faire mieux avec un outil dedié, poetry.</p>
-</blockquote>
-<p><a href="https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe">https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe</a></p>
-<blockquote>
-<p><a href="https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t">https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t</a><br>
-<a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html">https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html</a></p>
-</blockquote>
-<p><a href="https://medium.com/@sukul.teradata/understanding-python-virtual-environments-using-venv-and-virtualenv-283f37d24b13">https://medium.com/@sukul.teradata/understanding-python-virtual-environments-using-venv-and-virtualenv-283f37d24b13</a><br>
-<a href="https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html">https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html</a><br>
-<a href="https://linuxfr.org/news/python-partie-7-environnements-virtuels">https://linuxfr.org/news/python-partie-7-environnements-virtuels</a></p>
-<h2>poetry</h2>
-<ol start="3">
-<li>requierment.txt pour sauver les modules utilisés ainsi que leurs versions.</li>
+<h3>Utilisation</h3>
+<p>Il est possible, mais peu pratique d'utiliser l'environnement virtuel comme on l'a fait précédemment, uniquement en précisant le bon interpréteur dans le terminal.</p>
+<p>On va voir deux façons de procéder pour rendre le processus plus fluide : avec vscode, puis directement avec le terminal.</p>
+<h4>Avec vscode</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous avez déjà exécuté le code python avec le triangle d'exécution, supprimez le terminal nommé <code>Python</code> en :</p>
+<ol>
+<li>affichant les terminaux avec la commande <code>Affichage &gt; Terminal</code></li>
+<li>si vous avez exécuté du code python avec le triangle d'exécution de vscode, vous devriez avoir un terminal nommé <code>Python</code></li>
+<li>cliquant sur la poubelle à côté de son nom</li>
 </ol>
+<p>S'il n'y a qu'un terminal, son nom est au-dessus :</p>
+<p><img src="vscode-1-terminal.png" alt="vs code 1 terminal"></p>
+<p>S'il y en a plusieurs, son nom est à côté :</p>
+<p><img src="vscode-plusieurs-terminaux.png" alt="vs code 1 terminal"></p>
+</div>
+</div>
+<p>Vous pouvez utilisez votre nouvel environnement virtuel directement avec vscode en changeant l'interpréteur du projet.</p>
+<p><img src="vs-code-activation-1.png" alt="vs code activation"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Remarquez que vous pouvez directement créer un environnement virtuel avec vscode.</p>
+<p>Par défaut il le créera dans le dossier <code class="fichier">.venv</code>, qui commence par un <code class="fichier">.</code> et est donc un fichier caché.</p>
+</div>
+</div>
+<p>Vous pouvez maintenant utiliser le triangle d'exécution pour utiliser l'environnement virtuel :</p>
+<p><img src="vs-code-activation-2.png" alt="vs code activation"></p>
+<p><strong>Si</strong> vous avez créez le terminal avec l'exécution du fichier avec le nouvel interpréteur, vscode a <strong><em>activé</em></strong> l'environnement virtuel, c'est à dire que si vous tapez <code>python</code> dans le terminal, ce sera celui de l'environnement virtuel et non plus celui par défaut :</p>
+<p><img src="vs-code-activation-3.png" alt="vs code activation"></p>
+<p>Ce n'est bien sur vrai <strong><em>que</em></strong> pour ce terminal. Les autres terminaux, ou les nouveaux que vous créez, auront toujours le python par défaut :</p>
+<h4>Avec le terminal</h4>
+<p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work">une commande qui dépend de votre environnement</a> :</p>
+<ul>
+<li>sous mac : <code>source venv/bin/activate</code></li>
+<li>sous windows : <code>venv\Scripts\Activate.ps1</code></li>
+</ul>
+<p>Chez moi cela donne :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python main.py
+/opt/homebrew/opt/python@3.12/bin/python3.12
+$ <span class="token builtin class-name">source</span> venv/bin/activate
+$ python main.py
+/Users/fbrucker/Documents/temp/environnement_virtuel/venv/bin/python3
+</code></pre>
+<p>Après activation, en tapant <code>python</code>, c'est bien l'environnement virtuel qui est exécuté.</p>
+<p>Cette transformation est liée au terminal. Si vous en changez, il faudra re activer l'environnement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><strong><em>Activer</em></strong> un environnement, c'est associer le programme python avec l'environnement virtuel pour le terminal dans laquelle la commande est exécutée.</p>
+</div>
+</div>
+<h3>Partage</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://pip.pypa.io/en/stable/cli/pip_freeze/">Documentation de la commande <code>pip freeze</code></a></p>
+</div>
+</div>
+<p>Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.</p>
+<p>On procède alors comme suit :</p>
+<ol>
+<li>on installe un à un tous les modules nécessaires à notre projet avec l'interpréteur de l'environnement virtuel. Comme rien n'est installé initialement, seuls les modules utiles au projet sont installés</li>
+<li>on utilise une commande de <code>pip</code> qui sauvegarde tous les modules dans un fichier nommé <code class="fichier">requirement.txt</code> : <code>venv/bin/python -m pip freeze &gt; requirements.txt</code></li>
+</ol>
+<p>La commande précédente a créée un fichier <code class="fichier">requirements.txt</code> qui contient tous les modules installés.</p>
+<p>Par exemple chez moi, j'ai juste installé le module <code class="language-">pytest</code> et mon fichier requirements.txt est :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">iniconfig==2.0.0
+packaging==24.0
+pluggy==1.5.0
+pytest==8.2.1
+</code></pre>
+<p>Il contient le module <code class="language-">pytest</code>, ses dépendances et les versions installées.</p>
+<p>Pour partager votre code, vous n'avez qu'à donner le fichier <code class="fichier">requirements.txt</code> en plus de celui-ci. La personne recevant votre code :</p>
+<ol>
+<li>créera un nouvel environnement virtuel</li>
+<li>exécutera la commande <code>venv/bin/python -m pip install -r requirements.txt</code> qui installera tous les modules du fichier <code class="fichier">requirements.txt</code>.</li>
+</ol>
+<p>Le lien ci-dessous explicite le format du fichier <code class="fichier">requirements.txt</code> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers">Spécification des modules</a></p>
+</div>
+</div>
+<h2>Poetry</h2>
+<p>La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://python-poetry.org/">https://python-poetry.org/</a></p>
-<p>plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.</p>
+</div>
+</div>
 <blockquote>
-<p>Gestions des dépendances d'un projet.</p>
+<p>TBD : faire un exemple</p>
 </blockquote>
 
 
