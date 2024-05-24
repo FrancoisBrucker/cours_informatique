@@ -54,34 +54,41 @@ Pour que chaque projet ait ses propres modules d'installer pour éviter les inco
 Il faut installer un interpréteur spécifique pour chaque projet python. On appelle ceci un [environnement virtuel](https://en.wikipedia.org/wiki/Virtual_environment_software)
 {% endnote %}
 
-### module `venv`{.language-}
-
-{% lien %}
-[Module `venv`{.language-}](https://docs.python.org/fr/3/library/venv.html)
-{% endlien %}
-
-Il existe plusieurs modules permettant de créer et/ou gérer des environnements virtuels, nous allons utiliser ici celui fourni par python : `venv`{.language-}.
+On va montrer comment installer puis utiliser un environnement virtuel. Pour cela, créons un projet vscode qui nous permettra de tester tout ça.
 
 {% faire %}
 
 1. Créez un nouveau projet avec vscode que vous placerez dans un dossier nommé `environnement_virtuel/`{.fichier}.
 2. Créez un fichier `main.py`{.fichier} contenant le code :
 
-    ```python
-    import sys
+   ```python
+   import sys
 
-    print(sys.executable)
-    ```
+   print(sys.executable)
+   ```
 
 {% endfaire %}
 
 Vous pouvez exécuter le fichier `main.py`{.fichier} pour connaître le chemin vers l'interpréteur utilisé. Dans mon cas, lorsque j'exécute le fichier via un terminal j'obtiens :
 
-```shell
-$ python main.py
-/opt/homebrew/opt/python@3.12/bin/python3.12
+![code exécution](./virt-1.png)
 
-```
+Si j'utilise l'interpréteur de vscode, j'obtiens en appuyant sur le triangle d'exécution :
+
+![code exécution](./vs-code-1.png)
+
+Remarquez que :
+
+- un nouveau terminal a été crée par vscode pour ses exécutions
+- que le nom correspond à celui du bas.
+
+### Création
+
+{% lien %}
+[Module `venv`{.language-}](https://docs.python.org/fr/3/library/venv.html)
+{% endlien %}
+
+Il existe plusieurs modules permettant de créer et/ou gérer des environnements virtuels, nous allons utiliser ici celui fourni par python : `venv`{.language-}.
 
 Installons un nouvel interpréteur dans le dossier du projet.
 
@@ -116,11 +123,7 @@ venv/bin/python main.py
 
 Dans mon cas, j'obtiens :
 
-```shell
-$ venv/bin/python main.py
-/Users/fbrucker/Documents/projets/environnement_virtuel/venv/bin/python
-
-```
+![code exécution](./virt-2.png)
 
 Ce n'est bien plus le même interpréteur qui a exécuté notre fichier.
 
@@ -155,29 +158,119 @@ wheel             0.43.0
 
 ```
 
-> TBD activate avec le terminal ou vscode.
+### Utilisation
 
->
-> liste des packages pour s'en rappeler et ne donner que cette liste et le code, pas l'environnement virtuel.
->
-> dire qu'on peut faire mieux avec un outil dedié, poetry.
->
+Il est possible, mais peu pratique d'utiliser l'environnement virtuel comme on l'a fait précédemment, uniquement en précisant le bon interpréteur dans le terminal.
 
-<https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe>
-> <https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t>
-<https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html>
+On va voir deux façons de procéder pour rendre le processus plus fluide : avec vscode, puis directement avec le terminal.
 
-<https://medium.com/@sukul.teradata/understanding-python-virtual-environments-using-venv-and-virtualenv-283f37d24b13>
-<https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html>
-<https://linuxfr.org/news/python-partie-7-environnements-virtuels>
+#### Avec vscode
 
-## poetry
+{% attention %}
+Si vous avez déjà exécuté le code python avec le triangle d'exécution, supprimez le terminal nommé `Python` en :
 
-3. requierment.txt pour sauver les modules utilisés ainsi que leurs versions.
+1. affichant les terminaux avec la commande `Affichage > Terminal`
+2. si vous avez exécuté du code python avec le triangle d'exécution de vscode, vous devriez avoir un terminal nommé `Python`
+3. cliquant sur la poubelle à côté de son nom
 
+S'il n'y a qu'un terminal, son nom est au-dessus :
 
+![vs code 1 terminal](./vscode-1-terminal.png)
+
+S'il y en a plusieurs, son nom est à côté :
+
+![vs code 1 terminal](./vscode-plusieurs-terminaux.png)
+
+{% endattention %}
+
+Vous pouvez utilisez votre nouvel environnement virtuel directement avec vscode en changeant l'interpréteur du projet.
+
+![vs code activation](./vs-code-activation-1.png)
+
+{% info %}
+Remarquez que vous pouvez directement créer un environnement virtuel avec vscode.
+
+Par défaut il le créera dans le dossier `.venv`{.fichier}, qui commence par un `.`{.fichier} et est donc un fichier caché.
+{% endinfo %}
+
+Vous pouvez maintenant utiliser le triangle d'exécution pour utiliser l'environnement virtuel :
+
+![vs code activation](./vs-code-activation-2.png)
+
+**Si** vous avez créez le terminal avec l'exécution du fichier avec le nouvel interpréteur, vscode a **_activé_** l'environnement virtuel, c'est à dire que si vous tapez `python` dans le terminal, ce sera celui de l'environnement virtuel et non plus celui par défaut :
+
+![vs code activation](./vs-code-activation-3.png)
+
+Ce n'est bien sur vrai **_que_** pour ce terminal. Les autres terminaux, ou les nouveaux que vous créez, auront toujours le python par défaut :
+
+#### Avec le terminal
+
+On peut activer l'environnement virtuel à la main grace à [une commande qui dépend de votre environnement](https://docs.python.org/3/library/venv.html#how-venvs-work) :
+
+- sous mac : `source venv/bin/activate`
+- sous windows : `venv\Scripts\Activate.ps1`
+
+Chez moi cela donne :
+
+```shell
+$ python main.py
+/opt/homebrew/opt/python@3.12/bin/python3.12
+$ source venv/bin/activate
+$ python main.py
+/Users/fbrucker/Documents/temp/environnement_virtuel/venv/bin/python3
+```
+
+Après activation, en tapant `python`, c'est bien l'environnement virtuel qui est exécuté.
+
+Cette transformation est liée au terminal. Si vous en changez, il faudra re activer l'environnement.
+
+{% note %}
+**_Activer_** un environnement, c'est associer le programme python avec l'environnement virtuel pour le terminal dans laquelle la commande est exécutée.
+{% endnote %}
+
+### Partage
+
+{% lien %}
+[Documentation de la commande `pip freeze`](https://pip.pypa.io/en/stable/cli/pip_freeze/)
+{% endlien %}
+
+Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.
+
+On procède alors comme suit :
+
+1. on installe un à un tous les modules nécessaires à notre projet avec l'interpréteur de l'environnement virtuel. Comme rien n'est installé initialement, seuls les modules utiles au projet sont installés
+2. on utilise une commande de `pip` qui sauvegarde tous les modules dans un fichier nommé `requirement.txt`{.fichier} : `venv/bin/python -m pip freeze > requirements.txt`
+
+La commande précédente a créée un fichier `requirements.txt`{.fichier} qui contient tous les modules installés.
+
+Par exemple chez moi, j'ai juste installé le module `pytest`{.language-} et mon fichier requirements.txt est :
+
+```text
+iniconfig==2.0.0
+packaging==24.0
+pluggy==1.5.0
+pytest==8.2.1
+```
+
+Il contient le module `pytest`{.language-}, ses dépendances et les versions installées.
+
+Pour partager votre code, vous n'avez qu'à donner le fichier `requirements.txt`{.fichier} en plus de celui-ci. La personne recevant votre code :
+
+1. créera un nouvel environnement virtuel
+2. exécutera la commande `venv/bin/python -m pip install -r requirements.txt` qui installera tous les modules du fichier `requirements.txt`{.fichier}.
+
+Le lien ci-dessous explicite le format du fichier `requirements.txt`{.fichier} :
+
+{% lien %}
+[Spécification des modules](https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers)
+{% endlien %}
+
+## Poetry
+
+La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :
+
+{% lien %}
 <https://python-poetry.org/>
+{% endlien %}
 
-plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.
-
-> Gestions des dépendances d'un projet.
+> TBD : faire un exemple
