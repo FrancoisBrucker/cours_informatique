@@ -1,9 +1,9 @@
 ---
 layout: layout/post.njk 
-title: "S5 : [Programmation] Système"
+title: "[Programmation] Système"
 
 eleventyNavigation:
-  order: 3
+  order: 4
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,6 +12,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 
 ---
+
+> TBD : old. A mettre dans un cours et supprimer de l'enseignement.
 
 Objectif : Le but de cette UE est d’acquérir les connaissances nécessaires en programmation bas-niveau et système.
 

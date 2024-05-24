@@ -88,3 +88,31 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 - la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)
 
 {% endnote %}
+
+## Variantes
+
+> TBD <https://www.youtube.com/watch?v=_W0yUJlscRA>
+>
+
+Sélection est identique à l'algorithme ci-dessous :
+
+```python#
+def sélection(T):
+    for i in range(len(T)):
+        for j in range(i + 1, len(T)):
+            if T[j] < T[i]:
+                T[i], T[j] = T[j], T[i]
+```
+
+Pourquoi ?
+
+Et celui ci tri dans le sens opposé :
+
+```python#
+def sélection(T):
+    for i in range(len(T)):
+        for j in range(len(T)):
+            if T[j] < T[i]:
+                T[i], T[j] = T[j], T[i]
+
+pourquoi ?

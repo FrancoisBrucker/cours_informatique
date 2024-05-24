@@ -327,9 +327,11 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 [Listes](/cours/algorithmie/structure-conteneurs/liste){.interne}
 {% endaller %}
 {% aller %}
+
 1. [fonction de hachage](/cours/algorithmie/structure-conteneurs/fonctions-hash){.interne}
 2. [tableau associatif](/cours/algorithmie/structure-conteneurs/tableau-associatif){.interne}
 3. [Dictionnaires de python](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/){.interne}
+
 {% endaller %}
 
 #### Vendredi : Programmation dynamique
@@ -368,7 +370,10 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 
 ### Semaine 14 : Fichiers texte
 
+> TBD : pour 2024-25, à mettre en premier dans la partie développement. Y ajouter la partie interpréteur.
+
 {% aller %}
+
 1. [Qu'est-ce qu'un fichier](/cours/coder-et-développer/fichiers/structure){.interne}
 2. [fichiers texte](/cours/coder-et-développer/fichiers/fichiers-texte){.interne}
 3. [Encodage du texte](/cours/coder-et-développer/encodage-unicode/){.interne}
@@ -380,6 +385,7 @@ Test de 15min en début de cours consacré à **programmation objet**. Il faudra
 Dernière semaine de cours. Le début de la séance sera consacrée aux questions et retour sur le cours, puis on terminera la séance sur la suite des fichiers.
 
 {% aller %}
+
 1. [Dossiers et chemins en python](/cours/coder-et-développer/fichiers/dossiers-et-chemins/){.interne}
 2. [Stocker ses données dans un fichier texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
 {% endaller %}
