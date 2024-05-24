@@ -97,26 +97,162 @@
 <li>ceux liés à l'exécution du programme, comme pyglet, matplotlib ou encore numpy</li>
 <li>ceux liés au développement comme pytest</li>
 </ul>
+<p>La gestion de ces modules peut s'avérer fastidieuse car :</p>
+<ol>
+<li>si vous partagez votre code, il faut une liste des modules dont dépend votre projet pour être utilisé et qu'il faut installer</li>
+<li>il faut faire attention aux versions car un changement de version d'un module peut entraîner des changements dans son comportement et casser votre projet</li>
+</ol>
+<p>La première solution qui vient à l'esprit est de distribuer les modules en même temps que votre projet, dans un dossier dédié. C'est cependant une <strong>très mauvaise idée</strong> ! En effet :</p>
+<ul>
+<li>vous vous privez des développements futurs et des corrections de bug des modules. Il vous faut redistribuer votre projet à chaque mise à jour des modules, en plus de chaque mise à jour de votre code</li>
+<li>vous perdez de la place et si vous utilisez un contrôleur de version (comme git) vous allez à la fois stocker votre code et du code tierce.</li>
+<li>certains modules peuvent être compliqué à installer et dépendent de bibliothèque de votre système. Copier leur code uniquement ne suffira pas à les installer proprement</li>
+</ul>
+<p>Les remarques ci-dessus mènent à une unique conclusion :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut utiliser un outil de gestion des dépendances qui s'occupera d'installer, de maintenir à jour et d'éviter les incompatibilités d'une liste de modules dont dépend le projet.</p>
+</div>
+</div>
+<h2>Environnement Virtuel</h2>
+<p>Python ajoute une contrainte supplémentaire à la gestion des dépendances : les modules dépendent d'un interpréteur.</p>
+<p>Si l'on a plusieurs interpréteurs installés, on peut avoir un module installé pour 1 interpréteur mais pas pour un autre. Pour s'assurer d'installer un module pour le bon interpréteur on utilise <code>pip</code> avec celui-ci en utilisant la commande (que l'on a utilisée à chaque installation de module) :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token punctuation">[</span>nom de l'interpréteur<span class="token punctuation">]</span> <span class="token parameter variable">-m</span> pip <span class="token function">install</span> <span class="token punctuation">[</span>nom <span class="token function">du</span> module<span class="token punctuation">]</span>
+</code></pre>
+<p>Si l'on veut par exemple installer le module <code class="language-">numpy</code> pour l'interpréteur python dans le dossier <code>/usr/bin/</code> on utilise la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> numpy
+</code></pre>
+<p>Pour que chaque projet ait ses propres modules d'installer pour éviter les incompatibilités, il n'y a qu'une solution :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut installer un interpréteur spécifique pour chaque projet python. On appelle ceci un <a href="https://en.wikipedia.org/wiki/Virtual_environment_software">environnement virtuel</a></p>
+</div>
+</div>
+<h3>module <code class="language-">venv</code></h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/library/venv.html">Module <code class="language-">venv</code></a></p>
+</div>
+</div>
+<p>Il existe plusieurs modules permettant de créer et/ou gérer des environnements virtuels, nous allons utiliser ici celui fourni par python : <code class="language-">venv</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>
+<p>Créez un nouveau projet avec vscode que vous placerez dans un dossier nommé <code class="fichier">environnement_virtuel/</code>.</p>
+</li>
+<li>
+<p>Créez un fichier <code class="fichier">main.py</code> contenant le code :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>executable<span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ol>
+</div>
+</div>
+<p>Vous pouvez exécuter le fichier <code class="fichier">main.py</code> pour connaître le chemin vers l'interpréteur utilisé. Dans mon cas, lorsque j'exécute le fichier via un terminal j'obtiens :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python main.py
+/opt/homebrew/opt/python@3.12/bin/python3.12
+
+</code></pre>
+<p>Installons un nouvel interpréteur dans le dossier du projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un terminal, assurez vous d'être dans le dossier du projet (<code class="fichier">environnement_virtuel/</code>), puis tapez la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> venv venv/
+</code></pre>
+</div>
+</div>
+<p>La commande précédente va utiliser le module <code class="language-">venv</code> de python pour créer tout ce qui est nécessaire à un environnement virtuel dans le dossier <code class="fichier">venv/</code> du projet.</p>
 <blockquote>
-<p>TBD C'est un vrai soucis. plusieurs projet avec de`s modules pythons incompatibles, ou des modules inutiles pour certains projets.<br>
-TBD : pour éviter les soucis. il faut n'avoir que les modules utiles pour chaque projet.<br>
-Environnement d'exécution.</p>
+<p>TBD : vérifier avec windows 11.</p>
+</blockquote>
+<p>Pour python un environnement virtuel contient :</p>
+<ul>
+<li>un interpréteur : <code class="fichier">venv/bin/python</code></li>
+<li>ses modules associés : <code class="fichier">venv/lib/python3.12/site-packages/</code> (chez moi. Vous aurez peut-être une autre version de python). A priori, il n'y a que pip d'installé en plus des modules livrés directement avec python</li>
+</ul>
+<p>Pour utiliser le nouvel interpréteur, on donne son chemin :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans un terminal, assurez vous d'être dans le dossier du projet (<code class="fichier">environnement_virtuel/</code>), puis tapez la commande :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">venv/bin/python main.py
+</code></pre>
+</div>
+</div>
+<p>Dans mon cas, j'obtiens :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ venv/bin/python main.py
+/Users/fbrucker/Documents/projets/environnement_virtuel/venv/bin/python
+
+</code></pre>
+<p>Ce n'est bien plus le même interpréteur qui a exécuté notre fichier.</p>
+<p>Les packages installés sont visible en utilisant le module pip pour le nouvel interpréteur :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ venv/bin/python <span class="token parameter variable">-m</span> pip list
+Package Version
+------- -------
+pip     <span class="token number">24.0</span>
+</code></pre>
+<p>À comparer avec les modules installés pour l'interpréteur classique :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python <span class="token parameter variable">-m</span> pip list
+Package           Version
+----------------- -----------
+appnope           <span class="token number">0.1</span>.4
+asttokens         <span class="token number">2.4</span>.1
+cffi              <span class="token number">1.16</span>.0
+<span class="token function">comm</span>              <span class="token number">0.2</span>.2
+contourpy         <span class="token number">1.2</span>.1
+cycler            <span class="token number">0.12</span>.1
+
+<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+tornado           <span class="token number">6.4</span>
+traitlets         <span class="token number">5.14</span>.2
+wcwidth           <span class="token number">0.2</span>.13
+wheel             <span class="token number">0.43</span>.0
+
+</code></pre>
+<blockquote>
+<p>TBD activate avec le terminal ou vscode.</p>
 </blockquote>
 <blockquote>
-<p>dépendances dans un projet</p>
-</blockquote>
-<h4>Environnements virtuels</h4>
-<blockquote>
-<p>TBD venv</p>
+<p>liste des packages pour s'en rappeler et ne donner que cette liste et le code, pas l'environnement virtuel.</p>
+<p>dire qu'on peut faire mieux avec un outil dedié, poetry.</p>
 </blockquote>
 <p><a href="https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe">https://stackoverflow.com/questions/41573587/what-is-the-difference-between-venv-pyvenv-pyenv-virtualenv-virtualenvwrappe</a></p>
 <blockquote>
 <p><a href="https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t">https://code.tutsplus.com/understanding-virtual-environments-in-python--cms-28272t</a><br>
-<a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html">https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html</a><br>
-<a href="https://python-poetry.org/">https://python-poetry.org/</a><br>
-<a href="https://linuxfr.org/news/python-partie-7-environnements-virtuels">https://linuxfr.org/news/python-partie-7-environnements-virtuels</a></p>
+<a href="https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html">https://python-guide-pt-br.readthedocs.io/fr/latest/dev/virtualenvs.html</a></p>
 </blockquote>
-<h4>poetry</h4>
+<p><a href="https://medium.com/@sukul.teradata/understanding-python-virtual-environments-using-venv-and-virtualenv-283f37d24b13">https://medium.com/@sukul.teradata/understanding-python-virtual-environments-using-venv-and-virtualenv-283f37d24b13</a><br>
+<a href="https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html">https://www.infoworld.com/article/3239675/virtualenv-and-venv-python-virtual-environments-explained.html</a><br>
+<a href="https://linuxfr.org/news/python-partie-7-environnements-virtuels">https://linuxfr.org/news/python-partie-7-environnements-virtuels</a></p>
+<h2>poetry</h2>
+<ol start="3">
+<li>requierment.txt pour sauver les modules utilisés ainsi que leurs versions.</li>
+</ol>
+<p><a href="https://python-poetry.org/">https://python-poetry.org/</a></p>
 <p>plutôt que de mettre les python alternatifs dans le projet, il les place tous au même endroit.</p>
 <blockquote>
 <p>Gestions des dépendances d'un projet.</p>

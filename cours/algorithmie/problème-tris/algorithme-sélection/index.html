@@ -171,6 +171,27 @@ $$
 </ul>
 </div>
 </div>
+<h2>Variantes</h2>
+<blockquote>
+<p>TBD <a href="https://www.youtube.com/watch?v=_W0yUJlscRA">https://www.youtube.com/watch?v=_W0yUJlscRA</a></p>
+</blockquote>
+<p>Sélection est identique à l'algorithme ci-dessous :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Pourquoi ?</p>
+<p>Et celui ci tri dans le sens opposé :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+pourquoi ?
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 </article>

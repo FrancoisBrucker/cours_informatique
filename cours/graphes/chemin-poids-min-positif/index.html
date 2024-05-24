@@ -554,6 +554,9 @@ Retour <span class="token punctuation">:</span>
 </details>     
 </div>
 <h2><span id="a-star"></span> $A^\star$</h2>
+<blockquote>
+<p>TBD : <a href="https://www.youtube.com/watch?v=A60q6dcoCjw">https://www.youtube.com/watch?v=A60q6dcoCjw</a></p>
+</blockquote>
 <p>Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est <a href="https://fr.wikipedia.org/wiki/Algorithme_A*">l'algorithme $A^\star$</a>, qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors <em>rapidement</em> une solution <em>acceptable</em> plutôt qu'obtenir <em>lentement</em> une solution optimale.</p>
 <p>Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 22"><code class="language-python">        <span class="token comment"># ajout d'un élément à la structure</span>
