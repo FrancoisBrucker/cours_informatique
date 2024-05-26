@@ -208,11 +208,23 @@ page <span class="token operator">=</span> requests<span class="token punctuatio
 
 <span class="token keyword">import</span> requests
 
-<span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">"mon_fichier.py"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span><span class="token punctuation">)</span>
-    f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"mon_fichier.py"</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
-    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>page<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+URL <span class="token operator">=</span> <span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span>
+NOM_FICHIER_LOCAL <span class="token operator">=</span> <span class="token string">"madame_bovary.txt"</span>
+
+texte <span class="token operator">=</span> <span class="token string">""</span>
+
+<span class="token keyword">if</span> <span class="token keyword">not</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>NOM_FICHIER_LOCAL<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>URL<span class="token punctuation">)</span>
+    texte <span class="token operator">=</span> page<span class="token punctuation">.</span>text
+
+    f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>NOM_FICHIER_LOCAL<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>texte<span class="token punctuation">)</span>
     f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>NOM_FICHIER_LOCAL<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+    texte <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
 </code></pre>
 
 
