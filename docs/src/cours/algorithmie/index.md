@@ -76,6 +76,13 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 #### Lambda calcul
 
 > TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique
+> Catégories et types : <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>, <https://ncatlab.org/nlab/show/computational+trilogy>
+> <https://www.youtube.com/watch?v=_n4LIt2WPzE>
+> Maths : <https://www.paultaylor.eu/~pt/prafm/index.html>
+> <https://www.haskell.org/> :
+> - intro : <https://www.youtube.com/watch?v=UhM_H3lFk_Q>
+> - playlist <https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV>
+> - livre : <https://learnyouahaskell.com/>
 
 #### Automates cellulaires
 

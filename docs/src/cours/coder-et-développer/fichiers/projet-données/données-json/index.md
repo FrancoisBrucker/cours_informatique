@@ -129,7 +129,7 @@ Lorsque l'on travaille avec des dates en informatique, il ne faut **JAMAIS** le 
 
 ### Dates en python
 
-En python, cette bibliothèque s'appelle [`datetime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html). Pour le sujet qui nous intéresse, on a besoin de transformer une chaine de caractères en date. Ceci est possible avec la méthode [`strptime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior).
+En python, cette bibliothèque s'appelle [`datetime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html). Pour le sujet qui nous intéresse, on a besoin de transformer une chaîne de caractères en date. Ceci est possible avec la méthode [`strptime`{.language-}](https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior).
 
 Si on veut par exemple convertir la date "01/04/2020 à 14h34" en date python, on passe la chaine de caractère et le format à [`strptime`{.language-}](https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior) :
 

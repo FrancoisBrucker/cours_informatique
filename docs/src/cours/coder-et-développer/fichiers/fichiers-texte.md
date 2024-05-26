@@ -26,7 +26,7 @@ dans le vieil étang,
 une grenouille saute,
 un ploc dans l'eau.
 
-Bashô.
+Basho.
 ```
 
 {% faire %}
@@ -73,7 +73,7 @@ Pour lire un fichier, il faut commencer par l'ouvrir avec la commande `open`{.la
 f = open("haiku.txt", "r", encoding="utf-8")
 ```
 
-Le résultat de cette instruciton est la création d'un opbjet de type fichier de nom `f`{.language-}.
+Le résultat de cette instruction est la création d'un objet de type fichier de nom `f`{.language-}.
 
 {% attention %}
 
@@ -131,7 +131,7 @@ f.write("1644-1694")
 f.close()
 ```
 
-On ajoute un retour à la ligne, puis les dates de naissance et de mort de Bashô.
+On ajoute un retour à la ligne, puis les dates de naissance et de mort de Basho.
 
 Notez qu'aller à la ligne est un caractère comme un autre (il s'écrit `\n` et vaut U+0010). Il fait partie des [caractères de contrôles](https://fr.wikipedia.org/wiki/Caract%C3%A8re_de_contr%C3%B4le) comme la tabulation ou le bip (essayez par exemple `print(chr(0x7))`{.language-}).
 

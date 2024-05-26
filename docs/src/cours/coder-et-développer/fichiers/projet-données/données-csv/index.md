@@ -24,7 +24,7 @@ Le format csv est utilisé pour stocker des données sous la forme d'une table. 
 Prénom, nom, note
 Harry, Cover, 12.5
 Alain, Bessil, 7
-Elvire, Sacuty, 15
+Elvire, Sacuti, 15
 Aimée, Nêms, 20
 Gordon, Zola, 10
 ```
@@ -80,7 +80,7 @@ Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fi
 Prénom, nom, note
 Harry, Cover, 12.5
 Alain, Bessil, 7
-Elvire, Sacuty, 15
+Elvire, Sacuti, 15
 Aimée, Nêms, 20
 Gordon, Zola, 10
 ```
@@ -166,36 +166,9 @@ En utilisant ce fichier csv :
 1. Quel est le format de ce fichier ?
 2. Ouvrez ce fichier et déterminez :
    - A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?
-   - donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans [google maps](https://www.google.fr/maps))
+   - Combien de fois apparaît la ville de Marseille dans le fichier ? Et pourquoi ?
 
 {% endfaire %}
-
-En utilisant le fait que le numéro du département est présent dans le code postal :
-
-{% faire %}
-Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.
-{% endfaire %}
-
-Puis triez le tout :
-
-{% faire %}
-Classez les départements par nombre de code postal
-{% endfaire %}
-
-Pour trier les éléments d'un tableau selon un autre ordre que l'ordre _naturel_ des éléments d'un tableau, vous pourrez adapter le bout de code suivant :
-
-```python
-def trie(x):
-    d = {"a": 5, "b": 1, "c": 3}
-    return d[x]
-
-l = ["a", "c", "b"]
-l.sort()
-print(l)
-
-l.sort(key=trie)
-print(l)
-```
 
 ### Prénoms
 
@@ -210,4 +183,12 @@ En utilisant ce fichier :
 1. Quel le prénom le plus donné chez les garçons et chez les filles l'année de votre naissance ? Et en 2022 ?
 2. Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)
 
+{% endfaire %}
+
+Utilisez-maintenant le fichier des prénoms ventilés par département :
+
+{% faire %}
+Créez un dictionnaire dont les clés sont le numéro de département et la valeur, le nombre de fois où votre prénom a été donné dans ce département pour toutes les années.
+
+Dans quel département votre prénom a-t-il été le plus donné ?
 {% endfaire %}
