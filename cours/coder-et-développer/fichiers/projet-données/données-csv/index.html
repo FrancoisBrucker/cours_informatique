@@ -99,7 +99,7 @@
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Prénom, nom, note
 Harry, Cover, 12.5
 Alain, Bessil, 7
-Elvire, Sacuty, 15
+Elvire, Sacuti, 15
 Aimée, Nêms, 20
 Gordon, Zola, 10
 </code></pre>
@@ -166,7 +166,7 @@ Gordon, Zola, 10
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Prénom, nom, note
 Harry, Cover, 12.5
 Alain, Bessil, 7
-Elvire, Sacuty, 15
+Elvire, Sacuti, 15
 Aimée, Nêms, 20
 Gordon, Zola, 10
 </code></pre>
@@ -260,44 +260,12 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 <li>Ouvrez ce fichier et déterminez :
 <ul>
 <li>A quel code postal est associé la charmante bourgade d'OTTERSWILLER ?</li>
-<li>donnez sa latitude et longitude (vous pourrez l'admirer en les copiant/collant dans <a href="https://www.google.fr/maps">google maps</a>)</li>
+<li>Combien de fois apparaît la ville de Marseille dans le fichier ? Et pourquoi ?</li>
 </ul>
 </li>
 </ol>
 </div>
 </div>
-<p>En utilisant le fait que le numéro du département est présent dans le code postal :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un dictionnaire dont les clés sont le numéro de département et la clé le nombre code postaux différents de ce département.</p>
-</div>
-</div>
-<p>Puis triez le tout :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Classez les départements par nombre de code postal</p>
-</div>
-</div>
-<p>Pour trier les éléments d'un tableau selon un autre ordre que l'ordre <em>naturel</em> des éléments d'un tableau, vous pourrez adapter le bout de code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trie</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span>
-    <span class="token keyword">return</span> d<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
-
-l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">]</span>
-l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-
-l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>trie<span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-</code></pre>
 <h3>Prénoms</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -319,6 +287,17 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <li>Quel le prénom le plus donné chez les garçons et chez les filles l'année de votre naissance ? Et en 2022 ?</li>
 <li>Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)</li>
 </ol>
+</div>
+</div>
+<p>Utilisez-maintenant le fichier des prénoms ventilés par département :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un dictionnaire dont les clés sont le numéro de département et la valeur, le nombre de fois où votre prénom a été donné dans ce département pour toutes les années.</p>
+<p>Dans quel département votre prénom a-t-il été le plus donné ?</p>
 </div>
 </div>
 
