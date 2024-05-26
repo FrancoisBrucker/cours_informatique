@@ -34,12 +34,6 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 [Bases de python](bases-python){.interne}
 {% endaller %}
 
-Python gère les noms de variables via un concept appelé espace de noms. Il est crucial de comprendre comment cela fonctionne pour ne pas laisser par au doute quand à savoir quelle variable est utilisée quand :
-
-{% aller %}
-[Espace de noms](espace-noms){.interne}
-{% endaller %}
-
 ### Tutoriels
 
 #### Matplotlib
@@ -88,6 +82,24 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
+## <span id="développer"></span>Développer
+
+{% aller %}
+[Écrire et exécuter du code](développement){.interne}
+{% endaller %}
+
+Python gère les noms de variables via un concept appelé espace de noms. Il est crucial de comprendre comment cela fonctionne pour ne pas laisser par au doute quand à savoir quelle variable est utilisée quand :
+
+{% aller %}
+[Espace de noms](espace-noms){.interne}
+{% endaller %}
+
+Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
+
+{% aller %}
+[Déboguer son code](debugger){.interne}
+{% endaller %}
+
 ## Stockage des données
 
 ### En mémoire
@@ -108,14 +120,20 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Fichiers](fichiers){.interne}
 {% endaller %}
 
-## <span id="développer"></span>Développer
+## Gestion des dépendances
+
+On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
+
+### Créer ses propres modules
 
 {% aller %}
-[Écrire et exécuter du code](développement){.interne}
+[Modules python](modules-python){.interne}
 {% endaller %}
 
+### Modules et projets
+
 {% aller %}
-[Déboguer son code](debugger){.interne}
+[Modules et projets](modules-projets){.interne}
 {% endaller %}
 
 ### Programmation objet
@@ -151,20 +169,3 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 {% aller %}
 [Couverture de code](couverture-de-code){.interne}
 {% endaller %}
-
-## Gestion des dépendances
-
-On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/), ou encore [pyglet](https://pyglet.readthedocs.io/en/latest/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
-
-### Créer ses propres modules
-
-{% aller %}
-[Modules python](modules-python){.interne}
-{% endaller %}
-
-### Modules et projets
-
-{% aller %}
-[Modules et projets](modules-projets){.interne}
-{% endaller %}
-
