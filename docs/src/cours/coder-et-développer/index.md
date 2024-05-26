@@ -88,6 +88,26 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
 
+## Stockage des données
+
+### En mémoire
+
+{% aller %}
+[Données en mémoire](données-mémoire){.interne}
+{% endaller %}
+
+### Chaîne de caractères
+
+{% aller %}
+[Encodage Unicode](encodage-unicode){.interne}
+{% endaller %}
+
+### Sur des fichiers
+
+{% aller %}
+[Fichiers](fichiers){.interne}
+{% endaller %}
+
 ## <span id="développer"></span>Développer
 
 {% aller %}
@@ -148,22 +168,3 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 [Modules et projets](modules-projets){.interne}
 {% endaller %}
 
-## Stockage des données
-
-### En mémoire
-
-{% aller %}
-[Données en mémoire](données-mémoire){.interne}
-{% endaller %}
-
-### Chaîne de caractères
-
-{% aller %}
-[Encodage Unicode](encodage-unicode){.interne}
-{% endaller %}
-
-### Sur des fichiers
-
-{% aller %}
-[Fichiers](fichiers){.interne}
-{% endaller %}
