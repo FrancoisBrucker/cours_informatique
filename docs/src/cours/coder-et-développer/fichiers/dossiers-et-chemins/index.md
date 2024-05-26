@@ -142,9 +142,21 @@ import os.path
 
 import requests
 
-if not os.path.exists("mon_fichier.py"):
-    page = requests.get("https://www.gutenberg.org/ebooks/14155.txt.utf-8")
-    f = open("mon_fichier.py", "w", encoding="utf-8")
-    f.write(page.text)
+URL = "https://www.gutenberg.org/ebooks/14155.txt.utf-8"
+NOM_FICHIER_LOCAL = "madame_bovary.txt"
+
+texte = ""
+
+if not os.path.exists(NOM_FICHIER_LOCAL):
+    page = requests.get(URL)
+    texte = page.text
+
+    f = open(NOM_FICHIER_LOCAL, "w", encoding="utf-8")
+    f.write(texte)
     f.close()
+else:
+    f = open(NOM_FICHIER_LOCAL, "r", encoding="utf-8")
+    texte = f.read()
+    f.close()
+
 ```
