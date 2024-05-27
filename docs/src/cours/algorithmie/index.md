@@ -168,7 +168,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-
 ## Désordre et hasard
 
 {% aller %}
@@ -176,4 +175,3 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% endaller %}
 
 > TBD nombre aléatoires
-

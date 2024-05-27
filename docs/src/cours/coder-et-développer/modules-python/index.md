@@ -5,6 +5,8 @@ title: Modules python
 
 eleventyComputed:
   eleventyNavigation:
+    prerequis:
+        - '../bases-python/structurer-son-code/modules/'
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
