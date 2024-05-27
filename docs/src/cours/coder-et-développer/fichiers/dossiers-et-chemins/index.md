@@ -143,7 +143,7 @@ import os.path
 import requests
 
 URL = "https://www.gutenberg.org/ebooks/14155.txt.utf-8"
-NOM_FICHIER_LOCAL = "madame_bovary.txt"
+NOM_FICHIER_LOCAL = "madame_Bovary.txt"
 
 texte = ""
 
