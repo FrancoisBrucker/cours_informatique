@@ -15,7 +15,6 @@ Utilisation des fichiers en python.
 
 <!-- end résumé -->
 
-
 Mise en place de votre projet :
 
 {% faire %}
@@ -31,8 +30,7 @@ Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et
 [Méthodes de chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
 {% endlien %}
 
-
-De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variablesm puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.
+De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variables puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.
 
 ## Jouons sur les mots
 
@@ -49,8 +47,9 @@ Le fichier contient une liste de mots, un mot par ligne.
 ### Lecture du fichier en une seule fois
 
 {% faire %}
-1. Récupérez tout le fichier dans une chaine de caractères que vous appellerez `texte`{.language-}.
-2. afficher la chaine de caractères à l'écran.
+
+1. Récupérez tout le fichier dans une chaîne de caractères que vous appellerez `texte`{.language-}.
+2. afficher la chaîne de caractères à l'écran.
 3. Combien de caractères `"\n"`{.language-} possède ce fichier ?
 
 {% endfaire %}
@@ -63,8 +62,8 @@ Les caractères `"\n"`{.language-} sont des [retour à la ligne](https://www.dyn
 
 Notre fichier contient une donnée (un mot) par ligne. Il peut donc être utile de stocker chaque mot dans un tableau :
 
-
 {% faire %}
+
 1. En utilisant la lecture ligne à ligne d'un fichier. Construisez une liste `mots`{.language-} dont chaque élément est une ligne du fichier.
 2. Affichez la 42ième ligne du texte (l'indice 41 de la liste).
 

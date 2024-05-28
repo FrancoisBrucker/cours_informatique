@@ -114,6 +114,13 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 [Encodage Unicode](encodage-unicode){.interne}
 {% endaller %}
 
+> TBD méthodes de chaines de caractères :
+>
+> - split
+> - caractères spéciaux : tabulation, fin de ligne
+> - strip
+>
+
 ### Sur des fichiers
 
 {% aller %}
