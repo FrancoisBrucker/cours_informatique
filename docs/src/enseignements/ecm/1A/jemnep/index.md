@@ -29,7 +29,7 @@ Basé sur le cours :
 
 Listes d'exercices en vrac :
 
-- [les Mono-lignes](monolignes-élèves.pdf){.interne} (et [une solution](monolignes-prof.pdf){.interne} mais ne regardez pas tout de suite, cela gâche le plaisir).
+- [les Mono-lignes](monolignes-élèves.pdf){.interne}.
 - [exponentiation](/cours/algorithmie/projet-exponentiation/){.interne} :
   - prendre les algorithmes de la partie théorique (ils sont donnés) pour faire la partie pratique en python
   - puis faites la suite, plus générale sur [les suites additives](/cours_informatique/cours/algorithmie/projet-suite-additive/){.interne}
