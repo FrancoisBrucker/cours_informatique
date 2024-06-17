@@ -146,7 +146,7 @@ npm install
 ```
 
 {% faire %}
-Téléchargez l'archive [mon_super_site_node.zip](./mon_super_site_node.zip) qui contient le site sous la forme d'un projet node :
+Téléchargez l'archive [mon_super_site_node.zip](../mon_super_site_node.zip) qui contient le site sous la forme d'un projet node :
 
 1. installez les dépendances
 2. créez un serveur statique pour le servir

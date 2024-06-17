@@ -107,7 +107,7 @@ La commande précédente va utiliser le module `venv`{.language-} de python pour
 
 Pour python un environnement virtuel contient :
 
-- un interpréteur : `venv/bin/python`{.fichier}
+- un interpréteur : `venv/bin/python`{.fichier} sous mac et linux ; `venv/Scripts/python`{.fichier} sous windows 11
 - ses modules associés : `venv/lib/python3.12/site-packages/`{.fichier} (chez moi. Vous aurez peut-être une autre version de python). A priori, il n'y a que pip d'installé en plus des modules livrés directement avec python
 
 Pour utiliser le nouvel interpréteur, on donne son chemin :
@@ -115,9 +115,8 @@ Pour utiliser le nouvel interpréteur, on donne son chemin :
 {% faire %}
 Dans un terminal, assurez vous d'être dans le dossier du projet (`environnement_virtuel/`{.fichier}), puis tapez la commande :
 
-```shell
-venv/bin/python main.py
-```
+- sous mac : `venv/bin/python main.py`
+- sous windows : `venv\Scripts\python main.py`
 
 {% endfaire %}
 
@@ -204,6 +203,8 @@ Vous pouvez maintenant utiliser le triangle d'exécution pour utiliser l'environ
 Ce n'est bien sur vrai **_que_** pour ce terminal. Les autres terminaux, ou les nouveaux que vous créez, auront toujours le python par défaut :
 
 #### Avec le terminal
+
+> TBD changer script execution policy sous windows.
 
 On peut activer l'environnement virtuel à la main grace à [une commande qui dépend de votre environnement](https://docs.python.org/3/library/venv.html#how-venvs-work) :
 

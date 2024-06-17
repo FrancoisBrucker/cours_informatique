@@ -49,7 +49,6 @@ Bonnes performances
 * <http://math.univ-lyon1.fr/~jberard/genunif-www.pdf>
 * <https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires>
 * <https://perso.u-cergy.fr/~atorcini/MATDID/PYTHON/lect2.pdf>
-* <https://perso.u-cergy.fr/~atorcini/MATDID/PYTHON/lect2.pdf>
 * <https://towardsdatascience.com/where-does-python-get-its-random-numbers-from-81dece23b712>
 * <https://stackoverflow.com/questions/57208403/random-number-generation-algorithm-used-in-numpy>
 * <https://theses.hal.science/tel-01236602v2/document>

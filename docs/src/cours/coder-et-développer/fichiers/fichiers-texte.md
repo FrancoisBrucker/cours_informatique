@@ -114,9 +114,29 @@ for ligne in f:  # boucle sur les lignes
 f.close()
 ```
 
-{% info %}
 Notez la ligne vide entre deux affichages. Ceci est du au fait que chaque ligne du fichier contient déjà un retour à la ligne, auquel en est ajouté un automatiquement à la fin de l'instruction `print`.
-{% endinfo %}
+
+Pour éviter cela, souvent on va stocker les lignes **sans** le retour à la ligne. Une façon simple de faire ceci est d'utiliser la méthode [`strip`{.language-} des chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) :
+
+```python
+f = open("haiku.txt", "r", encoding="utf-8")
+for ligne in f:  # boucle sur les lignes
+    print(ligne.strip())
+f.close()
+```
+
+Le mieux étant encore de stocker directement le fichier dans une liste de lignes :
+
+```python
+f = open("haiku.txt", "r", encoding="utf-8")
+lignes = []
+for ligne in f:  # boucle sur les lignes
+    lignes.append(ligne.strip())
+f.close()
+
+for ligne in lignes:
+    print(ligne)
+```
 
 ## Ajout de texte à un fichier
 

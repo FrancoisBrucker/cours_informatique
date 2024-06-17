@@ -79,6 +79,8 @@ Problèmes de flots. Définition, algorithmes et applications
 
 > TBD : mettre chemin au-dessus
 
+> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+>
 Un cas particulier d'intérêt : l'arbre et les chemins.
 
 > Sous la forme d'exercices.

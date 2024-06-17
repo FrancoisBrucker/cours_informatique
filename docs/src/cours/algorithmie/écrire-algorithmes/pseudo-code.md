@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Pseudo-code
 
 eleventyComputed:
@@ -9,35 +9,47 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[La définition générale d'un algorithme](../../bases-théoriques/définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un ***pseudo-code*** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
+[La définition générale d'un algorithme](../../bases-théoriques/définition){.interne} ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un **_pseudo-code_** est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.
 
-Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.
-
-Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
-
-Il est communément admis que tout algorithme peut être écrit en pseudo-code. Nous utiliserons dorénavant ce formalisme pour décrire nos algorithmes puisqu'il est universel et facile à comprendre.
+Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain :
 
 {% info %}
-Nous y reviendrons lorsque nous parlerons des Machines de Turing, mais le fait que tout algorithme puisse s'écrire sous la forme de pseudo-code vient du fait que :
 
-1. tout ce qui peut s'écrire sous la forme d'une machine de Turing peut s'écrire en pseudo-code (et réciproquement),
-2. il est communément admis, c'est [la thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church), que tout algorithme peut s'écrire sous la forme d'une machine de Turing.
+Rappelez-vous les trois premières règles de la [définition d'un algorithme](../../bases-théoriques/définition/#règles-générales) qui sont faciles à respecter.
 
 {% endinfo %}
 
+Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.
+
+Il est communément admis que tout algorithme peut être écrit en **_pseudo-code_** :
+
+{% note "**Thèse de Church-Turing**" %}
+
+Tout programme (et donc algorithme) peut s'écrire sous la forme d'un pseudo-code (et réciproquement).
+
+{% endnote %}
+
+Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.
+
+{% lien %}
+[Thèse de Church-Turing](https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church).
+{% endlien %}
+
+La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais, nous le verrons pseudo-code et machines de Turing sont deux notions équivalentes.
+
 ## <span id="règles"></span> Éléments de pseudo-code
 
-Un pseudo-code est une succession de lignes qui seront exécutées ***en séquence*** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
+Un pseudo-code est une succession de lignes qui seront exécutées **_en séquence_** les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.
 
 Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.
 
 ### <span id="objets-basique"></span> Objets et variables
 
-On doit pouvoir manipuler et stocker des *objets* pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme ***une mémoire***. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir ***un objet basique*** ou ***une variable***.
+On doit pouvoir manipuler et stocker des _objets_ pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme **_une mémoire_**. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_** ou **_une variable_**.
 
 #### Objets basiques
 
-Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés ***objets basiques*** et sont au nombre de six :
+Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de six :
 
 - le vide (nommé `None`{.language-} en python, `null`{.language-} en javascript ou encore `void`{.language-} en C)
 - les booléens (vrai et faux)
@@ -48,33 +60,35 @@ Les objets que nous aurons directement à notre disposition sans avoir besoin de
 
 Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).
 
-Les instructions liées à ces objets sont de deux ordres. On doit pouvoir  :
+Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :
 
-- ***créer des objets***
-- ***opérer sur ces objets*** :
+- **_créer des objets_**
+- **_opérer sur ces objets_** :
   - opérations sur les entiers et/ou réels :
     - arithmétique : addition (`+`{.language-}), soustraction (`-`{.language-}), multiplication (`*`{.language-}), division (`/`{.language-})
     - opérations usuelles : prendre la valeur entière, valeur absolue, le modulo
     - logique : égalité (avec le signe `==`{.language-} ou `=`{.language-}), plus petit que (`<`{.language-}), plus grand que (`>`{.language-}), plus petit ou égal (`≤`{.language-}), plus grand ou égal (`≥`{.language-})
   - opérations sur les booléens : "négation logique" (non, `NOT`{.language-}, $\neg$), "et logique" (et, `&&`{.language-}, `AND`{.language-}), "ou logique" (ou, `||`{.language-}, `OR`{.language-})
 
+> TBD ici attention en pratique, on utilise des entier fini de taille fixe (64bits) sinon impossible d'avoir 1 opération simple pour les manipuler.
+
 #### Variables
 
-On doit pouvoir affecter des objets à des ***variables***.
+On doit pouvoir affecter des objets à des **_variables_**.
 
 {% note "**Définition**" %}
-Une ***variable*** est un nom auquel est associé un objet.
+Une **_variable_** est un nom auquel est associé un objet.
 {% endnote %}
 
 Les instructions autorisées sur les variables sont :
 
-- ***l'affectation*** : `a = 3`{.language-} défini le nom `a`{.language-} (appelé *variable*) qui est associé à un entier valant `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
-- ***la lecture***. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
-- ***l'affichage à l'écran***. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
+- **_l'affectation_** : `a = 3`{.language-} défini le nom `a`{.language-} (appelé _variable_) qui est associé à un entier valant `3`{.language-}. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise `=`{.language-} pour l'égalité)
+- **_la lecture_**. Si j'ai affecté `3`{.language-} à la variable `a`{.language-}, je dois pouvoir l'utiliser, par exemple en écrivant `b = a * 3`{.language-}
+- **_l'affichage à l'écran_**. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.
 
 #### <span id="str"></span>Chaînes de caractères
 
-Une ***chaîne de caractères*** est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.
+Une **_chaîne de caractères_** est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.
 
 D'un point de vue complexité, on considérera que :
 
@@ -94,12 +108,12 @@ On ne peut pas changer un caractère d'une chaîne de caractères.
 
 #### <span id="tableaux"></span>Tableaux
 
-Un ***tableau*** est un objet qui en contient d'autres.
+Un **_tableau_** est un objet qui en contient d'autres.
 
 {% note "**Définition**" %}
-Un ***tableau*** est un conteneur nommé pouvant contenir $n$ variables. $n$ est la ***longueur*** ou la ***taille*** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
+Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.
 
-Chaque variable du tableau peut être accédée via son ***indice***, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.
+Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.
 
 {% endnote %}
 
@@ -191,7 +205,7 @@ On peut dériver toutes les variantes de la forme initiale.
 
 #### <span id="répétition"></span> Répétition
 
-On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle *while*):
+On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle _while_):
 
 ```text
 tant que (condition logique) est vraie:
@@ -200,7 +214,7 @@ tant que (condition logique) est vraie:
     instruction n
 ```
 
-Il existe une variation de ce bloc très utile (boucle *for*):
+Il existe une variation de ce bloc très utile (boucle _for_):
 
 ```text
 pour chaque élément x d'un tableau:
@@ -227,7 +241,7 @@ if ((x > 12) AND (x < 36)):
     z = x * "coucou"
 ```
 
-1. Création de l'entier valant 30  : 1 instruction
+1. Création de l'entier valant 30 : 1 instruction
 2. on affecte l'entier à x : 1 instruction
 3. Pour faire cette instruction il faut :
    - faire `x > 12`{.language-}. Pour cela :
@@ -330,7 +344,7 @@ variable = nom(entrée 1, ..., entrée n)
 Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.
 {% endinfo %}
 
-Si on veut utiliser le pseudo code *recherche* défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`{.language-}. On affecte la sortie de l'algorithme `recherche`{.language-} avec comme paramètres `tab`{.language-} (le tableau d'entier) et `3`{.language-} (un entier) à la variable `trouve`{.language-}.
+Si on veut utiliser le pseudo code _recherche_ défini plus haut, cela pourrait être une instruction du type : `trouve = recherche(tab, 3)`{.language-}. On affecte la sortie de l'algorithme `recherche`{.language-} avec comme paramètres `tab`{.language-} (le tableau d'entier) et `3`{.language-} (un entier) à la variable `trouve`{.language-}.
 
 Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :
 
@@ -374,16 +388,16 @@ instructions c'est à dire $24$ instructions.
 
 ### Signature d'une fonction
 
-Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple [le problème recherche](./#problème-recherche) nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant ***les signatures de fonctions***
+Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple [le problème recherche](./#problème-recherche) nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant **_les signatures de fonctions_**
 
 {% note "**Définition**" %}
 Une signature de fonction associe :
 
 - son type à chaque paramètre (précédé d'un `:`)
 - le type de sortie (précédé d'un `->`)
-{% endnote %}
-{% info %}
-Par exemple, la signature de [la fonction recherche](./#fonction-recherche) est :
+  {% endnote %}
+  {% info %}
+  Par exemple, la signature de [la fonction recherche](./#fonction-recherche) est :
 
 ```python
 recherche(t: [int], x: int) -> bool

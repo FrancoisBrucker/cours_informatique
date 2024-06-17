@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Définition d'un algorithme
 
 eleventyComputed:
@@ -20,7 +20,7 @@ On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lo
 ## <span id="algorithme"></span> Algorithme ?
 
 {% note "Définition du '*Petit Robert*'  d'un **algorithme** :" %}
-Un ***algorithme*** est un ensemble des règles opératoires propres à un *calcul*.
+Un **_algorithme_** est un ensemble des règles opératoires propres à un _calcul_.
 {% endnote %}
 
 Qu'est-ce que ça veut dire ?
@@ -33,7 +33,7 @@ Tel monsieur Jourdain, on a utilisé un algorithme pour comprendre ce qu'est un 
 
 ```text
 Nom : comprendre_une_définition_du_petit_Robert
-Entrées : 
+Entrées :
     m : un mot à définir
 Programme :
     1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
@@ -58,23 +58,27 @@ Règles de construction de l'algorithme utilisé :
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
-- **finitude** : *« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »*
-- **définition précise** : *« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »*
-- **entrées** : *« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »*
-- **sortie** : *« […] des quantités ayant une relation spécifiée avec les entrées. »*
-- **rendement** : *« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »*
+- **finitude** : _« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »_
+- **définition précise** : _« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »_
+- **entrées** : _« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »_
+- **sortie** : _« […] des quantités ayant une relation spécifiée avec les entrées. »_
+- **rendement** : _« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »_
 
-On peut en déduire la définition suivante : Un ***algorithme*** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
+On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
 <div id="règles-générales"></div>
 {% note "**Définition**" %}
 
-Un ***algorithme*** est défini par les 4 propriétés suivantes :
+Un **_algorithme_** est défini par les 4 propriétés suivantes :
 
 1. un algorithme est constitué d'un **suite fini d'instructions**, chacune décrite avec **un nombre fini de symboles**
 2. un humain doit pouvoir suivre chaque étape avec **un papier et un crayon**
 3. exécuter une instruction **ne doit pas nécessiter d'intelligence** (à part celle pour comprendre l'instruction)
 4. l'algorithme produit un résultat et s'arrête après **un nombre fini d'étapes** (une étape étant l'application d'une instruction) successives.
+
+{% endnote %}
+{% note %}
+On appellera **_programme_** un texte qui ne respecte que les 3 premières propriétés : un algorithme est un programme qui s'arrête.
 
 {% endnote %}
 
@@ -87,13 +91,13 @@ La définition très générale d'un algorithme se décline usuellement sous deu
 1. [le pseudo-code](../../écrire-algorithmes/pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
 2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
-Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout *théoricien* doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout *développeur* doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout _théoricien_ doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout _développeur_ doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.
 
 ## Nombre d'algorithmes
 
-La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini**  de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.
+La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.
 
 ### Une infinité d'algorithmes différents
 
@@ -103,13 +107,13 @@ De la définition d'un algorithme on peut donc déjà conclure que :
 Il existe une infinité d'algorithmes différents.
 {% endnote %}
 {% details "preuve", "open" %}
-Si on considère l'instruction *"Ne fait rien"*, le texte ci-dessous est un algorithme d'une instruction :
+Si on considère l'instruction _"Ne fait rien"_, le texte ci-dessous est un algorithme d'une instruction :
 
 ```text
 Ne fait rien
 ```
 
-En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions *"Ne fait rien"* à la suite (l'algorithme précédent est $A_1$).
+En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions _"Ne fait rien"_ à la suite (l'algorithme précédent est $A_1$).
 
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
@@ -146,7 +150,7 @@ De là :
 
 {% note "**Proposition**" %}
 
-Un ***algorithme*** est une suite finie $c_1 \dots c_n$ où :
+Un **_algorithme_** est une suite finie $c_1 \dots c_n$ où :
 
 - $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
 - avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), $\vert \mathcal{U} \vert \leq 150000$.
@@ -225,7 +229,7 @@ On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre l
 - on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
 - on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
 - ...
-- on appelle $r_i$ le $i$ème réel  : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
+- on appelle $r_i$ le $i$ème réel : $f(r_i) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1, \dots, r_{i-1} \\}$
 - ...
 
 Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
@@ -270,7 +274,7 @@ Une **instruction** d'un algorithme est une règle définie par un nombre **fini
 Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
 le veut, du moment qu'ils ne soient pas infini.
 
-Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)). La conséquence fondamentale de ceci est que :
+Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>). La conséquence fondamentale de ceci est que :
 
 {% note "**un algorithme ne peut pas manipuler de nombres réels**" %}
 

@@ -77,6 +77,7 @@ Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) : 
    2. [on peut trouver la taille](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/viganalyse)
 
 > TBD : le montrer
+> <https://www.youtube.com/watch?v=yHXOnCKh4iE>
 
 ### One time Pad (OTP)
 

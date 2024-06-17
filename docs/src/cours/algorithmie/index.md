@@ -35,35 +35,35 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
+{% aller %}
+[Écrire du code](./écrire-code){.interne}
+{% endaller %}
+
 ### Autres modèles
 
 L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreuses façon d'en écrire. Nous allons en voir 4 toutes équivalentes les unes avec les autres !
 
-> TBD : séparer modèle et MTU qui permet de simuler dans le modèle. C'est le principe d'un ordinateur.
-
-#### Langages informatiques
-
-> TBD : le plus clair car le pseudo code s'écrit presque directement, par exemple en python
-> TBD pas exécuté directement. Traduit en un autre langage compréhensible par ce qui va l'exécuter. 
-> TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <https://docs.python.org/fr/3/library/dis.html> ou <https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html>) qui est lui-même exécuté par une machine virtuelle.
-
-#### Circuits logique
-
-> tout est basé sur les opérations booléennes, logiques car algorithme = fonction booléenne.
-
-> <https://people.csail.mit.edu/rrw/week1.pdf>
-> <https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter9.pdf>
-> sert pour la dé-randomisation : <https://www.youtube.com/watch?v=mZck0N_T9Cs>
-> 
-> Gros : <https://en.wikipedia.org/wiki/Circuit_complexity#History>
-> TBD circuit logiques ?
-
-#### Modèle de Von Neumann
-
-> TBD : le langage de la machine
 >
+> TBD : Turing vers formule SAT.
+> donc algorithme = formule logique.
+
+> TBD en pratique : Algo = ordinateur = modèle de von Neumann
+>
+> TBD : séparer modèle et MTU qui permet de simuler dans le modèle. C'est le principe d'un ordinateur.
+> TBD encore d'autres ! jeu de la vie, ...
 
 #### Machines de Turing
+
+> TBD :
+>
+> 1. pseudo-code = algorithme : thèse de Church/Turing
+> 2. uniquement binaire
+> 3. pas besoin de :
+>   - séparer variables et mémoire
+>   - de RAM juste se déplacer de 1
+>   - code, juste des états
+> 4. on est arrivé à la Machine de Turing. Donc code ≤ Turing
+> 5. comme on peut simuler ue machine de Turing avec un algo : Turing ≤ code
 
 > TBD : ne garder que la machine à 1 ruban ici.
 
@@ -80,6 +80,7 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 > <https://www.youtube.com/watch?v=_n4LIt2WPzE>
 > Maths : <https://www.paultaylor.eu/~pt/prafm/index.html>
 > <https://www.haskell.org/> :
+>
 > - intro : <https://www.youtube.com/watch?v=UhM_H3lFk_Q>
 > - playlist <https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV>
 > - livre : <https://learnyouahaskell.com/>
@@ -93,7 +94,25 @@ Cette partie est là pour vous montrer que pseudo-code et machines de Turing son
 
 > TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
 > TBD MTU = langage universel
-> TBD : brainfuck et interpréteur en python. Permet de parler de machine de turing universelle
+> TBD : brainfuck et interpréteur en python. Permet de parler de machine de Turing universelle
+
+## On s’entraîne
+
+> TBD : écrire des algos pour résoudre des problèmes.
+> TBD essence même d'un algorithme c'est la boucle et les if/them/else
+> sinon fait tout le temps la même chose (addition, etc). Le problème est de transformer une idée en code et en succession logique d'arguments (conditions) et d'action (instruction) tant que ce n'est pas résolu (boucles).
+>
+>
+> 1. exos simples avec 1 boucle puis 2 boucles imbriquées (compter le nb d’occurrences,  suppression de doublons, etc)
+> 2. dichotomie
+> 3. récursion et pile d'appel (tours de hanoï ; min et max d'un tableau)
+> 4. plusieurs boucles a la suite
+> 5. récursion et boucles
+>
+> exemples :
+>
+> - <https://www.youtube.com/watch?v=pKO9UjSeLew>
+>
 
 ## Complexités
 
@@ -144,7 +163,11 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Conteneurs](./structure-conteneurs){.interne}
 {% endaller %}
 
+> TBD ajouter exos pour dictionnaires.
+
 ## Complexité amortie
+
+> TBD A déplacer plus tard. Attention à l'amortie des dict/liste.
 
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
@@ -158,11 +181,18 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Problème du "sac à dos"
 
+> TBD Intro NP et NPC. Doit tenir 2h pour montrer pourquoi NP = problème algo et réduction simple (max ≤ tri ≤ SAT (admis) = 3-sat (le faire)).
+> TBD : Laisser les démos pour plus tard.
+
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
+> TBD : ici stop partie I. Ensuite Partie II.
+
 ## Classes de Problèmes Algorithmiques
+
+> TBD A déplacer plus tard.
 
 {% aller %}
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
