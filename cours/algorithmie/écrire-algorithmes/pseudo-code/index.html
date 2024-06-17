@@ -92,29 +92,45 @@
     
   
 
-  <p><a href="../../bases-th%C3%A9oriques/d%C3%A9finition" class="interne">La définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <em><strong>pseudo-code</strong></em> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
-<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain.</p>
-<p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.</p>
-<p>Il est communément admis que tout algorithme peut être écrit en pseudo-code. Nous utiliserons dorénavant ce formalisme pour décrire nos algorithmes puisqu'il est universel et facile à comprendre.</p>
+  <p><a href="../../bases-th%C3%A9oriques/d%C3%A9finition" class="interne">La définition générale d'un algorithme</a> ne spécifie rien sur les instructions à utiliser, juste qu'elles doivent être décrites en un nombre fini de mots. Un <strong><em>pseudo-code</em></strong> est une proposition d'instructions possibles pour décrire un algorithme, compréhensibles par un humain.</p>
+<p>Ce n'est cependant pas une langue car il n'y a pas de place pour l'ambiguïté ni l'invention : tout doit y être rigoureusement défini, et chaque étape élémentaire doit être réalisable en un temps fini par un humain :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Nous y reviendrons lorsque nous parlerons des Machines de Turing, mais le fait que tout algorithme puisse s'écrire sous la forme de pseudo-code vient du fait que :</p>
-<ol>
-<li>tout ce qui peut s'écrire sous la forme d'une machine de Turing peut s'écrire en pseudo-code (et réciproquement),</li>
-<li>il est communément admis, c'est <a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">la thèse de Church-Turing</a>, que tout algorithme peut s'écrire sous la forme d'une machine de Turing.</li>
-</ol>
+<p>Rappelez-vous les trois premières règles de la <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales">définition d'un algorithme</a> qui sont faciles à respecter.</p>
 </div>
 </div>
+<p>Ce n'est pas non plus un langage informatique dont le but est d'être compris par un ordinateur.</p>
+<p>Il est communément admis que tout algorithme peut être écrit en <strong><em>pseudo-code</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Thèse de Church-Turing</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout programme (et donc algorithme) peut s'écrire sous la forme d'un pseudo-code (et réciproquement).</p>
+</div>
+</div>
+<p>Notez que cette affirmation n'est pas démontrée mais que toutes les tentatives (et il y en a eu) pour infirmer cette affirmation ont été des échecs.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Th%C3%A8se_de_Church">Thèse de Church-Turing</a>.</p>
+</div>
+</div>
+<p>La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais, nous le verrons pseudo-code et machines de Turing sont deux notions équivalentes.</p>
 <h2><span id="règles"></span> Éléments de pseudo-code</h2>
-<p>Un pseudo-code est une succession de lignes qui seront exécutées <em><strong>en séquence</strong></em> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
+<p>Un pseudo-code est une succession de lignes qui seront exécutées <strong><em>en séquence</em></strong> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
 <p>Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.</p>
 <h3><span id="objets-basique"></span> Objets et variables</h3>
-<p>On doit pouvoir manipuler et stocker des <em>objets</em> pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme <em><strong>une mémoire</strong></em>. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <em><strong>un objet basique</strong></em> ou <em><strong>une variable</strong></em>.</p>
+<p>On doit pouvoir manipuler et stocker des <em>objets</em> pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong> ou <strong><em>une variable</em></strong>.</p>
 <h4>Objets basiques</h4>
-<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <em><strong>objets basiques</strong></em> et sont au nombre de six :</p>
+<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et sont au nombre de six :</p>
 <ul>
 <li>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</li>
 <li>les booléens (vrai et faux)</li>
@@ -124,10 +140,10 @@
 <li>les caractères</li>
 </ul>
 <p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).</p>
-<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir  :</p>
+<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :</p>
 <ul>
-<li><em><strong>créer des objets</strong></em></li>
-<li><em><strong>opérer sur ces objets</strong></em> :
+<li><strong><em>créer des objets</em></strong></li>
+<li><strong><em>opérer sur ces objets</em></strong> :
 <ul>
 <li>opérations sur les entiers et/ou réels :
 <ul>
@@ -140,8 +156,11 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>TBD ici attention en pratique, on utilise des entier fini de taille fixe (64bits) sinon impossible d'avoir 1 opération simple pour les manipuler.</p>
+</blockquote>
 <h4>Variables</h4>
-<p>On doit pouvoir affecter des objets à des <em><strong>variables</strong></em>.</p>
+<p>On doit pouvoir affecter des objets à des <strong><em>variables</em></strong>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -149,17 +168,17 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>variable</strong></em> est un nom auquel est associé un objet.</p>
+<p>Une <strong><em>variable</em></strong> est un nom auquel est associé un objet.</p>
 </div>
 </div>
 <p>Les instructions autorisées sur les variables sont :</p>
 <ul>
-<li><em><strong>l'affectation</strong></em> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
-<li><em><strong>la lecture</strong></em>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
-<li><em><strong>l'affichage à l'écran</strong></em>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
+<li><strong><em>l'affectation</em></strong> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
+<li><strong><em>la lecture</em></strong>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
+<li><strong><em>l'affichage à l'écran</em></strong>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
 </ul>
 <h4><span id="str"></span>Chaînes de caractères</h4>
-<p>Une <em><strong>chaîne de caractères</strong></em> est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.</p>
+<p>Une <strong><em>chaîne de caractères</em></strong> est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.</p>
 <p>D'un point de vue complexité, on considérera que :</p>
 <ul>
 <li>la création d'une chaîne de caractère prend 1 instruction : <code class="language-">&quot;salut&quot;</code> crée la chaîne contenant les caractères <code class="language-">&quot;s&quot;</code>, <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;l&quot;</code>, <code class="language-">&quot;u&quot;</code> et <code class="language-">&quot;t&quot;</code> de façon contiguë en mémoire.</li>
@@ -184,7 +203,7 @@
 </div>
 </div>
 <h4><span id="tableaux"></span>Tableaux</h4>
-<p>Un <em><strong>tableau</strong></em> est un objet qui en contient d'autres.</p>
+<p>Un <strong><em>tableau</em></strong> est un objet qui en contient d'autres.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -192,8 +211,8 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>tableau</strong></em> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <em><strong>longueur</strong></em> ou la <em><strong>taille</strong></em> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
-<p>Chaque variable du tableau peut être accédée via son <em><strong>indice</strong></em>, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.</p>
+<p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
+<p>Chaque variable du tableau peut être accédée via son <strong><em>indice</em></strong>, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.</p>
 </div>
 </div>
 <p>Comme une chaîne de caractères, les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement, mais contrairement à une chaîne de caractères qui contient uniquement des caractères constants, chaque élément du tableau est une variable et peut donc être affectée ou modifiée.</p>
@@ -302,7 +321,7 @@ if ((x > 12) AND (x < 36)):
     z = x * "coucou"
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol>
-<li>Création de l'entier valant 30  : 1 instruction</li>
+<li>Création de l'entier valant 30 : 1 instruction</li>
 <li>on affecte l'entier à x : 1 instruction</li>
 <li>Pour faire cette instruction il faut :
 <ul>
@@ -451,7 +470,7 @@ affiche à l'écran e
 <p>Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$<br>
 instructions c'est à dire $24$ instructions.</p>
 <h3>Signature d'une fonction</h3>
-<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple <a href="#probl%C3%A8me-recherche">le problème recherche</a> nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <em><strong>les signatures de fonctions</strong></em></p>
+<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple <a href="#probl%C3%A8me-recherche">le problème recherche</a> nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <strong><em>les signatures de fonctions</em></strong></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>

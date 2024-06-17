@@ -192,7 +192,7 @@
 </blockquote>
 <p>Pour python un environnement virtuel contient :</p>
 <ul>
-<li>un interpréteur : <code class="fichier">venv/bin/python</code></li>
+<li>un interpréteur : <code class="fichier">venv/bin/python</code> sous mac et linux ; <code class="fichier">venv/Scripts/python</code> sous windows 11</li>
 <li>ses modules associés : <code class="fichier">venv/lib/python3.12/site-packages/</code> (chez moi. Vous aurez peut-être une autre version de python). A priori, il n'y a que pip d'installé en plus des modules livrés directement avec python</li>
 </ul>
 <p>Pour utiliser le nouvel interpréteur, on donne son chemin :</p>
@@ -203,8 +203,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un terminal, assurez vous d'être dans le dossier du projet (<code class="fichier">environnement_virtuel/</code>), puis tapez la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">venv/bin/python main.py
-</code></pre>
+<ul>
+<li>sous mac : <code>venv/bin/python main.py</code></li>
+<li>sous windows : <code>venv\Scripts\python main.py</code></li>
+</ul>
 </div>
 </div>
 <p>Dans mon cas, j'obtiens :</p>
@@ -273,6 +275,9 @@ wheel             <span class="token number">0.43</span>.0
 <p><img src="vs-code-activation-3.png" alt="vs code activation"></p>
 <p>Ce n'est bien sur vrai <strong><em>que</em></strong> pour ce terminal. Les autres terminaux, ou les nouveaux que vous créez, auront toujours le python par défaut :</p>
 <h4>Avec le terminal</h4>
+<blockquote>
+<p>TBD changer script execution policy sous windows.</p>
+</blockquote>
 <p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work">une commande qui dépend de votre environnement</a> :</p>
 <ul>
 <li>sous mac : <code>source venv/bin/activate</code></li>
