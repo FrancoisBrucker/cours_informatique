@@ -36,7 +36,7 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 {% endaller %}
 
 {% aller %}
-[Écrire du code](./écrire-code){.interne}
+[Exécuter du code](./exécuter-code){.interne}
 {% endaller %}
 
 ### Autres modèles

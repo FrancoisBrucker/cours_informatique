@@ -95,25 +95,25 @@ Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sa
 
 Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.
 
-## Nombre d'algorithmes
+## Nombre de programme
 
-La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.
+La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symbole. De plus, c'est implicite, mais un programme doit être compris par un humain.
 
-### Une infinité d'algorithmes différents
+### Une infinité de programmes différents
 
-De la définition d'un algorithme on peut donc déjà conclure que :
+On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithmes on peut donc déjà conclure que :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes différents.
 {% endnote %}
 {% details "preuve", "open" %}
-Si on considère l'instruction _"Ne fait rien"_, le texte ci-dessous est un algorithme d'une instruction :
+Si on considère l'instruction `Ne fait rien`{.language-}, le texte ci-dessous est un algorithme d'une instruction :
 
 ```text
 Ne fait rien
 ```
 
-En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions _"Ne fait rien"_ à la suite (l'algorithme précédent est $A_1$).
+En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite (l'algorithme précédent est $A_1$).
 
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
@@ -150,7 +150,7 @@ De là :
 
 {% note "**Proposition**" %}
 
-Un **_algorithme_** est une suite finie $c_1 \dots c_n$ où :
+Un **_programme_** est une suite finie $c_1 \dots c_n$ où :
 
 - $c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$
 - avec $\mathcal{U}$ l'ensemble des caractères [Unicode](https://fr.wikipedia.org/wiki/Unicode), $\vert \mathcal{U} \vert \leq 150000$.
@@ -162,7 +162,7 @@ On note $\mathcal{A}$ cet ensemble.
 Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
 {% enddetails %}
 
-Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode
+Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode.
 
 On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par [numéro](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html) croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
@@ -271,8 +271,8 @@ On en déduit la définition (très générale) d'une instruction d'un algorithm
 Une **instruction** d'un algorithme est une règle définie par un nombre **fini** de symboles.
 {% endnote %}
 
-Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il
-le veut, du moment qu'ils ne soient pas infini.
+Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers relatifs aussi grand ou petit qu'il
+le veut, du moment qu'ils ne soient pas infinis.
 
 Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des [mots d'un alphabet fini](<https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)>). La conséquence fondamentale de ceci est que :
 
@@ -296,32 +296,46 @@ Faites tout de même attention car parfois, c'est problématique. Pour le calcul
 
 Donc :
 
-{% note "Les objets manipulables par un algorithme sont uniquement :" %}
+{% note %}
 
-- les entiers finis
+Les objets manipulables par un programme sont uniquement les suites finies composés des objets de type :
+
+- les entiers relatifs
 - les approximations finies de réels
 - les chaînes de caractères
 
 {% endnote %}
 
-Ces objets sont tous représentables par des entiers :
+Ces objets sont tous représentables par des suites finies de `0` et de `1` :
 
-- des entiers finis : c'est clair.
+- des entiers relatifs :
+  - positifs en utilisant leur notation binaire et en les faisant commencer par un `0`, par exemple 3 sera encodé par `011` (le `0` tout à gauche signifiant que l'entier est positif)
+  - négatifs en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) de la représentation binaire de son opposé. Ainsi -3 sera encodé par `101` (un entier négatif ainsi représenté commencera toujours par un `1`)
 - des approximations finies de réels : on peut utiliser la norme [IEEE 754](https://fr.wikipedia.org/wiki/IEEE_754). Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : `01000000010010010000111001010110` (j'ai utilisé [un convertisseur](https://www.h-schmidt.net/FloatConverter/IEEE754.html))
-- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)).
+- des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères "Yop !" correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé [un convertisseur](http://hapax.qc.ca/conversion.fr.html)) qui en binaire vaut : `0000010110010110111101110000001000000010`
 
-En conclusion, comme on peut associer un entier à tout algorithme et que tout ce qu'il peut manipuler est fini :
+On peu aller plus loin en représentant les tableaux de suites finies de "0" et de "1" par une unique suite finie de "0" et de "1". Pour cela on peut utiliser l'encodage suivant :
 
-<span id="paramètres-entier"></span>
+- le caractère `0` est encodé par la suite `100`
+- le caractère `1` est encodé par la suite `101`
+- le caractère de séparation est encodé par la suite `000`
+- le caractère de début de liste est encodé par la suite `010`
+- le caractère de fin de liste est encodé par la suite `001`
+
+Ainsi le tableau `[00110, 110]` sera encodé par la suite `010100100101101100000101101100001`. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme `[0, [1, [1]], 0]`, chaque caractère nécessaire (`0`, `1`, `,`, `[` et `]`) ayant son propre code sur 3 bits.
+
+En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tout algorithme et à tout ce qu'il peut manipuler :
+
+<span id="paramètres-binaires"></span>
 {% note "**Proposition**" %}
-Un algorithme et tout ce qu'il peut manipuler peut être représenté par des entiers finis.
+Tout ce que peut manipuler un programme est une suite finie de `0` et de `1`
 {% endnote %}
 
-Et enfin, comme tout entier peut être écrit sous [sa notation binaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire) :
+Enfin, comme la description d'un programme est aussi une suite finie de `0` et de `1` :
 
-{% attention "**À retenir**" %}
-Un algorithme et tout ce qu'il peut manipuler est une suite finie de 0 et de 1.
-{% endattention %}
+{% note "**À retenir**" %}
+Un algorithme et tout ce qu'il peut manipuler est une suite finie de `0` et de `1`.
+{% endnote %}
 
 ## Algorithmes et démonstration mathématiques
 

@@ -22,3 +22,6 @@ modulo pas crypto car on déduit a et b de deux variables.
 > 
 > LSFR <https://www.youtube.com/watch?v=-uVC2ISqHww>
 > LSFR toutes les preuves sont là : <https://www.paris.inria.fr/secret/Anne.Canteaut/MPRI/chapters-10-13.pdf>
+>
+> <https://www.staff.uni-mainz.de/pommeren/Cryptology/Bitstream/3_FSR/FSR.pdf>
+> 
