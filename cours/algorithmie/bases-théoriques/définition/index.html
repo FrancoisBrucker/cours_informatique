@@ -186,10 +186,10 @@ Programme :
 </ol>
 <p>Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
 <p>Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.</p>
-<h2>Nombre d'algorithmes</h2>
-<p>La définition générale d'un algorithme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symbole. De plus, c'est implicite, mais un algorithme doit être compris par un humain.</p>
-<h3>Une infinité d'algorithmes différents</h3>
-<p>De la définition d'un algorithme on peut donc déjà conclure que :</p>
+<h2>Nombre de programme</h2>
+<p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symbole. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
+<h3>Une infinité de programmes différents</h3>
+<p>On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithmes on peut donc déjà conclure que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -217,10 +217,10 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si on considère l'instruction <em>&quot;Ne fait rien&quot;</em>, le texte ci-dessous est un algorithme d'une instruction :</p>
+<p>Si on considère l'instruction <code class="language-">Ne fait rien</code>, le texte ci-dessous est un algorithme d'une instruction :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Ne fait rien
 </code></pre>
-<p>En notant alors $R_k$ ($k &gt;0$) l'algorithme de $k$ instructions <em>&quot;Ne fait rien&quot;</em> à la suite (l'algorithme précédent est $A_1$).</p>
+<p>En notant alors $R_k$ ($k &gt;0$) l'algorithme de $k$ instructions <code class="language-">Ne fait rien</code> à la suite (l'algorithme précédent est $A_1$).</p>
 <p>Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.</p>
 </div>
 </details>     
@@ -280,7 +280,7 @@ Programme :
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>algorithme</em></strong> est une suite finie $c_1 \dots c_n$ où :</p>
+<p>Un <strong><em>programme</em></strong> est une suite finie $c_1 \dots c_n$ où :</p>
 <ul>
 <li>$c_i \in \mathcal{U}$ pour tout $1 \leq i \leq n$</li>
 <li>avec $\mathcal{U}$ l'ensemble des caractères <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a>, $\vert \mathcal{U} \vert \leq 150000$.</li>
@@ -309,7 +309,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Bref, les Algorithmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode</p>
+<p>Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode.</p>
 <p>On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par <a href="http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html">numéro</a> croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :</p>
 <div id="encodage-algorithme"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -478,8 +478,8 @@ $$</p>
 <p>Une <strong>instruction</strong> d'un algorithme est une règle définie par un nombre <strong>fini</strong> de symboles.</p>
 </div>
 </div>
-<p>Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers aussi grand qu'il<br>
-le veut, du moment qu'ils ne soient pas infini.</p>
+<p>Fini ne veut pas dire petit nombre. Un algorithme peut utiliser des nombres entiers relatifs aussi grand ou petit qu'il<br>
+le veut, du moment qu'ils ne soient pas infinis.</p>
 <p>Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne peut manipuler que des <a href="https://fr.wikipedia.org/wiki/Mot_(math%C3%A9matiques)">mots d'un alphabet fini</a>. La conséquence fondamentale de ceci est que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -511,24 +511,37 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
-<p>Les objets manipulables par un algorithme sont uniquement :</p>
-</div><div class="pl-8 mr-8">
+<div class="pl-8 mr-8">
+<p>Les objets manipulables par un programme sont uniquement les suites finies composés des objets de type :</p>
 <ul>
-<li>les entiers finis</li>
+<li>les entiers relatifs</li>
 <li>les approximations finies de réels</li>
 <li>les chaînes de caractères</li>
 </ul>
 </div>
 </div>
-<p>Ces objets sont tous représentables par des entiers :</p>
+<p>Ces objets sont tous représentables par des suites finies de <code>0</code> et de <code>1</code> :</p>
 <ul>
-<li>des entiers finis : c'est clair.</li>
-<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
-<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>).</li>
+<li>des entiers relatifs :
+<ul>
+<li>positifs en utilisant leur notation binaire et en les faisant commencer par un <code>0</code>, par exemple 3 sera encodé par <code>011</code> (le <code>0</code> tout à gauche signifiant que l'entier est positif)</li>
+<li>négatifs en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> de la représentation binaire de son opposé. Ainsi -3 sera encodé par <code>101</code> (un entier négatif ainsi représenté commencera toujours par un <code>1</code>)</li>
 </ul>
-<p>En conclusion, comme on peut associer un entier à tout algorithme et que tout ce qu'il peut manipuler est fini :</p>
-<p><span id="paramètres-entier"></span></p>
+</li>
+<li>des approximations finies de réels : on peut utiliser la norme <a href="https://fr.wikipedia.org/wiki/IEEE_754">IEEE 754</a>. Par exemple 3.1415 en codage IEEE 754 sur 32 bits correspond à l'entier binaire : <code>01000000010010010000111001010110</code> (j'ai utilisé <a href="https://www.h-schmidt.net/FloatConverter/IEEE754.html">un convertisseur</a>)</li>
+<li>des chaînes de caractères : que l'on peut représenter comme un entier. Par exemple la chaîne de caractères &quot;Yop !&quot; correspond en utf-8 au nombre hexadécimal 0x596F702021 (là aussi, j'ai utilisé <a href="http://hapax.qc.ca/conversion.fr.html">un convertisseur</a>) qui en binaire vaut : <code>0000010110010110111101110000001000000010</code></li>
+</ul>
+<p>On peu aller plus loin en représentant les tableaux de suites finies de &quot;0&quot; et de &quot;1&quot; par une unique suite finie de &quot;0&quot; et de &quot;1&quot;. Pour cela on peut utiliser l'encodage suivant :</p>
+<ul>
+<li>le caractère <code>0</code> est encodé par la suite <code>100</code></li>
+<li>le caractère <code>1</code> est encodé par la suite <code>101</code></li>
+<li>le caractère de séparation est encodé par la suite <code>000</code></li>
+<li>le caractère de début de liste est encodé par la suite <code>010</code></li>
+<li>le caractère de fin de liste est encodé par la suite <code>001</code></li>
+</ul>
+<p>Ainsi le tableau <code>[00110, 110]</code> sera encodé par la suite <code>010100100101101100000101101100001</code>. Notez que cet encodage permet d'encoder tout aussi aisément les listes imbriquées de suites finies de 0 et de 1, comme <code>[0, [1, [1]], 0]</code>, chaque caractère nécessaire (<code>0</code>, <code>1</code>, <code>,</code>, <code>[</code> et <code>]</code>) ayant son propre code sur 3 bits.</p>
+<p>En conclusion, comme on peut associer une suite finie de de <code>0</code> et de <code>1</code> à tout algorithme et à tout ce qu'il peut manipuler :</p>
+<p><span id="paramètres-binaires"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -536,18 +549,18 @@ le veut, du moment qu'ils ne soient pas infini.</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un algorithme et tout ce qu'il peut manipuler peut être représenté par des entiers finis.</p>
+<p>Tout ce que peut manipuler un programme est une suite finie de <code>0</code> et de <code>1</code></p>
 </div>
 </div>
-<p>Et enfin, comme tout entier peut être écrit sous <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_binaire">sa notation binaire</a> :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<p>Enfin, comme la description d'un programme est aussi une suite finie de <code>0</code> et de <code>1</code> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un algorithme et tout ce qu'il peut manipuler est une suite finie de 0 et de 1.</p>
+<p>Un algorithme et tout ce qu'il peut manipuler est une suite finie de <code>0</code> et de <code>1</code>.</p>
 </div>
 </div>
 <h2>Algorithmes et démonstration mathématiques</h2>

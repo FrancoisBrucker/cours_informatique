@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Briques de base</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Briques de base</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/">Écrire des Algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/briques-de-base/">Briques de base</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Le pseudo-code est constitué d'instructions dont le but est soit de manipuler des objets (création, affectation ou lecture) ou de contrôler le flux d'instructions (test et boucles).</p>
+<p>Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.</p>
+<h2><span id="objets-basique"></span> Objets et variables</h2>
+<h2><span id="objets-basique"></span> Objets basiques</h2>
+<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et sont au nombre de cinq :</p>
+<ul>
+<li>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</li>
+<li>les booléens (vrai et faux)</li>
+<li>les nombres entiers</li>
+<li>les nombres réels</li>
+<li>les caractères</li>
+</ul>
+<p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 5 types d'objets (un point en 3D par exemple est constitué de 3 réels).</p>
+<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :</p>
+<ul>
+<li><strong><em>créer des objets</em></strong></li>
+<li><strong><em>opérer sur ces objets</em></strong> :
+<ul>
+<li>opérations sur les entiers et/ou réels :
+<ul>
+<li>arithmétique : addition (<code class="language-">+</code>), soustraction (<code class="language-">-</code>), multiplication (<code class="language-">*</code>), division (<code class="language-">/</code>)</li>
+<li>opérations usuelles : prendre la valeur entière, valeur absolue, le modulo</li>
+<li>logique : égalité (avec le signe <code class="language-">==</code> ou <code class="language-">=</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
+</ul>
+</li>
+<li>opérations sur les caractères :
+<ul>
+<li>logique : égalité (avec le signe <code class="language-">==</code>)</li>
+</ul>
+</li>
+<li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
+</ul>
+</li>
+</ul>
+<p>Notez que tous les objets basiques à part les entiers sont de taille fixe :</p>
+<ul>
+<li>booléen 1bit</li>
+<li>caractères 32bits si on utilise les caractères Unicode</li>
+<li>réel norme IEEE sur 64bits</li>
+</ul>
+<p>On peut très bien sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2^{64}$ et ainsi être représenté par un tableau d'entiers codé sur 64bits. C'est d'ailleurs ce qui se passe en python pr exemple où un entier, qui n'est pas borné, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.</p>
+</div>
+</div>
+<h2>Variables</h2>
+<p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>.</p>
+<p>Une <strong><em>variables</em></strong> est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>variable</em></strong> est un nom auquel est associé un objet.</p>
+</div>
+</div>
+<p>Les instructions autorisées sur les variables sont :</p>
+<ul>
+<li><strong><em>l'affectation</em></strong> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
+<li><strong><em>la lecture</em></strong>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
+<li><strong><em>l'affichage à l'écran</em></strong>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une variable est un nom, elle ne copie ni ne modifie un objet dans le pseudo-code suivant, les deux variables <code class="language-">a</code> et <code class="language-">b</code> référencent le même objet entier.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">a <span class="token operator">=</span> <span class="token number">3</span>
+b <span class="token operator">=</span> a
+</code></pre>
+<p>Dans la seconde instruction, on commence par retrouver l'objet nommé par <code class="language-">a</code> et on le nomme <code class="language-">b</code> : la case où est stocké l'entier dans la mémoire est donné à <code class="language-">a</code> et à <code class="language-">b</code></p>
+</div>
+</div>
+<h2><span id="structures"></span> Structures</h2>
+<p>Les objets basiques sont les briques élémentaires permettant de créer tout ce dont un algorithme à besoin. Un nombre complexe est composé de 2 approximations de réels ou une phrases d'une suite de caractères par exemples. Gérer ces objets complexes, appelés <strong><em>structures</em></strong>, se fait aux <strong><em>tableaux</em></strong>. Comme une structure est toujours <em>in fine</em> composée d'objet basiques :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On considérera toujours que la taille d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.</p>
+</div>
+</div>
+<h3><span id="tableaux"></span>Tableaux</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
+<p>Chaque variable du tableau peut être accédée via son <strong><em>indice</em></strong>, qui est un entier entre $0$ et $n-1$. Si le tableau est nommé $t$ :</p>
+<ul>
+<li>$t[i]$ est sa variable d'indice $i$ si $0 \leq i &lt; n$</li>
+<li>$t[-i]$ vaut $t[n-i]$ si si $0 &lt; i  \leq n$</li>
+</ul>
+</div>
+</div>
+<p>Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.</p>
+<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
+<p>On considérera que :</p>
+<ul>
+<li>la création d'un tableau prend 1 instruction : <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
+<ul>
+<li>d'indice 0 un entier valant 1</li>
+<li>d'indice 1 un entier valant 3</li>
+<li>d'indice 2 l'objet associé à la variable <code class="language-">x</code></li>
+</ul>
+</li>
+<li>l'affectation d'un tableau à une variable prend 1 instruction : <code class="language-">t=[1, 3, x]</code> prend 2 instructions une pour la création et une pour l'affectation</li>
+<li>l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : <code class="language-">t[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
+</div>
+</div>
+<p>Les opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.</p>
+</div>
+</div>
+<h3><span id="str"></span>Chaînes de caractères</h3>
+<p>Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.</p>
+<p>Une <strong><em>chaîne de caractères</em></strong> est un tableau constitué uniquement de caractères.</p>
+<p>On peut les manipuler essentiellement comme un tableau. On peut :</p>
+<ul>
+<li>créer une chaîne de caractères : <code class="language-">&quot;salut&quot;</code> crée la chaîne contenant les caractères <code class="language-">&quot;s&quot;</code>, <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;l&quot;</code>, <code class="language-">&quot;u&quot;</code> et <code class="language-">&quot;t&quot;</code> de façon contiguë en mémoire.</li>
+<li>affecter une chaîne de caractères à une variable prend 1 instruction : <code class="language-">s = &quot;salut&quot;</code> prend 2 instructions, une pour la création et une pour l'affectation.</li>
+<li>accéder à un caractère particulier en utilisant les crochets : <code class="language-">s[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
+</ul>
+<p>Les chaines étant très utilisées, des langages comme python les considèrent comme un type de base et considèrent les caractères comme étant des chaîne de langueur 1. Les chaines de caractères héritent donc de certains comportements spécifiques aux objets basiques :</p>
+<ul>
+<li>une fois crées <strong>on ne peut pas les modifier</strong> (<code class="languages">s[2] =&quot;p&quot;</code> n'est pas une instruction valide).</li>
+<li>on définit l'opération de concaténation avec l'opérateur <code class="language-">+</code> : <code class="language-">&quot;salut&quot; + &quot; toi !&quot;</code> vaut la chaîne de caractères <code class="language-">&quot;salut toi !&quot;</code></li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a> (les chaînes crées sont des constantes).</p>
+</div>
+</div>
+<h2><span id="instruction"></span> Instructions de contrôle</h2>
+<p>Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :</p>
+<ul>
+<li><a href="#tests" class="interne">l'exécution conditionnelle d'instructions</a>,</li>
+<li><a href="#r%C3%A9p%C3%A9tition" class="interne">la répétition d'instructions</a></li>
+</ul>
+<p>Ces formes d'instruction nécessitent de grouper les instructions en blocs.</p>
+<h3>Blocs</h3>
+<p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">type de bloc:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+</code></pre>
+<p>On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.</p>
+<h3><span id="tests"></span> Exécution conditionnelle d’instructions</h3>
+<p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>Cette instruction basique peut avoir plein de variantes comme :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon:
+    instruction 1
+    ...
+    instruction n'
+</code></pre>
+<p>ou encore :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+sinon si (autre condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n'
+</code></pre>
+<p>Ou tout mix de tout ça, du moment que c'est clair !</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut dériver toutes les variantes de la forme initiale.</p>
+</div>
+</div>
+<h3><span id="répétition"></span> Répétition</h3>
+<p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>Il existe une variation de ce bloc très utile (boucle <em>for</em>):</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque élément x d'un tableau:
+    instruction 1
+    ...
+    instruction n
+</code></pre>
+<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code>x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut dériver la variante <code class="language-">pour chaque</code> de la forme initiale <code class="language-">tant que</code>.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

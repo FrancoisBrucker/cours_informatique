@@ -124,43 +124,7 @@
 </div>
 </div>
 <p>La thèse de Church-Turing a été initialement formulée pour les Machines de Turing mais, nous le verrons pseudo-code et machines de Turing sont deux notions équivalentes.</p>
-<h2><span id="règles"></span> Éléments de pseudo-code</h2>
-<p>Un pseudo-code est une succession de lignes qui seront exécutées <strong><em>en séquence</em></strong> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser en entier avant de passer à la ligne suivante.</p>
-<p>Le but de chaque instruction est de manipuler des objets, auxquels on peut accéder via des variables.</p>
-<h3><span id="objets-basique"></span> Objets et variables</h3>
-<p>On doit pouvoir manipuler et stocker des <em>objets</em> pour faire fonctionner nos algorithmes ce qui nécessite de posséder un espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>. D'un point de vue algorithmique, on identifie celle-ci à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong> ou <strong><em>une variable</em></strong>.</p>
-<h4>Objets basiques</h4>
-<p>Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés <strong><em>objets basiques</em></strong> et sont au nombre de six :</p>
-<ul>
-<li>le vide (nommé <code class="language-">None</code> en python, <code class="language-">null</code> en javascript ou encore <code class="language-">void</code> en C)</li>
-<li>les booléens (vrai et faux)</li>
-<li>les nombres entiers</li>
-<li>les nombres réels</li>
-<li>les nombres complexes</li>
-<li>les caractères</li>
-</ul>
-<p>Tous les autres types d'objets que l'on peut créer seront des compositions de ces 6 types d'objets élémentaires (un point en 3D par exemple est constitué de 3 réels).</p>
-<p>Les instructions liées à ces objets sont de deux ordres. On doit pouvoir :</p>
-<ul>
-<li><strong><em>créer des objets</em></strong></li>
-<li><strong><em>opérer sur ces objets</em></strong> :
-<ul>
-<li>opérations sur les entiers et/ou réels :
-<ul>
-<li>arithmétique : addition (<code class="language-">+</code>), soustraction (<code class="language-">-</code>), multiplication (<code class="language-">*</code>), division (<code class="language-">/</code>)</li>
-<li>opérations usuelles : prendre la valeur entière, valeur absolue, le modulo</li>
-<li>logique : égalité (avec le signe <code class="language-">==</code> ou <code class="language-">=</code>), plus petit que (<code class="language-">&lt;</code>), plus grand que (<code class="language-">&gt;</code>), plus petit ou égal (<code class="language-">≤</code>), plus grand ou égal (<code class="language-">≥</code>)</li>
-</ul>
-</li>
-<li>opérations sur les booléens : &quot;négation logique&quot; (non, <code class="language-">NOT</code>, $\neg$), &quot;et logique&quot; (et, <code class="language-">&amp;&amp;</code>, <code class="language-">AND</code>), &quot;ou logique&quot; (ou, <code class="language-">||</code>, <code class="language-">OR</code>)</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>TBD ici attention en pratique, on utilise des entier fini de taille fixe (64bits) sinon impossible d'avoir 1 opération simple pour les manipuler.</p>
-</blockquote>
-<h4>Variables</h4>
-<p>On doit pouvoir affecter des objets à des <strong><em>variables</em></strong>.</p>
+<p><span id="règles"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -168,199 +132,27 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>variable</em></strong> est un nom auquel est associé un objet.</p>
+<p>Un pseudo-code est une succession de lignes qui seront exécutées <strong><em>en séquence</em></strong> les unes à la suite des autres. Chaque ligne est composée d'une instruction qu'il faut réaliser avant de passer à la ligne suivante.</p>
 </div>
 </div>
-<p>Les instructions autorisées sur les variables sont :</p>
+<p>Les langages de programmation classiques comme <a href="https://www.python.org/">python</a>, <a href="https://www.java.com/fr/">java</a> ou encore <a href="https://www.rust-lang.org/fr">rust</a> se transcrivent aisément en pseudo-code et réciproquement et peuvent donc être considérés comme équivalent :</p>
 <ul>
-<li><strong><em>l'affectation</em></strong> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
-<li><strong><em>la lecture</em></strong>. Si j'ai affecté <code class="language-">3</code> à la variable <code class="language-">a</code>, je dois pouvoir l'utiliser, par exemple en écrivant <code class="language-">b = a * 3</code></li>
-<li><strong><em>l'affichage à l'écran</em></strong>. Pour permettre un retour à l'utilisateur de ce qu'à produit le pseudo-code.</li>
+<li>on utilisera le pseudo-code ou un langage très proche comme le python pour l'étude théorique des algorithmes dans ce cours</li>
+<li>on codera ces algorithme dans un langage dédié à être exécuté lorsque l'on voudra les tester. Dans le cadre de ce cours on utilisera le python.</li>
 </ul>
-<h4><span id="str"></span>Chaînes de caractères</h4>
-<p>Une <strong><em>chaîne de caractères</em></strong> est un objet constitué d'une suite finie de caractères $c_0c_1\dots c_{n-1}$ stockées de façon et contiguë en mémoire.</p>
-<p>D'un point de vue complexité, on considérera que :</p>
-<ul>
-<li>la création d'une chaîne de caractère prend 1 instruction : <code class="language-">&quot;salut&quot;</code> crée la chaîne contenant les caractères <code class="language-">&quot;s&quot;</code>, <code class="language-">&quot;a&quot;</code>, <code class="language-">&quot;l&quot;</code>, <code class="language-">&quot;u&quot;</code> et <code class="language-">&quot;t&quot;</code> de façon contiguë en mémoire.</li>
-<li>l'affectation d'une chaîne de caractères à une variable prend 1 instruction : <code class="language-">s = &quot;salut&quot;</code> prend 2 instructions, une pour la création et une pour l'affectation.</li>
-<li>l'accès à un caractère particulier se fait en 1 instruction et en utilisant les crochets : <code class="language-">s[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<h2>Éléments de pseudo-code</h2>
+<h3>Briques de base</h3>
+<p>Commençons par décrire la <em>grammaire de base</em> du pseudo-code :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>On considère que créer une chaîne prend 1 instruction car cette chaîne est une constante. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
+<p><a href="briques-de-base" class="interne">Briques de base</a></p>
 </div>
 </div>
-<p>Les chaînes de caractères sont non mutables :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On ne peut pas changer un caractère d'une chaîne de caractères.</p>
-</div>
-</div>
-<h4><span id="tableaux"></span>Tableaux</h4>
-<p>Un <strong><em>tableau</em></strong> est un objet qui en contient d'autres.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
-<p>Chaque variable du tableau peut être accédée via son <strong><em>indice</em></strong>, qui est un entier entre $0$ et $n-1$ : si le tableau est nommé $t$, $t[i]$ est sa variable d'indice $i$.</p>
-</div>
-</div>
-<p>Comme une chaîne de caractères, les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement, mais contrairement à une chaîne de caractères qui contient uniquement des caractères constants, chaque élément du tableau est une variable et peut donc être affectée ou modifiée.</p>
-<p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
-<p>D'un point de vue complexité, on considérera que :</p>
-<ul>
-<li>la création d'un tableau prend 1 instruction : <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
-<ul>
-<li>d'indice 0 un entier valant 1</li>
-<li>d'indice 1 un entier valant 3</li>
-<li>d'indice 2 l'objet associé à la variable <code class="language-">x</code></li>
-</ul>
-</li>
-<li>l'affectation d'un tableau à une variable prend 1 instruction : <code class="language-">t=[1, 3, x]</code> prend 2 instructions une pour la création et une pour l'affectation</li>
-<li>l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : <code class="language-">t[2]</code> vaut le caractère <code class="language-">&quot;l&quot;</code></li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
-</div>
-</div>
-<h3><span id="instruction-basique"></span> Instruction basique</h3>
-<p>Le but d'une instruction est de transformer des objets. On utilisera un nombre restreint d'instructions, appelées instructions basiques, dont la composition permet (a priori) de réaliser toutes les instructions imaginables.</p>
-<p>Il y a 3 types d'instructions basiques :</p>
-<ul>
-<li><a href="#objets-basique" class="interne">les opérations sur les objets basiques</a> qu'on a déjà vu,</li>
-<li><a href="#tests" class="interne">l'exécution conditionnelle d'instructions</a></li>
-<li><a href="#r%C3%A9p%C3%A9tition" class="interne">la répétition d'instructions</a></li>
-</ul>
-<p>Les deux dernières formes d'instruction nécessitent de grouper les instructions en blocs.</p>
-<h4>Blocs</h4>
-<p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">type de bloc:
-    instruction 1
-    instruction 2
-    ...
-    instruction n
-</code></pre>
-<p>On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.</p>
-<h4><span id="tests"></span> Exécution conditionnelle d’instructions</h4>
-<p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
-    instruction 1
-    ...
-    instruction n
-</code></pre>
-<p>Cette instruction basique peut avoir plein de variantes comme :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
-    instruction 1
-    ...
-    instruction n
-sinon:
-    instruction 1
-    ...
-    instruction n'
-</code></pre>
-<p>ou encore :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
-    instruction 1
-    ...
-    instruction n
-sinon si (autre condition logique) est vraie:
-    instruction 1
-    ...
-    instruction n'
-</code></pre>
-<p>Ou tout mix de tout ça, du moment que c'est clair !</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut dériver toutes les variantes de la forme initiale.</p>
-</div>
-</div>
-<h4><span id="répétition"></span> Répétition</h4>
-<p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
-    instruction 1
-    ...
-    instruction n
-</code></pre>
-<p>Il existe une variation de ce bloc très utile (boucle <em>for</em>):</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque élément x d'un tableau:
-    instruction 1
-    ...
-    instruction n
-</code></pre>
-<p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code>x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On peut dériver la variante <code class="language-">pour chaque</code> de la forme initiale <code class="language-">tant que</code>.</p>
-</div>
-</div>
-<h3><span id="complexité"></span> Complexité</h3>
-<p>La complexité d'un pseudo-code est le nombre d'instructions basiques utilisées pour l'exécuter. La complexité d'un bloc d'instruction est égale à la somme des complexités des instructions qui le composent.</p>
-<p>Par exemple le pseudo-code suivant :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
-if ((x > 12) AND (x < 36)):
-    z = x * "coucou"
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>Création de l'entier valant 30 : 1 instruction</li>
-<li>on affecte l'entier à x : 1 instruction</li>
-<li>Pour faire cette instruction il faut :
-<ul>
-<li>faire <code class="language-">x &gt; 12</code>. Pour cela :
-<ul>
-<li>on crée l'entier valant 12 : 1 instruction</li>
-<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
-<li>on effectue la comparaison : 1 instruction</li>
-</ul>
-</li>
-<li>faire <code class="language-">x &lt; 36</code>. Pour cela :
-<ul>
-<li>on crée l'entier valant 36 : 1 instruction</li>
-<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
-<li>on effectue la comparaison : 1 instruction</li>
-</ul>
-</li>
-<li>faire l'instruction <code class="language-">AND</code> : 1 instruction</li>
-<li>faire le <code class="language-">if</code> : 1 instruction</li>
-</ul>
-</li>
-<li>on commence par récupérer la valeur de <code class="language-">x</code> (1 instruction), on crée la chaîne (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 4 instructions</li>
-</ol>
-<p>Un nombre total d'instructions de 14.</p>
-<h3>Nom des termes utilisés ?</h3>
-<p>Leurs noms importent peu, seuls leurs fonctions sont importantes. Vous pouvez donc utiliser les mots qui vous plaisent, du moment qu'ils sont compréhensible pour vous et — surtout — pour votre lecteur. Le plus souvent, on utilisera un mix de python et de français, ou d'anglais.</p>
-<p>Les trois pseudo-code suivant sont ainsi équivalent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    affiche à l'écran i
-</code></pre>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">pour chaque entier i allant de <span class="token number">0</span> à <span class="token number">9</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-</code></pre>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">for</span> <span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span> <span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">printf</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2>Pseudo-code</h2>
-<p>Le pseudo-code d'un algorithme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie. Par exemple :</p>
+<h3>Format</h3>
+<p>Le pseudo-code d'un programme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie (son but). Par exemple :</p>
 <div id="problème-recherche"></div>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : recherche
 Entrées :
@@ -387,165 +179,33 @@ Programme :
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Ceci permet ensuite de définir des fonctions pour écrire des algorithmes de façon plus concise.</p>
 <h3>Fonctions</h3>
-<p>Une fonction est un algorithme. Une fois que sa complexité est connue, on peut l'utiliser comme une instruction dans un pseudo-code.</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">nom(entrée 1, ..., entrée n)
-</code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Ne confondez pas <code class="language-">nom</code> qui est l'algorithme et <code class="language-">nom(a, b)</code> qui est le résultat de son exécution avec les paramètres <code class="language-">a</code> et <code class="language-">b</code></p>
+<p><a href="fonctions" class="interne">Fonctions</a></p>
 </div>
 </div>
-<p>Si l'algorithme a un retour, on peut directement l'utiliser, en l'affectant à une variable par exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">variable = nom(entrée 1, ..., entrée n)
-</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<h2>Écrire du bon pseudo-code</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Les fonctions nous donnent accès à la récursivité : Il suffit que notre pseudo-code s'appelle lui-même comme une fonction.</p>
+<p><a href="style" class="interne">Comment écrire du pseudo-code</a></p>
 </div>
 </div>
-<p>Si on veut utiliser le pseudo code <em>recherche</em> défini plus haut, cela pourrait être une instruction du type : <code class="language-">trouve = recherche(tab, 3)</code>. On affecte la sortie de l'algorithme <code class="language-">recherche</code> avec comme paramètres <code class="language-">tab</code> (le tableau d'entier) et <code class="language-">3</code> (un entier) à la variable <code class="language-">trouve</code>.</p>
-<p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Ainsi dans le code suivant :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token number">4</span>
-t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-affiche à l'écran e
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>On affichera bien 4 à l'écran et pas 6 (le nom de variable <code class="language-">e</code> défini dans recherche reste dans recherche).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
+<h2>Complexité</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !</p>
+<p><a href="complexit%C3%A9" class="interne">Complexité</a></p>
 </div>
 </div>
-<p>Prenons par exemple le code précédent et comptons les instructions utilisées ligne à ligne :</p>
-<ol>
-<li>création d'un objet et affectation à une variable : 2 instructions</li>
-<li>création d'un tableau et affectation à une variable : 2 instructions</li>
-<li>affectation d'une variable (1 instruction) plus l'exécution de la fonction recherche (ligne à ligne) :
-<ol>
-<li>affectation des paramètres :
-<ol>
-<li>trouver les objets à mettre en paramètres :
-<ul>
-<li>pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction</li>
-<li>pour le second paramètre, l'objet est à créer : 1 instruction</li>
-</ul>
-</li>
-<li>affecter les paramètres aux variables de la fonction :
-<ul>
-<li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
-<li>affectation du second paramètre à la variable locale e : 1 instruction</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>une boucle de 3 itérations</li>
-<li>un test
-<ul>
-<li>on trouve les objets associées à t et e : 2 instructions</li>
-<li>on teste l'égalité : 1 instruction</li>
-<li>on fait le <code class="language-">if</code> : 1 instruction</li>
-</ul>
-</li>
-<li>on arrive à cette ligne à la troisième itération : 1 instruction</li>
-</ol>
-</li>
-<li>afficher quelque chose à l'écran :
-<ul>
-<li>1 instruction pour trouver l'objet à afficher</li>
-<li>1 instruction pour trouver l'afficher</li>
-</ul>
-</li>
-</ol>
-<p>Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$<br>
-instructions c'est à dire $24$ instructions.</p>
-<h3>Signature d'une fonction</h3>
-<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple <a href="#probl%C3%A8me-recherche">le problème recherche</a> nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <strong><em>les signatures de fonctions</em></strong></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une signature de fonction associe :</p>
-<ul>
-<li>son type à chaque paramètre (précédé d'un <code>:</code>)</li>
-<li>le type de sortie (précédé d'un <code>-&gt;</code>)</li>
-</ul>
-</div>
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Par exemple, la signature de <a href="#fonction-recherche">la fonction recherche</a> est :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">bool</span>
-</code></pre>
-</div>
-</div>
-<p>On ne peut bien sur utiliser de signature que lorsque les entrées et les sorties sont de types parfaitement définis, ce qui n'est pas toujours le cas.</p>
-<h3>Instructions avancées</h3>
-<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
-<p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>
-<ul>
-<li>complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction</li>
-<li>complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
-<li>complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction</li>
-<li>complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
-<li>usage comme un tableau : 1 instruction</li>
-</ul>
-<p>Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une <code class="language-">ma_liste.index(&quot;?&quot;)</code>, <code class="language-">x in ma_chaîne_de_caractères</code>) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.</p>
-<h2>Comment écrire du pseudo-code</h2>
-<p>Le pseudo-code est une représentation d'un algorithme. Son but est de :</p>
-<ul>
-<li>démontrer que l'algorithme fait bien ce qu'on pense qu'il fait</li>
-<li>calculer ses performances :
-<ul>
-<li>nombre d'instructions utilisées</li>
-<li>nombre de cases mémoire utilisées</li>
-</ul>
-</li>
-</ul>
-<p>Pour réaliser cela le plus simplement possible, on voudra <strong>toujours</strong> :</p>
-<ul>
-<li>qu'il soit lisible,</li>
-<li>qu'il soit juste,</li>
-<li>en connaître les performances.</li>
-</ul>
-<h3>Lisible</h3>
-<p>Le but d'un algorithme papier est d'être compris. On utilisera pour l'écrire une série de règles compréhensibles par tout le monde : le pseudo-code. Ce n'est ni une langue ni un langage.</p>
-<p>préférez des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>N'oubliez pas</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Les fonctions doivent être décrites si elles ne sont pas immédiatement compréhensibles.</p>
-</div>
-</div>
-<h3>Preuve</h3>
-<p>On <strong>démontrera</strong> le fonctionnement de l'algorithme en utilisant des preuves mathématiques.</p>
-<h3>Performances</h3>
-<p>On calculera la complexité de l'algorithme :</p>
-<ul>
-<li>nombre d'instructions</li>
-<li>place en mémoire</li>
-</ul>
-<p>Ces complexités dépendent des paramètres de l'algorithme et, parfois de circonstances extérieures comme l'état du réseau par exemple.</p>
 
 
 </article>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Exécuter du Code</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Exécuter du Code</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales">Un programme</a> est un algorithme qui ne s'arrête pas forcément. On les décrit en algorithmie avec du <a href="../%C3%A9crire-algorithmes/pseudo-code/">pseudo-code</a> mais lorsque l'on veut exécuter ses programmes sur un ordinateur, on est obligé de transcrire le pseudo-code dans un langage de programmation (on utilisera le python dans ce cours) puis de l'exécuter sur un ordinateur.</p>
+<p>Nous allons voir dans cette partie qu'écrire du code ou du pseudo-code est équivalent.</p>
+<h2>Langage machine universel</h2>
+<blockquote>
+<p>Abus de langage (lol). Le but est de trouver un langage permettant de faire tout ce que fait le pseudo code avec les règles les plus simple possibles</p>
+</blockquote>
+<p>Nous allons pour cela commencer par donner une version alternative et équivalente au pseudo-code, nommé <strong><em>assembleur</em></strong>, qui nous permettra de faire un pont entre pseudo-code et code.</p>
+<p>L'assembleur est une sorte de pseudo-code nécessitant moins de syntaxe que <a href="../%C3%A9crire-algorithmes/pseudo-code/">le pseudo-code classique</a>, mais tout aussi expressif comme nous allons le voir.</p>
+<p>Le pseudo-code est en effet constitué de nombre de facilités dont on peut se passer.</p>
+<h3>Objets</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les objets manipulés par le langage machine universel sont des suites finies de &quot;0&quot; et de &quot;1&quot;.</p>
+</div>
+</div>
+<p>Un objet <code class="language-">o</code> utilisé par le langage machine est une suite de &quot;0&quot; et de &quot;1&quot;. On doit pouvoir affecter une variable :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span>
+</code></pre>
+<p>On doit pouvoir accéder à un de ses bit comme un tableau, qu'on lit de <strong>droite à gauche</strong> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token number">76543210</span>
+o <span class="token operator">=</span> <span class="token number">11010100</span>
+
+o<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+o<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+o<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+o<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+o<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+o<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+o<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+o<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre>
+<p>Et connaître sa taille <code class="language-">l(o) = 8</code><br>
+Enfin, on doit pouvoir interpréter un objet comme un entier :</p>
+<ul>
+<li>positif (on dit <strong><em>unsigned</em></strong>) en utilisant la représentation binaire de l'objet : <code>u(o) = 212</code></li>
+<li>relatif (on dit <strong><em>signed</em></strong>) en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> : <code>s(o) = -44</code></li>
+</ul>
+<p>Remarquez que le complément à deux dépend de la taille de la suite, ce qui semble contre intuitif mais sera justifié par la suite.<br>
+Il existe une autre possibilité, moins utilisée car moins pratique algorithmiquement, qui est de dédier un bit au signe usuellement celui le plus à gauche.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le bit le plus à gauche, donc celui d'indice le plus élevé, est appelé <strong><em>bit de poids fort</em></strong>.</p>
+</div>
+</div>
+<p>On a vu que <a href="../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires">tout objet d'un algorithme</a> pouvait être représenté par une suite finie de &quot;0&quot; et de &quot;1&quot; donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme et le langage machine universel utilisent les mêmes objets.</p>
+</div>
+</div>
+<h3>Opérations</h3>
+<p>Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :</p>
+<ul>
+<li>plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels</li>
+<li>plus, moins, fois et divisé pour les approximations de réels</li>
+<li>concaténation des chaines de caractères</li>
+</ul>
+<p>L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :</p>
+<ul>
+<li><code>copie(x)</code></li>
+<li><code>SHIFT(x, y)</code> rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) &gt; 0 et de -s(x) 0 à gauche si s(x) &lt; 0</li>
+<li><code>NAND(x, y)</code> : opérateur logique NON ET.</li>
+</ul>
+<p>En effet, il est possible d'<a href="https://en.wikipedia.org/wiki/NAND_logic">obtenir toutes les opérations logiques avec NAND</a> et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))</p>
+<p>Ou 1 ou 2 paramètre et une sortie.</p>
+<h3>Structures de contrôles</h3>
+<blockquote>
+<p>Saut conditionnel</p>
+</blockquote>
+<h3>Fonctions</h3>
+<blockquote>
+<p>Dans la mémoire directement. Variable = adresse du début de l'objet.<br>
+mémoire infinie</p>
+</blockquote>
+<blockquote></blockquote>
+<h3>Lier Variables et objets</h3>
+<p>Comme on a que la mémoire qui est une suite de 0 et de 1 pour stocker les objets et les variables//</p>
+<blockquote>
+<p>TBD exemple de 2 objets un qui fait hello et l'autre qui fait -3.</p>
+</blockquote>
+<p>Pour chaque objet il faut pouvoir connaitre la taille</p>
+<blockquote>
+<p>savoir distinguer un nombre d'un objet : connaitre sa taille. l'endrait dans la mémoire</p>
+<p>connaitre la taille d'un objet</p>
+</blockquote>
+<h3>Opérations</h3>
+<h4>Bit à bit</h4>
+<h4>Arithmétiques</h4>
+<p>dérivées des</p>
+<h4>Registres</h4>
+<blockquote>
+<p>ce qui amène a avoir que NOT et ADD comme opération. Le montrer<br>
+arithmétique et bit à bit<br>
+saut<br>
+paramètre des opérations dans des &quot;Registres&quot; il y en a peu.</p>
+</blockquote>
+<h2>Architecture de Von Neumann</h2>
+<blockquote>
+<p>code = nombres en mémoire. Exemple MMIX de knuth (langage théorique)<br>
+associe un registre spéciale pour l'adresse du code. On le place utiusllement avant les variables.</p>
+</blockquote>
+<p>tas (mémoire)<br>
+pile : variables (adresses vers)<br>
+constantes<br>
+code</p>
+<p>Code et variables dans la même mémoire</p>
+<blockquote>
+<p>Théoriquement infinie, même si en pratique comme Tout algorithme n'a besoin que d'un nombre fini d'opérations Si on a autant de cases mémoire que nombre d'opérations c'est comme si la mémoire était infinie.</p>
+<p>On donne une taille de 8b par usage. Et les entiers sont sur 64b par défaut (mais peuvent avoir d'autres taille 8b à 128b et souvent 32b pour les entiers courants)</p>
+</blockquote>
+<blockquote>
+<p>Donc attention, la taille des objets manipulés est (presque) toujours plus grande que la taille d'une case mémoire qui est, poids de l'histoire, fixée à 8b.</p>
+</blockquote>
+<blockquote>
+<p>Pour nos ordis :</p>
+<ul>
+<li>des cases de 8bits et</li>
+<li>adresse sur 64b et donc 2^64 cases mémoires.</li>
+<li>cela fait XXX terabyte</li>
+<li>pour 8GHz cela fait 2^64 opérations et un programme qui peut durer XXX siècles</li>
+</ul>
+</blockquote>
+<h2>Implémentation</h2>
+<blockquote>
+<p>plus que NAND pour gagner du temps. Optimisation RISC ou CISC</p>
+<p>dire que juste un programe là. Il y plus d'un preogramme en vrai : cf cours ssteme<br>
+Processeur x64 et RISK<br>
+MMIX<br>
+Taille des registre = 64b<br>
+mémoire finie et découpée en cases. 8b par défaut</p>
+<ul>
+<li>Pour ne pas avoir à retenir les positions des variables en mémoire qui peuvent changer d'une<br>
+exécutionà lautre, on procède à une indirection avec la pile : on connait la position dans la pile et dans la pile est contenue l'adresse de la variable</li>
+</ul>
+<p>Pile et variables locales par durée de vie. Faire exemple</p>
+<ul>
+<li>appel de fonctions call et ret</li>
+<li>appel au système</li>
+<li>taille finie<br>
+objet taille fixe, et pas infini pour être traité directement dans un registre.<br>
+Si on a des entiers plus gros il faut combiner en une structure plus compliquée<br>
+Variables temporaire dans la pile.<br>
+On peu empiler et dépiler</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>peut être vu comme un pseudo-code &quot;minimal&quot;</p>
+</blockquote>
+<blockquote>
+<p>TBD le plus minimal c'est la machine de turing, mais d'un point de vue opérationel il est minimal car c'est ce qui est appelé assembleur.<br>
+faire les call avec des jump<br>
+à la fin dire qu'il y a souvent plusieurs autres méthodes dans les langages machines pour aider (donner exemple, sub, mul, gestion approximation de réel, call/ret et surtout la pile qu'on verra bien plus tard.), mais on peut tout faire avec ce qu'on a la.</p>
+<p>Passer d'un pseudo code à un langage machine simple et montrer sn équivalence. Ceci permettra de montrer plus facilement que des langages sont équivalents.<br>
+Langage simplifié où les variables n'existent pas et le boucles sont remplacés par des saut. Tout langage informatique peut être transcrit en langage machine<br>
+instructions finie et 1 ou deux paramètres et une sortie dans des variables fixées et de taille fixé disons 64bits appelées registres.<br>
+variables = un grand tableaux de cases de taille fixée. Disons 64bits</p>
+</blockquote>
+<p>Y arriver à partir du pseudo-code : fait de façon formelle par Knuth et son langage universel MMIX.</p>
+<blockquote>
+<p>TBD Faire exemple avec Fibonacci ?</p>
+</blockquote>
+<p>Variables :</p>
+<blockquote>
+<ol>
+<li>uniquement entiers relatifs</li>
+<li>uniquement entiers binaires</li>
+<li>uniquement addition et -x comme opération.</li>
+<li>uniquement entiers binaires 64bits (sinon tableaux). Positifs et négatifs. Addition avec flag si ça dépasse. faire exemple d'une addition sur plusieurs mots</li>
+<li>uniquement entiers binaires positifs (non signé).  Négatif = complément à deux. Et on remplace le -x par NOT</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>TBD tout algorithme va s'arrêter et donc peut rentrer dans une machine physique avec une mémoire assez grande. Si N opérations -&gt; n accès à une variable utilisé -&gt; N cases mémoires  -&gt; on découpe l'espace en log2(n) pour qu'une case mémoire soit suffisant pour stocker l'adresse de la case mémoire.<br>
+Actuellement 64bits -&gt; taille mémoire de X terra. -&gt; si 4GHz alors temps execution XX sec On y est pas encore...</p>
+</blockquote>
+<p>Structures :</p>
+<blockquote>
+<ol start="6">
+<li>pas de boucles, que des labels</li>
+<li>pas de variables. Que la mémoire</li>
+<li>opérations via des registres pour les paramètres et les résultats des opérations (transfert mémoire registre), plus quelques registres généraux/sp´´cifique</li>
+</ol>
+</blockquote>
+<p>Programme :</p>
+<blockquote>
+<ol start="8">
+<li>pas de code que des nombres. Avec un numéro de fin.</li>
+<li>Programme = entier : code puis variables (voir <a href="https://en.wikipedia.org/wiki/CMD_file_(CP/M)">https://en.wikipedia.org/wiki/CMD_file_(CP/M)</a> plus compliqué aujourd'hui mais même principe)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>TBD ne pas parler de pile. Juste de la structure.</p>
+</blockquote>
+<p><a href="https://fr.wikibooks.org/wiki/Programmation_Assembleur/x86">https://fr.wikibooks.org/wiki/Programmation_Assembleur/x86</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/MMIX">https://fr.wikipedia.org/wiki/MMIX</a> <a href="https://mmix.cs.hm.edu/">https://mmix.cs.hm.edu/</a></p>
+<p><a href="https://www.technologuepro.com/microprocesseur/jeu-instructions-8086-8088.htm">https://www.technologuepro.com/microprocesseur/jeu-instructions-8086-8088.htm</a></p>
+<div id="665rzOSSxWA" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/665rzOSSxWA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p>Transcrit en code.<br>
+et les opérations fait en circuit.</p>
+<p>Attention, il y a le système en plus (qui est aussi un programme) qui gère plusieurs exécution des programmes. Cela rajoute une couche de complexité mais à chaque moment il n'y a qu'un seul programme qui tourne en même temps par processeur.</p>
+<blockquote>
+<p>TBD donner exemple de l'organisation de la mémoire pour un programme et dire ce qu'il se passe pour deux programme : échange de mémoire. Puis emmener vers la partie système si besoin de précision.</p>
+</blockquote>
+<h3>Circuits</h3>
+<h2>Langages et pseudo-code</h2>
+<p>On va montrer que les langages informatiques (ou en tout cas une grande partie) sont équivalents au pseudo-code. Pour cela on va procéder en deux temps :</p>
+<ol>
+<li>on va commencer par montrer que l'on peut simuler un pseudo-code avec un langage : un langage informatique sera plus puissant que le pseudo-code</li>
+<li>on montrera que l'on peut simuler un langage avec le pseudo-code ce qui montrera que le pseudo-code est plus puissant que tout langage informatique.</li>
+</ol>
+<p>Pour certains langages informatiques, comme le python ou le java par exemple, il est clair que l'on peut facilement écrire tout pseudo-code sous la forme d'un programme</p>
+<h3>Langage ≥ pseudo-code</h3>
+<blockquote>
+<p>il faut montrer que l'on peut faire tout ce que fait un pseudo-code.</p>
+<p>TBD souvent clair. comme le python, parfois moins clair et là il faudra voir un modèle équivalent au pseudo-code. Exemple de l'assembleur : que somme et test et pas de boucle mais des labels. En plus taille fixe, aussi possible.</p>
+</blockquote>
+<h3>Langage ≤ pseudo-code</h3>
+<p>compilation vers langage machine.</p>
+<p>Un langage informatique est décrit en utilisant <a href="https://fr.wikipedia.org/wiki/Grammaire_formelle">une grammaire formelle</a> qui permet d'écrire des lignes de code.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3.11/reference/grammar.html">Grammaire de python</a></p>
+</div>
+</div>
+<p>Chaque ligne de la grammaire peut être transformé en pseudo-code <em>via</em> un <a href="https://fr.wikipedia.org/wiki/Analyse_syntaxique">analyseur syntaxique</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/reference/lexical_analysis.html">Analyse syntaxique de python</a></p>
+</div>
+</div>
+<p>Comme l'analyse syntaxique peut-être décrite par un algorithme en pseudo-code, on en déduit que tout langage décrit par une grammaire formelle peut-être exécuté par un algorithme écrit en pseudo-code et donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout langage informatique</p>
+</div>
+</div>
+<blockquote>
+<p>TBD plan<br>
+pseudo-code &lt;=&gt; langage (via compilateur : chaque langage est décrit par une grammaire <a href="https://docs.python.org/fr/3.11/reference/grammar.html">https://docs.python.org/fr/3.11/reference/grammar.html</a><br>
+<a href="https://fr.wikipedia.org/wiki/Analyse_syntaxique">https://fr.wikipedia.org/wiki/Analyse_syntaxique</a> facile à fire. C'est pourquoi créer des programme est facile. Mais il ne font pas tous quelque chose et même parfois plantent (s'il font des division par 0 par exemple)<br>
+TBD faire un exemple<br>
+Si on peut écrire un interpréteur en pseudo-code, le langage est contenu dans ce qu'on peut faire en pseudo-code) &lt;=&gt; asm (pas de boucles) &lt;=&gt; taille fixe &lt;=&gt; von neumann</p>
+<h4>Langages informatiques</h4>
+</blockquote>
+<blockquote>
+<p>TBD : le plus clair car le pseudo code s'écrit presque directement, par exemple en python<br>
+TBD pas exécuté directement. Traduit en un autre langage compréhensible par ce qui va l'exécuter.<br>
+TBD : compilé en langage machine (montrer des exemples). Souvent actuellement en byte code (module dis en python pour le voir <a href="https://docs.python.org/fr/3/library/dis.html">https://docs.python.org/fr/3/library/dis.html</a> ou <a href="https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html">https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html</a>) qui est lui-même exécuté par une machine virtuelle.</p>
+</blockquote>
+<blockquote>
+<p>TBD :</p>
+<ol>
+<li>interprété (python, js)</li>
+<li>compilé :</li>
+<li>pour la machine : C</li>
+<li>bytecode : java, wasm</li>
+<li><a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">ésotérique</a> : brainfuck</li>
+</ol>
+</blockquote>
+<h2>Exécution automatique de programme</h2>
+<h3>Modèle de Von Neumann</h3>
+<blockquote>
+<p>TBD : le langage des processeurs<br>
+assembleur = transcription. Mais c'est déjà une interprétation<br>
+nom =&gt; nombre, saut<br>
+mais aussi le système va ajouter des chose pour être exécuté (elf)<br>
+une mémoire pour le code puis les variables : faire le dessin</p>
+</blockquote>
+<h3>Circuits logique</h3>
+<blockquote>
+<p>TBD : <a href="https://www.youtube.com/@CoreDumpped/videos">https://www.youtube.com/@CoreDumpped/videos</a>. <a href="https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/ref=sr_1_1">https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/ref=sr_1_1</a><br>
+TBD un processeur est codé en porte logiques,</p>
+<p>TBD tout est basé sur les opérations booléennes, logiques car algorithme = fonction booléenne.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://people.csail.mit.edu/rrw/week1.pdf">https://people.csail.mit.edu/rrw/week1.pdf</a><br>
+<a href="https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter9.pdf">https://cs.brown.edu/people/jsavage/book/pdfs/ModelsOfComputation_Chapter9.pdf</a><br>
+sert pour la dé-randomisation : <a href="https://www.youtube.com/watch?v=mZck0N_T9Cs">https://www.youtube.com/watch?v=mZck0N_T9Cs</a></p>
+<p>Gros : <a href="https://en.wikipedia.org/wiki/Circuit_complexity#History">https://en.wikipedia.org/wiki/Circuit_complexity#History</a><br>
+TBD circuit logiques ?</p>
+</blockquote>
+<h3>Compilation</h3>
+<blockquote>
+<p>TBD :</p>
+<ul>
+<li>chaque instruction est transformée à la volée en instruction : interprété comme python</li>
+<li>compiler pour la machine en assembleur : C ou le Rust</li>
+<li>compiler en autre chose : java</li>
+</ul>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
