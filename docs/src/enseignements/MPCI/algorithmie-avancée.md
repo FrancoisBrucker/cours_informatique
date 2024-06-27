@@ -48,12 +48,14 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
   - quantum random
   - humain pas bon pour faire du hasard : <https://www.youtube.com/watch?v=tP-Ipsat90c>
 
+<https://www.youtube.com/watch?v=RcXmhKF9ewo>
 ### mélanger
 
 - permutation : <https://en.wikipedia.org/wiki/Permutation>
 
 ### pseudo-aléatoire
 
+- entropie Shanon : <https://www.youtube.com/watch?v=ErfnhcEV1O8>
 - xorshift :
   - <https://en.wikipedia.org/wiki/Xorshift>
   - <https://www.codeproject.com/Articles/5264513/XorShift-Jump-101-Part-1-Matrix-Multiplication>
@@ -92,6 +94,10 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ### Randomized algorithms
 
+- dérandomizartion exemple dans randomized algorithm
+- meme si on ne gagne pas en O, parfois on gagne sur la constante multiplicative (ex. médiane)
+- random placement = nlogn en moyenne = coupon collector
+- <https://www.youtube.com/watch?v=gKuzFZ9ko7I&list=PLwp5OpRmcl_HPVnrDNmQ9cMbYiiFxZ19d&index=1>
 - cours mit :
   - <https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/pages/lecture-notes/>
   - <https://ocw.mit.edu/courses/6-856j-randomized-algorithms-fall-2002/pages/assignments/>
@@ -186,6 +192,22 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- liste degré vers graphe :
+  - <https://en.wikipedia.org/wiki/Havel%E2%80%93Hakimi_algorithm>
+  - <https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Gallai_theorem>
+  - <https://www.cambridge.org/core/services/aop-cambridge-core/content/view/FCA8B7DC763D3D504C68E3A5FDD8DE45/S0004972700002872a.pdf/simple_proof_of_the_erdosgallai_theorem_on_graph_sequences.pdf>
+- graphes aléatoire a k sommets : <https://egtheory.wordpress.com/2012/03/29/random-regular-graphs/>
+- graphes comme réseaux <https://www.youtube.com/watch?v=1T5-BG6yngM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=1>
+  - arbre = petit monde (profondeur en log)
+- random graphs <https://www.youtube.com/watch?v=WABtTfTnVCI>
+  - phase transition
+  - unique graphe infini
+- spectral graphs : <https://www.youtube.com/watch?v=uTUVhsxdGS8>
+- playlist <https://www.youtube.com/watch?v=7T-webnamho&list=PLzXFiYlgM72LMHOeTaZSHvkREdLbKBxLI>
+
+- graphe de rado pour preuve aléaoitre et graphe infini: 
+  - <https://www.youtube.com/watch?v=3QjZ31lj974>
+  - <https://www.youtube.com/watch?v=XwVZ5VttrW0&t=3s>
 - vertex cover
 - christophides : <https://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec9.pdf>
 - structures implique de nombreuses classes de problèmes et donc d'algorithmes. POuvant être adaptés a ses propres solution s. eg voyageur de commerce. matching. etc.

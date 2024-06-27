@@ -10,124 +10,35 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-[Un programme](../bases-théoriques/définition/#règles-générales) est un algorithme qui ne s'arrête pas forcément. On les décrit en algorithmie avec du [pseudo-code](../écrire-algorithmes/pseudo-code/) mais lorsque l'on veut exécuter ses programmes sur un ordinateur, on est obligé de transcrire le pseudo-code dans un langage de programmation (on utilisera le python dans ce cours) puis de l'exécuter sur un ordinateur.
+Le [pseudo-code](../écrire-algorithmes/pseudo-code/) permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
-Nous allons voir dans cette partie qu'écrire du code ou du pseudo-code est équivalent.
-
-## Langage machine universel
-
-> Abus de langage (lol). Le but est de trouver un langage permettant de faire tout ce que fait le pseudo code avec les règles les plus simple possibles
->
-Nous allons pour cela commencer par donner une version alternative et équivalente au pseudo-code, nommé **_assembleur_**, qui nous permettra de faire un pont entre pseudo-code et code.
-
-L'assembleur est une sorte de pseudo-code nécessitant moins de syntaxe que [le pseudo-code classique](../écrire-algorithmes/pseudo-code/), mais tout aussi expressif comme nous allons le voir.
-
-Le pseudo-code est en effet constitué de nombre de facilités dont on peut se passer.
-
-### Objets
-
-{% note "**Définition**" %}
-Les objets manipulés par le langage machine universel sont des suites finies de "0" et de "1".
-{% endnote %}
-
-Un objet `o`{.language-} utilisé par le langage machine est une suite de "0" et de "1". On doit pouvoir affecter une variable :
-
-```python
-o = 1011001
-```
-
-On doit pouvoir accéder à un de ses bit comme un tableau, qu'on lit de **droite à gauche** :
-
-```python
-    76543210
-o = 11010100
-
-o[0] = 0
-o[1] = 0
-o[2] = 1
-o[3] = 0
-o[4] = 1
-o[5] = 0
-o[6] = 1
-o[7] = 1
-```
-
-Et connaître sa taille `l(o) = 8`{.language-}
-Enfin, on doit pouvoir interpréter un objet comme un entier :
-
-- positif (on dit **_unsigned_**) en utilisant la représentation binaire de l'objet : `u(o) = 212`
-- relatif (on dit **_signed_**) en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) : `s(o) = -44`
-
-Remarquez que le complément à deux dépend de la taille de la suite, ce qui semble contre intuitif mais sera justifié par la suite.
-Il existe une autre possibilité, moins utilisée car moins pratique algorithmiquement, qui est de dédier un bit au signe usuellement celui le plus à gauche.
-
-{% note "**Définition**" %}
-Le bit le plus à gauche, donc celui d'indice le plus élevé, est appelé **_bit de poids fort_**.
-{% endnote %}
-
-On a vu que [tout objet d'un algorithme](../bases-théoriques/définition/#paramètres-binaires) pouvait être représenté par une suite finie de "0" et de "1" donc :
+Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 
 {% note "**Proposition**" %}
-Un programme et le langage machine universel utilisent les mêmes objets.
+Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.
 {% endnote %}
 
-### Opérations
+Mais se pose alors 2 questions :
 
-Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :
+1. Comment ?
+2. Est-ce que tout ce qui s'exécute sur un ordinateur peut s'écrire sous la forme d'un pseudo-code rendant les deux notions équivalentes ?
 
-- plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels
-- plus, moins, fois et divisé pour les approximations de réels
-- concaténation des chaines de caractères
+Pour répondre à ces deux questions, il nous faut commencer par montrer que le pseudo-code est équivalent à un autre langage, le pseudo-assembleur, comportant bien moins d'instructions et qui sera plus facile à implémenter physiquement.
 
-L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :
+### <span id="pseudo-assembleur"></span>Pseudo-assembleur
 
-- `copie(x)`
-- `SHIFT(x, y)` rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) > 0 et de -s(x) 0 à gauche si s(x) < 0
-- `NAND(x, y)` : opérateur logique NON ET.
-
-En effet, il est possible d'[obtenir toutes les opérations logiques avec NAND](https://en.wikipedia.org/wiki/NAND_logic) et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))
-
-Ou 1 ou 2 paramètre et une sortie.
-
-### Structures de contrôles
-
-> Saut conditionnel
-
-### Fonctions
-
-> Dans la mémoire directement. Variable = adresse du début de l'objet.
-> mémoire infinie
-> 
-
-> 
-
-### Lier Variables et objets
-
-Comme on a que la mémoire qui est une suite de 0 et de 1 pour stocker les objets et les variables//
-> TBD exemple de 2 objets un qui fait hello et l'autre qui fait -3.
-> 
-Pour chaque objet il faut pouvoir connaitre la taille
-> savoir distinguer un nombre d'un objet : connaitre sa taille. l'endrait dans la mémoire
-> 
-> connaitre la taille d'un objet
-
-### Opérations
-
-#### Bit à bit
-
-#### Arithmétiques
-
-dérivées des
-
-#### Registres
-
-> ce qui amène a avoir que NOT et ADD comme opération. Le montrer 
-> arithmétique et bit à bit
-> saut
-> paramètre des opérations dans des "Registres" il y en a peu.
-
+{% aller %}
+[Pseudo-assembleur](./pseudo-assembleur){.interne}
+{% endaller %}
 
 ## Architecture de Von Neumann
+
+> on stocke tout en mémoire :
+> 
+> - variable dans la pile
+> - code en version binaire
+> variables dans pile
+> little endian et big endian.
 
 > code = nombres en mémoire. Exemple MMIX de knuth (langage théorique)
 > associe un registre spéciale pour l'adresse du code. On le place utiusllement avant les variables.
