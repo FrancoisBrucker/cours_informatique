@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pseudo-assembleur</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Pseudo-assembleur</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/pseudo-assembleur/">Pseudo-assembleur</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p>TBD : dire que structure de donnée = code.</p>
+</blockquote>
+<p>Nous allons présenter une version <em>&quot;minimale&quot;</em> de pseudo-code que nous appellerons pseudo-assembleur. Cet assembleur idéal et théorique nous permettra de faire le lien entre pseudo-code et le langage machine qui est effectivement exécuté.</p>
+<h2>Objet et variables</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les objets que peut manipuler le pseudo-assembleur sont les caractères <code>0</code> et <code>1</code> et les suites finies de ces caractères.</p>
+</div>
+</div>
+<p>Par exemple l'objet de nom <code>o</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span>
+</code></pre>
+<p>Dans un pseudo-code, l'endroit où sont stockés les objets n'est pas défini, dans le pseudo-assembleur, on les stocke explicitement dans un tableau nommé <strong><em>mémoire</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La <strong><em>mémoire</em></strong> est un tableau $M$ de taille $N$ où chaque case peut contenir soit le caractère <code>0</code>, soit le caractère <code>1</code>.</p>
+</div>
+</div>
+<p>Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de <code>0</code> et de <code>1</code>, est  stocké dans des cases contiguës de la mémoire.</p>
+<p>L'objet <code>o</code> de tout à l'heure sera alors rangé :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token number">01234567</span>
+o <span class="token operator">=</span> <span class="token number">11010100</span>
+
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+</code></pre>
+<p>Attention à la lecture, <strong><em>le bit de poids fort</em></strong> de l'objet, celui le plus à gauche, est d'indice le plus petit.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture.</p>
+</div>
+</div>
+<p>Ce stockage permet de définir les références :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>référence</strong></em> d'un objet est l'adresse du premier indice en mémoire le contenant.</p>
+</div>
+</div>
+<p>Une variable est alors une référence nommée :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <em><strong>variable</strong></em> est un nom auquel est associé une référence à un objet.</p>
+</div>
+</div>
+<p>La mémoire étant finie, la référence à un objet est toujours codée sur $\log_2(N)$ bits. Ceci permet de définir rigoureusement un tableau :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <em><strong>tableau</strong></em> de taille $n$ est suite finie et contiguë de $n \cdot\log_2(N)$ cases mémoire. Chaque $\log_2(N)$ bits successifs en mémoire contient la référence d'un objet.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).</p>
+</blockquote>
+<h3>Objets entiers</h3>
+<p>L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $\log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :</p>
+<ul>
+<li>$u: \{0, 1\}^{\log_2(N)}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire</li>
+<li>$s: \{0, 1\}^{\log_2(N)}\rightarrow \mathbb{Z}$  qui rend l'entier associé à la suite considérée comme sa représentation binaire en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a></li>
+</ul>
+<p>Pour l'objet <code>o = 1011001</code> précédent, on a :</p>
+<ul>
+<li><code>u(o) = 212</code></li>
+<li><code>s(o) = -44</code></li>
+</ul>
+<p>Si <code>o</code> code un entier, c'est qu'une adresse mémoire est codée sur 8bits et donc que sa taille vaut $N = 2^8 = 256$.</p>
+<h3>Équivalence avec le pseudo-code</h3>
+<h4>Tailles des objets</h4>
+<p>Dans un pseudo-code, on ne suppose pas que l'on possède une mémoire finie. Tous les objets peuvent être aussi long qu'ils le veulent (tout en restant fini).</p>
+<p>Le pseudo-assembleur permet de tenir compte de ceci : si un programme en pseudo-assembleur atteint la limite de la mémoire, on stope sont exécution et on la recommence avec une mémoire deux fois plus grande.</p>
+<h4>Objets du pseudo-code</h4>
+<p>Les objets du pseudo-code</p>
+<blockquote>
+<p>objet :<br>
+On l'a vu, <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires" class="interne">un programme ne peut manipuler que des suites finies de <code>0</code> et de <code>1</code></a>. On peut donc sans perte de généralité considérer que<br>
+entier on peut les découper en base $N$, on l'a vu</p>
+</blockquote>
+<blockquote>
+<p>taille finie de la mémoire : on recommence en doublant si nécessaire.</p>
+</blockquote>
+<h2>Fonctions et appel de fonctions</h2>
+<h2>TBD</h2>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les objets manipulés par le langage machine universel sont des suites finies de &quot;0&quot; et de &quot;1&quot;.</p>
+</div>
+</div>
+<p>Et connaître sa taille <code class="language-">l(o) = 8</code><br>
+Enfin, on doit pouvoir interpréter un objet comme un entier :</p>
+<ul>
+<li>positif (on dit <strong><em>unsigned</em></strong>) en utilisant la représentation binaire de l'objet : <code>u(o) = 212</code></li>
+<li>relatif (on dit <strong><em>signed</em></strong>) en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> : <code>s(o) = -44</code></li>
+</ul>
+<p>Remarquez que le complément à deux dépend de la taille de la suite, ce qui semble contre intuitif mais sera justifié par la suite.<br>
+Il existe une autre possibilité, moins utilisée car moins pratique algorithmiquement, qui est de dédier un bit au signe usuellement celui le plus à gauche.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le bit le plus à gauche, donc celui d'indice le plus élevé, est appelé <strong><em>bit de poids fort</em></strong>.</p>
+</div>
+</div>
+<p>On a vu que <a href="../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires">tout objet d'un algorithme</a> pouvait être représenté par une suite finie de &quot;0&quot; et de &quot;1&quot; donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme et le langage machine universel utilisent les mêmes objets.</p>
+</div>
+</div>
+<h3>Opérations</h3>
+<p>Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :</p>
+<ul>
+<li>plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels</li>
+<li>plus, moins, fois et divisé pour les approximations de réels</li>
+<li>concaténation des chaines de caractères</li>
+</ul>
+<p>L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :</p>
+<ul>
+<li><code>copie(x)</code></li>
+<li><code>SHIFT(x, y)</code> rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) &gt; 0 et de -s(x) 0 à gauche si s(x) &lt; 0</li>
+<li><code>NAND(x, y)</code> : opérateur logique NON ET.</li>
+</ul>
+<p>En effet, il est possible d'<a href="https://en.wikipedia.org/wiki/NAND_logic">obtenir toutes les opérations logiques avec NAND</a> et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))</p>
+<p>Ou 1 ou 2 paramètre et une sortie.</p>
+<h3>Structures de contrôles</h3>
+<blockquote>
+<p>Saut conditionnel</p>
+</blockquote>
+<h3>Fonctions</h3>
+<blockquote>
+<p>Dans la mémoire directement. Variable = adresse du début de l'objet.<br>
+mémoire infinie</p>
+</blockquote>
+<blockquote></blockquote>
+<h3>Lier Variables et objets</h3>
+<p>Comme on a que la mémoire qui est une suite de 0 et de 1 pour stocker les objets et les variables//</p>
+<blockquote>
+<p>TBD exemple de 2 objets un qui fait hello et l'autre qui fait -3.</p>
+</blockquote>
+<p>Pour chaque objet il faut pouvoir connaitre la taille</p>
+<blockquote>
+<p>savoir distinguer un nombre d'un objet : connaitre sa taille. l'endrait dans la mémoire</p>
+<p>connaitre la taille d'un objet</p>
+</blockquote>
+<h3>Opérations</h3>
+<h4>Bit à bit</h4>
+<h4>Arithmétiques</h4>
+<p>dérivées des</p>
+<h4>Registres</h4>
+<blockquote>
+<p>ce qui amène a avoir que NOT et ADD comme opération. Le montrer<br>
+arithmétique et bit à bit<br>
+saut<br>
+paramètre des opérations dans des &quot;Registres&quot; il y en a peu.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

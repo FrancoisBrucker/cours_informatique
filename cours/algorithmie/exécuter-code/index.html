@@ -92,61 +92,8 @@
     
   
 
-  <p><a href="../bases-th%C3%A9oriques/d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales">Un programme</a> est un algorithme qui ne s'arrête pas forcément. On les décrit en algorithmie avec du <a href="../%C3%A9crire-algorithmes/pseudo-code/">pseudo-code</a> mais lorsque l'on veut exécuter ses programmes sur un ordinateur, on est obligé de transcrire le pseudo-code dans un langage de programmation (on utilisera le python dans ce cours) puis de l'exécuter sur un ordinateur.</p>
-<p>Nous allons voir dans cette partie qu'écrire du code ou du pseudo-code est équivalent.</p>
-<h2>Langage machine universel</h2>
-<blockquote>
-<p>Abus de langage (lol). Le but est de trouver un langage permettant de faire tout ce que fait le pseudo code avec les règles les plus simple possibles</p>
-</blockquote>
-<p>Nous allons pour cela commencer par donner une version alternative et équivalente au pseudo-code, nommé <strong><em>assembleur</em></strong>, qui nous permettra de faire un pont entre pseudo-code et code.</p>
-<p>L'assembleur est une sorte de pseudo-code nécessitant moins de syntaxe que <a href="../%C3%A9crire-algorithmes/pseudo-code/">le pseudo-code classique</a>, mais tout aussi expressif comme nous allons le voir.</p>
-<p>Le pseudo-code est en effet constitué de nombre de facilités dont on peut se passer.</p>
-<h3>Objets</h3>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Les objets manipulés par le langage machine universel sont des suites finies de &quot;0&quot; et de &quot;1&quot;.</p>
-</div>
-</div>
-<p>Un objet <code class="language-">o</code> utilisé par le langage machine est une suite de &quot;0&quot; et de &quot;1&quot;. On doit pouvoir affecter une variable :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span>
-</code></pre>
-<p>On doit pouvoir accéder à un de ses bit comme un tableau, qu'on lit de <strong>droite à gauche</strong> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token number">76543210</span>
-o <span class="token operator">=</span> <span class="token number">11010100</span>
-
-o<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-o<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-o<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-o<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-o<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-o<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-o<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-o<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-</code></pre>
-<p>Et connaître sa taille <code class="language-">l(o) = 8</code><br>
-Enfin, on doit pouvoir interpréter un objet comme un entier :</p>
-<ul>
-<li>positif (on dit <strong><em>unsigned</em></strong>) en utilisant la représentation binaire de l'objet : <code>u(o) = 212</code></li>
-<li>relatif (on dit <strong><em>signed</em></strong>) en utilisant <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">le complément à deux</a> : <code>s(o) = -44</code></li>
-</ul>
-<p>Remarquez que le complément à deux dépend de la taille de la suite, ce qui semble contre intuitif mais sera justifié par la suite.<br>
-Il existe une autre possibilité, moins utilisée car moins pratique algorithmiquement, qui est de dédier un bit au signe usuellement celui le plus à gauche.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Définition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Le bit le plus à gauche, donc celui d'indice le plus élevé, est appelé <strong><em>bit de poids fort</em></strong>.</p>
-</div>
-</div>
-<p>On a vu que <a href="../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires">tout objet d'un algorithme</a> pouvait être représenté par une suite finie de &quot;0&quot; et de &quot;1&quot; donc :</p>
+  <p>Le <a href="../%C3%A9crire-algorithmes/pseudo-code/">pseudo-code</a> permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation">langage de programmation</a>.</p>
+<p>Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -154,56 +101,34 @@ Il existe une autre possibilité, moins utilisée car moins pratique algorithmiq
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un programme et le langage machine universel utilisent les mêmes objets.</p>
+<p>Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.</p>
 </div>
 </div>
-<h3>Opérations</h3>
-<p>Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :</p>
-<ul>
-<li>plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels</li>
-<li>plus, moins, fois et divisé pour les approximations de réels</li>
-<li>concaténation des chaines de caractères</li>
-</ul>
-<p>L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :</p>
-<ul>
-<li><code>copie(x)</code></li>
-<li><code>SHIFT(x, y)</code> rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) &gt; 0 et de -s(x) 0 à gauche si s(x) &lt; 0</li>
-<li><code>NAND(x, y)</code> : opérateur logique NON ET.</li>
-</ul>
-<p>En effet, il est possible d'<a href="https://en.wikipedia.org/wiki/NAND_logic">obtenir toutes les opérations logiques avec NAND</a> et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))</p>
-<p>Ou 1 ou 2 paramètre et une sortie.</p>
-<h3>Structures de contrôles</h3>
-<blockquote>
-<p>Saut conditionnel</p>
-</blockquote>
-<h3>Fonctions</h3>
-<blockquote>
-<p>Dans la mémoire directement. Variable = adresse du début de l'objet.<br>
-mémoire infinie</p>
-</blockquote>
-<blockquote></blockquote>
-<h3>Lier Variables et objets</h3>
-<p>Comme on a que la mémoire qui est une suite de 0 et de 1 pour stocker les objets et les variables//</p>
-<blockquote>
-<p>TBD exemple de 2 objets un qui fait hello et l'autre qui fait -3.</p>
-</blockquote>
-<p>Pour chaque objet il faut pouvoir connaitre la taille</p>
-<blockquote>
-<p>savoir distinguer un nombre d'un objet : connaitre sa taille. l'endrait dans la mémoire</p>
-<p>connaitre la taille d'un objet</p>
-</blockquote>
-<h3>Opérations</h3>
-<h4>Bit à bit</h4>
-<h4>Arithmétiques</h4>
-<p>dérivées des</p>
-<h4>Registres</h4>
-<blockquote>
-<p>ce qui amène a avoir que NOT et ADD comme opération. Le montrer<br>
-arithmétique et bit à bit<br>
-saut<br>
-paramètre des opérations dans des &quot;Registres&quot; il y en a peu.</p>
-</blockquote>
+<p>Mais se pose alors 2 questions :</p>
+<ol>
+<li>Comment ?</li>
+<li>Est-ce que tout ce qui s'exécute sur un ordinateur peut s'écrire sous la forme d'un pseudo-code rendant les deux notions équivalentes ?</li>
+</ol>
+<p>Pour répondre à ces deux questions, il nous faut commencer par montrer que le pseudo-code est équivalent à un autre langage, le pseudo-assembleur, comportant bien moins d'instructions et qui sera plus facile à implémenter physiquement.</p>
+<h3><span id="pseudo-assembleur"></span>Pseudo-assembleur</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="pseudo-assembleur" class="interne">Pseudo-assembleur</a></p>
+</div>
+</div>
 <h2>Architecture de Von Neumann</h2>
+<blockquote>
+<p>on stocke tout en mémoire :</p>
+<ul>
+<li>variable dans la pile</li>
+<li>code en version binaire<br>
+variables dans pile<br>
+little endian et big endian.</li>
+</ul>
+</blockquote>
 <blockquote>
 <p>code = nombres en mémoire. Exemple MMIX de knuth (langage théorique)<br>
 associe un registre spéciale pour l'adresse du code. On le place utiusllement avant les variables.</p>
