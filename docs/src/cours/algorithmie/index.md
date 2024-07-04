@@ -35,8 +35,22 @@ Il est conseillé pour ce cours d'avoir des bases de programmation en python. Po
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
+> Dire que algo = au tableau/papier et pour les humains. Deux branches ensuite : exécution sur un ordinateur/réfléchir à la nature même de l'algorithmie (Turing). Selon ce qu'on voudra faire on utilisera l'un ou l'autre des formalismes. Nous Algo et on laisse la machine (le python) transcrire en langage machine pour être exécuté. Penser les algo se fera plus tard, mais on vous montre juste le modèle, archi connu : la machine de Turing.
+
+### Exécuter des programmes
+
 {% aller %}
-[Exécuter du pseudo-code](./exécuter-code){.interne}
+[Exécuter des programmes](./exécuter-code){.interne}
+{% endaller %}
+
+### Penser l'algorithmie
+
+> TBD : Turing.
+> faire Fibonacci avec une machine de Turing.
+> dire que structure de donnée = code et que l'on a besoin de rien comme outil pour exécuter du code : juste une façon de stocker et une façon d'écrire conditionnellement. Le code est LOCAL.
+
+{% aller %}
+[Penser l'algorithmie](){.interne}
 {% endaller %}
 
 ## On s'entraîne
@@ -148,17 +162,26 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Classes de Problèmes Algorithmiques
 
-> TBD Nouvelle partie en algo. 
+> TBD Nouvelle partie en algo.
 
 {% aller %}
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
 > Ici fion théorique = Turing et NPC avec SAT.
+
 #### Machines de Turing
 
 > TBD :
+> passer de pseudo-assembleur à turing :
 >
+> - opérations (ok, juste bits)
+> - code vers transitions
+> - ruban unique (registre)
+> - pointeur unique
+> - RAM vers décalage de 1
+>
+> Code de Von Neuman = MTU
 > 1. pseudo-code = algorithme : thèse de Church/Turing
 > 2. uniquement binaire
 > 3. pas besoin de :

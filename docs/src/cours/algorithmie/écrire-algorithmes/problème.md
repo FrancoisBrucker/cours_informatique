@@ -115,11 +115,11 @@ En revanche le problème de décision suivant n'est pas décidable :
 
 {% endnote %}
 
-On défini par extension les ***ensembles décidables*** comme étant ceux pouvant être énumérés par un algorithme :
+On défini par extension les **_ensembles décidables_** comme étant ceux pouvant être énumérés par un algorithme :
 
 {% note "**Définition**" %}
 
-Un ensemble $E$ d'entiers est ***décidable*** s'il existe un algorithme $A$ qui tel que :
+Un ensemble $E$ d'entiers est **_décidable_** s'il existe un algorithme $A$ qui tel que :
 
 - $A(n)$ vaut OUI si $n \in E$
 - $A(n)$ vaut NON si $n \notin E$
@@ -140,11 +140,11 @@ Un problème de décision est **_reconnaissable_** s'il existe un programme qui 
 
 Il est clair qu'un problème décidable est reconnaissable, il suffit de laisser tourner indéfiniment le décideur plutôt que de lui faire répondre NON, mais la réciproque est fausse, le problème de l'arrêt étant clairement reconnaissable (il suffit de laisser tourner l'algorithme et s'il s'arrête répondre OUI).
 
-De même que pour les ensembles décidables, on défini par extension les ***ensembles reconnaissables*** comme étant ceux pouvant être énumérés par un programme :
+De même que pour les ensembles décidables, on défini par extension les **_ensembles reconnaissables_** comme étant ceux pouvant être énumérés par un programme :
 
 {% note "**Définition**" %}
 
-Un ensemble $E$ d'entiers est ***reconnaissable*** s'il existe un programme $A$ qui tel que :
+Un ensemble $E$ d'entiers est **_reconnaissable_** s'il existe un programme $A$ qui tel que :
 
 - $A(n)$ vaut OUI si $n \in E$
 - $A(n)$ ne s'arrête pas si $n \notin E$
@@ -152,7 +152,6 @@ Un ensemble $E$ d'entiers est ***reconnaissable*** s'il existe un programme $A$ 
 {% endnote %}
 
 Il existe bien sur des ensembles reconnaissable et non décidable, par exemple l'ensemble des numéros de programmes qui sont des algorithmes.
-
 
 ## Exemple
 

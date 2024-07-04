@@ -33,12 +33,15 @@ Pour répondre à ces deux questions, il nous faut commencer par montrer que le 
 
 ## Architecture de Von Neumann
 
+
+
 > on stocke tout en mémoire :
 > 
 > - variable dans la pile
 > - code en version binaire
 > variables dans pile
 > little endian et big endian.
+> registre de l'instruction suivante (permet de faire des sauts)
 
 > code = nombres en mémoire. Exemple MMIX de knuth (langage théorique)
 > associe un registre spéciale pour l'adresse du code. On le place utiusllement avant les variables.

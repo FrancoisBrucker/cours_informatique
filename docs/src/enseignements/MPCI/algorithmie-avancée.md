@@ -94,6 +94,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ### Randomized algorithms
 
+- page rank = markov cahin.
 - dérandomizartion exemple dans randomized algorithm
 - meme si on ne gagne pas en O, parfois on gagne sur la constante multiplicative (ex. médiane)
 - random placement = nlogn en moyenne = coupon collector
@@ -143,6 +144,8 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Cryptographie
 
+- vente de secrets sans savoir lequel. Truc de Pascal. Dans le bouquin ?
+- zéro knowledge proof. Livre + 3 coloration.
 - attention aux attaques :
   - qui rendent les nombre aléatoire pas aléatoire : signal injection
   - qui mesurent l’énergie prisent pour les calculs
@@ -192,6 +195,13 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- Matrice d'adjacence :
+  - chemins
+  - valeurs/vecteur propre : markov et sommets importants (pagerank)
+- urne de polya <https://www.youtube.com/watch?v=lqec2my4gtg> comme idée de réseau par renforcement graphe
+- small world graph <https://en.wikipedia.org/wiki/Watts%E2%80%93Strogatz_model>
+
+- en moyenne tes voisins ont plus de voisins que toi (network 6 fin)
 - liste degré vers graphe :
   - <https://en.wikipedia.org/wiki/Havel%E2%80%93Hakimi_algorithm>
   - <https://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93Gallai_theorem>

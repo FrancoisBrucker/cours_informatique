@@ -10,8 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : dire que structure de donnée = code.
-
 Nous allons présenter une version _"minimale"_ de pseudo-code que nous appellerons pseudo-assembleur. Cet assembleur idéal et théorique nous permettra de faire le lien entre pseudo-code et le langage machine qui est effectivement exécuté.
 
 ## Objet et variables
@@ -32,7 +30,7 @@ Dans un pseudo-code, l'endroit où sont stockés les objets n'est pas défini, d
 La **_mémoire_** est un tableau $M$ de taille $N$ où chaque case peut contenir soit le caractère `0`, soit le caractère `1`.
 {% endnote %}
 
-Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de `0` et de `1`, est  stocké dans des cases contiguës de la mémoire.
+Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de `0` et de `1`, est stocké dans des cases contiguës de la mémoire.
 
 L'objet `o` de tout à l'heure sera alors rangé :
 
@@ -53,7 +51,9 @@ M[i + 7] = 0
 Attention à la lecture, **_le bit de poids fort_** de l'objet, celui le plus à gauche, est d'indice le plus petit.
 
 {% attention %}
-Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture.
+Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette **convention** [**_big endian_** (ou gros boutisme en français)](https://fr.wikipedia.org/wiki/Boutisme).
+
+Comme toute convention, certains prennent la convention opposée, dite **_little endian_** (ou petit boutisme en français).
 {% endattention %}
 
 Ce stockage permet de définir les références :
@@ -68,20 +68,27 @@ Une variable est alors une référence nommée :
 Une _**variable**_ est un nom auquel est associé une référence à un objet.
 {% endnote %}
 
-La mémoire étant finie, la référence à un objet est toujours codée sur $\log_2(N)$ bits. Ceci permet de définir rigoureusement un tableau :
+La mémoire étant finie, la référence à un objet est toujours codée sur $S = \log_2(N)$ bits.
 
 {% note "**Définition**" %}
-Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot\log_2(N)$ cases mémoire. Chaque $\log_2(N)$ bits successifs en mémoire contient la référence d'un objet.
+La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$$, la taille (entière et en bit) du codage binaire d'une adresse.
+{% endnote %}
+
+Ceci permet de définir rigoureusement un tableau :
+
+{% note "**Définition**" %}
+Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot S$ cases mémoire. Chaque $S$ bits successifs en mémoire contient la référence d'un objet.
 {% endnote %}
 
 > TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).
 
 ### Objets entiers
 
-L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $\log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :
+L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :
 
-- $u: \\{0, 1\\}^{\log_2(N)}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire
-- $s: \\{0, 1\\}^{\log_2(N)}\rightarrow \mathbb{Z}$  qui rend l'entier associé à la suite considérée comme sa représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
+- $u: \\{0, 1\\}^{S}\rightarrow \mathbb{N}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire
+- $s: \\{0, 1\\}^{S}\rightarrow \mathbb{Z}$ qui rend l'entier associé à la suite considérée comme sa représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) sur $S$ bits.
+- $b: \mathbb{Z} \rightarrow  \\{0, 1\\}^{S}$ qui rend la représentation binaire en [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) sur $S$ bits associé à l'entier.
 
 Pour l'objet `o = 1011001` précédent, on a :
 
@@ -92,52 +99,416 @@ Si `o` code un entier, c'est qu'une adresse mémoire est codée sur 8bits et don
 
 ### Équivalence avec le pseudo-code
 
-#### Tailles des objets
+On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../bases-théoriques/définition/#paramètres-binaires){.interne}. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.
 
-Dans un pseudo-code, on ne suppose pas que l'on possède une mémoire finie. Tous les objets peuvent être aussi long qu'ils le veulent (tout en restant fini).
+De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :
 
-Le pseudo-assembleur permet de tenir compte de ceci : si un programme en pseudo-assembleur atteint la limite de la mémoire, on stope sont exécution et on la recommence avec une mémoire deux fois plus grande. 
-
-#### Objets du pseudo-code
-
-Les objets du pseudo-code
-> objet :
-On l'a vu, [un programme ne peut manipuler que des suites finies de `0` et de `1`](../../bases-théoriques/définition/#paramètres-binaires){.interne}. On peut donc sans perte de généralité considérer que 
-> entier on peut les découper en base $N$, on l'a vu
-
-> taille finie de la mémoire : on recommence en doublant si nécessaire.
+{% note "**Proposition**" %}
+Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des objets.
+{% endnote %}
 
 ## Fonctions et appel de fonctions
 
-## TBD
+En pseudo-code, on appelle les fonctions via des paramètres :
 
+```python
+ma_fonction(p1, ..., pn)
+```
 
-{% note "**Définition**" %}
-Les objets manipulés par le langage machine universel sont des suites finies de "0" et de "1".
-{% endnote %}
+En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau $t$ à $n$ adresses telle que :
 
+1. $M[p]$ soit l'adresse du début d'un objet tableau $t$ de taille $n$
+2. $t[i]$ corresponde à l'adresse du paramètre $p_i$
+3. si $k = \log_2(N)$ vaut le nombre de bits pour stocker une adresse, alors aucun objet n'est pour l'instant stocké à une adresse supérieure à $k \cdot n$ : le tableau $t$ est le dernier objet stocké en mémoire par l'algorithme.
 
+Les deux premières conditions permettent de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la troisième permet d'appeler facilement des fonction de manière récursive !
 
-Et connaître sa taille `l(o) = 8`{.language-}
-Enfin, on doit pouvoir interpréter un objet comme un entier :
+Par exemple la fonction de Fibonacci que l'on pourrait écrire en pseudo-code :
 
-- positif (on dit **_unsigned_**) en utilisant la représentation binaire de l'objet : `u(o) = 212`
-- relatif (on dit **_signed_**) en utilisant [le complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux) : `s(o) = -44`
+```python
+def fibo(a, b, n):
+  si n ≤ 1:
+    return a
+  sinon:
+    return fibo(a + b, a, n - 1)
 
-Remarquez que le complément à deux dépend de la taille de la suite, ce qui semble contre intuitif mais sera justifié par la suite.
-Il existe une autre possibilité, moins utilisée car moins pratique algorithmiquement, qui est de dédier un bit au signe usuellement celui le plus à gauche.
+affiche à l'écran fibo(1, 1, 3)
+```
 
-{% note "**Définition**" %}
-Le bit le plus à gauche, donc celui d'indice le plus élevé, est appelé **_bit de poids fort_**.
-{% endnote %}
+Deviendrait en pseudo-assembleur :
 
-On a vu que [tout objet d'un algorithme](../bases-théoriques/définition/#paramètres-binaires) pouvait être représenté par une suite finie de "0" et de "1" donc :
+```python
+def fibo(p):
+  a = u(M[p:p+S])
+  b = u(M[p + S:p + 2 * S])
+  n = u(M[p + 2 * S:p + 3 * S])
+
+  si n ≤ 1:
+    stocke a dans les cases M[p + 3 * S:p + 4 * S]
+    return p + 3 * S
+  sinon:
+    stocke l'entier a + b dans les cases M[p + 3 * S:p + 4 * S]
+    stocke l'entier a dans les cases M[p + 4 * S:p + 5 * S]
+    stocke l'entier n-1 dans les cases M[p + 5 * S:p + 6 * S]
+
+    return fibo(p + 3 * S)
+
+  affiche à l'écran u(M[fibo(1, 1, 3)])
+```
+
+La fonction `fibo` retourne l'adresse d'un entier en mémoire et est correcte puisque l'on sait qu'aucun objet n'est stocké après le tableau de paramètre : l'appel récursif ne peut pas faire planter l'algorithme.
+
+> TBD dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)
+
+L'utilisation de ce tableau de paramètre en mémoire permet d'avoir :
 
 {% note "**Proposition**" %}
-Un programme et le langage machine universel utilisent les mêmes objets.
+Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des fonctions.
 {% endnote %}
 
-### Opérations
+## Structures de contrôles
+
+On associe à chaque ligne du programme en pseudo-assembleur un **_label_**, qui correspond à son numéro de ligne. Cet ajout va permettre de gérer les structures de contrôles et les tests sans blocs : uniquement avec des sauts.
+
+### Saut
+
+On ajoute au pseudo-assembleur une instruction de saut :
+
+```python
+GOTO label
+```
+
+L'instruction `GOTO` ("go to" : "aller à") _saute_ à l'instruction de label `label`. Par exemple le programme suivant qui est une version itérative (et infinie) de la suite de Fibonacci :
+
+```python#
+a = M[0:S] = b(1)
+b = M[S:2S] = b(1)
+n = M[2S:3S] = b(1)
+
+affiche à l'écran n, a
+
+n = n + 1
+a, b = a + b, a
+
+GOTO 8
+```
+
+> TBD : dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)
+> dire qu'on a assimiler variable et case mémoire.
+
+{% attention %}
+L'utilisation de saut était très répandu dans les débuts de la programmation (des langages comme [le C en possède une instruction de saut](https://koor.fr/C/Statements/goto.wp#google_vignette)), mais son usage a été banni pour être remplacé par des blocs car il rendait le code très difficile à lire.
+
+{% endattention %}
+{% aller %}
+[Célèbre article de Dijkstra contre l'utilisation des sauts en programmation](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf).
+{% endaller %}
+
+Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise la variable `I` pour stocker l'endroit où sauter après l'exécution de la fonction :
+
+```python
+GOTO 6
+
+affiche à l'écran n, a
+GOTO I
+
+a = M[0:S] = b(1)
+b = M[S:2S] = b(1)
+n = M[2S:3S] = b(1)
+
+I = 12
+GOTO 3
+
+n = n + 1
+a, b = a + b, a
+
+I = 18
+GOTO 3
+
+GOTO 5
+```
+
+{% note "**Proposition**" %}
+L'appel de fonction en pseudo-assembleur se fait avec des instruction de saut et une variable contenant la ligne de retour.
+{% endnote %}
+{% attention %}
+Dans ce cas là, le nombre de ligne de code est borné par l'adressage possible en mémoire. Ce n'est pas gênant en pratique, un adressage sur 64bit permet d'écrire $2^{64}$ lignes de code...
+{% endattention %}
+
+### Test
+
+Les tests en pseudo-code sont de deux types :
+
+- arithmétiques, comme $a < b$
+- logique, comme $(A OU B) ET C$
+
+Ils n'existent pas à proprement parler en pseudo-assembleur, mais ils peuvent être simulé grâce aux **_drapeaux_**.
+
+{% note "**Définition**" %}
+Un **_drapeau_** (**_flag_**)  est une variable binaire affectée automatiquement après une opération.
+{% endnote %}
+
+En particulier, on considère que le pseudo-assembleur possède les deux drapeaux suivant, qui permettent de faire tous les tests du pseudo-code :
+
+{% note "**Définition**" %}
+Le pseudo-assembleur possède les deux drapeaux :
+
+- `NÉGATIF` qui vaut `1` si la dernière opération arithmétique a donné un résultat négatif, et `0` sinon.
+- `ZÉRO` qui vaut `1` si la dernière opération arithmétique ou logique a donné un résultat de zéro, et `0` sinon.
+{% endnote %}
+
+Ainsi :
+
+- $a \leq b$ pourra être effectué en regardant la valeur du drapeau `NÉGATIF` après l'opération $b-a$.
+- $(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau `ZÉRO` (s'il vaut `0`, c'est vrai)
+
+On a donc :
+
+{% note "**Proposition**" %}
+On peut créer les mêmes tests en pseudo-assembleur et en pseudo-code.
+{% endnote %}
+
+### Saut conditionnel
+
+Enfin, pour permettre de construire les structures de contrôle du pseudo-code, on ajoute les **_sauts conditionnels_** :
+
+{% note "**Définition**" %}
+Un saut conditionnel est de la forme :
+
+```python
+IFGOTO drapeau label
+```
+
+La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau de nom `drapeau` vaut `1`.
+
+De même :
+
+```python
+IFNOTGOTO drapeau label
+```
+
+La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau de nom `drapeau` vaut `0`.
+
+{% endnote %}
+
+Le code ci-après utilise le saut conditionnel pour afficher les 11 premières valeurs de la suite de Fibonacci.
+
+```python#
+a = M[0:S] = b(1)
+b = M[S:2S] = b(1)
+n = M[2S:3S] = b(1)
+
+affiche à l'écran n, a
+
+n = n + 1
+a, b = a + b, a
+
+n-10
+IFNOTGOTO NÉGATIF 5
+
+affiche à l'écran "FIN", n, a
+```
+
+Comme on le voit, il est facile de remplacer les structures de contrôles et les répétitions du pseudo-code par une utilisation combinée des labels et des sauts conditionnels :
+
+{% note "**Proposition**" %}
+On peut créer les mêmes structure de contrôles et les boucles en pseudo-assembleur et en pseudo-code.
+{% endnote %}
+
+## Opérations
+
+Les opérations autorisées en pseudo-code sont de deux ordres : logique et arithmétiques. Les autres opérations (concaténation de chaines de caractères, manipulation d'approximation de réels, ...) se déduisent de ces deux catégories. Les opérations logiques et arithmétiques fonctionnent toutes de la même manière :
+
+- elles prennent au plus 2 paramètres
+- elles rendent au plus 1 objet
+
+Par exemple l'addition (2 paramètres et une sortie) ou la négation (1 paramètre et une sortie). Notez que les opérations qui rendent plus que une sortie (comme la division euclidienne par exemple) peuvent être décomposées en plusieurs opérations rendant chacune une unique sortie (division entière et modulo pour la division euclidienne).
+
+{% note "**Définition**" %}
+
+Le schéma général d'une **_opération_** en pseudo-assembleur est :
+
+```python
+OP #1 #2 #3 
+```
+
+Où :
+
+- `OP` est le [code mnémonique](https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique) associée (le nom) à l'opération
+- `#1`, `#2` et `#3` représentent les paramètres de l'opération et peuvent représenter soit des entrées soit une sortie selon l'opération.
+
+{% endnote %}
+
+Les paramètres d'entrées et la sortie sont stockés dans des [registres](https://fr.wikipedia.org/wiki/Registre_de_processeur) qui sont des variables spéciales.
+
+### Registres
+
+{% note "**Définition**" %}
+
+Un **_registre_** est une mémoire de taille $S$ (donc suffisante pour stocker une adresse). Il en existe deux types :
+
+- les registres génériques qui peuvent indépendamment être utilisé comme entrée et sortie d'une opération. Ils sont désignés par un numéro `$1`, `$2`, etc.
+- les registres spécifiques qui véhiculent des informations précisent et sont souvent en lecture seule (les drapeaux sont des registres spécifiques par exemple).
+
+{% endnote %}
+
+Les registres permettent de faire fonctionner le pseudo-assembleur et forment les liens entre opérations et mémoire. Les opérations permettant de déplacer les valeurs des registres à la mémoire et inversement sont :
+
+- `LOAD $X $Y` qui place la valeur en mémoire `M[u($Y):u($Y)+S]`  (`u($Y)` est la valeur du registre de numéro `Y` prise comme une adresse) dans le registre de numéro `X`
+- `STORE $X $Y` qui place la valeur du registre `X` dans les cases mémoires `M[u($Y):u($Y)+S]`
+- `SET $X Y` qui place la constante `Y` (une suite de 0 et de 1 de taille $S$) dans le registre de numéro `X`
+
+> TBD exemple avec image de la mémoire et de 2 registres.
+
+### Types d'opérations
+
+Les opérations d'un pseudo-assembleur, comme pour un pseudo-code sont essentiellement arithmétique
+
+#### Logiques
+
+Les opérations logiques sont des fonctions de $\\{0, 1\\}^p \rightarrow \\{0, 1\\}$, avec $p$ valant 0 ou 1. On les représentent via leurs [tables de vérité](https://fr.wikipedia.org/wiki/Table_de_v%C3%A9rit%C3%A9).
+
+Si $p$ vaut, il n'y a qu'une seule opération différente de l'identité :
+
+{% note "**Définition**" %}
+La fonction $\text{NOT}(x) = \bar{x}$ est définie selon la table de vérité suivante :
+
+x | NOT
+--|----
+0 | 1
+1 | 0
+
+Elle _inverse_ son paramètre.
+{% endnote %}
+
+Si $p$ vaut 2, on a coutume d'utiliser les deux fonctions suivantes :
+
+{% note "**Définition**" %}
+La fonction $\text{AND}(x, y) = x \land y$ est définie selon la table de vérité suivante :
+
+x | y | AND
+--|----
+0 | 0 | 0
+1 | 0 | 0
+0 | 1 | 0
+1 | 1 | 1
+
+Elle est vraie si $x$ et $y$ sont vrais.
+{% endnote %}
+
+{% note "**Définition**" %}
+La fonction $\text{OR}(x, y) = x \lor y$ est définie selon la table de vérité suivante :
+
+x | y | AND
+--|---|----
+0 | 0 | 0
+1 | 0 | 1
+0 | 1 | 1
+1 | 1 | 1
+
+Elle est vraie si $x$ ou $y$ est vrai.
+{% endnote %}
+
+Ces trois fonctions sont fondamentales :
+
+{% note "**Proposition**" %}
+Toute fonction de $\\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ peut s'écrire comme combinaison des fonctions $\text{NOT}(x)$, $\text{AND}(x, y)$, et $\text{OR}(x, y)$.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Il y a 16 possibilités de fonctions :
+
+x | y | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 10 | 11 | 12 | 13 | 14 | 15 | 16  
+--|---|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----
+0 | 0 | 0  | 1  | 0  | 0  | 0  | 1  | 1  | 1  | 1  | 0  | 1  | 1  | 1  | 0  | 0  | 0  
+1 | 0 | 0  | 0  | 1  | 0  | 0  | 1  | 0  | 0  | 1  | 1  | 0  | 1  | 1  | 0  | 1  | 1  
+0 | 1 | 0  | 0  | 0  | 1  | 0  | 0  | 1  | 0  | 1  | 1  | 1  | 0  | 1  | 1  | 0  | 1  
+1 | 1 | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 1  | 1  | 1  | 1  | 1  | 0  | 1  | 1  | 0  
+
+On a :
+
+- la fonction $f_i = \overline{f_{i+8}}$ pour $1\leq i \leq 8$
+- $f_1$ est la fonction constante valant 0
+- $f_{2+8}(x, y)$ est la fonction $x \lor y$
+- $f_{3}(x, y) = f_{4}(y, x)$ et $f_{3+8}$ est la fonction $\bar{x} \lor y$
+- $f_{5}(x, y)$ est la fonction $x \land y$
+- $f_{6}(x, y)$ est la fonction $\bar{y}$
+- $f_{7 + 8}(x, y)$ est la fonction $x$
+- $f_{8 + 8}(x, y)$ est la fonction $(x \land \bar{y}) \lor (\bar{x} \land y)$
+{% enddetails %}
+
+Le résultat précédent se généralise pour tout $p$. Pour cela, commençons par définir un concept fondamental en logique la _**conjonction de clauses**_ :
+
+{% note "**Définition**" %}
+Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :
+
+- un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
+- une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
+- une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
+{% endnote %}
+
+Toute fonction $f: \\{0, 1\\}^n \rightarrow \\{0, 1\\}$ peut alors s'écrire comme une conjonction de clauses :
+
+{% note "**Proposition**" %}
+Toute fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire comme une conjonction de clauses.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit $f(x_1, \dots, x_n)$ une fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$.
+
+À tout élément $x=(x_1, \dots, x_n)$ de $\\{0, 1\\}^n$ on peut associer la fonction $l^x(y_1, \dots, y_n) = l^x_1 \land \dots \land l^x_i \land \dots \land l^x_n$ où $l^x_i = y_i$ si $x_i = 1$ et $l^x_i = \overline{y_i}$ sinon. La fonction $f$ est alors égale à :
+
+$$
+f(x) = \lor \\{l^y(x) | f(y) = 1\\}
+$$
+
+Comme $(a \land b)\lor c = (a \lor c)\land (b \lor c)$, $f$ peut se récrire en conjonction de clauses ce qui conclut la preuve.
+
+{% enddetails %}
+
+On voit qu'il suffit que le pseudo-assembleur définisse les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires pour pouvoir générer toutes les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$, quelque soit l'entier $n$. On peut aller encore plus loin grâce à la proposition suivante :
+
+{% note "**Proposition**" %}
+Les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires peuvent s'écrire comme compositions de fonctions $\text{NAND}(x, y) = \text{NOT}(\text{AND}(x, y))$
+{% endnote %}
+{% details "preuve", "open" %}
+
+> TBD
+
+{% enddetails %}
+{% note %}
+> TBD cela marche aussi avec XOR.
+{% endnote %}
+
+Son pendant en
+L'opération `NOT $1 $2`, ou 
+, dont la table de vérité est :
+
+Si 
+> bit à bit
+> peut se généraliser sur tout un registre
+> peut se généraliser à aussi long qu'on veut : on peut découper
+
+> TBD faire une partie arithmétique booléenne ?
+
+On peut tout faire avec une combinaison de not, and et or : c'est une clause.
+
+
+#### Arithmétiques
+
+> addition dans 0,1 est une fonction sur 0, 1, donc logique. Elle est de plus découpable avec une retenue (registre)
+> 
+> avec complément à deux parce que soustraction = addition
+
+> a priori opération aussi grande qu'on veut mais on peut découper. Exemple sur logique et 1 seul bit. Ou addition et retenue.
+deux catégories
+
+On verra que l'on peut même se restreindre à une seule opération pour construire toutes les autres, mais commençons par formaliser comment le pseudo-assembleur utilise les opérations.
+
+> TBD parler des additions/soustraction etc par bout de taille fixe. plus drapeau retenue pour permettre de faire sur taille pas fixe si besoin.
+> On peut tout faire avec add et on peut faire add avec XOR.
+> Opérations logiques avec NANDm donc juste NAND pour tout faire.
 
 Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :
 
@@ -155,40 +526,25 @@ En effet, il est possible d'[obtenir toutes les opérations logiques avec NAND](
 
 Ou 1 ou 2 paramètre et une sortie.
 
-### Structures de contrôles
+### Équivalences
 
-> Saut conditionnel
+{% note "**Proposition**" %}
+> TBD que NAND sur 1 bit
+{% endnote %}
 
-### Fonctions
+## I/O
 
-> Dans la mémoire directement. Variable = adresse du début de l'objet.
-> mémoire infinie
-> 
+> TBD pas core (il suffit de regarder la mémoire), mais utile
 
-> 
+- afficher à l'écran
+- fichier et clavier ?
 
-### Lier Variables et objets
+## MMIX
 
-Comme on a que la mémoire qui est une suite de 0 et de 1 pour stocker les objets et les variables//
-> TBD exemple de 2 objets un qui fait hello et l'autre qui fait -3.
-> 
-Pour chaque objet il faut pouvoir connaitre la taille
-> savoir distinguer un nombre d'un objet : connaitre sa taille. l'endrait dans la mémoire
-> 
-> connaitre la taille d'un objet
+Nous n'avons montré que le principe d'un pseudo-assembleur, juste assez pour nous convaincre que les notions de pseudo-code et pseudo-assembleurs sont équivalentes.
 
-### Opérations
+Donald Knuth a formellement décrit un pseudo-assembleur complet, nommée [MMIX](https://fr.wikipedia.org/wiki/MMIX). Je ne saurais trop vous conseiller d'aller jeter un coup d'œil au site qui explique son fonctionnement, comme toujours avec Knuth, de façon claire et précise :
 
-#### Bit à bit
-
-#### Arithmétiques
-
-dérivées des
-
-#### Registres
-
-> ce qui amène a avoir que NOT et ADD comme opération. Le montrer 
-> arithmétique et bit à bit
-> saut
-> paramètre des opérations dans des "Registres" il y en a peu.
-
+{% lien %}
+<https://mmix.cs.hm.edu/>
+{% endlien %}
