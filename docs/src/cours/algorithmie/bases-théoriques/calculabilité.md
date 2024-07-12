@@ -32,7 +32,6 @@ $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^\star$$
 Où $\\{0, 1\\}^\star$ est l'ensemble des suites finies de $0$ et de $1$.
 {% endnote %}
 
-
 Comme une suite finie de 0 et de 1 est une écriture binaire d'un entier positif on en déduit immédiatement que :
 
 <span id="algorithme-fonction-N"></span>
@@ -87,7 +86,7 @@ Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de cré
 
 ## Exemples de fonctions calculables
 
-Commençons par montrer quelques fonction que l'on peut calculer.
+Commençons par montrer quelques fonctions que l'on peut calculer.
 
 [Quelques exemples](https://en.wikipedia.org/wiki/Computable_function#Examples) :
 
@@ -116,7 +115,7 @@ Programme :
 
 {% enddetails  %}
 
-Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive). Elles ont été utilisées par Gödel pour montrer son [théorème d'incomplétude](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del). On a démontré plus tard (voir [la fonction d'Ackermann](./#fonction-ackermann))que les fonctions récursives primitives sont des cas particuliers de fonctions calculables (ce sont les [fonctions récursives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive) qui sont exactement les fonctions calculables).
+Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive). Elles ont été utilisées par Gödel pour montrer son [théorème d'incomplétude](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del) et permettent de créer un grand nombre de fonctions, toutes calculables (mais pas toutes, [la fonction d'Ackermann](./#fonction-ackermann) étant un contre-exemple)
 
 Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.
 
@@ -248,52 +247,7 @@ Attention cependant à ne pas confondre le réel en tant que tel (non calculable
 
 ## Fonctions calculables rigolotes
 
-On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.
-
-Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
-
-### <span id="fonction-ackermann"></span>Fonction d'Ackermann
-
-La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles `for`{.language-}. On est obligé d'utiliser soit des boucles `while`{.language-} pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire). Enfin, cette fonction est d'utilité théorique certaine car c'est la première fonction connue à être calculable mais non primitive récursive.
-
-{% info %}
-Notez que tout algorithme récursif peut s'écrire de façon itérative. C'est ce quel'on appelle la dé-curryfication.
-{% endinfo %}
-
-Elle se définit de la manière suivante, pour tous entiers m et n positifs :
-
-<div>
-$$
-A(m, n) = \left\{
-    \begin{array}{ll}
-        n + 1 & \mbox{si } m = 0 \\
-        A(m - 1, 1) & \mbox{si } n = 0 \\
-        A(m - 1, A(m, n - 1)) & \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
-
-{% note "**Proposition**" %}
-La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.
-{% endnote %}
-{% details "preuve", "open" %}
-Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
-{% enddetails %}
-
-Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :
-
-- $A(2, 3) = A(1, A(2, 2))$
-- $A(2, 2) = A(1, A(2, 1))$
-- $A(2, 1) = A(1, A(2, 0))$
-- $A(2, 0) = A(1, 1)$
-- $A(1, 1) = A(0, A(1, 0))$
-- $A(1, 0) = A(0, 1) = 2$
-- puis on remonte d'un cran et les récursions recommencent...
-
-Au final on trouve $A(2, 3) = 9$. La fonction croît très très vite. Par exemple $A(5, 0) = A (4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.
-
-Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations pour calculer $A(m, n)$ puisque l'on ne fait qu'ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.
+On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
 
 ### Fonction de Takeuchi
 
@@ -350,6 +304,68 @@ La fonction de Takeuchi montre que pour résoudre un problème simple il existe 
 
 Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
 {% endattention %}
+
+### <span id="fonction-ackermann"></span>Fonction d'Ackermann
+
+La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car on s'est longtemps demandé si les seules fonctions calculables étaient [récursive primitive](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive) et la fonction d'Ackermann est un contre-exemple (ce sont les [fonctions récursives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive) qui sont exactement les fonctions calculables).
+
+Elle se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :
+
+<div>
+$$
+\text{Ack}(m, n) = \left\{
+    \begin{array}{ll}
+        n + 1 & \mbox{si } m = 0 \\
+        \text{Ack}(m - 1, 1) & \mbox{si } n = 0 \\
+        \text{Ack}(m - 1, \text{Ack}(m, n - 1)) & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+{% note "**Proposition**" %}
+La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.
+{% endnote %}
+{% details "preuve", "open" %}
+Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
+
+Formalisons ça par récurrence sur $min(m , n)$.
+
+Hypothèse $\text{Ack}(m, n)$ est défini pour tout $m$ et $n$ tels que $min(m , n) \leq k$
+Pour $k = 0$ Ok. Vrai à $k$ et on montre que c'est vrai à $k+1$ (ce qui est trivial en regardant les formes de récursion).
+
+{% enddetails %}
+
+Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :
+
+- $A(2, 1) = A(1, A(2, 0))$
+  - $A(2, 0) = A(1, 1)$
+    - $A(1, 1) = A(0, A(1, 0))$
+      - $A(1, 0) = A(0, 1) = 2$
+    - $A(1, 1) = A(0, 2) = 3$
+  - $A(2, 0) = A(1, 1) = 3$
+- $A(2, 1) = A(1, 3)$
+  - $A(1, 3) = A(0, A(1, 2))$
+    - $A(1, 2) = A(0, A(1, 1))$
+      - $A(1, 1) = A(0, A(1, 0))$
+        - $A(1, 0) = A(0, 1)= 2$
+      - $A(1, 1) = A(0, 2) = 3$
+    - $A(1, 2) = A(0, 3) = 4$
+  - $A(1, 3) = A(0, 4) = 5$
+- $A(2, 1) = A(1, 3) = 5$
+
+Au final on trouve $A(2, 1) = 5$. La fonction croît très très vite. Par exemple $A(4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.
+
+Démontrer que la fonction d'Ackermann n'est pas primitive récursive dépasse un peu le cadre de ce cours, mais ce n'est pas un résultat compliqué à démontrer, voir par exemple les lien suivants :
+
+{% lien %}
+
+- <https://lgayral.pages.math.cnrs.fr/agreg/ackermann.pdf>
+- <https://perso.univ-st-etienne.fr/ezequel/M1info/Primitif_Rec.pdf>
+
+{% endlien %}
+
+La fonction d'Ackermann est également une fonction  que l'on ne peut pas écrire avec des boucles `pour chaque`{.language-} (les boucles `for`{.language-} de la programmation). On est obligé d'utiliser des  boucles `tant que`{.language-} (les boucles `while`{.language-} de la programmation) pour écrire son pseudo-code de façon itérative.
 
 ## Non calculabilité
 

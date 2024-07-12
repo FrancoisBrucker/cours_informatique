@@ -95,7 +95,13 @@ Pour l'objet `o = 1011001` précédent, on a :
 - `u(o) = 212`
 - `s(o) = -44`
 
-Si `o` code un entier, c'est qu'une adresse mémoire est codée sur 8bits et donc que sa taille vaut $N = 2^8 = 256$.
+Si `o` code un entier, c'est qu'une adresse mémoire est codée sur 8bits ($S = 8$) et donc que sa taille vaut $N = 2^8 = 256$. Pour affecter des entiers dans la mémoire on écrira alors :
+
+```
+M[X:X+S] = b(212)
+```
+
+Qui sera équivalent à `M[X:X+S] = 1011001` si $S=8$ et à `M[X:X+S] = 000000001011001` si $S=16$.
 
 ### Équivalence avec le pseudo-code
 
@@ -115,52 +121,82 @@ En pseudo-code, on appelle les fonctions via des paramètres :
 ma_fonction(p1, ..., pn)
 ```
 
-En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau $t$ à $n$ adresses telle que :
+En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau à $n$ adresses telle que :
 
-1. $M[p]$ soit l'adresse du début d'un objet tableau $t$ de taille $n$
-2. $t[i]$ corresponde à l'adresse du paramètre $p_i$
-3. si $k = \log_2(N)$ vaut le nombre de bits pour stocker une adresse, alors aucun objet n'est pour l'instant stocké à une adresse supérieure à $k \cdot n$ : le tableau $t$ est le dernier objet stocké en mémoire par l'algorithme.
+1. $M[p+(i-1)S:p+iS]$ corresponde à l'adresse du paramètre $p_i$
+2. Pour tout $k \geq p+nS$, Aucune case mémoire $M[k]$, n'est utilisée pour l'instant par le programme.
 
-Les deux premières conditions permettent de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la troisième permet d'appeler facilement des fonction de manière récursive !
+La  première condition permet de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la seconde permet d'appeler facilement des fonction de manière récursive !
 
-Par exemple la fonction de Fibonacci que l'on pourrait écrire en pseudo-code :
+Par exemple la fonction factorielle que l'on pourrait écrire en pseudo-code :
 
 ```python
-def fibo(a, b, n):
+def factorielle(n):
   si n ≤ 1:
-    return a
+    return 1
   sinon:
-    return fibo(a + b, a, n - 1)
+    return n * factorielle(n-1)
 
-affiche à l'écran fibo(1, 1, 3)
+affiche à l'écran factorielle(3)
 ```
 
 Deviendrait en pseudo-assembleur :
 
-```python
-def fibo(p):
-  a = u(M[p:p+S])
-  b = u(M[p + S:p + 2 * S])
-  n = u(M[p + 2 * S:p + 3 * S])
-
-  si n ≤ 1:
-    stocke a dans les cases M[p + 3 * S:p + 4 * S]
-    return p + 3 * S
+```python#
+def factorielle(p):
+  si u(M[p:p+S]) ≤ 1:
+    return 1
   sinon:
-    stocke l'entier a + b dans les cases M[p + 3 * S:p + 4 * S]
-    stocke l'entier a dans les cases M[p + 4 * S:p + 5 * S]
-    stocke l'entier n-1 dans les cases M[p + 5 * S:p + 6 * S]
+    M[p + S:p +2*S] = b(u(M[p:p+S]) - 1)
+    return u(M[p:p+S]) * factorielle(p + S)
 
-    return fibo(p + 3 * S)
-
-  affiche à l'écran u(M[fibo(1, 1, 3)])
+M[0:S] = b(4)
+affiche à l'écran factorielle(0)
 ```
 
-La fonction `fibo` retourne l'adresse d'un entier en mémoire et est correcte puisque l'on sait qu'aucun objet n'est stocké après le tableau de paramètre : l'appel récursif ne peut pas faire planter l'algorithme.
+Lors de l'exécution du code précédent, la fonction factorielle va être appelée quatre fois. Voyons ça pour $S=4$ et donc une taille mémoire de 32bits.
 
-> TBD dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)
+premier appel depuis la ligne 9 du programme `factorielle(0)` :
 
-L'utilisation de ce tableau de paramètre en mémoire permet d'avoir :
+```
+0         1         2         3
+012345678901234567890123456789012
+010000000000000000000000000000000
+p
+```
+
+Comme u(M[0:0+4]) vaut 4, on rappelle factorielle en ligne 6, `factorielle(4)` :
+
+```
+0         1         2         3
+012345678901234567890123456789012
+010000110000000000000000000000000
+    p
+```
+
+Comme u(M[4:4+4]) vaut 3, on rappelle factorielle en ligne 6, `factorielle(8)` :
+
+```
+0         1         2         3
+012345678901234567890123456789012
+010000110010000000000000000000000
+        p
+```
+
+Comme u(M[8:8+4]) vaut 2, on rappelle factorielle en ligne 6, `factorielle(12)` :
+
+```
+0         1         2         3
+012345678901234567890123456789012
+010000110010000100000000000000000
+            p
+```
+
+Comme u(M[12:12+4]) vaut 1 : `factorielle(12)` rend `1`. On se trouve donc dans la fonction `factorielle(8)` qui peut maintenant également s'arrêter en rendant `u(M[8:8+4]) * factorielle(12)` qui vaut : $2 \cdot 1 = 2$.
+
+De là `factorielle(4)` s'arrête en rendant `u(M[4:4+4]) * factorielle(8)` qui vaut : $3 \cdot 2 = 6$ ce qui permet à `factorielle(0)` de rendre `u(M[0:0+4]) * factorielle(4)` qui vaut $4 \cdot 6 = 24$.
+
+L'utilisation de ce tableau de paramètres en mémoire permet d'avoir :
 
 {% note "**Proposition**" %}
 Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des fonctions.
@@ -178,62 +214,56 @@ On ajoute au pseudo-assembleur une instruction de saut :
 GOTO label
 ```
 
-L'instruction `GOTO` ("go to" : "aller à") _saute_ à l'instruction de label `label`. Par exemple le programme suivant qui est une version itérative (et infinie) de la suite de Fibonacci :
+L'instruction `GOTO` ("go to" : "aller à") _saute_ à l'instruction de label `label`. Par exemple le programme suivant qui est une version itérative (et infinie) de la factorielle :
 
 ```python#
-a = M[0:S] = b(1)
-b = M[S:2S] = b(1)
-n = M[2S:3S] = b(1)
+M[0:S] = b(1)
+M[S:2S] = b(1)
 
-affiche à l'écran n, a
+affiche à l'écran u(M[0:S])
 
-n = n + 1
-a, b = a + b, a
+M[S:2S] = b(u(M[S:2S]) + 1)
+M[0:S] = b(u(M[0:S]) * u(M[S:2S]))
 
-GOTO 8
+GOTO 3
 ```
 
-> TBD : dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)
-> dire qu'on a assimiler variable et case mémoire.
+Contrairement à la version récursive précédente, la taille de la mémoire utilisée de change pas.
 
-{% attention %}
-L'utilisation de saut était très répandu dans les débuts de la programmation (des langages comme [le C en possède une instruction de saut](https://koor.fr/C/Statements/goto.wp#google_vignette)), mais son usage a été banni pour être remplacé par des blocs car il rendait le code très difficile à lire.
-
-{% endattention %}
-{% aller %}
-[Célèbre article de Dijkstra contre l'utilisation des sauts en programmation](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf).
-{% endaller %}
-
-Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise la variable `I` pour stocker l'endroit où sauter après l'exécution de la fonction :
+Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise une variable pour stocker l'endroit où sauter après l'exécution de la fonction :
 
 ```python
 GOTO 6
 
-affiche à l'écran n, a
-GOTO I
+affiche à l'écran u(M[0:S])
+GOTO u(M[2S:3S])
 
-a = M[0:S] = b(1)
-b = M[S:2S] = b(1)
-n = M[2S:3S] = b(1)
-
-I = 12
+M[0:S] = b(1)
+M[S:2S] = b(1)
+M[2S:3S] = b(10)
 GOTO 3
 
-n = n + 1
-a, b = a + b, a
+M[S:2S] = b(u(M[S:2S]) + 1)
+M[0:S] = b(u(M[0:S]) * u(M[S:2S]))
 
-I = 18
+M[2S:3S] = 17
 GOTO 3
 
-GOTO 5
+GOTO 11
 ```
 
 {% note "**Proposition**" %}
-L'appel de fonction en pseudo-assembleur se fait avec des instruction de saut et une variable contenant la ligne de retour.
+L'appel de fonction en pseudo-assembleur se fait avec des instructions de saut et une variable contenant la ligne de retour.
 {% endnote %}
 {% attention %}
 Dans ce cas là, le nombre de ligne de code est borné par l'adressage possible en mémoire. Ce n'est pas gênant en pratique, un adressage sur 64bit permet d'écrire $2^{64}$ lignes de code...
 {% endattention %}
+
+On le voit, l'utilisation de saut peut vite être difficile à lire, on recommande de l'utiliser de façon parcimonieuse.
+
+{% lien %}
+[Célèbre article de Dijkstra contre l'utilisation des sauts en programmation](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf).
+{% endlien %}
 
 ### Test
 
@@ -248,21 +278,20 @@ Ils n'existent pas à proprement parler en pseudo-assembleur, mais ils peuvent �
 Un **_drapeau_** (**_flag_**)  est une variable binaire affectée automatiquement après une opération.
 {% endnote %}
 
-En particulier, on considère que le pseudo-assembleur possède les deux drapeaux suivant, qui permettent de faire tous les tests du pseudo-code :
-
-{% note "**Définition**" %}
-Le pseudo-assembleur possède les deux drapeaux :
-
-- `NÉGATIF` qui vaut `1` si la dernière opération arithmétique a donné un résultat négatif, et `0` sinon.
-- `ZÉRO` qui vaut `1` si la dernière opération arithmétique ou logique a donné un résultat de zéro, et `0` sinon.
-{% endnote %}
-
-Ainsi :
+Par exemple :
 
 - $a \leq b$ pourra être effectué en regardant la valeur du drapeau `NÉGATIF` après l'opération $b-a$.
 - $(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau `ZÉRO` (s'il vaut `0`, c'est vrai)
 
-On a donc :
+Comme les nombres négatifs seront codés en [Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux), le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau `NÉGATIF`  peut donc être simulé par le drapeau `ZÉRO` en effectuant l'opération `x ET 01...1` qui vaudra 0 (le drapeau `ZÉRO` vaudra alors 1) que le si le nombre `u(x)` est positif.
+
+On peut donc faire tout nos test en utilisant uniquement le drapeau `ZÉRO` :
+
+{% note "**Définition**" %}
+Le pseudo-assembleur possède un drapeau `ZÉRO` qui vaut `1` si la dernière opération arithmétique ou logique a donné un résultat de zéro, et `0` sinon.
+{% endnote %}
+
+Ce drapeau nous permet de faire tous les tests possibles en pseudo-code et donc :
 
 {% note "**Proposition**" %}
 On peut créer les mêmes tests en pseudo-assembleur et en pseudo-code.
@@ -276,7 +305,7 @@ Enfin, pour permettre de construire les structures de contrôle du pseudo-code, 
 Un saut conditionnel est de la forme :
 
 ```python
-IFGOTO drapeau label
+GOTOIF drapeau label
 ```
 
 La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau de nom `drapeau` vaut `1`.
@@ -284,29 +313,25 @@ La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau
 De même :
 
 ```python
-IFNOTGOTO drapeau label
+GOTOIFNOT drapeau label
 ```
 
 La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau de nom `drapeau` vaut `0`.
 
 {% endnote %}
 
-Le code ci-après utilise le saut conditionnel pour afficher les 11 premières valeurs de la suite de Fibonacci.
+Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :
 
 ```python#
-a = M[0:S] = b(1)
-b = M[S:2S] = b(1)
-n = M[2S:3S] = b(1)
+M[0:S] = b(1)
+M[S:2S] = b(4)
 
-affiche à l'écran n, a
+M[0:S] = b(u(M[0:S]) * (u(M[S:2S])))
 
-n = n + 1
-a, b = a + b, a
+M[S:2S] = b(u(M[S:2S]) - 1)
+GOTOIF ZÉRO 3
 
-n-10
-IFNOTGOTO NÉGATIF 5
-
-affiche à l'écran "FIN", n, a
+affiche à l'écran u(M[0:S])
 ```
 
 Comme on le voit, il est facile de remplacer les structures de contrôles et les répétitions du pseudo-code par une utilisation combinée des labels et des sauts conditionnels :
@@ -356,9 +381,21 @@ Les registres permettent de faire fonctionner le pseudo-assembleur et forment le
 
 - `LOAD $X $Y` qui place la valeur en mémoire `M[u($Y):u($Y)+S]`  (`u($Y)` est la valeur du registre de numéro `Y` prise comme une adresse) dans le registre de numéro `X`
 - `STORE $X $Y` qui place la valeur du registre `X` dans les cases mémoires `M[u($Y):u($Y)+S]`
-- `SET $X Y` qui place la constante `Y` (une suite de 0 et de 1 de taille $S$) dans le registre de numéro `X`
+- `SET $X Y` qui place la constante `Y` (un entier relatif) dans le registre de numéro `X`
 
-> TBD exemple avec image de la mémoire et de 2 registres.
+Encore et toujours factorielle, mais avec des registres
+
+```python
+SET $1 1
+SET $2 4
+
+$1 = b(u($1) * (u($2)))
+$2 = b(u($2) - 1)
+GOTOIF ZÉRO 3
+
+affiche à l'écran u($1)
+
+```
 
 ### Types d'opérations
 
@@ -467,84 +504,121 @@ Comme $(a \land b)\lor c = (a \lor c)\land (b \lor c)$, $f$ peut se récrire en 
 
 {% enddetails %}
 
-On voit qu'il suffit que le pseudo-assembleur définisse les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires pour pouvoir générer toutes les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$, quelque soit l'entier $n$. On peut aller encore plus loin grâce à la proposition suivante :
+On voit qu'il suffit que le pseudo-assembleur définisse les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires pour pouvoir générer avec un algorithme toutes les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$, quelque soit l'entier $n$. On peut aller encore plus loin grâce à la proposition suivante :
 
 {% note "**Proposition**" %}
 Les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires peuvent s'écrire comme compositions de fonctions $\text{NAND}(x, y) = \text{NOT}(\text{AND}(x, y))$
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD
+- $\text{NOT}(x) = \text{NAND}(x, x)$
+- $\text{AND}(x, y) = \text{NOT}(\text{NAND}(x, y))$
+- $\text{OR}(x, y) = \text{NAND}(\text{NOT}(x), \text{NOT}(y))$
 
 {% enddetails %}
-{% note %}
-> TBD cela marche aussi avec XOR.
+{% info %}
+Cela marche aussi avec le [OU exclusif](https://fr.wikipedia.org/wiki/Fonction_OU_exclusif) ($\text{XOR}(x, y) = \text{AND}(\text{OR}(x, y), \text{NAND}(x, y))$).
+{% endinfo %}
+
+On en conclut donc qu'il suffit que le pseudo-assembleur ne doit posséder que la fonction $\text{NAND}(x, y)$ pour 1bit pour pouvoir effectuer toutes les opérations logiques. D'où la proposition suivante :
+
+{% note "**Proposition**" %}
+Le pseudo-assembleur peut effectuer toutes les opérations logiques du pseudo-code s'il possède l'opération :
+
+```python
+NAND $1 $2 $3
+```
+
+Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres `$1` et `$2` et affecte le résultat dans le registre `$3`.
 {% endnote %}
-
-Son pendant en
-L'opération `NOT $1 $2`, ou 
-, dont la table de vérité est :
-
-Si 
-> bit à bit
-> peut se généraliser sur tout un registre
-> peut se généraliser à aussi long qu'on veut : on peut découper
-
-> TBD faire une partie arithmétique booléenne ?
-
-On peut tout faire avec une combinaison de not, and et or : c'est une clause.
-
 
 #### Arithmétiques
 
-> addition dans 0,1 est une fonction sur 0, 1, donc logique. Elle est de plus découpable avec une retenue (registre)
-> 
-> avec complément à deux parce que soustraction = addition
+Pour générer toutes les opérations arithmétiques sur les entiers relatifs, il suffit de posséder les opérations d'addition et de soustraction. En utilisant le complément à deux pour noter les entiers négatifs, addition et soustractions sont équivalents :
 
-> a priori opération aussi grande qu'on veut mais on peut découper. Exemple sur logique et 1 seul bit. Ou addition et retenue.
-deux catégories
+{% lien %}
+[Complément à deux](https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux)
+{% endlien %}
 
-On verra que l'on peut même se restreindre à une seule opération pour construire toutes les autres, mais commençons par formaliser comment le pseudo-assembleur utilise les opérations.
+On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits `M[0]` et `M[1]` pour rendre la valeur `M[3]` et la retenue, `M[2]`, s'il y en a une:
 
-> TBD parler des additions/soustraction etc par bout de taille fixe. plus drapeau retenue pour permettre de faire sur taille pas fixe si besoin.
-> On peut tout faire avec add et on peut faire add avec XOR.
-> Opérations logiques avec NANDm donc juste NAND pour tout faire.
+```python
+M[2] = 0
 
-Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :
+M[3] = XOR(XOR(M[2], M[0]), M[1])
+M[2] = OR(AND(M[2], M[0]), OR(AND(M[2], M[1]), AND(M[0], M[1])))
+```
 
-- plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels
-- plus, moins, fois et divisé pour les approximations de réels
-- concaténation des chaines de caractères
-
-L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :
-
-- `copie(x)`
-- `SHIFT(x, y)` rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) > 0 et de -s(x) 0 à gauche si s(x) < 0
-- `NAND(x, y)` : opérateur logique NON ET.
-
-En effet, il est possible d'[obtenir toutes les opérations logiques avec NAND](https://en.wikipedia.org/wiki/NAND_logic) et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))
-
-Ou 1 ou 2 paramètre et une sortie.
-
-### Équivalences
+En reprenant la sortie de l'algorithme précédent et en l'itérant autant de fois que nécessaire (les paramètres d'entrées seront les deux bit à additionner et la retenue précédente), on peut peut additionner des entiers de toute taille :
 
 {% note "**Proposition**" %}
-> TBD que NAND sur 1 bit
+Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :
+
+```python
+ADD $1 $2 $3
+```
+
+et le drapeau `RETENUE` telle que `ADD` additionne les valeurs des registres `$1` et `$2` en tenant compte du drapeau `RETENUE` et affecte le résultat dans le registre `$3` en mettant à jour la valeur du drapeau `RETENUE`.
+{% endnote %}
+
+Come l'addition bit à bit permet de créer l'addition sur un registre complet et que celle ci se fait uniquement avec des opérations logiques, on a de plus :
+
+{% note "**Proposition**" %}
+Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :
+
+```python
+NAND $1 $2 $3
+```
+
+Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres `$1` et `$2` et affecte le résultat dans le registre `$3`.
+{% endnote %}
+
+#### Autres opérations
+
+Les autres opérations possibles par un pseudo-code (gestion des réels, concaténation de chaines, etc) sont facilement codable avec les opérations logique et arithmétiques sur les entiers.
+
+La factorielle finale serait alors quelque chose du genre, en supposant que l'on ait les opérations de somme et de multiplications :
+
+```python
+SET $1 1
+SET $2 4
+
+MUL $1 $2 $1
+ADD $2 -1 $2
+
+GOTOIF ZÉRO 3
+
+affiche à l'écran u($1)
+```
+
+### Conclusion
+
+La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération `NAND`. Tout le reste peut être construit grâce à du code.
+
+{% note "**À retenir**" %}
+Les structure de contrôles, les variables en mémoire et l'unique opération `NAND` permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.
 {% endnote %}
 
 ## I/O
 
-> TBD pas core (il suffit de regarder la mémoire), mais utile
+[Les entrées/sorties](https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie) ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.
 
-- afficher à l'écran
-- fichier et clavier ?
+## Pseudo-assembleur minimal
 
-## MMIX
+On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que faire du pseudo-code :
 
-Nous n'avons montré que le principe d'un pseudo-assembleur, juste assez pour nous convaincre que les notions de pseudo-code et pseudo-assembleurs sont équivalentes.
+1. Mémoire de taille fixe $N = 2^S$ cases
+2. 3 registres de taille $S$, deux pour les entrées et une pour la sortie
+3. 3 opérations permettant :
+   - de déplacer des données de la mémoire vers le registre `$1` ou `$2`
+   - de déplacer des données d'un des 3 registres vers la mémoire
+   - d'écrire des constantes dans le registre `$1` ou `$2`
+4. 1 drapeau `ZÉRO` (pour les saut conditionnels)
+5. une opération `NAND $1 $2 $3` (qui permet de créer en code toutes les autres opérations)
+6. un saut conditionnel avec le drapeau `ZÉRO` à une ligne donnée du code
 
-Donald Knuth a formellement décrit un pseudo-assembleur complet, nommée [MMIX](https://fr.wikipedia.org/wiki/MMIX). Je ne saurais trop vous conseiller d'aller jeter un coup d'œil au site qui explique son fonctionnement, comme toujours avec Knuth, de façon claire et précise :
+Tout le reste peut–être géré via du code, lui aussi est très simple puisqu'il est uniquement constitué de transfert de mémoire, d'opérations `NAND` et de sauts conditionnels.
 
-{% lien %}
-<https://mmix.cs.hm.edu/>
-{% endlien %}
+{% note "**À retenir**" %}
+Le pseudo-code ne peut pas faire plus que du pseudo-assembleur, c'est juste plus agréable à écrire.
+{% endnote %}

@@ -94,6 +94,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ### Randomized algorithms
 
+- <https://www.youtube.com/watch?v=4y_nmpv-9lI>
 - page rank = markov cahin.
 - dérandomizartion exemple dans randomized algorithm
 - meme si on ne gagne pas en O, parfois on gagne sur la constante multiplicative (ex. médiane)
@@ -195,6 +196,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- random graphs. Friendship paradox. Tes amis ont plus d'amis que toi (existence de sommets avec beaucoup de voisins)
 - Matrice d'adjacence :
   - chemins
   - valeurs/vecteur propre : markov et sommets importants (pagerank)
