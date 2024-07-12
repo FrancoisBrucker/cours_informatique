@@ -195,7 +195,7 @@ Programme :
 </div>
 </div>
 <h2>Exemples de fonctions calculables</h2>
-<p>Commençons par montrer quelques fonction que l'on peut calculer.</p>
+<p>Commençons par montrer quelques fonctions que l'on peut calculer.</p>
 <p><a href="https://en.wikipedia.org/wiki/Computable_function#Examples">Quelques exemples</a> :</p>
 <ul>
 <li>les fonctions constantes sont calculables</li>
@@ -239,7 +239,7 @@ Programme :
 </div>
 </details>     
 </div>
-<p>Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">fonctions récursives primitives</a>. Elles ont été utilisées par Gödel pour montrer son <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">théorème d'incomplétude</a>. On a démontré plus tard (voir <a href="#fonction-ackermann">la fonction d'Ackermann</a>)que les fonctions récursives primitives sont des cas particuliers de fonctions calculables (ce sont les <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive">fonctions récursives</a> qui sont exactement les fonctions calculables).</p>
+<p>Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">fonctions récursives primitives</a>. Elles ont été utilisées par Gödel pour montrer son <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del">théorème d'incomplétude</a> et permettent de créer un grand nombre de fonctions, toutes calculables (mais pas toutes, <a href="#fonction-ackermann">la fonction d'Ackermann</a> étant un contre-exemple)</p>
 <p>Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -400,73 +400,7 @@ Programme :
 </div>
 <p>Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.</p>
 <h2>Fonctions calculables rigolotes</h2>
-<p>On va montrer deux exemples de fonctions calculables. L'une qui grossi très très vite (la fonction d'Ackermann) et l'autre (la fonction de Takeuchi) qui calcule des choses simples de façon compliquées.</p>
-<p>Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.</p>
-<h3><span id="fonction-ackermann"></span>Fonction d'Ackermann</h3>
-<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a>, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est la première fonction connue que l'on ne peut pas écrire avec des boucles <code class="language-">for</code>. On est obligé d'utiliser soit des boucles <code class="language-">while</code> pour écrire son pseudo-code de façon itérative, soit d'utiliser la récursivité (ce que l'on va faire). Enfin, cette fonction est d'utilité théorique certaine car c'est la première fonction connue à être calculable mais non primitive récursive.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que tout algorithme récursif peut s'écrire de façon itérative. C'est ce quel'on appelle la dé-curryfication.</p>
-</div>
-</div>
-<p>Elle se définit de la manière suivante, pour tous entiers m et n positifs :</p>
-<div>
-$$
-A(m, n) = \left\{
-    \begin{array}{ll}
-        n + 1 & \mbox{si } m = 0 \\
-        A(m - 1, 1) & \mbox{si } n = 0 \\
-        A(m - 1, A(m, n - 1)) & \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.</p>
-</div>
-</details>     
-</div>
-<p>Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :</p>
-<ul>
-<li>$A(2, 3) = A(1, A(2, 2))$</li>
-<li>$A(2, 2) = A(1, A(2, 1))$</li>
-<li>$A(2, 1) = A(1, A(2, 0))$</li>
-<li>$A(2, 0) = A(1, 1)$</li>
-<li>$A(1, 1) = A(0, A(1, 0))$</li>
-<li>$A(1, 0) = A(0, 1) = 2$</li>
-<li>puis on remonte d'un cran et les récursions recommencent...</li>
-</ul>
-<p>Au final on trouve $A(2, 3) = 9$. La fonction croît très très vite. Par exemple $A(5, 0) = A (4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.</p>
-<p>Sa complexité est de plus supérieure : il faut plus de $A(m, n)$ opérations pour calculer $A(m, n)$ puisque l'on ne fait qu'ajouter 1 à n comme calcul et les valeurs de n sont modifiées de +1 ou -1.</p>
+<p>On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.</p>
 <h3>Fonction de Takeuchi</h3>
 <p>La <a href="https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi">fonction de Takeuchi</a> est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.</p>
 <p>Elle est définie pour tous entiers $x$, $y$ et $z$ telle que :</p>
@@ -543,6 +477,107 @@ $$
 <p>Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.</p>
 </div>
 </div>
+<h3><span id="fonction-ackermann"></span>Fonction d'Ackermann</h3>
+<p>La <a href="https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann">fonction d'Ackermann</a>, outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car on s'est longtemps demandé si les seules fonctions calculables étaient <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">récursive primitive</a> et la fonction d'Ackermann est un contre-exemple (ce sont les <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive">fonctions récursives</a> qui sont exactement les fonctions calculables).</p>
+<p>Elle se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :</p>
+<div>
+$$
+\text{Ack}(m, n) = \left\{
+    \begin{array}{ll}
+        n + 1 & \mbox{si } m = 0 \\
+        \text{Ack}(m - 1, 1) & \mbox{si } n = 0 \\
+        \text{Ack}(m - 1, \text{Ack}(m, n - 1)) & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.</p>
+<p>Formalisons ça par récurrence sur $min(m , n)$.</p>
+<p>Hypothèse $\text{Ack}(m, n)$ est défini pour tout $m$ et $n$ tels que $min(m , n) \leq k$<br>
+Pour $k = 0$ Ok. Vrai à $k$ et on montre que c'est vrai à $k+1$ (ce qui est trivial en regardant les formes de récursion).</p>
+</div>
+</details>     
+</div>
+<p>Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :</p>
+<ul>
+<li>$A(2, 1) = A(1, A(2, 0))$
+<ul>
+<li>$A(2, 0) = A(1, 1)$
+<ul>
+<li>$A(1, 1) = A(0, A(1, 0))$
+<ul>
+<li>$A(1, 0) = A(0, 1) = 2$</li>
+</ul>
+</li>
+<li>$A(1, 1) = A(0, 2) = 3$</li>
+</ul>
+</li>
+<li>$A(2, 0) = A(1, 1) = 3$</li>
+</ul>
+</li>
+<li>$A(2, 1) = A(1, 3)$
+<ul>
+<li>$A(1, 3) = A(0, A(1, 2))$
+<ul>
+<li>$A(1, 2) = A(0, A(1, 1))$
+<ul>
+<li>$A(1, 1) = A(0, A(1, 0))$
+<ul>
+<li>$A(1, 0) = A(0, 1)= 2$</li>
+</ul>
+</li>
+<li>$A(1, 1) = A(0, 2) = 3$</li>
+</ul>
+</li>
+<li>$A(1, 2) = A(0, 3) = 4$</li>
+</ul>
+</li>
+<li>$A(1, 3) = A(0, 4) = 5$</li>
+</ul>
+</li>
+<li>$A(2, 1) = A(1, 3) = 5$</li>
+</ul>
+<p>Au final on trouve $A(2, 1) = 5$. La fonction croît très très vite. Par exemple $A(4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.</p>
+<p>Démontrer que la fonction d'Ackermann n'est pas primitive récursive dépasse un peu le cadre de ce cours, mais ce n'est pas un résultat compliqué à démontrer, voir par exemple les lien suivants :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://lgayral.pages.math.cnrs.fr/agreg/ackermann.pdf">https://lgayral.pages.math.cnrs.fr/agreg/ackermann.pdf</a></li>
+<li><a href="https://perso.univ-st-etienne.fr/ezequel/M1info/Primitif_Rec.pdf">https://perso.univ-st-etienne.fr/ezequel/M1info/Primitif_Rec.pdf</a></li>
+</ul>
+</div>
+</div>
+<p>La fonction d'Ackermann est également une fonction  que l'on ne peut pas écrire avec des boucles <code class="language-">pour chaque</code> (les boucles <code class="language-">for</code> de la programmation). On est obligé d'utiliser des  boucles <code class="language-">tant que</code> (les boucles <code class="language-">while</code> de la programmation) pour écrire son pseudo-code de façon itérative.</p>
 <h2>Non calculabilité</h2>
 <p>Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.</p>
 <p>Mais ces objets existent puisqu'il y a strictement plus de fonction et de réels que d'algorithmes.</p>

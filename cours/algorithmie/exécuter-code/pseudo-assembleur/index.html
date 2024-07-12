@@ -201,7 +201,10 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <li><code>u(o) = 212</code></li>
 <li><code>s(o) = -44</code></li>
 </ul>
-<p>Si <code>o</code> code un entier, c'est qu'une adresse mémoire est codée sur 8bits et donc que sa taille vaut $N = 2^8 = 256$.</p>
+<p>Si <code>o</code> code un entier, c'est qu'une adresse mémoire est codée sur 8bits ($S = 8$) et donc que sa taille vaut $N = 2^8 = 256$. Pour affecter des entiers dans la mémoire on écrira alors :</p>
+<pre><code>M[X:X+S] = b(212)
+</code></pre>
+<p>Qui sera équivalent à <code>M[X:X+S] = 1011001</code> si $S=8$ et à <code>M[X:X+S] = 000000001011001</code> si $S=16$.</p>
 <h3>Équivalence avec le pseudo-code</h3>
 <p>On l'a vu, <a href="../../bases-th%C3%A9oriques/d%C3%A9finition/#param%C3%A8tres-binaires" class="interne">un programme ne peut manipuler que des suites finies de <code>0</code> et de <code>1</code></a>. Le pseudo-code et le pseudo-assembleur manipulent les mêmes objets.</p>
 <p>De plus, la finitude de la mémoire n'est pas un problème pour les algorithmes puisqu'ils finissent. On pourra donc toujours trouver une taille de mémoire permettant de l'exécuter. De là, si un programme en pseudo-assembleur atteint la limite de la mémoire, on peut toujours stopper son exécution et la recommencer avec une mémoire deux fois plus grande. L'algorithme en pseudo-assembleur finira toujours par s'arrêter. On a donc :</p>
@@ -219,45 +222,60 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <p>En pseudo-code, on appelle les fonctions via des paramètres :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ma_fonction<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">)</span>
 </code></pre>
-<p>En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau $t$ à $n$ adresses telle que :</p>
+<p>En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau à $n$ adresses telle que :</p>
 <ol>
-<li>$M[p]$ soit l'adresse du début d'un objet tableau $t$ de taille $n$</li>
-<li>$t[i]$ corresponde à l'adresse du paramètre $p_i$</li>
-<li>si $k = \log_2(N)$ vaut le nombre de bits pour stocker une adresse, alors aucun objet n'est pour l'instant stocké à une adresse supérieure à $k \cdot n$ : le tableau $t$ est le dernier objet stocké en mémoire par l'algorithme.</li>
+<li>$M[p+(i-1)S:p+iS]$ corresponde à l'adresse du paramètre $p_i$</li>
+<li>Pour tout $k \geq p+nS$, Aucune case mémoire $M[k]$, n'est utilisée pour l'instant par le programme.</li>
 </ol>
-<p>Les deux premières conditions permettent de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la troisième permet d'appeler facilement des fonction de manière récursive !</p>
-<p>Par exemple la fonction de Fibonacci que l'on pourrait écrire en pseudo-code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<p>La  première condition permet de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la seconde permet d'appeler facilement des fonction de manière récursive !</p>
+<p>Par exemple la fonction factorielle que l'on pourrait écrire en pseudo-code :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
   si n ≤ <span class="token number">1</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> a
+    <span class="token keyword">return</span> <span class="token number">1</span>
   sinon<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> fibo<span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">,</span> a<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 
-affiche à l'écran fibo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Deviendrait en pseudo-assembleur :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
-  a <span class="token operator">=</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
-  b <span class="token operator">=</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p <span class="token operator">+</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> S<span class="token punctuation">]</span><span class="token punctuation">)</span>
-  n <span class="token operator">=</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">*</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> S<span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-  si n ≤ <span class="token number">1</span><span class="token punctuation">:</span>
-    stocke a dans les cases M<span class="token punctuation">[</span>p <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> S<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> p <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> S
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  si u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> ≤ <span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
   sinon<span class="token punctuation">:</span>
-    stocke l'entier a <span class="token operator">+</span> b dans les cases M<span class="token punctuation">[</span>p <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> S<span class="token punctuation">]</span>
-    stocke l'entier a dans les cases M<span class="token punctuation">[</span>p <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">5</span> <span class="token operator">*</span> S<span class="token punctuation">]</span>
-    stocke l'entier n<span class="token operator">-</span><span class="token number">1</span> dans les cases M<span class="token punctuation">[</span>p <span class="token operator">+</span> <span class="token number">5</span> <span class="token operator">*</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span> <span class="token number">6</span> <span class="token operator">*</span> S<span class="token punctuation">]</span>
+    M<span class="token punctuation">[</span>p <span class="token operator">+</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>p <span class="token operator">+</span> S<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> fibo<span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token number">3</span> <span class="token operator">*</span> S<span class="token punctuation">)</span>
-
-  affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>fibo<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Lors de l'exécution du code précédent, la fonction factorielle va être appelée quatre fois. Voyons ça pour $S=4$ et donc une taille mémoire de 32bits.</p>
+<p>premier appel depuis la ligne 9 du programme <code>factorielle(0)</code> :</p>
+<pre><code>0         1         2         3
+012345678901234567890123456789012
+010000000000000000000000000000000
+p
 </code></pre>
-<p>La fonction <code>fibo</code> retourne l'adresse d'un entier en mémoire et est correcte puisque l'on sait qu'aucun objet n'est stocké après le tableau de paramètre : l'appel récursif ne peut pas faire planter l'algorithme.</p>
-<blockquote>
-<p>TBD dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)</p>
-</blockquote>
-<p>L'utilisation de ce tableau de paramètre en mémoire permet d'avoir :</p>
+<p>Comme u(M[0:0+4]) vaut 4, on rappelle factorielle en ligne 6, <code>factorielle(4)</code> :</p>
+<pre><code>0         1         2         3
+012345678901234567890123456789012
+010000110000000000000000000000000
+    p
+</code></pre>
+<p>Comme u(M[4:4+4]) vaut 3, on rappelle factorielle en ligne 6, <code>factorielle(8)</code> :</p>
+<pre><code>0         1         2         3
+012345678901234567890123456789012
+010000110010000000000000000000000
+        p
+</code></pre>
+<p>Comme u(M[8:8+4]) vaut 2, on rappelle factorielle en ligne 6, <code>factorielle(12)</code> :</p>
+<pre><code>0         1         2         3
+012345678901234567890123456789012
+010000110010000100000000000000000
+            p
+</code></pre>
+<p>Comme u(M[12:12+4]) vaut 1 : <code>factorielle(12)</code> rend <code>1</code>. On se trouve donc dans la fonction <code>factorielle(8)</code> qui peut maintenant également s'arrêter en rendant <code>u(M[8:8+4]) * factorielle(12)</code> qui vaut : $2 \cdot 1 = 2$.</p>
+<p>De là <code>factorielle(4)</code> s'arrête en rendant <code>u(M[4:4+4]) * factorielle(8)</code> qui vaut : $3 \cdot 2 = 6$ ce qui permet à <code>factorielle(0)</code> de rendre <code>u(M[0:0+4]) * factorielle(4)</code> qui vaut $4 \cdot 6 = 24$.</p>
+<p>L'utilisation de ce tableau de paramètres en mémoire permet d'avoir :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -274,58 +292,36 @@ affiche à l'écran fibo<span class="token punctuation">(</span><span class="tok
 <p>On ajoute au pseudo-assembleur une instruction de saut :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTO label
 </code></pre>
-<p>L'instruction <code>GOTO</code> (&quot;go to&quot; : &quot;aller à&quot;) <em>saute</em> à l'instruction de label <code>label</code>. Par exemple le programme suivant qui est une version itérative (et infinie) de la suite de Fibonacci :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">a <span class="token operator">=</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<p>L'instruction <code>GOTO</code> (&quot;go to&quot; : &quot;aller à&quot;) <em>saute</em> à l'instruction de label <code>label</code>. Par exemple le programme suivant qui est une version itérative (et infinie) de la factorielle :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 
-affiche à l'écran n<span class="token punctuation">,</span> a
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-n <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span>
-a<span class="token punctuation">,</span> b <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-GOTO <span class="token number">8</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>TBD : dérouler l'exemple (avec la mémoire représentée à chaque exécution de ligne)<br>
-dire qu'on a assimiler variable et case mémoire.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'utilisation de saut était très répandu dans les débuts de la programmation (des langages comme <a href="https://koor.fr/C/Statements/goto.wp#google_vignette">le C en possède une instruction de saut</a>), mais son usage a été banni pour être remplacé par des blocs car il rendait le code très difficile à lire.</p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
-</div>
-</div>
-<p>Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise la variable <code>I</code> pour stocker l'endroit où sauter après l'exécution de la fonction :</p>
+GOTO <span class="token number">3</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Contrairement à la version récursive précédente, la taille de la mémoire utilisée de change pas.</p>
+<p>Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise une variable pour stocker l'endroit où sauter après l'exécution de la fonction :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTO <span class="token number">6</span>
 
-affiche à l'écran n<span class="token punctuation">,</span> a
-GOTO I
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
+GOTO u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-a <span class="token operator">=</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-I <span class="token operator">=</span> <span class="token number">12</span>
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
 GOTO <span class="token number">3</span>
 
-n <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span>
-a<span class="token punctuation">,</span> b <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-I <span class="token operator">=</span> <span class="token number">18</span>
+M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">17</span>
 GOTO <span class="token number">3</span>
 
-GOTO <span class="token number">5</span>
+GOTO <span class="token number">11</span>
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -334,7 +330,7 @@ GOTO <span class="token number">5</span>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'appel de fonction en pseudo-assembleur se fait avec des instruction de saut et une variable contenant la ligne de retour.</p>
+<p>L'appel de fonction en pseudo-assembleur se fait avec des instructions de saut et une variable contenant la ligne de retour.</p>
 </div>
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -343,6 +339,15 @@ GOTO <span class="token number">5</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans ce cas là, le nombre de ligne de code est borné par l'adressage possible en mémoire. Ce n'est pas gênant en pratique, un adressage sur 64bit permet d'écrire $2^{64}$ lignes de code...</p>
+</div>
+</div>
+<p>On le voit, l'utilisation de saut peut vite être difficile à lire, on recommande de l'utiliser de façon parcimonieuse.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
 </div>
 </div>
 <h3>Test</h3>
@@ -362,7 +367,13 @@ GOTO <span class="token number">5</span>
 <p>Un <strong><em>drapeau</em></strong> (<strong><em>flag</em></strong>)  est une variable binaire affectée automatiquement après une opération.</p>
 </div>
 </div>
-<p>En particulier, on considère que le pseudo-assembleur possède les deux drapeaux suivant, qui permettent de faire tous les tests du pseudo-code :</p>
+<p>Par exemple :</p>
+<ul>
+<li>$a \leq b$ pourra être effectué en regardant la valeur du drapeau <code>NÉGATIF</code> après l'opération $b-a$.</li>
+<li>$(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau <code>ZÉRO</code> (s'il vaut <code>0</code>, c'est vrai)</li>
+</ul>
+<p>Comme les nombres négatifs seront codés en <a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">Complément à deux</a>, le bit d poids ford d'un entier vaudra 0 s-il est positif et 1 s'il est négatif. Le drapeau <code>NÉGATIF</code>  peut donc être simulé par le drapeau <code>ZÉRO</code> en effectuant l'opération <code>x ET 01...1</code> qui vaudra 0 (le drapeau <code>ZÉRO</code> vaudra alors 1) que le si le nombre <code>u(x)</code> est positif.</p>
+<p>On peut donc faire tout nos test en utilisant uniquement le drapeau <code>ZÉRO</code> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -370,19 +381,10 @@ GOTO <span class="token number">5</span>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le pseudo-assembleur possède les deux drapeaux :</p>
-<ul>
-<li><code>NÉGATIF</code> qui vaut <code>1</code> si la dernière opération arithmétique a donné un résultat négatif, et <code>0</code> sinon.</li>
-<li><code>ZÉRO</code> qui vaut <code>1</code> si la dernière opération arithmétique ou logique a donné un résultat de zéro, et <code>0</code> sinon.</li>
-</ul>
+<p>Le pseudo-assembleur possède un drapeau <code>ZÉRO</code> qui vaut <code>1</code> si la dernière opération arithmétique ou logique a donné un résultat de zéro, et <code>0</code> sinon.</p>
 </div>
 </div>
-<p>Ainsi :</p>
-<ul>
-<li>$a \leq b$ pourra être effectué en regardant la valeur du drapeau <code>NÉGATIF</code> après l'opération $b-a$.</li>
-<li>$(A OU B) ET C$ pourra être effectué en regardant la valeur du drapeau <code>ZÉRO</code> (s'il vaut <code>0</code>, c'est vrai)</li>
-</ul>
-<p>On a donc :</p>
+<p>Ce drapeau nous permet de faire tous les tests possibles en pseudo-code et donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -403,30 +405,26 @@ GOTO <span class="token number">5</span>
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un saut conditionnel est de la forme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">IFGOTO drapeau label
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTOIF drapeau label
 </code></pre>
 <p>La prochaine instruction exécutée sera celle de la ligne <code>label</code> si le drapeau de nom <code>drapeau</code> vaut <code>1</code>.</p>
 <p>De même :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">IFNOTGOTO drapeau label
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTOIFNOT drapeau label
 </code></pre>
 <p>La prochaine instruction exécutée sera celle de la ligne <code>label</code> si le drapeau de nom <code>drapeau</code> vaut <code>0</code>.</p>
 </div>
 </div>
-<p>Le code ci-après utilise le saut conditionnel pour afficher les 11 premières valeurs de la suite de Fibonacci.</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">a <span class="token operator">=</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-b <span class="token operator">=</span> M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-n <span class="token operator">=</span> M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<p>Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 
-affiche à l'écran n<span class="token punctuation">,</span> a
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-n <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span>
-a<span class="token punctuation">,</span> b <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIF ZÉRO <span class="token number">3</span>
 
-n<span class="token operator">-</span><span class="token number">10</span>
-IFNOTGOTO NÉGATIF <span class="token number">5</span>
-
-affiche à l'écran <span class="token string">"FIN"</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> a
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Comme on le voit, il est facile de remplacer les structures de contrôles et les répétitions du pseudo-code par une utilisation combinée des labels et des sauts conditionnels :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -482,11 +480,19 @@ affiche à l'écran <span class="token string">"FIN"</span><span class="token pu
 <ul>
 <li><code>LOAD $X $Y</code> qui place la valeur en mémoire <code>M[u($Y):u($Y)+S]</code>  (<code>u($Y)</code> est la valeur du registre de numéro <code>Y</code> prise comme une adresse) dans le registre de numéro <code>X</code></li>
 <li><code>STORE $X $Y</code> qui place la valeur du registre <code>X</code> dans les cases mémoires <code>M[u($Y):u($Y)+S]</code></li>
-<li><code>SET $X Y</code> qui place la constante <code>Y</code> (une suite de 0 et de 1 de taille $S$) dans le registre de numéro <code>X</code></li>
+<li><code>SET $X Y</code> qui place la constante <code>Y</code> (un entier relatif) dans le registre de numéro <code>X</code></li>
 </ul>
-<blockquote>
-<p>TBD exemple avec image de la mémoire et de 2 registres.</p>
-</blockquote>
+<p>Encore et toujours factorielle, mais avec des registres</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
+SET $<span class="token number">2</span> <span class="token number">4</span>
+
+$<span class="token number">1</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>u<span class="token punctuation">(</span>$<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+$<span class="token number">2</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>$<span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIF ZÉRO <span class="token number">3</span>
+
+affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span>
+
+</code></pre>
 <h3>Types d'opérations</h3>
 <p>Les opérations d'un pseudo-assembleur, comme pour un pseudo-code sont essentiellement arithmétique</p>
 <h4>Logiques</h4>
@@ -808,7 +814,7 @@ $$</p>
 </div>
 </details>     
 </div>
-<p>On voit qu'il suffit que le pseudo-assembleur définisse les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires pour pouvoir générer toutes les fonctions de $\{0, 1\}^n$ dans $\{0, 1\}$, quelque soit l'entier $n$. On peut aller encore plus loin grâce à la proposition suivante :</p>
+<p>On voit qu'il suffit que le pseudo-assembleur définisse les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires pour pouvoir générer avec un algorithme toutes les fonctions de $\{0, 1\}^n$ dans $\{0, 1\}$, quelque soit l'entier $n$. On peut aller encore plus loin grâce à la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -836,65 +842,23 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<ul>
+<li>$\text{NOT}(x) = \text{NAND}(x, x)$</li>
+<li>$\text{AND}(x, y) = \text{NOT}(\text{NAND}(x, y))$</li>
+<li>$\text{OR}(x, y) = \text{NAND}(\text{NOT}(x), \text{NOT}(y))$</li>
+</ul>
 </div>
 </details>     
 </div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<blockquote>
-<p>TBD cela marche aussi avec XOR.</p>
-</blockquote>
+<p>Cela marche aussi avec le <a href="https://fr.wikipedia.org/wiki/Fonction_OU_exclusif">OU exclusif</a> ($\text{XOR}(x, y) = \text{AND}(\text{OR}(x, y), \text{NAND}(x, y))$).</p>
 </div>
 </div>
-<p>Son pendant en<br>
-L'opération <code>NOT $1 $2</code>, ou<br>
-, dont la table de vérité est :</p>
-<p>Si</p>
-<blockquote>
-<p>bit à bit<br>
-peut se généraliser sur tout un registre<br>
-peut se généraliser à aussi long qu'on veut : on peut découper</p>
-</blockquote>
-<blockquote>
-<p>TBD faire une partie arithmétique booléenne ?</p>
-</blockquote>
-<p>On peut tout faire avec une combinaison de not, and et or : c'est une clause.</p>
-<h4>Arithmétiques</h4>
-<blockquote>
-<p>addition dans 0,1 est une fonction sur 0, 1, donc logique. Elle est de plus découpable avec une retenue (registre)</p>
-<p>avec complément à deux parce que soustraction = addition</p>
-</blockquote>
-<blockquote>
-<p>a priori opération aussi grande qu'on veut mais on peut découper. Exemple sur logique et 1 seul bit. Ou addition et retenue.<br>
-deux catégories</p>
-</blockquote>
-<p>On verra que l'on peut même se restreindre à une seule opération pour construire toutes les autres, mais commençons par formaliser comment le pseudo-assembleur utilise les opérations.</p>
-<blockquote>
-<p>TBD parler des additions/soustraction etc par bout de taille fixe. plus drapeau retenue pour permettre de faire sur taille pas fixe si besoin.<br>
-On peut tout faire avec add et on peut faire add avec XOR.<br>
-Opérations logiques avec NANDm donc juste NAND pour tout faire.</p>
-</blockquote>
-<p>Le pseudo-code doit permettre de faire les opérations arithmétiques courantes sur les objets :</p>
-<ul>
-<li>plus, moins, fois et divisé pour les entiers relatifs et les approximations des réels</li>
-<li>plus, moins, fois et divisé pour les approximations de réels</li>
-<li>concaténation des chaines de caractères</li>
-</ul>
-<p>L'intérêt d'utiliser des suites binaires est que toutes les opérations arithmétiques peuvent se réaliser avec les deux opérations logiques suivantes :</p>
-<ul>
-<li><code>copie(x)</code></li>
-<li><code>SHIFT(x, y)</code> rend un objet contenant la concaténation de y0...0 ajout de s(x) 0 à droite de y si s(x) &gt; 0 et de -s(x) 0 à gauche si s(x) &lt; 0</li>
-<li><code>NAND(x, y)</code> : opérateur logique NON ET.</li>
-</ul>
-<p>En effet, il est possible d'<a href="https://en.wikipedia.org/wiki/NAND_logic">obtenir toutes les opérations logiques avec NAND</a> et l'opération SHIFT permet d'ajouter des bits à gauche ou à droite d'un objet (si on veut ajouter des 1 on peut fait NOT(SHIFT(x, NOT(y))))</p>
-<p>Ou 1 ou 2 paramètre et une sortie.</p>
-<h3>Équivalences</h3>
+<p>On en conclut donc qu'il suffit que le pseudo-assembleur ne doit posséder que la fonction $\text{NAND}(x, y)$ pour 1bit pour pouvoir effectuer toutes les opérations logiques. D'où la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -902,28 +866,108 @@ Opérations logiques avec NANDm donc juste NAND pour tout faire.</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<blockquote>
-<p>TBD que NAND sur 1 bit</p>
-</blockquote>
+<p>Le pseudo-assembleur peut effectuer toutes les opérations logiques du pseudo-code s'il possède l'opération :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
+</code></pre>
+<p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
 </div>
 </div>
-<h2>I/O</h2>
-<blockquote>
-<p>TBD pas core (il suffit de regarder la mémoire), mais utile</p>
-</blockquote>
-<ul>
-<li>afficher à l'écran</li>
-<li>fichier et clavier ?</li>
-</ul>
-<h2>MMIX</h2>
-<p>Nous n'avons montré que le principe d'un pseudo-assembleur, juste assez pour nous convaincre que les notions de pseudo-code et pseudo-assembleurs sont équivalentes.</p>
-<p>Donald Knuth a formellement décrit un pseudo-assembleur complet, nommée <a href="https://fr.wikipedia.org/wiki/MMIX">MMIX</a>. Je ne saurais trop vous conseiller d'aller jeter un coup d'œil au site qui explique son fonctionnement, comme toujours avec Knuth, de façon claire et précise :</p>
+<h4>Arithmétiques</h4>
+<p>Pour générer toutes les opérations arithmétiques sur les entiers relatifs, il suffit de posséder les opérations d'addition et de soustraction. En utilisant le complément à deux pour noter les entiers négatifs, addition et soustractions sont équivalents :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://mmix.cs.hm.edu/">https://mmix.cs.hm.edu/</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">Complément à deux</a></p>
+</div>
+</div>
+<p>On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits <code>M[0]</code> et <code>M[1]</code> pour rendre la valeur <code>M[3]</code> et la retenue, <code>M[2]</code>, s'il y en a une:</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+
+M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> XOR<span class="token punctuation">(</span>XOR<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>En reprenant la sortie de l'algorithme précédent et en l'itérant autant de fois que nécessaire (les paramètres d'entrées seront les deux bit à additionner et la retenue précédente), on peut peut additionner des entiers de toute taille :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ADD $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
+</code></pre>
+<p>et le drapeau <code>RETENUE</code> telle que <code>ADD</code> additionne les valeurs des registres <code>$1</code> et <code>$2</code> en tenant compte du drapeau <code>RETENUE</code> et affecte le résultat dans le registre <code>$3</code> en mettant à jour la valeur du drapeau <code>RETENUE</code>.</p>
+</div>
+</div>
+<p>Come l'addition bit à bit permet de créer l'addition sur un registre complet et que celle ci se fait uniquement avec des opérations logiques, on a de plus :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
+</code></pre>
+<p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
+</div>
+</div>
+<h4>Autres opérations</h4>
+<p>Les autres opérations possibles par un pseudo-code (gestion des réels, concaténation de chaines, etc) sont facilement codable avec les opérations logique et arithmétiques sur les entiers.</p>
+<p>La factorielle finale serait alors quelque chose du genre, en supposant que l'on ait les opérations de somme et de multiplications :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
+SET $<span class="token number">2</span> <span class="token number">4</span>
+
+MUL $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">1</span>
+ADD $<span class="token number">2</span> <span class="token operator">-</span><span class="token number">1</span> $<span class="token number">2</span>
+
+GOTOIF ZÉRO <span class="token number">3</span>
+
+affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>Conclusion</h3>
+<p>La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération <code>NAND</code>. Tout le reste peut être construit grâce à du code.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les structure de contrôles, les variables en mémoire et l'unique opération <code>NAND</code> permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.</p>
+</div>
+</div>
+<h2>I/O</h2>
+<p><a href="https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie">Les entrées/sorties</a> ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.</p>
+<h2>Pseudo-assembleur minimal</h2>
+<p>On vient de voir qu'il ne faut vraiment pas grand chose pour simuler tout ce que faire du pseudo-code :</p>
+<ol>
+<li>Mémoire de taille fixe $N = 2^S$ cases</li>
+<li>3 registres de taille $S$, deux pour les entrées et une pour la sortie</li>
+<li>3 opérations permettant :
+<ul>
+<li>de déplacer des données de la mémoire vers le registre <code>$1</code> ou <code>$2</code></li>
+<li>de déplacer des données d'un des 3 registres vers la mémoire</li>
+<li>d'écrire des constantes dans le registre <code>$1</code> ou <code>$2</code></li>
+</ul>
+</li>
+<li>1 drapeau <code>ZÉRO</code> (pour les saut conditionnels)</li>
+<li>une opération <code>NAND $1 $2 $3</code> (qui permet de créer en code toutes les autres opérations)</li>
+<li>un saut conditionnel avec le drapeau <code>ZÉRO</code> à une ligne donnée du code</li>
+</ol>
+<p>Tout le reste peut–être géré via du code, lui aussi est très simple puisqu'il est uniquement constitué de transfert de mémoire, d'opérations <code>NAND</code> et de sauts conditionnels.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le pseudo-code ne peut pas faire plus que du pseudo-assembleur, c'est juste plus agréable à écrire.</p>
 </div>
 </div>
 

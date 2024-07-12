@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Architecture de Von Neumann</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Architecture de Von Neumann</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/von-neumann/">Architecture de Von Neumann</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>L'<a href="https://fr.wikipedia.org/wiki/Architecture_de_von_Neumann">Architecture de Von Neumann</a> est une façon d'unifier code et donnée. Il est basé sur deux notions supplémentaire au pseudo-assembleur :</p>
+<ul>
+<li>Unification du code et des données</li>
+<li>Utilisation de la pile pour gérer la portée des variables et les appels de fonctions</li>
+</ul>
+<p>On se place donc dans le cas où l'on souhaite exécuter du code écrit en <a href="../pseudo-assembleur">pseudo-assembleur</a> sur une machine de $N=2^S$ cases mémoires. On supposera ici que $S$ vaut 64, ou plus.</p>
+<h2>Unifier mémoire et code</h2>
+<p>Chaque ligne de code du pseudo-assembleur est constituée de la même manière :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span>
+</code></pre>
+<p>Où <code>OP</code> est le nom de l'instruction et <code>#1</code>, <code>#2</code> et <code>#3</code> des registres ou des constantes.</p>
+<p>Comme on a un nombre fini d'opérations et de registres, on peut associer :</p>
+<ul>
+<li>un nombre, on dit <a href="https://fr.wikipedia.org/wiki/Code_op%C3%A9ration">OPCODE</a>, à chaque opération</li>
+<li>un nombre à chaque registre.</li>
+</ul>
+<p>L'instruction précédente peut alors être associé à un quadruplet d'entiers $(o, r_1, r_2, r_3)$.</p>
+<p>Si l'on à $S=64$, on peut avoir jusqu'à $2^{16} = 65536$ opérations et registres ! Habituellement, on stocke chaque instruction sur 32bits, ce qui permet d'avoir 256 registres (3 suffisent) et 256 opérations (une seule opération, NAND, est nécessaire) :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe une injection permettant d'associer une suite de <code>0</code> et de <code>1</code> de taille $S$ à toute instruction de pseudo-assembleur.</p>
+</div>
+</div>
+<p>Par exemple si l'on associe 42 à l'opération <code>NAND</code>, l'instruction <code>NAND $2 $1 $3</code> sera codée par le quadruplet : $(42, 2, 1, 3)$ ce qui sur 32bit donne le code (on a séparé les 32bits par paquet de 8 pour plus de clarté):</p>
+<pre><code>00101010 00000010 00000001 00000011
+</code></pre>
+<p>Cette injection entre code et suite de <code>0</code> et de <code>1</code> permet de placer le code en mémoire :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans une architecture de Von Neumann, le code est placé en mémoire sous la forme d'une suite de <code>0</code> et de <code>1</code>. So exécution est contrôlée par un registre spécial, $I$ appelé pointeur d'instruction dont la valeur est l'adresse de la <strong>prochaine</strong> instruction à exécuter.</p>
+<p>Exécuter une instruction se fait alors de la façon suivante :</p>
+<ol>
+<li>lire l'instruction à exécuter dont le code commence en $M[u(I)]$</li>
+<li>incrémenter la valeur de $I$ de la taille de l'instruction lue</li>
+<li>exécuter l'instruction lue</li>
+</ol>
+</div>
+</div>
+<p>L'utilisation d'un pointeur d'instruction et le fait qu'il pointe sur l'instruction suivante permet de gérer simplement les sauts : il suffit de modifier sa valeur.</p>
+<h2>Variable et pile</h2>
+<p>L'architecture de Von Neumann utilise le concept de <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong><em>Définition</em></strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>pile</em></strong> est une structure de donnée qui comprend deux fonctions :</p>
+<ul>
+<li>empile(d) : ajoute l'élément d à la pile et rend son indice de stockage</li>
+<li>dépile() : supprime un élément de la pile et le rend</li>
+<li>accès(0) : accède au i+1 ème élément de la pile en lecture ou en écriture</li>
+</ul>
+<p>Le <strong>premier</strong> élément de la pile est le <strong>dernier</strong> empilé.</p>
+</div>
+</div>
+<p>Prenons l'exemple suivant :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">empile<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+empile<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span>
+dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span>
+</code></pre>
+<p>La pile est une structure fondamentale en algorithmie (on y reviendra) et permet de résoudre efficacement tout un tas de problèmes lié au stockage de données. Le modèle de Von Neumann l'utilise pour gérer efficacement les variables et les appels de fonctions.</p>
+<h3>Implémentation et fonctionnement</h3>
+<p>La pile est composée de cases contiguës en mémoire : classiquement les derniers.</p>
+<p>Pour gérer la pile le modèle de Von Neumann possède :</p>
+<ul>
+<li>trois instructions :
+<ul>
+<li><code>PUSH $X</code> qui empile la valeur du registre <code>X</code> dans la pile</li>
+<li><code>PUSH X</code> qui empile la constante <code>X</code></li>
+<li><code>POP $X</code> : dépile la pile dans le registre <code>X</code></li>
+</ul>
+</li>
+<li>deux registres :
+<ul>
+<li><code>SP</code> (<strong><em>stack pointer</em></strong>) qui contient l'adresse de fin de pile, c'est à dire le début de l'adresse du dernier élément dans la pile</li>
+<li><code>FP</code> (<strong><em>frame pointer</em></strong>)  qui contient l'adresse du début de la pile</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>On ne peut placer que des valeurs de taille $S$ dans la pile</li>
+<li>Lorsque l'on empile des éléments à la pile, la valeur <code>u(SP)</code> <strong>décroît</strong>.</li>
+</ul>
+</div>
+</div>
+<p>La pile est ainsi constituée du segment de mémoire $M[u(SP):u(FP)]$, que l'on appelle un <strong><em>frame</em></strong> et à chaque fois qu'une valeur est ajoutée dans la pile, le registre <code>SP</code> est décrémenté de $S$. Ainsi :</p>
+<ul>
+<li>le dernier élément ajouté à la pile sera dans le segment $M[u(SP):u(SP) + S]$</li>
+<li>l'avant-dernier élément ajouté à la pile sera dans le segment $M[u(SP) + S:u(SP) + 2S]$</li>
+<li>...</li>
+</ul>
+<p>Notez que l'on peut retrouver un élément de la pile si on sait combien d'éléments ont été ajouté <strong>après lui</strong>. Si $k$ éléments ont été ajoutés après l'élément recherché, il se trouve à cet endroit de la pile : $M[u(SP) + k\cdot S:u(SP) + (k+1)\cdot S]$</p>
+<p>On peut également retrouver un élément de la pile si on sait combien d'éléments ont été ajouté <strong>avant lui</strong>. Si $k$ éléments ont été ajoutés avant l'élément recherché, il se trouve à cet endroit de la pile : $M[u(FP) - (k+1)\cdot S:u(FP) - k\cdot S]$</p>
+<p>C'est exactement ce qu'il faut pour gérer des variables !</p>
+<h3>Usage</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong><em>Définition</em></strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans une architecture de de Von Neumann la pile contient les adresses des données stockées en mémoire : ce sont les variables du programme</p>
+</div>
+</div>
+<h4>Stocker des variables</h4>
+<p>Lorsqu'une variable est créée en mémoire son adresse est empilée et le code y accède via la pile.</p>
+<p>On peut y accéder via le registre <code>SP</code>. Par exemple avec cette boucle for qui calcule factorielle 4 :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+PUSH <span class="token number">0</span>
+
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>SP<span class="token punctuation">:</span>SP<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+PUSH S
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIFNOT ZÉRO <span class="token number">9</span>
+</code></pre>
+<p>Le programme va créer 2 variables en faisant pour chacune 2 opérations :</p>
+<ol>
+<li>création de l'objet en mémoire</li>
+<li>assignation de l'objet à une <em>variable</em> en l'empilant</li>
+</ol>
+<p>Puis on utilise les objets via les variables, c'est à dire la pile.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Qu'affiche à l'écran le code précédent ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il va afficher 4, 4, 12, 24, 24</p>
+</div>
+</details>     
+</div>
+<p>Mais on a coutume d'accéder aux variables par rapport à <code>FP</code> car cela permet d'accéder à l'objet sans changer d'adresse. Le code précédent devient alors :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+PUSH <span class="token number">0</span>
+
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+PUSH S
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIFNOT ZÉRO <span class="token number">9</span>
+</code></pre>
+<p>Dans une frame, les données (en mémoire) sont toujours associé aux même variables (valeurs selon <code>FP</code>).</p>
+<h4>Supprimer des variables</h4>
+<p>Lorsque l'on a plus besoin d'un objet, on le dépile et on peut réutiliser la mémoire qu'il utilisait. Pour que cela fonctionne il faut créer et supprimer les variables dans l'ordre, on ne peux pas supprimer une variable sans supprimer également toutes celles qui ont étés crées après elle.</p>
+<p>L'usage veut que l'on supprime tout le frame. Pour ne pas avoir à garder toutes les variables, on va créer des frame temporaires pour stocker les variables locales, en particulier lors de l'appels des fonctions.</p>
+<h4>Appels de fonctions</h4>
+<p>Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :</p>
+<ol>
+<li>gestion des variables locales à la fonction ainsi que ses paramètres</li>
+<li>permettre de gérer l'appel et le retour après la fonction exécutée</li>
+</ol>
+<p>Le pseudo-assembleur gère les deux cas précédent en :</p>
+<ol>
+<li>passant les paramètres dans un tableau</li>
+<li>s'assurant que les variables locales seront crées après toutes les autres variables.</li>
+</ol>
+<p>Si le deuxième point est géré de la même manière par le modèle de Von Neumann (<em>ie.</em> c'est au développeur de faire attention), l'adresse de retour, les paramètres et les variables locales sont gérées par la pile, en associant à chaque fonction sa <strong>_frame de pile</strong>_.</p>
+<p>Nous allons montrer ici une façon générale de procéder mais il n'existe en pratique plein d'implémentation différente de ce principe général (voir par exemple <a href="https://www.ired.team/miscellaneous-reversing-forensics/windows-kernel-internals/linux-x64-calling-convention-stack-frame">les conventions d'appels pour les processeurs x64 Linux</a> où certains paramètres sont passés par des registres pour aller plus vite).</p>
+<ol>
+<li>paramètres de la fonction : empile les paramètres</li>
+<li>saut vers la fonction :
+<ol>
+<li>empile <code>IP</code></li>
+<li>affecte <code>IP</code> à l'adresse de la fonction</li>
+</ol>
+</li>
+<li>fonction :
+<ol>
+<li>préparation de la fonction :
+<ol>
+<li>empile <code>FP</code> : sauvegarde de la <em>frame</em> appelante</li>
+<li><code>FP = SP</code> : nouvelle <em>frame</em> pour les variables locales</li>
+</ol>
+</li>
+<li>corps de la fonction : normale avec création de variables locales et</li>
+<li>fin de fonction :
+<ol>
+<li>place le résultat de la fonction dans le registre <code>$1</code></li>
+<li>dépile toutes les variables locales</li>
+<li>dépile dans <code>FP</code> : on retrouve la <em>frame</em> précédente</li>
+</ol>
+</li>
+<li>saut retour : dépile dans <code>IP</code></li>
+</ol>
+</li>
+<li>nettoyage on dépile les paramètres de la fonction</li>
+</ol>
+<p>La partie 3.1.2 permet de gérer facilement les variables locales à la fonction. On remet tout en place en 3.3.3 où le replace le pointeur <code>FP</code> à sa valeur d'avant l'appel de la fonction.</p>
+<p>Voici un exemple avec le code de la factorielle itérative :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">#### Main</span>
+
+M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>   <span class="token comment"># paramètre de la fonction</span>
+PUSH <span class="token number">0</span>          
+PUSH IP<span class="token operator">+</span><span class="token number">2</span>       <span class="token comment"># adresse de retour</span>
+IP <span class="token operator">=</span> <span class="token number">13</span>          <span class="token comment"># saut vers la fonction</span>
+                
+POP              <span class="token comment"># retour de la fonction. On dépile le paramètre</span>
+affiche à l'écran $<span class="token number">1</span>
+
+<span class="token comment">#### factorielle</span>
+
+PUSH FP           <span class="token comment"># nouveau frame</span>
+FP <span class="token operator">=</span> SP
+
+M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># une variable locale</span>
+PUSH S
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIFNOT ZÉRO <span class="token number">19</span>
+
+POP $<span class="token number">1</span>          <span class="token comment"># retour de fonction</span>
+POP FP          <span class="token comment"># ancien frame</span>
+
+POP IP          <span class="token comment"># retour de la fonction</span>
+</code></pre>
+<p>Si on avait utilisé le code de la factorielle récursive, il aurait fallut faire attention à où l'on stockait la variable locale. Pour cela, on peut réserver un registre qui indique la valeur maximum où sont stockés les données et on l'incrémente ou décrémente dès que l'on crée ou supprime des données.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>En supposant que le registre $p$ contienne l'adresse maximum en mémoire, modifiez le code de la factorielle.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">#### factorielle recursive</span>
+
+PUSH FP           
+FP <span class="token operator">=</span> SP
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># une variable locale crée après p</span>
+PUSH S
+p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> S            <span class="token comment"># incrémente p</span>
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+GOTOIFNOT ZÉRO <span class="token number">19</span>
+
+POP $<span class="token number">1</span>          <span class="token comment"># retour de fonction</span>
+p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">-</span> S    
+POP FP          
+
+POP IP          
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</div>
+</details>     
+</div>
+<h2>Structure du programme en mémoire</h2>
+<p>La mémoire doit permettre de stocker à la fois le code, les variables via la pile et les données. Ces dernières se<br>
+Avoir de la place pour</p>
+<ul>
+<li>code</li>
+<li>la pile</li>
+<li>le reste :
+<ul>
+<li>données constantes</li>
+<li>données allouées dynamiquement : le tas</li>
+</ul>
+</li>
+</ul>
+<p>Mémoire de bas en haut :</p>
+<pre><code>pile                   # hautes valeurs de M
+...
+...
+tas
+constantes
+code                  # basses valeurs de M
+</code></pre>
+<p>La pile augmente en <em>descendant</em>, le tas augmente en <em>montant</em> les valeurs de la mémoire. On supposera que la mémoire est assez grande pour pqs qu'ils se rencontrent.</p>
+<p>Enfin, les constantes ou les données statiques sont souvent placé juste au-dessus du code.</p>
+<h2>Processeur</h2>
+<p>Dans l'architecture de Von Neumann, le processeur est séparé en deux :</p>
+<ul>
+<li>l'<strong><em>unité arithmétique</em></strong> qui s'occupe d'exécuter les opérations (au pire juste NAND et gestion transferts mémoire &lt;-&gt; registres)</li>
+<li>l'<strong><em>unité contrôle</em></strong> qui gère le code, c'est à dire la transcription des opcode en instructions.</li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
