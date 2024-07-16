@@ -146,9 +146,6 @@
 </div>
 </div>
 <p>Le pseudo-code ressemble à un langage de programmation comme le python que l'on peut exécuter sur un ordinateur. Voyons comment ceci est possible :</p>
-<blockquote>
-<p>TBD : déplacer complexité à après. Insister sur algorithme = programme + fin et preuve de ce que ça fait.</p>
-</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -157,33 +154,19 @@
 <p><a href="ex%C3%A9cuter-code" class="interne">Exécuter du code</a></p>
 </div>
 </div>
-<blockquote>
-<p>Dire que algo = au tableau/papier et pour les humains. Deux branches ensuite : exécution sur un ordinateur/réfléchir à la nature même de l'algorithmie (Turing). Selon ce qu'on voudra faire on utilisera l'un ou l'autre des formalismes. Nous Algo et on laisse la machine (le python) transcrire en langage machine pour être exécuté. Penser les algo se fera plus tard, mais on vous montre juste le modèle, archi connu : la machine de Turing.</p>
-</blockquote>
-<h3>Penser l'informatique</h3>
-<blockquote>
-<p>TBD : Turing.<br>
-faire Fibonacci avec une machine de Turing.<br>
-dire que structure de donnée = code et que l'on a besoin de rien comme outil pour exécuter du code : juste une façon de stocker et une façon d'écrire conditionnellement. Le code est LOCAL.</p>
-</blockquote>
-<blockquote>
-<p>TBD le plus minimal c'est la machine de Turing, mais d'un point de vue opérationnel il est minimal car c'est ce qui est appelé assembleur.<br>
-faire les call avec des jump<br>
-à la fin dire qu'il y a souvent plusieurs autres méthodes dans les langages machines pour aider (donner exemple, sub, mul, gestion approximation de réel, call/ret et surtout la pile qu'on verra bien plus tard.), mais on peut tout faire avec ce qu'on a la.</p>
-<p>Passer d'un pseudo code à un langage machine simple et montrer sn équivalence. Ceci permettra de montrer plus facilement que des langages sont équivalents.<br>
-Langage simplifié où les variables n'existent pas et le boucles sont remplacés par des saut. Tout langage informatique peut être transcrit en langage machine<br>
-instructions finie et 1 ou deux paramètres et une sortie dans des variables fixées et de taille fixé disons 64bits appelées registres.<br>
-variables = un grand tableaux de cases de taille fixée. Disons 64bits</p>
-</blockquote>
+<p>Maintenant que l'on sait comment écrire des algorithmes en pseudo-code et que l'on peut les compiler (automatiquement) en assembleur pour être (également automatiquement) exécuté sur un ordinateur. Il nous reste une voie à explorer, la voie théorique qui nous permettra d'extraire les lois fondamentale de l'algorithmique pour penser l'informatique :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="." class="interne">Penser l'informatique</a></p>
+<p><a href="penser-algorithmie" class="interne">Penser l'algorithmie</a></p>
 </div>
 </div>
-<h2>On s'entraîne</h2>
+<h2>On s'entraîne : itératif vs récursif</h2>
+<blockquote>
+<p>TBD premières séries d'exercice permettant comprendre comment créer des algorithmes simple de façon itérative, r´´cursives et comment passer de l'un à l'autre.</p>
+</blockquote>
 <p>Écrire des algorithmes simples en pseudo-code (ou en python) pour résoudre des problèmes algorithmiques.</p>
 <blockquote>
 <p>TBD : écrire des algos pour résoudre des problèmes.<br>
@@ -214,16 +197,17 @@ sinon fait tout le temps la même chose (addition, etc). Le problème est de tra
 </ol>
 </blockquote>
 <h3>Rendre itératif des algorithmes récursifs</h3>
+<div id="HXNhEYqFo0o" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/HXNhEYqFo0o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 <blockquote>
 <p>TBD :</p>
+<p>cours ici  <a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration</a></p>
 <ol>
-<li>factorielle.</li>
+<li>factorielle (reprendre ce qu'on a vue et le formaliser)</li>
 <li>recursive simple : montrer que l'on peut sauver les paramètre et les remettre avec une todo list</li>
 <li>on peut faire mieux avec récursivité terminale et sa chaîne d'égalité.</li>
 <li>fonction 91 de Mc Carty. Récursif mais pas terminal. Montrer qu'on peut le rendre terminal.</li>
-<li>Fibonacci</li>
-<li>un truc avec todo-list.</li>
-<li>montrer que l'on peut l</li>
+<li>Fibonacci. par terminal. On utilise la pile. Puis on simplifie. A la fin fibo plus besoin de pile.</li>
+<li>Pas toujours le cas. Exemple : Ackermann.</li>
 </ol>
 <ul>
 <li>recursivité terminale = qu'une suite d'égalité. C'est donc super.</li>

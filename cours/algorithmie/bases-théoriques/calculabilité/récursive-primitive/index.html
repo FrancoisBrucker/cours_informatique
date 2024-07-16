@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fonctions primitives récursives</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Fonctions primitives récursives</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/">Bases théoriques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/calculabilité/">Calculabilité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/calculabilité/récursive-primitive/">Fonctions primitives récursives</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Les <a href="https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive">fonctions récursives primitives</a> sont un cas particulier important des fonctions calculables. La plupart des fonction mathématiques usuelles en sont !</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.andrew.cmu.edu/user/kk3n/recursionclass/chap2.pdf">https://www.andrew.cmu.edu/user/kk3n/recursionclass/chap2.pdf</a></li>
+<li><a href="https://www.youtube.com/watch?v=yaDQrOUK-KY&amp;list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5&amp;index=1">https://www.youtube.com/watch?v=yaDQrOUK-KY&amp;list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5&amp;index=1</a></li>
+</ul>
+</div>
+</div>
+<p>Elles sont définies à partir de trois fonctions de base :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les <em><strong>fonctions récursives primitives de bases</strong></em> sont :</p>
+<ul>
+<li>
+<p><em><strong>les fonctions zéro</strong></em> $\mathbb{0}^n$ ($0 \leq n$) :</p>
+  <div>
+  $$
+  \begin{align*}
+  \mathbb{N}^n &\to \mathbb{N}\\
+  (x_1, \dots, x_n)  &\mapsto 0
+  \end{align*}
+  $$
+  </div>
+</li>
+<li>
+<p><em><strong>les fonctions projections</strong></em> $\pi^n_i$ ($0 \leq i \leq n$) :</p>
+  <div>
+  $$
+  \begin{align*}
+  \mathbb{N}^n &\to \mathbb{N}\\
+  (x_1, \dots, x_n)  &\mapsto x_i
+  \end{align*}
+  $$
+  </div>
+</li>
+<li>
+<p><em><strong>la fonctions successeur</strong></em> $\text{succ}$ :</p>
+  <div>
+  $$
+  \begin{align*}
+  \mathbb{N}&\to \mathbb{N}\\
+  x &\mapsto x+1
+  \end{align*}
+  $$
+  </div>
+</li>
+</ul>
+</div>
+</div>
+<p>Dont il est clair qu'elles sont calculables, au moins pour les fonctions zéro et les projections.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Exhibez un algorithme permettant de calculer $\text{succ}$ lorsque les entiers sont codées sous forme binaire $x = x_p\dots x_0$ avec $x_i \in { 0, 1}$ et $x = \sum_{0\leq i \leq p}x_i2^i$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD addition binaire avec retenue.</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>Les fonctions primitives récursives sont alors toutes les fonctions que l'on peut obtenir en combinant les fonctions de base en utilisant les règles de <strong><em>composition</em></strong> et de <strong><em>récursion</em></strong>.</p>
+<p>La règle de composition est classique :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient :</p>
+<ul>
+<li>$f: \mathbb{N}^n \to \mathbb{N}$</li>
+<li>$g_i: \mathbb{N}^m \to \mathbb{N}$ pour $1 \leq i \leq n$.</li>
+</ul>
+<p>La <strong><em>composition</em></strong> de $f$ par $(g_i)_{1\leq i \leq n}$ est notée $f \circ [g_1, \dots, g_n]$ et vaut :</p>
+<div>
+$$
+\begin{align*}
+    \mathbb{N}^m &\to \mathbb{N}\\
+    (x_1, \dots, x_m)  &\mapsto f(g_1(x_1, \dots, x_m), \dots, g_n(x_1, \dots, x_m))
+\end{align*}
+$$
+</div>
+</div>
+</div>
+<p>Il est clair que s'il existe un algorithme pour créer $f$ et $g$, l'algorithme suivant fonctionne pour créer la composition :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : composition
+Entrées :
+    n, m : entiers
+    x[] : un tableau de m entiers
+    f : une fonction à n paramètres
+    g[i] : un tableau de n fonctions à m paramètres
+Programme :
+    soit y[] un tableau à n entiers
+    pour chaque i allant de 1 à n:
+        y[i] = g[1](x[])
+    rendre f(y[])
+</code></pre>
+<p>Remarquez que :</p>
+<ol>
+<li>l'ordre est important. On commence par évaluer les fonctions g[i] puis on évalue f</li>
+<li>la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$.</li>
+</ol>
+<p>Cette simple règle permet déjà de créer quelques fonctions, en particulier les fonctions constantes :</p>
+<p>Par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la fonction $\mathbb{k}^n(x_1, \dots, x_n) = k$ existe pour tout $n\geq 0$ et tout $k \geq 0$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On le montre par récurrence sur $k$.</p>
+<ul>
+<li>initialisation : Pour $k=0$ la propriété est vraie</li>
+<li>on suppose que pour $k\geq 0$ la fonction $\mathbb{k}^n(x_1, \dots, x_n) = k$ est primitive récursive.</li>
+<li>la fonction $\text{succ} \circ [\mathbb{k}^n]$ est alors également primitive récursive et vaut $k+1$ tout le temps ce qui conclut la preuve.</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>On ne peut utiliser que cette règle car elle ne permet pas de créer des fonctions toutes simples (et calculable) comme $\text{add}(x, y) = x + y$. On a besoin pour cela de pouvoir itérer le processus d'ajouter 1 un nombre quelconque de fois, bref de simuler une boucle. Pour cela, on utilise... la récursion :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit :</p>
+<ul>
+<li>$f: \mathbb{N}^n \to \mathbb{N}$</li>
+<li>$g: \mathbb{N}^{n+2} \to \mathbb{N}$</li>
+</ul>
+<p>La <strong><em>récursion</em></strong> de $f$ par $g$ est une fonction de $\mathbb{N}^{n+1} \to \mathbb{N}$, notée $\rho^n(f, g)$, et définie récursivement telle que :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \rho^n(f, g)(0, x_1, \dots, x_n)&= f(x_1, \dots, x_n) \\
+     \rho^n(f, g)(x+1, x_1, \dots, x_n)&= g(x, \rho^n(f, g)(x, x_1, \dots, x_n), x_1, \dots, x_n)
+\end{cases}
+\end{align}
+$$
+</div>
+</div>
+</div>
+<p>Dans la définition de la récursion, la fonction $g$ fait office d'algorithme permettant d'ajouter par récurrence un paramètre à $f$.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Exhibez un algorithme sans récursion permettant de calculer $\rho^n(f, g)$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : récursion
+Entrées :
+    x[] : un tableau de n+1 entiers
+    f : une fonction à n paramètres
+    g[] : un tableau de n fonctions à n+2 paramètres
+Programme :
+    h = f(x[2:])
+    pour chaque i allant de 0 à x[1] - 1:
+        h = g(i, h, x[2:])
+
+    rendre h
+</code></pre>
+<p>On a la aussi supposé que les fonctions prenaient des tableaux en paramètre pour ne pas se préoccuper du nombre de paramètres lors de l'appel.</p>
+</div>
+</details>     
+</div>
+<p>Le simple ajout de cette règle permet de créer la fonction prédécesseur :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     f&= \mathbb{0}^0 \\
+     g(x, y) &= \pi^2_1 \\
+\end{cases}
+\end{align}
+$$
+</div>
+<p>Que l'on écrira de façon plus simple :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{pred}(0)&= 0 \\
+     \text{pred}(x+1)&= x \\
+\end{cases}
+\end{align}
+$$
+</div>
+<p>De même, l'addition devient :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{add}(0, y)&= \pi^2_2 \\
+     \text{add}(x+1, y)&= \text{succ}(\text{add}(x, y)) \\
+\end{cases}
+\end{align}
+$$
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez l'addition de façon formelle, comme une récursion.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     f(y)&= \pi^1_1 \\
+     g(x, v, y) &= \text{succ} \circ [\pi^3_2]\\
+\end{cases}
+\end{align}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>Comme toute composition finie d'algorithme reste un algorithme, on a la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les fonctions récursives primitives sont calculables.</p>
+</div>
+</div>
+<p>Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent de créer toutes les fonctions arithmétiques usuelles (voir <a href="https://fr.wikipedia.org/wiki/Axiomes_de_Peano">arithmétique de Peano</a>) et ont été utilisées par Gödel pour montrer son <a href="https://perso.ens-lyon.fr/natacha.portier/enseign/logique/GoedelParAlex.pdf">célèbre théorème d'incomplétude</a>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ce type de construction où l'on combine simplement des éléments basiques pour produire des choses complexes est l'essence même de l'informatique et de l'algorithmie.</p>
+<p>Nous n'allons cesser de le montrer dans ce cours.</p>
+</div>
+</div>
+<p>Voyons-le en créant quelques fonctions mathématiques usuelles.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la fonction $f(x) = x + k$ est primitive récursive, pour tout entier $k$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>$f(x) = \text{add} \circ [\pi^1_1, \mathbb{k}^1]$</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la fonction $f(x, y) = x \times y$ est primitive récursive.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{mul}(0, y)&= \pi^2_2 \\
+     \text{mul}(x+1, y)&= \text{add}(x, \text{mul}(x, y)) \\
+\end{cases}
+\end{align}
+$$
+</div>
+<p>Ce qui donne de façon formelle :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     f(x) &= \mathbb{0}^1(x) \\
+     g(x, v, y) &= \text{add} \circ [ \pi^3_1, \pi^3_2] \\
+\end{cases}
+\end{align}
+$$
+</div>
+</div>
+</details>     
+</div>
+<p>On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Si ce genre d'exemples vous intéresse, allez jeter un œil au lien suivant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.michaelbeeson.com/teaching/StanfordLogic/Lecture4Slides.pdf">exemples de fonctions primitives récursives</a></p>
+</div>
+</div>
+<p>On ne peut qu'être ébahi par le fait qu'il ne faut vraiment rien (trois fonctions ridiculement simples) et deux fonctions (naturelles) de composition pour créer toutes ces fonctions très différentes les unes des autres.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La quasi totalité des fonctions mathématiques usuelles sont primitives récursives, donc calculables uniquement en utilisant des boucles de type <em>&quot;pour chaque&quot;</em>.</p>
+</div>
+</div>
+<p>C'est pourquoi on s'est longtemps demandé si calculabilité et fonctions récursives primitives n'étaient pas synonymes. Ce n'est pas le cas, comme nous allons tout de suite le voir.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

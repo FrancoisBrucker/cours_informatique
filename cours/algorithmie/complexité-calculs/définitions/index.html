@@ -92,7 +92,134 @@
     
   
 
-  <p><a href="../../%C3%A9crire-algorithmes/pseudo-code/#complexit%C3%A9">On l'a vu</a>, on appelle complexité d'un pseudo-code le nombre d'instructions élémentaires utilisées pour son exécution.</p>
+  <p>La complexité d'un pseudo-code est une mesure associée au pseudo-code. Elle peut mesurer 2 grandeurs physique lors de l'exécution d'un algorithme :</p>
+<ul>
+<li><strong><em>complexité en temps</em></strong> : le nombre d'instruction effectuées pendant son exécution</li>
+<li><strong><em>complexité en espace</em></strong> : le nombre de cases mémoires maximales utilisées pendant son exécution.</li>
+</ul>
+<p>Par défaut, la complexité utilisée est celle en temps :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité d'un pseudo-code est la complexité en temps de celui-ci.</p>
+</div>
+</div>
+<p>Par exemple le pseudo-code suivant :</p>
+<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
+if ((x > 12) AND (x < 36)):
+    z = "entre 13 et 35"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>Création de l'entier valant 30 : 1 instruction</li>
+<li>on affecte l'entier à x : 1 instruction</li>
+<li>Pour faire cette instruction il faut :
+<ul>
+<li>faire <code class="language-">x &gt; 12</code>. Pour cela :
+<ul>
+<li>on crée l'entier valant 12 : 1 instruction</li>
+<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
+<li>on effectue la comparaison : 1 instruction</li>
+</ul>
+</li>
+<li>faire <code class="language-">x &lt; 36</code>. Pour cela :
+<ul>
+<li>on crée l'entier valant 36 : 1 instruction</li>
+<li>on récupère la valeur de <code class="language-">x</code> : 1 instruction</li>
+<li>on effectue la comparaison : 1 instruction</li>
+</ul>
+</li>
+<li>faire l'instruction <code class="language-">AND</code> : 1 instruction</li>
+<li>faire le <code class="language-">if</code> : 1 instruction</li>
+</ul>
+</li>
+<li>on commence par récupérer la valeur de <code class="language-">x</code> (1 instruction), on crée la chaîne (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 4 instructions</li>
+</ol>
+<p>Un nombre total d'instructions de 14.</p>
+<h2>Complexité des appels de fonctions</h2>
+<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il faut compter le nombre d'instructions de l'exécution des fonctions !</p>
+</div>
+</div>
+<p>Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :</p>
+<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">return</span> <span class="token boolean">False</span>
+
+t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+affiche à l'écran trouve
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol>
+<li>exécution de la ligne 7 : création d'un tableau et affectation à une variable : 2 instructions</li>
+<li>exécution de la ligne 8 :
+<ol>
+<li>exécution de la fonction recherche (ligne à ligne) :
+<ol>
+<li>exécution de la ligne 1 : affectation des paramètres
+<ol>
+<li>trouver les objets à mettre en paramètres :
+<ul>
+<li>pour le premier paramètre il faut trouver l'objet associé à t : 1 instruction</li>
+<li>pour le second paramètre, l'objet est à créer : 1 instruction</li>
+</ul>
+</li>
+<li>affecter les paramètres aux variables de la fonction :
+<ul>
+<li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
+<li>affectation du second paramètre à la variable locale e : 1 instruction</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>exécution de la ligne 2 (3 fois): affecter <code>e</code> : 1 instruction</li>
+<li>exécution de la ligne 3 : un test
+<ul>
+<li>on trouve les objets associées à t et e : 2 instructions</li>
+<li>on teste l'égalité : 1 instruction</li>
+<li>on fait le <code class="language-">if</code> : 1 instruction</li>
+</ul>
+</li>
+<li>exécution de la ligne 4 : on arrive à cette ligne à la troisième itération : 1 instruction</li>
+</ol>
+</li>
+<li>affection de la variable <code class="language-">trouve</code></li>
+</ol>
+</li>
+<li>afficher quelque chose à l'écran :
+<ul>
+<li>1 instruction pour trouver l'objet à afficher</li>
+<li>1 instruction pour trouver l'afficher</li>
+</ul>
+</li>
+</ol>
+<p>Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$<br>
+instructions c'est à dire $24$ instructions.</p>
+<h2>Complexité des structures</h2>
+<blockquote>
+<p>TBD re-écrire sous la forme de structures avec l'exemple de la pile et de son implémentation sous la forme d'un tableau de taille fixe donné a la création et d'une méthode copie dans pile qui copie toute la structure dans une autre.</p>
+</blockquote>
+<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
+<p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>
+<ul>
+<li>complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction</li>
+<li>complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+<li>complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction</li>
+<li>complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
+<li>usage comme un tableau : 1 instruction</li>
+</ul>
+<p>Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une <code class="language-">ma_liste.index(&quot;?&quot;)</code>, <code class="language-">x in ma_chaîne_de_caractères</code>) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.</p>
+<h2>Complexité d'un algorithme</h2>
 <p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 45$ :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">F = un tableau vide de 10 cases
 F[0] = 1
@@ -227,7 +354,6 @@ $$</p>
     rend NON
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.</p>
-<h2>Complexité d'un algorithme</h2>
 <p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour la fonction <code class="language-">est_dans_tableau</code> on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -262,7 +388,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$</em></strong> est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité</em></strong> $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
 <p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">est_dans_tableau</code> vaut $5N+4$.</p>
@@ -282,9 +408,9 @@ $$</p>
 </ul>
 </div>
 </div>
-<h2>Autres types de Complexité</h2>
+<h2>Autres types de complexités</h2>
 <p>Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant la définition précédente. Il existe cependant d'autres types de complexité que l'on pourra utiliser.</p>
-<h3>Complexité min</h3>
+<h2>Complexité min</h2>
 <p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">est_dans_tableau</code> par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">est_dans_tableau</code>) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme <code class="language-">est_dans_tableau</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -296,7 +422,7 @@ $$</p>
 <p><strong><em>La complexité minimum $C</em>{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$_</strong> est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
-<h3><span id="complexité-temps"></span>Complexité en temps</h3>
+<h2><span id="complexité-temps"></span>Complexité en temps</h2>
 <p>Lorsqu'un algorithme est codé, on peut l'exécuter et mesurer son temps d'exécution. On peut alors définir la <strong><em>complexité en temps</em></strong> d'exécution d'un code :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -305,7 +431,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong>_La complexité en temps $T(N)$ d'un code $A(p_1, \dots, p_m)$_</strong> est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité en temps</em></strong> $T(N)$ d'un code $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
 <p>Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :</p>
@@ -318,7 +444,7 @@ $$</p>
 </div>
 </div>
 <p>Si l'on connaît le jeu de paramètres d'entrée réalisant la complexité $C(N)$ d'un algorithme, on peut alors exécuter le code qui lui est associé et mesurer son temps d'exécution pour tracer la courbe de la complexité.</p>
-<h3>Complexité spatiale</h3>
+<h2>Complexité spatiale</h2>
 <p>Enfin, L'autre paramètre utile que l'on mesure est le nombre de cases mémoires utilisées par l'algorithme, c'est à dire la taille des variables dont il a eu besoin pour fonctionner.</p>
 <div id="complexité-spatiale"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -328,7 +454,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité spatiale $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$</em></strong> (aussi appelée <strong><em>complexité en mémoire</em></strong>) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité spatiale</em></strong> $S(N)$ d'un algorithme $A(p_1, \dots, p_m)$ (aussi appelée <strong><em>complexité en mémoire</em></strong>) est le nombre maximum de cases mémoires utilisées (lues ou modifiées) pendant l'exécution de l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div>
 </div>
 <p>Par exemple notre fonction <code class="language-">fibonacci(n)</code> nécessite $n+2$ cases mémoires, en plus de ses paramètres, pour fonctionner :</p>
