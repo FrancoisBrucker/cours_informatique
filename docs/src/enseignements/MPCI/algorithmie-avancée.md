@@ -15,6 +15,8 @@ eleventyComputed:
 
 ## TBD
 
+> TBD voir plan de ce truc : <https://www.youtube.com/watch?v=nRA2unaJZIc&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh>
+
 > MIT algo. <https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp>
 > mettre les ref.
 > 3 et on en chosit 2 (cf cours du MIT)
@@ -196,6 +198,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- <https://lgayral.pages.math.cnrs.fr/fr/agreg/>
 - random graphs. Friendship paradox. Tes amis ont plus d'amis que toi (existence de sommets avec beaucoup de voisins)
 - Matrice d'adjacence :
   - chemins
@@ -261,6 +264,8 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 - 4 couleurs : <https://inria.hal.science/hal-04034866/document>
 
 - arbre binary lifting : <https://www.youtube.com/watch?v=oib-XsjFa-M&list=PLl0KD3g-oDOHpWRyyGBUJ9jmul0lUOD80&index=15>
+
+- planaire et embedding : <https://www.youtube.com/watch?v=MNgKx4A1pXM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=13>
 
 ## Complexité
 

@@ -9,9 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : Variables empilées. Programme = fonction main au départ.
-> TBD : paramètres, variables locales et retour
-
 Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des _sous-programmes_ réutilisables à volonté, appelés _**fonctions_**.
 
 {% note "**Définition**" %}
@@ -98,6 +95,7 @@ def exorcisme(t):
         print("Aspergez votre ordinateur d'eau bénite. Vite !")
     else:
         print("Tout va bien, le tableau n'est pas possédé. Ouf")
+
 ```
 
 ### Signature d'une fonction

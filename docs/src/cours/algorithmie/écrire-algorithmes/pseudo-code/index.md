@@ -108,9 +108,3 @@ def recherche(t, x):
 {% aller %}
 [Comment écrire du pseudo-code](style){.interne}
 {% endaller %}
-
-## Complexité
-
-{% aller %}
-[Complexité](complexité){.interne}
-{% endaller %}

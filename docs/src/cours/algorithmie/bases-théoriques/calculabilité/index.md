@@ -86,90 +86,17 @@ Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de cré
 
 ## Exemples de fonctions calculables
 
-Commençons par montrer quelques fonctions que l'on peut calculer.
+### Fonctions récursives primitives
 
-[Quelques exemples](https://en.wikipedia.org/wiki/Computable_function#Examples) :
+{% aller %}
+[Fonctions récursives primitives](./récursive-primitive){.interne}
+{% endaller %}
 
-- les fonctions constantes sont calculables
-- si $f$ et $g$ sont deux fonctions calculables, alors $f+g$, $f \cdot g$ et $f \circ g$ sont calculables
-- les fonctions dont le domaine de définition est fini, sont calculables
-- ...
+### fonction d'Ackermann
 
-En utilisant uniquement la fonction successeur $\text{succ}(x) \rightarrow x + 1$ (qui est clairement calculable) on arrive par exemple à [reconstruire toutes les opérations usuelles](https://fr.wikipedia.org/wiki/Axiomes_de_Peano).
-
-{% exercice %}
-Créez la fonction $\text{somme}(x, y) \rightarrow x + y$ en utilisant uniquement la fonction successeur, un test d'égalité et une boucle.
-{% endexercice %}
-{% details "corrigé" %}
-
-```text
-Nom : somme
-Entrées :
-    x, y : deux entiers
-Programme :
-    c = 0
-    tant que c < x:
-        y = succ(y)
-        c = succ(c)
-```
-
-{% enddetails  %}
-
-Les fonctions calculables par compositions de fonctions simples (successeur et projection essentiellement) sont appelées [fonctions récursives primitives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive). Elles ont été utilisées par Gödel pour montrer son [théorème d'incomplétude](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8mes_d%27incompl%C3%A9tude_de_G%C3%B6del) et permettent de créer un grand nombre de fonctions, toutes calculables (mais pas toutes, [la fonction d'Ackermann](./#fonction-ackermann) étant un contre-exemple)
-
-Beaucoup, beaucoup, beaucoup de fonctions sont calculables, il suffit d'exhiber un pseudo-code pour le prouver.
-
-{% attention "**À retenir**" %}
-La quasi totalité des fonctions mathématiques usuelles sont calculables
-{% endattention %}
-
-De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
-
-```text
-Nom : 5-consécutifs
-Entrées :
-    n : un entier
-Programme :
-    si il existe n "5" consécutifs dans les décimales de π:
-        rend 1
-    sinon:
-        rend 0
-```
-
-Le texte ci-dessus n'est **pas** un programme car le "il existe" n'est pas ue opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du "il existe", ce qui fait que s'il n'existe pas n "5" successifs, le programme ne s'arrêtera pas.
-
-Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.
-
-Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers)) et alors le programme devient l'algorithme ci-dessous :
-
-```text
-Nom : 5-consécutifs
-Entrées :
-    n : un entier
-Programme :
-    rend 1
-```
-
-Soit il existe au plus N "5" consécutifs dans les décimales de $\pi$ et le programme devient :
-
-```text
-Nom : 5-consécutifs
-Entrées :
-    n : un entier
-Programme :
-    si n < N + 1:
-        rend 1
-    sinon:
-        rend 0
-```
-
-Dans les deux cas, c'est un algorithme.
-
-Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
-
-{% attention "**À retenir**" %}
-Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, poussée sur le problème à résoudre pour le faire
-{% endattention %}
+{% aller %}
+[Fonction d'Ackermann](./ackermann){.interne}
+{% endaller %}
 
 ## Nombres calculables
 
@@ -245,11 +172,61 @@ Il existe un algorithme prenant un entier $i$ en paramètre et qui rend sa $i$è
 
 Attention cependant à ne pas confondre le réel en tant que tel (non calculable puisqu'il possède une infinité de décimale) et son approximation que l'on peut utiliser dans les calculs.
 
-## Fonctions calculables rigolotes
+## Cas limites
+
+### Fonctions calculables sans algorithme connu
+
+De façon plus bizarre, il existe aussi des fonctions, que l'on sait calculable, mais dont on ne connaît pas l'algorithme pour les calculer. Par exemple :
+
+```text
+Nom : 5-consécutifs
+Entrées :
+    n : un entier
+Programme :
+    si il existe n "5" consécutifs dans les décimales de π:
+        rend 1
+    sinon:
+        rend 0
+```
+
+Le texte ci-dessus n'est **pas** un programme car le "il existe" n'est pas ue opération élémentaire que je peux effectuer de tête. De plus, sans connaissance a priori, je suis obligé de tester toutes les décimales de $\pi$ pour répondre à la question du "il existe", ce qui fait que s'il n'existe pas n "5" successifs, le programme ne s'arrêtera pas.
+
+Mais en vrai, le texte ci-dessus peut se re-écrire de deux façons.
+
+Soit existe n "5" consécutifs dans les décimales de $\pi$ quelque soit $n$ (on appelle les nombres qui vérifient cette propriété [des nombres univers](https://fr.wikipedia.org/wiki/Nombre_univers)) et alors le programme devient l'algorithme ci-dessous :
+
+```text
+Nom : 5-consécutifs
+Entrées :
+    n : un entier
+Programme :
+    rend 1
+```
+
+Soit il existe au plus N "5" consécutifs dans les décimales de $\pi$ et le programme devient :
+
+```text
+Nom : 5-consécutifs
+Entrées :
+    n : un entier
+Programme :
+    si n < N + 1:
+        rend 1
+    sinon:
+        rend 0
+```
+
+Dans les deux cas, c'est un algorithme.
+
+Le problème est que l'on ne sait pas si π est [un nombre univers](https://fr.wikipedia.org/wiki/Nombre_univers) et donc on ne sait pas lequel des deux algorithmes est le bon.
+
+{% attention "**À retenir**" %}
+Savoir qu'on peut créer un algorithme pour calculer une fonction ne signifie pas que c'est facile de le faire. Il faut souvent avoir des connaissances annexes, hors algorithmie, poussée sur le problème à résoudre pour le faire
+{% endattention %}
 
 On va montrer deux exemples de fonctions calculables. Ces deux fonctions sont parfois utilisées pour des tests de performance d'ordinateurs car est sont très gourmandes en temps de calcul.
 
-### Fonction de Takeuchi
+### Fonction écran de fumée
 
 La [fonction de Takeuchi](https://fr.wikipedia.org/wiki/Fonction_de_Takeuchi) est surprenante, bien malin qui sait ce qu'elle fait juste en la regardant.
 
@@ -304,68 +281,6 @@ La fonction de Takeuchi montre que pour résoudre un problème simple il existe 
 
 Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
 {% endattention %}
-
-### <span id="fonction-ackermann"></span>Fonction d'Ackermann
-
-La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car on s'est longtemps demandé si les seules fonctions calculables étaient [récursive primitive](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive_primitive) et la fonction d'Ackermann est un contre-exemple (ce sont les [fonctions récursives](https://fr.wikipedia.org/wiki/Fonction_r%C3%A9cursive) qui sont exactement les fonctions calculables).
-
-Elle se définit de la manière suivante, pour tous entiers $m$ et $n$ positifs :
-
-<div>
-$$
-\text{Ack}(m, n) = \left\{
-    \begin{array}{ll}
-        n + 1 & \mbox{si } m = 0 \\
-        \text{Ack}(m - 1, 1) & \mbox{si } n = 0 \\
-        \text{Ack}(m - 1, \text{Ack}(m, n - 1)) & \mbox{sinon.}
-    \end{array}
-\right.
-$$
-</div>
-
-{% note "**Proposition**" %}
-La fonction d'Ackermann est bien définie pour tout $m$ et $n$ entiers.
-{% endnote %}
-{% details "preuve", "open" %}
-Pour chaque appel récursif de la fonction d'Ackermann, soit m, soit $n$ est strictement plus petit dans la fonction appelée que dans la fonction appelante. On arrivera donc toujours à $m = 0$ qui stoppera la récursion ou $n = 0$ qui fera baisser la valeur de $m$.
-
-Formalisons ça par récurrence sur $min(m , n)$.
-
-Hypothèse $\text{Ack}(m, n)$ est défini pour tout $m$ et $n$ tels que $min(m , n) \leq k$
-Pour $k = 0$ Ok. Vrai à $k$ et on montre que c'est vrai à $k+1$ (ce qui est trivial en regardant les formes de récursion).
-
-{% enddetails %}
-
-Le nombre de récursion est très très important. Pour calculer $A(2, 3)$ par exemple, on a les récurrences suivantes :
-
-- $A(2, 1) = A(1, A(2, 0))$
-  - $A(2, 0) = A(1, 1)$
-    - $A(1, 1) = A(0, A(1, 0))$
-      - $A(1, 0) = A(0, 1) = 2$
-    - $A(1, 1) = A(0, 2) = 3$
-  - $A(2, 0) = A(1, 1) = 3$
-- $A(2, 1) = A(1, 3)$
-  - $A(1, 3) = A(0, A(1, 2))$
-    - $A(1, 2) = A(0, A(1, 1))$
-      - $A(1, 1) = A(0, A(1, 0))$
-        - $A(1, 0) = A(0, 1)= 2$
-      - $A(1, 1) = A(0, 2) = 3$
-    - $A(1, 2) = A(0, 3) = 4$
-  - $A(1, 3) = A(0, 4) = 5$
-- $A(2, 1) = A(1, 3) = 5$
-
-Au final on trouve $A(2, 1) = 5$. La fonction croît très très vite. Par exemple $A(4, 1) = 65533$ et $A(4, 2) = $2^{65536} - 3$.
-
-Démontrer que la fonction d'Ackermann n'est pas primitive récursive dépasse un peu le cadre de ce cours, mais ce n'est pas un résultat compliqué à démontrer, voir par exemple les lien suivants :
-
-{% lien %}
-
-- <https://lgayral.pages.math.cnrs.fr/agreg/ackermann.pdf>
-- <https://perso.univ-st-etienne.fr/ezequel/M1info/Primitif_Rec.pdf>
-
-{% endlien %}
-
-La fonction d'Ackermann est également une fonction  que l'on ne peut pas écrire avec des boucles `pour chaque`{.language-} (les boucles `for`{.language-} de la programmation). On est obligé d'utiliser des  boucles `tant que`{.language-} (les boucles `while`{.language-} de la programmation) pour écrire son pseudo-code de façon itérative.
 
 ## Non calculabilité
 

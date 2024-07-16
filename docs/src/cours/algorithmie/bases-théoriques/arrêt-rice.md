@@ -66,6 +66,15 @@ Programme :
 
 On ne sait pas (pas de démonstration) s'il s'arrête quelque soit $n$ ou pas.
 
+{% lien %}
+
+De nombreux travaux ont été fait pour connaître mieux ce problème. Vous pouvez allez jeter un coup d'œil aux liens suivant pour (beaucoup plus d'informations) :
+
+- <https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf>
+- <https://hal.science/hal-01593181v3/document>
+
+{% endlien %}
+
 {% faire %}
 Testez le programme `syracuse`{.language-} pour quelques entrées. Vous verrez que très rapidement $n$ va tendre vers 1.
 

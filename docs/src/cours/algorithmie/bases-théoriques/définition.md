@@ -331,7 +331,7 @@ En conclusion, comme on peut associer une suite finie de de `0` et de `1` à tou
 Tout ce que peut manipuler un programme est une suite finie de caractères `0` et `1`.
 {% endnote %}
 {% note "**Définition**" %}
-Un caractère (`0` ou `1`) [est appelé **_bit_**](https://fr.wikipedia.org/wiki/Bit).
+Un caractère (`0` ou `1`) [est appelé _**bit**_](https://fr.wikipedia.org/wiki/Bit).
 {% endnote %}
 
 Un bit est l'information minimale que l'on peut véhiculer puisqu'il ne peut avoir que 2 valeurs différentes. Cette unité minimale d'information est très puissante puisque les suites finies de bits permettent non seulement de stocker tous les objets que peut manipuler un algorithme mais aussi les algorithmes eux-même via le codage binaires des chaines Unicode par exemple. On en conclut que :

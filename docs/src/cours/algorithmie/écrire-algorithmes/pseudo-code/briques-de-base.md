@@ -210,6 +210,8 @@ On peut dériver toutes les variantes de la forme initiale.
 
 ### <span id="répétition"></span> Répétition
 
+> TBD : dire que l'on en a de deux types : for et while. Que l'on peut tout faire en while mais les boucles for sont plus lisible, en particulier leur condition d'arrêt est claire.
+
 On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle _while_):
 
 ```text

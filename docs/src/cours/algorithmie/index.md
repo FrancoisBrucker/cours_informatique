@@ -37,34 +37,19 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 
 Le pseudo-code ressemble à un langage de programmation comme le python que l'on peut exécuter sur un ordinateur. Voyons comment ceci est possible :
 
-> TBD : déplacer complexité à après. Insister sur algorithme = programme + fin et preuve de ce que ça fait.
-
 {% aller %}
 [Exécuter du code](./exécuter-code){.interne}
 {% endaller %}
 
-> Dire que algo = au tableau/papier et pour les humains. Deux branches ensuite : exécution sur un ordinateur/réfléchir à la nature même de l'algorithmie (Turing). Selon ce qu'on voudra faire on utilisera l'un ou l'autre des formalismes. Nous Algo et on laisse la machine (le python) transcrire en langage machine pour être exécuté. Penser les algo se fera plus tard, mais on vous montre juste le modèle, archi connu : la machine de Turing.
-
-### Penser l'informatique
-
-> TBD : Turing.
-> faire Fibonacci avec une machine de Turing.
-> dire que structure de donnée = code et que l'on a besoin de rien comme outil pour exécuter du code : juste une façon de stocker et une façon d'écrire conditionnellement. Le code est LOCAL.
-
-> TBD le plus minimal c'est la machine de Turing, mais d'un point de vue opérationnel il est minimal car c'est ce qui est appelé assembleur.
-> faire les call avec des jump
-> à la fin dire qu'il y a souvent plusieurs autres méthodes dans les langages machines pour aider (donner exemple, sub, mul, gestion approximation de réel, call/ret et surtout la pile qu'on verra bien plus tard.), mais on peut tout faire avec ce qu'on a la.
-> 
-> Passer d'un pseudo code à un langage machine simple et montrer sn équivalence. Ceci permettra de montrer plus facilement que des langages sont équivalents.
-> Langage simplifié où les variables n'existent pas et le boucles sont remplacés par des saut. Tout langage informatique peut être transcrit en langage machine
-> instructions finie et 1 ou deux paramètres et une sortie dans des variables fixées et de taille fixé disons 64bits appelées registres.
-> variables = un grand tableaux de cases de taille fixée. Disons 64bits
+Maintenant que l'on sait comment écrire des algorithmes en pseudo-code et que l'on peut les compiler (automatiquement) en assembleur pour être (également automatiquement) exécuté sur un ordinateur. Il nous reste une voie à explorer, la voie théorique qui nous permettra d'extraire les lois fondamentale de l'algorithmique pour penser l'informatique :
 
 {% aller %}
-[Penser l'informatique](){.interne}
+[Penser l'algorithmie](./penser-algorithmie){.interne}
 {% endaller %}
 
-## On s'entraîne
+## On s'entraîne : itératif vs récursif
+
+> TBD premières séries d'exercice permettant comprendre comment créer des algorithmes simple de façon itérative, r´´cursives et comment passer de l'un à l'autre.
 
 Écrire des algorithmes simples en pseudo-code (ou en python) pour résoudre des problèmes algorithmiques.
 
@@ -98,15 +83,17 @@ TBD :
 > 
 ### Rendre itératif des algorithmes récursifs
 
+<https://www.youtube.com/watch?v=HXNhEYqFo0o>
+
 > TBD :
 >
-> 1. factorielle.
+> cours ici  <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration>
+> 1. factorielle (reprendre ce qu'on a vue et le formaliser)
 > 2. recursive simple : montrer que l'on peut sauver les paramètre et les remettre avec une todo list
 > 3. on peut faire mieux avec récursivité terminale et sa chaîne d'égalité.
 > 4. fonction 91 de Mc Carty. Récursif mais pas terminal. Montrer qu'on peut le rendre terminal.
-> 5. Fibonacci
-> 6. un truc avec todo-list.
-> 2. montrer que l'on peut l
+> 5. Fibonacci. par terminal. On utilise la pile. Puis on simplifie. A la fin fibo plus besoin de pile.
+> 6. Pas toujours le cas. Exemple : Ackermann.
 >
 > - recursivité terminale = qu'une suite d'égalité. C'est donc super.
 > - <https://www.lirmm.fr/~dony/notesCours/c4.s.pdf>
@@ -226,7 +213,6 @@ def Ack(m, n):
 {% info %}
 Notez que tout algorithme récursif peut s'écrire de façon itérative avec une TODO-list (une pile).
 {% endinfo %}
-
 
 ## Complexités
 
