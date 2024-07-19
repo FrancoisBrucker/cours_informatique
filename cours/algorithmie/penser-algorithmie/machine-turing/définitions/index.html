@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Définition</title>
+    <title>Définitions</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Définition</h1>
+  <h1>Définitions</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/">Penser l&#39;algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/machine-turing/définition/">Définition</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/">Penser l&#39;algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/machine-turing/définitions/">Définitions</a>
 
 </div>
 </div>
@@ -92,20 +92,26 @@
     
   
 
-  <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+  <p>Une machine de Turing est une structure minimaliste permettant d'être exécutée pour réaliser son programme. Commençons par définir sa structure :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>machine de Turing</strong></em> est composée :</p>
+<p>Une <strong><em>machine de Turing</em></strong> est composée :</p>
 <ul>
-<li>d'un <em><strong>ruban</strong></em> (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère <code>0</code> soit le caractère <code>1</code></li>
-<li>d'un <em><strong>curseur</strong></em> qui est positionné sur une case du ruban (on suppose que le ruban est infini à gauche et à droite du curseur)</li>
-<li>d'un ensemble fini $Q$ d'<em><strong>états possibles</strong></em>, contenant les états <code class="language-">START</code>  et <code class="language-">STOP</code></li>
-<li>d'un <em><strong>état courant</strong></em> $q \in Q$</li>
-<li>d'une <em><strong>fonction de transition</strong></em> $\delta(q, r) = (\delta_e(q, r), \delta_c(q, r), \delta_d(q, r))$ dépendant de l'état $q$ de la machine et du caractère $r$ contenu dans la case du ruban pointée par le curseur. Cette fonction définie sur $Q \times \{0, 1\}$ permet de modifier :
+<li>d'un <strong><em>ruban</em></strong> (supposé infini) constitué de cases contiguës pouvant chacune contenir soit le caractère <code>0</code> soit le caractère <code>1</code></li>
+<li>d'un <strong><em>curseur</em></strong> qui est positionné sur une case du ruban (on suppose que le ruban est infini à gauche et à droite du curseur)</li>
+<li>d'un ensemble fini $Q$ d'<strong><em>états possibles</em></strong>, contenant les deux états :
+<ul>
+<li>l'<strong><em>état initial</em></strong> noté <code class="language-">START</code></li>
+<li>l'<strong><em>état d'acceptation</em></strong>, noté <code class="language-">STOP</code></li>
+</ul>
+</li>
+<li>d'un <strong><em>état courant</em></strong> $q \in Q$</li>
+<li>d'une <strong><em>fonction de transition</em></strong> $\delta(q, r) = (\delta_e(q, r), \delta_c(q, r), \delta_d(q, r))$ dépendant de l'état $q$ de la machine et du caractère $r$ contenu dans la case du ruban pointée par le curseur. Cette fonction définie sur $Q \times \{0, 1\}$ permet de modifier :
 <ul>
 <li>l'état de la machine : $\delta_e : Q \times \{0, 1\} \mapsto Q$</li>
 <li>le caractère de la case du ruban pointée par le curseur : $\delta_c : Q \times \{0, 1\} \mapsto \{0, 1\}$</li>
@@ -115,7 +121,7 @@
 </ul>
 </div>
 </div>
-<p>Une machine c'est donc un <strong>programme</strong> (la fonction de transition) qui agit à partir de <strong>données</strong> (le ruban et l'état interne de la machine). Une machine de Turing n'a d'intérêt que si elle est <strong>exécutée</strong>  :</p>
+<p>Une machine c'est donc un <strong>programme</strong> (la fonction de transition) qui agit à partir de <strong>données</strong> (le ruban et l'état interne de la machine). Une machine de Turing n'a d'intérêt que si elle est <strong>exécutée</strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -123,21 +129,21 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>exécution</strong></em> d'une machine de Turing se déroule comme suit :</p>
+<p>L'<strong><em>exécution</em></strong> d'une machine de Turing se déroule comme suit :</p>
 <ol>
 <li>initialisation :
 <ol>
 <li>le ruban est constitué uniquement <code>0</code></li>
-<li>l'état courant de la machine est <code class="language-">START</code></li>
+<li>l'état courant de la machine est l'état initial <code class="language-">START</code></li>
 </ol>
 </li>
 <li>étape :
 <ol>
-<li>on lit l'état courant  $q$ de la machine</li>
-<li>Si $q$ vaut <code class="language-">STOP</code> on arrête l'exécution de la machine</li>
+<li>on lit l'état courant $q$ de la machine</li>
+<li>Si $q$ vaut l'état d'acceptation <code class="language-">STOP</code> on arrête l'exécution de la machine</li>
 <li>on lit le caractère $r$ dans la case du ruban pointée par le curseur</li>
 <li>on écrit le caractère $\delta_c(q, r)$ dans la case du ruban pointée par le curseur</li>
-<li>on déplace le curseur d'une case à droite ou à gauche selon la valeur de $\delta_d(q, r)$</li>
+<li>on déplace le curseur d'une case à droite ou à gauche selon la valeur de $\delta_d(q, r)$ (à gauche si $\leftarrow$, à droite si $\rightarrow$)</li>
 <li>on change l'état courant de la machine en $\delta_e(q, r)$</li>
 <li>retour en 2.1</li>
 </ol>
@@ -145,17 +151,18 @@
 </ol>
 </div>
 </div>
-<p>L'exécution d'une machine de Turing, n'est pas forcément finie. Elle ne s'arrête que si elle atteint l'état <code class="language-">STOP</code>, ce qui peut ne jamais arriver.</p>
+<p>L'exécution d'une machine de Turing ne s'arrête pas forcément. Elle ne le fait que si elle atteint l'état <code class="language-">STOP</code>, ce qui peut ne jamais arriver.</p>
 <p>Remarquez la minimalité du fonctionnement :</p>
 <ul>
 <li>on ne peut déplacer la tête de lecture que d'une case vers la gauche ou vers la droite (il est impossible d'écrire où l'on veut dans la mémoire comme on peut le faire avec un ordinateur classique)</li>
 <li>on ne peut écrire qu'un caractère à la fois (pas d'entier, de réel, rien que <code>0</code> ou <code>1</code>)</li>
 <li>pas de variables</li>
-<li>pas de boucle for ni de saut</li>
+<li>pas de boucle <code class="language-">while</code> ni de saut</li>
 <li>un unique test entre un état et une case du ruban</li>
 </ul>
 <p>Et pourtant (nous le verrons), elle capte toutes les possibilités d'un algorithme.</p>
 <h2>Exemples</h2>
+<p>Rien de tel que d'exécuter quelques machines pour mieux comprendre le fonctionnement général.</p>
 <h3><span id="exemple-répétition"></span> Répétitions</h3>
 <p>Considérons la machine de Turing dont une fonction de transition partielle est la suivante :</p>
 <ul>
@@ -243,109 +250,6 @@
 </div>
 </details>     
 </div>
-<h3><span id="exemple-oscillation"></span> Oscillation</h3>
-<p>Considérons la machine de Turing dont une fonction de transition partielle est la suivante :</p>
-<ul>
-<li>$\delta(\text{START}, 0) = (\text{L1}, 0, \leftarrow)$</li>
-<li>$\delta(\text{L1}, 0) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{R0}, 0) = (\text{R1}, 0, \rightarrow)$</li>
-<li>$\delta(\text{R0}, 1) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{R1}, 1) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{R1}, 0) = (\text{STOP}, 1, \leftarrow)$</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que la fonction de transition partielle précédente est suffisante pour que l'exécution de la machine soit bien définie</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Les transitions à partir des états <code class="language-">R0</code> et <code class="language-">R1</code> sont définis pour <code>0</code> et <code>1</code>. Seul <code class="language-">L1</code> n'est défini que pour <code>0</code>. Or la seule étape où la machine peut se trouver dans l'état <code class="language-">L1</code> est la seconde étape (les autres transitions ne transitionnent jamais vers <code class="language-">L1</code>), où il ne peut y avoir qu'un 0 sur la case du ruban pointée par le curseur.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrer que l'exécution de cette machine de Turing va s'arrêter et donnez les caractères présents sur le ruban</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p><code>···01010···</code></p>
-</div>
-</details>     
-</div>
-<p><span id="exemple-oscillation-infini"></span></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Que faudrait-il ajouter/modifier à la fonction de transition pour que la machine oscille infiniment ?</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ul>
-<li>$\delta(\text{START} = (\text{L1}, 0, \leftarrow)$</li>
-<li>$\delta(\text{L1}, 0) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{L1}, 1) = (\text{L0}, 1, \leftarrow)$ (<strong>Ajout</strong>)</li>
-<li>$\delta(\text{R0}, 0) = (\text{R1}, 0, \rightarrow)$</li>
-<li>$\delta(\text{R0}, 1) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{R1}, 1) = (\text{R0}, 1, \rightarrow)$</li>
-<li>$\delta(\text{R1}, 0) = (\text{L0}, 1, \leftarrow)$ (<strong>Modification</strong>)</li>
-<li>$\delta(\text{L0}, 0) = (\text{L1}, 0, \leftarrow)$ (<strong>Ajout</strong>)</li>
-<li>$\delta(\text{L0}, 1) = (\text{L0}, 1, \leftarrow)$ (<strong>Ajout</strong>)</li>
-</ul>
-</div>
-</details>     
-</div>
-<h2>Visualisation</h2>
 <p>Voir une machine de Turing s'exécuter est très gratifiant, surtout lorsqu'on a passé du temps à la créer. Il existe de nombreux sites permettant de visualiser l'exécution d'une machine, nous allons utiliser celui-ci :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -356,7 +260,7 @@
 </div>
 </div>
 <p>Il utilise une définition plus générale d'une machine de Turing (c'est celle - classique - de <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing#D%C3%A9finition_formelle">Wikipedia</a>) mais nous pouvons tout à fait utiliser notre définition.</p>
-<p>Reprenons <a href="#exemple-r%C3%A9p%C3%A9tition" class="interne">le premier précédent</a> et écrivons le sous la forme utilisée par le site.</p>
+<p>Reprenons notre exemple et vérifions que nous avons bien compris son fonctionnement.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -441,7 +345,7 @@ table:
       write: 0,
       R: START
     }
-    
+
   STOP:
 </code></pre>
 </div>
@@ -489,22 +393,86 @@ table:
       write: 1,
       R: DEUX
     }
-    
+
   DEUX:
     0: {
       write: 0,
       L: START
     }
-    
+
   STOP:
 </code></pre>
+</div>
+</details>     
+</div>
+<h3><span id="exemple-oscillation"></span> Oscillation</h3>
+<p>Considérons la machine de Turing dont une fonction de transition partielle est la suivante :</p>
+<ul>
+<li>$\delta(\text{START}, 0) = (\text{L1}, 0, \leftarrow)$</li>
+<li>$\delta(\text{L1}, 0) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{R0}, 0) = (\text{R1}, 0, \rightarrow)$</li>
+<li>$\delta(\text{R0}, 1) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{R1}, 1) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{R1}, 0) = (\text{STOP}, 1, \leftarrow)$</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que la fonction de transition partielle précédente est suffisante pour que l'exécution de la machine soit bien définie</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Les transitions à partir des états <code class="language-">R0</code> et <code class="language-">R1</code> sont définis pour <code>0</code> et <code>1</code>. Seul <code class="language-">L1</code> n'est défini que pour <code>0</code>. Or la seule étape où la machine peut se trouver dans l'état <code class="language-">L1</code> est la seconde étape (les autres transitions ne transitionnent jamais vers <code class="language-">L1</code>), où il ne peut y avoir qu'un 0 sur la case du ruban pointée par le curseur.</p>
 </div>
 </details>     
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez le code de l'<a href="#exemple-oscillation" class="interne">oscillateur</a> qui s'arrête.</p>
+<p>Montrer que l'exécution de cette machine de Turing va s'arrêter et donnez les caractères présents sur le ruban</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code>···01010···</code></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez le code de l'oscillateur.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -560,10 +528,49 @@ table:
 </div>
 </details>     
 </div>
+<p>On va maintenant faire osciller l'oscillateur infiniment.</p>
+<p><span id="exemple-oscillation-infini"></span></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez le code de l'<a href="#exemple-oscillation-infini" class="interne">oscillateur infini</a>.</p>
+<p>Que faudrait-il ajouter/modifier à la fonction de transition pour que la machine oscille infiniment ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li>$\delta(\text{START} = (\text{L1}, 0, \leftarrow)$</li>
+<li>$\delta(\text{L1}, 0) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{L1}, 1) = (\text{L0}, 1, \leftarrow)$ (<strong>Ajout</strong>)</li>
+<li>$\delta(\text{R0}, 0) = (\text{R1}, 0, \rightarrow)$</li>
+<li>$\delta(\text{R0}, 1) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{R1}, 1) = (\text{R0}, 1, \rightarrow)$</li>
+<li>$\delta(\text{R1}, 0) = (\text{L0}, 1, \leftarrow)$ (<strong>Modification</strong>)</li>
+<li>$\delta(\text{L0}, 0) = (\text{L1}, 0, \leftarrow)$ (<strong>Ajout</strong>)</li>
+<li>$\delta(\text{L0}, 1) = (\text{L0}, 1, \leftarrow)$ (<strong>Ajout</strong>)</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez le code de l'oscillateur infini.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -627,7 +634,7 @@ table:
       write: 1,
       L: L0
     }
-    
+
   STOP:
 </code></pre>
 </div>
@@ -635,7 +642,7 @@ table:
 </div>
 <h2>Sortie et Entrée d'une machine</h2>
 <h3>Sortie</h3>
-<p>Mais si la machine s'arrête, le ruban constitue sa <em><strong>sortie</strong></em>. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :</p>
+<p>Mais si la machine s'arrête, le ruban constitue sa <strong><em>sortie</em></strong>. Comme la machine a effectuée un nombre fini d'étape avant de s'arrêter, on peut uniquement considérer une portion finie de celui-ci :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -643,7 +650,7 @@ table:
 <div class="pl-8  mb-2 mr-8">
 <p>définition</p>
 </div><div class="pl-8 mr-8">
-<p>La <em><strong>sortie</strong></em> d'une machine de Turing est constituée la partie finie du ruban entourant le curseur allant de :</p>
+<p>La <strong><em>sortie</em></strong> d'une machine de Turing est constituée la partie finie du ruban entourant le curseur allant de :</p>
 <ul>
 <li>la case contenant le caractère <code>1</code> le plus à gauche du curseur ou la case contenant le curseur s'il n'y a que des <code>0</code> à gauche du curseur</li>
 <li>à la case contenant le caractère <code>1</code> le plus à droite la case contenant le curseur s'il n'y a que des <code>0</code> à droite du curseur</li>
@@ -659,10 +666,10 @@ table:
 <pre><code>···0110001101010000···
                 ^
 </code></pre>
-<p>La sortie sera : <code>100</code></p>
-<p>Cette définition de sortie n'est pas totalement satisfaisante puisqu'elle est vaut soit <code>0</code> soit elle aura un <code>1</code> au début ou à la fin. On verra <a href="#turing-01#" class="interne">plus tard</a> comment régler ce (petit) problème.</p>
+<p>La sortie sera : <code>1100011010100</code></p>
+<p>Cette définition de sortie n'est pas totalement satisfaisante puisqu'elle est vaut soit <code>0</code> soit elle aura un <code>1</code> au début ou à la fin. On peut régler ce problème en entourant toujours le ruban d'un <code>1</code> à gauche et d'un <code>1</code> à droite. Les sorties seront alors ainsi toutes les suites commençant et finissant pas un <code>1</code> ce qui n'est pas gênant il suffit de les supprimer a posteriori.</p>
 <h3>Entrée</h3>
-<p>Avant de définir l'<em><strong>entrée</strong></em> d'une machine de Turing, commençons par une propriété anodine mais avec de grosses conséquences :</p>
+<p>Avant de définir l'<strong><em>entrée</em></strong> d'une machine de Turing, commençons par une propriété anodine mais avec de grosses conséquences :</p>
 <p><span id="addition-turing"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -671,7 +678,7 @@ table:
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $M$ et $M'$ sont deux machines de Turing, définit la machine de Turing $M+M'$ en suivant la procédure suivante :</p>
+<p>Si $M$ et $M'$ sont deux machines de Turing, on définit la machine de Turing $M+M'$ en suivant la procédure suivante :</p>
 <ul>
 <li>on s'assure que les états de $M$ et les états de $M'$ (à part <code class="language-">START</code> et <code class="language-">STOP</code>) soient différents</li>
 <li>on renomme l'état <code class="language-">STOP</code> de la machine $M$ en <code class="language-">START'</code></li>
@@ -685,7 +692,7 @@ table:
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Notez que l'addition de Machine de Turing est bien commutative et associative.</p>
+<p>Notez que l'addition de Machine de Turing n'est pas commutative mais est associative.</p>
 </div>
 </div>
 <p>Cette addition nous permet d'exécuter une machine $M$ avec autre chose que des <code>0</code> sur le ruban en exécutant la machine $M_\text{Init} + M$, avec $M_\text{Init}$ une machine qui <em>prépare</em> le ruban.</p>
@@ -701,7 +708,7 @@ table:
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Vérifiez que la machine ci-dessus fait fait ce-que l'on pense et vérifiez le en la codant sur <a href="https://turingmachine.io/">https://turingmachine.io/</a></p>
+<p>Codez la machine ci-dessus sur sur <a href="https://turingmachine.io/">https://turingmachine.io/</a> et vérifiez son fonctionnement.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -863,7 +870,7 @@ table:
 <div class="pl-8  mb-2 mr-8">
 <p>définition</p>
 </div><div class="pl-8 mr-8">
-<p>Le <em><strong>paramètre d'entrée</strong></em> de l'exécution d'une machine de Turing $M$ est une suite <strong>finie</strong> $E$ (pouvant être vide) de caractères <code>0</code> et <code>1</code>.</p>
+<p>Le <strong><em>paramètre d'entrée</em></strong> de l'exécution d'une machine de Turing $M$ est une suite <strong>finie</strong> $E$ (pouvant être vide) de caractères <code>0</code> et <code>1</code>.</p>
 <p>Lors de l'initialisation de l'exécution de la machine on rajoute deux étapes :</p>
 <ol>
 <li>inscription de la chaîne <code>E</code> sur le ruban</li>
@@ -880,7 +887,7 @@ table:
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant le code <a href="https://turingmachine.io/">https://turingmachine.io/</a> de l'<a href="#exemple-oscillation" class="interne">oscillateur</a>, ajoutez la chaîne <code>0101</code> comme paramètre d'entrée avec le mot clé <code class="language-">input:</code></p>
+<p>En utilisant le code <a href="https://turingmachine.io/">https://turingmachine.io/</a> de l'<a href="#exemple-oscillation-infini" class="interne">oscillateur infini</a>, ajoutez la chaîne <code>01110111</code> comme paramètre d'entrée avec le mot clé <code class="language-">input:</code></p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -914,6 +921,10 @@ table:
       write: 1,
       R: R0
     }
+    1: {
+      write: 1,
+      L: L0
+    }
   R0:
     0: {
       write: 0,
@@ -930,14 +941,35 @@ table:
     }
     0: {
       write: 1,
-      L: STOP
+      L: L0
     }
+  L0:
+    0: {
+      write: 0,
+      L: L1
+    }
+    1: {
+      write: 1,
+      L: L0
+    }
+
   STOP:
 </code></pre>
 </div>
 </details>     
 </div>
-<p>Attention cependant, une machine peut s'arrêter pour certaines entrées et pas d'autres.</p>
+<p>Attention cependant, une machine peut s'arrêter pour certaines entrées et pas d'autres. On défini alors :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>définition</p>
+</div><div class="pl-8 mr-8">
+<p>Un machine de Turing $M$ <strong><em>accepte</em></strong> la chaîne de caractères $E\in \{0, 1\}^\star$ (qui peut être vide) si l'exécution de $M(E)$ s'arrête. Par abus de notation, on associera alors $M(E)$ à sa sortie.</p>
+<p>Le <strong><em>langage</em></strong> de $M$ est l'ensemble de toutes les chaînes de caractères $E\in \{0, 1\}^\star$ qu'elle accepte.</p>
+</div>
+</div>
 
 
 </article>

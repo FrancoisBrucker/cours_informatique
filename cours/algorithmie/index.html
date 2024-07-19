@@ -187,7 +187,8 @@ sinon fait tout le temps la même chose (addition, etc). Le problème est de tra
 </blockquote>
 <h3>Algorithmes itératif</h3>
 <h3>Algorithmes récursif</h3>
-<p>TBD :</p>
+<p>terminale/ pas terminale. <a href="https://web4.ensiie.fr/~dubois/recursivite.pdf">https://web4.ensiie.fr/~dubois/recursivite.pdf</a><br>
+TBD :</p>
 <blockquote>
 <ol>
 <li>factorielle.</li>
@@ -197,7 +198,10 @@ sinon fait tout le temps la même chose (addition, etc). Le problème est de tra
 </ol>
 </blockquote>
 <h3>Rendre itératif des algorithmes récursifs</h3>
-<div id="HXNhEYqFo0o" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/HXNhEYqFo0o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<blockquote>
+<p>TBD grace à une todo list (aka une pile)<br>
+<a href="https://www.youtube.com/watch?v=HXNhEYqFo0o">https://www.youtube.com/watch?v=HXNhEYqFo0o</a></p>
+</blockquote>
 <blockquote>
 <p>TBD :</p>
 <p>cours ici  <a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration</a></p>
@@ -503,79 +507,7 @@ ici exemple de problème pas dans P (on ne sais pas)</p>
 </div>
 </div>
 <blockquote>
-<p>Ici fion théorique = Turing et NPC avec SAT.</p>
-</blockquote>
-<h4>Machines de Turing</h4>
-<blockquote>
-<p>TBD :<br>
-passer de pseudo-assembleur à turing :</p>
-<ul>
-<li>opérations (ok, juste bits)</li>
-<li>code vers transitions</li>
-<li>ruban unique (registre)</li>
-<li>pointeur unique</li>
-<li>RAM vers décalage de 1</li>
-</ul>
-<p>Code de Von Neuman = MTU</p>
-<ol>
-<li>pseudo-code = algorithme : thèse de Church/Turing</li>
-<li>uniquement binaire</li>
-<li>pas besoin de :</li>
-</ol>
-<ul>
-<li>séparer variables et mémoire</li>
-<li>de RAM juste se déplacer de 1</li>
-<li>code, juste des états</li>
-</ul>
-<ol start="4">
-<li>on est arrivé à la Machine de Turing. Donc code ≤ Turing</li>
-<li>comme on peut simuler ue machine de Turing avec un algo : Turing ≤ code</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>TBD : ne garder que la machine à 1 ruban ici.</p>
-</blockquote>
-<p>Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="machine-turing" class="interne">Machines de Turing</a></p>
-</div>
-</div>
-<h2>Autres modèles</h2>
-<p>L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreuses façon d'en écrire. Nous allons en voir 4 toutes équivalentes les unes avec les autres !</p>
-<blockquote>
-<p>TBD : Turing vers formule SAT.<br>
-donc algorithme = formule logique.</p>
-</blockquote>
-<blockquote>
-<p>TBD : séparer modèle et MTU qui permet de simuler dans le modèle. C'est le principe d'un ordinateur.<br>
-TBD encore d'autres ! jeu de la vie, ...</p>
-</blockquote>
-<h4>Lambda calcul</h4>
-<blockquote>
-<p>TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique<br>
-Catégories et types : <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/</a>, <a href="https://ncatlab.org/nlab/show/computational+trilogy">https://ncatlab.org/nlab/show/computational+trilogy</a><br>
-<a href="https://www.youtube.com/watch?v=_n4LIt2WPzE">https://www.youtube.com/watch?v=_n4LIt2WPzE</a><br>
-Maths : <a href="https://www.paultaylor.eu/~pt/prafm/index.html">https://www.paultaylor.eu/~pt/prafm/index.html</a><br>
-<a href="https://www.haskell.org/">https://www.haskell.org/</a> :</p>
-<ul>
-<li>intro : <a href="https://www.youtube.com/watch?v=UhM_H3lFk_Q">https://www.youtube.com/watch?v=UhM_H3lFk_Q</a></li>
-<li>playlist <a href="https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV">https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV</a></li>
-<li>livre : <a href="https://learnyouahaskell.com/">https://learnyouahaskell.com/</a></li>
-</ul>
-</blockquote>
-<h4>Automates cellulaires</h4>
-<blockquote>
-<p>TBD : Jeu de la vie<br>
-TBD : <a href="https://fr.wikipedia.org/wiki/Automate_cellulaire#R%C3%A8gle_110">https://fr.wikipedia.org/wiki/Automate_cellulaire#Règle_110</a></p>
-</blockquote>
-<h4>Équivalence des différentes approches</h4>
-<blockquote>
-<p>TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.<br>
-TBD MTU = langage universel</p>
+<p>Ici Turing et NPC avec SAT.</p>
 </blockquote>
 <h2>Désordre et hasard</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
