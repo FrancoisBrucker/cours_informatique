@@ -22,16 +22,113 @@ C'est ce que propose Turing avec sa célèbre Machine : une base théorique mini
 [Machine de Turing](./machine-turing){.interne}
 {% endaller %}
 
-> equivalence assembleur = turing
-> thèse de church-turing revisités
+## Équivalences
 
-### Penser l'informatique
+### Pseudo-code
+
+1. Une machine de von Neumann est une machine à accès mémoire  plusieurs rubans, et un curseur par ruban
+2. il est facile de simuler une machine de Turing avec du pseudo-assembleur : <[turingmachine.io](https://turingmachine.io/)> en est un exemple.
+
+{% note "**théorème**" %}
+
+[Pseudo-code]("../..//pseudo-code/"){.interne} et [machine de Turing](../définition){.interne} sont deux notions équivalentes.
+
+{% endnote %}
+
+### Fonction
+
+fonctions récursives.
 
 > TBD partial recursive function : <https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5> comme tout ce qui peut être calculer avec une machine de Turing.
-> cdans la partie fonction juste dire que les primitive recursives sont calculables, mais pqs que elle : ackerman et o le démontre.
+> cdans la partie fonction juste dire que les primitive recursives sont calculables, mais pqs que elle.
+
+{% note "**Proposition**" %}
+Les fonctions récursives primitives sont les fonctions calculables avec des algorithmes utilisant uniquement des boucles de type _"pour chaque"_ (des boucles `for`{.language-}).
+{% endnote %}
+{% details "preuve" %}
+un coté clair nos algos sont fait avec des compositions finies de boucle for.
+
+réciproquement : <https://ai.dmi.unibas.ch/_files/teaching/fs16/theo/slides/theory-d05.pdf>
+{% enddetails %}
+
+En déduire que [la fonction de couplage de Cantor](https://fr.wikipedia.org/wiki/Fonction_de_couplage) est primitive récursive :
+
+{% exercice %}
+Montrez que la fonction $f(x, y) = (x + y + 1)(x+y)/2 + y$ est primitive récursive.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD avec diviser par 2.
+
+{% enddetails %}
+
+{% exercice %}
+Montrez que la fonction
+[Théorème montrant qu'il y a strictement plus de réels que d'entiers](../définition/#diagonale-cantor)
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+### Lambda calcul
+
+- Turing : algorithme par de x pour le transformer en f(x)
+- fonction/lambda calcul part de f et l'applique en x pour trouver f(x)
+
+> Lambda calcul
+> ...
+> <https://www.youtube.com/watch?v=jUnbX27jbvY>
+> <https://en.wikipedia.org/wiki/General_recursive_function>
+> <https://en.wikipedia.org/wiki/Computable_function>
+> bijection recursive et Turing <https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html>
+>
+> dire que recursion = boucle for
+> reduction = boucle while.
+> TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique
+> Catégories et types : <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>, <https://ncatlab.org/nlab/show/computational+trilogy>
+> <https://www.youtube.com/watch?v=_n4LIt2WPzE>
+> Maths : <https://www.paultaylor.eu/~pt/prafm/index.html>
+> <https://www.haskell.org/> :
+>
+> - intro : <https://www.youtube.com/watch?v=UhM_H3lFk_Q>
+> - playlist <https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV>
+> - livre : <https://learnyouahaskell.com/>
+
+## Penser l'informatique
+
+> TBD comment tout faire avec le ;oins de choses possible. Que l'on puisse facilement tout appréhender. 
+> TBD comment ponctionne l'algorithmie en principe.
 > 
+## <span id="thèse-Church-Turing"></span>Thèse de Church-Turing
+
+Une machine de Turing (et donc le pseudo-code) est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci. Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.
+
+{% lien %}
+Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :
+<https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo>
+
+C'est en Anglais, mais c'est très bien.
+{% endlien %}
+
+On pense donc (mais ce n'est pas démontré) que :
+
+{% note "**Thèse de Church-Turing**" %}
+Les notions d'algorithme et de pseudo-code sont équivalentes.
+
+Tout algorithme peut être écrit en pseudo-code.
+{% endnote %}
+
+En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :
+
+- on écrira tous nos algorithmes en pseudo-code
+- pseudo-code et algorithme seront considérés comme synonyme.
+
+
+> Algo = machine de Turing.
 > TBD : Turing.
-> faire factorielle avec une machine de Turing.
 > dire que structure de donnée = code et que l'on a besoin de rien comme outil pour exécuter du code : juste une façon de stocker et une façon d'écrire conditionnellement. Le code est LOCAL.
 
 > TBD le plus minimal c'est la machine de Turing, mais d'un point de vue opérationnel il est minimal car c'est ce qui est appelé assembleur.
@@ -43,32 +140,57 @@ C'est ce que propose Turing avec sa célèbre Machine : une base théorique mini
 > instructions finie et 1 ou deux paramètres et une sortie dans des variables fixées et de taille fixé disons 64bits appelées registres.
 > variables = un grand tableaux de cases de taille fixée. Disons 64bits
 
-## Autres modèles
+## Turing complet
 
-> Turing complet
->
-> Lambda calcul
-> ...
-> <https://www.youtube.com/watch?v=jUnbX27jbvY>
-> <https://en.wikipedia.org/wiki/General_recursive_function>
-> <https://en.wikipedia.org/wiki/Computable_function>
-> bijection recursive et Turing <https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html>
->
-> dire que recursion = boucle for
-> reduction = boucle while.
-> 
-> Enfin, puisque nos algorithmes pour la composition et la récursion n'utilisent que des boucles de type _"pour chaque"_ :
+> Thèse de Church-Turing : machine de turing = algorithmie. donc on adment qu'une machine de turing peut tout faire. Un langage ne peut donc pas faire plus qu'une machine. Il en fait autant si on peut simuler une machine dans le langage.
+> Turing complet = on peut simuler
+
+
+Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. Comme il est facile de simuler une MTU en pseudo-code (on l'a fait [juste avant](./#pseudo-code-MTU)){.interne} on en conclut :
 
 {% note "**Proposition**" %}
-Les fonctions récursives primitives sont les fonctions calculables avec des algorithmes utilisant uniquement des boucles de type _"pour chaque"_ (des boucles `for`{.language-}).
+Tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec un pseudo-code.
 {% endnote %}
-{% details "preuve" %}
-un coté clair nos algos sont fait avec des compositions finies de boucle for.
 
-réciproquement : <https://ai.dmi.unibas.ch/_files/teaching/fs16/theo/slides/theory-d05.pdf>
-{% enddetails %}
 
-fonctions vs algorithmes :
 
-- Turing : algorithme par de x pour le transformer en f(x)
-- fonction/lambda calcul part de f et l'applique en x pour trouver f(x)
+{% note "**définition**" %}
+Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'une machine de Turing peut faire.
+{% endnote %}
+
+Une façon de montrer qu'un système est Turing complet est de faire ce qu'on a fait pour le pseudo--code, montrer qu'il peut simuler l'exécution d'une machine de Turing. De là il peut simuler l'exécution d'une machine de Turing Universelle et donc faire tout ce que peut faire une machine de Turing.
+
+Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
+
+- un processeur
+- la quasi-totalité des langages de programmation
+- excel
+- Factorio
+- Minecraft
+- ...
+
+Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet !
+
+{% lien %}
+L'exemple de système Turing complet le plus simple que je connaisse est l'automate uni-dimensionnel respectant la [règle 110](https://en.wikipedia.org/wiki/Rule_110).
+
+Jetez-y un coup d'œil, c'est assez bluffant.
+{% endlien %}
+
+Bien qu'il soit très facile pour un système d'être Turing Complet, toute les tentatives de généralisation  se sont révéler vaines.
+La notion de Machine de Turing semble capturer l'essence même de ce qu'est un algorithme.
+
+### Automates cellulaires
+
+> TBD : Jeu de la vie
+> TBD : <https://fr.wikipedia.org/wiki/Automate_cellulaire#R%C3%A8gle_110>
+
+### Langages exotiques
+
+brainfuck
+
+### Autres trucs
+
+powerpoint
+factorio
+...

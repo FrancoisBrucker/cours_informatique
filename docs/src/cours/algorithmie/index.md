@@ -74,6 +74,7 @@ Maintenant que l'on sait comment écrire des algorithmes en pseudo-code et que l
 
 ### Algorithmes récursif
 
+terminale/ pas terminale. <https://web4.ensiie.fr/~dubois/recursivite.pdf>
 TBD :
 >
 > 1. factorielle.
@@ -83,6 +84,7 @@ TBD :
 > 
 ### Rendre itératif des algorithmes récursifs
 
+> TBD grace à une todo list (aka une pile)
 <https://www.youtube.com/watch?v=HXNhEYqFo0o>
 
 > TBD :
@@ -304,71 +306,7 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-> Ici fion théorique = Turing et NPC avec SAT.
-
-#### Machines de Turing
-
-> TBD :
-> passer de pseudo-assembleur à turing :
->
-> - opérations (ok, juste bits)
-> - code vers transitions
-> - ruban unique (registre)
-> - pointeur unique
-> - RAM vers décalage de 1
->
-> Code de Von Neuman = MTU
-> 1. pseudo-code = algorithme : thèse de Church/Turing
-> 2. uniquement binaire
-> 3. pas besoin de :
->   - séparer variables et mémoire
->   - de RAM juste se déplacer de 1
->   - code, juste des états
-> 4. on est arrivé à la Machine de Turing. Donc code ≤ Turing
-> 5. comme on peut simuler ue machine de Turing avec un algo : Turing ≤ code
-
-> TBD : ne garder que la machine à 1 ruban ici.
-
-Cette partie est là pour vous montrer que pseudo-code et machines de Turing sont deux notions équivalentes. On aura également besoin des machines de Turing bien plus tard, lorsque nous rencontrerons les classes de problèmes.
-
-{% aller %}
-[Machines de Turing](./machine-turing){.interne}
-{% endaller %}
-
-## Autres modèles
-
-L'écriture d'algorithmes sous la forme de pseudo-code n'est qu'une des nombreuses façon d'en écrire. Nous allons en voir 4 toutes équivalentes les unes avec les autres !
-
->
-> TBD : Turing vers formule SAT.
-> donc algorithme = formule logique.
-
->
-> TBD : séparer modèle et MTU qui permet de simuler dans le modèle. C'est le principe d'un ordinateur.
-> TBD encore d'autres ! jeu de la vie, ...
-
-
-#### Lambda calcul
-
-> TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique
-> Catégories et types : <https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/>, <https://ncatlab.org/nlab/show/computational+trilogy>
-> <https://www.youtube.com/watch?v=_n4LIt2WPzE>
-> Maths : <https://www.paultaylor.eu/~pt/prafm/index.html>
-> <https://www.haskell.org/> :
->
-> - intro : <https://www.youtube.com/watch?v=UhM_H3lFk_Q>
-> - playlist <https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV>
-> - livre : <https://learnyouahaskell.com/>
-
-#### Automates cellulaires
-
-> TBD : Jeu de la vie
-> TBD : <https://fr.wikipedia.org/wiki/Automate_cellulaire#R%C3%A8gle_110>
-
-#### Équivalence des différentes approches
-
-> TBD : à supprimer de la partie sur les machines de Turing et à mettre ici.
-> TBD MTU = langage universel
+> Ici Turing et NPC avec SAT.
 
 ## Désordre et hasard
 

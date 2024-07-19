@@ -111,10 +111,14 @@ Programme :
 
 Remarquez que :
 
-1. l'ordre est important. On commence par évaluer les fonctions g[i] puis on évalue f
+1. l'ordre est important. On commence par évaluer les fonctions $g[i]$ puis on évalue $f$
 2. la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$.
 
-Cette simple règle permet déjà de créer quelques fonctions, en particulier les fonctions constantes :
+{% note "**À retenir**" %}
+La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f(g(x))$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.
+{% endnote %}
+
+La séquentialité du calcul des fonctions permet déjà de créer des choses nouvelles, en particulier les fonctions constantes :
 
 Par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.
 
@@ -127,6 +131,17 @@ On le montre par récurrence sur $k$.
 - initialisation : Pour $k=0$ la propriété est vraie
 - on suppose que pour $k\geq 0$ la fonction $\mathbb{k}^n(x_1, \dots, x_n) = k$ est primitive récursive.
 - la fonction $\text{succ} \circ [\mathbb{k}^n]$ est alors également primitive récursive et vaut $k+1$ tout le temps ce qui conclut la preuve.
+
+{% enddetails %}
+
+Ou encore l'ajout d'une constante :
+
+{% exercice %}
+Montrez que la fonction $f_k(x) = x + k$ est primitive récursive, pour tout entier $k\leq 0$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Par récurrence sur $k$. On a $f_0(x) = \pi^1_1$. Si on suppose que $f_k$ existe alors $f_{k+1} = f_k \circ [\text{succ}]$.
 
 {% enddetails %}
 
@@ -234,6 +249,26 @@ $$
 
 {% enddetails %}
 
+Allez, un dernier pour la route :
+
+{% exercice %}
+Montrez que la fonction $\text{mul}(x, y) = x \times y$ est primitive récursive.
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{mul}(0, y)&= \pi^2_2 \\
+     \text{mul}(x+1, y)&= \text{add}(x, \text{mul}(x, y)) \\
+\end{cases}
+\end{align}
+$$
+</div>
+
+{% enddetails %}
+
 Comme toute composition finie d'algorithme reste un algorithme, on a la proposition suivante :
 
 {% note "**Proposition**" %}
@@ -248,53 +283,43 @@ Ce type de construction où l'on combine simplement des éléments basiques pour
 Nous n'allons cesser de le montrer dans ce cours.
 {% endnote %}
 
-Voyons-le en créant quelques fonctions mathématiques usuelles.
-
-{% exercice %}
-Montrez que la fonction $f(x) = x + k$ est primitive récursive, pour tout entier $k$.
-{% endexercice %}
-{% details "corrigé" %}
-
-$f(x) = \text{add} \circ [\pi^1_1, \mathbb{k}^1]$
-
-{% enddetails %}
-
-{% exercice %}
-Montrez que la fonction $f(x, y) = x \times y$ est primitive récursive.
-{% endexercice %}
-{% details "corrigé" %}
-
-On a :
-<div>
-$$
-\begin{align}
-    \begin{cases}
-     \text{mul}(0, y)&= \pi^2_2 \\
-     \text{mul}(x+1, y)&= \text{add}(x, \text{mul}(x, y)) \\
-\end{cases}
-\end{align}
-$$
-</div>
-
-Ce qui donne de façon formelle :
+On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Par exemple la fonction $\text{eq}_0(x) = 1 \text{ si } x = 0 \text{ et } \text{eq}_0(x) = 0 \text{ sinon}$ est primitive récursive puisque :
 
 <div>
 $$
 \begin{align}
     \begin{cases}
-     f(x) &= \mathbb{0}^1(x) \\
-     g(x, v, y) &= \text{add} \circ [ \pi^3_1, \pi^3_2] \\
+     \text{eq}_0(0)&= 1 \\
+     \text{eq}_0(x+1)&= 0 \\
 \end{cases}
 \end{align}
 $$
 </div>
 
+Ce qui va permet de montrer que les instruction conditionnelles le sont aussi :
+
+{% exercice %}
+Montrez que si $f$, $g$ et $h$ sont trois fonctions primitives récursives de $\mathbb{N}^p \rightarrow \mathbb{N}$ alors la fonction "$\text{si } (f(x) = 0) \text{ alors } g(x) \text{ sinon } h(x)$" l'est aussi.
+{% endexercice %}
+{% details "corrigé" %}
+
+C'est la fonction :
+
+<div>
+$$
+\text{eq}_0(f(x)) \times g(x) + \text{eq}_0(\text{eq}_0(f(x))) \times h(x)
+$$
+</div>
+
 {% enddetails %}
 
-On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Si ce genre d'exemples vous intéresse, allez jeter un œil au lien suivant :
+Si ce genre d'exemples vous intéresse, allez jeter un œil au lien suivant :
 
 {% lien %}
-[exemples de fonctions primitives récursives](https://www.michaelbeeson.com/teaching/StanfordLogic/Lecture4Slides.pdf)
+
+- [exemples de fonctions primitives récursives](https://www.michaelbeeson.com/teaching/StanfordLogic/Lecture4Slides.pdf)
+- [logique et fonctions primitives récursives](https://www.cs.utep.edu/vladik/cs5315.21/pr2.pdf)
+
 {% endlien %}
 
 On ne peut qu'être ébahi par le fait qu'il ne faut vraiment rien (trois fonctions ridiculement simples) et deux fonctions (naturelles) de composition pour créer toutes ces fonctions très différentes les unes des autres.

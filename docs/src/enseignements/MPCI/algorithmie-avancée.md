@@ -198,6 +198,8 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- cascade in networks. Kleinberg. Tardos 2003.<https://www.youtube.com/watch?v=gw8Hgx-EtJQ&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=14>
+- 
 - <https://lgayral.pages.math.cnrs.fr/fr/agreg/>
 - random graphs. Friendship paradox. Tes amis ont plus d'amis que toi (existence de sommets avec beaucoup de voisins)
 - Matrice d'adjacence :
