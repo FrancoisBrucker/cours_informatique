@@ -81,6 +81,7 @@ TBD :
 > 2. Fibonacci
 > 3. Triangle de pascal (optimisation pas tout garder)
 > 4. hanoi
+> 5. lancers de nd6 avec nombre max de récursion à trouver.
 > 
 ### Rendre itératif des algorithmes récursifs
 
@@ -238,6 +239,8 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Les suites additives](./projet-suite-additive){.interne}
 {% endaller %}
 
+> TBD reprendre les exos d'avant avec calcul de complexité.
+
 ## Complexité en moyenne
 
 {% aller %}
@@ -255,6 +258,8 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% aller %}
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
+
+> TBD faire un lien avec les exos vu en écriture d'algo + complexité pour que tout soit aussi là.
 
 ## Structures linéaires
 

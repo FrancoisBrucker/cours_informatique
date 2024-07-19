@@ -24,20 +24,38 @@ C'est ce que propose Turing avec sa célèbre Machine : une base théorique mini
 
 ## Équivalences
 
-### Pseudo-code
+Nous allons agrandir dans cette partie les différents modèles de création de programmes qui produisent des résultats équivalents. On sait déjà que les programmes crées en pseudo-codes sont équivalents à ceux crées en pseudo-assembleur, eux même équivalents à ceux que l'on peut exécuter sur un processeur suivant l'architecture de Von Neumann (tous les processeurs la suive).
 
-1. Une machine de von Neumann est une machine à accès mémoire  plusieurs rubans, et un curseur par ruban
-2. il est facile de simuler une machine de Turing avec du pseudo-assembleur : <[turingmachine.io](https://turingmachine.io/)> en est un exemple.
+Pour montrer qu'un modèle de création de programme $A$ est plus riche qu'un modèle $B$, il suffit de montrer que l'on peut soit :
 
-{% note "**théorème**" %}
+- simuler $B$ dans $A$,
+- convertir un programme du modèle $B$ en un programme du modèle $A$
 
-[Pseudo-code]("../..//pseudo-code/"){.interne} et [machine de Turing](../définition){.interne} sont deux notions équivalentes.
+On notera alors $A \geq B$. Si on peut aussi faire la réciproque ($B \geq A$), alors les deux modèles sont équivalent et peuvent faire les mêmes programmes.
+
+### Machines de Turing
+
+En deux temps, aussi aisé l'un que l'autre pour obtenir le résultat :
+
+{% note "**Théorème**" %}
+
+Pseudo-code et machine de Turing sont deux notions équivalentes.
 
 {% endnote %}
+{% details "preuve", "open" %}
 
-### Fonction
+- **Machines de Turing $\leq$ pseudo-assembleur** :
+  Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle en pseudo-code. Le site <https://turingmachine.io/> en est un exemple.
+- **Machines de Turing $\geq$ pseudo-assembleur** :
+  1. les [compositions de machines](./machine-turing/composition){.interne} montrent que l'on peut avoir les mêmes structures de contrôle qu'en pseudo-assembleur (exécution séquentielle et saut conditionnels)
+  2. il est facile de faire une fonction de transition qui simule l'opération `NAND`{.language-}
+  3. on peut avoir autant de ruban qu'on le veut et écrire où on veut en mémoire : on peut utiliser le modèle de von Neumann avec une machine de Turing
 
-fonctions récursives.
+{% enddetails %}
+
+### Fonctions récursives
+
+fonctions récursives > fonctions primitives récursives
 
 > TBD partial recursive function : <https://www.youtube.com/watch?v=yaDQrOUK-KY&list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5> comme tout ce qui peut être calculer avec une machine de Turing.
 > cdans la partie fonction juste dire que les primitive recursives sont calculables, mais pqs que elle.
@@ -101,6 +119,7 @@ Montrez que la fonction
 
 > TBD comment tout faire avec le ;oins de choses possible. Que l'on puisse facilement tout appréhender. 
 > TBD comment ponctionne l'algorithmie en principe.
+> TBD dire que code = local et que les structures de données peutvent être gérée avec du code. 
 > 
 ## <span id="thèse-Church-Turing"></span>Thèse de Church-Turing
 
