@@ -96,6 +96,14 @@
 Pseudo-code et assembleurs sont équivalents : les problèmes que l'on peut résoudre avec l'un sont également résoluble avec l'autre (et réciproquement). On peut même transcrire en assembleur un programme écrit en pseudo-code de façon automatique (on a évoqué sans rentrer dans les détails les moyens d'y parvenir) il est donc courant d'écrire son code en pseudo-code, facile à lire et à maintenir, puis de laisser un compilateur le transcrire en assembleur pour être exécuté.</p>
 <p>Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne peut pas être résoluble par le calcul, pseudo-code et assembleur sont encore trop <em>riches</em> (on peut aller n'importe où dans la mémoire par exemple, on suppose l'existence de la fonction <code class="language-">NAND</code>, etc). Il ne faut conserver que les éléments indispensables pour pouvoir écrire tout ce que l'on peut faire en pseudo-code.</p>
 <p>C'est ce que propose Turing avec sa célèbre Machine : une base théorique minimale de ce qu'est l'informatique.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=bP1lOm5rLsI&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt&amp;index=1">Playlist sur la <em>theory of computation</em></a> et <a href="https://hefferon.net/computation/">le livre associé</a></p>
+</div>
+</div>
 <h2>Machine de Turing</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -157,147 +165,45 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 </details>     
 </div>
 <h3>Fonctions récursives</h3>
-<p>fonctions récursives &gt; fonctions primitives récursives</p>
-<blockquote>
-<p>TBD partial recursive function : <a href="https://www.youtube.com/watch?v=yaDQrOUK-KY&amp;list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5">https://www.youtube.com/watch?v=yaDQrOUK-KY&amp;list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5</a> comme tout ce qui peut être calculer avec une machine de Turing.<br>
-cdans la partie fonction juste dire que les primitive recursives sont calculables, mais pqs que elle.</p>
-</blockquote>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Les fonctions récursives primitives sont les fonctions calculables avec des algorithmes utilisant uniquement des boucles de type <em>&quot;pour chaque&quot;</em> (des boucles <code class="language-">for</code>).</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>un coté clair nos algos sont fait avec des compositions finies de boucle for.</p>
-<p>réciproquement : <a href="https://ai.dmi.unibas.ch/_files/teaching/fs16/theo/slides/theory-d05.pdf">https://ai.dmi.unibas.ch/_files/teaching/fs16/theo/slides/theory-d05.pdf</a></p>
-</div>
-</details>     
-</div>
-<p>En déduire que <a href="https://fr.wikipedia.org/wiki/Fonction_de_couplage">la fonction de couplage de Cantor</a> est primitive récursive :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<p>Nous avons vu que les fonctions primitives récursives étaient des fonctions calculable. Nous allons montrer ici qu'un modèle plus générale, les fonctions récursives, sont équivalentes au pseudo-code ! Ceci montre que l'algorithmie peut posséder de nombreuses formes, toutes équivalentes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p>Montrez que la fonction $f(x, y) = (x + y + 1)(x+y)/2 + y$ est primitive récursive.</p>
+<p><a href="fonctions-r%C3%A9cursives" class="interne">Fonctions récursives</a></p>
 </div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD avec diviser par 2.</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Montrez que la fonction<br>
-<a href="../d%C3%A9finition/#diagonale-cantor">Théorème montrant qu'il y a strictement plus de réels que d'entiers</a></p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
 </div>
 <h3>Lambda calcul</h3>
-<ul>
-<li>Turing : algorithme par de x pour le transformer en f(x)</li>
-<li>fonction/lambda calcul part de f et l'applique en x pour trouver f(x)</li>
-</ul>
-<blockquote>
-<p>Lambda calcul<br>
-...<br>
-<a href="https://www.youtube.com/watch?v=jUnbX27jbvY">https://www.youtube.com/watch?v=jUnbX27jbvY</a><br>
-<a href="https://en.wikipedia.org/wiki/General_recursive_function">https://en.wikipedia.org/wiki/General_recursive_function</a><br>
-<a href="https://en.wikipedia.org/wiki/Computable_function">https://en.wikipedia.org/wiki/Computable_function</a><br>
-bijection recursive et Turing <a href="https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html">https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html</a></p>
-<p>dire que recursion = boucle for<br>
-reduction = boucle while.<br>
-TBD : pour les matheux qui veulent s'encanailler à faire de l'informatique<br>
-Catégories et types : <a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/</a>, <a href="https://ncatlab.org/nlab/show/computational+trilogy">https://ncatlab.org/nlab/show/computational+trilogy</a><br>
-<a href="https://www.youtube.com/watch?v=_n4LIt2WPzE">https://www.youtube.com/watch?v=_n4LIt2WPzE</a><br>
-Maths : <a href="https://www.paultaylor.eu/~pt/prafm/index.html">https://www.paultaylor.eu/~pt/prafm/index.html</a><br>
-<a href="https://www.haskell.org/">https://www.haskell.org/</a> :</p>
-<ul>
-<li>intro : <a href="https://www.youtube.com/watch?v=UhM_H3lFk_Q">https://www.youtube.com/watch?v=UhM_H3lFk_Q</a></li>
-<li>playlist <a href="https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV">https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV</a></li>
-<li>livre : <a href="https://learnyouahaskell.com/">https://learnyouahaskell.com/</a></li>
-</ul>
-</blockquote>
-<h2>Penser l'informatique</h2>
-<blockquote>
-<p>TBD comment tout faire avec le ;oins de choses possible. Que l'on puisse facilement tout appréhender.<br>
-TBD comment ponctionne l'algorithmie en principe.<br>
-TBD dire que code = local et que les structures de données peutvent être gérée avec du code.</p>
-</blockquote>
-<h2><span id="thèse-Church-Turing"></span>Thèse de Church-Turing</h2>
-<p>Une machine de Turing (et donc le pseudo-code) est a priori un cas particulier d'algorithme puisque l'on se limite à un nombre fixé d'instructions et à une construction rigide et normée de ceux ci. Mais toutes les tentatives de généralisation ont échoués : elle n'ont jamais permis de faire des algorithmes impossible à réaliser en pseudo-code.</p>
+<p>Le lambda calcul est encore une autre forme de calcul équivalent aux machines de Turing. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus <em>matheuse</em> de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.</p>
+<p>On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le <a href="https://www.haskell.org/">Haskell</a> (il en existe d'autres, comme le <a href="https://ocaml.org/">Ocaml</a> par exemple).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si ces considérations vous intéressent, n'hésitez pas à jeter un coup d'œil à ce lien :<br>
-<a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo</a></p>
-<p>C'est en Anglais, mais c'est très bien.</p>
+<p>Pour apprendre Haskell :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=UhM_H3lFk_Q">introduction au langage Haskell</a> et au <a href="https://www.youtube.com/watch?v=_n4LIt2WPzE">lambda calcul</a></li>
+<li><a href="https://www.youtube.com/watch?v=Vgu82wiiZ90&amp;list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV">playlist</a></li>
+<li><a href="https://learnyouahaskell.com/">https://learnyouahaskell.com/</a></li>
+</ul>
 </div>
 </div>
-<p>On pense donc (mais ce n'est pas démontré) que :</p>
+<p>Cette façon de programmer est très liée aux types et a permis quelques avancées dans la vérification automatique des types.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/">Catégories et types</a></li>
+<li><a href="https://ncatlab.org/nlab/show/computational+trilogy">preuve de programme et types</a></li>
+</ul>
+</div>
+</div>
+<h2>Penser l'informatique</h2>
+<p>Nous avons montré que de nombreux modèles de calculs très différents sont équivalents. Toutes les tentatives d'étendre ou de trouver des modèles différents ont tous échoué : on a l'impression que le modèle de la machine de Turing est indépassable et qu'il capture l'essence même de ce qui est un algorithme. C'est pourquoi il est communément admis que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -305,45 +211,39 @@ TBD dire que code = local et que les structures de données peutvent être gér�
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Thèse de Church-Turing</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Les notions d'algorithme et de pseudo-code sont équivalentes.</p>
-<p>Tout algorithme peut être écrit en pseudo-code.</p>
+<p>Les notions d'algorithme et de machine de Turing sont équivalentes.</p>
+<p>Tout algorithme peut être écrit avec une machine de Turing.</p>
 </div>
 </div>
-<p>En bon informaticien, on considérera la thèse de Church-Turing vérifiée et :</p>
+<p>En bon informaticien, on considérera la thèse de Church-Turing vérifiée et, comme pseudo-code et machines de Turing sont équivalents :</p>
 <ul>
 <li>on écrira tous nos algorithmes en pseudo-code</li>
 <li>pseudo-code et algorithme seront considérés comme synonyme.</li>
 </ul>
-<blockquote>
-<p>Algo = machine de Turing.<br>
-TBD : Turing.<br>
-dire que structure de donnée = code et que l'on a besoin de rien comme outil pour exécuter du code : juste une façon de stocker et une façon d'écrire conditionnellement. Le code est LOCAL.</p>
-</blockquote>
-<blockquote>
-<p>TBD le plus minimal c'est la machine de Turing, mais d'un point de vue opérationnel il est minimal car c'est ce qui est appelé assembleur.<br>
-faire les call avec des jump<br>
-à la fin dire qu'il y a souvent plusieurs autres méthodes dans les langages machines pour aider (donner exemple, sub, mul, gestion approximation de réel, call/ret et surtout la pile qu'on verra bien plus tard.), mais on peut tout faire avec ce qu'on a la.</p>
-<p>Passer d'un pseudo code à un langage machine simple et montrer sn équivalence. Ceci permettra de montrer plus facilement que des langages sont équivalents.<br>
-Langage simplifié où les variables n'existent pas et le boucles sont remplacés par des saut. Tout langage informatique peut être transcrit en langage machine<br>
-instructions finie et 1 ou deux paramètres et une sortie dans des variables fixées et de taille fixé disons 64bits appelées registres.<br>
-variables = un grand tableaux de cases de taille fixée. Disons 64bits</p>
-</blockquote>
-<h2>Turing complet</h2>
-<blockquote>
-<p>Thèse de Church-Turing : machine de turing = algorithmie. donc on adment qu'une machine de turing peut tout faire. Un langage ne peut donc pas faire plus qu'une machine. Il en fait autant si on peut simuler une machine dans le langage.<br>
-Turing complet = on peut simuler</p>
-</blockquote>
-<p>Grâce à la machine de Turing universelle, démontrer qu'un langage est <a href="https://fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing. Comme il est facile de simuler une MTU en pseudo-code (on l'a fait <a href="#pseudo-code-MTU">juste avant</a>){.interne} on en conclut :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+<p>Le calcul est donc quelque chose d’éminemment local : une tête de lecture et un état, c'est la succession de ces modifications locales qui produit un résultat global. De plus, on a pas besoin de types ou de structures de données compliquées dans le modèle : seul le bit et la fonction NAND sont indispensable. Toutes les autres structures de données comme les listes, les piles, et autres dictionnaires sont géré par du code.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Tout ce qui peut s'écrire avec une machine de Turing peut s'écrire avec un pseudo-code.</p>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo">https://plato.stanford.edu/entries/turing-machine/#ThesDefiAxioTheo</a></li>
+<li><a href="https://www.youtube.com/watch?v=jUnbX27jbvY">https://www.youtube.com/watch?v=jUnbX27jbvY</a></li>
+</ul>
 </div>
 </div>
+<p>De part les nombreuses équivalences, lorsque l'on cherchera à démontrer des résultats sur les algorithmes en général on se ramènera aux machines de Turing, au pseudo-code ou aux fonctions récursives.</p>
+<p>Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'il peut simuler une machine de Turing. C'est ce qu'on appelle être Turing complet.</p>
+<h2>Turing complet</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<div id="RPQD7-AOjMI" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/RPQD7-AOjMI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+</div>
+</div>
+<p>Grâce à la machine de Turing universelle, démontrer qu'un langage est <a href="https://fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -354,7 +254,12 @@ Turing complet = on peut simuler</p>
 <p>Un système est dit <a href="https:/fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> s'il permet de faire tout ce qu'une machine de Turing peut faire.</p>
 </div>
 </div>
-<p>Une façon de montrer qu'un système est Turing complet est de faire ce qu'on a fait pour le pseudo--code, montrer qu'il peut simuler l'exécution d'une machine de Turing. De là il peut simuler l'exécution d'une machine de Turing Universelle et donc faire tout ce que peut faire une machine de Turing.</p>
+<p>Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing que ce modèle peut calculer tous les algorithmes. Pour montrer qu'un modèle est Turing-complet, on peut soit écrire un simulateur de machine de Turing (pour un langage comme python par exemple) ou, comme on l'a vu avec le pseudo-assembleur, montrer que l'on possède :</p>
+<ul>
+<li>de la mémoire</li>
+<li>un saut conditionnel à un endroit donnée du code</li>
+<li>la fonction <code>NAND</code> (ou la fonction <code>XOR</code>)</li>
+</ul>
 <p>Cette preuve permet de montrer que les systèmes suivant sont Turing complet :</p>
 <ul>
 <li>un processeur</li>
@@ -364,7 +269,10 @@ Turing complet = on peut simuler</p>
 <li>Minecraft</li>
 <li>...</li>
 </ul>
-<p>Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet !</p>
+<p>Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !</p>
+<p>Finissons par quelques exemples non triviaux de modèles Turing complet.</p>
+<h3>Automates cellulaires</h3>
+<p>La plupart des <a href="https://fr.wikipedia.org/wiki/Automate_cellulaire">automates cellulaires</a> sont Turing-complet. C'est le cas du célèbre <a href="https://fr.wikipedia.org/wiki/Jeu_de_la_vie">jeu de la vie</a>, mais aussi d'automates bien plus simple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -374,19 +282,15 @@ Turing complet = on peut simuler</p>
 <p>Jetez-y un coup d'œil, c'est assez bluffant.</p>
 </div>
 </div>
-<p>Bien qu'il soit très facile pour un système d'être Turing Complet, toute les tentatives de généralisation  se sont révéler vaines.<br>
-La notion de Machine de Turing semble capturer l'essence même de ce qu'est un algorithme.</p>
-<h3>Automates cellulaires</h3>
-<blockquote>
-<p>TBD : Jeu de la vie<br>
-TBD : <a href="https://fr.wikipedia.org/wiki/Automate_cellulaire#R%C3%A8gle_110">https://fr.wikipedia.org/wiki/Automate_cellulaire#Règle_110</a></p>
-</blockquote>
 <h3>Langages exotiques</h3>
-<p>brainfuck</p>
+<p>Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">langages de programmation exotiques</a>, qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instruction, comme le célèbre <a href="https://www.google.com/search?q=brainfuck">brainfuck</a>, ou à être marrant, comme le <a href="https://www.dangermouse.net/esoteric/piet.html">Piet</a> dont le but est de créer des programmes sous la forme d'un tableau de <a href="https://fr.wikipedia.org/wiki/Piet_Mondrian">Piet Mondrian</a>.</p>
 <h3>Autres trucs</h3>
-<p>powerpoint<br>
-factorio<br>
-...</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=5u6BN1p0Uo8">Legend of Zelda: Tears of the Kingdom</a></li>
+<li><a href="https://www.youtube.com/watch?v=uNjxe8ShM-8">Powerpoint</a></li>
+<li><a href="https://www.youtube.com/watch?v=NCC2Fd8qxv4">règle 110 avec Factorio (et des trains)</a></li>
+<li>...</li>
+</ul>
 
 
 </article>

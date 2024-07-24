@@ -480,6 +480,7 @@ $$
 <li>la propriété est vérifiée pour les fonctions primitives de base</li>
 <li>la propriété est conservée par composition et récursion</li>
 </ol>
+<p>Ce type de récurrence est nommée <a href="https://fr.wikipedia.org/wiki/Induction_structurelle">récurrence structurelle</a></p>
 <p>La première partie de la preuve est claire puisque les fonctions zéros, projections et successeurs sont toutes plus petites que $\text{Ack}(0, \sum_{1\leq i \leq n}x_i) = \sum_{1\leq i \leq n}x_i + 1$</p>
 <p>Pour la seconde partie, commençons par montrer que la propriété est stable par composition.</p>
 <p>Soient $f: \mathbb{N}^n \to \mathbb{N}$ et $(g_i)_{1 \leq i \leq n}: \mathbb{N}^m \to \mathbb{N}$ des fonctions primitives récursives satisfaisant la propriété. On a alors :</p>

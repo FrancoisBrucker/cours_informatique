@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fonctions récursives</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Fonctions récursives</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/">Penser l&#39;algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/penser-algorithmie/fonctions-récursives/">Fonctions récursives</a>
+
+</div>
+</div>
+
+
+    
+      
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+
+<b>Prérequis :</b>
+
+</div><div class="pl-8 mr-8">
+
+
+      <ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/algorithmie/bases-théoriques/calculabilité/récursive-primitive/">Fonctions récursives primitives</a>
+              </li></ul>
+      
+
+</div>
+</div>
+
+    
+  
+
+  <p>Nous allons montrer dans cette partie un modèle équivalent au pseudo-code nommé les fonction récursives.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=yaDQrOUK-KY&amp;list=PLC-8dKj3F0NUnR8LeBGH3utAI9aQjFbi5">playlist sur les fonctions récursives</a></li>
+<li><a href="https://www.irif.fr/~carton/Enseignement/Complexite/ENS/Cours/funrec.html">un cours</a></li>
+</ul>
+</div>
+</div>
+<p>On va vu que <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/r%C3%A9cursive-primitive/" class="interne">les fonctions primitives récursives</a> sont calculables mais qu'il existe des fonctions calculables non primitives récursives (comme <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/ackermann">la fonction d'Ackermann</a> par exemple).</p>
+<p>Un pseudo-code est composé d'une suite de blocs d'instructions à executer séquentiellement. Chaque bloc peut être vue comme des fonctions. Si par exemple deux blocs consécutifs utilisent et modifient les variables <code>x1</code> à <code>xn</code>, on peut écrire :</p>
+<pre><code>(x1, ..., xn) = f(x1, ..., xn)
+g(x1, ..., xn)
+</code></pre>
+<p>Les blocs en pseudo-code sont de plusieurs types :</p>
+<ul>
+<li>exécution d'une fonction et affectation à une variable. On a vu que la seule fonction nécessaire était la fonction <code class="language-">NAND</code></li>
+<li>bloc de test. On a vu que le seul bloc de test nécessaire est : <em>&quot;si une variable est nulle alors exécute le bloc&quot;</em></li>
+<li>bloc pour chaque</li>
+<li>bloc tant que</li>
+</ul>
+<p>Avant de nous attaquer à chaque type de bloc, commençons par résoudre le premier problème : les fonctions récursives primitives rendent un entier et pas une liste de variables.</p>
+<h2>Couplage de Cantor</h2>
+<p><a href="https://fr.wikipedia.org/wiki/Fonction_de_couplage">La fonction de couplage de Cantor</a> est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction $f: \mathbb{N}^2 \rightarrow\mathbb{N}$ telle que : $\pi(x, y) = (x + y + 1)(x+y)/2 + y$ est appelée <strong><em>fonction de couplage de Cantor</em></strong> et est une bijection de $\mathbb{N}^2$ dans $\mathbb{N}$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a (clairement) que $\pi(x, y) = \sum_{i=0}^{x+y} i + y$. Donc s'il existe deux couples $(x, y)$ et $(x', y')$ tels que $\pi(x, y) = \pi(x', y')$ alors :</p>
+<ul>
+<li>soit $x+y = x'+y'$ et l'égalité des $\pi$ donne $y=y'$ et donc $x=x'$</li>
+<li>soit $x+y &gt; x'+y'$ et l'égalité des $\pi$ donne $y' = \sum_{i=x'+y'+1}^{x+y} i + y$. Or $\sum_{i=x'+y'+1}^{x+y} i + y \geq x'+y'+1 + y &gt; y$ ce qui est impossible.</li>
+</ul>
+<p>La fonction de couplage de Cantor est donc une injection.</p>
+<p>Réciproquement, on a :</p>
+<ul>
+<li>$\pi(0, 0) = 0$</li>
+<li>$\pi(0, y) + 1 = \pi(y + 1, 0)$</li>
+<li>$\pi(x, y) + 1 = \pi(x - 1, y + 1)$ si $x &gt; 0$</li>
+</ul>
+<p>Tous les entiers sont donc associé à un couple $(x, y)$</p>
+</div>
+</details>     
+</div>
+<p>La bijection de la fonction de couplage :</p>
+<p><img src="couplage-cantor.png" alt="couplage Cantor"></p>
+<p>La fonction $\pi$ et son inverse sont de plus primitives récursives :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction de couplage de Cantor $\pi$, ainsi que les deux fonction ${\pi^{-1}_1}$ et ${\pi^{-1}_2}$ tels que $\pi({\pi^{-1}_1}(n), {\pi^{-1}_2}(n)) = n$ sont primitives récursives.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La fonction $\pi$ est clairement primitives récursive car on peut l'écrire  sous la forme $\pi(x, y) = \sum_{i=0}^{x+y} i + y$. Comme la somme des $n$ premiers entiers est récursive primitive :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{somme}(0)&= 0 \\
+     \text{somme}(n+1)&= \text{add}(\text{somme}(n), n + 1) \\
+\end{cases}
+\end{align}
+$$
+</div>
+<p>La fonction de couplage de Cantor l'est également :</p>
+<div>
+$$
+\pi(x, y)= \text{add}(\text{somme}(\text{add}(x, y)), y)$
+$$
+</div>
+<p>Pour les fonction inverses, commençons par remarquer que : $\text{somme}(x+y) \leq \pi(x, y) &lt; \text{somme}(x+y + 1)$. De là on peut définir la fonction $\text{somme}^{-1}(n)$ comme étant le plus grand entier tel que $\text{somme}^{-1}(n) \leq n$. Cette fonction est récursive primitive :</p>
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     \text{somme}^{-1}(0)&= 0 \\
+     \text{somme}^{-1}(n+1)&= \text{somme}^{-1}(n) + \text{eq}(n+1, \text{somme}(\text{somme}^{-1}(n) +1))\\
+\end{cases}
+\end{align}
+$$
+</div>
+<p>On a alors que $x+y = \text{somme}^{-1}(\pi(x, y))$ et donc :</p>
+<ul>
+<li>$y = \pi^{-1}_2(\pi(x, y)) = \pi(x, y) - \text{somme}(\text{somme}^{-1}(\pi(x, y)))$</li>
+<li>$x = \pi^{-1}_1(\pi(x, y)) = \text{somme}^{-1}(\pi(x, y)) - \pi^{-1}_2(\pi(x, y))$</li>
+</ul>
+</div>
+</details>     
+</div>
+<p>On peut alors utiliser notre fonction $\pi$ pour définir récursivement pour $n&gt;2$ :</p>
+<ul>
+<li>$\pi^{(2)}(x_1, x_2) = \pi(x_1, x_2)$</li>
+<li>$\pi^{(n)}(x_1, \dots, x_n) = \pi(x_1, \pi^{(n-1)}(x_2, \dots, x_n))$</li>
+</ul>
+<p>Et d'obtenir les fonctions inverses $(\pi^{(n)})^{-1}_i$ :</p>
+<ul>
+<li>$(\pi^{(n)})^{-1}_1(z) = \pi^{-1}_1(z)$</li>
+<li>$(\pi^{(n)})^{-1}_n(z) = \pi^{-1}_2 \circ \dots \circ \pi^{-1}_2(z)$ ($n$ composition)</li>
+<li>$(\pi^{(n)})^{-1}_i(z) = \pi^{-1}_1 \circ \pi^{-1}_2 \circ \dots \circ \pi^{-1}_2(z)$ ($i-1$ composition de $\pi^{-1}_2$) pour $1&lt;i &lt; n$.</li>
+</ul>
+<p>On a alors clairement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction de couplage de Cantor $\pi^{(n)}$ est une bijection de $\mathbb{N}^n$ dans $\mathbb{N}$. Cette fonction ainsi que ses inverses $\pi^{(n)}((\pi^{(n)})^{-1}_1(n), \dots, (\pi^{(n)})^{-1}_n(n)) = n$ sont primitives récursives.</p>
+</div>
+</div>
+<p>Ces fonctions nous permettent d'associer un entier (le retour d'une fonction) à une suite finie de paramètres permettant de passer toutes les variables d'un pseudo-code sous la forme d'un seul entier.</p>
+<p>Et on peut alors transformer le code :</p>
+<pre><code>(x1, ..., xn) = f(x1, ..., xn)
+g(x1, ..., xn)
+</code></pre>
+<p>en :</p>
+<pre><code>x = f(x1, ..., xn)
+g(x)
+</code></pre>
+<p>Tout en conservant la récursive primalité de $f$ et $g$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La fonction de couplage de Cantor est l'équivalent pour les entiers de ce qu'on a déjà vu pour les chaines de caractères (toute chaîne de caractères peut s'écrire en une suite de <code>0</code> et de <code>1</code>) : toute suite finie d'entiers peut être représentée par un entier.</p>
+</div>
+</div>
+<h2>Composition et Séquentialité</h2>
+<p>Reprenons le code précédent :</p>
+<pre><code>x = f(x1, ..., xn)
+g(x)
+</code></pre>
+<p>Cette séquentialité d'exécution d'u pseudo-code, $f$ s'exécute avant $g$, s'interprète comme une <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/r%C3%A9cursive-primitive/#composition" class="interne">composition</a>. En effet, lors de l'exécution de $f\circ [g](x_1, \dots, x_m)$ on commence par évaluer la fonction $g$ puis on évalue $f$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f\circ g(x)$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.</p>
+</div>
+</div>
+<p>On a alors que le code :</p>
+<pre><code>x = f(x1, ..., xn)
+g(x)
+</code></pre>
+<p>est identique au code :</p>
+<pre><code>g(f(x1, ..., xn))
+</code></pre>
+<p>On en déduit :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si un algorithme est composé de deux blocs récursifs primitifs successifs et que chaque bloc modifie $n$ variables alors la succession de ces 2 blocs est primitif récursif.</p>
+</div>
+</div>
+<h2>Fonction <code>NAND</code></h2>
+<p>On l'a vu, la seule opération indispensable pour recréer toutes les opérations d'un pseudo-code est la fonction <code class="language-">NAND</code>. Cela tombe bien, elle est primitive récursive :</p>
+<p>$$<br>
+\text{NAND}(x, y) = \text{sub}(1, \text{eq}(x, y))<br>
+$$</p>
+<h2>Bloc conditionnels</h2>
+<p>Les blocs conditionnels sont très simplement récursifs primitifs :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si $f$, $g$ et $h$ sont trois fonctions primitives récursives de $\mathbb{N}^p \rightarrow \mathbb{N}$ alors la fonction &quot;$\text{si } (f(x) = 0) \text{ alors } g(x) \text{ sinon } h(x)$&quot; l'est aussi.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est la fonction :</p>
+<div>
+$$
+\text{eq}_0(f(x)) \times g(x) + \text{eq}_0(\text{eq}_0(f(x))) \times h(x)
+$$
+</div>
+</div>
+</details>     
+</div>
+<h2>Récursives Primitives  et fonction <code>pour chaque</code></h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On doit ce résultat à <a href="https://people.csail.mit.edu/meyer/meyer-ritchie.pdf">Meyer et Ritchie en 1966</a> dans le cadre <a href="https://en.wikipedia.org/wiki/LOOP_(programming_language)">des langages loop</a>. Nous en donnons ici une preuve pour le pseudo-code.</p>
+</div>
+</div>
+<p>Nous allons montrer dans cette partie que toutes les fonctions récursives primitives sont exactement les fonctions calculables uniquement en utilisant des blocs de répétition <code>pour chaque</code>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les fonctions récursives primitives peuvent s'écrire en pseudo-code uniquement en utilisant des blocs de répétition <code>pour chaque</code>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Se fait selon une récurrence structurelle : on vérifie que les éléments de bases vérifient la propriété et que les opérations de transformation la conserve. Ceci est clair :</p>
+<ol>
+<li>les fonctions primitives peuvent être écrites sans boucle,</li>
+<li>la composition de fonctions revient à exécuter les fonctions les unes apres les autres,</li>
+<li>l'algorithme permettant d'écrire la composition et la récursion de fonctions est écrit avec une boucle <code>pour chaque</code>.</li>
+</ol>
+</div>
+</details>     
+</div>
+<p>La réciproque est tout aussi simple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout pseudo-code qui s'écrit uniquement en utilisant des blocs de répétition <code>pour chaque</code> est une fonction récursive primitive</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a vu que tout pseudo-code est une fonction de $\mathbb{N}$ dans $\mathbb{N}$. C'est donc bien une fonction.</p>
+<p>Comme l'opération <code class="language-">NAND</code> est récursive primitive, que la composition de fonctions est équivalent à la séquentialité de blocs de pseudo-code, et que les blocs conditionnels sont des fonction récursives primitives, on a déjà que tout pseudo-code écrit sans bloc de répétition est récursif primitif.</p>
+<p>On peut alors, par récurrence, supposer que tout pseudo-code écrit avec moins de $k$ blocs de répétition <code>pour chaque</code> est une fonction récursive primitive et considérer un pseudo-code écrit avec $k$ blocs de répétition <code>pour chaque</code>.</p>
+<p>De part la séquentialité des blocs, on peut se concentrer sur le pseudo-code commençant au premier bloc <code>pour chaque</code> des $k+1$ imbrications.</p>
+<p>Par hypothèse de récurrence ce pseudo-code s'écrit :</p>
+<pre><code>pour chaque x de K:
+  y = f(x, y)
+  
+</code></pre>
+<p>Avec $f$ une fonction récursive primitive et $y$ un entier représentant l'ensemble des variables locales que modifie $f$ via une fonction de couplage. Ce code va s'écrire de façon identique en :</p>
+<pre><code>pour chaque i de 0 à |K|:
+  x = K[i]
+  y = f(x, y)
+</code></pre>
+<p>Si $f$ est récursive primitive, alors le code précédent est équivalent à :</p>
+<pre><code>pour chaque i de 0 à |K|:
+  y = f'(x, y)
+</code></pre>
+<p>Avec $f'$ récursive primitive. Comme le code ci-dessus est exactement une règle de récursion, on en déduit que tout le pseudo-code est récursif primitif.</p>
+</div>
+</details>     
+</div>
+<p>La proposition précédente montre deux choses :</p>
+<ol>
+<li>que la boucle <code>pour chaque</code> permet de créer un grand nombre de fonctions mathématiques,</li>
+<li>certaines fonctions calculables, comme la fonction d'Ackermann, ne peuvent s'écrire uniquement avec des boucles <code>pour chaque</code></li>
+<li>que toutes les fonctions récursives primitives sont définies sur tout leur domaines et sont des fonctions qui s'arrêtent tout le temps</li>
+<li>que toutes les fonctions récursives primitives peuvent s'écrire sans récursion.</li>
+</ol>
+<h2>Récursives et fonction <code>tant que</code></h2>
+<p>Pour pouvoir capter le pseudo-code que l'on écrit avec des boucles <code>tant que</code> il faut ajouter une opérations sur les fonctions récursives primitives.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Les fonctions récursives</em></strong> sont toutes les fonctions que l'on peut obtenir en combinant les fonctions de base (zéro, projections et successeur) en utilisant les règles de composition, de récursion et de <strong><em>minimisation</em></strong>.</p>
+</div>
+</div>
+<div id="minimisation"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $f: \mathbb{N}^{n+1} \to \mathbb{N}$. La <strong><em>minimisation</em></strong> de $f$ est notée $\mu^n(f)$ et vaut :</p>
+<div>
+$$
+\begin{align*}
+    \mathbb{N}^n &\to \mathbb{N}\\
+    (x_1, \dots, x_n)  &\mapsto \min_{x}\{x \vert f(x, x_1, \dots, x_n) = 0\}
+\end{align*}
+$$
+</div>
+</div>
+</div>
+<p>Il est clair que s'il existe un algorithme pour créer $f$, l'algorithme suivant fonctionne pour créer la minimisation :</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : minimisation
+Entrées :
+    x[] : un tableau de n entiers
+    f : une fonction à n+1 paramètres
+Programme :
+    y = 0
+    tant que f(y, x[1], ..., x[n]) ≠ 0:
+        y = y +1
+    rendre y
+</code></pre>
+<p>On voit que cet algorithme ne rend une réponse que s'il existe $x$ tel que $f(x, x_1, \dots, x_n) = 0$. Ceci est normal puisque la fonction de minimisation n'est possible que pour ces valeurs de $(x_1, \dots, x_n)$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Contrairement aux fonction récursives primitives, les fonctions récursives ne sont plus obligatoirement définies sur tout $\mathbb{N}^n$.</p>
+</div>
+</div>
+<p>Le même raisonnement que pour les blocs <code>pour chaque</code> nous permet d'écrire :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Tout pseudo-code qui s'écrit en utilisant des blocs de répétition <code>tant que</code> est une fonction récursive.</p>
+</div>
+</div>
+<p>Ce qui entraîne :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pseudo-code et fonctions récursives sont deux notions équivalentes.</p>
+</div>
+</div>
+<h2>Indécidabilité</h2>
+<p>Savoir si une fonction récursive est également primitive est un problème indécidable. Il est en effet équivalent au problème de l'arrêt.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
