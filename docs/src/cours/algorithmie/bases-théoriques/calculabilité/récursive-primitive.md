@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: Fonctions primitives récursives
+title: Fonctions récursives primitives 
 
 eleventyComputed:
   eleventyNavigation:
@@ -74,6 +74,7 @@ Les fonctions primitives récursives sont alors toutes les fonctions que l'on pe
 
 La règle de composition est classique :
 
+<div id="composition"></div>
 {% note "**Définition**" %}
 Soient :
 
@@ -109,18 +110,7 @@ Programme :
     rendre f(y[])
 ```
 
-Remarquez que :
-
-1. l'ordre est important. On commence par évaluer les fonctions $g[i]$ puis on évalue $f$
-2. la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$.
-
-{% note "**À retenir**" %}
-La composition permet de simuler la séquentialité d'un algorithme puisque pour calculer $f(g(x))$ il faut d'abord calculer $y=g(x)$ puis calculer $f(y)$.
-{% endnote %}
-
-La séquentialité du calcul des fonctions permet déjà de créer des choses nouvelles, en particulier les fonctions constantes :
-
-Par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.
+Remarquez que la composition dépend des domaines de validité des fonctions $f$ et $g[i]$, on passe donc un tableau en paramètre de la fonction pour que l'appel de la fonction soit identique quelque soit $n$ et $m$. La composition permet déjà de créer des choses nouvelles, en particulier les fonctions constantes, par exemple la fonction : $\mathbb{1}^n = \text{succ} \circ [\mathbb{0}^n]$ est la fonction rendant tout le temps 1.
 
 {% exercice %}
 Montrez que la fonction $\mathbb{k}^n(x_1, \dots, x_n) = k$ existe pour tout $n\geq 0$ et tout $k \geq 0$.
@@ -137,7 +127,7 @@ On le montre par récurrence sur $k$.
 Ou encore l'ajout d'une constante :
 
 {% exercice %}
-Montrez que la fonction $f_k(x) = x + k$ est primitive récursive, pour tout entier $k\leq 0$.
+Montrez que la fonction $f_k(x) = x + k$ est primitive récursive, pour tout entier $k\geq 0$.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -192,20 +182,33 @@ Programme :
 On a la aussi supposé que les fonctions prenaient des tableaux en paramètre pour ne pas se préoccuper du nombre de paramètres lors de l'appel.
 {% enddetails %}
 
-Le simple ajout de cette règle permet de créer la fonction prédécesseur :
+Le simple ajout de cette règle permet de créer l'addition :
 
 <div>
 $$
 \begin{align}
     \begin{cases}
-     f&= \mathbb{0}^0 \\
-     g(x, y) &= \pi^2_1 \\
+     \text{add}(0, y)&= y \\
+     \text{add}(x+1, y)&= \text{succ}(\text{add}(x, y)) \\
 \end{cases}
 \end{align}
 $$
 </div>
 
-Que l'on écrira de façon plus simple :
+On a utilisé un petit raccourci d'écriture qui la rend plus lisible. La fonction $g$ de la définition de la récursion explicite juste le fait que la valeur en $x+1$ dépend de la valeur en $x$, de $x$ ainsi que des autres paramètres :
+
+<div>
+$$
+\begin{align}
+    \begin{cases}
+     f&= \pi^2_2 \\
+     g(x, y) &= \text{succ} \circ [\pi^3_2] \\
+\end{cases}
+\end{align}
+$$
+</div>
+
+L'ajout de cet opérateur permet d'ajouter tout un tas de fonctions. La fonction prédécesseur par exemple:
 
 <div>
 $$
@@ -218,21 +221,15 @@ $$
 $$
 </div>
 
-De même, l'addition devient :
-
-<div>
-$$
-\begin{align}
-    \begin{cases}
-     \text{add}(0, y)&= \pi^2_2 \\
-     \text{add}(x+1, y)&= \text{succ}(\text{add}(x, y)) \\
-\end{cases}
-\end{align}
-$$
-</div>
+Ou encore la soustraction et la multiplication :
 
 {% exercice %}
-Écrivez l'addition de façon formelle, comme une récursion.
+Écrivez la soustraction :
+
+$$
+\text{sub}(x, y) = x-y \text{ si } x> y \text{ et } 0 \text{ sinon}
+$$
+
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -240,17 +237,14 @@ $$
 $$
 \begin{align}
     \begin{cases}
-     f(y)&= \pi^1_1 \\
-     g(x, v, y) &= \text{succ} \circ [\pi^3_2]\\
+     \text{sub}(x, 0)&= x \\
+     \text{sub}(x, y + 1)&= \text{pred}(\text{sub}(x, y)) \\
 \end{cases}
 \end{align}
 $$
 </div>
 
 {% enddetails %}
-
-Allez, un dernier pour la route :
-
 {% exercice %}
 Montrez que la fonction $\text{mul}(x, y) = x \times y$ est primitive récursive.
 {% endexercice %}
@@ -280,7 +274,7 @@ Ca n'a pas l'air comme ça, mais les fonctions récursives primitives permettent
 {% note "**À retenir**" %}
 Ce type de construction où l'on combine simplement des éléments basiques pour produire des choses complexes est l'essence même de l'informatique et de l'algorithmie.
 
-Nous n'allons cesser de le montrer dans ce cours.
+**Nous n'allons cesser de le montrer dans ce cours.**
 {% endnote %}
 
 On peut aussi faire des fonctions plus logiques comme le maximum ou le minimum, ou encore la valeur absolue... Bref, il y a de quoi s'amuser. Par exemple la fonction $\text{eq}_0(x) = 1 \text{ si } x = 0 \text{ et } \text{eq}_0(x) = 0 \text{ sinon}$ est primitive récursive puisque :
@@ -296,10 +290,10 @@ $$
 $$
 </div>
 
-Ce qui va permet de montrer que les instruction conditionnelles le sont aussi :
+Ce qui va permet de montrer que l'égalité  l'est aussi :
 
 {% exercice %}
-Montrez que si $f$, $g$ et $h$ sont trois fonctions primitives récursives de $\mathbb{N}^p \rightarrow \mathbb{N}$ alors la fonction "$\text{si } (f(x) = 0) \text{ alors } g(x) \text{ sinon } h(x)$" l'est aussi.
+Montrez que la fonction égalité : $\text{eq}(x, y) = 1 \text{ si } x = y \text{ et } 0 \text{ sinon}$ est récursive primitive.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -307,7 +301,7 @@ C'est la fonction :
 
 <div>
 $$
-\text{eq}_0(f(x)) \times g(x) + \text{eq}_0(\text{eq}_0(f(x))) \times h(x)
+\text{eq}_0(\text{sub}(x,y)) + \text{eq}_0(\text{sub}(y, x)) - 1
 $$
 </div>
 
@@ -323,6 +317,21 @@ Si ce genre d'exemples vous intéresse, allez jeter un œil au lien suivant :
 {% endlien %}
 
 On ne peut qu'être ébahi par le fait qu'il ne faut vraiment rien (trois fonctions ridiculement simples) et deux fonctions (naturelles) de composition pour créer toutes ces fonctions très différentes les unes des autres.
+
+{% exercice %}
+Montrez que si $f$, $g$ et $h$ sont trois fonctions primitives récursives de $\mathbb{N}^p \rightarrow \mathbb{N}$ alors la fonction "$\text{si } (f(x) = 0) \text{ alors } g(x) \text{ sinon } h(x)$" l'est aussi.
+{% endexercice %}
+{% details "corrigé" %}
+
+C'est la fonction :
+
+<div>
+$$
+\text{eq}_0(f(x)) \times g(x) + \text{eq}_0(\text{eq}_0(f(x))) \times h(x)
+$$
+</div>
+
+{% enddetails %}
 
 {% note "**À retenir**" %}
 La quasi totalité des fonctions mathématiques usuelles sont primitives récursives, donc calculables uniquement en utilisant des boucles de type _"pour chaque"_.

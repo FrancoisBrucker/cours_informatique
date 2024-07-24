@@ -121,5 +121,5 @@ Le tri rapide est, malgré sa simplicité apparente, le plus difficile à implé
 Projet de développement pour voir les tris se trier.
 
 {% aller %}
-[Implémentation des algorithmes](./implémentation-tris){.interne}
+[Projet implémentation des algorithmes de tri](./projet-tris){.interne}
 {% endaller %}

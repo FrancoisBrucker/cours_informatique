@@ -164,6 +164,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
   - mais surement pas NP-complet <https://cstheory.stackexchange.com/a/160> car dans np/co-np
   - <https://www.youtube.com/watch?v=vfjN7MmSB6g&list=PLkvhuSoxwjI_UudECvFYArvG0cLbFlzSr>
 - problèmes dont on ne sait pas s'il sont NPC. Ils sont dures partout et pas seulement au max. Exemple du protocole avec sac a dos qui ne fonctionne pas car les instances dures sont rares (<https://www-users.cse.umn.edu/~odlyzko/doc/arch/knapsack.survey.pdf>) Idem pour 3-coloriable si K4 c'est foutu c'est non.
+- LLL : <https://www.youtube.com/watch?v=U8MI2a_BHHo>
 
 ## C et structures de données
 

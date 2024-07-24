@@ -253,6 +253,8 @@ Comme l'ensemble des fonctions récursives primitives est l'ensemble minimum des
 1. la propriété est vérifiée pour les fonctions primitives de base
 2. la propriété est conservée par composition et récursion
 
+Ce type de récurrence est nommée [récurrence structurelle](https://fr.wikipedia.org/wiki/Induction_structurelle)
+
 La première partie de la preuve est claire puisque les fonctions zéros, projections et successeurs sont toutes plus petites que $\text{Ack}(0, \sum_{1\leq i \leq n}x_i) = \sum_{1\leq i \leq n}x_i + 1$
 
 Pour la seconde partie, commençons par montrer que la propriété est stable par composition.

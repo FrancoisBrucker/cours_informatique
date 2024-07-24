@@ -14,9 +14,9 @@ eleventyComputed:
 Une classe de langages particulier, décidables, sont très utiles, c'est ceux que l'on peut créer avec un **_automate (fini)_** :
 
 {% note "**Définition**" %}
-Un **_automate_** est un décideur admettant comme entrée les mots d'un alphabet $\mathcalcal{A}$.
+Un **_automate_** est un décideur admettant comme entrée les mots d'un alphabet $\mathcal{A}$.
 
-Il est défini grace à une **_fonction de transition_** $f: \mathcalcal{A} \times Q \rightarrow Q$, où $Q$ est un ensemble fini d'**_états_** et deux paramètres :
+Il est défini grace à une **_fonction de transition_** $f: \mathcal{A} \times Q \rightarrow Q$, où $Q$ est un ensemble fini d'**_états_** et deux paramètres :
 
 - $q_0 \in Q$ l'**_état initial_**
 - $F \subseteq Q$ les **_états d'acceptation_**
@@ -36,14 +36,14 @@ def automate(m):
 
 {% endnote %}
 
-Un automate est une version simplifiée d'un algorithme, il n'y a pas de possibilité de stocker des variables, et sa forme est déterminée exclusivement par sa fonction de transition. On a alors coutume de représenter les automates par un [diagramme](https://fr.wikipedia.org/wiki/Automate_fini_d%C3%A9terministe#Repr%C3%A9sentation_graphique) :
+Un automate est une version simplifiée d'une machine de Turing (donc d'un algorithme), il n'y a pas de possibilité de stocker des variables, et sa forme est déterminée exclusivement par sa fonction de transition. On a alors coutume de représenter les automates par un [diagramme](https://fr.wikipedia.org/wiki/Automate_fini_d%C3%A9terministe#Repr%C3%A9sentation_graphique) :
 
 > tbd exemple. avec départ et arrivées.
 
 Les langages reconnaissables par un automates sont strictement inclus dans les langages décidables :
 
 {% note "**Définition**" %}
-Un langage est dit **_rationnel_** s'il existe un automate pour le reconnaitre.
+Un langage est dit **_rationnel_** s'il existe un automate pour le reconnaître.
 {% endnote %}
 
 De nombreux langages sont rationnels :
