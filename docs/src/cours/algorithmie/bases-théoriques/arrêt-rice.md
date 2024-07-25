@@ -140,7 +140,7 @@ La conclusion de cette partie est pratique :
 Lorsque vous créez des algorithmes, il faut **toujours** démontrer qu'ils s'arrêtent. Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme s'arrête.
 {% endnote %}
 
-## <span id="théorème-rice"></span>Que calcule un algorithme
+## Que calcule un algorithme
 
 {% lien %}
 Cette partie est consacrée au [Théorème de Rice](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice)
@@ -162,6 +162,7 @@ Un programme $A$ ***vérifie la propriété $P$*** s'il existe un programme $A' 
 
 La notion de propriété permet de rendre compte du sens des programmes, de ce qu'ils font. La encore on va donner un résultat négatif. Il n'existe pas de propriété commune à tous les programmes respectant une propriété, et ce, quelque soit la propriété :
 
+<div id="théorème-rice"></div>
 {% note "**Théorème (Rice)**" %}
 Quelque soit la propriété $P$, l'algorithme suivant n'existe pas :
 

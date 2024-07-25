@@ -25,11 +25,11 @@ On possède $n$ poudres différentes (ou liquide, ou tout autre produit pouvant 
 - sa quantité disponible en kilo : $k_i$
 - son prix total : $p_i$
 
-On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$  à mettre dans le sac telle que :
+On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :
 
 - on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
-- le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
-{% endnote %}
+- le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
+  {% endnote %}
 
 Par exemple, on a un sac à dos de 20kg et six poudres de paramètres :
 
@@ -47,7 +47,7 @@ Le sac peut contenir soit :
 - 1kg de la poudre 1 à 5 et le reste (15kg) en poudre 6, pour un profit de 192€,
 - ...
 
-### Algorithme glouton
+### Résolution par un algorithme glouton
 
 Un algorithme _"glouton"_ ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des produit jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre et comme on veut maximiser le profit, on choisi de prendre les poudres par prix au kilo décroissant.
 
@@ -75,7 +75,7 @@ def glouton(produits, masse_totale):
 ```
 
 - entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix"`{.language-} et `"kg"`{.language-}
-- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos. 
+- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.
 
 {% info %}
 On trie la liste dans le code en utilisant un liste tampon.
@@ -124,7 +124,7 @@ EXEMPLE = [
 Notez que l'on a ajouté une clé `"nom"`{.language-} pour retrouver l'objet dans le sac à dos.
 
 {% exercice %}
-Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton. 
+Reprenez l'exemple et donnez la solution donnée par l'algorithme glouton.
 
 On a un sac à dos de $K=20$ et 6 produits :
 
@@ -153,7 +153,7 @@ Cet algorithme glouton est même optimal !
 L'algorithme glouton précédent rend un sac à dos fractionnel optimal.
 {% endnote %}
 {% details "Preuve", "open" %}
-On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos .
+On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos.
 
 Pour notre solution, on note $(f_1, \dots, f_n)$ les proportions choisis dans l'ordre de choix de l'algorithme glouton.
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i <n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(f_1, \dots, f_{i-1}, f'_i, \dots, f'_n)$.
@@ -165,7 +165,7 @@ Jusqu'à l'étape $i-1$ tous les choix sont identiques donc une fois placés les
 Donc :
 
 - soit $f'_j = 0$ pour tout $j > i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,
-- soit il existe $f'_j >0$ pour un $j>i$. On peut alors diminuer  $f_j'$ d'un $\epsilon > 0$ que l'on peut ajouter à  $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.
+- soit il existe $f'_j >0$ pour un $j>i$. On peut alors diminuer $f_j'$ d'un $\epsilon > 0$ que l'on peut ajouter à $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.
 
 Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.
 {% enddetails %}
@@ -187,8 +187,8 @@ On possède $n$ produits différents, décris par :
 On dispose d'un sac pouvant contenir $K$ kilos et on cherche les produits à mettre dans le sac, on note $f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon, de façon à ce que :
 
 - les produits choisis tiennent dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$
-- le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
-{% endnote %}
+- le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum
+  {% endnote %}
 
 Ce problème se décline de plein de façons pratique :
 
@@ -209,7 +209,6 @@ La solution optimale du problème du sac à dos est une solution admissible au p
 
 ## Algorithme glouton
 
-
 Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :
 
 ```python
@@ -229,7 +228,7 @@ def glouton(produits, masse_totale):
 ```
 
 - entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés `"prix"`{.language-} et `"kg"`{.language-}
-- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos. 
+- sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.
 
 {% info %}
 La structure de l'algorithme est identique à celle du sac à dos fractionnel.
@@ -244,7 +243,7 @@ Reprenons l'exemple et modifions le pour que l'on ne puisse pas prendre une frac
 - poudre 5 : 6kg et un prix de 18€ (3€ le kilo)
 - poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime ce produit puisqu'il ne rentre pas dans le sac.
 
-En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.
+En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de 173€.
 
 On peut même montrer que l'algorithme glouton ne possède pas de garantie :
 
@@ -263,7 +262,6 @@ Le glouton privilégiera toujours le produit 1 alors que c'est le produit 2 qu'i
 
 On peu alors vouloir modifier l'algorithme glouton pour considérer le prix total et pas celui au kilo (on trouve alors l'optimum pour l'exemple) mais ce n'est pas non plus super :
 
-
 {% exercice %}
 Montrer que le rapport entre la solution optimale et la solution de l'algorithme glouton modifié peut-être aussi grand que l'on veut.
 {% endexercice %}
@@ -281,7 +279,7 @@ Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu
 
 ## Algorithme à performance garantie
 
-Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, quiest la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
+Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :
 
 - $\sum_{i < i^\star} k_i \leq K$
 - $\sum_{i < i^\star} k_i + k_{i^\star} > K$
@@ -304,7 +302,8 @@ On sait que la solution optimale (notée $\text{OPT}$) est :
 - plus grande que la solution trouvée par notre algorithme (notée $\text{SOL}$)
 - plus petite que $\sum_{i < i^\star} p_i + p_{i^\star}$
 
-Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$, on a : 
+Comme $\sum_{i < i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i < i^\star} p_i, \sum_{i < i^\star} p_i)$, on a :
+
 $$
 \frac{1}{2}\cdot \text{OPT} \leq \text{SOL} \leq \text{OPT}
 $$
@@ -315,17 +314,17 @@ $$
 
 Pour trouver la solution maximale à un problème d'optimisation, on peut toujours énumérer toutes les solutions. Dans le cas d'un sac à dos cela revient à énumérer tous les sous ensembles de l'ensemble des produits et de prendre celui qui maximise le sac à dos. Pour aider à l'énumération, formalisons le problème du sac à dos sous la forme d'un [problème d'optimisation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) :
 
-
 {% note "**Problème du sac à dos sous la forme d'un problème de programmation linéaire**" %}
+
 - **_Les données_** sont :
-    - les prix $p_i$ ($1\leq i \leq n$)
-    - les poids des produits $k_i$ ($1\leq i \leq n$)
-    - la contenance en kilo $K$ du sac à dos
+  - les prix $p_i$ ($1\leq i \leq n$)
+  - les poids des produits $k_i$ ($1\leq i \leq n$)
+  - la contenance en kilo $K$ du sac à dos
 - **_les variables_** du problème sont constituées de $n$ variables $x_i$ ($1\leq i \leq n$)
 - le but est de **_maximiser la fonction objectif_** : $\sum_{1\leq i \leq n}x_i\cdot p_i$
 - sous **_les contraintes_** :
-    - $x_i \in \\{0, 1\\}$ pour tout $1\leq i \leq n$
-    - $\sum_{1\leq i \leq n}x_i\cdot k_i \leq K$
+  - $x_i \in \\{0, 1\\}$ pour tout $1\leq i \leq n$
+  - $\sum_{1\leq i \leq n}x_i\cdot k_i \leq K$
 
 {% endnote %}
 
@@ -339,7 +338,6 @@ Pour trouver la solution maximale à un problème d'optimisation, on peut toujou
 Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre [l'algorithme successeur](../../projet-classiques/compteur-binaire/#successeur){.interne} qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.
 
 L'algorithme peut alors être, avec des produits organisés comme l'`EXEMPLE`{.language-} :
-
 
 ```python
 def énumération(produits, K):
@@ -365,8 +363,8 @@ def énumération(produits, K):
 ```
 
 {% attention %}
-Si vous faites `affectation_max = affectation`{.language-} plutôt que `affectation_max = list(affectation)`{.language-} vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste `affectation`{.language-} ce qui est problématique puisque `successeur`{.language-} la modifie. 
-{% endattention %} 
+Si vous faites `affectation_max = affectation`{.language-} plutôt que `affectation_max = list(affectation)`{.language-} vous ne stockerez pas l'affectation maximale, vous donnerez juste un nouveau nom à la liste `affectation`{.language-} ce qui est problématique puisque `successeur`{.language-} la modifie.
+{% endattention %}
 {% info %}
 On a utilisé [la fonction `zip`{.language-} de python](https://docs.python.org/fr/3/library/functions.html#zip) qu'il est très utile de connaitre.
 {% endinfo %}
@@ -380,7 +378,7 @@ La complexité de l'algorithme est la somme de :
 On obtient une complexité totale de $\mathcal{O}(n \cdot 2^n)$. La complexité est exponentielle, mais c'est du au fait qu'il y a beaucoup de cas à voir. L'analyse d'une affectation particulière est simple.
 
 {% exercice %}
-Reprenez l'exemple et donnez la solution optimale par recherche exhaustive. 
+Reprenez l'exemple et donnez la solution optimale par recherche exhaustive.
 
 On a un sac à dos de $K=20$ et 5 produits :
 
@@ -396,8 +394,8 @@ Il y a $2^5 = 32$ possibilités et les seules possibilités admissibles maximale
 
 - poudres 1, 2, 4 de valeur 171€
 - poudres 1, 3, 4 de valeur 173€
-- poudres 2, 3, 4, 5 de valeur 86€ 
-{% enddetails %}
+- poudres 2, 3, 4, 5 de valeur 86€
+  {% enddetails %}
 
 ### Branch and bound
 
@@ -420,7 +418,7 @@ Si l'on reprend l'exemple en supprimant la poudre 6 qui ne rentre pas en entier 
 
 - 15kg de poudre 1 (l'entièreté)
 - 2kg de poudre 2 (l'entièreté)
-- 3/4 de la poudre 3 
+- 3/4 de la poudre 3
 
 Pour un profit de 174€ qui est bien strictement plus grand que le profit max du sac à dos (qui vaut 173€). Remarquez que l'on ne **peut pas déduire la solution entière à partir de la solution fractionnelle** : elle contient la poudre 2 qui n'est pas dans la solution optimale.
 
@@ -439,8 +437,8 @@ Soient $p_i$ ($1\leq i \leq n$), $k_i$ ($1\leq i \leq n$) et $K$ les données d'
 
 Si l'on fixe $x_1$ à :
 
-- $x_1= 0$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K$ 
-- $x_1= 1$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K-p_1$ 
+- $x_1= 0$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K$
+- $x_1= 1$, alors cela revient à résoudre un sac à dos à $n-1$ variables de données $p_i$ ($2\leq i \leq n$), $k_i$ ($2\leq i \leq n$) et une contenance de $K-p_1$
 
 {% endnote %}
 {% info %}
@@ -468,12 +466,12 @@ L'algorithme du Branch and bound est alors très simple : il va énumérer toute
 
 - initialisation : on commence avec un sac à dos vide et la solution ouverte ne contenant que des -1.
 - tant que : il existe une solution ouverte non explorée, on calcule la valeur de son sac à dos fractionnel optimal.
-    - Si cette valeur est inférieure à celle du sac à dos courant, il est inutile de l'explorer car on ne pourra trouver que des solutions moins bonnes.
-    - Sinon :
-        - si le sac à dos fractionnel optimal est un sac à dos on compare sa valeur au sac à dos stocké et on le met à jour si cette nouvelle solution est meilleure
-        - sinon, il faut explorer de nouveaux sous-problème en fixant la valeur fractionnelle de la solution optimale à 0 et à 1. On ajoute ces deux sous problèmes aux solutions ouvertes à explorer.
+  - Si cette valeur est inférieure à celle du sac à dos courant, il est inutile de l'explorer car on ne pourra trouver que des solutions moins bonnes.
+  - Sinon :
+    - si le sac à dos fractionnel optimal est un sac à dos on compare sa valeur au sac à dos stocké et on le met à jour si cette nouvelle solution est meilleure
+    - sinon, il faut explorer de nouveaux sous-problème en fixant la valeur fractionnelle de la solution optimale à 0 et à 1. On ajoute ces deux sous problèmes aux solutions ouvertes à explorer.
 
-Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 produits :
+Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple. On a un sac à dos de $K=20$ et 5 produits :
 
 - poudre 1 : 15kg et un prix de 135€ (9€ le kilo)
 - poudre 2 : 2kg et un prix de 30€ (15€ le kilo)
@@ -494,10 +492,9 @@ La solution à explorer est $[-1, -1, -1, -1, -1, 0]$ de solution fractionnelle 
 
 ![branch and bound 1](bb-3.png)
 
-L'analyse de la solution ouverte $[-1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[0.9333333333333333, 1, 1, 0, 0, 0]$ et de valeur 188, ce qui fait que l'on continue l'exploration : 
+L'analyse de la solution ouverte $[-1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[0.9333333333333333, 1, 1, 0, 0, 0]$ et de valeur 188, ce qui fait que l'on continue l'exploration :
 
 ![branch and bound 1](bb-4.png)
-
 
 L'analyse de la solution ouverte $[1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[1, 0.5, 1, 0, 0, 0]$ et de valeur 182, ce qui fait que l'on continue encore :
 
@@ -505,13 +502,11 @@ L'analyse de la solution ouverte $[1, -1, 1, -1, -1, 0]$ donne une solution frac
 
 Notez que la solution ouverte $[1, 1, 1, -1, -1, 0]$ de donne pas de sac à dos viable, elle est donc directement éliminée.
 
-Lors de l'analyse de la solution ouverte  $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :
-
+Lors de l'analyse de la solution ouverte $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :
 
 ![branch and bound 1](bb-6.png)
 
 L'analyse de la solution ouverte $[0, -1, 1, -1, -1, 0]$ donne une solution optimale $[0, 1, 1, 1, 1, 0]$ de valeur 86 ce qui est moins bon que notre sac à dos stocké : inutile d'explorer. On a :
-
 
 ![branch and bound 1](bb-7.png)
 
@@ -525,8 +520,8 @@ Finissez l'exploration et donnez l'arbre final.
 Avec :
 
 - $[-1, -1, 0, -1, -1, 0]$ de sac à dos fractionnel $[1, 1, 0, 1, 0.33, 0]$ de valeur 177.0 : on continue d'explorer
-- $[-1, -1, 0, -1, 1, 0]$ de sac à dos fractionnel  $[0.8, 1, 0, 0, 1, 0]$ de valeur 156.0, donc inutile de continuer l'exploration de cette solution ouverte
-- $[-1, -1, 0, -1, 0, 0]$ de sac à dos fractionnel  $[1, 1, 0, 1, 0, 0]$ 171, donc inutile de continuer l'exploration de cette solution ouverte
+- $[-1, -1, 0, -1, 1, 0]$ de sac à dos fractionnel $[0.8, 1, 0, 0, 1, 0]$ de valeur 156.0, donc inutile de continuer l'exploration de cette solution ouverte
+- $[-1, -1, 0, -1, 0, 0]$ de sac à dos fractionnel $[1, 1, 0, 1, 0, 0]$ 171, donc inutile de continuer l'exploration de cette solution ouverte
 
 {% enddetails  %}
 
@@ -534,13 +529,12 @@ Remarquer que cette algorithme est bien plus efficace en pratique que l'énumér
 
 ### Algorithme
 
-On suppose que l'on possède l'algorithme `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que `borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)`{.language-} vaudrait  `[0.933333, 1, 1, 0, 0, 0]`{.language-}
+On suppose que l'on possède l'algorithme `borne_supérieure(ouverte, produits, masse_totale)`{.language-} qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que `borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)`{.language-} vaudrait `[0.933333, 1, 1, 0, 0, 0]`{.language-}
 
 Il nous faut aussi deux fonctions utilitaires :
 
-- `première_valeur_fractionnelle(sac_à_dos_fractionnel)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : `première_valeur_fractionnelle([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 et `première_valeur_fractionnelle([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-} 
-- `profit(sac_à_dos_fractionnel, produits)`{.language-} qui rend le profit associé au sac à dos fractionnel passé en entrée 
-
+- `première_valeur_fractionnelle(sac_à_dos_fractionnel)`{.language-} qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou `None`{.language-} si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : `première_valeur_fractionnelle([1, 0.3, 1, 1, 0])`{.language-} aurait rendu 1 et `première_valeur_fractionnelle([1, 0, 1, 1, 0])`{.language-} aurait rendu `None`{.language-}
+- `profit(sac_à_dos_fractionnel, produits)`{.language-} qui rend le profit associé au sac à dos fractionnel passé en entrée
 
 ```python
 def branch_and_bound(produits, masse_totale):
@@ -559,7 +553,7 @@ def branch_and_bound(produits, masse_totale):
         solution_ouverte = solutions_ouvertes_possibles.pop()
 
         sac_à_dos_fractionnel = borne_supérieure(solution_ouverte, produits, masse_totale)
-        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits) 
+        profit_sac_à_dos_fractionnel = profit(sac_à_dos_fractionnel, produits)
 
         if profit_sac_à_dos_fractionnel > profit_sac_à_dos:
             i = première_valeur_fractionnelle(sac_à_dos_fractionnel)
@@ -575,12 +569,12 @@ def branch_and_bound(produits, masse_totale):
     return sac_à_dos
 ```
 
-Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
+Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.
 
 Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.
 
 {% note "**Conclusion**" %}
-L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et esrt en pratique extrêmement efficace.
+L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et est en pratique extrêmement efficace.
 {% endnote %}
 
 ## Solution par programmation dynamique
@@ -618,22 +612,20 @@ On a un sac à dos de $K=20$ et 5 produits :
 {% details "corrigé" %}
 Il faut créer une matrice à 5 lignes et 21 colonnes :
 
- |0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20
--|-|-|-|-|-|-|-|-|-|-|--|--|--|--|--|--|--|--|--|--|--
-**1**|0|0 | 0  | 0  | 0  | 0  | 0  | 0  |  0 |  0 | 0  | 0  | 0  | 0  | 0  | 135 | 135 | 135 | 135 | 135 | 135
-**2**|0|0 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 135 | 135 | 165 | 165 | 165 | 165
-**3**|0|0 | 30 | 30 | 32 | 32 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 135 | 135 | 165 | 165 | 167 | 167
-**4**|0|6 | 30 | 36 | 36 | 38 | 62 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 135 | 141 | 165 | 171 | 171 | 173
-**5**|0|6 | 30 | 36 | 36 | 38 | 62 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 135 | 141 | 165 | 171 | 171 | 173
+| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16  | 17  | 18  | 19  | 20  |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 135 | 135 | 135 | 135 | 135 | 135 |
+| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 135 | 135 | 165 | 165 | 165 | 165 |
+| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135 | 135 | 165 | 165 | 167 | 167 |
+| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
+| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135 | 141 | 165 | 171 | 171 | 173 |
 
-
-Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3.  Il vaut soit : 
+Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3. Il vaut soit :
 
 - le maximum du sac $M[2][16]$, c'est à dire le sac maximum de masse 16 qui ne contient pas le produit 3
 - $M[2][16-2] + 30$ c'est à dire le sac à dos maximum qui contient le produit 3 et pour lequel il reste 16-2 place pour range les produits 1 et 2.
 
 {% enddetails %}
-
 
 Une fois la matrice complete, de la même manière que pour [l'alignement de séquences](../../design-algorithmes/programmation-dynamique/alignement-séquences/étude/){.interne}, on remonte la matrice pour trouver le sac à dos.
 
@@ -644,19 +636,19 @@ Reprenez la matrice associée à l'exemple que vous avez calculée dans l'exerci
 
 On remonte depuis la dernière case en reprenant le chemin inverse pour la créer :
 
-1. $M[5][20] = \max(M[4][20 - 6] + 18, M[4][20]) = M[4][20]$ ($M[4][16] = 141$) : on ne prend pas la poudre 5 
+1. $M[5][20] = \max(M[4][20 - 6] + 18, M[4][20]) = M[4][20]$ ($M[4][16] = 141$) : on ne prend pas la poudre 5
 2. $M[4][20] = \max(M[3][20 - 1] + 6, M[3][20]) = M[3][19] + 6$ ($M[3][20] = 167$) : on prend la poudre 4
 3. $M[3][19] = \max(M[2][19 - 4] + 32, M[2][19]) = M[2][15] + 32$ ($M[2][19] = 165$) : on prend la poudre 3
 4. $M[2][15] = \max(M[1][15 - 2] + 30, M[1][15]) = M[1][15] $ ($M[1][13] = 0$) : on ne prend pas la poudre 2
-4. $M[1][15] = 135$ : on prend la poudre 1
+5. $M[1][15] = 135$ : on prend la poudre 1
 
- |0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20
--|-|-|-|-|-|-|-|-|-|-|--|--|--|--|--|--|--|--|--|--|--
-**1**|0|0 | 0  | 0  | 0  | 0  | 0  | 0  |  0 |  0 | 0  | 0  | 0  | _0_  | 0  | **135** | 135 | 135 | 135 | 135 | 135
-**2**|0|0 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | 30 | **135** | 135 | 165 | 165 | _165_ | 165
-**3**|0|0 | 30 | 30 | 32 | 32 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 62 | 135 | 135 | 165 | 165 | **167** | _167_
-**4**|0|6 | 30 | 36 | 36 | 38 | 62 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 135 | _141_ | 165 | 171 | 171 | **173**
-**5**|0|6 | 30 | 36 | 36 | 38 | 62 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 68 | 135 | 141 | 165 | 171 | 171 | **173**
+| 0     | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  | 15  | 16      | 17    | 18  | 19  | 20      |
+| ----- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ------- | ----- | --- | --- | ------- | ------- |
+| **1** | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | 0   | _0_ | 0   | **135** | 135   | 135 | 135 | 135     | 135     |
+| **2** | 0   | 0   | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | 30  | **135** | 135   | 165 | 165 | _165_   | 165     |
+| **3** | 0   | 0   | 30  | 30  | 32  | 32  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 62  | 135     | 135   | 165 | 165 | **167** | _167_   |
+| **4** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | _141_ | 165 | 171 | 171     | **173** |
+| **5** | 0   | 6   | 30  | 36  | 36  | 38  | 62  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 68  | 135     | 141   | 165 | 171 | 171     | **173** |
 
 {%enddetails %}
 
@@ -666,7 +658,7 @@ La complexité de cet algorithme est $\mathcal{O}(n\cdot K)$.
 La complexité de l'algorithme par programmation dynamique n'est **pas** meilleure celle par branch and bound car $K$ peut être très grand : s'il est plus grand que $2^n$ il est moins bon.
 {% endattention %}
 
-La mise en garde précédente est fondamentale, les deux algorithmes analyses tous les 2 toutes les possibilités pour une partie des données : 
+La mise en garde précédente est fondamentale, les deux algorithmes analyses tous les 2 toutes les possibilités pour une partie des données :
 
 - l'algorithme de recherche exhaustive examine tous les contenus de sac à dos possible pour un contenant de $K$ et il y en a $2^n$
 - l'algorithme de programmation dynamique examine tous les contenant de sacs à dos possible pour un contenu de $n$ objets et il y en a $K$
@@ -680,6 +672,7 @@ Souvent $K$ est petit devant le nombre d'objets et il est plus avantageux d'util
 ## Heuristique génétique
 
 > TBD voir :
+>
 > - <https://www.youtube.com/watch?v=MacVqujSXWE>
 > - <https://leria-info.univ-angers.fr/~jeanmichel.richer/uco_opt_combi_sac_a_dos.php> (6.2)
 
@@ -695,5 +688,4 @@ De plus, le problème du sac à dos est un problème très courant en pratique p
 
 Et il se généralise à plusieurs dimensions.
 
-Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.
-
+Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à [l'optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) d'une part (qui admet des algorithmes polynomiaux de résolution) et à [la programmation linéaire en nombre entier](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers) d'autre part (dont on ne connaît pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.

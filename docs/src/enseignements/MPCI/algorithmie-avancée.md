@@ -168,6 +168,8 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## C et structures de données
 
+- <https://www.youtube.com/@TheatricalTheta> les corrigés du K&R
+
 - <https://www.ens-lyon.fr/DI/wp-content/uploads/2010/12/poly09.pdf>
 - perfect hashing.
   - <https://en.wikipedia.org/wiki/Dynamic_perfect_hashing>
@@ -199,6 +201,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
+- graphe fortement connexe pour 2-sat : <https://fr.wikipedia.org/wiki/Algorithme_de_Kosaraju>
 - cascade in networks. Kleinberg. Tardos 2003.<https://www.youtube.com/watch?v=gw8Hgx-EtJQ&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=14>
 - 
 - <https://lgayral.pages.math.cnrs.fr/fr/agreg/>
@@ -282,7 +285,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
   - <https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf>
 - OUI est diff du NON. Vérifier que oui ok mais pas vérifier que non (il faut faire tous les cas). Vérifier poly est identique à : Remplace par des branches : Aller la ou la ou la. Et s'il existe un choix qui mène à vrai ça y va. Ca simule l'intuition.
 - pb de décision = pb général.
-- approximation algorithm. 
+- approximation algorithm.
 - plan (mettre en L1 ensuite) :
   - P, NP
   - réduction. Passer d'un pb à l'autre

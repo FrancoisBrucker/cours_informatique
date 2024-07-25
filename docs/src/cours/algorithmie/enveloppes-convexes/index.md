@@ -1,11 +1,6 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Algorithmes de calcul d'enveloppe convexe"
-
-eleventyNavigation:
-    order: 16
-    prerequis:
-        - "../tris/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,11 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble de points de $\mathbb{R}^2$.
-
-<!-- end résumé -->
+> TBD expliciter les divers formes d'algorithme (diviser pour régner, gloutons, etc)
 
 Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
@@ -30,10 +21,10 @@ Nous nous restreignons ici à la géométrie du plan euclidien $\mathbb{R}^2$. C
 
 ## Convexité
 
-La notion de *convexité*, très générale, est utilisée lorsque l'on manipule des objets *pleins* et de forme *bombée*. Elle se formalise en utilisant les segments :
+La notion de _convexité_, très générale, est utilisée lorsque l'on manipule des objets _pleins_ et de forme _bombée_. Elle se formalise en utilisant les segments :
 
 {% note "**définition**" %}
-Soit deux points $A=(x, y)$ et $B=(x', y')$. Le ***segment $[A, B]$*** est l'ensemble des points $C$ tels que :
+Soit deux points $A=(x, y)$ et $B=(x', y')$. Le **_segment $[A, B]$_** est l'ensemble des points $C$ tels que :
 
 <div>
 $$
@@ -51,7 +42,7 @@ Avec $0 \leq \lambda \leq 1$.
 
 {% endnote %}
 
-De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est *convexe*.
+De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudié (fonction, ensemble, forme géométrique, etc) est _convexe_.
 
 ### Fonction convexe
 
@@ -60,7 +51,7 @@ De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudi�
 {% endlien %}
 
 {% note "**définition**" %}
-Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est ***convexe*** si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :
+Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est **_convexe_** si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :
 
 <div>
 $$
@@ -82,7 +73,7 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 {% endlien %}
 
 {% note "**définition**" %}
-Un sous-ensemble $C \in \mathbb{R}^2$ est ***convexe*** si pour tous $A, B \in C$, $[A, B] \subseteq C$.
+Un sous-ensemble $C \in \mathbb{R}^2$ est **_convexe_** si pour tous $A, B \in C$, $[A, B] \subseteq C$.
 {% endnote %}
 
 La première propriété que l'on peut donner est, clairement, que :
@@ -91,7 +82,7 @@ La première propriété que l'on peut donner est, clairement, que :
 Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y \geq f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
- Les ensembles convexes sont en forme de patate et en tout point, la tangente est à **l'extérieur de l'ensemble** :
+Les ensembles convexes sont en forme de patate et en tout point, la tangente est à **l'extérieur de l'ensemble** :
 
 ![ensemble convexe](./ensemble-convexe.png)
 
@@ -112,13 +103,13 @@ Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quel que soit $C 
 Comme l'ensemble $\mathbb{R}^2$ est convexe, on déduit de la proposition précédente que :
 
 {% note "**proposition**" %}
-Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le ***plus petit ensemble convexe contenant $A$*** (pour l'ordre d'inclusion $\subseteq$)
+Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le **_plus petit ensemble convexe contenant $A$_** (pour l'ordre d'inclusion $\subseteq$)
 {% endnote %}
 {% details "preuve" %}
 Comme $A \subseteq \mathbb{R}^2$ et que $\mathbb{R}^2$ est convexe, l'ensemble $\mathcal{A}$ de tous les convexes contenant $A$ est non vide donc :
 
-* $A \subseteq \cap \mathcal{A}$
-* tout convexe $C$ contenant $A$ étant dans $\mathcal{A}$, on a : $\cap \mathcal{A} \subseteq C$
+- $A \subseteq \cap \mathcal{A}$
+- tout convexe $C$ contenant $A$ étant dans $\mathcal{A}$, on a : $\cap \mathcal{A} \subseteq C$
 
 Les deux remarques ci-dessus prouvent que $\text{Conv}(A)$ existe et qu'il vaut $\cap \mathcal{A}$.
 {% enddetails %}
@@ -134,18 +125,18 @@ Les ensembles convexes ont de multiples propriétés mathématiques sympathiques
 En informatique (et dans la vie réelle), les ensembles convexes se rencontrent uniquement sous la forme de polygones convexes.
 
 {%note "**définitions**" %}
-Un [***polygone***](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[P_1, \dots, P_h]$ :
+Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[P_1, \dots, P_h]$ :
 
 ![exemple polygones](./exemple-polygones.png)
 
-Le polygone de droite est dit ***croisé*** ou ***complexe*** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [***simple***](https://fr.wikipedia.org/wiki/Polygone_simple).
+Le polygone de droite est dit **_croisé_** ou **_complexe_** car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est [**_simple_**](https://fr.wikipedia.org/wiki/Polygone_simple).
 {% endnote %}
 
 Un polygone simple est une surface :
 
 {%note "**définitions**" %}
 
-L'***intérieur*** d'un polygone simple est la surface formé par la ligne polygonale fermée.
+L'**_intérieur_** d'un polygone simple est la surface formé par la ligne polygonale fermée.
 
 On confond souvent intérieur et polygone simple.
 {% endnote %}
@@ -170,8 +161,8 @@ Un polygone simple est convexe si et seulement si l'ensemble des points qui le c
 
 Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :
 
-* un polygone convexe et une droite, ce qui est crucial en *raytracing*
-* deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D
+- un polygone convexe et une droite, ce qui est crucial en _raytracing_
+- deux polygones convexes, ce qui est indispensable pour des calculs rapides de collisions pour des jeux 2D
 
 Enfin, les problèmes d'[optimisation linéaire](https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire) se résolvent facilement car cela revient à trouver un maximum dans un polygone convexe.
 
@@ -180,11 +171,11 @@ Par exemple :
 {% exercice %}
 Je veux faire le tour du monde en ballon. Il faut donc que j'emporte dans ma montgolfière le plus de nourriture possible **mais** il y a des contraintes :
 
-* j'ai l'estomac fragile et ne mange que des noisettes ([628 calories pour 100g](https://www.infocalories.fr/calories/calories-noisettes.php)) et de la gelée de framboise ([328 calories pour 100g](https://fr.openfoodfacts.org/produit/3701164000079/gelee-de-framboise))
-* je n'ai que 2000€ sur mon compte en banque et :
-  * 100g de noisettes coûte 3€
-  * 100g de gelée de framboise coûte 5.65€
-* ma montgolfière ne peut contenir plus de 60kg de nourriture
+- j'ai l'estomac fragile et ne mange que des noisettes ([628 calories pour 100g](https://www.infocalories.fr/calories/calories-noisettes.php)) et de la gelée de framboise ([328 calories pour 100g](https://fr.openfoodfacts.org/produit/3701164000079/gelee-de-framboise))
+- je n'ai que 2000€ sur mon compte en banque et :
+  - 100g de noisettes coûte 3€
+  - 100g de gelée de framboise coûte 5.65€
+- ma montgolfière ne peut contenir plus de 60kg de nourriture
 
 Combien de calories puis-je emmener au maximum ?
 {% endexercice %}
@@ -206,13 +197,13 @@ Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^
 ### Enveloppe convexe
 
 {% note "définition" %}
-L'***enveloppe convexe*** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
+L'**_enveloppe convexe_** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
 {% endnote %}
 
-Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous  :
+Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous :
 
 {% note "proposition" %}
-L'***enveloppe convexe*** d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :
+L'**_enveloppe convexe_** d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :
 
 $$
 x = \sum_{i=1}^m \lambda_i x_i
@@ -220,10 +211,10 @@ $$
 
 Avec :
 
-* $m$ un entier
-* $\lambda_i \geq 0$ pour $1\leq i \leq m$
-* $\sum_{i=1}^m \lambda_i = 1$
-* $x_i \in P$ pour tout $1\leq i \leq m$
+- $m$ un entier
+- $\lambda_i \geq 0$ pour $1\leq i \leq m$
+- $\sum_{i=1}^m \lambda_i = 1$
+- $x_i \in P$ pour tout $1\leq i \leq m$
 
 {% endnote %}
 {% info %}
@@ -255,14 +246,14 @@ $$
 
 Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.
 
-Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est  également.
+Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.
 
 {% enddetails %}
 
-On peut même aller plus loin lorsque nos points sont dans $\mathbb{R}^2$  ([dans le cas général](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Carath%C3%A9odory_(g%C3%A9om%C3%A9trie)), il suffit que l'espace soit de dimension fini) :
+On peut même aller plus loin lorsque nos points sont dans $\mathbb{R}^2$ ([dans le cas général](<https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Carath%C3%A9odory_(g%C3%A9om%C3%A9trie)>), il suffit que l'espace soit de dimension fini) :
 
 {% note "proposition" %}
-L'***enveloppe convexe*** d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :
+L'**_enveloppe convexe_** d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :
 
 $$
 x = \sum_{i=1}^{3} \lambda_i x_i
@@ -270,9 +261,9 @@ $$
 
 Avec :
 
-* $\lambda_i \geq 0$ pour $1\leq i \leq 3$
-* $\sum_{i=1}^{3} \lambda_i = 1$
-* $x_i \in P$ pour tout $1\leq i \leq 3$
+- $\lambda_i \geq 0$ pour $1\leq i \leq 3$
+- $\sum_{i=1}^{3} \lambda_i = 1$
+- $x_i \in P$ pour tout $1\leq i \leq 3$
 
 {% endnote %}
 {% details "preuve" %}
@@ -281,8 +272,8 @@ La proposition précédente nous indique que les points de $\text{Conv}(P)$ s'é
 
 Lorsque $m \leq 3$, la proposition est clairement vérifiée :
 
-* $x = \sum_{i=1}^3\frac{1}{3}x$
-* $x = \lambda\cdot x_1 + (1-\lambda)\cdot x_2 =  \frac{\lambda}{2}\cdot x_1 + \frac{\lambda}{2}\cdot x_1 + (1-\lambda)\cdot x_2$
+- $x = \sum_{i=1}^3\frac{1}{3}x$
+- $x = \lambda\cdot x_1 + (1-\lambda)\cdot x_2 =  \frac{\lambda}{2}\cdot x_1 + \frac{\lambda}{2}\cdot x_1 + (1-\lambda)\cdot x_2$
 
 On va montrer que si $m > 3$ et que tous les $x_i$ sot différents, on peut re-écrire $x$ avec $m-1$ points. Ceci montrera qu'on peut toujours se ramener à 3 points, en itérant le processus de descente.
 
@@ -302,8 +293,8 @@ Avec : $\alpha_2 + \alpha_3 + \alpha_4 = 1$. Des $\alpha_i$ peuvent cependant ê
 
 En posant $\mu_1 = 1$ et $\mu_i = - \alpha_i$ pour $2 \leq i \leq 4$ on alors :
 
-* $\sum_{i=1}^4\mu_i = 0$
-* $\sum_{i=1}^4\mu_i x_i = \overrightarrow{0}$
+- $\sum_{i=1}^4\mu_i = 0$
+- $\sum_{i=1}^4\mu_i x_i = \overrightarrow{0}$
 
 Ces équations vont nous permettre d'écrire un des quatre points avec les autres en ayant des coefficients positifs.
 
@@ -311,8 +302,8 @@ Soit $k$ réalisant le minimum de $\frac{\lambda_i}{\mu_i}$ pour les $\mu_i > 0$
 
 On a alors :
 
-* $\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$
-* $a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$
+- $\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$
+- $a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$
 
 En injectant tout ça dans notre équation de départ, on trouve :
 
@@ -331,12 +322,12 @@ Comme $\sum_{1\leq i\neq k \leq 4}(\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_
 
 On a deux cas :
 
-* soit $\mu_i \leq 0$ et alors : $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
-* soit $\mu_i > 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$.  Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
+- soit $\mu_i \leq 0$ et alors : $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
+- soit $\mu_i > 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$. Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$
 
 {% enddetails %}
 
-L'enveloppe convexe d'un ensemble fini de points  de $\mathbb{R}^2$ comme celui-ci :
+L'enveloppe convexe d'un ensemble fini de points de $\mathbb{R}^2$ comme celui-ci :
 
 ![points](./polygone-triangle-points.png)
 
@@ -364,10 +355,10 @@ Avant de partir bille en tête sur les algorithmes de construction d'enveloppe c
 
 {% attention "**conventions**" %}
 
-* on se place dans le plan (euclidien) $\mathbb{R}^2$
-* tous les points sont donnés par leurs coordonnées cartésiennes
-* les angles seront donnés par rapport à l'ordre trigonométrique (anti-horaire)
-* les polygones simples sont donnés en suivant l'ordre horaire : l'intérieur du polygone est toujours à droite du vecteur
+- on se place dans le plan (euclidien) $\mathbb{R}^2$
+- tous les points sont donnés par leurs coordonnées cartésiennes
+- les angles seront donnés par rapport à l'ordre trigonométrique (anti-horaire)
+- les polygones simples sont donnés en suivant l'ordre horaire : l'intérieur du polygone est toujours à droite du vecteur
 
 ![conventions](./conventions.png)
 
@@ -397,7 +388,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-On considère le [déterminant](https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien) entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :
+On considère le [déterminant](<https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien>) entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :
 
 $$
 \text{det}(\overrightarrow{v_1}, \overrightarrow{v_2}) = x_1 \cdot y_2 - y_1 \cdot x_2 = \sin(\theta)\cdot ||v_1|| \cdot ||v_2||
@@ -415,7 +406,7 @@ $$
 \overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0
 $$
 
-Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$  :
+Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$ :
 
 <div>
 $$
@@ -428,8 +419,8 @@ $$
 
 Si un point $(x, y)$ n'est pas sur la droite alors :
 
-* $Ax + By + C > 0$ s'il est dans le demi-plan rouge
-* $Ax + By + C < 0$ s'il est dans le demi-plan vert
+- $Ax + By + C > 0$ s'il est dans le demi-plan rouge
+- $Ax + By + C < 0$ s'il est dans le demi-plan vert
 
 {% exercice %}
 Soit $x, y, x', y' \in \mathbb{R}^2$ quatre points. Proposez une méthode permettant de déterminer si les segments $[x, y]$ et $[x', y']$ se croisent.
@@ -438,8 +429,8 @@ Soit $x, y, x', y' \in \mathbb{R}^2$ quatre points. Proposez une méthode permet
 
 Il suffit de remarquer que les segments $[x, y]$ et $[x', y']$ se croisent si et seulement si les deux propositions ci-dessous sont vérifiées :
 
-* $x'$ et $y'$ sont dans des demi-plans différents par rapport à la droite $(x, y)$
-* $x$ et $y$ sont dans des demi-plans différents par rapport à la droite $(x', y')$
+- $x'$ et $y'$ sont dans des demi-plans différents par rapport à la droite $(x, y)$
+- $x$ et $y$ sont dans des demi-plans différents par rapport à la droite $(x', y')$
 
 ![croisement segments](./croisement-segment.png)
 
@@ -494,7 +485,7 @@ $$
 {% endexercice %}
 {% details "solution" %}
 
-La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs  $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.
+La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.
 
 {% enddetails %}
 
@@ -546,7 +537,7 @@ Remarquez que l'on peut de la même manière trouver le minimum en $y$, ou le ma
 L'une pour laquelle tous les points du polygone sont à sa droite (la droite verte), l'autre pour laquelle tous les points du polygone sont à gauche (la droite rouge).
 
 {% exercice %}
-Montrez que l'on peut trouver la tangente rouge (*resp.* verte) en $\mathcal{O}(\log(h))$ opérations.
+Montrez que l'on peut trouver la tangente rouge (_resp._ verte) en $\mathcal{O}(\log(h))$ opérations.
 {% endexercice %}
 {% details "solution" %}
 
@@ -597,15 +588,15 @@ On entame la dichotomie en vérifiant si le point est à gauche de$(p_i, p_{i+h/
 
 Les polygones convexes permettent de calculer très efficacement :
 
-* des minimaux ou des maximaux
-* des intersections :
-  * entre droite et polygone convexe
-  * entre deux polygones convexes (au moins un sommet d'un polygone est à l'intérieur de l'autre)
+- des minimaux ou des maximaux
+- des intersections :
+  - entre droite et polygone convexe
+  - entre deux polygones convexes (au moins un sommet d'un polygone est à l'intérieur de l'autre)
 
 Ils sont pour cela très utilisé en infographie pour :
 
-* du raytracing : le rayon rebondi sur le polygone selon la normale du segment qu'il intersecte (remarquez que la normale pointe vers l'extérieur)
-* dans les jeu car le calcul de la collision est rapide
+- du raytracing : le rayon rebondi sur le polygone selon la normale du segment qu'il intersecte (remarquez que la normale pointe vers l'extérieur)
+- dans les jeu car le calcul de la collision est rapide
 
 {% info %}
 Les calculs se généralisent en 3D lorsque chaque surface est composée de triangles.
@@ -621,14 +612,14 @@ Soit $\mathcal{P}$ en ensemble fini de $n$ points de $\mathcal{R}^2$.
 Trouver $P = [p_1, \dots, p_h]$ l'enveloppe convexe de $\mathcal{P}$.
 {% endnote  %}
 
-Pour alléger les algorithmes, on considérera que tous les points de  $\mathcal{P}$ sont [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale), c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.
+Pour alléger les algorithmes, on considérera que tous les points de $\mathcal{P}$ sont [position générale](https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale), c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.
 
 ### Reconnaissance
 
 En utilisant ce que nous avons fait précédemment, il est facile de savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ :
 
-* on vérifie pour chaque point en $\mathcal{O}(\log(h))$ s'il est dans le convexe
-* lors de la vérification d'un point, on pourra également savoir si c'est un point du polygone. Si à la fin de la vérification, on a $h$ points sur l'enveloppe, tous les points de $P$ sont dans $\mathcal{P}$
+- on vérifie pour chaque point en $\mathcal{O}(\log(h))$ s'il est dans le convexe
+- lors de la vérification d'un point, on pourra également savoir si c'est un point du polygone. Si à la fin de la vérification, on a $h$ points sur l'enveloppe, tous les points de $P$ sont dans $\mathcal{P}$
 
 On conclut de ce qui précède que :
 
@@ -706,7 +697,7 @@ L'algorithme de Jarvis trouve l'enveloppe convexe de $n$ points en $\mathcal{O}(
 
 Même si souvent la taille de l'enveloppe convexe est plus petite que $n$.
 
-### Complexité du problème
+### <span id="complexité-problème"></span>Complexité du problème
 
 On montre que le problème du tri est un cas particulier du problème de l'enveloppe convexe.
 
@@ -840,7 +831,7 @@ fonction diviser(P):
 
     Soient G les points de P strictement à gauche de la droite (p, q)
     Soient D les points de P strictement à droite de la droite (p, q)
-    
+
     return p, q, G, D
 
 fonction simplifier(p, q, p', q'):
@@ -992,7 +983,7 @@ L'équation de récurrence des boucles `while`{.language-} des lignes 24 et 32 r
 
 {% enddetails %}
 
-Cet algorithme est donc très efficace lorsque les données sont  répartis de façon homogène dans le plan.
+Cet algorithme est donc très efficace lorsque les données sont répartis de façon homogène dans le plan.
 
 {% exercice %}
 Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?
@@ -1049,8 +1040,8 @@ Les polygone vert et bleues se rassemblent avec le segment noir qui ne lie aucun
 
 La complexité totale de cette jonction est en :
 
-* recherche des éléments extrémaux des deux polygones : $\mathcal{O}(h_1 +h_2)$
-* simplification de Sklansky : $\mathcal{O}(h_1 + h_2)$
+- recherche des éléments extrémaux des deux polygones : $\mathcal{O}(h_1 +h_2)$
+- simplification de Sklansky : $\mathcal{O}(h_1 + h_2)$
 
 {% note %}
 La complexité de la combinaison de deux polygones convexes disjoints est linéaire en la taille des deux polygones.
@@ -1070,8 +1061,8 @@ Soit $p_i$ le dernier point ajouté à l'enveloppe convexe. Le point suivant de 
 
 Supposons que $p_i$ soit le point $p^1_j$ du polygone $P_1$ :
 
-* le point de $P_1$ maximisant l'angle est $p^1_{j+1}$
-* le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\log(h_2))$ opérations.
+- le point de $P_1$ maximisant l'angle est $p^1_{j+1}$
+- le point de $P_2$ maximisant l'angle est $p^2_{k}$ tel que la droite $(p_i, p^2_{k})$ soit tangente à $P_2$ et place tous ses éléments à sa droite. Ce point se trouve en $\mathcal{O}(\log(h_2))$ opérations.
 
 Le prochain point $p_{i+1}$ est donc soit $p^1_{j+1}$ soit $p^2_{k}$.
 
@@ -1159,16 +1150,16 @@ $$
 \mathcal{O}(n + n\log(m) + h\cdot \frac{n}{m}\log(m)) = \mathcal{O}(n\log(m) + h\cdot \frac{n}{m}\log(m))
 $$
 
-* Si $m = h$ l'algorithme prend $\mathcal{O}(n\log(h))$ opérations
-* Si $m < h$ alors $n\log(m) <  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations
-* Si $m > h$ alors $n\log(m) >  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations
+- Si $m = h$ l'algorithme prend $\mathcal{O}(n\log(h))$ opérations
+- Si $m < h$ alors $n\log(m) <  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $h\cdot \frac{n}{m}\log(m)$ opérations
+- Si $m > h$ alors $n\log(m) >  h\cdot \frac{n}{m}\log(m)$ et l'algorithme prend de l'ordre de $\mathcal{O}(n\log(m))$ opérations
 
 La complexité minimale de cet algorithme est ainsi atteinte pour $m=h$. Le soucis est que l'on ne connaît pas $h$. **Mais** lors de la marche de Jarvis au bout de $m$ itérations on sait si on a fini ou non.
 
 L'idée est alors de ne faire que $m$ étapes de la marche pour un $m$ donné. La complexité de cet algorithme tronqué est alors toujours en : $\mathcal{O}(n\log(m))$. On a deux cas :
 
-* soit $m$ est plus petit que $h$. On aura pas construit l'enveloppe convexe car on ne sera pas revenu au point de départ de la marche
-* soit $m$ est plus grand que $h$. On aura construit l'enveloppe convexe car on sera revenu au point de départ de la marche à une étape donnée. On pourra alors stopper l'algorithme à ce moment là.
+- soit $m$ est plus petit que $h$. On aura pas construit l'enveloppe convexe car on ne sera pas revenu au point de départ de la marche
+- soit $m$ est plus grand que $h$. On aura construit l'enveloppe convexe car on sera revenu au point de départ de la marche à une étape donnée. On pourra alors stopper l'algorithme à ce moment là.
 
 On itère alors cet algorithme en commençant par un $m$ petit que l'on fait croître tant que l'on a pas réussi à construire l'enveloppe convexe. **La ruse ultime** est de faire croître $m$ pas trop lentement pour ne pas faire trop d'itérations et pas trop rapidement pour avoir de trop d'ensembles (on en a $m$) à considérer. On prend $m_1 = 4$ et $m_{i+1} = m_i^2$.
 

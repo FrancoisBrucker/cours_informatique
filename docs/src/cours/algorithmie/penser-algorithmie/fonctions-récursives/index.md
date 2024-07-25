@@ -343,6 +343,8 @@ Ce qui entraîne :
 Pseudo-code et fonctions récursives sont deux notions équivalentes.
 {% endnote %}
 
+> TBD à faire preuve 8.2.3 math de l'informatique pour une preuve directe p182.
+
 ## Indécidabilité
 
 Savoir si une fonction récursive est également primitive est un problème indécidable. Il est en effet équivalent au problème de l'arrêt.

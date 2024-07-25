@@ -12,7 +12,8 @@ eleventyComputed:
 
 > on se restreint à 0, 1 mais marche aussi si alphabet plus gros
 
-
+> TBD <https://www.youtube.com/watch?v=miOofcAiINM&list=PLhqug0UEsC-IDomfNsn8e3neoy34o8oye&index=2>
+> 
 ## Décideur
 
 Rappelons qu'un algorithme est [dans toute sa généralité](../../bases-théoriques/calculabilité/#algorithme-fonction){.interne} une fonction qui prend et rend un mot de $\\{0, 1\\}$. On peut lui associer de façon équivalente la fonction $v_f : \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$ ci-dessous :

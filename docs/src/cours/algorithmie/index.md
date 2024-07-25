@@ -127,30 +127,34 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
+## Enveloppes convexes
+
+{% aller %}
+[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
+{% endaller %}
+
 ## Réductions : passer d'un problème à un autre
 
-> TBD Intro NP et NPC.
-> TBD utiliser les technique de résolution d'un problème dans un autre.
-> ne pas parler de problème de décision.
-> TBD langage d'une machine de Turing et reco aussi dure qu'on veut (prendre le bout de classe de pb)
-> 
->  Doit tenir 2h pour montrer pourquoi NP = problème algo et réduction simple (max ≤ tri ; en trouver un autre.
-> on a égalité si ≤ et ≥. Faire exemple simple puis faire SAT = 3-sat (le faire)).
->
-> question P ≤ NP ouverte.
->
-> TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.
+> TBD dire qu'on a vue que tri est plus simple que l'enveloppe donc de complexité supérieure. On explore ces transformations de problèmes algo en d'autres.
+
+{% aller %}
+[réduction de problèmes](./problème-réduction){.interne}
+{% endaller %}
 
 ## Problème du "sac à dos"
 
-> tbd montrer dans la partie sac à dos qu'il est inf à sat.
-> ici exemple de problème pas dans P (on ne sait pas)
+> TBD premier problème dur : montrer que plus dur que SAT. Le rajouter.
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
 ## Classes de Problèmes Algorithmiques
+
+> tbd montrer dans la partie sac à dos qu'il est inf à sat.
+> ici exemple de problème pas dans P (on ne sait pas)
+> pb de décision
+> question P (soluble) ≤ NP (vérifiable) ouverte.
 
 > TBD cook
 > TBD pbs de décision
@@ -160,6 +164,8 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
+> TBD : montrer l'algorithme universel qui résout tout en temps optimal si on a un certificat. <https://www.youtube.com/watch?v=9ONm1od1QZo>
+> 
 > TBD : ici stop partie I. Ensuite Partie II.
 
 ## Complexité amortie
@@ -174,14 +180,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}
-{% endaller %}
-
-> TBD nombre aléatoires
-
-## Enveloppes convexes
-
-{% aller %}
-[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
 > TBD nombre aléatoires
