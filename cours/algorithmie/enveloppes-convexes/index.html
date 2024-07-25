@@ -90,33 +90,11 @@
 
 
     
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../tris/">../tris/</a>
-            </li></ul>
-      
-
-</div>
-</div>
-
-    
   
 
-  <!-- début résumé -->
-<p>Introduction aux algorithmes de recherche d'enveloppe convexe pour un ensemble de points de $\mathbb{R}^2$.</p>
-<!-- end résumé -->
+  <blockquote>
+<p>TBD expliciter les divers formes d'algorithme (diviser pour régner, gloutons, etc)</p>
+</blockquote>
 <p>Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.</p>
 <p>Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -136,7 +114,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit deux points $A=(x, y)$ et $B=(x', y')$. Le <em><strong>segment $[A, B]$</strong></em> est l'ensemble des points $C$ tels que :</p>
+<p>Soit deux points $A=(x, y)$ et $B=(x', y')$. Le <strong><em>segment $[A, B]$</em></strong> est l'ensemble des points $C$ tels que :</p>
 <div>
 $$
 C = \lambda \cdot A + (1-\lambda) \cdot B =
@@ -168,7 +146,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est <em><strong>convexe</strong></em> si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :</p>
+<p>Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est <strong><em>convexe</em></strong> si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :</p>
 <div>
 $$
 f\left(\lambda\cdot x+(1-\lambda)\cdot x'\right)\leq \lambda\cdot f(x)+(1-\lambda)\cdot f(y)
@@ -195,7 +173,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un sous-ensemble $C \in \mathbb{R}^2$ est <em><strong>convexe</strong></em> si pour tous $A, B \in C$, $[A, B] \subseteq C$.</p>
+<p>Un sous-ensemble $C \in \mathbb{R}^2$ est <strong><em>convexe</em></strong> si pour tous $A, B \in C$, $[A, B] \subseteq C$.</p>
 </div>
 </div>
 <p>La première propriété que l'on peut donner est, clairement, que :</p>
@@ -253,7 +231,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le <em><strong>plus petit ensemble convexe contenant $A$</strong></em> (pour l'ordre d'inclusion $\subseteq$)</p>
+<p>Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le <strong><em>plus petit ensemble convexe contenant $A$</em></strong> (pour l'ordre d'inclusion $\subseteq$)</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -300,9 +278,9 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <a href="https://fr.wikipedia.org/wiki/Polygone"><em><strong>polygone</strong></em></a> est une suite finie de points $[P_1, \dots, P_h]$ :</p>
+<p>Un <a href="https://fr.wikipedia.org/wiki/Polygone"><strong><em>polygone</em></strong></a> est une suite finie de points $[P_1, \dots, P_h]$ :</p>
 <p><img src="exemple-polygones.png" alt="exemple polygones"></p>
-<p>Le polygone de droite est dit <em><strong>croisé</strong></em> ou <em><strong>complexe</strong></em> car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est <a href="https://fr.wikipedia.org/wiki/Polygone_simple"><em><strong>simple</strong></em></a>.</p>
+<p>Le polygone de droite est dit <strong><em>croisé</em></strong> ou <strong><em>complexe</em></strong> car il y a au moins un croisement de segment (deux segments non consécutifs s'intersectent) et le polygone de gauche, sans croisement de segment, est <a href="https://fr.wikipedia.org/wiki/Polygone_simple"><strong><em>simple</em></strong></a>.</p>
 </div>
 </div>
 <p>Un polygone simple est une surface :</p>
@@ -313,7 +291,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>intérieur</strong></em> d'un polygone simple est la surface formé par la ligne polygonale fermée.</p>
+<p>L'<strong><em>intérieur</em></strong> d'un polygone simple est la surface formé par la ligne polygonale fermée.</p>
 <p>On confond souvent intérieur et polygone simple.</p>
 </div>
 </div>
@@ -406,10 +384,10 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p>définition</p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>enveloppe convexe</strong></em> $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.</p>
+<p>L'<strong><em>enveloppe convexe</em></strong> $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.</p>
 </div>
 </div>
-<p>Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous  :</p>
+<p>Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -417,7 +395,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p>proposition</p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>enveloppe convexe</strong></em> d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
+<p>L'<strong><em>enveloppe convexe</em></strong> d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
 <p>$$<br>
 x = \sum_{i=1}^m \lambda_i x_i<br>
 $$</p>
@@ -473,11 +451,11 @@ x &=& \sum_{i=1}^{m-1}\lambda_i\cdot x_i + \lambda_m \cdot x_m \\
 $$
 </div>
 <p>Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.</p>
-<p>Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est  également.</p>
+<p>Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.</p>
 </div>
 </details>     
 </div>
-<p>On peut même aller plus loin lorsque nos points sont dans $\mathbb{R}^2$  (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Carath%C3%A9odory_(g%C3%A9om%C3%A9trie)">dans le cas général</a>, il suffit que l'espace soit de dimension fini) :</p>
+<p>On peut même aller plus loin lorsque nos points sont dans $\mathbb{R}^2$ (<a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Carath%C3%A9odory_(g%C3%A9om%C3%A9trie)">dans le cas général</a>, il suffit que l'espace soit de dimension fini) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -485,7 +463,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p>proposition</p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>enveloppe convexe</strong></em> d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
+<p>L'<strong><em>enveloppe convexe</em></strong> d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
 <p>$$<br>
 x = \sum_{i=1}^{3} \lambda_i x_i<br>
 $$</p>
@@ -556,12 +534,12 @@ $$
 <p>On a deux cas :</p>
 <ul>
 <li>soit $\mu_i \leq 0$ et alors : $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$</li>
-<li>soit $\mu_i &gt; 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$.  Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$</li>
+<li>soit $\mu_i &gt; 0$ et par construction $\frac{\lambda_i}{\mu_i} \geq \frac{\lambda_k}{\mu_k}$. Ceci implique $\lambda_i - \lambda_k \cdot \frac{\mu_i}{\mu_k} \geq 0$</li>
 </ul>
 </div>
 </details>     
 </div>
-<p>L'enveloppe convexe d'un ensemble fini de points  de $\mathbb{R}^2$ comme celui-ci :</p>
+<p>L'enveloppe convexe d'un ensemble fini de points de $\mathbb{R}^2$ comme celui-ci :</p>
 <p><img src="polygone-triangle-points.png" alt="points"></p>
 <p>est l'union de ses triangles :</p>
 <p><img src="polygone-triangle.png" alt="polygone triangle"></p>
@@ -648,7 +626,7 @@ $$</p>
 <p>$$<br>
 \overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0<br>
 $$</p>
-<p>Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$  :</p>
+<p>Ce qui s'écrit, si $a=(a^x, a^y)$ et $b=(b^x, b^y)$ :</p>
 <div>
 $$
 \begin{array}{rc}
@@ -769,7 +747,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs  $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.</p>
+<p>La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.</p>
 </div>
 </details>     
 </div>
@@ -986,7 +964,7 @@ $$</p>
 <p>Trouver $P = [p_1, \dots, p_h]$ l'enveloppe convexe de $\mathcal{P}$.</p>
 </div>
 </div>
-<p>Pour alléger les algorithmes, on considérera que tous les points de  $\mathcal{P}$ sont <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.</p>
+<p>Pour alléger les algorithmes, on considérera que tous les points de $\mathcal{P}$ sont <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que trois points de $\mathcal{P}$ ne sont pas alignés.</p>
 <h3>Reconnaissance</h3>
 <p>En utilisant ce que nous avons fait précédemment, il est facile de savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$ :</p>
 <ul>
@@ -1076,7 +1054,7 @@ $$
 </div>
 </div>
 <p>Même si souvent la taille de l'enveloppe convexe est plus petite que $n$.</p>
-<h3>Complexité du problème</h3>
+<h3><span id="complexité-problème"></span>Complexité du problème</h3>
 <p>On montre que le problème du tri est un cas particulier du problème de l'enveloppe convexe.</p>
 <p>Soit $L=[x_1, \dots, x_n]$ une liste de $n$ nombres que l'on veut trier et considérons les $n$ points $\mathcal{P} = \{ (x_1, x_1^2), \dots, (x_i, x_i^2), \dots, (x_n, x_n^2)\}$</p>
 <p><img src="tri-enveloppe.png" alt="tri et enveloppe convexe"></p>
@@ -1242,7 +1220,7 @@ $$
 
     Soient G les points de P strictement à gauche de la droite (p, q)
     Soient D les points de P strictement à droite de la droite (p, q)
-    
+
     return p, q, G, D
 
 fonction simplifier(p, q, p', q'):
@@ -1409,7 +1387,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Cet algorithme est donc très efficace lorsque les données sont  répartis de façon homogène dans le plan.</p>
+<p>Cet algorithme est donc très efficace lorsque les données sont répartis de façon homogène dans le plan.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">

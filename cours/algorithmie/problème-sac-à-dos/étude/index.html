@@ -115,10 +115,10 @@
 <li>sa quantité disponible en kilo : $k_i$</li>
 <li>son prix total : $p_i$</li>
 </ul>
-<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$  à mettre dans le sac telle que :</p>
+<p>On dispose d'un sac pouvant contenir $K$ kilos de poudre et on cherche une répartition de poudres $0\leq f_i\leq 1$ à mettre dans le sac telle que :</p>
 <ul>
 <li>on peut mettre les poudres dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
-<li>le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
 </ul>
 </div>
 </div>
@@ -138,7 +138,7 @@
 <li>1kg de la poudre 1 à 5 et le reste (15kg) en poudre 6, pour un profit de 192€,</li>
 <li>...</li>
 </ul>
-<h3>Algorithme glouton</h3>
+<h3>Résolution par un algorithme glouton</h3>
 <p>Un algorithme <em>&quot;glouton&quot;</em> ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des produit jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre et comme on veut maximiser le profit, on choisi de prendre les poudres par prix au kilo décroissant.</p>
 <p>On obtient donc in fine l'algorithme suivant, écrit en python :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -279,7 +279,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos .</p>
+<p>On peut remarquer que l'algorithme glouton prend toujours tout le produit disponible jusqu'au dernier choix où il ne prend qu'une fraction de celui-ci (la place restante) pour finir de remplir le sac à dos.</p>
 <p>Pour notre solution, on note $(f_1, \dots, f_n)$ les proportions choisis dans l'ordre de choix de l'algorithme glouton.<br>
 On suppose que notre solution n'est pas optimale et, parmi toutes les solutions optimales possible, on en prend une qui correspond le plus longtemps possible avec la solution rendue par l'algorithme. Soit alors $0 \leq i &lt;n$ le plus petit indice telle que la solution optimale et celle rendue par l'algorithme est différente. La solution optimale est alors $(f_1, \dots, f_{i-1}, f'_i, \dots, f'_n)$.</p>
 <p>On peut enfin, sans perte de généralité, choisir la solution optimale ayant $f_i'$ le plus grand possible parmi toutes les solutions optimales coïncidant avec la solution de l'algorithme glouton jusqu'à $f_{i-1}$.</p>
@@ -287,7 +287,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <p>Donc :</p>
 <ul>
 <li>soit $f'_j = 0$ pour tout $j &gt; i$ et notre solution est meilleure que la solution optimale, ce qui est impossible par hypothèse,</li>
-<li>soit il existe $f'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer  $f_j'$ d'un $\epsilon &gt; 0$ que l'on peut ajouter à  $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
+<li>soit il existe $f'_j &gt;0$ pour un $j&gt;i$. On peut alors diminuer $f_j'$ d'un $\epsilon &gt; 0$ que l'on peut ajouter à $f_i'$ pour obtenir une solution strictement meilleure que la solution optimale : c'est impossible.</li>
 </ul>
 <p>Notre hypothèse arrivant à une contradiction, elle était fausse : la solution de l'algorithme glouton est optimale.</p>
 </div>
@@ -318,7 +318,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <p>On dispose d'un sac pouvant contenir $K$ kilos et on cherche les produits à mettre dans le sac, on note $f_i = 1$ si le produit $i$ est dans le sac et $f_i = 0$ sinon, de façon à ce que :</p>
 <ul>
 <li>les produits choisis tiennent dans le sac : $\sum_{1\leq i \leq n} f_i \cdot k_i \leq K$</li>
-<li>le prix du sac  $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
+<li>le prix du sac $\sum_{1\leq i \leq n} f_i \cdot p_i \leq K$ soit maximum</li>
 </ul>
 </div>
 </div>
@@ -399,7 +399,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <li>poudre 5 : 6kg et un prix de 18€ (3€ le kilo)</li>
 <li>poudre 6 : 80kg et un prix de 800€ (10€ le kilo). On supprime ce produit puisqu'il ne rentre pas dans le sac.</li>
 </ul>
-<p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de  173€.</p>
+<p>En maximisant le profit, l'algorithme glouton préconise de prendre les poudres 1, 2 et 4 pour un profit de 171€. On se rend cependant compte que cette solution n'est plus maximale ! En effet prendre les poudres 1, 3 et 4 rapporte un profit de 173€.</p>
 <p>On peut même montrer que l'algorithme glouton ne possède pas de garantie :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -468,7 +468,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </div>
 <p>Tout n'est cependant pas perdu car on peut modifier l'algorithme glouton pour qu'il soit à performance garantie.</p>
 <h2>Algorithme à performance garantie</h2>
-<p>Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, quiest la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :</p>
+<p>Lors de l'exécution de l'algorithme glouton, soit $i^\star$ la dernière étape, qui est la seule pour laquelle le produit ne peut pas être ajouté dans le sac. On a alors :</p>
 <ul>
 <li>$\sum_{i &lt; i^\star} k_i \leq K$</li>
 <li>$\sum_{i &lt; i^\star} k_i + k_{i^\star} &gt; K$</li>
@@ -509,8 +509,8 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 <li>plus grande que la solution trouvée par notre algorithme (notée $\text{SOL}$)</li>
 <li>plus petite que $\sum_{i &lt; i^\star} p_i + p_{i^\star}$</li>
 </ul>
-<p>Comme $\sum_{i &lt; i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$, on a :<br>
-$$<br>
+<p>Comme $\sum_{i &lt; i^\star} p_i + p_{i^\star} \leq 2 \cdot \max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$ et que l'algorithme rend $\max(\sum_{i &lt; i^\star} p_i, \sum_{i &lt; i^\star} p_i)$, on a :</p>
+<p>$$<br>
 \frac{1}{2}\cdot \text{OPT} \leq \text{SOL} \leq \text{OPT}<br>
 $$</p>
 </div>
@@ -730,7 +730,7 @@ $$</p>
 </ul>
 </li>
 </ul>
-<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple.  On a un sac à dos de $K=20$ et 5 produits :</p>
+<p>Avant de formaliser tout ça, regardons ce que cela fait sur l'exemple. On a un sac à dos de $K=20$ et 5 produits :</p>
 <ul>
 <li>poudre 1 : 15kg et un prix de 135€ (9€ le kilo)</li>
 <li>poudre 2 : 2kg et un prix de 30€ (15€ le kilo)</li>
@@ -750,7 +750,7 @@ $$</p>
 <p>L'analyse de la solution ouverte $[1, -1, 1, -1, -1, 0]$ donne une solution fractionnelle optimale de $[1, 0.5, 1, 0, 0, 0]$ et de valeur 182, ce qui fait que l'on continue encore :</p>
 <p><img src="bb-5.png" alt="branch and bound 1"></p>
 <p>Notez que la solution ouverte $[1, 1, 1, -1, -1, 0]$ de donne pas de sac à dos viable, elle est donc directement éliminée.</p>
-<p>Lors de l'analyse de la solution ouverte  $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :</p>
+<p>Lors de l'analyse de la solution ouverte $[1, 0, 1, -1, -1, 0]$, quelque chose de nouveau arrive : la solution fractionnelle optimale est un sac à dos ! Il contient $[1, 0, 1, 1, 0, 0]$ et vaut 173. On met à jour notre sac à dos et il est inutile de continuer cette voie. À l'issue de cette étape on a :</p>
 <p><img src="bb-6.png" alt="branch and bound 1"></p>
 <p>L'analyse de la solution ouverte $[0, -1, 1, -1, -1, 0]$ donne une solution optimale $[0, 1, 1, 1, 1, 0]$ de valeur 86 ce qui est moins bon que notre sac à dos stocké : inutile d'explorer. On a :</p>
 <p><img src="bb-7.png" alt="branch and bound 1"></p>
@@ -781,15 +781,15 @@ $$</p>
 <p>Avec :</p>
 <ul>
 <li>$[-1, -1, 0, -1, -1, 0]$ de sac à dos fractionnel $[1, 1, 0, 1, 0.33, 0]$ de valeur 177.0 : on continue d'explorer</li>
-<li>$[-1, -1, 0, -1, 1, 0]$ de sac à dos fractionnel  $[0.8, 1, 0, 0, 1, 0]$ de valeur 156.0, donc inutile de continuer l'exploration de cette solution ouverte</li>
-<li>$[-1, -1, 0, -1, 0, 0]$ de sac à dos fractionnel  $[1, 1, 0, 1, 0, 0]$ 171, donc inutile de continuer l'exploration de cette solution ouverte</li>
+<li>$[-1, -1, 0, -1, 1, 0]$ de sac à dos fractionnel $[0.8, 1, 0, 0, 1, 0]$ de valeur 156.0, donc inutile de continuer l'exploration de cette solution ouverte</li>
+<li>$[-1, -1, 0, -1, 0, 0]$ de sac à dos fractionnel $[1, 1, 0, 1, 0, 0]$ 171, donc inutile de continuer l'exploration de cette solution ouverte</li>
 </ul>
 </div>
 </details>     
 </div>
 <p>Remarquer que cette algorithme est bien plus efficace en pratique que l'énumération exhaustive, on a parcouru que que 11 des 32 sac à dos possibles.</p>
 <h3>Algorithme</h3>
-<p>On suppose que l'on possède l'algorithme <code class="language-">borne_supérieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que <code class="language-">borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)</code> vaudrait  <code class="language-">[0.933333, 1, 1, 0, 0, 0]</code></p>
+<p>On suppose que l'on possède l'algorithme <code class="language-">borne_supérieure(ouverte, produits, masse_totale)</code> qui à partir d'une solution ouverte le sac à dos fractionnel optimal. Pour notre exemple, on aurait ainsi que <code class="language-">borne_supérieure([-1, -1, 1, -1, -1,-1], EXEMPLE, 20)</code> vaudrait <code class="language-">[0.933333, 1, 1, 0, 0, 0]</code></p>
 <p>Il nous faut aussi deux fonctions utilitaires :</p>
 <ul>
 <li><code class="language-">première_valeur_fractionnelle(sac_à_dos_fractionnel)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : <code class="language-">première_valeur_fractionnelle([1, 0.3, 1, 1, 0])</code> aurait rendu 1 et <code class="language-">première_valeur_fractionnelle([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
@@ -811,7 +811,7 @@ $$</p>
         solution_ouverte <span class="token operator">=</span> solutions_ouvertes_possibles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
         sac_à_dos_fractionnel <span class="token operator">=</span> borne_supérieure<span class="token punctuation">(</span>solution_ouverte<span class="token punctuation">,</span> produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span>
-        profit_sac_à_dos_fractionnel <span class="token operator">=</span> profit<span class="token punctuation">(</span>sac_à_dos_fractionnel<span class="token punctuation">,</span> produits<span class="token punctuation">)</span> 
+        profit_sac_à_dos_fractionnel <span class="token operator">=</span> profit<span class="token punctuation">(</span>sac_à_dos_fractionnel<span class="token punctuation">,</span> produits<span class="token punctuation">)</span>
 
         <span class="token keyword">if</span> profit_sac_à_dos_fractionnel <span class="token operator">></span> profit_sac_à_dos<span class="token punctuation">:</span>
             i <span class="token operator">=</span> première_valeur_fractionnelle<span class="token punctuation">(</span>sac_à_dos_fractionnel<span class="token punctuation">)</span>
@@ -826,7 +826,7 @@ $$</p>
                         solutions_ouvertes_possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nouvelle_solution_ouverte<span class="token punctuation">)</span>
     <span class="token keyword">return</span> sac_à_dos
 </code></pre>
-<p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en  $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
+<p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
 <p>Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -835,7 +835,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Conclusion</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et esrt en pratique extrêmement efficace.</p>
+<p>L'utilisation du principe du branch and bound est donc profitable au problème du sac à dos puisqu'il n'augmente pas la complexité théorique et est en pratique extrêmement efficace.</p>
 </div>
 </div>
 <h2>Solution par programmation dynamique</h2>
@@ -890,7 +890,6 @@ $$
 <table>
 <thead>
 <tr>
-<th></th>
 <th>0</th>
 <th>1</th>
 <th>2</th>
@@ -1037,7 +1036,7 @@ $$
 </tr>
 </tbody>
 </table>
-<p>Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3.  Il vaut soit :</p>
+<p>Par exemple la case $M[3][16]$ représente le sac à dos de masse 16 pouvant contenir les produits 1, 2 et 3. Il vaut soit :</p>
 <ul>
 <li>le maximum du sac $M[2][16]$, c'est à dire le sac maximum de masse 16 qui ne contient pas le produit 3</li>
 <li>$M[2][16-2] + 30$ c'est à dire le sac à dos maximum qui contient le produit 3 et pour lequel il reste 16-2 place pour range les produits 1 et 2.</li>
@@ -1080,7 +1079,6 @@ $$
 <table>
 <thead>
 <tr>
-<th></th>
 <th>0</th>
 <th>1</th>
 <th>2</th>
@@ -1270,7 +1268,7 @@ $$
 <li>...</li>
 </ul>
 <p>Et il se généralise à plusieurs dimensions.</p>
-<p>Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">l'optimisation linéaire</a> d'une part (qui admet des algorithmes polynomiaux de résolution) et à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">la programmation linéaire en nombre entier</a> d'autre part (dont on ne connait pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.</p>
+<p>Enfin, en l'écrivant sous la forme d'équations linéaires à résoudre comme on l'a fait pour la recherche exhaustive, il permet de s'initier à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire">l'optimisation linéaire</a> d'une part (qui admet des algorithmes polynomiaux de résolution) et à <a href="https://fr.wikipedia.org/wiki/Optimisation_lin%C3%A9aire_en_nombres_entiers">la programmation linéaire en nombre entier</a> d'autre part (dont on ne connaît pas d'algorithme polynomial de résolution) en autorisant plusieurs exemplaires de chaque produits.</p>
 
 
 </article>
