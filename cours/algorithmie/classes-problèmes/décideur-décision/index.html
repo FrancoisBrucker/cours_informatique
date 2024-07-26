@@ -92,218 +92,7 @@
     
   
 
-  <blockquote>
-<p>TBD : chapeau</p>
-</blockquote>
-<h2>Algorithmes, décideurs et vérifieurs</h2>
-<p>Rappelons qu'un algorithme est <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction-N" class="interne">dans toute sa généralité</a> une fonction de $\mathbb{N}$ dans $\mathbb{N}$ (tous les paramètres considérés comme des chaines de caractères peuvent être concaténés en une seule chaine. On verra dans quelques lignes une autre façon de <em>concaténer</em> des entiers) et qu'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cideur" class="interne">un décideur</a> est un algorithme dont la sortie est soit OUI (que l'on associe à 1) soit NON (associé à 0).</p>
-<p>On va commencer par montrer qu'un algorithme peut être vu comme un décideur, ce qui nous permettra de voir trois formes équivalentes d'un algorithme.</p>
-<p>Commençons par démontrer que $\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection (on pourrait utiliser l'argument de <a href="../../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction">la partie calculabilité</a> en recodant les différents paramètres mais ne boudons pas notre plaisir en utilisant, et en la démontrant, la bijection classique que l'on doit au mathématicien <a href="https://fr.wikipedia.org/wiki/Georg_Cantor">Cantor</a>) :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Théorème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\mathbb{N}^2$ et $\mathbb{N}$ sont en bijection.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Remarquons que tout élément de $\mathbb{N}^2$ est un point du plan :</p>
-<p><img src="n2_dans_plan.png" alt="point de n2 dans le plan"></p>
-<p>On peut les parcourir en suivant les diagonales :</p>
-<p><img src="n2_dans_n.png" alt="point de n2 dans le plan"></p>
-<p>On chemine alors comme ça :</p>
-<ol>
-<li>$(0, 0)$</li>
-<li>$(1, 0)$</li>
-<li>$(0, 1)$</li>
-<li>$(2, 0)$</li>
-<li>$(1, 1)$</li>
-<li>$(0, 2)$</li>
-<li>$(3, 0)$</li>
-<li>$(2, 1)$</li>
-<li>$(1, 2)$</li>
-<li>$(0, 3)$</li>
-<li>$(4, 0)$</li>
-<li>...</li>
-</ol>
-<p>Et on associe à un entier $(x, y)$ son ordre de cheminement $O((x, y))$ (par exemple $O((2, 1)) = 8$).</p>
-<p>Ce cheminement est clairement une bijection.</p>
-<p>On peut donc aussi associer un unique entier à tout couple d'entiers avec $O^{-1}$ ($O^{-1}(6) = (0, 2)$ par exemple).</p>
-</div>
-</details>     
-</div>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Corollaire</strong></p>
-</div><div class="pl-8 mr-8">
-<p>$\mathbb{N}^p$ et $\mathbb{N}$ sont en bijection pour tout entier $p$.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La démonstration précédente montre que $\mathbb{N}^p = \mathbb{N}^2 \times \mathbb{N}^{p-2} $ est en bijection avec $\mathbb{N} \times \mathbb{N}^{p-2} = \mathbb{N}^{p-1}$ pour tout $p&gt;2$.</p>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez le pseudo-code de la fonction $O^{-1}$ qui associe un couple $(x, y)$ unique à un entier $i$ passé en paramètre.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : O^{-1}
-Entrée : un entier i
-Programme :
-    x = y = 0
-    k = 0
-    tant que k < i:
-        si x == 0:
-            x = y + 1
-            y = 0
-        sinon:
-            x = x - 1
-            y = y + 1
-    Retour (x, y)
-</code></pre>
-</div>
-</details>     
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>À partir du pseudo-code de $O^{-1}$, il est facile d’écrire le pseudo code de $O$ : faites le.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : O
-Entrée :  un couple (u, v) d'entiers
-Programme :
-    x = y = 0
-    i = 0
-    tant que (u, v) ≠ (x, y):
-        i = i + 1
-        si x == 0:
-            x = y + 1
-            y = 0
-        sinon:
-            x = x - 1
-            y = y + 1
-    Retour i
-</code></pre>
-</div>
-</details>     
-</div>
-<p>Comme un algorithme est une fonction $f: \mathbb{N} \rightarrow \mathbb{N}$, on peut lui associer de façon équivalente la fonction $v_f$ ci-dessous :</p>
-<p>$$<br>
-v_f(n, m) = \left\{<br>
-\begin{array}{ll}<br>
-1 &amp; \mbox{si } f(n) = m\\<br>
-0 &amp; \mbox{sinon.}<br>
-\end{array}<br>
-\right.<br>
-$$</p>
-<p>On peut voir l'algorithme $v_f$ comme un vérifieur. Il vérifie que le second paramètre est la sortie du premier paramètre. On reparlera de ces algorithmes dans la suite, pour l'instant ils nous permettent de montrer que l'espace d'arriver d'un algorithme peut être uniquement deux valeurs. Un algorithme peut être vu comme une fonction de :</p>
-<p>$$f: \mathbb{N}^2 \rightarrow \{0, 1 \}$$</p>
-<p>Et comme $\mathbb{N}^2$ est en bijection avec $\mathbb{N}$, un algorithme est équivalent à un <em><strong>décideur</strong></em> :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Un <strong><em>décideur</em></strong> est une fonction de :</p>
-<p>$$f: \mathbb{N} \rightarrow \{0, 1 \}$$</p>
-</div>
-</div>
-<p>On ne va bien sur pas uniquement utiliser des décideurs en pratique, loin de là, mais cela montre que l'on peut se contenter de considérer les propriétés théoriques des décideurs  puisqu'on pourra les appliquer sans perte de généralité aux autres types d'algorithmes.</p>
-<p>Avant de passer à l'étude théorique des problèmes et de les classer en plusieurs catégories, analysons les 3 formes d'algorithmes (équivalentes) utiles :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>À retenir</strong></p>
-</div><div class="pl-8 mr-8">
-<p>On peut représenter un algorithme sous 3 formes équivalentes :</p>
-<ul>
-<li>les <strong><em>fonctions</em></strong> : $A(x) = y$, avec $x, y \in \mathbb{N}$ qui permettent le calcul effectif,</li>
-<li>les <strong><em>décideurs</em></strong> : $A(x) = b$, avec $x \in \mathbb{N}$ et $b \in \{0, 1\}$ qui permettent de séparer les entiers en 2, les entiers <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$, et les autres</li>
-<li>les <strong><em>vérifieurs</em></strong> : $A(x, y) = b$, avec $x, y \in \mathbb{N}$ et $b \in \{0, 1\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.</li>
-</ul>
-</div>
-</div>
-<h2>Problèmes de décision</h2>
-<p>De la même manière qu'un algorithme de type <em>fonction</em> peut s'écrire sous la forme d'un algorithme de la forme <em>décideur</em> on peut associer à tout problème algorithmique un problème de décision.</p>
-<p>Considérons par exemple le problème de trouver le maximum d'un tableau. On peut lui associer le problème de décision suivant :</p>
+  <p>Or on a vu dans <a href="../../structure-chaine-de-caract%C3%A8res/langages-mots/" class="interne">la partie consacrée aux chaines de caractères et au langages</a> que l'on peut associer un problème de décision à tout problème algorithmique. Considérons par exemple le problème de trouver le maximum d'un tableau. On peut lui associer le problème de décision suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -325,7 +114,7 @@ $$</p>
 </div>
 <p>Si le problème <em>&quot;plus grand que&quot;</em> est décidable, trouver le maximum d'un tableau l'est aussi en appliquant itérativement <em>&quot;plus grand que&quot;</em> pour $K$ valant chaque élément de $T$.</p>
 <p>De façon formelle si $P$ est un problème d'entrée $e \in E$ et cherchant une solution $s \in S$, on peut lui associer le problème de décision demandant l'entrée $(e, s)$ et répondant OUI si $s$ est une solution de $P(e)$. Si le problème de décision est décidable, alors $P$ l'est aussi puisqu'il suffit d'itérer sur tous les $s$ possibles jusqu'à trouver une solution (on suppose que toute instance de $P$ admet une solution).</p>
-<p>L'équivalence entre les algorithmes et les décideurs d'une part et les problèmes algorithmiques et les problèmes de décision d'autres part, qui sont des structures plus simple à manipuler car ayant mois de paramètres en font les objets de prédilection de l'étude théorique des algorithmes.</p>
+<p>L'équivalence entre les algorithmes et les décideurs d'une part et les problèmes algorithmiques et les problèmes de décision d'autres part font que l'étude théorique des problèmes algorithmiques vont se faire via les problèmes de décision puisque plus simple (il n'y a pas de solution à gérer cela ne peut être que 1 ou 0) sans perte de généralité</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -336,15 +125,9 @@ $$</p>
 <p>Étudier les propriétés théoriques des algorithmes et des problèmes algorithmiques se fait, sans perte de généralité, via les décideurs et les problèmes de décision.</p>
 </div>
 </div>
-<h2>Décideur et décision</h2>
-<p>Formalisons les notions de décideurs et des problèmes de décision (décidables) qui leurs sont associés.</p>
-<p>Langages et problèmes de décisions sont deux notions équivalentes. On utilisera l'une ou l'autre des notions selon le contexte :</p>
-<ul>
-<li><em><strong>langages</strong></em> si l'on veut caractériser tous les algorithmes faisant la même chose</li>
-<li>problèmes de décision si l'on cherche à résoudre une question précise</li>
-</ul>
-<h3>Langage</h3>
-<p>Un algorithme décideur prend en paramètre un entier (donc de façon équivalente une suite de 0 et de 1, donc de façon équivalente une chaine de caractère, donc de façon équivalente tout ce qu'on veut d'autre de fini...) et répond soit 1 (qu'on assimile à VRAI ou OUI) soit 0 (qu'on assimile à FAUX ou NON) : il sélectionne un ensemble de nombres (donc de façon équivalente un ensemble de suites de 0 et de 1, donc de façon équivalente un ensemble de chaines de caractères, ...).</p>
+<h2>Décision et NP</h2>
+<p>Nous avons précédemment défini NP comme étant la classe des problèmes admettant un vérifieur efficace. Cette définition n'est pas directement applicable aux problèmes de décision puisqu'ils ne peuvent répondre que OUI ou NON.</p>
+<p>Il faut donc réussir à transposer la notion de vérifieur efficace à ces derniers, et c'est exactement ce que fait la définition ci-dessous :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -352,13 +135,27 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On appelle <em><strong>langage</strong></em> d'un décideur $A$ l'ensemble $A^{-1}(1)$.</p>
-<p>On dira qu'un décideur $A$ <em><strong>accepte le langage $L$</strong></em> si $L = A^{-1}(1)$ et qu'un langage $L$ est <em><strong>décidable</strong></em> s'il existe un algorithme pour l'accepter.</p>
+<p><strong><em>Un problème (de décision) est dit</em></strong> $NP$ s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ vraie du problème il existe $t$, appelé <strong><em>certificat de</em></strong> $e$, tel que $v(e, t)$ soit vrai.</p>
 </div>
 </div>
-<p>La notion de langage est à rapprocher des ensembles décidables et des ensembles reconnaissable que l'<a href="../../%C3%A9crire-algorithmes/probl%C3%A8me">on a vus précédemment</a>.</p>
-<h3>Décision</h3>
-<p>Deux décideurs sont équivalents s'ils acceptent le même langage. De façon formelle, un problème de décision est alors un langage qu'il s'agit de reconnaître avec un algorithme de la complexité la plus faible possible. De même que la complexité d'un problème est la complexité la plus faible d'un algorithme que le résout :</p>
+<p>On peut voir le certificat comme étant la raison pour laquelle le problème de décision répond OUI et on doit pouvoir la vérifier :</p>
+<ol>
+<li>Le vérifieur est le schéma général de la preuve que l'instance $e$ est vrai pour le problème</li>
+<li>les raisons pour laquelle $e$ est vraie selon le schéma de preuve du vérifieur est le certificat</li>
+</ol>
+<p>Enfin, comme la taille du certificat est bornée par la complexité du vérifieur on peut utiliser le même argument que précédemment pour montrer que tout problème de décision de $NP$ est décidable : il suffit de tester le vérifieur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérifieur).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour des problèmes de décision, le certificat fait office de solution au problème : il dit OUI (réponse) et pourquoi (raison pour laquelle la réponse est OUI), ce qui unifie les deux approches de NP.</p>
+</div>
+</div>
+<h2>Complexités de problèmes de décision</h2>
+<p>La complexité d'un problème est la complexité du plus petit algorithme qui le résout. Comme résoudre un problème de décision revient à trouver un décideur pour son langage on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -366,14 +163,13 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <em><strong>complexité d'un langage (décidable)</strong></em> est la complexité la plus faible d'un algorithme qui l'accepte.</p>
+<p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'un décideur qui l'accepte.</p>
 </div>
 </div>
-<h2>Complexités des décideurs</h2>
-<p>Comme un décideur prend en entrée un entier, sa complexité sera forcément calculé par rapport à lui. Pour un décideur $A$ prenant un entier $n$ en paramètre, on notera dans cette partie :</p>
+<p>Comme un décideur prend en entrée un entier, sa complexité sera forcément calculé par rapport à lui. Pour un décideur $D$ prenant une entrée $e$ en paramètre, on notera dans cette partie :</p>
 <ul>
-<li>$C(n)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9">complexité</a>.</li>
-<li>$S(n)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-spatiale">complexité spatiale</a>,</li>
+<li>$C(e)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9">complexité</a>.</li>
+<li>$S(e)$ sa <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-spatiale">complexité spatiale</a>,</li>
 </ul>
 <p>Comme on se place d'un point de vue théorique, on supposera que chaque case mémoire ne peut contenir qu'un 0 ou un 1 (un bit) et que chaque instruction aura une complexité linaire en la taille de la donnée, codée au format binaire, qu'il manipule.</p>
 <p>On sait que la complexité spatiale d'un algorithme est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :</p>
@@ -387,7 +183,7 @@ $$</p>
 <p>Pour tout décideur sans instructions inutiles, on a l'encadrement :</p>
 <div>
 $$
-S(n) \leq C(n) \leq \mathcal{O}(S(n) \cdot 2^{S(n)})
+S(e) \leq C(e) \leq \mathcal{O}(S(e) \cdot 2^{S(e)})
 $$
 </div>
 </div>
@@ -411,10 +207,10 @@ $$
 <div class="mx-8 pb-2">
 <p>On suppose que le décideur a $L$ instructions.</p>
 <ol>
-<li>comme le décideur est un algorithme, si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) l'algorithme va forcément boucler indéfiniment. Chaque ligne va donc  être exécutée au maximum $2^{S(n)}$ fois</li>
-<li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$</li>
+<li>comme le décideur est un algorithme, si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) l'algorithme va forcément boucler indéfiniment. Chaque ligne va donc être exécutée au maximum $2^{S(e)}$ fois</li>
+<li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(e))$</li>
 </ol>
-<p>La complexité est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ et comme le nombre d'instructions du décideur est une constante on en déduit le résultat demandé.</p>
+<p>La complexité est donc bornée par $L \cdot 2^{S(e)} \cdot \mathcal{O}(S(e))$ et comme le nombre d'instructions du décideur est une constante on en déduit le résultat demandé.</p>
 </div>
 </details>     
 </div>
@@ -422,16 +218,16 @@ $$
 <p>On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.</p>
 <p>La preuve est belle, simple mais atypique.</p>
 <h3>Pseudo-code et entier</h3>
-<p>On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format <a href="Unicode">Unicode</a> : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Tout entier $n$, écrit au format binaire, peut alors :</p>
+<p>On suppose sans perte de généralité que nos programmes sont écrits en Français. Ils sont encodés sous forme binaire en utilisant le format <a href="Unicode">Unicode</a> : chaque caractère est écrit sur 32 bits (c'est le format UTF-32). Toute entrée $e$ suite finie de 0 et de 1 peut alors :</p>
 <ol>
-<li>parfois être vu comme une suite de caractères (si sa représentation binaire possède un multiple de 32 bits)</li>
-<li>moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier 10).</li>
+<li>parfois être vu comme une suite de caractères (si sa longueur est un multiple de 32)</li>
+<li>moins souvent, mais c'est possible, la suite de caractères forme un texte en français, terminé par un ou plusieurs caractères retour à la ligne (le retour à la ligne est un caractère Unicode correspondant à l'entier binaire <code>00000000000000000000000000001010</code> (10 en décimal sur 32 bits)).</li>
 <li>encore moins souvent ce texte, privé des derniers retour à la ligne est un programme écrit en pseudo-code.</li>
 <li>et, cerise sur le gâteau parfois ce pseudo-code ne prend qu'un paramètre.</li>
 </ol>
-<p>Si $n$ satisfait la condition 4, alors $P(n)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">chaque instruction est autorisée</a> et ceci est possible avec un <a href="https://fr.wikipedia.org/wiki/Analyse_lexicale">analyseur lexical</a> de complexité quadratique dans la taille de la données, c'est à dire ici $\log_2(n)$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).</p>
-<p>Le décideur $P(n)$ est ainsi décidable avec une complexité $\mathcal{O}((\log_2(n))^2)$.</p>
-<p>Enfin, si l'entier $n$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $P[n]()$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $P[n]$ sera égal à $P[n']$ avec $n' = 2^{32}\cdot n + 10$ (on concatène à la représentation binaire de $n$ à la représentation binaire du caractère retour à la ligne en UTF-32, valant 10 codée sur 32 bits).</p>
+<p>Soit alors $P(e)$ un décideur tel que si $e$ satisfait la condition 4, alors $P(e)$ vaut 1, sinon il vaut 0. Savoir si un texte est un pseudo-code est facile. On regarde juste si <a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">chaque instruction est autorisée</a> et ceci est possible avec un <a href="https://fr.wikipedia.org/wiki/Analyse_lexicale">analyseur lexical</a> de complexité quadratique dans la taille de la données, c'est à dire ici $\vert e \vert$. Si vous voulez vous fixer les idées, vous pouvez supposer sans perte de généralité que le pseudo-code est en fait écrit en python et que l'on vérifie qu'il est syntaxiquement correct (le programme pourra toujours planter, mais chaque ligne est une instruction valide).</p>
+<p>Le décideur $P(e)$ est ainsi décidable avec une complexité $\mathcal{O}(\vert e \vert^2)$.</p>
+<p>Enfin, si l'entrée $e$ correspond à un pseudo-code terminé par un ou plusieurs retour à la ligne, on appelle $[e]$ celui-ci. L'intérêt de supprimer les derniers retour à la ligne c'est que le même programme va apparaître une infinité de fois puisque $[e]$ sera égal à $[e']$ avec $e'$ valeur $e$ concaténé à <code>00000000000000000000000000001010</code> .</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -439,35 +235,35 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On peut associer à tout entier $n$ un texte qui peut parfois être du pseudo-code correspondant à un programme à un paramètre $P[n]()$.</p>
+<p>On peut associer à tout entrée $e$ un texte qui peut parfois être du pseudo-code correspondant à un programme à un paramètre $[n]$.</p>
 </div>
 </div>
 <h3>Exécution de pseudo-code</h3>
 <p>Considérons le programme suivant, qui prend en paramètre un pseudo-code :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exécution (on le notera E(n, K))
-Entrées : 
-    - un entier n correspondant à un pseudo-code P[n] à un paramètre
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exécution (on le notera E(e, K))
+Entrées :
+    - un mot e correspondant à un pseudo-code [e] à un paramètre
     - un entier K
 Programme :
-    on exécute de programme P[n](n) instruction après instruction :
-        soit I la prochaine instruction de P[n](n)
+    on exécute de programme [e](e) instruction après instruction :
+        soit I la prochaine instruction de [e](e)
 
-        si l'exécution de I stoppe P :
-            si le retour de P est 0 :
+        si l'exécution de I stoppe [e](e) :
+            si le retour de [e](e) est 0 :
                 Rendre 1
             sinon :
                 Rendre 0
-        
+
         exécution de I
 
         K = K - 1
         si K ≤ 0 :
             Rendre 0
 </code></pre>
-<p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $P[n](n)$, soit si le pseudo-code de $P[n]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $P[n](n)$.</p>
+<p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $[e](e)$, soit si le pseudo-code de $[e]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $[e](e)$.</p>
 <p>Enfin, il va rendre :</p>
 <ul>
-<li>1 si $P[n](n)$ s'arrête en moins de $K$ instructions et rend la valeur 0</li>
+<li>1 si $[e](e)$ s'arrête en moins de $K$ instructions et rend la valeur 0</li>
 <li>0 dans tous les autres cas.</li>
 </ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -486,16 +282,17 @@ Programme :
 Entrée : un entier n
 Programme :
     K = f(n)
-    Si P(n) vaut 0
+    e = la représentation binaire de n
+    Si P(e) vaut 0
         rendre 0
     sinon
-        Rendre E(n, K)
+        Rendre E(e, K)
 
 </code></pre>
 <p>On a bien affaire à un algorithme puisque :</p>
 <ul>
 <li>$f$ est calculable</li>
-<li>$P(n)$ et $E(n, K)$ sont des algorithmes.</li>
+<li>$P(e)$ et $E(e, K)$ sont des algorithmes.</li>
 </ul>
 <p>On peut donc lui associer :</p>
 <ul>
@@ -534,15 +331,15 @@ Programme :
     ne rien faire
 </code></pre>
 <p>Qui ne va jamais s'arrêter.</p>
-<p>Comme $P[n] = P[2^{32}\cdot n + 10]$ il va exister une infinité d'entiers avec $P[n_0]$ comme pseudo-code associé et que pour ces entiers $E(n, f(n))$ va effectuer $f(n)$ instructions de $P[n_0]$ qui boucle à l'infini, on a bien que $C_{cf}(n) = \Omega(f(n))$</p>
+<p>Comme $[e] = [e + 00000000000000000000000000001010]$ il va exister une infinité d'entiers avec $[e_0]$ comme pseudo-code associé et que pour ces entrées $E(e, f(n))$ va effectuer $f(n)$ instructions de $[n_0]$ qui boucle à l'infini, on a bien que $C_{cf}(n) = \Omega(f(n))$</p>
 </div>
 </details>     
 </div>
 <p>On peut être plus précis quand à la complexité de $cf(n)$ :</p>
 <ol>
 <li>il doit calculer $f(n)$.</li>
-<li>il doit savoir si $f(n)$ correspond à un pseudo-code, ce qui peut se faire en carré de la longeur binaire de $f(n)$ : $\mathcal{O}(\log^2(f(n)))$.</li>
-<li>il exécute au pire $f(n)$ instructions de a $P[n](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\log(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \log(f(n))$ opérations.</li>
+<li>il doit savoir si $f(n)$ correspond à un pseudo-code, ce qui peut se faire en carré de la longueur binaire de $f(n)$ : $\mathcal{O}(\log^2(f(n)))$.</li>
+<li>il exécute au pire $f(n)$ instructions de a $[e](n)$ et décrémente le compteur $K$ à chaque fois. Comme en informatique théorique on ne manipule que des bits, cette décrémentation va prendre non pas 1 instruction mais la taille binaire de $K$, c'est à dire $\log(f(n))$, opération. Cette étape va donc prendre au maximum $f(n) \cdot \log(f(n))$ opérations.</li>
 </ol>
 <p>La complexité théorique de $cf(n)$ est donc $C_{cf}(n) = \Theta(f(n) \cdot \log(f(n)))$.</p>
 <p>Terminons en montrant que le langage de $cf$ est de complexité supérieure à $f(n)$ :</p>
@@ -573,12 +370,12 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Supposons qu'il existe un décideur $B(n)$ de complexité asymptotique $C_B(n)$ strictement inférieure à $f(n)$. Il existe alors $N_0$ tel que $C_B(n) &lt; f(n)$ pour tout $n&gt;N_0$.</p>
-<p>Le décideur $B$ pouvant être décrit par un pseudo-code, il existe un entier $n_B$ tel que $P(n_B)$ vaut 1 et $P[n_B]$ vaut $B$. En ajoutant assez de retour à la ligne au pseudo-code de $B$, il va exister un entier $n^{\star} &gt; \max(N_0, n_B)$ tel que $P(n^{\star})$ vaut 1 et $P[n^{\star}]$ vaut $B$.</p>
-<p>Comme $n^{\star} &gt; N_0$, on a que $C_B(n^{\star}) &lt; f(n^{\star})$ et donc que $P[n^{\star}](n^{\star}) = P[n_B](n^{\star})$ et va être exécuté dans sont intégralité par $cf(n^{\star})$. Ceci amène à une contradiction car :</p>
+<p>Supposons qu'il existe un décideur $B(e)$ de complexité asymptotique $C_B(e)$ strictement inférieure à $f(n)$ avec $n$ l'entier associé au mot $e$. Il existe alors $N_0$ tel que $C_B(e) &lt; f(n)$ pour tout $n&gt;N_0$.</p>
+<p>Le décideur $B$ pouvant être décrit par un pseudo-code, il existe une entrée $e_B$, associée à l'entier $n_B$ tel que $P(e_B)$ vaut 1 et $[e_B]$ vaut $B$. En ajoutant assez de retour à la ligne au pseudo-code de $B$, il va exister un entier $n^{\star} &gt; \max(N_0, n_B)$ tel que $P(e^{\star})$ vaut 1 et $[e^{\star}]$ vaut $B$ (avec $e^{\star}$ le mot binaire associé à $n^{\star}$).</p>
+<p>Comme $n^{\star} &gt; N_0$, on a que $C_B(n^{\star}) &lt; f(n^{\star})$ et donc que $[e^{\star}](e^{\star}) = [e_B](e^{\star})$ et va être exécuté dans sont intégralité par $cf(n^{\star})$. Ceci amène à une contradiction car :</p>
 <ul>
-<li>soit $n^{\star} \in L_f$ et donc $P[n_B](n^{\star})$ vaut 1 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 0 et  $n^{\star} \notin L_f$</li>
-<li>soit $n^{\star} \notin L_f$ et donc $P[n_B](n^{\star})$ vaut 0 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 1 et  $n^{\star} \in L_f$</li>
+<li>soit $e^{\star} \in L_f$ et donc $[e_B](e^{\star})$ vaut 1 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 0 et $e^{\star} \notin L_f$</li>
+<li>soit $e^{\star} \notin L_f$ et donc $[e_B](e^{\star})$ vaut 0 mais comme il est exécuté dans son intégralité par $cf(n^{\star})$, on a $cf(n^{\star})$ qui vaut 1 et $e^{\star} \in L_f$</li>
 </ul>
 </div>
 </details>     
@@ -607,6 +404,55 @@ Programme :
 <p>Il existe des problèmes algorithmiques de complexités aussi grande ou aussi petite que l'on veut.</p>
 </div>
 </div>
+<p>Ainsi on en conclut :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe des problèmes de décision décidables qui ne sont pas dans $NP$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or <a href="../d%C3%A9cideur-d%C3%A9cision/#hi%C3%A9rarchie-complexit%C3%A9">le théorème de la hiérarchie des complexité</a> nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.</p>
+</div>
+</details>     
+</div>
+<p>Nous ne donnons pas d'exemple concret, bien qu'il en existe, car ils demanderaient beaucoup de définitions pour être compris. Retenez seulement que trouver un problème décidable qui n'est pas dans $NP$ est difficile : la très grande majorités des problèmes de décisions que vous rencontrerez seront dans $NP$ et les autres problèmes pourront facilement s'écrire sous la forme d'un problème de décision de $NP$ à résoudre.</p>
+<h2>Cas du NON</h2>
+<p>Notez qu'un problème de décision est dans NP si on peut vérifier facilement qu'il ne répond pas OUI à tord et à travers. On ne lui demande rien s'il répond NON.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Un problème (de décision) est dit</em></strong> co-$NP$ s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ <strong>fausse</strong> du problème il existe $t$, appelé <strong><em>certificat de</em></strong> $e$ tel que $v(e, t)$ soit vrai.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD les problème de $P$ sont dans co-NP<br>
+TBD parler de co-NP</p>
+</blockquote>
 
 
 </article>

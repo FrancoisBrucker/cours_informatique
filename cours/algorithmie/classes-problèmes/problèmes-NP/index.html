@@ -94,9 +94,10 @@
 
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a>) puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
+<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a> puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre.</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
-<h3>Problèmes P</h3>
+<p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
+<h3>Résolution efficace</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -126,14 +127,14 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).</p>
 </div>
 </div>
-<h3>Problèmes et vérifieurs efficaces</h3>
-<p>Il existe de nombreux problèmes dont on ne connait pas la complexité, ou dont on ne connait pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :</p>
+<h3>Vérification efficace</h3>
+<p>Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :</p>
 <ul>
 <li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">somme de sous-ensemble</a></li>
 <li><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">sac à dos</a></li>
 <li><a href="https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes">isomorphisme de graphes</a></li>
 </ul>
-<p>Si l'on ne connait pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (<em>ie.</em> polynomialement) si une solution en est une ou pas.</p>
+<p>Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (<em>ie.</em> polynomialement) si une solution en est une ou pas. On reprend ici la notion de <a href="../../structure-chaine-de-caract%C3%A8res/langages-mots">vérifieur</a></p>
 <p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$ et $E'$ :</p>
 <ol>
 <li>On vérifie que $|E'| \leq |E|$ ce qui peut se faire en $\mathcal{O}(|E|)$ opérations en comptant chaque élément de $E'$ et en s'arrêtant soit après avoir compté tous les éléments soit lorsque le compte dépasse strictement $|E|$.</li>
@@ -158,12 +159,20 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 </div>
 <p>Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérifieur efficace. Terminons cette partie par deux remarques d'importance.</p>
-<p>Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.</p>
+<p>Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
 <p>Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
 <p>En effet, si le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
-<h3>Problèmes NP</h3>
-<p>La notion de vérifieur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#probl%C3%A8me-d%C3%A9cision" class="interne">problèmes de décision</a> où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.</p>
-<p>On a vu dans <a href="../d%C3%A9cideur-d%C3%A9cision">la partie précédente</a> que l'on peut associer à tout problème un problème de décision et qu'il suffit d'étudier les ces derniers sans perte de généralité. Il faut donc réussir à transposer la notion de vérifieur efficace à ces derniers, et c'est exactement ce que fait la définition ci-dessous :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+</div>
+</div>
+<p>Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -171,12 +180,12 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>Un problème de décision est dit $NP$</em></strong> s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé <strong><em>certificat de $e$</em></strong> tel que $v(e, t)$ soit vrai.</p>
+<p><strong><em>Un problème algorithmique est dit</em></strong> $NP$ s'il existe un vérifieur efficace de ses solutions.</p>
 </div>
 </div>
-<p>La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a>.</p>
-<p>Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérifieur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.</p>
-<p>Enfin, comme la taille du certificat est bornée par la complexité du vérifieur on peut utiliser le même argument que précédemment pour que tout problème de $NP$ est décidable : il suffit de tester le vérifieur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérifieur).</p>
+<p>Ce qui donne le schéma suivant :</p>
+<p><img src="NP-NP-1.png" alt="décidable"></p>
+<p>La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a> : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -191,8 +200,13 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div>
 </div>
-<p>Au final on a le schéma suivant :</p>
-<p><img src="NP-NP-1.png" alt="décidable"></p>
+<p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.</p>
+<p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
+<p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
+<p>Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème. C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
+<p>On connaît déjà quelques uns de ces problèmes : SAT et le problème du sac à dos. Au final on a :</p>
+<p><img src="NP-NP-2.png" alt="décidable"></p>
+<p>Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
 <h2>Autres classes</h2>
 <p>Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souvent uniquement à ceux de $P$) mais il en existe une foultitudes d'autres. On peut par exemple citer :</p>
 <ul>
@@ -209,45 +223,6 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Le lecteur intéresser pourra consulter <a href="https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9">la page wikipedia sur les classes de complexité</a> qui en liste certaines.</p>
 </div>
 </div>
-<h2>Inclusion des classes</h2>
-<p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ?</p>
-<p>De part <a href="../d%C3%A9cideur-d%C3%A9cision/#hi%C3%A9rarchie-complexit%C3%A9">le théorème de la hiérarchie des complexité</a> on peut déjà avoir la proposition suivante :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Il existe des problèmes de décision décidables qui ne sont pas dans $NP$.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or <a href="../d%C3%A9cideur-d%C3%A9cision/#hi%C3%A9rarchie-complexit%C3%A9">le théorème de la hiérarchie des complexité</a> nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.</p>
-</div>
-</details>     
-</div>
-<p>Nous ne donnons pas d'exemple concret, bien qu'il en existe, car ils demanderaient beaucoup de définitions pour être compris. Retenez seulement que trouver un problème décidable qui n'est pas dans $NP$ est difficile : la très grande majorités des problèmes de décisions que vous rencontrerez seront dans $NP$ et les autres problèmes pourront facilement s'écrire sous la forme d'un problème de décision de $NP$ à résoudre.</p>
-<p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
-<p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
-<p><img src="NP-NP-2.png" alt="décidable"></p>
-<p>La partie suivante va étudier tout ça de plus prêt, car même si on ne sait pas s'il existe des problèmes de $NP$ qui ne sont pas dans $P$ on sait tout de même des choses sur la structure de la classe $NP$.</p>
 
 
 </article>
