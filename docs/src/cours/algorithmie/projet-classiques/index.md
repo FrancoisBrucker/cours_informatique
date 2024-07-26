@@ -45,5 +45,4 @@ pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et di
 [Tris spéciaux](tris-spéciaux){.interne}
 {% endaller %}
 
-
 > TBD ajouter : k-médiane (voir et 20/21 mpci.)

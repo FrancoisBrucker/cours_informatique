@@ -16,10 +16,10 @@ Cependant pour penser l'algorithmie, c'est à dire étudier ce qui peut ou ne pe
 
 C'est ce que propose Turing avec sa célèbre Machine : une base théorique minimale de ce qu'est l'informatique.
 
-{% aller %}
+{% lien %}
 [Playlist sur la _theory of computation_](https://www.youtube.com/watch?v=bP1lOm5rLsI&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt&index=1) et [le livre associé](https://hefferon.net/computation/)
 
-{% endaller %}
+{% endlien %}
 
 ## Machine de Turing
 

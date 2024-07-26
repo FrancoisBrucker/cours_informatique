@@ -66,14 +66,58 @@ Réciproquement, on a :
 Tous les entiers sont donc associé à un couple $(x, y)$
 {% enddetails %}
 
-La bijection de la fonction de couplage :
+Cette bijection peut se voir comme un parcours de points du plan. En effet, les éléments de $\mathbb{N}^2$ sont des point du plan :
 
-![couplage Cantor](./couplage-cantor.png)
+![point de n2 dans le plan](n2_dans_plan.png)
 
-La fonction $\pi$ et son inverse sont de plus primitives récursives :
+Que l'on peut les parcourir en suivant les diagonales :
+
+![point de n2 dans le plan](n2_dans_n.png)
+
+On chemine alors comme ça :
+
+1. $(0, 0)$
+2. $(1, 0)$
+3. $(0, 1)$
+4. $(2, 0)$
+5. $(1, 1)$
+6. $(0, 2)$
+7. $(3, 0)$
+8. $(2, 1)$
+9. $(1, 2)$
+10. $(0, 3)$
+11. $(4, 0)$
+12. ...
+
+Qui correspond à la valeur du couplage ($\pi((2, 1)) = 7 = 8 -1$ par exemple). Comme ce cheminement est une bijection, on peut chercher la bijection inverse qui associe le couple d'entier à sa position dans le cheminement ($\pi^{-1}(6) = (1, 1)$ par exemple).
+
+{% exercice %}
+Écrivez un pseudo-code prenant un entier $k$ en paramètre qui parcourt tous les couple dans l'ordre de cheminement jusqu'à arriver à $\pi^{-1}(k)$, au'il rend.
+{% endexercice %}
+{% details "solution" %}
+
+```text
+Nom : pi^{-1}
+Entrée : un entier k
+Programme :
+    x = y = 0
+    i = 0
+    pour i allant de 0 à k-1:
+        si x == 0:
+            x = y + 1
+            y = 0
+        sinon:
+            x = x - 1
+            y = y + 1
+    Retour (x, y)
+```
+
+{% enddetails %}
+
+L'exercice précédant nous permet d'écrire la proposition suivante :
 
 {% note "**Proposition**" %}
-La fonction de couplage de Cantor $\pi$, ainsi que les deux fonction ${\pi^{-1}_1}$ et ${\pi^{-1}_2}$ tels que $\pi({\pi^{-1}_1}(n), {\pi^{-1}_2}(n)) = n$ sont primitives récursives.
+La fonction de couplage de Cantor $\pi$, ainsi que les deux fonction ${\pi^{-1}_1}$ et ${\pi^{-1}_2}$ tels que $\pi^{-1}(n) = ({\pi^{-1}_1}(n), {\pi^{-1}_2}(n))$ (on a $\pi({\pi^{-1}_1}(n), {\pi^{-1}_2}(n)) = n$) sont primitives récursives.
 
 {% endnote %}
 {% details "preuve", "open" %}

@@ -110,6 +110,10 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% endaller %}
 
 > TBD ajouter exos pour dictionnaires.
+> TBD 2-SUM et 3-SUM exact et avec dico.
+> $T[i] + T[j] + T[k] = 0$
+> En $\mathcal{O}(n^3)$ puis en $\mathcal{O}(n^2)$ (avec tri) et en $\mathcal{O}(n)$ en moyenne
+> TBD pas toujours la meilleur solution : lièvre et lapin pour deux tableaux avec égalité mieux que dictionnaire.
 
 ### Chaînes de caractères
 
@@ -135,29 +139,17 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Réductions : passer d'un problème à un autre
 
-> TBD dire qu'on a vue que tri est plus simple que l'enveloppe donc de complexité supérieure. On explore ces transformations de problèmes algo en d'autres.
-
 {% aller %}
 [réduction de problèmes](./problème-réduction){.interne}
 {% endaller %}
 
-## Problème du "sac à dos"
-
-> TBD premier problème dur : montrer que plus dur que SAT. Le rajouter.
-
 {% aller %}
-[Problème du sac à dos](./problème-sac-à-dos){.interne}
+[problème SAT](./problème-SAT){.interne}
 {% endaller %}
 
 ## Classes de Problèmes Algorithmiques
 
-> tbd montrer dans la partie sac à dos qu'il est inf à sat.
-> ici exemple de problème pas dans P (on ne sait pas)
-> pb de décision
-> question P (soluble) ≤ NP (vérifiable) ouverte.
-
 > TBD cook
-> TBD pbs de décision
 > TBD 2-sat facile et 3-sat impossible.
 
 {% aller %}
@@ -165,7 +157,18 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 {% endaller %}
 
 > TBD : montrer l'algorithme universel qui résout tout en temps optimal si on a un certificat. <https://www.youtube.com/watch?v=9ONm1od1QZo>
-> 
+
+## Problème du "sac à dos"
+
+> TBD deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
+>
+> <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>
+> subset-sum to sac a dos : <https://cgm.cs.mcgill.ca/~avis/courses/360/2003/assignments/sol4.pdf>
+
+{% aller %}
+[Problème du sac à dos](./problème-sac-à-dos){.interne}
+{% endaller %}
+
 > TBD : ici stop partie I. Ensuite Partie II.
 
 ## Complexité amortie

@@ -13,11 +13,13 @@ Les classes de problèmes et leurs significations donnent toujours des problème
 
 ## Problèmes utilisables en pratique
 
-Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne}) puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe un algorithme permettant de le résoudre. Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : la résolution.
+Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne} puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe un algorithme permettant de le résoudre.
 
 ![décidable](./NP-décidable.png)
 
-### Problèmes P
+Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme _traiter_. Commençons par la plus évidente : la résolution.
+
+### Résolution efficace
 
 {% note "**Définition**" %}
 Un problème algorithmique est dit **_polynomial_** s'il existe un algorithme de complexité polynomiale en la taille de son entrée permettant de le résoudre.
@@ -43,15 +45,15 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).
 {% endinfo %}
 
-### Problèmes et vérifieurs efficaces
+### Vérification efficace
 
-Il existe de nombreux problèmes dont on ne connait pas la complexité, ou dont on ne connait pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
+Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :
 
 - [somme de sous-ensemble](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles)
 - [sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos)
 - [isomorphisme de graphes](https://fr.wikipedia.org/wiki/Isomorphisme_de_graphes)
 
-Si l'on ne connait pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas.
+Si l'on ne connaît pas d'algorithme polynomiaux pour résoudre les 3 problèmes ci-dessus, on peut en revanche vérifier efficacement (_ie._ polynomialement) si une solution en est une ou pas. On reprend ici la notion de [vérifieur](../../structure-chaine-de-caractères/langages-mots)
 
 Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$ et $E'$ :
 
@@ -75,29 +77,28 @@ Un **_vérifieur efficace_** d'un problème décidable $P$ ayant pour entrée $e
 
 Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérifieur efficace. Terminons cette partie par deux remarques d'importance.
 
-Premièrement, il est clair que tous les problèmes de $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomiale de l'entrée puisque sa résolution l'est.
+Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.
 
 Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
 
 En effet, si le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
-### Problèmes NP
-
-La notion de vérifieur efficace nécessite que l'on ait une solution à vérifier, ce qui n'est pas le cas des [problèmes de décision](../../écrire-algorithmes/problème/#problème-décision){.interne} où l'on cherche juste à savoir si c'est possible (oui ou non, existe-t-il une solution ?) plutôt que de donner une solution explicite si elle existe.
-
-On a vu dans [la partie précédente](../décideur-décision) que l'on peut associer à tout problème un problème de décision et qu'il suffit d'étudier les ces derniers sans perte de généralité. Il faut donc réussir à transposer la notion de vérifieur efficace à ces derniers, et c'est exactement ce que fait la définition ci-dessous :
-
-{% note "**Définition**" %}
-**_Un problème de décision est dit $NP$_** s'il existe un vérifieur efficace $v$ tel que pour toute entrée $e$ du problème il existe $t$, appelé **_certificat de $e$_** tel que $v(e, t)$ soit vrai.
+{% note "**Proposition**" %}
+Si un problème admet un **_vérifieur efficace_** de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
 {% endnote %}
 
-La définition ci-dessus appelle plusieurs remarques. Tout d'abord le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe).
+Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :
 
-Deuxièmement ce qu'est le certificat n'est pas explicite. On sait juste qu'il existe. Voyez ça comme si le vérifieur était le schéma général de la preuve que $e$ est vrai pour le problème, et que le certificat était les paramètres qui permettent d'appliquer la preuve à $e$. Dans le cas de problèmes de $P$ seul $e$ suffit et pour des problèmes qui ne sont pas de décision c'est le couple $(e, s)$ (où $s$ est la solution) qui doit être prouvé.
+{% note "**Définition**" %}
+**_Un problème algorithmique est dit_** $NP$ s'il existe un vérifieur efficace de ses solutions.
+{% endnote %}
 
-Enfin, comme la taille du certificat est bornée par la complexité du vérifieur on peut utiliser le même argument que précédemment pour que tout problème de $NP$ est décidable : il suffit de tester le vérifieur avec tous les certificats possibles et de s'arrêter s'il répond OUI. Si l'on teste tous les certificat et qu'aucun ne donne réponse positive, la réponse du problème initial est NON. Ceci va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $\mathcal{O}(|e|^k)$ la complexité du vérifieur).
+Ce qui donne le schéma suivant :
 
+![décidable](./NP-NP-1.png)
+
+La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe) : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.
 
 {% attention "**À retenir**" %}
 Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
@@ -107,9 +108,19 @@ Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. 
 
 {% endattention %}
 
-Au final on a le schéma suivant :
+Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.
 
-![décidable](./NP-NP-1.png)
+En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une  époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
+
+Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
+
+Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème. C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une **réduction polynomiale** de $B$ vers $A$ : on a $B \leq A$.
+
+On connaît déjà quelques uns de ces problèmes : SAT et le problème du sac à dos. Au final on a :
+
+![décidable](./NP-NP-2.png)
+
+Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.
 
 ## Autres classes
 
@@ -123,30 +134,4 @@ Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souv
 {% lien %}
 Le lecteur intéresser pourra consulter [la page wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9) qui en liste certaines.
 {% endlien %}
-
-## Inclusion des classes
-
-Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ?
-
-De part [le théorème de la hiérarchie des complexité](../décideur-décision/#hiérarchie-complexité) on peut déjà avoir la proposition suivante :
-
-{% note "**Proposition**" %}
-Il existe des problèmes de décision décidables qui ne sont pas dans $NP$.
-{% endnote %}
-{% details "preuve", "open" %}
-
-La complexité d'un problème de décision est bornée par $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ où $\mathcal{O}(|e|^k)$ est la complexité de son vérifieur efficace. Or [le théorème de la hiérarchie des complexité](../décideur-décision/#hiérarchie-complexité) nous indique qu'il existe des problèmes de décision de complexité plus grande que toute fonction calculable, en particulier $f(n) = 2^{2^n}$ qui sera en $\Omega(n^k\cdot e^{n^k})$, quelque soit l'entier $k$.
-
-{% enddetails %}
-
-Nous ne donnons pas d'exemple concret, bien qu'il en existe, car ils demanderaient beaucoup de définitions pour être compris. Retenez seulement que trouver un problème décidable qui n'est pas dans $NP$ est difficile : la très grande majorités des problèmes de décisions que vous rencontrerez seront dans $NP$ et les autres problèmes pourront facilement s'écrire sous la forme d'un problème de décision de $NP$ à résoudre.
-
-
-En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée [à une  époque où un million de dollar c'était quelque chose](https://www.youtube.com/watch?v=LCZMhs_xpjc) et n'a jamais été réévaluée...).
-
-Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
-
-![décidable](./NP-NP-2.png)
-
-La partie suivante va étudier tout ça de plus prêt, car même si on ne sait pas s'il existe des problèmes de $NP$ qui ne sont pas dans $P$ on sait tout de même des choses sur la structure de la classe $NP$.
 

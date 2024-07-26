@@ -716,14 +716,16 @@ Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), s
 {% note %}
 Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../tris#complexité-problème){.interne} :
 
-Tout algorithme trouvant l'enveloppe convexe de $n$ points est a au moins une complexité de $\mathcal{O}(n\log(n))$.
+Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\log(n))$ si les $n$ points sont sur l'enveloppe.
 {% endnote %}
 
-Nous allons voir avec l'algorithme ci-après que cette borne est atteinte :
+Comme l'algorithme suivant atteint cette borne, on peut écrire :
 
 {% note %}
 La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\log(n))$.
 {% endnote %}
+
+Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(h\log(h))$ ou encore $\mathcal{O}(n\log(h))$.
 
 ### Parcours de Graham
 

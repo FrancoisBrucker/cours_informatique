@@ -86,9 +86,11 @@ Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant 
 
 Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le `stop`{.language-} :
 
+<div id="algorithme-STOP"></div>
+
 ```text
 Nom : stop
-Entrée : 
+Entrée :
     n : un entier représentant un programme
 Sortie :
     rend 1 si le programme en entrée est un algorithme

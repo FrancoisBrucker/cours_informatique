@@ -30,79 +30,84 @@ Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/
 ## Définitions
 
 {% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_1$ en $P_2$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_2$ en $P_1$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :
 
 - Si $E_1$ est une entrée du problème $P_1$ alors $A_1(E_1)$ est une entrée de du problème $P_2$
 - Si $S_2$ est une solution au problème $P_2$ avec $A_1(E_1)$ comme entrée alors $A_2(S_2)$ est ue solution au problème $P_1$ d'entrée $E_1$.
 
-Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_1$ en $P_2$ on notera $P_1 \leq P_2$ et on dira
-que $P_1$ est plus facile que $P_2$.
+Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_2$ en $P_1$ on notera $P_1 \leq P_2$.
 {% endnote %}
 
-Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$, mais il ne dit rien sur la complexité de passer du problème $A$ au problème $B$, il dit juste que c'est possible. C'est pourquoi on utilise souvent la réduction générale comme outils pour savoir si un problème est calculable on non. On a déjà utilisé ce genre de réduction sans le dire lorsque l'on a démontré [le théorème de Rice](../bases-théoriques/arrêt-rice/#théorème-rice){.interne} par exemple
+Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$ : que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$.
 
-{% lien %}
-[réduction et calculabilité en 5 mins](https://www.youtube.com/watch?v=U4yGQp5aCTM&list=PLhqug0UEsC-IDomfNsn8e3neoy34o8oye&index=9)
-{% endlien %}
+Rappelez-vous, c'est exactement ce qu'on a fait lorsque l'on a étudié la complexité de [la recherche de l'enveloppe convexe](../enveloppes-convexes/#complexité-problème), on a montré que le problème du tri est plus simple que la complexité de la recherche de l'enveloppe convexe.
 
 Si l'on veut une utilisation plus pratique de la réduction, on va chercher le couple d'algorithmes avec la complexité la plus faible, si possible linéaire et au mieux polynomiale :
 
 {% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_1$ en $P_2$ est une réduction ou le couple d'algorithmes $A_1$ et $A_2$ est de complexité polynomiale.
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou le couple d'algorithmes $A_1$ et $A_2$ est de complexité polynomiale.
 {% endnote %}
 
-On a utilisé ce type de réduction lorsque l'on a étudié la complexité de [la recherche de l'enveloppe convexe](../enveloppes-convexes/#complexité-problème)
+Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme résolvant $P_2$ pour résoudre $P_1$.
 
-- réduction calculable : pour la calculabilité (trouver exemple)
-- réduction polynomiale : pour la complexité du problème. Ex enveloppe convexe.
+Enfin :
 
+{% note "**Définition**" %}
+Lorsque $P_1 \leq P_2$ et $P_2 \leq P_1$, on dira que $P_1$ est équivalent à $P_2$.
+{% endnote %}
 
-> TBD utilisation d'un autre algo = réduction de Turing mais on n'en parlera pas là.
+## Exemples et exercices
 
-## Exemples
+### Min et max
 
-> exemple décidable
-> puis exemple pas utile pour arriver à réduction polynomiale
-> TBD exemple pas utile. 
+Cette première réduction est simple :
 
-### Réduction et calculabilité
+{% exercice %}
+Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs et le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
+{% endexercice %}
+{% details "corrigé" %}
+Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
+{% enddetails %}
 
-### Réduction polynomiale
+La seconde un peu moins :
 
-> TBD définition puis exemple
->
-## Le cas de SAT
+{% exercice %}
+Montrez que le problème de recherche du minimum dans un tableau d'entiers  est plus simple que le problème de recherche du maximum dans un tableau d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
 
-## TBD
+Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche $\max(T')$. Le min est alors : $\min(T) = \max(T) - \max(T')$.
 
-> en faire des exos.
+{% enddetails %}
 
-> TBD "gadget" pour la transformation
-> exemples.
+{% exercice %}
+Montrez que le problème de recherche du maximum dans un tableau d'entiers  est plus simple que le problème du tri d'un tableau d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
 
-selon ce que l'on cherche à faire.
-passer d'un problème à un autre pour le résoudre.
+> On trie puis on prend le max
 
-> TBD
-> https://en.wikipedia.org/wiki/Reduction_(complexity) 
-> https://fr.wikipedia.org/wiki/R%C3%A9duction_polynomiale 
-> exemple :
-> - <https://web.stanford.edu/class/archive/cs/cs161/cs161.1138/handouts/070%20Guide%20to%20Reductions.pdf>
-> parler du halting problem et de décidabilité
-> mais aussi vrai de autre problème on a vu l'enveloppe convexe.
-> 
-> TBD utiliser les technique de résolution d'un problème dans un autre.
-> ne pas parler de problème de décision.
-> TBD langage d'une machine de Turing et reco aussi dure qu'on veut (prendre le bout de classe de pb)
-> 
->  Doit tenir 2h pour montrer pourquoi NP = problème algo et réduction simple (max ≤ tri ; en trouver un autre.
-> on a égalité si ≤ et ≥. Faire exemple simple puis faire SAT = 3-sat (le faire)).
-> Faire 2-sat \leq 3-sat eq sat.
-> 
->
-> TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.
+{% enddetails %}
 
-> parler de 2-sat ≤ 3-sat = k-sat = sat
-> exemple réduction : 
-> - <https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS4104/html/Reduction.html>
-> - <https://www.cs.princeton.edu/courses/archive/spr03/cs226/lectures/reductions.pdf>
+### Nombres premiers
+
+PRIME = COMPOSITE ≤ FACTOR
+
+On espère que FACTOR > PRIME.
+
+### Produit et carré
+
+#### Entiers
+
+> TBD Wikipedia <https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)#Exemple_introductif>
+
+#### Matrices
+
+> TBD <https://people.cs.pitt.edu/~kirk/cs1510/notes/reducenotes.pdf>
+
+### 3-SUM
+
+> TBD classique en géométrie algébrique.
+
+> TBD <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness>

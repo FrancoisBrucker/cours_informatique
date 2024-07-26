@@ -477,6 +477,7 @@ On a :
 
 Le résultat précédent se généralise pour tout $p$. Pour cela, commençons par définir un concept fondamental en logique la _**conjonction de clauses**_ :
 
+<div id="clauses"></div>
 {% note "**Définition**" %}
 Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :
 
@@ -485,7 +486,7 @@ Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :
 - une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
 {% endnote %}
 
-Toute fonction $f: \\{0, 1\\}^n \rightarrow \\{0, 1\\}$ peut alors s'écrire comme une conjonction de clauses :
+Toute fonction $f: \\{0, 1\\}^n \rightarrow \\{0, 1\\}$ peut s'écrire comme une conjonction de clauses :
 
 {% note "**Proposition**" %}
 Toute fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire comme une conjonction de clauses.
