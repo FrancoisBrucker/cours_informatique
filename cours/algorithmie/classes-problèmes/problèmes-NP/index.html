@@ -93,8 +93,10 @@
   
 
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
+<p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, on sera toujours explicite sur le type d'algorithme utilisé : la machine de Turing et ses équivalents démontrés (pseudo code, pseudo-assembleur, fonctions récursives et toutes les définitions alternatives des machines de Turing).</p>
+<p>Enfin, comme le passage d'une machine de Turing à un pseudo-code et réciproquement peut se faire de façon polynomiale, un problème pouvant être résolu par une machine de Turing polynomiale le sera aussi avec un pseudo-code polynomial (et réciproquement).</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a> puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un algorithme permettant de le résoudre.</p>
+<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a> puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe une machine de Turing permettant de le résoudre.</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
 <h3>Résolution efficace</h3>
@@ -105,7 +107,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un problème algorithmique est dit <strong><em>polynomial</em></strong> s'il existe un algorithme de complexité polynomiale en la taille de son entrée permettant de le résoudre.</p>
+<p>Un problème algorithmique est dit <strong><em>polynomial</em></strong> s'il existe une machine de Turing de complexité polynomiale en la taille de son entrée permettant de le résoudre.</p>
 <p>L'ensemble des problèmes polynomiaux est nommé $P$.</p>
 </div>
 </div>
@@ -151,17 +153,17 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>vérifieur efficace</em></strong> d'un problème décidable $P$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
+<p>Un <strong><em>vérifieur efficace</em></strong> d'un problème décidable $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est une machine de Turing <code>01#</code> (pour plus de commodité, mais cela peut être n'importe quelle type de machine de Turing puisqu'elles sont polynomialement équivalentes) $V: E \times S \rightarrow \{0, 1\}$ telle que :</p>
 <ul>
-<li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $P(e)$</li>
+<li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$</li>
 <li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
 </ul>
 </div>
 </div>
-<p>Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérifieur efficace. Terminons cette partie par deux remarques d'importance.</p>
+<p>Remarquons que notre pseudo-code pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une correspond à un vérifieur efficace. Terminons cette partie par deux remarques d'importance.</p>
 <p>Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
 <p>Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
-<p>En effet, si le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+<p>En effet, si le vérifieur est une machine de Turing de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -185,7 +187,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </div>
 <p>Ce qui donne le schéma suivant :</p>
 <p><img src="NP-NP-1.png" alt="décidable"></p>
-<p>La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministe</a> : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.</p>
+<p>La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie <em>Non déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="../Turing-non-d%C3%A9terministe">machines de Turing non déterministe</a> : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -203,7 +205,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.</p>
 <p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 <p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
-<p>Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème. C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
+<p>Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème (ça aussi on va le voir et même le démontrer !). C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
 <p>On connaît déjà quelques uns de ces problèmes : SAT et le problème du sac à dos. Au final on a :</p>
 <p><img src="NP-NP-2.png" alt="décidable"></p>
 <p>Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
