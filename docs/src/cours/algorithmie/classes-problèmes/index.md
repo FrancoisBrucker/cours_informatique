@@ -17,21 +17,16 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
 
+> TBD intermède : <https://www.youtube.com/watch?v=9ONm1od1QZo> et son algo universel pour tous les problèmes NP.
+
 {% aller %}
-[Problèmes de décision](./décideur-décision){.interne}
+[NP et problèmes de décision](./décideur-décision){.interne}
+{% endaller %}
+
+{% aller %}
+[NP et machines de Turing non déterministes](./Turing-non-déterministe){.interne}
 {% endaller %}
 
 {% aller %}
 [Problèmes NP complets](./problèmes-NPC){.interne}
 {% endaller %}
-
-> TBD : en parler ?
-{% aller %}
-[Turing non déterministe](./Turing-non-déterministe){.interne}
-{% endaller %}
-
-> TBD isomorphisme de graphe : status inconnu.
-> TBD organiser ça sous l'angle de $\leq$ de problèmes
-> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
-
-> TBD <https://www.youtube.com/watch?v=9ONm1od1QZo>

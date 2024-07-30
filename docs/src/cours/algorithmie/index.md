@@ -123,6 +123,14 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Chaines de caractères](./structure-chaine-de-caractères){.interne}
 {% endaller %}
 
+### Complexité amortie
+
+> TBD A déplacer plus tard. Attention à l'amortie des dict/liste.
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
 ## Design d'algorithmes
 
 > TBD reprendre les algos d'avant et les classer dans les cases.
@@ -149,21 +157,16 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 ## Classes de Problèmes Algorithmiques
 
-> TBD cook
-> TBD 2-sat facile et 3-sat impossible.
-
 {% aller %}
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-> TBD : montrer l'algorithme universel qui résout tout en temps optimal si on a un certificat. <https://www.youtube.com/watch?v=9ONm1od1QZo>
-
 ## Problème du "sac à dos"
 
 > TBD deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
->
+
+> TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>
-> subset-sum to sac a dos : <https://cgm.cs.mcgill.ca/~avis/courses/360/2003/assignments/sol4.pdf>
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
@@ -171,13 +174,6 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 > TBD : ici stop partie I. Ensuite Partie II.
 
-## Complexité amortie
-
-> TBD A déplacer plus tard. Attention à l'amortie des dict/liste.
-
-{% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
-{% endaller %}
 
 ## Désordre et hasard
 

@@ -234,10 +234,10 @@ On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre l
 
 Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
 
-- $0$ si le $i$ chiffre après la virgule de $r_i$ est différent de $0$
-- $1$ si le $i$ chiffre après la virgule de $r_i$ est $0$
+- $1$ si le $i$ chiffre après la virgule de $r_i$ est différent de $1$
+- $2$ si le $i$ chiffre après la virgule de $r_i$ est $1$
 
-Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction. Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
+Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els), il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
 Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 

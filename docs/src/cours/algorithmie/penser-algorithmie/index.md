@@ -74,11 +74,14 @@ On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmatio
 
 {% lien %}
 
-Pour apprendre Haskell :
+Pour apprendre Haskell et les langages fonctionnels :
 
-- [introduction au langage Haskell](https://www.youtube.com/watch?v=UhM_H3lFk_Q) et au [lambda calcul](https://www.youtube.com/watch?v=_n4LIt2WPzE)
-- [playlist](https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV)
-- <https://learnyouahaskell.com/>
+1. <https://github.com/system-f/fp-course>
+2. <https://haskell.mooc.fi/>
+3. <https://www.youtube.com/playlist?list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3>
+4. [introduction au langage Haskell](https://www.youtube.com/watch?v=UhM_H3lFk_Q) et au [lambda calcul](https://www.youtube.com/watch?v=_n4LIt2WPzE)
+5. [playlist](https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV)
+6. <https://learnyouahaskell.com/>
 
 {% endlien %}
 
@@ -119,10 +122,6 @@ De part les nombreuses équivalences, lorsque l'on cherchera à démontrer des r
 Enfin, pour savoir si un modèle donné est général, il suffit de montrer qu'il peut simuler une machine de Turing. C'est ce qu'on appelle être Turing complet.
 
 ## Turing complet
-
-{% lien %}
-<https://www.youtube.com/watch?v=RPQD7-AOjMI>
-{% endlien %}
 
 Grâce à la machine de Turing universelle, démontrer qu'un langage est [Turing complet](https://fr.wikipedia.org/wiki/Turing-complet) c'est à dire qu'il permet de calculer tout ce qu'une machine de Turing peut calculer revient à montrer qu'on peut simuler une machine de Turing.
 
@@ -165,7 +164,8 @@ Si la plupart des langages informatiques sont clairement Turing complet, il exis
 
 ### Autres trucs
 
+{% lien %}
 - [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)
 - [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8)
 - [règle 110 avec Factorio (et des trains)](https://www.youtube.com/watch?v=NCC2Fd8qxv4)
-- ...
+{% endlien %}

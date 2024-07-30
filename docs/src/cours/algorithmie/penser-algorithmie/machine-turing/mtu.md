@@ -239,4 +239,6 @@ On peut encoder toute machine de Turing $M$ par une chaîne $\<M\>$ composée de
 
 {% endnote %}
 
-La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique).
+La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique) : une machine qui permet de simuler toutes les autres machine.
+
+Il suffit de construire une seule machine pour avoir toutes les machines de Turing possible via leur code.

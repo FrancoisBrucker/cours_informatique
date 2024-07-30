@@ -80,6 +80,10 @@ Pour cela, On crée le tableau $T'$ tel que $T'[x] = \max(T)-T[x]$ et on cherche
 
 {% enddetails %}
 
+## Tris
+
+Trier un tableau d'entier va souvent rendre les problèmes bien plus facile. ce qui fait que c'est souvent utile de faire une réduction au tri.
+
 {% exercice %}
 Montrez que le problème de recherche du maximum dans un tableau d'entiers  est plus simple que le problème du tri d'un tableau d'entiers.
 {% endexercice %}
@@ -88,6 +92,8 @@ Montrez que le problème de recherche du maximum dans un tableau d'entiers  est 
 > On trie puis on prend le max
 
 {% enddetails %}
+
+> TBD Recherche de doublon ≤ tri
 
 ### Nombres premiers
 

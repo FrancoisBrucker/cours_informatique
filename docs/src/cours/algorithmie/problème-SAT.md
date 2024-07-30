@@ -25,6 +25,8 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie.
 
+> TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
+> 
 > TBD exemple sudoku.
 
 > TBD subsetsum 3-sat : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
@@ -49,4 +51,5 @@ résoudre 2-sat.
 > exemple réduction :
 >
 > résolution 3-sat par backtracking
-> tbd support cours s1 mpci 
+>
+> TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>

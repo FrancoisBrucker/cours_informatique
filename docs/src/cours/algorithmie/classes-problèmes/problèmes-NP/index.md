@@ -11,9 +11,13 @@ eleventyComputed:
 
 Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.
 
+En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, on sera toujours explicite sur le type d'algorithme utilisé : la machine de Turing et ses équivalents démontrés (pseudo code, pseudo-assembleur, fonctions récursives et toutes les définitions alternatives des machines de Turing).
+
+Enfin, comme le passage d'une machine de Turing à un pseudo-code et réciproquement peut se faire de façon polynomiale, un problème pouvant être résolu par une machine de Turing polynomiale le sera aussi avec un pseudo-code polynomial (et réciproquement).
+
 ## Problèmes utilisables en pratique
 
-Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne} puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe un algorithme permettant de le résoudre.
+Pour qu'un [problème algorithmique](../../écrire-algorithmes/problème/){.interne} puisse être utilisé en pratique, il faut bien sûr qu'il soit [décidable](../../écrire-algorithmes/problème/#décidable){.interne}, c'est à dire qu'il existe une machine de Turing permettant de le résoudre.
 
 ![décidable](./NP-décidable.png)
 
@@ -22,7 +26,7 @@ Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on p
 ### Résolution efficace
 
 {% note "**Définition**" %}
-Un problème algorithmique est dit **_polynomial_** s'il existe un algorithme de complexité polynomiale en la taille de son entrée permettant de le résoudre.
+Un problème algorithmique est dit **_polynomial_** s'il existe une machine de Turing de complexité polynomiale en la taille de son entrée permettant de le résoudre.
 
 L'ensemble des problèmes polynomiaux est nommé $P$.
 {% endnote %}
@@ -68,20 +72,20 @@ Cette notion de vérification est cruciale. Si on ne sait pas construire de solu
 Formalisons cette notion de vérification efficace :
 
 {% note "**Définition**" %}
-Un **_vérifieur efficace_** d'un problème décidable $P$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \\{0, 1\\}$ tel que :
+Un **_vérifieur efficace_** d'un problème décidable $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est une machine de Turing `01#` (pour plus de commodité, mais cela peut être n'importe quelle type de machine de Turing puisqu'elles sont polynomialement équivalentes) $V: E \times S \rightarrow \\{0, 1\\}$ telle que :
 
-- $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $P(e)$
+- $V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$
 - la complexité de $V$ est **polynomiale** en la taille de $e$ et ne **dépend pas** de la taille de $s$.
 
 {% endnote %}
 
-Remarquons que notre algorithme pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une est un vérifieur efficace. Terminons cette partie par deux remarques d'importance.
+Remarquons que notre pseudo-code pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une correspond à un vérifieur efficace. Terminons cette partie par deux remarques d'importance.
 
 Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.
 
 Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
 
-En effet, si le vérifieur est un algorithme de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
+En effet, si le vérifieur est une machine de Turing de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
 {% note "**Proposition**" %}
 Si un problème admet un **_vérifieur efficace_** de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
@@ -98,7 +102,7 @@ Ce qui donne le schéma suivant :
 
 ![décidable](./NP-NP-1.png)
 
-La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe) : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.
+La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie _Non déterministe Polynomial_ (et **_pas du tout_** non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux [machines de Turing non déterministe](../Turing-non-déterministe) : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.
 
 {% attention "**À retenir**" %}
 Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :
@@ -114,7 +118,7 @@ En revanche, la question de savoir s'il existe des problèmes de décision qui s
 
 Certains se demandent même si cette question est décidable (_ie._ démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).
 
-Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème. C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une **réduction polynomiale** de $B$ vers $A$ : on a $B \leq A$.
+Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème (ça aussi on va le voir et même le démontrer !). C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une **réduction polynomiale** de $B$ vers $A$ : on a $B \leq A$.
 
 On connaît déjà quelques uns de ces problèmes : SAT et le problème du sac à dos. Au final on a :
 
