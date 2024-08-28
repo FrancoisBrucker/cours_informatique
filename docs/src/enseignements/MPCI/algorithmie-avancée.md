@@ -13,22 +13,41 @@ eleventyComputed:
 
 ---
 
-## TBD
-
-> TBD voir plan de ce truc : <https://www.youtube.com/watch?v=nRA2unaJZIc&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh>
-
-> MIT algo. <https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp>
-> mettre les ref.
-> 3 et on en chosit 2 (cf cours du MIT)
-proba : <https://www.youtube.com/watch?v=pxzbbP7FmPA&list=PLYhJxc3T5xALIscExdC0YqPKdBgSp6EfP>
+## Plan
 
 > TBD reprendre cours L1. On formalise ce que l'on a vu comme ça en L1.
 > complexité amortie, NP, graphes, design et approximation.
-> TBD refaire ça propre dans le cours d'algo.
 
-> TBD plein d'exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+1. 24/25 et 25/26 : Turing vers pseudo-assembleur
+2. Assembleur, mémoire et C
+3. graphes, arbre (nb) et k-connexité (Menger)
+4. Graphes eulérien -> Christofides et idée du couplage sur graphe complet valué
+5. 24/25 : flots (idée de la programmation linéaire) + plut de poids min/max
+6. coupe min/max et couplage max graphe bi-parti
+7. couplage min/max sur graphe bi-parti (méthode hongroise ?)
+8. donner algo couplage Edmonds fleur + autre
+9. valué : Lovaz dans Matching theory
+10. aléatoire, algorithme randomisé et approximation
+    1. Commencez par les considération probabilistes sous-jacentes et exemples direct pour chaque
+    2. exemples classiques
+11. retour sur le couplage et algo randomisé
+12. Graphes aléatoires et infinis
+13. Crypto
+14. coloriabilité
+15. graphes planaires
+
+## TBD
+
+> TBD théorie de Galois : <https://www.maths.ed.ac.uk/~tl/galois/> et version papier <https://arxiv.org/abs/2408.07499>
+>
+> TBD voir plan de ce truc :
+>
+> - <https://www.youtube.com/watch?v=nRA2unaJZIc&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh>
+> - MIT algo. <https://www.youtube.com/playlist?list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp>
 
 ## Hasard
+
+- proba : <https://www.youtube.com/watch?v=pxzbbP7FmPA&list=PLYhJxc3T5xALIscExdC0YqPKdBgSp6EfP>
 
 Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
@@ -51,6 +70,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
   - humain pas bon pour faire du hasard : <https://www.youtube.com/watch?v=tP-Ipsat90c>
 
 <https://www.youtube.com/watch?v=RcXmhKF9ewo>
+
 ### mélanger
 
 - permutation : <https://en.wikipedia.org/wiki/Permutation>
@@ -96,9 +116,36 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ### Randomized algorithms
 
+1. rappeler quicksort
+2. random select
+3. las Vegas et Monte Carlo
+4. Utilitaire :
+   1. linéarité de l'espérance
+   2. inégalités de Markov et Tchebychev
+   3. coupon's collector
+   4. Chernov bounds 4.1 et application en 4.2
+5. La méthode probabilistes
+   1. Lovász Local Lemma application à k-sat
+6. chaines de Markov et graphes
+7. Techiniques algébriques
+   1. Multiplication de matrices
+   2. vérification de valeur de polynomes
+   3. PCP et vérification de preuve
+
+- problème du mariage random 3.5 livre random algo qui amène au problème du collecteur de pokemon 3.6
+
+Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'utilisation d'algo random.
+
+- max-sat 5.2
+- min-cut
+- 
+- algorithmes :
+  - exemple : <https://perso.eleves.ens-rennes.fr/people/clement.legrand-duchesne/TIPE.pdf>
+  - cours ens introduction aux algorithmes d'approximation et randomisés : <https://pauillac.inria.fr/~quercia/documents-info/Luminy-2003/schabanel/schabanel.pdf>
+  - livre approximation algorithm de Vazirani : <https://ics.uci.edu/~vazirani/book.pdf>
 - <https://www.youtube.com/watch?v=4y_nmpv-9lI>
-- page rank = markov cahin.
-- dérandomizartion exemple dans randomized algorithm
+- page rank = Markov chain.
+- dérandomization exemple dans randomized algorithm
 - meme si on ne gagne pas en O, parfois on gagne sur la constante multiplicative (ex. médiane)
 - random placement = nlogn en moyenne = coupon collector
 - <https://www.youtube.com/watch?v=gKuzFZ9ko7I&list=PLwp5OpRmcl_HPVnrDNmQ9cMbYiiFxZ19d&index=1>
@@ -118,13 +165,15 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 - Hasard ? Intros :
   - court : <https://www.youtube.com/watch?v=nBq4sFg3at0>
   - TB : <https://www.youtube.com/watch?v=_tN2ev3hO14>
-  - le hasard est dans l'oeil de celui qui regarde. SI on ne peut pas prédire le suivant, pseudo-random = random. C'est comme le démon de Laplace.
+  - le hasard est dans l'œil de celui qui regarde. SI on ne peut pas prédire le suivant, pseudo-random = random. C'est comme le démon de Laplace.
 - regarder dans le Kleinberg/Tardos
 - cours Dieter Kratch
 - <https://www.youtube.com/watch?v=0r2D32esF3Y> et <https://www.youtube.com/watch?v=GS2MxmorEzc>
 - <https://www.youtube.com/watch?v=01ohO542NMI&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO>
 - ? <https://www.youtube.com/watch?v=bsZXgXdSomc&list=PLOMwD5hwqoJ_slbq9iSE6tURVqX5eLKq8>
-- bpp : <https://cs.uwaterloo.ca/~eblais/cs365/PandBPP.html>
+- bpp :
+  - <https://cs.uwaterloo.ca/~eblais/cs365/PandBPP.html>
+  - <https://www.youtube.com/watch?v=CinKHIkJKu0&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH&index=64>
 - <https://www.columbia.edu/~cs2035/courses/csor4231.S19/rand.pdf>
 - <https://theory.stanford.edu/people/pragh/amstalk.pdf>
 - monte carlo : <https://www.youtube.com/watch?v=CmpWM2HMhxw>
@@ -142,7 +191,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 - td :
   - <https://courses.cs.washington.edu/courses/cse312/18wi/312A/lecture23.pdf>
   - <https://people.engr.tamu.edu/j-chen3/courses/658/2016/notes/s6.pdf>
-- 2-sat via davis et putnam
+- 2-sat via Davis et Putnam
 - <https://www.cs.ubc.ca/~nickhar/Book.pdf>
 
 ## Cryptographie
@@ -201,9 +250,13 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 ## Graphes
 
-- graphe fortement connexe pour 2-sat : <https://fr.wikipedia.org/wiki/Algorithme_de_Kosaraju>
+- Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
+- 2-sat et graphes :
+  - Graphes médians = 2-sat
+  - composantes fortement connexes :
+    - <https://cp-algorithms.com/graph/2SAT.html>
+    - <https://fr.wikipedia.org/wiki/Algorithme_de_Kosaraju>
 - cascade in networks. Kleinberg. Tardos 2003.<https://www.youtube.com/watch?v=gw8Hgx-EtJQ&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=14>
-- 
 - <https://lgayral.pages.math.cnrs.fr/fr/agreg/>
 - random graphs. Friendship paradox. Tes amis ont plus d'amis que toi (existence de sommets avec beaucoup de voisins)
 - Matrice d'adjacence :
@@ -226,16 +279,12 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 - spectral graphs : <https://www.youtube.com/watch?v=uTUVhsxdGS8>
 - playlist <https://www.youtube.com/watch?v=7T-webnamho&list=PLzXFiYlgM72LMHOeTaZSHvkREdLbKBxLI>
 
-- graphe de rado pour preuve aléaoitre et graphe infini: 
+- graphe de rado pour preuve aléaoitre et graphe infini :
   - <https://www.youtube.com/watch?v=3QjZ31lj974>
   - <https://www.youtube.com/watch?v=XwVZ5VttrW0&t=3s>
 - vertex cover
 - christophides : <https://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec9.pdf>
 - structures implique de nombreuses classes de problèmes et donc d'algorithmes. POuvant être adaptés a ses propres solution s. eg voyageur de commerce. matching. etc.
-- matching :
-  - <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>; <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>;<https://www.epfl.ch/labs/disopt/wp-content/uploads/2018/09/pset3.pdf>; <https://madars.org/projects/6854/AlgMatching.pdf> ; <https://www.cs.cmu.edu/~15850/notes/lec8.pdf> ; <https://www.math.uwaterloo.ca/~harvey/W11/Matching.pptx>
-  - Micali-Vazirani : <https://arxiv.org/pdf/2012.03582>
-  - Harvey le mieux, las-vegas : <https://web.eecs.umich.edu/~pettie/matching/Harvey-maximum-matching-j-version.pdf>
 - bi-parti
 - planaire :
   - <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
@@ -254,11 +303,13 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 - random graphs
 - union-find
 - coloriable :
+  - 3 coloriable et problème de la galerie d'art : <<https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>>
+  - 3 coloriable et lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>
   - <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
   - 3 coloriable :
     - NP complet <https://perso.eleves.ens-rennes.fr/people/pierre.le-barbenchon/devinfo/3colo.pdf>
     - planaire aussi : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD11-correction.pdf>
-- nombres de ramsey :
+- nombres de Ramsey :
   - <https://www.youtube.com/watch?v=eHXeOnIrVxU&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=19>
   - <https://en.wikipedia.org/wiki/Ramsey%27s_theorem>
   - preuve du théorème de Ramsey : <https://uu.diva-portal.org/smash/get/diva2:1729430/FULLTEXT01.pdf>
@@ -273,37 +324,45 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 
 - planaire et embedding : <https://www.youtube.com/watch?v=MNgKx4A1pXM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=13>
 
+- mineur : en parler un peu et donner les principaux résultats que l'on précisera dans des cas particuliers : <https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+  - <https://www.labri.fr/perso/bousquet/Exposes/forum-fr.pdf>
+  - bel ordre et mineurs : <https://perso.ens-lyon.fr/eric.thierry/Graphes2007/denis-kuperberg.pdf>
+- graphe planaire :
+  - preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
+  - définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf>. On a besoin de :
+    - coloriabilité via le problème de la galerie d'art :
+      - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+      - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
+      - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>
+      - théorème de Jordan : <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
+    - k-connectivité
+  - placement sur la grille :
+    - <https://ics.uci.edu/~eppstein/gina/schnyder/>
+    - papier : <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
+    - <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
+  - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
+  - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
+  - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
+
 ## Complexité
 
-- <https://www.youtube.com/watch?v=ctwX--JEzSA>
-- code vers circuit :
-  - <https://people.cs.georgetown.edu/jthaler/firstcircuitlecture.pdf>
-  - <https://en.wikipedia.org/wiki/C_to_HDL>
-  - automate et circuits : <https://pageperso.lis-lab.fr/arnaud.labourel/AUTO/cours7.pdf>
+### Complexité et cryptographie
+
 - nombres premiers :
   - <https://en.wikipedia.org/wiki/AKS_primality_test>
   - <https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf>
-- OUI est diff du NON. Vérifier que oui ok mais pas vérifier que non (il faut faire tous les cas). Vérifier poly est identique à : Remplace par des branches : Aller la ou la ou la. Et s'il existe un choix qui mène à vrai ça y va. Ca simule l'intuition.
-- pb de décision = pb général.
+
+### Algorithmes d'approximation
+
+- exos : <https://people.irisa.fr/Francois.Schwarzentruber/algo2/03approximation.pdf>
 - approximation algorithm.
-- plan (mettre en L1 ensuite) :
-  - P, NP
-  - réduction. Passer d'un pb à l'autre
-    - max a tri
-    - Sat à 3 sat
-    - borne max ? Pas forcement dans NP. Oui c'est sat.
-  - P neq NP ?
-  - cook dans le bouquin de wilf
-- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>
 - multiplication de matrice <https://www.youtube.com/watch?v=sZxjuT1kUd0>
-- languages
-- P et NP
-- réductions
-- Cook et Turing
-- autres classes : <https://fr.wikipedia.org/wiki/BPP_(complexit%C3%A9)> : <https://www.youtube.com/watch?v=mZck0N_T9Cs>
-- k-sat et random : random qui prouve <https://www.youtube.com/watch?v=F2JdDIMi2A0&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=22>
-  - LLL <https://courses.cs.washington.edu/courses/cse525/13sp/scribe/lec10.pdf>
-  - <https://arxiv.org/pdf/0903.0544>
-  - 3-sat et 2-sat. Graphes médians
-  - <https://cp-algorithms.com/graph/2SAT.html>
+
+- random :
+  - random et polynomial. Classes de problèmes : <https://fr.wikipedia.org/wiki/BPP_(complexit%C3%A9)> : <https://www.youtube.com/watch?v=mZck0N_T9Cs>
+  - k-sat et random : random qui prouve <https://www.youtube.com/watch?v=F2JdDIMi2A0&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=22>
   - 2-sat random : <https://people.seas.harvard.edu/~cs125/fall14/lec19.pdf>
+  - LLL :
+    - <https://courses.cs.washington.edu/courses/cse525/13sp/scribe/lec10.pdf>
+    - <https://arxiv.org/pdf/0903.0544>
+  

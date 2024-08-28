@@ -38,7 +38,8 @@ def automate(m):
 
 Un automate est une version simplifiée d'une machine de Turing (donc d'un algorithme), il n'y a pas de possibilité de stocker des variables, et sa forme est déterminée exclusivement par sa fonction de transition. On a alors coutume de représenter les automates par un [diagramme](https://fr.wikipedia.org/wiki/Automate_fini_d%C3%A9terministe#Repr%C3%A9sentation_graphique) :
 
-> tbd exemple. avec départ et arrivées.
+> TBD exemple. avec départ et arrivées.
+> TBD cours <https://pageperso.lis-lab.fr/arnaud.labourel/AUTO/cours7.pdf>
 
 Les langages reconnaissables par un automates sont strictement inclus dans les langages décidables :
 

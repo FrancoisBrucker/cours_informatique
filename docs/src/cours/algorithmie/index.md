@@ -21,7 +21,11 @@ _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer).
 
-## Algorithmes et programmes
+## Partie I
+
+Tout ce que devrait connaître tout ingénieur de l'informatique.
+
+### Algorithmes et programmes
 
 Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas faire :
 
@@ -47,7 +51,13 @@ Maintenant que l'on sait comment écrire des algorithmes en pseudo-code et que l
 [Penser l'algorithmie](./penser-algorithmie){.interne}
 {% endaller %}
 
-## On s'entraîne : itératif vs récursif
+### Quelques liens
+
+{% lien %}
+[une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
+{% endlien %}
+
+### On s'entraîne : itératif vs récursif
 
 > TBD : à faire propre
 
@@ -55,7 +65,7 @@ Maintenant que l'on sait comment écrire des algorithmes en pseudo-code et que l
 [exercices : itératif et récursif](./projet-itératif-récursif){.interne}
 {% endaller %}
 
-## Complexités
+### Complexités
 
 Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
 
@@ -68,11 +78,11 @@ Cette partie s'intéresse à la notion de complexités pour un algorithme et un 
 
 La notion de complexité est centrale en algorithmie, nous en reparlerons encore plus tard dans le cours.
 
-## On s'entraîne
+### On s'entraîne
 
 > TBD reprendre les exos d'avant avec calcul de complexité.
 
-## projet : problèmes liés à l'exponentiation
+### projet : problèmes liés à l'exponentiation
 
 {% aller %}
 [Calculer $x^y$](./projet-exponentiation){.interne}
@@ -81,49 +91,54 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Les suites additives](./projet-suite-additive){.interne}
 {% endaller %}
 
-## Complexité en moyenne
+### Complexité en moyenne
 
 {% aller %}
 [Complexité en moyenne](./complexité-moyenne){.interne}
 {% endaller %}
 
-## Problème du tri
+### Problème du tri
 
 {% aller %}
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}
 
-## On s'entraîne : exercices de complexité et de preuve
+### On s'entraîne : exercices de complexité et de preuve
 
 {% aller %}
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
 
 > TBD faire un lien avec les exos vu en écriture d'algo + complexité pour que tout soit aussi là.
+> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
 
-## Structures linéaires
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
+> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.
 
-### Conteneurs
+> TBD lièvre et lapin.
+
+### Structures linéaires
+
+#### Conteneurs
 
 {% aller %}
 [Conteneurs](./structure-conteneurs){.interne}
 {% endaller %}
 
 > TBD ajouter exos pour dictionnaires.
-> TBD 2-SUM et 3-SUM exact et avec dico.
-> $T[i] + T[j] + T[k] = 0$
-> En $\mathcal{O}(n^3)$ puis en $\mathcal{O}(n^2)$ (avec tri) et en $\mathcal{O}(n)$ en moyenne
-> TBD pas toujours la meilleur solution : lièvre et lapin pour deux tableaux avec égalité mieux que dictionnaire.
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
+>
+> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
 
-### Chaînes de caractères
+#### Chaînes de caractères
 
-> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de 01* à 01*, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
+> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
 
 {% aller %}
 [Chaines de caractères](./structure-chaine-de-caractères){.interne}
 {% endaller %}
 
-### Complexité amortie
+#### Complexité amortie
 
 > TBD A déplacer plus tard. Attention à l'amortie des dict/liste.
 
@@ -131,7 +146,7 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-## Design d'algorithmes
+### Design d'algorithmes
 
 > TBD reprendre les algos d'avant et les classer dans les cases.
 
@@ -139,13 +154,13 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
-## Enveloppes convexes
+### Enveloppes convexes
 
 {% aller %}
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
-## Réductions : passer d'un problème à un autre
+### Réductions : passer d'un problème à un autre
 
 {% aller %}
 [réduction de problèmes](./problème-réduction){.interne}
@@ -155,16 +170,19 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 [problème SAT](./problème-SAT){.interne}
 {% endaller %}
 
-## Classes de Problèmes Algorithmiques
+{% aller %}
+[Multiplication de matrices](.multiplication-matrices){.interne}
+{% endaller %}
+
+### Classes de Problèmes Algorithmiques
 
 {% aller %}
 [Classes de problèmes algorithmiques](./classes-problèmes){.interne}
 {% endaller %}
 
-## Problème du "sac à dos"
+### Problème du "sac à dos"
 
 > TBD deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
-
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>
 
@@ -174,6 +192,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 > TBD : ici stop partie I. Ensuite Partie II.
 
+## Partie II
+
+Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
 ## Désordre et hasard
 

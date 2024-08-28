@@ -33,6 +33,8 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 > 
 ## TBD
 
+> polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>
+> et revenir en arrière : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.
 > en faire des exos.
 
 > TBD "gadget" pour la transformation

@@ -136,6 +136,5 @@ Nous nous restreindrons dans ce cours uniquement aux problèmes de $NP$ (et souv
 - ...
 
 {% lien %}
-Le lecteur intéresser pourra consulter [la page wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9) qui en liste certaines.
+Le lecteur intéresser pourra consulter [la page Wikipedia sur les classes de complexité](https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9) qui en liste certaines.
 {% endlien %}
-

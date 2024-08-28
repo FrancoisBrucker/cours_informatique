@@ -28,7 +28,7 @@ Nous allons commencer par aborder la première extension des tableaux, les liste
 > TBD : bornées
 > TBD : circulaires
 > TBD : faire gain/perte
-> TBD : exo pile/file simple (jouer avec la structure) et usage dans des algos. Montrer aussi que la pile peut ˆ´tre utilisée pour stocker des variables : faire fibo et enfin dire que c'est comme ça en mémoire : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
+> TBD : exo pile/file simple (jouer avec la structure) et usage dans des algos. Montrer aussi que la pile peut être utilisée pour stocker des variables : faire fibo et enfin dire que c'est comme ça en mémoire : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
 
 ## Tableau associatifs
 
@@ -42,5 +42,5 @@ Aussi appelé dictionnaires
 {% endaller %}
 
 ### Dérivés
-> ensembles
 
+> ensembles

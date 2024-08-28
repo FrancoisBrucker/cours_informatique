@@ -13,20 +13,33 @@ On a vu au début de ce cours que certains problèmes [ne pouvaient pas être r�
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](../problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](../projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
+> TBD voir si cohérent avec NP-optimization problem de A.3 de "Approximation Algorithms". Ajouter une partie pour l'approximation.
+
 {% aller %}
 [Problèmes NP](./problèmes-NP){.interne}
 {% endaller %}
 
-> TBD intermède : <https://www.youtube.com/watch?v=9ONm1od1QZo> et son algo universel pour tous les problèmes NP.
+> TBD intermède : <https://www.youtube.com/watch?v=9ONm1od1QZo> et son algo universel pour tous les problèmes NP. <https://steemit.com/steemstem/@markgritter/leonid-levin-s-universal-algorithm>
+
+{% aller %}
+[NP et machines de Turing non déterministes](./Turing-non-déterministe){.interne}
+{% endaller %}
+
+> TBD retravailler la suite pour qu'elle colle avec avant. Turing = décision.
+> Du coup les définitions de NP et de co-NP deviennent claires.
 
 {% aller %}
 [NP et problèmes de décision](./décideur-décision){.interne}
 {% endaller %}
 
 {% aller %}
-[NP et machines de Turing non déterministes](./Turing-non-déterministe){.interne}
-{% endaller %}
-
-{% aller %}
 [Problèmes NP complets](./problèmes-NPC){.interne}
 {% endaller %}
+
+{% lien %}
+
+- <https://www2.math.upenn.edu/~wilf/AlgoComp.pdf>
+- <https://www.youtube.com/watch?v=s9l6QTX9n0Q&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt>
+- <https://www.youtube.com/watch?v=KydXVE9Su5g&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH>
+
+{% endlien %}

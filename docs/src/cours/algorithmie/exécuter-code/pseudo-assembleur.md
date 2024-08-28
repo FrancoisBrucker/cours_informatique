@@ -448,6 +448,8 @@ Elle est vraie si $x$ ou $y$ est vrai.
 
 Ces trois fonctions sont fondamentales :
 
+> TBD voir si la preuve est identique à <https://people.csail.mit.edu/rrw/6.045-2020/notenp.pdf>
+
 {% note "**Proposition**" %}
 Toute fonction de $\\{0, 1\\}^2 \rightarrow \\{0, 1\\}$ peut s'écrire comme combinaison des fonctions $\text{NOT}(x)$, $\text{AND}(x, y)$, et $\text{OR}(x, y)$.
 
