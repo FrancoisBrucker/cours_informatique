@@ -94,6 +94,9 @@
 
   <p>On a vu au début de ce cours que certains problèmes <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9" class="interne">ne pouvaient pas être résolu par un algorithme</a> (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si <a href="../complexit%C3%A9-calculs/importance" class="interne">sa complexité est exponentielle</a> le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.</p>
 <p>Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le <a href="../probl%C3%A8me-tris" class="interne">problème du tri</a> est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du <a href="../projet-exponentiation" class="interne">problème de l'exponentiation</a> est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.</p>
+<blockquote>
+<p>TBD voir si cohérent avec NP-optimization problem de A.3 de &quot;Approximation Algorithms&quot;. Ajouter une partie pour l'approximation.</p>
+</blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -103,7 +106,19 @@
 </div>
 </div>
 <blockquote>
-<p>TBD intermède : <a href="https://www.youtube.com/watch?v=9ONm1od1QZo">https://www.youtube.com/watch?v=9ONm1od1QZo</a> et son algo universel pour tous les problèmes NP.</p>
+<p>TBD intermède : <a href="https://www.youtube.com/watch?v=9ONm1od1QZo">https://www.youtube.com/watch?v=9ONm1od1QZo</a> et son algo universel pour tous les problèmes NP. <a href="https://steemit.com/steemstem/@markgritter/leonid-levin-s-universal-algorithm">https://steemit.com/steemstem/@markgritter/leonid-levin-s-universal-algorithm</a></p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="Turing-non-d%C3%A9terministe" class="interne">NP et machines de Turing non déterministes</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD retravailler la suite pour qu'elle colle avec avant. Turing = décision.<br>
+Du coup les définitions de NP et de co-NP deviennent claires.</p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -118,15 +133,19 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="Turing-non-d%C3%A9terministe" class="interne">NP et machines de Turing non déterministes</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
 <p><a href="probl%C3%A8mes-NPC" class="interne">Problèmes NP complets</a></p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www2.math.upenn.edu/~wilf/AlgoComp.pdf">https://www2.math.upenn.edu/~wilf/AlgoComp.pdf</a></li>
+<li><a href="https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt">https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt</a></li>
+<li><a href="https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH">https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH</a></li>
+</ul>
 </div>
 </div>
 

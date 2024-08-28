@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Diviser pour régner</title>
+    <title>Multiplication de matrices</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Diviser pour régner</h1>
+  <h1>Multiplication de matrices</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/diviser-régner/">Diviser pour régner</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/multiplication-matrices/">Multiplication de matrices</a>
 
 </div>
 </div>
@@ -92,15 +92,35 @@
     
   
 
-  <blockquote>
-<p>TBD. Dire qu'on a vue ça dans les tris.<br>
-TBD Reprendre le master theorem et le démontrer ici.<br>
-TBD autres exemples<br>
-TBD transformée de Fourier<br>
-TBD exo <a href="https://wkerl.me/#teaching">https://wkerl.me/#teaching</a><br>
-TBD médiane en temps linéaire en moyenne. en vrai.<br>
-<a href="https://wkerl.me/cours/ouv_td.pdf">https://wkerl.me/cours/ouv_td.pdf</a><br>
-<a href="https://www.normalesup.org/~simonet/teaching/caml-prepa/tp-caml-2001-02.pdf">https://www.normalesup.org/~simonet/teaching/caml-prepa/tp-caml-2001-02.pdf</a> et <a href="https://fr.wikipedia.org/wiki/Recherche_des_deux_points_les_plus_rapproch%C3%A9s">https://fr.wikipedia.org/wiki/Recherche_des_deux_points_les_plus_rapprochés</a></p>
+  <p>Comment utiliser la réduction pour créer des algorithmes. Exemple de la multiplication de Matrices.</p>
+<blockquote>
+<p>TBD en faire un DM/exos.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication">https://en.wikipedia.org/wiki/Computational_complexity_of_matrix_multiplication</a></p>
+<blockquote>
+<p>algo : <a href="https://mathworld.wolfram.com/StrassenFormulas.html">https://mathworld.wolfram.com/StrassenFormulas.html</a></p>
+</blockquote>
+<blockquote>
+<p>Multipication matrice = inversion <a href="https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion">https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion</a></p>
+</blockquote>
+<ol>
+<li>Simple</li>
+<li>Strassen</li>
+<li>voir ça comme une réduction.</li>
+<li>amélioration $\mathcal{O}(n^\omega)$</li>
+</ol>
+<blockquote>
+<p>TBD exposé de la méthode : <a href="https://www.youtube.com/watch?v=HdysaWNs1g8">https://www.youtube.com/watch?v=HdysaWNs1g8</a><br>
+voir aussi <a href="https://www.youtube.com/watch?v=DruwS2_cVys">https://www.youtube.com/watch?v=DruwS2_cVys</a></p>
+</blockquote>
+<blockquote>
+<p>TBD utilisation de la réduction comme outils de computation d'algorithmes</p>
+<p>TBD review <a href="https://www.youtube.com/watch?v=sZxjuT1kUd0">https://www.youtube.com/watch?v=sZxjuT1kUd0</a></p>
+</blockquote>
+<p>Fonctionne aussi pour inversion de matrice. (cf strassen)</p>
+<blockquote>
+<p>TBD review : <a href="https://theoryofcomputing.org/articles/gs005/gs005.pdf">https://theoryofcomputing.org/articles/gs005/gs005.pdf</a><br>
+TBD coppersmith winograde <a href="https://www-auth.cs.wisc.edu/lists/theory-reading/2009-December/pdfmN6UVeUiJ3.pdf">https://www-auth.cs.wisc.edu/lists/theory-reading/2009-December/pdfmN6UVeUiJ3.pdf</a></p>
 </blockquote>
 
 
