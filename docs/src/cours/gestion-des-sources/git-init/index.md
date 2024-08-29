@@ -2,24 +2,19 @@
 layout: layout/post.njk 
 title: Installation et configuration de Git
 
+eleventyNavigation:
+  prerequis:
+    - "/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/"
+    - "/cours/coder-et-développer/ordinateur-développement/terminal/"
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-{% prerequis "**Prérequis** :" %}
-
-* [Terminal]({{ "/tutoriels/terminal" | url }})
-* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
-
-{% endprerequis %}
-
-<!-- début résumé -->
 
 Installation et configuration de git pour github.
-
-<!-- fin résumé -->
 
 {% info %}
 On ne montrera pas ici comment utiliser git en ligne de commande.
@@ -43,7 +38,7 @@ apt-get install git
 
 {% details "Sous mac" %}
 
-On utilise [brew]({{ "/tutoriels/brew" }}) :
+On utilise [brew](/cours/coder-et-développer/ordinateur-développement/brew){.interne} :
 
 ```shell
 brew install git
@@ -109,7 +104,7 @@ Vous pourrez ensuite faire des `git pull` tout seul et ils seront rebasés par d
 
 ### Branche par défaut
 
-POur être cohérent avec github, on va dire que tout nouveau projet commence avec la branche `main`.
+Pour être cohérent avec github, on va dire que tout nouveau projet commence avec la branche `main`.
 
 Par défaut c'est `master` (et ça [fait des histoires](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)).
 
@@ -181,7 +176,7 @@ On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant
 <https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository>
 {% endlien %}
 
-le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#animaux){.interne} :
+le projet existe déjà sur github et je le *clone* chez moi C'est dans le menu déroulant `clone` sur la page github du projet. Par exemple pour le [projet animaux](../projet-github-desktop#nouveau-projet){.interne} :
 [cloner un projet](clone-1.png)
 
 Il existe plusieurs façon de procéder :

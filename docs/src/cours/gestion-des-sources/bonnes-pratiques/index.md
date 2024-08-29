@@ -1,8 +1,8 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 
 title: Bonnes pratiques
-authors: 
+authors:
   - "Corentin Lange"
 
 eleventyComputed:
@@ -26,7 +26,7 @@ Deux repos qui, selon moi, sont très bien réalisé et celui du projet open-sou
 
 ## Workflow
 
-Le *"workflow"*, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
+Le _"workflow"_, ou flux de travail en français (à bas les anglicismes) sont les petites règles à adopter pour avancer dans son travail dans de bonnes conditions en minimisant les potentielles pertes de temps créées par une mauvaise gestion.
 
 Pour travailler en équipe, à l'aide de GitHub, il est bon de garder un schéma de travail harmonieux afin de faciliter la relecture des autres qui passeront derrière nous.
 
@@ -40,10 +40,10 @@ C'est souvent ce qu'on utilise la première fois en se servant de git et github 
 
 Travailler de cette manière est très peu pratique pour :
 
-* la relecture du code
-* une intégration continue
-* un nombre de personnes participant élevé
-* éviter des conflits de merge (que l'on veut au plus souvent éviter)
+- la relecture du code
+- une intégration continue
+- un nombre de personnes participant élevé
+- éviter des conflits de merge (que l'on veut au plus souvent éviter)
 
 Ce tutoriel est ici en grande partie pour vous montrer d'autres modes de travail afin de parfaire l'expérience et l'efficacité du travail à plusieurs sur un projet.
 
@@ -102,23 +102,24 @@ La forme du nom de ses commits est aussi important, une liste de commits mal nom
 
 Message de commit :
 
-* titre du message : \<type\> [scope (optionnel)]: \<description\>
-  * type :
-    * **feature** : Ajout d’une nouvelle fonctionnalité
-    * **test** : Ajout de tests
-    * **bugfix** : Correction d’un bug
-    * **hotfix** : Correction d’un bug critique
-    * **chore** : Nettoyage du code
-    * **experiment** : Expérimentation de fonctionnalités
-    * ...
-  * scope : Optionnel. l'endroit dans le code où les modification on été faites
-    * **api** : changement dans l'api
-    * **lang** : ajout d'une traduction dans une nouvelle langue
-    * **style** : changement dans le css
-    * ...
-  * description : en une courte phrase d'une ligne.
+- titre du message : \<type\> [scope (optionnel)]: \<description\>
 
-* corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare
+  - type :
+    - **feature** : Ajout d’une nouvelle fonctionnalité
+    - **test** : Ajout de tests
+    - **bugfix** : Correction d’un bug
+    - **hotfix** : Correction d’un bug critique
+    - **chore** : Nettoyage du code
+    - **experiment** : Expérimentation de fonctionnalités
+    - ...
+  - scope : Optionnel. l'endroit dans le code où les modification on été faites
+    - **api** : changement dans l'api
+    - **lang** : ajout d'une traduction dans une nouvelle langue
+    - **style** : changement dans le css
+    - ...
+  - description : en une courte phrase d'une ligne.
+
+- corps du message : à n'utiliser que si nsi vous avez besoin d'ajouter beaucoup de description à votre commit. Cela doit être rare
 
 ### Gitmoji
 
@@ -132,13 +133,14 @@ Il est conseillé de le mettre soit avant votre scope soit directement le rempla
 
 Exemple de commits:
 
-* Sans scope:
-  * :bug: correction of bad codes
-  * :zap: accelerated program launch on windows
+- Sans scope:
 
-* Avec scope:
-  * :hammer: refact: refactored sql db
-  * :rotating_light: fix: compiler problems
+  - :bug: correction of bad codes
+  - :zap: accelerated program launch on windows
+
+- Avec scope:
+  - :hammer: refact: refactored sql db
+  - :rotating_light: fix: compiler problems
 
 {% info %}
 Personnellement je préfère garder le scope.
@@ -160,10 +162,10 @@ Elles sont aussi un bon moyen d'apporter des infos sur une contribution, de déf
 
 Comme vous pouvez le voir sur cette capture, sur une pull_request vous avez la possibilité d'assigner :
 
-* Des **relecteurs** : devant donner leur aval pour accepter le merge
-* Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
-* Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
-* Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
+- Des **relecteurs** : devant donner leur aval pour accepter le merge
+- Des **labels**: afin de trier les différentes pull request (ex : hotfix, feature,...)
+- Définir si la pull request s'inscrit dans un projet ou/et à des milestones (un outil de gestion de projet présent sur github)
+- Lier des **issues** qui seront automatiquement fermées au moment du merge de la pull request dans la branch master du projet
 
 Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus grande quantité de modifications dans le projet.
 
@@ -171,22 +173,22 @@ Cet outil permet ainsi d'"empaqueter" des commits au sein d'un ajout d'une plus 
 
 De la même manière que les Pull Requests, il est possible de créer des issues (ou problèmes) afin de mettre l'accent sur :
 
-* l'ajout d'une fonctionnalité
-* une dis-fonctionnalité
+- l'ajout d'une fonctionnalité
+- une dis-fonctionnalité
 
 Une bonne issue doit être bien rédiger afin d'aider la personne qui va s'en occuper :
 
-* si ajout d'une fonctionnalité :
-  * bien décrire la fonctionnalité voulue
-  * son fonctionnement
-  * des visuels.
-* si dis-fonctionnalité :
-  * visuels,
-  * comment l'erreur s'est produite ?
-  * sur quelle machine ?
-  * avec quelle version ?
-  * si reproductible, expliquer comment la reproduire
-  * indiquer des pistes si vous en avez
+- si ajout d'une fonctionnalité :
+  - bien décrire la fonctionnalité voulue
+  - son fonctionnement
+  - des visuels.
+- si dis-fonctionnalité :
+  - visuels,
+  - comment l'erreur s'est produite ?
+  - sur quelle machine ?
+  - avec quelle version ?
+  - si reproductible, expliquer comment la reproduire
+  - indiquer des pistes si vous en avez
 
 Je vous redirige [vers le contributing](./#contributing){.interne} afin d'aider les gens à leur rédaction d'issues.
 
@@ -206,21 +208,21 @@ C'est le fichier `README.md`{.fichier} visible directement sur votre repo quand 
 
 On y retrouve en général :
 
-* le nom du projet
-* son installation
-* son utilisation
-* des visuels
+- le nom du projet
+- son installation
+- son utilisation
+- des visuels
 
-Vous pouvez vous inspirer du  [readme d'Atom](https://github.com/atom/atom#readme)
+Vous pouvez vous inspirer du [readme d'Atom](https://github.com/atom/atom#readme)
 
 ### <span id="contributing"></span> Contributing
 
 Il est d'usage aussi de réaliser un fichier markdown `CONTRIBUTING.md`{.fichier} afin d'expliquer à toutes personnes participant au code/projet comment :
 
-* bien faire leur commits dans ce projet
-* ce qui est autorisé ou non
-* un "template" pour les issues
-* un "template" pour les pull requests
+- bien faire leur commits dans ce projet
+- ce qui est autorisé ou non
+- un "template" pour les issues
+- un "template" pour les pull requests
 
 Vous pouvez vous inspirer du **CONTRIBUTING** de [Atom](https://github.com/atom/atom/blob/master/CONTRIBUTING.md), ainsi que celui de [GodotEngine](https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md) (Moteur de jeux open-source).
 
@@ -245,23 +247,27 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.
 Par exemple :
 
 ```text
-1.0.0-beta1 
+1.0.0-beta1
 ```
 
 On retrouve dans la version de son projet :
 
-* le numéro de version **MAJEUR** : Quand les changements apportés ne sont pas rétrocompatibles, vulgairement de gros changements
-* le numéro de version **MINEUR** : Quand les ajouts sont rétrocompatibles
-* le numéro de version de **CORRECTIF/PATCH** : Pas d'ajouts de fonctionnalités mais uniquement des corrections.
-* un **LABEL** facultatif: Pour apporter des précisions sur le type de version
+- le numéro de version **MAJEUR** : Quand les changements apportés ne sont pas rétrocompatibles, vulgairement de gros changements
+- le numéro de version **MINEUR** : Quand les ajouts sont rétrocompatibles
+- le numéro de version de **CORRECTIF/PATCH** : Pas d'ajouts de fonctionnalités mais uniquement des corrections.
+- un **LABEL** facultatif: Pour apporter des précisions sur le type de version
   (ex: beta/alpha/stable)
 
 ## Bibliographie
 
-* <https://docs.github.com/en/get-started/quickstart/github-flow>
-* <https://github.com/atom/atom>
-* <https://makeareadme.com>
-* <https://github.com/godotengine/godot/>
-* <https://semver.org/lang/fr/>
-* <https://zepel.io/blog/5-git-workflows-to-improve-development/>
-* <https://gitmoji.dev/>
+{% lien %}
+
+- <https://docs.github.com/en/get-started/quickstart/github-flow>
+- <https://github.com/atom/atom>
+- <https://makeareadme.com>
+- <https://github.com/godotengine/godot/>
+- <https://semver.org/lang/fr/>
+- <https://zepel.io/blog/5-git-workflows-to-improve-development/>
+- <https://gitmoji.dev/>
+
+{% endlien %}

@@ -57,7 +57,7 @@ Quelques applications sont indispensables pour utiliser son ordinateur pour le d
 
 ### Un navigateur
 
-Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](https://fr.wikipedia.org/wiki/Safari_(navigateur_web)) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
+Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](https://fr.wikipedia.org/wiki/Safari_(navigateur_web)), [chrome](https://www.google.com/chrome/) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
 
 ### Un outil de compression/décompression de fichiers
 

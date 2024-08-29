@@ -1,6 +1,10 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Projet github avec l'application desktop
+
+eleventyNavigation:
+  prerequis:
+    - "/cours/coder-et-développer/ordinateur-développement/fichiers-navigation/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -8,16 +12,13 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-{% prerequis "**Prérequis** :" %}
 
-* [Naviguer dans un système de fichiers]({{ "/tutoriels/fichiers-navigation" | url }})
+Utilisation de l'application https://desktop.github.com/ pour la gestion des sources d'un projet.
 
-{% endprerequis %}
-<!-- début résumé -->
+{% faire %}
+[Télécharger l'application github desktop](https://desktop.github.com/download/) et installez là sur votre ordinateur.
 
-Utilisation de l'application [desktop](https://desktop.github.com/) de github.
-
-<!-- fin résumé -->
+{% endfaire %}
 
 ## Configuration
 
@@ -39,9 +40,9 @@ Ignorez les fenêtres si vous en avez et arrivez là :
 
 Allez dans les préférences et vérifiez que :
 
-* *"Accounts"* : pointe bien vers votre compte github
-* *"Integration"* : soit lié à vscode et au terminal
-* *"Git"* : connaisse bien votre vrai nom (pas de pseudo) et une adresse mail où vous joindre.
+- _"Accounts"_ : pointe bien vers votre compte github
+- _"Integration"_ : soit lié à vscode et au terminal
+- _"Git"_ : connaisse bien votre vrai nom (pas de pseudo) et une adresse mail où vous joindre.
 
 {% info %}
 On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement toute personne ayant fait un commit pour lui demander des explications ou de faire des corrections. Il faut donc pouvoir **toujours** identifier l'auteur par un nom et une adresse mail valide.
@@ -50,21 +51,21 @@ On le rappelle, dans la gestion des sources il faut pouvoir contacter rapidement
 
 ## Projets
 
-Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser [vscode]({{ "/tutoriels/vsc-installation-et-prise-en-main"  }}).
+Puisque vous travailler sur votre ordinateur, il vous faudra également une application vous permettant de créer et modifier des fichiers texte. Je vous conseille d'utiliser [l'éditeur vscode]([{{ "/tutoriels/vsc-installation-et-prise-en-main"  }}](https://code.visualstudio.com/)).
 
-### Récupérer un projet
+### <span id="récupérer-projet"></span>Récupérer un projet
 
 Commençons par récupérer le projet précédent et voir comment tout ça se passe dans l'application.
 
-1. choisissez "*clone a project from the internet
-2. vous devriez voir vos le projet dans l'onglet *"Github.com"*
-3. en cliquant sur le bouton *"clone"*, votre projet va aller dans un dossier de votre ordinateur
+1. choisissez "\*clone a project from the internet
+2. vous devriez voir vos le projet dans l'onglet _"Github.com"_
+3. en cliquant sur le bouton _"clone"_, votre projet va aller dans un dossier de votre ordinateur
 
-Une fois cliqué sur *"clone"* on se retrouve devant la fenêtre suivante :
+Une fois cliqué sur _"clone"_ on se retrouve devant la fenêtre suivante :
 
 ![projet](app-github-mac-projet-1.png)
 
-Remarquez qu'en cliquant sur *"history"*, on retrouve **tout** l'historique du projet :
+Remarquez qu'en cliquant sur _"history"_, on retrouve **tout** l'historique du projet :
 
 ![projet](app-github-mac-projet-2.png)
 
@@ -81,13 +82,13 @@ Pour communiquer les changement effectué chez soit aux autre membre de l'équip
 {% endnote %}
 
 {% info %}
-Avoir un clone *"origin"* n'est pas indispensable. On pourrait tout aussi bien directement récupérer des modification depuis le clone d'un collaborateur : le système est **distribué**.
+Avoir un clone _"origin"_ n'est pas indispensable. On pourrait tout aussi bien directement récupérer des modification depuis le clone d'un collaborateur : le système est **distribué**.
 
 Mais c'est tout de même vachement plus simple d'avoir un lieu où se concentre l’information avant d'être distribuée aux autres membres du projet.
 
 {% endinfo %}
 
-### <span id="animaux"></span> Nouveau projet
+### <span id="nouveau-projet"></span> Nouveau projet
 
 Créons un nouveau projet jouet :
 
@@ -111,16 +112,16 @@ Vous voyez que l'application a mis un fichier (caché) `.gitattributes`{.fichier
 {% info %}
 Le fichier `.gitattributes`{.fichier} donne à git des règles pour [modifier automatiquement](https://buzut.net/cours/versioning-avec-git/normalisation-des-fichiers) des fichiers lorsqu'ils passent entre ses mains.
 
-Par exemple, pour les fichiers texte, de gérer automatiquement les caractères *à la ligne* qui sont [différents sous unix, max et windows](https://fr.wikipedia.org/wiki/Fin_de_ligne).
+Par exemple, pour les fichiers texte, de gérer automatiquement les caractères _à la ligne_ qui sont [différents sous unix, max et windows](https://fr.wikipedia.org/wiki/Fin_de_ligne).
 {% endinfo %}
 
 #### Ajoutons des fichiers
 
-Utilisons vscode pour *"ouvrir un dossier"* puis choisir le dossier contenant notre projet.
+Utilisons vscode pour _"ouvrir un dossier"_ puis choisir le dossier contenant notre projet.
 
 Ajoutons y 3 fichiers :
 
-* `poissons.txt`{.fichier}
+- `poissons.txt`{.fichier}
 
   ```text
   Anchois
@@ -129,7 +130,7 @@ Ajoutons y 3 fichiers :
 
   ```
 
-* `mammifères.txt`{.fichier}
+- `mammifères.txt`{.fichier}
 
   ```text
   Chat
@@ -138,7 +139,7 @@ Ajoutons y 3 fichiers :
 
   ```
 
-* `oiseaux.txt`{.fichier}
+- `oiseaux.txt`{.fichier}
 
   ```text
   Pinson
@@ -158,12 +159,12 @@ Faisons un commit. On voit que les 3 fichiers ont été pris en compte dans le c
 ![desktop-projet-2](desktop-projet-2.png)
 
 {% note %}
-Choisir quels fichiers seront pris en compte pour le commit est ce que l'on appelle le *staging*
+Choisir quels fichiers seront pris en compte pour le commit est ce que l'on appelle le _staging_
 {% endnote %}
 
 ### Pousser l'historique sur github
 
-Pour l'instant, nous n'avons travailler que chez nous. Rien n'a été mis sur github. POur le faire, il suffit de cliquer sur le bouton *"push origin"* pour le faire.
+Pour l'instant, nous n'avons travailler que chez nous. Rien n'a été mis sur github. Pour le faire, il suffit de cliquer sur le bouton _"push origin"_ pour le faire.
 
 Faisons le.
 
@@ -226,7 +227,7 @@ Sur l'application desktop, notre bouton de communication avec le serveur dit*"fe
 ![desktop-projet fetch](desktop-projet-3.png)
 
 {% note %}
-***fetch origin*** signifie que l'application va chercher des infos sur l'état de l'origin c'est à dire sur github.
+**_fetch origin_** signifie que l'application va chercher des infos sur l'état de l'origin c'est à dire sur github.
 {% endnote %}
 
 Cliquons sur ce bouton pour nous retrouver dans la situation suivante :
@@ -237,7 +238,7 @@ On voit que github et nous différons tous deux d'un commit.
 
 #### Résolution du problème
 
-Nous pourrions faire comme précédemment et faire un *merge* des deux histoires. On aurait du coup un historique comme ça :
+Nous pourrions faire comme précédemment et faire un _merge_ des deux histoires. On aurait du coup un historique comme ça :
 
 ```text
 origin : A -> B --> D
@@ -255,7 +256,7 @@ On va re-écrire notre histoire en fonction de l'origine, c'est à dire transfor
 
 ```text
 origin : A -> B
-          \    
+          \
 nous   :    -> C
 ```
 
@@ -263,7 +264,7 @@ en ça :
 
 ```text
 origin : A -> B
-               \    
+               \
 nous   :         -> C'
 ```
 
@@ -288,7 +289,7 @@ On a régler un problème dans le rebase. COmme c'était le seul, desktop nous p
 
 ![rebase 2](desktop-rebase-2.png)
 
-On clique sur le bouton *"continue rebase"*. Pour arriver à cette situation :
+On clique sur le bouton _"continue rebase"_. Pour arriver à cette situation :
 
 ![rebase 3](desktop-rebase-3.png)
 
@@ -296,11 +297,11 @@ Il n'y a plus de conflit avec l'origin, puisque son commit d'avance a été int�
 
 ![rebase 4](desktop-rebase-4.png)
 
-Notre commit a été re-écrit pour tenir compte du commit de l'origin (qui est passé *avant* le notre) :
+Notre commit a été re-écrit pour tenir compte du commit de l'origin (qui est passé _avant_ le notre) :
 
 ![rebase 5](desktop-rebase-5.png)
 
-On peut maintenant pousser nos changements sur github sans soucis en cliquant sur le bouton *"push origin"*
+On peut maintenant pousser nos changements sur github sans soucis en cliquant sur le bouton _"push origin"_
 
 Il y a au final tous les commit sur github (victoire !)
 

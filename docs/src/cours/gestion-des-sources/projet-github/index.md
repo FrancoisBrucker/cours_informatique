@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Projet github
 
 eleventyComputed:
@@ -17,9 +17,9 @@ Création et maintient d'un projet avec Github.
 
 On en profitera pour voir le fonctionnement basique de git :
 
-* commit
-* branches
-* merge
+- commit
+- branches
+- merge
 
 ## Créer un projet
 
@@ -28,15 +28,15 @@ On en profitera pour voir le fonctionnement basique de git :
 
 Résultat : ![options du projet](github-créer-un-projet-3.png)
 
-Les *commit* sont les mises à jour du projet.
+Les _commit_ sont les mises à jour du projet.
 
 {% note %}
 
-Chaque ***commit*** est associé à une ***branche*** (ici `main`) et est obligatoirement constitué de :
+Chaque **_commit_** est associé à une **_branche_** (ici `main`) et est obligatoirement constitué de :
 
-* du nom de la personne qui a effectué le commit, ici `Test-cours-ecm`
-* du numéro du commit, ici `da919d7` (donné automatiquement). 
-* d'un message (d'une ligne) décrivant le commit, ici `initial commit`
+- du nom de la personne qui a effectué le commit, ici `Test-cours-ecm`
+- du numéro du commit, ici `da919d7` (donné automatiquement).
+- d'un message (d'une ligne) décrivant le commit, ici `initial commit`
 
 {% endnote %}
 {% info %}
@@ -56,7 +56,7 @@ Voir [ce doc](https://medium.com/@jonathan_finch/git-commit-hash-number-theory-7
 On a utilisé <https://gitmoji.dev/> pour le commit. Mettre un émoji en premier caractère du message permet de facilement identifier le but du commit.
 {% endinfo %}
 
-Notre projet a maintenant 2 commits. En cliquant sur le texte *32 commits"*, on voit l'historique de notre projet sur la branche principale (`main`) :
+Notre projet a maintenant 2 commits. En cliquant sur le texte _32 commits"_, on voit l'historique de notre projet sur la branche principale (`main`) :
 
 ![historique](github-historique-main.png)
 
@@ -90,13 +90,13 @@ Notre nouveau commit :
 
 Je suis content de mon projet, mais soit :
 
-* j'aimerai tester des modifications sans être sûr de les conserver
-* j'aimerai corriger un bug mais sa correction risque de prendre un peu de temps
+- j'aimerai tester des modifications sans être sûr de les conserver
+- j'aimerai corriger un bug mais sa correction risque de prendre un peu de temps
 
 De plus, je ne voudrai pas juste travailler dans mon coin et tout commiter une fois que ce sera fini car :
 
-* le travail risque de prendre du temps et plusieurs commits
-* si je travaille dans mon coin, lorsque j'aurai fini, les autres membres du projets auront certainement modifié le code.
+- le travail risque de prendre du temps et plusieurs commits
+- si je travaille dans mon coin, lorsque j'aurai fini, les autres membres du projets auront certainement modifié le code.
 
 La solution à ce problème consiste à ajouter **une branche** au projet.
 
@@ -104,11 +104,11 @@ La solution à ce problème consiste à ajouter **une branche** au projet.
 
 1. ![branches](github-branches-1.png)
 2. On clique :
-   * pour ajouter une nouvelle branche : ![ajout d'une branche](github-branches-2.1.png)
-   * on indique son nom et la branche à copier : ![paramètres de la branche](github-branches-2.2.png)
+   - pour ajouter une nouvelle branche : ![ajout d'une branche](github-branches-2.1.png)
+   - on indique son nom et la branche à copier : ![paramètres de la branche](github-branches-2.2.png)
 3. On peut maintenant changer de branche :
-   * on retourne à la page de gestion de projet et on voit qu'on a 2 branches : ![plusieurs branches](github-branches-3.1.png)
-   * passage sur une autre branche : ![passage à la nouvelle branche](github-branches-3.2.png)
+   - on retourne à la page de gestion de projet et on voit qu'on a 2 branches : ![plusieurs branches](github-branches-3.1.png)
+   - passage sur une autre branche : ![passage à la nouvelle branche](github-branches-3.2.png)
 
 ### Travail sur la nouvelle branche
 
@@ -119,7 +119,7 @@ On obtient alors les commits sur la branches feature :
 
 ![commits sur la branche feature](github-feature-3.png)
 
-Les 3 premiers commits sont communs à la branche main (allez dans *"insights/network"* pour voir le graphe de dépendances) :
+Les 3 premiers commits sont communs à la branche main (allez dans _"insights/network"_ pour voir le graphe de dépendances) :
 
 ![graphe de dépendances](github-feature-4.png)
 
@@ -137,8 +137,8 @@ Notre feature est terminée, nous voulons ajouter ses modifications dans la banc
 
 Il faut amener les modifications de la branche `feature` dans la branche `main` sans tout casser. Git permet de faire ceci avec deux opérations :
 
-* merge
-* rebase
+- merge
+- rebase
 
 #### merge
 
@@ -174,15 +174,15 @@ Pour cela :
 6. Qui sont dans le fichier `programme.txt`: ![requête conflits diff](github-merge-5.2.png)
 7. Chaque conflit (il peut y en avoir plusieurs par fichier) est toujours représenté comme ça :
 
-  ```text
-  <<<<<< [nom d'une branche ou d'un commit]
-  [contenu de la branche]
-  ====== autre branche
-  [contenu de l'autre branche]
-  >>>>>> [nom de l'autre branche ou de l'autre commit]
-  ```
+```text
+<<<<<< [nom d'une branche ou d'un commit]
+[contenu de la branche]
+====== autre branche
+[contenu de l'autre branche]
+>>>>>> [nom de l'autre branche ou de l'autre commit]
+```
 
-  Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème :  ![résolution](github-merge-6.png)
+Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les `<<<<<<`, `>>>>>>` et `=====`. Puis cliquez sur `mark as resolved Pour notre problème : ![résolution](github-merge-6.png)
 
 Une fois la fusion exécutée, notre graphe de dépendance est :
 
@@ -194,14 +194,14 @@ On peut alors supprimer la branche `feature` qui ne nous est plus d'aucune utili
 
 #### annuler un commit
 
-L'opération `revert` permet de revenir en arrière et d'annuler un commit ou un *"pull request"* (le commit fautif n'est pas supprimé).
+L'opération `revert` permet de revenir en arrière et d'annuler un commit ou un _"pull request"_ (le commit fautif n'est pas supprimé).
 
 {% note %}
 Supprimer un commit n'est pas une opération recommandée lorsque des collaborateur ont pu avoir accès à celui-ci. Cela les désynchroniseraient. On préfère faire un `commit revert` qui crée un commit qui revient en arrière : on ne supprime pas le commit fautif, on l'annule en refaisant le contraire de ce qu'il a fait. Ceci assure que les utilisateurs restent synchronisés.
 
 {% endnote %}
 
-Nous allons ici *annuler* notre pull request :
+Nous allons ici _annuler_ notre pull request :
 
 1. ![pull request revert 1](github-revert-1.png)
 2. ![pull request revert 2](github-revert-2.png)

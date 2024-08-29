@@ -69,7 +69,7 @@ Vous pouvez aussi utiliser le raccourci clavier global `<CTRL> + <ALT> + T` :
 
 ### <span id="explorateur"></span>Via l'explorateur de fichier
 
-[L'explorateur de fichier](../fichiers-navigation/#explorateur) est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
+[L'explorateur de fichier](../fichiers-navigation/#explorateur){.interne} est un moyen simple d'accéder à un terminal directement placé dans le dossier voulu.
 
 {% details "sous Windows 11" %}
 
