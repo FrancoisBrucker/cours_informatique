@@ -53,7 +53,7 @@ Le but de ce cours est que vous puissiez :
             - ne sauver que ce qui est modifié
             - marquer chaque modification d'un résumé du travail effectué
             - faire de branches
-            - > TBD faire des schémas.
+            - > TBD faire des schémas ![schémas de commits](../IMG_0604.jpg)
          3. On ne peut pas faire ça a la mimine. Il faut un logiciel qui gère tout ça.
             1. gestion des branches
             2. des logs
