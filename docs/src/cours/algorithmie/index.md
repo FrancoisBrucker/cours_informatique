@@ -196,6 +196,9 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
+> mettre Turing ici et Cook.
+> Fin de la partie 1 juste donner NP et dire qu'il y a des NP-complet et le prouver ici.
+
 ## Désordre et hasard
 
 {% aller %}
