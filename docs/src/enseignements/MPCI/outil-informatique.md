@@ -44,7 +44,7 @@ Vous aurez besoin d'installer python et un logiciel pour programmer :
 {% endaller %}
 
 {% aller %}
-[prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
+[Éditeur vscode](/cours/coder-et-développer/éditeur-vscode/){.interne}
 {% endaller %}
 
 ## Autre logiciels utiles
