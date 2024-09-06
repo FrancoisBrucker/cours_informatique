@@ -4,10 +4,10 @@ layout: layout/post.njk
 title: Ordinateur pour le développement
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Utiliser son ordinateur pour le développement nécessite quelques connaissances et outils pour que tout se passe au mieux. Rien d'insurmontable, mais si on ne le fait pas on a vite un système instable où rien de marche comme il faudrait.
@@ -17,10 +17,10 @@ Il faut résister à la tentation de faire n'importe quoi en espérant que ça p
 {% info %}
 On regardera comment faire sous 3 systèmes d'exploitations :
 
-* Windows 11
-* Macos
-* Linux/Ubuntu (si vous êtes avec une autre distribution, vous devriez savoir vous déb rouiller tout seul)
-{% endinfo %}
+- Windows 11
+- Macos
+- Linux/Ubuntu (si vous êtes avec une autre distribution, vous devriez savoir vous déb rouiller tout seul)
+  {% endinfo %}
 
 ## Préparation
 
@@ -28,18 +28,18 @@ On regardera comment faire sous 3 systèmes d'exploitations :
 
 Votre compte utilisateur avec lequel vous allez faire du développement (qui peut être votre compte principal) doit posséder quelques propriétés qui vont vous faire gagner du temps :
 
-* doit être un ***compte administrateur*** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480) si vous êtes sous Linux)
-* votre nom de compte ne doit contenir ***ni espace ni accent***
+- doit être un **_compte administrateur_** (pouvant exécuter la commande [`sudo`](https://www.linuxtricks.fr/wiki/print.php?id=480) si vous êtes sous Linux)
+- votre nom de compte ne doit contenir **_ni espace ni accent_**
 
 Si votre compte ne satisfait pas les deux critères ci-dessus :
 
 {% faire %}
 Création d'un compte administrateur :
 
-* [sous Windows 11](https://support.microsoft.com/fr-fr/windows/cr%C3%A9er-un-compte-d-administrateur-ou-d-utilisateur-local-dans-windows-20de74e0-ac7f-3502-a866-32915af2a34d)
-* [sous Macos](https://support.apple.com/fr-fr/guide/mac-help/mchl3e281fc9/mac)
-* [sous Linux/Ubuntu](https://guide.ubuntu-fr.org/desktop/user-add.html)
-{% endfaire %}
+- [sous Windows 11](https://support.microsoft.com/fr-fr/windows/cr%C3%A9er-un-compte-d-administrateur-ou-d-utilisateur-local-dans-windows-20de74e0-ac7f-3502-a866-32915af2a34d)
+- [sous Macos](https://support.apple.com/fr-fr/guide/mac-help/mchl3e281fc9/mac)
+- [sous Linux/Ubuntu](https://guide.ubuntu-fr.org/desktop/user-add.html)
+  {% endfaire %}
 
 ### Installation d'un nouveau système
 
@@ -57,7 +57,7 @@ Quelques applications sont indispensables pour utiliser son ordinateur pour le d
 
 ### Un navigateur
 
-Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](https://fr.wikipedia.org/wiki/Safari_(navigateur_web)), [chrome](https://www.google.com/chrome/) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
+Il en existe de nombreux et tout système en a un par défaut ([edge](https://fr.wikipedia.org/wiki/Microsoft_Edge), [safari](<https://fr.wikipedia.org/wiki/Safari_(navigateur_web)>), [chrome](https://www.google.com/chrome/) ou [firefox](https://fr.wikipedia.org/wiki/Mozilla_Firefox)).
 
 ### Un outil de compression/décompression de fichiers
 
@@ -74,7 +74,9 @@ Je conseille d'installer [notepad++](https://notepad-plus-plus.org/)
 
 {% enddetails %}
 {% details "sous Macos" %}
-Je conseille d'utiliser la version gratuite (ou de payer le logiciel si vous l'utilisez beaucoup ou avec besoin des fonctionnalités avancées que la version payante propose) de [bbedit](http://www.barebones.com/products/bbedit/).
+
+- En éditeur gratuit à rout faire, vous pouvez télécharger [CotEditor sur l'appstore](https://coteditor.com/), simple et efficace.
+- Je conseille aussi d'utiliser la version gratuite (ou de payer le logiciel si vous l'utilisez beaucoup ou avec besoin des fonctionnalités avancées que la version payante propose) de [bbedit](http://www.barebones.com/products/bbedit/).
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
