@@ -84,15 +84,9 @@ Comme il existe au plus autant d'Algorithmes que de nombres entiers, il y a bien
 Nous utiliserons parfois des algorithmes sans paramètre. Ils permettent de créer les fonctions constantes et peuvent être vue comme un cas particulier d'Algorithme ou la réponse est la même quelque soit l'entrée donnée.
 {% endinfo %}
 
-## Exemples de fonctions calculables
+## Exemple de fonction calculable
 
-### Fonctions récursives primitives
-
-{% aller %}
-[Fonctions récursives primitives](./récursive-primitive){.interne}
-{% endaller %}
-
-### fonction d'Ackermann
+> TBD un truc plus simple, ou un autre truc ?
 
 {% aller %}
 [Fonction d'Ackermann](./ackermann){.interne}

@@ -63,7 +63,7 @@ On a alors les correspondances :
 
 Avec $k$ le plus petit indice tel que $T[5\cdot k] = \phi_q(q)$
 
-Par exemple, [la machine oscillation](../définition/#exemple-oscillation) pourra par exemple être encodée par :
+Par exemple, [la machine oscillation](../définitions/#exemple-oscillation){.interne} pourra par exemple être encodée par :
 
 <div>
 $$

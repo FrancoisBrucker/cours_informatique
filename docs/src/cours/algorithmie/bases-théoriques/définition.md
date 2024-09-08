@@ -9,12 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une définition de ce qu'est un algorithme.
-
-{% lien %}
-Une super introduction aux algorithmes : <https://www.arte.tv/fr/videos/094414-012-A/declics/>
-{% endlien %}
-
 On doit le mot algorithme à [Ada Lovelace](https://fr.wikipedia.org/wiki/Ada_Lovelace) (1815-1852) qui est le(a) premier(e) informaticien(ne) de l'histoire. Elle a donné ce nom en hommage à un savant persan du 9ème siècle (né vers 780 et mort en 850 à Bagdad) nommé [Al-Khwârizmî](https://fr.wikipedia.org/wiki/Al-Khw%C3%A2rizm%C3%AE) qui a publié le premier manuel d'algèbre connu à ce jour.
 
 ## <span id="algorithme"></span> Algorithme ?

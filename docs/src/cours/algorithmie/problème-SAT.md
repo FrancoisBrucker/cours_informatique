@@ -28,7 +28,8 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 > TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
 > 
 > TBD exemple sudoku.
-
+> <https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf>
+> 
 > TBD subsetsum 3-sat : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
 > 
 ## TBD
@@ -46,6 +47,9 @@ passer d'un problème à un autre pour le résoudre.
 > parler de 2-sat ≤ 3-sat = k-sat = sat
 résoudre 2-sat.
 
+> 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
+> strongly connected component : Tarjan : <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+> 
 > TBD
 >
 > TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.

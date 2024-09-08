@@ -36,6 +36,22 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
+## Arbres
+
+> TBD : que les choses simples.
+
+> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+>
+> Un cas particulier d'intérêt : l'arbre et les chemins.
+
+> Sous la forme d'exercices.
+
+2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
+3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
+
+> combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
+
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
@@ -88,8 +104,7 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% aller %}
 
-1. [Les problèmes de flots](flots){.interne}
-2. [connectivité](connectivité){.interne}
+[Les problèmes de flots](flots){.interne}
 
 {% endaller %}
 
@@ -102,9 +117,9 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
-## Arbres
+## Arbres 2 le retour
 
-> TBD : mettre chemin au-dessus
+> TBD : mettre en forme. Voir à mettre dans les parties où on en parle.
 
 > exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
 >
@@ -117,9 +132,16 @@ Problèmes de flots. Définition, algorithmes et applications
 3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
 4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
+> TBD : DFS et arbre. Tarjan pour fortement connexe.
 > TBD
-> combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
-> {.note}
+
+## Connectivité
+
+{% aller %}
+
+[connectivité](connectivité){.interne}
+
+{% endaller %}
 
 ## Couplages
 

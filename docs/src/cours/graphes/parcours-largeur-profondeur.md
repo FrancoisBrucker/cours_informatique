@@ -30,4 +30,4 @@ tous les sommets une fois de plus en plus loin et chemin longs
 
 [Parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
 
-parler de trouver cycles en temps linéaire avec;
+parler de trouver cycles en temps linéaire avec.

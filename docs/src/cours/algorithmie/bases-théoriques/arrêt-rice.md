@@ -132,10 +132,6 @@ Bref, `oups`{.language-} ne peut pas exister et donc `stop`{.language-}, notre h
 
 Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété **démontrable** (donc en temps fini) qu'auraient tout algorithme. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.
 
-{% lien %}
-C'est la version informatique de l'entscheidungsproblem. Voir [cet excellent documentaire d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws)
-{% endlien %}
-
 La conclusion de cette partie est pratique :
 
 {% note "**À retenir**" %}

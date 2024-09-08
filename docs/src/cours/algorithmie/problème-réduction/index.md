@@ -33,7 +33,7 @@ Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P_2$ en $P_1$ est un couple d'algorithmes $A_1$ et $A_2$ tels que :
 
 - Si $E_1$ est une entrée du problème $P_1$ alors $A_1(E_1)$ est une entrée de du problème $P_2$
-- Si $S_2$ est une solution au problème $P_2$ avec $A_1(E_1)$ comme entrée alors $A_2(S_2)$ est ue solution au problème $P_1$ d'entrée $E_1$.
+- Si $S_2$ est une solution au problème $P_2$ avec $A_1(E_1)$ comme entrée alors $A_2(S_2)$ est une solution au problème $P_1$ d'entrée $E_1$.
 
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_2$ en $P_1$ on notera $P_1 \leq P_2$.
 {% endnote %}
@@ -45,7 +45,7 @@ Rappelez-vous, c'est exactement ce qu'on a fait lorsque l'on a étudié la compl
 Si l'on veut une utilisation plus pratique de la réduction, on va chercher le couple d'algorithmes avec la complexité la plus faible, si possible linéaire et au mieux polynomiale :
 
 {% note "**Définition**" %}
-Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou le couple d'algorithmes $A_1$ et $A_2$ est de complexité polynomiale.
+Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
 {% endnote %}
 
 Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme résolvant $P_2$ pour résoudre $P_1$.
@@ -89,31 +89,160 @@ Montrez que le problème de recherche du maximum dans un tableau d'entiers  est 
 {% endexercice %}
 {% details "corrigé" %}
 
-> On trie puis on prend le max
+On trie puis on prend le max.
 
 {% enddetails %}
 
-> TBD Recherche de doublon ≤ tri
+{% exercice %}
+Montrez que le problème de la recherche de doublon dans un tableau d'entiers est plus simple que le problème du tri d'un tableau d'entiers.
+{% endexercice %}
+{% details "corrigé" %}
+
+On trie puis on parcourt le tableau jusqu'à trouver deux éléments successifs égaux.
+
+{% enddetails %}
 
 ### Nombres premiers
 
-PRIME = COMPOSITE ≤ FACTOR
+{% exercice %}
+Montrez que le problème de savoir si un nombre entier est premier (problème PRIME) est équivalent au problème de savoir si un nombre entier est composé (problème COMPOSÉ).
 
-On espère que FACTOR > PRIME.
+{% endexercice %}
+{% details "corrigé" %}
+
+un problème est la négation de l'autre.
+
+{% enddetails %}
+
+Le problème de savoir si un nombre est polynomial, mais sa preuve dépasse le cadre de ce cours.
+
+{% lien %}
+[Article montrant que le problème PRIME est polynomial](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf).
+{% endlien %}
+
+Même si le problème PRIME est polynomial, sa preuve ne permet pas de déterminer les facteurs dont il est composé (problème FACTORS). On a cependant clairement COMPOSITE ≤ FACTOR.
+
+{% exercice %}
+Montrez que [l'algorithme du crible d'Ératosthène](https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne) n'est pas polynomial.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut regarder tous les nombres jusqu'à $\sqrt{n}$ alors qu'il ne faut que $\log_2{n}$ bits pour stocker $n$. L'algorithme est donc de complexité exponentiel par rapport à la taille des entrées.
+
+{% enddetails %}
+
+On espère, mais on a aucune preuve, qu'il n'existe pas de réduction polynomiale FACTOR ≤ COMPOSITE car le problème FACTORS est à la base des algorithmes actuels de cryptographie.
 
 ### Produit et carré
 
-#### Entiers
+{% exercice %}
+Montrer que le problème d'élever un entier au carré est équivalent au problème de multiplier deux entiers entres eux.
+{% endexercice %}
+{% details "corrigé" %}
 
-> TBD Wikipedia <https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)#Exemple_introductif>
+Soit $C(x)$ un algorithme qui rend $x^2$ et $M(x, y)$ un algorithme qui rend $xy$.
 
-#### Matrices
+Comme $C(x) = M(x, x)$ on a clairement $C \leq M$.
 
-> TBD <https://people.cs.pitt.edu/~kirk/cs1510/notes/reducenotes.pdf>
+La réciproque vient du produit remarquable $(x + y)^2 = x^2 + y^2 + 2xy$ et donc $M(x, y) = \frac{1}{2}(C(x+y) - C(x) - C(y))$.
+
+{% enddetails %}
 
 ### 3-SUM
 
-> TBD classique en géométrie algébrique.
+{% lien %}
 
-> TBD <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
-> TBD <https://en.wikipedia.org/wiki/3SUM#3SUM-hardness>
+- <https://people.csail.mit.edu/virgi/6.s078/papers/gajovermars.pdf>
+- <https://www.cs.mcgill.ca/~jking/papers/3sumhard.pdf>
+
+{% endlien %}
+
+Reprenons le problème 3-SUM que nous avons déjà vu :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM
+- **données** :
+  - T : un tableau de $n$ entiers relatifs
+- **question** : existe-t-il 3 indices (pouvant être égaux) tels que $T[i] + T[j] + T[k] = 0$
+
+{% endnote %}
+
+De nombreux problèmes lui sont équivalent comme par exemple le suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : 3-SUM'
+- **données** :
+  - $T$, $T'$ et $T''$ : trois tableaux d'entiers relatifs
+- **question** : existe-t-il 3 indices tels que $T[i] + T'[j] = T''[k]$
+
+{% endnote %}
+
+Prouvons le :
+
+{% exercice %}
+Montrer que 3-SUM ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $T = T'$ et $T''[x] = -T[x]$
+
+{% enddetails %}
+{% exercice %}
+Montrer que 3-SUM' ≤ 3-SUM
+{% endexercice %}
+{% details "corrigé" %}
+
+On prend $A = 3(\sum \vert T[i]\vert + \sum \vert T'[i]\vert + \sum \vert T''[i]\vert) + 1$ et on crée un tableau $[T[i] + A \vert i] + [T'[i] + 3A \vert i] + $[-T''[i] - 4A \vert i]$.
+
+Soient $i, j, k$ tels que T[i] + T[j] + T[k] = 0$.
+
+Pour que la somme fasse 0 il faut que les $A$ ajoutés s'annulent : donc
+obligatoirement 1 élément de chaque tableau initial $T$, $T'$ et $T''$.
+{% enddetails %}
+
+3-SUM est un problème fondamental en [géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique). Considérons par exemple le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : Geobase
+- **données** :
+  Un ensemble de $n$ points du plan à coordonnées entières sur trois lignes horizontales avec $y = 0$, $y = 1$ et $y = 2$
+- **question** : Existe-t-il une droite non horizontale passant par 3 points.
+{% endnote %}
+
+Montrons qu'il est équivalent à 3-SUM :
+
+{% exercice %}
+Montrer que 3-SUM' ≤ GEOBASE
+{% endexercice %}
+{% details "corrigé" %}
+
+Deux vecteurs $\vec{u} = (x, y)$ et $\vec{v} = (x', y')$ sont colinéaires si $\vec{u} \cdot \vec{v}^{\perp} = 0$. Comme $\vec{v}^{\perp} = (-y', x')$, $\vec{u}$ et $\vec{v}$ sont colinéaires si $xy' - yx' = 0$.
+
+Il suffit alors de construire les points :
+
+- $(T[i], 0)$
+- $(T''[i]/2, 1)$
+- $(T'[i], 2)$
+
+si trois points sont colinéaires alors il existe i, j et k tels que $T[i] + T'[j] = T''[k]$
+{% enddetails %}
+
+{% exercice %}
+Montrer que GEOBASE ≤ 3-SUM'
+{% endexercice %}
+{% details "corrigé" %}
+
+On fait le contraire. On ajoute chaque point de :
+
+- $(x, 0)$ dans $T = [x | \forall (x, 0)]$
+- $(x, 1)$ dans $T'' = [2x | \forall (x, 1)]$
+- $(x, 2)$ dans $T' = [x | \forall (x, 2)]$
+
+{% enddetails %}
+
+### Matrices
+
+> TBD multiplication puissance et inverse équivalents (et transformations linéaire)
