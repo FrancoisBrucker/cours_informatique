@@ -54,6 +54,7 @@ Démon de Laplace : <https://fr.wikipedia.org/wiki/D%C3%A9mon_de_Laplace>
 #### mélanger
 
 - permutation : <https://en.wikipedia.org/wiki/Permutation>
+- proba et compression : <https://www.youtube.com/watch?v=RFWJM8JMXBs>
 
 #### pseudo-aléatoire
 

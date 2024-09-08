@@ -127,7 +127,7 @@ Si ça a marché, l'interpréteur aura donné sa version (**assurez vous que c'e
 
 {% faire %}
 
-1. Tapez la commande python : `print(Bonjour monde !)` et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.
+1. Tapez la commande python : `print("Bonjour monde !")`{.language-} et assurez vous du résultat pour être sur que tout se passe comme prévu et que votre interpréteur fonctionne.
 2. quittez l'interpréteur pour revenir au terminal en tapant la commande `quit()`.
 
 {% endfaire %}
