@@ -52,7 +52,7 @@ Au final on obtient qu'un algorithme est équivalent à un **_décideur_** :
 
 <div id="décideur"></div>
 {% note "**Définition**" %}
-Un **_décideur_** est une fonction de :
+Un **_décideur_** est un algorithme de :
 
 $$f: \\{0, 1\\}^\star \rightarrow \\{0, 1 \\}$$
 

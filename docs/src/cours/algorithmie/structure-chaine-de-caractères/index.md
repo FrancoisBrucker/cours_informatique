@@ -51,9 +51,43 @@ Nous verrons également comment passer d'un alphabet binaire à un alphabet quel
 
 ### Langages et mots
 
-{% aller %}
-[Langages et mots](./langages-mots){.interne}
-{% endaller %}
+> TBD mots et décideur
+
+## Langages et algorithmes
+
+<div id="décideur"></div>
+{% note "**Définition**" %}
+Un **_décideur_** est un programme de :
+
+$$f: \\{0, 1\\}^\star \rightarrow \\{0, 1 \\}$$
+
+{% endnote %}
+
+{% note "**Définition**" %}
+On appelle **_langage_** d'un décideur $d$ l'ensemble $d^{-1}(1)$.
+
+On dira qu'un décideur $d$ **_accepte le langage_** $L$ si $L = d^{-1}(1)$ et qu'un langage $L$ est **_décidable_** s'il existe un algorithme pour l'accepter.
+{% endnote %}
+
+Tout langage n'est bien sur pas décidable. On a vu qu'il était impossible de savoir _a priori_ si un programme va s'arrêter ou pas ([l'algorithme STOP n'existe pas](../../bases-théoriques/arrêt-rice/#algorithme-STOP){.interne}). Le langage composé des pseudo-codes associés aux algorithmes — c'est à dire les programmes qui s'arrêtent — n'est donc pas décidable. En revanche, le langage composé des pseudo-codes, est décidable (on peut facilement vérifier si un texte respecte les règles syntaxiques associé à un pseudo-code).
+
+{% exercice %}
+Montrez que l'ensemble des palindromes d'un alphabet $\mathcal{A}$ est décidable.
+{% endexercice %}
+{% details "corrigé" %}
+
+```python
+def palindrome(mot):
+    for i in range(len(mot)):
+        if mot[i] != mot[len(mot) - 1 - i]:
+            return False
+    return True
+
+```
+
+{% enddetails %}
+
+> même distinction entre programme et algorithme : langages reconnaissable si programme (ne s'arrête pas forcément).
 
 ### Automates
 
