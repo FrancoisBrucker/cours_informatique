@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Classes de problèmes</title>
+    <title>Problèmes et algorithmes de décision</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Classes de problèmes</h1>
+  <h1>Problèmes et algorithmes de décision</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Classes de problèmes</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a>
 
 </div>
 </div>
@@ -92,39 +92,8 @@
     
   
 
-  <blockquote>
-<p>TBD mettre <a href="langages-mots">langages et mots</a></p>
-</blockquote>
-<p>On a vu au début de ce cours que certains problèmes <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9" class="interne">ne pouvaient pas être résolu par un algorithme</a> (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si <a href="../complexit%C3%A9-calculs/importance" class="interne">sa complexité est exponentielle</a> le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.</p>
-<p>Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le <a href="../probl%C3%A8me-tris" class="interne">problème du tri</a> est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du <a href="../projet-exponentiation" class="interne">problème de l'exponentiation</a> est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="Turing-non-d%C3%A9terministe" class="interne">NP et machines de Turing non déterministes</a></p>
-</div>
-</div>
-<blockquote>
-<p>TBD retravailler la suite pour qu'elle colle avec avant. Turing = décision.<br>
-Du coup les définitions de NP et de co-NP deviennent claires.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="d%C3%A9cideur-d%C3%A9cision" class="interne">NP et problèmes de décision</a></p>
-</div>
-</div>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="probl%C3%A8mes-NPC" class="interne">Problèmes NP complets</a></p>
-</div>
-</div>
+  <p>On définit la classe de problèmes NP comme étant ceux permettant de vérifier efficacement leurs solutions. Cette approche, pratique, permet de comprendre l'utilité de cette classe, mais n'est pas très opérationnelle pour faire des démonstrations.</p>
+<p>Nous allons dans cette partie redéfinir la notion de problème algorithmique via les problèmes de décision.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -135,6 +104,199 @@ Du coup les définitions de NP et de co-NP deviennent claires.</p>
 <li><a href="https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt">https://www.youtube.com/watch?v=s9l6QTX9n0Q&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt</a></li>
 <li><a href="https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH">https://www.youtube.com/watch?v=KydXVE9Su5g&amp;list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH</a></li>
 </ul>
+</div>
+</div>
+<h2>Décision et algorithmes</h2>
+<p>Rappelons qu'un algorithme est <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#algorithme-fonction" class="interne">dans toute sa généralité</a> une fonction qui prend et rend un mot de $\{0, 1\}$. On peut lui associer de façon équivalente la fonction $v_f : \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ ci-dessous :</p>
+<p>$$<br>
+v_f(n, m) = \left\{<br>
+\begin{array}{ll}<br>
+1 &amp; \mbox{si } f(n) = m\\<br>
+0 &amp; \mbox{sinon.}<br>
+\end{array}<br>
+\right.<br>
+$$</p>
+<p>Un algorithme est ainsi <a href="../probl%C3%A8mes-NP/#v%C3%A9rifieur">un vérifieur</a>. De là, on peut combiner les deux mots en entrée en un seul pour arriver à la formulation d'un algorithme qui nous intéressera ici. Pour cela, la façon classique de procéder est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
+<ul>
+<li>on code l'information <code class="language-">0</code> en <code class="language-">00</code></li>
+<li>on code l'information <code class="language-">1</code> en <code class="language-">01</code></li>
+<li><code class="language-">11</code> est le caractère de séparation des paramètres</li>
+</ul>
+<p>Ainsi, si un algorithme possède 2 paramètres valant <code>1001</code>, <code>001</code> par exemple, cela devient le paramètre <code>0100000111000001</code>. on modifie alors l'algorithme pour que la première chose qu'il fasse soit de retrouver les deux paramètres en entrée :</p>
+<ol>
+<li>on trouve les paramètres en découpant la chaîne d'entrée aux endroits où se trouvent le séparateur <code class="language-">11</code></li>
+<li>on reconvertit chaque caractère en binaire en ne prenant qu'un bit sur 2</li>
+</ol>
+<p>Au final on obtient qu'un algorithme est équivalent à un <strong><em>décideur</em></strong> :</p>
+<div id="décideur"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>décideur</em></strong> est un algorithme de :</p>
+<p>$$f: \{0, 1\}^\star \rightarrow \{0, 1 \}$$</p>
+</div>
+</div>
+<p>On peut représenter un algorithme sous 3 formes équivalentes :</p>
+<ul>
+<li>une <strong><em>fonction</em></strong> : $f: \{0, 1\}^\star \rightarrow \{0, 1 \}^\star$ qui permettent le calcul effectif,</li>
+<li>un <strong><em>décideur</em></strong> : $d: \{0, 1\}^\star \rightarrow \{0, 1 \}$ qui permettent de séparer les mots en 2 ensembles, ceux qui sont <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$ et les autres</li>
+<li>un <strong><em>vérifieur</em></strong> : $v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ en entrée est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>D'un point de vue théorique on peut donc uniquement considérer la version décideur d'un algorithme sans aucune perte de généralité.</p>
+</div>
+</div>
+<p>En conclusion, en utilisant les machines de Turing, on définit les problème algorithmique comme étant ds problèmes de décision :</p>
+<div id="algorithme-décision"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>problème de décision</em></strong> est un problème algorithmique n'acceptant que deux réponses : OUI ou NON, et pouvant être résolu par une machine de Turing acceptant tous les mots de $\{0, 1\}^\star$ et dont les sorties sont 0 (FAUX) ou 1 (VRAI).</p>
+<p>Le <strong><em>langage</em></strong> d'un problème de décision est l'ensemble des mots de sortie 1.</p>
+</div>
+</div>
+<p>Problème et langage sont donc deux notions équivalentes : un algorithme est caractérisé par l'ensemble des mots qu'il reconnaît.</p>
+<h2>Complexités des problèmes de décision</h2>
+<p>La complexité d'un problème est la complexité la plus petite d'une machine de Turing qui le résout. Comme résoudre un problème de décision revient à trouver un décideur pour son langage on a :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'une machine de Turing qui l'accepte.</p>
+</div>
+</div>
+<p>Comme une machine de Turing prend en entrée un mot de $\{0, 1\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :</p>
+<ul>
+<li>$C(\vert E \vert)$ sa <a href="../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9" class="interne">complexité</a>.</li>
+<li>$S(\vert E \vert)$ sa <a href="../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-spatiale" class="interne">complexité spatiale</a>,</li>
+</ul>
+<p>On sait que la complexité spatiale d'une machine de Turing est forcément plus petite que sa complexité temporelle, mais la proposition suivante va plus loin et propose un encadrement :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour toute machine de Turing sans instructions inutiles, on a l'encadrement :</p>
+<div>
+$$
+S(n) \leq C(n) \leq \mathcal{O}(S(n) \cdot 2^{S(n)})
+$$
+</div>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On suppose que la machine de Turing correspond à un pseudo-code à $L$ instructions.</p>
+<ol>
+<li>si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) le pseudo-code va forcément boucler indéfiniment. Chaque ligne va donc être exécutée au maximum $2^{S(n)}$ fois</li>
+<li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$</li>
+</ol>
+<p>La complexité totale est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ et comme le nombre d'instructions du décideur est une constante on en déduit le résultat demandé.</p>
+</div>
+</details>     
+</div>
+<h2>P, NP et décision</h2>
+<p>On peut très facilement définir la classe $P$ :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Un langage est de la classe</em></strong> $P$ s'il existe une machine de Turing de complexité polynomiale qui l'accepte.</p>
+</div>
+</div>
+<p>Pour définir précisément ce qu'est la classe NP en revanche, il faut introduire un autre modèle de Machine de Turing, les machines non déterministes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="Turing-non-d%C3%A9terministe" class="interne">Machines de Turing non déterministes</a></p>
+</div>
+</div>
+<p>On a alors :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p><strong><em>Un langage est de la classe</em></strong> $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui l'accepte.</p>
+</div>
+</div>
+<p>La classe de problème $NP$ a été précédemment construite via l'existence d'un vérifieur polynomial qui vérifie si la solution est correcte ou pas.<br>
+Avec cette nouvelle définition, le certificat est la suite de choix effectués par la machine de Turing non déterministe. Voyez ces choix comme un oracle (ou un prof) qui vous guide tout au long du déroulement de la machine. On peut s'en passer mais cela prendrait beaucoup de temps (faire tout les choix amène à une complexité exponentielle). Si on sait déjà ou aller en revanche, on peut trouver rapidement une solution (en temps polynomiale).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Tout ceci fonctionne car le nombre d'état est une <strong>constante</strong>, il ne dépend pas de l'entrée qui peut être aussi grande que l'on veut.</p>
+</div>
+</div>
+<h2>Cas du NON</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="co-NP" class="interne">co-NP</a></p>
+</div>
+</div>
+<h2>Problèmes NP-complets</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="probl%C3%A8mes-NPC" class="interne">Problèmes NP complets</a></p>
+</div>
+</div>
+<h2>Hiérarchie des complexités</h2>
+<p>Terminons cette partie en montrant qu'il existe bien d'autres algorithmes que ceux de NP. On peut même trouver des problèmes de toute complexité.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="hi%C3%A9rarchie-complexit%C3%A9" class="interne">Hiérarchie des complexités</a></p>
 </div>
 </div>
 

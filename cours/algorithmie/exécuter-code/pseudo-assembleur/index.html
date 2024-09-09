@@ -189,6 +189,13 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <blockquote>
 <p>TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).</p>
 </blockquote>
+<blockquote>
+<p>TBD : le fait que ce soit fini ne change rien :</p>
+<ul>
+<li>à l'exécution : si on dépasse on double la mémoire et on recommence</li>
+<li>à la complexité : le temps mis/nb d'instruction effectué est T(sum i/2^i) = 2T. Voir universal search</li>
+</ul>
+</blockquote>
 <h3>Objets entiers</h3>
 <p>L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :</p>
 <ul>

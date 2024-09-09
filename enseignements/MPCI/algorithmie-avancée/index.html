@@ -93,28 +93,104 @@
   
 
   <h2>Plan</h2>
+<h3>Modèles de calculs et classes de problèmes &quot;utiles&quot;</h3>
 <ol>
-<li>exécuter du code
+<li>cours 1 : <a href="/cours_informatique/cours/algorithmie/#mod%C3%A8le-calculs">Modèle de calcul</a>
 <ol>
-<li>pseudo-assembleur</li>
-<li>modèle de Von Neumann</li>
-<li>la pile : structure de donnée et usage</li>
+<li><a href="/cours_informatique/cours/algorithmie/ex%C3%A9cuter-code/pseudo-assembleur/">pseudo-assembleur</a></li>
+<li><a href="/cours_informatique/cours/algorithmie/ex%C3%A9cuter-code/von-neumann/">Architecture de Von Neumann</a></li>
+<li><a href="/cours_informatique/cours/algorithmie/machine-turing/">Machines de Turing</a></li>
 </ol>
 </li>
-<li>penser l'informatique
+<li>Cours 2 : Turing et NP
 <ol>
-<li>Machine de Turing</li>
-<li>définitions alternatives</li>
-<li>Machine de Turing Universelle</li>
+<li>Machine de Turing
+<ol>
+<li>définition alternatives
+<ul>
+<li>2 curseurs</li>
+<li>2 rubans</li>
+<li>alphabets</li>
+</ul>
+</li>
+<li>Modèle <code>01#</code></li>
+<li>coder avec Turing
+<ol>
+<li>doublement de batons</li>
+<li><a href="https://courses.cs.washington.edu/courses/cse431/14sp/scribes/lec3.pdf">autres exemples</a></li>
 </ol>
 </li>
-<li>Réduction de problèmes
-<ol>
-<li>problèmes P et NP</li>
-<li></li>
 </ol>
 </li>
-<li>24/25 et 25/26 : Turing vers pseudo-assembleur</li>
+<li><a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-r%C3%A9duction/">réduction de problèmes</a></li>
+<li>Classes de problèmes :
+<ol>
+<li><a href="/cours_informatique/cours/algorithmie/probl%C3%A8mes-NP/">P, NP et NPC : avec vérifieurs</a></li>
+<li><a href="/cours_informatique/cours/algorithmie/recherche-universelle/">Recherche universelle</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Cours 3
+<ol>
+<li>Machines de Turing
+<ol>
+<li>MTU</li>
+<li>Castors affairées</li>
+<li><a href="/cours_informatique/cours/algorithmie/bases-th%C3%A9oriques/arr%C3%AAt-rice/">Rappels sur le problème de l'arrêt</a>. Avec le code de la machine en entrée (MTU).</li>
+</ol>
+</li>
+<li>P, NP et NPC
+<ol>
+<li><a href="/cours_informatique/cours/algorithmie/d%C3%A9cision-probl%C3%A8mes/">décision</a></li>
+<li>co-NP</li>
+</ol>
+</li>
+<li>SAT, 3-SAT et 2-SAT</li>
+</ol>
+</li>
+<li>Cours 4 : <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-sac-%C3%A0-dos/">problème du sac à dos</a> et pseudo-polynomial.</li>
+</ol>
+<h3>C</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/syst%C3%A8me/langage-c/">cours de C</a></p>
+</div>
+</div>
+<h3>Graphes</h3>
+<blockquote>
+<p>TBD : voir ce qu'ils connaissent déjà</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/graphes/">cours de Graphes</a></p>
+</div>
+</div>
+<ol start="5">
+<li>Graphes 1 :
+<ol>
+<li>rappels</li>
+<li>quelques propriétés degrés/chemins</li>
+<li>connectivités</li>
+<li>parcours en largeur/profondeur</li>
+</ol>
+</li>
+<li>Graphes :
+<ol>
+<li>arbres def et preuves</li>
+<li>prufer</li>
+<li>parcours en profondeur et arborescence</li>
+</ol>
+</li>
+</ol>
+<h2>TBD</h2>
+<ol start="6">
 <li>Assembleur, mémoire et C</li>
 <li>graphes, arbre (nb) et k-connexité (Menger)</li>
 <li>Graphes eulérien -&gt; Christofides et idée du couplage sur graphe complet valué</li>

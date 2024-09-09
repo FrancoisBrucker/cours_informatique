@@ -110,29 +110,45 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 <p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie.</p>
 <blockquote>
 <p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).</p>
-<p>TBD exemple sudoku.<br>
-<a href="https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf">https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf</a></p>
+</blockquote>
+<h2>Modélisation</h2>
+<p>Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien</p>
+<h3>Fonctions booléennes</h3>
+<blockquote>
+<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.<br>
+polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
+</blockquote>
+<h3>exemple du sudoku</h3>
+<blockquote>
+<p>TBD puissant outil de modélisation. Déjà toutes fonctions mais autres choses.<br>
+exemple sudoku. :</p>
+<ul>
+<li><a href="https://sat.inesc-id.pt/~ines/publications/aimath06.pdf">https://sat.inesc-id.pt/~ines/publications/aimath06.pdf</a></li>
+</ul>
+</blockquote>
+<h2>3-SAT</h2>
+<p>équivalent à SAT</p>
+<blockquote>
+<p>TBD <a href="https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf">https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf</a></p>
+</blockquote>
+<p>Permet certaines réductions de façon bien plus facile :</p>
+<blockquote>
 <p>TBD subsetsum 3-sat : <a href="https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf">https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf</a></p>
 </blockquote>
-<h2>TBD</h2>
+<h2>2-SAT</h2>
 <blockquote>
-<p>polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a><br>
-et revenir en arrière : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.<br>
-en faire des exos.</p>
+<p>Réduction ne fonctionne pas.<br>
+Algo poly<br>
+2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
 </blockquote>
 <blockquote>
-<p>TBD &quot;gadget&quot; pour la transformation<br>
-exemples.</p>
+<p>TBD faire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
 </blockquote>
-<p>selon ce que l'on cherche à faire.<br>
-passer d'un problème à un autre pour le résoudre.</p>
+<h2>Inversibilité du problème SAT</h2>
 <blockquote>
-<p>parler de 2-sat ≤ 3-sat = k-sat = sat<br>
-résoudre 2-sat.</p>
+<p>revenir en arrière facile : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.</p>
 </blockquote>
 <blockquote>
-<p>2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a><br>
-strongly connected component : Tarjan : <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
 <p>TBD</p>
 <p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
 </blockquote>

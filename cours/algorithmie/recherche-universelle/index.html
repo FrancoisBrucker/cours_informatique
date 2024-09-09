@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Recherche universelle</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Recherche universelle</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/recherche-universelle/">Recherche universelle</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>On doit cet algorithme à <a href="https://fr.wikipedia.org/wiki/Leonid_Levin">Léonid Levin</a>.</p>
+<p>L'algorithme de recherche universelle est un algorithme permettant de résoudre tout problème de NP, de manière optimale du moment qu'on ait un vérifieur pour lui.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=9ONm1od1QZo">Une vidéo de l'excellence chaîne polylog</a></p>
+</div>
+</div>
+<h2>Exécution fragmenté d'un algorithme</h2>
+<p>Pour comprendre comment fonctionne la recherche universelle, commençons par étudier l'algorithme suivant, qui prend en paramètre un algorithme <code class="language-">A</code> et une de ses entré possible, <code class="language-">E</code> :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> exécution_fragmentée<span class="token punctuation">(</span>T<span class="token punctuation">,</span> A<span class="token punctuation">,</span> E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  I <span class="token operator">=</span> <span class="token number">1</span>
+  tant que I <span class="token operator">&lt;</span> T<span class="token punctuation">:</span>
+    exécuter I instructions de A<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+    Si l<span class="token string">'algorithme A s'</span>est arrêté<span class="token punctuation">:</span>
+      rendre sa sortie
+    I <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> I
+</code></pre>
+<p>On a la proposition suivante :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité d'exécution de l'algorithme <code class="language-">exécution_fragmentée</code> est en $\Theta(C(\vert E \vert ))$ où $C(n)$ est la complexité de l'algorithme <code class="language-">A</code></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons que l'algorithme $A(E)$ s'arrête au bout de $K$ instructions. Le nombre maximum d'itération de l'algorithme est alors donné pour <code class="language-">exécution_fragmentée(K, A, E)</code></p>
+<p>L'algorithme <code class="language-">exécution_fragmentée(T, A, E)</code> sera rentré dans la boucle <code class="language-">tant que</code> $\log_2(K)$ fois puisque c'est à ce moment que $I$ sera égal ou plus grand que $K$. Le nombre total d'instructions de l'algorithme <code class="language-">exécution_fragmentée(A, E)</code> a alors été :</p>
+<p>$$<br>
+1 + 2 + 4 + \dots + 2^i + \dots + 2^{\log_2(K)}<br>
+$$</p>
+<p>C'est à dire que :</p>
+<ol>
+<li>les $K/2$ dernières instructions de $A(E)$ ont été exécutées 1 fois</li>
+<li>parmi les $K/2$ premières opérations, la moitié ($K/4$) a été exécutée 2 fois (pour les 2 dernières boucles)</li>
+<li>parmi les $K/4$ premières opérations, la moitié ($K/8$) a été exécutée 3 fois (pour les 3 dernières boucles)</li>
+<li>...</li>
+<li>la première opération a été exécuté $\log_2(K)$ fois</li>
+</ol>
+<p>Le nombre d'opérations effectuées par l'algorithme est alors :</p>
+<p>$$<br>
+K\cdot \frac{1}{2} + K\cdot \frac{2}{4} + K\cdot \frac{3}{8} + \dots + K\cdot \frac{i}{2^i} + \dots + K\cdot \frac{\log_2(K)}{2^{\log_2(K)}} = K\cdot (\sum_{1\leq i \leq \log_2{K}}\frac{i}{2^i})<br>
+$$</p>
+<p>En notant $S_n = \sum_{1\leq i \leq n}$ on a :</p>
+<p>$$<br>
+\frac{S_n}{2} = S_n - \frac{S_n}{2} = \sum_{1\leq i \leq n }\frac{1}{2^i} = 1- \frac{1}{2^n}<br>
+$$</p>
+<p>Et donc $S_n \leq S_{\infty} = 2$ ce qui nous permet de conclure que le nombre d'opérations total est $2K$, ce qui conclut la preuve.</p>
+</div>
+</details>     
+</div>
+<h2>Exécution fragmentée générale</h2>
+<p>L'algorithme de la recherche universelle va procéder un peu de la même manière que celui d'exécution fragmentée mais pour tous les algorithmes.</p>
+<p>Un pseudo-code étant un texte, on peut considérer tous les textes rangés par ordre lexico-graphique. On peut tenter d'exécuter chaque texte comme un pseudo-code et voir ce qu'il se passe. Exécuter $K$ instructions d'un de ces texte peut résulter en 3 cas :</p>
+<ol>
+<li>un plantage (ce n'est pas un pseudo-code on tente d'exécuter quelque chose qui n'est pas une instruction, on fait une instruction interdite comme une division par zéro par exemple, etc)</li>
+<li>le texte est un pseudo-code valide et on a exécuté entièrement son code.On peut récupérer sa sortie.</li>
+<li>le texte est un pseudo-code valide (au moins pour les $K$ instructions) mais il ne s'est pas arrêté : il tourne toujours après $K$ instructions.</li>
+</ol>
+<p>On considère alors l'algorithme <code class="language-">next(B)</code> qui, rend la chaîne $B'$ qui suit la chaîne $B$ dans l'ordre lexico-graphique.</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> exécution_fragmentée_universelle<span class="token punctuation">(</span>A<span class="token punctuation">,</span> E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  I <span class="token operator">=</span> <span class="token number">1</span>
+  tant que VRAI<span class="token punctuation">:</span>
+    B <span class="token operator">=</span> <span class="token string">""</span>
+    tant que I ≥ <span class="token number">1</span><span class="token punctuation">:</span>
+      B <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span>
+      exécuter I instructions de B<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+      Si on s'est arrêté et que B <span class="token operator">==</span> A<span class="token punctuation">:</span>
+        rendre sa sortie
+      I <span class="token operator">=</span> I <span class="token operator">/</span> <span class="token number">2</span>
+    I <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> I
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité d'exécution de l'algorithme <code class="language-">exécution_fragmentée_universelle</code> est en $\Theta(C(\vert E \vert ))$ où $C(n)$ est la complexité de l'algorithme <code class="language-">A</code></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Supposons que l'algorithme $A(E)$ s'arrête au bout de $K$ instructions et que la chaîne de caractère qui correspond à son pseudo-code soit en position $L$ de la liste ordonnée de tous les textes.</p>
+<p>L'algorithme <code class="language-">exécution_fragmentée_universelle</code> va s'arrêter lorsqu'il aura effectué $K$ opération de l'algorithme $A$</p>
+<p>Tout se passe alors comme si :</p>
+<ul>
+<li>on avait exécuté <code class="language-">exécution_fragmentée(K2**L, A1, E)</code> pour <code>A1</code>, le premier élément de la liste ordonnée des textes</li>
+<li>on avait exécuté <code class="language-">exécution_fragmentée(K2**(L-1), A2, E)</code> pour <code>A2</code>, le second élément de la liste ordonnée des textes</li>
+<li>...</li>
+<li>on avait exécuté <code class="language-">exécution_fragmentée(K, AL, E)</code> pour <code>AL</code>, le $L$ ème élément de la liste ordonnée des textes</li>
+<li>on avait exécuté <code class="language-">exécution_fragmentée(K/2, A(L+1), E)</code> pour <code>A(L+1)</code>, le $L+1$ ème élément élément de la liste ordonnée des textes</li>
+<li>...</li>
+<li>on avait exécuté <code class="language-">exécution_fragmentée(1, A(L+1), E)</code> pour <code>A(L+log(K))</code>, le $L+\log_2(K)$ ème élément élément de la liste ordonnée des textes.</li>
+</ul>
+<p>La complexité maximale est alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+2 \cdot 2^L\cdot K +  2 \cdot 2^{L-1} \cdot K + \dots + 2 \cdot 2^{0} \cdot K + 2 \cdot \frac{1}{2} \cdot K + \dots + 2 \cdot \frac{1}{2^i} \cdot K + \dots + 2 \cdot \frac{1}{2^{\log_2(K)}} \cdot K&=&\\
+2\cdot(2^{L+1}-1)\cdot K + 2\cdot (1-\frac{1}{2^{\log_2(K)}})\cdot K&\leq&\\
+2^{L+2}\cdot K
+\end{array}
+$$
+</div>
+<p>Comme $L$ est une constante, on a bien le résultat demandé</p>
+</div>
+</details>     
+</div>
+<p>On voit que la complexité asymptotique est la même que celle de l'algorithme initial. Ce qui change c'est la constante multiplicative, $2^{L+2} qui peut être gigantesque !</p>
+<h2>Recherche universelle</h2>
+<p>L'algorithme de recherche universelle est une variation de l'algorithme précédent pour les problèmes de NP. Soit $P$ un problème de NP et $v$ un de ses vérificateurs.</p>
+<p>On alors l'algorithme :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche_universelle</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> E<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  I <span class="token operator">=</span> <span class="token number">1</span>
+  tant que VRAI<span class="token punctuation">:</span>
+    B <span class="token operator">=</span> <span class="token string">""</span>
+    tant que I ≥ <span class="token number">1</span><span class="token punctuation">:</span>
+      B <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span>B<span class="token punctuation">)</span>
+      exécuter I instructions de B<span class="token punctuation">(</span>E<span class="token punctuation">)</span>
+      Si B<span class="token punctuation">(</span>E<span class="token punctuation">)</span> s'est arrêté et que v<span class="token punctuation">(</span>B<span class="token punctuation">(</span>E<span class="token punctuation">)</span><span class="token punctuation">,</span> E<span class="token punctuation">)</span> est vrai<span class="token punctuation">:</span>
+        rendre sa sortie
+      I <span class="token operator">=</span> I <span class="token operator">/</span> <span class="token number">2</span>
+    I <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> I
+</code></pre>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité d'exécution de l'algorithme <code class="language-">recherche_universelle</code> est en $\Theta(C(\vert E \vert ) + \log_2(C(\vert E \vert )) \cdot D(\vert E \vert ))$ où :</p>
+<ul>
+<li>$C(n)$ est la complexité minimale d'un algorithme résolvant $P$</li>
+<li>$D(n)$ est la complexité du vérifieur $v$</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Idem que la preuve précédente. Il faut juste ajouter qu'il faut vérifier chaque pseudo-code (il y en a $L+ \log_2(C(\vert E \vert ) ))$ qui s'arrête une fois.</p>
+</div>
+</details>     
+</div>
+<p>Dans de très nombreux cas, $D(n)$ est petite devant $C(n)$, par exemple si $D(n) = \Theta(n^a)$ et $C(n) = \Theta(n^b)$ avec $b&gt;a$ puisqu'asymptotiquement $\frac{n^{\epsilon}}{\ln(n)}$ tend vers l'infini. Et on peut négliger le terme en $D(n)$, ce qui donne un algorithme optimal pour résoudre tout problème de NP !</p>
+<p>Donc si $P = NP$ alors la recherche universelle est l'algorithme optimal qui résout tout. Bien sur l'arnaque se situe au niveau de la constante multiplicative, $2^L$ qui peut être gigantesque ce qui fait que même si asymptotiquement le résultat est optimal ce n'est pas le cas dans des cas d'utilisation normale des algorithme. La recherche universelle n'est donc pas une excuse pour ne pas chercher l'algorithme le plus efficace pour résoudre un problème.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
