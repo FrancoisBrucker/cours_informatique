@@ -182,25 +182,19 @@ Un problème NP-complet, le sac à dos :
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-## Intermède
+## Intermède : recherche universelle
 
 Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique :
 
-Il existe un algorithme optimal pour résoudre tous les problèmes de NP ! Il suffit juste pour cela de connaître un de ses vérifieurs efficaces.
-
-{% lien %}
-<https://www.youtube.com/watch?v=9ONm1od1QZo> et son algo universel pour tous les problèmes NP. <https://steemit.com/steemstem/@markgritter/leonid-levin-s-universal-algorithm>
-
-{% endlien %}
-
-> TBD on se demande si NP vaut NP-complet. Même si c'est le cas la constante devant peut être giganteste pour empêcher de l'utiliser en pratique. Ce n'est vrai qu'asymptotiquemet. Cela ne vous dispense donc pas d'écrire devrais algorithmes
-
+{% aller %}
+[L'algorithme de la recherche universelle](./recherche-universelle){.interne}
+{% endaller %}
 
 ## <span id="partie-2"></span>Partie II
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 
-### Modèle de calculs
+### <span id="modèle-calculs"></span>Modèle de calculs
 
 Nous avons jusqu'à présent utilisé le modèle du pseudo-code pour créer des algorithmes.
 
@@ -244,7 +238,7 @@ Pseudo-code et machine de Turing sont deux notions équivalentes.
 
 {% enddetails %}
 
-#### Algorithme et machine de Turing
+### Algorithme et machine de Turing
 
 Toutes les tentatives de généraliser le modèle de la machine de Turing ont été vains. Il semble que ce modèle capte exactement ce qu'est un algorithme. C'est pourquoi les informaticiens sont intimement convaincu que la thèse de Turing-Church est vraie :
 
@@ -307,17 +301,25 @@ Finissons par quelques exemples non triviaux de modèles Turing complet :
 
 ### Problèmes de décisions
 
-> TBD refaire NP-complet et le prouver
-> TBD reprendre ici langage et mots.
-> 
+Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.
+
 {% aller %}
-[Classes de problèmes algorithmiques](./décision-problèmes){.interne}
+[Problèmes de décision](./décision-problèmes){.interne}
 {% endaller %}
 
 > mettre Turing ici et Cook.
 > Fin de la partie 1 juste donner NP et dire qu'il y a des NP-complet et le prouver ici.
 
-## Désordre et hasard
+### Problème SAT
+
+> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
+> TBD y mettre la partie sur clause dans pseudo-assembleur.
+
+{% aller %}
+[problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
+### Désordre et hasard
 
 {% aller %}
 [Mélanger un tableau](./projet-mélange){.interne}
@@ -335,14 +337,6 @@ Finissons par quelques exemples non triviaux de modèles Turing complet :
 
 > TBD : [projet Multiplication de matrices](./multiplication-matrices){.interne}
 
-Un problème particulier :
-
-{% aller %}
-[problème SAT](./problème-SAT){.interne}
-{% endaller %}
-
-## Sac à dos
-
-> TBD deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
+> TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>

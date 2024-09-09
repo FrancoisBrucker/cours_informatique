@@ -422,7 +422,7 @@ parité de la case  : 01010101010
 curseur du ruban 2 :    ^
 ```
 
-Second état tampon, l;es deux se déplace dans la même direction :
+Second état tampon, les deux se déplacent dans la même direction :
 
 ```
 curseur du ruban 1 :       v

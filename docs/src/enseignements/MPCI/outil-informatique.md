@@ -33,7 +33,12 @@ Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après 
 
 ## Utiliser le réseau
 
-> TBD : comment utiliser eduroam.
+Connectez vous [au réseau Éduroam](https://www.eduroam.fr/) qui est le réseau des université européennes.
+
+- login : votre adresse mail
+- mot de passe : celui de l'ent AMU
+
+Sous Linux vous pouvez cocher : *aucun certificat CA requis*.
 
 ## Programmation en python
 

@@ -82,6 +82,10 @@ Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot S$ cases
 
 > TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).
 
+> TBD : le fait que ce soit fini ne change rien :
+> - à l'exécution : si on dépasse on double la mémoire et on recommence
+> - à la complexité : le temps mis/nb d'instruction effectué est T(sum i/2^i) = 2T. Voir universal search
+
 ### Objets entiers
 
 L'objet entier n'existe pas à proprement parler, mais on suppose qu'une suite finie de $S = \log_2(N)$ bits, qui correspond à une adresse, peut aussi être vue comme un entier. Pour cela, on on possède les deux fonctions suivantes :

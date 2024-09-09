@@ -26,7 +26,7 @@ Nous avons vu que les fonctions primitives récursives étaient des fonctions ca
 [Fonctions récursives](./fonctions-récursives){.interne}
 {% endaller %}
 
-### Lambda calcul
+## Lambda calcul
 
 Le lambda calcul est encore une autre forme de calcul équivalent aux machines de Turing. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus _matheuse_ de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.
 
@@ -53,11 +53,7 @@ Cette façon de programmer est très liée aux types et a permis quelques avanc�
 - [preuve de programme et types](https://ncatlab.org/nlab/show/computational+trilogy)
 {% endlien %}
 
-## Penser l'informatique
-
-Nous avons montré que de nombreux modèles de calculs très différents sont équivalents. Toutes les tentatives d'étendre ou de trouver des modèles différents ont tous échoué : on a l'impression que le modèle de la machine de Turing est indépassable et qu'il capture l'essence même de ce qui est un algorithme. C'est pourquoi il est communément admis que :
-
-### Automates cellulaires
+## Automates cellulaires
 
 La plupart des [automates cellulaires](https://fr.wikipedia.org/wiki/Automate_cellulaire) sont Turing-complet. C'est le cas du célèbre [jeu de la vie](https://fr.wikipedia.org/wiki/Jeu_de_la_vie), mais aussi d'automates bien plus simple :
 
@@ -67,11 +63,11 @@ L'exemple de système Turing complet le plus simple que je connaisse est l'autom
 Jetez-y un coup d'œil, c'est assez bluffant.
 {% endlien %}
 
-### Langages exotiques
+## Langages exotiques
 
 Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé [langages de programmation exotiques](https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique), qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instruction, comme le célèbre [brainfuck](https://www.google.com/search?q=brainfuck), ou à être marrant, comme le [Piet](https://www.dangermouse.net/esoteric/piet.html) dont le but est de créer des programmes sous la forme d'un tableau de [Piet Mondrian](https://fr.wikipedia.org/wiki/Piet_Mondrian).
 
-### Autres trucs
+## Autres trucs
 
 {% lien %}
 - [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)

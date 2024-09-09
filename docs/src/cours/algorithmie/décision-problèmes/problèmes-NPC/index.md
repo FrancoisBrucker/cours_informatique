@@ -15,7 +15,7 @@ Nous allons voir ici que ces deux problématiques sont liées et que
 
 > TBD
 > Si P ≠ NP alors il existe des pbs entre.
-> Si  P ≠ NP alors NP \cap co-NP = P (je ne sais plus si c'est vrai ça)
+> Si P ≠ NP alors NP \cap co-NP = P (je ne sais plus si c'est vrai ça)
 
 ## Machine de Turing et clauses
 
@@ -182,7 +182,7 @@ On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour ré
 
 ## Autres problèmes NP-complets
 
-> TBD comment faire pour montrer NP-complet. Utilisation de [gadgets](https://fr.wikipedia.org/wiki/Gadget_(informatique))
+> TBD comment faire pour montrer NP-complet. Utilisation de [gadgets](<https://fr.wikipedia.org/wiki/Gadget_(informatique)>)
 
 > TBD bi-partition
 > TBD trouver des exemples simple avec gadget rigolo
@@ -222,7 +222,7 @@ On a finalement trois cas possible :
 2. P $\subsetneq$ NP = co-NP$. Dans ce cas NP-complet = co-NP-complet. Ce cas est très improbable, en tous les cas la très grande majorité des informaticiens n'y croient pas non plus.
 3. P $\subsetneq$ NP ≠ co-NP$ qui est le cas admis par la quasi totalité des informaticiens. On se retrouve dans le schéma ci-après.
 
-![npc et conpc](npc-conpc)
+![npc et conpc](npc-conpc.png)
 
 {% lien %}
 [np et co-np](https://www.youtube.com/watch?v=Hx6sfus7PIk&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH&index=46)
@@ -234,4 +234,4 @@ On a finalement trois cas possible :
 >
 > 1. à ne pas avoir l'air ridicule si on fait une heuristique.
 > 2. à utiliser des techniques de preuves efficaces de problèmes NPC pur résoudre son problème.
-> Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. ON peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.
+>    Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. ON peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.

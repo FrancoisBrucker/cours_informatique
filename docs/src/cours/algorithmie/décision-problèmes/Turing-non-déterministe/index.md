@@ -9,12 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD dire que c'est équivalent à une machine de Turing et que certificat = choix.
-
-La classe de problème $NP$ est construite via l'existence d'un vérifieur polynomial qui vérifie si la solution est correcte ou pas. Dans le case des problèmes de décision, la réponse (OUI on NON) est adjointe, dans le cas où la réponse est exacte, à un certificat qui donne la raison pour laquelle la solution est exacte.
-L'ajout d'un certificat semble artificiel puisqu'on en a pas besoin pour les problèmes de classe $P$.
-
-Nous allons montrer ici comment unifier proprement les classes $P$ et $NP$ sous la bannière des problèmes de décision en utilisant une machine de Turing spéciale (mais équivalente à la machine de Turing classique) : [la machine de Turing non déterministe](https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe).
+Une machine de Turing non déterministe est un modèle abstrait  de machine ou il y a plusieurs possibilité par transition. On montre cependant ce que modèles est équivalent à une machine de Turing.
 
 ## Définition
 
@@ -24,9 +19,7 @@ Une **_machine de Turing non déterministe_** est une machine de Turing dont la 
 
 Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \\{0, 1\\} \times \\{\leftarrow, \rightarrow\\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe.
 
-{% info %}
-On fait exactement la même chose que l'on avait fait avec les [automates déterministes et non-déterministes](../../structure-chaine-de-caractères/automates/){.interne} !
-{% endinfo %}
+## Usage
 
 Ce qui nous intéresse ici ce n'est plus l'exécution effective d'une telle machine mais **s'il existe pour une entrée donnée, une suite de transitions emmenant à l'état final**. C'est à dire qu'il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$ on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mène à un état final.
 
@@ -65,22 +58,4 @@ Tant que Vrai:
 Si la machine $M$ s'arrête, c'est qu'il existe une suite de choix qui lui permette de s'arrêter. Cette suite étant de longueur finie, notre algorithme finira forcément par la considérer et il s'arrêtera.
 {% enddetails %}
 
-La machine de Turing non déterministe est, tout comme les automates non déterministes, qu'une façon plus simple de décrire les mêmes choses. Dans notre cas, cela va unifier la définition des classes $P$ et $NP$.
-
-## P et NP revisités
-
-Un problème de décision est équivalent à son langage. On peut donc définir $P$ et $NP$ uniquement comme ça.
-
-{% note "**Définition**" %}
-**_Un langage est de la classe_** $P$ s'il existe une machine de Turing de complexité polynomiale qui l'accepte.
-{% endnote %}
-
-{% note "**Définition**" %}
-**_Un langage est de la classe_** $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui l'accepte.
-{% endnote %}
-
-Avec cette définition, le certificat est la suite de choix effectués par la machine de Turing non déterministe. Voyez ces choix comme un oracle (ou un prof) qui vous guide tout au long du déroulement de la machine. On peut s'en passer mais cela prendrait beaucoup de temps (faire tout les choix amène à une complexité exponentielle). Si on sait déjà ou aller en revanche, on peut trouver rapidement une solution (en temps polynomiale).
-
-{% attention %}
-Tout ceci fonctionne car le nombre d'état est une **constante**, il ne dépend pas de l'entrée qui peut être aussi grande que l'on veut.
-{% endattention %}
+La machine de Turing non déterministe n'est qu'une façon plus simple de décrire les mêmes choses. Dans notre cas, cela va unifier la définition des classes $P$ et $NP$.

@@ -26,29 +26,46 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie.
 
 > TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
-> 
-> TBD exemple sudoku.
-> <https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf>
-> 
-> TBD subsetsum 3-sat : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
-> 
-## TBD
 
+## Modélisation
+
+Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien
+
+### Fonctions booléennes
+
+> TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.
 > polylog circuit et sat : <https://www.youtube.com/watch?v=6OPsH8PK7xM>
-> et revenir en arrière : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.
-> en faire des exos.
 
-> TBD "gadget" pour la transformation
-> exemples.
+### exemple du sudoku
 
-selon ce que l'on cherche à faire.
-passer d'un problème à un autre pour le résoudre.
+> TBD puissant outil de modélisation. Déjà toutes fonctions mais autres choses.
+> exemple sudoku. :
+>  - <https://sat.inesc-id.pt/~ines/publications/aimath06.pdf>
 
-> parler de 2-sat ≤ 3-sat = k-sat = sat
-résoudre 2-sat.
+## 3-SAT
 
+équivalent à SAT
+
+> TBD <https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf>
+
+Permet certaines réductions de façon bien plus facile :
+
+> TBD subsetsum 3-sat : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
+
+## 2-SAT
+
+> Réduction ne fonctionne pas.
+> Algo poly
 > 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
-> strongly connected component : Tarjan : <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+
+
+> TBD faire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+
+## Inversibilité du problème SAT
+
+> revenir en arrière facile : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.
+
+
 > 
 > TBD
 >
