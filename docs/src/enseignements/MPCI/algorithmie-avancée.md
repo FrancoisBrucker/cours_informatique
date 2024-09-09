@@ -39,7 +39,7 @@ eleventyComputed:
    1. Machines de Turing
       1. MTU
       2. Castors affairées
-      3. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine en entrée (MTU).
+      3. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
    2. P, NP et NPC
       1. [décision](/cours/algorithmie/décision-problèmes/)
       2. co-NP
