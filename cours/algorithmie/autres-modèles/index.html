@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Penser l&#39;algorithmie</title>
+    <title>Autres modèles de création d&#39;algorithme</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Penser l&#39;algorithmie</h1>
+  <h1>Autres modèles de création d&#39;algorithme</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/modèles-turing-complet/">Penser l&#39;algorithmie</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/autres-modèles/">Autres modèles de création d&#39;algorithme</a>
 
 </div>
 </div>
@@ -92,35 +92,22 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+  <p>Nous ne rentrerons pas dans les détails ici, nous voulons juste montrer que l'on peut très bien écrire des algorithmes en utilisant autre chose que du pseudo-code. En revanche tous les modèles que nous verrons ne peuvent pas coder plus de choses, ils permettent juste d'écrire différemment les mêmes algorithmes.</p>
+<p>Les algorithmes écrit sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dit <strong><em>Turing complet</em></strong> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=bP1lOm5rLsI&amp;list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt&amp;index=1">Playlist sur la <em>theory of computation</em></a> et <a href="https://hefferon.net/computation/">le livre associé</a></p>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un système est dit <a href="https:/fr.wikipedia.org/wiki/Turing-complet">Turing complet</a> s'il permet de faire tout ce qu'un pseudo-code peut faire.</p>
 </div>
 </div>
-<h2>Fonctions récursives</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="r%C3%A9cursive-primitive" class="interne">Fonctions récursives primitives</a></p>
-</div>
-</div>
-<p>Nous avons vu que les fonctions primitives récursives étaient des fonctions calculable. Nous allons montrer ici qu'un modèle plus générale, les fonctions récursives, sont équivalentes au pseudo-code ! Ceci montre que l'algorithmie peut posséder de nombreuses formes, toutes équivalentes.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="fonctions-r%C3%A9cursives" class="interne">Fonctions récursives</a></p>
-</div>
-</div>
+<p>Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.</p>
 <h2>Lambda calcul</h2>
-<p>Le lambda calcul est encore une autre forme de calcul équivalent aux machines de Turing. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus <em>matheuse</em> de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.</p>
-<p>On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le <a href="https://www.haskell.org/">Haskell</a> (il en existe d'autres, comme le <a href="https://ocaml.org/">Ocaml</a> par exemple).</p>
+<p>Le lambda calcul est une autre forme d'écriture équivalent au pseudo-code. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus <em>matheuse</em> de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.</p>
+<p>On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le <a href="https://www.haskell.org/">Haskell</a> (il en existe d'autres, comme le <a href="https://ocaml.org/">Ocaml</a> par exemple (n')utilisé (qu')en prépa).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -163,18 +150,12 @@
 <h2>Langages exotiques</h2>
 <p>Si la plupart des langages informatiques sont clairement Turing complet, il existe des langages bizarres, nommé <a href="https://fr.wikipedia.org/wiki/Langage_de_programmation_exotique">langages de programmation exotiques</a>, qui sont aussi Turing complet. Ces langages tendent à être minimalistes et cherchent à posséder soit le nombre minimal d'instruction, comme le célèbre <a href="https://www.google.com/search?q=brainfuck">brainfuck</a>, ou à être marrant, comme le <a href="https://www.dangermouse.net/esoteric/piet.html">Piet</a> dont le but est de créer des programmes sous la forme d'un tableau de <a href="https://fr.wikipedia.org/wiki/Piet_Mondrian">Piet Mondrian</a>.</p>
 <h2>Autres trucs</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
+<p>Ne nombreuses applications ou jeux sont Turing-complet par inadvertence. Par exemple :</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=5u6BN1p0Uo8">Legend of Zelda: Tears of the Kingdom</a></li>
 <li><a href="https://www.youtube.com/watch?v=uNjxe8ShM-8">Powerpoint</a></li>
 <li><a href="https://www.youtube.com/watch?v=NCC2Fd8qxv4">règle 110 avec Factorio (et des trains)</a></li>
 </ul>
-</div>
-</div>
 
 
 </article>

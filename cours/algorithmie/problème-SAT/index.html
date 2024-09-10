@@ -111,6 +111,9 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 <blockquote>
 <p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).</p>
 </blockquote>
+<blockquote>
+<p>TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
+</blockquote>
 <h2>Modélisation</h2>
 <p>Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien</p>
 <h3>Fonctions booléennes</h3>
@@ -133,16 +136,24 @@ exemple sudoku. :</p>
 </blockquote>
 <p>Permet certaines réductions de façon bien plus facile :</p>
 <blockquote>
-<p>TBD subsetsum 3-sat : <a href="https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf">https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf</a></p>
+<p>TBD résolution par backtracking</p>
 </blockquote>
 <h2>2-SAT</h2>
 <blockquote>
-<p>Réduction ne fonctionne pas.<br>
-Algo poly<br>
-2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
+<p>Réduction ne fonctionne pas. Autre problème</p>
+<p>Algo poly par limited backtracking : <a href="https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking">https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking</a><br>
+limited backatracking car chaque cas est indépendant donc si on doit rbacktracker impossible.</p>
+</blockquote>
+<blockquote>
+<p>2-sat poly : <a href="https://cp-algorithms.com/graph/2SAT.html">https://cp-algorithms.com/graph/2SAT.html</a></p>
 </blockquote>
 <blockquote>
 <p>TBD faire dans la partie graphe : strongly connected component : Tarjan <a href="https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf">https://github.com/tpn/pdfs/blob/master/Depth-First Search and Linear Graph Algorithms - Tarjan (1972).pdf</a></p>
+</blockquote>
+<h2>Réductions</h2>
+<blockquote>
+<p>TBD bi-partition SAT : <a href="https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf">https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf</a><br>
+TBD subsetsum 3-SAT : <a href="https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf">https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf</a></p>
 </blockquote>
 <h2>Inversibilité du problème SAT</h2>
 <blockquote>
@@ -156,6 +167,10 @@ Algo poly<br>
 <p>exemple réduction :</p>
 <p>résolution 3-sat par backtracking</p>
 <p>TBD <a href="https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf">https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf</a></p>
+</blockquote>
+<h2>Résolution de SAT</h2>
+<blockquote>
+<p>TBD : <a href="https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf">https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf</a></p>
 </blockquote>
 
 
