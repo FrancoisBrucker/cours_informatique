@@ -27,6 +27,8 @@ Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$
 
 > TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
 
+> TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.
+
 ## Modélisation
 
 Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien
@@ -50,16 +52,24 @@ Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais p
 
 Permet certaines réductions de façon bien plus facile :
 
-> TBD subsetsum 3-sat : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
+> TBD résolution par backtracking
 
 ## 2-SAT
 
-> Réduction ne fonctionne pas.
-> Algo poly
+> Réduction ne fonctionne pas. Autre problème
+> 
+> Algo poly par limited backtracking : <https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking>
+> limited backatracking car chaque cas est indépendant donc si on doit rbacktracker impossible.
+
 > 2-sat poly : <https://cp-algorithms.com/graph/2SAT.html>
 
 
 > TBD faire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
+
+## Réductions
+
+> TBD bi-partition SAT : <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>
+> TBD subsetsum 3-SAT : <https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf>
 
 ## Inversibilité du problème SAT
 
@@ -76,3 +86,7 @@ Permet certaines réductions de façon bien plus facile :
 > résolution 3-sat par backtracking
 >
 > TBD <https://courses.engr.illinois.edu/cs473/fa2011/lec/21_notes.pdf>
+>
+## Résolution de SAT
+
+> TBD : <https://people.csail.mit.edu/virgi/6.s078/lecture3and4.pdf>

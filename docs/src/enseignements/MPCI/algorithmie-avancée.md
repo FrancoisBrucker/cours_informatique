@@ -52,6 +52,8 @@ eleventyComputed:
 [cours de C](/cours/système/langage-c/)
 {% endaller %}
 
+La pile pour dé-récursifier : faire les exemples
+
 ### Graphes
 
 > TBD : voir ce qu'ils connaissent déjà
@@ -63,14 +65,14 @@ eleventyComputed:
 5. Graphes 1 :
    1. rappels
    2. quelques propriétés degrés/chemins
-   3. connectivités
+   3. connectivités : arbres
    4. parcours en largeur/profondeur
-6. Graphes : 
-   1. arbres def et preuves
-   2. prufer
-   3. parcours en profondeur et arborescence
+6. Graphes :
+   1. arbres preuves Prufer effeuillage ...
+   2. parcours en profondeur et arborescence
 
-
+> TBD : fortement connexe et
+> 
 ## TBD
 
 6.  Assembleur, mémoire et C

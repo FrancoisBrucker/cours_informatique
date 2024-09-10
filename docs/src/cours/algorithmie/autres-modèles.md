@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk 
-title:  "Penser l'algorithmie"
+title:  "Autres modèles de création d'algorithme"
 
 eleventyComputed:
   eleventyNavigation:
@@ -9,28 +9,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% lien %}
-[Playlist sur la _theory of computation_](https://www.youtube.com/watch?v=bP1lOm5rLsI&list=PLwF3A0R8OzMpO6_9WbT1kK16akYFh3_Nt&index=1) et [le livre associé](https://hefferon.net/computation/)
+Nous ne rentrerons pas dans les détails ici, nous voulons juste montrer que l'on peut très bien écrire des algorithmes en utilisant autre chose que du pseudo-code. En revanche tous les modèles que nous verrons ne peuvent pas coder plus de choses, ils permettent juste d'écrire différemment les mêmes algorithmes.
 
-{% endlien %}
+Les algorithmes écrit sous la forme de pseudo-code sont équivalents (on le verra) aux algorithmes écrits grâce à une machine de Turing. Les modèles équivalents sont alors dit **_Turing complet_** :
 
-## Fonctions récursives
+{% note "**définition**" %}
+Un système est dit [Turing complet](./https://fr.wikipedia.org/wiki/Turing-complet) s'il permet de faire tout ce qu'un pseudo-code peut faire.
+{% endnote %}
 
-{% aller %}
-[Fonctions récursives primitives](./récursive-primitive){.interne}
-{% endaller %}
-
-Nous avons vu que les fonctions primitives récursives étaient des fonctions calculable. Nous allons montrer ici qu'un modèle plus générale, les fonctions récursives, sont équivalentes au pseudo-code ! Ceci montre que l'algorithmie peut posséder de nombreuses formes, toutes équivalentes.
-
-{% aller %}
-[Fonctions récursives](./fonctions-récursives){.interne}
-{% endaller %}
+Avoir un modèle Turing Complet nous assure, en suivant la thèse de Church-Turing, que ce modèle peut calculer tous les algorithmes.
 
 ## Lambda calcul
 
-Le lambda calcul est encore une autre forme de calcul équivalent aux machines de Turing. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus _matheuse_ de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.
+Le lambda calcul est une autre forme d'écriture équivalent au pseudo-code. On doit ce modèle à Church, qui était le directeur de thèse de Turing. C'est une version bien plus _matheuse_ de l'algorithmie puisqu'elle ne s'intéresse qu'aux fonctions et ne parle jamais d'algorithme.
 
-On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le [Haskell](https://www.haskell.org/) (il en existe d'autres, comme le [Ocaml](https://ocaml.org/) par exemple).
+On peut cependant coder en lambda calcul, c'est ce qu'on appelle la programmation fonctionnelle et elle est possible avec des langages comme le [Haskell](https://www.haskell.org/) (il en existe d'autres, comme le [Ocaml](https://ocaml.org/) par exemple (n')utilisé (qu')en prépa).
 
 {% lien %}
 
@@ -69,8 +62,9 @@ Si la plupart des langages informatiques sont clairement Turing complet, il exis
 
 ## Autres trucs
 
-{% lien %}
+Ne nombreuses applications ou jeux sont Turing-complet par inadvertence. Par exemple :
+
 - [Legend of Zelda: Tears of the Kingdom](https://www.youtube.com/watch?v=5u6BN1p0Uo8)
 - [Powerpoint](https://www.youtube.com/watch?v=uNjxe8ShM-8)
 - [règle 110 avec Factorio (et des trains)](https://www.youtube.com/watch?v=NCC2Fd8qxv4)
-{% endlien %}
+

@@ -60,6 +60,12 @@ La thèse de Church-Turing est intimement lié aux démonstrations mathématique
 Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQws) pour une introduction en douceur de la problématique.
 {% endlien %}
 
+Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres :
+
+{% aller %}
+[Autres modèles](./autres-modèles)
+{% endaller %}
+
 ### Algorithmes itératifs et récursifs
 
 > TBD : à faire propre et ne garder que le simple. En donnant une définition de récursif.
@@ -137,6 +143,14 @@ La notion de complexité est centrale en algorithmie, nous en reparlerons encore
 > TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
 >
 > TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
+
+### Complexité amortie
+
+Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
 
 #### Chaînes de caractères
 
@@ -291,12 +305,14 @@ Cette preuve permet de montrer que les systèmes suivant sont Turing complet :
 
 Ce qu'il faut retenir de tout ça, c'est qu'il est très facile d'être Turing Complet mais impossible d'être plus !
 
-#### Autres modèles
+#### Algorithmes et fonctions
+
+> TBD uniquement fonctions récursives.
 
 Finissons par quelques exemples non triviaux de modèles Turing complet :
 
 {% aller %}
-[Autres modèles](./modèles-turing-complet){.interne}
+[Algorithmes et fonctions](./fonctions-récursives){.interne}
 {% endaller %}
 
 ### Problèmes de décisions
@@ -327,16 +343,8 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD nombre aléatoires
 
-## Complexité amortie
-
-> TBD A déplacer plus tard. Attention à l'amortie des dict/liste.
-
-{% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
-{% endaller %}
-
 > TBD : [projet Multiplication de matrices](./multiplication-matrices){.interne}
 
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
-> <https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf>
+
