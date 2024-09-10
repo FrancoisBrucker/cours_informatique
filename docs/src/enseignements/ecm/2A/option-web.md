@@ -24,7 +24,7 @@ Web front et back (avec node).
 ## Programme
 
 {% aller %}
-[Cours de web]("/cours/web"){.interne}
+[Cours de web](/cours/web){.interne}
 {% endaller %}
 
 ## Projet final

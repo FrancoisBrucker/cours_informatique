@@ -133,7 +133,9 @@ Problèmes de flots. Définition, algorithmes et applications
 4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
-> TBD
+> TBD arbre :
+> - buneman
+> - tout automorphisme d'arbre laisse invariant une feuille ou une arête
 
 ## Connectivité
 

@@ -63,7 +63,7 @@ Voir [cette excellente vidéo d'Arte](https://www.youtube.com/watch?v=Zci9m08HQw
 Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. La célèbre machine de Turing que l'on verra en partie II en est un exemple. Mais il y en a beaucoup, beaucoup d'autres :
 
 {% aller %}
-[Autres modèles](./autres-modèles)
+[Autres modèles](./autres-modèles){.interne}
 {% endaller %}
 
 ### Algorithmes itératifs et récursifs

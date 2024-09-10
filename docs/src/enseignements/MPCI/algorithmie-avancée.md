@@ -34,16 +34,16 @@ eleventyComputed:
    2. [réduction de problèmes](/cours/algorithmie/problème-réduction/)
    3. Classes de problèmes :
       1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/)
-      2. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
 3. Cours 3
-   1. Machines de Turing
+   1. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
+   2. Machines de Turing
       1. MTU
       2. Castors affairées
       3. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
-   2. P, NP et NPC
+   3. P, NP et NPC
       1. [décision](/cours/algorithmie/décision-problèmes/)
       2. co-NP
-   3. SAT, 3-SAT et 2-SAT
+   4. SAT, 3-SAT et 2-SAT
 4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/) et pseudo-polynomial.
 
 ### C

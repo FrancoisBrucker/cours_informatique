@@ -17,6 +17,17 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 [Une vidéo de l'excellence chaîne polylog](https://www.youtube.com/watch?v=9ONm1od1QZo)
 {% endlien %}
 
+## Recherche universelle première approche
+
+> TBD dire qu'on peut le faire en python :
+>   1. on envoie un texte dans l'interpréteur et soit il plante soit c'est du python
+>   2. avec le débugeur on peut exécuter une instruction à la fois
+>   3. si ça plante on le sort de la liste des programmes
+>   4. s'il finit on vérifie si c'est ok. Si c'est pas ok on le sort de la liste des programmes
+
+> TBD on ajoute juste une instruction à chaque fois.
+> Reste possible mais complexité plus élevée.
+
 ## Exécution fragmenté d'un algorithme
 
 Pour comprendre comment fonctionne la recherche universelle, commençons par étudier l'algorithme suivant, qui prend en paramètre un algorithme `A`{.language-} et une de ses entré possible, `E`{.language-} :
