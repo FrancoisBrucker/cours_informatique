@@ -315,6 +315,14 @@ Finissons par quelques exemples non triviaux de modèles Turing complet :
 [Algorithmes et fonctions](./fonctions-récursives){.interne}
 {% endaller %}
 
+### Problème SAT
+
+> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
+
+{% aller %}
+[problème SAT](./problème-SAT){.interne}
+{% endaller %}
+
 ### Problèmes de décisions
 
 Nous allons dans cette partie approfondir et démontrer proprement des choses que nous avons laissées en suspend à la fin de la partie I, à savoir les classes de problèmes NP et les problèmes NP-complets.
@@ -323,17 +331,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Problèmes de décision](./décision-problèmes){.interne}
 {% endaller %}
 
-> mettre Turing ici et Cook.
-> Fin de la partie 1 juste donner NP et dire qu'il y a des NP-complet et le prouver ici.
-
-### Problème SAT
-
-> TBD on vu que toute fonction est un sat et que tout circuit logique est un sat. Le problème SAT va être fondamental.
-> TBD y mettre la partie sur clause dans pseudo-assembleur.
-
-{% aller %}
-[problème SAT](./problème-SAT){.interne}
-{% endaller %}
+> TBD exemple de choses NP complete : <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap12-good.pdf>
 
 ### Désordre et hasard
 
@@ -347,4 +345,5 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
+> TBD subsetsum ≤ bi-partition  : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
 

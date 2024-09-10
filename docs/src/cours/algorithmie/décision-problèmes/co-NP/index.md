@@ -85,13 +85,47 @@ De là, si $P=NP$ alors $NP$=$co-NP$ mais cela a tout de même peut de chance d'
 
 {% endnote %}
 {% details "preuve", "open"%}
-Supposons que $NP$ est strictement inclut dans co-$NP$. Il existe alors un problème de décision $p$ qui est dans co-$NP$ et pas dans $NP$ et soit $L$ sont langage. Son complémentaire $\overline{L}$ est alors dans $NP$ qui est dans inclut dans co-$NP$ ce qui implique que le complémentaire de son complémentaire $\overline{\overline{L}}$, qui vaut $L$, est dans $NP4 ce qui est impossible.
+Supposons que $NP$ est strictement inclut dans co-$NP$. Il existe alors un problème de décision $p$ qui est dans co-$NP$ et pas dans $NP$ et soit $L$ sont langage. Son complémentaire $\overline{L}$ est alors dans $NP$ qui est dans inclut dans co-$NP$ ce qui implique que le complémentaire de son complémentaire $\overline{\overline{L}}$, qui vaut $L$, est dans $NP$ ce qui est impossible.
 
 La seconde assertion se démontre de la même manière.
 
 {% enddetails %}
 
-On a donc que $P \subset NP \cap co-NP$ et que si $NP \neq co-NP$ alors $NP \backslash co-NP$ et $co-NP \backslash NP$ sont non vide. En revanche on ne sait pas si $P = NP \cap co-NP$.
+On a donc que $P \subseteq NP \cap co-NP$ et que si $NP \neq co-NP$ alors $NP \backslash co-NP$ et $co-NP \backslash NP$ sont non vide. En revanche on ne sait pas si $P = NP \cap co-NP$.
 En supposant $NP \neq co-NP$ ce qui est supposé par la quasi-majorité des informaticiens on a la figure suivante :
 
 ![np et co-NP](np-conp-2.png)
+
+## Problèmes co-NP complets
+
+On peut montrer exactement de la même manière que pour le théorème de cook que la problème Tautologie est co-NP Complet. C'est à dire que pour tout problème $p$ de décision de co-NP il existe une réduction polynomiale telle que $p$ est inférieure à Tautologie.
+
+Si $NP \neq co-NP$ les problème NP-complets et co-NP complets sont disjoints :
+
+{% note "**Proposition**" %}
+
+Si $NP \neq co-NP$ alors :
+
+- les problèmes NP-complets ne sont pas dans co-$NP$
+- les problèmes co-NP-complets ne sont pas dans $NP$
+
+{% endnote %}
+{% details "preuve", "open"%}
+Soit $P$ un problème NP-complet qui est également dans co-NP et $p$ un problème de NP. On a alors $p \leq P$ et comme $P$ est également dans co-NP on a que $p$ est dans co-NP (la machine qui répond non pour $P$ répond aussi non pour $p$ en utilisant les algorithmes de la réduction).
+
+Comme $p$ a été pris au hasard, tout problème de NP est dans co-NP ce qui est faut par hypothèse.
+
+Le second item se démontre exactement de la même manière.
+{% enddetails %}
+
+On a finalement trois cas possible :
+
+1. P = NP = co-NP = NP-complet = co-NP-complet. Ce cas est hautement improbable, en tous les cas la quasi totalité des informaticien n'y croient pas.
+2. P $\subsetneq$ NP = co-NP$. Dans ce cas NP-complet = co-NP-complet. Ce cas est très improbable, en tous les cas la très grande majorité des informaticiens n'y croient pas non plus.
+3. P $\subsetneq$ NP ≠ co-NP$ qui est le cas admis par la quasi totalité des informaticiens. On se retrouve dans le schéma ci-après.
+
+![npc et conpc](npc-conpc.png)
+
+{% lien %}
+[np et co-np](https://www.youtube.com/watch?v=Hx6sfus7PIk&list=PLdUzuimxVcC0DENcdT8mfhI3iRRJLVjqH&index=46)
+{% endlien %}

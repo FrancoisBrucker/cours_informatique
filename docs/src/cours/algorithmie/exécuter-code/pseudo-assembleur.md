@@ -81,8 +81,9 @@ Un _**tableau**_ de taille $n$ est suite finie et contiguë de $n \cdot S$ cases
 {% endnote %}
 
 > TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).
-
+>
 > TBD : le fait que ce soit fini ne change rien :
+>
 > - à l'exécution : si on dépasse on double la mémoire et on recommence
 > - à la complexité : le temps mis/nb d'instruction effectué est T(sum i/2^i) = 2T. Voir universal search
 
@@ -481,21 +482,10 @@ On a :
 - $f_{8 + 8}(x, y)$ est la fonction $(x \land \bar{y}) \lor (\bar{x} \land y)$
 {% enddetails %}
 
-Le résultat précédent se généralise pour tout $p$. Pour cela, commençons par définir un concept fondamental en logique la _**conjonction de clauses**_ :
-
-<div id="clauses"></div>
-{% note "**Définition**" %}
-Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :
-
-- un **_littéral_** $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$
-- une **_clause_** comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)
-- une **_conjonction de clauses_** comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)
-{% endnote %}
-
-Toute fonction $f: \\{0, 1\\}^n \rightarrow \\{0, 1\\}$ peut s'écrire comme une conjonction de clauses :
+Le résultat précédent se généralise pour tout $p$ :
 
 {% note "**Proposition**" %}
-Toute fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire comme une conjonction de clauses.
+Toute fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peut s'écrire sous une [forme normale disjonctive](https://fr.wikipedia.org/wiki/Forme_normale_disjonctive)
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -506,8 +496,6 @@ Soit $f(x_1, \dots, x_n)$ une fonction de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$.
 $$
 f(x) = \lor \\{l^y(x) | f(y) = 1\\}
 $$
-
-Comme $(a \land b)\lor c = (a \lor c)\land (b \lor c)$, $f$ peut se récrire en conjonction de clauses ce qui conclut la preuve.
 
 {% enddetails %}
 
