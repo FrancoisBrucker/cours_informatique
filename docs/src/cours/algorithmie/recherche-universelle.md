@@ -22,6 +22,7 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 > TBD dire qu'on peut le faire en python :
 >   1. on envoie un texte dans l'interpréteur et soit il plante soit c'est du python
 >   2. avec le débugeur on peut exécuter une instruction à la fois
+>   3. k instructions les k premiers (pas encore finis) puis on augmente k
 >   3. si ça plante on le sort de la liste des programmes
 >   4. s'il finit on vérifie si c'est ok. Si c'est pas ok on le sort de la liste des programmes
 

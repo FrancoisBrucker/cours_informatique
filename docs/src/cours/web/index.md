@@ -24,14 +24,21 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 <!-- fin résumé -->
 
+## URL ?
+
+Différence entre exécuter un fichier soit et sur un serveur :
+
+[Qu'est qu'une url](./anatomie-url){.interne}
+
+> TBD Bases de réseau.
+
 ## <span id="trinité"><span>  Trinité html/css/js
 
 ### Découverte d'html
 
 1. Introduction avec les [outils de développement](./outils-de-développement/){.interne}
 2. [Introduction à html](./html-introduction){.interne} chez soit dans un seul fichier
-3. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url ?](./anatomie-url){.interne}
-4. [Projet html](./projet-html){.interne}
+3. [Projet html](./projet-html){.interne}
 
 ### Découverte de css
 
