@@ -17,7 +17,7 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 [Une vidéo de l'excellence chaîne polylog](https://www.youtube.com/watch?v=9ONm1od1QZo)
 {% endlien %}
 
-## Recherche universelle première approche
+## Principe
 
 > TBD dire qu'on peut le faire en python :
 >   1. on envoie un texte dans l'interpréteur et soit il plante soit c'est du python
