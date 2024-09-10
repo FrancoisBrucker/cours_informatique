@@ -92,8 +92,28 @@
     
   
 
-  <p>Nous allons intensivement utiliser la réduction pour classer les problèmes algorithmiques, et en particulier les réduction depuis <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT">le problème SAT</a>.</p>
+  <blockquote>
+<p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
+</blockquote>
+<p>Nous allons intensivement utiliser la réduction pour classer les problèmes algorithmiques, et en particulier les réduction depuis <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT">le problème SAT</a>.</p>
 <p>Nous avons entraperçu le problème lorsque nous avons parlé de <a href="../ex%C3%A9cuter-code/pseudo-assembleur#clauses">pseudo-assembleur</a> et que tout les fonctions de $\{0, 1\}^n$ dans $\{0, 1\}$ peuvent s'écrire comme conjonction de clauses :</p>
+<p>Pour cela, commençons par définir un concept fondamental en logique la <em><strong>conjonction de clauses</strong></em> :</p>
+<div id="clauses"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :</p>
+<ul>
+<li>un <strong><em>littéral</em></strong> $l$ comme étant soit une variable $l = x_i$, soit sa négation $l = \overline{x_i}$</li>
+<li>une <strong><em>clause</em></strong> comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)</li>
+<li>une <strong><em>conjonction de clauses</em></strong> comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)</li>
+</ul>
+</div>
+</div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -109,25 +129,32 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 </div>
 <p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie.</p>
 <blockquote>
-<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).</p>
+<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).<br>
+TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
 </blockquote>
 <blockquote>
-<p>TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
+<p>TBD toute formule logique peut s'écrire comme une conjonction de clause. CNF-SAT mais on peut passer de toute formule à SAT en temps linéaire :</p>
 </blockquote>
 <h2>Modélisation</h2>
 <p>Tout problème se résout via un SAT. Pas toujours facile de s'y ramener, mais parfois c'est bien</p>
 <h3>Fonctions booléennes</h3>
 <blockquote>
-<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.<br>
-polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
+<p>TBD clauses et conjonction de clauses. Montrer que toute fonction booléennes sont des conjonctions de clauses.</p>
 </blockquote>
+<p>on passe de dnf à cnf en passant au non. Voir <a href="https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf">https://www.csd.uwo.ca/~mmorenom/cs2209_moreno/slide/lec8-9-NF.pdf</a></p>
+<h3>Formules logiques</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">transfomation de Tseitin</a></p>
+</div>
+</div>
+<p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules.</p>
 <h3>exemple du sudoku</h3>
 <blockquote>
-<p>TBD puissant outil de modélisation. Déjà toutes fonctions mais autres choses.<br>
-exemple sudoku. :</p>
-<ul>
-<li><a href="https://sat.inesc-id.pt/~ines/publications/aimath06.pdf">https://sat.inesc-id.pt/~ines/publications/aimath06.pdf</a></li>
-</ul>
+<p>p47 <a href="https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf">https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf</a></p>
 </blockquote>
 <h2>3-SAT</h2>
 <p>équivalent à SAT</p>
@@ -152,16 +179,13 @@ limited backatracking car chaque cas est indépendant donc si on doit rbacktrack
 </blockquote>
 <h2>Réductions</h2>
 <blockquote>
-<p>TBD bi-partition SAT : <a href="https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf">https://people.orie.cornell.edu/dpw/orie6300/Lectures/lec25.pdf</a><br>
-TBD subsetsum 3-SAT : <a href="https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf">https://ics.uci.edu/~goodrich/teach/cs162/notes/pnp3.pdf</a></p>
+<p>TBD subsetsum 3-SAT :<a href="https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf">https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness (Proofs)/subsum.pdf</a></p>
 </blockquote>
 <h2>Inversibilité du problème SAT</h2>
 <blockquote>
-<p>revenir en arrière facile : si solution alors on a l'entrée. Les fonctions à sens unique, factorisation, etc.</p>
-</blockquote>
-<blockquote>
-<p>TBD</p>
-<p>TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.</p>
+<p>TBD fct booléenne de l'addition ou du produit. Comme c'est une fonction booléenne cela permet d'avoir une réponse mais aussi d'avoir les entrées.</p>
+<p>TBD on y reviendra mais en crypto c'est crucial de ne pas pouvoir  faire... Par exemple pour les produit de 2 nombres premiers. On revient au fait que factor doit être de complexité importante.</p>
+<p>polylog circuit et sat : <a href="https://www.youtube.com/watch?v=6OPsH8PK7xM">https://www.youtube.com/watch?v=6OPsH8PK7xM</a></p>
 </blockquote>
 <blockquote>
 <p>exemple réduction :</p>
