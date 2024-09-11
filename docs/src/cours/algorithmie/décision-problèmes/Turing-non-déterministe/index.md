@@ -24,7 +24,7 @@ Cette machine se distingue de la machine de Turing normale parce que la fonction
 
 Prenons par exemple la machine de Turing non déterministe suivante :
 
-- $\delta(\text{START}, 0) = \\{(\text{START}, 1, \leftarrow), (\text{START}, 0, \righttarrow)\\}$
+- $\delta(\text{START}, 0) = \\{(\text{START}, 1, \leftarrow), (\text{START}, 0, \rightarrow)\\}$
 - $\delta(\text{START}, 1) = \\{(\text{STOP}, 1, \rightarrow) \\}$
 
 Avec l'entrée $E=01$ Il y a plein de choix possible :
@@ -47,7 +47,7 @@ Une **_machine de Turing non déterministe polynomiale_** $M$ est une machine de
 
 Pour rendre notre machine de Turing déterministe précédente polynomiale, il faut lui interdire d'avoir des transitions infinies. Par exemple ne pas refaire boucler sur $\text{START}$. :
 
-- $\delta(\text{START}, 0) = \\{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \righttarrow)\\}$
+- $\delta(\text{START}, 0) = \\{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \rightarrow)\\}$
 - $\delta(\text{START}, 1) = \\{(\text{STOP}, 1, \rightarrow) \\}$
 - $\delta(\text{UN}, 1) = \\{(\text{STOP}, 1, \rightarrow) \\}$
 - $\delta(\text{UN}, 0) = \\{(\text{STOP}, 0, \rightarrow) \\}$
@@ -68,7 +68,7 @@ Une exécution de la machine revient à suivre un chemin dans cet arbre, donc qu
 - $(e_{t_1\dots t_i}, a_{t_1\dots t_i}, f_{t_1\dots t_i}) \in \delta(e_{t_1t_2\dots t_{i-1}}, a_{t_1t_2\dots t_1i-1})$
 
 {% note %}
-Les choix effectués constituent un **_certificat_** de réussite.
+Les choix effectués pour accepter une entrée constituent un **_certificat_** de réussite.
 
 Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.
 {% endnote %}
