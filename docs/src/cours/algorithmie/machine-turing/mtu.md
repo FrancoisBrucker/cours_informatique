@@ -52,7 +52,7 @@ $$
 Et finalement associer à la fonction de transition le tableau constitué de la concaténation ($+$ est ici l'opération de concaténation des tableaux):
 
 $$
-T = T(q_1, 0) + T(q_1, 1) + \dots + T(q_i, 0) + T(q_i, 1) + \dots + T(q_{|Q|}, 0) + T(q_{|Q|}, 1)
+T = T(q_0, 0) + T(q_0, 1) + \dots + T(q_i, 0) + T(q_i, 1) + \dots + T(q_{|Q|-1}, 0) + T(q_{|Q|-1}, 1)
 $$
 
 On a alors les correspondances :
