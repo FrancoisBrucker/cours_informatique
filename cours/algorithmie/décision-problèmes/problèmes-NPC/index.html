@@ -92,73 +92,97 @@
     
   
 
-  <p>La classe NP regroupe l'ensemble des problèmes algorithmiques utilisables en pratique, c'est à dire vérifiable en temps polynomial par une machine de Turing.</p>
-<p>Nous allons voir ici que ces deux problématiques sont liées et que</p>
-<blockquote>
-<p>TBD<br>
-Si P ≠ NP alors il existe des pbs entre.<br>
-Si P ≠ NP alors NP \cap co-NP = P (je ne sais plus si c'est vrai ça)</p>
-</blockquote>
-<h2>Machine de Turing et clauses</h2>
-<p>Nous allons modéliser une machine de Turing (possiblement non déterministe) par une conjonction de clauses.</p>
-<h3>Machine à un instant donné</h3>
-<p>À un instant donné, une machine de Turing est déterminée par :</p>
+  <p>Nous allons montrer que la classe NP contient des problèmes plus généraux que tous les autres. Soit $M$ une machine de Turing non déterministe polynomiale. Il existe alors $K$ et $k$ tels que pour toute entrée $E$ de taille $n$, la machine s'arrête au bout de $Kn^k$ opérations.</p>
+<p>De là :</p>
 <ul>
-<li>les valeurs sur son ruban</li>
-<li>une position sur le ruban</li>
-<li>son état</li>
+<li>la machine n'a pas pu effectuer plus de $Kn^m$ transitions</li>
+<li>le curseur de la machine n'a pas pu visiter plus de $Kn^m$ cases différentes du ruban</li>
 </ul>
-<p>On va pouvoir associer à chacune de ses parties une conjonction de clause dont exactement toutes les assignations vraies sont possibles.</p>
-<h4>Clause de case</h4>
-<p>Chaque case du ruban peut avoir 2 valeurs : <code>0</code> ou <code>1</code>. On associe donc à une case $c$ sa variable booléenne qui peut être vrai si la valeur de la case vaut <code>1</code> et est faux si la valeur de la case vaut <code>0</code>.</p>
-<h4>Clause de ruban</h4>
-<p>Un bout fini de ruban est un tableau de cases, on peut donc lui associer :</p>
+<p>On va montrer que l'exécution de cette machine est équivalente à trouver une affectation de littéraux d'une conjonction de clauses.</p>
+<p>Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machine de Turing non déterministe.</p>
+<blockquote>
+<p>TBD <a href="https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf">https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf</a><br>
+TBD <a href="https://perso.eleves.ens-rennes.fr/~tpier758/agreg/dvpt/info/cook.pdf">https://perso.eleves.ens-rennes.fr/~tpier758/agreg/dvpt/info/cook.pdf</a></p>
+</blockquote>
+<h2>Variables</h2>
+<h3>du ruban</h3>
+<p>Le curseur pouvant aller à droite ou à gauche, simuler son fonctionnement peut se faire sur un ruban de taille $2\cdot Kn^m$ en positionnant initialement le curseur à la position $Kn^m$.</p>
+<p>Chaque case du ruban peut avoir 2 valeurs : <code>0</code> ou <code>1</code>. On associe donc à une case une variable qui peut être vrai si la valeur de la case vaut <code>1</code> et est faux si la valeur de la case vaut <code>0</code>.</p>
+<p>Comme il y aura au plus $Kn^m$ étapes, on peut simuler les valeurs du rubans par les variables $r_i^k$ avec L</p>
+<ul>
+<li>$0\leq i \leq 2\cdot Kn^m$ qui correspond à la position de la case sur le ruban</li>
+<li>$0\leq k \leq Kn^m$ qui correspond au nombres d'instructions</li>
+</ul>
+<p>La seule chose dont on est sur concernant la valeur du ruban est leurs valeurs initiales, positionnées à l'entrée de la machine. Si l'entrée est nulle on a :</p>
 <div>
 $$
-R = \bigwedge_{0\leq i < n} c_i
+R^0 = \bigwedge_{i} \overline{r_i^0}
 $$
 </div>
-<h4>Clause de position</h4>
-<p>Le curseur est positionné sur une case, on peut donc lui associer $n$ variables p dont une seule est vraie. Par exemple si la position est sur la case $i$ on a :</p>
+<p>Sinon, si l'entrée est $E=e_0\dots e_p$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :</p>
 <div>
 $$
-p_i \land (\bigwedge_{j\neq i} \overline{p_j})
+R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 = e_i)) = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \lor \overline{e_i}) \land (\overline{r_i^0} \lor e_i))
 $$
 </div>
-<p>Ce qui donne la conjonctions de clause suivante pour la position sur le ruban :</p>
+<p>La conjonction $R^k$ montrera l'état du ruban à l'instruction $k$</p>
+<h3>de l'état</h3>
+<p>Il y $\vert Q \vert$ état différents et à chaque instruction, il n'y a qu'un seul état possible. En notant $q_i^k$ les variables associés à l'état on a :</p>
+<ul>
+<li>$0\leq i &lt; \vert Q \vert$ qui correspond à la valeur de l'état</li>
+<li>$0\leq k \leq Kn^m$ qui correspond au nombres d'instructions</li>
+</ul>
+<p>Comme un seul état est possible on a pour pour tout $k&gt;0$ :</p>
 <div>
 $$
-P = \bigvee_{0\leq i < n} (p_i \land (\bigwedge_{j\neq i} \overline{p_j}))
+Q^k = \bigvee_{i} (q^k_i \land (\bigwedge_{j\neq i} \overline{q^k_j})) = (\bigvee_{i} {q^k_i}) \land (\bigwedge_{j\neq i} (\overline{q^k_i} \vee \overline{q^k_j}))
 $$
 </div>
-<h4>Clause d'état</h4>
-<p>Une machine de Turing ne peut être que dans un seul état parmi $\vert Q\vert$. La conjonction de clauses associée est donc similaire à celui de la position :</p>
+<p>À l'état initial on a :</p>
 <div>
 $$
-Q = \bigvee_{0\leq i < q} (q_i \land (\bigwedge_{j\neq i} \overline{q_j}))
+Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
-<h3>Transition</h3>
-<p>Les transitions permettent de passer d'une étape à une autre, elles peuvent également être modélisées par des clauses. En reprenant la partie précédente, une machine de Turing au début de la $k$ème étape vaut :</p>
+<h3>du curseur</h3>
+<p>Tout comme les états, le curseur ne peut être qu'à une seule position à chaque étape d'une exécution. On le modélise donc de façon identique qux états par des variables $c_i^k$ tels que pour une instruction $k$ donnée, seule une position $i$ aura $c_i^k =1$, les autres seront fausse.</p>
+<p>Ceci s'écrit tel que pour tout $k&gt;0$ :</p>
 <div>
 $$
-M^k = R^k \land P^k \land Q^k
+C^k = (\bigvee_{i} {c^k_i}) \land (\bigwedge_{j\neq i} (\overline{c^k_i} \vee \overline{c^k_j}))
 $$
 </div>
-<h4>Conservation si pas de curseur</h4>
-<p>Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et l'étape $k+1$. Ceci peut s'écrire, si le curseur n'est pas à la case $i$, que soit la case vaut 1 aux étapes $k$ et $k+1$ soit elle vaut 0 aux étapes $k$ et $k+1$:</p>
+<p>À l'état initial on a :</p>
 <div>
 $$
-C^k_i = (c^{k}_{i} \land c^{k+1}_{i}) \lor (\overline{c^{k}_{i}} \land \overline{c^{k+1}_{i}})
+C^0 = c^0_{Kn^m} \land (\bigwedge_{j\neq Kn^m} \overline{c^0_j}))
 $$
 </div>
-<p>On en déduit une conjonction de clause qui traduit la conservation du ruban là où ne se trouve pas le curseur :</p>
+<h3>Variables et exécution de la machine</h3>
+<p>Pour garantir ceci tout au long de l'exécution de la machine, la conjonction de causes suivante doit être vérifiée :</p>
 <div>
 $$
-C^k = \bigwedge_{0\leq i < n}[(\overline{p^k_i}\land C^k_i) \lor p^k_i]
+R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
 $$
 </div>
-<h4>Transition si curseur</h4>
+<p>Il faut maintenant contraindre l'évolution des valeurs du ruban en fonction de la fonction de transition.</p>
+<blockquote>
+<p>TBD faire le matrice de l'exécution en mettant en ligne le ruban.</p>
+</blockquote>
+<h2>Ruban et transition</h2>
+<blockquote>
+<p>TBD la transition permet de passer d'une ligne à l'autre. La modification est locale puisque on ne peut aller que d'une case à gauche ou d'une case à droite.<br>
+TBD c'est une fenêtre de 3x2 sur la matrice d'exécution centrée au niveau du curseur.</p>
+</blockquote>
+<p>Les transitions permettent de passer d'une étape à une autre, elles peuvent également être modélisées par des clauses.</p>
+<h3>Conservation si pas de curseur</h3>
+<p>Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et l'étape $k+1$. Ceci peut s'écrire :</p>
+<div>
+$$
+\bigwedge_{i}(\overline{c_i^k} \land (r_i^k = r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
+$$
+</div>
+<h3>Transition si curseur</h3>
 <p>À l'endroit où le curseur se trouve, la fonction de transition s'applique et on peut aussi l'écrire comme une conjonction de clause ! Par exemple la transition $\delta(q_j, 0) = (\delta_e(q_j, 0), \delta_c(q_j, 0), \delta_d(q_j, 0))$ d'une machine de Turing simple cva s'écrire, en supposant que $\delta_c(q_j, 0) = 1$ et que $\delta_d(q, 0) \in \{-1, +1\}$ pour respectivement gauche et droite :</p>
 <div>
 $$
@@ -195,7 +219,7 @@ M = \bigwedge_{0\leq k < K} (M^k) \land \bigwedge_{0\leq k < K-1} (T^k) \land q^
 $$
 </div>
 <p>Si la machine de Turing es simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie.</p>
-<h2>Théorème de Cook</h2>
+<h2>Théorème de Cook-Levin</h2>
 <p>On a assez de matériel maintenant pour démontrer <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook">le théorème de Cook (1971)</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -244,21 +268,13 @@ $$
 </div>
 <p>Les problèmes NP-complets signifient qu'ils sont universels : les solutions peuvent apparaître partout ; ils n'ont pas de structure qui permettent d'inférer une solution par rapport à une entrée.</p>
 <p>On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.</p>
-<h2>Autres problèmes NP-complets</h2>
-<blockquote>
-<p>TBD comment faire pour montrer NP-complet. Utilisation de <a href="https://fr.wikipedia.org/wiki/Gadget_(informatique)">gadgets</a></p>
-</blockquote>
-<blockquote>
-<p>TBD bi-partition<br>
-TBD trouver des exemples simple avec gadget rigolo</p>
-</blockquote>
 <h2>Conclusion</h2>
 <blockquote>
 <p>TBD A quoi ça sert :</p>
 <ol>
 <li>à ne pas avoir l'air ridicule si on fait une heuristique.</li>
 <li>à utiliser des techniques de preuves efficaces de problèmes NPC pur résoudre son problème.<br>
-Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. ON peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.</li>
+Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. On peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.</li>
 </ol>
 </blockquote>
 

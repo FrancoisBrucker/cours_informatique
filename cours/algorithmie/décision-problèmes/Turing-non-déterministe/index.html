@@ -101,10 +101,55 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <strong><em>machine de Turing non déterministe</em></strong> est une machine de Turing dont la fonction de transition est définie sur $2^{Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}}$.</p>
+<p>Une <strong><em>machine de Turing non déterministe</em></strong> $M$ est une machine de Turing  telle que :</p>
+<ul>
+<li>à chaque transition $\delta(q, r)$ on a plusieurs choix possibles : la fonction de transition est définie sur $2^{Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}}$.</li>
+<li>pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à s'arrêter, elle choisira une de ces successions de choix.</li>
+</ul>
 </div>
 </div>
-<p>Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe.</p>
+<p>Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe. C'est la machine elle même qui fait les choix pour arriver, si c'est possible à un choix de 1. Si aucun choix ne fait arriver à 1, il est possible que parfois elle s'arrête sur 0 et parfois ne s'arrête pas.</p>
+<p>Prenons par exemple la machine de Turing non déterministe suivante :</p>
+<ul>
+<li>$\delta(\text{START}, 0) = \{(\text{START}, 1, \leftarrow), (\text{START}, 0, \righttarrow)\}$</li>
+<li>$\delta(\text{START}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
+</ul>
+<p>Avec l'entrée $E=01$ Il y a plein de choix possible :</p>
+<ol>
+<li>On peut par exemple s'arrêter sur un 0 :
+<ol>
+<li>de $\delta(\text{START}, 0)$ on choisit $(\text{START}, 0, \rightarrow)$</li>
+<li>puis de $(\text{START}, 1)$ choisir la seule possibilité $(\text{STOP}, 1, \rightarrow)$</li>
+</ol>
+</li>
+<li>On peut aussi s'arrêter sur un 1 :
+<ol>
+<li>de $\delta(\text{START}, 0)$ on choisit $(\text{START}, 1, \leftarrow)$</li>
+<li>puis de de $\delta(\text{START}, 0)$ on choisit $(\text{START}, 0, \rightarrow)$</li>
+<li>enfin de $(\text{START}, 1)$ choisir la seule possibilité $(\text{STOP}, 1, \rightarrow)$</li>
+</ol>
+</li>
+</ol>
+<p>Donc la sortie de $M(01) = 1$</p>
+<p>Avec une entrée vide en revanche, tous les choix mènent à une sortie en 0 ou une boucle infinie (faites le test) et donc $M()$ n'est pas déterminé.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>machine de Turing non déterministe polynomiale</em></strong> $M$ est une machine de Turing non déterministe qui s'arrête sur toutes les entrées $E$ quelques soient les transitions effectuées en $\mathcal{O}(\vert E \vert^k)$ opérations.</p>
+</div>
+</div>
+<p>Pour rendre notre machine de Turing déterministe précédente polynomiale, il faut lui interdire d'avoir des transitions infinies. Par exemple ne pas refaire boucler sur $\text{START}$. :</p>
+<ul>
+<li>$\delta(\text{START}, 0) = \{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \righttarrow)\}$</li>
+<li>$\delta(\text{START}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
+<li>$\delta(\text{UN}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
+<li>$\delta(\text{UN}, 0) = \{(\text{STOP}, 0, \rightarrow) \}$</li>
+</ul>
+<p>De là toutes les entrées vont forcément s'arrêter. On a toujours $M(01) = 1$, mais maintenant $M() = 0$.</p>
 <h2>Usage</h2>
 <p>Ce qui nous intéresse ici ce n'est plus l'exécution effective d'une telle machine mais <strong>s'il existe pour une entrée donnée, une suite de transitions emmenant à l'état final</strong>. C'est à dire qu'il existe une suite de nombres $(t_1, \dots, t_k)$ telle que à chaque instruction $i$ on ait pu choisir le $t_i$ème choix pour que la $k$ instruction mène à un état final.</p>
 <p>En représentant les choix sous la forme d'un arbre, on peut représenter $\delta$ comme ça :</p>
@@ -114,8 +159,17 @@
 <li>$(e_{t_1}, a_{t_1}, f_{t_1}) \in \delta(e, a)$</li>
 <li>$(e_{t_1\dots t_i}, a_{t_1\dots t_i}, f_{t_1\dots t_i}) \in \delta(e_{t_1t_2\dots t_{i-1}}, a_{t_1t_2\dots t_1i-1})$</li>
 </ul>
-<p>C'est un outil théorique très puissant car il permet de démontrer simplement beaucoup de théorèmes d'informatique théorique. Cependant, <strong>elle ne permet pas de faire plus de chose qu'une machine normale</strong>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les choix effectués constituent un <strong><em>certificat</em></strong> de réussite.</p>
+<p>Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.</p>
+</div>
+</div>
 <h2>Équivalence avec une machine de Turing</h2>
+<p>La machine de Turing non déterministe est un outil théorique très puissant car il permet de démontrer simplement beaucoup de théorèmes d'informatique théorique. Cependant, <strong>elle ne permet pas de faire plus de chose qu'une machine normale</strong>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -123,7 +177,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour toute machine de Turing non déterministe, on peut créer une machine de Turing <em>normale</em> qui s'arrêtera sur les même entrées.</p>
+<p>Pour toute machine de Turing non déterministe polynomiale, on peut créer une machine de Turing <em>normale</em> qui acceptera les même entrées.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -150,17 +204,38 @@ Tant que Vrai:
   on construit un tableau T contenant tous les mots de $Q$ de longueur $k$ (il y en a $2^k$)
   pour chaque élément e de T:
     exécuter M en suivant, si possible les éléments de e dans l'ordre lorsqu'il y a un choix.
-    Si l'exécution de M est possible et se termine rendre la sortie de M
+    Si l'exécution de M est possible et se termine sur un 1:
+      rendre 1
+  Si toutes les executions de T se sont terminées:
+    rendre 0
   k = k+1
 </code></pre>
-<blockquote>
-<p>TBD renvoyer à l'exercice du lancer de $k$ dés pour le pseudo-code de l'algorithme qui trouve tous les mots de longueur $k$.</p>
-</blockquote>
 <p>Si la machine $M$ s'arrête, c'est qu'il existe une suite de choix qui lui permette de s'arrêter. Cette suite étant de longueur finie, notre algorithme finira forcément par la considérer et il s'arrêtera.</p>
 </div>
 </details>     
 </div>
-<p>La machine de Turing non déterministe n'est qu'une façon plus simple de décrire les mêmes choses. Dans notre cas, cela va unifier la définition des classes $P$ et $NP$.</p>
+<p>Notez que notre machine de Turing déterministe ne s'arrêtera sur un mot que si tous les chemins possibles de transitions de la machine de Turing non déterministe s'arrêtent :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une machine de Turing non déterministe polynomiale est équivalente à une machine de Turing de complexité exponentielle.</p>
+</div>
+</div>
+<p>La machine de Turing non déterministe n'est qu'une façon plus simple de décrire les mêmes choses. Dans notre cas, cela va unifier la définition des classes $P$ et $NP$. En effet :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M$ une machine de Turing non déterministe polynomiale. Le vérifieur $v(E, C)$ avec $v$ une entrée et $C$ une suite de transition possible qui consiste à exécuter $M$ en choisissant itérativement les les élément de $C$ est un vérifieur efficace du langage de $M$.</p>
+</div>
+</div>
 
 
 </article>
