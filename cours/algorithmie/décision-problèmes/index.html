@@ -195,10 +195,10 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour toute machine de Turing sans instructions inutiles, on a l'encadrement :</p>
+<p>Pour toute machine de Turing lisant toute son entrée, on a l'encadrement :</p>
 <div>
 $$
-S(n) \leq C(n) \leq \mathcal{O}(S(n) \cdot 2^{S(n)})
+S(n) \leq C(n) \leq S(n) \cdot 2^{S(n)}
 $$
 </div>
 </div>
@@ -220,12 +220,8 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On suppose que la machine de Turing correspond à un pseudo-code à $L$ instructions.</p>
-<ol>
-<li>si la même ligne est exécutée plusieurs fois elle laisse à chaque fois la mémoire dans un état différent, sans quoi (les mêmes causes ayant les mêmes conséquences) le pseudo-code va forcément boucler indéfiniment. Chaque ligne va donc être exécutée au maximum $2^{S(n)}$ fois</li>
-<li>chaque ligne peut lire ou modifier toutes les cases utilisées de la mémoire, sa complexité est donc en $\mathcal{O}(S(n))$</li>
-</ol>
-<p>La complexité totale est donc bornée par $L \cdot 2^{S(n)} \cdot \mathcal{O}(S(n))$ et comme le nombre d'instructions du décideur est une constante on en déduit le résultat demandé.</p>
+<p>Si la machine lit toute ses donnée, il lui faudra se déplacer (une operation à chaque fois) sur chacune des cases du ruban où quelque chose est écrit, d'où : $S(n) \leq C(n)$.</p>
+<p>Le curseur de la machine peut être sur $S(n)$ cases au maximum et pour ne pas boucler si le curseur repasse par une case où il était déjà présent, au moins une des valeurs des $S(n)$ cases doit être différente par rapport à son dernier passage. Comme il y a $2^{S(n)}$ possibilités pour les $S(n)$ cases (soit 0 soit 1 pour chaque case) il ne peut repasser par la même case que $^{S(n)}$ fois : il y a donc au maximum $S(n) \cdot 2^{S(n)}$ instructions d'où la seconde inégalité.</p>
 </div>
 </details>     
 </div>
