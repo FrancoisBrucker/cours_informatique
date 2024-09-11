@@ -103,7 +103,7 @@ Pour garantir ceci tout au long de l'exécution de la machine, la conjonction de
 
 <div>
 $$
-R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
+M_0 = R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
 $$
 </div>
 
@@ -125,17 +125,17 @@ Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et 
 
 <div>
 $$
-\bigwedge_{i}(\overline{c_i^k} \land (r_i^k = r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
+I^k = \bigwedge_{i}(\overline{c_i^k} \land (r_i^k = r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
 $$
 </div>
 
 ### Transition si curseur
 
-À l'endroit où le curseur se trouve, la fonction de transition s'applique et on peut aussi l'écrire comme une conjonction de clause ! Par exemple la transition $\delta(q_j, 0) = (\delta_e(q_j, 0), \delta_c(q_j, 0), \delta_d(q_j, 0))$ d'une machine de Turing simple cva s'écrire, en supposant que $\delta_c(q_j, 0) = 1$ et que $\delta_d(q, 0) \in \\{-1, +1\\}$ pour respectivement gauche et droite :
+À l'endroit où le curseur se trouve, la fonction de transition s'applique et on peut aussi l'écrire comme une conjonction de clause ! Par exemple la transition $\delta(q_j, 0) = (\delta_e(q_j, 0), \delta_c(q_j, 0), \delta_d(q_j, 0))$ d'une machine de Turing simple va s'écrire, en supposant que $\delta_c(q_j, 0) = 1$ et que $\delta_d(q, 0) \in \\{-1, +1\\}$ pour respectivement gauche et droite :
 
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < n} [\underbracket{p^k_i \land q^k_j \land \overline{c^k_{i}}}_{\text{étape courante}} \land \underbracket{p^{k+1}_{i + \delta_{d}(0, q_j)} \land q^{k+1}_{\delta_{e}(0, q_j)}\land c^{k+1}_{i}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land r^{k+1}_{i}}_{\text{prochaine étape}}]
 $$
 </div>
 
@@ -143,7 +143,7 @@ Et si $\delta_c(q_j, 0) = 0$ :
 
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < n} [\underbracket{p^k_i \land q^k_j \land \overline{c^k_{i}}}_{\text{étape courante}} \land \underbracket{p^{k+1}_{i + \delta_{d}(0, q_j)} \land q^{k+1}_{\delta_{e}(0, q_j)}\land \overline{c^{k+1}_{i}}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land \overline{r^{k+1}_{i}}}_{\text{prochaine étape}}]
 $$
 </div>
 
@@ -157,24 +157,15 @@ $$
 
 Ceci fonctionne car une seule clause $p^k_i \land q^k_j \land c^k_{i, 0}$ est vraie : on ne procède qu'à une seule transition.
 
-Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ qu'il y a de choix dans la transition.
-
-### Conditions initiales
-
-Les conditions initiales $M^0 = R^0 \land P^0 \land Q^0
-$doivent fixer le ruban $R^0$, la position du curseur $P^0$ et l'état $Q^0$ initiaux de la machine.
-
-- Si le ruban est initialement vide on a $R^0 = \bigwedge_{0\leq i < n}\overline{c_{i,0}}$ et sinon on le positionne à sa valeur
-- Le curseur est initialement à la case $n/2$ (on verra pour quoi tout à l'heure) : $C^0 = p^0_{n/2}$
-- et l'état initial est $q_0$ : $Q^0 = q^0_{0}$
+Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ et $T^k_{q_j, 0}$ qu'il y a de choix dans la transition.
 
 ### Exécution de la machine
 
-On va supposer que l'état `START` est l'état $q_0$ et $q_1$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $K$ étapes si la conjonction de clause suivante admet une solution :
+On va supposer comme pour les MTU, que l'état `START` est l'état $q_0$ et $q_1$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes sur un état 1 si la conjonction de clause suivante admet une solution :
 
 <div>
 $$
-M = \bigwedge_{0\leq k < K} (M^k) \land \bigwedge_{0\leq k < K-1} (T^k) \land q^{K-1}_1
+M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1 \land (\bigvee_{i} (r^{Kn^m}_i \land c^{Kn^m}_i)))}_{\text{STOP sur 1}}
 $$
 </div>
 
@@ -188,11 +179,10 @@ On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)
 Pour problème de décision $D$ de la classe NP il existe une réduction polynomiale telle que $D \leq \text{SAT}$
 {% endnote %}
 {% details "preuve", "open" %}
-Soit $L$ un langage de la classe $NP$. Il existe donc une machine de Turing non déterministe $M$ qui l'accepte en temps polynomial $\mathcal{O}(n^k)$. Il existe alors $p$ tel que $M$ ne prennent jamais plus de $n^p$ opérations. Pour s'assurer que $M$ puisse toujours effectuer $n^p$ opérations on remplace change toutes les transitions vers `STOP` en une transition vers un nouvel état `TEMP` qui ne change rien et peut transitionner vers `STOP` ou `TEMP` : la machine peut boucler sur l'état `TEMP` aussi longtemps que nécessaire avant de s'arrêter.
 
-Soit $e$ un mot et Soit $C(M, e, 2\cdot \vert e \vert^p)$ l'ensemble de clauses associée à $M$ et avec $e$ comme ruban initial $2\cdot \vert e \vert^p$ rubans de longueur $2\cdot \vert e \vert^p$ (ceci pour garantir que l'exécution de la machine ne puisse pas dépasser notre ruban de taille finie en allant constamment à gauche ou constamment à droite). Notez enfin que cette conversion est polynomiale en $2\cdot \vert e \vert^p$ donc en $\vert e \vert$ (les états de $M$ ne changent pas avec l'entrée et sont donc des constantes dans la transformation).
+Soit $M$ une machine de Turing non déterministe polynomiale qui résout $D$ en $\mathcal{O}(n^k)$ opérations. Il existe alors $p$ tel que $M$ ne prennent jamais plus de $n^p$ opérations. Pour s'assurer que $M$ puisse toujours effectuer $n^p$ opérations on remplace change toutes les transitions vers `STOP` en une transition vers un nouvel état `TEMP` qui ne change rien et peut transitionner vers `STOP` ou `TEMP` : la machine peut boucler sur l'état `TEMP` aussi longtemps que nécessaire avant de s'arrêter.
 
-Nous venons d'effectuer la première étape de la réduction : passer d'une instance du problème de décision $d$ à une instance de SAT en temps polynomial. Enfin, cette instance de SAT n'a de solution que si le problème initial en a une ce que montre que nous avons fait une réduction polynomial entre le problème initial et SAT.
+On peut lui associer **en temps polynomial** la conjonction de clauses définie précédemment pour associer à cette machine un problème SAT qui n'a de solution que si et seulement si notre machine en à une.
 
 {% enddetails %}
 
@@ -207,11 +197,3 @@ Les problèmes $p$ qui ne sont pas dans NP et tels que SAT ≤ p sont dit **_NP-
 Les problèmes NP-complets signifient qu'ils sont universels : les solutions peuvent apparaître partout ; ils n'ont pas de structure qui permettent d'inférer une solution par rapport à une entrée.
 
 On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.
-
-## Conclusion
-
-> TBD A quoi ça sert :
->
-> 1. à ne pas avoir l'air ridicule si on fait une heuristique.
-> 2. à utiliser des techniques de preuves efficaces de problèmes NPC pur résoudre son problème.
->    Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. On peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.
