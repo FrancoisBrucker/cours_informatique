@@ -331,7 +331,9 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Problèmes de décision](./décision-problèmes){.interne}
 {% endaller %}
 
-> TBD exemple de choses NP complete : <https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap12-good.pdf>
+{% aller %}
+[Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
+{% endaller %}
 
 ### Désordre et hasard
 

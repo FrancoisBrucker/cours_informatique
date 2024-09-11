@@ -9,99 +9,127 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-La classe NP regroupe l'ensemble des problèmes algorithmiques utilisables en pratique, c'est à dire vérifiable en temps polynomial par une machine de Turing.
+Nous allons montrer que la classe NP contient des problèmes plus généraux que tous les autres. Soit $M$ une machine de Turing non déterministe polynomiale. Il existe alors $K$ et $k$ tels que pour toute entrée $E$ de taille $n$, la machine s'arrête au bout de $Kn^k$ opérations.
 
-Nous allons voir ici que ces deux problématiques sont liées et que
+De là :
 
-> TBD
-> Si P ≠ NP alors il existe des pbs entre.
-> Si P ≠ NP alors NP \cap co-NP = P (je ne sais plus si c'est vrai ça)
+- la machine n'a pas pu effectuer plus de $Kn^m$ transitions
+- le curseur de la machine n'a pas pu visiter plus de $Kn^m$ cases différentes du ruban
 
-## Machine de Turing et clauses
+On va montrer que l'exécution de cette machine est équivalente à trouver une affectation de littéraux d'une conjonction de clauses.
 
-Nous allons modéliser une machine de Turing (possiblement non déterministe) par une conjonction de clauses.
+Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machine de Turing non déterministe.
 
-### Machine à un instant donné
+> TBD <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>
+> TBD <https://perso.eleves.ens-rennes.fr/~tpier758/agreg/dvpt/info/cook.pdf>
 
-À un instant donné, une machine de Turing est déterminée par :
+## Variables
 
-- les valeurs sur son ruban
-- une position sur le ruban
-- son état
+### du ruban
 
-On va pouvoir associer à chacune de ses parties une conjonction de clause dont exactement toutes les assignations vraies sont possibles.
+Le curseur pouvant aller à droite ou à gauche, simuler son fonctionnement peut se faire sur un ruban de taille $2\cdot Kn^m$ en positionnant initialement le curseur à la position $Kn^m$.
 
-#### Clause de case
+Chaque case du ruban peut avoir 2 valeurs : `0` ou `1`. On associe donc à une case une variable qui peut être vrai si la valeur de la case vaut `1` et est faux si la valeur de la case vaut `0`.
 
-Chaque case du ruban peut avoir 2 valeurs : `0` ou `1`. On associe donc à une case $c$ sa variable booléenne qui peut être vrai si la valeur de la case vaut `1` et est faux si la valeur de la case vaut `0`.
+Comme il y aura au plus $Kn^m$ étapes, on peut simuler les valeurs du rubans par les variables $r_i^k$ avec L
 
-#### Clause de ruban
+- $0\leq i \leq 2\cdot Kn^m$ qui correspond à la position de la case sur le ruban
+- $0\leq k \leq Kn^m$ qui correspond au nombres d'instructions
 
-Un bout fini de ruban est un tableau de cases, on peut donc lui associer :
-
-<div>
-$$
-R = \bigwedge_{0\leq i < n} c_i
-$$
-</div>
-
-#### Clause de position
-
-Le curseur est positionné sur une case, on peut donc lui associer $n$ variables p dont une seule est vraie. Par exemple si la position est sur la case $i$ on a :
+La seule chose dont on est sur concernant la valeur du ruban est leurs valeurs initiales, positionnées à l'entrée de la machine. Si l'entrée est nulle on a :
 
 <div>
 $$
-p_i \land (\bigwedge_{j\neq i} \overline{p_j})
+R^0 = \bigwedge_{i} \overline{r_i^0}
 $$
 </div>
 
-Ce qui donne la conjonctions de clause suivante pour la position sur le ruban :
+Sinon, si l'entrée est $E=e_0\dots e_p$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :
 
 <div>
 $$
-P = \bigvee_{0\leq i < n} (p_i \land (\bigwedge_{j\neq i} \overline{p_j}))
+R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 = e_i)) = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \lor \overline{e_i}) \land (\overline{r_i^0} \lor e_i))
 $$
 </div>
 
-#### Clause d'état
+La conjonction $R^k$ montrera l'état du ruban à l'instruction $k$
 
-Une machine de Turing ne peut être que dans un seul état parmi $\vert Q\vert$. La conjonction de clauses associée est donc similaire à celui de la position :
+### de l'état
+
+Il y $\vert Q \vert$ état différents et à chaque instruction, il n'y a qu'un seul état possible. En notant $q_i^k$ les variables associés à l'état on a :
+
+- $0\leq i < \vert Q \vert$ qui correspond à la valeur de l'état
+- $0\leq k \leq Kn^m$ qui correspond au nombres d'instructions
+
+Comme un seul état est possible on a pour pour tout $k>0$ :
 
 <div>
 $$
-Q = \bigvee_{0\leq i < q} (q_i \land (\bigwedge_{j\neq i} \overline{q_j}))
+Q^k = \bigvee_{i} (q^k_i \land (\bigwedge_{j\neq i} \overline{q^k_j})) = (\bigvee_{i} {q^k_i}) \land (\bigwedge_{j\neq i} (\overline{q^k_i} \vee \overline{q^k_j}))
 $$
 </div>
 
-### Transition
-
-Les transitions permettent de passer d'une étape à une autre, elles peuvent également être modélisées par des clauses. En reprenant la partie précédente, une machine de Turing au début de la $k$ème étape vaut :
+À l'état initial on a :
 
 <div>
 $$
-M^k = R^k \land P^k \land Q^k
+Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
 
-#### Conservation si pas de curseur
+### du curseur
 
-Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et l'étape $k+1$. Ceci peut s'écrire, si le curseur n'est pas à la case $i$, que soit la case vaut 1 aux étapes $k$ et $k+1$ soit elle vaut 0 aux étapes $k$ et $k+1$:
+Tout comme les états, le curseur ne peut être qu'à une seule position à chaque étape d'une exécution. On le modélise donc de façon identique qux états par des variables $c_i^k$ tels que pour une instruction $k$ donnée, seule une position $i$ aura $c_i^k =1$, les autres seront fausse.
+
+Ceci s'écrit tel que pour tout $k>0$ :
 
 <div>
 $$
-C^k_i = (c^{k}_{i} \land c^{k+1}_{i}) \lor (\overline{c^{k}_{i}} \land \overline{c^{k+1}_{i}})
+C^k = (\bigvee_{i} {c^k_i}) \land (\bigwedge_{j\neq i} (\overline{c^k_i} \vee \overline{c^k_j}))
 $$
 </div>
 
-On en déduit une conjonction de clause qui traduit la conservation du ruban là où ne se trouve pas le curseur :
+À l'état initial on a :
 
 <div>
 $$
-C^k = \bigwedge_{0\leq i < n}[(\overline{p^k_i}\land C^k_i) \lor p^k_i]
+C^0 = c^0_{Kn^m} \land (\bigwedge_{j\neq Kn^m} \overline{c^0_j}))
 $$
 </div>
 
-#### Transition si curseur
+### Variables et exécution de la machine
+
+Pour garantir ceci tout au long de l'exécution de la machine, la conjonction de causes suivante doit être vérifiée :
+
+<div>
+$$
+R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
+$$
+</div>
+
+Il faut maintenant contraindre l'évolution des valeurs du ruban en fonction de la fonction de transition.
+
+> TBD faire le matrice de l'exécution en mettant en ligne le ruban.
+
+## Ruban et transition
+
+> TBD la transition permet de passer d'une ligne à l'autre. La modification est locale puisque on ne peut aller que d'une case à gauche ou d'une case à droite.
+> TBD c'est une fenêtre de 3x2 sur la matrice d'exécution centrée au niveau du curseur.
+>
+
+Les transitions permettent de passer d'une étape à une autre, elles peuvent également être modélisées par des clauses.
+
+### Conservation si pas de curseur
+
+Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et l'étape $k+1$. Ceci peut s'écrire :
+
+<div>
+$$
+\bigwedge_{i}(\overline{c_i^k} \land (r_i^k = r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
+$$
+</div>
+
+### Transition si curseur
 
 À l'endroit où le curseur se trouve, la fonction de transition s'applique et on peut aussi l'écrire comme une conjonction de clause ! Par exemple la transition $\delta(q_j, 0) = (\delta_e(q_j, 0), \delta_c(q_j, 0), \delta_d(q_j, 0))$ d'une machine de Turing simple cva s'écrire, en supposant que $\delta_c(q_j, 0) = 1$ et que $\delta_d(q, 0) \in \\{-1, +1\\}$ pour respectivement gauche et droite :
 
@@ -152,7 +180,7 @@ $$
 
 Si la machine de Turing es simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie.
 
-## Théorème de Cook
+## Théorème de Cook-Levin
 
 On a assez de matériel maintenant pour démontrer [le théorème de Cook (1971)](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook) :
 
@@ -180,19 +208,10 @@ Les problèmes NP-complets signifient qu'ils sont universels : les solutions peu
 
 On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.
 
-## Autres problèmes NP-complets
-
-> TBD comment faire pour montrer NP-complet. Utilisation de [gadgets](<https://fr.wikipedia.org/wiki/Gadget_(informatique)>)
-
-> TBD bi-partition
-> TBD trouver des exemples simple avec gadget rigolo
-
-
-
 ## Conclusion
 
 > TBD A quoi ça sert :
 >
 > 1. à ne pas avoir l'air ridicule si on fait une heuristique.
 > 2. à utiliser des techniques de preuves efficaces de problèmes NPC pur résoudre son problème.
->    Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. ON peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.
+>    Attention à ne pas faire le contraire : résoudre un problème simple avec un problème compliqué. On peut résoudre le problème du max d'un tableau avec SAT, mais c'est bête.

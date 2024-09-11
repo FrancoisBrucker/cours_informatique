@@ -88,11 +88,6 @@ Permet certaines réductions de façon bien plus facile :
 
 > TBD faire dans la partie graphe : strongly connected component : Tarjan <https://github.com/tpn/pdfs/blob/master/Depth-First%20Search%20and%20Linear%20Graph%20Algorithms%20-%20Tarjan%20(1972).pdf>
 
-## Réductions
-
-> TBD subsetsum 3-SAT :<https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf>
-> TBD : il faut commencer par montrer que subsetsum est dans NP en trouvant un vérifieur, puis on fait la réduction
-
 ## Inversibilité du problème SAT
 
 > TBD fct booléenne de l'addition ou du produit. Comme c'est une fonction booléenne cela permet d'avoir une réponse mais aussi d'avoir les entrées.
