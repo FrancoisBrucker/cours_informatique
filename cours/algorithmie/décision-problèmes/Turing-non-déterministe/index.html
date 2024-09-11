@@ -111,7 +111,7 @@
 <p>Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe. C'est la machine elle même qui fait les choix pour arriver, si c'est possible à un choix de 1. Si aucun choix ne fait arriver à 1, il est possible que parfois elle s'arrête sur 0 et parfois ne s'arrête pas.</p>
 <p>Prenons par exemple la machine de Turing non déterministe suivante :</p>
 <ul>
-<li>$\delta(\text{START}, 0) = \{(\text{START}, 1, \leftarrow), (\text{START}, 0, \righttarrow)\}$</li>
+<li>$\delta(\text{START}, 0) = \{(\text{START}, 1, \leftarrow), (\text{START}, 0, \rightarrow)\}$</li>
 <li>$\delta(\text{START}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
 </ul>
 <p>Avec l'entrée $E=01$ Il y a plein de choix possible :</p>
@@ -144,7 +144,7 @@
 </div>
 <p>Pour rendre notre machine de Turing déterministe précédente polynomiale, il faut lui interdire d'avoir des transitions infinies. Par exemple ne pas refaire boucler sur $\text{START}$. :</p>
 <ul>
-<li>$\delta(\text{START}, 0) = \{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \righttarrow)\}$</li>
+<li>$\delta(\text{START}, 0) = \{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \rightarrow)\}$</li>
 <li>$\delta(\text{START}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
 <li>$\delta(\text{UN}, 1) = \{(\text{STOP}, 1, \rightarrow) \}$</li>
 <li>$\delta(\text{UN}, 0) = \{(\text{STOP}, 0, \rightarrow) \}$</li>
@@ -164,7 +164,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les choix effectués constituent un <strong><em>certificat</em></strong> de réussite.</p>
+<p>Les choix effectués pour accepter une entrée constituent un <strong><em>certificat</em></strong> de réussite.</p>
 <p>Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.</p>
 </div>
 </div>
