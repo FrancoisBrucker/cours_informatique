@@ -37,7 +37,7 @@ eleventyComputed:
       2. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
 3. Cours 3 : NP et Turing, NPC
    1. Machines de Turing
-      1. MTU
+      1. [MTU](/cours/algorithmie/machine-turing/mtu/)
       2. ceci permet de faire la recherche universelle (exécuter $k$ operation d'une machine) de façon propre
       3. Machine comme chaîne de caractères :
          1. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
