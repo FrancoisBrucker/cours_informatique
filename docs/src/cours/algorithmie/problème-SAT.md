@@ -91,6 +91,7 @@ Permet certaines réductions de façon bien plus facile :
 ## Réductions
 
 > TBD subsetsum 3-SAT :<https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf>
+> TBD : il faut commencer par montrer que subsetsum est dans NP en trouvant un vérifieur, puis on fait la réduction
 
 ## Inversibilité du problème SAT
 

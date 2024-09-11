@@ -10,7 +10,7 @@ eleventyComputed:
 ---
 
 
-> TBD refaire joli.
+> TBD refaire propre avec les MTU.
 
 On va montrer dans cette partie qu'il existe des langages de toute complexité et donc que les problèmes algorithmiques ne sont pas tous polynomiaux, loin de là.
 

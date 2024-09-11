@@ -66,14 +66,6 @@ $$v: \\{0, 1\\}^\star \times \\{0, 1\\}^\star \rightarrow \\{0, 1\\}$$
 Il est dit **_efficace_** s'il est de complexité polynomiale.
 {% endnote %}
 
-Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$ et $E'$ :
-
-1. On vérifie que $|E'| \leq |E|$ ce qui peut se faire en $\mathcal{O}(|E|)$ opérations en comptant chaque élément de $E'$ et en s'arrêtant soit après avoir compté tous les éléments soit lorsque le compte dépasse strictement $|E|$.
-2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(|E'| \cdot |E|) = \mathcal{O}(|E|^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
-3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $0$, $\mathcal{O}(|E'|) = \mathcal{O}(|E|)$ opérations
-
-La complexité de l'algorithme est donc de $\mathcal{O}(|E|^2)$ et ne dépend pas du paramètre $E'$.
-
 Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.
 
 Formalisons cette notion de vérification efficace :
@@ -86,11 +78,71 @@ Un **_vérifieur efficace d'un problème décidable_** $p$ ayant pour entrée $e
 
 {% endnote %}
 
-Remarquons que notre pseudo-code pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une correspond à un vérifieur efficace. Terminons cette partie par deux remarques d'importance.
+> TBD ne dépend pas de la sortie mais cela borne sa taille par rapport à l'entrée : elle doit être au max de la taille de la complexité du vérifieur, sinon le vérifieur ne pourrait pas parcourir toute la solution.
 
-Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.
+### Exemples de vérifieurs efficaces
 
-Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
+> TBD exemples de vérifieurs simple puis le somme de sous-ensemble.
+
+#### Max/min d'un tableau
+
+> TBD max/min : on vérifie tous
+
+#### Tri d'un tableau
+
+> TBD le tri : croissant
+
+#### 3-SUM
+
+> TBD de la réduction
+
+#### Sac à dos
+
+Ci-après une version du célèbre [problème du sac à dos](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos) :
+
+{% note "**Problème**" %}
+Données :
+
+- On possède $n$ produits différents, chacun décrit par :
+  - sa masse en kilo : $k_i$
+  - son prix : $p_i$
+- un prix $P$ à dépasser.
+- On dispose d'un sac pouvant contenir $K$ kilos
+
+On cherche les produits à mettre dans le sac de façon à ce que :
+
+- les produits choisis tiennent dans le sac,
+- le prix du sac est supérieur à $P$
+{% endnote %}
+
+Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :
+
+1. de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un [bucket sort](https://fr.wikipedia.org/wiki/Tri_par_paquets))
+2. que la somme des prix est supérieure à $P$
+
+Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.
+
+#### SUBSET SUM
+
+> TBD def : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles>
+
+Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
+ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
+ et $E'$ :
+
+1. On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
+ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.
+2. On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).
+3. On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
+, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.
+
+La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.
+
+### Vérifieur efficace et algorithme de résolution
+
+Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.
+
+Enfin, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.
 
 En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
@@ -98,6 +150,8 @@ En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)
 Si un problème admet un **_vérifieur efficace_** de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.
 
 {% endnote %}
+
+## Problèmes NP
 
 Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :
 

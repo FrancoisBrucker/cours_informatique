@@ -36,16 +36,17 @@ eleventyComputed:
       1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/)
       2. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
 3. Cours 3 : NP et Turing, NPC
-   1. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/)
-   2. P, NP et NPC
+   1. Machines de Turing
+      1. MTU
+      2. ceci permet de faire la recherche universelle (exécuter $k$ operation d'une machine) de façon propre
+      3. Machine comme chaîne de caractères :
+         1. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
+         2. [Castors affairées](/cours/algorithmie/machine-turing/castors-affairés/)
+   2. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/)
+   3. P, NP et NPC
       1. rappeler définition avec vérifieur
       2. [décision](/cours/algorithmie/décision-problèmes/)
-   3. [co-NP](/cours/algorithmie/décision-problèmes/co-NP/)
-   4. Machines de Turing
-      1. MTU
-      2. Castors affairées
-      3. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
-
+   4. [co-NP](/cours/algorithmie/décision-problèmes/co-NP/)
 4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/) et pseudo-polynomial.
 
 ### C

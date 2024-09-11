@@ -165,7 +165,10 @@ Programme :
 
     Tant que q ≠ 1:
       Soit r la valeur de la case du ruban pointée par c    
+
       Trouver le plus petit k tel que T[5k] = q
+      Si on ne trouve pas k:
+        rendre 0
 
       écrire T[5(k+r) + 3] sur R
       déplacer le curseur à droite si T[5(k+r) + 4] == 1 et vers la gauche sinon
@@ -174,7 +177,54 @@ Programme :
     Rendre R
 ```
 
-On voit que la MTU va simuler toute machine de Turing encodée par T.
+On voit que la MTU va simuler toute machine de Turing encodée par T et si le tableau T n'est pas une machine elle s'arrête immédiatement. Enfin, la complexité d'exécution est identique à celle la machine originelle :
+
+{% note "**Proposition**" %}
+La complexité de l'exécution de `MTU(T, E)`{.language-} est la même que celle de `T(E)`{.language-}
+{% endnote %}
+{% details "preuve", "open" %}
+En effet, le seul changement est le parcours des différents états pour trouver la prochaine transition : chaque transition sera effectuée en un temps proportionnel qu nombre d'état de la machine.
+
+ Comme le nombre d'état est une constante pour la machine `T` : la complexité est la même.
+{% enddetails %}
+
+La machine de Turing Universelle est donc un outil très puissant :
+
+1. elle permet d'exécuter n'importe quelle machine avec une complexité identique
+2. si l'encodage passer en entrée n'est pas une machine on ne trouve pas de transition et la MTU s'arrête immédiatement
+
+Enfin, on peut facilement n'exécuter que $k$ opération d'une machine donnée avec la variation suivante de la MTU :
+
+```
+Nom : K-MTU
+Entrées :
+    T : un tableau de 0 et de 1
+    E : une suite de 0 et de 1
+    K : un entier
+Programme :
+    Soit R un ruban initialement rempli par E et un curseur c qui pointe sur une le premier caractère de E.
+    q = 0
+
+    Tant que q ≠ 1 et K > 0:
+      Soit r la valeur de la case du ruban pointée par c    
+      Trouver le plus petit k tel que T[5k] = q
+      Si on ne trouve pas k:
+        rendre 0
+
+      écrire T[5(k+r) + 3] sur R
+      déplacer le curseur à droite si T[5(k+r) + 4] == 1 et vers la gauche sinon
+      q = T[5(k+r) + 2]
+
+      K = K-1
+
+    Si q == 1:
+      Rendre R
+    Sinon:
+      Rendre 0
+```
+
+La machine `K-MTU` exécute au maximum K-opérations d'une machine de Turing.
+Ceci permet de justifier rigoureusement l'algorithme de [la recherche universelle](../../recherche-universelle) que l'on a précédemment vu.
 
 ### Création effective
 
@@ -235,10 +285,10 @@ On obtient alors l'algorithme ci-après qui est une écriture de l’algorithme 
 Nous venons de faire un ordinateur avec une machine de Turing ! La machine de Turing est tout à la fois un programme et une machine pour exécuter automatiquement des programmes.
 
 {% note "**Théorème fondamental de l'algorithmie**" %}
-On peut encoder toute machine de Turing $M$ par une chaîne $\<M\>$ composée de `0` et de `1`, de telle sorte que l'exécution de la machine de Turing universelle $\text{MTU}(\<M\>, E)$ simule l'exécution de $M$ avec une entrée $E$.
+On peut encoder toute machine de Turing $M$ par une chaîne $\<M\>$ composée de `0` et de `1`, de telle sorte que l'exécution de la machine de Turing universelle $\text{MTU}(\<M\>, E)$ simule l'exécution de $M$ avec une entrée $E$ avec la même complexité.
 
 {% endnote %}
 
-La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique) : une machine qui permet de simuler toutes les autres machine.
+La machine de Turing universelle est donc [la machine qui les gouverne toutes](https://fr.wikipedia.org/wiki/Anneau_unique) : une machine qui permet de simuler efficacement toutes les autres machine.
 
-Il suffit de construire une seule machine pour avoir toutes les machines de Turing possible via leur code.
+Il suffit de construire une seule machine pour avoir toutes les machines de Turing possible via leur encodage.

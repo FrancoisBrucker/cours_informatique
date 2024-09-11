@@ -19,15 +19,28 @@ L'algorithme de recherche universelle est un algorithme permettant de résoudre 
 
 ## Principe
 
-> TBD dire qu'on peut le faire en python :
->   1. on envoie un texte dans l'interpréteur et soit il plante soit c'est du python
->   2. avec le débugeur on peut exécuter une instruction à la fois
->   3. k instructions les k premiers (pas encore finis) puis on augmente k
->   3. si ça plante on le sort de la liste des programmes
->   4. s'il finit on vérifie si c'est ok. Si c'est pas ok on le sort de la liste des programmes
+> TBD à écrire propre.
 
-> TBD on ajoute juste une instruction à chaque fois.
-> Reste possible mais complexité plus élevée.
+On peut considérer toutes les chaînes de caractères possibles rangées dans l'ordre lexicographique ("a", "b", ..., "z", "aa", ...). On peut toujours écrire une de ces chaines dans un fichier et tenter de l'exécuter avec l'interpréteur python. Si, par chance, on a écrit du code python l'interpréteur va exécuter le code et sinon il va planter.
+
+Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieur et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.
+
+En prenant une chaîne de caractères en position $L' < L$ que peut-il se passer si on l'exécute avec l'interpréteur python :
+
+1. cela peut (vraisemblablement) planter rapidement
+2. cela peut exécuter du code avec une complexité plus faible que celle recherchée
+3. cela peut exécuter du code avec une complexité plus forte que celle recherchée
+4. cela peut même boucler indéfiniment
+
+On ne peut donc pas parcourir et exécuter tous les programmes jusqu'à tomber sur celui qui fonctionne (en position $L$ qu'on sait exister mais dont on ne connaît pas la valeur) car cela risque de durer indéfiniment.
+
+L'idée est d'exécuter $k$ opérations des $k$ premières chaînes en vérifiant ensuite si la solution d'un des programme qui s'est arrêter satisfait notre vérifieur. Ci ce n'est pas le cas on recommence en incrémentant $k$.
+
+Au bout d'un moment on aura $k \geq \max(L, C)$ (avec $C$ le nombre d'opération que met notre programme à s'exécuter) et on trouvera notre solution !
+
+On vient de trouver un algorithme universelle pour résoudre tous les problèmes de NP ! Ce n'est pas encore optimal car sa complexité ne va pas être exactement égale à la complexité du meilleur algorithme pour résoudre notre problème.
+
+> TBD calcul de la complexité
 
 ## Exécution fragmenté d'un algorithme
 
