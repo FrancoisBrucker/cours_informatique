@@ -104,18 +104,23 @@
 </div>
 <h2>Principe</h2>
 <blockquote>
-<p>TBD dire qu'on peut le faire en python :</p>
-<ol>
-<li>on envoie un texte dans l'interpréteur et soit il plante soit c'est du python</li>
-<li>avec le débugeur on peut exécuter une instruction à la fois</li>
-<li>k instructions les k premiers (pas encore finis) puis on augmente k</li>
-<li>si ça plante on le sort de la liste des programmes</li>
-<li>s'il finit on vérifie si c'est ok. Si c'est pas ok on le sort de la liste des programmes</li>
-</ol>
+<p>TBD à écrire propre.</p>
 </blockquote>
+<p>On peut considérer toutes les chaînes de caractères possibles rangées dans l'ordre lexicographique (&quot;a&quot;, &quot;b&quot;, ..., &quot;z&quot;, &quot;aa&quot;, ...). On peut toujours écrire une de ces chaines dans un fichier et tenter de l'exécuter avec l'interpréteur python. Si, par chance, on a écrit du code python l'interpréteur va exécuter le code et sinon il va planter.</p>
+<p>Si le problème que l'on cherche à résoudre est dans NP on possède un de ses vérifieur et il existe une chaîne de caractères qui correspond à un code python de l'algorithme que le résout de manière optimale. On suppose que ce code est la chaîne en position $L$ dans l'ordre lexicographique.</p>
+<p>En prenant une chaîne de caractères en position $L' &lt; L$ que peut-il se passer si on l'exécute avec l'interpréteur python :</p>
+<ol>
+<li>cela peut (vraisemblablement) planter rapidement</li>
+<li>cela peut exécuter du code avec une complexité plus faible que celle recherchée</li>
+<li>cela peut exécuter du code avec une complexité plus forte que celle recherchée</li>
+<li>cela peut même boucler indéfiniment</li>
+</ol>
+<p>On ne peut donc pas parcourir et exécuter tous les programmes jusqu'à tomber sur celui qui fonctionne (en position $L$ qu'on sait exister mais dont on ne connaît pas la valeur) car cela risque de durer indéfiniment.</p>
+<p>L'idée est d'exécuter $k$ opérations des $k$ premières chaînes en vérifiant ensuite si la solution d'un des programme qui s'est arrêter satisfait notre vérifieur. Ci ce n'est pas le cas on recommence en incrémentant $k$.</p>
+<p>Au bout d'un moment on aura $k \geq \max(L, C)$ (avec $C$ le nombre d'opération que met notre programme à s'exécuter) et on trouvera notre solution !</p>
+<p>On vient de trouver un algorithme universelle pour résoudre tous les problèmes de NP ! Ce n'est pas encore optimal car sa complexité ne va pas être exactement égale à la complexité du meilleur algorithme pour résoudre notre problème.</p>
 <blockquote>
-<p>TBD on ajoute juste une instruction à chaque fois.<br>
-Reste possible mais complexité plus élevée.</p>
+<p>TBD calcul de la complexité</p>
 </blockquote>
 <h2>Exécution fragmenté d'un algorithme</h2>
 <p>Pour comprendre comment fonctionne la recherche universelle, commençons par étudier l'algorithme suivant, qui prend en paramètre un algorithme <code class="language-">A</code> et une de ses entré possible, <code class="language-">E</code> :</p>

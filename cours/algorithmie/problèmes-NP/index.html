@@ -149,13 +149,6 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Il est dit <strong><em>efficace</em></strong> s'il est de complexité polynomiale.</p>
 </div>
 </div>
-<p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$ en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$ et $E'$ :</p>
-<ol>
-<li>On vérifie que $|E'| \leq |E|$ ce qui peut se faire en $\mathcal{O}(|E|)$ opérations en comptant chaque élément de $E'$ et en s'arrêtant soit après avoir compté tous les éléments soit lorsque le compte dépasse strictement $|E|$.</li>
-<li>On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(|E'| \cdot |E|) = \mathcal{O}(|E|^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).</li>
-<li>On somme les éléments de $E'$ et on vérifie que la somme finale vaut $0$, $\mathcal{O}(|E'|) = \mathcal{O}(|E|)$ opérations</li>
-</ol>
-<p>La complexité de l'algorithme est donc de $\mathcal{O}(|E|^2)$ et ne dépend pas du paramètre $E'$.</p>
 <p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
 <p>Formalisons cette notion de vérification efficace :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -172,9 +165,76 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div>
 </div>
-<p>Remarquons que notre pseudo-code pour vérifier si une solution potentielle du problème somme de sous-ensemble en est bien une correspond à un vérifieur efficace. Terminons cette partie par deux remarques d'importance.</p>
-<p>Premièrement, il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
-<p>Deuxièmement, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
+<blockquote>
+<p>TBD ne dépend pas de la sortie mais cela borne sa taille par rapport à l'entrée : elle doit être au max de la taille de la complexité du vérifieur, sinon le vérifieur ne pourrait pas parcourir toute la solution.</p>
+</blockquote>
+<h3>Exemples de vérifieurs efficaces</h3>
+<blockquote>
+<p>TBD exemples de vérifieurs simple puis le somme de sous-ensemble.</p>
+</blockquote>
+<h4>Max/min d'un tableau</h4>
+<blockquote>
+<p>TBD max/min : on vérifie tous</p>
+</blockquote>
+<h4>Tri d'un tableau</h4>
+<blockquote>
+<p>TBD le tri : croissant</p>
+</blockquote>
+<h4>3-SUM</h4>
+<blockquote>
+<p>TBD de la réduction</p>
+</blockquote>
+<h4>Sac à dos</h4>
+<p>Ci-après une version du célèbre <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_sac_%C3%A0_dos">problème du sac à dos</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Problème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Données :</p>
+<ul>
+<li>On possède $n$ produits différents, chacun décrit par :
+<ul>
+<li>sa masse en kilo : $k_i$</li>
+<li>son prix : $p_i$</li>
+</ul>
+</li>
+<li>un prix $P$ à dépasser.</li>
+<li>On dispose d'un sac pouvant contenir $K$ kilos</li>
+</ul>
+<p>On cherche les produits à mettre dans le sac de façon à ce que :</p>
+<ul>
+<li>les produits choisis tiennent dans le sac,</li>
+<li>le prix du sac est supérieur à $P$</li>
+</ul>
+</div>
+</div>
+<p>Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :</p>
+<ol>
+<li>de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">bucket sort</a>)</li>
+<li>que la somme des prix est supérieure à $P$</li>
+</ol>
+<p>Au final, la complexité du vérifieur est en $\mathcal{O}(n)$.</p>
+<h4>SUBSET SUM</h4>
+<blockquote>
+<p>TBD def : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">https://fr.wikipedia.org/wiki/Problème_de_la_somme_de_sous-ensembles</a></p>
+</blockquote>
+<p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$<br>
+en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$<br>
+et $E'$ :</p>
+<ol>
+<li>On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$<br>
+et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.</li>
+<li>On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).</li>
+<li>On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$<br>
+, ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.</li>
+</ol>
+<p>La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.</p>
+<h3>Vérifieur efficace et algorithme de résolution</h3>
+<p>Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
+<p>Enfin, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
 <p>En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -186,6 +246,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
 </div>
 </div>
+<h2>Problèmes NP</h2>
 <p>Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
