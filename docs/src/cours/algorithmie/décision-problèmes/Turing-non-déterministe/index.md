@@ -21,7 +21,7 @@ Une machine de Turing non déterministe est un modèle abstrait  de machine ou i
 Une **_machine de Turing non déterministe_** $M$ est une machine de Turing  telle que :
 
 - à chaque transition $\delta(q, r)$ on a plusieurs choix possibles : la fonction de transition est définie sur $2^{Q \times \\{0, 1\\} \times \\{\leftarrow, \rightarrow\\}}$.
-- pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à s'arrêter, elle choisira une de ces successions de choix.
+- pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à [accepter $E$](../#accepte-rejette) (elle s'arrête pour $E$ et la case sous le ruban vaut 1), elle choisira une de ces successions de choix.
 {% endnote %}
 
 Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \\{0, 1\\} \times \\{\leftarrow, \rightarrow\\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe. C'est la machine elle même qui fait les choix pour arriver, si c'est possible à un choix de 1. Si aucun choix ne fait arriver à 1, il est possible que parfois elle s'arrête sur 0 et parfois ne s'arrête pas.
@@ -82,7 +82,9 @@ Connaître la machine et le certificat pour une entrée permet de vérifier qu'e
 La machine de Turing non déterministe est un outil théorique très puissant car il permet de démontrer simplement beaucoup de théorèmes d'informatique théorique. Cependant, **elle ne permet pas de faire plus de chose qu'une machine normale**.
 
 {% note "**Proposition**" %}
-Pour toute machine de Turing non déterministe polynomiale, on peut créer une machine de Turing _normale_ qui acceptera les même entrées.
+Pour toute machine de Turing non déterministe, on peut créer une machine de Turing _normale_ qui reconnaîtra les même entrées.
+
+De plus, si la machine de Turing non déterministe décide son langage. la machine de Turing associée également.
 {% endnote %}
 {% details "preuve", "open" %}
 Soit $M$ une machine de Turing non déterministe à $Q$ états. On va construire une machine de Turing déterministe sous la forme d'un pseudo-code, qui simule $M$.

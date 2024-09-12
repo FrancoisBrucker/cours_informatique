@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Problèmes NP complets"
+title: "SAT est un problème NP complet"
 
 eleventyComputed:
   eleventyNavigation:
@@ -29,7 +29,7 @@ Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machi
 
 ## Variables
 
-### du ruban
+### Ruban
 
 Le curseur pouvant aller à droite ou à gauche, simuler son fonctionnement peut se faire sur un ruban de taille $2\cdot Kn^m$ en positionnant initialement le curseur à la position $Kn^m$.
 
@@ -48,7 +48,7 @@ R^0 = \bigwedge_{i} \overline{r_i^0}
 $$
 </div>
 
-Sinon, si l'entrée est $E=e_0\dots e_p$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :
+Sinon, si l'entrée est $E=e_0\dots e_{p-1}$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :
 
 <div>
 $$
@@ -58,7 +58,7 @@ $$
 
 La conjonction $R^k$ montrera l'état du ruban à l'instruction $k$
 
-### de l'état
+### États
 
 Il y $\vert Q \vert$ état différents et à chaque instruction, il n'y a qu'un seul état possible. En notant $q_i^k$ les variables associés à l'état on a :
 
@@ -81,7 +81,7 @@ Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
 
-### du curseur
+### Curseur
 
 Tout comme les états, le curseur ne peut être qu'à une seule position à chaque étape d'une exécution. On le modélise donc de façon identique qux états par des variables $c_i^k$ tels que pour une instruction $k$ donnée, seule une position $i$ aura $c_i^k =1$, les autres seront fausse.
 
@@ -115,7 +115,7 @@ Il faut maintenant contraindre l'évolution des valeurs du ruban en fonction de 
 
 > TBD faire le matrice de l'exécution en mettant en ligne le ruban.
 
-## Ruban et transition
+## Ruban et transitions
 
 > TBD la transition permet de passer d'une ligne à l'autre. La modification est locale puisque on ne peut aller que d'une case à gauche ou d'une case à droite.
 > TBD c'est une fenêtre de 3x2 sur la matrice d'exécution centrée au niveau du curseur.
@@ -139,7 +139,7 @@ $$
 
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land r^{k+1}_{i}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} (\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land r^{k+1}_{i}}_{\text{prochaine étape}})
 $$
 </div>
 
@@ -147,7 +147,7 @@ Et si $\delta_c(q_j, 0) = 0$ :
 
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land \overline{r^{k+1}_{i}}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} (\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land \overline{r^{k+1}_{i}}}_{\text{prochaine étape}})
 $$
 </div>
 
@@ -165,7 +165,15 @@ Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ et $T^k_
 
 ### Exécution de la machine
 
-On va supposer comme pour les MTU, que l'état `START` est l'état $q_0$ et $q_1$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes sur un état 1 si la conjonction de clause suivante admet une solution :
+On va supposer comme pour les MTU, que l'état `START` est l'état $q_0$ et $q_1$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes :
+
+<div>
+$$
+M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1}_{\text{STOP à la fin}}
+$$
+</div>
+
+Si on cherche à savoir si notre entrée est reconnue par la machine, il faut de plus ajouter que le curseur est sur un 1 à la fin :
 
 <div>
 $$
@@ -173,7 +181,12 @@ M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < K
 $$
 </div>
 
-Si la machine de Turing es simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie.
+Si la machine de Turing est simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie. En revanche on a :
+
+{% note %}
+Le système de clauses est satisfiable si et seulement si l'entrée est reconnue par la machine !
+
+{% endnote %}
 
 ## Théorème de Cook-Levin
 
