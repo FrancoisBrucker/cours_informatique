@@ -112,7 +112,7 @@
 <p>Une <strong><em>machine de Turing non déterministe</em></strong> $M$ est une machine de Turing  telle que :</p>
 <ul>
 <li>à chaque transition $\delta(q, r)$ on a plusieurs choix possibles : la fonction de transition est définie sur $2^{Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}}$.</li>
-<li>pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à s'arrêter, elle choisira une de ces successions de choix.</li>
+<li>pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à <a href="../#accepte-rejette">accepter $E$</a> (elle s'arrête pour $E$ et la case sous le ruban vaut 1), elle choisira une de ces successions de choix.</li>
 </ul>
 </div>
 </div>
@@ -185,7 +185,8 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Pour toute machine de Turing non déterministe polynomiale, on peut créer une machine de Turing <em>normale</em> qui acceptera les même entrées.</p>
+<p>Pour toute machine de Turing non déterministe, on peut créer une machine de Turing <em>normale</em> qui reconnaîtra les même entrées.</p>
+<p>De plus, si la machine de Turing non déterministe décide son langage. la machine de Turing associée également.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

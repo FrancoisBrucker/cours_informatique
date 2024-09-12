@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Problèmes NP complets</title>
+    <title>SAT est un problème NP complet</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Problèmes NP complets</h1>
+  <h1>SAT est un problème NP complet</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/problèmes-NPC/">Problèmes NP complets</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/SAT-NPC/">SAT est un problème NP complet</a>
 
 </div>
 </div>
@@ -112,7 +112,7 @@
 </div>
 </div>
 <h2>Variables</h2>
-<h3>du ruban</h3>
+<h3>Ruban</h3>
 <p>Le curseur pouvant aller à droite ou à gauche, simuler son fonctionnement peut se faire sur un ruban de taille $2\cdot Kn^m$ en positionnant initialement le curseur à la position $Kn^m$.</p>
 <p>Chaque case du ruban peut avoir 2 valeurs : <code>0</code> ou <code>1</code>. On associe donc à une case une variable qui peut être vrai si la valeur de la case vaut <code>1</code> et est faux si la valeur de la case vaut <code>0</code>.</p>
 <p>Comme il y aura au plus $Kn^m$ étapes, on peut simuler les valeurs du rubans par les variables $r_i^k$ avec L</p>
@@ -126,14 +126,14 @@ $$
 R^0 = \bigwedge_{i} \overline{r_i^0}
 $$
 </div>
-<p>Sinon, si l'entrée est $E=e_0\dots e_p$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :</p>
+<p>Sinon, si l'entrée est $E=e_0\dots e_{p-1}$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :</p>
 <div>
 $$
 R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 = e_i)) = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \lor \overline{e_i}) \land (\overline{r_i^0} \lor e_i))
 $$
 </div>
 <p>La conjonction $R^k$ montrera l'état du ruban à l'instruction $k$</p>
-<h3>de l'état</h3>
+<h3>États</h3>
 <p>Il y $\vert Q \vert$ état différents et à chaque instruction, il n'y a qu'un seul état possible. En notant $q_i^k$ les variables associés à l'état on a :</p>
 <ul>
 <li>$0\leq i &lt; \vert Q \vert$ qui correspond à la valeur de l'état</li>
@@ -151,7 +151,7 @@ $$
 Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
-<h3>du curseur</h3>
+<h3>Curseur</h3>
 <p>Tout comme les états, le curseur ne peut être qu'à une seule position à chaque étape d'une exécution. On le modélise donc de façon identique qux états par des variables $c_i^k$ tels que pour une instruction $k$ donnée, seule une position $i$ aura $c_i^k =1$, les autres seront fausse.</p>
 <p>Ceci s'écrit tel que pour tout $k&gt;0$ :</p>
 <div>
@@ -176,7 +176,7 @@ $$
 <blockquote>
 <p>TBD faire le matrice de l'exécution en mettant en ligne le ruban.</p>
 </blockquote>
-<h2>Ruban et transition</h2>
+<h2>Ruban et transitions</h2>
 <blockquote>
 <p>TBD la transition permet de passer d'une ligne à l'autre. La modification est locale puisque on ne peut aller que d'une case à gauche ou d'une case à droite.<br>
 TBD c'est une fenêtre de 3x2 sur la matrice d'exécution centrée au niveau du curseur.</p>
@@ -193,13 +193,13 @@ $$
 <p>À l'endroit où le curseur se trouve, la fonction de transition s'applique et on peut aussi l'écrire comme une conjonction de clause ! Par exemple la transition $\delta(q_j, 0) = (\delta_e(q_j, 0), \delta_c(q_j, 0), \delta_d(q_j, 0))$ d'une machine de Turing simple va s'écrire, en supposant que $\delta_c(q_j, 0) = 1$ et que $\delta_d(q, 0) \in \{-1, +1\}$ pour respectivement gauche et droite :</p>
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land r^{k+1}_{i}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} (\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land r^{k+1}_{i}}_{\text{prochaine étape}})
 $$
 </div>
 <p>Et si $\delta_c(q_j, 0) = 0$ :</p>
 <div>
 $$
-T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} [\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land \overline{r^{k+1}_{i}}}_{\text{prochaine étape}}]
+T^k_{q_j, 0} = \bigvee_{0\leq i < 2Kn^m} (\underbracket{c^k_i \land q^k_j \land \overline{r^k_{i}}}_{\text{étape courante}} \land \underbracket{c^{k+1}_{i + \delta_{d}(q_j, 0)} \land q^{k+1}_{\delta_{e}(q_j, 0)}\land \overline{r^{k+1}_{i}}}_{\text{prochaine étape}})
 $$
 </div>
 <p>En faisant de même avec $T^k_{q_j, 1}$, on associe une conjonction de clauses à la fonction de transition de l'étape $k$ à l'étape $k+1$ :</p>
@@ -211,13 +211,27 @@ $$
 <p>Ceci fonctionne car une seule clause $p^k_i \land q^k_j \land c^k_{i, 0}$ est vraie : on ne procède qu'à une seule transition.</p>
 <p>Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ et $T^k_{q_j, 0}$ qu'il y a de choix dans la transition.</p>
 <h3>Exécution de la machine</h3>
-<p>On va supposer comme pour les MTU, que l'état <code>START</code> est l'état $q_0$ et $q_1$ l'état <code>STOP</code>. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes sur un état 1 si la conjonction de clause suivante admet une solution :</p>
+<p>On va supposer comme pour les MTU, que l'état <code>START</code> est l'état $q_0$ et $q_1$ l'état <code>STOP</code>. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes :</p>
+<div>
+$$
+M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1}_{\text{STOP à la fin}}
+$$
+</div>
+<p>Si on cherche à savoir si notre entrée est reconnue par la machine, il faut de plus ajouter que le curseur est sur un 1 à la fin :</p>
 <div>
 $$
 M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1 \land (\bigvee_{i} (r^{Kn^m}_i \land c^{Kn^m}_i)))}_{\text{STOP sur 1}}
 $$
 </div>
-<p>Si la machine de Turing es simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie.</p>
+<p>Si la machine de Turing est simple, il n'y a qu'une possibilité puisque les transitions vont toutes être déterministes, mais si la machine est non déterministe l'assignation des états peut ou pas produire une assignation vraie. En revanche on a :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le système de clauses est satisfiable si et seulement si l'entrée est reconnue par la machine !</p>
+</div>
+</div>
 <h2>Théorème de Cook-Levin</h2>
 <p>On a assez de matériel maintenant pour démontrer <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Cook">le théorème de Cook (1971)</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

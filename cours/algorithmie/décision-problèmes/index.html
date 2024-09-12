@@ -116,7 +116,9 @@ v_f(n, m) = \left\{<br>
 \end{array}<br>
 \right.<br>
 $$</p>
-<p>Un algorithme est ainsi <a href="../probl%C3%A8mes-NP/#v%C3%A9rifieur">un vérifieur</a>. De là, on peut combiner les deux mots en entrée en un seul pour arriver à la formulation d'un algorithme qui nous intéressera ici. Pour cela, la façon classique de procéder est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
+<p>Un algorithme est ainsi <a href="../probl%C3%A8mes-NP/#v%C3%A9rifieur">un vérifieur</a>. Nous allons monter dans cette partie une version équivalente, plus simple à manipuler théoriquement, mais moins opérationnelle en pratique d'un algorithme.</p>
+<h3>Décideur et algorithmes</h3>
+<p>On peut combiner les deux mots en entrée d'un vérifieur en un seul pour arriver à la formulation d'un algorithme qui nous intéressera ici. Pour cela, la façon classique de procéder est de coder chaque information (0 et 1) sur 2 bits ce qui permet d'avoir un caractère supplémentaire de séparation :</p>
 <ul>
 <li>on code l'information <code class="language-">0</code> en <code class="language-">00</code></li>
 <li>on code l'information <code class="language-">1</code> en <code class="language-">01</code></li>
@@ -146,6 +148,10 @@ $$</p>
 <li>un <strong><em>décideur</em></strong> : $d: \{0, 1\}^\star \rightarrow \{0, 1 \}$ qui permettent de séparer les mots en 2 ensembles, ceux qui sont <em>vrais pour $A$</em> : $\{ x \vert A(x) = 1 \}$ et les autres</li>
 <li>un <strong><em>vérifieur</em></strong> : $v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$ qui, associé à un problème algorithmique $P$, permettent de vérifier si le couple $(x, y)$ en entrée est tel que $y$ soit une solution de $P$ avec $x$ comme entrée.</li>
 </ul>
+<blockquote>
+<p>TBD un même problème peut se voir sous sa forme fonction, vérifieur ou décideur.<br>
+TBD : exemple du Max tableau et de ? un élément strictement plus grand que K.</p>
+</blockquote>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -156,7 +162,76 @@ $$</p>
 <p>D'un point de vue théorique on peut donc uniquement considérer la version décideur d'un algorithme sans aucune perte de généralité.</p>
 </div>
 </div>
-<p>En conclusion, en utilisant les machines de Turing, on définit les problème algorithmique comme étant ds problèmes de décision :</p>
+<h3>Langages et Turing</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf">https://pageperso.lis-lab.fr/~alexis.nasr/Ens/THL/mt.pdf</a></li>
+<li><a href="https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf">https://www.enseignement.polytechnique.fr/informatique/INF423/uploads/Main/chap8-good.pdf</a></li>
+</ul>
+</div>
+</div>
+<p>Si on veut appliquer la notion de décideur à une machine de Turing, cela revient à ne considérer que la case du ruban sous le curseur lorsque la machine s'arrête. On dira alors :</p>
+<div id="accepte-rejette"></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M$ une machine de Turing. Une entrée $E$ est :</p>
+<ul>
+<li><strong><em>acceptée</em></strong> par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 1</li>
+<li><strong><em>rejetée</em></strong> par $M$ si $M(E)$ s'arrête et que la case sous la position finale du curseur vaut 0</li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>TBD exemple avec accepte, rejette et infini.</p>
+</blockquote>
+<p>On peut alors chercher à connaître toutes les entrées acceptées par une machine :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Soit $M$ une machine de Turing. Son <strong><em>langage</em></strong> $L$ est l'ensemble des entrées acceptées. On dira que :</p>
+<ul>
+<li>$M$ <strong><em>reconnaît</em></strong> $L$ si elle n'accepte que les élément de $L$.</li>
+<li>$M$ <strong><em>décide</em></strong> $L$ si elle si elle accepte les élément de $L$ et rejette tous les autres.</li>
+</ul>
+</div>
+</div>
+<p>Remarquez que dans la définition précédente, <strong><em>décider un langage</em></strong> est bien plus fort qu'uniquement <strong><em>reconnaître un langage</em></strong> puisque la machine ne bouclera jamais indéfiniment.</p>
+<blockquote>
+<p>TBD reprendre exemple précédent. Puis transformer M pour qu'elle décide.</p>
+</blockquote>
+<p>Enfin, l'algorithmie peut être vu comme la reconnaissance des ensembles pouvant être un langage reconnaissable ou, mieux encore, décidable.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un ensemble de mots  $L \subset \{0, 1\}^\star$ est appelé un <strong><em>langage</em></strong>. Il est :</p>
+<ul>
+<li><strong><em>reconnaissable</em></strong> s'il existe une machine de Turing qui le reconnaît</li>
+<li><strong><em>décidable</em></strong> s'il existe une machine de Turing que le décide.</li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p>TBD exemple de langages reconnaissable et décidable.</p>
+</blockquote>
+<h3>Décideur et Langage</h3>
+<p>En conclusion, en utilisant les machines de Turing, on définit les problèmes algorithmiques comme étant des problèmes de décision associé à un langage décidable :</p>
 <div id="algorithme-décision"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -165,11 +240,10 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <strong><em>problème de décision</em></strong> est un problème algorithmique n'acceptant que deux réponses : OUI ou NON, et pouvant être résolu par une machine de Turing acceptant tous les mots de $\{0, 1\}^\star$ et dont les sorties sont 0 (FAUX) ou 1 (VRAI).</p>
-<p>Le <strong><em>langage</em></strong> d'un problème de décision est l'ensemble des mots de sortie 1.</p>
+<p>Un <strong><em>problème de décision</em></strong> est un problème n'acceptant que deux réponses : OUI ou NON, et tel qu'il existe une machine de Turing décidant l'ensemble des entrées OUI du problème.</p>
 </div>
 </div>
-<p>Problème et langage sont donc deux notions équivalentes : un algorithme est caractérisé par l'ensemble des mots qu'il reconnaît.</p>
+<p>Algorithme, décision et langages sont donc trois notions équivalentes : un algorithme est caractérisé par l'ensembles des mots qu'il décide.</p>
 <h2>Complexités des problèmes de décision</h2>
 <p>La complexité d'un problème est la complexité la plus petite d'une machine de Turing qui le résout. Comme résoudre un problème de décision revient à trouver un décideur pour son langage on a :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -179,7 +253,7 @@ $$</p>
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'une machine de Turing qui l'accepte.</p>
+<p>La <strong><em>complexité d'un langage (décidable)</em></strong> est la complexité la plus faible d'une machine de Turing qui le décide.</p>
 </div>
 </div>
 <p>Comme une machine de Turing prend en entrée un mot de $\{0, 1\}^\star$, sa complexité sera forcément calculé par rapport à sa taille. Pour une machine de Turing $M$ prenant une entrée $E$ en paramètre, on notera dans cette partie :</p>
@@ -226,7 +300,7 @@ $$
 </details>     
 </div>
 <h2>P, NP et décision</h2>
-<p>On peut très facilement définir la classe $P$ :</p>
+<p>On peut maintenant redéfinir les classes $P$ et $NP$ grace aux langages. Commençons par la classe $P$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -234,7 +308,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>Un langage est de la classe</em></strong> $P$ s'il existe une machine de Turing de complexité polynomiale qui l'accepte.</p>
+<p><strong><em>Un langage est de la classe</em></strong> $P$ s'il existe une machine de Turing de complexité polynomiale qui le décide.</p>
 </div>
 </div>
 <p>Pour définir précisément ce qu'est la classe NP en revanche, il faut introduire un autre modèle de Machine de Turing, les machines non déterministes :</p>
@@ -254,7 +328,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>Un langage est de la classe</em></strong> $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui l'accepte.</p>
+<p><strong><em>Un langage est de la classe</em></strong> $NP$ s'il existe une machine de Turing non déterministe de complexité polynomiale qui le décide.</p>
 </div>
 </div>
 <p>La classe de problème $NP$ a été précédemment construite via l'existence d'un vérifieur polynomial qui vérifie si la solution est correcte ou pas.<br>
@@ -276,15 +350,16 @@ Avec cette nouvelle définition, le certificat est la suite de choix effectués 
 <p><a href="co-NP" class="interne">co-NP</a></p>
 </div>
 </div>
-<h2>Problèmes NP-complets</h2>
+<h2>SAT est NP-complet</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="probl%C3%A8mes-NPC" class="interne">Problèmes NP complets</a></p>
+<p><a href="SAT-NPC" class="interne">SAT est un problème NP-complet</a></p>
 </div>
 </div>
+<p>On verra qu'il y en a beaucoup, beaucoup d'autres.</p>
 <h2>Hiérarchie des complexités</h2>
 <p>Terminons cette partie en montrant qu'il existe bien d'autres algorithmes que ceux de NP. On peut même trouver des problèmes de toute complexité.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
