@@ -13,16 +13,18 @@ eleventyComputed:
 
 ---
 
-## Plan
+## Programme
+
+En quatre parties.
 
 ### Modèles de calculs et classes de problèmes "utiles"
 
-1. cours 1 : [Modèle de calcul](/cours/algorithmie/#modèle-calculs)
-   1. [pseudo-assembleur](/cours/algorithmie/exécuter-code/pseudo-assembleur/)
-   2. [Architecture de Von Neumann](/cours/algorithmie/exécuter-code/von-neumann/)
-   3. Modèle de la [Machine de Turing](/cours/algorithmie/machine-turing/)
+1. cours 1 : [Modèle de calcul](/cours/algorithmie/#modèle-calculs){.interne}
+   1. [pseudo-assembleur](/cours/algorithmie/exécuter-code/pseudo-assembleur/){.interne}
+   2. [Architecture de Von Neumann](/cours/algorithmie/exécuter-code/von-neumann/){.interne}
+   3. Modèle de la [Machine de Turing](/cours/algorithmie/machine-turing/){.interne}
 2. Cours 2 : Turing et NP
-   1. [Machines de Turing](/cours/algorithmie/machine-turing/)
+   1. [Machines de Turing](/cours/algorithmie/machine-turing/){.interne}
       1. définition alternatives
          - 2 curseurs
          - 2 rubans
@@ -31,18 +33,18 @@ eleventyComputed:
       3. coder avec Turing
          1. doublement de batons
          2. [autres exemples](https://courses.cs.washington.edu/courses/cse431/14sp/scribes/lec3.pdf)
-   2. [réduction de problèmes](/cours/algorithmie/problème-réduction/)
+   2. [réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
    3. Classes de problèmes :
-      1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/)
-      2. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
+      1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/){.interne}
+      2. [Recherche universelle](/cours/algorithmie/recherche-universelle/){.interne}
 3. Cours 3 : NP et Turing, NPC
-   1. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/)
+   1. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/){.interne}
    2. P, NP et NPC
-      1. [de vérifieur à décideur](/cours/algorithmie/décision-problèmes/)
-      2. [SAT est NPC](/cours/algorithmie/décision-problèmes/SAT-NPC/)
-4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/)
-   1. [SAC à dos est NPC](/cours/algorithmie/exemples-problèmes-NPC/)
-   2. [résolutions](/cours/algorithmie/problème-sac-à-dos/étude) :
+      1. [de vérifieur à décideur](/cours/algorithmie/décision-problèmes/){.interne}
+      2. [SAT est NPC](/cours/algorithmie/décision-problèmes/SAT-NPC/){.interne}
+4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/){.interne}
+   1. [SAC à dos est NPC](/cours/algorithmie/exemples-problèmes-NPC/){.interne}
+   2. [résolutions](/cours/algorithmie/problème-sac-à-dos/étude){.interne} :
       1. fractionnel
       2. énumération (juste donner le principe)
       3. programmation dynamique
@@ -50,60 +52,60 @@ eleventyComputed:
 ### C
 
 1. Système :
-   1. [architecture générale](/cours/système/architecture-ordinateur/#général)
+   1. [architecture générale](/cours/système/architecture-ordinateur/#général){.interne}
    2. Mémoire :
-      1. [organisation système de la mémoire](/cours/système/système-exploitation/process/#forme-finale)
+      1. [organisation système de la mémoire](/cours/système/système-exploitation/process/#forme-finale){.interne}
       2. différence entre pile et tas
-2. [cours de C](/cours/système/langage-c/)
-
-> TBD Faire le sac à dos en C
-> TBD ajouter python et C
+2. [cours de C](/cours/système/langage-c/){.interne}
+3. Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
 
 ### Graphes
 
 > TBD : voir ce qu'ils connaissent déjà
 
 {% aller %}
-[cours de Graphes](/cours/graphes/)
+[cours de Graphes](/cours/graphes/){.interne}
 {% endaller %}
 
-5. Graphes 1 :
+1. Graphes 1 :
    1. rappels
    2. quelques propriétés degrés/chemins
    3. connectivités : arbres
    4. parcours en largeur/profondeur
-6. Graphes :
+2. Arbres :
    1. arbres preuves Prufer effeuillage ...
    2. parcours en profondeur et arborescence
+3. graphes, arbre (nb) et k-connexité (Menger)
+4. Graphes eulérien -> Christofides et idée du couplage sur graphe complet valué
+5. flots (idée de la programmation linéaire) + flot de poids min/max
+6. coupe min/max et couplage max graphe bi-parti
+7. Graphes aléatoires et infinis (intro)
+8. Coloriabilité de graphes
+9. graphes planaires
 
-## Est tombé aux concours de cette partie
+### Cryptographie
 
-- variations et calcul sur 3-SUM
-- sac à dos en programmation dynamique
-- graphes bi-parti
+{% aller %}
+[Cryptographie](/cours/système/cryptographie/){.interne}
+{% endaller %}
 
-## TBD
+## Modalités de contrôle
 
-> TBD : fortement connexe et
-> 
+### Note
 
-6.  Assembleur, mémoire et C
-7.  graphes, arbre (nb) et k-connexité (Menger)
-8.  Graphes eulérien -> Christofides et idée du couplage sur graphe complet valué
-9.  24/25 : flots (idée de la programmation linéaire) + plut de poids min/max
-10. coupe min/max et couplage max graphe bi-parti
-11. couplage min/max sur graphe bi-parti (parler de la méthode hongroise ?)
-12. Graphes aléatoires et infinis
-13. Cryptographie
-14. Coloriabilité de graphes
-15. graphes planaires
+La note de cette UE résulte de cette formule :
 
-> TBD si on a le temps ou qu'ils ont envie
+$$
+\max (\frac{DM+ DS + ET}{3}, ET)
+$$
 
-1. Couplage :
-    1. valué : Lovaz dans Matching theory
-    2. donner algo couplage Edmonds fleur + autre.
-2. aléatoire, algorithme randomisé et approximation
-    1. Commencez par les considération probabilistes sous-jacentes et exemples direct pour chaque
-    2. exemples classiques
-3. retour sur le couplage et algo randomisé
+Avec :
+
+- $DM$ devoir(s) maison ou exposé(s)
+- $DS$ la note du devoir surveillé
+- $ET$ est l'examen terminal
+
+### Rendus
+
+- deux dm de code
+- un ds de théorie des graphes/informatique théorique

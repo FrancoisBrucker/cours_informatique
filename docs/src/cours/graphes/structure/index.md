@@ -2,8 +2,8 @@
 layout: layout/post.njk
 title: Structure d'un graphe
 
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,30 +12,26 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Définition de la structure de graphe et de ses composants (sommets et arêtes). On terminera cette partie en démontrant une première propriété fondamentale les liant.
-
-<!-- fin résumé -->
 
 ## Définition générale
 
-Dans toute sa généralité, on peut définir un ***multi-graphe*** comme étant un triplet $G = (V, E, \phi)$ où :
+Dans toute sa généralité, on peut définir un **_multi-graphe_** comme étant un triplet $G = (V, E, \phi)$ où :
 
-* $V$ est un ensemble de ***sommets*** (***vertices***)
-* $E$ est un ensemble d'***arcs*** (***edges***)
-* $\phi: E \rightarrow V \times V$ une ***fonction d'incidence*** qui associe à chaque arête un couple (possiblement égaux) de sommets.
+- $V$ est un ensemble de **_sommets_** (**_vertices_**)
+- $E$ est un ensemble d'**_arcs_** (**_edges_**)
+- $\phi: E \rightarrow V \times V$ une **_fonction d'incidence_** qui associe à chaque arête un couple (possiblement égaux) de sommets.
 
 Cette définition permet de considérer des ensemble a priori infini, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.
 
-En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique  :
+En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :
 
 {% note "**Définition**" %}
 
-Un ***multi-graphe*** est un couple $G = (V, E)$ où :
+Un **_multi-graphe_** est un couple $G = (V, E)$ où :
 
-* $V$ est un ensemble fini de ***sommets*** (***vertices***)
-* $E$ est une liste finie de d'éléments de $V \times V$ appelés ***arcs*** (***edges***)
+- $V$ est un ensemble fini de **_sommets_** (**_vertices_**)
+- $E$ est une liste finie de d'éléments de $V \times V$ appelés **_arcs_** (**_edges_**)
 
 {% endnote %}
 
@@ -43,8 +39,8 @@ Un ***multi-graphe*** est un couple $G = (V, E)$ où :
 
 Le multi-graphe $G = (V, E)$ avec :
 
-* $V = \\{1, 2, 3, 4, 5\\}$
-* $E = ((1, 2), (2, 3), (2, 2), (1, 2), (4, 5), (5, 4))$
+- $V = \\{1, 2, 3, 4, 5\\}$
+- $E = ((1, 2), (2, 3), (2, 2), (1, 2), (4, 5), (5, 4))$
 
 Peut se représenter graphiquement (sur le plan) :
 
@@ -53,9 +49,9 @@ Peut se représenter graphiquement (sur le plan) :
 {% info %}
 Remarquez qu'un multi-graphe peur avoir :
 
-* plusieurs fois le même arc : l'arc $(1, 2)$
-* des *boucles* : l'arc $(2, 2)$
-{% endinfo %}
+- plusieurs fois le même arc : l'arc $(1, 2)$
+- des _boucles_ : l'arc $(2, 2)$
+  {% endinfo %}
 
 ### Utilité
 
@@ -63,23 +59,23 @@ Les multi-graphes sont des outils puissants de modélisation permettant de réso
 
 #### Résolution de problème
 
- Outre le problème évident de construction ou de maintien de réseaux (informatique, de transports ou encore sociaux), on peut aussi citer :
+Outre le problème évident de construction ou de maintien de réseaux (informatique, de transports ou encore sociaux), on peut aussi citer :
 
-* [google maps](https://www.google.fr/maps/dir/). On cherche un itinéraire entre deux villes en ne connaissant à priori que ce qui se passe entre deux croisement consécutifs, mais on connaît tous les croisements,
-* les contraintes d'allocations de ressources. Les sommets sont les antennes et les arêtes si il y a des interférences possibles, on cherche à trouver une [coloration du graphe](https://fr.wikipedia.org/wiki/Coloration_de_graphe),
-* problèmes de transports où l'on veut distribuer le plus de ressources possibles dans un réseau routier/fluvial/informatique,
+- [google maps](https://www.google.fr/maps/dir/). On cherche un itinéraire entre deux villes en ne connaissant à priori que ce qui se passe entre deux croisement consécutifs, mais on connaît tous les croisements,
+- les contraintes d'allocations de ressources. Les sommets sont les antennes et les arêtes si il y a des interférences possibles, on cherche à trouver une [coloration du graphe](https://fr.wikipedia.org/wiki/Coloration_de_graphe),
+- problèmes de transports où l'on veut distribuer le plus de ressources possibles dans un réseau routier/fluvial/informatique,
 
 Les problèmes ci-dessus ont ceci de particulier qu'ils peuvent très facilement **se décrire localement** :
 
-* le problème de la recherche d'itinéraire se décrit par une liste de croisement et, pour chaque croisement, une liste de ceux qu'il peut atteindre
-* le problème d'allocation de ressources se décrit de même par une liste d'antenne et, pour chaque antenne, une liste de celles avec laquelle il y a interférence possible
-* enfin, le problème de transport se décrit de la même manière que le problème d'itinéraire en ajoutant une capacité à chaque couple de croisement)
+- le problème de la recherche d'itinéraire se décrit par une liste de croisement et, pour chaque croisement, une liste de ceux qu'il peut atteindre
+- le problème d'allocation de ressources se décrit de même par une liste d'antenne et, pour chaque antenne, une liste de celles avec laquelle il y a interférence possible
+- enfin, le problème de transport se décrit de la même manière que le problème d'itinéraire en ajoutant une capacité à chaque couple de croisement)
 
-Mais la **solution cherchée est globale** :  
+Mais la **solution cherchée est globale** :
 
-* une suite de croisement pour le problème d'itinéraire
-* une fréquence à associer à chaque antenne pour le problème d'allocation de ressources
-* un flot sur chaque route pour le problème de transport
+- une suite de croisement pour le problème d'itinéraire
+- une fréquence à associer à chaque antenne pour le problème d'allocation de ressources
+- un flot sur chaque route pour le problème de transport
 
 C'est une caractéristique générale :
 
@@ -91,8 +87,8 @@ Un problème pouvant se décrire localement mais dont la solution est globale pe
 
 Ils permettent également de comprendre le réel en utilisant des classes particulières de multi-graphes. Par exemple :
 
-* le modèle arboré des [arbres phylogénétique](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) modélisent l'évolution des espèces
-* des graphes aléatoire générés en utilisant par exemple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert) permettent de créer des graphes "*petit monde*" typiques des réseaux sociaux ou de l'internet.
+- le modèle arboré des [arbres phylogénétique](https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique) modélisent l'évolution des espèces
+- des graphes aléatoire générés en utilisant par exemple [le modèle de Barabasi-Albert](https://fr.wikipedia.org/wiki/Mod%C3%A8le_de_Barab%C3%A1si-Albert) permettent de créer des graphes "_petit monde_" typiques des réseaux sociaux ou de l'internet.
 
 #### Esthétique
 
@@ -102,34 +98,34 @@ Enfin, ils procurent une satisfaction purement esthétique de part la grande bea
 
 Notre définition est tellement générale, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :
 
-* ***sans boucles***. Les arcs commencent et finissent toujours sur nœuds différents.
-* ***sans arcs multiples***. On a alors que pour $G = (V, E)$, $E$ est un sous-ensemble de $V \times V$ : c'est une **relation**.
-* ***non orienté***. Si $(x, y) \in E$ alors $(y, x) \in E$.
+- **_sans boucles_**. Les arcs commencent et finissent toujours sur nœuds différents.
+- **_sans arcs multiples_**. On a alors que pour $G = (V, E)$, $E$ est un sous-ensemble de $V \times V$ : c'est une **relation**.
+- **_non orienté_**. Si $(x, y) \in E$ alors $(y, x) \in E$.
 
 {% info %}
-Ainsi, un ***multi-graphe non orienté sans boucle*** est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.
+Ainsi, un **_multi-graphe non orienté sans boucle_** est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.
 {% endinfo %}
 
-Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle ***graphes*** et on peut les définir comme suit :
+Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle **_graphes_** et on peut les définir comme suit :
 
 <span id="definition-graphe"></span>
 {% note "**Définition**" %}
 Un **graphe** est un couple $G = (V, E)$ où :
 
-* $V$ est un ensemble fini
-* $E$ est un sous-ensemble de $\\{ \\{x, y\\} \mid x \neq y \in V \\}$. Ses éléments sont appelés ***arêtes***.
+- $V$ est un ensemble fini
+- $E$ est un sous-ensemble de $\\{ \\{x, y\\} \mid x \neq y \in V \\}$. Ses éléments sont appelés **_arêtes_**.
 
 {% endnote %}
 
-De cette définition minimale on pourra alors définir d'autres cas, comme le ***graphe orienté*** :
+De cette définition minimale on pourra alors définir d'autres cas, comme le **_graphe orienté_** :
 
 <span id="definition-graphe-orienté"></span>
 {% note "**Définition**" %}
 
-Un ***graphe orienté*** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
+Un **_graphe orienté_** est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :
 
-* $V$ est un ensemble fini
-* $E$ est un sous-ensemble de $\\{ (x, y) \mid x \neq y \in V \\}$
+- $V$ est un ensemble fini
+- $E$ est un sous-ensemble de $\\{ (x, y) \mid x \neq y \in V \\}$
 
 {% endnote %}
 
@@ -144,43 +140,43 @@ Un **graphe mixte** est un triplet $G= (V, E, A)$ tel que $G_1=(V, E)$ soit un g
 
 Ou toutes les combinaisons de ceux-ci, comme :
 
-* le ***graphe avec arêtes multiples***
-* le ***graphe avec boucles***
-* un ***multi-graphe mixte orienté***
-* ...
+- le **_graphe avec arêtes multiples_**
+- le **_graphe avec boucles_**
+- un **_multi-graphe mixte orienté_**
+- ...
 
 Il est important de connaître précisément de quels type de graphe on parle car les algorithmes ne fonctionnent pas toujours sur toutes les classes de graphes.
 
 ## Vocabulaire
 
-Par abus de langage on écrira $xy$ pour designer une arête (*resp.* arc) plutôt que $\\{x, y\\}$ (*resp.* $(x, y)$).
+Par abus de langage on écrira $xy$ pour designer une arête (_resp._ arc) plutôt que $\\{x, y\\}$ (_resp._ $(x, y)$).
 
 ### Taille et ordre
 
 Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
-* $\vert V\ver**t = n$ l'***ordre*** de $G$.
-* $\vert E \vert = m$ la ***taille*** de $G$.
+- $\vert V\ver**t = n$ l'**_ordre_** de $G$.
+- $\vert E \vert = m$ la **_taille_** de $G$.
 
-A ordre fixe, les graphes de taille maximum son dit ***complet*** :
+A ordre fixe, les graphes de taille maximum son dit **_complet_** :
 
 <span id="definition-graphe-complet"></span>
 {% note "**Définition**" %}
-Un graphe est ***complet*** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
+Un graphe est **_complet_** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
 {% endnote %}
 
-On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un ***graphe orienté complet*** n'existe pas. On préfère parler de [tournoi](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)) :
+On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un **_graphe orienté complet_** n'existe pas. On préfère parler de [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) :
 
 {% note "**Définition**" %}
-Un ***tournoi*** est un graphe orienté $G=(V, E)$ tel que :
+Un **_tournoi_** est un graphe orienté $G=(V, E)$ tel que :
 
-* si $xy \in E$ alors $yx \notin E$
-* pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.
-{% endnote %}
+- si $xy \in E$ alors $yx \notin E$
+- pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.
+  {% endnote %}
 
 ### Arcs
 
-Un ***arc*** $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :
+Un **_arc_** $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :
 
 ![arc](arc.png)
 
@@ -188,22 +184,22 @@ Quelques notations et définitions relatives aux arcs :
 
 {% note "**Définitions**" %}
 
-* $x$ est l'***origine*** de l'arc,
-* $y$ est la ***destination*** de l'arc.
-  
-On appelle ***voisinage sortant de $x$*** (***neighbors***) l'ensemble des arcs d'origine $x$ et on le note :
+- $x$ est l'**_origine_** de l'arc,
+- $y$ est la **_destination_** de l'arc.
+
+On appelle **_voisinage sortant de $x$_** (**_neighbors_**) l'ensemble des arcs d'origine $x$ et on le note :
 
 $$N^+(x) = \\{ y \mid xy \in E\\}$$
 
-Son cardinal est appelé ***degré sortant*** de $x$ et est noté :
+Son cardinal est appelé **_degré sortant_** de $x$ et est noté :
 
 $$\delta^+(x) = \vert N^+(x) \vert$$
 
-De la même manière, l'ensemble des arcs de destination $y$ est appelé  ***voisinage entrant en $y$*** et est noté :
+De la même manière, l'ensemble des arcs de destination $y$ est appelé **_voisinage entrant en $y$_** et est noté :
 
 $$N^-(y) = \\{ x \mid xy \in E\\}$$
 
-Son cardinal est appelé ***degré entrant*** de $y$ et on le note :
+Son cardinal est appelé **_degré entrant_** de $y$ et on le note :
 
 $$\delta^-(y) = \vert N^-(y) \vert$$
 
@@ -211,18 +207,18 @@ $$\delta^-(y) = \vert N^-(y) \vert$$
 
 ### Arêtes
 
-Une ***arête*** $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :
+Une **_arête_** $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :
 
 ![arête](arete.png)
 
 Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :
 
 {% note "**Définitions**" %}
-Le ***voisinage*** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :
+Le **_voisinage_** d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :
 
 $$N(x) = \\{ y \mid  xy \in E\\}$$
 
-Le cardinal d'un voisinage est appelé ***degré***. On le note :
+Le cardinal d'un voisinage est appelé **_degré_**. On le note :
 
 $$\delta(x) = \vert N(x) \vert$$
 
@@ -251,8 +247,8 @@ Avant d'énoncer la propriété, commençons par le visualiser. Considérons le 
 
 On a par exemple :
 
-* $N^+(a) = \\{ b, e \\}$,
-* $\delta^+(b) = \delta^-(b) = 2$.
+- $N^+(a) = \\{ b, e \\}$,
+- $\delta^+(b) = \delta^-(b) = 2$.
 
 {% exercice %}
 
@@ -271,14 +267,14 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 
 On voit que $\sum_x \delta^+(x) = \sum_x \delta^-(x)$et vaut le nombre d'arcs du graphe orienté avec boucle.
 
-Cette constatation va — peu ou prou — s'étendre aux graphes.  Une version non orienté du graphe orienté avec boucles précédent pourrait être :
+Cette constatation va — peu ou prou — s'étendre aux graphes. Une version non orienté du graphe orienté avec boucles précédent pourrait être :
 
 ![un graphe simple](graphe_simple.png)
 
 On a :
 
-* $\delta(a) = 3$,
-* $N(a) = \\{b, d, e \\}$.
+- $\delta(a) = 3$,
+- $N(a) = \\{b, d, e \\}$.
 
 {% exercice %}
 
@@ -298,11 +294,11 @@ On peut maintenant démontrer :
 {% note "**Propriété**" %}
 Pour un graphe orienté avec boucle $G=(V, E)$, on a la propriété suivante :
 
-$$ \sum_x \delta^+(x) =  \sum_x \delta^-(x) = \vert E  \vert$$
+$$ \sum_x \delta^+(x) = \sum_x \delta^-(x) = \vert E \vert$$
 
 Pour un graphe $G=(V, E)$, on a :
 
-$$ \sum_x \delta(x)  = 2\vert E \vert$$
+$$ \sum_x \delta(x) = 2\vert E \vert$$
 
 {% endnote %}
 {% details "**Preuve**", "open" %}
@@ -324,10 +320,10 @@ Il existe deux façons canonique de découper un graphe, supprimer soit des somm
 {% note "**Définitions**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté.
 
-* si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un **sous-graphe de $G$ induit par $V'$**.
-* si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un **graphe partiel de $G$ induit par $V'$**.
-* si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
-{% endnote %}
+- si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un **sous-graphe de $G$ induit par $V'$**.
+- si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un **graphe partiel de $G$ induit par $V'$**.
+- si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
+  {% endnote %}
 
 Et si on a besoin de supprimer les deux :
 
@@ -380,8 +376,8 @@ $$G_1 \square G_2 = (V_1 \times V_2, E)$$
 
 Avec $((x_1, x_2), (y_1, y_2)) \in E$ si :
 
-* $x_2 = y_2$ et $x_1y_1 \in E_1$
-* $x_1 = y_1$ et $x_2y_2 \in E_2$
+- $x_2 = y_2$ et $x_1y_1 \in E_1$
+- $x_1 = y_1$ et $x_2y_2 \in E_2$
 
 {% endnote %}
 {% exercice %}
@@ -392,7 +388,7 @@ Que vaut :
 ![g carré g solution](./g_carré_g_solution.png)
 {% enddetails %}
 
-On peut aussi chercher l'approche inverse qui consiste à décomposer un graphe donné. C'est très efficace sur les graphes *"en pattern"* :
+On peut aussi chercher l'approche inverse qui consiste à décomposer un graphe donné. C'est très efficace sur les graphes _"en pattern"_ :
 
 {% exercice %}
 La grille 2D est le produit cartésien de deux graphes, lesquels ?

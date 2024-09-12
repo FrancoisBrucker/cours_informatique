@@ -18,8 +18,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes.
 
 Il a pour principal objectif d'allumer la petite flamme de l'intérêt pour cette structure, à la fois riche en problèmes intéressants et en solutions élégantes ; à la fois théorique — à l'intersection des mathématiques discrètes et de l'informatique théorique — et au cœur de nombre d'applications de tous les jours.
@@ -35,22 +33,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 3. [Chemins, cycle et connexité](chemins-cycles-connexite){.interne}
 
 {% endaller %}
-
-## Arbres
-
-> TBD : que les choses simples.
-
-> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
->
-> Un cas particulier d'intérêt : l'arbre et les chemins.
-
-> Sous la forme d'exercices.
-
-2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
-3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
-
-> combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
 
 ## Parcours
 
@@ -73,6 +55,48 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 2. [Problème du postier chinois](projet-postier-chinois){.interne}
 
 {% endaller %}
+
+## Arbres
+
+> Un cas particulier d'intérêt : l'arbre et les chemins.
+> TBD : que les choses simples.
+
+> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+>
+
+> automorphisme d'arbre rend un sommet ou une arête "identique"
+> Sous la forme d'exercices.
+
+2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
+3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
+
+> combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
+
+> TBD : mettre en forme. Voir à mettre dans les parties où on en parle.
+
+> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+>
+> Un cas particulier d'intérêt : l'arbre et les chemins.
+
+> Sous la forme d'exercices.
+
+1. arbre planté algorithmique arborescence du parcours en largeur/profondeur + propriétés ?
+2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
+3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
+
+> TBD : DFS et arbre. Tarjan pour fortement connexe.
+> TBD arbre :
+> - buneman
+> - tout automorphisme d'arbre laisse invariant une feuille ou une arête
+
+
+## Structures de données arborées
+
+- tas
+- file de priorité
+- arbre de recherche
 
 ## Chemins de longueur/poids minimum
 
@@ -117,26 +141,6 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
-## Arbres 2 le retour
-
-> TBD : mettre en forme. Voir à mettre dans les parties où on en parle.
-
-> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
->
-> Un cas particulier d'intérêt : l'arbre et les chemins.
-
-> Sous la forme d'exercices.
-
-1. arbre planté algorithmique arborescence du parcours en largeur/profondeur + propriétés ?
-2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
-3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
-
-> TBD : DFS et arbre. Tarjan pour fortement connexe.
-> TBD arbre :
-> - buneman
-> - tout automorphisme d'arbre laisse invariant une feuille ou une arête
-
 ## Connectivité
 
 {% aller %}
@@ -150,3 +154,9 @@ Problèmes de flots. Définition, algorithmes et applications
 {% aller %}
 [Couplages](./couplages/){.interne}
 {% endaller %}
+
+## Planarité
+
+> TBD isomorphisme de graphe planaire
+
+## Colorabilité

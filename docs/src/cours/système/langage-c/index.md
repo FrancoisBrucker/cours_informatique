@@ -125,7 +125,7 @@ Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étap
 ## Gestion des sources
 
 {% aller %}
-[Gestion du code source](gestion-code-source)
+[Gestion du code source](gestion-code-source){.interne}
 {% endaller %}
 
 ## Gestion des erreurs

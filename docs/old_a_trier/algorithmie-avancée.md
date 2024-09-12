@@ -347,3 +347,12 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
     - <https://courses.cs.washington.edu/courses/cse525/13sp/scribe/lec10.pdf>
     - <https://arxiv.org/pdf/0903.0544>
   
+## TBD2 le retour
+
+1. Couplage :
+    1. valué : Lovaz dans Matching theory
+    2. donner algo couplage Edmonds fleur + autre.
+2. aléatoire, algorithme randomisé et approximation
+    1. Commencez par les considération probabilistes sous-jacentes et exemples direct pour chaque
+    2. exemples classiques
+3. retour sur le couplage et algo randomisé

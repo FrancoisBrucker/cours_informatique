@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: FOnctions
+title: Fonctions
 
 eleventyComputed:
   eleventyNavigation:

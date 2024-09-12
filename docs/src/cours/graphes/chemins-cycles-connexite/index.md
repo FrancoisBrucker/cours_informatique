@@ -1,8 +1,8 @@
 ---
 layout: layout/post.njk
 title: Chemins, cycles et connexité
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -17,7 +17,7 @@ Chemins, cycle et connexité dans les graphes : définitions et premières propr
 
 <!-- fin résumé -->
 
-Un graphe $G=(V, E)$ rend compte d'une *relation* (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
+Un graphe $G=(V, E)$ rend compte d'une _relation_ (les arêtes) entre des objets (les sommets). Une grande part des applications des graphes viennent du fait que l'on cherche à décrire ou parcourir objets en suivant localement les relations. Cette courte partie vise à poser les diverses définitions relatives à ces notions et à exhiber quelques propriétés soit utiles, soit belles à démontrer, soit les deux.
 
 ## Chemin, cycles et circuits
 
@@ -29,10 +29,10 @@ $$C = v_0v_1\dots v_i \dots v_{k}$$
 
 de sommets du graphe telle que :
 
-1. $v_iv_{i+1}$ soit une arête (*resp.* arc) du graphe quelque soit $0 \leq i < k$
-2. les arcs (*resp.* arêtes) sont deux à deux distinctes.
-  
-Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (*resp.* arête).
+1. $v_iv_{i+1}$ soit une arête (_resp._ arc) du graphe quelque soit $0 \leq i < k$
+2. les arcs (_resp._ arêtes) sont deux à deux distinctes.
+
+Le chemin $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes). Un chemin de longueur $0$ est le chemin contenant un unique sommet, sans arc (_resp._ arête).
 
 {% endnote %}
 
@@ -47,7 +47,7 @@ de sommets du graphe telle que :
 
 1. soit $v_iv_{i+1}$ soit $v_{i+1}v_i$ est un arc du graphe pour tout $0 \leq i < k$
 2. les arcs sont deux à deux distincts.
-  
+
 La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
 
 {% endnote %}
@@ -67,7 +67,7 @@ La cycle $C$ à une **longueur** de $k$ (c'est le nombre d'arêtes).
 Pour les graphes orientés, ça se complique un peu car on a coutume de différentier cycle (le sens de l'arc est indifférent) de circuit (on peut parcourir le cycle dans l'ordre) :
 
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un (multi-)graphe orienté. Un **cycle**  est une suite finie :
+Soit $G = (V, E)$ un (multi-)graphe orienté. Un **cycle** est une suite finie :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
 
@@ -81,7 +81,7 @@ de sommets du graphe telle que :
 
 <span id="définition-circuit"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un (multi-)graphe orienté. Un ***circuit*** est un cycle :
+Soit $G = (V, E)$ un (multi-)graphe orienté. Un **_circuit_** est un cycle :
 
 $$C = v_0v_1\dots v_i \dots v_k$$
 
@@ -95,11 +95,11 @@ Les définitions de chemins et cycles supposent que les arêtes ou arcs n'appara
 
 <span id="définition-pseudo-"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un ***pseudo-chemin*** est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$.
+Soit $G = (V, E)$ un graphe orienté. Un **_pseudo-chemin_** est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i < k$.
 {% endnote  %}
 <span id="définition-élémentaire"></span>
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté. Un ***chemin élémentaire*** (*resp.* cycle ou circuit élémentaire) est un chemin (*resp.* cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.
+Soit $G = (V, E)$ un graphe orienté. Un **_chemin élémentaire_** (_resp._ cycle ou circuit élémentaire) est un chemin (_resp._ cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.
 {% endnote  %}
 
 {% info %}
@@ -110,11 +110,11 @@ Ces notions sont bien sûr liées comme le montre les deux propositions ci-desso
 
 {% note "**Proposition**" %}
 
-* De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.
-* De tout chemin, chaîne, cycle ou circuit  allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire  allant de $x$ à $y$.
-{% endnote %}
-{% details "**Preuve**", "open" %}
-Nous n'allons faire la preuve que pour les chemins. Les autres preuves sont équivalentes.
+- De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.
+- De tout chemin, chaîne, cycle ou circuit allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire allant de $x$ à $y$.
+  {% endnote %}
+  {% details "**Preuve**", "open" %}
+  Nous n'allons faire la preuve que pour les chemins. Les autres preuves sont équivalentes.
 
 Soit $G=(V, E)$ un graphe et $c=v_0 \dots v_p$ un de ses pseudo-chemins qui n'est pas un chemin. Il existe donc $i < j$ tel que $v_iv_{i+1} = v_jv_{j+1}$ et $c'= v_0\dots v_iv_{j+1}\dots v_k$ est un autre pseudo-chemin allant de $v_0$ à $v_k$ ayant strictement moins de répétition d'arêtes que $c$ : on peut itérativement supprimer les répétitions d'arêtes d'un pseudo-chemin pour obtenir un chemin.
 
@@ -132,18 +132,18 @@ Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il exist
 
 Si le graphe est orienté :
 
-* il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.
-* il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
-{% endnote %}
+- il est **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ ou un chemin allant de $y$ à $x$ dans $G$.
+- il est dit **fortement connexe** s'il existe pour toute paire $x$ et $y$ de sommet un chemin allant de $x$ à $y$ et un chemin allant de $y$ à $x$.
+  {% endnote %}
 
-La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à *google maps* où l'on aime bien pouvoir faire des aller-retours.
+La connexité est une notion très importante en théorie des graphes. Elle permet de relier deux sommets entre eux par des relations. D'un point de vue pratique on aime bien les graphes connexes, pensez à _google maps_ où l'on aime bien pouvoir faire des aller-retours.
 
 {% note "**Définition**" %}
 Soit $G=(V, E)$ un graphe orienté ou non.
 
-* Un **ensemble connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ ou entre $y$ et $x$.
-* Un **ensemble fortement connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ et entre $y$ et $x$.
-* Une **composante (fortement) connexe** $Y \subseteq V$ de $G$ est un ensemble (fortement) connexe maximal pour l'inclusion.
+- Un **ensemble connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ ou entre $y$ et $x$.
+- Un **ensemble fortement connexe** $Y \subseteq V$ de $G$ est tel que quelque soit $x \neq y \in Y$ il existe un chemin entre $x$ et $y$ et entre $y$ et $x$.
+- Une **composante (fortement) connexe** $Y \subseteq V$ de $G$ est un ensemble (fortement) connexe maximal pour l'inclusion.
 
 {% endnote %}
 
@@ -151,11 +151,11 @@ Les composantes connexes d'un graphe $G$ forment ainsi un Souvent (toujours) si 
 
 {% note "**Proposition**" %}
 
-* Si $G=(V, E)$ est un graphe, l'ensemble $\mathcal{C} = \{ V_1, \dots, V_p \}$ de ses composantes connexe est une partition :
+Si $G=(V, E)$ est un graphe, l'ensemble $\mathcal{C} = \{ V_1, \dots, V_p \}$ de ses composantes connexe est une partition :
 
-* $V_i \cap V_j = \varnothing$ si $i \neq j$
-* quelque soit $x \in V_i$ et $y\in V_j$ avec $i \neq j$, $xy \notin E$
-* $ \sum_i V_i = V$
+- $V_i \cap V_j = \varnothing$ si $i \neq j$
+- quelque soit $x \in V_i$ et $y\in V_j$ avec $i \neq j$, $xy \notin E$
+- $ \sum_i V_i = V$
 
 Si le le graphe est orienté, on a le même résultat en considérant l'ensemble de des composantes fortement connexes.
 
@@ -174,8 +174,8 @@ Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus im
 {% note "**Définition**" %}
 Soit $G$ un graphe connexe.
 
-* Un **isthme** est une arête qui déconnecte le graphe si on la supprime
-* Un **nœud d'articulation** est une arête qui déconnecte le graphe si on le supprime
+- Un **isthme** est une arête qui déconnecte le graphe si on la supprime
+- Un **nœud d'articulation** est une arête qui déconnecte le graphe si on le supprime
 
 {% endnote %}
 
@@ -191,8 +191,8 @@ Commençons par donner des condition d'existence de chemins et cycles de longueu
 {% note "**Proposition**" %}
 Soit $G = (V, E)$ un graphe. S'il existe un entier $k > 1$ tel que $\delta(x) \geq k$ pour tout $x \in V$, alors :
 
-* pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,
-* il existe un cycle élémentaire de longueur au moins $k+1$,
+- pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,
+- il existe un cycle élémentaire de longueur au moins $k+1$,
 
 {% endnote %}
 {% details "**Preuve**", "open" %}
@@ -203,8 +203,8 @@ Comme $\delta(v_i) = k > i$ il existe un voisin $y$ de $v_i$ qui n'est pas un é
 
 Une fois que $c = v_0\dots v_i$ a atteint la longueur $k$, on peut continuer cette procédure en cherchant à agrandir $c$ par un sommet $v_{i+1}$ tel que :
 
-* $v_iv_{i+1}$ est une arête du graphe
-* n'ayant aucun sommet $v_j$ avec $i+1 - k < j < i+1$ comme voisin (il y en a $k-1$)
+- $v_iv_{i+1}$ est une arête du graphe
+- n'ayant aucun sommet $v_j$ avec $i+1 - k < j < i+1$ comme voisin (il y en a $k-1$)
 
 De deux choses l'une :
 
@@ -251,8 +251,8 @@ Le graphe $G'$ est donc connexe par hypothèse de récurrence, donc $G$ l'est au
 
 Notez bien que ces propositions ne sont que des implications. Si l'on prend le graphe $G=(\\{v_1, \dots, v_n\\}, E)$ avec $E = \\{ v_iv_{i+1} \mid 1 \leq i \leq n \\} \cup \\{ v_1v_n \\}$ il :
 
-* est connexe alors qu'il a $n < \frac{(n-1)(n-2)}{2}$ arêtes si $n \geq 5$,
-* admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.
+- est connexe alors qu'il a $n < \frac{(n-1)(n-2)}{2}$ arêtes si $n \geq 5$,
+- admet un cycle de longueur $n$ alors que le degré de chaque élément est $2$.
 
 ## Algorithmes
 
@@ -291,29 +291,29 @@ def composante_connexe(G, origine):
 
 On utilise :
 
-* méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
-  * la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
-  * la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
-* méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
-  * création avec les accolades
-  * méthode `add`{.language-} qui ajoute un élément à l'ensemble
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
+  - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
+  - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
+  - création avec les accolades
+  - méthode `add`{.language-} qui ajoute un élément à l'ensemble
 
 #### <span id="comp-conn-complexité"></span> Complexité
 
 L'algorithme précédent utilise un ensemble pour stocker la composante connexe car :
 
-* ajouter un élément à un ensemble prend $\mathcal{O}(1)$ opérations en moyenne
-* savoir si un élément est dans un ensemble prend $\mathcal{O}(1)$ opérations en moyenne
+- ajouter un élément à un ensemble prend $\mathcal{O}(1)$ opérations en moyenne
+- savoir si un élément est dans un ensemble prend $\mathcal{O}(1)$ opérations en moyenne
 
 Pour une liste :
 
-* l'ajout d'un élément à la liste avec la méthode `append`{.language-} prend $\mathcal{O}(1)$ opérations
-* la suppression d'un élément à la liste avec la méthode `pop`{.language-} prend $\mathcal{O}(1)$ opérations
+- l'ajout d'un élément à la liste avec la méthode `append`{.language-} prend $\mathcal{O}(1)$ opérations
+- la suppression d'un élément à la liste avec la méthode `pop`{.language-} prend $\mathcal{O}(1)$ opérations
 
 La complexité de l'algorithme va ainsi dépendre :
 
-* du nombre de fois où la boucle while de la ligne 5 va être exécutée
-* de la nature des éléments $x$ de la boucle
+- du nombre de fois où la boucle while de la ligne 5 va être exécutée
+- de la nature des éléments $x$ de la boucle
 
 Pour notre encodage, Toutes les opérations élémentaires de l'algorithme sont donc en $\mathcal{O}(1)$ opérations au maximum sauf le test de la ligne 9 et l'ajout à la composante de la ligne 10 qui est en $\mathcal{O}(1)$ opérations en moyenne.
 
@@ -355,14 +355,14 @@ def les_composantes(G):
     composantes = []
 
     dans_une_composante = set()
-    
+
     for x in G:
         if x in dans_une_composante:
             continue
 
         composantes.append(composante_connexe(G, x))
         dans_une_composante.update(composantes[-1])
-    
+
     return composantes
 ```
 
@@ -399,16 +399,16 @@ def chemin(G, a, b):
 
 On utilise :
 
-* méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
-  * la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
-  * la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
-  * le fait quel'on puisse accéder au dernier élément d'une liste avec un indice de `-1`{.language-}
-* méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
-  * création avec les accolades
-  * méthode `add`{.language-} qui ajoute un élément à l'ensemble
-  * la soustraction de deux ensembles qui rend un nouvel ensemble contenant les éléments du premier ensemble non présent dans le second.
-* la commande `break`{.langage-} qui sort de la boucle la plus imbriquée, ici la boucle `while`{.language-} de la ligne 6.
-* les tests des lignes 8 et 15 qui rendent faut si l'ensemble ou la liste sont respectivement vides.
+- méthodes des [liste](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
+  - la méthode `pop`{.language-} qui permet de supprimer le dernier élément de la liste et le rendre
+  - la méthode `append`{.language-} qui permet d'ajouter un élément à la fin de la liste
+  - le fait quel'on puisse accéder au dernier élément d'une liste avec un indice de `-1`{.language-}
+- méthodes des [ensembles](https://docs.python.org/fr/3/tutorial/datastructures.html#sets) :
+  - création avec les accolades
+  - méthode `add`{.language-} qui ajoute un élément à l'ensemble
+  - la soustraction de deux ensembles qui rend un nouvel ensemble contenant les éléments du premier ensemble non présent dans le second.
+- la commande `break`{.langage-} qui sort de la boucle la plus imbriquée, ici la boucle `while`{.language-} de la ligne 6.
+- les tests des lignes 8 et 15 qui rendent faut si l'ensemble ou la liste sont respectivement vides.
 
 #### <span id="chemin-complexité"></span> Complexité
 
@@ -429,10 +429,10 @@ Le preuve de l'algorithme repose sur la proposition suivante :
 {% note "**Proposition**" %}
 Soit $G = (V, E)$ un graphe connexe et $a, b\in V$.
 
-S'il existe  un chemin allant de $a$ à $x$ :
+S'il existe un chemin allant de $a$ à $x$ :
 
-* ne passant pas par $b$
-* tel que tous les voisins de $x$ soient dans le chemin
+- ne passant pas par $b$
+- tel que tous les voisins de $x$ soient dans le chemin
 
 Alors il existe un chemin allant de $a$ à $b$ ne passant pas par $x$.
 {% endnote %}
@@ -442,8 +442,8 @@ Soit $c= a\dots x = v_0\dots v_p$ le chemin allant de $a$ à $x$ et $c' = a \dot
 
 On note $1 \leq i < q$ le plus grand indice tel qu'il existe $1\leq j < p$ avec $w_i = v_j$. Comme $x$ est sur $c'$ :
 
-* cet élément existe
-* il est placé après $x$ dans $c'$
+- cet élément existe
+- il est placé après $x$ dans $c'$
 
 Le chemin $v_0 \dots v_i w_{j+1} \dots w_q$ est un chemin allant de $a$ à $b$ ne passant pas pas $x$.
 

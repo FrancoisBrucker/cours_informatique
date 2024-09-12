@@ -194,7 +194,7 @@ l'intérêts des pointeurs est qu'il permet d'accéder à une variable de multip
 
 Une utilisation courante des pointeurs consiste à passer l'adresse d'une variable (un pointeur sur elle) à une fonction pour pouvoir la modifier.
 
-Par exemple le code suivant ne modifie bien sur pas la variable `i`.language-} :
+Par exemple le code suivant ne modifie bien sur pas la variable `i`{.language-} :
 
  ```c#
 #include <stdio.h>
@@ -216,7 +216,7 @@ printf("Entier : %i\n", i);
 
 ```
 
-La variable `x`{.language}, crée à l'exécution de la fonction sur la pile, contient la donnée de `i`, ps `i`. Pour modifier `i`, il faut la passer directement à la fonction via un pointeur :
+La variable `x`{.language-}, crée à l'exécution de la fonction sur la pile, contient la donnée de `i`{.language-}, pas `i`{.language-}. Pour modifier `i`{.language-}, il faut la passer directement à la fonction via un pointeur :
 
 ```c#
 #include <stdio.h>
@@ -364,7 +364,7 @@ printf("Entier : i=%i\n", i);
 La variable `t` n'est plus valable en sorte de fonction : son adresse n'est plus utilisée !
 
 {% attention "**danger !**" %}
-Ne pas rendre une pointeur sur une une variable crée dans une fonction.
+Ne pas rendre un pointeur sur une variable crée dans une fonction.
 {% endattention %}
 
 ## Pointeurs de fonctions
@@ -461,5 +461,5 @@ printf("%f \n", conversion(37, kelvin));
 ```
 
 {% lien %}
-[Comprendre tout les types de fonctions](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs)
+[Comprendre tous les types de fonctions](https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs)
 {% endlien %}

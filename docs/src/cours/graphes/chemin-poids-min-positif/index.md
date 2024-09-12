@@ -486,3 +486,7 @@ Donnons un exemple. Le graphe suivant avec une valuation de 1 sur tous les arc :
 Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, **mais** il ne le trouvera pas si les sommets sont rentrés dans `V_prim`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible).
 
 Même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...
+
+## Dijkstra et BFS
+
+> idem file de priorité à la place de file dans BFS
