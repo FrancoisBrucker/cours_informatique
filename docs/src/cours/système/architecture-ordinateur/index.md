@@ -71,7 +71,7 @@ Les périphériques présents sur tous les ordinateurs sont les périphériques 
 [Disques durs et autres périphériques de stockage](./device-stockage){.interne}
 {% endaller %}
 
-## Version détaillée
+## <span id="général"></span>Version détaillée
 
 > TBD : à refaire.
 

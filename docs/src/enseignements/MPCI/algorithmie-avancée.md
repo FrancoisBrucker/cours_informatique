@@ -20,9 +20,9 @@ eleventyComputed:
 1. cours 1 : [Modèle de calcul](/cours/algorithmie/#modèle-calculs)
    1. [pseudo-assembleur](/cours/algorithmie/exécuter-code/pseudo-assembleur/)
    2. [Architecture de Von Neumann](/cours/algorithmie/exécuter-code/von-neumann/)
-   3. [Machines de Turing](/cours/algorithmie/machine-turing/)
+   3. Modèle de la [Machine de Turing](/cours/algorithmie/machine-turing/)
 2. Cours 2 : Turing et NP
-   1. Machine de Turing
+   1. [Machines de Turing](/cours/algorithmie/machine-turing/)
       1. définition alternatives
          - 2 curseurs
          - 2 rubans
@@ -36,28 +36,22 @@ eleventyComputed:
       1. [P, NP et NPC : avec vérifieurs](/cours/algorithmie/problèmes-NP/)
       2. [Recherche universelle](/cours/algorithmie/recherche-universelle/)
 3. Cours 3 : NP et Turing, NPC
-   1. Machines de Turing
-      1. [MTU](/cours/algorithmie/machine-turing/mtu/)
-      2. ceci permet de faire la recherche universelle (exécuter $k$ operation d'une machine) de façon propre
-      3. Machine comme chaîne de caractères :
-         1. [Rappels sur le problème de l'arrêt](/cours/algorithmie/bases-théoriques/arrêt-rice/). Avec le code de la machine (comme MTU) en entrée.
-         2. [Castors affairées](/cours/algorithmie/machine-turing/castors-affairés/)
-   2. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/)
-   3. P, NP et NPC
-      1. rappeler définition avec vérifieur
-      2. [décision](/cours/algorithmie/décision-problèmes/)
-   4. [co-NP](/cours/algorithmie/décision-problèmes/co-NP/)
-4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/) et pseudo-polynomial.
+   1. [SAT, 3-SAT et 2-SAT](/cours/algorithmie/problème-SAT/)
+   2. P, NP et NPC
+      1. [de vérifieur à décideur](/cours/algorithmie/décision-problèmes/)
+      2. [SAT est NPC](/cours/algorithmie/décision-problèmes/SAT-NPC/)
+4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/)
+   1. SAC à dos est NPC
+   2. résolutions
 
 ### C
 
-{% aller %}
-[cours de C](/cours/système/langage-c/)
-{% endaller %}
-
-- La pile pour gérer les variables
-- organisation système en mémoire
-- multi-process et défaut de cache : attention aux listes chaînées.
+1. Système :
+   1. [architecture générale](/cours/système/architecture-ordinateur/#général)
+   2. Mémoire :
+      1. [organisation système de la mémoire](/cours/système/système-exploitation/process/#forme-finale)
+      2. différence entre pile et tas
+2. [cours de C](/cours/système/langage-c/)
 
 ### Graphes
 
