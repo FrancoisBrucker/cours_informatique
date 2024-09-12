@@ -11,6 +11,10 @@ eleventyComputed:
 
 Une machine de Turing non déterministe est un modèle abstrait  de machine ou il y a plusieurs possibilité par transition. On montre cependant ce que modèles est équivalent à une machine de Turing.
 
+{% lien %}
+<https://www.youtube.com/watch?v=5VRjCk7R-Xg>
+{% endlien %}
+
 ## Définition
 
 {% note "**Définition**" %}
@@ -100,7 +104,9 @@ Tant que Vrai:
 Si la machine $M$ s'arrête, c'est qu'il existe une suite de choix qui lui permette de s'arrêter. Cette suite étant de longueur finie, notre algorithme finira forcément par la considérer et il s'arrêtera.
 {% enddetails %}
 
-Notez que notre machine de Turing déterministe ne s'arrêtera sur un mot que si tous les chemins possibles de transitions de la machine de Turing non déterministe s'arrêtent :
+Notez que dans la preuve précédente on a bien besoin que la machine s'arrête sur toute entrée, sinon notre machine déterministe ne s’arrêterait jamais s'il existait une suite de choix pouvant mener à une exécution infinie.
+
+Comme la machine de Turing non déterministe est polynomiale on a de plus :
 
 {% note "**Proposition**" %}
 Une machine de Turing non déterministe polynomiale est équivalente à une machine de Turing de complexité exponentielle.

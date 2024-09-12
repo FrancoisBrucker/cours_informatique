@@ -55,7 +55,9 @@ eleventyComputed:
 [cours de C](/cours/système/langage-c/)
 {% endaller %}
 
-La pile pour dé-récursifier : faire les exemples
+- La pile pour gérer les variables
+- organisation système en mémoire
+- multi-process et défaut de cache : attention aux listes chaînées.
 
 ### Graphes
 
@@ -74,9 +76,16 @@ La pile pour dé-récursifier : faire les exemples
    1. arbres preuves Prufer effeuillage ...
    2. parcours en profondeur et arborescence
 
+## Est tombé aux concours de cette partie
+
+- variations et calcul sur 3-SUM
+- sac à dos en programmation dynamique
+- graphes bi-parti
+
+## TBD
+
 > TBD : fortement connexe et
 > 
-## TBD
 
 6.  Assembleur, mémoire et C
 7.  graphes, arbre (nb) et k-connexité (Menger)

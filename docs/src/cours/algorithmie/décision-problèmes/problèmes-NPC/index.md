@@ -20,8 +20,12 @@ On va montrer que l'exécution de cette machine est équivalente à trouver une 
 
 Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machine de Turing non déterministe.
 
-> TBD <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>
-> TBD <https://perso.eleves.ens-rennes.fr/~tpier758/agreg/dvpt/info/cook.pdf>
+{% lien %}
+
+- <https://www.youtube.com/watch?v=0LZ39iyLMog>
+- <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf>
+
+{% endlien %}
 
 ## Variables
 

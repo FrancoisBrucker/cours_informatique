@@ -57,7 +57,7 @@ Cette étape permet d'avoir un code où toutes les références sont explicites 
 Dans le code précédent quelle est l'intérêt d'inclure `stdlib.h`{.fichier} et `stdio.h`{.fichier} ?
 {% endexercice %}
 {% details "solution" %}
-On supprime une oigne et on recompile pour voir.
+On supprime une ligne et on recompile pour voir.
 
 En supprimant la ligne `#include <stdlib.h>` on obtient l'erreur de compilation :
 

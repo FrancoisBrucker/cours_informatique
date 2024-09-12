@@ -61,7 +61,7 @@ En comparant par rapport à un code python :
 {% info %}
 Venant du python, il peut sembler grisant de pouvoir écrire plusieurs instructions sur une ligne, par exemple :
 
-```
+```c
 int main(void){printf("Hello World!\n");return EXIT_SUCCESS;}
 ```
 

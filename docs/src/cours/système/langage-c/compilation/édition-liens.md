@@ -18,6 +18,7 @@ En ajoutant l'option `-v`, on voit que clang utilise en fait la commande [`ld`](
 
 > TBD faire un [ltrace](https://www.it-connect.fr/chapitres/la-couche-bibliotheque-ltrace-et-ldd/) pour voir les apples de la libc, comme printf.
 
+> sous mac : <https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection>
 
 > TBD static avec -static
 > ajout de ses propres lib.
