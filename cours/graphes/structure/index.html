@@ -103,18 +103,16 @@
     
   
 
-  <!-- début résumé -->
-<p>Définition de la structure de graphe et de ses composants (sommets et arêtes). On terminera cette partie en démontrant une première propriété fondamentale les liant.</p>
-<!-- fin résumé -->
+  <p>Définition de la structure de graphe et de ses composants (sommets et arêtes). On terminera cette partie en démontrant une première propriété fondamentale les liant.</p>
 <h2>Définition générale</h2>
-<p>Dans toute sa généralité, on peut définir un <em><strong>multi-graphe</strong></em> comme étant un triplet $G = (V, E, \phi)$ où :</p>
+<p>Dans toute sa généralité, on peut définir un <strong><em>multi-graphe</em></strong> comme étant un triplet $G = (V, E, \phi)$ où :</p>
 <ul>
-<li>$V$ est un ensemble de <em><strong>sommets</strong></em> (<em><strong>vertices</strong></em>)</li>
-<li>$E$ est un ensemble d'<em><strong>arcs</strong></em> (<em><strong>edges</strong></em>)</li>
-<li>$\phi: E \rightarrow V \times V$ une <em><strong>fonction d'incidence</strong></em> qui associe à chaque arête un couple (possiblement égaux) de sommets.</li>
+<li>$V$ est un ensemble de <strong><em>sommets</em></strong> (<strong><em>vertices</em></strong>)</li>
+<li>$E$ est un ensemble d'<strong><em>arcs</em></strong> (<strong><em>edges</em></strong>)</li>
+<li>$\phi: E \rightarrow V \times V$ une <strong><em>fonction d'incidence</em></strong> qui associe à chaque arête un couple (possiblement égaux) de sommets.</li>
 </ul>
 <p>Cette définition permet de considérer des ensemble a priori infini, mais elle le fait au prix d'une grosse lourdeur de manipulation puisqu'il faut passer par une fonction d'incidence.</p>
-<p>En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique  :</p>
+<p>En pratique, on aura toujours un nombre fini de sommets et d'arêtes, on choisit donc une définition plus restrictive, mais plus facilement manipulable en informatique :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -122,10 +120,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>multi-graphe</strong></em> est un couple $G = (V, E)$ où :</p>
+<p>Un <strong><em>multi-graphe</em></strong> est un couple $G = (V, E)$ où :</p>
 <ul>
-<li>$V$ est un ensemble fini de <em><strong>sommets</strong></em> (<em><strong>vertices</strong></em>)</li>
-<li>$E$ est une liste finie de d'éléments de $V \times V$ appelés <em><strong>arcs</strong></em> (<em><strong>edges</strong></em>)</li>
+<li>$V$ est un ensemble fini de <strong><em>sommets</em></strong> (<strong><em>vertices</em></strong>)</li>
+<li>$E$ est une liste finie de d'éléments de $V \times V$ appelés <strong><em>arcs</em></strong> (<strong><em>edges</em></strong>)</li>
 </ul>
 </div>
 </div>
@@ -190,19 +188,19 @@
 <h2>Graphe</h2>
 <p>Notre définition est tellement générale, qu'elle est très peu utilisée telle quelle. On utilisera souvent des cas particuliers selon le problème que l'on veut résoudre :</p>
 <ul>
-<li><em><strong>sans boucles</strong></em>. Les arcs commencent et finissent toujours sur nœuds différents.</li>
-<li><em><strong>sans arcs multiples</strong></em>. On a alors que pour $G = (V, E)$, $E$ est un sous-ensemble de $V \times V$ : c'est une <strong>relation</strong>.</li>
-<li><em><strong>non orienté</strong></em>. Si $(x, y) \in E$ alors $(y, x) \in E$.</li>
+<li><strong><em>sans boucles</em></strong>. Les arcs commencent et finissent toujours sur nœuds différents.</li>
+<li><strong><em>sans arcs multiples</em></strong>. On a alors que pour $G = (V, E)$, $E$ est un sous-ensemble de $V \times V$ : c'est une <strong>relation</strong>.</li>
+<li><strong><em>non orienté</em></strong>. Si $(x, y) \in E$ alors $(y, x) \in E$.</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Ainsi, un <em><strong>multi-graphe non orienté sans boucle</strong></em> est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.</p>
+<p>Ainsi, un <strong><em>multi-graphe non orienté sans boucle</em></strong> est un multigraphe tel que si $(x, y) \in E$ alors $(y, x) \in E$ et tel que $(x, x) \notin E$ pour tout $x \in V$.</p>
 </div>
 </div>
-<p>Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle <em><strong>graphes</strong></em> et on peut les définir comme suit :</p>
+<p>Le cas le plus simple (et donc celui que l'on utilisera en priorité) est le multi-graphe sans boucle, sans arcs multiples et non orienté. On les appelle <strong><em>graphes</em></strong> et on peut les définir comme suit :</p>
 <p><span id="definition-graphe"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -214,11 +212,11 @@
 <p>Un <strong>graphe</strong> est un couple $G = (V, E)$ où :</p>
 <ul>
 <li>$V$ est un ensemble fini</li>
-<li>$E$ est un sous-ensemble de $\{ \{x, y\} \mid x \neq y \in V \}$. Ses éléments sont appelés <em><strong>arêtes</strong></em>.</li>
+<li>$E$ est un sous-ensemble de $\{ \{x, y\} \mid x \neq y \in V \}$. Ses éléments sont appelés <strong><em>arêtes</em></strong>.</li>
 </ul>
 </div>
 </div>
-<p>De cette définition minimale on pourra alors définir d'autres cas, comme le <em><strong>graphe orienté</strong></em> :</p>
+<p>De cette définition minimale on pourra alors définir d'autres cas, comme le <strong><em>graphe orienté</em></strong> :</p>
 <p><span id="definition-graphe-orienté"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -227,7 +225,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>graphe orienté</strong></em> est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :</p>
+<p>Un <strong><em>graphe orienté</em></strong> est un multi-graphe sans boucle et sans arcs multiples. C'est un couple $G = (V, E)$ où :</p>
 <ul>
 <li>$V$ est un ensemble fini</li>
 <li>$E$ est un sous-ensemble de $\{ (x, y) \mid x \neq y \in V \}$</li>
@@ -248,9 +246,9 @@
 </div>
 <p>Ou toutes les combinaisons de ceux-ci, comme :</p>
 <ul>
-<li>le <em><strong>graphe avec arêtes multiples</strong></em></li>
-<li>le <em><strong>graphe avec boucles</strong></em></li>
-<li>un <em><strong>multi-graphe mixte orienté</strong></em></li>
+<li>le <strong><em>graphe avec arêtes multiples</em></strong></li>
+<li>le <strong><em>graphe avec boucles</em></strong></li>
+<li>un <strong><em>multi-graphe mixte orienté</em></strong></li>
 <li>...</li>
 </ul>
 <p>Il est important de connaître précisément de quels type de graphe on parle car les algorithmes ne fonctionnent pas toujours sur toutes les classes de graphes.</p>
@@ -259,10 +257,10 @@
 <h3>Taille et ordre</h3>
 <p>Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :</p>
 <ul>
-<li>$\vert V\ver**t = n$ l'<em><strong>ordre</strong></em> de $G$.</li>
-<li>$\vert E \vert = m$ la <em><strong>taille</strong></em> de $G$.</li>
+<li>$\vert V\ver<strong>t = n$ l'</strong><em>ordre</em>** de $G$.</li>
+<li>$\vert E \vert = m$ la <strong><em>taille</em></strong> de $G$.</li>
 </ul>
-<p>A ordre fixe, les graphes de taille maximum son dit <em><strong>complet</strong></em> :</p>
+<p>A ordre fixe, les graphes de taille maximum son dit <strong><em>complet</em></strong> :</p>
 <p><span id="definition-graphe-complet"></span></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -271,10 +269,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe est <em><strong>complet</strong></em> s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.</p>
+<p>Un graphe est <strong><em>complet</em></strong> s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.</p>
 </div>
 </div>
-<p>On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un <em><strong>graphe orienté complet</strong></em> n'existe pas. On préfère parler de <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournoi</a> :</p>
+<p>On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un <strong><em>graphe orienté complet</em></strong> n'existe pas. On préfère parler de <a href="https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)">tournoi</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -282,7 +280,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>tournoi</strong></em> est un graphe orienté $G=(V, E)$ tel que :</p>
+<p>Un <strong><em>tournoi</em></strong> est un graphe orienté $G=(V, E)$ tel que :</p>
 <ul>
 <li>si $xy \in E$ alors $yx \notin E$</li>
 <li>pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.</li>
@@ -290,7 +288,7 @@
 </div>
 </div>
 <h3>Arcs</h3>
-<p>Un <em><strong>arc</strong></em> $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :</p>
+<p>Un <strong><em>arc</em></strong> $xy$ est un élément de $E$ pour les graphes orientés. On le représente graphiquement comme ça :</p>
 <p><img src="arc.png" alt="arc"></p>
 <p>Quelques notations et définitions relatives aux arcs :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -301,21 +299,21 @@
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>$x$ est l'<em><strong>origine</strong></em> de l'arc,</li>
-<li>$y$ est la <em><strong>destination</strong></em> de l'arc.</li>
+<li>$x$ est l'<strong><em>origine</em></strong> de l'arc,</li>
+<li>$y$ est la <strong><em>destination</em></strong> de l'arc.</li>
 </ul>
-<p>On appelle <em><strong>voisinage sortant de $x$</strong></em> (<em><strong>neighbors</strong></em>) l'ensemble des arcs d'origine $x$ et on le note :</p>
+<p>On appelle <strong><em>voisinage sortant de $x$</em></strong> (<strong><em>neighbors</em></strong>) l'ensemble des arcs d'origine $x$ et on le note :</p>
 <p>$$N^+(x) = \{ y \mid xy \in E\}$$</p>
-<p>Son cardinal est appelé <em><strong>degré sortant</strong></em> de $x$ et est noté :</p>
+<p>Son cardinal est appelé <strong><em>degré sortant</em></strong> de $x$ et est noté :</p>
 <p>$$\delta^+(x) = \vert N^+(x) \vert$$</p>
-<p>De la même manière, l'ensemble des arcs de destination $y$ est appelé  <em><strong>voisinage entrant en $y$</strong></em> et est noté :</p>
+<p>De la même manière, l'ensemble des arcs de destination $y$ est appelé <strong><em>voisinage entrant en $y$</em></strong> et est noté :</p>
 <p>$$N^-(y) = \{ x \mid xy \in E\}$$</p>
-<p>Son cardinal est appelé <em><strong>degré entrant</strong></em> de $y$ et on le note :</p>
+<p>Son cardinal est appelé <strong><em>degré entrant</em></strong> de $y$ et on le note :</p>
 <p>$$\delta^-(y) = \vert N^-(y) \vert$$</p>
 </div>
 </div>
 <h3>Arêtes</h3>
-<p>Une <em><strong>arête</strong></em> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
+<p>Une <strong><em>arête</em></strong> $xy$ est un élément de $E$ pour les graphes non orienté. On la représente graphiquement comme ça :</p>
 <p><img src="arete.png" alt="arête"></p>
 <p>Contrairement aux arcs, il n'y a pas de distinction entre origine et destination :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -325,9 +323,9 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définitions</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Le <em><strong>voisinage</strong></em> d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :</p>
+<p>Le <strong><em>voisinage</em></strong> d'un sommet $x$ est l'ensemble des sommets $y$ tels que $xy \in E$. ON le note :</p>
 <p>$$N(x) = \{ y \mid  xy \in E\}$$</p>
-<p>Le cardinal d'un voisinage est appelé <em><strong>degré</strong></em>. On le note :</p>
+<p>Le cardinal d'un voisinage est appelé <strong><em>degré</em></strong>. On le note :</p>
 <p>$$\delta(x) = \vert N(x) \vert$$</p>
 </div>
 </div>
@@ -400,7 +398,7 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 </details>     
 </div>
 <p>On voit que $\sum_x \delta^+(x) = \sum_x \delta^-(x)$et vaut le nombre d'arcs du graphe orienté avec boucle.</p>
-<p>Cette constatation va — peu ou prou — s'étendre aux graphes.  Une version non orienté du graphe orienté avec boucles précédent pourrait être :</p>
+<p>Cette constatation va — peu ou prou — s'étendre aux graphes. Une version non orienté du graphe orienté avec boucles précédent pourrait être :</p>
 <p><img src="graphe_simple.png" alt="un graphe simple"></p>
 <p>On a :</p>
 <ul>
@@ -444,9 +442,9 @@ On peut également remarquer que $\sum_x \delta^+(x) = \sum_x \delta^-(x) = \ver
 <p><strong>Propriété</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour un graphe orienté avec boucle $G=(V, E)$, on a la propriété suivante :</p>
-<p>$$ \sum_x \delta^+(x) =  \sum_x \delta^-(x) = \vert E  \vert$$</p>
+<p>$$ \sum_x \delta^+(x) = \sum_x \delta^-(x) = \vert E \vert$$</p>
 <p>Pour un graphe $G=(V, E)$, on a :</p>
-<p>$$ \sum_x \delta(x)  = 2\vert E \vert$$</p>
+<p>$$ \sum_x \delta(x) = 2\vert E \vert$$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">

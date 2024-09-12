@@ -166,7 +166,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong>cycle</strong>  est une suite finie :</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong>cycle</strong> est une suite finie :</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>de sommets du graphe telle que :</p>
 <ol>
@@ -184,7 +184,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <em><strong>circuit</strong></em> est un cycle :</p>
+<p>Soit $G = (V, E)$ un (multi-)graphe orienté. Un <strong><em>circuit</em></strong> est un cycle :</p>
 <p>$$C = v_0v_1\dots v_i \dots v_k$$</p>
 <p>de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$</p>
 </div>
@@ -199,7 +199,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>pseudo-chemin</strong></em> est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <strong><em>pseudo-chemin</em></strong> est une suite finie $C = v_0v_1\dots v_i \dots v_{k}$ une suite de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0 \leq i &lt; k$.</p>
 </div>
 </div>
 <p><span id="définition-élémentaire"></span></p>
@@ -210,7 +210,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté. Un <em><strong>chemin élémentaire</strong></em> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.</p>
+<p>Soit $G = (V, E)$ un graphe orienté. Un <strong><em>chemin élémentaire</em></strong> (<em>resp.</em> cycle ou circuit élémentaire) est un chemin (<em>resp.</em> cycle ou circuit) $C = v_0v_1\dots v_i \dots v_{k}$ tel que $v_i \neq v_j$ quelque soit $i \neq j$.</p>
 </div>
 </div>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -231,7 +231,7 @@
 </div><div class="pl-8 mr-8">
 <ul>
 <li>De tout pseudo-chemin, pseudo-chaîne, pseudo-cycle ou pseudo-circuit allant de $x$ à $y$ on peut extraire un chemin, chaîne, cycle ou circuit allant de $x$ à $y$.</li>
-<li>De tout chemin, chaîne, cycle ou circuit  allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire  allant de $x$ à $y$.</li>
+<li>De tout chemin, chaîne, cycle ou circuit allant de $x$ à $y$, on peut extraire un chemin, chaîne, cycle ou circuit élémentaire allant de $x$ à $y$.</li>
 </ul>
 </div>
 </div>
@@ -306,19 +306,11 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<ul>
-<li>
 <p>Si $G=(V, E)$ est un graphe, l'ensemble $\mathcal{C} = { V_1, \dots, V_p }$ de ses composantes connexe est une partition :</p>
-</li>
-<li>
-<p>$V_i \cap V_j = \varnothing$ si $i \neq j$</p>
-</li>
-<li>
-<p>quelque soit $x \in V_i$ et $y\in V_j$ avec $i \neq j$, $xy \notin E$</p>
-</li>
-<li>
-<p>$ \sum_i V_i = V$</p>
-</li>
+<ul>
+<li>$V_i \cap V_j = \varnothing$ si $i \neq j$</li>
+<li>quelque soit $x \in V_i$ et $y\in V_j$ avec $i \neq j$, $xy \notin E$</li>
+<li>$ \sum_i V_i = V$</li>
 </ul>
 <p>Si le le graphe est orienté, on a le même résultat en considérant l'ensemble de des composantes fortement connexes.</p>
 </div>
@@ -611,14 +603,14 @@ $$
     composantes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     dans_une_composante <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    
+
     <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">:</span>
         <span class="token keyword">if</span> x <span class="token keyword">in</span> dans_une_composante<span class="token punctuation">:</span>
             <span class="token keyword">continue</span>
 
         composantes<span class="token punctuation">.</span>append<span class="token punctuation">(</span>composante_connexe<span class="token punctuation">(</span>G<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span>
         dans_une_composante<span class="token punctuation">.</span>update<span class="token punctuation">(</span>composantes<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    
+
     <span class="token keyword">return</span> composantes
 </code></pre>
 <p>Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on stocke dans un ensemble les sommets déjà vu. On utilise pour cela le mot clé <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops"><code class="language-">continue</code></a>.</p>
@@ -690,7 +682,7 @@ $$</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G = (V, E)$ un graphe connexe et $a, b\in V$.</p>
-<p>S'il existe  un chemin allant de $a$ à $x$ :</p>
+<p>S'il existe un chemin allant de $a$ à $x$ :</p>
 <ul>
 <li>ne passant pas par $b$</li>
 <li>tel que tous les voisins de $x$ soient dans le chemin</li>
