@@ -41,8 +41,11 @@ eleventyComputed:
       1. [de vérifieur à décideur](/cours/algorithmie/décision-problèmes/)
       2. [SAT est NPC](/cours/algorithmie/décision-problèmes/SAT-NPC/)
 4. Cours 4 : [problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/)
-   1. SAC à dos est NPC
-   2. résolutions
+   1. [SAC à dos est NPC](/cours/algorithmie/exemples-problèmes-NPC/)
+   2. [résolutions](/cours/algorithmie/problème-sac-à-dos/étude) :
+      1. fractionnel
+      2. énumération (juste donner le principe)
+      3. programmation dynamique
 
 ### C
 
@@ -52,6 +55,9 @@ eleventyComputed:
       1. [organisation système de la mémoire](/cours/système/système-exploitation/process/#forme-finale)
       2. différence entre pile et tas
 2. [cours de C](/cours/système/langage-c/)
+
+> TBD Faire le sac à dos en C
+> TBD ajouter python et C
 
 ### Graphes
 
