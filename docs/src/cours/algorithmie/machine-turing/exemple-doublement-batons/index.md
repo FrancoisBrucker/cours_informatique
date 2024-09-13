@@ -214,15 +214,13 @@ Il nous reste plus qu'à gérer le stop :
 ...
 0000⓪0111100000 START
 00000⓪111100000 SEPT
-000000①11100000 HUIT - STOP
+000000①11100000 STOP
 ```
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------
 START |   0  |  SEPT       |     0    |  droite
-SEPT  |   0  |  HUIT       |     0    |  droite
-HUIT  |   0  |  STOP       |     0    |  droite
-HUIT  |   1  |  STOP       |     1    |  droite
+SEPT  |   0  |  STOP       |     0    |  droite
 
 ## Machine finale
 
@@ -240,18 +238,16 @@ CINQ  |   0  |  SIX        |     0    |  gauche
 CINQ  |   1  |  CINQ       |     1    |  gauche  
 SIX   |   0  |  START      |     0    |  gauche  
 SIX   |   1  |  SIX        |     1    |  gauche  
-SEPT  |   0  |  HUIT       |     0    |  droite
-HUIT  |   0  |  STOP       |     0    |  droite
-HUIT  |   1  |  STOP       |     1    |  droite
+SEPT  |   0  |  STOP       |     0    |  droite
 
 Et maintenant la machine finale :
 
 {% exercice %}
-Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/>.
+Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/> et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.
 {% endexercice %}
 {% details "solution" %}
 
-> TBD refaire avec la machine précédente
+> TBD ne marche pas. A changer...
 
 ```
 blank: 0
@@ -261,53 +257,64 @@ table:
   START:
     0: {
       write: 0,
+      R: DEUX
+    }
+    1: {
+      write: 0,
+      R: UN
+    }
+  UN:
+    0: {
+      write: 0,
+      R: SEPT
+    }
+    1: {
+      write: 1,
+      R: UN
+    }
+  DEUX:
+    0: {
+      write: 1,
+      R: TROIS
+    }
+    1: {
+      write: 1,
+      R: DEUX
+    }
+  TROIS:
+    0: {
+      write: 1,
+      R: QUATRE
+    }
+  QUATRE:
+    0: {
+      write: 0,
+      L: CINQ
+    }
+  CINQ:
+    0: {
+      write: 0,
+      L: SIX
+    }
+    1: {
+      write: 1,
+      L: CINQ
+    }
+  SIX:
+    0: {
+      write: 0,
+      L: START
+    }
+    1: {
+      write: 1,
+      L: SIX
+    }
+  SEPT:
+    0: {
+      write: 0,
       R: STOP
     }
-    1: {
-      write: 0,
-      R: D_ENTREE
-    }
-  D_ENTREE:
-    1: {
-      write: 1,
-      R: D_ENTREE
-    }
-    0: {
-      write: 0,
-      R: D_SORTIE
-    }
-  D_SORTIE:
-    0: {
-      write: 1,
-      R: ÉCRIT
-    }
-    1: {
-      write: 1,
-      R: D_SORTIE
-    }
-  ÉCRIT:
-    0: {
-      write: 1,
-      L: G_SORTIE
-    }
-  G_SORTIE:
-    1: {
-      write: 1,
-      L: G_SORTIE
-    }
-    0: {
-      write: 0,
-      L: G_ENTREE
-    }
-  G_ENTREE:
-    1: {
-      write: 1,
-      L: G_ENTREE
-    }
-    0: {
-      write: 0,
-      R: START
-    }
+
   STOP:
 ```
 
