@@ -135,18 +135,9 @@ La composition de machines de Turing permet d'écrire du code comme en pseudo-as
 - un saut à une ligne donné
 - un saut conditionnel à une ligne donné
 
-Utilisons cette formalisation pour réaliser une machine un peu plus complexe que ce que nous avons fait jusqu'à présent :
+Utilisons cette formalisation pour refaire le [doublement de batons](../exemple-doublement-batons) que nous avons fait précédemment.
 
-Nous allons créer une machine de Turing qui prend en entrée un suite finie de $k$ `1` ($k$ _bâtons_) et rend comme sortie une suite de $2k$ `1` ($2k$ _bâtons_).
-
-Cette machine fait l'opération _multiplier par 2_ si l'on encode les entiers positifs par un [système unaire](https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire).
-
-Commençons par chercher un algorithme pour faire cela et convertissons chaque partie en une machine de Turing.
-L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérativement un bâton à l'entrée et d'en ajouter 2 à la sortie. Lorsque l'on aura supprimé tous les bâtons de l'entrée, il ne restera que la sortie et la machine s'arrêtera :
-
-![doublement de bâtons](./turing_double_batons.gif)
-
-Créons cette procédure en combinant des étapes élémentaires (ie pouvant être facilement crées avec une machine de Turing) :
+On va décomposer la machine en plusieurs opérations _"élémentaires"_ :
 
 1. Si `0` aller ligne 9
 2. Écrire `0` et aller à droite jusqu'à arriver sur un `0`. Aller à droite.
@@ -157,6 +148,8 @@ Créons cette procédure en combinant des étapes élémentaires (ie pouvant êt
 7. Aller à gauche jusqu'à arriver sur un `0`. Aller à droite
 8. retour en 1
 9. Aller à droite. Aller à droite
+
+On peut ensuite écrire chacun de ses machines puis les composer.
 
 {% exercice %}
 Vérifiez que le programme précédant fonctionne avec `111` comme entrée
@@ -192,72 +185,4 @@ fin étape 3 : 000001111110
 
 {% enddetails %}
 
-Et maintenant la machine :
-
-{% exercice %}
-Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/>.
-
-On pourra sûrement simplifier les connexions entre les lignes.
-{% endexercice %}
-{% details "solution" %}
-
-```
-blank: 0
-start state: START
-input: '111'
-table:
-  START:
-    0: {
-      write: 0,
-      R: STOP
-    }
-    1: {
-      write: 0,
-      R: D_ENTREE
-    }
-  D_ENTREE:
-    1: {
-      write: 1,
-      R: D_ENTREE
-    }
-    0: {
-      write: 0,
-      R: D_SORTIE
-    }
-  D_SORTIE:
-    0: {
-      write: 1,
-      R: ÉCRIT
-    }
-    1: {
-      write: 1,
-      R: D_SORTIE
-    }
-  ÉCRIT:
-    0: {
-      write: 1,
-      L: G_SORTIE
-    }
-  G_SORTIE:
-    1: {
-      write: 1,
-      L: G_SORTIE
-    }
-    0: {
-      write: 0,
-      L: G_ENTREE
-    }
-  G_ENTREE:
-    1: {
-      write: 1,
-      L: G_ENTREE
-    }
-    0: {
-      write: 0,
-      R: START
-    }
-  STOP:
-```
-
-{% enddetails %}
-
+> TBD à finir en écrivant les différentes machines élémentaires

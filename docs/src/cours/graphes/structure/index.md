@@ -406,3 +406,56 @@ Le graphe suivant est le produit cartésien de deux graphes, lesquels ?
 {% details "**Solution**" %}
 ![g carré g solution](./quel_carré_solution.png)
 {% enddetails %}
+
+## Morphismes de graphes
+
+{% lien %}
+[Les définitions d'une excellente chaîne d'informatique](https://www.youtube.com/watch?v=21bMUXO-QYQ)
+{% endlien %}
+
+Les notions définies dans cette partie le seront -- par commodité -- pour des graphes mais elles se généralisent directement à des graphes orienté ou à des multigraphes.
+
+### Définitions
+
+{% note "**Définition**" %}
+Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une fonction $f: V\to V'$ est un **_morphisme_** entre $G$ et $G'$ si $xy \in E$ implique $f(x)f(y) \in E'$.
+
+{% endnote %}
+
+> TBD exemple
+
+On le voit dans l'exemple $f$ n'est pas forcément une bijection de $V$ dans $V'$ et l'implication n'est que dans un sens : l'arête  $f(x)f(y)$ peut exister dans $G'$ alors que $xy \notin E$. Pour avoir une correspondance parfaite entre $G$ et $G'$ il faut qu'il existe un **_isomorphisme_** entre eux :
+
+{% note "**Définition**" %}
+Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une bijection $f: V\to V'$ est un **_isomorphisme_** entre $G$ et $G'$ si $xy \in E$ est équivalent à $f(x)f(y) \in E'$.
+
+{% endnote %}
+
+Deux graphes isomorphes sont structurellement équivalents. Ils ne diffèrent que par le nom des sommets.
+
+En ce sens, notez que le si et seulement si entre les arêtes n'est pas suffisant pour que les graphes soient équivalents
+
+> TBD un chemin de longueur 3 dans une arête. On a bien le ssi mais les deux graphes ne sont clairement pas identiques.
+
+L'identité est toujours un isomorphisme d'un graphe dans lui même, et certains graphes (les graphes complets par exemple) en admettent beaucoup d'autres. On appelle ces isomorphisme d'un graphe dans lui-même des automorphismes :
+
+{% note "**Définition**" %}
+Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
+
+{% endnote %}
+
+> TBD exemple.
+
+### Reconnaissance
+
+{% note "**Problème de décision**" %}
+
+- **nom** : isomorphisme de graphe
+- **données** : deux graphes
+- **question** : les deux graphes sont-ils isomorphes ?
+
+{% endnote %}
+
+Si on se donne une fonction $f$ allant de l'ensemble des sommets d'un graphe à un autre, il est facile de vérifier si c'est un isomorphisme entre les deux graphes ou non : le problème de l'isomorphisme de graphe est donc clairement dans NP.
+
+En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem) est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.

@@ -23,6 +23,10 @@ Enfin, toutes les tentatives de généralisation de son modèle se sont révél�
 [définitions](./définitions){.interne}
 {% endaller %}
 
+{% aller %}
+[Exemple du Doublement de batons](./exemple-doublement-batons){.interne}
+{% endaller %}
+
 ## Compositions de machines
 
 Écrire un programme en machine de Turing (c'est à dire écrie des fonctions de transitions) peut être pénible, nous décrivons dans cette partie quelques [sucres syntaxiques](https://fr.wikipedia.org/wiki/Sucre_syntaxique) permettant d'obtenir toutes les structures de contrôle d'un pseudo-assembleur (séquentialité, saut et saut conditionnel) :

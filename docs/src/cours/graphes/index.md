@@ -10,6 +10,7 @@ eleventyNavigation:
   prerequis:
     - /cours/algorithmie/complexité-calculs/
     - /cours/coder-et-développer/
+    - /cours/algorithmie/problèmes-NP/
 
 eleventyComputed:
   eleventyNavigation:
@@ -98,6 +99,8 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 - file de priorité
 - arbre de recherche
 
+> TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
+
 ## Chemins de longueur/poids minimum
 
 ### <span id="chemin-problèmes"></span> Problème et algorithmes
@@ -149,14 +152,16 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
-## Couplages
-
-{% aller %}
-[Couplages](./couplages/){.interne}
-{% endaller %}
-
 ## Planarité
 
 > TBD isomorphisme de graphe planaire
 
 ## Colorabilité
+
+> <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
+
+## Couplages
+
+{% aller %}
+[Couplages](./couplages/){.interne}
+{% endaller %}

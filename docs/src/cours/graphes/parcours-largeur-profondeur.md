@@ -39,6 +39,7 @@ tous les sommets une fois de plus en plus loin et chemin longs
 
 ### Utilisation
 
-- Tarjan fortement connexe
-- ordonnencement ordre en 
-- parler de trouver cycles en temps linéaire avec.
+- Tarjan fortement connexe : <https://www.youtube.com/watch?v=m2mdGfxs_5E>
+
+- ordonnancement ordre.
+- parler de trouver cycles/chemin en temps linéaire avec

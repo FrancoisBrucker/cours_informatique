@@ -111,17 +111,55 @@ M_0 = R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
 $$
 </div>
 
-Il faut maintenant contraindre l'évolution des valeurs du ruban en fonction de la fonction de transition.
+Si on reprend l'exécution de [la machine de Turing doublant les batons](../../machine-turing/exemple-doublement-batons) la succession des variables de ruban, de curseur et d'état est la suivante :
 
-> TBD faire le matrice de l'exécution en mettant en ligne le ruban.
+> TBD mettre les états
+
+```
+000①10000000000  START
+0000①0000000000
+00001⓪000000000
+000010⓪00000000
+0000101⓪0000000
+00001011⓪000000
+0000101①0000000
+000010①10000000
+00001⓪110000000
+0000①0110000000
+000⓪10110000000
+0000①0110000000
+00000⓪110000000
+000000①10000000
+0000001①0000000
+00000011⓪000000
+000000111⓪00000
+0000001111⓪0000
+000000111①00000
+00000011①100000
+0000001①1100000
+000000①11100000
+00000⓪111100000
+0000⓪0111100000
+00000⓪111100000
+000000①11100000 STOP
+```
+
+Qui est bien représenté par l'énorme (mais de taille polynomiale par rapport à l'entrée puisque le nombre d'état est une constante) conjonction de clauses $M_0$.
+
+Cependant sans contrôle de ces variables elles peuvent s'affecter comme on veut. C'est le but de la partie suivante.
 
 ## Ruban et transitions
 
-> TBD la transition permet de passer d'une ligne à l'autre. La modification est locale puisque on ne peut aller que d'une case à gauche ou d'une case à droite.
-> TBD c'est une fenêtre de 3x2 sur la matrice d'exécution centrée au niveau du curseur.
->
+Il faut maintenant contraindre l'évolution des valeurs du ruban en fonction de la fonction de transition.
 
-Les transitions permettent de passer d'une étape à une autre, elles peuvent également être modélisées par des clauses.
+Comme l'exécution de la machine de Turing est locale, contrôler ces transitions est simple à faire : si le curseur est en position $i$ à l'étape $k$ ($c^k_i = 1$ et $c^k_j = 0$ pour $j\neq i$) et se trouve à l'état $q_l^k$ ($q^k_l = 1$ et $q^k_m = 0$ pour $m\neq l$) il suffit de  :
+
+1. connaître la transition $\delta(q_l^k, r_i^k)$
+2. modifier uniquement 2 cases du ruban :
+   - $r_i^k$,
+   - soit $r_{i-1}^{k+1}$ soit $r_{i+1}^{k+1}$ selon la direction de la transition
+
+Cela revient à suivre une matrice de 3x2 centrée en la position du ruban tout au long de l'exécution : tout ceci va pouvoir se faire par des clauses et de manière polynomiale.
 
 ### Conservation si pas de curseur
 

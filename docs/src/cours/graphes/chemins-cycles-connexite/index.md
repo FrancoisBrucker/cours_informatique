@@ -370,6 +370,14 @@ Pour s'assurer de ne pas refaire plusieurs fois la même composante connexe, on 
 
 {% enddetails %}
 
+### <span id="algorithme-fortement-connexe"></span> Algorithme de recherche de composante fortement connexe
+
+> TBD lien
+
+{% info %}
+Notez qu'il existe un autre algorithme utilisant le parcours en profondeur et que nous verrons plus tard qui permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.
+{% endinfo %}
+
 ### Trouver un chemin
 
 L'algorithme suivant, nommé `chemin`{.language-}, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.
@@ -418,9 +426,14 @@ $$
 C = \mathcal{O}(\sum_x (\delta(x))^2) \leq \mathcal{O}((\sum_x \delta(x))^2) = \mathcal{O}((2 \vert E \vert)^2) = \mathcal{O}(\vert E \vert^2)
 $$
 
-{% note %}
-Notez que cet algorithme recalcule plein de fois la même chose : tous les voisins de $x$. Une version optimisée de cet algorithme, appelé parcours en profondeur et que nous verrons plus tard, permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.
-{% endnote %}
+
+> TBD lien
+
+{% info %}
+Notez que cet algorithme recalcule plein de fois la même chose : tous les voisins de $x$.
+
+La encore, Une version optimisée de cet algorithme peut être faite avec le parcours en profondeur et que nous verrons plus tard, permet de faire la même chose avec une complexité linéaire (c'est à dire la taille du graphe): $\mathcal{O}(\vert E \vert)$.
+{% endinfo %}
 
 #### <span id="chemin-preuve"></span> Preuve
 
