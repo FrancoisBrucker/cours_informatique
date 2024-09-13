@@ -380,7 +380,7 @@
 <pre><code>...
 0000⓪0111100000 START
 00000⓪111100000 SEPT
-000000①11100000 HUIT - STOP
+000000①11100000 STOP
 </code></pre>
 <table>
 <thead>
@@ -403,22 +403,8 @@
 <tr>
 <td>SEPT</td>
 <td>0</td>
-<td>HUIT</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>HUIT</td>
-<td>0</td>
 <td>STOP</td>
 <td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>HUIT</td>
-<td>1</td>
-<td>STOP</td>
-<td>1</td>
 <td>droite</td>
 </tr>
 </tbody>
@@ -522,22 +508,8 @@
 <tr>
 <td>SEPT</td>
 <td>0</td>
-<td>HUIT</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>HUIT</td>
-<td>0</td>
 <td>STOP</td>
 <td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>HUIT</td>
-<td>1</td>
-<td>STOP</td>
-<td>1</td>
 <td>droite</td>
 </tr>
 </tbody>
@@ -546,7 +518,7 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez la machine pour qu'elle soit exécutable sur <a href="https://turingmachine.io/">https://turingmachine.io/</a>.</p>
+<p>Écrivez la machine pour qu'elle soit exécutable sur <a href="https://turingmachine.io/">https://turingmachine.io/</a> et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -567,7 +539,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <blockquote>
-<p>TBD refaire avec la machine précédente</p>
+<p>TBD ne marche pas. A changer...</p>
 </blockquote>
 <pre><code>blank: 0
 start state: START
@@ -576,53 +548,64 @@ table:
   START:
     0: {
       write: 0,
+      R: DEUX
+    }
+    1: {
+      write: 0,
+      R: UN
+    }
+  UN:
+    0: {
+      write: 0,
+      R: SEPT
+    }
+    1: {
+      write: 1,
+      R: UN
+    }
+  DEUX:
+    0: {
+      write: 1,
+      R: TROIS
+    }
+    1: {
+      write: 1,
+      R: DEUX
+    }
+  TROIS:
+    0: {
+      write: 1,
+      R: QUATRE
+    }
+  QUATRE:
+    0: {
+      write: 0,
+      L: CINQ
+    }
+  CINQ:
+    0: {
+      write: 0,
+      L: SIX
+    }
+    1: {
+      write: 1,
+      L: CINQ
+    }
+  SIX:
+    0: {
+      write: 0,
+      L: START
+    }
+    1: {
+      write: 1,
+      L: SIX
+    }
+  SEPT:
+    0: {
+      write: 0,
       R: STOP
     }
-    1: {
-      write: 0,
-      R: D_ENTREE
-    }
-  D_ENTREE:
-    1: {
-      write: 1,
-      R: D_ENTREE
-    }
-    0: {
-      write: 0,
-      R: D_SORTIE
-    }
-  D_SORTIE:
-    0: {
-      write: 1,
-      R: ÉCRIT
-    }
-    1: {
-      write: 1,
-      R: D_SORTIE
-    }
-  ÉCRIT:
-    0: {
-      write: 1,
-      L: G_SORTIE
-    }
-  G_SORTIE:
-    1: {
-      write: 1,
-      L: G_SORTIE
-    }
-    0: {
-      write: 0,
-      L: G_ENTREE
-    }
-  G_ENTREE:
-    1: {
-      write: 1,
-      L: G_ENTREE
-    }
-    0: {
-      write: 0,
-      R: START
-    }
+
   STOP:
 </code></pre>
 </div>
