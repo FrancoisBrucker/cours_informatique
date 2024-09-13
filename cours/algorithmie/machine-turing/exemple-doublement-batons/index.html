@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Exemple du doublement de batons</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Exemple du doublement de batons</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/exemple-doublement-batons/">Exemple du doublement de batons</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Faire de l'arithmétique avec une machine de Turing. Comme on ne peut qu'écrire des 0 ou des 1, la façon la plus simple d'écrire les nombres est d'utiliser un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire">système unaire</a> : chaque entier $n$ est représenté par $n$ 1 successifs sur la machine.</p>
+<h2>Problème</h2>
+<p>Nous voulons créer une machine de Turing qui prend en entrée un suite finie de $k$ <code>1</code> ($k$ <em>bâtons</em>) et rend comme sortie une suite de $2k$ <code>1</code> ($2k$ <em>bâtons</em>).</p>
+<p>Cette machine fait l'opération <em>multiplier par 2 unaire</em>.</p>
+<h2>Idée</h2>
+<p>Chaque baton en entrée doit être doublé, mais :</p>
+<ul>
+<li>comme une machine de Turing n'a pas de variable on ne peut pas utiliser de compteur de boucle</li>
+<li>que le nombre d'état est constant : on ne peut pas les utiliser pour faire un compteur de boucle ($n$ états ne permettraient que de traiter les nombre de taille au plus $n$)</li>
+</ul>
+<p>Il faut pouvoir trouver une boucle principale d'action et avoir un moyen simple de vérifier les fins de boucle et de revenir en début de boucle si nécessaire.</p>
+<p>L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérativement un bâton à l'entrée et d'en ajouter 2 à la sortie. Lorsque l'on aura supprimé tous les bâtons de l'entrée, il ne restera que la sortie et la machine s'arrêtera :</p>
+<pre><code>000①10000000000
+0000①0000000000
+00001⓪000000000
+000010⓪00000000
+0000101⓪0000000
+00001011⓪000000
+0000101①0000000
+000010①10000000
+00001⓪110000000
+0000①0110000000
+000⓪10110000000
+0000①0110000000
+00000⓪110000000
+000000①10000000
+0000001①0000000
+00000011⓪000000
+000000111⓪00000
+0000001111⓪0000
+000000111①00000
+00000011①100000
+0000001①1100000
+000000①11100000
+00000⓪111100000
+0000⓪0111100000
+00000⓪111100000
+000000①11100000
+</code></pre>
+<p>Ou de façon animée avec 3 batons :</p>
+<p><img src="turing_double_batons.gif" alt="doublement de bâtons"></p>
+<h2>Création de la machine</h2>
+<p>On va exécuter notre machine et ajouter petit à petit des états qui vont permettre de réaliser notre schéma ci-dessus.</p>
+<p>On va ici ne pas faire dans la dentelle et ajouter des états lorsque l'on en a besoin. Il existe sûrement une version plus optimisée de cette machine mais qui sera plus compliquée à trouver.</p>
+<h3>Départ</h3>
+<p>On part de (START, 1) à droite tant que l'on rencontre des 1 :</p>
+<pre><code>000①10000000000 START
+0000①0000000000 UN
+00001⓪000000000 UN
+...
+</code></pre>
+<p>On peut faire ça comme ça :</p>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>1</td>
+<td>UN</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>UN</td>
+<td>1</td>
+<td>UN</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<h3>Séparation entre entrée et sortie</h3>
+<p>On arrive au <code>0</code> qui doit séparer l'entrée de la sortie. On se décale vers la droite pour se placer en mode écriture.</p>
+<pre><code>...
+00001⓪000000000 UN
+000010⓪00000000 DEUX
+...
+</code></pre>
+<p>Ceci peut se faire en ajoutant autant d'états que nécessaire :</p>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UN</td>
+<td>0</td>
+<td>DEUX</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<h3>Écriture de la sortie</h3>
+<p>On arrive au <code>0</code> qui doit être remplacé par deux 1 à la suite.</p>
+<pre><code>...
+00001⓪000000000 UN
+000010⓪00000000 DEUX
+0000101⓪0000000 TROIS
+00001011⓪000000 QUATRE
+...
+</code></pre>
+<p>On peut faire ça directement avec 1 nouvel état :</p>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEUX</td>
+<td>0</td>
+<td>TROIS</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>TROIS</td>
+<td>0</td>
+<td>QUATRE</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<h3>On remonte la sortie</h3>
+<p>Il faut maintenant remonter l'entrée :</p>
+<pre><code>...
+00001011⓪000000 QUATRE
+0000101①0000000 CINQ
+000010①10000000 CINQ
+00001⓪110000000 CINQ
+...
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUATRE</td>
+<td>0</td>
+<td>CINQ</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>CINQ</td>
+<td>1</td>
+<td>CINQ</td>
+<td>1</td>
+<td>gauche</td>
+</tr>
+</tbody>
+</table>
+<h3>On remonte l'entrée</h3>
+<pre><code>...
+00001⓪110000000 CINQ
+0000①0110000000 SIX
+000⓪10110000000 SIX
+...
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CINQ</td>
+<td>0</td>
+<td>SIX</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>SIX</td>
+<td>1</td>
+<td>SIX</td>
+<td>1</td>
+<td>gauche</td>
+</tr>
+</tbody>
+</table>
+<h3>On recommence à START</h3>
+<p>On est arrivé juste à gauche de l'entrée, il suffit de se décaler à droite pour tout recommencer.</p>
+<pre><code>...
+000⓪10110000000 SIX
+0000①0110000000 START
+...
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIX</td>
+<td>0</td>
+<td>START</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+</tbody>
+</table>
+<p>La machine va alors recommencer son cycle jusqu'à tomber sur un cas non prévu :</p>
+<pre><code>...
+0000①0110000000 START
+00000⓪110000000 UN
+000000①10000000 DEUX
+...
+</code></pre>
+<p>On a écrit des choses en sortie. Il faut donc se décaler jusqu'à obtenir un 0 :</p>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEUX</td>
+<td>1</td>
+<td>DEUX</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<p>Ce qui permet de continuer comme si de rien n'était :</p>
+<pre><code>000000①10000000 DEUX
+0000001①0000000 DEUX
+00000011⓪000000 DEUX
+000000111⓪00000 TROIS
+0000001111⓪0000 QUATRE
+000000111①00000 CINQ
+00000011①100000 CINQ
+0000001①1100000 CINQ
+000000①11100000 CINQ
+00000⓪111100000 CINQ
+0000⓪0111100000 SIX
+...
+</code></pre>
+<h3>On STOP si on a fini</h3>
+<p>Il nous reste plus qu'à gérer le stop :</p>
+<pre><code>...
+0000⓪0111100000 START
+00000⓪111100000 SEPT
+000000①11100000 HUIT - STOP
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>0</td>
+<td>SEPT</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>SEPT</td>
+<td>0</td>
+<td>HUIT</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>HUIT</td>
+<td>0</td>
+<td>STOP</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>HUIT</td>
+<td>1</td>
+<td>STOP</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<h2>Machine finale</h2>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>0</td>
+<td>SEPT</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>START</td>
+<td>1</td>
+<td>UN</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>UN</td>
+<td>0</td>
+<td>DEUX</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>UN</td>
+<td>1</td>
+<td>UN</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>DEUX</td>
+<td>0</td>
+<td>TROIS</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>DEUX</td>
+<td>1</td>
+<td>DEUX</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>TROIS</td>
+<td>0</td>
+<td>QUATRE</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>QUATRE</td>
+<td>0</td>
+<td>CINQ</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>CINQ</td>
+<td>0</td>
+<td>SIX</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>CINQ</td>
+<td>1</td>
+<td>CINQ</td>
+<td>1</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>SIX</td>
+<td>0</td>
+<td>START</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>SIX</td>
+<td>1</td>
+<td>SIX</td>
+<td>1</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>SEPT</td>
+<td>0</td>
+<td>HUIT</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>HUIT</td>
+<td>0</td>
+<td>STOP</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>HUIT</td>
+<td>1</td>
+<td>STOP</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+</tbody>
+</table>
+<p>Et maintenant la machine finale :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez la machine pour qu'elle soit exécutable sur <a href="https://turingmachine.io/">https://turingmachine.io/</a>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD refaire avec la machine précédente</p>
+</blockquote>
+<pre><code>blank: 0
+start state: START
+input: '111'
+table:
+  START:
+    0: {
+      write: 0,
+      R: STOP
+    }
+    1: {
+      write: 0,
+      R: D_ENTREE
+    }
+  D_ENTREE:
+    1: {
+      write: 1,
+      R: D_ENTREE
+    }
+    0: {
+      write: 0,
+      R: D_SORTIE
+    }
+  D_SORTIE:
+    0: {
+      write: 1,
+      R: ÉCRIT
+    }
+    1: {
+      write: 1,
+      R: D_SORTIE
+    }
+  ÉCRIT:
+    0: {
+      write: 1,
+      L: G_SORTIE
+    }
+  G_SORTIE:
+    1: {
+      write: 1,
+      L: G_SORTIE
+    }
+    0: {
+      write: 0,
+      L: G_ENTREE
+    }
+  G_ENTREE:
+    1: {
+      write: 1,
+      L: G_ENTREE
+    }
+    0: {
+      write: 0,
+      R: START
+    }
+  STOP:
+</code></pre>
+</div>
+</details>     
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

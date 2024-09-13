@@ -263,13 +263,8 @@ $$</p>
 <li>un saut à une ligne donné</li>
 <li>un saut conditionnel à une ligne donné</li>
 </ul>
-<p>Utilisons cette formalisation pour réaliser une machine un peu plus complexe que ce que nous avons fait jusqu'à présent :</p>
-<p>Nous allons créer une machine de Turing qui prend en entrée un suite finie de $k$ <code>1</code> ($k$ <em>bâtons</em>) et rend comme sortie une suite de $2k$ <code>1</code> ($2k$ <em>bâtons</em>).</p>
-<p>Cette machine fait l'opération <em>multiplier par 2</em> si l'on encode les entiers positifs par un <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire">système unaire</a>.</p>
-<p>Commençons par chercher un algorithme pour faire cela et convertissons chaque partie en une machine de Turing.<br>
-L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérativement un bâton à l'entrée et d'en ajouter 2 à la sortie. Lorsque l'on aura supprimé tous les bâtons de l'entrée, il ne restera que la sortie et la machine s'arrêtera :</p>
-<p><img src="turing_double_batons.gif" alt="doublement de bâtons"></p>
-<p>Créons cette procédure en combinant des étapes élémentaires (ie pouvant être facilement crées avec une machine de Turing) :</p>
+<p>Utilisons cette formalisation pour refaire le <a href="../exemple-doublement-batons">doublement de batons</a> que nous avons fait précédemment.</p>
+<p>On va décomposer la machine en plusieurs opérations <em>&quot;élémentaires&quot;</em> :</p>
 <ol>
 <li>Si <code>0</code> aller ligne 9</li>
 <li>Écrire <code>0</code> et aller à droite jusqu'à arriver sur un <code>0</code>. Aller à droite.</li>
@@ -281,6 +276,7 @@ L'idée est de fabriquer la sortie à droite de l'entrée en supprimant itérati
 <li>retour en 1</li>
 <li>Aller à droite. Aller à droite</li>
 </ol>
+<p>On peut ensuite écrire chacun de ses machines puis les composer.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -332,90 +328,9 @@ fin étape 3 : 000001111110
 </div>
 </details>     
 </div>
-<p>Et maintenant la machine :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez la machine pour qu'elle soit exécutable sur <a href="https://turingmachine.io/">https://turingmachine.io/</a>.</p>
-<p>On pourra sûrement simplifier les connexions entre les lignes.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre><code>blank: 0
-start state: START
-input: '111'
-table:
-  START:
-    0: {
-      write: 0,
-      R: STOP
-    }
-    1: {
-      write: 0,
-      R: D_ENTREE
-    }
-  D_ENTREE:
-    1: {
-      write: 1,
-      R: D_ENTREE
-    }
-    0: {
-      write: 0,
-      R: D_SORTIE
-    }
-  D_SORTIE:
-    0: {
-      write: 1,
-      R: ÉCRIT
-    }
-    1: {
-      write: 1,
-      R: D_SORTIE
-    }
-  ÉCRIT:
-    0: {
-      write: 1,
-      L: G_SORTIE
-    }
-  G_SORTIE:
-    1: {
-      write: 1,
-      L: G_SORTIE
-    }
-    0: {
-      write: 0,
-      L: G_ENTREE
-    }
-  G_ENTREE:
-    1: {
-      write: 1,
-      L: G_ENTREE
-    }
-    0: {
-      write: 0,
-      R: START
-    }
-  STOP:
-</code></pre>
-</div>
-</details>     
-</div>
+<blockquote>
+<p>TBD à finir en écrivant les différentes machines élémentaires</p>
+</blockquote>
 
 
 </article>
