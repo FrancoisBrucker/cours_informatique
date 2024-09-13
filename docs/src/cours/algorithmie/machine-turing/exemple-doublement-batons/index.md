@@ -212,21 +212,20 @@ Il nous reste plus qu'à gérer le stop :
 
 ```
 ...
-0000⓪0111100000 START
-00000⓪111100000 SEPT
+0000⓪0111100000 SIX
+00000⓪111100000 START
 000000①11100000 STOP
 ```
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------
-START |   0  |  SEPT       |     0    |  droite
-SEPT  |   0  |  STOP       |     0    |  droite
+START |   0  |  STOP       |     0    |  droite
 
 ## Machine finale
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------
-START |   0  |  SEPT       |     0    |  droite
+START |   0  |  STOP       |     0    |  droite
 START |   1  |    UN       |     0    |  droite
   UN  |   0  |  DEUX       |     0    |  droite
   UN  |   1  |    UN       |     1    |  droite
@@ -237,8 +236,7 @@ QUATRE|   0  |  CINQ       |     0    |  gauche
 CINQ  |   0  |  SIX        |     0    |  gauche  
 CINQ  |   1  |  CINQ       |     1    |  gauche  
 SIX   |   0  |  START      |     0    |  droite  
-SIX   |   1  |  SIX        |     1    |  gauche  
-SEPT  |   0  |  STOP       |     0    |  droite
+SIX   |   1  |  SIX        |     1    |  gauche
 
 Et maintenant la machine finale :
 
@@ -255,7 +253,7 @@ table:
   START:
     0: {
       write: 0,
-      R: SEPT
+      R: STOP
     }
     1: {
       write: 0,
@@ -306,11 +304,6 @@ table:
     1: {
       write: 1,
       L: SIX
-    }
-  SEPT:
-    0: {
-      write: 0,
-      R: STOP
     }
 
   STOP:

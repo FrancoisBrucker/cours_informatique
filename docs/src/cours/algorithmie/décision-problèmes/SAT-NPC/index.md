@@ -9,9 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD remplacer = par $\Leftrightarrow$ et dire formule logique = clauses
-
- 
 Nous allons montrer que la classe NP contient des problèmes plus généraux que tous les autres. Soit $M$ une machine de Turing non déterministe polynomiale. Il existe alors $K$ et $k$ tels que pour toute entrée $E$ de taille $n$, la machine s'arrête au bout de $Kn^k$ opérations.
 
 De là :
@@ -51,11 +48,11 @@ R^0 = \bigwedge_{i} \overline{r_i^0}
 $$
 </div>
 
-Sinon, si l'entrée est $E=e_0\dots e_{p-1}$ on aura $r_i^0 = e_i$ pour tout $i$, ce qui donne :
+Sinon, si l'entrée est $E=e_0\dots e_{p-1}$ on aura $r_i^0 \Leftrightarrow e_i$ pour tout $i$ (les deux valeurs sont identiques), ce qui donne :
 
 <div>
 $$
-R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 = e_i)) = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \lor \overline{e_i}) \land (\overline{r_i^0} \lor e_i))
+R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \Leftrightarrow e_i)) = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge_{0 \leq i < p} (r_i^0 \lor \overline{e_i}) \land (\overline{r_i^0} \lor e_i))
 $$
 </div>
 
@@ -116,38 +113,42 @@ $$
 
 Si on reprend l'exécution de [la machine de Turing doublant les batons](../../machine-turing/exemple-doublement-batons) la succession des variables de ruban, de curseur et d'état est la suivante :
 
-> TBD mettre les états
-
 ```
 000①10000000000  START
-0000①0000000000
-00001⓪000000000
-000010⓪00000000
-0000101⓪0000000
-00001011⓪000000
-0000101①0000000
-000010①10000000
-00001⓪110000000
-0000①0110000000
-000⓪10110000000
-0000①0110000000
-00000⓪110000000
-000000①10000000
-0000001①0000000
-00000011⓪000000
-000000111⓪00000
-0000001111⓪0000
-000000111①00000
-00000011①100000
-0000001①1100000
-000000①11100000
-00000⓪111100000
-0000⓪0111100000
-00000⓪111100000
-000000①11100000 STOP
+0000①0000000000  UN
+00001⓪000000000  UN
+000010⓪00000000  DEUX
+0000101⓪0000000  TROIS
+00001011⓪000000  QUATRE
+0000101①0000000  CINQ
+000010①10000000  CINQ
+00001⓪110000000  CINQ
+0000①0110000000  SIX
+000⓪10110000000  SIX
+0000①0110000000  START
+00000⓪110000000  UN
+000000①10000000  DEUX
+0000001①0000000  DEUX
+00000011⓪000000  DEUX
+000000111⓪00000  TROIS
+0000001111⓪0000  QUATRE
+000000111①00000  CINQ
+00000011①100000  CINQ
+0000001①1100000  CINQ
+000000①11100000  CINQ
+00000⓪111100000  CINQ
+0000⓪0111100000  SIX
+00000⓪111100000  START
+000000①11100000  STOP
 ```
 
 Qui est bien représenté par l'énorme (mais de taille polynomiale par rapport à l'entrée puisque le nombre d'état est une constante) conjonction de clauses $M_0$.
+
+> TBD faire les variables
+
+On a :
+
+- $R^0 =$
 
 Cependant sans contrôle de ces variables elles peuvent s'affecter comme on veut. C'est le but de la partie suivante.
 
