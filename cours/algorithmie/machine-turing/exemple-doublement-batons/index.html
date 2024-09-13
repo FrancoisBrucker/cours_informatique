@@ -378,8 +378,8 @@
 <h3>On STOP si on a fini</h3>
 <p>Il nous reste plus qu'à gérer le stop :</p>
 <pre><code>...
-0000⓪0111100000 START
-00000⓪111100000 SEPT
+0000⓪0111100000 SIX
+00000⓪111100000 START
 000000①11100000 STOP
 </code></pre>
 <table>
@@ -395,13 +395,6 @@
 <tbody>
 <tr>
 <td>START</td>
-<td>0</td>
-<td>SEPT</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>SEPT</td>
 <td>0</td>
 <td>STOP</td>
 <td>0</td>
@@ -424,93 +417,86 @@
 <tr>
 <td>START</td>
 <td>0</td>
-<td>SEPT</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>START</td>
-<td>1</td>
-<td>UN</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>UN</td>
-<td>0</td>
-<td>DEUX</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>UN</td>
-<td>1</td>
-<td>UN</td>
-<td>1</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>DEUX</td>
-<td>0</td>
-<td>TROIS</td>
-<td>1</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>DEUX</td>
-<td>1</td>
-<td>DEUX</td>
-<td>1</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>TROIS</td>
-<td>0</td>
-<td>QUATRE</td>
-<td>1</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>QUATRE</td>
-<td>0</td>
-<td>CINQ</td>
-<td>0</td>
-<td>gauche</td>
-</tr>
-<tr>
-<td>CINQ</td>
-<td>0</td>
-<td>SIX</td>
-<td>0</td>
-<td>gauche</td>
-</tr>
-<tr>
-<td>CINQ</td>
-<td>1</td>
-<td>CINQ</td>
-<td>1</td>
-<td>gauche</td>
-</tr>
-<tr>
-<td>SIX</td>
-<td>0</td>
-<td>START</td>
-<td>0</td>
-<td>droite</td>
-</tr>
-<tr>
-<td>SIX</td>
-<td>1</td>
-<td>SIX</td>
-<td>1</td>
-<td>gauche</td>
-</tr>
-<tr>
-<td>SEPT</td>
-<td>0</td>
 <td>STOP</td>
 <td>0</td>
 <td>droite</td>
+</tr>
+<tr>
+<td>START</td>
+<td>1</td>
+<td>UN</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>UN</td>
+<td>0</td>
+<td>DEUX</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>UN</td>
+<td>1</td>
+<td>UN</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>DEUX</td>
+<td>0</td>
+<td>TROIS</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>DEUX</td>
+<td>1</td>
+<td>DEUX</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>TROIS</td>
+<td>0</td>
+<td>QUATRE</td>
+<td>1</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>QUATRE</td>
+<td>0</td>
+<td>CINQ</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>CINQ</td>
+<td>0</td>
+<td>SIX</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>CINQ</td>
+<td>1</td>
+<td>CINQ</td>
+<td>1</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>SIX</td>
+<td>0</td>
+<td>START</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>SIX</td>
+<td>1</td>
+<td>SIX</td>
+<td>1</td>
+<td>gauche</td>
 </tr>
 </tbody>
 </table>
@@ -545,7 +531,7 @@ table:
   START:
     0: {
       write: 0,
-      R: SEPT
+      R: STOP
     }
     1: {
       write: 0,
@@ -596,11 +582,6 @@ table:
     1: {
       write: 1,
       L: SIX
-    }
-  SEPT:
-    0: {
-      write: 0,
-      R: STOP
     }
 
   STOP:
