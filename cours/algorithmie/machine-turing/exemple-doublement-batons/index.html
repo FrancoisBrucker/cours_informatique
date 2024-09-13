@@ -329,7 +329,7 @@
 <td>0</td>
 <td>START</td>
 <td>0</td>
-<td>gauche</td>
+<td>droite</td>
 </tr>
 </tbody>
 </table>
@@ -496,7 +496,7 @@
 <td>0</td>
 <td>START</td>
 <td>0</td>
-<td>gauche</td>
+<td>droite</td>
 </tr>
 <tr>
 <td>SIX</td>
@@ -538,9 +538,6 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD ne marche pas. A changer...</p>
-</blockquote>
 <pre><code>blank: 0
 start state: START
 input: '111'
@@ -548,7 +545,7 @@ table:
   START:
     0: {
       write: 0,
-      R: DEUX
+      R: SEPT
     }
     1: {
       write: 0,
@@ -557,7 +554,7 @@ table:
   UN:
     0: {
       write: 0,
-      R: SEPT
+      R: DEUX
     }
     1: {
       write: 1,
@@ -594,7 +591,7 @@ table:
   SIX:
     0: {
       write: 0,
-      L: START
+      R: START
     }
     1: {
       write: 1,
