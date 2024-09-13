@@ -171,7 +171,7 @@ On est arrivé juste à gauche de l'entrée, il suffit de se décaler à droite 
 
 état  | case | nouvel état | écriture | déplacement
 ------|------|-------------|----------|------------
-SIX   |   0  |  START      |     0    |  gauche  
+SIX   |   0  |  START      |     0    |  droite  
 
 La machine va alors recommencer son cycle jusqu'à tomber sur un cas non prévu :
 
@@ -236,7 +236,7 @@ TROIS |   0  |  QUATRE     |     1    |  droite
 QUATRE|   0  |  CINQ       |     0    |  gauche  
 CINQ  |   0  |  SIX        |     0    |  gauche  
 CINQ  |   1  |  CINQ       |     1    |  gauche  
-SIX   |   0  |  START      |     0    |  gauche  
+SIX   |   0  |  START      |     0    |  droite  
 SIX   |   1  |  SIX        |     1    |  gauche  
 SEPT  |   0  |  STOP       |     0    |  droite
 
@@ -247,8 +247,6 @@ Et maintenant la machine finale :
 {% endexercice %}
 {% details "solution" %}
 
-> TBD ne marche pas. A changer...
-
 ```
 blank: 0
 start state: START
@@ -257,7 +255,7 @@ table:
   START:
     0: {
       write: 0,
-      R: DEUX
+      R: SEPT
     }
     1: {
       write: 0,
@@ -266,7 +264,7 @@ table:
   UN:
     0: {
       write: 0,
-      R: SEPT
+      R: DEUX
     }
     1: {
       write: 1,
@@ -303,7 +301,7 @@ table:
   SIX:
     0: {
       write: 0,
-      L: START
+      R: START
     }
     1: {
       write: 1,

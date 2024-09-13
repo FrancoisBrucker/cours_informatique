@@ -20,15 +20,13 @@ Il y a un grand nombre de problèmes NP complets. Ce sont donc fondamentalement 
 
 > subsetsum 3-SAT :<https://community.wvu.edu/~krsubramani/courses/fa16/Aaoa/lecnotes/NP-completness%20(Proofs)/subsum.pdf>
 
-> TBD : il faut commencer par montrer que subsetsum est dans NP en trouvant un vérifieur, puis on fait la réduction
-
 ## Partition
 
-> depuis subsetsum
+> depuis subsetsum : <https://www.geeksforgeeks.org/set-partition-is-np-complete/>
 
 ## Sac à dos
 
-depuis partition
+> TBD depuis partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2023Knapsack.pdf>
 
 ## Autres exemples
 
