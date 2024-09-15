@@ -26,6 +26,7 @@ Il y a un grand nombre de problèmes NP complets. Ce sont donc fondamentalement 
 
 ## Sac à dos
 
+> Passer du problème d'optimisation au problème de décision. Au départ pas de décision et donc pas dans NP.
 > TBD depuis partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2023Knapsack.pdf>
 
 ## Autres exemples

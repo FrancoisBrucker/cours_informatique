@@ -77,6 +77,34 @@ Les choix effectués pour accepter une entrée constituent un **_certificat_** d
 Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.
 {% endnote %}
 
+## <span id="exemple"></span>Exemple
+
+Prenons la machine non déterministe suivante :
+
+état  | case | nouvel état | écriture | déplacement
+------|------|-------------|----------|------------
+START |   0  |  STOP       |     0    |  gauche
+START |   1  |  START      |     0    |  droite
+START |   1  |  STEP       |     0    |  droite
+STEP  |   0  |  STOP       |     0    |  droite
+STEP  |   1  |  STOP       |     0    |  gauche
+
+{% exercice %}
+Montrez que la machine précédente s'arrête sur toute entrée en temps linéaire
+{% endexercice %}
+{% details "corrigé" %}
+La machine est non déterministe si l'état est `START` et il y a un `1` comme il ne peut y avoir qu'un nombre fini de `1` sur le ruban (on écrit que des 0), la machine s'arrêtera d'elle même une fois le premier 0 rencontré.
+{% enddetails %}
+
+{% exercice %}
+Montrez que la machine précédente reconnaît les entrées commençant par une suite de `1` puis suivie par la chaîne `01`.
+{% endexercice %}
+{% details "corrigé" %}
+
+On ne peut s'arrêter sur un 1 que si l'on choisit la transition `(UN, 0)`. On ne fait en effet qu'écrire des 0 et la seule transition qui va en `STOP` à droite. Ceci ne peut arriver que dans le cas ou l'entrée est de type `1....101?....`.
+
+{% enddetails %}
+
 ## Équivalence avec une machine de Turing
 
 La machine de Turing non déterministe est un outil théorique très puissant car il permet de démontrer simplement beaucoup de théorèmes d'informatique théorique. Cependant, **elle ne permet pas de faire plus de chose qu'une machine normale**.
@@ -119,3 +147,5 @@ La machine de Turing non déterministe n'est qu'une façon plus simple de décri
 {% note "**Proposition**" %}
 Soit $M$ une machine de Turing non déterministe polynomiale. Le vérifieur $v(E, C)$ avec $v$ une entrée et $C$ une suite de transition possible qui consiste à exécuter $M$ en choisissant itérativement les les élément de $C$ est un vérifieur efficace du langage de $M$.
 {% endnote %}
+
+Si on rend déterministe la machine non déterministe exemple, on voit qu ele non déterministe permet de simuler une boucle tant que non `101` avancer de 1 case vers la droite : le non-déterminisme est une façon de condenser une énumération de choix.

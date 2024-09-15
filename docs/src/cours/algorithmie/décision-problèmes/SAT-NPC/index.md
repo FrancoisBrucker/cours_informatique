@@ -27,6 +27,8 @@ Ceci montrera que résoudre SAT permet de résoudre toute exécution d'une machi
 
 {% endlien %}
 
+Nous allons prendre comme exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} $M$ avec comme entrée $E=101$. Le nombre d'opération est linéaire et on peut montrer qu'il n'y aura jamais plus de $\vert E \vert + 1$ opérations.
+
 ## Variables
 
 ### Ruban
@@ -56,7 +58,22 @@ R^0 = (\bigwedge_{i < 0\mbox{ et } i \geq p} \overline{r_i^0}) \wedge (\bigwedge
 $$
 </div>
 
-La conjonction $R^k$ montrera l'état du ruban à l'instruction $k$
+En prenant [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} et l'entrée $E = 101$, il va y avoir au plus $4$ opérations et donc on a :
+
+<div>
+$$
+R_M^0 = \overline{r_0^0} \land \overline{r_1^0} \land \overline{r_2^0} \land ({r_3^0}\Leftrightarrow 1) \land ({r_4^0}\Leftrightarrow 0) \land ({r_5^0}\Leftrightarrow 1) \land \overline{r_6^0} \land \overline{r_7^0} =
+\overline{r_0^0} \land \overline{r_1^0} \land \overline{r_2^0} \land {r_3^0} \land \overline{r_4^0} \land r_5^0  \land \overline{r_6^0} \land \overline{r_7^0}
+$$
+</div>
+
+La conjonction de clause $R^0$ ne possède qu'une solution, qui correspond au ruban à l'instruction 0 :
+
+```
+0 : 00010100  START
+```
+
+La position de la case $i$ pour l'étape $k$ sera donnée par les variables $r_i^k$. Elles vont être déterminées grace à $R^0$ et aux transitions.
 
 ### États
 
@@ -81,6 +98,28 @@ Q^0 = q^0_0 \land (\bigwedge_{j\neq 0} \overline{q^0_j}))
 $$
 </div>
 
+Les états de [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} sont au nombre de 3 :
+
+- `START` qu'on nommera $q_0$
+- `STOP` qu'on nommera $q_1$
+- `STEP` qu'on nommera $q_2$
+
+On a alors :
+
+<div>
+$$
+Q_M^0 = q^0_0 \land \overline{q^0_1} \land \overline{q^0_2}
+$$
+</div>
+
+Et :
+
+<div>
+$$
+Q_M^k = (q^k_0 \lor q^k_1 \lor q^k_2) \land (\overline{q^k_0} \vee \overline{q^k_1})  \land (\overline{q^k_0} \vee \overline{q^k_2})  \land (\overline{q^k_1} \vee \overline{q^k_2})
+$$
+</div>
+
 ### Curseur
 
 Tout comme les états, le curseur ne peut être qu'à une seule position à chaque étape d'une exécution. On le modélise donc de façon identique qux états par des variables $c_i^k$ tels que pour une instruction $k$ donnée, seule une position $i$ aura $c_i^k =1$, les autres seront fausse.
@@ -101,6 +140,21 @@ C^0 = c^0_{Kn^m} \land (\bigwedge_{j\neq Kn^m} \overline{c^0_j}))
 $$
 </div>
 
+Le curseur [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} peut être sur une des 8 cases du ruban :
+
+<div>
+$$
+C_M^k = (\bigvee_{0\leq i < 8} {c^k_i}) \land (\bigwedge_{0\leq j\neq i <8} (\overline{c^k_i} \vee \overline{c^k_j}))
+$$
+</div>
+
+Et est initialement sur la case d'indice 3 :
+<div>
+$$
+C_M^0 = c^0_3 \land \overline{c^0_1} \land \overline{c^0_2}\land \overline{c^0_4}\land \overline{c^0_5}\land \overline{c^0_6}\land \overline{c^0_7}
+$$
+</div>
+
 ### Variables et exécution de la machine
 
 Pour garantir ceci tout au long de l'exécution de la machine, la conjonction de causes suivante doit être vérifiée :
@@ -111,46 +165,40 @@ M_0 = R^0 \land Q^0 \land C^0 \wedge (\bigwedge_{k>0}Q^k \wedge C^k)
 $$
 </div>
 
-Si on reprend l'exécution de [la machine de Turing doublant les batons](../../machine-turing/exemple-doublement-batons) la succession des variables de ruban, de curseur et d'état est la suivante :
-
-```
-000①10000000000  START
-0000①0000000000  UN
-00001⓪000000000  UN
-000010⓪00000000  DEUX
-0000101⓪0000000  TROIS
-00001011⓪000000  QUATRE
-0000101①0000000  CINQ
-000010①10000000  CINQ
-00001⓪110000000  CINQ
-0000①0110000000  SIX
-000⓪10110000000  SIX
-0000①0110000000  START
-00000⓪110000000  UN
-000000①10000000  DEUX
-0000001①0000000  DEUX
-00000011⓪000000  DEUX
-000000111⓪00000  TROIS
-0000001111⓪0000  QUATRE
-000000111①00000  CINQ
-00000011①100000  CINQ
-0000001①1100000  CINQ
-000000①11100000  CINQ
-00000⓪111100000  CINQ
-0000⓪0111100000  SIX
-00000⓪111100000  START
-000000①11100000  STOP
-```
-
-Qui est bien représenté par l'énorme (mais de taille polynomiale par rapport à l'entrée puisque le nombre d'état est une constante) conjonction de clauses $M_0$.
-
-> TBD faire les variables
-
-On a :
-
-- $R^0 =$
-
 Cependant sans contrôle de ces variables elles peuvent s'affecter comme on veut. C'est le but de la partie suivante.
+
+Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne}, comme on a déterminé qu'il ne pouvait pas y avoir plus de 8 instructions on aura :
+
+<div>
+$$
+M_0 = {R_M}^0 \land {Q_M}^0 \land {C_M}^0 \wedge (\bigwedge_{0 < k <8} Q_M^k \wedge C_M^k)
+$$
+</div>
+
+et correspond à l'exécution de la machine :
+
+<div>
+$$
+\begin{array}{cccc}
+\text{instruction}&\text{ruban}&\text{curseur}&\text{état}\\
+0&0\;\; 0\;\; 0\;\; 1\;\; 0\;\; 1\;\; 0\;\; 0&3&q_0\\
+1&r_0^1\, r_1^1\, r_2^1\, r_3^1\, r_4^1\, r_5^1\, r_6^1\, r_7^1&?&?\\
+2&r_0^2\, r_1^2\, r_2^2\, r_3^2\, r_4^2\, r_5^2\, r_6^2\, r_7^2&?&?\\
+3&r_0^3\, r_1^3\, r_2^3\, r_3^3\, r_4^3\, r_5^3\, r_6^3\, r_7^3&?&?\\
+4&r_0^4\, r_1^4\, r_2^4\, r_3^4\, r_4^4\, r_5^4\, r_6^4\, r_7^4&?&?\\
+5&r_0^5\, r_1^5\, r_2^5\, r_3^5\, r_4^5\, r_5^5\, r_6^5\, r_7^5&?&?\\
+6&r_0^6\, r_1^6\, r_2^6\, r_3^6\, r_4^6\, r_5^6\, r_6^6\, r_7^6&?&?\\
+7&r_0^7\, r_1^7\, r_2^7\, r_3^7\, r_4^7\, r_5^7\, r_6^7\, r_7^7&?&q_1
+\end{array}
+$$
+</div>
+
+Les positions intermédiaires des curseurs et les valeurs des états et des cases du ruban sont inconnues. On connaît en revanche :
+
+- la position initiale du curseur : indice 3
+- l'état initial est `START` ($q_0$)
+- le ruban initial est : $r_1^0\, r_2^0\, r_3^0\, r_4^0\, r_5^0\, r_6^0\, r_7^0 = 0\, 0\, 0\, 1\, 0\, 1\, 0\, 0$
+- l'état final est `STOP` ($q_0$)
 
 ## Ruban et transitions
 
@@ -171,7 +219,15 @@ Toutes les cases où n'est pas le curseur ne changent pas entre l'étape $k$ et 
 
 <div>
 $$
-I^k = \bigwedge_{i}(\overline{c_i^k} \land (r_i^k = r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
+I^k = \bigwedge_{i}(\overline{c_i^k} \land (r_i^k \Leftrightarrow r_i^{k+1})) = \bigwedge_{i}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
+$$
+</div>
+
+Pour l'exemple [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne}, le ruban possède 8 cases :
+
+<div>
+$$
+{I_M}^k = \bigwedge_{0\leq i < 8}(\overline{c_i^k} \land ((r_i^k \lor \overline{r_i^{k+1}}) \land (\overline{r_i^k} \lor {r_i^{k+1}})))
 $$
 </div>
 
@@ -205,13 +261,47 @@ Ceci fonctionne car une seule clause $p^k_i \land q^k_j \land c^k_{i, 0}$ est vr
 
 Si la machine est non déterministe, on ajoute autant de $T^k_{q_j, 1}$ et $T^k_{q_j, 0}$ qu'il y a de choix dans la transition.
 
-### Exécution de la machine
+[La machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} a uniquement 5 transitions :
 
-On va supposer comme pour les MTU, que l'état `START` est l'état $q_0$ et $q_1$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes :
+état  | case | nouvel état | écriture | déplacement
+------|------|-------------|----------|------------
+START |   0  |  STOP       |     0    |  gauche
+START |   1  |  START      |     0    |  droite
+START |   1  |  STEP       |     0    |  droite
+STEP  |   0  |  STOP       |     0    |  droite
+STEP  |   1  |  STOP       |     0    |  gauche
+
+En notant l'état `START` $q_0$, l'état `STOP` $q_1$ et l'état `STEP` $q_2$ et avec les 8 cases sur le ruban, on a :
 
 <div>
 $$
-M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1}_{\text{STOP à la fin}}
+\begin{array}{lcl}
+{T_M^k}_{q_0, 0} &=& \bigvee_{0 < i < 8} ({c^k}_{i} \land {q^k}_{0} \land \overline{r^k_{i}} \land c^{k+1}_{i - 1} \land q^{k+1}_{q_1} \land \overline{r^{k+1}_{i}})\\
+{T_M^k}_{q_0, 1} &=& \bigvee_{0 \leq i < 7} ({c^k}_{i} \land {q^k}_{0} \land {r^k_{i}} \land c^{k+1}_{i + 1} \land q^{k+1}_{q_0} \land \overline{r^{k+1}_{i}})\\
+{T_M'^k}_{q_0, 1} &=& \bigvee_{0 < i < 7} ({c^k}_{i} \land {q^k}_{0} \land {r^k_{i}} \land c^{k+1}_{i + 1} \land q^{k+1}_{q_2} \land \overline{r^{k+1}_{i}})\\
+{T_M^k}_{q_2, 0} &=& \bigvee_{0 \leq i < 7} ({c^k}_{i} \land {q^k}_{2} \land \overline{r^k_{i}} \land c^{k+1}_{i + 1} \land q^{k+1}_{q_1} \land \overline{r^{k+1}_{i}})\\
+{T_M^k}_{q_2, 1} &=& \bigvee_{0 < i < 8} ({c^k}_{i} \land {q^k}_{2} \land {r^k_{i}} \land c^{k+1}_{i - 1} \land q^{k+1}_{q_1} \land \overline{r^{k+1}_{i}})\\
+\end{array}
+$$
+</div>
+
+L'ensemble des transition pour l'étape $0 \leq k <8$ est alors :
+
+<div>
+$$
+\begin{array}{lcl}
+{T_M^k} &=& {T_M^k}_{q_0, 0} \lor {T_M^k}_{q_0, 1} \lor {T_M'^k}_{q_0, 1} \lor {T_M^k}_{q_2, 0} \lor {T_M^k}_{q_2, 1}\\
+\end{array}
+$$
+</div>
+
+### Exécution de la machine
+
+On va supposer que l'état `START` est l'état $q_0$ et $q_{1}$ l'état `STOP`. La machine de Turing va s'arrêter au bout de $Kn^m$ étapes :
+
+<div>
+$$
+M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{q^{Kn^m}_{1}}_{\text{STOP à la fin}}
 $$
 </div>
 
@@ -219,7 +309,7 @@ Si on cherche à savoir si notre entrée est reconnue par la machine, il faut de
 
 <div>
 $$
-M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_1 \land (\bigvee_{i} (r^{Kn^m}_i \land c^{Kn^m}_i)))}_{\text{STOP sur 1}}
+M = \underbracket{M_0}_{\text{init}} \land \underbracket{(\bigwedge_{0\leq k < Kn^m} (I^k \land T^k))}_{\text{exécution}} \land \underbracket{(q^{Kn^m}_{1} \land (\bigvee_{i} (r^{Kn^m}_i \land c^{Kn^m}_i)))}_{\text{STOP sur 1}}
 $$
 </div>
 
@@ -229,6 +319,14 @@ Si la machine de Turing est simple, il n'y a qu'une possibilité puisque les tra
 Le système de clauses est satisfiable si et seulement si l'entrée est reconnue par la machine !
 
 {% endnote %}
+
+Ce qui donne pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} a uniquement 5 transitions :
+
+<div>
+$$
+M = {M_0} \land {(\bigwedge_{0\leq k < 7} (I_M^k \land T_M^k))} \land {(q^{7}_{1} \land (\bigvee_{i} (r^{7}_i \land c^{7}_i)))}
+$$
+</div>
 
 ## Théorème de Cook-Levin
 
@@ -256,3 +354,20 @@ Les problèmes $p$ qui ne sont pas dans NP et tels que SAT ≤ p sont dit **_NP-
 Les problèmes NP-complets signifient qu'ils sont universels : les solutions peuvent apparaître partout ; ils n'ont pas de structure qui permettent d'inférer une solution par rapport à une entrée.
 
 On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.
+
+Pour [la machine non déterministe exemple](../Turing-non-déterministe/#exemple){.interne} il faut ajouter un état non déterministe juste avant l'état `STOP` pour garantir qu'il existe toujours une exécution prenant 8 instructions et pouvant se terminer sur un `1`. Comme l'état `STOP` est atteint depuis `STEP` ou `START`, on ajouter une boucle non déterministe de taille 2 :
+
+état  | case | nouvel état | écriture | déplacement
+------|------|-------------|----------|------------
+START |   0  |  STOP       |     0    |  gauche
+START |   0  |  STOP'      |     0    |  droite
+START |   1  |  START      |     0    |  droite
+START |   1  |  STEP       |     0    |  droite
+STEP  |   0  |  STOP       |     0    |  droite
+STEP  |   0  |  STOP'      |     0    |  droite
+STEP  |   1  |  STOP       |     0    |  gauche
+STEP  |   1  |  STOP'      |     0    |  droite
+STOP' |   0  |  STOP       |     0    |  gauche
+STOP' |   1  |  STOP       |     1    |  gauche
+
+Ce nouvel état temporaire permet de cycler autant de fois que nécessaire avant de s'arrêter.

@@ -238,7 +238,38 @@ CINQ  |   1  |  CINQ       |     1    |  gauche
 SIX   |   0  |  START      |     0    |  droite  
 SIX   |   1  |  SIX        |     1    |  gauche
 
-Et maintenant la machine finale :
+ce qui donne comme exécution complète en 25 opérations :
+
+```  
+ 0 : ①1000000  START
+ 1 : 0①000000  UN
+ 2 : 01⓪00000  UN
+ 3 : 010⓪0000  DEUX
+ 4 : 0101⓪000  TROIS
+ 5 : 01011⓪00  QUATRE
+ 6 : 0101①000  CINQ
+ 7 : 010①1000  CINQ
+ 8 : 01⓪11000  CINQ
+ 9 : 0①011000  SIX
+10 : ⓪1011000  SIX
+11 : 0①011000  START
+12 : 00⓪11000  UN
+13 : 000①1000  DEUX
+14 : 0001①000  DEUX
+15 : 00011⓪00  DEUX
+16 : 000111⓪0  TROIS
+17 : 0001111⓪  QUATRE
+18 : 000111①0  CINQ
+19 : 00011①10  CINQ
+20 : 0001①110  CINQ
+21 : 000①1110  CINQ
+22 : 00⓪11110  CINQ
+23 : 0⓪011110  SIX
+24 : 00⓪11110  START
+25 : 000①1110  STOP
+```
+
+Et maintenant le code :
 
 {% exercice %}
 Écrivez la machine pour qu'elle soit exécutable sur <https://turingmachine.io/> et vérifiez qu'elle fonctionne bien avec 3 batons en entrée.
