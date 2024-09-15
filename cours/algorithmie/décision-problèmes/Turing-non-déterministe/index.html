@@ -176,6 +176,110 @@
 <p>Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.</p>
 </div>
 </div>
+<h2><span id="exemple"></span>Exemple</h2>
+<p>Prenons la machine non déterministe suivante :</p>
+<table>
+<thead>
+<tr>
+<th>état</th>
+<th>case</th>
+<th>nouvel état</th>
+<th>écriture</th>
+<th>déplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>0</td>
+<td>STOP</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+<tr>
+<td>START</td>
+<td>1</td>
+<td>START</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>START</td>
+<td>1</td>
+<td>STEP</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>STEP</td>
+<td>0</td>
+<td>STOP</td>
+<td>0</td>
+<td>droite</td>
+</tr>
+<tr>
+<td>STEP</td>
+<td>1</td>
+<td>STOP</td>
+<td>0</td>
+<td>gauche</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la machine précédente s'arrête sur toute entrée en temps linéaire</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La machine est non déterministe si l'état est <code>START</code> et il y a un <code>1</code> comme il ne peut y avoir qu'un nombre fini de <code>1</code> sur le ruban (on écrit que des 0), la machine s'arrêtera d'elle même une fois le premier 0 rencontré.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrez que la machine précédente reconnaît les entrées commençant par une suite de <code>1</code> puis suivie par la chaîne <code>01</code>.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On ne peut s'arrêter sur un 1 que si l'on choisit la transition <code>(UN, 0)</code>. On ne fait en effet qu'écrire des 0 et la seule transition qui va en <code>STOP</code> à droite. Ceci ne peut arriver que dans le cas ou l'entrée est de type <code>1....101?....</code>.</p>
+</div>
+</details>     
+</div>
 <h2>Équivalence avec une machine de Turing</h2>
 <p>La machine de Turing non déterministe est un outil théorique très puissant car il permet de démontrer simplement beaucoup de théorèmes d'informatique théorique. Cependant, <strong>elle ne permet pas de faire plus de chose qu'une machine normale</strong>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -246,6 +350,7 @@ Tant que Vrai:
 <p>Soit $M$ une machine de Turing non déterministe polynomiale. Le vérifieur $v(E, C)$ avec $v$ une entrée et $C$ une suite de transition possible qui consiste à exécuter $M$ en choisissant itérativement les les élément de $C$ est un vérifieur efficace du langage de $M$.</p>
 </div>
 </div>
+<p>Si on rend déterministe la machine non déterministe exemple, on voit qu ele non déterministe permet de simuler une boucle tant que non <code>101</code> avancer de 1 case vers la droite : le non-déterminisme est une façon de condenser une énumération de choix.</p>
 
 
 </article>
