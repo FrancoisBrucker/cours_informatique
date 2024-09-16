@@ -2,8 +2,6 @@
 layout: layout/post.njk
 
 title: Parcours
-authors: 
-    - François Brucker
 
 eleventyComputed:
   eleventyNavigation:

@@ -19,7 +19,7 @@ Cours d'algorithmie.
 _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
-Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer).
+Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer){.interne}.
 
 ## <span id="partie-2"></span>Partie I
 
@@ -39,7 +39,7 @@ On peut maintenant définir une grammaire permettant décrire des algorithmes so
 [Écrire des algorithmes](./écrire-algorithmes){.interne}
 {% endaller %}
 
-Le [pseudo-code](./écrire-algorithmes/pseudo-code/) permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
+Le [pseudo-code](./écrire-algorithmes/pseudo-code/){.interne} permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 

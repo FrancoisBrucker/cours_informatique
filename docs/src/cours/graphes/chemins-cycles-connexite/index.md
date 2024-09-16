@@ -54,6 +54,7 @@ La chaîne $C$ à une **longueur** de $k$ (c'est le nombre d'arcs).
 
 Un chemin nous permet de définir un cycle pour les graphes non-orientés :
 
+<span id="définition-cycle"></span>
 {% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe non orienté. Un **cycle** est un chemin
 
@@ -127,6 +128,7 @@ La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou
 
 ## Connexité
 
+<span id="définition-connexe"></span>
 {% note "**Définition**" %}
 Un graphe est dit **connexe** si pour toute paire de sommets $x$ et $y$ il existe un chemin allant de $x$ à $y$ dans $G$.
 
@@ -425,7 +427,6 @@ La complexité de chaque itération `while`{.language-} de la ligne 6 et de l'or
 $$
 C = \mathcal{O}(\sum_x (\delta(x))^2) \leq \mathcal{O}((\sum_x \delta(x))^2) = \mathcal{O}((2 \vert E \vert)^2) = \mathcal{O}(\vert E \vert^2)
 $$
-
 
 > TBD lien
 

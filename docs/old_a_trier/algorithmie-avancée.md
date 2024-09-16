@@ -214,7 +214,7 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
   - pourquoi les utiliser vs arbre de recherche : <https://stackoverflow.com/a/260277>. Mais c'est rare que ce soit important. Donc dans le doute, arbre de recherche
   - <https://15721.courses.cs.cmu.edu/spring2018/papers/08-oltpindexes1/pugh-skiplists-cacm1990.pdf>
   - <https://www.singlestore.com/blog/what-is-skiplist-why-skiplist-index-for-memsql/>
-- modèle von Neumann pour un ordinateur
+
 - gestion de la mémoire :
   - noyau programme et mémoire
   - données : dépend du type des données.

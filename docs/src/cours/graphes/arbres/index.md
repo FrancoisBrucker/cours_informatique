@@ -1,33 +1,28 @@
 ---
 layout: layout/post.njk
+
 title: Arbres
 
-authors: 
-    - François Brucker
-
-eleventyNavigation:
-  key: "Arbres"
-  parent: "Graphes"
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% prerequis "**Prérequis** :" %}
-
-* [Chemins, cycles et connexité](../chemins-cycles-connexite)
-
-{% endprerequis %}
-
-<!-- début résumé -->
+> TBD à épurer. Des trucs se retrouvent partout.
 
 Explorer les propriétés et l'intérêt de l'arbre.
 
-<!-- fin résumé -->
+## Définitions
 
-## définitions
+{% note "**Définition**" %}
+Un **arbre** est un _graphe_ $T = (V, E)$ qui est :
 
-Un **arbre** est un *graphe* $T = (V, E)$ qui est :
+- [connexe](../chemins-cycles-connexite/#définition-connexe){.interne}
+- [sans cycle](../chemins-cycles-connexite/#définition-cycle){.interne}
 
-* connexe
-* sans cycle
+{% endnote %}
 
 ### graphe
 
@@ -45,7 +40,7 @@ Voir la [définition du cours](../structure#definition-graphe). Le nombre maximu
 Déduire de la définition lequel des 2 graphes ci-dessous est un arbre.
 
 | :-: | :-: |
-|![graphe A](../assets/img/pas_arbre.png)|![graphe B](../assets/img/arbre.png)|
+|![graphe A](./pas_arbre.png)|![graphe B](./arbre.png)|
 |A|B|
 
 {.no-border}
@@ -73,15 +68,14 @@ On utilise le [parcours en largeur des graphes](https://fr.wikipedia.org/wiki/Al
 
 {% enddetails %}
 
-
 #### graphe sans cycle ?
 
 Là comme ça, ça n'a pas l'air simple de répondre à cette question. On va plutôt ruser et prouver deux propriétés des graphes connexes à la place.
 
 {% exercice %}
 
-* Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
-* Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
+- Tout graphe sans cycle contient au maximum $\vert V \vert - 1$ arêtes.
+- Tout graphe connexe contient au minimum $\vert V \vert - 1$ arêtes.
 
 {% endexercice %}
 {% details "solution" %}
@@ -91,7 +85,7 @@ Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forc�
 
 S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
 
-Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours](chemins-cycles-connexite#prop-cycles-graph)) : notre hypothèse était fausse.
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours](../chemins-cycles-connexite#prop-cycles-graph)) : notre hypothèse était fausse.
 
 Pour la seconde preuve, on la montre par récurrence. La propriété est clairement vraie pour un graphe à 1 ou 2 sommets. On la suppose alors vraie jusqu'à $n$ sommets et on considère un graphe connexe à $n+1$ sommets.
 
@@ -110,8 +104,8 @@ En déduire que :
 
 Un graphe $G=(V, E)$ est un arbre si et seulement si :
 
-* il est connexe
-* $\vert E \vert = \vert V \vert - 1$
+- il est connexe
+- $\vert E \vert = \vert V \vert - 1$
 
 {% endexercice %}
 {% details "solution" %}
@@ -124,8 +118,8 @@ Sur votre lancée prouvez aussi que :
 
 Un graphe $G=(V, E)$ est un arbre si et seulement si :
 
-* il est sans cycle
-* $\vert E \vert = \vert V \vert - 1$
+- il est sans cycle
+- $\vert E \vert = \vert V \vert - 1$
 
 {% endexercice %}
 {% details "solution" %}
@@ -138,8 +132,8 @@ Pour enfoncer le clou et montrer que les arbres sont une structure de connexité
 
 Prouver que :
 
-* Si on ajoute une arête à un arbre (n'importe laquelle) on ajoute un cycle
-* Si on supprime une arête à un arbre (n'importe laquelle) on le déconnecte
+- Si on ajoute une arête à un arbre (n'importe laquelle) on ajoute un cycle
+- Si on supprime une arête à un arbre (n'importe laquelle) on le déconnecte
 
 {% endexercice %}
 {% details "solution" %}
@@ -179,20 +173,20 @@ S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au pr
 
 ### ordonnancement des sommets { #ordo-sommets }
 
-L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire *"tomber"* depuis la racine. On peut en effet les ranger par rapport à **leur chemin** par rapport à celle ci :
+L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire _"tomber"_ depuis la racine. On peut en effet les ranger par rapport à **leur chemin** par rapport à celle ci :
 
-![arbre_plante](../assets/img/arbre_plante.png)
+![arbre_plante](./arbre_plante.png)
 
 Vocabulaire :
 
-* $y$ est un **ancêtre** de $x$ : si $y$ est sur le chemin entre la racine et $x$
-* $x$ est un **descendant** de $y$ : si $y$ est sur le chemin entre la racine et $x$
-* $x$ est une **feuille** s'il n'a pas de descendant
-* $x$ est un **nœud intérieur** s'il n'est pas une feuille
-* $x$ est un **enfant** de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
-* $y$ est un **parent** de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
-* la **hauteur** de $x$ est la longueur du chemin entre la racine et $x$.
-* la **hauteur** de l'arbre est la longueur du plus long chemin entre la racine et un autre sommet.
+- $y$ est un **ancêtre** de $x$ : si $y$ est sur le chemin entre la racine et $x$
+- $x$ est un **descendant** de $y$ : si $y$ est sur le chemin entre la racine et $x$
+- $x$ est une **feuille** s'il n'a pas de descendant
+- $x$ est un **nœud intérieur** s'il n'est pas une feuille
+- $x$ est un **enfant** de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
+- $y$ est un **parent** de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$
+- la **hauteur** de $x$ est la longueur du chemin entre la racine et $x$.
+- la **hauteur** de l'arbre est la longueur du plus long chemin entre la racine et un autre sommet.
 
 {% exercice %}
 
@@ -200,14 +194,15 @@ Donnez un exemple de chacun des termes pour le graphe ci-avant.
 
 {% endexercice %}
 {% details "solution" %}
-* $a$ est un **ancêtre** de $n$
-* $g$ est un **descendant** de $d$
-* $k$ est une **feuille**
-* $c$ est un **nœud intérieur**
-* $b$ est un **enfant** de $a$
-* $h$ est un **parent** de $m$
-* la **hauteur** de $i$ est 2
-* la **hauteur** de l'arbre est 4
+
+- $a$ est un **ancêtre** de $n$
+- $g$ est un **descendant** de $d$
+- $k$ est une **feuille**
+- $c$ est un **nœud intérieur**
+- $b$ est un **enfant** de $a$
+- $h$ est un **parent** de $m$
+- la **hauteur** de $i$ est 2
+- la **hauteur** de l'arbre est 4
 
 {% enddetails %}
 
@@ -230,13 +225,13 @@ Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfan
 Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.
 {% enddetails %}
 
-> TBD * la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1
+> TBD \* la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1
 
 Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des **arbres de décisions**, si utiles en apprentissage automatique.
 
 > La différence en $\log_2(n)$ et $n$ est très importante ! On par exemple besoin d'uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.
 > Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une structure en $\log_2(n)$.
-{.note}
+> {.note}
 
 ### exemple du tas
 
@@ -244,7 +239,7 @@ Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre l
 
 #### le problème
 
-Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.  
+Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.
 
 #### une solution possible (naïve)
 
@@ -272,18 +267,19 @@ Des trois arbres ci-dessus lequel (il n'y en a qu'un) est binaire, complet et pl
 
 {% endexercice %}
 {% details "solution" %}
-* (a) est binaire mais pas complet
-* (b) est binaire complet mais pas plein
-* (c) est binaire, complet et plein.
-{% enddetails %}
+
+- (a) est binaire mais pas complet
+- (b) est binaire complet mais pas plein
+- (c) est binaire, complet et plein.
+  {% enddetails %}
 
 De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses descendants direct.
 
 {% exercice %}
 
-* Créez un tas avec les nombres : 42, 12, 1, 3, 6, 5.
-* Y a-t-il plusieurs possibilités ?
-* que peut-on dire du nœud ayant le plus grand nombre ?
+- Créez un tas avec les nombres : 42, 12, 1, 3, 6, 5.
+- Y a-t-il plusieurs possibilités ?
+- que peut-on dire du nœud ayant le plus grand nombre ?
 
 {% endexercice %}
 {% details "solution" %}
@@ -307,12 +303,11 @@ Donner les algorithmes pour effectuer les opérations suivantes :
 
 1. on l'ajoute à la fin et on le remonte (récursivement) si nécessaire
 2. on change la valeur puis on échange récursivement
-   * avec son parent si la valeur est plus grande ou
-   * avec son enfant de valeur maximum si la valeur est plus petite
+   - avec son parent si la valeur est plus grande ou
+   - avec son enfant de valeur maximum si la valeur est plus petite
 3. on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.
 
 {% enddetails %}
-
 
 On peut s'en sortir avec des algorithmes dont le nombre d'opérations est proportionnel à la hauteur du tas.
 
@@ -329,8 +324,8 @@ Toutes les opérations nécessitent un nombre de calculs proportionnel à la hau
 
 {% exercice %}
 
-* En déduire une façon de trier un tableau de nombres.
-* trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).
+- En déduire une façon de trier un tableau de nombres.
+- trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).
 
 {% endexercice %}
 {% details "solution" %}
@@ -339,7 +334,7 @@ On commence par un tas vide et on le remplit petit à petit (cela prend $n$ fois
 
 On a donc un tri en $\mathcal{O}(n\log_2(n))$ opérations.
 
-Pour la représentation en tableau, voir Voir [wikipedia](https://fr.wikipedia.org/wiki/Tas_(informatique)) (on les place dans l'ordre de haut en bas et de droite à gauche).
+Pour la représentation en tableau, voir Voir [wikipedia](<https://fr.wikipedia.org/wiki/Tas_(informatique)>) (on les place dans l'ordre de haut en bas et de droite à gauche).
 {% enddetails %}
 
 ## parcours
@@ -359,9 +354,9 @@ Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabét
 {% endexercice %}
 {% details "solution" %}
 
-* pré-ordre : a-b-h-l-m-n-i-j-k-c-d-e-g-f
-* post-ordre : l-n-m-h-j-k-i-b-g-e-f-d-c-a
-* en-ordre : l-h-n-m-b-j-i-k-a-c-g-e-d-f
+- pré-ordre : a-b-h-l-m-n-i-j-k-c-d-e-g-f
+- post-ordre : l-n-m-h-j-k-i-b-g-e-f-d-c-a
+- en-ordre : l-h-n-m-b-j-i-k-a-c-g-e-d-f
 
 ```text
 alphabétique(racine)
@@ -369,8 +364,9 @@ alphabétique(racine)
     examen enfant droit
     alphabétique(enfant droit)
     alphabétique(enfant gauche)
-    
+
 ```
+
 {% enddetails %}
 
 #### pré-ordre
@@ -378,8 +374,8 @@ alphabétique(racine)
 ```text
 pré-ordre(racine)
 Si la racine existe:
-    Examen de la racine 
-    pré-ordre(enfant gauche) 
+    Examen de la racine
+    pré-ordre(enfant gauche)
     pré-ordre(enfant droit)
 ```
 
@@ -388,9 +384,9 @@ Si la racine existe:
 ```text
 post-ordre(racine)
 Si la racine existe:
-    post-ordre(enfant gauche) 
+    post-ordre(enfant gauche)
     post-ordre(enfant droit)
-    Examen de la racine 
+    Examen de la racine
 ```
 
 #### en-ordre
@@ -398,8 +394,8 @@ Si la racine existe:
 ```text
 en-ordre(racine)
 Si la racine existe:
-    en-ordre(enfant gauche) 
-    Examen de la racine 
+    en-ordre(enfant gauche)
+    Examen de la racine
     en-ordre(enfant droit)
 ```
 
@@ -453,9 +449,9 @@ Avec un peu d'imagination considérez que c'est le graphe de construction d'une 
 
 {% exercice %}
 
-* Quel est l'arête qui sera forcément dans tous les arbres couvrants de poids minimum ?
-* Quel est l'arête qui ne sera forcément jamais dans un arbre couvrant de poids minimum ?
-* y a-t-il plusieurs arbres couvrants de poids minimum pour ce graphe ?
+- Quel est l'arête qui sera forcément dans tous les arbres couvrants de poids minimum ?
+- Quel est l'arête qui ne sera forcément jamais dans un arbre couvrant de poids minimum ?
+- y a-t-il plusieurs arbres couvrants de poids minimum pour ce graphe ?
 
 {% endexercice %}
 {% details "solution" %}
@@ -467,26 +463,26 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 3. en supprimant n'importe quelle arête de ce cycle, le graphe redevient un arbre.
 4. si on supprime judicieusement l'arête du cycle, on arrivera à une contradiction. car le nouvel arbre sera mieux que l'arbre initial.
 
-* Il n'y a qu'une seule arête avec une valuation minimale. S'il existait un arbre couvrant qui ne la possédait pas, on pourrait l'ajouter à cet arbre. Ce ne serait alors plus un arbre, il existerait donc un cycle. En supprimant une arête de ce cycle (on peut choisir une arête de valuation non minimale) on aurait à nouveau un arbre (connexe et nombre minimum d'arête), mais qui serait de valuation totale strictement plus petite que notre premier arbre. Ce qui est impossible puisqu'il était déjà de valuation minimale.
-* Il n'y a qu'une seule arête avec une valuation maximale. De plus, il existe des cycles la contenant dans le graphe initial. Si on suppose qu'un arbre couvrant possède cette arête de valuation maximale et qu'on la supprime de l'arbre, on va se retrouver avec 2 parties connexes. Comme il existe un cycle contenant l'arête de valuation maximale dans le graphe initial, il va exister une arête du graphe initial qui relie les 2 parties connexes nouvellement créées. L'ajouter à notre graphe va à nouveau le rendre connexe : ce sera à nouveau un arbre. Comme il serait de valuation strictement plus petite que notre arbre initial, ce n'est pas possible.
-* Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.
-{% enddetails %}
+- Il n'y a qu'une seule arête avec une valuation minimale. S'il existait un arbre couvrant qui ne la possédait pas, on pourrait l'ajouter à cet arbre. Ce ne serait alors plus un arbre, il existerait donc un cycle. En supprimant une arête de ce cycle (on peut choisir une arête de valuation non minimale) on aurait à nouveau un arbre (connexe et nombre minimum d'arête), mais qui serait de valuation totale strictement plus petite que notre premier arbre. Ce qui est impossible puisqu'il était déjà de valuation minimale.
+- Il n'y a qu'une seule arête avec une valuation maximale. De plus, il existe des cycles la contenant dans le graphe initial. Si on suppose qu'un arbre couvrant possède cette arête de valuation maximale et qu'on la supprime de l'arbre, on va se retrouver avec 2 parties connexes. Comme il existe un cycle contenant l'arête de valuation maximale dans le graphe initial, il va exister une arête du graphe initial qui relie les 2 parties connexes nouvellement créées. L'ajouter à notre graphe va à nouveau le rendre connexe : ce sera à nouveau un arbre. Comme il serait de valuation strictement plus petite que notre arbre initial, ce n'est pas possible.
+- Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.
+  {% enddetails %}
 
 #### propriété
 
 {% exercice %}
 
-* montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation
-* montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
-* montrez que la réciproque n'est pas vraie
+- montrez que s'il existe deux arbres couvrants de poids minimum qui ne différent que d'une arête, alors elles ont même valuation
+- montrez que si toutes les valuations sont différentes, il n'existe qu'un seul arbre couvrant de poids minimal.
+- montrez que la réciproque n'est pas vraie
 
 {% endexercice %}
 {% details "solution" %}
 
-* Les 2 arbres ont même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.
-* On range les valuations des 2 arbres par ordre croissant. Les deux arbres étant différents, on s'arrête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arêtes va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.
-* Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
-{% enddetails %}
+- Les 2 arbres ont même valuation de la somme des valuations de leurs arêtes :les 2 arêtes différentes ont donc forcément même valuation.
+- On range les valuations des 2 arbres par ordre croissant. Les deux arbres étant différents, on s'arrête à la 1ère position dans cet ordre qui contient 2 arêtes différentes. L'une des arêtes va avoir une valuation inférieure à l'autre. On peut alors procéder comme précédemment et ajouter l'arête de valuation la plus petite dans l'autre arbre. Il faudra alors à nouveau supprimer une arête qui forme un cycle, mais on pourra enlever une arête de valuation plus grande, ce qui est impossible car l'arbre initial était de valuation minimale.
+- Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
+  {% enddetails %}
 
 #### un algorithme { #algo-prim }
 
@@ -503,7 +499,7 @@ Initialisation :
 Algorithme :
     * on choisit un sommet r quelconque
     * cout_entree(r) = 0
-    * ajoute r à V'    
+    * ajoute r à V'
     * tant que V' n'est pas V:
         * pour tous les voisins x de r qui ne sont pas dans V':
             * si cout_entree(x) >= f(rx):
@@ -521,13 +517,18 @@ Retour :
 
 1. Prouver que si G est connexe, alors T est connexe et est un arbre
 2. Prouver que $T$ est **un arbre couvrant de poids minimal** pour $G$.
-{% endexercice %}
-{% details "solution" %}
-Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim). Tout y est très bien expliqué.
-{% enddetails %}
+   {% endexercice %}
+   {% details "solution" %}
+   Voir [wikipedia](https://fr.wikipedia.org/wiki/Algorithme_de_Prim). Tout y est très bien expliqué.
+   {% enddetails %}
 
 Maintenant qu'on est sur que ça marche :
 
 {% exercice %}
 Réalisez l'algorithme en entier sur le graphe précédent.
 {% endexercice %}
+
+
+> TBD faire Kruskal et parler de relation d'équivalence. Premier contact avec les couleurs.
+> TBD le graphe formé des ALM et une arête si échange possible est connexe.
+> TBD un lien vers les matroïdes

@@ -39,6 +39,28 @@ A faire : une page avec son animal favori. Cette page doit contenir :
 
 Cette page doit être validée par le W3C
 
+{% faire "À faire" %}
+Mettre sa page sur sa page web.
+{% endfaire %}
+
+## cours 2
+
+CSS. Ajouter de la couleur et du style à votre page. En particulier :
+
+- gérer les marges de vos paragraphes
+- faites en sorte que les images soient centrées
+- gérer les pseudo-attributs des liens
+
+Pour vous aider : [un rapport de stage de l'année dernière](Rapport_stage_L1_Arnaud_SERRES.pdf)
+
+{% faire %}
+Ajouter le css sur sa page web.
+{% endfaire %}
+
+{% note "Exposé" %}
+
+{% endnote %}
+
 ## Projet final
 
 Il doit avoir :

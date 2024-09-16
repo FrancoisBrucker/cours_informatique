@@ -234,7 +234,7 @@ En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} créez un
 
 ## <span id="liste"></span> Structure de liste
 
-Une [structure de liste](/cours/algorithme-code-théorie/algorithme/structure-de-données/liste/) en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
+Une [structure de liste](/cours/algorithmie/structure-conteneurs/liste/){.interne} en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
 
 ### Implémentation
 
@@ -298,6 +298,10 @@ On utilise une double indirection et on crée des tableaux de type `void** t`;
 
 Il faudra faire un cast pour chaque élément pour qu'il soit du bon type.
 {% enddetails %}
+
+### deque
+
+Implémentez [une structure de deque](https://fr.wikipedia.org/wiki/File_d%27attente_%C3%A0_double_extr%C3%A9mit%C3%A9) sur le même principe.
 
 ## <span id="matrice"></span>Structure de matrice
 

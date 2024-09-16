@@ -59,6 +59,12 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 ## Arbres
 
+{% aller %}
+
+[Arbres](arbres){.interne}
+
+{% endaller %}
+
 > Un cas particulier d'intérêt : l'arbre et les chemins.
 > TBD : que les choses simples.
 
@@ -67,25 +73,13 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 > automorphisme d'arbre rend un sommet ou une arête "identique"
 > Sous la forme d'exercices.
+> arbre Prim
 
-2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
-3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
+1. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
+2. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+3. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
 > combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
-
-> TBD : mettre en forme. Voir à mettre dans les parties où on en parle.
-
-> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
->
-> Un cas particulier d'intérêt : l'arbre et les chemins.
-
-> Sous la forme d'exercices.
-
-1. arbre planté algorithmique arborescence du parcours en largeur/profondeur + propriétés ?
-2. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
-3. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-4. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
 > TBD arbre :
