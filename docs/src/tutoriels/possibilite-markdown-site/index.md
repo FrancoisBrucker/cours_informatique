@@ -23,7 +23,7 @@ Les différentes possibilités d'écriture de post pour ce site. On rappellera d
 
 <!-- fin résumé -->
 
-Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/do-it/main/src/blog/possibilite-markdown.md).
+Comparer le résultat au [code source](https://raw.githubusercontent.com/FrancoisBrucker/cours_informatique/refs/heads/main/docs/src/tutoriels/possibilite-markdown-site/index.md).
 
 ## titre `##`
 

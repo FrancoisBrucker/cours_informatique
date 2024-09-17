@@ -61,31 +61,24 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 {% aller %}
 
-[Arbres](arbres){.interne}
+1. [Arbres](arbres){.interne}
+2. [Arbres enracinés](arbres-enracinés){.interne}
 
 {% endaller %}
-
-> Un cas particulier d'intérêt : l'arbre et les chemins.
-> TBD : que les choses simples.
 
 > exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
 >
 
-> automorphisme d'arbre rend un sommet ou une arête "identique"
-> Sous la forme d'exercices.
-> arbre Prim
-
-1. [arbre et graphe]({{ "/cours/graphes/arbres"  }})
-2. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-3. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
-
-> combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
+1. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
+2. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
 
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
-> TBD arbre :
-> - buneman
-> - tout automorphisme d'arbre laisse invariant une feuille ou une arête
 
+{% aller %}
+
+[Structures de données arborées](structures-arborées){.interne}
+
+{% endaller %}
 
 ## Structures de données arborées
 
