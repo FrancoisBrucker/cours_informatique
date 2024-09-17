@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Structures arborées</title>
+    <title>Arbres enracinés</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Structures arborées</h1>
+  <h1>Arbres enracinés</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/structures-arborées/">Structures arborées</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/arbres-enracinés/">Arbres enracinés</a>
 
 </div>
 </div>
@@ -93,50 +93,32 @@
   
 
   <blockquote>
-<p>TBD tas, ABR, lexico-graphiques<br>
-exo AABB, arbres</p>
+<p>TBD à refaire mieux.</p>
 </blockquote>
-<h3>exemple du tas</h3>
-<p>Nous allons montrer ici une utilité de l'arbre binaire complet pour résoudre le problème d'une file de priorité.</p>
-<h4>le problème</h4>
-<p>Une salle d'attente des urgences d'un hôpital contient des patients dont la gravité d'état est donnée par un entier. Des patients peuvent arriver et partir de la salle d'attente et leur état peut s'améliorer (la gravité d'état baisse) ou se détériorer (leur gravité d'état augmente). A chaque fois qu'un médecin est libre, on prend en charge le patient avec l'état de gravité le plus important.</p>
-<h4>une solution possible (naïve)</h4>
-<p>On regarde chaque patient et on prend le patient ayant la gravité d'état le plus important.</p>
+<h2>arbre enraciné</h2>
+<blockquote>
+<p>TBD mettre dans une section à part ?<br>
+TBD calcul de hauteur récursif</p>
+</blockquote>
+<p>En informatique on utilise souvent la structure d'arbre en l'<strong>enracinant</strong>, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : <strong>l'unicité des chemins</strong></p>
+<h3 id="ordo-sommets">ordonnancement des sommets</h3>
+<p>L'unicité des chemins permet d'ordonner les sommets par rapport à leur chemin par rapport à la racine. On a coutume de les faire <em>&quot;tomber&quot;</em> depuis la racine. On peut en effet les ranger par rapport à <strong>leur chemin</strong> par rapport à celle ci :</p>
+<p><img src="arbre_plante.png" alt="arbre_plante"></p>
+<p>Vocabulaire :</p>
+<ul>
+<li>$y$ est un <strong>ancêtre</strong> de $x$ : si $y$ est sur le chemin entre la racine et $x$</li>
+<li>$x$ est un <strong>descendant</strong> de $y$ : si $y$ est sur le chemin entre la racine et $x$</li>
+<li>$x$ est une <strong>feuille</strong> s'il n'a pas de descendant</li>
+<li>$x$ est un <strong>nœud intérieur</strong> s'il n'est pas une feuille</li>
+<li>$x$ est un <strong>enfant</strong> de $y$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+<li>$y$ est un <strong>parent</strong> de $x$ : si $y$ est le sommet juste avant $x$ dans le chemin de la racine à $x$</li>
+<li>la <strong>hauteur</strong> de $x$ est la longueur du chemin entre la racine et $x$.</li>
+<li>la <strong>hauteur</strong> de l'arbre est la longueur du plus long chemin entre la racine et un autre sommet.</li>
+</ul>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Quel est le coût algorithmique d'utiliser une telle solution ?</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On a simplement besoin de regarder chaque patient lorsqu'il faut en prendre en charge un nouveau. On n'a pas besoin de faire des choses lorsque les patients changent d'état de gravité ou partent et arrivent. Mais à chaque fois c'est $\mathcal{O}(n)$ opérations.</p>
-</div>
-</details>     
-</div>
-<p>Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bien mieux.</p>
-<h4>un tas</h4>
-<p>Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est <strong>plein</strong>, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.</p>
-<p><img src="../assets/img/arbre_plante_tas_abc.png" alt="arbre_plante_tas_?"></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Des trois arbres ci-dessus lequel (il n'y en a qu'un) est binaire, complet et plein ?</p>
+<p>Donnez un exemple de chacun des termes pour le graphe ci-avant.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -157,148 +139,129 @@ exo AABB, arbres</p>
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li>(a) est binaire mais pas complet</li>
-<li>(b) est binaire complet mais pas plein</li>
-<li>(c) est binaire, complet et plein.</li>
+<li>$a$ est un <strong>ancêtre</strong> de $n$</li>
+<li>$g$ est un <strong>descendant</strong> de $d$</li>
+<li>$k$ est une <strong>feuille</strong></li>
+<li>$c$ est un <strong>nœud intérieur</strong></li>
+<li>$b$ est un <strong>enfant</strong> de $a$</li>
+<li>$h$ est un <strong>parent</strong> de $m$</li>
+<li>la <strong>hauteur</strong> de $i$ est 2</li>
+<li>la <strong>hauteur</strong> de l'arbre est 4</li>
 </ul>
 </div>
 </details>     
 </div>
-<p>De plus, pour un tas, chaque nœud est de valeur plus grande que chacun de ses descendants direct.</p>
+<p>Cet ordonnancement est <a href="https://fr.wikipedia.org/wiki/Arbre_phylog%C3%A9n%C3%A9tique">très utilisé en biologie</a> par exemple car il permet de rendre compte de l'évolution des espèces. En analyse des données on utilise ce paradigme pour classer les données (qui sont les feuilles) selon ce qu'elles ont en commun (les leurs ancêtres).</p>
+<h2 id="arbre-binaire">arbre binaire planté</h2>
+<p>En informatique, c'est souvent les arbres binaires planté que l'on utilise :</p>
+<p>Un arbre planté est binaire si tout noeud intérieur a <strong>au plus 2 enfants</strong>. On aura parfois aussi besoin qu'il soit <strong>complet</strong>, c'est-à-dire que les noeuds intérieurs qui n'ont pas 2 enfants sont en bas de l'arbre (à la hauteur de l'arbre -1).</p>
+<h3>propriété fondamentale des arbres binaires</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
+<p>Montrer que pour un arbre binaire, si tout nœud intérieur a exactement 2 enfants, alors en notant $f$ le nombre de feuilles de l'arbre, on a : $f$ est égal au nombre de nœuds intérieurs plus 1.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si chaque nœud intérieur a 2 enfants $ \sum \delta(x) = 2 + f + (n-f - 1) \cdot 3$. Comme $\vert E \vert = \vert V \vert -1 = n -1$, on assemble ces deux équations pour obtenir $n + 1 = 2f$.</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD * la hauteur de l'arbre est égale à $\log_2(f)$ si les feuilles sont à h ou h-1</p>
+</blockquote>
+<p>Les propriétés ci-dessus montrent que si l'on veut organiser $n$ données, on n'a besoin que d'un arbre de hauteur $\log_2(n)$. Comme le chemin depuis la racine nous permet de retrouver les données, si on associe une question à chaque nœud intérieur, on peut retrouver $n$ éléments en ne posant que $\log_2(n)$ questions. C'est le principe des <strong>arbres de décisions</strong>, si utiles en apprentissage automatique.</p>
+<blockquote class="note">
+<p>La différence en $\log_2(n)$ et $n$ est très importante ! On par exemple besoin d'uniquement 100 questions pour trier 1267650600228229401496703205376 éléments.<br>
+Un informaticien est prêt à beaucoup, beaucoup de choses pour avoir une structure en $\log_2(n)$.</p>
+</blockquote>
+<h2>parcours</h2>
+<p>Pour modifier la structure du tas on a dû évoluer dans la structure d'arbre planté. Un autre intérêt (encore un !) des arbres plantés est que tout sommet peut être considéré comme la racine de sous-arbre. On a donc uniquement besoin de créer l'algorithme qui fonctionnera pour la racine et le re-exécuter ensuite sur les descendants.</p>
+<p>On utilise ce principe pour parcourir tous les sommets d'un arbre planté efficacement, c'est à dire en ne regardant chaque sommet qu'un nombre constant de fois.</p>
+<h3>trois parcours classiques</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Pour chaque parcours ci-après, donnez le résultat pour l'arbre de la partie <a href="#ordo-sommets">ordonnancement des sommets</a> en supposant que <code>Examen de la Racine</code> signifie : affiche le numéro de la racine à l'écran.</p>
+<p>Une fois ceci fait, trouvez un ordre qui lira les sommets dans l'ordre alphabétique à partir de la lettre b (en oubliant la racine).</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <ul>
-<li>Créez un tas avec les nombres : 42, 12, 1, 3, 6, 5.</li>
-<li>Y a-t-il plusieurs possibilités ?</li>
-<li>que peut-on dire du nœud ayant le plus grand nombre ?</li>
+<li>pré-ordre : a-b-h-l-m-n-i-j-k-c-d-e-g-f</li>
+<li>post-ordre : l-n-m-h-j-k-i-b-g-e-f-d-c-a</li>
+<li>en-ordre : l-h-n-m-b-j-i-k-a-c-g-e-d-f</li>
 </ul>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p><img src="../assets/img/tas_2-possibilites.png" alt="tas possibles"></p>
-<p>Le plus grand nœud est <strong>toujours</strong> la racine du tas.</p>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">alphabétique(racine)
+    examen enfant gauche
+    examen enfant droit
+    alphabétique(enfant droit)
+    alphabétique(enfant gauche)
+
+</code></pre>
 </div>
 </details>     
 </div>
-<h4>manipulation d'un tas</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<h4>pré-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pré-ordre(racine)
+Si la racine existe:
+    Examen de la racine
+    pré-ordre(enfant gauche)
+    pré-ordre(enfant droit)
+</code></pre>
+<h4>post-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">post-ordre(racine)
+Si la racine existe:
+    post-ordre(enfant gauche)
+    post-ordre(enfant droit)
+    Examen de la racine
+</code></pre>
+<h4>en-ordre</h4>
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">en-ordre(racine)
+Si la racine existe:
+    en-ordre(enfant gauche)
+    Examen de la racine
+    en-ordre(enfant droit)
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p>Donner les algorithmes pour effectuer les opérations suivantes :</p>
-<ol>
-<li>ajout d'un élément</li>
-<li>modification d'une valeur</li>
-<li>suppression de la racine</li>
-</ol>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Arbre_syntaxique">parcours d'arbres</a> sont utilisés en linguistique pour analyser syntaxiquement une phrase. Un exercice classique est de créer un <a href="https://diu-uf-bordeaux.github.io/bloc4/td/arbres/expression/">arbre à partir d'une expression arithmétique</a> pour la résoudre de façon optimale en nombre d'opérations.</p>
 </div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ol>
-<li>on l'ajoute à la fin et on le remonte (récursivement) si nécessaire</li>
-<li>on change la valeur puis on échange récursivement
-<ul>
-<li>avec son parent si la valeur est plus grande ou</li>
-<li>avec son enfant de valeur maximum si la valeur est plus petite</li>
-</ul>
-</li>
-<li>on prend la dernière feuille, on la supprime et on modifie (avec l'opération 2) la racine avec la valeur de la feuille enlevée.</li>
-</ol>
-</div>
-</details>     
-</div>
-<p>On peut s'en sortir avec des algorithmes dont le nombre d'opérations est proportionnel à la hauteur du tas.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>En conclure que l'utilisation du tas est bien meilleure que la solution naïve.</p>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Toutes les opérations nécessitent un nombre de calculs proportionnel à la hauteur $h$ du tas. Et il y a $n = 2^h$ éléments dans celui-ci. Nos opérations sont donc toutes en $\mathcal{O}(\log_2(n)) = \mathcal{O}(h)$ opérations.</p>
-</div>
-</details>     
-</div>
-<h4>pour la bonne bouche</h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>En déduire une façon de trier un tableau de nombres.</li>
-<li>trouver un moyen de représenter un tas par une liste (on pourra parcourir le tas de haut en bas et de droite à gauche).</li>
-</ul>
-</div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>On commence par un tas vide et on le remplit petit à petit (cela prend $n$ fois $\mathcal{O}(\log_2(n))$ opérations). Puis on supprime itérativement la racine $n$ fois. Ce qui prend encore $n$ fois $\mathcal{O}(\log_2(n))$ opérations.</p>
-<p>On a donc un tri en $\mathcal{O}(n\log_2(n))$ opérations.</p>
-<p>Pour la représentation en tableau, voir Voir <a href="https://fr.wikipedia.org/wiki/Tas_(informatique)">wikipedia</a> (on les place dans l'ordre de haut en bas et de droite à gauche).</p>
-</div>
-</details>     
 </div>
 
 
