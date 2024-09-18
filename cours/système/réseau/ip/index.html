@@ -97,7 +97,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Internet_Protocol">Internet Protocol (IP)</a></p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Internet_Protocol">Internet Protocol (IP)</a></li>
+<li>nombre d'adresses : <a href="https://xkcd.com/865/">https://xkcd.com/865/</a></li>
+<li><a href="https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html">ipv4 vers ipv6 (chiffres ARCEP)</a></li>
+</ul>
 </div>
 </div>
 <h2>Adresse IP</h2>
@@ -210,7 +214,7 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les messages ping sont envoyés en utilisant le protocole <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a>, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser  les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/">attaques DDos</a></p>
+<p>Les messages ping sont envoyés en utilisant le protocole <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a>, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/">attaques DDos</a></p>
 </div>
 </div>
 <h2>Routage</h2>
@@ -222,12 +226,12 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 <div class="pl-8  mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>routeur</strong></em> est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.</p>
+<p>Un <strong><em>routeur</em></strong> est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.</p>
 </div>
 </div>
 <p>On peut considérer le réseau ci-après, à 5 machines (de A à E) et 4 routeurs (1 à 4)</p>
 <pre><code>A----1---2---4----E
-      \ /    |    
+      \ /    |
        3 --- D
       / \
      B   C
@@ -298,8 +302,8 @@ Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d
 </div>
 <p>Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.</p>
 <h4>Area et AS</h4>
-<p>Le réseau géré par notre provider est une région (area.1) relié à un <em>backbone</em> reliant un ensemble de région formant une <em><strong>région autonome (Autonomous System)</strong></em> d'internet. Disons, l'internet Français. Une <a href="https://fr.wikipedia.org/wiki/Autonomous_System">région autonome</a> est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :</p>
-<pre><code>  LAN                            ... 
+<p>Le réseau géré par notre provider est une région (area.1) relié à un <em>backbone</em> reliant un ensemble de région formant une <strong><em>région autonome (Autonomous System)</em></strong> d'internet. Disons, l'internet Français. Une <a href="https://fr.wikipedia.org/wiki/Autonomous_System">région autonome</a> est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :</p>
+<pre><code>  LAN                            ...
    |                              |
   ...                     ...  subarea - ...
    |                        \   /
@@ -333,7 +337,7 @@ Impossible de tout garder dans les réseaux actuel. On segmente le réseau en r�
 <pre><code>AS-O-----O-AS-O-AS
     \   /
      \ /
-      O 
+      O
       |
    AS-O-AS
 </code></pre>
