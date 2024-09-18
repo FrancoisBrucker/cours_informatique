@@ -90,11 +90,16 @@ La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier 
 ./a.out
 ```
 
+{% info %}
+Si vous tapez uniquement `a.out`, cela ne marchera pas. Il faut préciser le chemin relatif car les fichiers exécutables sans chemin ne sont exécutable que s'ils sont dans le PATH.
+{% endinfo %}
+
 Notez que si vous voulez exécuter le résultat de la compilation uniquement si la compilation a réussie, vous pouvez utiliser la commande :
 
 ```
 clang hello.c && ./a.out
 ```
+
 
 On peut toujours préciser le fichier de sortie avec l'option `-o`. Par exemple :
 

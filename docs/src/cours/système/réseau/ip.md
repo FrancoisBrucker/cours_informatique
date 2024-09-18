@@ -10,9 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 {% lien %}
-[Internet Protocol (IP)](https://fr.wikipedia.org/wiki/Internet_Protocol)
+
+- [Internet Protocol (IP)](https://fr.wikipedia.org/wiki/Internet_Protocol)
+- nombre d'adresses : <https://xkcd.com/865/>
+- [ipv4 vers ipv6 (chiffres ARCEP)](https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html)
 {% endlien %}
 
 ## Adresse IP
@@ -89,10 +91,10 @@ On y voit :
 > TBD :
 > There appear to be four different types of IPv6 addresses:
 >
->Main address, using your ISP prefix + derivation of your network-interface MAC-address.
->[Temporary addresses](https://www.rfc-editor.org/rfc/rfc4941), based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
->Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)
->Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)
+> Main address, using your ISP prefix + derivation of your network-interface MAC-address.
+> [Temporary addresses](https://www.rfc-editor.org/rfc/rfc4941), based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
+> Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)
+> Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)
 
 Ceci signifie que l'adresse IP de ma machine est `2001:660:5404:f232::/64` c'est à dire que j'ai en fait $2^{64}$ adresses possibles et que mon ordinateur a choisi d'utiliser `2001:660:5404:f232:a4b7:59d7:f780:855c`.
 
@@ -100,7 +102,7 @@ Ceci signifie que l'adresse IP de ma machine est `2001:660:5404:f232::/64` c'est
 Il y a tellement d'adresse IPv6 de disponibles (en tous cas, [pour l'instant...](https://xkcd.com/865/)) qu'on assigne par défaut un réseau en `/64` à toute machine. Quite à elle d'en choisir une (ou plusieurs) parmi toute ces possibilités.
 {% endinfo %}
 
-On peut trouver une machine sur le réseau en la *pinguant*. On peut ainsi d'une autre machine de l'internet trouver ma machine en :
+On peut trouver une machine sur le réseau en la _pinguant_. On peut ainsi d'une autre machine de l'internet trouver ma machine en :
 
 ```
 ping6 2001:660:5404:f232:a4b7:59d7:f780:855c
@@ -122,7 +124,7 @@ ping 172.18.32.190
 Attention, contrairement à IPv6, IPv4 a de nombreux [réseaux locaux](https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9), inaccessible de l'internet. Mon adresse IPv4 en fait parti. Ces réseaux locaux existent de part la pénurie des adresse Ipv4, ils n'ont plus de raison d'être en IPv6.
 
 {% info %}
-Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol), qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser  les [attaques DDos](https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/)
+Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol), qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les [attaques DDos](https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/)
 
 {% endinfo %}
 
@@ -131,7 +133,7 @@ Les messages ping sont envoyés en utilisant le protocole [ICMP](https://fr.wiki
 Cette notion de sous-réseau est importante pour l'organisation des machines sur le réseau. On considère que des machines de numéro proches donc d'un même sous-réseau, sont aussi proche physiquement et peuvent être routé par le même routeur.
 
 {% note "**définition**" %}
-Un ***routeur*** est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.
+Un **_routeur_** est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.
 
 {% endnote %}
 
@@ -139,7 +141,7 @@ On peut considérer le réseau ci-après, à 5 machines (de A à E) et 4 routeur
 
 ```
 A----1---2---4----E
-      \ /    |    
+      \ /    |
        3 --- D
       / \
      B   C
@@ -198,7 +200,7 @@ Lorsque le réseau va grossir, on ne peut plus garder les route vers toutes les 
 
 Pour que ceci fonctionne :
 
-- il faut *en gros* qu'un routeur route son sous-réseau.
+- il faut _en gros_ qu'un routeur route son sous-réseau.
 - il faut que des ordinateurs d'adresses proches soient proche physiquement
 
 ## Structure d'internet
@@ -208,7 +210,7 @@ Du petit réseau géré de façon ad-hoc, internet est devenu un réseau mondial
 ### LAN
 
 - LAN : **Local Area Network**. Le réseau de la maison où toutes les machines sont connectée les unes au autres. Ce réseau ne possède qu'une porte de d'entrée/sortie, son routeur (la box).
-Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d'une LAN car chaque machine peut communiquer directement avec une autre. La nécessité d'un routeur vient lorsque l'on veut faire sortir ou entrer des paquet dans la LAN. Le routeur est ainsi connecté à0 deux réseaux, celui de la LAN et l'extérieur.
+  Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d'une LAN car chaque machine peut communiquer directement avec une autre. La nécessité d'un routeur vient lorsque l'on veut faire sortir ou entrer des paquet dans la LAN. Le routeur est ainsi connecté à0 deux réseaux, celui de la LAN et l'extérieur.
 
 Ce réseau extérieur est de notre provider internet, et plus vraisemblablement à une partie de celui-ci (celui de notre région).
 
@@ -223,17 +225,17 @@ Le protocole RIP de configuration des tables de routage en est issu.
 De nombreux réseaux connectés ensembles. Des routeurs se chargeant de gérer le traffic interne au réseau et les interconnections. De grosses entités autonomes liées entre elle par des GGP. Chaque entité autonome étant à son tour formées d'aires elles mêmes encore subdivisées en sous-aires.
 
 {% note %}
-L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des [firewall](https://fr.wikipedia.org/wiki/Pare-feu_(informatique)) par exemple.
+L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des [firewall](<https://fr.wikipedia.org/wiki/Pare-feu_(informatique)>) par exemple.
 {% endnote %}
 
 Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.
 
 #### Area et AS
 
-Le réseau géré par notre provider est une région (area.1) relié à un *backbone* reliant un ensemble de région formant une ***région autonome (Autonomous System)*** d'internet. Disons, l'internet Français. Une [région autonome](https://fr.wikipedia.org/wiki/Autonomous_System) est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :
+Le réseau géré par notre provider est une région (area.1) relié à un _backbone_ reliant un ensemble de région formant une **_région autonome (Autonomous System)_** d'internet. Disons, l'internet Français. Une [région autonome](https://fr.wikipedia.org/wiki/Autonomous_System) est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :
 
 ```
-  LAN                            ... 
+  LAN                            ...
    |                              |
   ...                     ...  subarea - ...
    |                        \   /
@@ -267,7 +269,7 @@ Impossible de tout garder dans les réseaux actuel. On segmente le réseau en r�
 AS-O-----O-AS-O-AS
     \   /
      \ /
-      O 
+      O
       |
    AS-O-AS
 ```

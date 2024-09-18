@@ -4,10 +4,10 @@ layout: layout/post.njk
 title: Terminal
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
 Qu'est-ce que le terminal ? Comment le trouver et taper des commandes.
@@ -18,9 +18,9 @@ Le terminal est l'outil utilisé pour taper des commandes qui seront ensuite ex�
 
 Même si cela est intimidant, le CLI est le moyen le plus efficace d'interagir avec votre ordinateur car, contrairement aux applications :
 
-* on peut ajouter des paramètres aux instructions
-* on gère facilement les entrées et les sorties des commandes
-* c'est automatisable par des scripts.
+- on peut ajouter des paramètres aux instructions
+- on gère facilement les entrées et les sorties des commandes
+- c'est automatisable par des scripts.
 
 Enfin, c'est souvent la seule façon d'interagir avec un ordinateur distant.
 
@@ -36,13 +36,14 @@ Il y plusieurs moyen d'accéder à l'application terminal.
 
 ### Via des menus
 
+<div id="powershell"></div>
 {% details "sous Windows 11" %}
 
 Dans le menu démarrer choisissez `toutes les applications` en haut à droite de la fenêtre. Le terminal est à la lettre `T` :
 
 ![terminal sous windows](powershell-menu-démarrer.png)
 
-Le terminal s'appelle aussi parfois [powershell](https://learn.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.3), à ne pas confondre avec *l'invite de commande* (commande `cmd`) qui est là pour des raisons de compatibilités mais qu'il ne faut jamais utiliser soit même.
+Le terminal s'appelle aussi parfois [powershell](https://learn.microsoft.com/fr-fr/powershell/scripting/overview?view=powershell-7.3), à ne pas confondre avec _l'invite de commande_ (commande `cmd`) qui est là pour des raisons de compatibilités mais qu'il ne faut jamais utiliser soit même.
 
 {% enddetails %}
 {% details "sous Macos" %}
@@ -54,7 +55,7 @@ L'application se trouve dans le dossier `/Application/utilitaires`{.fichier} que
 1. `menu Aller > utilitaires``
 2. une nouvelle fenêtre `finder` apparaît : double-cliquez sur l'icône "Terminal".
 
-Une fois dans l'application `Terminal` vous pouvez ouvrir une nouvelle fenêtre dans le menu *Shell > Nouvelle Fenêtre > Nouvelle fenêtre avec le profil - ...* (les "..." correspondent à votre profil de fenêtre).
+Une fois dans l'application `Terminal` vous pouvez ouvrir une nouvelle fenêtre dans le menu _Shell > Nouvelle Fenêtre > Nouvelle fenêtre avec le profil - ..._ (les "..." correspondent à votre profil de fenêtre).
 
 {% enddetails %}
 
@@ -123,7 +124,7 @@ Maintenant que vous avez trouvé le terminal, ouvrez une fenêtre terminal :
 
 ![terminal](terminal.png)
 
-Vous êtes devant ce qu'on appelle [***un prompt***](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou *invite de commande*. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
+Vous êtes devant ce qu'on appelle [**_un prompt_**](https://en.wikipedia.org/wiki/Command-line_interface#Command_prompt)*, ou **_invite de commande_**. Le prompt s'arrête juste avant le curseur, qui marque l'endroit où seront tapées les commandes.
 
 {% note %}
 C'est simple à utiliser. On tape une commande, on appuie sur entrée et la commande s'exécute.
@@ -131,8 +132,8 @@ C'est simple à utiliser. On tape une commande, on appuie sur entrée et la comm
 
 Ces commandes peuvent être de 2 types :
 
-* soit des noms de fichiers qui sont *exécutables* (ce sont des programmes)
-* soit des instructions compréhensibles par le terminal comme `ls` (si si, c'est compréhensible par le terminal) par exemple.
+- soit des noms de fichiers qui sont _exécutables_ (ce sont des programmes)
+- soit des instructions compréhensibles par le terminal comme `ls` (si si, c'est compréhensible par le terminal) par exemple.
 
 Le terminal ci-après montre le résultat de la commande `ls` (on a tapé `ls` sur le clavier suivie de la touche entrée) :
 

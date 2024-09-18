@@ -137,3 +137,21 @@ Réalisez l'algorithme en entier sur le graphe précédent.
 > TBD faire Kruskal et parler de relation d'équivalence. Premier contact avec les couleurs.
 > TBD le graphe formé des ALM et une arête si échange possible est connexe.
 > TBD un lien vers les matroïdes
+
+
+### Prim vs Dijkstra
+
+{% exercice %}
+
+- Quelle est la différence entre Prim et Dijsktra ?
+- Montrez que les problèmes qu'ils résolvent sont différents et en déduire que l'arborescence obtenue par l'algorithme de Dijsktra pour un graphe non orienté peut être différente de l'arbre de poids minimum obtenu par Prim
+  {% endexercice %}
+  {% details "solution" %}
+  Le graphe suivant montre que l'arborescence de Disjkstra sera différente de l'arbre de poids minimum donné par Prim.
+
+![Prim vs Dijkstra](./chemin_prim_vs_dijkstra.png)
+
+{% attention %}
+Ne confondez pas les 2 problèmes !
+{% endattention %}
+{% enddetails %}

@@ -1,10 +1,10 @@
 ---
 layout: layout/post.njk
 title: Arbres binaire de recherche
-authors: 
-    - François Brucker
-    - Pascal Préa
-    - Sébastien Ratel
+authors:
+  - François Brucker
+  - Pascal Préa
+  - Sébastien Ratel
 
 eleventyNavigation:
   key: "Arbres binaire de recherche"
@@ -13,8 +13,8 @@ eleventyNavigation:
 
 {% prerequis "**Prérequis** :" %}
 
-* [Arbres](../arbres)
-* python code
+- [Arbres](../arbres)
+- python code
 
 {% endprerequis %}
 
@@ -30,12 +30,12 @@ Le but de ce travail est d'étudier les arbres de recherche, qui sont une struct
 
 Comme vu [précédemment]({{ "/cours/graphes/arbres"  }}#arbre-binaire), un arbre binaire planté est une structure de graphe qui possède :
 
-* un nœud particulier appelé racine qui n'est enfant de personne
-* chaque nœud à un ou deux enfants, nommé *enfant gauche* ou *enfant droit*
-* chaque nœud de la structure a des enfants différents
-* chaque nœud différent de la racine est enfant d'un autre nœud
+- un nœud particulier appelé racine qui n'est enfant de personne
+- chaque nœud à un ou deux enfants, nommé _enfant gauche_ ou _enfant droit_
+- chaque nœud de la structure a des enfants différents
+- chaque nœud différent de la racine est enfant d'un autre nœud
 
-Les nœuds sans enfants sont appelées *feuilles*.
+Les nœuds sans enfants sont appelées _feuilles_.
 
 Un des intérêt d'un arbre binaire est qu'il suffit de connaître la racine et pour chaque nœud ses enfant pour retrouver toute la structure : **Se donner une racine ou tout l'arbre binaire est équivalent**.
 
@@ -66,7 +66,7 @@ On a alors :
 def hauteur(nœud):
     if nœud is None:
         return 0
-    return max(hauteur(enfant_gauche(nœud)), hauteur(enfant_droit(nœud))) + 1  
+    return max(hauteur(enfant_gauche(nœud)), hauteur(enfant_droit(nœud))) + 1
 
 print(hauteur(racine))
 
@@ -76,25 +76,24 @@ De part la définition des arbres binaires, on ne va parcourir qu'une seule fois
 
 {% enddetails %}
 
-
 ### structure de donnée
 
 Si l'on code un nœud d'un arbre binaire par une liste à trois éléments où :
 
-* le premier élément est sa valeur,
-* le second élément est son enfant gauche ou `None`s'il n'en a pas
-* le troisième élément est son enfant droit ou `None` s'il n'en a pas
+- le premier élément est sa valeur,
+- le second élément est son enfant gauche ou `None`s'il n'en a pas
+- le troisième élément est son enfant droit ou `None` s'il n'en a pas
 
 {% exercice %}
 donnez le code des fonctions :
 
-* `enfant_gauche(x)` et `change_enfant_gauche(x, nouveau)` : qui rende et change l'enfant gauche d'un nœud `x`
-* `enfant_droit(x)` et `change_enfant_droit(x,nouveau)` : qui rende et change l'enfant droit d'un nœud `x`
-* `valeur(x)` et `change_valeur(x, nouveau)`  : qui rende et change la valeur d'un nœud `x`
-
+- `enfant_gauche(x)` et `change_enfant_gauche(x, nouveau)` : qui rende et change l'enfant gauche d'un nœud `x`
+- `enfant_droit(x)` et `change_enfant_droit(x,nouveau)` : qui rende et change l'enfant droit d'un nœud `x`
+- `valeur(x)` et `change_valeur(x, nouveau)` : qui rende et change la valeur d'un nœud `x`
 
 {% endexercice %}
 {% details "solution" %}
+
 ```python
 
 def enfant_gauche(x):
@@ -121,6 +120,7 @@ def change_valeur(x, nouveau):
     x[0] = nouveau
 
 ```
+
 {% enddetails %}
 
 ### encodage
@@ -149,6 +149,7 @@ Quel est l'encodage du tas de droite ?
 
 {% endexercice %}
 {% details "solution" %}
+
 ```python
 [42, [12, [3, None, None], [1, None, None]], [6, [5, None, None], None]]
 ```
@@ -160,10 +161,9 @@ Quel est l'encodage du tas de droite ?
 {% exercice %}
 Exécutez en python les algorithmes de hauteur et de nombre sur les 2 tas de la question précédente.
 
-
 {% endexercice %}
 {% details "solution" %}
-fichier *"arbre_binaires.py"* :
+fichier _"arbre_binaires.py"_ :
 
 ```python
 
@@ -208,15 +208,15 @@ racine_2 = [42, [12, [3, None, None], [1, None, None]], [6, [5, None, None], Non
 print("hauteur : ", hauteur(racine_1), " - nombre : ", nombre(racine_1))
 
 ```
-{% enddetails %}
 
+{% enddetails %}
 
 ## arbre binaire de recherche : définitions
 
 Un **arbre binaire de recherche** est un arbre binaire planté dont les sommets sont valués par un ensemble ordonné (e.g. des nombres) & tel que, pour chaque sommet $s$ :
 
-* l'enfant gauche et ses descendants aient une valuation strictement plus petite que celle de $s$,
-* l'enfant droit et ses descendants aient une valuation plus grande ou égale à celle de $s$.
+- l'enfant gauche et ses descendants aient une valuation strictement plus petite que celle de $s$,
+- l'enfant droit et ses descendants aient une valuation plus grande ou égale à celle de $s$.
 
 ### exemple
 
@@ -246,11 +246,13 @@ Donnez la structure python des deux arbres binaires de recherche.
 
 {% endexercice %}
 {% details "solution" %}
+
 ```python
 [12, [8, [6, None, None], [10, None, None]], [15, None, [20, None, None]]]
 
 [6, None, [8, None, [10, None, [12, None, [15, None, [20, None, None]]]]]]
 ```
+
 {% enddetails %}
 
 ## algorithmes de manipulation
@@ -261,10 +263,12 @@ Donnez la structure python des deux arbres binaires de recherche.
 En utilisant la structure des arbres binaires, donnez un fonction python qui crée un arbre binaire de recherche à partir d'une valeur.
 {% endexercice %}
 {% details "solution" %}
+
 ```python
 def creation(valeur):
-    return [valeur, None, None] 
+    return [valeur, None, None]
 ```
+
 {% enddetails %}
 
 ### trouve
@@ -303,7 +307,6 @@ Elle est proportionnelle à la hauteur de l'arbre.
 Ajouter à votre code la fonction de recherche et les deux arbres que vous avez trouvé. Essayez de trouver 10 et 42 sur vos deux arbres.
 {% endexercice %}
 {% details "solution" %}
-
 
 ```python
 # ...
@@ -365,7 +368,6 @@ Elle est proportionnelle à la hauteur de l'arbre.
 
 {% enddetails %}
 
-
 {% exercice %}
 Insérez 42 dans les 2 arbres de recherche précédents. Et donner le résultat.
 {% endexercice %}
@@ -387,13 +389,12 @@ Ce qui donne :
 
 {% enddetails %}
 
-
 ### suppression
 
 Supprimer un noeud d'un arbre de recherche peut être simple si :
 
-* ce nœud n'a pas d'enfant : on le remplace dans son parent par `None`
-* ce nœud n'a qu'un seul enfant : on le remplace par son enfant dans son parent.
+- ce nœud n'a pas d'enfant : on le remplace dans son parent par `None`
+- ce nœud n'a qu'un seul enfant : on le remplace par son enfant dans son parent.
 
 Si le noeud, disons $x$ à 2 enfants, on peut chercher le noeud contenant la plus grande des valeurs plus petite que celle du noeud parmi ses descendants, disons $y$. Ce noeud n'aura qu'un seul enfant.
 
@@ -479,7 +480,6 @@ la hauteur minimale est atteinte si tous les nœuds on 2 enfants. La hauteur est
 
 {% enddetails %}
 
-
 {% exercice %}
 A partir d'une liste de valeurs, donner un algorithme qui rend un arbre binaire de recherche de hauteur minimale contenant ces valeurs. On s'inspirera de la recherche dichotomique pour à chaque fois insérer le milieu.
 {% endexercice %}
@@ -510,7 +510,7 @@ print(abr)
 
 ## hauteur expérimentale
 
-Conserver une hauteur minimale dans un arbre binaire de recherche est donc crucial pour maintenir de bonnes performances. 
+Conserver une hauteur minimale dans un arbre binaire de recherche est donc crucial pour maintenir de bonnes performances.
 
 {% info %}
 Il existe des version des arbres recherche qui s'équilibrent tout seul comme les [AVL](https://fr.wikipedia.org/wiki/Arbre_AVL) ou les arbres [rouge/noir](https://fr.wikipedia.org/wiki/Arbre_bicolore) mais leur structure est plus lourde algorithmiquement.
@@ -525,7 +525,6 @@ Insérer des nombre pris dans une liste triée et vérifier que la hauteur est �
 
 {% endexercice %}
 {% details "solution" %}
-
 
 ```python
 liste = list(range(1000))
@@ -567,9 +566,9 @@ for x in liste[1:]:
 
 Lors de mes expérimentations, je trouve :
 
-* une hauteur max de 1000
-* une hauteur min de 10
-* une hauteur aléatoire de l'ordre de 20
+- une hauteur max de 1000
+- une hauteur min de 10
+- une hauteur aléatoire de l'ordre de 20
 
 {% exercice %}
 Essayez avec des listes plus grandes.
