@@ -63,6 +63,7 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 1. [Arbres](arbres){.interne}
 2. [Arbres enracinés](arbres-enracinés){.interne}
+2. [Arbres couvrant](arbres-couvrants){.interne}
 
 {% endaller %}
 

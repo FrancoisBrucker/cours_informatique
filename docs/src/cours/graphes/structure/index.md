@@ -448,6 +448,12 @@ Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 
 ### Reconnaissance
 
+{% lien %}
+<https://perso.ens-lyon.fr/eric.thierry/Graphes2009/jonas-lefevre.pdf>
+{% endlien %}
+
+Définissons le problème algorithmique associé :
+
 {% note "**Problème de décision**" %}
 
 - **nom** : isomorphisme de graphe

@@ -16,6 +16,8 @@ eleventyComputed:
 
 > TBD mettre dans une section à part ?
 > TBD calcul de hauteur récursif
+> TBD arbres régulier.
+> TBD tracé dendrogramme (et voir Knuth <https://llimllib.github.io/pymag-trees/>)
 
 En informatique on utilise souvent la structure d'arbre en l'**enracinant**, c'est-à-dire qu'on choisi un sommet qui sera la racine et tous les autres sommets vont être dépendants de lui. Ceci est possible de part une importante propriété des arbres : **l'unicité des chemins**
 
