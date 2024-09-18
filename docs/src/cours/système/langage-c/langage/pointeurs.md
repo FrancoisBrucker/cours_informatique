@@ -36,7 +36,7 @@ printf("%uf", sizeof(p))
 
 Qui vaut sur ma machine 8B=64b, ce qui semble raisonnable.
 
-Ce type de pointeur n'est cependant pas très utile car l'adresse sur laquelle il pointe n'est pas utilisable. Le principal intérêt des pointeurs est de pouvoir être associer à l'adresse d'une vraie donnée.
+Ce type de pointeur n'est cependant pas très utile car l'adresse sur laquelle il pointe n'est pas utilisable. Le principal intérêt des pointeurs est de pouvoir être associé à l'adresse d'une vraie donnée.
 
 Ceci se fait avec l'opérateur d'indirection `&`. Si par exemple on a :
 

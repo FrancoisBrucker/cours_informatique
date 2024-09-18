@@ -14,6 +14,8 @@ Pour avoir un programme gérable et maintenable, il faut le scinder en unités f
 
 Pour illustrer cette partie, nous allons utiliser l'exemple de conversion des degrés en supposant que l'on ait le programme suivant, nommé `degres.c`{.fichiers} :
 
+<div id="code"></div>
+
 ```c
 #include <stdio.h>
 

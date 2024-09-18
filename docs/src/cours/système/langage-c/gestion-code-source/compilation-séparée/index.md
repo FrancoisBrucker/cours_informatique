@@ -10,8 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-Séparer le code de `degres.c`{.fichiers} en unités fonctionnelles :
+Reprenons [le code vu précédemment](../#code){.interne} et séparons le code du fichier `degres.c`{.fichiers} en unités fonctionnelles :
 
 1. un fichier `main.c`{.fichier} qui regroupera uniquement le programme principal
 2. un fichier `celcius.c`{.fichier} qui regroupera uniquement les fonctions de conversions

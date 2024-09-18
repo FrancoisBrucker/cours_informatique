@@ -311,7 +311,7 @@ L'opérateur `typedef` renomme un type (`unsigned long long`) en un autre (`size
 
 Ce type est défini pour pouvoir contenir le nombre maximum d'élément d'un ensemble. Attention, cette quantité est dépendante de la structure. Elle vaut $2^{64}$ pour une architecture x64 mais peut–être plus petite pour un Raspberry PI par exemple.
 
-C utilise cette techniques à ne nombreux endroits, et nous l'utiliserons aussi lorsque cela nous permettra de :
+C utilise cette techniques à de nombreux endroits, et nous l'utiliserons aussi lorsque cela nous permettra de :
 
 - raccourcir les notations (avec les structures par exemple)
 - d'être pus clair

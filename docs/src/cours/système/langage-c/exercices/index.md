@@ -59,7 +59,7 @@ int nb_chiffre_v2(int i);
 ### V3
 
 {% faire %}
-Utilisez la [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm)  définie dans `<stdlib.h>`{.fichier} pour coder cette fonction.
+Utilisez la fonction [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm) définie dans `<stdlib.h>`{.fichier} et la fonction [`strlen`](https://koor.fr/C/cstring/strlen.wp#google_vignette) définie dans `<string.h>`{.fichier}  pour coder cette fonction.
 
 ```c
 int nb_chiffre_v3(int i);
@@ -74,13 +74,7 @@ Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclar
 
 {% endinfo %}
 
-### Comparaison
-
-En utilisant la commande unix [`time`](https://linuxize.com/post/linux-time-command/), comparez le temps d'exécution des différentes méthodes via l'exécution d'un programme.
-
 ## <span id="nombres-aléatoire"></span> Nombres aléatoires
-
-Le but de cet exercice est de comprendre la compilation séparée, tout en jouant avec les nombres.
 
 ### <span id="entier-aléatoire"></span>Entier aléatoire
 
@@ -115,7 +109,7 @@ Créez une fonction de signature :
 int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre.
+Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de `nombre`{.language-} entiers `int`{.language-} avec une [allocation dans le tas](../langage/gestion-tas/){.interner}.
 
 {% endfaire %}
 {% faire %}
@@ -179,6 +173,8 @@ Testez la fonction précédente en tirant mélangeant plusieurs fois le tableau 
 
 ### Compilation séparée
 
+Le but de cet exercice est de comprendre [la compilation séparée](../gestion-code-source/compilation-séparée/), tout en jouant avec les nombres.
+
 {% faire %}
 Décomposez le code en deux unités fonctionnelles :
 
@@ -235,6 +231,8 @@ En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} créez un
 ## <span id="liste"></span> Structure de liste
 
 Une [structure de liste](/cours/algorithmie/structure-conteneurs/liste/){.interne} en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
+
+En `C` on utilisera [les structures](../langage/structures/) pour gérer des type composés comme les listes qui nécessitent à la fois un tableau, sa taille et le nombre actuel d'éléments présents.
 
 ### Implémentation
 
@@ -298,10 +296,6 @@ On utilise une double indirection et on crée des tableaux de type `void** t`;
 
 Il faudra faire un cast pour chaque élément pour qu'il soit du bon type.
 {% enddetails %}
-
-### deque
-
-Implémentez [une structure de deque](https://fr.wikipedia.org/wiki/File_d%27attente_%C3%A0_double_extr%C3%A9mit%C3%A9) sur le même principe.
 
 ## <span id="matrice"></span>Structure de matrice
 
