@@ -45,14 +45,18 @@ Si le nombre passé en paramètre est est plus petit ou égal à 1, la fonction 
 ## <span id="syracuse-v3"></span> Paramètres d'exécutables
 
 {% lien %}
-[Utilisation de `getopt`](https://opensource.com/article/21/8/short-option-parsing-c)
+[Utilisation de paramètres d'exécution](https://opensource.com/article/21/8/short-option-parsing-c)
 {% endlien %}
 
 {% faire %}
-En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} et [`atoi`](https://koor.fr/C/cstdlib/atoi.wp) créez un programme `syracuse`  qui :
+Créez un programme `syracuse`  qui prend un entier en paramètre et rend la liste des éléments de sa suite de syracuse. On faudra appeler le programme avec un paramètre, par exemple : `syracuse 20`.
 
-- prend un paramètre `x` qui est le premier élément de la liste
-- sans option le programme rend la longueur de la suite de Syracuse (v1)
-- avec l'option `-l` le programme rend la suite complète de syracuse (v2)
+Vous devrez certainement utiliser la fonction [`atoi`{.language-}](https://koor.fr/C/cstdlib/atoi.wp) qui transforme une chaîne de caractères en entier.
+
+Faites également en sorte que si le programme n'a pas exactement un paramètre ou que son paramètre ne corresponde pas à un entier strictement positif le programme s'arrête.
+{% endfaire %}
+
+{% faire %}
+Utilisez maintenant la fonction [`getopt`](https://www.gnu.org/software/libc/manual/html_node/Getopt.html) définie dans `<unistd.h>`{.fichier} pour ajouter une option facultative `-n` qui rend, en plus de la liste de syracuse, le nombre d'élément en premier. On pourra appeler syracuse de deux manières : `syracuse 20` ou `syracuse -n 20`.
 
 {% endfaire %}

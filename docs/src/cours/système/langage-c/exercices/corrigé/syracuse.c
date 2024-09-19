@@ -44,37 +44,46 @@ int *syracuse_tab(int nombre) {
 }
 
 int main(int argc, char *argv[]) {
-  int tab = 0;
-  char opt;
+  int montre_nombre = 0;
+    char opt;
 
-  while ((opt = getopt(argc, argv, "l")) != -1) {
-    switch (opt) {
-    case 'l':
-      tab = 1;
-      break;
-    default:
-      printf("%c : non reconnue", opt);
-      printf("Format : syracuse nb [-l]\n");
-      return EXIT_FAILURE;
+    while ((opt = getopt(argc, argv, "l")) != -1) {
+      switch (opt) {
+      case 'l':
+        montre_nombre = 1;
+        break;
+      case '?':
+      default:
+        printf("Format : syracuse [-n] nb\n");
+        return EXIT_FAILURE;
+      }
     }
-  }
-  if (optind != argc - 1) {
-    printf("Format : syracuse nb [-l]\n");
+
+  if (optind != argc -1) {
+    printf("Format : syracuse [-n] nb\n");
     return EXIT_FAILURE;
   }
 
+
   int u0 = atoi(argv[optind]);
+
+  if (u0 <= 0) {
+    printf("Format : syracuse [-n] nb\n");
+    return EXIT_FAILURE;
+  }
 
   int n = syracuse_nb(u0);
   int *t = syracuse_tab(u0);
 
-  printf(" Syracuse %i : %i.\n", u0, n);
+    if (montre_nombre) {
+        printf(" Syracuse %i : %i.\n", u0, n);
+    }
+        
 
-  if (tab) {
     for (int i = 0; i <= n; i++) {
       printf("%i ", t[i]);
     }
     printf("\n");
-  }
+
   return EXIT_SUCCESS;
 }
