@@ -1,7 +1,7 @@
-#include <stdlib.h>
-
 #ifndef FILE_NB_ALE
 #define FILE_NB_ALE
+
+#include <stdlib.h>
 
 int aleatoire_int(int min, int max);
 int *aleatoire_tab(int max, size_t nombre);
