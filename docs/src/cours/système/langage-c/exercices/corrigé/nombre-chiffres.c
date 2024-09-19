@@ -36,7 +36,9 @@ int nb_chiffre_v2(int i) {
 }
 
 int nb_chiffre_v3(int i) {
-  char *s = (char *)malloc(100 * sizeof(char));
+  // char *s = (char *)malloc(100 * sizeof(char));
+  char s[100];
+
   sprintf(s, "%i", i);
 
   return strlen(s);

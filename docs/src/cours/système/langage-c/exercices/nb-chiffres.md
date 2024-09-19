@@ -74,9 +74,14 @@ int nb_chiffre_v3(int i);
 
 Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_function_sprintf.htm), elle ne renvoie rien. Elle modifie le contenu du pointeur de chaîne de caractères placée n premier paramètre.
 
-Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}). Vous pouvez choisir 100 par exemple qui est (plus que) suffisant pour stocker le nombre sous la forme de chiffres plus le caractère '\0' de fin de chaîne (qu'il ne faut pas oublier...)
-
+Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant soit avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}), par exemple 100.
 {% endinfo %}
+{% exercice %}
+Quelle est la différence fondamentale entre une allocation avec un tableau et avec un malloc ?
+{% endexercice %}
+{% details "corrigé" %}
+L'initialisation par tableau ne peut se faire que si la taille est connue à la compilation et se fait dans la pile.
+{% enddetails %}
 
 ## Cerise sur le gâteau
 
