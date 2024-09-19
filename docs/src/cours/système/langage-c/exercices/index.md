@@ -16,7 +16,17 @@ Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les option
 -Wall -Wextra -pedantic -std=c23
 ```
 
+{% info %}
+Si `-std=c23` n'est pas une option reconnue, essayez `-std=c2x`.
+{% endinfo %}
+
 Déclarez bien vos variables dans une fonction (au pire dans la fonction main), sans quoi elle seront stockées dans la partie data de votre programme et pas la pile.
+
+Chaque série d'exercice va vous apprendre une technique nouvelle de programmation en C. Ils sont pensés pour être de plus en plus spécifique, faites les donc dans l'ordre.
+
+{% info %}
+[corrigé de quelques exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9)
+{% endinfo %}
 
 ## Bases
 
@@ -34,6 +44,14 @@ On utilise des pointeurs comme retour de fonctions et on termine en créant un m
 [Nombres aléatoires](./nb-aléatoires){.interne}
 {% endaller %}
 
+## <span id="liste"></span> Structure de liste
+
+Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](../../langage/structures/){.interne}.
+
+{% aller %}
+[Listes](./structure-liste){.interne}
+{% endaller %}
+
 ## Syracuse
 
 Quelques petits exercices puis on personnalise notre exécutable avec des paramètres.
@@ -41,75 +59,6 @@ Quelques petits exercices puis on personnalise notre exécutable avec des param�
 {% aller %}
 [Syracuse](./syracuse){.interne}
 {% endaller %}
-
-## <span id="liste"></span> Structure de liste
-
-Une [structure de liste](/cours/algorithmie/structure-conteneurs/liste/){.interne} en python est une version améliorée d'un tableau. On vous demande d'implémenter cette structure en `C` dans deux fichiers `liste.c`{.fichier} et `liste.h`{.fichier} dont vous testerez les fonctions dans un fichier `main.c`{.fichier}.
-
-En `C` on utilisera [les structures](../langage/structures/) pour gérer des type composés comme les listes qui nécessitent à la fois un tableau, sa taille et le nombre actuel d'éléments présents.
-
-### Implémentation
-
-{% faire %}
-Proposez une structure permettant de stocker une structure de liste contenant des entiers.
-
-Créez le type `liste` associé à cette structure.
-{% endfaire %}
-{% faire %}
-Créez les fonctions :
-
-- de création d'une liste vide
-- d'ajout d'un élément à la fin de la liste
-- d'évaluation d'un élément de la liste
-- de remplacement d'un élément
-- de suppression de l'élément en fin de liste
-
-Vous vérifierez sur des exemple que le tableau est bien correctement dimensionné
-{% endfaire %}
-{% info %}
-Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/) pour le dimensionnement des tableaux.
-{% endinfo %}
-{% faire %}
-Reprenez l'exercice [Syracuse v2](./#syracuse-v2) et rendez une liste à la place d'un tableau.  
-{% endfaire %}
-
-Pour ne pas avoir d'overhead lors de la création d'une liste utilisée comme un tableau :
-{% faire %}
-Créez une fonction de signature :
-
-```c
-liste *liste_create(int *t, size_t n);
-```
-
-Qui :
-
-- crée une liste contenant une copie des `n>0` premiers éléments de`t`{.language-} si `t`{.language-} est non `NULL`{.language-}
-- crée une liste vide de taille `n`{.language-} si `t`{.language-} est `NULL`{.language-}
-{% endfaire %}
-
-### Pile
-
-Notre structure de liste peut très facilement se décliner en [pile](https://fr.wikipedia.org/wiki/Pile_(informatique)).
-
-{% faire %}
-Quelles sont les opérations (et leurs complexités) pour une structure de pile ?
-{% endfaire %}
-{% faire %}
-Créez les fonctions permettant de mettre en œuvre les opérations liées à une pile pour la structure de liste.
-{% endfaire %}
-
-### Liste générique
-
-Pour l'instant notre liste est constituée uniquement d'entier.
-
-{% faire %}
-Comment procéderiez vous pour créer une liste pouvant contenir tout ce qu'on veut ?
-{% endfaire %}
-{% details "solution" %}
-On utilise une double indirection et on crée des tableaux de type `void** t`;
-
-Il faudra faire un cast pour chaque élément pour qu'il soit du bon type.
-{% enddetails %}
 
 ## <span id="matrice"></span>Structure de matrice
 
@@ -307,7 +256,7 @@ Vous pourrez :
 Une liste doublement chaînées est la structure :
 
 ```c
-typedef _element* element;
+typedef struct _element* element;
 struct _element {
   void* data;
   element next;

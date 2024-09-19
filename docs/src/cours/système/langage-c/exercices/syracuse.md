@@ -56,6 +56,8 @@ Vous devrez certainement utiliser la fonction [`atoi`{.language-}](https://koor.
 Faites également en sorte que si le programme n'a pas exactement un paramètre ou que son paramètre ne corresponde pas à un entier strictement positif le programme s'arrête.
 {% endfaire %}
 
+## Cerise sur le gateau
+
 {% faire %}
 Utilisez maintenant la fonction [`getopt`](https://www.gnu.org/software/libc/manual/html_node/Getopt.html) définie dans `<unistd.h>`{.fichier} pour ajouter une option facultative `-n` qui rend, en plus de la liste de syracuse, le nombre d'élément en premier. On pourra appeler syracuse de deux manières : `syracuse 20` ou `syracuse -n 20`.
 

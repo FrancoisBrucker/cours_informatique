@@ -10,7 +10,7 @@ main: main.o nombre-aléatoires.o
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
 
-celcius.o: celcius.c
+nombre-aléatoires.o: nombre-aléatoires.c
 	$(CC) $(CFLAGS) -c nombre-aléatoires.c
 
 clean:

@@ -19,7 +19,7 @@ struct personne {
 };
 ```
 
-Pour créer une variable de cette structure, comme ce n'est ni un type reconnu ni un typedef il faut :
+Pour créer une variable de cette structure, comme ce n'est ni un type reconnu ni un `typedef`{.language-} il faut :
 
 ```c
 struct personne x = {"Chun-Li", 55};
