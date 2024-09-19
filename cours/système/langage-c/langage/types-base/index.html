@@ -517,11 +517,12 @@ petit_entier i <span class="token operator">=</span> <span class="token number">
 <li>si énumération ou comptage positif <code>size_t</code></li>
 <li>réel : <code>double</code></li>
 </ul>
-<p>Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifier#C/C++">Qualifiées</a>. Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en <code>C</code>.</p>
+<p><span id="qualifier"></span><br>
+Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifier#C/C++">Qualifiées</a>. Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en <code>C</code>.</p>
 <p>Le qualifier se place au début de la déclaration, Par exemple :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">const</span> <span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14</span>
 </code></pre>
-<p>Il existe 4 types de qualifier :</p>
+<p>Il existe 3 types de <em>qualifier</em> :</p>
 <ul>
 <li><code>const</code> : la variable est constante. Le compilateur va produire une erreur lorsque le code tentera de la modifier.</li>
 <li><code>volatile</code> : la variable peut être modifiée en dehors du code (lorsque la variable correspond à des données partagées via le réseau par exemple), le compilateur ne doit pas <em>cacher</em> la variable par exemple</li>
