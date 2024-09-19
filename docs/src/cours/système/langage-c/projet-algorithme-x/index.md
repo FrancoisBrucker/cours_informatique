@@ -189,7 +189,7 @@ Créez 3 exécutables prenant chacun un paramètre :
 A partir de quelle taille, le temps mis pour résoudre le problème devient trop grand ?
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/) pour mesurer le temps
+Vous pourrez utiliser la commande [`time`](https://linuxize.com/post/linux-time-command/) pour mesurer le temps sous unix, ou [measure-Command](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4) sous windows.
 {% endinfo %}
 
 ## Amélioration

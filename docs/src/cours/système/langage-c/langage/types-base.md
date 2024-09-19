@@ -346,6 +346,7 @@ Si pas de contrainte de taille :
 - si énumération ou comptage positif `size_t`
 - réel : `double`
 
+<span id="qualifier"></span>
 Les variables peuvent être [Qualifiées](https://en.wikipedia.org/wiki/Type_qualifier#C/C++). Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en `C`.
 
 Le qualifier se place au début de la déclaration, Par exemple :
@@ -354,7 +355,8 @@ Le qualifier se place au début de la déclaration, Par exemple :
 const double PI = 3.14
 ```
 
-Il existe 4 types de qualifier :
+
+Il existe 3 types de _qualifier_ :
 
 - `const` : la variable est constante. Le compilateur va produire une erreur lorsque le code tentera de la modifier.
 - `volatile` : la variable peut être modifiée en dehors du code (lorsque la variable correspond à des données partagées via le réseau par exemple), le compilateur ne doit pas *cacher* la variable par exemple

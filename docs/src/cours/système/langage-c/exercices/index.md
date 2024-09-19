@@ -18,6 +18,14 @@ Vos fonctions ne doivent produire ni erreurs ni warnings en utilisant les option
 
 Déclarez bien vos variables dans une fonction (au pire dans la fonction main), sans quoi elle seront stockées dans la partie data de votre programme et pas la pile.
 
+## Bases
+
+Création de fonctions simples et compilation avec des bibliothèques annexes.
+
+{% aller %}
+[Nombre de chiffres d'un entier](./nb-chiffres){.interne}
+{% endaller %}
+
 ## Nombre de chiffres d'un entier
 
 Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.

@@ -240,7 +240,7 @@ printf("Entier : %i\n", i);
 
 Cette technique est très puissante et est utilisée massivement e `C`.
 
-### scanf
+### <span id="scanf"></span> scanf
 
 La fonction [`scanf`{.language-}](http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html) demande à l'entrée standard (les champs sont séparés par des espaces par défaut) de renseigner une variable. On l'utilise de cette manière :
 
