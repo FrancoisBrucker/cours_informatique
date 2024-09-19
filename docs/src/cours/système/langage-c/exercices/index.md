@@ -28,7 +28,7 @@ Création de fonctions simples et compilation avec des bibliothèques annexes.
 
 ## Retour de Pointeurs
 
-On utilise des pointeurs comme retour de fonctions.
+On utilise des pointeurs comme retour de fonctions et on termine en créant un makefile.
 
 {% aller %}
 [Nombres aléatoires](./nb-aléatoires){.interne}
@@ -36,47 +36,11 @@ On utilise des pointeurs comme retour de fonctions.
 
 ## Syracuse
 
-Variation sur le thème de la [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse).
+Quelques petits exercices puis on personnalise notre exécutable avec des paramètres.
 
-### <span id="syracuse-v2"></span> v1
-
-{% faire %}
-Créez une fonction (et testez la) qui rend le nombre d'étapes nécessaire pour arriver à 1 pour la [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
-
-```c
-int syracuse(int nombre);
-```
-
-Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre -1.
-{% endfaire %}
-
-### <span id="syracuse-v2"></span> v2
-
-{% faire %}
-Créez une fonction (et testez la) qui rend tous les éléments de la suite de [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
-
-```c
-int *syracuse_tab(int nombre);
-```
-
-Si le nombre passé en paramètre est négatif ou nul, la fonction doit rendre le pointeur `NULL`{.language}.
-
-{% endfaire %}
-
-### <span id="syracuse-v3"></span> v3
-
-{% lien %}
-[Utilisation de `getopt`](https://stacklima.com/getopt-fonction-en-c-pour-analyser-les-arguments-de-la-ligne-de-commande/)
-{% endlien %}
-
-{% faire %}
-En utilisant la fonction `getopt` définie dans `<unistd.h>`{.fichier} créez un programme `siracuse` qui :
-
-- prend un paramètre `x` qui est le premier élément de la liste
-- sans option le programme rend la longueur de la suite de Syracuse (v1)
-- avec l'option `-l` le programme rend la suite complète de syracuse (v2)
-
-{% endfaire %}
+{% aller %}
+[Syracuse](./syracuse){.interne}
+{% endaller %}
 
 ## <span id="liste"></span> Structure de liste
 

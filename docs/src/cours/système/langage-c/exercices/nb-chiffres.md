@@ -75,11 +75,10 @@ Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_fun
 Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant soit avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}), par exemple 100.
 {% endinfo %}
 
-
 ## Cerise sur le gâteau
 
 {% faire %}
 
-Demandez à l'utilisateur de rentrer un entier relatif (vous utiliserez la fonction [`scanf`{.language-}](../../langage/pointeurs/#scanf)){.interne} dont vous donnerez également le nombre de chiffres.
+Demandez à l'utilisateur de rentrer un entier relatif (vous utiliserez la fonction [`scanf`{.language-}](../../langage/pointeurs/#scanf){.interne}) dont vous donnerez également le nombre de chiffres.
 
 {% endfaire %}
