@@ -25,10 +25,12 @@ La video précédente nous a permis d'écrire le fichier `Makefile`{.fichier} su
 CC=clang
 CFLAGS=-Wall -Wextra -pedantic -std=c2x
 
+TARGET = celcius
+
 all: main
 
 main: main.o celcius.o
-	$(CC) $(CFLAGS) main.o celcius.o
+	$(CC) $(CFLAGS) main.o celcius.o -o $(TARGET)
 
 main.o: main.c
 	$(CC) $(CFLAGS) -c main.c
@@ -37,7 +39,7 @@ celcius.o: celcius.c
 	$(CC) $(CFLAGS) -c celcius.c
 
 clean:
-	rm *.o a.out
+	rm *.o $(TARGET)
 ```
 
 {% attention "**danger !**" %}

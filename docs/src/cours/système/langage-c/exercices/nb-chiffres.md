@@ -12,8 +12,6 @@ eleventyComputed:
 
 Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.
 
-Sa signature doit être :
-
 Vous implémenterez cette fonction de 3 manières différentes. Vous ajouterez chaque fonction dans le même fichier `nombre-chiffres.c`{.fichier}.
 
 ## V1
@@ -76,12 +74,7 @@ Attention à [`sprintf`](https://www.tutorialspoint.com/c_standard_library/c_fun
 
 Il faut s'assurer d'avoir la place de stocker votre résultat soit en le déclarant soit avec un tableau soit avec un `malloc`{.language-} en choisissant bien la taille (nombre de caractères avec un tableau, nombre de bytes avec un `malloc`{.language-}), par exemple 100.
 {% endinfo %}
-{% exercice %}
-Quelle est la différence fondamentale entre une allocation avec un tableau et avec un malloc ?
-{% endexercice %}
-{% details "corrigé" %}
-L'initialisation par tableau ne peut se faire que si la taille est connue à la compilation et se fait dans la pile.
-{% enddetails %}
+
 
 ## Cerise sur le gâteau
 

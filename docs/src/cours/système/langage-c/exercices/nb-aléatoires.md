@@ -10,10 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-## <span id="entier-aléatoire"></span>Entier aléatoire
+Vous implémenterez les fonction de cet exercice dans le fichier `nombre-aléatoires.c`{.fichier}.
 
 - Toutes les fonctions sont à écrire dans le programme principal, en dehors de la fonctions main.
 - Le programme main doit permettre de tester chaque fonction demandée
+
+## <span id="entier-aléatoire"></span>Entier aléatoire
 
 {% faire %}
 Créez une fonction de signature :
@@ -26,12 +28,12 @@ permettant de rendre un entier aléatoire entre `min`{.language-} et `max`{.lang
 
 Pour cela, vous pourrez utiliser les fonctions (de la `libc`) suivantes définis dans `<stdlib.h>`{.fichier} :
 
-- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, au tout début.
+- [`srand`{.language-}](https://koor.fr/C/cstdlib/srand.wp) dont le but est d'initialiser l'algorithme de nombres aléatoire avec ue seed. Attention cette fonction n'est à n'utiliser qu'une fois par programme, dans la fonction `main`{.language-}, au tout début.
 - [`rand`{.language-}](https://koor.fr/C/cstdlib/rand.wp) qui rend un entier aléatoire entre 0 et et RAND_MAX
 - le  modulo  (`%`{.language-}) qui permet de conserver l'équiprobabilité.
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente en faisant la moyenne de 100000 tirage de nombres entre -50 et +50 et en vérifiant pour chaque tirage que l'on est bien entre -50 et 50.
+Testez la fonction précédente dans la fonction `main`{.language-} en faisant la moyenne de 100 tirages de nombres entre -50 et +50 (vous devez trouver quelque chose proche de 0).
 {% endfaire %}
 
 ## Liste d'entiers aléatoires
@@ -43,14 +45,21 @@ Créez une fonction de signature :
 int *aleatoire_tab(int max, size_t nombre);
 ```
 
-Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de `nombre`{.language-} entiers `int`{.language-} avec une [allocation dans le tas](../langage/gestion-tas/){.interner}.
+Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les rend dans un tableau de taille nombre. Vous créerez un tableau de `nombre`{.language-} entiers `int`{.language-} avec une [allocation dans le tas](../../langage/gestion-tas/){.interne}.
 
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente avec `int *t = aleatoire_tab(10, 1000)`{.language-} et en remplissant le tableau `int n[10]`{.language-} tel que `n[i]`{.language-} contienne le nombre de fois où le nombre `i`{.language-} est présent dans `t`{.language-}.
+Testez la fonction précédente avec `int *t = aleatoire_tab(10, 100)`{.language-} et en remplissant le tableau `int n[10]`{.language-} tel que `n[i]`{.language-} contienne le nombre de fois où le nombre `i`{.language-} est présent dans `t`{.language-}.
 {% endfaire %}
 
-## Intervalle aléatoire
+{% exercice %}
+Pourquoi faire l'allocation avec un `mallloc`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+Toute variable déclarée dans une fonction est placée dans la pile et disparaît à la fin de l'exécution de la fonction. Pour rendre un pointeur par une fonction il faut que l'objet pointé reste valide à la fin de son exécution.
+{% enddetails %}
+
+## <span id="proba-aléatoire"></span>Probabilité
 
 {% faire %}
 Créez une fonction de signature :
@@ -62,52 +71,23 @@ double aleatoire_01();
 permettant de rendre un réel aléatoire entre 0 et 1.
 {% endfaire %}
 
-## <span id="proba-aléatoire"></span>Probabilité
-
 {% faire %}
 Utilisez la fonction précédente pour créer une fonction de signature :
 
 ```c
-int aleatoire_01(double proba);
+void aleatoire_01_liste(double proba, size_t nombre, int *t);
 ```
 
-Qui rend 1 avec une probabilité `proba`{.language-} et 0 sinon.
+Cette fonction doit remplir `nombre`{.language-} cases d'un tableau `t`{.language-} passé en paramètre valant chacun 1 avec une probabilité `proba`{.language-} et 0 sinon.
 {% endfaire %}
 
 {% faire %}
-Utilisez la fonction précédente pour créer une fonction de signature :
-
-```c
-int *aleatoire_01_liste(double proba, size_t nombre);
-```
-
-Qui rend une liste de taille `nombre`{.language-} contenant des 0 ou des 1 tirés selon une probabilité `proba`{.language-}.
-{% endfaire %}
-
-{% faire %}
-Testez la fonction précédente en tirant une liste de taille 100 avec une probabilité de .1, .5. et .75. Vérifier que les proportions sont bien vérifiées.
-{% endfaire %}
-
-## <span id="mélange"></span>Mélange d'un tableau
-
-{% faire %}
-
-Créez une fonction qui mélange les $n$ premiers éléments d'un tableau d'entier. Sa signature doit être :
-
-```c
-void nb_chiffres(int *t, size_t n);
-```
-
-Vous utiliserez l'algorithme de [mélange de Knuth](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates), improprement appelé algorithme de Fisher-Yates par les mathématiciens.
-
-{% endfaire %}
-{% faire %}
-Testez la fonction précédente en tirant mélangeant plusieurs fois le tableau contenant les 10 premiers entiers et en affichant le résultat.
+Testez la fonction précédente en tirant une liste de taille 100 avec une probabilité de .5.
 {% endfaire %}
 
 ## Compilation séparée
 
-Le but de cet exercice est de comprendre [la compilation séparée](../gestion-code-source/compilation-séparée/), tout en jouant avec les nombres.
+En utilisant la partie sur [la gestion du code source](../../gestion-code-source){.interne} :
 
 {% faire %}
 Décomposez le code en deux unités fonctionnelles :
