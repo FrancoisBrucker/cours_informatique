@@ -22,10 +22,10 @@ Si `-std=c23` n'est pas une option reconnue, essayez `-std=c2x`.
 
 Déclarez bien vos variables dans une fonction (au pire dans la fonction main), sans quoi elle seront stockées dans la partie data de votre programme et pas la pile.
 
-Chaque série d'exercice va vous apprendre une technique nouvelle de programmation en C. Ils sont pensés pour être de plus en plus spécifique, faites les donc dans l'ordre.
+Chaque série d'exercice va vous apprendre une technique nouvelle de programmation en C. Ils sont pensés pour être de plus en plus spécifique, faites les donc dans l'ordre. Lorsque vous arriverez à tous les faire et que vous les avez compris, vous pourrez considérer que vous avez acquis les bases de programmation en C.
 
 {% info %}
-[corrigé de quelques exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9)
+[corrigé des exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9)
 {% endinfo %}
 
 ## Bases
@@ -70,7 +70,7 @@ On y apprend comment gérer des pointeurs de pointeurs et la technique du pointe
 
 ## Listes doublement chaînées
 
-On y apprend à utiliser des pointeurs sur des fonctions.
+On y apprend à utiliser des données sans type prédéfinis et des pointeurs sur des fonctions.
 
 {% aller %}
 [Listes doublement chaînées](./listes-chaînées){.interne}
