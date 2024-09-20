@@ -176,6 +176,8 @@ Autres exercices (liste non exhaustive) :
 
 ## TBD
 
+> TBD liste de sujets non traité. Peut-être à ajouter plus tard.
+
 - [python et C](https://www.youtube.com/watch?v=l8dRF_AnFE0)
 - Créer une lib en [static](https://dev.to/iamkhalil42/all-you-need-to-know-about-c-static-libraries-1o0b) avec ar
 - [diff entre clone, fork, vfork](https://www.baeldung.com/linux/fork-vfork-exec-clone)

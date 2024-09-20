@@ -46,7 +46,7 @@ On utilise des pointeurs comme retour de fonctions et on termine en créant un m
 
 ## <span id="liste"></span> Structure de liste
 
-Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](../../langage/structures/){.interne}.
+Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](../langage/structures/){.interne}.
 
 {% aller %}
 [Listes](./structure-liste){.interne}
