@@ -264,11 +264,12 @@ l'intérêts des pointeurs est qu'il permet d'accéder à une variable de multip
 
 <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"Tapez un entier signé : %i"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Tapez un entier signé : "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%i"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier (signé) : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>On voit l'utilité des pointeurs car sans eux il serait impossible de modifier une variable d'un type donnée. La fonction ne pouvant avoir qu'un type donné de sortie, le seul possible serait <code>void*</code> et elle devrait devrait allouer elle-même de la mémoire pour y stocker le retour demandé.</p>
 <h3>Retour multiples de fonctions</h3>
 <p>Une fonction en <code>C</code> rend toujours 1 unique résultat. Il est donc impossible de faire comme en python l'astuce suivante :</p>
