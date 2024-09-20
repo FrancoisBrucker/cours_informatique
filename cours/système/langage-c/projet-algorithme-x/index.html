@@ -160,7 +160,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>En utilisant la fonction crée dans l'<a href="../exercices/#proba-al%C3%A9atoire" class="interne">exercice de probabilité</a>, créez une fonction permettant de créer une instance du problème. Sa signature doit être :</p>
+<p>En utilisant la fonction crée dans l'<a href="../exercices/#proba" class="interne">exercice sur les nombres aléatoires</a>, créez une fonction permettant de créer une instance du problème. Sa signature doit être :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_quelconque</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">,</span> <span class="token keyword">double</span> proba<span class="token punctuation">)</span>
 </code></pre>
 <p>La fonction doit générer une matrice binaire avec une proportion de 1 égale à <code class="language-">proba</code>.</p>
@@ -214,12 +214,12 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser les fonctions vues dans l'<a href="../exercices/#nombres-al%C3%A9atoire" class="interne">exercice aléatoire</a> pour vous aider. En particulier :</p>
+<p>Vous pourrez utiliser les fonctions vues dans l'<a href="../exercices/#proba" class="interne">exercice aléatoire</a> pour vous aider. En particulier :</p>
 <ul>
-<li>la fonction <a href="../exercices/#entier-al%C3%A9atoire"><code>int aleatoire_int(int min, int max)</code></a> pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.</li>
-<li>la fonction <a href="../exercices/#proba-al%C3%A9atoire"><code>int aléatoire_01(double proba)</code></a> pour générer les lignes strictement plus grandes que $k$</li>
+<li>la fonction <code class="language-">int aleatoire_int(int min, int max)</code> pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.</li>
+<li>la fonction <code class="language-">int *aléatoire_01_tab(double proba)</code> pour générer les lignes strictement plus grandes que $k$</li>
 </ul>
-<p>Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger.</p>
+<p>Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">l'algorithme de Fisher-Yates</a> pour trouver une permutation des lignes et/ou des colonnes).</p>
 </div>
 </div>
 <h2>Algorithme</h2>
