@@ -251,7 +251,8 @@ int main() {
 
 int i = 0;
 
-scanf("Tapez un entier signé : %i", &i);
+printf("Tapez un entier signé : ");
+scanf("%i", &i);
 printf("Entier (signé) : %i\n", i);
 }
 
