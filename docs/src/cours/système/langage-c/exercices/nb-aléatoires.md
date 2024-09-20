@@ -53,7 +53,7 @@ Testez la fonction précédente avec `int *t = aleatoire_tab(10, 100)`{.language
 {% endfaire %}
 
 {% exercice %}
-Pourquoi faire l'allocation avec un `mallloc`{.language-} ?
+Pourquoi faire l'allocation avec un `malloc`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 Toute variable déclarée dans une fonction est placée dans la pile et disparaît à la fin de l'exécution de la fonction. Pour rendre un pointeur par une fonction il faut que l'objet pointé reste valide à la fin de son exécution.
