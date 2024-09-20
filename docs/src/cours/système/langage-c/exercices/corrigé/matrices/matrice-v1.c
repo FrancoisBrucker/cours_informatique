@@ -12,7 +12,7 @@ int **matrice_create(size_t nombre_lignes, size_t nombre_colonnes) {
     return matrice;
 }
 
-void matrice_affiche(int **matrice, size_t nombre_lignes, size_t nombre_colonnes) {
+void matrice_show(int **matrice, size_t nombre_lignes, size_t nombre_colonnes) {
     for (size_t i = 0 ; i < nombre_lignes ; i++) {
         for (size_t j = 0 ; j < nombre_colonnes ; j++) {
             printf("%3i ", matrice[i][j]);
@@ -38,7 +38,7 @@ int main() {
         }
     }
 
-    matrice_affiche(matrice, 4, 6);
+    matrice_show(matrice, 4, 6);
 
     matrice_destroy(matrice, 4);
     matrice = NULL;

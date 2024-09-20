@@ -46,7 +46,39 @@ Dans un fichier `liste.c`, créez les fonctions :
 Vous pourrez utiliser la fonction [`realloc`{.language-}](https://www.scaler.com/topics/c-realloc/) pour le dimensionnement du tableau lorsqu'il faut ajouter un élément à une liste pleine ou que l'on supprime un élément d'une liste dont le nombre d'éléments restant est deux fois plus petit que sa taille.
 {% endinfo %}
 
-Il est important de passer des pointeurs sur la liste lorsqu'on la modifie, sinon le contenu est copié et placé dans la pile et on ne modifie que la copie et pas la liste originelle...
+Quelques questions pour voir si vous avez compris (faites des tests et comprenez avant de regarder la réponse) :
+
+{% exercice %}
+Pourquoi une fonction avec la signature suivante ne fonctionnerait pas ?
+
+```c
+void liste_ajoute(liste, int)
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+Le paramètre est copié dans la pile. Comme liste ajoute doit modifier l'attribut nombre de liste, il ne modifierait que la copie et pas l'original.
+
+Il est important de passer des pointeurs sur la liste lorsqu'on la modifie, sinon le contenu est copié et placé dans la pile et on ne modifie que la copie et pas la liste originelle.
+
+{% enddetails %}
+
+Cependant :
+
+{% exercice %}
+Pourquoi une fonction avec la signature suivante fonctionnerait parfaitement ?
+
+```c
+void liste_remplace(liste, size_t, int)
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Cette fonction remplace une valeur à un endroit *pointé* par la structure. Ce qui est dupliqué c'est l'adresse, mais c'est la même adresse : on ne modifie pas la structure on modifie un endroit pointé par elle.
+{% enddetails %}
+
+Testons nos fonctions :
 
 {% faire %}
 Dans le programme principal `main.c` :

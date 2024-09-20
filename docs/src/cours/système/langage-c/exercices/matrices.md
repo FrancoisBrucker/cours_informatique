@@ -36,10 +36,9 @@ Créez une fonction qui affiche à l'écran une matrice crée par la fonction `m
 Sa signature sera :
 
 ```c
-void matrice_affiche(int **matrice, size_t nombre_lignes, size_t nombre_colonnes);
+void matrice_show(int **matrice, size_t nombre_lignes, size_t nombre_colonnes);
 ```
 
-**Contrainte** : utilisez l'arithmétique des pointeurs pour trouver vos éléments.
 {% endfaire %}
 {% info %}
 Vous pourrez utiliser le [formatage des entiers](https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html) de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).
@@ -76,39 +75,48 @@ Comme la matrice est crée comme un tableau de ligne, le nombre de colonnes est 
 ## Implémentation v2 : simple indirection
 
 {% faire %}
-La fonction précédente peut créer des défauts de cache si l'on adresse les éléments par colonne. L'idée est de rassemble les lignes et les connes en un seul tableau.
+L'implémentation précédente va créer des lignes qui peuvent êtres à des endroits différents de la mémoire. On veut ici créer une matrice à un seul endroit de la mémoire (pour éviter les défauts de cache potentiels) et rassembler les lignes et les connes en un seul tableau où les lignes sont mises bout à bout.
 
-Réimplémentez les fonctions d création et de suppression de la matrice avec cette nouvelle structure. Les signatures des fonctions doivent être  :
+Réimplémentez les fonctions de création et de suppression de la matrice avec cette nouvelle structure. Les signatures des fonctions seront maintenant :
 
 ```c
 int *matrice_create(size_t nombre_lignes, size_t nombre_colonnes);
 void matrice_destroy(int *matrice);
-void matrice_affiche(int *matrice, size_t nombre_lignes, size_t nombre_colonnes);
+void matrice_show(int *matrice, size_t nombre_lignes, size_t nombre_colonnes);
 ```
 
 {% endfaire %}
 
-Il est cependant maintenant plus dure d'accéder directement à un élément de la matrice :
+Il est cependant maintenant plus dur d'accéder directement à un élément de la matrice. Créons des fonctions pour nous aider :
 
 {% faire %}
-Faire des fonctions permettant d'accéder et de modifier un élément de la matrice. Ces fonctions doivent être de signature :
+Faire des fonctions permettant d'accéder et de modifier un élément de la matrice et utilisez les dans vos fonctions. Ces fonctions doivent être de signature :
 
 ```c
-int matrice_get(int *matrice, size_t ligne, size_t colonne, size_t nombre_lignes, size_t nombre_colonnes);
-int matrice_set(int *matrice, int element, size_t ligne, size_t colonne, size_t nombre_lignes, size_t nombre_colonnes);
+int matrice_get(int *matrice, size_t ligne, size_t colonne, size_t nombre_colonnes);
+int matrice_set(int *matrice, int element, size_t ligne, size_t colonne, size_t nombre_colonnes);
 ```
-
-Et utilisez-les dans le fichier `main.c`{.fichier}.
 
 {% endfaire %}
 
 ## Implémentation v3 : pointeur opaque
 
-Manipuler une matrice devient très lourd puisqu'il faut connaître et stocker tous les paramètres de la matrice. Améliorons ça :
+Manipuler une matrice devient très lourd puisqu'il faut connaître et stocker les dimension de la matrice. Améliorons ça :
 
-{% faire %}
+{% exercice %}
 Proposez une structure permettant de stocker la matrice et tous ses paramètres
-{% endfaire %}
+{% endexercice %}
+{% details "corrigé" %}
+
+```c
+struct matrice {
+  int *matrice;
+  size_t lignes;
+  size_t colonnes;
+}
+```
+
+{% enddetails %}
 
 {% faire %}
 Utilisez cette structure dans toutes les fonctions. Elles deviennent de signature :
@@ -118,7 +126,7 @@ matrice *matrice_create(size_t nombre_lignes, size_t nombre_colonnes);
 void matrice_destroy(matrice *m);
 void matrice_affiche(matrice *m);
 int matrice_get(matrice *m, size_t ligne, size_t colonne);
-int matrice_set(matrice *m, int element, size_t ligne, size_t colonne);
+void matrice_set(matrice *m, int element, size_t ligne, size_t colonne);
 ```
 
 {% endfaire %}
@@ -131,7 +139,15 @@ On appelle cette façon de faire :
 [Technique du pointeur opaque](https://interrupt.memfault.com/blog/opaque-pointers)
 {% endlien %}
 
-Ce qui donne pour notre matrice :
+Pour que la technique du pointeur opaque fonctionne, il faut séparer les déclarations ds fonctions (les `.h`) et leurs implémentations (les `.c`) :
+
+{% faire %}
+
+Séparer le fichier unique en trois fichiers : `matrice.h`{.fichier}, `matrice.c`{.fichier} et `main.c`{.fichier} et créez un fichier `Makefile`{.fichier} pour compiler le projet.
+
+{% endfaire %}
+
+Pour le pointeur opaque on doit modifier les `.h` pour qu'ils connaissent un pointeur sur la structure mais pas la structure. Ce qui donne pour notre matrice :
 
 Fichier `matrice.h`{.fichier} :
 
@@ -141,11 +157,7 @@ Fichier `matrice.h`{.fichier} :
 
 typedef struct matrice* matrice_t;
 
-matrice_p matrice_create(size_t nombre_lignes, size_t nombre_colonnes);
-void matrice_destroy(matrice_t m);
-void matrice_affiche(matrice_t m);
-int matrice_get(matrice_t m, size_t ligne, size_t colonne);
-int matrice_set(matrice_t m, int element, size_t ligne, size_t colonne);
+// déclaration des fonctions
 
 #endif
 ```
@@ -166,17 +178,23 @@ struct matrice {
 
 {% faire %}
 
-- Pourquoi appelle-t-on ce pattern de création de structure _"pointeur opaque"_ ?
-- en qui cela peut-il faire penser à de la programmation objet ?
-
-{% endfaire %}
-{% faire %}
-
 Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.
 
 {% endfaire %}
 
+{% exercice %}
+
+- Pourquoi appelle-t-on ce pattern de création de structure _"pointeur opaque"_ ?
+- en qui cela peut-il faire penser à de la programmation objet ?
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On connaît un pointeur sur la structure mais pas la structure elle-même. On est obligé de manipuler la structure via les fonctions, comme en programmation objets où l'on manipule les objets via leurs méthodes.
+
 Les types opaques sont une façon très utilisée d'implémenter des structures en C.
+
+{% enddetails %}
 
 Ce type de structure à un autre avantage, il permet de modifier la matrice sans modifier le pointeur opaque ! Pour s'en convaincre :
 
@@ -198,3 +216,9 @@ Vous pourrez :
 4. libérer la mémoire allouée par `m2`{.language-} (sans libérer la matrice en elle même).
 
 {% endinfo %}
+
+{% faire %}
+
+Dans le programme principale, après avoir affiché la matrice, transposez là et affichez la à nouveau.
+
+{% endfaire %}
