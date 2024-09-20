@@ -25,7 +25,9 @@ Déclarez bien vos variables dans une fonction (au pire dans la fonction main), 
 Chaque série d'exercice va vous apprendre une technique nouvelle de programmation en C. Ils sont pensés pour être de plus en plus spécifique, faites les donc dans l'ordre. Lorsque vous arriverez à tous les faire et que vous les avez compris, vous pourrez considérer que vous avez acquis les bases de programmation en C.
 
 {% info %}
-[corrigé des exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9)
+[corrigé des exercices](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/syst%C3%A8me/langage-c/exercices/corrig%C3%A9).
+
+Ne regardez la solution qu'**après avoir résolu l'exercice**. En C comme partout c'est se casser les dents sur un problème qui vous fait progresser. Pas juste passivement regarder la solution.
 {% endinfo %}
 
 ## Bases
