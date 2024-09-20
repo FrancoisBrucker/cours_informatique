@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Créez une fonction qui rend le nombre de chiffres d'un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, alors 7 seulement d'un seul.
+Créez une fonction qui rend le nombre de caractères utilisés pour écrire un entier (positif ou négatif) écrit en base 10. Par exemple 42 est composé de 2 chiffres en base 10, 7 seulement d'un seul et -1 de deux.
 
 Vous implémenterez cette fonction de 3 manières différentes. Vous ajouterez chaque fonction dans le même fichier `nombre-chiffres.c`{.fichier}.
 
