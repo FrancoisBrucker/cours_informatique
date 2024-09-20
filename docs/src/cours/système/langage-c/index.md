@@ -86,12 +86,20 @@ clang hello.c
 
 La compilation a crée un fichier exécutable `a.out`{.fichier} dans le dossier courant :
 
+Sous unix :
+
 ```
 ./a.out
 ```
 
+Sous Windows :
+
+```
+.\a.exe
+```
+
 {% info %}
-Si vous tapez uniquement `a.out`, cela ne marchera pas. Il faut préciser le chemin relatif car les fichiers exécutables sans chemin ne sont exécutable que s'ils sont dans le PATH.
+Si vous tapez uniquement `a.out` (ou `a.exe` sous windows), cela ne marchera pas. Il faut préciser le chemin relatif car les fichiers exécutables sans chemin ne sont exécutable que s'ils sont dans le PATH.
 {% endinfo %}
 
 Notez que si vous voulez exécuter le résultat de la compilation uniquement si la compilation a réussie, vous pouvez utiliser la commande :
