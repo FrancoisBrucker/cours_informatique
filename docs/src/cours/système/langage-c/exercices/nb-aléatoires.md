@@ -49,7 +49,7 @@ Qui tire `nombre`{.language-} nombres aléatoires entre 0 et max (exclu) et les 
 
 {% endfaire %}
 {% faire %}
-Testez la fonction précédente avec `int *t = aleatoire_tab(10, 100)`{.language-} et en remplissant le tableau `int n[10]`{.language-} tel que `n[i]`{.language-} contienne le nombre de fois où le nombre `i`{.language-} est présent dans `t`{.language-}.
+Testez la fonction précédente avec `int *t = aleatoire_tab(10, 100)`{.language-} et en remplissant **un autre tableau** `int n[10]`{.language-} tel que `n[i]`{.language-} contienne le nombre de fois où le nombre `i`{.language-} est présent dans `t`{.language-}.
 {% endfaire %}
 
 {% exercice %}
