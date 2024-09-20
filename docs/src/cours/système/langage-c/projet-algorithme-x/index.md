@@ -71,7 +71,7 @@ Vous créerez dans cet exécutable une matrice de chaque type (assez grosse pour
 ### Instances quelconques
 
 {% faire %}
-En utilisant la fonction crée dans l'[exercice de probabilité](../exercices/#proba-aléatoire){.interne}, créez une fonction permettant de créer une instance du problème. Sa signature doit être :
+En utilisant la fonction crée dans l'[exercice sur les nombres aléatoires](../exercices/#proba){.interne}, créez une fonction permettant de créer une instance du problème. Sa signature doit être :
 
 ```c
 matrice_t instance_quelconque(size_t nombre_ligne, size_t nombre_colonnes, double proba)
@@ -121,12 +121,12 @@ matrice_t instance_solution(k, m)
 Qui crée une matrice carrée $M$ avec les $m_k$ pris aléatoirement entre $1$ et $m$
 {% endfaire %}
 {% info %}
-Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercices/#nombres-aléatoire){.interne} pour vous aider. En particulier :
+Vous pourrez utiliser les fonctions vues dans l'[exercice aléatoire](../exercices/#proba){.interne} pour vous aider. En particulier :
 
-- la fonction [`int aleatoire_int(int min, int max)`](../exercices/#entier-aléatoire) pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.
-- la fonction [`int aléatoire_01(double proba)`](../exercices/#proba-aléatoire) pour générer les lignes strictement plus grandes que $k$
+- la fonction `int aleatoire_int(int min, int max)`{.language-} pour générer des nombres aléatoires entre 1 et m et ainsi créer les $m_k$.
+- la fonction `int *aléatoire_01_tab(double proba)`{.language-} pour générer les lignes strictement plus grandes que $k$
 
-Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger.
+Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter [l'algorithme de Fisher-Yates](https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates) pour trouver une permutation des lignes et/ou des colonnes).
 
 {% endinfo %}
 

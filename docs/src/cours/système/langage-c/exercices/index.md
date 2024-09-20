@@ -36,7 +36,7 @@ Création de fonctions simples et compilation avec des bibliothèques annexes.
 [Nombre de chiffres d'un entier](./nb-chiffres){.interne}
 {% endaller %}
 
-## Retour de Pointeurs
+## <span id="proba"></span> Retour de Pointeurs
 
 On utilise des pointeurs comme retour de fonctions et on termine en créant un makefile.
 
@@ -50,14 +50,6 @@ Création d'une structure de donnée complexe grâce aux [`struct`{.language-}](
 
 {% aller %}
 [Listes](./structure-liste){.interne}
-{% endaller %}
-
-## Syracuse
-
-Quelques petits exercices puis on personnalise notre exécutable avec des paramètres.
-
-{% aller %}
-[Syracuse](./syracuse){.interne}
 {% endaller %}
 
 ## <span id="matrice"></span>Structure de matrice
@@ -74,4 +66,12 @@ On y apprend à utiliser des données sans type prédéfinis et des pointeurs su
 
 {% aller %}
 [Listes doublement chaînées](./listes-chaînées){.interne}
+{% endaller %}
+
+## Syracuse
+
+On personnalise notre exécutable avec des paramètres.
+
+{% aller %}
+[Syracuse](./syracuse){.interne}
 {% endaller %}

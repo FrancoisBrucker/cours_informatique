@@ -100,7 +100,6 @@ Notez que si vous voulez exécuter le résultat de la compilation uniquement si 
 clang hello.c && ./a.out
 ```
 
-
 On peut toujours préciser le fichier de sortie avec l'option `-o`. Par exemple :
 
 ```
@@ -147,12 +146,7 @@ Avant de pouvoir exécuter un fichier `.c`, il faut procéder à plusieurs étap
 
 ## Exercices
 
-Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, par exemple :
-
-- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
-- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
-
-Nous en ajoutons quelques-un ci-après.
+Il existe de nombreux sites compilant des exercices (plus ou moins corrigés) en `C`, nous vous en avons concocté 3 séries ci-après qui mobilisent tout ce qu'on a vu.
 
 {% aller %}
 [Exercices](./exercices){.interne}
@@ -165,6 +159,14 @@ Nous en ajoutons quelques-un ci-après.
 {% aller %}
 [Examen](./examen){.interne}
 {% endaller %}
+
+{% lien %}
+Autres exercices (liste non exhaustive) :
+
+- <https://www.lamsade.dauphine.fr/~manouvri/C/PolyExoC_MM.pdf>
+- <https://perso.univ-perp.fr/langlois/images/pdf/ens/touslestd.pdf>
+
+{% endlien %}
 
 ## C art
 
