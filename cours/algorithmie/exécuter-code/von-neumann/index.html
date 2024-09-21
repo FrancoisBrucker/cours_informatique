@@ -168,6 +168,14 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
 <span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span>
 </code></pre>
 <p>La pile est une structure fondamentale en algorithmie (on y reviendra) et permet de résoudre efficacement tout un tas de problèmes lié au stockage de données. Le modèle de Von Neumann l'utilise pour gérer efficacement les variables et les appels de fonctions.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">vidéo qui détaille l'invention et les diverses utilisations de la pile</a>.</p>
+</div>
+</div>
 <h3>Implémentation et fonctionnement</h3>
 <p>La pile est composée de cases contiguës en mémoire : classiquement les derniers.</p>
 <p>Pour gérer la pile le modèle de Von Neumann possède :</p>
@@ -287,6 +295,16 @@ GOTOIFNOT ZÉRO <span class="token number">9</span>
 <p>Lorsque l'on a plus besoin d'un objet, on le dépile et on peut réutiliser la mémoire qu'il utilisait. Pour que cela fonctionne il faut créer et supprimer les variables dans l'ordre, on ne peux pas supprimer une variable sans supprimer également toutes celles qui ont étés crées après elle.</p>
 <p>L'usage veut que l'on supprime tout le frame. Pour ne pas avoir à garder toutes les variables, on va créer des frame temporaires pour stocker les variables locales, en particulier lors de l'appels des fonctions.</p>
 <h4>Appels de fonctions</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ce n'est pas Von Neumann mais Dijkstra qui a a proposé cette façon de faire (utiliser la pile pour appeler des fonctions et stocker les variables locales), toujours utilisée dans nos ordinateurs actuels.</p>
+<p>Le, célèbre article où il présente cette idée est là :<br>
+<a href="https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf">Recursive programming</a></p>
+</div>
+</div>
 <p>Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :</p>
 <ol>
 <li>gestion des variables locales à la fonction ainsi que ses paramètres</li>
