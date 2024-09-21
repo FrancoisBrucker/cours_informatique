@@ -88,6 +88,10 @@ print(accès(0))  # rendra 1
 
 La pile est une structure fondamentale en algorithmie (on y reviendra) et permet de résoudre efficacement tout un tas de problèmes lié au stockage de données. Le modèle de Von Neumann l'utilise pour gérer efficacement les variables et les appels de fonctions.
 
+{% lien %}
+La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette [vidéo qui détaille l'invention et les diverses utilisations de la pile](https://www.youtube.com/watch?v=2vBVvQTTdXg).
+{% endlien %}
+
 ### Implémentation et fonctionnement
 
 La pile est composée de cases contiguës en mémoire : classiquement les derniers.
@@ -191,6 +195,13 @@ Lorsque l'on a plus besoin d'un objet, on le dépile et on peut réutiliser la m
 L'usage veut que l'on supprime tout le frame. Pour ne pas avoir à garder toutes les variables, on va créer des frame temporaires pour stocker les variables locales, en particulier lors de l'appels des fonctions.
 
 #### Appels de fonctions
+
+{% lien %}
+Ce n'est pas Von Neumann mais Dijkstra qui a a proposé cette façon de faire (utiliser la pile pour appeler des fonctions et stocker les variables locales), toujours utilisée dans nos ordinateurs actuels.
+
+Le, célèbre article où il présente cette idée est là :
+[Recursive programming](https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf)
+{% endlien %}
 
 Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :
 

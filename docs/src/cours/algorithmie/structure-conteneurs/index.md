@@ -25,6 +25,9 @@ Nous allons commencer par aborder la première extension des tableaux, les liste
 
 > listes chaînées très utilisé en système et en algo lorsque l'on a besoin uniquement d'accéder au suivant
 > TBD : pile/files : structure
+> invention de la pile : <https://www.youtube.com/watch?v=2vBVvQTTdXg> Hamblin's stack
+>  utilisation de deux piles une opération et une nombre. Samelson et bauer
+> 
 > TBD : bornées : faire avec des listes + démo amortie
 > TBD : decques circulaires
 > TBD : faire gain/perte

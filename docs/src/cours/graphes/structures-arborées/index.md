@@ -13,6 +13,7 @@ eleventyComputed:
 
 > TBD tas, ABR, lexico-graphiques
 > exo AABB, arbres
+> arbre syntaxique + pile pour lecture
 
 ### exemple du tas
 

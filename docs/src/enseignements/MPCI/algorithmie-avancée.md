@@ -51,6 +51,14 @@ En quatre parties.
 
 ### C
 
+{% lien %}
+Le but de cette partie est d'avoir assez de bases en C pour s'amuser.
+
+N'hésitez pas à suivre et à faire également les exercices du cours suivant :
+
+<https://www.0de5.net/stimuli/a-reintroduction-to-programming/essentials/just-enough-c-to-have-fun>
+{% endlien %}
+
 1. Cours 1 : Système et consequences pour le code
    1. [architecture générale](/cours/système/architecture-ordinateur/#général){.interne}
    2. Mémoire :
