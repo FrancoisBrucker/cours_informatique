@@ -2,8 +2,8 @@
 layout: layout/post.njk
 title: Chemin et cycles Hamiltonien
 
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,25 +12,62 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-tous les sommets en chemin ou cycle
+{% note "**Définition**" %}
+Un graphe (_resp._ graphe dirigé) admet un **_cycle_** (_resp._ **_circuit_**) **_hamiltonien_** s'il existe un cycle (_resp._ un circuit) élémentaire passant par tous les sommets.
 
-prop delta(x)> n/2
-delta(x) + delat(y)
+{% endnote %}
 
-problème NP-complet
+On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton) qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game) qu'il commercialisera et correspond à l'exercice suivant :
 
-> TBD compléter
+{% exercice "Jeu du dodécaèdre" %}
+Montrer que le graphe suivant possède un cycle hamiltonien
+![dodécaèdre](dodécaèdre.png)
+{% endexercice %}
+{% details "corrigé" %}
+![dodécaèdre](dodécaèdre_hamilton.png)
+{% enddetails %}
 
+Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien. La définition suivante est également très utilisée :
 
-## chemin le plus long
+{% note "**Définition**" %}
+Un graphe (_resp._ graphe dirigé) admet un **_chemin hamiltonien_** s'il existe un chemin élémentaire passant par tous les sommets.
 
-L'algorithme de Dijkstra permet de répondre à la question : *quelle est la longueur des chemins les plus courts partant d'un sommet*. Mais qu'en est-il du pendant : *quelle est la longueur des chemins les plus longs partant d'un sommet* ?
+{% endnote %}
 
-On suppose que le problème est maintenant : quel est la longueur maximale d'un chemin passant une unique fois par chaque sommet ?
+Tous les graphes ne possèdent cependant pas de cycle hamiltonien. Par exemple le graphe suivant, appelé [graphe de Petersen](https://fr.wikipedia.org/wiki/Graphe_de_Petersen) (que l'on est amené à revoir), n'en possède pas :
 
-C'est le problème du **plus long chemin élémentaire** (les sommets n'apparaissent qu'une unique fois).
+![graphe de Petersen](petersen.png)
 
-### chemin hamiltonien
+{% info "tiré de Wikipédia" %}
+Donald Knuth explique dans The Art of Computer Programming que le graphe de Petersen est _«une configuration remarquable qui sert de contre-exemple à de nombreuses prédictions optimistes sur ce qui devrait être vrai pour tous les graphes3 »_.
+{% endinfo %}
+{% exercice %}
+Montrez que le graphe de Petersen ne possède pas de cycle hamiltonien.
+{% endexercice %}
+{% details "corrigé" %}
+S'il suffit d'exhiber un exemple pour montrer qu'un graphe est hamiltonien, pour montrer qu'il ne l'est pas il faut en démontrer l'impossibilité.
+
+On peut utiliser pour cela séparons les sommets du graphe en deux parties : les sommets rouges et les sommets verts :
+
+![graphe de Petersen](petersen2.png)
+
+Supposons qu'il existe un cycle hamiltonien $x_1\dots x_n$. Soit $x_ix_{i+1}$ est une arête dont les sommets sont de couleurs différentes. Si $j>i$ est le plus petit entier tel que $x_jx_{j+1}$ est une arête dont les sommets sont de couleurs différentes, alors la couleur de $x_{i+1}$ est identique à celle de $x_j$ et donc il ne peut y avoir qu'un nombre pair d'arêtes dont les sommets sont de couleurs différentes. Soit 0, 2 ou 4 arêtes ce qui, par symétrie, suppose qu'un des quatre graphes ci-après possède aussi un cycle hamiltonien avec les arêtes vertes (jonction entre couleur et sommets de degré 2), ce qui est impossible :
+
+| :-: | :-: |
+|![graphe A](./petersen-a.png)|![graphe B](./petersen-b.png)|
+|![graphe C](./petersen-c.png)|![graphe D](./petersen-d.png)|
+
+{% enddetails %}
+
+Le problème du cycle pou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier [le problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
+
+## NP-complétude
+
+> TBD à faire
+> TBD NPC :
+>
+> - dirigé : <https://www.youtube.com/watch?v=4r78NtOnWWA>
+> - non dirigé : <https://www.youtube.com/watch?v=5SaQa_wlel8>
 
 Il est illusoire de tenter de trouver un algorithme pour résoudre le problème du chemin le plus long dans le cas général car il permettrait de résoudre le problème du [chemin hamiltonien](https://fr.wikipedia.org/wiki/Graphe_hamiltonien) qui peut s'écrire ainsi : existe-t-il un chemin élémentaire passant par tous les sommets d'un graphe G donné ?
 
@@ -47,18 +84,55 @@ Ce problème est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-com
 Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.
 {% endinfo %}
 
-Le problème de trouver un chemin hamiltonien dans un graphe peut paraître un peu artificiel mais il est crucial en pratique dans sa version [voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
+## Propriétés
+
+Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales.
+
+> TBD mettre de l'ordre
+
+{% note "**Proposition**" %}
+Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un chemin Hamiltonien.
+{% endnote %}
+{% info %}
+Dirac, 1952.
+{% endinfo %}
+{% details "preuve", "open" %}
+
+> TBD
+> {% enddetails %}
+
+{% note "**Proposition**" %}
+Si $G=(V, E)$ avec $\vert V \vert\geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ our tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.
+{% endnote %}
+{% info %}
+Core, 1960.
+{% endinfo %}
+{% details "preuve", "open" %}
+
+> TBD
+> {% enddetails %}
+
+## Chemin le plus long
+
+Le parcours en largeur permet de répondre à la question : _quelle est la longueur des chemins les plus courts partant d'un sommet_. Mais qu'en est-il du pendant : _quelle est la longueur des chemins les plus longs partant d'un sommet_ ?
+
+On suppose que le problème est maintenant : quel est la longueur maximale d'un chemin passant une unique fois par chaque sommet ?
+
+C'est le problème du **plus long chemin élémentaire** (les sommets n'apparaissent qu'une unique fois).
+
+### chemin hamiltonien
+
 
 ### graphes particuliers
 
 Il existe tout de même 2 classes de graphes particulières qui admettent des solutions faciles pour le problème du chemin élémentaire le plus long :
 
-* les [graphes orientés sans circuits](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique)
-* les [tournois](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes))
+- les [graphes orientés sans circuits](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique)
+- les [tournois](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>)
 
 #### graphe sans circuit
 
-Un graphe orienté qui ne contient pas de circuit est souvent appelé *DAG* (direct acyclic graph).
+Un graphe orienté qui ne contient pas de circuit est souvent appelé _DAG_ (direct acyclic graph).
 
 On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total $<$ sur les sommets du graphe tel que $xy \in E$ implique $x < y$ dans l'ordre.
 
@@ -66,12 +140,12 @@ On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total 
 Montrer que :
 
 1. un graphe ne peut admettre de tri topologique que s'il n'a pas de cycle
-2. pour un DAG, il existe toujours un sommet qui n'a pas de voisins entrant (*resp.* sortant)
+2. pour un DAG, il existe toujours un sommet qui n'a pas de voisins entrant (_resp._ sortant)
 3. en déduire qu'un DAG admet un tri topologique
 4. conclure sur le fait qu'un graphe est un DAG si et seulement s'il admet un tri topologique
-{% endexercice %}
-{% details "solution" %}
-1 :
+   {% endexercice %}
+   {% details "solution" %}
+   1 :
 
 Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l'ordre total entre les sommets du graphe, il existe $i$ tel que $c_{i+1} < c_i$ ce qui est impossible si un tel ordre était topologique.
 
@@ -91,11 +165,10 @@ en supprimant itérativement les sommets sans voisins rentrant d'un DAG (le grap
 
 On a montré que :
 
-* cycle implique non tri topologique
-* DAG (non cycle) implique tri topologique
+- cycle implique non tri topologique
+- DAG (non cycle) implique tri topologique
 
 On a donc bien l'équivalence : tri topologique est équivalent à DAG.
-
 
 {% enddetails %}
 
@@ -126,7 +199,7 @@ Algorithme :
     * x = a
     * tant que x est différent de predecesseur(x):
         * x = predecesseur(x)
-        * ajoute x au début de chemin        
+        * ajoute x au début de chemin
 Retour :
     chemin
 ```
@@ -140,7 +213,7 @@ Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \v
 
 #### tournoi
 
-Un [tournoi](https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)) est un graphe orienté $T = (V, E)$  tel que quelque soit $x \neq y \in V$ soit $xy$ soit $yx$ est une arête, mais pas les deux.
+Un [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) est un graphe orienté $T = (V, E)$ tel que quelque soit $x \neq y \in V$ soit $xy$ soit $yx$ est une arête, mais pas les deux.
 
 Un tournoi est très utilisé en théorie du choix social et en théorie des votes car il modélise bien les choix et les soucis entre choix locaux (quelque soit une alternative on en préfère l'une à l'autre) et optimum global (existe-t-il un choix qui est préféré à tous les autres).
 
@@ -150,7 +223,7 @@ Dans ce champ applicatif, les cycles sont problématiques (A est préféré à B
 Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif
 {% endexercice %}
 {% details "solution" %}
-Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$  tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
+Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
 
 Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
 
@@ -168,8 +241,8 @@ On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{
 
 Il existe alors :
 
-* un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
-* un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
+- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
+- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
 
 On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
 {% enddetails %}

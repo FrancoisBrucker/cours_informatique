@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD comme <https://www.youtube.com/watch?v=76acHVJfziw&t=23s>, utiliser radar2 pour voir comment ça marche en mémoire. Pile et tas.
+
 Le  [C a été créé pour créer Unix](https://www.youtube.com/watch?v=de2Hsvxaf8M). Son but est de créer des systèmes d'exploitation. Il :
 
 - est très proche de la machine

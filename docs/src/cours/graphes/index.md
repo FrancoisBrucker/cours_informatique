@@ -148,6 +148,18 @@ Problèmes de flots. Définition, algorithmes et applications
 
 > <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
 
+## Bi-parti
+
+Caractérisation :
+
+- equivalent pas de cycle de longueur impair
+
+Propriétés :
+
+- couplage facile
+- hamiltonien si même taille
+- 2 coloriables
+
 ## Couplages
 
 {% aller %}

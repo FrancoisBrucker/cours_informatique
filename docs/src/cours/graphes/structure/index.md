@@ -465,3 +465,23 @@ Définissons le problème algorithmique associé :
 Si on se donne une fonction $f$ allant de l'ensemble des sommets d'un graphe à un autre, il est facile de vérifier si c'est un isomorphisme entre les deux graphes ou non : le problème de l'isomorphisme de graphe est donc clairement dans NP.
 
 En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem) est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.
+
+## Graphes dérivés
+
+A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci. 
+
+### Graphe complémentaire
+
+<https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>
+
+complémentaire de complémentaire = graphe
+
+### Graphe adjoint
+
+> TBD <https://fr.wikipedia.org/wiki/Line_graph>
+adjoint de adjoint = graphe
+
+### Mineurs
+
+> TBD <https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.

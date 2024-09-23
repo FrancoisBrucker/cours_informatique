@@ -5,6 +5,10 @@ tags: informatique
 author: "François Brucker"
 ---
 
+## possible exo ds
+
+- <https://math.stackexchange.com/questions/1699203/hamilton-paths-cycles-in-grid-graphs>
+
 ## Plan
 
 Liste des différents cours. La plupart de ceux-ci sont enseignés par bouts dans les différentes années.

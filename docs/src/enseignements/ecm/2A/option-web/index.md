@@ -27,7 +27,7 @@ Web front et back (avec node).
 [Cours de web](/cours/web){.interne}
 {% endaller %}
 
-## cours 1
+## cours 1 : html (2h)
 
 A faire : une page avec son animal favori. Cette page doit contenir :
 
@@ -43,7 +43,7 @@ Cette page doit être validée par le W3C
 Mettre sa page sur sa page web.
 {% endfaire %}
 
-## cours 2
+## cours 2 : css (2h)
 
 CSS. Ajouter de la couleur et du style à votre page. En particulier :
 
@@ -60,6 +60,24 @@ Ajouter le css sur sa page web.
 {% note "Exposé" %}
 
 {% endnote %}
+
+## cours 3 : bootstrap (2h)
+
+Installation :
+
+- cdn
+- à la main
+- node
+
+La page des animaux à bootstraper :
+
+- mise en pase
+- image et card
+- ...
+
+## cours 4 : js (2h)
+
+## cours 5 : projet front (4h+)
 
 ## Projet final
 

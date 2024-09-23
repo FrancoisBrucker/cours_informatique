@@ -2,8 +2,8 @@
 layout: layout/post.njk
 
 title: Algorithme de Dijkstra
-authors: 
-    - François Brucker
+authors:
+  - François Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -22,16 +22,16 @@ L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra)
 
 ## Principe
 
-L'algorithme de Dijkstra cherche à créer un ***arborescence*** à partir d'un graphe initial $G$. Précisons cela.
+L'algorithme de Dijkstra cherche à créer un **_arborescence_** à partir d'un graphe initial $G$. Précisons cela.
 
 {% note "**Définition**" %}
 
-Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une ***arborescence*** $T_{x} = (V', E')$ est un graphe tel que :
+Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une **_arborescence_** $T_{x} = (V', E')$ est un graphe tel que :
 
-* $x \in V'$
-* $V' \subseteq V$ et $E' \subseteq E$
-* il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$
-* pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est **minimum**
+- $x \in V'$
+- $V' \subseteq V$ et $E' \subseteq E$
+- il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$
+- pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est **minimum**
 
 {% endnote %}
 
@@ -39,9 +39,9 @@ Par exemple :
 
 ![G et G'](./g_g_prim.png)
 
-La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets puisque  $T_{x} = (\\{x\\}, \varnothing)$ en est une quelque soient $x$ et $G$.
+La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets puisque $T_{x} = (\\{x\\}, \varnothing)$ en est une quelque soient $x$ et $G$.
 
-Enfin, la proposition suivant montre que l'on peut faire *grossir* les arborescences :
+Enfin, la proposition suivant montre que l'on peut faire _grossir_ les arborescences :
 
 {% note "**Proposition**" %}
 Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Et $T_x = (V', E')$ une de ses arborescence.
@@ -57,9 +57,11 @@ N'est pas vide alors il existe un arc $u^\star v^\star \in W$ tel que :
 $$f(c^T_{xu}) + f(u^\star v^\star) = \min_{uv \in W}(f(c^T_{xu}) + f(uv))$$
 
 Et
+
 $$
 T' = (V' \cup \\{v^\star\\}, E' \cup \\{ u^\star v^\star \\})
 $$
+
 est également une arborescence de $G$
 {% endnote %}
 {% details "preuve" %}
@@ -86,6 +88,8 @@ L'implémentation naïve de cet algorithme serait cependant d'une complexité im
 
 L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent de façon optimale.
 
+> TBD montrer que Dijkstra = BFS + file de priorité
+
 ### Pseudo-code
 
 On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
@@ -97,22 +101,22 @@ Entrées :
 
 Initialisation :
     prédécesseur[départ] = départ  # pour retrouver les chemins
-    
+
     coût[départ] = 0  # distances
     coût[u] = +∞ pour tous les autres sommets u
-    
+
     V_prim = {départ}  # les sommets de l'arborescence
-    
+
     pivot = départ  # pivot est le dernier élément ajouté à l'arborescence
 
 Algorithme :
     tant que pivot ≠ arrivé :
         # mise à jour des coûts
         pour tous les voisins x de pivot dans G qui ne sont pas dans V_prim :
-            si coût[x] > coût[pivot] + f(pivot, x):   
+            si coût[x] > coût[pivot] + f(pivot, x):
                 coût[x] = coût[pivot] + f(pivot, x)
                 prédécesseur[x] = pivot
-        
+
         # ajout d'un élément à la structure
         soit u un élément de V \ V_prim tel que coût[u] soit minimum
 
@@ -243,10 +247,10 @@ Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets son
 {% details "solution" %}
 Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.
 
-* La figure se lit de gauche à droite et de haut en bas.
-* les sommets de `V_prim`{.language-} sont encadrés en vert
-* en orange les valeurs de `prédécesseur`{.language-} et de `coût_entrée`{.language-}
-* en magenta `pivot`{.language-} et les modifications de `prédécesseur`{.language-} et de `coût_entrée`{.language-} s'il y en a
+- La figure se lit de gauche à droite et de haut en bas.
+- les sommets de `V_prim`{.language-} sont encadrés en vert
+- en orange les valeurs de `prédécesseur`{.language-} et de `coût_entrée`{.language-}
+- en magenta `pivot`{.language-} et les modifications de `prédécesseur`{.language-} et de `coût_entrée`{.language-} s'il y en a
 
 ![Dijkstra Paris à Rana](chemin_dijkstra_paris_rana.png)
 {% enddetails %}
@@ -259,9 +263,9 @@ Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ d
 {% details "solution" %}
 On montre par récurrence qu'à chaque étape le chemin de `départ`{.language-} à `pivot`{.language-} constitué en remontant les prédécesseurs de `pivot`{.language-} jusqu'à arriver à `départ`{.language-} est de longueur minimale et de coût `coût_entrée[pivot]`{.language-}.
 
-Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans  `V_prim`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `V_prim`{.language-}.
+Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans `V_prim`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `V_prim`{.language-}.
 
-Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ  (disons $u$) est dans `V_prim`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
+Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ (disons $u$) est dans `V_prim`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
 
 Par hypothèse de récurrence, `coût_entree[u]`{.language-} est le coût minimum d'un chemin entre `départ`{.language-} et $u$ et `coût_entree[v]`{.language-} est donc plus grand que `coût_entree[u] + f[uv]`{.language-} (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V_prim`{.language-}) et de `coût_entree[pivot]`{.language-} (car c'est le min).
 
@@ -280,6 +284,7 @@ On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ ét
 On prend ensuite le minimum parmi les éléments de `V_prim`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
 
 La complexité totale est alors en :
+
 <p>
 \[
 \mathcal{O}(\underbracket{\vert E\vert}_{\mbox{mises à jour du coût d'entrée}} + \underbracket{(\vert V \vert)^2}_{\vert V \vert \mbox{ choix de pivot}})
@@ -296,20 +301,20 @@ Clair puisque $\vert E \vert \leq \vert V \vert)^2$.
 
 On le voit dans la preuve de la proposition, le facteur limitant est la partie en $\mathcal{O}(\vert V \vert^2)$ qui n'est pas linéaire en la taille du graphe (en mémoire un graphe occupe de l'ordre de $\mathcal{O}(\vert E \vert + \vert V \vert)$ cases). Celle ci concerne le choix du nouveau pivot en cherchant un minimum de `coût_entree`{.language-}. En optimisant cette opération, on peut drastiquement diminuer la complexité de l'algorithme.
 
-Une optimisation classique est d'utiliser un [tas](https://fr.wikipedia.org/wiki/Tas_(informatique)) pour trouver le min. On a alors que :
+Une optimisation classique est d'utiliser un [tas](<https://fr.wikipedia.org/wiki/Tas_(informatique)>) pour trouver le min. On a alors que :
 
-* une complexité de $\mathcal{O}(1)$  pour prendre un minimum
-* une complexité de $\mathcal{O}(\log_2(M))$ où $M$ est le nombre d'éléments du tas pour mettre à jour la structure après chaque modification. Comme il va y a voir au maximum $V$ éléments dans ce tas, on peut borner cette complexité par $\mathcal{O}(\log_2(\vert V \vert))$
+- une complexité de $\mathcal{O}(1)$ pour prendre un minimum
+- une complexité de $\mathcal{O}(\log_2(M))$ où $M$ est le nombre d'éléments du tas pour mettre à jour la structure après chaque modification. Comme il va y a voir au maximum $V$ éléments dans ce tas, on peut borner cette complexité par $\mathcal{O}(\log_2(\vert V \vert))$
 
 Enfin :
 
-* il y a de l'ordre de $\mathcal{O}(\vert V \vert)$ prise de minimum  : à chaque choix de `pivot`{.language-}
-* il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de `coût_entree`{.language-}
+- il y a de l'ordre de $\mathcal{O}(\vert V \vert)$ prise de minimum : à chaque choix de `pivot`{.language-}
+- il y a de l'ordre de $\mathcal{O}(\vert E \vert)$ modifications : à chaque modification de `coût_entree`{.language-}
 
 On a donc une complexité de choix de `pivot`{.language-} qui passe alors de $\mathcal{O}(\vert V \vert^2)$ à $\mathcal{O}(\vert E \vert \log_2(\vert V \vert))$.
 
-* S'il y a **peu d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, **c'est beaucoup mieux** puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$
-* S'il y a **beaucoup d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est **un peu moins bon**  puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$
+- S'il y a **peu d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert)$, **c'est beaucoup mieux** puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)\log_2(\vert V \vert))$
+- S'il y a **beaucoup d'arcs**, disons $\vert E \vert = \mathcal{O}(\vert V \vert^2)$, c'est **un peu moins bon** puisque l'on a alors une complexité de : $\mathcal{O}((\vert V \vert)^2\log_2(\vert V \vert))$
 
 La complexité de Dijkstra avec un tas est alors : $\mathcal{O}(\vert E \vert + (\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ ce qui est égal à $\mathcal{O}((\vert E \vert + \vert V \vert)\log_2(\vert V \vert))$ qui est beaucoup mieux que l'implémentation naïve si le graphe est peu dense et un peu moins bonne dans le cas où le graphe est dense.
 
@@ -338,19 +343,22 @@ A chaque fois que l'on ajoute un élément dans `V_prim`{.language-} on vérifie
 {% exercice %}
 Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$ soit égal à $V$ on obtient un graphe $G' = (V, E')$ tel que :
 
-* $\vert E' \vert = \vert V \vert -1$
-* il existe un unique chemin entre $d$ et tout autre sommet
-* le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$
+- $\vert E' \vert = \vert V \vert -1$
+- il existe un unique chemin entre $d$ et tout autre sommet
+- le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$
+  
 {% endexercice %}
 {% details "solution" %}
-Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
+  Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
 {% enddetails %}
+
+
 
 ## <span id="a-star"></span> $A^\star$
 
 > TBD : <https://www.youtube.com/watch?v=A60q6dcoCjw>
 
-Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors *rapidement* une solution *acceptable* plutôt qu'obtenir *lentement* une solution optimale.
+Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très grand, voir inconnu (un terrain de jeu) est [l'algorithme $A^\star$](https://fr.wikipedia.org/wiki/Algorithme_A*), qui est une variante de l'algorithme de Dijkstra qui accélère la procédure de choix en sacrifiant l'optimalité : on obtient alors _rapidement_ une solution _acceptable_ plutôt qu'obtenir _lentement_ une solution optimale.
 
 Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :
 
@@ -369,7 +377,7 @@ Notez que si l'heuristique vaut $0$ pour tout sommet, $A^\star$ est exactement l
 
 {% note "**Propriétés**" %}
 
-L'heuristique $h$ est dite ***consistante*** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$
+L'heuristique $h$ est dite **_consistante_** si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$
 
 Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
@@ -383,7 +391,7 @@ Procédons par l'absurde. Soit la première étape où l'on choisit de rentrer d
 2. $c$ est de poids minimum, c'est donc aussi un chemin de poids minimum pour aller de $\mbox{départ}$ à $p'$
 3. le coût de tous les éléments $x$ de $V'$ est égal au poids minimum d'un chemin allant de $\mbox{départ}$ à $x$ : $\mbox{coût}[p']$ vaut le poids de $c$ de $\mbox{départ}$ à $p'$
 4. $\mbox{coût}[p'] + f(p', u')$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$
-5. $\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre  $\mbox{départ}$ à $u'$
+5. $\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$
 
 De plus, comme $u'$ n'a pas été choisit à cette étape on a :
 
@@ -415,10 +423,12 @@ Ce qui est impossible car $h$ est consistante.
 
 La proposition suivante montre que l'on peut donner une définition locale de consistance, qui donne un moyen simple de vérifier ou de construire une heuristique consistante :
 {% note %}
-Une heuristique $h$ est ***consistante*** si et seulement si pour tout arc $uv$ on a :
+Une heuristique $h$ est **_consistante_** si et seulement si pour tout arc $uv$ on a :
+
 $$
 h(u) \leq f(uv) + h(v)
 $$
+
 {% endnote %}
 {% details "preuve" %}
 
@@ -435,9 +445,9 @@ Proposez une implémentation de l'algorithme $A^*$ qui trouvera un chemin de poi
 {% endexercice %}
 {% details "solution" %}
 
-* On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
-* s'il y a des murs on ne met pas d'arêtes
-* l'heuristique sera la distance entre la position et l'arrivée. Qui est consistante.
+- On peut prendre comme graphe la grille 2D carré de pas 1m par exemple
+- s'il y a des murs on ne met pas d'arêtes
+- l'heuristique sera la distance entre la position et l'arrivée. Qui est consistante.
 
 {% enddetails %}
 
@@ -445,13 +455,13 @@ Avant de conclure cette partie, donnons une autre condition pour qu'$A^\star$ do
 
 {% note %}
 
-Une heuristique $h$ est dite ***admissible*** si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.
+Une heuristique $h$ est dite **_admissible_** si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.
 
 Si l’heuristique de $A^\star$ est admissible **et** qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence **alors** $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
 {% details "preuve" %}
 
-Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof).  
+Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof).
 
 {% enddetails %}
 
@@ -473,7 +483,7 @@ Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement
 Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
 {% enddetails %}
 
-On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [*pathfinding*](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
+On préférera parfois utiliser des heuristique non consistantes voir non admissible (sans changer $A^\star$) si cela permet d'aller plus vite. Cette approche est particulièrement utilisées dans une grande variété de cas d'applications où il est plus important d'aller vite que d'être exact : comme dans les jeux vidéos par exemple où on utilise cet algorithme dans le [_pathfinding_](https://fr.wikipedia.org/wiki/Recherche_de_chemin) par exemple.
 
 ## Chemin de poids minimum n'est pas équivalent à chemin de poids maximum
 

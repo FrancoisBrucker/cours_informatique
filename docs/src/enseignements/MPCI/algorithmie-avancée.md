@@ -17,6 +17,8 @@ eleventyComputed:
 
 En quatre parties.
 
+> TBD année prochaine faire préparer le cours avant et au tableau aller plus loin ?
+
 ### Modèles de calculs et classes de problèmes "utiles"
 
 1. cours 1 : [Modèle de calcul](/cours/algorithmie/#modèle-calculs){.interne}
@@ -73,9 +75,17 @@ Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet
 A rendre pour le 18 octobre.
 {% endfaire %}
 
+> TBD année prochaine :
+>
+> 1. les faire préparer le cours :
+>    1. lire le cours : (pseudo-assembleur si pas préparé avant), von Neumann et C avant
+>    2. faire le premier exercice
+> 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
+
 ### Graphes
 
 > TBD : voir ce qu'ils connaissent déjà
+> TBD et s'il sont d'accord de préparer un bout de cours avant pour aller plus loin.
 
 {% aller %}
 [cours de Graphes](/cours/graphes/){.interne}

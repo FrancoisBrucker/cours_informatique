@@ -348,4 +348,3 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
 > TBD subsetsum ≤ bi-partition  : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
-
