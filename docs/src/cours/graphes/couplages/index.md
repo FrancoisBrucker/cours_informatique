@@ -9,6 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> Problème
+
+> Graphe biparti.
+> algo problème général
+> random ?
+
 - tutte 47 graph with perfect matching dans NP cap co-NP
 
 {% note "**Définition**" %}

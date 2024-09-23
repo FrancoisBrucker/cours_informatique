@@ -42,7 +42,25 @@ Le problème du postier chinois permet de modéliser les problèmes de tournées
 On est obligé de  considérer des pseudo-cycles car le graphe considéré n'est pas forcément [eulérien](../parcours-eulériens){.interne} : il faut passer plusieurs fois par certaines arêtes pour en atteindre d'autres.
 {% endinfo %}
 
-## Données
+## Éléments de résolution
+
+Edmonds et Johnson en 1973 ont démontré que le problème du postier chinois était polynomial dans les cas suivant :
+
+- graphe pondéré en $\mathcal{O}(n^3)$
+- graphe orienté pondéré en $\mathcal{O}(n^3)$ également
+- graphe mixte pair
+
+Il est cependant NP-complet pour les graphes mixtes dans le cas général ([Papadimitriou](https://fr.wikipedia.org/wiki/Christos_Papadimitriou), 1976)
+
+### Graphe simple
+
+> TBD
+
+### Graphe mixte
+
+> TBD
+
+## Projet
 
 > TBD : ici données = (trouver le jeu de données)
 > 

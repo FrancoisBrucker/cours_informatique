@@ -155,7 +155,7 @@ Par abus de langage on écrira $xy$ pour designer une arête (_resp._ arc) plut�
 
 Pour un graphe (orienté ou non) $G = (V, E)$ on appelle :
 
-- $\vert V\ver**t = n$ l'**_ordre_** de $G$.
+- $\vert V\vert = n$ l'**_ordre_** de $G$.
 - $\vert E \vert = m$ la **_taille_** de $G$.
 
 A ordre fixe, les graphes de taille maximum son dit **_complet_** :
@@ -167,12 +167,23 @@ Un graphe est **_complet_** s'il possède toutes les arêtes : pour tous $x, y \
 
 On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un **_graphe orienté complet_** n'existe pas. On préfère parler de [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) :
 
+<span id="definition-tournoi"></span>
 {% note "**Définition**" %}
 Un **_tournoi_** est un graphe orienté $G=(V, E)$ tel que :
 
 - si $xy \in E$ alors $yx \notin E$
 - pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.
   {% endnote %}
+
+{% exercice %}
+Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif
+{% endexercice %}
+{% details "solution" %}
+Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
+
+Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
+
+{% enddetails %}
 
 ### Arcs
 

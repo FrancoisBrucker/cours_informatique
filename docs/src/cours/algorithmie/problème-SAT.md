@@ -67,7 +67,7 @@ on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom
 
 > p47 <https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf>
 
-## 3-SAT
+## <span id="3-sat"></span>3-SAT
 
 équivalent à SAT
 

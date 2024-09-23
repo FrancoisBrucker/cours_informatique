@@ -219,6 +219,7 @@ Par finitude du graphe il arrivera forcément un moment où l'on atteindra le ca
 
 De même pour garantir la connexité d'un graphe :
 
+<div id="prop-connexe"></div>
 {% note "**Proposition**" %}
 
 Un graphe $G=(V, E)$ tel que (avec $\vert V \vert = n$ et $\vert E \vert = m$) :

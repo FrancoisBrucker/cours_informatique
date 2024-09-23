@@ -63,13 +63,45 @@ Le problème du cycle pou du chemin hamiltonien est un problème classique en th
 
 ## NP-complétude
 
+Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et non orienté :
+
+{% note "**Problème**" %}
+
+- **nom** : cycle (_resp._ circuit) hamiltonien
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **question** : $G$ possède-t-il un cycle hamiltonien ?
+
+{% endnote %}
+
+Et faisons de même pour les chemins hamiltonien dans ses versions orienté et non orienté :
+
+{% note "**Problème**" %}
+
+- **nom** : chemin (_resp._ chemin orienté) hamiltonien
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **question** : $G$ possède-t-il un chemin hamiltonien ?
+
+{% endnote %}
+
+Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de NP. Nous allons montrer qu'ils sont NP-complet par des réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
+
 > TBD à faire
 > TBD NPC :
 >
 > - dirigé : <https://www.youtube.com/watch?v=4r78NtOnWWA>
 > - non dirigé : <https://www.youtube.com/watch?v=5SaQa_wlel8>
 
-Il est illusoire de tenter de trouver un algorithme pour résoudre le problème du chemin le plus long dans le cas général car il permettrait de résoudre le problème du [chemin hamiltonien](https://fr.wikipedia.org/wiki/Graphe_hamiltonien) qui peut s'écrire ainsi : existe-t-il un chemin élémentaire passant par tous les sommets d'un graphe G donné ?
+La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'il est illusoire de tenter de trouver un algorithme efficace pour résoudre le problème du chemin le plus long :
+
+{% note "**Problème**" %}
+
+- **nom** : chemin le plus long
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **réponse** : Un chemin élémentaire le plus long possible.
+
+{% endnote %}
+
+Résoudre ce problème revient en effet clairement à résoudre le problème du chemin hamiltonien.
 
 {% exercice %}
 Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.
@@ -78,63 +110,89 @@ Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans
 Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.
 {% enddetails %}
 
-Ce problème est [NP-complet](https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet), c'est à dire qu'il fait parti des problèmes algorithmiques les plus durs à résoudre (et que le résoudre facilement permettrait de résoudre facilement tous les problèmes algorithmiques qu'on peut se poser).
-
-{% info %}
 Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.
-{% endinfo %}
 
 ## Propriétés
 
-Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales.
+Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales, en particulier lorsque l'on considère des graphes avec beaucoup d'arêtes.
 
-> TBD mettre de l'ordre
-
-{% note "**Proposition**" %}
+{% note "**Proposition (Dirac, 1952)**" %}
 Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un chemin Hamiltonien.
 {% endnote %}
-{% info %}
-Dirac, 1952.
-{% endinfo %}
 {% details "preuve", "open" %}
 
-> TBD
-> {% enddetails %}
+Le graphe $G$ est connexe car s'il ne l'était pas sa plus petite composante connexe serait de taille inférieure ou égale à $\vert V \vert / 2$ et donc les sommets de cette composante ont tous un un degré strictement plus petit que $\vert V \vert / 2$ (on pourrait aussi utiliser [cette propriété](../chemins-cycles-connexite/#prop-connexe) et le fait que $\vert E \vert = \frac{1}{2}\sum_x\delta(x) \geq \frac{1}{4}\vert V \vert^2>  \frac{1}{2}(\vert V \vert-1)(\vert V \vert-2)$ pour $\vert V \vert \geq 3$).
 
-{% note "**Proposition**" %}
-Si $G=(V, E)$ avec $\vert V \vert\geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ our tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.
+Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cycle est hamiltonien. Sinon en effet, par connexité, il existerait une arête $yx_j$ avec $y\notin C$ et le chemin suivant serait strictement plus long que $C$ : $yx_j\dots x_kx_0\dots x_{j-1}$.
+
+On suppose alors que $x_0x_k \notin E$.
+
+Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.
+De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous ses voisins (au moins $\vert V \vert / 2$) et  $\delta(x_k)$ (au moins $\vert V \vert / 2$) non voisins et $C$ aurait strictement plus de $\vert V \vert$ sommets ce qui est impossible : il existe $x_i$ tel que $x_ix_k \in E$ et $x_{i+1}x_0 \in E$ (remarquez que ceci fonctionne si $\delta(x_0)+\delta(x_k) \geq \vert V \vert$. On utilisera ça dans la preuve de la proposition suivante).
+
+Le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est hamiltonien.
+
+{% enddetails %}
+
+La propriété se généralise même :
+
+{% note "**Proposition (Core, 1960)**" %}
+Si $G=(V, E)$ avec $\vert V \vert = n \geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ pour tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.
 {% endnote %}
-{% info %}
-Core, 1960.
-{% endinfo %}
 {% details "preuve", "open" %}
 
-> TBD
-> {% enddetails %}
+On suppose que $G$ n'est pas hamiltonien. Comme le graphe complet est hamiltonien il va exister $G'=(V, E')$ tel que :
 
-## Chemin le plus long
+- $E \subseteq E'$
+- $G'$ n'est pas hamiltonien
+- si on ajoute l'arête $uv$ à $G'$ il devient hamiltonien.
 
-Le parcours en largeur permet de répondre à la question : _quelle est la longueur des chemins les plus courts partant d'un sommet_. Mais qu'en est-il du pendant : _quelle est la longueur des chemins les plus longs partant d'un sommet_ ?
+Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Si $\delta(u) + \delta(v) < n$ dans $G'$ on pourrait utiliser le même raisonnement que pour la proposition précédente et montrer qu'il existe $i$ tel que $ux_i, vx_{i+1} \in E'$ et en conclure que $G'$ est hamiltonien.
 
-On suppose que le problème est maintenant : quel est la longueur maximale d'un chemin passant une unique fois par chaque sommet ?
+Or comme $E \subseteq E'$, on a également $\delta(u) + \delta(v) < n$ dans $G$, ce qui est impossible.
 
-C'est le problème du **plus long chemin élémentaire** (les sommets n'apparaissent qu'une unique fois).
+{% enddetails %}
 
-### chemin hamiltonien
+On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cycle hamiltonien. Ceci est vrai même pour les graphes orientés :
 
+Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.
 
-### graphes particuliers
+{% exercice %}
+Montrez que tout [tournoi](../structure/#definition-tournoi) admet un chemin hamiltonien, mais pas forcément de circuit hamiltonien.
+{% endexercice %}
+{% details "solution" %}
 
-Il existe tout de même 2 classes de graphes particulières qui admettent des solutions faciles pour le problème du chemin élémentaire le plus long :
+Commençons par montrer que tout tournoi ne possède pas de circuit hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
 
-- les [graphes orientés sans circuits](https://fr.wikipedia.org/wiki/Graphe_orient%C3%A9_acyclique)
-- les [tournois](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>)
+On peut démontrer l'autre partie par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
 
-#### graphe sans circuit
+On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
+
+Il existe alors :
+
+- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
+- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
+
+On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
+{% enddetails %}
+
+## Applications
+
+### Voyageur de commerce
+
+Problème vu sous l'angle algorithmique dans le cours d'algorithmie :
+
+{% aller %}
+[Chemins et cycle](/cours/algorithmie/design-algorithmes/chemins-cycles/)
+{% endaller %}
+
+> TBD formaliser ça en graphe.
+
+### Problème d’ordonnancements
 
 Un graphe orienté qui ne contient pas de circuit est souvent appelé _DAG_ (direct acyclic graph).
 
-On appelle **tri topologique** d'un graphe orienté $G = (V, E)$ un ordre total $<$ sur les sommets du graphe tel que $xy \in E$ implique $x < y$ dans l'ordre.
+On appelle **_tri topologique_** d'un graphe orienté $G = (V, E)$ un ordre total $<$ sur les sommets du graphe tel que $xy \in E$ implique $x < y$ dans l'ordre.
 
 {% exercice %}
 Montrer que :
@@ -159,7 +217,9 @@ Le raisonnement est identique pour les voisins entrant.
 
 en supprimant itérativement les sommets sans voisins rentrant d'un DAG (le graphe obtenu en supprimant un sommet d'un DAG est toujours un DAG puisque supprimer un sommet ne rajoute pas de cycle), on obtient un tri topologique.
 
-> On peut aussi le faire de façon optimale en utilisant un [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
+{% info %}
+On peut aussi le faire de façon optimale en utilisant un [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
+{% endinfo %}
 
 4 :
 
@@ -182,24 +242,24 @@ algorithme sur tri topologique :
 
 ```text
 Entrée :
-    * un graphe orienté G = (V, E)
-    * un tri topologique V0 < ... < Vn des éléments de V
+    - un graphe orienté G = (V, E)
+    - un tri topologique V0 < ... < Vn des éléments de V
 Initialisation :
-    * longueur(x) = 0 pour tout sommet x
-    * predecesseur(x) = x pour tout sommet x
-    * V' = {}, E' = {}
+    longueur(x) = 0 pour tout sommet x
+    predecesseur(x) = x pour tout sommet x
+    V' = {}, E' = {}
 Algorithme :
-    * pour v allant de V0 à Vn:
-        * pour chaque voisin sortant w de v:
-            * si longueur(w) < longueur(v) + 1:
-                * longueur(w) = longueur(v) + 1
-                * predecesseur(w) = v
-    * soit a l'élément de V ayant la plus grande longueur
-    * chemin = [a]
-    * x = a
-    * tant que x est différent de predecesseur(x):
-        * x = predecesseur(x)
-        * ajoute x au début de chemin
+    pour v allant de V0 à Vn:
+        pour chaque voisin sortant w de v:
+            si longueur(w) < longueur(v) + 1:
+                longueur(w) = longueur(v) + 1
+                predecesseur(w) = v
+    soit a l'élément de V ayant la plus grande longueur
+    chemin = [a]
+    x = a
+    tant que x est différent de predecesseur(x):
+        x = predecesseur(x)
+        ajoute x au début de chemin
 Retour :
     chemin
 ```
@@ -210,46 +270,6 @@ Pour prouver l'algorithme, on montre par récurrence sur $\vert V \vert$ que `lo
 
 Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que `longueur(Vi)` est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseurs de $v_{n+1}$ seront vus pour l'algorithme et que `longueur(Vi)` ne change pas après l'étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.
 {% enddetails %}
-
-#### tournoi
-
-Un [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) est un graphe orienté $T = (V, E)$ tel que quelque soit $x \neq y \in V$ soit $xy$ soit $yx$ est une arête, mais pas les deux.
-
-Un tournoi est très utilisé en théorie du choix social et en théorie des votes car il modélise bien les choix et les soucis entre choix locaux (quelque soit une alternative on en préfère l'une à l'autre) et optimum global (existe-t-il un choix qui est préféré à tous les autres).
-
-Dans ce champ applicatif, les cycles sont problématiques (A est préféré à B qui est préféré à C qui est préféré à A).
-
-{% exercice %}
-Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif
-{% endexercice %}
-{% details "solution" %}
-Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
-
-Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
-
-{% enddetails %}
-
-Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.
-
-{% exercice %}
-Montrez le.
-{% endexercice %}
-{% details "solution" %}
-Par récurrence, un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
-
-On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
-
-Il existe alors :
-
-- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
-- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
-
-On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
-{% enddetails %}
-
-Donc quelles que soient les préférences, on peut toujours ordonner les préférences selon un ordre total (même s'il y en a plusieurs) localement cohérent (pour chaque élément il est préféré à celui d'avant et on lui préfèrera celui d'après dans l'ordre).
-
-### ordonnancement
 
 Un [problème d'ordonnancement](https://fr.wikipedia.org/wiki/Th%C3%A9orie_de_l%27ordonnancement) peut se modéliser par un DAG nommé graphe de dépendances où si $xy$ est une arête alors il faut faire $x$ avant de pouvoir faire $y$.
 

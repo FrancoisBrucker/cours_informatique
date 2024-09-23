@@ -57,6 +57,13 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 
 {% endaller %}
 
+## Couplages
+
+
+{% aller %}
+[Couplages](./couplages/){.interne}
+{% endaller %}
+
 ## Arbres
 
 {% aller %}
@@ -160,8 +167,3 @@ Propriétés :
 - hamiltonien si même taille
 - 2 coloriables
 
-## Couplages
-
-{% aller %}
-[Couplages](./couplages/){.interne}
-{% endaller %}
