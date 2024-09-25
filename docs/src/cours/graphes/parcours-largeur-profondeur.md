@@ -18,11 +18,11 @@ Deux parcours classiques d'un graphe : largeur et profondeur.
 
 [Parcours en largeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_largeur)
 
-Tous les sommets une fois de plus en plus loin et chemin longs
+Tous les sommets une fois de plus en plus loin et chemin long.
 
 Utilisation :
 
-- chemin le plus court en nombre de sommets non pondéré
+> TBD on peut les prendre comme on veut, ce qui donne plein de parcours mais si file alors chemin plus court (en nb d'arêtes)
 
 ## Profondeur
 

@@ -95,6 +95,7 @@ On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de
 ### Biparti complets
 
 > TBD biparti complets $K_{p,q}$
+> TBD aussi appelé [une biclique](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
 
 ### Triparti
 
@@ -111,11 +112,50 @@ On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de
 
 > TBD split graph
 
-## Biparti complets couvrants
+## Décomposition en graphes Biparti
 
-> TBD <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Graham-Pollak>
 
-> exemple avec batailles : <https://www.youtube.com/watch?v=6ByCnuCbPsg>
+Le problème de decomposition d'un graphe en graphe biparti est un problème de communication réseau initialement posé (et résolu) par les deux chercheurs Graham et Pollak des laboratoires Bell dans les années 1970.
+
+{% lien %}
+[Problème de Graham-Pollak](https://www.youtube.com/watch?v=ZtXfGagSUlA)
+{% endlien %}
+
+Posons le problème.
+
+> TBD def
+
+> TBD exemple $K_6$ avec une décomposition normale et une autre en etoiles (def etoile).
+
+{% exercice %}
+
+> TBD exo décomposition en etoiles et en conclure n-1 comme bornes.
+
+{% endexercice  %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+> TBD Autre possibilité de décomposition : <https://11011110.github.io/blog/2020/07/12/graham-pollak-partitions.html>
+
+{% note "**Proposition**" %}
+
+On ne peut décomposer $K_n$ en moins de $n-1$ graphes bipartis.
+
+{% endnote  %}
+{% details "preuve", "open" %}
+
+> TBD la preuve de <https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Graham-Pollak> est simple.
+
+
+{% enddetails %}
+
+
+> TBD preuve dans l'autre sens.
+>
+
 
 ## TBD
 
