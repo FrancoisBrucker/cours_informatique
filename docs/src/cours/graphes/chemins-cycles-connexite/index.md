@@ -90,6 +90,18 @@ de sommets du graphe telle que $v_iv_{i+1}$ est un arc du graphe quelque soit $0
 
 {% endnote %}
 
+Terminons cette partie par un petit exercice :
+
+{% exercice %}
+Montrer qu'[un tournoi](../structure/#definition-tournoi) $G = (V, E)$ n'admet pas de cycle si et seulement si la relation $xRy \Leftrightarrow xy \in E$ est transitive.
+{% endexercice %}
+{% details "solution" %}
+Si la relation n'est pas transitive il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$, ce qui implique que $xyzx$ est un cycle.
+
+Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
+
+{% enddetails %}
+
 ### Chemins et cycles élémentaires
 
 Les définitions de chemins et cycles supposent que les arêtes ou arcs n'apparaissent pas deux fois. Si cette précaution permet d'éviter les chemin de taille infini, certains problèmes nécessitent de pouvoir passer plusieurs fois par les mêmes arêtes ou au contraire de ne passer qu'une seule fois par chaque sommet :

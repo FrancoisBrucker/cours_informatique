@@ -12,6 +12,8 @@ eleventyComputed:
 
 > TBD à refaire mieux.
 
+> TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
+
 ## arbre enraciné
 
 > TBD mettre dans une section à part ?

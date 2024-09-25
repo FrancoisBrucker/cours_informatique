@@ -165,6 +165,12 @@ A ordre fixe, les graphes de taille maximum son dit **_complet_** :
 Un graphe est **_complet_** s'il possède toutes les arêtes : pour tous $x, y \in V$ $xy$ est une arête. On le note $K_n$ et $m = n(n-1)/2$.
 {% endnote %}
 
+Réciproquement, un graphe sans arête est dit **_discret_** :
+
+<span id="definition-graphe-discret"></span>
+{% note "**Définition**" %}
+Un graphe est **_discret_** s'il ne possède aucune arête.{% endnote %}
+
 On peut noter qu'un graphe orienté ayant un nombre maximum d'arêtes est en fait un graphe (non orienté) complet. C'est pour cela que la définition d'un **_graphe orienté complet_** n'existe pas. On préfère parler de [tournoi](<https://fr.wikipedia.org/wiki/Tournoi_(th%C3%A9orie_des_graphes)>) :
 
 <span id="definition-tournoi"></span>
@@ -173,17 +179,7 @@ Un **_tournoi_** est un graphe orienté $G=(V, E)$ tel que :
 
 - si $xy \in E$ alors $yx \notin E$
 - pour tous $x \neq y \in V$, soit $xy$ soit $yx$ est un arc de $G$.
-  {% endnote %}
-
-{% exercice %}
-Montrer qu'un tournoi n'admet pas de cycle si et seulement si il est transitif
-{% endexercice %}
-{% details "solution" %}
-Si le tournoi n'est pas transitif il existe $x$, $y$ et $z$ tels que $xy$ et $yz$ mais pas $xz$ : $xyzx$ est un cycle.
-
-Réciproquement, s'il existe un cycle, prenons en un de longueur minimum : $c_0c_1c_2 \dots c_k$. Comme le cycle est de longueur minimum, $c_0c_2$ n'est pas une arête : le tournoi n'est pas transitif.
-
-{% enddetails %}
+{% endnote %}
 
 ### Arcs
 
@@ -245,6 +241,108 @@ Montrez que dans tout graphe (à au moins 2 sommets) il existe au moins deux som
 {% details "solution" %}
 C'est une application directe du [principe des tiroirs](https://fr.wikipedia.org/wiki/Principe_des_tiroirs).
 Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soit $n$ possibilités. Si tous les sommets avaient des degrés différents il y en aurait 1 avec 0 voisins et un autre avec $n-1$, ce qui est impossible.
+
+{% enddetails %}
+
+### Clique et stable
+
+<span id="definition-clique"></span>
+{% note "**Définitions**" %}
+Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
+{% endnote %}
+
+Un **_stable_** est l'opposé :
+
+<span id="definition-stable"></span>
+{% note "**Définitions**" %}
+Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.
+{% endnote %}
+
+Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle **_clique maximale_** (_resp._ **_stable maximal_**) un ensemble maximal pour l'inclusion.
+
+Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seule l'ensemble rouge est maximal.
+
+![cliques](cliques.png)
+
+On appelle **_clique maximum** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
+
+Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
+
+{% exercice %}
+Montrez que pour le graphe précédent, la taille maximum de la clique est 4.
+{% endexercice %}
+{% details "corrigé" %}
+Pour ce genre de preuves, il faut procéder en deux temps :
+
+1. exhiber une clique de taille 4
+2. montrer que tout ensemble de 5 sommet n'est pas une clique.
+
+Le sous ensemble des sommets bleus suivant est une clique :
+
+![cliques](cliques.png)
+
+Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et aucuns de ceux ci n'est une clique.
+{% enddetails %}
+
+Ll est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
+
+> TBD exercice où il faut trouver l'algo.
+
+ trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : clique
+- **Entrée** :
+  - un graphe
+  - un entier $K$
+- **Question** : le graphe contient-il une clique de taille supérieure ou égale à $K$ ?
+
+{% endnote %}
+
+Le problème est clairement dans NP puisque vérifier qu'un ensemble est une clique se résout polynomialement (il suffit de vérifier toutes les paires de sommets). Il est de plus NP-complet :
+
+{% note "**Proposition**" %}
+Le problème clique est NP-complet.
+{% endnote %}
+{% details "preuve", "open" %}
+On va le montrer par réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
+
+Soit l'ensemble de clauses suivante, formant une entrée du problème 3-SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
+
+<div>
+$$
+C = \land_{1\leq i \leq m}( c_i^1\lor c_i^2\lor c_i^3)
+$$
+</div>
+
+Avec pour tous $1\leq i \leq m$ et $1\leq j \leq 3$, l'existence de $1\leq k\leq n$ tel que $c_i^j = x_k$ ou $c_i^j = \overline{x_k}$.
+
+On associe (polynomialement) à cette instance un graphe $G=(V, E)$ tel que :
+
+- $V = \\{ c_i^j \vert 1\leq i \leq m, 1\leq j \leq 3 \\}$
+- $c_i^jc_k^l$ est une arête si :
+  - $i \neq j$
+  - $c_i^j \neq \overline{c_i^j}$
+
+Et on cherche s'il existe une clique de taille supérieure ou égale à $m$.
+
+S'il existe une solution au problème 3-SAT alors il existe un littéral $c_i^{u_i}$ qui est vrai pour toute clause $i$. L'ensemble $\mathcal{C} = \\{ c_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
+
+Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de chaque clause, donc une clique de taille $K$ contient un littéral par clause que l'on peut positionner à vrai.
+{% enddetails %}
+
+C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
+
+{% exercice %}
+Montrez que le problème de savoir si un graphe donné possède un stable de taille supérieure ou égale à $K$ est un problème NP-complet.
+{% endexercice %}
+{% details "corrigé" %}
+
+1. NP
+2. réduction depuis clique
+
+> TBD écrire propre
 
 {% enddetails %}
 
@@ -457,6 +555,10 @@ Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 
 > TBD exemple.
 
+{% lien %}
+<https://www.bourbaki.fr/TEXTES/1125.pdf>
+{% endlien %}
+
 ### Reconnaissance
 
 {% lien %}
@@ -479,20 +581,36 @@ En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomp
 
 ## Graphes dérivés
 
-A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci. 
+A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci.
 
 ### Graphe complémentaire
 
+{% lien %}
 <https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>
+{% endlien %}
 
 complémentaire de complémentaire = graphe
 
+> TBD tout graphe est complémentaire d'un autre. le carré est identité
+
 ### Graphe adjoint
 
-> TBD <https://fr.wikipedia.org/wiki/Line_graph>
+{% lien %}
+<https://fr.wikipedia.org/wiki/Line_graph>
+{% endlien %}
+Aussi appelé line graph
+
+> TBD stable pour cycle, diminue pour chemin et augmente pour clique
+> TBD tout graphe n'est pas adjoint d'un autre (exemple ?)
 adjoint de adjoint = graphe
 
 ### Mineurs
 
-> TBD <https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+{% lien %}
+<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+{% endlien %}
+
 > TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
+
+> TBD rend compte de l'intrication locale de chemins entre sommets.
+>

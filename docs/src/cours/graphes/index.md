@@ -35,17 +35,29 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
+{% aller %}
+
+[Projet : graphe bi-parti](graphe-biparti){.interne}
+{% endaller %}
+
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
 
 ### Types de parcours
 
+Parcours spécifiques :
+
 {% aller %}
 
-1. [Largeur et profondeur](parcours-largeur-profondeur){.interne}
-2. [Eulérien](parcours-eulériens){.interne}
-3. [Hamiltonien](parcours-hamiltoniens){.interne}
+1. [Eulérien](parcours-eulériens){.interne}
+2. [Hamiltonien](parcours-hamiltoniens){.interne}
+{% endaller %}
+
+Algorithmes généraux :
+
+{% aller %}
+[Parcours en largeur et en profondeur](parcours-largeur-profondeur){.interne}
 {% endaller %}
 
 ### Projets
@@ -56,45 +68,6 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 2. [Problème du postier chinois](projet-postier-chinois){.interne}
 
 {% endaller %}
-
-## Couplages
-
-
-{% aller %}
-[Couplages](./couplages/){.interne}
-{% endaller %}
-
-## Arbres
-
-{% aller %}
-
-1. [Arbres](arbres){.interne}
-2. [Arbres enracinés](arbres-enracinés){.interne}
-2. [Arbres couvrant](arbres-couvrants){.interne}
-
-{% endaller %}
-
-> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
->
-
-1. [arbres binaires de recherche]({{ "/cours/graphes/arbre-de-recherche"  }})
-2. [chemins et arborescences]({{ "/cours/graphes/chemins"  }})
-
-> TBD : DFS et arbre. Tarjan pour fortement connexe.
-
-{% aller %}
-
-[Structures de données arborées](structures-arborées){.interne}
-
-{% endaller %}
-
-## Structures de données arborées
-
-- tas
-- file de priorité
-- arbre de recherche
-
-> TBD <https://www.youtube.com/watch?v=_n7RH11-eDM&list=PLwp5OpRmcl_EukVp5ntU0gtS-_g9ntCuI>
 
 ## Chemins de longueur/poids minimum
 
@@ -115,6 +88,34 @@ Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriét
 1. [Projet chemins de poids minimum](projet-chemins-min){.interne}
 2. [Projet graphe géographique](projet-graphe-géographique){.interne}
 3. [Projet chemins avec hubs](projet-chemins-hub){.interne}
+
+{% endaller %}
+
+## Couplages
+
+Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des graphes bi-parti avant d'aborder le cas général.
+
+{% aller %}
+[Couplages](./couplages/){.interne}
+{% endaller %}
+
+## Arbres
+
+{% aller %}
+
+1. [Arbres](arbres){.interne}
+2. [Arbres enracinés](arbres-enracinés){.interne}
+3. [Arbres couvrant](arbres-couvrants){.interne}
+
+{% endaller %}
+
+> exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
+>
+> TBD : DFS et arbre. Tarjan pour fortement connexe.
+
+{% aller %}
+
+[Structures de données arborées](structures-arborées){.interne}
 
 {% endaller %}
 

@@ -12,13 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Un problème d'optimisation où la théorie des graphes peut aider.
-
-<!-- fin résumé -->
-
-> TBD : à finir
 
 Nous allons étudier le problème du [postier chinois](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_postier_chinois), proposé par le mathématicien chinois [管梅谷](https://fr.wikipedia.org/wiki/Meigu_Guan) en 1962 :
 
@@ -28,6 +22,11 @@ Soit $G = (V, E, A)$ un [graphe mixte](../structure#definition-graphe-mixte){.in
 Le **problème du postier chinois** consiste à trouver un pseudo-circuit (des arêtes/arcs peuvent apparaître plusieurs fois) passant par toutes les arêtes et les arcs du graphe mixte de coût (la somme des valuations des arcs/arêtes le constituant) minimum.
 {% endnote %}
 
+Nous ne donnerons pas ici les algorithmes exactes pour le résoudre mais donnerons les liens vers les parties (suivantes) de ce cours qui vous permettrons de le résoudre. Voyez ça comme une justification, un fil rouge, de ce qui va suivre.
+
+> TBD à finir.
+>
+> 
 Nous nous intéresserons ici à un cas particulier du problème où $G$ est juste un graphe :
 
 {% note "**Définition**" %}
@@ -53,6 +52,17 @@ Edmonds et Johnson en 1973 ont démontré que le problème du postier chinois é
 Il est cependant NP-complet pour les graphes mixtes dans le cas général ([Papadimitriou](https://fr.wikipedia.org/wiki/Christos_Papadimitriou), 1976)
 
 ### Graphe simple
+
+Si le graphe est eulérien, un cycle eulérien résout le problème. S'il ne l'est pas, on peut utiliser l'exercice suivant :
+
+{% exercice %}
+Montrer que tout graphe contient un nombre pair de sommets de degré impair.
+{% endexercice %}
+{% details "corrigé" %}
+On a $\sum\delta(x) = 2 \cdot \vert E \vert$. De là, comme la somme des degrés des sommets de degré pair est paire, on en conclue que la somme des degrés des sommets de degré impair est également paire : il y a un nombre pair de sommet de degré impair.
+
+{% enddetails %}
+
 
 > TBD
 

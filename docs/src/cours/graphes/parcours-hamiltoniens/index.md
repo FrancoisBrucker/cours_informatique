@@ -197,12 +197,12 @@ On appelle **_tri topologique_** d'un graphe orienté $G = (V, E)$ un ordre tota
 {% exercice %}
 Montrer que :
 
-1. un graphe ne peut admettre de tri topologique que s'il n'a pas de cycle
+1. un graphe orienté ne peut admettre de tri topologique que s'il n'a pas de cycle
 2. pour un DAG, il existe toujours un sommet qui n'a pas de voisins entrant (_resp._ sortant)
 3. en déduire qu'un DAG admet un tri topologique
 4. conclure sur le fait qu'un graphe est un DAG si et seulement s'il admet un tri topologique
-   {% endexercice %}
-   {% details "solution" %}
+{% endexercice %}
+{% details "solution" %}
    1 :
 
 Soit $c_0\dots c_k$ un cycle ($c_k = c_0$), quelque soit l'ordre total entre les sommets du graphe, il existe $i$ tel que $c_{i+1} < c_i$ ce qui est impossible si un tel ordre était topologique.
@@ -217,10 +217,6 @@ Le raisonnement est identique pour les voisins entrant.
 
 en supprimant itérativement les sommets sans voisins rentrant d'un DAG (le graphe obtenu en supprimant un sommet d'un DAG est toujours un DAG puisque supprimer un sommet ne rajoute pas de cycle), on obtient un tri topologique.
 
-{% info %}
-On peut aussi le faire de façon optimale en utilisant un [parcours en profondeur](https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur)
-{% endinfo %}
-
 4 :
 
 On a montré que :
@@ -231,6 +227,8 @@ On a montré que :
 On a donc bien l'équivalence : tri topologique est équivalent à DAG.
 
 {% enddetails %}
+
+> TBD tri topologique avec un DFS
 
 On utilisera souvent ce tri pour résoudre des problèmes d'ordonnancement (on le verra tout à l'heure dans un cas d'importance certaine).
 

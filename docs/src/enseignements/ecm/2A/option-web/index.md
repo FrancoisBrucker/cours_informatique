@@ -71,7 +71,7 @@ Installation :
 
 La page des animaux à bootstraper :
 
-- mise en pase
+- mise en page
 - image et card
 - ...
 

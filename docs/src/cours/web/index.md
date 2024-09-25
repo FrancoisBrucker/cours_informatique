@@ -71,19 +71,18 @@ Utilisez **toujours** des chemins relatifs lorsque vous référencez vos fichier
 
 ### Bibliothèques css
 
-- exercice à présenter
-
-exercices : bibliothèque css. Utilisation avec un cdn.
-
-- bootstrap
-- lib à la mode en 2023
-- ...
+<https://getbootstrap.com/>
 
 Comment :
 
 - cdn
-- téléchargement des fichiers (on verra plus tard comment faire mieux avec npm)
+- téléchargement des fichiers
 - node_modules (npm pour gérer des paquets et utilisation de npm sans node pour le front)
+
+Si vous avez des soucis avec l'exécution des scripts powershell :
+<https://www.it-connect.fr/autoriser-lexecution-de-scripts-powershell/>
+
+Modifier votre page animal préféré avec bootstrap
 
 ### Découverte de Javascript
 
