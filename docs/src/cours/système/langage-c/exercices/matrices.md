@@ -139,7 +139,7 @@ On appelle cette façon de faire :
 [Technique du pointeur opaque](https://interrupt.memfault.com/blog/opaque-pointers)
 {% endlien %}
 
-Pour que la technique du pointeur opaque fonctionne, il faut séparer les déclarations ds fonctions (les `.h`) et leurs implémentations (les `.c`) :
+Pour que la technique du pointeur opaque fonctionne, il faut séparer les déclarations des fonctions (les `.h`) et leurs implémentations (les `.c`) :
 
 {% faire %}
 
@@ -185,7 +185,7 @@ Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.
 {% exercice %}
 
 - Pourquoi appelle-t-on ce pattern de création de structure _"pointeur opaque"_ ?
-- en qui cela peut-il faire penser à de la programmation objet ?
+- en quoi cela peut-il faire penser à de la programmation objet ?
 
 {% endexercice %}
 {% details "corrigé" %}
