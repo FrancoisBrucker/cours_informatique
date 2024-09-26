@@ -59,7 +59,7 @@ C'est un trade-off. On optimise l'ajout et la suppression d'éléments au détri
 - la liste à une complexité en $\mathcal{O}(n)$ pour supprimer un élément donné quelconque alors que la liste chaînée est en $\mathcal{O}(1)$
 
 {% faire %}
-Montrer que dans les cas suivants, qu'une liste chaînée n'est pas avantageuse :
+Montrer que dans les cas suivants, une liste chaînée n'est pas avantageuse :
 
 1. si l'on ne modifie que peu la structure ou si l'on ajoute/supprime que les derniers élément
 2. si l'ordre n'est pas important.
