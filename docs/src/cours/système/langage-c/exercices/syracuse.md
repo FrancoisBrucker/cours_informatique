@@ -15,7 +15,7 @@ Variation sur le thème de la [suite de Syracuse](https://fr.wikipedia.org/wiki/
 ## <span id="syracuse-v1"></span> Un élément
 
 {% faire %}
-Créez une fonction qui rend le nombre d'étapes nécessaire pour arriver à 1 pour la [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'en entier passé en paramètre. Sa signature doit être :
+Créez une fonction qui rend le nombre d'étapes nécessaire pour arriver à 1 pour la [suite de Syracuse](https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse#Suite_de_Syracuse) d'un entier passé en paramètre. Sa signature doit être :
 
 ```c
 int syracuse_nb(int nombre);
@@ -49,7 +49,7 @@ Si le nombre passé en paramètre est est plus petit ou égal à 1, la fonction 
 {% endlien %}
 
 {% faire %}
-Créez un programme `syracuse`  qui prend un entier en paramètre et rend la liste des éléments de sa suite de syracuse. On faudra appeler le programme avec un paramètre, par exemple : `syracuse 20`.
+Créez un programme `syracuse`  qui prend un entier en paramètre et rend la liste des éléments de sa suite de syracuse. Il faudra appeler le programme avec un paramètre, par exemple : `syracuse 20`.
 
 Vous devrez certainement utiliser la fonction [`atoi`{.language-}](https://koor.fr/C/cstdlib/atoi.wp) qui transforme une chaîne de caractères en entier.
 
