@@ -148,23 +148,123 @@ TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">transfomation de Tseitin</a></p>
+<p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">Transformation de Tseitin</a></p>
 </div>
 </div>
 <p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules.</p>
-<h3>exemple du sudoku</h3>
+<h3>Exemple du sudoku</h3>
 <blockquote>
 <p>p47 <a href="https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf">https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf</a></p>
 </blockquote>
 <h2><span id="3-sat"></span>3-SAT</h2>
-<p>équivalent à SAT</p>
+<p>Un cas particulier important du problème <code>SAT</code> est le problème <code>3-SAT</code> ou toutes les clauses ont exactement 3 littéraux.</p>
+<h3><span id="3-sat-exemple"></span> Exemple</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Exemple de Wikipédia</a></p>
+</div>
+</div>
+<div>
+$$
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
+$$
+</div>
+<p>Ce qui correspond formellement à :</p>
+<ul>
+<li>la conjonction de 4 clauses $\mathcal{C} = c_1 \land c_2 \land c_3 \land c_4$,</li>
+<li>les 4 clauses $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ pour $1\leq i \leq 4$</li>
+<li>les littéraux $l_i^j$ avec $1\leq i \leq 4$ et $1\leq j \leq 3$ :
+<ul>
+<li>$l_1^1 = x_1$, $l_1^2 = x_2$, $l_1^3 = x_3$,</li>
+<li>$l_2^1 = \overline{x_1}$, $l_1^2 = x_2$, $l_1^3 = x_4$,</li>
+<li>$l_3^1 = \overline{x_1}$, $l_3^2 = x_2$, $l_3^3 = \overline{x_5}$,</li>
+<li>$l_4^1 = \overline{x_3}$, $l_4^2 = x_4$, $l_4^3 = x_5$.</li>
+</ul>
+</li>
+</ul>
+<p>On a alors les différentes valuations pour les variables, clauses et la conjonctions :</p>
+<div>
+$$
+\begin{array}{ccccc||cccc||c}
+x_1&x_2&x_3&x_4&x_5& x_1 \lor x_2 \lor x_3 & \overline{x_1} \lor x_2 \lor x_4 & \overline{x_1} \lor x_2 \lor \overline{x_5} & \overline{x_3} \lor x_4 \lor x_5 & \mathcal{C}\\
+0&0&0&0&0& 0&1&1&1&0\\
+0&0&0&0&1& 0&1&1&1&0\\
+0&0&0&1&0& 0&1&1&1&0\\
+0&0&0&1&1& 0&1&1&1&0\\
+0&0&1&0&0& 1&1&1&0&0\\
+0&0&1&0&1& 1&1&1&1&1\\
+0&0&1&1&0& 1&1&1&1&1\\
+0&0&1&1&1& 1&1&1&1&1\\
+0&1&0&0&0& 1&1&1&0&0\\
+0&1&0&0&1& 1&1&1&1&1\\
+0&1&0&1&0& 1&1&1&1&1\\
+0&1&0&1&1& 1&1&1&1&1\\
+0&1&1&0&0& 1&1&1&0&0\\
+0&1&1&0&1& 1&1&1&1&1\\
+0&1&1&1&0& 1&1&1&1&1\\
+0&1&1&1&1& 1&1&1&1&1\\
+1&0&0&0&0& 1&0&1&0&0\\
+1&0&0&0&1& 1&0&0&1&0\\
+1&0&0&1&0& 1&1&1&1&1\\
+1&0&0&1&1& 1&1&0&1&0\\
+1&0&1&0&0& 1&0&1&0&0\\
+1&0&1&0&1& 1&0&0&1&0\\
+1&0&1&1&0& 1&1&1&1&1\\
+1&0&1&1&1& 1&1&0&1&0\\
+1&1&0&0&0& 1&1&1&0&0\\
+1&1&0&0&1& 1&1&1&1&1\\
+1&1&0&1&0& 1&1&1&1&1\\
+1&1&0&1&1& 1&1&1&1&1\\
+1&1&1&0&0& 1&1&1&0&0\\
+1&1&1&0&1& 1&1&1&1&1\\
+1&1&1&1&0& 1&1&1&1&1\\
+1&1&1&1&1& 1&1&1&1&1
+\end{array}
+$$
+</div>
+<p>Il existe donc plusieurs affectations qui vérifient l'ensemble des clauses. On donne dans le tableau suivant le nombre de littéraux vrais par clause :</p>
+<div>
+$$
+\begin{array}{ccccc||cccc}
+x_1&x_2&x_3&x_4&x_5& x_1 \lor x_2 \lor x_3 & \overline{x_1} \lor x_2 \lor x_4 & \overline{x_1} \lor x_2 \lor \overline{x_5} & \overline{x_3} \lor x_4 \lor x_5\\
+0&0&1&0&1& 1&1&1&1\\
+0&0&1&1&0& 1&2&1&1\\
+0&0&1&1&1& 1&2&1&2\\
+0&1&0&0&1& 1&2&1&2\\
+0&1&0&1&0& 1&3&1&2\\
+0&1&0&1&1& 1&3&1&3\\
+0&1&1&0&1& 2&2&1&1\\
+0&1&1&1&0& 2&3&1&1\\
+0&1&1&1&1& 2&3&1&2\\
+1&0&0&1&0& 1&2&1&2\\
+1&0&1&1&0& 2&1&1&2\\
+1&1&0&0&1& 2&1&1&2\\
+1&1&0&1&0& 2&2&1&2\\
+1&1&0&1&1& 2&2&1&3\\
+1&1&1&0&1& 3&1&1&1\\
+1&1&1&1&0& 3&2&1&1\\
+1&1&1&1&1& 3&2&1&2
+\end{array}
+$$
+</div>
+<p>Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter des clauses. Par exemple les 6 clauses suivantes :</p>
+<ul>
+<li>$x_1 \lor x_2 \lor \overline{x_3}$</li>
+<li>$x_1 \lor \overline{x_2} \lor \overline{x_4}$</li>
+<li>$x_1 \lor \overline{x_2} \lor \overline{x_5}$</li>
+<li>$\overline{x_1} \lor x_2 \lor \overline{x_4}$</li>
+<li>$\overline{x_1} \lor \overline{x_2} \lor x_3$</li>
+<li>$\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}$</li>
+</ul>
+<p>Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.</p>
+<h3>équivalent à SAT</h3>
 <blockquote>
 <p>TBD <a href="https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf">https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf</a></p>
 </blockquote>
-<p>Permet certaines réductions de façon bien plus facile :</p>
-<blockquote>
-<p>TBD résolution par backtracking</p>
-</blockquote>
+<p>Permet certaines réductions de façon bien plus facile.</p>
 <h2>2-SAT</h2>
 <blockquote>
 <p>Réduction ne fonctionne pas. Autre problème</p>
