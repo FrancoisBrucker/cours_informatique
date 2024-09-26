@@ -128,7 +128,7 @@
 </code></pre>
 <p>Il est important de rendre la donnée pour que l'utilisateur la libère si nécessaire, sinon on risque la fuite de mémoire.</p>
 <p>La liste doublement chaînée est une généralisation de la liste chaînée. Son intérêt en général est de garantir un ordre arbitraire dans une suite où l'ajout et la suppression d'élément est courante.</p>
-<p>C'est un trade-off. On optimise l'ajout et la suppression d'éléments au détriment de a localisation d'un élément particulier :</p>
+<p>C'est un trade-off. On optimise l'ajout et la suppression d'éléments au détriment de la localisation d'un élément particulier :</p>
 <ul>
 <li>la liste à une complexité en $\mathcal{O}(1)$ pour accéder au $i$ème élément alors que la liste chaînée est en $\mathcal{O}(n)$</li>
 <li>la liste à une complexité en $\mathcal{O}(n)$ pour supprimer un élément donné quelconque alors que la liste chaînée est en $\mathcal{O}(1)$</li>
@@ -139,9 +139,9 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Montrer que dans les cas suivants, une liste chaînée n'est ps avantageuse :</p>
+<p>Montrer que dans les cas suivants, une liste chaînée n'est pas avantageuse :</p>
 <ol>
-<li>si l'on ne modifie que peu la structure ou si l'ajoute/supprime que les derniers élément</li>
+<li>si l'on ne modifie que peu la structure ou si l'on ajoute/supprime que les derniers élément</li>
 <li>si l'ordre n'est pas important.</li>
 </ol>
 </div>
@@ -183,7 +183,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il ne faut pas confondre la structure de liste que l'on a vu précédemment et la liste chaînée. Les deux structures portent le même non, c;est fâcheux, mais c'est ainsi.</p>
+<p>Il ne faut pas confondre la structure de liste que l'on a vu précédemment et la liste chaînée. Les deux structures portent le même non, c'est fâcheux, mais c'est ainsi.</p>
 </div>
 </div>
 <p>Vous allez implémenter un algorithme qui maintient une liste d'éléments dans l'ordre inverse de leur utilisation.</p>

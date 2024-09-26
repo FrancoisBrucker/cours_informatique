@@ -195,7 +195,7 @@
 <p>TBD exemple</p>
 </blockquote>
 <h2>Opérateur ternaire</h2>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">condition <span class="token operator">?</span> expr2 <span class="token operator">:</span> expr2<span class="token punctuation">;</span>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">condition <span class="token operator">?</span> expr1 <span class="token operator">:</span> expr2<span class="token punctuation">;</span>
 </code></pre>
 <p>Qui est équivalent à :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">if</span> <span class="token punctuation">(</span>condition<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -248,7 +248,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On se trompe rapidement dans l'ordre et les paramètres d la boucle for. En core une fois le mieux qui peut vous arriver est une erreur :</p>
+<p>On se trompe rapidement dans l'ordre et les paramètres de la boucle for. Encore une fois le mieux qui peut vous arriver est une erreur :</p>
 <ul>
 <li>l'échange de condition de fin et de test fonctionne de temps en temps</li>
 <li>remplacer les <code>;</code> par des <code>,</code> <em>peut</em> fonctionner (voir <a href="https://en.wikipedia.org/wiki/Comma_operator"><code>,</code> est un opérateur en C</a>)</li>
