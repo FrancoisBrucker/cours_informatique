@@ -361,13 +361,14 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
 </div>
 <p>Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de NP. Nous allons montrer qu'ils sont NP-complet par des réduction depuis <a href="/cours_informatique/cours/algorithmie/probl%C3%A8me-SAT/#3-sat">le problème 3-SAT</a>.</p>
 <h3>Chemin orienté hamiltonien</h3>
-<blockquote>
-<p>TBD à faire<br>
-TBD NPC :</p>
+<p>Pour transformer une instance de 3-SAT en une instance de recherche d'un chemin hamiltonien dans un graphe, il faut :</p>
 <ul>
-<li>dirigé : <a href="https://www.youtube.com/watch?v=4r78NtOnWWA">https://www.youtube.com/watch?v=4r78NtOnWWA</a></li>
+<li>encoder les différentes variables dans leur état 1 ou 0</li>
+<li>gérer les clause pour que tout ne soit pas possible</li>
+<li>s'assurer qu'il n'existe de chemin hamiltonien que si et seulement si le système est satisfiable.</li>
 </ul>
-</blockquote>
+<p><img src="NPC-dirig%C3%A9-variables.png" alt="encodage des variables"></p>
+<p><img src="NPC-dirig%C3%A9-clauses.png" alt="encodage des clauses"></p>
 <h3>Circuit orienté hamiltonien</h3>
 <blockquote>
 <p>adaptation du gadget en remontant</p>
