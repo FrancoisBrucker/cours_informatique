@@ -331,6 +331,8 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Problèmes de décision](./décision-problèmes){.interne}
 {% endaller %}
 
+> TBD dire que les deux vision des problèmes NP sont équivalentes. La solution des problèmes est le certificat des problèmes de décision. Le non déterminisme c'est trouver la solution, puis la vérification est est déterministe.
+
 {% aller %}
 [Exemples de problèmes NP complets](./exemples-problèmes-NPC){.interne}
 {% endaller %}

@@ -35,11 +35,6 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
-{% aller %}
-
-[Projet : graphe bi-parti](graphe-biparti){.interne}
-{% endaller %}
-
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
@@ -91,14 +86,6 @@ Algorithmes généraux :
 
 {% endaller %}
 
-## Couplages
-
-Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des graphes bi-parti avant d'aborder le cas général.
-
-{% aller %}
-[Couplages](./couplages/){.interne}
-{% endaller %}
-
 ## Arbres
 
 {% aller %}
@@ -140,6 +127,24 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
+## Graphe biparti
+
+Un exemple particulier de graphes, les graphes bipartis :
+
+{% aller %}
+[Projet : graphe bi-parti](graphe-biparti){.interne}
+{% endaller %}
+
+## Couplages
+
+Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des graphes bi-parti avant d'aborder le cas général.
+
+{% aller %}
+[Couplages](./couplages/){.interne}
+{% endaller %}
+
+> TBD projet christophides
+
 ## Connectivité
 
 {% aller %}
@@ -155,16 +160,4 @@ Problèmes de flots. Définition, algorithmes et applications
 ## Colorabilité
 
 > <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
-
-## Bi-parti
-
-Caractérisation :
-
-- equivalent pas de cycle de longueur impair
-
-Propriétés :
-
-- couplage facile
-- hamiltonien si même taille
-- 2 coloriables
-
+> NPC 3 coloriable : <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap13-goodINF412.pdf> p10 3-coloriable.

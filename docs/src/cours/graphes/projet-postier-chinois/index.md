@@ -63,8 +63,7 @@ On a $\sum\delta(x) = 2 \cdot \vert E \vert$. De là, comme la somme des degrés
 
 {% enddetails %}
 
-
-> TBD
+> TBD finir
 
 ### Graphe mixte
 

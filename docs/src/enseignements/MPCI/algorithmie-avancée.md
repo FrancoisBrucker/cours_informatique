@@ -84,28 +84,43 @@ A rendre pour le 18 octobre.
 
 ### Graphes
 
-> TBD : voir ce qu'ils connaissent déjà
-> TBD et s'il sont d'accord de préparer un bout de cours avant pour aller plus loin.
-
 {% aller %}
 [cours de Graphes](/cours/graphes/){.interne}
 {% endaller %}
 
-1. Graphes 1 :
-   1. rappels
-   2. quelques propriétés degrés/chemins
-   3. connectivités : arbres
-   4. parcours en largeur/profondeur
-2. Arbres :
+#### Cours 1
+
+1. [Graphes bases](/cours/graphes/structure){.interne} :
+   1. rappel des définitions
+   2. quelques propriétés sur les degrés, les chemins et les cycles
+   3. NP complétude du problème clique
+2. [exercice sur les tournois](/cours/graphes/parcours-hamiltoniens/#tournoi-exercice){.interne}
+
+#### Cours 2
+
+1. [Parcours eulériens](/cours/graphes/parcours-eulériens/){.interne}
+2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
+3. idée du problème du postier chinois
+
+#### Cours 3
+
+> TBD flots
+
+#### TBD
+
+3. Graphes 1 :
+   1. connectivités : arbres
+   2. parcours en largeur/profondeur
+4. Arbres :
    1. arbres preuves Prufer effeuillage ...
    2. parcours en profondeur et arborescence
-3. graphes, arbre (nb) et k-connexité (Menger)
-4. Graphes eulérien -> Christofides et idée du couplage sur graphe complet valué
-5. flots (idée de la programmation linéaire) + flot de poids min/max
-6. coupe min/max et couplage max graphe bi-parti
-7. Graphes aléatoires et infinis (intro)
-8. Coloriabilité de graphes
-9. graphes planaires
+5. graphes, arbre (nb) et k-connexité (Menger)
+6. Christofides pour résoudre le problème du voyageur de commerce et idée du couplage sur graphe complet valué
+7. flots (idée de la programmation linéaire) + flot de poids min/max
+8. coupe min/max et couplage max graphe bi-parti
+9.  Graphes aléatoires et infinis (intro)
+10. Coloriabilité de graphes
+11. graphes planaires
 
 ### Cryptographie
 

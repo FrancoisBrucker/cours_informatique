@@ -99,7 +99,8 @@ On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de
 
 ### Triparti
 
-> TBD 3-parti NP-complet. : <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap13-goodINF412.pdf> p10 3-coloriable.
+> TBD 3-parti NP-complet. on le verra dans le coloriage. C'est donc un problème juste pour savoir si le graphe l'est.
+> 
 >
 > un gadget : les preuve de NP-complétude le font.
 > entre 2 et 3 le soucis. Comme 2 et 3 SAT
@@ -113,7 +114,6 @@ On utilise l'algorithme et si l'algorithme répond non c'est qu'on a un cycle de
 > TBD split graph
 
 ## Décomposition en graphes Biparti
-
 
 Le problème de decomposition d'un graphe en graphe biparti est un problème de communication réseau initialement posé (et résolu) par les deux chercheurs Graham et Pollak des laboratoires Bell dans les années 1970.
 
@@ -156,7 +156,13 @@ On ne peut décomposer $K_n$ en moins de $n-1$ graphes bipartis.
 > TBD preuve dans l'autre sens.
 >
 
-
 ## TBD
 
 > TBD à placer les biparti là ou il faut dans la suite du cours : <https://en.wikipedia.org/wiki/Bipartite_graph>
+
+Propriétés :
+
+- couplage facile
+- hamiltonien si même taille
+- 2 coloriables
+

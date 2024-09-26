@@ -57,25 +57,127 @@ on passe de dnf à cnf en passant au non. Voir <https://www.csd.uwo.ca/~mmorenom
 ### Formules logiques
 
 {% lien %}
-[transfomation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM)
+[Transformation de Tseitin](https://www.youtube.com/watch?v=v2uW258qIsM)
 {% endlien %}
 
 Évite l'exponentialité si on utilise [que la distributivité](https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable
 ) pour convertir les formules.
 
-### exemple du sudoku
+### Exemple du sudoku
 
 > p47 <https://members.femto-st.fr/pierre-cyrille-heam/sites/femto-st.fr.pierre-cyrille-heam/files/content/Enseignement/cours-satsolveurs.pdf>
 
 ## <span id="3-sat"></span>3-SAT
 
-équivalent à SAT
+Un cas particulier important du problème `SAT` est le problème `3-SAT` ou toutes les clauses ont exactement 3 littéraux.
+
+### <span id="3-sat-exemple"></span> Exemple
+
+{% lien %}
+[Exemple de Wikipédia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description)
+{% endlien %}
+
+<div>
+$$
+(x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
+$$
+</div>
+
+Ce qui correspond formellement à :
+
+- la conjonction de 4 clauses $\mathcal{C} = c_1 \land c_2 \land c_3 \land c_4$,
+- les 4 clauses $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ pour $1\leq i \leq 4$
+- les littéraux $l_i^j$ avec $1\leq i \leq 4$ et $1\leq j \leq 3$ :
+  - $l_1^1 = x_1$, $l_1^2 = x_2$, $l_1^3 = x_3$,
+  - $l_2^1 = \overline{x_1}$, $l_1^2 = x_2$, $l_1^3 = x_4$,
+  - $l_3^1 = \overline{x_1}$, $l_3^2 = x_2$, $l_3^3 = \overline{x_5}$,
+  - $l_4^1 = \overline{x_3}$, $l_4^2 = x_4$, $l_4^3 = x_5$.
+
+On a alors les différentes valuations pour les variables, clauses et la conjonctions :
+
+<div>
+$$
+\begin{array}{ccccc||cccc||c}
+x_1&x_2&x_3&x_4&x_5& x_1 \lor x_2 \lor x_3 & \overline{x_1} \lor x_2 \lor x_4 & \overline{x_1} \lor x_2 \lor \overline{x_5} & \overline{x_3} \lor x_4 \lor x_5 & \mathcal{C}\\
+0&0&0&0&0& 0&1&1&1&0\\
+0&0&0&0&1& 0&1&1&1&0\\
+0&0&0&1&0& 0&1&1&1&0\\
+0&0&0&1&1& 0&1&1&1&0\\
+0&0&1&0&0& 1&1&1&0&0\\
+0&0&1&0&1& 1&1&1&1&1\\
+0&0&1&1&0& 1&1&1&1&1\\
+0&0&1&1&1& 1&1&1&1&1\\
+0&1&0&0&0& 1&1&1&0&0\\
+0&1&0&0&1& 1&1&1&1&1\\
+0&1&0&1&0& 1&1&1&1&1\\
+0&1&0&1&1& 1&1&1&1&1\\
+0&1&1&0&0& 1&1&1&0&0\\
+0&1&1&0&1& 1&1&1&1&1\\
+0&1&1&1&0& 1&1&1&1&1\\
+0&1&1&1&1& 1&1&1&1&1\\
+1&0&0&0&0& 1&0&1&0&0\\
+1&0&0&0&1& 1&0&0&1&0\\
+1&0&0&1&0& 1&1&1&1&1\\
+1&0&0&1&1& 1&1&0&1&0\\
+1&0&1&0&0& 1&0&1&0&0\\
+1&0&1&0&1& 1&0&0&1&0\\
+1&0&1&1&0& 1&1&1&1&1\\
+1&0&1&1&1& 1&1&0&1&0\\
+1&1&0&0&0& 1&1&1&0&0\\
+1&1&0&0&1& 1&1&1&1&1\\
+1&1&0&1&0& 1&1&1&1&1\\
+1&1&0&1&1& 1&1&1&1&1\\
+1&1&1&0&0& 1&1&1&0&0\\
+1&1&1&0&1& 1&1&1&1&1\\
+1&1&1&1&0& 1&1&1&1&1\\
+1&1&1&1&1& 1&1&1&1&1
+\end{array}
+$$
+</div>
+
+Il existe donc plusieurs affectations qui vérifient l'ensemble des clauses. On donne dans le tableau suivant le nombre de littéraux vrais par clause :
+
+<div>
+$$
+\begin{array}{ccccc||cccc}
+x_1&x_2&x_3&x_4&x_5& x_1 \lor x_2 \lor x_3 & \overline{x_1} \lor x_2 \lor x_4 & \overline{x_1} \lor x_2 \lor \overline{x_5} & \overline{x_3} \lor x_4 \lor x_5\\
+0&0&1&0&1& 1&1&1&1\\
+0&0&1&1&0& 1&2&1&1\\
+0&0&1&1&1& 1&2&1&2\\
+0&1&0&0&1& 1&2&1&2\\
+0&1&0&1&0& 1&3&1&2\\
+0&1&0&1&1& 1&3&1&3\\
+0&1&1&0&1& 2&2&1&1\\
+0&1&1&1&0& 2&3&1&1\\
+0&1&1&1&1& 2&3&1&2\\
+1&0&0&1&0& 1&2&1&2\\
+1&0&1&1&0& 2&1&1&2\\
+1&1&0&0&1& 2&1&1&2\\
+1&1&0&1&0& 2&2&1&2\\
+1&1&0&1&1& 2&2&1&3\\
+1&1&1&0&1& 3&1&1&1\\
+1&1&1&1&0& 3&2&1&1\\
+1&1&1&1&1& 3&2&1&2
+\end{array}
+$$
+</div>
+
+Pour que notre instance ne puisse plus avoir de solution, il faut lui rajouter des clauses. Par exemple les 6 clauses suivantes :
+
+- $x_1 \lor x_2 \lor \overline{x_3}$
+- $x_1 \lor \overline{x_2} \lor \overline{x_4}$
+- $x_1 \lor \overline{x_2} \lor \overline{x_5}$
+- $\overline{x_1} \lor x_2 \lor \overline{x_4}$
+- $\overline{x_1} \lor \overline{x_2} \lor x_3$
+- $\overline{x_1} \lor \overline{x_2} \lor \overline{x_3}$
+
+Le fait qu'une conjonction de clauses fonctionne ou pas est très dur a voir sans faire tous les cas.
+
+### équivalent à SAT
 
 > TBD <https://cse.iitkgp.ac.in/~palash/2018AlgoDesignAnalysis/SAT-3SAT.pdf>
 
-Permet certaines réductions de façon bien plus facile :
-
-> TBD résolution par backtracking
+Permet certaines réductions de façon bien plus facile.
 
 ## 2-SAT
 

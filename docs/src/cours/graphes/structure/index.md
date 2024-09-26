@@ -244,108 +244,6 @@ Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soi
 
 {% enddetails %}
 
-### Clique et stable
-
-<span id="definition-clique"></span>
-{% note "**Définitions**" %}
-Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
-{% endnote %}
-
-Un **_stable_** est l'opposé :
-
-<span id="definition-stable"></span>
-{% note "**Définitions**" %}
-Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.
-{% endnote %}
-
-Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle **_clique maximale_** (_resp._ **_stable maximal_**) un ensemble maximal pour l'inclusion.
-
-Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seule l'ensemble rouge est maximal.
-
-![cliques](cliques.png)
-
-On appelle **_clique maximum** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
-
-Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
-
-{% exercice %}
-Montrez que pour le graphe précédent, la taille maximum de la clique est 4.
-{% endexercice %}
-{% details "corrigé" %}
-Pour ce genre de preuves, il faut procéder en deux temps :
-
-1. exhiber une clique de taille 4
-2. montrer que tout ensemble de 5 sommet n'est pas une clique.
-
-Le sous ensemble des sommets bleus suivant est une clique :
-
-![cliques](cliques.png)
-
-Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et aucuns de ceux ci n'est une clique.
-{% enddetails %}
-
-Ll est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
-
-> TBD exercice où il faut trouver l'algo.
-
- trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
-
-{% note "**Problème**" %}
-
-- **nom** : clique
-- **Entrée** :
-  - un graphe
-  - un entier $K$
-- **Question** : le graphe contient-il une clique de taille supérieure ou égale à $K$ ?
-
-{% endnote %}
-
-Le problème est clairement dans NP puisque vérifier qu'un ensemble est une clique se résout polynomialement (il suffit de vérifier toutes les paires de sommets). Il est de plus NP-complet :
-
-{% note "**Proposition**" %}
-Le problème clique est NP-complet.
-{% endnote %}
-{% details "preuve", "open" %}
-On va le montrer par réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
-
-Soit l'ensemble de clauses suivante, formant une entrée du problème 3-SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
-
-<div>
-$$
-C = \land_{1\leq i \leq m}( c_i^1\lor c_i^2\lor c_i^3)
-$$
-</div>
-
-Avec pour tous $1\leq i \leq m$ et $1\leq j \leq 3$, l'existence de $1\leq k\leq n$ tel que $c_i^j = x_k$ ou $c_i^j = \overline{x_k}$.
-
-On associe (polynomialement) à cette instance un graphe $G=(V, E)$ tel que :
-
-- $V = \\{ c_i^j \vert 1\leq i \leq m, 1\leq j \leq 3 \\}$
-- $c_i^jc_k^l$ est une arête si :
-  - $i \neq j$
-  - $c_i^j \neq \overline{c_i^j}$
-
-Et on cherche s'il existe une clique de taille supérieure ou égale à $m$.
-
-S'il existe une solution au problème 3-SAT alors il existe un littéral $c_i^{u_i}$ qui est vrai pour toute clause $i$. L'ensemble $\mathcal{C} = \\{ c_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
-
-Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de chaque clause, donc une clique de taille $K$ contient un littéral par clause que l'on peut positionner à vrai.
-{% enddetails %}
-
-C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
-
-{% exercice %}
-Montrez que le problème de savoir si un graphe donné possède un stable de taille supérieure ou égale à $K$ est un problème NP-complet.
-{% endexercice %}
-{% details "corrigé" %}
-
-1. NP
-2. réduction depuis clique
-
-> TBD écrire propre
-
-{% enddetails %}
-
 ## Voisinages et arêtes
 
 Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.
@@ -516,6 +414,166 @@ Le graphe suivant est le produit cartésien de deux graphes, lesquels ?
 ![g carré g solution](./quel_carré_solution.png)
 {% enddetails %}
 
+## Graphes dérivés
+
+A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci.
+
+### Graphe complémentaire
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>
+{% endlien %}
+
+complémentaire de complémentaire = graphe
+
+> TBD tout graphe est complémentaire d'un autre. le carré est identité
+
+### Graphe adjoint
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Line_graph>
+{% endlien %}
+Aussi appelé line graph
+
+> TBD stable pour cycle, diminue pour chemin et augmente pour clique
+> TBD tout graphe n'est pas adjoint d'un autre (exemple ?)
+adjoint de adjoint = graphe
+
+### Mineurs
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
+{% endlien %}
+
+> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
+
+> TBD rend compte de l'intrication locale de chemins entre sommets.
+>
+
+## Clique et stable
+
+<span id="definition-clique"></span>
+{% note "**Définitions**" %}
+Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in C \subseteq V$, $xy \in E$.
+{% endnote %}
+
+Un **_stable_** est l'opposé :
+
+<span id="definition-stable"></span>
+{% note "**Définitions**" %}
+Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.
+{% endnote %}
+
+Des deux définition précédentes, un sommet est à la fois une clique et un stable. Ils constituent les ensembles minimaux non vide. Réciproquement, on appelle **_clique maximale_** (_resp._ **_stable maximal_**) un ensemble maximal pour l'inclusion.
+
+Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seule l'ensemble rouge est maximal.
+
+![cliques](cliques.png)
+
+On appelle **_clique maximum** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
+
+Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
+
+{% exercice %}
+Montrez que pour le graphe précédent, la taille maximum de la clique est 4.
+{% endexercice %}
+{% details "corrigé" %}
+Pour ce genre de preuves, il faut procéder en deux temps :
+
+1. exhiber une clique de taille 4
+2. montrer que tout ensemble de 5 sommet n'est pas une clique.
+
+Le sous ensemble des sommets bleus suivant est une clique :
+
+![cliques](cliques.png)
+
+Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et aucuns de ceux ci n'est une clique.
+{% enddetails %}
+
+Ll est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
+
+> TBD exercice où il faut trouver l'algo.
+
+ trouver une clique maximum d'un graphe est un problème NP-complet. Considérons le problème suivant :
+
+{% note "**Problème**" %}
+
+- **nom** : clique
+- **Entrée** :
+  - un graphe
+  - un entier $K$
+- **Question** : le graphe contient-il une clique de taille supérieure ou égale à $K$ ?
+
+{% endnote %}
+
+Le problème est clairement dans NP puisque vérifier qu'un ensemble est une clique se résout polynomialement (il suffit de vérifier toutes les paires de sommets). Il est de plus NP-complet :
+
+{% note "**Proposition**" %}
+Le problème clique est NP-complet.
+{% endnote %}
+{% details "preuve", "open" %}
+On va le montrer par réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
+
+Soit l'ensemble de clauses suivante, formant une entrée du problème 3-SAT, sur l'ensemble de variables $\\{ x_1, \dots, x_n \\}$ :
+
+<div>
+$$
+\mathcal{C} = \land_{1\leq i \leq m}( l_i^1\lor l_i^2\lor l_i^3)
+$$
+</div>
+
+Avec pour tous $1\leq i \leq m$ et $1\leq j \leq 3$, $l_i^j \in \\{x_i \vert 1\leq i \leq n \\} \cup \\{\overline{x_i} \vert 1\leq i \leq n \\}$.
+
+On associe (polynomialement) à cette instance un graphe $G=(V, E)$ tel que :
+
+- $V = \\{ l_i^j \vert 1\leq i \leq m, 1\leq j \leq 3 \\}$
+- $l_i^jl_k^l$ est une arête si :
+  - $i \neq j$
+  - $l_i^j \neq \overline{l_i^j}$
+
+Et on cherche s'il existe une clique de taille supérieure ou égale à $m$.
+
+S'il existe une solution au problème 3-SAT alors il existe un littéral $l_i^{u_i}$ qui est vrai pour toute clause $i$. L'ensemble $\mathcal{C} = \\{ l_i^{u_i} \vert 1\leq i \leq m\\}$ est une clique de taille $K$ de $G$.
+
+Réciproquement toute clique de $G$ ne peut contenir qu'au plus un littéral de chaque clause, donc une clique de taille $K$ contient un littéral par clause que l'on peut positionner à vrai.
+{% enddetails %}
+
+En reprenant [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple) on obtient le graphe associé $G=(V, E)$ :
+
+![réduction](3-sat-clique-reduction-1.png)
+
+Ce graphe possède de multiples cliques de taille 4, comme par exemple :
+
+![réduction](3-sat-clique-reduction-2.png)
+
+Ce qui fixe 1 littéral pour chaque clause :
+
+- ${x_3}$ de la clause 1
+- $\overline{x_1}$ des clauses 2 et 3
+- ${x_4}$ de la clause clause 4
+
+Qui fixe 3 variables. On aura toutes les clauses de vérifiées quelques soient les valeurs de $x_2$ et $x_5$ si :
+
+- $x_3 = 1$,
+- $x_1 = 0$,
+- $x_4 = 1$
+
+Dans la plupart des exemples réels, il y aura plus de clauses que de variables mais la clique max sera toujours compatible, la variable apparaissant toujours de façon identique pour chaque littéral de la clique : comme chez nous il y a 2 fois $\overline{x_1}$.
+
+C'est le premier problème de graphe que l'on voit NP-complet, il va y en avoir tout un tas d'autres.
+
+{% exercice %}
+Montrez que le problème de savoir si un graphe donné possède un stable de taille supérieure ou égale à $K$ est un problème NP-complet.
+{% endexercice %}
+{% details "corrigé" %}
+
+1. NP
+2. réduction depuis clique en prenant le graphe complémentaire.
+
+> TBD écrire propre
+
+{% enddetails %}
+
 ## Morphismes de graphes
 
 {% lien %}
@@ -578,39 +636,3 @@ Définissons le problème algorithmique associé :
 Si on se donne une fonction $f$ allant de l'ensemble des sommets d'un graphe à un autre, il est facile de vérifier si c'est un isomorphisme entre les deux graphes ou non : le problème de l'isomorphisme de graphe est donc clairement dans NP.
 
 En revanche, on ne connaît pas son status exact : on ne sait ni s'il est NPcomplet, ni s'il est polynomial. [Le meilleur algorithme connu](https://en.wikipedia.org/wiki/Graph_isomorphism_problem) est de complexité $2^{\mathcal{O}(\log^3(n))}$ ce qui est plus que polynomial mais moins qu'exponentiel. On verra que pour certaines classes de graphes, le problème est simple.
-
-## Graphes dérivés
-
-A tout graphe on peut lui associer d'autres graphes, dérivés de celui-ci.
-
-### Graphe complémentaire
-
-{% lien %}
-<https://fr.wikipedia.org/wiki/Graphe_compl%C3%A9mentaire>
-{% endlien %}
-
-complémentaire de complémentaire = graphe
-
-> TBD tout graphe est complémentaire d'un autre. le carré est identité
-
-### Graphe adjoint
-
-{% lien %}
-<https://fr.wikipedia.org/wiki/Line_graph>
-{% endlien %}
-Aussi appelé line graph
-
-> TBD stable pour cycle, diminue pour chemin et augmente pour clique
-> TBD tout graphe n'est pas adjoint d'un autre (exemple ?)
-adjoint de adjoint = graphe
-
-### Mineurs
-
-{% lien %}
-<https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
-{% endlien %}
-
-> TBD très très important, a donné des caractérisation et des théorèmes extrêmement important en théorie des graphes.
-
-> TBD rend compte de l'intrication locale de chemins entre sommets.
->

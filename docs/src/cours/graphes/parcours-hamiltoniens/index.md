@@ -61,58 +61,35 @@ Supposons qu'il existe un cycle hamiltonien $x_1\dots x_n$. Soit $x_ix_{i+1}$ es
 
 Le problème du cycle pou du chemin hamiltonien est un problème classique en théorie des graphe et est présent dans nombre de problèmes concrets. C'est en particulier [le problème du voyageur de commerce](https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce) qui est la base de toute optimisation de tournée ou de nombre de problèmes liés au transport.
 
-## NP-complétude
+## Propriétés
 
-Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et non orienté :
+Lorsque le graphe a beaucoup d'arêtes, il va être facile de trouver des chemin ou cycles/circuit hamiltonien.
 
-{% note "**Problème**" %}
+### Tournois
 
-- **nom** : cycle (_resp._ circuit) hamiltonien
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **question** : $G$ possède-t-il un cycle hamiltonien ?
+Commençons par un résultat surprenant sur les graphes orientés. S'il est évidant que les graphes complets ont tous des chemins hamiltoniens, c'est également le cas pour les tournois !
 
-{% endnote %}
-
-Et faisons de même pour les chemins hamiltonien dans ses versions orienté et non orienté :
-
-{% note "**Problème**" %}
-
-- **nom** : chemin (_resp._ chemin orienté) hamiltonien
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **question** : $G$ possède-t-il un chemin hamiltonien ?
-
-{% endnote %}
-
-Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de NP. Nous allons montrer qu'ils sont NP-complet par des réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
-
-> TBD à faire
-> TBD NPC :
->
-> - dirigé : <https://www.youtube.com/watch?v=4r78NtOnWWA>
-> - non dirigé : <https://www.youtube.com/watch?v=5SaQa_wlel8>
-
-La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'il est illusoire de tenter de trouver un algorithme efficace pour résoudre le problème du chemin le plus long :
-
-{% note "**Problème**" %}
-
-- **nom** : chemin le plus long
-- **données** : Un graphe (_resp._ graphe orienté) $G$
-- **réponse** : Un chemin élémentaire le plus long possible.
-
-{% endnote %}
-
-Résoudre ce problème revient en effet clairement à résoudre le problème du chemin hamiltonien.
-
+<div id="tournoi-exercice"></div>
 {% exercice %}
-Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.
+Montrez que tout [tournoi](../structure/#definition-tournoi) admet un chemin hamiltonien.
 {% endexercice %}
 {% details "solution" %}
-Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.
+
+On peut le démontrer par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
+
+On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
+
+Il existe alors :
+
+- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
+- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
+
+On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
 {% enddetails %}
 
-Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.
+Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
 
-## Propriétés
+### Cycles et chemins
 
 Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales, en particulier lorsque l'on considère des graphes avec beaucoup d'arêtes.
 
@@ -153,28 +130,70 @@ Or comme $E \subseteq E'$, on a également $\delta(u) + \delta(v) < n$ dans $G$,
 
 {% enddetails %}
 
-On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cycle hamiltonien. Ceci est vrai même pour les graphes orientés :
+On le voit, lorsque les graphes ont beaucoup d'arêtes ils vont posséder un cycle hamiltonien.
 
-Mais pour ce qui nous intéresse, il est rigolo de voir qu'un tournoi admet toujours un chemin qui passe par tous les sommets une unique fois.
+## NP-complétude
+
+Formalisons les problèmes du cycle hamiltonien dans ses versions orienté et non orienté :
+
+{% note "**Problème**" %}
+
+- **nom** : cycle (_resp._ circuit) hamiltonien
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **question** : $G$ possède-t-il un cycle hamiltonien ?
+
+{% endnote %}
+
+Et faisons de même pour les chemins hamiltonien dans ses versions orienté et non orienté :
+
+{% note "**Problème**" %}
+
+- **nom** : chemin (_resp._ chemin orienté) hamiltonien
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **question** : $G$ possède-t-il un chemin hamiltonien ?
+
+{% endnote %}
+
+Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de NP. Nous allons montrer qu'ils sont NP-complet par des réduction depuis [le problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat).
+
+### Chemin orienté hamiltonien
+
+> TBD à faire
+> TBD NPC :
+>
+> - dirigé : <https://www.youtube.com/watch?v=4r78NtOnWWA>
+
+### Circuit orienté hamiltonien
+
+> adaptation du gadget en remontant
+
+### Cycle et chemins hamiltonien
+
+> NON orienté
+> - non dirigé : <https://www.youtube.com/watch?v=5SaQa_wlel8>
+
+### Chemin le plus long
+
+La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'il est illusoire de tenter de trouver un algorithme efficace pour résoudre le problème du chemin le plus long :
+
+{% note "**Problème**" %}
+
+- **nom** : chemin le plus long
+- **données** : Un graphe (_resp._ graphe orienté) $G$
+- **réponse** : Un chemin élémentaire le plus long possible.
+
+{% endnote %}
+
+Résoudre ce problème revient en effet clairement à résoudre le problème du chemin hamiltonien.
 
 {% exercice %}
-Montrez que tout [tournoi](../structure/#definition-tournoi) admet un chemin hamiltonien, mais pas forcément de circuit hamiltonien.
+Montrer que si l'on pouvait résoudre le problème d'un chemin le plus long dans un graphe, on pourrait résoudre le problème du chemin hamiltonien.
 {% endexercice %}
 {% details "solution" %}
-
-Commençons par montrer que tout tournoi ne possède pas de circuit hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
-
-On peut démontrer l'autre partie par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
-
-On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
-
-Il existe alors :
-
-- un chemin hamiltonien $c_0\dots c_k$ dans la restriction de $T$ à $N^+(x)$
-- un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
-
-On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
+Le plus long chemin élémentaire possible dans un graphe passe par tous les sommets. Donc un chemin élémentaire de longueur $\vert V \vert -1$ est hamiltonien.
 {% enddetails %}
+
+Notez comment une petite différence — remplacer sommet (hamiltonien) par arête (eulérien) — rend un problème soit très simple soit très compliqué à résoudre.
 
 ## Applications
 
