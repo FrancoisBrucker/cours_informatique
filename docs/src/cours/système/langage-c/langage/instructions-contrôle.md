@@ -117,7 +117,7 @@ else if (condition2) {
 ## Opérateur ternaire
 
 ```c
-condition ? expr2 : expr2;
+condition ? expr1 : expr2;
 ```
 
 Qui est équivalent à :
@@ -182,7 +182,7 @@ printf("\n");
 ```
 
 {% attention "**danger !**" %}
-On se trompe rapidement dans l'ordre et les paramètres d la boucle for. En core une fois le mieux qui peut vous arriver est une erreur :
+On se trompe rapidement dans l'ordre et les paramètres de la boucle for. Encore une fois le mieux qui peut vous arriver est une erreur :
 
 - l'échange de condition de fin et de test fonctionne de temps en temps
 - remplacer les `;` par des `,` *peut* fonctionner (voir [`,` est un opérateur en C](https://en.wikipedia.org/wiki/Comma_operator))
