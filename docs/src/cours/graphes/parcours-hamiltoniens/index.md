@@ -158,10 +158,15 @@ Les quatre problèmes ci-dessus sont clairement des problèmes de décisions de 
 
 ### Chemin orienté hamiltonien
 
-> TBD à faire
-> TBD NPC :
->
-> - dirigé : <https://www.youtube.com/watch?v=4r78NtOnWWA>
+Pour transformer une instance de 3-SAT en une instance de recherche d'un chemin hamiltonien dans un graphe, il faut :
+
+- encoder les différentes variables dans leur état 1 ou 0
+- gérer les clause pour que tout ne soit pas possible
+- s'assurer qu'il n'existe de chemin hamiltonien que si et seulement si le système est satisfiable.
+
+![encodage des variables](./NPC-dirigé-variables.png)
+
+![encodage des clauses](./NPC-dirigé-clauses.png)
 
 ### Circuit orienté hamiltonien
 

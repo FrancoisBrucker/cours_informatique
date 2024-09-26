@@ -11,7 +11,6 @@ eleventyComputed:
 
 > TBD : Dire, mais laisser la démo pour plus tard, que SAT est supérieur à tout et donner exemple de réduction ≤ SAT et aussi ≥ SAT mais pas le sac à dos.
 
-
 Nous allons intensivement utiliser la réduction pour classer les problèmes algorithmiques, et en particulier les réduction depuis [le problème SAT](https://fr.wikipedia.org/wiki/Probl%C3%A8me_SAT).
 
 Nous avons entraperçu le problème lorsque nous avons parlé de [pseudo-assembleur](../exécuter-code/pseudo-assembleur#clauses) et que tout les fonctions de $\\{0, 1\\}^n$ dans $\\{0, 1\\}$ peuvent s'écrire comme conjonction de clauses :
@@ -37,7 +36,7 @@ Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1
 
 {% endnote %}
 
-Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie.
+Le problème `SAT` cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite **_satisfiable_**.
 
 > TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
 > TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.
