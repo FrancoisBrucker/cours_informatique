@@ -67,17 +67,28 @@ Lorsque le graphe a beaucoup d'arêtes, il va être facile de trouver des chemin
 
 ### Tournois
 
-Commençons par un résultat surprenant sur les graphes orientés. S'il est évidant que les graphes complets ont tous des chemins hamiltoniens, c'est également le cas pour les tournois !
+Commençons par un résultat surprenant sur les graphes orientés. S'il est évident que les graphes complets ont tous des chemins hamiltoniens, c'est également le cas pour les tournois !
 
 <div id="tournoi-exercice"></div>
 {% exercice %}
 Montrez que tout [tournoi](../structure/#definition-tournoi) admet un chemin hamiltonien.
 {% endexercice %}
-{% details "solution" %}
+{% details "corrigé" %}
 
 On peut le démontrer par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
 
-On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que la restriction de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
+On prend $x$ un sommet de ce tournoi. Le graphe $T$ privé de $T$ est un tournoi à $n$ sommets. Il existe alors un chemin hamiltonien $c_0\dots c_{n-1}$ dans la restriction de $T$.
+
+Si $xc_{0}$ est un arc de $T$, alors $xc_0\dots c_{n-1}$ est un chemin hamiltonien. Sinon si $c_{n-1}x$ est un arc de $T$, alors $c_0\dots c_{n-1}x$ est un chemin hamiltonien.
+
+Si on est dans aucun des cas précédents, il existe $0 <i<n-1$ tel que $c_{i}x$ et $xc_{i+1}$ sont deux arcs de $T$ : $c_0\dots c_{i}xc_{i+1}\dots c_{n-1}x$ est un chemin hamiltonien de $T$.
+{% enddetails %}
+{% details "corrigé alternatif" %}
+Preuve un peu plus élégante que la précédente.
+
+On peut le démontrer par récurrence. Un tournoi à 1 sommet admet un chemin hamiltonien. Si on suppose cela vrai pour tout tournoi à moins de $n$ sommets, soit $T = (V, E)$ un tournoi à $n+1$ sommets.
+
+On prend $x$ un sommet de ce tournoi. On a alors que $N^+(x) \cup N^-(x) \cup \{ x \} = V$ et que les restrictions de $T$ à $N^+(x)$ ou à $N^-(x)$ restent des tournois et ont strictement moins de $n+1$ sommets.
 
 Il existe alors :
 
@@ -85,6 +96,7 @@ Il existe alors :
 - un chemin hamiltonien $c'_0\dots c'_l$ dans la restriction de $T$ à $N^-(x)$
 
 On en conclut que le chemin $c'_0 \dots c'_l x c_0 \dots c_k$ est hamiltonien dans $T$, ce qui termine la preuve par récurrence.
+
 {% enddetails %}
 
 Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considérer le tournoi $G = (\{x_1,\dots, x_n\}, E)$ avec $x_ix_j \in E$ si et seulement si $i< j$. Ce tournoi ne peut clairement posséder aucun circuit.
@@ -164,18 +176,78 @@ Pour transformer une instance de 3-SAT en une instance de recherche d'un chemin 
 - gérer les clause pour que tout ne soit pas possible
 - s'assurer qu'il n'existe de chemin hamiltonien que si et seulement si le système est satisfiable.
 
+Nous allons appliquer la réduction à [l'exemple du problème 3-SAT](/cours/algorithmie/problème-SAT/#3-sat-exemple).
+
+#### Encodage des variables
+
+Chaque variable est encodé par le sous-graphe suivant :
+
 ![encodage des variables](./NPC-dirigé-variables.png)
+
+Il possède uniquement deux chemins passant par tous les sommets :
+
+- $y_{i-1}x_iv_iv^1_iu^1_if^1_i\dots v^j_iu^j_if^j_i\dots v^m_iu^m_if^m_if_iy_i$ : le chemin vrai
+- $y_{i-1}x_if_if^1_iu^1_iv^1_i\dots f^j_iu^j_iv^j_i\dots f^m_iu^m_iv^m_iv_iy_i$ : le chemin faux
+
+Le graphe de toutes les variables est composé de l'union de tous ces graphes. Pour l'exemple cela donne :
+
+![encodage des variables exemples](./NPC-dirigé-variables-exemple.png)
+
+Il possède $2^5$ chemin hamiltoniens selon que l'o passe par le chemin vrai ou le chemin faux pour chaque variable.
+
+#### Encodage des clauses
+
+On encode chaque clause $c_i$ = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k leq 3$ :
+
+- $v^i_jc_i$ et $c_iu^i_j$ si $l_i^k = x_j$,
+- $f^i_jc_i$ et $c_iu^i_j$ si $l_i^k = \overline{x_j}$,
 
 ![encodage des clauses](./NPC-dirigé-clauses.png)
 
+Le graphe complet de l'exemple est :
+
+![encodage des variables exemples](./NPC-dirigé-clauses-exemple.png)
+
+#### Satisfiabilité
+
+Si la conjonction de clause est satisfiable, il existe un chemin hamiltonien passant pas les chemins vrais des variables vraies, les chemins faux des variables fausses et passant par chaque clause pour un des littéral vrai de la clause. Pour l'exemple :
+
+![Une solution](./NPC-dirigé-exemple-solution.png)
+
+Réciproquement s'il existe un chemin hamiltonien :
+
+- il passe par les chemins vrais ou les chemins faut de chaque variable
+- il passe par une clause en passant par le vrai ou le faux
+
+Notez que pour un chemin hamiltonien, si $v^j_ic_i$ est un arc (_resp._ $f^j_ic_i$), alors $c_iu^j_i$ en est un aussi, sinon $f^j_i$ (_resp._ $v^j_i$) ne peut être atteint. Cette construction justifie le fait que la clause est satisfaite pour un de ses littéraux (ceci montre qu'il faut 3 sommets v, f et u pour cette construction et qu'on ne peut s'en sortir qu'avec des sommets v et f).
+
+On en conclut :
+
+{% note "**Proposition**" %}
+Le problème de recherche d'un chemin hamiltonien dans un graphe dirigé est NP-complet.
+{% endnote %}
+
 ### Circuit orienté hamiltonien
 
-> adaptation du gadget en remontant
+La précédente preuve s'applique de manière identique pour la recherche d'un circuit hamiltonien en ajoutant un arc de $y_n$ à $y_0$. On en conclut :
+
+{% note "**Proposition**" %}
+Le problème de recherche d'un circuit hamiltonien dans un graphe dirigé est NP-complet.
+{% endnote %}
 
 ### Cycle et chemins hamiltonien
 
-> NON orienté
-> - non dirigé : <https://www.youtube.com/watch?v=5SaQa_wlel8>
+On va montrer ici que la recherche d'un chemin (_resp._ circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (_resp._ cycle) hamiltonien dans un graphe. POur cela on va associer à tout graphe dirigé un graphe.
+
+On effectue la transformation suivante, pour chaque sommet du graphe orienté :
+
+![Arc orienté initial](./NPC-non-orienté1.png)
+
+On en assoie 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :
+
+![Arêtes non orientées](./NPC-non-orienté2.png)
+
+Il est alors évident que si le graphe non orienté a un chemin (_resp._ cycle) hamiltonien, alors le graphe orienté possède également un chemin (_resp._ circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montrer que les problèmes orientés ou non orientés sont équivalent.
 
 ### Chemin le plus long
 
@@ -207,7 +279,7 @@ Notez comment une petite différence — remplacer sommet (hamiltonien) par arê
 Problème vu sous l'angle algorithmique dans le cours d'algorithmie :
 
 {% aller %}
-[Chemins et cycle](/cours/algorithmie/design-algorithmes/chemins-cycles/)
+[Chemins et cycle](/cours/algorithmie/design-algorithmes/chemins-cycles/){.interne}
 {% endaller %}
 
 > TBD formaliser ça en graphe.

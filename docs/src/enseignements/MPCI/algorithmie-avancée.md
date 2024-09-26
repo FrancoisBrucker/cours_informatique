@@ -118,7 +118,7 @@ A rendre pour le 18 octobre.
 6. Christofides pour résoudre le problème du voyageur de commerce et idée du couplage sur graphe complet valué
 7. flots (idée de la programmation linéaire) + flot de poids min/max
 8. coupe min/max et couplage max graphe bi-parti
-9.  Graphes aléatoires et infinis (intro)
+9. Graphes aléatoires et infinis (intro)
 10. Coloriabilité de graphes
 11. graphes planaires
 
