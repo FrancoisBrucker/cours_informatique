@@ -197,7 +197,7 @@ Il possède $2^5$ chemin hamiltoniens selon que l'o passe par le chemin vrai ou 
 
 #### Encodage des clauses
 
-On encode chaque clause $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k leq 3$ :
+On encode chaque clause $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k \leq 3$ :
 
 - $v^i_jc_i$ et $c_iu^i_j$ si $l_i^k = x_j$,
 - $f^i_jc_i$ et $c_iu^i_j$ si $l_i^k = \overline{x_j}$,
@@ -237,17 +237,17 @@ Le problème de recherche d'un circuit hamiltonien dans un graphe dirigé est NP
 
 ### Cycle et chemins hamiltonien
 
-On va montrer ici que la recherche d'un chemin (_resp._ circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (_resp._ cycle) hamiltonien dans un graphe. POur cela on va associer à tout graphe dirigé un graphe.
+On va montrer ici que la recherche d'un chemin (_resp._ circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (_resp._ cycle) hamiltonien dans un graphe. Pour cela on va associer à tout graphe dirigé un graphe.
 
 On effectue la transformation suivante, pour chaque sommet du graphe orienté :
 
 ![Arc orienté initial](./NPC-non-orienté1.png)
 
-On en assoie 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :
+On en associe 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :
 
 ![Arêtes non orientées](./NPC-non-orienté2.png)
 
-Il est alors évident que si le graphe non orienté a un chemin (_resp._ cycle) hamiltonien, alors le graphe orienté possède également un chemin (_resp._ circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montrer que les problèmes orientés ou non orientés sont équivalent.
+Il est alors évident que si le graphe non orienté a un chemin (_resp._ cycle) hamiltonien, alors le graphe orienté possède également un chemin (_resp._ circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montre que les problèmes orientés ou non orientés sont équivalent.
 
 {% lien %}
 [exemple de la réduction](https://www.youtube.com/watch?v=5SaQa_wlel8)
