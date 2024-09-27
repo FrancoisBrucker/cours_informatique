@@ -380,6 +380,8 @@ Tout d'abord, on peut toujours s'arranger pour que $
 
 La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.
 
-Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant [la technique classique](../chemins-cycles-connexite/#prop-cycles-graphe){.interne}. Le supprimer du graphe va conserver les deux propriétés puisque sur ce cycle, on va rentrer et sortir un nombre égal de fois de tout $V \subseteq V$. On peut donc procéder itérativement, comme on l'a fait pour le multi-graphe non orienté, pour trouver un circuit mixte eulérien à notre multi-graphe mixte.
+Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant [la technique classique](../chemins-cycles-connexite/#prop-cycles-graphe){.interne} et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).
+
+ Le supprimer du graphe va conserver les deux propriétés puisque sur ce cycle, on va rentrer et sortir un nombre égal de fois de tout $V \subseteq V$. On peut donc procéder itérativement, comme on l'a fait pour le multi-graphe non orienté, pour trouver un circuit mixte eulérien à notre multi-graphe mixte.
 
 {% enddetails %}
