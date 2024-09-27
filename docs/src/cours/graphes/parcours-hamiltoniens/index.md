@@ -106,7 +106,7 @@ Ce résultat ne se généralise pas aux cycle hamiltonien. Il suffit de considé
 Bien que le problème général soit NP-complet, beaucoup d'instances sont polynomiales, en particulier lorsque l'on considère des graphes avec beaucoup d'arêtes.
 
 {% note "**Proposition (Dirac, 1952)**" %}
-Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un chemin Hamiltonien.
+Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un cycle Hamiltonien.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -117,15 +117,15 @@ Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cyc
 On suppose alors que $x_0x_k \notin E$.
 
 Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.
-De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous ses voisins (au moins $\vert V \vert / 2$) et  $\delta(x_k)$ (au moins $\vert V \vert / 2$) non voisins et $C$ aurait strictement plus de $\vert V \vert$ sommets ce qui est impossible : il existe $x_i$ tel que $x_ix_k \in E$ et $x_{i+1}x_0 \in E$ (remarquez que ceci fonctionne si $\delta(x_0)+\delta(x_k) \geq \vert V \vert$. On utilisera ça dans la preuve de la proposition suivante).
+De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous les voisins de $x_k$ (au moins $\vert V \vert / 2$) plus tous les prédécesseurs de ceux-ci voisins (dont $x_k$ puisque $x_{k-1}x_k$), c'est à dire encore au moins $\vert V \vert / 2$ : $C$ posséderait au moins $\vert V \vert + 1$ élément, ce qui est impossible.
 
-Le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est hamiltonien.
+Il existe donc $x_i$ ($0 < i <k$) tel que $x_ix_k \in E$ et a $x_{i+1}x_0 \in E$ : le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est un cycle hamiltonien.
 
 {% enddetails %}
 
 La propriété se généralise même :
 
-{% note "**Proposition (Core, 1960)**" %}
+{% note "**Proposition (Ore, 1960)**" %}
 Si $G=(V, E)$ avec $\vert V \vert = n \geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ pour tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.
 {% endnote %}
 {% details "preuve", "open" %}
@@ -136,9 +136,10 @@ On suppose que $G$ n'est pas hamiltonien. Comme le graphe complet est hamiltonie
 - $G'$ n'est pas hamiltonien
 - si on ajoute l'arête $uv$ à $G'$ il devient hamiltonien.
 
-Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Si $\delta(u) + \delta(v) < n$ dans $G'$ on pourrait utiliser le même raisonnement que pour la proposition précédente et montrer qu'il existe $i$ tel que $ux_i, vx_{i+1} \in E'$ et en conclure que $G'$ est hamiltonien.
+Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Pour tout $0\leq i<n-1$, on ne peut avoir $x_ix_k \in E'$ et a $x_{i+1}x_0 \in E'$ sinon, tout comme la preuve précédente, on peut construire le cycle hamiltonien $x_0\dots x_ix_{n-1}\dots x_{i+1}x_0$.
 
-Or comme $E \subseteq E'$, on a également $\delta(u) + \delta(v) < n$ dans $G$, ce qui est impossible.
+De là, $\delta(x_0) + \delta(x_{n-1}) < n$ dans $G'$ puisqu'au plus une des deux arêtes $x_ix_k$ ou $x_{i+1}x_0$ est dans $E'$ pour $0\leq i<n-1$.
+Or comme $E \subseteq E'$ on aurait également $\delta(x_0) + \delta(x_{n-1}) < n$ dans $G$, ce qui est impossible.
 
 {% enddetails %}
 
@@ -212,7 +213,7 @@ Le graphe complet de l'exemple est :
 
 Si la conjonction de clause est satisfiable, il existe un chemin hamiltonien passant pas les chemins vrais des variables vraies, les chemins faux des variables fausses et passant par chaque clause pour un des littéral vrai de la clause. Pour l'exemple :
 
-![Une solution](./NPC-dirigé-exemple-solution.png)
+![Une solution](./NPC-dirige-exemple-solution.png)
 
 Réciproquement s'il existe un chemin hamiltonien :
 
