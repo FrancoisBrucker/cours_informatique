@@ -405,7 +405,7 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
 <p><img src="NPC-dirig%C3%A9-variables-exemple.png" alt="encodage des variables exemples"></p>
 <p>Il possède $2^5$ chemin hamiltoniens selon que l'o passe par le chemin vrai ou le chemin faux pour chaque variable.</p>
 <h4>Encodage des clauses</h4>
-<p>On encode chaque clause $c_i$ = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k leq 3$ :</p>
+<p>On encode chaque clause $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k \leq 3$ :</p>
 <ul>
 <li>$v^i_jc_i$ et $c_iu^i_j$ si $l_i^k = x_j$,</li>
 <li>$f^i_jc_i$ et $c_iu^i_j$ si $l_i^k = \overline{x_j}$,</li>
@@ -446,12 +446,12 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
 </div>
 </div>
 <h3>Cycle et chemins hamiltonien</h3>
-<p>On va montrer ici que la recherche d'un chemin (<em>resp.</em> circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (<em>resp.</em> cycle) hamiltonien dans un graphe. POur cela on va associer à tout graphe dirigé un graphe.</p>
+<p>On va montrer ici que la recherche d'un chemin (<em>resp.</em> circuit) hamiltonien dans un graphe orienté est équivalent à chercher un chemin (<em>resp.</em> cycle) hamiltonien dans un graphe. Pour cela on va associer à tout graphe dirigé un graphe.</p>
 <p>On effectue la transformation suivante, pour chaque sommet du graphe orienté :</p>
 <p><img src="NPC-non-orient%C3%A91.png" alt="Arc orienté initial"></p>
-<p>On en assoie 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :</p>
+<p>On en associe 3 dans le graphe non orienté associé, permettant de séparer les arcs entrant des arcs sortants :</p>
 <p><img src="NPC-non-orient%C3%A92.png" alt="Arêtes non orientées"></p>
-<p>Il est alors évident que si le graphe non orienté a un chemin (<em>resp.</em> cycle) hamiltonien, alors le graphe orienté possède également un chemin (<em>resp.</em> circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montrer que les problèmes orientés ou non orientés sont équivalent.</p>
+<p>Il est alors évident que si le graphe non orienté a un chemin (<em>resp.</em> cycle) hamiltonien, alors le graphe orienté possède également un chemin (<em>resp.</em> circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montre que les problèmes orientés ou non orientés sont équivalent.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
