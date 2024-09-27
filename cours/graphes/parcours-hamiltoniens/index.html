@@ -284,7 +284,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Proposition (Dirac, 1952)</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un chemin Hamiltonien.</p>
+<p>Si $G=(V, E)$ est un graphe tel que $\delta(x) \geq \vert V \vert / 2$ pour tout sommet $x\in V$, alors $G$ admet un cycle Hamiltonien.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -308,8 +308,8 @@
 <p>Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cycle est hamiltonien. Sinon en effet, par connexité, il existerait une arête $yx_j$ avec $y\notin C$ et le chemin suivant serait strictement plus long que $C$ : $yx_j\dots x_kx_0\dots x_{j-1}$.</p>
 <p>On suppose alors que $x_0x_k \notin E$.</p>
 <p>Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.<br>
-De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous ses voisins (au moins $\vert V \vert / 2$) et  $\delta(x_k)$ (au moins $\vert V \vert / 2$) non voisins et $C$ aurait strictement plus de $\vert V \vert$ sommets ce qui est impossible : il existe $x_i$ tel que $x_ix_k \in E$ et $x_{i+1}x_0 \in E$ (remarquez que ceci fonctionne si $\delta(x_0)+\delta(x_k) \geq \vert V \vert$. On utilisera ça dans la preuve de la proposition suivante).</p>
-<p>Le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est hamiltonien.</p>
+De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous les voisins de $x_k$ (au moins $\vert V \vert / 2$) plus tous les prédécesseurs de ceux-ci voisins (dont $x_k$ puisque $x_{k-1}x_k$), c'est à dire encore au moins $\vert V \vert / 2$ : $C$ posséderait au moins $\vert V \vert + 1$ élément, ce qui est impossible.</p>
+<p>Il existe donc $x_i$ ($0 &lt; i &lt;k$) tel que $x_ix_k \in E$ et a $x_{i+1}x_0 \in E$ : le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est un cycle hamiltonien.</p>
 </div>
 </details>     
 </div>
@@ -319,7 +319,7 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>Proposition (Core, 1960)</strong></p>
+<p><strong>Proposition (Ore, 1960)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $G=(V, E)$ avec $\vert V \vert = n \geq 3$ est un graphe tel que $\delta(x) + \delta(y) \geq \vert V \vert$ pour tous sommets non adjacents $x, y \in V$, alors $G$ admet un chemin Hamiltonien.</p>
 </div>
@@ -347,8 +347,9 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
 <li>$G'$ n'est pas hamiltonien</li>
 <li>si on ajoute l'arête $uv$ à $G'$ il devient hamiltonien.</li>
 </ul>
-<p>Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Si $\delta(u) + \delta(v) &lt; n$ dans $G'$ on pourrait utiliser le même raisonnement que pour la proposition précédente et montrer qu'il existe $i$ tel que $ux_i, vx_{i+1} \in E'$ et en conclure que $G'$ est hamiltonien.</p>
-<p>Or comme $E \subseteq E'$, on a également $\delta(u) + \delta(v) &lt; n$ dans $G$, ce qui est impossible.</p>
+<p>Il existe donc dans $G'$ un chemin hamiltonien $x_0\dots x_{n-1}$ tel que $u=x_0$ et $v=x_{n-1}$. Pour tout $0\leq i&lt;n-1$, on ne peut avoir $x_ix_k \in E'$ et a $x_{i+1}x_0 \in E'$ sinon, tout comme la preuve précédente, on peut construire le cycle hamiltonien $x_0\dots x_ix_{n-1}\dots x_{i+1}x_0$.</p>
+<p>De là, $\delta(x_0) + \delta(x_{n-1}) &lt; n$ dans $G'$ puisqu'au plus une des deux arêtes $x_ix_k$ ou $x_{i+1}x_0$ est dans $E'$ pour $0\leq i&lt;n-1$.<br>
+Or comme $E \subseteq E'$ on aurait également $\delta(x_0) + \delta(x_{n-1}) &lt; n$ dans $G$, ce qui est impossible.</p>
 </div>
 </details>     
 </div>
@@ -415,7 +416,7 @@ De plus, si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $
 <p><img src="NPC-dirig%C3%A9-clauses-exemple.png" alt="encodage des variables exemples"></p>
 <h4>Satisfiabilité</h4>
 <p>Si la conjonction de clause est satisfiable, il existe un chemin hamiltonien passant pas les chemins vrais des variables vraies, les chemins faux des variables fausses et passant par chaque clause pour un des littéral vrai de la clause. Pour l'exemple :</p>
-<p><img src="NPC-dirige%CC%81-exemple-solution.png" alt="Une solution"></p>
+<p><img src="NPC-dirige-exemple-solution.png" alt="Une solution"></p>
 <p>Réciproquement s'il existe un chemin hamiltonien :</p>
 <ul>
 <li>il passe par les chemins vrais ou les chemins faut de chaque variable</li>
