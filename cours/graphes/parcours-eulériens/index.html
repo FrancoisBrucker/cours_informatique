@@ -67,21 +67,10 @@
       
 <article>
 
-  <h1 class="mb-1">Parcours Eulériens</h1>
-  <div class="mb-4">
+  <h1>Parcours Eulériens</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
@@ -103,21 +92,19 @@
     
   
 
-  <!-- début résumé -->
-<p>Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.</p>
-<!-- fin résumé -->
+  <p>Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.</p>
 <h2>Le problème concret ou <em>&quot;comment ne pas aller se promener&quot;</em></h2>
 <p>C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg">7 ponts de Königsberg</a>, qui permit à <a href="https://fr.wikipedia.org/wiki/Leonhard_Euler">Euler</a> d'inventer la théorie des graphes pour éviter d'aller se balader.</p>
 <p>La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts aux 18ème siècle qui enjambent la Pregel. Ca ressemblait un peu à ça (cliquez sur l'image pour voir les ponts en vrai sur google maps):</p>
 <p><a href="https://www.google.com/maps/d/viewer?msa=0&amp;mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&amp;ll=54.708383%2C20.508084000000014&amp;z=15"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png" alt="ponts de Königsberg"></a></p>
-<p>L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de  revenir à son point de départ.</p>
+<p>L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de revenir à son point de départ.</p>
 <p>Personne n'y arrivant, le jeu devint fort populaire. Sauf qu'Euler, s'il y a bien une chose qu'il n'aimait pas, c'était les ballades.</p>
 <p>Du coup, un après-midi, plutôt que d'aller se balader il griffonna le schéma suivant sur un coin de nappe et démontra à l'assistance médusée qu'il était impossible de faire ce qu'ils voulaient faire et que donc il préférait reprendre un peu de tarte que d'essayer un truc impossible.</p>
 <p>Euler avait d'un coup prix 1kg et inventé la théorie des graphes. Le dessin qu'Euler griffonna était celui-ci :</p>
 <p><img src="graphe_7_ponts.png" alt="graphe_7_ponts"></p>
 <p>C'est un multi-graphe non orienté et est une modélisation du problème, les sommets $A$, $B$, $C$ et $D$ représentant les quatre berges de la ville et les arêtes les 7 ponts.</p>
 <p>Le problème revient maintenant de trouver un cycle qui passe par toutes les arêtes du multi-graphe.</p>
-<h2>Retour au problème</h2>
+<h2>Problème de graphe</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -196,7 +183,7 @@
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -213,12 +200,12 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>On l'a déjà prouvé, mais refaisons le pour la complétion.</p>
-<p>Si un cycle Eulérien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes.  Comme le chemin passe une seule fois par chaque arête du graphe, à chaque fois que l'on rencontre un sommet donné $x$, on lui trouve 2 nouvelles arêtes. On en conclut que $\delta(x)$ est égal au nombre de fois où $x$ apparaît dans le cycle fois 2 : c'est donc pair.</p>
+<p>Si un cycle Eulérien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe, à chaque fois que l'on rencontre un sommet donné $x$, on lui trouve 2 nouvelles arêtes. On en conclut que $\delta(x)$ est égal au nombre de fois où $x$ apparaît dans le cycle fois 2 : c'est donc pair.</p>
 </div>
 </details>     
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -424,7 +411,42 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <p>Soit $G= (V, E)$ un multi-graphe non orienté. Un <strong>chemin eulérien entre $x$ et $y$</strong> est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe</p>
 </div>
 </div>
-<p>On prouve aisément que les graphes dont tous les sommets sont de degré pair sauf $x$ et $y$ qui doivent être de degré impair sont solutions de ce problème. En effet, on ajoute une arête entre $x$ et $y$ et on est ramené aux problème du cycle eulérien.</p>
+<p>Connaître les multigraphes qui possèdent un chemin eulérien est facile à partir de la caractérisation des graphes eulérien :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un multi-graphe non orienté $G= (V, E)$ possède un chemin eulérien entre deux de ses sommets $x$ et $y$ si et seulement si :</p>
+<ul>
+<li>les degrés des sommets $x$ et $y$ sont impair</li>
+<li>les degrés des autres sommets sont tous pair.</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Un multigraphe possède un chemin eulérien si et seulement si $G'= (V, E \cup \{xy\})$ possède un cycle eulérien.</p>
+</div>
+</details>     
+</div>
 <h3>Graphes orientés</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -433,11 +455,45 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G= (V, E)$ un multi-graphe. Un <strong>circuit eulérien</strong> de $G$ est un circuit passant par tous les arcs du graphe.</p>
+<p>Soit $G= (V, E)$ un multi-graphe orienté. Un <strong>circuit eulérien</strong> de $G$ est un circuit passant par tous les arcs du graphe.</p>
 </div>
 </div>
-<p>Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement les multi-graphes où $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
+<p>La encore les multi-graphes orientés qui possèdent un circuit eulérien est facile à partir de la caractérisation des graphes eulérien :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un multi-graphe orienté $G= (V, E)$ possède un circuit eulérien si et seulement si on a $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que l'existence d'un circuit eulérien implique $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
+<p>Réciproquement, <a href="../chemins-cycles-connexite/#exercice-circuit-oriente" class="interne">l'exercice sur les degrés d'un graphe orienté</a> montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.</p>
+</div>
+</details>     
+</div>
+<p>Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement les multi-graphes où .</p>
 <h3>Graphes mixtes</h3>
+<p>Le cas d'intérêt pratique des circuit eulérien est lorsque l'on utilise des multi-graphes mixtes puisqu'ils permettent de modéliser un réseau routier avec des routes à sens unique ou à double sens et plusieurs routes menant à des mêmes croisements.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -448,14 +504,58 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <p>Soit $G= (V, E, A)$ un multi-graphe mixte. Un <strong>circuit eulérien</strong> de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.</p>
 </div>
 </div>
+<p>Ce qui est intéressant ici, c'est que la condition nécessaire et suffisante pour que le multi-graphe mixte soit eulérien n'est pas juste l'union des conditions pour les multi-graphes non orienté et orienté. S'il est clair que l'union de ces deux conditions fonctionne (tout se passe comme si on avait deux graphes disjoints que l'on raboute ensuite), la condition nécessaire et suffisante est plus générale comme le montre l'exemple suivant, qui fonctionne mais ne correspond pas à l'union des conditions orienté et non orientée :</p>
+<p><img src="multi-euler.png" alt="multi euler"></p>
+<p>Pour que cela fonctionne, on doit modifier la condition de parité pour prendre en compte les deux types d'arêtes et ajouter une condition dites d'équilibre :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Un (multi-)graphe mixte $G$ possède un circuit eulérien si et seulement si :</p>
 <ul>
-<li>il est <strong>pair</strong> : pour tout sommet $x$ le nombre $\delta_1(x) + \delta_2^+(x) + \delta_2^-(x)$ (pour les graphes $G_1$ et $G_2$) est pair</li>
+<li>il est <strong>pair</strong> : pour tout sommet $x$ le nombre $\delta(x) + \delta^+(x) + \delta^-(x)$ est pair</li>
 <li>il est <strong>équilibré</strong> : quelque soit $S \subseteq V$ :</li>
 </ul>
 <p>$$<br>
 \vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert \leq \vert \{ xy \in E \mid x \in S, y \in V \backslash S\} \vert<br>
 $$</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Tout d'abord, on peut toujours s'arranger pour que $<br>
+\vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert$ soit positif, au pire on prend le complémentaire $S\backslash V$ de $S$.</p>
+<p>La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.</p>
+<blockquote>
+<p>TBD réciproque</p>
+</blockquote>
+<blockquote>
+<ul>
+<li><a href="https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231">https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231</a></li>
+<li><a href="https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf">https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf</a> p70</li>
+</ul>
+</blockquote>
+</div>
+</details>     
+</div>
 
 
 </article>
