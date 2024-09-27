@@ -229,6 +229,34 @@ Par finitude du graphe il arrivera forcément un moment où l'on atteindra le ca
 
 {% enddetails %}
 
+Deux petits exercices pour montrer que la proposition précédente s'étend aux graphes orientés :
+
+<span id="exercice-circuit-oriente"></span>
+{% exercice %}
+Soit $G = (V, E)$ un graphe orienté. S'il existe un entier $k \geq 1$ tel que $\delta^+(x) \geq k$ pour tout $x \in V$, alors :
+
+- pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ partant de $x$ ,
+- il existe un circuit élémentaire de longueur au moins $k+1$,
+
+{% endexercice %}
+{% details "corrigé" %}
+
+La preuve est identique à la proposition précédente puisqu'on ne fait que considérer les arêtes sortantes dans la preuve.
+
+{% enddetails %}
+{% exercice %}
+Soit $G = (V, E)$ un graphe orienté. S'il existe un entier $k \geq 1$ tel que $\delta^-(x) \geq k$ pour tout $x \in V$, alors :
+
+- pour tout $x \in V$ il existe un chemin élémentaire de longueur $k$ finissant en $x$ ,
+- il existe un circuit élémentaire de longueur au moins $k+1$,
+
+{% endexercice %}
+{% details "corrigé" %}
+
+La preuve est identique à l'exercice précédent en allant _à reculons_ dans la création du cycle.
+
+{% enddetails %}
+
 De même pour garantir la connexité d'un graphe :
 
 <div id="prop-connexe"></div>

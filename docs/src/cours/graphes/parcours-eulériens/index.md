@@ -2,9 +2,6 @@
 layout: layout/post.njk
 title: Parcours Eulériens
 
-authors: 
-    - François Brucker
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -12,13 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Voir grâce à l'exemple des circuits eulériens ce qu'est un chemin, un cycle, et nos premiers algorithmes de graphes.
 
-<!-- fin résumé -->
-
-## Le problème concret ou *"comment ne pas aller se promener"*
+## Le problème concret ou _"comment ne pas aller se promener"_
 
 C'est un retour aux sources s'il l'on peut dire puisqu'il s'agit du problème des [7 ponts de Königsberg](https://fr.wikipedia.org/wiki/Probl%C3%A8me_des_sept_ponts_de_K%C3%B6nigsberg), qui permit à [Euler](https://fr.wikipedia.org/wiki/Leonhard_Euler) d'inventer la théorie des graphes pour éviter d'aller se balader.
 
@@ -26,7 +19,7 @@ La ville de Kaliningrad (anciennement appelée Königsberg) possédait 7 ponts a
 
 [![ponts de Königsberg](https://upload.wikimedia.org/wikipedia/commons/5/5d/Konigsberg_bridges.png)](https://www.google.com/maps/d/viewer?msa=0&mid=1eyTkT4J8X_GRGc1qccm-iDbdZQo&ll=54.708383%2C20.508084000000014&z=15)
 
-L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de  revenir à son point de départ.
+L'histoire veut qu'une tradition bourgeoise (et noble) de l'époque soit de faire les ballades digestives autour de ces ponts en essayant de tous les traverser une fois et de revenir à son point de départ.
 
 Personne n'y arrivant, le jeu devint fort populaire. Sauf qu'Euler, s'il y a bien une chose qu'il n'aimait pas, c'était les ballades.
 
@@ -40,7 +33,7 @@ C'est un multi-graphe non orienté et est une modélisation du problème, les so
 
 Le problème revient maintenant de trouver un cycle qui passe par toutes les arêtes du multi-graphe.
 
-## Retour au problème
+## Problème de graphe
 
 {% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
@@ -88,12 +81,12 @@ Ce qui est très beau c'est que la réciproque complète est vraie. On a le thé
 {% note "**Proposition**" %}
 Un multi-graphe non orienté connexe admet un cycle eulérien si et seulement si le degré de tout ses sommets est pair.
 {% endnote %}
-{% details "démonstration ⇒" %}
+{% details "démonstration ⇒", "open" %}
 On l'a déjà prouvé, mais refaisons le pour la complétion.
 
-Si un cycle Eulérien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes.  Comme le chemin passe une seule fois par chaque arête du graphe, à chaque fois que l'on rencontre un sommet donné $x$, on lui trouve 2 nouvelles arêtes. On en conclut que $\delta(x)$ est égal au nombre de fois où $x$ apparaît dans le cycle fois 2 : c'est donc pair.
+Si un cycle Eulérien $u_0 \dots u_k$ existe, à chaque $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ sont des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe, à chaque fois que l'on rencontre un sommet donné $x$, on lui trouve 2 nouvelles arêtes. On en conclut que $\delta(x)$ est égal au nombre de fois où $x$ apparaît dans le cycle fois 2 : c'est donc pair.
 {% enddetails %}
-{% details "démonstration ⇐" %}
+{% details "démonstration ⇐", "open" %}
 
 1. Comme notre graphe est eulérien et connexe, les degrés de tous les sommets sont pairs et strictement positif : donc supérieur ou égal à 2. Il existe alors un cycle dans notre graphe.
 2. en supprimant le cycle du graphe, on obtient toujours un graphe dont les degrés sont pairs (en supprimant un cycle on a supprimé un nombre pair d'arête pour chaque sommet apparaissant dans le cycle)
@@ -204,7 +197,7 @@ def cycle(G):
 ```
 
 {% info %}
-On a ajouté une *sentinelle* qui traite le cas où $G$ est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
+On a ajouté une _sentinelle_ qui traite le cas où $G$ est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.
 
 Sans cette sentinelle, l'algorithme planterait car on ne peut `pop`{.language-} une liste vide.
 {% endinfo %}
@@ -322,27 +315,74 @@ Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois 
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **chemin eulérien entre $x$ et $y$** est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe
 {% endnote %}
 
-On prouve aisément que les graphes dont tous les sommets sont de degré pair sauf $x$ et $y$ qui doivent être de degré impair sont solutions de ce problème. En effet, on ajoute une arête entre $x$ et $y$ et on est ramené aux problème du cycle eulérien.
+Connaître les multigraphes qui possèdent un chemin eulérien est facile à partir de la caractérisation des graphes eulérien :
+
+{% note "**Proposition**" %}
+Un multi-graphe non orienté $G= (V, E)$ possède un chemin eulérien entre deux de ses sommets $x$ et $y$ si et seulement si :
+
+- les degrés des sommets $x$ et $y$ sont impair
+- les degrés des autres sommets sont tous pair.
+  {% endnote %}
+  {% details "preuve", "open" %}
+  Un multigraphe possède un chemin eulérien si et seulement si $G'= (V, E \cup \\{xy\\})$ possède un cycle eulérien.
+  {% enddetails %}
 
 ### Graphes orientés
 
 {% note "**Définition**" %}
-Soit $G= (V, E)$ un multi-graphe. Un **circuit eulérien** de $G$ est un circuit passant par tous les arcs du graphe.
+Soit $G= (V, E)$ un multi-graphe orienté. Un **circuit eulérien** de $G$ est un circuit passant par tous les arcs du graphe.
 {% endnote %}
 
-Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement les multi-graphes où $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
+La encore les multi-graphes orientés qui possèdent un circuit eulérien est facile à partir de la caractérisation des graphes eulérien :
+
+{% note "**Proposition**" %}
+Un multi-graphe orienté $G= (V, E)$ possède un circuit eulérien si et seulement si on a $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
+{% endnote %}
+{% details "preuve", "open" %}
+Tout circuit rentre et sort de chaque sommet du cycle, on a donc clairement que l'existence d'un circuit eulérien implique $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.
+
+Réciproquement, [l'exercice sur les degrés d'un graphe orienté](../chemins-cycles-connexite/#exercice-circuit-oriente){.interne} montre l'existence d'un circuit pour des graphes où $\delta^+(x) = \delta^-(x) \geq 1$ pour tout $x$.
+
+{% enddetails %}
+
+Les multi-graphe (orientés) qui possèdent un circuit eulérien sont exactement les multi-graphes où .
 
 ### Graphes mixtes
+
+Le cas d'intérêt pratique des circuit eulérien est lorsque l'on utilise des multi-graphes mixtes puisqu'ils permettent de modéliser un réseau routier avec des routes à sens unique ou à double sens et plusieurs routes menant à des mêmes croisements.
 
 {% note "**Définition**" %}
 Soit $G= (V, E, A)$ un multi-graphe mixte. Un **circuit eulérien** de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.
 {% endnote %}
 
+Ce qui est intéressant ici, c'est que la condition nécessaire et suffisante pour que le multi-graphe mixte soit eulérien n'est pas juste l'union des conditions pour les multi-graphes non orienté et orienté. S'il est clair que l'union de ces deux conditions fonctionne (tout se passe comme si on avait deux graphes disjoints que l'on raboute ensuite), la condition nécessaire et suffisante est plus générale comme le montre l'exemple suivant, qui fonctionne mais ne correspond pas à l'union des conditions orienté et non orientée :
+
+![multi euler](./multi-euler.png)
+
+Pour que cela fonctionne, on doit modifier la condition de parité pour prendre en compte les deux types d'arêtes et ajouter une condition dites d'équilibre :
+
+{% note "**Proposition**" %}
+
 Un (multi-)graphe mixte $G$ possède un circuit eulérien si et seulement si :
 
-* il est **pair** : pour tout sommet $x$ le nombre $\delta_1(x) + \delta_2^+(x) + \delta_2^-(x)$ (pour les graphes $G_1$ et $G_2$) est pair
-* il est **équilibré** : quelque soit $S \subseteq V$ :
+- il est **pair** : pour tout sommet $x$ le nombre $\delta(x) + \delta^+(x) + \delta^-(x)$ est pair
+- il est **équilibré** : quelque soit $S \subseteq V$ :
 
 $$
 \vert \\{ xy \in A \mid x \in S, y \in V \backslash S\\} \vert - \vert \\{ yx \in A \mid x \in S, y \in V \backslash S\\} \vert \leq \vert \\{ xy \in E \mid x \in S, y \in V \backslash S\\} \vert
 $$
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Tout d'abord, on peut toujours s'arranger pour que $
+\vert \\{ xy \in A \mid x \in S, y \in V \backslash S\\} \vert - \vert \\{ yx \in A \mid x \in S, y \in V \backslash S\\} \vert$ soit positif, au pire on prend le complémentaire $S\backslash V$ de $S$.
+
+La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.
+
+> TBD réciproque
+
+> - <https://pubsonline.informs.org/doi/pdf/10.1287/opre.43.2.231>
+> - <https://www.rand.org/content/dam/rand/pubs/reports/2007/R375.pdf> p70
+
+{% enddetails %}

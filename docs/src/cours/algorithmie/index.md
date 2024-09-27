@@ -13,6 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD : refaire juste avec du pseudo-code et ajouter le code python/C en exercice.
+
 Cours d'algorithmie.
 
 {% info %}

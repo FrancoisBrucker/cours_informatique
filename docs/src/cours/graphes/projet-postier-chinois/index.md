@@ -25,8 +25,8 @@ Le **problème du postier chinois** consiste à trouver un pseudo-circuit (des a
 Nous ne donnerons pas ici les algorithmes exactes pour le résoudre mais donnerons les liens vers les parties (suivantes) de ce cours qui vous permettrons de le résoudre. Voyez ça comme une justification, un fil rouge, de ce qui va suivre.
 
 > TBD à finir.
->
-> 
+> TBD revue <https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/7d72c3b6-c1f3-4f71-87ef-54d32aad57c5/content>
+
 Nous nous intéresserons ici à un cas particulier du problème où $G$ est juste un graphe :
 
 {% note "**Définition**" %}

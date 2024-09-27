@@ -84,10 +84,6 @@ A rendre pour le 18 octobre.
 
 ### Graphes
 
-{% aller %}
-[cours de Graphes](/cours/graphes/){.interne}
-{% endaller %}
-
 #### Cours 1
 
 1. [Graphes bases](/cours/graphes/structure){.interne} :
@@ -147,4 +143,5 @@ Avec :
 ### Rendus
 
 - deux dm de code
+- une présentation d'une jolie démonstration du proof from the book.
 - un ds de théorie des graphes/informatique théorique
