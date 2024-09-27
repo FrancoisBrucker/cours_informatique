@@ -197,7 +197,7 @@ Il possède $2^5$ chemin hamiltoniens selon que l'o passe par le chemin vrai ou 
 
 #### Encodage des clauses
 
-On encode chaque clause $c_i$ = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k leq 3$ :
+On encode chaque clause $c_i = l_i^1 \lor l_i^2 \lor l_i^3$ par un sommet $c_i$ que l'on ajoute au graphe des variables et tels que ses voisins sont, pour $1\leq k leq 3$ :
 
 - $v^i_jc_i$ et $c_iu^i_j$ si $l_i^k = x_j$,
 - $f^i_jc_i$ et $c_iu^i_j$ si $l_i^k = \overline{x_j}$,
