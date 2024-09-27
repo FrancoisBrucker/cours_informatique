@@ -117,7 +117,7 @@ Soit $C=x_0\dots x_k$ un chemin le plus long dans $G$. Si $x_0x_k \in E$, le cyc
 On suppose alors que $x_0x_k \notin E$.
 
 Tous les voisins de $x_0$ et $x_k$ sont dans $C$ sinon on pourrait le prolonger.
-De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous les voisins de $x_k$ (au moins $\vert V \vert / 2$) plus tous les prédécesseurs de ceux-ci voisins (dont $x_k$ puisque $x_{k-1}x_k$), c'est à dire encore au moins $\vert V \vert / 2$ : $C$ posséderait au moins $\vert V \vert + 1$ élément, ce qui est impossible.
+De plus si pour tout $x_i$ tel que $x_ix_k \in E$ on a $x_{i+1}x_0 \notin E$, $C$ contiendrait $x_0$, tous les voisins de $x_k$ (au moins $\vert V \vert / 2$) plus tous les successeurs de ceux-ci (dont $x_k$ puisque $x_{k-1}x_k$), c'est à dire encore au moins $\vert V \vert / 2$ : $C$ posséderait au moins $\vert V \vert + 1$ élément, ce qui est impossible.
 
 Il existe donc $x_i$ ($0 < i <k$) tel que $x_ix_k \in E$ et a $x_{i+1}x_0 \in E$ : le chemin $x_0\dots x_ix_k\dots x_{i+1} = x'_0\dots x'_k$ est alors de longueur maximum et comme $x'_kx'_0 \in E$ on est ramené au cas précédent et $x'_0\dots x'_kx'_0$ est un cycle hamiltonien.
 
