@@ -249,6 +249,10 @@ On en assoie 3 dans le graphe non orienté associé, permettant de séparer les 
 
 Il est alors évident que si le graphe non orienté a un chemin (_resp._ cycle) hamiltonien, alors le graphe orienté possède également un chemin (_resp._ circuit) hamiltonien. La réciproque est aussi trivialement vrai ce qui montrer que les problèmes orientés ou non orientés sont équivalent.
 
+{% lien %}
+[exemple de la réduction](https://www.youtube.com/watch?v=5SaQa_wlel8)
+{% endlien %}
+
 ### Chemin le plus long
 
 La NP-complétude des chemins et cycles hamiltoniens nous permet de conclure qu'il est illusoire de tenter de trouver un algorithme efficace pour résoudre le problème du chemin le plus long :
