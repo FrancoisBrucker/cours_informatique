@@ -13,7 +13,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+{% lien %}
 <https://man.archlinux.org/man/file-hierarchy.7>
+{% endlien %}
 
 ```
 cd /

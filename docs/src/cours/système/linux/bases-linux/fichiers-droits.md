@@ -13,7 +13,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+{% lien %}
 <https://www.cekome.com/blog/permissions-utilisateurs-linux/>
+{% endlien %}
 
 Dans le système Linux, (pratiquement) tout ce que l'on manipule est un fichier :
 

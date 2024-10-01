@@ -15,7 +15,7 @@ eleventyComputed:
 
 Bases d'un système Linux.
 
-1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/tutoriels/ordinateur-développement){.interne}
+1. Lire la partie Linux du tutoriel [Ordinateur pour le développement](/cours/coder-et-développer/ordinateur-développement/){.interne}
 2. [post installation](post-installation){.interne}
 3. [hiérarchie-fichiers](fhiérarchie-fichiers){.interne}
 4. [fichiers et droits](fichiers-droits){.interne}
