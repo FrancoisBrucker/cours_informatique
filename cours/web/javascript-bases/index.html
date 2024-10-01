@@ -160,11 +160,11 @@
 </div>
 </div>
 <h4>Directement depuis la console</h4>
-<p>L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux <a href="../../outils-de-d%C3%A9veloppement/" class="interne">outils de développement</a> (<em>&quot;... du menu &gt; show console drawer&quot;</em>, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).</esc></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<p>L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux <a href="../outils-de-d%C3%A9veloppement/" class="interne">outils de développement</a> (<em>&quot;... du menu &gt; show console drawer&quot;</em>, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).</esc></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
 <p><a href="https://developer.chrome.com/docs/devtools/console/">Console avec chrome</a></p>
 </div>
@@ -269,7 +269,7 @@
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/tutoriels/terminal">Utilisation du terminal</a></p>
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/ordinateur-d%C3%A9veloppement/terminal/">Utilisation du terminal</a></p>
 </div>
 </div>
 <p>D'un terminal il vous suffit de taper <code>node</code> pour exécuter l'interpréteur :</p>
@@ -352,7 +352,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"trois virgule quatorze !"</span>
 </code></pre>
-<p>Enfin, la <a href="https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)">portée</a> d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :</p>
+<p>Enfin, <a href="https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)">la portée</a> d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"po"</span>
@@ -495,7 +495,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 <h3>Structures de contrôles</h3>
 <h4>Instructions conditionnelles</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Documentation</strong></p>
+</div><div class="pl-8 mr-8">
 <p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles</a></p>
+</div>
+</div>
 <p>javascript utilise deux forme d'égalité :</p>
 <ul>
 <li><code>==</code> : javascript va tenter de convertir les objets dans un même type avant de tester l'égalité. Par exemple <code class="language-">42 == &quot;42&quot;</code> sera vrai.</li>

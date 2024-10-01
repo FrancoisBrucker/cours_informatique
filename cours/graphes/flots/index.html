@@ -133,10 +133,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>réseau</strong></em> est un graphe (simple) orienté $G=(V, E)$ avec :</p>
+<p>Un <strong><em>réseau</em></strong> est un graphe (simple) orienté $G=(V, E)$ avec :</p>
 <ul>
-<li>une <em><strong>capacité</strong></em> $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)</li>
-<li>deux sommets spéciaux nommées <em><strong>source</strong></em> (noté $s$) et <em><strong>puits</strong></em> (noté $p$).</li>
+<li>une <strong><em>capacité</em></strong> $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)</li>
+<li>deux sommets spéciaux nommées <strong><em>source</em></strong> (noté $s$) et <strong><em>puits</em></strong> (noté $p$).</li>
 </ul>
 </div>
 </div>
@@ -157,12 +157,12 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un <em><strong>flot</strong></em> dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :</p>
+<p>Un <strong><em>flot</em></strong> dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :</p>
 <ul>
 <li>$0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$</li>
-<li>pour tout sommet $x$ différent de $s$ et $p$, il y a <em><strong>conservation du flot</strong></em>, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.</li>
+<li>pour tout sommet $x$ différent de $s$ et $p$, il y a <strong><em>conservation du flot</em></strong>, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.</li>
 </ul>
-<p>On dit que pour un arc donné $u$ son <em><strong>flux</strong></em> est $f(u)$.</p>
+<p>On dit que pour un arc donné $u$ son <strong><em>flux</em></strong> est $f(u)$.</p>
 </div>
 </div>
 <p>Exemple de flot (nombres en bleu) :</p>
@@ -175,7 +175,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>coupe</strong></em> est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.</p>
+<p>Une <strong><em>coupe</em></strong> est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$ est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.</p>
 </div>
 </div>
 <p>Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :</p>
@@ -191,7 +191,7 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La <em><strong>capacité d'une coupe</strong></em> $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :</p>
+<p>La <strong><em>capacité d'une coupe</em></strong> $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :</p>
 <p>$$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$</p>
 </div>
 </div>
@@ -216,7 +216,7 @@ $$</p>
 <p>De plus, les arcs internes à $S$ sont comptés deux fois une fois pour l'origine de façon positive et une fois pour l'extrémité de façon négative. Les seuls arcs qui ne sont comptés qu'une fois sont ceux qui rentre ou qui sortent de $S$. de là :</p>
 <p>$$\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = f(S, \overline{S}) - f(\overline{S}, S)$$</p>
 <p>On en conclut donc que $f(S, \overline{S}) - f(\overline{S}, S)$ est une constante pour n'importe quelle coupe et vaut :</p>
-<p>$$ \mbox{val}(f) = \sum_{sx \in E}f(sx) - \sum_{xs \in E}f(xs) = \sum_{xp \in E}f(xp) - \sum_{px \in E}f(px)$$</p>
+<p>$$ \mbox{val}(f) = \sum*{sx \in E}f(sx) - \sum*{xs \in E}f(xs) = \sum*{xp \in E}f(xp) - \sum*{px \in E}f(px)$$</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -246,7 +246,7 @@ $$</p>
 </ol>
 <h3>Existence du flot maximum</h3>
 <p>Commençons pas montrer que le flot maximum est atteint.</p>
-<p>Soient $G= (V, E)$ et $c$ un réseau donné. Une valuation $f$ des arcs de $G$ peut être vue comme  un vecteur de l'espace vectoriel $\mathbb{R}^m$ où $m = \vert E \vert$ que l'on munie d'une norme $\vert\vert . \vert\vert$ . Si cette valuation n'est pas un flot, alors :</p>
+<p>Soient $G= (V, E)$ et $c$ un réseau donné. Une valuation $f$ des arcs de $G$ peut être vue comme un vecteur de l'espace vectoriel $\mathbb{R}^m$ où $m = \vert E \vert$ que l'on munie d'une norme $\vert\vert . \vert\vert$ . Si cette valuation n'est pas un flot, alors :</p>
 <ul>
 <li>soit une des coordonnées est strictement négative : $f(u) &lt; 0$,</li>
 <li>soit la conservation du flot n'est pas respectée pour au moins un sommet de $G$ : la valeur absolue de la différence vaut $d &gt; 0$.</li>
@@ -277,7 +277,7 @@ $$</p>
 <p>On en conclut que s'il existe une chaîne augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.</p>
 </div>
 </div>
-<p>Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors  $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
+<p>Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \{ s\}$ est alors une coupe de notre réseau et :</p>
 <ul>
 <li>pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaîne augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaîne augmentante entre $s$ et $y$</li>
 <li>pour tout arc $xy$ commençant dans $\overline{S}$ et finissant dans $S$ on a $f(xy) &gt; 0$ sinon il existerait une chaîne augmentante de $s$ à $y$ et de $y$ à $x$, donc une chaîne augmentante entre $s$ et $y$</li>
@@ -370,7 +370,7 @@ Retour :
 
     marques <span class="token operator">=</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
     examiné <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    
+
     <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token keyword">not</span> <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">:</span>
         x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -383,19 +383,19 @@ Retour :
                     marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
                 <span class="token keyword">else</span><span class="token punctuation">:</span>
                     marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        
+
         <span class="token keyword">for</span> y <span class="token keyword">in</span> G<span class="token punctuation">:</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> G<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
                 <span class="token keyword">continue</span>
-            
+
             <span class="token keyword">if</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
                 <span class="token keyword">if</span> <span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
                     marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
                 <span class="token keyword">else</span><span class="token punctuation">:</span>
                     marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        
+
         examiné<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    
+
     <span class="token keyword">return</span> marques
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
@@ -426,7 +426,7 @@ Retour :
 </summary>
 <div class="mx-8 pb-2">
 <p>C'est la boucle for de la ligne 19 ! On cherche tous les y tels que (xy) est un arc.</p>
-<p>Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$  alors $yx$ est un arc dans $G'$.</p>
+<p>Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$ alors $yx$ est un arc dans $G'$.</p>
 <p>Une fois ce graphe créé, la boucle for de la ligne 19 revient à prendre tous les voisins de $x$ dans $G'$ : on ne passe plus obligatoirement par tous les sommets du graphe.</p>
 </div>
 </details>     
@@ -434,7 +434,7 @@ Retour :
 <p>Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante.</p>
 <h4>Chaîne augmentante à partir des marques</h4>
 <p>La chaîne augmentante est retrouvée à partir des marques par l'algorithme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée : 
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
     deux sommets s et p
     les marques de l'algorithme de marquage
 Initialisation :
@@ -445,7 +445,7 @@ Algorithme :
         soit y la première marque de x
         x = y
         ajouter x au début de C
-Retour : 
+Retour :
     C
 </code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -472,7 +472,7 @@ Retour :
         y <span class="token operator">=</span> marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
         x <span class="token operator">=</span> y
         C<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    
+
     C<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> C
@@ -483,9 +483,9 @@ Retour :
 <p>Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle existe, il suffit de remarquer qu'un sommet est marqué que si et seulement si il existe une chaîne augmentante allant de s à lui. Ceci fonctionne car s'il existe une chaîne augmentante allant de $s$ à $x$ et une chaîne augmentante allant de $x$ à $y$ alors il existe une chaîne augmentante allant de $s$ à $y$.</p>
 <h4>Mise à jour du flot</h4>
 <p>De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée : 
+<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
     une chaîne augmentante c=c[0] ... c[k] entre s et p
-    les marques 
+    les marques
     deux sommets s et p
     un flot f
 Algorithme
@@ -821,7 +821,11 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </details>     
 </div>
 <h3>Autres algorithmes</h3>
-<p>La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">wikipedia</a> pour quelques exemples, dont l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dinic">Dinic</a> ou d'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp">Edmonds Karp</a>.</p>
+<p>La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum">wikipedia</a> pour quelques exemples, dont l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dinic">Dinic</a> ou d'</p>
+<blockquote>
+<p>TBD <a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp">Edmonds Karp</a>. Dans le graphe d'écart la taille du chemin min augmente<br>
+TBD voir <a href="https://www.cs.williams.edu/~shikha/teaching/spring20/cs256/lectures/Lecture19.pdf">https://www.cs.williams.edu/~shikha/teaching/spring20/cs256/lectures/Lecture19.pdf</a></p>
+</blockquote>
 <h2>Flot maximum à coût minimum</h2>
 <p>Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$</p>
 <p>On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est possible pour les graphes antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) en utilisant les graphes d'écart pour trouver une chaîne augmentante.</p>
@@ -834,7 +838,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </div>
 </div>
 <h3>Graphe d'écart</h3>
-<p>On peut utiliser un graphe auxiliaire, appelé <em><strong>graphe d'écart</strong></em> pour trouver une chaîne augmentante.</p>
+<p>On peut utiliser un graphe auxiliaire, appelé <strong><em>graphe d'écart</em></strong> pour trouver une chaîne augmentante.</p>
 <p>Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :</p>
 <ul>
 <li>si $f(xy) &lt; c(xy)$ alors on crée un arc $xy$ dans $G_f$</li>
@@ -876,7 +880,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <h3>Chaîne augmentante avec un graphe d'écart</h3>
 <p>Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.</p>
 <p>On peut utiliser l'<a href="../chemin-poids-min-positif" class="interne">algorithme de Dijkstra</a> par exemple pour trouver ce chemin.</p>
-<p>Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe.  Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.</p>
+<p>Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe. Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -900,13 +904,9 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <li>si $xy$ est dans $G$ :
 <ul>
 <li>si $yx$ n'est pas dans $G$ on value par $v[xy]$ puisque l'on peut augmenter le flot en augmentant le flot passant par $xy$</li>
-<li>si $yx$ est dans $G$ :
-<ul>
-<li>si $f[xy] &lt; c[xy]$ et $0 &lt; f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot <strong>soit</strong> en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$</li>
-<li>si $f[xy] &lt; c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$</li>
-<li>si $f[xy] = c[xy]$ et $0 &lt; f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$</li>
-</ul>
-</li>
+<li>si $yx$ est dans $G$ :<br>
+_ si $f[xy] &lt; c[xy]$ et $0 &lt; f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot <strong>soit</strong> en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$<br>
+_ si $f[xy] &lt; c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$ * si $f[xy] = c[xy]$ et $0 &lt; f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$</li>
 </ul>
 </li>
 </ul>
@@ -1175,7 +1175,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
+<p>Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
