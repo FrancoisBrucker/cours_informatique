@@ -7,7 +7,7 @@ authors:
 
 eleventyNavigation:
     prerequis:
-        - "/tutoriels/ordinateur-développement/"
+        - "/cours/coder-et-développer/ordinateur-développement/"
 
 eleventyComputed:
     eleventyNavigation:
