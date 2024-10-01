@@ -55,7 +55,9 @@ Edmonds et Johnson en 1973 ont démontré que le problème du postier chinois é
 
 Il est cependant NP-complet pour les graphes mixtes dans le cas général ([Papadimitriou](https://fr.wikipedia.org/wiki/Christos_Papadimitriou), 1976)
 
-### Graphe simple
+Nous allon sdans ce projet unique,ent nous concentrer sur le cas simple
+
+## Graphe simple
 
 Si le graphe est eulérien, un cycle eulérien résout le problème. S'il ne l'est pas, on peut utiliser l'exercice suivant :
 
@@ -67,11 +69,10 @@ On a $\sum\delta(x) = 2 \cdot \vert E \vert$. De là, comme la somme des degrés
 
 {% enddetails %}
 
+> TBD faire avec un heuristique pour le couplage parfait et dire qu'il existe des algos exact : on verra plus tard.
+> <https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w>
+> <https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf>
 > TBD finir
-
-### Graphe mixte
-
-> TBD
 
 ## Projet
 

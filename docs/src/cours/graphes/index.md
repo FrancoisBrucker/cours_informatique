@@ -127,6 +127,14 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% endaller %}
 
+## Connectivité
+
+{% aller %}
+
+[connectivité](connectivité){.interne}
+
+{% endaller %}
+
 ## Graphe biparti
 
 Un exemple particulier de graphes, les graphes bipartis :
@@ -144,14 +152,6 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 {% endaller %}
 
 > TBD projet christophides
-
-## Connectivité
-
-{% aller %}
-
-[connectivité](connectivité){.interne}
-
-{% endaller %}
 
 ## Planarité
 

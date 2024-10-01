@@ -58,11 +58,11 @@ La plupart du temps, c'est l'interpréteur de la [V8](https://fr.wikipedia.org/w
 
 #### Directement depuis la console
 
-L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux [outils de développement](../../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
+L'interpréteur est accessible via la . Vous pouvez la consulter grâce aux [outils de développement](../outils-de-développement/){.interne} (*"... du menu > show console drawer"*, ou en appuyant sur la touche <esc> alors que la fenêtre des outils de développement est ouverte).
 
-{% aller %}
+{% lien %}
 [Console avec chrome](https://developer.chrome.com/docs/devtools/console/)
-{% endaller %}
+{% endlien %}
 
 Il est indispensable de connaître cette méthode car elle permet d'accéder directement au javascript de la page pour analyse les composant de la page et/ou débeuguer son code.
 
@@ -161,7 +161,7 @@ Commencez par télécharger installer la version current de <https://nodejs.org/
 <https://nodejs.org/> s'utilise via le terminal. Si vous ne savez pas ce que c'est lisez le tutoriel suivant :
 
 {% aller %}
-[Utilisation du terminal](/tutoriels/terminal)
+[Utilisation du terminal](/cours/coder-et-développer/ordinateur-développement/terminal/)
 {% endaller %}
 
 D'un terminal il vous suffit de taper `node` pour exécuter l'interpréteur :
@@ -261,7 +261,7 @@ let pi = 3.14
 let pi = "trois virgule quatorze !"
 ```
 
-Enfin, la [portée](https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)) d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :
+Enfin, [la portée](https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)) d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :
 
 ```js
 let pi = 3.14
@@ -375,7 +375,9 @@ Beaucoup de choses en web sont asynchrones : on envoie une requête au serveur e
 
 #### Instructions conditionnelles
 
-https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles
+{% lien "**Documentation**" %}
+<https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Control_flow_and_error_handling#les_instructions_conditionnelles>
+{% endlien %}
 
 javascript utilise deux forme d'égalité :
 

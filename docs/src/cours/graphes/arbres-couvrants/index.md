@@ -19,15 +19,17 @@ Montrer que pour tout graphe connexe $G = (V, E)$, il existe au moins un arbre $
 Si un graphe est connexe et n'est pas un arbre, alors il existe un cycle. En supprimant une arête de ce cycle le graphe reste connexe et a strictement moins d'arêtes. On peut alors itérativement supprimer des arêtes à un graphe connexe qui contient un cycle jusqu'à obtenir un graphe connexe à $\vert V \vert -1$ arêtes qui ne contient pas de cycles : ce sera un arbre.
 {% enddetails %}
 
+> TBD def
+
 On appelle ces arbres les **arbres couvrants** d'un graphe.
 
 Les arbres couvrant d'un graphe sont beaucoup utilisés en optimisation. Nous allons montrer un exemple ci-après.
 
-### graphe valué
+## graphe valué
 
 On peut associer à tout graphe $G = (V, E)$ une **valuation** $f: E \rightarrow \mathbb{R}$.
 
-#### une mise en situation
+### une mise en situation
 
 On suppose que vous êtes chef d'un état. Vous voulez que votre territoire soit connexe (que les gens puissent aller partout sur votre territoire), mais vous ne voulez pas payer trop cher (vous voulez être ré-élu et ça fait mauvais genre d'augmenter les impôts).
 
@@ -44,7 +46,7 @@ Pourquoi ?
 Un arbre est la structure minimale en nombre d'arêtes qui garantie la connexité. Parmi tous les arbres couvrants du graphe, on peut prendre un de ceux qui ont une somme des valuations de ses arêtes minimale (il y en a un nombre fini, le min existe donc mais il peut y en avoir plusieurs). Si la valuation d'une arête représente le coût, un arbre couvrant de poids minimal représente une solution de coût minimal pour rendre connexe le territoire.
 {% enddetails %}
 
-#### un exemple
+### un exemple
 
 On considère le graphe ci-dessous :
 
@@ -73,7 +75,7 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 - Oui, il existe plusieurs arbres couvrant car le cycle k-g-j-l est de valuation constante et valant 2. Un raisonnement identique aux 2 précédent montre que l'on peut échanger une arête de valuation 2 par une autre dans un arbre de valuation minimale.
   {% enddetails %}
 
-#### propriété
+### propriété
 
 {% exercice %}
 
@@ -89,7 +91,7 @@ Toutes les preuves de cette partie et de la partie suivante vont fonctionner la 
 - Si le graphe de départ est un arbre, il n'y a qu'un seul arbre couvant et les valuations peuvent être égales.
   {% enddetails %}
 
-#### un algorithme { #algo-prim }
+### un algorithme { #algo-prim }
 
 Ce problème a l'air dur, mais il possède un algorithme (assez) simple pour le résoudre. L'algorithme suivant est l'algorithme de Prim (1957) :
 
@@ -133,11 +135,9 @@ Maintenant qu'on est sur que ça marche :
 Réalisez l'algorithme en entier sur le graphe précédent.
 {% endexercice %}
 
-
 > TBD faire Kruskal et parler de relation d'équivalence. Premier contact avec les couleurs.
 > TBD le graphe formé des ALM et une arête si échange possible est connexe.
 > TBD un lien vers les matroïdes
-
 
 ### Prim vs Dijkstra
 
@@ -147,7 +147,7 @@ Réalisez l'algorithme en entier sur le graphe précédent.
 - Montrez que les problèmes qu'ils résolvent sont différents et en déduire que l'arborescence obtenue par l'algorithme de Dijsktra pour un graphe non orienté peut être différente de l'arbre de poids minimum obtenu par Prim
   {% endexercice %}
   {% details "solution" %}
-  Le graphe suivant montre que l'arborescence de Disjkstra sera différente de l'arbre de poids minimum donné par Prim.
+  Le graphe suivant montre que l'arborescence de Dijkstra sera différente de l'arbre de poids minimum donné par Prim.
 
 ![Prim vs Dijkstra](./chemin_prim_vs_dijkstra.png)
 
@@ -155,3 +155,8 @@ Réalisez l'algorithme en entier sur le graphe précédent.
 Ne confondez pas les 2 problèmes !
 {% endattention %}
 {% enddetails %}
+
+### un autre algorithme
+
+> TBD Kruskal
+> $\mathcal{O}(n^2\log(n))$ s'il faut trier, et $\mathcal{O}(n^2)$ sinon.

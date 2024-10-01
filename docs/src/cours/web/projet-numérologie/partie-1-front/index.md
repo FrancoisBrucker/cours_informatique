@@ -9,12 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% prerequis "**Prérequis** :" %}
-
-* [connaître un peu de html/css/js]({{ "/cours/web" | url }}#trinité)
-
-{% endprerequis %}
-
 <!-- début résumé -->
 
 Numérologie partie 1. On prépare notre site en créant tout ce qui est nécessaire et en le faisant fonctionner en *front*.

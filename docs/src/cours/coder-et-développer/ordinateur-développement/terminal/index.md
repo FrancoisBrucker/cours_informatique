@@ -97,7 +97,7 @@ Cliquer croit sur un dossier dans l'explorateur et choisissez `Open in Terminal`
 
 ### Via un IDE
 
-La plupart des éditeurs de textes permettent d'ouvrir directement des terminaux. Si vous utilisez [vscode](https://code.visualstudio.com/) par exemple, vous pouvez directement ouvrir un terminal (voir [le tuto](../éditeur-vscode/terminal){.interne}).
+La plupart des éditeurs de textes permettent d'ouvrir directement des terminaux. Si vous utilisez [vscode](https://code.visualstudio.com/) par exemple, vous pouvez directement ouvrir un terminal (voir [le tuto](../../éditeur-vscode/terminal/){.interne}).
 
 ## Épingler le terminal
 

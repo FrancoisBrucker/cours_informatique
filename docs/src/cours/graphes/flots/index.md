@@ -24,8 +24,8 @@ Les exemples de ce cours ont été pris dans l'excellent livre de Charon et Hudr
 
 On considère un réseau de canalisations, chaque tuyau le constituant ayant une capacité (le diamètre) particulière. Dans ce réseau on considère deux nœuds d'intérêt :
 
-* la source : le robinet
-* le puits : l'endroit on l'on veut récupérer l'eau.
+- la source : le robinet
+- le puits : l'endroit on l'on veut récupérer l'eau.
 
 Lorsque l'on ouvre le robinet, on peut mesurer le débit (en $m^3/s$) au puits.
 
@@ -50,11 +50,11 @@ C'est pour résoudre ces problèmes d'importance capitale sans avoir besoin de s
 ## Définitions
 
 {% note "**Définition**" %}
-Un ***réseau*** est un graphe (simple) orienté $G=(V, E)$ avec :
+Un **_réseau_** est un graphe (simple) orienté $G=(V, E)$ avec :
 
-* une ***capacité*** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
-* deux sommets spéciaux nommées ***source*** (noté $s$) et ***puits*** (noté $p$).
-{% endnote %}
+- une **_capacité_** $c : E \rightarrow \mathbb{R}^{+\star}$ (réels strictement positifs)
+- deux sommets spéciaux nommées **_source_** (noté $s$) et **_puits_** (noté $p$).
+  {% endnote %}
 
 exemple de réseau :
 
@@ -65,12 +65,12 @@ Notez que si on veut une capacité nulle, il suffit de supprimer l'arc
 {% endinfo %}
 
 {% note "**Définition**" %}
-Un ***flot*** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
+Un **_flot_** dans un réseau donné est une application $f : E \rightarrow \mathbb{R}^{+}$ telle que :
 
-* $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
-* pour tout sommet $x$ différent de $s$ et $p$, il y a ***conservation du flot***, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
+- $0 \leq f(u) \leq c(u)$ pour tout arc $u \in E$
+- pour tout sommet $x$ différent de $s$ et $p$, il y a **_conservation du flot_**, c'est à dire que le flot entrant est égal au flot sortant : $\sum_{y \in N^-(x)} f(yx) = \sum_{y \in N^+(x)} f(xy)$.
 
-On dit que pour un arc donné $u$ son ***flux*** est $f(u)$.
+On dit que pour un arc donné $u$ son **_flux_** est $f(u)$.
 {% endnote %}
 
 Exemple de flot (nombres en bleu) :
@@ -80,17 +80,17 @@ Exemple de flot (nombres en bleu) :
 On peut d'ores et déjà noter qu'il existe toujours un flot dans n'importe quel réseau, le flot nul qui vaut $0$ pour tout arc.
 
 {% note "**Définition**" %}
-Une ***coupe*** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$  est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
+Une **_coupe_** est déterminée à partir d'un ensemble $S \subseteq V$ contenant $s$ et pas $p$. En notant $\overline{S} = V \backslash S$ le complémentaire de $S$, une coupe, notée $(S, \overline{S})$ est l'ensemble des arcs ayant leurs origines dans $S$ et leurs extrémités dans $\overline{S}$.
 {% endnote %}
 
 Notez bien qu'une coupe $S$ n'est pas forcément connexe dans $G$. Exemples de coupes pour notre réseau :
 
-* $(\\{s\\}, V \backslash \\{s\\})$ qui contient les arcs : $sa$ et $sb$
-* $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
-* $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
+- $(\\{s\\}, V \backslash \\{s\\})$ qui contient les arcs : $sa$ et $sb$
+- $(V \backslash \\{p\\}, \\{p\\})$ qui contient les arcs $dp$ et $ep$
+- $(\\{s, d\\}, \overline{\\{s, d\\}})$ qui contient les arcs : $sa$, $sb$, $dp$ et $de$
 
 {% note "**Définition**" %}
-La ***capacité d'une coupe*** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
+La **_capacité d'une coupe_** $c(S, \overline{S})$ est la somme des capacités des arcs de la coupe :
 
 $$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$
 
@@ -98,14 +98,14 @@ $$c(S, \overline{S}) = \sum_{xy \in (S, \overline{S})}c(xy)$$
 
 On note également pour une coupe $(S, \overline{S})$ les valeurs suivantes :
 
-* $f(S, \overline{S})$ comme étant la somme des flux des arcs ayant pour origine $S$ et pour extrémité $\overline{S}$ (les éléments de la coupe)
-* $f(\overline{S}, S)$ comme étant la somme des flux des arcs ayant pour extrémité $S$ et pour origine $\overline{S}$
+- $f(S, \overline{S})$ comme étant la somme des flux des arcs ayant pour origine $S$ et pour extrémité $\overline{S}$ (les éléments de la coupe)
+- $f(\overline{S}, S)$ comme étant la somme des flux des arcs ayant pour extrémité $S$ et pour origine $\overline{S}$
 
 Exemples :
 
-* $f(\\{s\\}, \overline{\\{s\\}}) = 1 + 0 = 1$
-* $f(\\\{p\\}, V \backslash \\{p\\}) = 1 + 0 = 1$
-* $f(\\{s, d\\}, \overline{\\{s, d\\}}) = 1 + 0 + 1 + 0 = 2$
+- $f(\\{s\\}, \overline{\\{s\\}}) = 1 + 0 = 1$
+- $f(\\\{p\\}, V \backslash \\{p\\}) = 1 + 0 = 1$
+- $f(\\{s, d\\}, \overline{\\{s, d\\}}) = 1 + 0 + 1 + 0 = 2$
 
 ## Valeur d'un flot
 
@@ -125,7 +125,7 @@ $$\sum_{x \in S} (\sum_{xy \in E} f(xy) - \sum_{yx \in E} f(yx)) = f(S, \overlin
 
 On en conclut donc que $f(S, \overline{S}) - f(\overline{S}, S)$ est une constante pour n'importe quelle coupe et vaut :
 
-$$ \mbox{val}(f) = \sum_{sx \in E}f(sx) - \sum_{xs \in E}f(xs) = \sum_{xp \in E}f(xp) - \sum_{px \in E}f(px)$$
+$$ \mbox{val}(f) = \sum*{sx \in E}f(sx) - \sum*{xs \in E}f(xs) = \sum*{xp \in E}f(xp) - \sum*{px \in E}f(px)$$
 
 {% info %}
 Ce qui rentre dans le réseau en ressort.
@@ -137,12 +137,12 @@ Pour notre exemple, on a donc une valeur de flot de $\mbox{val}(f) = 1$
 
 On a clairement que :
 
-* $\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.
-* si $\mbox{val}(f) = c(S^\star, \overline{S^\star})$ alors :
-  * $S^\star$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$
-  * $\mbox{val}(f)$ est maximum
-  * pour tout arc $u$ partant de $S^\star$ pour finir en $\overline{S^\star}$, $f(u) = c(u)$
-  * pour tout arc $u$ partant de $\overline{S^\star}$ pour finir en $S^\star$, $f(u) = 0$
+- $\mbox{val}(f) \leq c(S, \overline{S})$ pour toute coupe du réseau.
+- si $\mbox{val}(f) = c(S^\star, \overline{S^\star})$ alors :
+  - $S^\star$ est la coupe réalisant le minimum de $c(S, \overline{S})$ pour toute coupe $S$
+  - $\mbox{val}(f)$ est maximum
+  - pour tout arc $u$ partant de $S^\star$ pour finir en $\overline{S^\star}$, $f(u) = c(u)$
+  - pour tout arc $u$ partant de $\overline{S^\star}$ pour finir en $S^\star$, $f(u) = 0$
 
 La réciproque est également vraie et nous allons le prouver. On va prouver :
 
@@ -153,10 +153,10 @@ La réciproque est également vraie et nous allons le prouver. On va prouver :
 
 Commençons pas montrer que le flot maximum est atteint.
 
-Soient $G= (V, E)$ et $c$ un réseau donné. Une valuation $f$ des arcs de $G$ peut être vue comme  un vecteur de l'espace vectoriel $\mathbb{R}^m$ où $m = \vert E \vert$ que l'on munie d'une norme $\vert\vert . \vert\vert$ . Si cette valuation n'est pas un flot, alors :
+Soient $G= (V, E)$ et $c$ un réseau donné. Une valuation $f$ des arcs de $G$ peut être vue comme un vecteur de l'espace vectoriel $\mathbb{R}^m$ où $m = \vert E \vert$ que l'on munie d'une norme $\vert\vert . \vert\vert$ . Si cette valuation n'est pas un flot, alors :
 
-* soit une des coordonnées est strictement négative : $f(u) < 0$,
-* soit la conservation du flot n'est pas respectée pour au moins un sommet de $G$ : la valeur absolue de la différence vaut $d > 0$.
+- soit une des coordonnées est strictement négative : $f(u) < 0$,
+- soit la conservation du flot n'est pas respectée pour au moins un sommet de $G$ : la valeur absolue de la différence vaut $d > 0$.
 
 Il existe alors $\epsilon > 0$ tel que toute valuation $f'$ avec $\vert\vert f - f'\vert\vert \leq \epsilon$ n'est pas non plus un flot (on prend $\epsilon$ plus petit que $f(u) > 0$ et $d > 0$) : l'espace de $\mathbb{R}^m$ où $f$ n'est pas un flot est un ouvert. Donc son complémentaire, l'espace de $\mathbb{R}^m$ où $f$ est un flot, est fermé. Ce fermé est de plus borné puisque les flux ne peuvent dépasser les capacités.
 
@@ -180,9 +180,9 @@ Si l'on peut augmenter la valeurs des arcs allant de $s$ à $p$ et diminuer la v
 
 Notons alors $C^+$ (respectivement $C^-$) l'ensemble des arcs de la chaîne allant de $s$ à $p$ (respectivement de $p$ à $s$) et calculons :
 
-* $\alpha^+ = \min \\{ c(u) - f(u) \vert u \in C^+ \\}$
-* $\alpha^- = \min \\{ f(u) \vert u \in C^- \\}$
-* $\alpha = \min \\{\alpha^+, \alpha^-\\}$
+- $\alpha^+ = \min \\{ c(u) - f(u) \vert u \in C^+ \\}$
+- $\alpha^- = \min \\{ f(u) \vert u \in C^- \\}$
+- $\alpha = \min \\{\alpha^+, \alpha^-\\}$
 
 Si $\alpha > 0$, $C$ est dit être une **chaîne augmentante** car on peut augmenter le flot des arcs de $C^+$ de $\alpha$ et diminuer les arcs de $C^-$ de $\alpha$ ce qui garde la conservation du flot et augmente $\mbox{val}(f)$ de $\alpha > 0$.
 
@@ -192,10 +192,10 @@ Dans l'exemple on a : $\alpha^+ = \alpha^- = 1$ : notre flot n'est pas maximum
 On en conclut que s'il existe une chaîne augmentante de $s$ à $p$ alors $\mbox{val}(f)$ n'est pas maximum.
 {% endnote %}
 
-Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors  $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \\{ s\\}$ est alors une coupe de notre réseau et :
+Réciproquement, supposons qu'il n'existe pas de chaînes augmentante de $s$ à $p$. Soit alors $S'$ l'ensemble des sommets $x$ tels qu'il existe une chaîne augmentante de $s$ à $x$. L'ensemble $S = S' \cup \\{ s\\}$ est alors une coupe de notre réseau et :
 
-* pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaîne augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaîne augmentante entre $s$ et $y$
-* pour tout arc $xy$ commençant dans $\overline{S}$ et finissant dans $S$ on a $f(xy) > 0$ sinon il existerait une chaîne augmentante de $s$ à $y$ et de $y$ à $x$, donc une chaîne augmentante entre $s$ et $y$
+- pour tout arc $xy$ commençant dans $S$ et finissant dans $\overline{S}$ on a $f(xy) = c(xy)$ sinon il existerait une chaîne augmentante de $s$ à $x$ et de $x$ à $y$, donc une chaîne augmentante entre $s$ et $y$
+- pour tout arc $xy$ commençant dans $\overline{S}$ et finissant dans $S$ on a $f(xy) > 0$ sinon il existerait une chaîne augmentante de $s$ à $y$ et de $y$ à $x$, donc une chaîne augmentante entre $s$ et $y$
 
 On en déduit que pour cette coupe : $c(S, \overline{S}) = f(S, \overline{S}) - f(\overline{S}, S)$, la valeur de notre flot est maximum !
 
@@ -209,8 +209,8 @@ Les arcs d'une chaîne augmentante ne sont **pas forcément** tous dans le même
 
 Finalement :
 
-* il existe une chaîne augmentante de $s$ à $p$ si et seulement si $\mbox{val}(f)$ n'est pas maximum.
-* comme le flot maximum est atteint sa valeur ne peut être que la valeur de la coupe minimum puisque l'ensemble des sommets admettant une chaîne augmentante forme alors une coupe.
+- il existe une chaîne augmentante de $s$ à $p$ si et seulement si $\mbox{val}(f)$ n'est pas maximum.
+- comme le flot maximum est atteint sa valeur ne peut être que la valeur de la coupe minimum puisque l'ensemble des sommets admettant une chaîne augmentante forme alors une coupe.
 
 {% info %}
 La coupe minimum est le goulot d'étranglement du réseau.
@@ -229,13 +229,13 @@ Lorsque l'on ne trouve plus de chaîne augmentante, le flot est maximum. L'initi
 
 Si l'on suppose que nos capacités sont entières on pourra augmenter au minimum de 1 unité toutes nos chaînes augmentantes à chaque fois, donc l'algorithme va converger en :
 
-* au maximum $C(S, \overline{S})$ itérations où $S$ est une coupe
-* au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum
-* au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)
+- au maximum $C(S, \overline{S})$ itérations où $S$ est une coupe
+- au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum
+- au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)
 
 ### <span id="#ford-fulkerson"></span> Ford et Fulkerson
 
-L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme *marquer/ examiner*
+L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme _marquer/ examiner_
 
 #### Algorithme de marquage
 
@@ -275,7 +275,7 @@ def marquage(G, c, s, p, f):
 
     marques = {s: (s, None)}
     examiné = set()
-    
+
     while (p not in marques) and (set(marques.keys()) - examiné):
         x = (set(marques.keys()) - examiné).pop()
 
@@ -288,19 +288,19 @@ def marquage(G, c, s, p, f):
                     marques[y] = (x, c[(x, y)] - f[(x, y)])
                 else:
                     marques[y] = (x, abs(marques[x][1]))
-        
+
         for y in G:
             if (y in marques) or (x not in G[y]):
                 continue
-            
+
             if f[(y, x)] > 0:
                 if (marques[x][1] is None) or (abs(marques[x][1]) > f[(y, x)]):
                     marques[y] = (x, -f[(y, x)])
                 else:
                     marques[y] = (x, -abs(marques[x][1]))
-        
+
         examiné.add(x)
-    
+
     return marques
 ```
 
@@ -314,7 +314,7 @@ Peut-on y remédier ?
 {% details "solution" %}
 C'est la boucle for de la ligne 19 ! On cherche tous les y tels que (xy) est un arc.
 
-Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$  alors $yx$ est un arc dans $G'$.
+Pour accélérer cette étape, on peut créer au début de l'algorithme le graphe $G'$ qui est le graphe opposé de $G$ : si $xy$ est un arc dans $G$ alors $yx$ est un arc dans $G'$.
 
 Une fois ce graphe créé, la boucle for de la ligne 19 revient à prendre tous les voisins de $x$ dans $G'$ : on ne passe plus obligatoirement par tous les sommets du graphe.
 {% enddetails %}
@@ -323,10 +323,10 @@ Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augm
 
 #### Chaîne augmentante à partir des marques
 
- La chaîne augmentante est retrouvée à partir des marques par l'algorithme suivant :
+La chaîne augmentante est retrouvée à partir des marques par l'algorithme suivant :
 
 ```text
-Entrée : 
+Entrée :
     deux sommets s et p
     les marques de l'algorithme de marquage
 Initialisation :
@@ -337,7 +337,7 @@ Algorithme :
         soit y la première marque de x
         x = y
         ajouter x au début de C
-Retour : 
+Retour :
     C
 ```
 
@@ -351,7 +351,7 @@ def chaîne_augmentante(s, p, marques):
         y = marques[x][0]
         x = y
         C.append(x)
-    
+
     C.reverse()
 
     return C
@@ -366,9 +366,9 @@ Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle 
 De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer :
 
 ```text
-Entrée : 
+Entrée :
     une chaîne augmentante c=c[0] ... c[k] entre s et p
-    les marques 
+    les marques
     deux sommets s et p
     un flot f
 Algorithme
@@ -634,7 +634,10 @@ Et on obtient :
 
 ### Autres algorithmes
 
-La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithme de [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'[Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp).
+La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithme de [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'
+
+> TBD [Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp). Dans le graphe d'écart la taille du chemin min augmente
+> TBD voir <https://www.cs.williams.edu/~shikha/teaching/spring20/cs256/lectures/Lecture19.pdf>
 
 ## Flot maximum à coût minimum
 
@@ -648,12 +651,12 @@ La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car
 
 ### Graphe d'écart
 
-On peut utiliser un graphe auxiliaire, appelé ***graphe d'écart*** pour trouver une chaîne augmentante.
+On peut utiliser un graphe auxiliaire, appelé **_graphe d'écart_** pour trouver une chaîne augmentante.
 
 Soit $G=(V, E)$ un graphe orienté, une capacité $c$ et un flot $f$. on appelle graphe d'écart le graphe orienté $G_f = (V, E')$ tel que pour toute arc $xy$ de $G$ :
 
-* si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$
-* si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$
+- si $f(xy) < c(xy)$ alors on crée un arc $xy$ dans $G_f$
+- si $f(xy) > 0$ alors on crée un arc $yx$ dans $G_f$
 
 Il est alors clair qu'il n'existe un chemin allant de $s$ à $p$ dans $G_f$ que si et seulement si il existe une chaîne augmentante pour le réseau initial.
 
@@ -681,19 +684,18 @@ Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe 
 
 On peut utiliser l'[algorithme de Dijkstra](../chemin-poids-min-positif){.interne} par exemple pour trouver ce chemin.
 
-Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe.  Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.
+Pour valuer les arcs $xy$ du graphe d'écart, si le graphe est anti-symétrique (si $xy \in E$ alors $yx \notin E$) — ce qui est le cas de nombreux graphes utiles pour les flots — il suffit de valuer l'arc $xy$ du graphe d'écart par la valuation de l'arc ayant généré ce graphe. Si le graphe est quelconque, il faut faire attention à l'arc du graphe initial qui a généré l'arc dans le graphe d'écart.
 {% details "valuation dans le cas général" %}
 
- On peut procéder comme suit, qui retrace toutes les possibilités de création d'une arête dans le graphe d'écart et accorde son poids en conséquence :
+On peut procéder comme suit, qui retrace toutes les possibilités de création d'une arête dans le graphe d'écart et accorde son poids en conséquence :
 
-* si $xy$ n'est pas dans $G$ on value par $v[yx]$ puisque l'on peut augmenter le flot en diminuant le flot passant par $yx$
-* si $xy$ est dans $G$ :
-  * si $yx$ n'est pas dans $G$ on value par $v[xy]$ puisque l'on peut augmenter le flot en augmentant le flot passant par $xy$
-  * si $yx$ est dans $G$ :
-    * si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
-    * si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$
-    * si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
-{% enddetails %}
+- si $xy$ n'est pas dans $G$ on value par $v[yx]$ puisque l'on peut augmenter le flot en diminuant le flot passant par $yx$
+- si $xy$ est dans $G$ :
+  - si $yx$ n'est pas dans $G$ on value par $v[xy]$ puisque l'on peut augmenter le flot en augmentant le flot passant par $xy$
+  - si $yx$ est dans $G$ :
+    _ si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
+    _ si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$ \* si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
+    {% enddetails %}
 
 {% details "en python" %}
 
@@ -891,7 +893,7 @@ for x in Ge:
 {% enddetails %}
 
 {% exercice %}
-Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis  augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.
+Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.
 {% endexercice %}
 {% details "solution" %}
 Une chaîne augmentante et l'augmentation de flot associée dans la foulée :

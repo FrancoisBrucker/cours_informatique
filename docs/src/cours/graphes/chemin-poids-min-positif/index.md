@@ -12,13 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Chemins de longueur minimum entre deux sommets pour un graphe orienté pour une valuation positive.
-
-<!-- fin résumé -->
-
-L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet, à partir d'un graphe orienté valué positivement, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
+L'[algorithme de Dijkstra](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra) permet, à partir d'un graphe orienté valué **positivement**, de trouver un chemin de longueur minimum entre deux sommets $d$ (départ) et $a$ (arrivée).
 
 ## Principe
 
@@ -64,7 +58,7 @@ $$
 
 est également une arborescence de $G$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Comme on ne rajoute qu'un arc à $E'$ pour créer $E''$, il ne peut exister qu'un seul chemin pour aller de $x$ à un autre sommet $y$ de $G'' =(V'', E'')$.
 
@@ -88,8 +82,6 @@ L'implémentation naïve de cet algorithme serait cependant d'une complexité im
 
 L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent de façon optimale.
 
-> TBD montrer que Dijkstra = BFS + file de priorité
-
 ### Pseudo-code
 
 On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
@@ -105,23 +97,23 @@ Initialisation :
     coût[départ] = 0  # distances
     coût[u] = +∞ pour tous les autres sommets u
 
-    V_prim = {départ}  # les sommets de l'arborescence
+    V_dijkstra = {départ}  # les sommets de l'arborescence
 
     pivot = départ  # pivot est le dernier élément ajouté à l'arborescence
 
 Algorithme :
     tant que pivot ≠ arrivé :
         # mise à jour des coûts
-        pour tous les voisins x de pivot dans G qui ne sont pas dans V_prim :
+        pour tous les voisins x de pivot dans G qui ne sont pas dans V_dijkstra :
             si coût[x] > coût[pivot] + f(pivot, x):
                 coût[x] = coût[pivot] + f(pivot, x)
                 prédécesseur[x] = pivot
 
         # ajout d'un élément à la structure
-        soit u un élément de V \ V_prim tel que coût[u] soit minimum
+        soit u un élément de V \ V_dijkstra tel que coût[u] soit minimum
 
         pivot = u
-        ajoute pivot à V_prim
+        ajoute pivot à V_dijkstra
 
 
     # restitution du chemin (pivot = arrivé au départ)
@@ -150,12 +142,12 @@ Une implémentation en python en utilisant le codage par dictionnaire des graphe
 def dijkstra(G, f, départ, arrivé):
     prédécesseur = {départ: départ}
     coût = {départ: 0}
-    V_prim = {départ}
+    V_dijkstra = {départ}
 
     pivot = départ
     while pivot != arrivé:
         for x in G[pivot]:
-            if x in V_prim:
+            if x in V_dijkstra:
                 continue
 
             if (x not in coût) or (
@@ -166,14 +158,14 @@ def dijkstra(G, f, départ, arrivé):
 
         new = None
         for x in G:
-            if (x in V_prim) or (x not in coût):
+            if (x in V_dijkstra) or (x not in coût):
                 continue
 
             if (new is None) or (coût[new] > coût[x]):
                 new = x
 
         pivot = new
-        V_prim.add(pivot)
+        V_dijkstra.add(pivot)
 
     chemin = [arrivé]
     x = arrivé
@@ -187,9 +179,9 @@ def dijkstra(G, f, départ, arrivé):
 
 L'algorithme précédent peut être décomposé en plusieurs parties :
 
-1. initialisation (lignes 2 à 4) : `prédécesseur`{.language-} et `coût_entrée`{.language-} sont des dictionnaires et `V_prim`{.language-} un ensemble
+1. initialisation (lignes 2 à 4) : `prédécesseur`{.language-} et `coût_entrée`{.language-} sont des dictionnaires et `V_dijkstra`{.language-} un ensemble
 2. boucle principale, qui correspond au `while`{.language-} (lignes 6 à 27). Cette boucle est composée de deux parties :
-   1. mise à jour (lignes 8 à 16) : on considère tous les voisins de `pivot`{.language-} qui ne sont pas encore dans `V_prim`{.language-} (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (`x not in coût_entrée`{.language-}) soit on à mieux (`coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]`{.language-})
+   1. mise à jour (lignes 8 à 16) : on considère tous les voisins de `pivot`{.language-} qui ne sont pas encore dans `V_dijkstra`{.language-} (test des lignes 9 et 10) et on les met à jour si nécessaire (lignes 12 à 16) : soit on les découvre pour la première fois (`x not in coût_entrée`{.language-}) soit on à mieux (`coût_entrée[x] > coût_entrée[pivot] + f[(pivot, x)]`{.language-})
    2. recherche d'un nouveau `pivot`{.language-} (lignes 18 à 27) : on choisit un sommet non encore examiné de coût d'entrée le plus faible
    3. la boucle principale s'arrête une fois que l'on choisi l'arrivé comme `pivot`{.language-}
 3. construction du chemin (lignes 29 à 34) : on remonte de prédécesseur en prédécesseur en partant de `arrivé`{.language-} jusqu'à remonter en `départ`{.language-}.
@@ -242,13 +234,13 @@ f = {
 ```
 
 {% exercice %}
-Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans `V_prim`{.language-} ?
+Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans `V_dijkstra`{.language-} ?
 {% endexercice %}
 {% details "solution" %}
 Les différentes étapes de l'algorithme sont représentées dans les graphes ci-dessous.
 
 - La figure se lit de gauche à droite et de haut en bas.
-- les sommets de `V_prim`{.language-} sont encadrés en vert
+- les sommets de `V_dijkstra`{.language-} sont encadrés en vert
 - en orange les valeurs de `prédécesseur`{.language-} et de `coût_entrée`{.language-}
 - en magenta `pivot`{.language-} et les modifications de `prédécesseur`{.language-} et de `coût_entrée`{.language-} s'il y en a
 
@@ -263,11 +255,11 @@ Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ d
 {% details "solution" %}
 On montre par récurrence qu'à chaque étape le chemin de `départ`{.language-} à `pivot`{.language-} constitué en remontant les prédécesseurs de `pivot`{.language-} jusqu'à arriver à `départ`{.language-} est de longueur minimale et de coût `coût_entrée[pivot]`{.language-}.
 
-Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans `V_prim`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `V_prim`{.language-}.
+Au départ `pivot = départ`{.language-}, la propriété est donc vraie. On la suppose vrai jusqu'à l'itération $i$ (qui correspond au fait que l'on ait $i$ sommets dans `V_dijkstra`{.language-}). A l'étape $i+1$, on a choisi `pivot`{.language-} qui minimise le coût d'entrée parmi tous les sommets qui ne sont pas encore dans `V_dijkstra`{.language-}.
 
-Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ (disons $u$) est dans `V_prim`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
+Comme tous les chemins alternatifs entre `départ`{.language-} et `pivot`{.language-} commencent en `départ`{.language-}, il existe un arc de ce chemin dont le départ (disons $u$) est dans `V_dijkstra`{.language-} et l'arrivée (disons $v$) n'y est pas. Prenons la première arête $uv$ pour laquelle ça arrive.
 
-Par hypothèse de récurrence, `coût_entree[u]`{.language-} est le coût minimum d'un chemin entre `départ`{.language-} et $u$ et `coût_entree[v]`{.language-} est donc plus grand que `coût_entree[u] + f[uv]`{.language-} (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V_prim`{.language-}) et de `coût_entree[pivot]`{.language-} (car c'est le min).
+Par hypothèse de récurrence, `coût_entree[u]`{.language-} est le coût minimum d'un chemin entre `départ`{.language-} et $u$ et `coût_entree[v]`{.language-} est donc plus grand que `coût_entree[u] + f[uv]`{.language-} (on a examiné ce cas lorsque l'on a fait rentrer $u$ dans `V_dijkstra`{.language-}) et de `coût_entree[pivot]`{.language-} (car c'est le min).
 
 De là, le coût du chemin alternatif est plus grand également que `coût_entree[pivot]`{.language-} **car toutes les valuations sont positives** : notre hypothèse est vérifiée.
 
@@ -278,10 +270,10 @@ De là, le coût du chemin alternatif est plus grand également que `coût_entre
 {% note "**Proposition**" %}
 La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 On ajoute à chaque étape un élément, donc il y a au pire $\vert V \vert$ étapes. A chaque choix on compare les voisins de `pivot`{.language-}. Ces comparaisons sont donc de l'ordre de $\mathcal{O}(\delta(\mbox{pivot}))$ opérations. Comme `pivot`{.language-} est différent à chaque étape, toutes ces comparaisons sont de l'ordre de $\mathcal{O}(\sum\delta(\mbox{pivot})) = \mathcal{O}(\vert E \vert)$ opérations.
 
-On prend ensuite le minimum parmi les éléments de `V_prim`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
+On prend ensuite le minimum parmi les éléments de `V_dijkstra`{.language-}, ce qui prend $\mathcal{O}(\vert V \vert)$ opérations.
 
 La complexité totale est alors en :
 
@@ -295,7 +287,7 @@ La complexité totale est alors en :
 {% note "**Corollaire**" %}
 En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Clair puisque $\vert E \vert \leq \vert V \vert)^2$.
 {% enddetails %}
 
@@ -330,14 +322,14 @@ La [page wikipédia](https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Comple
 
 ## <span id="arborescence"></span> Arborescence
 
-On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans `V_prim`{.language-} et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans `V_prim`{.language-} ou que `V_prim`{.language-} soit égal à $V$.
+On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans `V_dijkstra`{.language-} et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans `V_dijkstra`{.language-} ou que `V_dijkstra`{.language-} soit égal à $V$.
 
 <span id="preuve-Dijkstra-arborescence"></span>
 {% exercice %}
-Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans `V_prim`{.language-}, il n'existe pas de chemin entre `départ`{.language-} et $x$ dans $G$
+Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans `V_dijkstra`{.language-}, il n'existe pas de chemin entre `départ`{.language-} et $x$ dans $G$
 {% endexercice %}
 {% details "solution" %}
-A chaque fois que l'on ajoute un élément dans `V_prim`{.language-} on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
+A chaque fois que l'on ajoute un élément dans `V_dijkstra`{.language-} on vérifie tous ses voisins pour mettre à jour le coût d'entrée dans la structure. On procède comme le parcours en largeur et on a montré qu'il trouvait la composante connexe de sa racine.
 {% enddetails %}
 
 {% exercice %}
@@ -346,13 +338,11 @@ Montrez que si l'on peut continuer l'algorithme de Dijkstra jusqu'à ce que $V'$
 - $\vert E' \vert = \vert V \vert -1$
 - il existe un unique chemin entre $d$ et tout autre sommet
 - le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$
-  
+
 {% endexercice %}
 {% details "solution" %}
-  Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
+Cette preuve dérive directement de la preuve de l'algorithme de Dijkstra que l'on a fait précédemment.
 {% enddetails %}
-
-
 
 ## <span id="a-star"></span> $A^\star$
 
@@ -364,10 +354,10 @@ Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à 
 
 ```python#23
         # ajout d'un élément à la structure
-        soit u un élément de V \ V_prim tel que coût[u] + h(u) soit minimum
+        soit u un élément de V \ V_dijkstra tel que coût[u] + h(u) soit minimum
 
         pivot = u
-        ajoute pivot à V_prim
+        ajoute pivot à V_dijkstra
 
 ```
 
@@ -381,7 +371,7 @@ L'heuristique $h$ est dite **_consistante_** si $h(x) \leq f(c) + h(y)$ pour tou
 
 Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 > TBD : mettre un dessin explicatif. et peut-être expliquer mieux.
 
@@ -430,7 +420,7 @@ h(u) \leq f(uv) + h(v)
 $$
 
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Comme $f(c) \leq f(uv)$ avec $c$ est un chemin de poids minimum entre $u$ et $v$ un sens de qu'équivalence est prouvé.
 
@@ -459,7 +449,7 @@ Une heuristique $h$ est dite **_admissible_** si $h(x)$ est plus petite que le p
 
 Si l’heuristique de $A^\star$ est admissible **et** qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence **alors** $A^\star$ trouvera un chemin de poids minimum.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Voir <https://en.wikipedia.org/wiki/Admissible_heuristic> et en particulier la [preuve de l'optimalité](https://en.wikipedia.org/wiki/Admissible_heuristic#Optimality_proof).
 
@@ -476,8 +466,8 @@ Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement
 {% endinfo %}
 {% details " comment faire" %}
 
-1. mettre à jour tous les voisins à chaque itération et pas uniquement ceux qui ne sont pas dans `V_prim`{.language-}
-2. si on met à jour un sommet dans `V_prim`{.language-} il faut supprimer de `V_prim`{.language-} tout son sous-arborescence
+1. mettre à jour tous les voisins à chaque itération et pas uniquement ceux qui ne sont pas dans `V_dijkstra`{.language-}
+2. si on met à jour un sommet dans `V_dijkstra`{.language-} il faut supprimer de `V_dijkstra`{.language-} tout son sous-arborescence
 3. choisir le nouveau pivot se fait dans l'ensemble $\\{ v \mid uv \in E, u \in V', v \notin V' \\}$
 
 Les 3 mécanismes ci-dessus assurent qu'il existe toujours un chemin de poids minimum accessible, mais $A^\star$ peut effectuer un nombre exponentiel d'opérations. Bref, le coût de l'optimalité est très cher, autant utiliser Dijkstra.
@@ -493,10 +483,10 @@ Donnons un exemple. Le graphe suivant avec une valuation de 1 sur tous les arc :
 
 ![Dijkstra pas Hamilton](chemin_pas_hamilton.png)
 
-Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, **mais** il ne le trouvera pas si les sommets sont rentrés dans `V_prim`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible).
+Le chemin de longueur maximum entre $1$ et $2$ est $132$. L'algorithme où l'on renverse toutes les inégalités trouvera ce chemin si les sommets sont examinés dans l'ordre $1$, $3$ puis $2$, **mais** il ne le trouvera pas si les sommets sont rentrés dans `V_dijkstra`{.language-} dans l'ordre 1, 2, 3 (ce qui est possible).
 
 Même s'il existe des cas où l'algorithme de Dijkstra trouvera le chemin le plus long, il en existe d'autres où il ne le trouvera pas...
 
 ## Dijkstra et BFS
 
-> idem file de priorité à la place de file dans BFS
+> TBD montrer que Dijkstra = BFS + file de priorité

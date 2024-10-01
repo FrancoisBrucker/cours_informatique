@@ -204,7 +204,9 @@ Permet de démontrer simplement [la formule de Cayley](https://fr.wikipedia.org/
 ## Isomorphismes d'arbres
 
 > TBD polynomial pour les arbres
-> TBD <https://info.faidherbe.org/MPII/11.pdf>
+
+> TBD Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
+> TBD TP <https://info.faidherbe.org/MPII/11.pdf>
 
 ## Arbres et classes
 

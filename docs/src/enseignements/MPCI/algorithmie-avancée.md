@@ -100,7 +100,25 @@ A rendre pour le 18 octobre.
 
 #### Cours 3
 
-> TBD flots
+> TBD flots 4h
+
+#### Cours 4
+
+> TBD arbres prim/dijkstra prufer
+>
+#### Coloriabilité
+
+#### Planarité
+
+#### Graphes aléatoires et infini
+
+### Cryptographie
+
+> TBD 3 cours
+
+{% aller %}
+[Cryptographie](/cours/système/cryptographie/){.interne}
+{% endaller %}
 
 #### TBD
 
@@ -117,12 +135,6 @@ A rendre pour le 18 octobre.
 9. Graphes aléatoires et infinis (intro)
 10. Coloriabilité de graphes
 11. graphes planaires
-
-### Cryptographie
-
-{% aller %}
-[Cryptographie](/cours/système/cryptographie/){.interne}
-{% endaller %}
 
 ## Modalités de contrôle
 

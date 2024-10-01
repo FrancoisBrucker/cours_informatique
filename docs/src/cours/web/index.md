@@ -91,7 +91,7 @@ Modifier votre page animal préféré avec bootstrap
 3. [gestion des événements](./javascript-événements){.interne}
 
 {% faire %}
-[Projet Numérologie](./projet-numérologie){.interne}, faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/).
+[Projet Numérologie](./projet-numérologie){.interne}, faire [le niveau 1 de la partie 1](./projet-numérologie/partie-1-front/niveau-1/){.interne}.
 {% endfaire %}
 
 > - à faire : partie 1 niveau 2 et changer la lib css par bootstrap. A présenter sur le site perso

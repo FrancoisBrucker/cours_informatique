@@ -18,7 +18,7 @@ Codage de la page web.
 
 <!-- fin résumé -->
 
-Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez le [cours de web]({{"/cours/web" }})
+Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez [le cours de web](../../../../){.interne}
 
 ## <span id="tache-1"></span> Tâche 1 : squelette de la page html
 

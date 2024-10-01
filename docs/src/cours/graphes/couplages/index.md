@@ -11,9 +11,18 @@ eleventyComputed:
 
 > Problème
 
-> Graphe biparti.
+> Graphe biparti + montrer programmation linéaire
+> 
 > algo problème général
 > random ?
+> <https://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15850-f20/www/notes/lec7.pdf>
+> <https://en.wikipedia.org/wiki/Maximum_weight_matching>
+> méthode hongroise pour les graphes bi-parti ?
+> non weighted <https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf>
+
+> <https://www.youtube.com/watch?v=Z0eSQapcE6A&list=PLXsmhnDvpjORcTRFMVF3aUgyYlHsxfhNL&index=41>
+
+> weighted matching.
 
 - tutte 47 graph with perfect matching dans NP cap co-NP
 
