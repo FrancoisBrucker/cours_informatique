@@ -192,6 +192,8 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 [Codage de Prüfer](https://fr.wikipedia.org/wiki/Codage_de_Pr%C3%BCfer)
 {% endlien %}
 
+> TBD <https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf>
+
 Permet de démontrer simplement [la formule de Cayley](https://fr.wikipedia.org/wiki/Formule_de_Cayley) qui compte le nombre d'arbre différents que l'on peut faire à partir d'un ensemble de sommets donné.
 
 > TBD exemple à 5

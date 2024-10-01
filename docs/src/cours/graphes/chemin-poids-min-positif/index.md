@@ -24,7 +24,7 @@ Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ 
 
 - $x \in V'$
 - $V' \subseteq V$ et $E' \subseteq E$
-- il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ por tout sommet $y \in V'$
+- il existe un chemin $c^T_{xy}$ **unique** entre $x$ et $y$ dans $T_{x}$ pour tout sommet $y \in V'$
 - pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est **minimum**
 
 {% endnote %}
