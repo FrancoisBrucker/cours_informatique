@@ -98,7 +98,7 @@ A rendre pour le 18 octobre.
 2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
 3. idée du problème du postier chinois
 
-#### Cours 3, 4 et 5
+#### Cours 3
 
 1. rappels sur les chemins les plus courts :
    1. [Poids positifs](/cours/graphes/chemin-poids-min-problème/){.interne}
@@ -108,13 +108,29 @@ A rendre pour le 18 octobre.
       - définitions
       - propriétés fondamentales
       - Cayley et Prüfer
-      - isomorphisme d'arbre
    2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
-3. problèmes de flots
-   1. [Problème et résolutions](/cours/graphes/flots/){.interne}
-   2. Modélisation par les flots :
-      1. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
-      2. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
+
+#### Cours 4
+
+[Problème et résolutions flots](/cours/graphes/flots/){.interne}
+
+#### Cours 5
+
+Exercices sur les flots :
+
+1. applications directs
+2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
+3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
+4. $k$-connectivités d'un graphe
+
+### Couplages
+
+1. graphes bi-parti
+   - définitions et propriétés
+   - Couplage bi-parti
+     - simple
+     - méthode hongroise
+2. Couplage général
 
 #### Coloriabilité
 

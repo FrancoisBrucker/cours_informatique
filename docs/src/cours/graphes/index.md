@@ -114,24 +114,18 @@ Problèmes de flots. Définition, algorithmes et applications
 
 {% aller %}
 
-[Les problèmes de flots](flots){.interne}
+1. [Les problèmes de flots](flots){.interne}
+2. [Exercices d'application](flots-exercices){.interne}
 
 {% endaller %}
 
-### <span id="projet-flots"></span> Projets
+### <span id="projet-flots"></span> Modélisation
 
 {% aller %}
 
-1. [exercices de modélisation](projet-flots-modélisation){.interne}
+1. [Deux problèmes de transports](projet-flots-modélisation){.interne}
 2. [bataille de la marne](projet-bataille-de-la-marne){.interne}
-
-{% endaller %}
-
-## Connectivité
-
-{% aller %}
-
-[connectivité](connectivité){.interne}
+3. [connectivité](connectivité){.interne}
 
 {% endaller %}
 
@@ -151,7 +145,7 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD projet christophides
+> TBD projet Christophides
 
 ## Planarité
 

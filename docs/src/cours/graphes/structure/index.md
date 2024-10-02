@@ -600,6 +600,8 @@ Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une bijection $f: V\to V'$ 
 
 Deux graphes isomorphes sont structurellement équivalents. Ils ne diffèrent que par le nom des sommets.
 
+> TBD dire que c'est une relation d'équivalence et que les classes d'équivalences donnent les formes de graphes à $n$ sommets. Donner exemple à 3 ?
+
 En ce sens, notez que le si et seulement si entre les arêtes n'est pas suffisant pour que les graphes soient équivalents
 
 > TBD un chemin de longueur 3 dans une arête. On a bien le ssi mais les deux graphes ne sont clairement pas identiques.
@@ -616,6 +618,7 @@ Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 {% lien %}
 <https://www.bourbaki.fr/TEXTES/1125.pdf>
 {% endlien %}
+
 
 ### Reconnaissance
 

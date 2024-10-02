@@ -4,9 +4,8 @@ layout: layout/post.njk
 title: Installation de Linux/Ubuntu
 
 eleventyNavigation:
-    order: 1
     prerequis:
-        - "/tutoriels/ordinateur-développement/"
+        - "/cours/coder-et-développer/ordinateur-développement/"
 
 eleventyComputed:
   eleventyNavigation:

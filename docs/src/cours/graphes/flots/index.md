@@ -420,7 +420,7 @@ La complexité de l’algorithme de marquage est proportionnelle au nombre d'ar�
 En revanche, la complexité totale dépend du nombre de fois où l'on va trouver une chaîne augmentante.
 
 > TBD : calcul complexité si entier
-> TBD : Complexité exponentielle si pas entier.
+> TBD : Complexité exponentielle si pas entier : ajouter exemple
 
 ### Exemple
 
@@ -632,24 +632,16 @@ Et on obtient :
 
 {% enddetails %}
 
-### Autres algorithmes
-
-La complexité de l'algorithme de Ford et Fulkerson n'est pas polynomiale (elle dépend des valuations), mais il existe des algorithmes polynomiaux, variations de l'algorithme de Ford et Fulkerson pour résoudre notre problème de flot. Vous pouvez voir la page [wikipedia](https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_flot_maximum) pour quelques exemples, dont l'algorithme de [Dinic](https://fr.wikipedia.org/wiki/Algorithme_de_Dinic) ou d'
-
-> TBD [Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp). Dans le graphe d'écart la taille du chemin min augmente
-> TBD voir <https://www.cs.williams.edu/~shikha/teaching/spring20/cs256/lectures/Lecture19.pdf>
-
-## Flot maximum à coût minimum
-
-Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$
-
-On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est possible pour les graphes antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) en utilisant les graphes d'écart pour trouver une chaîne augmentante.
-
-{% info %}
-La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.
-{% endinfo %}
-
 ### Graphe d'écart
+
+L'algorithme de Ford et Fulkerson pour trouver une chaîne augmentante est efficace si les capacités sont peut importante. Il n'est cependant pas polynomial.
+
+Nous allons montrer ici une variante utilisant un graphe, nommé **_graphe d'écart_**, pour trouver une chaîne augmentante. La simple utilisation de ce graphe va montrer qu'il est possible de rendre l'algorithme de Ford et Fulkerson polynomial.
+
+{% lien %}
+[Algoruthme d'Edmonds Karp](https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds-Karp)
+
+{% endlien %}
 
 On peut utiliser un graphe auxiliaire, appelé **_graphe d'écart_** pour trouver une chaîne augmentante.
 
@@ -678,7 +670,7 @@ def graphe_écart(G, c, f):
 
 {% enddetails %}
 
-### Chaîne augmentante avec un graphe d'écart
+#### Chaîne augmentante avec un graphe d'écart
 
 Une chaîne augmentante correspond à un chemin entre $s$ et $p$ dans le graphe d'écart. En valuant ses arcs avec le coût de l'augmentation du flot, un chemin de poids minimum donnera une augmentation minimale du coût.
 
@@ -693,13 +685,13 @@ On peut procéder comme suit, qui retrace toutes les possibilités de création 
 - si $xy$ est dans $G$ :
   - si $yx$ n'est pas dans $G$ on value par $v[xy]$ puisque l'on peut augmenter le flot en augmentant le flot passant par $xy$
   - si $yx$ est dans $G$ :
-    _ si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
-    _ si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$ \* si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
+    - si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
+    - si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$ \* si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
     {% enddetails %}
 
 {% details "en python" %}
 
-L'idée de l'algorithme est de regarder si on a déjà créer la valuation on non. Si oui, on prend le minimum et sinon on place la valuation de l'arc considéré.
+L'idée de l'algorithme est de regarder si on a déjà créé la valuation on non. Si oui, on prend le minimum et sinon on place la valuation de l'arc considéré.
 
 ```python
 def graphe_écart_valuation(G, c, f, v):
@@ -729,7 +721,7 @@ def graphe_écart_valuation(G, c, f, v):
 
 {% enddetails %}
 
-### Exemple avec le graphe d'écart
+#### Exemple avec le graphe d'écart
 
 Reprenons notre exemple fétiche (On ne mettra pas de valuation sur le graphe) :
 
@@ -778,141 +770,18 @@ Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 
 ![graphe d'écart 3](flot-ecart-4.png)
 
-## Exercice
+#### Complexité polynomiale
 
-On considère le réseau suivant (en gras les capacités, en italique les flux) :
+> TBD . Dans le graphe d'écart la taille du chemin min augmente
+> TBD voir <https://www.cs.williams.edu/~shikha/teaching/spring20/cs256/lectures/Lecture19.pdf>
+> TBD voir introduction aux algorithme pour la preuve de polynomialité
 
-![flot application](flot-app-1.png)
-{% details "en python" %}
+## Flot maximum à coût minimum
 
-```python
-G = {
-    's': {'a', 'd', 'b'},
-    'a': {'c', 'f', 'd'},
-    'b': {'d', 'g', 'e'},
-    'c': {'h', 'f'},
-    'd': {'f', 'i', 'g'},
-    'e': {'g', 'j'},
-    'f': {'h', 'k', 'i'},
-    'g': {'i', 'l', 'j'},
-    'h': {'k'},
-    'i': {'k', 'p', 'l'},
-    'j': {'l'},
-    'k': {'p'},
-    'l': {'p'},
-    'p': set()
-}
+Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$
 
-c = {
-    ('s', 'a'): 15,
-    ('s', 'b'): 9,
-    ('s', 'd'): 5,
-    ('a', 'f'): 12,
-    ('a', 'c'): 2,
-    ('a', 'd'): 1,
-    ('b', 'd'): 3,
-    ('b', 'e'): 4,
-    ('b', 'g'): 2,
-    ('c', 'h'): 3,
-    ('c', 'f'): 1,
-    ('d', 'i'): 9,
-    ('d', 'g'): 10,
-    ('d', 'f'): 1,
-    ('e', 'g'): 1,
-    ('e', 'j'): 2,
-    ('f', 'h'): 1,
-    ('f', 'k'): 2,
-    ('f', 'i'): 7,
-    ('g', 'i'): 4,
-    ('g', 'l'): 14,
-    ('g', 'j'): 2,
-    ('h', 'k'): 6,
-    ('i', 'p'): 3,
-    ('i', 'k'): 1,
-    ('i', 'l'): 2,
-    ('j', 'l'): 3,
-    ('k', 'p'): 9,
-    ('l', 'p'): 16
-}
+On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est possible pour les graphes antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) en utilisant les graphes d'écart pour trouver une chaîne augmentante de poids minimum.
 
-f = {
-    ('s', 'a'): 8,
-    ('s', 'b'): 8,
-    ('s', 'd'): 5,
-    ('a', 'f'): 5,
-    ('a', 'c'): 2,
-    ('a', 'd'): 1,
-    ('b', 'd'): 3,
-    ('b', 'e'): 3,
-    ('b', 'g'): 2,
-    ('c', 'h'): 2,
-    ('c', 'f'): 0,
-    ('d', 'i'): 4,
-    ('d', 'g'): 5,
-    ('d', 'f'): 0,
-    ('e', 'g'): 1,
-    ('e', 'j'): 2,
-    ('f', 'h'): 1,
-    ('f', 'k'): 2,
-    ('f', 'i'): 2,
-    ('g', 'i'): 0,
-    ('g', 'l'): 7,
-    ('g', 'j'): 1,
-    ('h', 'k'): 3,
-    ('i', 'p'): 3,
-    ('i', 'k'): 1,
-    ('i', 'l'): 2,
-    ('j', 'l'): 3,
-    ('k', 'p'): 6,
-    ('l', 'p'): 12
-}
-```
-
-{% enddetails %}
-
-{% exercice %}
-Tracer le graphe d'écart associé à ce réseau.
-{% endexercice %}
-{% details "solution" %}
-![flot application](flot-app-2.png)
-
-Les arcs plein sont les arcs directs, les arcs en pointillés, les arcs retours.
-{% enddetails %}
-{% exercice %}
-Créez le graphe d'écart en python.
-{% endexercice %}
-{% details "solution" %}
-
-```python
-Ge = graphe_écart(G, c, f)
-print("Graphe d'écart :")
-for x in Ge:
-    print(x, Ge[x])
-```
-
-{% enddetails %}
-
-{% exercice %}
-Cherchez à améliorer le flot avec une chaîne augmentante en utilisant le graphe d'écart, puis augmentez le jusqu'à son maximum avec l'algorithme de Ford et Fulkerson en exhibant une coupe minimum.
-{% endexercice %}
-{% details "solution" %}
-Une chaîne augmentante et l'augmentation de flot associée dans la foulée :
-
-![flot application](flot-app-3.png)
-
-La coupe min :
-
-![flot application](flot-app-4.png)
-{% enddetails %}
-{% exercice %}
-Créez la coupe min en python
-{% endexercice %}
-{% details "solution" %}
-
-```python
-ford_et_fulkerson(G,c, 's', 'p',f)  # on rend le flot maximum
-
-print("coupe min :", set(marquage(G, c, 's', 'p', f)))  # les sommets marqués sont la coupe min
-```
-
-{% enddetails %}
+{% info %}
+La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.
+{% endinfo %}

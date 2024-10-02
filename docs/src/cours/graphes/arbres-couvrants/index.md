@@ -50,7 +50,7 @@ Un arbre est la structure minimale en nombre d'arêtes qui garantie la connexit�
 
 On considère le graphe ci-dessous :
 
-![graphe exemple](../assets/img/prim_graphe_exemple.png)
+![graphe exemple](./prim_graphe_exemple.png)
 
 Avec un peu d'imagination considérez que c'est le graphe de construction d'une petite île du pacifique dont vous êtes le nouveau chef d'état.
 
@@ -157,6 +157,10 @@ Ne confondez pas les 2 problèmes !
 {% enddetails %}
 
 ### un autre algorithme
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal>
+{% endlien %}
 
 > TBD Kruskal
 > $\mathcal{O}(n^2\log(n))$ s'il faut trier, et $\mathcal{O}(n^2)$ sinon.

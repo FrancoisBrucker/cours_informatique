@@ -99,12 +99,14 @@ Clair avec les deux proposition précédentes.
 
 Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe.
 
-{% exercice "**A connaître**" %}
+{% exercice "**À connaître**" %}
 
-Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
+Montrez qu'un graphe est un arbre si et seulement si quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
 
 {% endexercice %}
 {% details "solution" %}
+Le graphe est connexe.
+
 S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.
 {% enddetails %}
 
@@ -134,15 +136,18 @@ Pour se familiariser avec les feuilles, commençons par résoudre l'exercice sui
 
 {% exercice %}
 
-Montrez que si $T = (V, E)$ est un arbre tel que tout sommet intérieur est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $r$ est le nombre de ses feuilles on a :
+Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $p$ est le nombre de ses feuilles on a :
 
-- $\vert V \vert = 2r-2$
-- $\vert E \vert = 2r-3$
+- $\vert V \vert = 2p-2$
+- $\vert E \vert = 2p-3$
 
 {% endexercice %}
 {% details "solution" %}
 
-> TBD vient du fair que somme degré = 2m et m=n-1
+Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = $\vert E \vert +1 $.
+
+De plus, la somme des degrés, $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.
+On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.
 
 {% enddetails %}
 
@@ -204,18 +209,31 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 
 ## Nombre d'arbre
 
+[La formule de Cayley](https://fr.wikipedia.org/wiki/Formule_de_Cayley) donne le nombre d'arbre différents que l'on peut faire à partir d'un ensemble $n$ de sommets donné : il y en a $n^{n-2}$.
+
+Par exemple, pour les 4 sommets $\\{1, 2, 3, 4\\}, il y a 16 arbres différents :
+
+![arbres à 4 sommets](arbres-4.png)
+
+Attention, ceci ne nombre pas les formes d'arbres différents à 4 sommets, c'est à dire les différents classes d'équivalences des isomorphismes d'arbres à 4 sommets, ou il n'y en a que 2 :
+
+![arbres à 4 sommets](arbres-4-iso.png)
+
+### Code de Prüfer
+
 {% lien %}
 [Codage de Prüfer](https://fr.wikipedia.org/wiki/Codage_de_Pr%C3%BCfer)
 {% endlien %}
 
-> TBD <https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf>
-
-Permet de démontrer simplement [la formule de Cayley](https://fr.wikipedia.org/wiki/Formule_de_Cayley) qui compte le nombre d'arbre différents que l'on peut faire à partir d'un ensemble de sommets donné.
 
 > TBD exemple à 5
 > TBD dire que ce n'est pas un problème d'assignation (ie isomorphisme d'arbres) qui compte le nombre de fores d'arbres différentes.
 
 > TBD Plusieurs façons de faire. Cayley le premier. On va voir une version algorithmique de ceci en utilisant le code de Prüfer.
+
+### Tirage aléatoire d'un arbre
+
+> TBD <https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf>
 
 > combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).
 
