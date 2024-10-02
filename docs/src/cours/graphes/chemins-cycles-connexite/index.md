@@ -21,7 +21,7 @@ Un graphe $G=(V, E)$ rend compte d'une _relation_ (les arêtes) entre des objets
 
 ## Chemin, cycles et circuits
 
-<span id="définition-longueur"></span>
+<span id="definition-longueur"></span>
 {% note "**Définition**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Un **chemin allant de $v_0$ à $v_{k}$** est une suite finie :
 

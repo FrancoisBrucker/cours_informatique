@@ -49,7 +49,7 @@ Commençons par remarquer que si $\vert E \vert \geq \vert V \vert$, alors forc�
 
 S'il existait dans ce graphe un sommet de degré plus petit ou égal à 1, on pourrait le supprimer du graphe et on aurait un graphe $G' = (V', E')$ avec strictement moins de sommets que $G$, tel que $\vert E' \vert \geq \vert V' \vert$ et qui ne contiendrait pas de cycle (on ne peut pas ajouter de cycle en supprimant une arête ou un sommet à un graphe). Ce qui est impossible par choix de $G$.
 
-Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours](../chemins-cycles-connexite#prop-cycles-graph)) : notre hypothèse était fausse.
+Donc tout sommet de $G$ a un degré d'au moins 2 et il existe un cycle ([c'est dans le cours](../chemins-cycles-connexite#prop-cycles-graphe){.interne}) : notre hypothèse était fausse.
 {% enddetails %}
 
 Continuons par une borne min sur la connexité :
@@ -99,7 +99,7 @@ Clair avec les deux proposition précédentes.
 
 Le théorème précédent est important car il montre l'optimalité d'un arbre : c'est le graphe avec un nombre minimum d'arête qui est connexe. C'est pourquoi cette structure est très utilisé dans les problèmes de réseaux réels. Cette optimalité vient avec un coût puisque si une arête casse, on déconnecte le graphe.
 
-{% exercice %}
+{% exercice "**A connaître**" %}
 
 Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.
 
@@ -128,6 +128,22 @@ Comme un arbre est connexe, tout sommet a un degré supérieur ou égal à 1.
 S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1$. Or $\sum\delta(x) = 2\vert E \vert = 2n-2$, ce qui est impossible.
 
 Enfin, si un arbre ne possédait que des feuilles, on aurait $\sum\delta(x) = n = 2\vert E \vert = 2n-2$, ce qui n'est possible que pour $n=2$.
+{% enddetails %}
+
+Pour se familiariser avec les feuilles, commençons par résoudre l'exercice suivant :
+
+{% exercice %}
+
+Montrez que si $T = (V, E)$ est un arbre tel que tout sommet intérieur est de degré 3 (on appelle ces arbres **_ternaire_**) alors si $r$ est le nombre de ses feuilles on a :
+
+- $\vert V \vert = 2r-2$
+- $\vert E \vert = 2r-3$
+
+{% endexercice %}
+{% details "solution" %}
+
+> TBD vient du fair que somme degré = 2m et m=n-1
+
 {% enddetails %}
 
 Un des principal intérêt des feuilles est que cela permet d'associer aux arbres un **_schéma d'élimination_** aux arbres. Commençons par un petit exercice pour le voir :

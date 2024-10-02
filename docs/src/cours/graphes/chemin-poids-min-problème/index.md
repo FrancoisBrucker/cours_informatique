@@ -17,10 +17,10 @@ Pour cette partie, nous n'allons considérer **que des graphes orientés** car l
 Commençons par définir le problème :
 
 {% note "**Définition**" %}
-Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k-1}$ tel que :
+Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un **chemin de longueur minimum entre $a$ et $b$** est un chemin $v_0 \dots v_{k}$ tel que :
 
-- $a = v_0$ et $b=v_{k-1}$
-- il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#définition-longueur){.interne} strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
+- $a = v_0$ et $b=v_{k}$
+- il n'existe pas de chemin entre $a$ et $b$ de [longueur](../chemins-cycles-connexite#definition-longueur){.interne} strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).
   {% endnote %}
 
 Que l'on généralise souvent aux **graphes orientés valués** :
@@ -31,13 +31,13 @@ Un **graphe orienté valué** est un couple $(G, f)$ où :
 - $G=(V, E)$ est un graphe orienté
 - $f: E \rightarrow \mathbb{R}$
 
-Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-){.interne} (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i < k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
+Le **poids** d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un [pseudo-chemin](../chemins-cycles-connexite#définition-pseudo-){.interne} (les arcs peuvent se répéter) $c=v_0\dots v_{k}$, noté $f(c)$, est la somme $\sum_{0\leq i < k}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).
 {% endnote %}
 {% note "**Définition**" %}
-Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k-1}$ tel que :
+Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un **chemin de poids minimum entre $a$ et $b$** est un chemin $c=v_0 \dots v_{k}$ tel que :
 
-- $a = v_0$ et $b=v_{k-1}$
-- il n'existe pas de chemin $w_0\dots w_{k'-1}$ de poids plus petit que celui de $c$.
+- $a = v_0$ et $b=v_{k}$
+- il n'existe pas de chemin $w_0\dots w_{k'}$ de poids plus petit que celui de $c$.
   {% endnote %}
 
 Il est clair qu'un chemin de longueur minimum d'un graphe est un chemin de poids minimum où toutes les valuations sont égales à 1.
