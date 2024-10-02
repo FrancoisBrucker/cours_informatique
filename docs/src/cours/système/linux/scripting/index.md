@@ -17,7 +17,7 @@ Le scripting c'est l'exécution de fichiers textes pour résoudre un problème s
 
 - du shell
 - mais aussi python
-- ou d'autres langage de script comme le awk
+- ou d'autres langage de script comme awk, perl, ruby, …
 
 ## Exécution d'un fichier texte
 
@@ -25,7 +25,7 @@ Le scripting c'est l'exécution de fichiers textes pour résoudre un problème s
 [shebang](https://fr.wikipedia.org/wiki/Shebang)
 {% endlien %}
 
-Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par `#!` si oui la fin de la ligne correspond à un programme auquel on passe en 1er paramètre le fichier à exécuter.
+Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par `#!` si oui la fin de la ligne correspond au chemin absolu d'un programme auquel on passe en 1er paramètre le fichier à exécuter.
 
 Par exemple si on a le fichier exécutable suivant, nommé `bonjour` :
 
@@ -51,7 +51,7 @@ Il y a deux moyens classique d'utiliser le shebang :
 - appeler directement le programme : `/bin/bash`
 - passer via env : `/usr/bin/env bash`
 
-La différence es que pour le deuxième appel, c'est le bash du PATH qui est pris et pas celui du système. Ces deux programmes pouvant être différent. Si pour bash il y a peu de risque, pour python est est courant d'avoir plusieurs versions d'installées.
+La différence est que pour le deuxième appel, c'est le bash du PATH qui est pris et pas celui dans /bin. Ces deux programmes pouvant être différent. bash peut être dans /bin, dans /usr/bin, dans /usr/local/bin ou encore ailleurs selon le système et la méthode d'installation, pour python il est courant d'avoir plusieurs versions d'installées. En revanche, tous les systèmes ont /usr/bin/env (tapez `/usr/bin/env bash` dans une console pour comprendre le fonctionnement)
 
 {% lien %}
 [Quel shebang utiliser](https://www.baeldung.com/linux/bash-shebang-lines)
