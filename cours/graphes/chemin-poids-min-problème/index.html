@@ -112,10 +112,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $v_0 \dots v_{k-1}$ tel que :</p>
+<p>Soit $G = (V, E)$ un graphe orienté et $a, b$ deux sommets. Un <strong>chemin de longueur minimum entre $a$ et $b$</strong> est un chemin $v_0 \dots v_{k}$ tel que :</p>
 <ul>
-<li>$a = v_0$ et $b=v_{k-1}$</li>
-<li>il n'existe pas de chemin entre $a$ et $b$ de <a href="../chemins-cycles-connexite#d%C3%A9finition-longueur" class="interne">longueur</a> strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).</li>
+<li>$a = v_0$ et $b=v_{k}$</li>
+<li>il n'existe pas de chemin entre $a$ et $b$ de <a href="../chemins-cycles-connexite#definition-longueur" class="interne">longueur</a> strictement plus petite que $k$ (il y a $k+1$ sommets, donc $k$ arêtes).</li>
 </ul>
 </div>
 </div>
@@ -132,7 +132,7 @@
 <li>$G=(V, E)$ est un graphe orienté</li>
 <li>$f: E \rightarrow \mathbb{R}$</li>
 </ul>
-<p>Le <strong>poids</strong> d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un <a href="../chemins-cycles-connexite#d%C3%A9finition-pseudo-" class="interne">pseudo-chemin</a> (les arcs peuvent se répéter) $c=v_0\dots v_{k-1}$, noté $f(c)$, est la somme $\sum_{0\leq i &lt; k-1}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).</p>
+<p>Le <strong>poids</strong> d'une liste d'arc/arêtes $L$, noté $f(L)$ est la somme des valuations de ses arcs/arêtes et le poids d'un <a href="../chemins-cycles-connexite#d%C3%A9finition-pseudo-" class="interne">pseudo-chemin</a> (les arcs peuvent se répéter) $c=v_0\dots v_{k}$, noté $f(c)$, est la somme $\sum_{0\leq i &lt; k}f(v_iv_{i+1})$ (le poids de la liste des arc/arêtes constituant le pseudo-chemin).</p>
 </div>
 </div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -142,10 +142,10 @@
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un <strong>chemin de poids minimum entre $a$ et $b$</strong> est un chemin $c=v_0 \dots v_{k-1}$ tel que :</p>
+<p>Soit $(G, f)$ un graphe valué et $a, b$ deux sommets de $G$. Un <strong>chemin de poids minimum entre $a$ et $b$</strong> est un chemin $c=v_0 \dots v_{k}$ tel que :</p>
 <ul>
-<li>$a = v_0$ et $b=v_{k-1}$</li>
-<li>il n'existe pas de chemin $w_0\dots w_{k'-1}$ de poids plus petit que celui de $c$.</li>
+<li>$a = v_0$ et $b=v_{k}$</li>
+<li>il n'existe pas de chemin $w_0\dots w_{k'}$ de poids plus petit que celui de $c$.</li>
 </ul>
 </div>
 </div>
