@@ -208,6 +208,7 @@ Permet de démontrer simplement [la formule de Cayley](https://fr.wikipedia.org/
 > TBD polynomial pour les arbres
 
 > TBD Aho, Hopcroft and Ullman <https://hal.science/hal-04232137/document>
+> <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/marthe-bonamy.pdf>
 > TBD TP <https://info.faidherbe.org/MPII/11.pdf>
 
 ## Arbres et classes

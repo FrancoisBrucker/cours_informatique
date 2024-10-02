@@ -100,7 +100,7 @@ Modifier votre page animal préféré avec bootstrap
 ## Projet front
 
 {% aller %}
-[Projet front](projet-front)
+[Projet front](projet-front){.interne}
 {% endaller %}
 
 ## Gestion des données

@@ -10,18 +10,30 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les fichiers html, css et js que vous avec créés forment un tout que l'on nomme ***le front*** (par opposé au *back* que l'on verra plus tard) et qui est exécuté sur un navigateur. Tous les fichiers crées sont ***statiques*** car ils ne peuvent être modifiés : ils sont chargés tels quels par le navigateur via une url. Cette url peut utiliser le protocole :
+Les fichiers html, css et js que vous avec créés forment un tout que l'on nomme **_le front_** (par opposé au _back_ que l'on verra plus tard) et qui est exécuté sur un navigateur. Tous les fichiers crées sont **_statiques_** car ils ne peuvent être modifiés : ils sont chargés tels quels par le navigateur via une url. Cette url peut utiliser le protocole :
 
 - [file](https://en.wikipedia.org/wiki/File_URI_scheme) si vous chargez un fichier de votre disque dur
 - [http](https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol) si vous utilisez votre page personnelle par exemple
+
+## Sujet
+
+Choisissez un sport parmi les 10 du décathlon :
+
+{% lien %}
+<https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf>
+{% endlien %}
+
+Et créez en un site !
+
+Il faudra que vous créiez un site statique que vous pourrez voir soir sur votre page web et avec un serveur web en local.
 
 ## Site statique
 
 {% note "**Définition**" %}
 
-Un ***site statique*** est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé ***dossier racine***. Le point d'entrée du site est le fichier `index.html`{.fichier} placé dans le dossier racine.
+Un **_site statique_** est un ensemble de fichiers html, css et js tous placés dans un dossier donné, nommé **_dossier racine_**. Le point d'entrée du site est le fichier `index.html`{.fichier} placé dans le dossier racine.
 
-A l'intérieur de ce site, l'accès aux fichiers se fait de façon ***relative***.
+A l'intérieur de ce site, l'accès aux fichiers se fait de façon **_relative_**.
 {% endnote %}
 
 Par exemple :
@@ -55,11 +67,11 @@ Téléchargez le ficher [mon_super_site.zip](./mon_super_site.zip) qui contient 
 ## Dépendances
 
 {% aller %}
-[Gestion des dépendances](gestion-dépendances)
+[Gestion des dépendances](gestion-dépendances){.interne}
 {% endaller %}
 
 ## Serveur de fichiers statiques
 
 {% aller %}
-[Serveur de fichier statiques](serveur-statique)
+[Serveur de fichier statiques](serveur-statique){.interne}
 {% endaller %}

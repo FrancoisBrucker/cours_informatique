@@ -98,14 +98,24 @@ A rendre pour le 18 octobre.
 2. [Parcours hamiltoniens](/cours/graphes/parcours-hamiltoniens/){.interne}
 3. idée du problème du postier chinois
 
-#### Cours 3
+#### Cours 3, 4 et 5
 
-> TBD flots 4h
+1. rappels sur les chemins les plus courts :
+   1. [Poids positifs](/cours/graphes/chemin-poids-min-problème/){.interne}
+   2. Noms des [algorithmes pour poids quelconques](/cours/graphes/chemin-poids-min-cas-général/){.interne}
+2. Arbres :
+   1. [version théorie des graphes des arbres](/cours/graphes/arbres/){.interne}
+      - définitions
+      - propriétés fondamentales
+      - Cayley et Prüfer
+      - isomorphisme d'arbre
+   2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
+3. problèmes de flots
+   1. [Problème et résolutions](/cours/graphes/flots/){.interne}
+   2. Modélisation par les flots :
+      1. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
+      2. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
 
-#### Cours 4
-
-> TBD arbres prim/dijkstra prufer
->
 #### Coloriabilité
 
 #### Planarité

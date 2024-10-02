@@ -159,9 +159,9 @@ Si vous n'installez pas les dépendance, le site ne peut fonctionner puisqu'il n
 
 On conserve également parfois le fichier `package-lock.json`{.fichier} dans la distribution d'un projet node. Vois le lien suivant pour le pourquoi de son existence et son utilisation courante :
 
-{% aller %}
+{% lien %}
 [gestion du fichier](https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable)
-{% endaller %}
+{% endlien %}
 
 ## Compiler un site statique
 
