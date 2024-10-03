@@ -15,6 +15,8 @@ eleventyComputed:
 
 La gestion des variables d'environnement dépend du shell utilisé. On suppose ici que vous utilisez le shell par défaut sous Linux/Ubuntu : [bash](https://www.gnu.org/software/bash/)
 
+> TBD ajout zsh : <https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/>
+
 ## Variables d'environnement
 
 La personnalisation de son environnement se fait sous la forme de variables. Ces variables servent à deux choses essentiellement :
