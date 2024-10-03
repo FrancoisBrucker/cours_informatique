@@ -209,13 +209,21 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 
 ## Nombre d'arbre
 
-[La formule de Cayley](https://fr.wikipedia.org/wiki/Formule_de_Cayley) donne le nombre d'arbre différents que l'on peut faire à partir d'un ensemble $n$ de sommets donné : il y en a $n^{n-2}$.
+[La formule de Cayley](https://fr.wikipedia.org/wiki/Formule_de_Cayley) donne le nombre d'arbre différents que l'on peut faire à partir d'un ensemble $n$ de sommets donné :
 
-Par exemple, pour les 4 sommets $\\{1, 2, 3, 4\\}, il y a 16 arbres différents :
+{% note "**Proposition**" %}
+Le nombre d'arbre que l'opn peut former avec un ensemble $V$ de $n$ sommets donné est $n^{n-2}$
+
+{% endnote %}
+{% details "preuve%, "open" %}
+Via le code de Prüfer que l'on verra juste après qui est une bijection.
+{% enddetails %}
+
+Par exemple, pour les 4 sommets $\\{1, 2, 3, 4\\}$, il y a 16 arbres différents :
 
 ![arbres à 4 sommets](arbres-4.png)
 
-Attention, ceci ne nombre pas les formes d'arbres différents à 4 sommets, c'est à dire les différents classes d'équivalences des isomorphismes d'arbres à 4 sommets, ou il n'y en a que 2 :
+Attention, ceci n'est le nombre de formes d'arbres différents à 4 sommets, c'est à dire les différents classes d'équivalences des isomorphismes d'arbres à 4 sommets. Il n'y en a en effet que 2 :
 
 ![arbres à 4 sommets](arbres-4-iso.png)
 
@@ -224,7 +232,6 @@ Attention, ceci ne nombre pas les formes d'arbres différents à 4 sommets, c'es
 {% lien %}
 [Codage de Prüfer](https://fr.wikipedia.org/wiki/Codage_de_Pr%C3%BCfer)
 {% endlien %}
-
 
 > TBD exemple à 5
 > TBD dire que ce n'est pas un problème d'assignation (ie isomorphisme d'arbres) qui compte le nombre de fores d'arbres différentes.

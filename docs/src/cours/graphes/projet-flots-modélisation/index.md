@@ -12,11 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Une série d'exercices pour s'entraîner à la modélisation par les flots.
-
-<!-- end résumé -->
+Deux exercices de modélisation par les flots. Ces problèmes sont classiques et sont la bases de nombreuses applications.
 
 ## Problème du transport de marchandise
 

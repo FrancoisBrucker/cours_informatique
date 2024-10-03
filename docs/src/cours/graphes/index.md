@@ -93,6 +93,7 @@ Algorithmes généraux :
 1. [Arbres](arbres){.interne}
 2. [Arbres enracinés](arbres-enracinés){.interne}
 3. [Arbres couvrant](arbres-couvrants){.interne}
+4. [Isomorphisme d'arbre](arbres-isomorphisme){.interne}
 
 {% endaller %}
 

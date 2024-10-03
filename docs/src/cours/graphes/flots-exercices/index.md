@@ -11,6 +11,35 @@ eleventyComputed:
 
 ## Application directe
 
+On considère le réseau ci-dessous, les capacités des arcs étant les nombres entre parenthèses :
+
+![flot réseau](reseau.png)
+
+{% exercice %}
+Pourquoi a-t-on donné une capacité de 666 à un des arcs ?
+{% endexercice %}
+
+{% exercice %}
+Donner et justifier la valeur maximale d'un flot sans utiliser l'algorithme de Ford et Fulkerson.
+{% endexercice %}
+
+{% exercice %}
+On considère un flot partiel donné par :
+
+- $f(s,a)=3$, $f(s,b)=3$, $f(c,s)=3$
+- $f(b,g)=2$, $f(d,b)=3$
+- $f(a,d)=1$, $f(g,d)=2$
+
+Déterminez les valeurs du flot sur les autres arcs.
+{% endexercice %}
+{% exercice %}
+
+À partir du flot précédent, utiliser l'algorithme de Ford et Fulkerson pour réaliser le flot maximal en une seule chaîne augmentante ayant des arcs dans les deux sens
+
+{% endexercice %}
+
+## Création d'une source et d'un puits
+
 Une ressource est disponible sur 5 sites $x_1$, $x_2$, $x_3$, $x_4$ et $x_5$ en quantités respectives, 30,70,80,60 et 60. Cette ressource est demandée dans 6 sites $y_1$, $y_2$, $y_3$, $y_4$ , $y_5$ et $y_6$ en quantités respectives 40, 20, 40, 40, 30 et 70. Les possibilités d'acheminement des ressources en $x_i$ vers le site $y_j$ sont indiquées dans le tableau ci-dessous (une valeur
 sur la ligne $x_i$ et la colonne $y_j$ signifie un acheminement possible de $x_i$ vers $y_j$, d'une capacité max correspondant à la valeur indiquée et une
 absence de valeur signifie un acheminement impossible) :

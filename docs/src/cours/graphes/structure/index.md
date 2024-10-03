@@ -619,7 +619,6 @@ Un isomorphisme d'un graphe dans lui-même est appelé **_automorphisme_**.
 <https://www.bourbaki.fr/TEXTES/1125.pdf>
 {% endlien %}
 
-
 ### Reconnaissance
 
 {% lien %}
