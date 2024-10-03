@@ -273,9 +273,9 @@
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8  mb-2 mr-8">
-<p><strong>A connaître</strong></p>
+<p><strong>À connaître</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Montrez que quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.</p>
+<p>Montrez qu'un graphe est un arbre si et seulement si quels que soient deux sommets $x$ et $y$, il n'existe qu'un seul chemin entre $x$ et $y$.</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -295,6 +295,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Le graphe est connexe.</p>
 <p>S'il existait 2 chemins distincts pour aller de $x$ à $y$ on se placerait au premier élément distinct et au premier élément en commun après celui-ci et on aurait un cycle.</p>
 </div>
 </details>     
@@ -352,10 +353,10 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que si $T = (V, E)$ est un arbre tel que tout sommet intérieur est de degré 3 (on appelle ces arbres <strong><em>ternaire</em></strong>) alors si $r$ est le nombre de ses feuilles on a :</p>
+<p>Montrez que si $T = (V, E)$ est un arbre tel que tout sommet interne est de degré 3 (on appelle ces arbres <strong><em>ternaire</em></strong>) alors si $p$ est le nombre de ses feuilles on a :</p>
 <ul>
-<li>$\vert V \vert = 2r-2$</li>
-<li>$\vert E \vert = 2r-3$</li>
+<li>$\vert V \vert = 2p-2$</li>
+<li>$\vert E \vert = 2p-3$</li>
 </ul>
 </div>
 </div>
@@ -376,9 +377,9 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD vient du fair que somme degré = 2m et m=n-1</p>
-</blockquote>
+<p>Si on note $p$ le nombre de feuilles et $q$ le nombre de sommets intérieur, on a : $\vert V \vert = p + q = $\vert E \vert +1 $.</p>
+<p>De plus, la somme des degrés, $p + 3q$ vaut 2 fois le nombre d'arête, donc $\vert E \vert = 1/2 \cdot (p+3q) = p + q - 1$.<br>
+On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 </div>
 </details>     
 </div>
@@ -492,6 +493,12 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 </details>     
 </div>
 <h2>Nombre d'arbre</h2>
+<p><a href="https://fr.wikipedia.org/wiki/Formule_de_Cayley">La formule de Cayley</a> donne le nombre d'arbre différents que l'on peut faire à partir d'un ensemble $n$ de sommets donné : il y en a $n^{n-2}$.</p>
+<p>Par exemple, pour les 4 sommets $\{1, 2, 3, 4\}, il y a 16 arbres différents :</p>
+<p><img src="arbres-4.png" alt="arbres à 4 sommets"></p>
+<p>Attention, ceci ne nombre pas les formes d'arbres différents à 4 sommets, c'est à dire les différents classes d'équivalences des isomorphismes d'arbres à 4 sommets, ou il n'y en a que 2 :</p>
+<p><img src="arbres-4-iso.png" alt="arbres à 4 sommets"></p>
+<h3>Code de Prüfer</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -501,15 +508,15 @@ S'il y avait 1 feuille ou moins, on aurait $\sum\delta(x) \geq 2(n-1) + 1 = 2n-1
 </div>
 </div>
 <blockquote>
-<p>TBD <a href="https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf">https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf</a></p>
-</blockquote>
-<p>Permet de démontrer simplement <a href="https://fr.wikipedia.org/wiki/Formule_de_Cayley">la formule de Cayley</a> qui compte le nombre d'arbre différents que l'on peut faire à partir d'un ensemble de sommets donné.</p>
-<blockquote>
 <p>TBD exemple à 5<br>
 TBD dire que ce n'est pas un problème d'assignation (ie isomorphisme d'arbres) qui compte le nombre de fores d'arbres différentes.</p>
 </blockquote>
 <blockquote>
 <p>TBD Plusieurs façons de faire. Cayley le premier. On va voir une version algorithmique de ceci en utilisant le code de Prüfer.</p>
+</blockquote>
+<h3>Tirage aléatoire d'un arbre</h3>
+<blockquote>
+<p>TBD <a href="https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf">https://www3.nd.edu/~dgalvin1/40210/40210_f12/prufer.pdf</a></p>
 </blockquote>
 <blockquote>
 <p>combien d'arbre ? Encodage Prüfer et application à un arbre aléatoire (!= différent de la structure).</p>
