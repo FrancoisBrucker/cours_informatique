@@ -215,7 +215,7 @@ Montrez que tout automorphisme d'arbre laisse invariant au moins un sommet ou un
 Le nombre d'arbre que l'opn peut former avec un ensemble $V$ de $n$ sommets donné est $n^{n-2}$
 
 {% endnote %}
-{% details "preuve%, "open" %}
+{% details "preuve", "open" %}
 Via le code de Prüfer que l'on verra juste après qui est une bijection.
 {% enddetails %}
 
