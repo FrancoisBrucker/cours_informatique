@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/scripting/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/scripting/exercices/">Exercices</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/">Système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système/linux/shell/exercices/">Exercices</a>
 
 </div>
 </div>
@@ -92,39 +92,7 @@
     
   
 
-  <h2>Fichiers</h2>
-<ol>
-<li>Quel est le chemin de votre dossier maison</li>
-<li>Quels sont les fichiers présents ?</li>
-<li>Quel est la différence entre :
-<ul>
-<li><code>ls</code></li>
-<li><code>ls -l</code></li>
-<li><code>ls -a</code></li>
-<li><code>ls -la</code></li>
-</ul>
-</li>
-<li>Créez un dossier <code class="fichier">temporaire</code> dans votre dossier maison. Quels sont les droits de ce fichier ?</li>
-<li>Affichez la liste des fichiers par date de dernière modification/création (c'est une option de <code>ls</code>). Le dossier <code class="fichier">temporaire</code> devrait être en premier.</li>
-<li>Modifier la date de modification du dossier modifié le dernier (grace à la commande <code>touch</code>) et vérifier qu'il est maintenant en premier dans la liste</li>
-<li>Que fait <code>touch fichier</code> si <code class="fichier">fichier</code> n'existe pas ?</li>
-<li>Affichez les 3 éléments plus récemment modifiés, puis les 5 moins récemment modifié (vous pouvez utiliser les commandes <code>head</code> et <code>tail</code>)</li>
-<li>Copiez le fichier <code>/etc/passwd</code> dans le dossier <code class="fichier">${HOME}/temporaire</code> créé précédemment et appelez le mot-de-passe, le tout en une seule commande</li>
-<li>Supprimez le dossier <code class="fichier">${HOME}/temporaire</code> en une seule commande <code>rm</code></li>
-<li>Créez un dossier <code>private</code> dans maison et modifiez ses droits pour qu'il ne soit accessible que de vous même. Faites cette modification en utilisant la notation symbolique.</li>
-<li>À quoi correspondent ces droits en notation <a href="https://docs.oracle.com/cd/E19504-01/802-5750/6i9g464pv/index.html">octale</a> ?</li>
-<li>Créez un fichier nommé <code>hello.txt</code> dans votre dossier maison contenant le texte &quot;bonjour&quot; avec un éditeur de texte (nano par exemple)</li>
-<li>Ajoutez &quot; monde !&quot; à la fin du fichier <code>hello.txt</code> avec une commande commande echo</li>
-<li>Déplacez le fichier <code>hello.txt</code> dans le dossier <code>private</code></li>
-<li>Créez un lien symbolique dans votre maison vers le fichier <code>hello.txt</code> de votre dossier private.</li>
-<li>Modifiez le contenu du fichier symbolique pour son contenu soit sur une seule ligne (vous pourrez vous aider de la commande <code>tr</code> et de <a href="https://www.baeldung.com/linux/join-multiple-lines">ce tutoriel</a>)</li>
-<li>Afficher, avec la commande <code>cat</code>, le contenu du fichier dans <code>private/hello.txt</code></li>
-<li>Que se passe-t-il pour le lien si vous supprimez ou renommez le fichier original ?</li>
-<li>Créez avec <code>nano</code> un fichier nommé <code ,.fichier="">brise marine.txt</code> et mettez-y le <a href="https://www.poetica.fr/poeme-109/stephane-mallarme-brise-marine/">poème de Mallarmé</a></li>
-<li>Affichez ce fichier avec la commande <code>cat</code> en <a href="https://www.shellscript.sh/escape.html">escapant</a> le métacaractère espace</li>
-<li>renommez, avec la commande <code>mv</code> le fichier <code class="fichier">brise marine.txt</code> en <code class="fichier">brise_marine.txt</code></li>
-</ol>
-<h2>Personnalisation</h2>
+  <h2>Personnalisation</h2>
 <p>Le fichier <code class="fichier">.bashrc</code> crée un alias <code>ll</code>. À quoi cela correspond-t-il ?</p>
 <p>Créez dans un shell les deux alias suivant :</p>
 <ul>
@@ -132,22 +100,6 @@
 <li><code>cd...</code> pour <code>cd ../..</code>.</li>
 </ul>
 <p>Le fichier de configuration <code class="fichier">.bashrc</code> tente d'exécuter un fichier dédié aux alias. Lequel ? Ajoutez y vos deux nouveaux alias pour qu'ils soient toujours disponible.</p>
-<h2>find</h2>
-<p><a href="https://shapeshed.com/unix-find/">find</a><br>
-trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)</p>
-<p>Déterminez quel est le dossier contenant le plus de méga de votre système.(du -h | sort -h | tail)</p>
-<h2>Process</h2>
-<ol>
-<li>Lister tous les process de tous les utilisateurs (avec la commande <code>ps</code> et ses options)</li>
-<li>Les compter (avec la commande <code>wc</code>)</li>
-<li>Comptez uniquement les process de root puis les vôtres (avec l'aide de la commande <code>grep</code>)</li>
-<li>À l\aide de deux terminaux :
-<ol>
-<li>ouvrir un <code>nano</code> dans lun,</li>
-<li>à l'aide de son PID, tuer le process <code>nano</code> dans l'autre terminal.</li>
-</ol>
-</li>
-</ol>
 <h2>Sur une machine de l'ecm</h2>
 <h3>Connection aux sas</h3>
 <p>En groupe.</p>
@@ -195,13 +147,6 @@ trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mti
 <li>Quelle difference de fonctionnement avec les 2 cas precedents ?</li>
 <li>Une url peut être utilisée comme un mot de passe pour accéder à une ressource puisqu'il est impossible <strong>depuis l'extérieur</strong> de connaître toutes les url accessibles. En revanche pour une personne connectée au réseau, elle peut visiter l'arborescence de <code>~/html/</code>. Comment protéger les fichier à cacher tout en les laissant accessible de l'extérieur ?</li>
 </ol>
-<h2>Que fait ça ?</h2>
-<p>Vu dans un fichier de configuration d'un nouvel utilisateur :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token assign-left variable">password</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /dev/urandom <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-dc</span> <span class="token string">'a-zA-Z0-9'</span> <span class="token operator">|</span> <span class="token function">fold</span> <span class="token parameter variable">-w</span> <span class="token number">8</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">1</span><span class="token variable">)</span></span>
-</code></pre>
-<blockquote>
-<p>TBD en ajouter d'autres</p>
-</blockquote>
 
 
 </article>
