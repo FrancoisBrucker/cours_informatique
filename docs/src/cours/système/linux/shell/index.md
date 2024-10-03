@@ -13,6 +13,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD à refaire mieux.
+
 Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :
 
 - du shell
@@ -68,7 +70,10 @@ La différence est que pour le deuxième appel, c'est le bash du PATH qui est pr
 ### bash
 
 {% aller %}
-[bash scripting](bash){.interne}
+
+1. [Environnement](environnement-configuration){.interne}
+2. [bash scripting](bash){.interne}
+
 {% endaller %}
 
 Exercices :

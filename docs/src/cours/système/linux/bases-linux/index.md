@@ -21,7 +21,7 @@ Bases d'un système Linux.
 4. [fichiers et droits](fichiers-droits){.interne}
 5. [process](process){.interne}
 6. [commandes](./commandes){.interne}
-7. [environnement et configuration](environnement-configuration){.interne}
+7. [exercices](exercices){.interne}
 
 ## Bibliographie
 

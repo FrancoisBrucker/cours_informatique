@@ -27,8 +27,8 @@ Cours d'introduction au système. La partie ops de dev**ops**.
 Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un développeur s'il veut pouvoir comprendre et interagir avec son administrateur système et un serveur distant (unix).
 
 1. Système
-   1. [Système d'exploitation](./système-exploitation){.interne}
-   2. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
+   1. [Architecture d'un ordinateur](./architecture-ordinateur){.interne}
+   2. [Système d'exploitation](./système-exploitation){.interne}
    3. [Structures de données utiles](./structures-données-système){.interne}
    4. [Linux](linux){.interne}
 2. Langages
