@@ -444,7 +444,11 @@ Il suffit de prendre $S = \\{s\\}$ comme coupe et de remarquer que $c(S, \overli
 
 Attention, la capacité d'une coupe peut être aussi grande que l'on veut et donc cet algorithme n'est **pas** de complexité polynomial en la taille des entrées.
 
-De plus, et de façon plus insidieuse, si les capacités sont réelles, l'algorithme peut même ne jamais s'arrêter... L'exemple que nous allons prendre pour illustrer ce cas particulier est tiré de [l'article _"The Simplest and Smallest Network on Which the Ford-Fulkerson Maximum Flow Procedure May Fail to Terminate"_](https://www.jstage.jst.go.jp/article/ipsjjip/24/2/24_390/_pdf) qui fait une revue de plusieurs exemples pathologiques.
+#### Valeurs réelles
+
+Attention, l'algorithme ne converge que si les valeurs sont entières. Si les capacités sont réelles, l'algorithme peut ne jamais s'arrêter...
+
+L'exemple que nous allons prendre pour illustrer ce cas particulier est tiré de [l'article _"The Simplest and Smallest Network on Which the Ford-Fulkerson Maximum Flow Procedure May Fail to Terminate"_](https://www.jstage.jst.go.jp/article/ipsjjip/24/2/24_390/_pdf) qui fait une revue de plusieurs exemples pathologiques.
 
 On considère le graphe orienté et les capacités suivantes :
 
@@ -452,7 +456,7 @@ On considère le graphe orienté et les capacités suivantes :
 
 Avec :
 
-- $M$ un entier plus grand ou égal à 4
+- $M$ un entier plus grand ou égal à 5
 - $r = (\sqrt{5}-1)/2$
 
 Le flot maximal est bien sur de $2M + 1$ (la valeur de la coupe $S = \\{s, c, d\\}$) et est réalisé par, par exemple :
@@ -461,25 +465,32 @@ Le flot maximal est bien sur de $2M + 1$ (la valeur de la coupe $S = \\{s, c, d\
 
 Cependant, la nature particulière de $r$ ($r^k-r^{k+1} = r^{k+2}$) et un choix malheureux de chaînes augmentantes peut ne pas faire converger l'algorithme en un nombre fini d'opérations.
 
-On commence par trouver une première chaîne augmentante en partant du plot nul :
+On commence par trouver une première chaîne augmentante en partant du flot nul :
 
 ![graphe flot init](./flot-infini-parcours-1.png)
 
 Puis on va itérativement appliquer les chaines augmentante :
 
-1. $sabcdp$ : on peut augmenter le flot de $r^1$
-    ![graphe flot 1](./flot-infini-parcours-2.png)
-2. $scbap$ : on peut augmenter le flot de $r^1$
-    ![graphe flot 2](./flot-infini-parcours-3.png)
-3. $sabcdp$ : on peut augmenter le flot de $r^2$
-    ![graphe flot 3](./flot-infini-parcours-4.png)
-4. $sdcbp$ : on peut augmenter le flot de $r^2$
-    ![graphe flot 4](./flot-infini-parcours-5.png)
+1. $sabcdp$ : on peut augmenter le flot de $r^1$, ce qui sature l'arc $ab$
+   ![graphe flot 1](./flot-infini-parcours-2.png)
+2. $scbap$ : on peut augmenter le flot de $r^1$, ce qui sature l'arc $cb$
+   ![graphe flot 2](./flot-infini-parcours-3.png)
+3. $sabcdp$ : on peut augmenter le flot de $r^2$, ce qui sature l'arc $cd$
+   ![graphe flot 3](./flot-infini-parcours-4.png)
+4. $sdcbp$ : on peut augmenter le flot de $r^2$, ce qui sature l'arc $cb$
+   ![graphe flot 4](./flot-infini-parcours-5.png)
 
-Ces 4 étapes nous ont fait augmenter le flot de $2(r^1+r^2)$
+Ces 4 étapes nous ont fait augmenter le flot de $2(r^1+r^2)$. On peut refaire à l'infini ces 4 étapes, comme le montre le tableau suivant (on s'est arrêté à $n=2$):
 
-> TBD ca fonctionne pour $M$
-> TBD régime stable avec les r^i$ sous la forme d'un tableau de
+| chaîne      | $ab$        | $bc$        | $cd$                           | valeur flot                               |
+| ----------- | ----------- | ----------- | ------------------------------ | ----------------------------------------- |
+| $r-r^{n+1}$ | $1-0$       | $1-r^{n}$   | $2(\sum_{0\leq i\leq n}r^i)-1$ |
+| $sabcdp$    | $r-0$       | $1-r^{n+1}$ | $1-r^{n+2}$                    | $2(\sum_{0\leq i\leq n}r^i) -1 +r^{n+1}$  |
+| $scbap$     | $r-r^{n+1}$ | $1-0$       | $1-r^{n+2}$                    | $2(\sum_{0\leq i\leq n+1}r^i) - 1$        |
+| $sabcdp$    | $r-r^{n+3}$ | $1-r^{n+2}$ | $1-0$                          | $2(\sum_{0\leq i\leq n+1}r^i) -1+r^{n+2}$ |
+| $sdcbp$     | $r-r^{n+3}$ | $1-0$       | $1-r^{n+2}$                    | $2(\sum_{0\leq i\leq n+2}r^i)-1$          |
+
+On peut alors recommencer jusqu'à l'infini car $\sum_{0\leq i\leq n}r^i$ est [une série géométrique](https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique) convergente : $\sum_{0\leq i\leq n}r^i \leq 1/(1-r)\leq 3$ pour tout $n$. Et donc la valeur du flot sera toujours inférieure à 5, donc à $M$ et pourra passer par tous les arcs.
 
 ### Exemple
 
@@ -746,7 +757,7 @@ On peut procéder comme suit, qui retrace toutes les possibilités de création 
   - si $yx$ est dans $G$ :
     - si $f[xy] < c[xy]$ et $0 < f[yx]$ on value par $\min(v[xy], v[yx])$ puisque l'on peut augmenter le flot **soit** en augmentant le flot passant par $xy$, soit en diminuant le flot passant par $yx$
     - si $f[xy] < c[xy]$ et $0 = f[yx]$ on value par $v[xy]$ puisque l'on ne peut augmenter le flot qu'en augmentant le flot passant par $xy$ \* si $f[xy] = c[xy]$ et $0 < f[yx]$ on value par $v[yx]$ puisque l'on ne peut augmenter le flot qu'en diminuant le flot passant par $yx$
-    {% enddetails %}
+      {% enddetails %}
 
 {% details "en python" %}
 

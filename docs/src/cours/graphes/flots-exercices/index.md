@@ -11,17 +11,27 @@ eleventyComputed:
 
 ## Application directe
 
-On considère le réseau ci-dessous, les capacités des arcs étant les nombres entre parenthèses :
+On considère le réseau ci-dessous, les capacités des arcs étant les nombres en noir :
 
 ![flot réseau](reseau.png)
 
 {% exercice %}
 Pourquoi a-t-on donné une capacité de 666 à un des arcs ? Aurait-on pu lui assigner une autre valeur sans changer les flot maximaux ?
 {% endexercice %}
+{% details "solution" %}
+On a mis une capacité très grande pour modéliser l'infini : la capacité de cet arc ne sera jamais un problème.
+
+Pour réaliser cela, on pourrait prendre la valeur de toute coupe ne la traversant pas, puisque la valeur du flot sera toujours inférieure. On peut par exemple prendre la coupe ne contenant que la source et mettre sa capacité à cette valeur : 6.
+{% enddetails %}
 
 {% exercice %}
 Donner et justifier la valeur maximale d'un flot sans utiliser l'algorithme de Ford et Fulkerson.
 {% endexercice %}
+{% details "solution" %}
+La capacité de la coupe ne contenant que la source vaut 6 et le flot suivant est de valeur 6 :
+
+![flot réseau max](reseau-max.png)
+{% enddetails %}
 
 {% exercice %}
 On considère un flot partiel donné par :
@@ -32,11 +42,39 @@ On considère un flot partiel donné par :
 
 Déterminez les valeurs du flot sur les autres arcs.
 {% endexercice %}
+{% details "solution" %}
+
+On remplit ce qui est indispensable pour la conservation des flots. c'est à dire les arcs sont un des sommets à tous ses arcs, sauf un, avec un flot indiqué :
+
+1. $b$
+2. puis $a$
+3. $c$ est a maintenant un flot de fixé sur tous ses voisins mais la conservation du flot est OK
+4. $d$
+5. $g$
+
+On obtient le flot suivant, de valuation 3 :
+
+![flot réseau suite](reseau-suite.png)
+
+{% enddetails %}
+
 {% exercice %}
 
 À partir du flot précédent, utiliser l'algorithme de Ford et Fulkerson pour réaliser le flot maximal en une seule chaîne augmentante ayant des arcs dans les deux sens
 
 {% endexercice %}
+{% details "solution" %}
+Pour trouver le flot maximal en une unique chaîne augmentante, il faut trouver en trouver une d'augmentation possible 3.
+
+Depuis la source :
+
+1. la seule possibilité de est de considérer l'arc $sc$ les deux autres étant saturés.
+2. Puis il faut passer par l'arc $ca$, puisque l'arc $cg$ ne peut être augmenté que de 1.
+3. ensuite deux choix :
+   - soit $ad$ puis $dp$
+   - soit $ab$, $bd$ et enfin $dp$ qui est une autre possibilité
+
+{% enddetails %}
 
 ## Création d'une source et d'un puits
 
@@ -64,6 +102,11 @@ $$
 
 Est-il possible de satisfaire les demandes des $y_j$, à partir des possibilités des $x_i$ et des possibilités de transport ?
 {% endexercice %}
+{% details "solution" %}
+
+> TBD avec des arc dirigés
+
+{% enddetails %}
 
 ## Modification du flot max
 
