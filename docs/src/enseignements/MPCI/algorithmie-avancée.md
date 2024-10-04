@@ -118,7 +118,7 @@ A rendre pour le 18 octobre.
 
 Exercices sur les flots :
 
-1. applications directs
+1. [applications directs](/cours/graphes/flots-exercices/)
 2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
 3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
 4. $k$-connectivités d'un graphe

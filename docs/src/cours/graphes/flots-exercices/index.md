@@ -16,7 +16,7 @@ On considère le réseau ci-dessous, les capacités des arcs étant les nombres 
 ![flot réseau](reseau.png)
 
 {% exercice %}
-Pourquoi a-t-on donné une capacité de 666 à un des arcs ?
+Pourquoi a-t-on donné une capacité de 666 à un des arcs ? Aurait-on pu lui assigner une autre valeur sans changer les flot maximaux ?
 {% endexercice %}
 
 {% exercice %}
