@@ -417,10 +417,69 @@ def ford_et_fulkerson(G, c, s, p, f):
 
 La complexité de l’algorithme de marquage est proportionnelle au nombre d'arête du graphe (il suffit de stocker les éléments marqué dans une liste que l'on prend petit à petit). Il est donc optimal pour trouver et traiter une chaîne augmentante.
 
-En revanche, la complexité totale dépend du nombre de fois où l'on va trouver une chaîne augmentante.
+En revanche, la complexité totale dépend du nombre de fois où l'on va trouver une chaîne augmentante. Si les capacités sont toutes entières, ce qui va être le cas en informatique (au pire les nombres sont des valeurs $k\cdot \epsilon$ avec $\epsilon >0$ et $k$ entier, ce qui revient au même que de manipuler des entiers) on peut borner la complexité de l'algorithme :
 
-> TBD : calcul complexité si entier
-> TBD : Complexité exponentielle si pas entier : ajouter exemple
+{% note "**Proposition**" %}
+Soit $G = (V, E)$ un graphe orienté et $c : E \rightarrow \mathbb{N}^{+\star}$ des capacités **entières**. Trouver le flot maximal entre deux sommets $s$ et $p$ de $G$ peut être effectué par l'algorithme de Ford et Fulkerson en :
+$\mathcal{O}(c(S, \overline{S}) \cdot \vert E\vert)$ opérations.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Trouver une chaîne augmentante se fait en $\mathcal{O}(\vert E\vert)$ opérations et comme le flot augmente au minimum de 1 à chaque fois, on obtient bien le résultat souhaité.
+
+{% enddetails %}
+
+On peut prendre ce que l'on veut comme comme coupe comme par exemple $S = \\{s\\}$, $S = V \backslash \\{p\\}$ ou toute autre coupe dont on peut facilement calculer la capacité.
+
+Il existe un cas particulier très important, le cas où la capacité est constante :
+
+{% exercice %}
+Montrer que si les capacités sont constantes, la complexité de l'algorithme de ford et Fulkerson est en $\mathcal{O}(\vert V\vert \cdot \vert E\vert)$
+{% endexercice %}
+{% details "solution" %}
+Il suffit de prendre $S = \\{s\\}$ comme coupe et de remarquer que $c(S, \overline{S}) = \mathcal{O}(\vert V \vert|)$
+
+{% enddetails %}
+
+Attention, la capacité d'une coupe peut être aussi grande que l'on veut et donc cet algorithme n'est **pas** de complexité polynomial en la taille des entrées.
+
+De plus, et de façon plus insidieuse, si les capacités sont réelles, l'algorithme peut même ne jamais s'arrêter... L'exemple que nous allons prendre pour illustrer ce cas particulier est tiré de [l'article _"The Simplest and Smallest Network on Which the Ford-Fulkerson Maximum Flow Procedure May Fail to Terminate"_](https://www.jstage.jst.go.jp/article/ipsjjip/24/2/24_390/_pdf) qui fait une revue de plusieurs exemples pathologiques.
+
+On considère le graphe orienté et les capacités suivantes :
+
+![graphe flot infini](./flot-infini-1.png)
+
+Avec :
+
+- $M$ un entier plus grand ou égal à 4
+- $r = (\sqrt{5}-1)/2$
+
+Le flot maximal est bien sur de $2M + 1$ (la valeur de la coupe $S = \\{s, c, d\\}$) et est réalisé par, par exemple :
+
+![graphe flot infini max](./flot-infini-2.png)
+
+Cependant, la nature particulière de $r$ ($r^k-r^{k+1} = r^{k+2}$) et un choix malheureux de chaînes augmentantes peut ne pas faire converger l'algorithme en un nombre fini d'opérations.
+
+On commence par trouver une première chaîne augmentante en partant du plot nul :
+
+![graphe flot init](./flot-infini-parcours-1.png)
+
+Puis on va itérativement appliquer les chaines augmentante :
+
+1. $sabcdp$ : on peut augmenter le flot de $r^1$
+    ![graphe flot 1](./flot-infini-parcours-2.png)
+2. $scbap$ : on peut augmenter le flot de $r^1$
+    ![graphe flot 2](./flot-infini-parcours-3.png)
+3. $sabcdp$ : on peut augmenter le flot de $r^2$
+    ![graphe flot 3](./flot-infini-parcours-4.png)
+4. $sdcbp$ : on peut augmenter le flot de $r^2$
+    ![graphe flot 4](./flot-infini-parcours-5.png)
+
+Ces 4 étapes nous ont fait augmenter le flot de $2(r^1+r^2)$
+
+> TBD ca fonctionne pour $M$
+> TBD régime stable avec les r^i$ sous la forme d'un tableau de
 
 ### Exemple
 

@@ -42,7 +42,7 @@ Si l'on suppose que l'état de gravité d'un patient est connu, on peut faire bi
 
 Un tas est un arbre binaire planté complet dont les sommets sont des entiers. On considère en plus qu'un tas est **plein**, c'est-à-dire que les feuilles de hauteur maximum forment un intervalle à gauche de l'arbre.
 
-![arbre_plante_tas_?](../assets/img/arbre_plante_tas_abc.png)
+![arbre_plante_tas_?](arbre_plante_tas_abc.png)
 
 {% exercice %}
 

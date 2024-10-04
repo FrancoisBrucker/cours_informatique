@@ -350,7 +350,7 @@ On a $T = T'$.
 {% endnote %}
 {% details "preuve", "open" %}
 
-Encore une fois par récurrence car la première arête recodée est la première arête supprimée en codant.
+Il est facile de voir que la première arête recodée est la première arête supprimée en codant. Une récurrence immédiate permet alors de conclure que les deux arbres sont identiques.
 
 {% enddetails %}
 
@@ -359,6 +359,10 @@ Le fait que le codage/recodage de Prüfer soit une bijection montre que le nombr
 ### Tirage aléatoire d'un arbre
 
 Trouver un arbre aléatoire d'un ensemble $V$ à $n$ éléments revient à tirer avec remise $n-2$ fois parmi son ensemble de sommets.
+
+{% attention %}
+On tire aléatoire un arbre à $V$ fixé, **pas** une forme d'arbre.
+{% endattention %}
 
 ## Représentation graphique
 
