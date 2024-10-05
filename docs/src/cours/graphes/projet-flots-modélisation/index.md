@@ -84,7 +84,7 @@ Le flot est maximum, l'algorithme de Ford et Fulkerson nous donnant une coupe mi
 ![flot transport coupe min](flot-app-transport-6.png)
 {% enddetails %}
 
-## Problème du transport amoureux
+## <span id="transport-amoureux"></span>Problème du transport amoureux
 
 Des héros littéraires ont décidé de se marier. On considère pour simplifier qu'ils sont tous hétérosexuels et qu'ils ont préétablis une matrice d'affinité : un cœur dans la case signifie que la ligne et la colonne sont intéressées l'une par l'autre.
 

@@ -26,6 +26,13 @@ eleventyComputed:
 
 - tutte 47 graph with perfect matching dans NP cap co-NP
 
+Propriétés :
+
+- couplage facile :
+  - augmentante
+  - méthode hongroise <https://www.youtube.com/watch?v=fMAmtE0UyzI>
+
+
 {% note "**Définition**" %}
 Soit $G = (V, E)$ un graphe. Un sous-ensemble $M\subseteq E$ est un **_couplage_** si quelque soient $xy \neq x'y' \in M$, $xy \cap x'y' =\varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).
 

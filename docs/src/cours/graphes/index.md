@@ -155,4 +155,3 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 ## Colorabilité
 
 > <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
-> NPC 3 coloriable : <https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap13-goodINF412.pdf> p10 3-coloriable.
