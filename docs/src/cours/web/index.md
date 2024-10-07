@@ -27,7 +27,7 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 ## URL ?
 
 1. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url](./anatomie-url){.interne}
-2. Bases de réseau pour communiquer sur internet : [Bases de réseau](../système/réseau/){.interne}
+2. Bases de réseau pour communiquer sur internet : [Bases de réseau](../système-et-réseau/réseau/){.interne}
 
 ## <span id="trinité"><span>  Trinité html/css/js
 

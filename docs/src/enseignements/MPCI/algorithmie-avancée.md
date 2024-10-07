@@ -62,12 +62,12 @@ N'hésitez pas à suivre et à faire également les exercices du cours suivant :
 {% endlien %}
 
 1. Cours 1 : Système et consequences pour le code
-   1. [architecture générale](/cours/système/architecture-ordinateur/#général){.interne}
+   1. [architecture générale](/cours/système-et-réseau/architecture-ordinateur/#général){.interne}
    2. Mémoire :
-      1. [organisation système de la mémoire](/cours/système/système-exploitation/process/#forme-finale){.interne}
+      1. [organisation système de la mémoire](/cours/système-et-réseau/système-exploitation/process/#forme-finale){.interne}
       2. différence entre pile et tas
-   3. [cours de C](/cours/système/langage-c/){.interne} : survole tout jusqu'aux exercices. A préparer chez vous
-2. Cours 2 : [exercices en C](/cours/système/langage-c/exercices){.interne}
+   3. [cours de C](/cours/système-et-réseau/langage-c/){.interne} : survole tout jusqu'aux exercices. A préparer chez vous
+2. Cours 2 : [exercices en C](/cours/système-et-réseau/langage-c/exercices){.interne}
 
 {% faire "**DM**" %}
 Faire en C le [projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
@@ -143,7 +143,7 @@ Exercices sur les flots :
 > TBD 3 cours
 
 {% aller %}
-[Cryptographie](/cours/système/cryptographie/){.interne}
+[Cryptographie](/cours/système-et-réseau/cryptographie/){.interne}
 {% endaller %}
 
 #### TBD

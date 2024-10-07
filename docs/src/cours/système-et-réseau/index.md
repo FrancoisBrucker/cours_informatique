@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Système
+title: Système et réseau
 tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"

@@ -67,6 +67,6 @@ C'est une notion avancée, mais il est parfois utile d'ajouter des sites lorsque
 
 Ci-après deux tutoriels avancés pour comprendre comment faire :
 
-* [signature électronique](/cours/système/cryptographie/#signature){.interne}
+* [signature électronique](/cours/système-et-réseau/cryptographie/#signature){.interne}
 * [dossiers de sites ubuntu](https://automateinfra.com/2021/04/14/how-to-work-with-ubuntu-repository/)
 * [signature électronique des sites](https://www.digitalocean.com/community/tutorials/how-to-handle-apt-key-and-add-apt-repository-deprecation-using-gpg-to-add-external-repositories-on-ubuntu-22-04)

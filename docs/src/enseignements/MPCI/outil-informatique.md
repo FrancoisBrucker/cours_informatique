@@ -28,7 +28,7 @@ Afin de pouvoir utiliser votre ordinateur comme un outil permettant de faire du 
 {% endaller %}
 
 {% info %}
-Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système/linux/bases-linux/post-installation/){.interne}
+Si vous débutez sous Linux/Ubuntu, cela vaut le coup de lire le tuto ci-après qui liste différents paquets utiles : [post-installation](/cours/système-et-réseau/linux/bases-linux/post-installation/){.interne}
 {% endinfo %}
 
 ## Utiliser le réseau
