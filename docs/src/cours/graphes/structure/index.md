@@ -324,6 +324,8 @@ On a parfois envie de découper un graphe pour en étudier une partie (s'il est 
 
 Il existe deux façons canonique de découper un graphe, supprimer soit des sommets, soit des arêtes :
 
+<div id="definition-sous-graphe"></div>
+<div id="definition-graphe-partiel"></div>
 {% note "**Définitions**" %}
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté.
 

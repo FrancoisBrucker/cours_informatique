@@ -35,6 +35,7 @@ Le problème revient maintenant de trouver un cycle qui passe par toutes les ar�
 
 ## Problème de graphe
 
+<div id="definition-cycle-eulerien"></div>
 {% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **cycle eulérien** de $G$ est un cycle passant par toutes les arêtes du graphe.
 {% endnote %}
@@ -311,6 +312,7 @@ Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois 
 
 ### Chemin eulérien
 
+<div id="definition-chemin-eulerien"></div>
 {% note "**Définition**" %}
 Soit $G= (V, E)$ un multi-graphe non orienté. Un **chemin eulérien entre $x$ et $y$** est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe
 {% endnote %}

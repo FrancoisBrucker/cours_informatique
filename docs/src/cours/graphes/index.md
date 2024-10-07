@@ -98,7 +98,6 @@ Algorithmes généraux :
 {% endaller %}
 
 > exo : <https://www.youtube.com/watch?v=OTfp2_SwxHk>
->
 > TBD : DFS et arbre. Tarjan pour fortement connexe.
 
 {% aller %}
@@ -146,12 +145,47 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD projet Christophides
+> TBD revenir sur le problème du voyage de commerce avec Christophides pour les distances
 
-## Planarité
+## Colorabilité d'un graphe
+
+> c'est k-parti renommé.
+> 
+> <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
+> 3 colorable np-complet.
+> tbd glouton
+
+## Graphes Planaires
 
 > TBD isomorphisme de graphe planaire
+> 5 et 4 coloriable. 3 coloriable np-complet.
 
-## Colorabilité
+> secret sans informations.
 
-> <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
+## Algorithmes randomisés
+
+> TBD Partie 3, après algo random et hasard en algorithmie.
+
+### Graphes aléatoires et infinis
+
+> erdos-rado
+>
+
+### couplage
+
+> Algo randomisés :
+>
+> - <https://www.epfl.ch/labs/disopt/wp-content/uploads/2018/09/pset3.pdf>
+> - <https://madars.org/projects/6854/AlgMatching.pdf>
+> - <https://www.cs.cmu.edu/~15850/notes/lec8.pdf>
+> - <https://www.math.uwaterloo.ca/~harvey/W11/Matching.pptx>
+>
+> TBD : <https://web.eecs.umich.edu/~pettie/matching/Rabin-Vazirani-randomized-maximum-matching.pdf> -> peut être amélioré.
+> Micali-Vazirani : <https://arxiv.org/pdf/2012.03582>
+>
+> TBD : Harvey 2006, le mieux, Las Vegas :
+>
+> - <https://www.math.uwaterloo.ca/~harvey/Publications/AlgebraicMatching/AlgebraicMatching.pdf>
+> - Thèse (MIT) : <https://www.math.uwaterloo.ca/~harvey/PhDThesis.pdf>
+> - <https://web.eecs.umich.edu/~pettie/matching/Harvey-maximum-matching-j-version.pdf>
+>

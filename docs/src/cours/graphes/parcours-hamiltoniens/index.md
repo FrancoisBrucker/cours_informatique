@@ -12,9 +12,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+<div id="definition-graphe-hamiltonien"></div>
 {% note "**Définition**" %}
 Un graphe (_resp._ graphe dirigé) admet un **_cycle_** (_resp._ **_circuit_**) **_hamiltonien_** s'il existe un cycle (_resp._ un circuit) élémentaire passant par tous les sommets.
 
+Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien. 
 {% endnote %}
 
 On doit ce problème au mathématicien [Hamilton](https://en.wikipedia.org/wiki/William_Rowan_Hamilton) qui a proposé de le résoudre [sous la forme d'un casse tête](https://en.wikipedia.org/wiki/Icosian_game) qu'il commercialisera et correspond à l'exercice suivant :
@@ -27,7 +29,7 @@ Montrer que le graphe suivant possède un cycle hamiltonien
 ![dodécaèdre](dodécaèdre_hamilton.png)
 {% enddetails %}
 
-Un **_graphe est hamiltonien_** s'il possède un cycle hamiltonien. La définition suivante est également très utilisée :
+La définition suivante est également très utilisée :
 
 {% note "**Définition**" %}
 Un graphe (_resp._ graphe dirigé) admet un **_chemin hamiltonien_** s'il existe un chemin élémentaire passant par tous les sommets.

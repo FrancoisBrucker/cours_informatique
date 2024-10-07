@@ -55,7 +55,9 @@ Edmonds et Johnson en 1973 ont démontré que le problème du postier chinois é
 
 Il est cependant NP-complet pour les graphes mixtes dans le cas général ([Papadimitriou](https://fr.wikipedia.org/wiki/Christos_Papadimitriou), 1976)
 
-Nous allon sdans ce projet unique,ent nous concentrer sur le cas simple
+Nous allons dans ce projet unique,ent nous concentrer sur le cas simple
+
+> TBD renvoyer à la partie couplage pour des algos exacts
 
 ## Graphe simple
 

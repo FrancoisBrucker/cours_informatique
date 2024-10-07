@@ -704,6 +704,8 @@ Et on obtient :
 
 ### Graphe d'écart
 
+> TBD xy implique pas yx. Sinon on ajoute des arcs xy et yz, zx de même capacité.
+
 L'algorithme de Ford et Fulkerson pour trouver une chaîne augmentante est efficace si les capacités sont peut importante. Il n'est cependant pas polynomial.
 
 Nous allons montrer ici une variante utilisant un graphe, nommé **_graphe d'écart_**, pour trouver une chaîne augmentante. La simple utilisation de ce graphe va montrer qu'il est possible de rendre l'algorithme de Ford et Fulkerson polynomial.
@@ -851,6 +853,10 @@ Et le graphe d'écart qui ne permet plus de trouver un chemin entre $s$ et $p$ :
 Si les arcs ont un coût de passage $v(u)$, le coût du flot est : $\sum_{u \in E} v(u)f(u)$
 
 On peut alors chercher à trouver un flot maximum à coût minimum. Ceci est possible pour les graphes antisymétriques (c'est à dire que si l'arête $xy$ existe, l'arête $yx$ n'existe pas) en utilisant les graphes d'écart pour trouver une chaîne augmentante de poids minimum.
+
+Cet algorithme s'appelle algorithme de Busaker et Gowen.
+
+> TBD démontrer que l'algorithme est correct si on commence depuis un flot nul, et pas forcément sinon.
 
 {% info %}
 La complexité est plus importante qu'avec l'algorithme de Ford et Fulkerson car il faut utiliser Dijkstra pour trouver un chemin.

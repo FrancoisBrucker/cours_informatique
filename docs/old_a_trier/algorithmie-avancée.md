@@ -15,6 +15,8 @@ eleventyComputed:
 
 ## TBD
 
+> TBD exos graphes <http://www.discmath.ulg.ac.be/cours/Graphes22-23.pdf>
+
 > TBD reprendre cours L1. On formalise ce que l'on a vu comme ça en L1.
 > complexité amortie, NP, graphes, design et approximation.
 
@@ -260,11 +262,11 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 - spectral graphs : <https://www.youtube.com/watch?v=uTUVhsxdGS8>
 - playlist <https://www.youtube.com/watch?v=7T-webnamho&list=PLzXFiYlgM72LMHOeTaZSHvkREdLbKBxLI>
 
-- graphe de rado pour preuve aléaoitre et graphe infini :
+- graphe de Rado pour preuve aléatoire et graphe infini :
   - <https://www.youtube.com/watch?v=3QjZ31lj974>
   - <https://www.youtube.com/watch?v=XwVZ5VttrW0&t=3s>
 - vertex cover
-- christophides : <https://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec9.pdf>
+- Christophides : <https://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec9.pdf>
 - structures implique de nombreuses classes de problèmes et donc d'algorithmes. POuvant être adaptés a ses propres solution s. eg voyageur de commerce. matching. etc.
 - bi-parti
 - planaire :
@@ -274,12 +276,10 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
   - 4 colorier un graphe planaire 3 coloriable : <https://perso.ens-lyon.fr/eric.thierry/ER02/esperet-col.pdf>
   - 5 coloration <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
 - coloration
-- arbres : propriété, code Prüfer
 - k-connectivité
-- flots
+
 - postier chinois
 - couplage
-- Hamilton
 - graphes infinis
 - random graphs
 - union-find
