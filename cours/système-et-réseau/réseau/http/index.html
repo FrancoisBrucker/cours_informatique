@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Protocole http</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Protocole http</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/http/">Protocole http</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Overview">Aperçu du protocole http</a></p>
+</div>
+</div>
+<p>Avec le protocole http le client est souvent un navigateur web, par exemple <a href="https://fr.wikipedia.org/wiki/Google_Chrome">chrome</a>, qui accède à l'application serveur via une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a> comme <a href="http://www.google.fr">http://www.google.fr</a>, qui lie le nom de la machine qui héberge le serveur (ici <code>www.google.fr</code>) et le protocole (http) : il n'y a qu'un seul serveur et de multiples clients.</p>
+<p>Exemple de requête et de réponse en utilisant la commande <a href="https://curl.se/"><code>curl</code></a> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">curl</span> http://www.google.fr 
+
+<span class="token operator">&lt;</span><span class="token operator">!</span>doctype html<span class="token operator">></span><span class="token operator">&lt;</span>html <span class="token assign-left variable">itemscope</span><span class="token operator">=</span><span class="token string">""</span> <span class="token assign-left variable">itemtype</span><span class="token operator">=</span><span class="token string">"http://schema.org/WebPage"</span> <span class="token assign-left variable">lang</span><span class="token operator">=</span><span class="token string">"fr"</span><span class="token operator">></span><span class="token operator">&lt;</span>head<span class="token operator">></span><span class="token operator">&lt;</span>meta <span class="token assign-left variable">content</span><span class="token operator">=</span><span class="token string">"text/html; charset=UTF-8"</span> http-equiv<span class="token operator">=</span><span class="token string">"Content-Type"</span><span class="token operator">></span>
+
+<span class="token punctuation">[</span>snip<span class="token punctuation">]</span>
+</code></pre>
+<p>On ne voit que la réponse du serveur, qui est la page web d'accueil de Google. Plus précisément on ne voit que la partie <em>body</em> du message http.</p>
+<p>Tout message http est constitué de deux parties séparées par une ligne vide :</p>
+<pre><code>headers
+
+body
+</code></pre>
+<p>De façon pratique, seule la partie <em>body</em> est utilisée puisqu'elle contient la page html, la partie headers contient des informations complémentaires, utiles au navigateur et c'est pourquoi curl ne l'affiche pas par défaut.</p>
+<p>Affichons toute la réponse :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> http://www.google.fr <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> -
+
+HTTP/1.1 <span class="token number">200</span> OK
+Date: Sun, <span class="token number">22</span> Oct <span class="token number">2023</span> <span class="token number">11</span>:48:07 GMT
+Expires: <span class="token parameter variable">-1</span>
+Cache-Control: private, max-age<span class="token operator">=</span><span class="token number">0</span>
+Content-Type: text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>ISO-8859-1
+Content-Security-Policy-Report-Only: object-src <span class="token string">'none'</span><span class="token punctuation">;</span>base-uri <span class="token string">'self'</span><span class="token punctuation">;</span>script-src <span class="token string">'nonce-sGPqt8KFPVp8rNGgfz-I9Q'</span> <span class="token string">'strict-dynamic'</span> <span class="token string">'report-sample'</span> <span class="token string">'unsafe-eval'</span> <span class="token string">'unsafe-inline'</span> https: http:<span class="token punctuation">;</span>report-uri https://csp.withgoogle.com/csp/gws/other-hp
+Server: gws
+X-XSS-Protection: <span class="token number">0</span>
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: <span class="token assign-left variable">AEC</span><span class="token operator">=</span>Ackid1RFMolAVTxqHjvwg9GzsSPD8fcT1i7nKjUNCLbruMDT3tdfEZprh_E<span class="token punctuation">;</span> <span class="token assign-left variable">expires</span><span class="token operator">=</span>Fri, <span class="token number">19</span>-Apr-2024 <span class="token number">11</span>:48:07 GMT<span class="token punctuation">;</span> <span class="token assign-left variable">path</span><span class="token operator">=</span>/<span class="token punctuation">;</span> <span class="token assign-left variable">domain</span><span class="token operator">=</span>.google.fr<span class="token punctuation">;</span> Secure<span class="token punctuation">;</span> HttpOnly<span class="token punctuation">;</span> <span class="token assign-left variable">SameSite</span><span class="token operator">=</span>lax
+Accept-Ranges: none
+Vary: Accept-Encoding
+Transfer-Encoding: chunked
+
+<span class="token operator">&lt;</span><span class="token operator">!</span>doctype html<span class="token operator">></span><span class="token operator">&lt;</span>html <span class="token assign-left variable">itemscope</span><span class="token operator">=</span><span class="token string">""</span> <span class="token assign-left variable">itemtype</span><span class="token operator">=</span><span class="token string">"http://schema.org/WebPage"</span> <span class="token assign-left variable">lang</span><span class="token operator">=</span><span class="token string">"fr"</span><span class="token operator">></span><span class="token operator">&lt;</span>head<span class="token operator">></span><span class="token operator">&lt;</span>meta <span class="token assign-left variable">content</span><span class="token operator">=</span><span class="token string">"text/html; charset=UTF-8"</span> http-equiv<span class="token operator">=</span><span class="token string">"Content-Type"</span><span class="token operator">></span>
+
+<span class="token punctuation">[</span>snip<span class="token punctuation">]</span>
+</code></pre>
+<p>On voit bien la séparation entre la partie header et body.</p>
+<p>De la même manière, une requête est composée d'un header et d'un body. Le body peut cependant être vide, comme c'est le cas de notre requête :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> http://www.google.fr <span class="token parameter variable">-s</span> <span class="token parameter variable">-v</span> <span class="token operator">></span> /dev/null                                           
+*   Trying <span class="token punctuation">[</span>2a00:1450:4007:81a::2003<span class="token punctuation">]</span>:80<span class="token punctuation">..</span>.
+* Connected to www.google.fr <span class="token punctuation">(</span>2a00:1450:4007:81a::2003<span class="token punctuation">)</span> port <span class="token number">80</span> <span class="token punctuation">(</span><span class="token comment">#0)</span>
+<span class="token operator">></span> GET / HTTP/1.1
+<span class="token operator">></span> Host: www.google.fr
+<span class="token operator">></span> User-Agent: curl/8.1.2
+<span class="token operator">></span> Accept: */*
+<span class="token operator">></span> 
+
+<span class="token punctuation">[</span>snip<span class="token punctuation">]</span>
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Avec Wireshark, attrapez la communication http lié à la commande</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> http://www.google.fr <span class="token parameter variable">-s</span> <span class="token parameter variable">-v</span> <span class="token operator">></span> /dev/null
+</code></pre>
+<p>Retrouvez les messages transmis (headers et body) de la requête et de la réponse.</p>
+</div>
+</div>
+<blockquote>
+<p>TBD header GET + host en 1.1<br>
+option nom:valeur</p>
+<p>body peut être ce que l'on veut. Aide avec le type mime.</p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

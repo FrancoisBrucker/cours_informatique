@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ajout de bibliothèques</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Ajout de bibliothèques</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/ajout-bibliothèques/">Ajout de bibliothèques</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Un programme <code>C</code> peut utiliser de nombreuses bibliothèques, dont la plupart ne sont pas intégrées par défaut lors de l'édition de lien.</p>
+<h2>Installation de la bibliothèque</h2>
+<p>Pour pouvoir être inclues dans notre programme, il faut que la bibliothèque soit installée :</p>
+<ul>
+<li>sur notre système :
+<ul>
+<li>la bibliothèque elle même est installée dans <code class="fichier">/usr/lib</code> si on peut utiliser cette bibliothèque de façon dynamique</li>
+<li>les fichiers d'entêtes <code class="fichier">.h</code> sont eux dans le dossier <code class="fichier">/usr/include</code></li>
+</ul>
+</li>
+<li>dans un dossier connu si on veut l'inclure de façon statique dans notre code.</li>
+</ul>
+<p>Nous allons utiliser la bibliothèque <a href="https://www.openssl.org/">openssl</a> qui permet le cryptage/décryptage de données. Cette bibliothèque est souvent installée par défaut sur un système car elle est utilisée par de nombreux programmes, mais il manque souvent les fichiers de headers qui ne sont utiles que si on peut programmer avec. C'est pourquoi il y a deux paquets à installer :</p>
+<ul>
+<li><code>sudo apt install libssl</code> qui installe la bibliothèque openssl (devrait déjà être sur votre système).</li>
+<li><code>sudo apt install libssl-dev</code> qui installe les fichiers <code class="language-">.h</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si vous êtes sous mac, tout est installé avec la commande <code>brew install openssl</code>.</p>
+</div>
+</div>
+<h2>Code</h2>
+<p>Nous allons utiliser les fonctions <a href="https://www.openssl.org/docs/man3.1/man7/evp.html">EVP</a> pour encoder et décoder une chaîne de caractères au format <a href="https://fr.wikipedia.org/wiki/Base64">base64</a></p>
+<p>Fichier <code class="fichier">base64.c</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;openssl/evp.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">char</span> <span class="token operator">*</span>entree <span class="token operator">=</span> <span class="token string">"longtemps je me suis couché de bonne heure."</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 3 bytes sont encodées en 4 bytes et un `\0` est ajouté à la fin</span>
+  <span class="token class-name">size_t</span> taille <span class="token operator">=</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>entree<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>code <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>taille<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> code_sortie <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  code_sortie <span class="token operator">=</span> <span class="token function">EVP_EncodeBlock</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>entree<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>entree<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>code_sortie <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"Erreur d'encodage"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> EXIT_FAILURE<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token operator">*</span>decode <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span>taille<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  code_sortie <span class="token operator">=</span> <span class="token function">EVP_DecodeBlock</span><span class="token punctuation">(</span>decode<span class="token punctuation">,</span> code<span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token punctuation">)</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>code_sortie <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"Erreur de décodage"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> EXIT_FAILURE<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"'%s'\n"</span><span class="token punctuation">,</span> entree<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"'%s'\n"</span><span class="token punctuation">,</span> code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"'%s'\n"</span><span class="token punctuation">,</span> decode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2>Compilateur</h2>
+<p>Plusieurs options de <code>clang</code> contrôlent l'inclusion de celles-ci :</p>
+<ul>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-I-dir"><code>-I</code></a> chemin vers les fichiers d'entêtes</li>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-L-dir"><code>-L</code></a> chemin vers la bibliothèque à inclure</li>
+<li><a href="https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-l-arg"><code>-l</code></a> nom de la bibliothèque à inclure</li>
+</ul>
+<p>Sous Linux/Ubuntu où les headers et les bibliothèques sont toutes installées dans le même dossier système, il suffit de renseigner la bibliothèque où sont définies les fonctions utilisées, ici c'est crypto :</p>
+<pre><code> clang base64.c -lcrypto
+
+</code></pre>
+<p>La bibliothèque ajoutée est la bibliothèque cryto qui est contenu dans le fichier <code>libcrypto.so</code> (dans le dossier système <code>/usr/lib/aarch64-linux-gnu/</code> chez moi) On ne donne pas le fichier en entier, on ne donne que son nom (un fichier de  bibliothèque dynamique s'écrira toujours <code class="fichier">libnom.so</code>).</p>
+<p>Le fichier d'entête est dans le dossier système des entêtes : <code class="fichier">/usr/include/</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Sous mac, si vous avez installé la bibliothèque avec brew et avec un mac arm, la ligne de commande sera plus importante car il faudra renseigner tous les champs :</p>
+<pre><code>clang base64.c -I/opt/homebrew/include/ -L/opt/homebrew/lib -lcrypto
+</code></pre>
+<ul>
+<li><code>-I</code> pour trouver le fichier <code class="fichier">/opt/homebrew/include/openssl/evp.h</code></li>
+<li><code>-L</code> pour trouver la bibliothèque <code class="fichier">/opt/homebrew/lib/libcrypto.dylib</code></li>
+</ul>
+</div>
+</div>
+<p>Il se peut que les bibliothèques ajoutée ne soient pas trouvées par le système à l'exécution. Ceci arrive lorsqu'elles ne sont pas dans des endroits système reconnu. VOus pouvez ajouter des dossiers de recherche vec la variable d'environnement <a href="https://linuxhint.com/what-is-ld-library-path/"><code>LD_LIBRARY_PATH</code></a>.</p>
+<h2>Makefile</h2>
+<p>Si vous compilez vos programme via la commande <code>make</code>, on a coutume de placer les options <code>-L</code> et <code>-l</code> dans une variable nommée <code>LDFLAGS</code> et utilisée uniquement lors de règle faisant l'édition de lien.</p>
+<p>N'oubliez pas également d'ajouter l'option <code>-I</code> si nécessaire dans la variable <code>CFLAGS</code>.</p>
+<h2>Bibliothèque statique</h2>
+<p>Si vous préférez lier une bibliothèque spécifique de façon statique à votre projet, il faut ruser. En effet :</p>
+<ul>
+<li>si vous utiliser l'option <code>-static</code> le compilateur va rendre statique toutes les bibliothèques dont la <code>libc</code> ce qui est inutile.</li>
+<li>le compilateur va préférer la version dynamique à la version statique s'il trouve les deux dans le même dossier.</li>
+</ul>
+<p>Faite un lien de votre bibliothèque statique dans un dossier temporaire et ajouter ce dossier à l'option <code>-L</code> lors de l'édition de lien. Le compilateur ne devrait voir que la bibliothèque statique (et non sa version dynamique qui est dans un autre dossier) et l'inclure dans votre dossier.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

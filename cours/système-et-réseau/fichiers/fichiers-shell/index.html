@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fichiers avec Bash</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Fichiers avec Bash</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/fichiers/fichiers-shell/">Fichiers avec Bash</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>On a déjà l'habitude d'utiliser les 3 file descriptor stdin, stdout et stderr.</p>
+<p>Leurs numéros sont utilisés lorsqu'on écrit des choses comme cela :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">cd</span> /root/ <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+</code></pre>
+<p>On redirige le file descriptor 2 (stderr) vers le fichier <code class="fichier">/dev/null</code>.</p>
+<h2>Créer ses file descriptors</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=FuiLk7uH9Jw">file descriptor en Bash</a></p>
+</div>
+</div>
+<p>Bash permet d'ouvrir/créer des fichiers et de leurs associer des file descriptor très facilement.</p>
+<p>On peut en créer d'autres avec <code>exec</code> (attention tout doit être collé), qui seront soit :</p>
+<ul>
+<li>associé à des fichiers déjà ouvert</li>
+<li>associé à un nouveau fichier</li>
+</ul>
+<p>Par exemple le code suivant qui crée un nouveau file descriptor qui est associé au <em>fichier</em> de la sortie standard:</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+$ <span class="token builtin class-name">echo</span> coucou <span class="token operator">>&amp;</span><span class="token number">42</span>
+coucou
+<span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
+lrwx------ <span class="token number">1</span> fbrucker fbrucker <span class="token number">64</span> oct.  <span class="token number">13</span> 09:20 /proc/704757/fd/42 -<span class="token operator">></span> /dev/pts/0
+
+</code></pre>
+<p>Ou créer un file descriptor associer à un nouveau fichier  :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span>texte
+$ <span class="token builtin class-name">echo</span> coucou <span class="token operator">>&amp;</span><span class="token number">42</span>
+$ <span class="token function">cat</span> texte 
+coucou
+$ <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
+l-wx------ <span class="token number">1</span> fbrucker fbrucker <span class="token number">64</span> oct.  <span class="token number">13</span> 09:20 /proc/704757/fd/42 -<span class="token operator">></span> /home/fbrucker/texte
+
+</code></pre>
+<p>Supprimer un file descriptor se fait ensuite avec <code>exec 42&gt;&amp;-</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>>&amp;</span>-
+$ <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
+ls: impossible d<span class="token string">'accéder à '</span>/proc/704757/fd/42': Aucun fichier ou dossier de ce <span class="token builtin class-name">type</span>
+</code></pre>
+<h2>Buffers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://eklitzke.org/stdout-buffering">N'oubliez pas le buffer</a></p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

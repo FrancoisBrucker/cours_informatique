@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Appels systèmes fichiers</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Appels systèmes fichiers</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/fichiers/fichiers-syscall/">Appels systèmes fichiers</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p>TBD commencer par un <a href="https://www.youtube.com/watch?v=-gP58pozNuM">strace fopen</a> et voir que c'est open qui est utilisé.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=BQJBe4IbsvQ">fopen vs open</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=ayMPFUGE_b4&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=20">fichiers et appels systèmes</a></p>
+</div>
+</div>
+<p>La création et gestion des fichiers est du ressort du noyau. Il faut donc faire un appel système à chaque manipulation.</p>
+<p>La gestion effective des fichiers lorsque l'on code en <strong>C</strong> se fait souvent via d'autres fonctions (que nous verrons plus tard), plus pratiques à utiliser.</p>
+<p>Les cinq principaux appels systèmes pour gérer un fichier sont :</p>
+<ul>
+<li><a href="https://man7.org/linux/man-pages/man2/open.2.html">open</a> : ouvre un fichier et rend un file descriptor</li>
+<li><a href="https://man7.org/linux/man-pages/man2/close.2.html">close</a> : ferme un fichier via son file descriptor</li>
+<li><a href="https://man7.org/linux/man-pages/man2/read.2.html">read</a> : lit du fichier</li>
+<li><a href="https://man7.org/linux/man-pages/man2/write.2.html">write</a> : écrit dans un fichier</li>
+<li><a href="https://man7.org/linux/man-pages/man2/lseek.2.html">lseek</a> : se positionne dans un fichier, si disponible</li>
+</ul>
+<p>Il en existe d'autres, comme <a href="https://man7.org/linux/man-pages/man2/dup.2.html">dup</a> dont le but est de dupliquer des file descriptors.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La section 2 de la commande <code>man</code> renseigne sur les appels systèmes. Faites l'essai pour les 5 fonctions ci-dessus</p>
+</div>
+</div>
+<blockquote>
+<p>TBD : un buffer ?</p>
+</blockquote>
+<h2>Gestion des fichiers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=tKvm_qOeRpU">file descriptor en C</a></p>
+</div>
+</div>
+<blockquote>
+<p>TBD ici. faire les programmes et expliquer. Puis strace/ltrace après chacun.</p>
+</blockquote>
+<p>Plusieurs programmes :</p>
+<h3>Ouverture et/ou création</h3>
+<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/stat.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+
+<span class="token keyword">extern</span> <span class="token keyword">int</span> errno<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span><span class="token punctuation">,</span>
+                  O_WRONLY<span class="token operator">|</span>O_CREAT<span class="token operator">|</span>O_TRUNC<span class="token punctuation">,</span>
+                  S_IRUSR <span class="token operator">|</span> S_IWUSR <span class="token operator">|</span> S_IRGRP <span class="token operator">|</span> S_IROTH <span class="token operator">|</span> S_IWOTH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//printf("fd = %d\n", fd);</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>fd <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"Erreur"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>une fois compilé, on peut exécuter le code. Il crée un fichier nommé <code>mon-fichier.txt</code> dans le dossier courant. En lisant la page <code>man 2 open</code> (la section 2 est pour les appels systèmes) on voit que l'on :</p>
+<ul>
+<li>crée ou ouvre un fichier en écriture</li>
+<li>on lui donne des droits.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>modifiez le contenu de <code class="fichier">mon-fichier.txt</code> dans un éditeur puis re-exécutez le code. Le fichier devrait à nouveau être vide</li>
+<li>changez le code pour que les autres n'aient pas le droit de lire le fichier créé</li>
+</ol>
+</div>
+</div>
+<p>En utilisant <code>ltrace</code> pour voir les appels aux bibliothèques :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ ltrace ./a.out
+__libc_start_main<span class="token punctuation">(</span>0xaaaacf2e0854, <span class="token number">1</span>, 0xffffc805d068, <span class="token number">0</span> <span class="token operator">&lt;</span>unfinished <span class="token punctuation">..</span>.<span class="token operator">></span>
+open<span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span>, <span class="token number">577</span>, 0646<span class="token punctuation">)</span>               <span class="token operator">=</span> <span class="token number">3</span>
+printf<span class="token punctuation">(</span><span class="token string">"fd = %d<span class="token entity" title="\n">\n</span>"</span>, 3fd <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token punctuation">)</span>                           <span class="token operator">=</span> <span class="token number">7</span>
+close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                         <span class="token operator">=</span> <span class="token number">0</span>
+__cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span>
++++ exited <span class="token punctuation">(</span>status <span class="token number">0</span><span class="token punctuation">)</span> +++
+
+</code></pre>
+<p>On voit qu'il y en à 3 : <code>open</code>, <code>printf</code> et <code>close</code>. Ils correspondent à des appels à la libc. Pour utiliser des fichiers, le  process doit demander au noyau de le faire via des appels systèmes. On peut les voir avec la commande <code>strace</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=mBfurelWwPQ">strace ouverture de fichiers</a></p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=2AmP7Pse4U0">strace et ltrace</a></li>
+<li><a href="https://www.youtube.com/watch?v=-gP58pozNuM">appels systèmes fichiers avec strace</a></li>
+<li><a href="https://www.youtube.com/watch?v=j_w-vQ3UriM&amp;list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf">playlist <code>strace</code></a></li>
+</ul>
+</div>
+</div>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">strace</span> ./a.out
+execve<span class="token punctuation">(</span><span class="token string">"./a.out"</span>, <span class="token punctuation">[</span><span class="token string">"./a.out"</span><span class="token punctuation">]</span>, 0xfffffb9635d0 /* <span class="token number">46</span> vars */<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+brk<span class="token punctuation">(</span>NULL<span class="token punctuation">)</span>                               <span class="token operator">=</span> 0xaaab1d30f000
+mmap<span class="token punctuation">(</span>NULL, <span class="token number">8192</span>, PROT_READ<span class="token operator">|</span>PROT_WRITE, MAP_PRIVATE<span class="token operator">|</span>MAP_ANONYMOUS, -1, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff94947000
+faccessat<span class="token punctuation">(</span>AT_FDCWD, <span class="token string">"/etc/ld.so.preload"</span>, R_OK<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token parameter variable">-1</span> ENOENT <span class="token punctuation">(</span>Aucun fichier ou dossier de ce <span class="token builtin class-name">type</span><span class="token punctuation">)</span>
+openat<span class="token punctuation">(</span>AT_FDCWD, <span class="token string">"/etc/ld.so.cache"</span>, O_RDONLY<span class="token operator">|</span>O_CLOEXEC<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span>
+newfstatat<span class="token punctuation">(</span><span class="token number">3</span>, <span class="token string">""</span>, <span class="token punctuation">{</span>st_mode<span class="token operator">=</span>S_IFREG<span class="token operator">|</span>0644, <span class="token assign-left variable">st_size</span><span class="token operator">=</span><span class="token number">72775</span>, <span class="token punctuation">..</span>.<span class="token punctuation">}</span>, AT_EMPTY_PATH<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mmap<span class="token punctuation">(</span>NULL, <span class="token number">72775</span>, PROT_READ, MAP_PRIVATE, <span class="token number">3</span>, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff94900000
+close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                <span class="token operator">=</span> <span class="token number">0</span>
+openat<span class="token punctuation">(</span>AT_FDCWD, <span class="token string">"/lib/aarch64-linux-gnu/libc.so.6"</span>, O_RDONLY<span class="token operator">|</span>O_CLOEXEC<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span>
+read<span class="token punctuation">(</span><span class="token number">3</span>, <span class="token string">"<span class="token entity" title="\177">\177</span>ELF<span class="token entity" title="\2">\2</span><span class="token entity" title="\1">\1</span><span class="token entity" title="\1">\1</span><span class="token entity" title="\3">\3</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\3">\3</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\267">\267</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\1">\1</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\340">\340</span>u<span class="token entity" title="\2">\2</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span><span class="token entity" title="\0">\0</span>"</span><span class="token punctuation">..</span>., <span class="token number">832</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">832</span>
+newfstatat<span class="token punctuation">(</span><span class="token number">3</span>, <span class="token string">""</span>, <span class="token punctuation">{</span>st_mode<span class="token operator">=</span>S_IFREG<span class="token operator">|</span>0755, <span class="token assign-left variable">st_size</span><span class="token operator">=</span><span class="token number">1641496</span>, <span class="token punctuation">..</span>.<span class="token punctuation">}</span>, AT_EMPTY_PATH<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mmap<span class="token punctuation">(</span>NULL, <span class="token number">1810024</span>, PROT_NONE, MAP_PRIVATE<span class="token operator">|</span>MAP_ANONYMOUS, -1, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff94746000
+mmap<span class="token punctuation">(</span>0xffff94750000, <span class="token number">1744488</span>, PROT_READ<span class="token operator">|</span>PROT_EXEC, MAP_PRIVATE<span class="token operator">|</span>MAP_FIXED<span class="token operator">|</span>MAP_DENYWRITE, <span class="token number">3</span>, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff94750000
+munmap<span class="token punctuation">(</span>0xffff94746000, <span class="token number">40960</span><span class="token punctuation">)</span>           <span class="token operator">=</span> <span class="token number">0</span>
+munmap<span class="token punctuation">(</span>0xffff948fa000, <span class="token number">24168</span><span class="token punctuation">)</span>           <span class="token operator">=</span> <span class="token number">0</span>
+mprotect<span class="token punctuation">(</span>0xffff948d9000, <span class="token number">61440</span>, PROT_NONE<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mmap<span class="token punctuation">(</span>0xffff948e8000, <span class="token number">24576</span>, PROT_READ<span class="token operator">|</span>PROT_WRITE, MAP_PRIVATE<span class="token operator">|</span>MAP_FIXED<span class="token operator">|</span>MAP_DENYWRITE, <span class="token number">3</span>, 0x188000<span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff948e8000
+mmap<span class="token punctuation">(</span>0xffff948ee000, <span class="token number">48744</span>, PROT_READ<span class="token operator">|</span>PROT_WRITE, MAP_PRIVATE<span class="token operator">|</span>MAP_FIXED<span class="token operator">|</span>MAP_ANONYMOUS, -1, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff948ee000
+close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                <span class="token operator">=</span> <span class="token number">0</span>
+set_tid_address<span class="token punctuation">(</span>0xffff94947f30<span class="token punctuation">)</span>         <span class="token operator">=</span> <span class="token number">1858948</span>
+set_robust_list<span class="token punctuation">(</span>0xffff94947f40, <span class="token number">24</span><span class="token punctuation">)</span>     <span class="token operator">=</span> <span class="token number">0</span>
+rseq<span class="token punctuation">(</span>0xffff94948600, 0x20, <span class="token number">0</span>, 0xd428bc00<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mprotect<span class="token punctuation">(</span>0xffff948e8000, <span class="token number">16384</span>, PROT_READ<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mprotect<span class="token punctuation">(</span>0xaaaae5610000, <span class="token number">4096</span>, PROT_READ<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+mprotect<span class="token punctuation">(</span>0xffff9494c000, <span class="token number">8192</span>, PROT_READ<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+prlimit64<span class="token punctuation">(</span><span class="token number">0</span>, RLIMIT_STACK, NULL, <span class="token punctuation">{</span>rlim_cur<span class="token operator">=</span><span class="token number">8192</span>*1024, <span class="token assign-left variable">rlim_max</span><span class="token operator">=</span>RLIM64_INFINITY<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
+munmap<span class="token punctuation">(</span>0xffff94900000, <span class="token number">72775</span><span class="token punctuation">)</span>           <span class="token operator">=</span> <span class="token number">0</span>
+openat<span class="token punctuation">(</span>AT_FDCWD, <span class="token string">"mon-fichier.txt"</span>, O_WRONLY<span class="token operator">|</span>O_CREAT<span class="token operator">|</span>O_TRUNC, 0646<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span>
+close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                <span class="token operator">=</span> <span class="token number">0</span>
+exit_group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>                           <span class="token operator">=</span> ?
++++ exited with <span class="token number">0</span> +++
+
+</code></pre>
+<p>Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger la bibliothèque partagée <code>libc</code> et faire les différents liens pour permettre son exécution.</p>
+<p>Les 3 derniers appels sont en revanche issus de notre code :</p>
+<ol>
+<li>le dernier <code class="language-">exit_group(0)</code> est le code de sortie (ligne 23 du code)</li>
+<li>l'avant dernier <code class="language-">close(3)</code> correspond à la fermeture de notre fichier (ligne 23 du code)</li>
+<li>l'avant avant dernier <code class="language-">openat(AT_FDCWD, &quot;mon-fichier.txt&quot;, O_WRONLY|O_CREAT|O_TRUNC, 0646) = 3 </code> correspond à l'ouverture du fichier (ligne 12 du code)</li>
+</ol>
+<p>On voit que le compilateur a utilisé :</p>
+<ul>
+<li>l'appel système <code>openat</code></li>
+<li>il a donné un numéro octal (il commence par 0) pour les permissions.</li>
+</ul>
+<p>Et que le file descriptor de notre fichier ouvert est 3.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Dé-commentez la ligne 16 du code et trouvez l'appel système correspondant.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>C'est un write dans stdout (de file descriptor 1).</p>
+</div>
+</details>     
+</div>
+<h2>Autre</h2>
+<ul>
+<li><a href="https://www.delftstack.com/fr/howto/c/dup2-in-c/">dup et dup2</a></li>
+<li><a href="https://www.geeksforgeeks.org/named-pipe-fifo-example-c-program/">Créer des fifo</a></li>
+<li><a href="https://www.youtube.com/watch?v=8AXEHrQTf3I">popen : fifo</a></li>
+</ul>
+<blockquote>
+<p>TBD lseek et monter ce que ça donne sur un fichier ?<br>
+adapter  <a href="https://www.youtube.com/watch?v=EA2MVIgu7Q4">fseek</a></p>
+</blockquote>
+<h2>Buffers</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html">N'oubliez pas le buffer</a></p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Fichiers en C</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Fichiers en C</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/fichiers-C/">Fichiers en C</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Un système de fichier est composé de...fichiers. La <code>libc</code> propose une grande variété de fonction permettant de les manipuler.</p>
+<p>Dans le monde unix, un fichier peut être beaucoup de choses. Nous y reviendrons. Pour l'instant nous nous contenterons de manipuler les éléments les plus représentatifs d'un système de fichiers :</p>
+<ul>
+<li>les fichiers &quot;<em>réguliers</em>&quot; (ie composés d'une suite d'octets) stockant des données texte (comme des codes sources), binaire (comme des images) ou des fichiers exécutables</li>
+<li>les dossiers qui organisent hiérarchiquement le système de fichier.</li>
+</ul>
+<h2>Contrôle du système de fichier</h2>
+<p>Les fichiers <code class="fichier">&lt;unistd.h&gt;</code> et <code class="fichier">&lt;sys/stat.h&gt;</code> définissent des fonctions permettant de contrôler le système de fichier.</p>
+<p>Certaines fonctions permettent de controller le dossier courant du programme <strong>C</strong> :</p>
+<ul>
+<li>le connaître avec <a href="https://koor.fr/C/unistd.h/getcwd.wp"><code class="language-">getcwd</code></a></li>
+<li>le changer avec <a href="https://koor.fr/C/unistd.h/chdir.wp"><code class="language-">chdir</code></a></li>
+</ul>
+<blockquote>
+<p>TBD getcwd : comment est stocké le résultat et le type de retour.</p>
+</blockquote>
+<p>D'autres de créer ou de supprimer des dossiers :</p>
+<p>- <code class="language-">mkdir</code><br>
+- <code class="language-">rmdir</code></p>
+<p>Et enfin les dernières les permissions des fichiers et si besoin les modifier :</p>
+<ul>
+<li><code class="language-">chmod</code></li>
+<li><code class="language-">stat</code></li>
+</ul>
+<blockquote>
+<p>TBD stat et mkdir pour check et créer un dossier.</p>
+</blockquote>
+<h2>Structure FILE</h2>
+<p>Un fichier &quot;<em>régulier</em>&quot;</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=bOF-SpEAYgk&amp;list=PLhQjrBD2T381k8ul4WQ8SQ165XqY149WW&amp;index=20">Utiliser FILE pour gérer ses fichiers</a></p>
+</div>
+</div>
+<p>Bufferisé pour la rapidité : attention au flush.</p>
+<h2>Entrées et sorties formatées</h2>
+<ul>
+<li>fprintf</li>
+<li>fscanf</li>
+</ul>
+<h2>stdin/out</h2>
+<blockquote>
+<p>test avec un PID dun autre process et envoie du texte dans le stdin d'au autre process<br>
+faire avec 1 fichier C et une commande, puis avec 2 fichiers C.</p>
+</blockquote>
+<p><a href="https://stackoverflow.com/questions/15883568/reading-from-stdin">stdin/out</a></p>
+<h2>TBD</h2>
+<p>aussi <a href="https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin"><code class="language-">getwchar</code></a> ?</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">putchar</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+  
+</code></pre>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token constant">stdin</span><span class="token punctuation">;</span> <span class="token comment">// ou tout autre fichier</span>
+<span class="token keyword">char</span> c<span class="token punctuation">;</span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">putc</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+      
+</code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

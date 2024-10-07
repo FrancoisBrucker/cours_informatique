@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Carte mère</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Carte mère</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/carte-mère/">Carte mère</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>La carte mère doit rentrer dans le boîtier de l’ordinateur. Sa forme est donc importante selon qu'on ait une tour, un portable ou un mini-pc. De sa forme va dépendre les différents composant qu'on va pouvoir lui adjoindre.</p>
+<p>Le format classique d'une tour, permettant les plus grandes cartes mères est le <a href="https://fr.wikipedia.org/wiki/Format_ATX">format ATX</a>. Elle possède :</p>
+<ul>
+<li>un emplacement pour placer le processeur</li>
+<li>des emplacements pour les barrettes de RAM <a href="https://fr.wikipedia.org/wiki/Dual_Inline_Memory_Module">DIMM</a> (ou <a href="https://fr.wikipedia.org/wiki/SO-DIMM">SO-DIMM</a> pour les portables). Ils sont spécifiques au type de RAM utilisé (DDR4 ou DDR5 actuellement).</li>
+<li>des ports <a href="https://fr.wikipedia.org/wiki/PCI_Express">PCIe</a> en x4, x8 ou x16 pour brancher des périphériques. On a coutume d'y brancher des appareils nécessitant un gros <a href="https://fr.wikipedia.org/wiki/D%C3%A9bit_binaire">débit</a>, comme des <a href="https://fr.wikipedia.org/wiki/Disque_dur">disques durs</a> ou la <a href="https://fr.wikipedia.org/wiki/Carte_graphique">carte graphique</a></li>
+<li>des ports pour les périphériques <a href="https://fr.wikipedia.org/wiki/USB">USB</a></li>
+<li>une horloge qui permet la synchronisation des différents devices. Chaque device soit fonctionner à une fréquence qui est un multiple de la fréquence d'horloge de la carte mère</li>
+<li>une mémoire contenant le gestionnaire <a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> de la carte mère</li>
+</ul>
+<p>Tous ces composants sont reliés au processeur via le <a href="https://en.wikipedia.org/wiki/Uncore">system agent</a>. Les connections sont fait par des <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a> de transmission au format <a href="https://fr.wikipedia.org/wiki/PCI_Express">PCIe</a> (même les périphériques USB sont relié au processeur par des bus PCIe).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous allez trouver plein de vieilles choses sur internet :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/BIOS_(informatique)">BIOS</a> : n'existe plus depuis 2006, il est remplacé par l'UEFI</li>
+<li><a href="https://en.wikipedia.org/wiki/Northbridge_(computing)">northbridge/southbridge</a>. Depuis 2019, remplacé par le system agent.</li>
+</ul>
+</div>
+</div>
+<h2>Horloge et synchronisation</h2>
+<p>Communiquer une information binaires se fait usuellement par un signal continu :</p>
+<ul>
+<li>+5v signifie un 1</li>
+<li>0v signifie un 0</li>
+</ul>
+<p>Une succession d'information binaire ne peut se faire qu'à intervalle donné, sinon il serait impossible de distinguer deux 1 (respectivement deux 0) de suite :</p>
+<pre><code>mesure  :  x   x   x   x   x   x   x
+signal  : __/⎺⎺⎺⎺⎺\_____/⎺⎺⎺⎺⎺⎺⎺\_____
+bits    :  0   1   0   0   1   1   0
+</code></pre>
+<p>La mesure est synchronisée par la fréquence de l'horloge de la carte mère (ou le plus souvent un multiple de celle-ci, car la fréquence de l'horologe est basse).</p>
+<p>Exemple de signal synchronisé à la fréquence de l'horloge. On regarde à chaque <em>front montant</em> de l'horloge le signal, qui est convertit en bit :</p>
+<pre><code>           front montant     front descendant 
+           v                 v
+horloge : _/⎺\_/⎺\_/⎺\_/⎺\_/⎺\_/⎺\_/⎺\
+signal  : __/⎺⎺⎺⎺⎺\_____/⎺⎺⎺⎺⎺⎺⎺\_____
+bits    :  0   1   0   0   1   1   0
+</code></pre>
+<p>Si les devices transmettent leurs données à la même vitesse, mais qu'ils ne sont pas tous synchronisé avec une même horloge, il est impossible de connaître le depart de transmission et par là de connaître le message.</p>
+<p>Enfin, pour que des devices de vitesses différentes puissent communiquer sans perte de temps, il faut que le device le plus rapide puisse communiquer à la vitesse du plus lent : il faut que toutes leurs horloges soient des multiples de l'horloge de la carte mère.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vir ce petit tuto sur la <a href="https://www.youtube.com/watch?v=ZQ-Jb__HTyo">transmission de données</a></p>
+</div>
+</div>
+<h2>Transmissions</h2>
+<p>Les périphériques d'une carte mère ont besoin de communiquer avec le processeur, et entre eux :</p>
+<p><img src="bus.png" alt="bus"></p>
+<p>Le canal de transmission entre périphérique est appelé <a href="https://fr.wikipedia.org/wiki/Bus_informatique">bus</a> et permet de transmettre des données allant de un à plusieurs gigaoctets de bits.</p>
+<p>Il existe deux types de transmissions, et donc deux types de bus :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Transmission_s%C3%A9rie">transmission série</a> : on on transmet un bit après l'autre</li>
+<li><a href="https://fr.wikipedia.org/wiki/Transmission_parall%C3%A8le">transmission parallèle</a> : ou on transmet plusieurs bits (8, 16, 32, 64, ...) en une fois</li>
+</ul>
+<p>Les deux types de transmissions ont leurs avantages et inconvénients voir <a href="https://www.youtube.com/watch?v=-iDaeZt-pYM">cette courte vidéo</a>, mais en gros :</p>
+<ul>
+<li>la transmission parallèle est utilisée pour de courtes distances (plus petit que la longueur d'onde de l'horloge pour éviter les problème de <a href="https://en.wikipedia.org/wiki/Clock_skew">skew</a> c'est à dire de désynchronisation générée par le délai de propagation variable entre les différents canaux de la communication parallèle) lorsque la vitesse est primordiale.</li>
+<li>la transmission série est utilisée pour des distances <em>&quot;longues&quot;</em> et pour des gain de places (moins de cables sont nécessaires)</li>
+</ul>
+<p>Ce qui donne finalement le schéma de communication des processeurs actuels (par exemple l'architecture <a href="https://en.wikichip.org/wiki/intel/microarchitectures/ice_lake_(client)#Entire_SoC_Overview">ice lake</a>):</p>
+<p><img src="bus-2.png" alt="bus"></p>
+<p>Le processeur est composé de deux parties :</p>
+<ul>
+<li>le system agent dont le but est de concentrer les transmissions de tous les périphérique en un point</li>
+<li>les <a href="https://fr.wikipedia.org/wiki/Core_(microarchitecture)">cœurs ou cores</a> qui forment les unités de calcul proprement dites.</li>
+</ul>
+<p>Les deux seuls bus en parallèles sont celui sortant des cores et celui sortant de la mémoire RAM (leurs tailles sont variables, de 64 à 512 bits). Les autres sont tous en série :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/PCI_Express">bus PCIe</a>. Peuvent être plus ou moins rapide selon le nombre de <em>lanes</em>. Chaque <em>lane</em> est composée de deux fils permettant une communication en série sous la forme d'un <a href="https://en.wikipedia.org/wiki/Differential_signalling">differential signaling</a>. Un bus PCIe 4x est composé de 4 lanes et permet d'avoir 4 canaux de transmissions simultanés. On a coutume d'utiliser un bus PCIe x16 pour la carte graphique, et des bus plus petits pour le reste (disques dur, USB, etc) pour des questions de coût.</li>
+<li><a href="https://www.youtube.com/watch?v=F7NlCaaL3yU">bus USB</a> qui lie le device USB à son connecteur</li>
+<li><a href="https://fr.wikipedia.org/wiki/Ethernet">Ethernet</a> qui lie le câble à la carte réseau.</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=IyGwvGzrqp8">Analyse des protocoles séries basiques</a></p>
+</div>
+</div>
+<h2>UEFI</h2>
+<p>L'<a href="https://fr.wikipedia.org/wiki/UEFI">UEFI</a> est un logiciel sur la carte mère permettant de :</p>
+<ol>
+<li>vérifier, synchroniser et configurer si nécessaire les devices installés sur la carte</li>
+<li>déterminer sur quel disque démarrer pour exécuter le système d'exploitation.</li>
+</ol>
+<h3>UEFI manager</h3>
+<p>L'UEFI manager permet d'avoir accès aux paramètres de l'UEFI. Il permet de configurer divers paramètres système.</p>
+<p>Pour accéder à l'UEFI manager, il faut au boot de l'ordinateur appuyer sur une touche. Cette touche dépend de votre ordinateur et sera affichée au boot. Cela peut être <code>F2</code>, mais aussi <code>ESC</code> ou encore <code>F11</code>. Sur le <a href="https://www.intel.fr/content/www/fr/fr/products/details/nuc.html">NUC</a> de la maison, c'est <code>F2</code> au démarrage, et voici le manager qu'on obtient :</p>
+<p><img src="uefi-main.png" alt="UEFI main"></p>
+<p>On y voit les caractéristiques du processeur (onglet de départ  <code>main</code>).</p>
+<p>Le deuxième onglet (<code>advanced</code>) montre les différents matériels branché sur la carte mère :</p>
+<p><img src="uefi-2.png" alt="UEFI 2"></p>
+<p>Pour ma part 3 disques dur :</p>
+<ul>
+<li>Un disque SSD de 1TB sur le port <a href="https://fr.wikipedia.org/wiki/Serial_ATA">SATA</a> (qui contient les données)</li>
+<li>deux disques un sur chaque port <a href="https://fr.wikipedia.org/wiki/M.2">M2</a> :
+<ul>
+<li>un de 1TB (contient un système Linux/ArchLinux)</li>
+<li>un de 240GB (contient un système Windows 11)</li>
+</ul>
+</li>
+</ul>
+<p>Le troisième onglet permet d'overclocker le processeur si on est joueur :</p>
+<p><img src="uefi-3.png" alt="UEFI 2"></p>
+<p>Le dernier onglet, <code>boot</code> permet de gérer le boot :</p>
+<p><img src="uefi-4.png" alt="UEFI 2"></p>
+<p>On voit que j'ai désactivé le <a href="https://fr.wikipedia.org/wiki/UEFI#Lancement_s%C3%A9curis%C3%A9_(secure_boot)">secure boot</a> car il ne permet pas d'exécuter tous les logiciel libres (secure signifiant approuvé par microsoft... qui <a href="https://www.fsf.org/campaigns/secure-boot-vs-restricted-boot/whitepaper-web">refuse de signer des logiciels sous licence GPLv3</a>) et vous aurez aussi à le faire pour booter certains disque d'installation Linux.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lisez <a href="https://www.rodsbooks.com/efi-bootloaders/secureboot.html">ce document</a> qui explique ce qu'est le secure boot.</p>
+<p>Plus généralement vous pouvez lire <a href="https://www.rodsbooks.com/efi-bootloaders/index.html">l'article complet</a> sur l'UEFI et Linux)</p>
+</div>
+</div>
+<p>En cliquant sur <code>boot priority</code> on voit l'ordre de boot que j'ai choisi pour l'ordinateur :</p>
+<p><img src="uefi-5.png" alt="UEFI 2"></p>
+<ol>
+<li>Le disque LEXAR SSD de 1TB contenant ma distribution Linux/ArchLinux</li>
+<li>Le disque de 240GB contenant le système Windows 11</li>
+<li>l'<a href="https://papy-tux.legtux.org/doc1249/index.html">UEFI shell</a> qui est un programme permettant de faire des opérations très bas niveaux sur la carte mère et les disques.</li>
+</ol>
+<p>On voit de plus que si une clé USB bootable est présente dans l'ordinateur au démarrage, on boot d'abord sur elle (c'est ce que genre de chose qu'il faudra faire lorsque vous voudrez installer Linux à partir d'une clé USB par exemple)</p>
+<h3>Boot</h3>
+<p>Le <a href="https://wiki.archlinux.org/title/Arch_boot_process_(Fran%C3%A7ais)#Avec_un_UEFI">processus de démarrage UEFI</a> est le suivant :</p>
+<ol>
+<li>mise sous tension de l'ordinateur</li>
+<li>Procédure <a href="https://fr.wikipedia.org/wiki/Power-on_self-test_(informatique)">POST</a> qui vérifie que tout est Ok sur la carte et que les appareils qui lui sont connectés sont reconnus</li>
+<li>Pour chaque disque dans l'ordre de démarrage des disques :
+<ol>
+<li>s'il possède une <a href="https://en.wikipedia.org/wiki/EFI_system_partition">partition EFI</a></li>
+<li>on exécute le fichier <code class="fichier">\EFI\BOOT\BOOTx64.EFI</code> dont l'exécution charge le système d'exploitation</li>
+<li>si le fichier ou la partition EFI n'existe pas on passe au disque suivant</li>
+</ol>
+</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour aller plus loin :</p>
+<ul>
+<li><a href="https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface">interface UEFI</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">partition GPT</a>. FAT32 pour la partition EFI.</li>
+</ul>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

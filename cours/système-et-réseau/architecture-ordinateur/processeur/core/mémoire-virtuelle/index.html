@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mémoire virtuelle</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Mémoire virtuelle</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/core/">Core</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/core/mémoire-virtuelle/">Mémoire virtuelle</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <h2>Adresse logique vs adresse physique</h2>
+<p>On a vu dans la partie système d'exploitation que la mémoire vue par le process n'est pas celle qui est physiquement présente en RAM. Les adresses mémoires sont séparées en pages et les pages sont réordonnées pour chaque process. La mémoire vue par le process est appelée mémoire logique (ou virtuelle), la mémoire réelle est appelée mémoire physique.</p>
+<h3>Adresse et page</h3>
+<p>Chaque page contient une puissance de 2 adresses contiguës. Si la taille de la page est de 4KiB (valeur courante pour les x64),</p>
+<p>On peut séparer une adresse en deux :</p>
+<ul>
+<li>les douze derniers bits qui correspondent à l'adresse dans la page</li>
+<li>les 52 premiers bits qui correspondent à un numéro de page</li>
+</ul>
+<p>Remarquez que l'adresse à l'intérieur de la page est la même pour les adresses physiques et logiques.</p>
+<h3>Adressage valide</h3>
+<p>Actuellement, les processeurs x64 ont les spécificités suivantes pour l'adressage.</p>
+<ul>
+<li>adresse sur 48 bit logique : les bits 48 à 63 sont identiques</li>
+<li>adresse sur 52 bit physique : on peut avoir plus de mémoire physique que de mémoire logique, ceci permet d'avoir plusieurs process en même temps en mémoire</li>
+</ul>
+<p>Ces limitations sont tout de même très larges :</p>
+<ul>
+<li>un adressage sur $2^{48}$b permet d'adresser 256TiB de données</li>
+<li>un adressage sur $2^{48}$b permet d'adresser 4096TiB de données</li>
+</ul>
+<p>A comparer avec les quantités de mémoire actuelles pour des ordinateur puissants :</p>
+<ul>
+<li>128GiB de RAM</li>
+<li>20TiB de stockage</li>
+</ul>
+<h2>Table de conversion</h2>
+<p>Pour chaque page virtuelle, il faut lui associer une adresse de page physique. Cette adresse prend $52-12 = 40b$.</p>
+<p>On lui adjoint des informations utiles à l'OS comme :</p>
+<ul>
+<li>un dirty bit</li>
+<li>un compteur du ombre de process ayant cette page</li>
+<li>...</li>
+</ul>
+<p>Pour amener à <a href="https://www.geeksforgeeks.org/page-table-entries-in-page-table/">une entrée sur 64b</a> contenant :</p>
+<ul>
+<li>l'adresse physique de la page (sur 40b)</li>
+<li>24 bit de contrôle</li>
+</ul>
+<p>Il est impossible de maintenir toute cette structure en mémoire car il faudrait $2^40 \cdot 8B = 8 TiB$ de stockage...</p>
+<h3>Structure</h3>
+<p>Comme un process ne va nécessite qu'u petit nombre de page, on utilise une structure arborée permettant, si nécessaire, de tout stocker mais également efficace pour en stocker une partie.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p>élément de design</p>
+</div><div class="pl-8 mr-8">
+<p>Le stockage par une structure arborée permet :</p>
+<ul>
+<li>de ne stocker que ce qui est nécessaire</li>
+<li>d'être efficace vide (peut de nœud) et plein (on accède à chaque nœud en log du nombre de nœuds)</li>
+</ul>
+<p>Cette structure possède un <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">Overhead</a> faible en temps (en log) et en place (ajout des nœuds en plus des données)</p>
+</div>
+</div>
+<p>La structure est une <a href="https://en.wikipedia.org/wiki/Page_table#Multilevel_page_tables">structure arborée multi-level</a>, elle comporte 4 niveaux en 64b :</p>
+<ul>
+<li>bit 0 à 11 : l'offset dans la page, 4096 possibilités</li>
+<li>bit 12 à 20 : 4ème page, 512 possibilités</li>
+<li>bit 21 à 29 : 3ème page, 512 possibilités</li>
+<li>bit 30 à 39 : 2ème page, 512 possibilités</li>
+<li>bit 40 à 49 : 1ème page, 512 possibilités</li>
+<li>bit 50 à 63 : identiques au bit 48.</li>
+</ul>
+<p>Ce qui fait qu'une page sur 64 bit peut s'écrire en 4 nombres plus petit que 512 : ABCD</p>
+<p>L'arbre est donc de racine une page de 512 entrée, initialement vide. Si u process contient la page d'adresse ABCD, on :</p>
+<ol>
+<li>vérifie si la racine possède un enfant à l'entrée A.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée A de la racine et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 2 possède un enfant à l'entrée B.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée B de la page 2 et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 3 possède un enfant à l'entrée C.
+<ol>
+<li>si oui on y va</li>
+<li>si non on crée une page vide à l'entrée C de la page 3 et on y va</li>
+</ol>
+</li>
+<li>vérifie si la page 4 possède un enfant à l'entrée D.
+<ol>
+<li>si oui on trouve l'adresse physique</li>
+<li>si non lance une exception <a href="https://fr.wikipedia.org/wiki/Erreur_de_page">page fault</a> pour que le noyau traite ce cas (soit en arrêtant le process soit en associant une page)</li>
+</ol>
+</li>
+</ol>
+<p>Seule les associations nécessaires sont stockées au prix d'un petit <a href="https://en.wikipedia.org/wiki/Overhead_(computing)">overhead</a> :</p>
+<ul>
+<li>en mémoire : les pages</li>
+<li>en temps : il faut parcourir les 4 pages pour chaque appel</li>
+</ul>
+<p>Cette structure est stockée en mémoire et son emplacement est connue de la MMU.</p>
+<h3>Buffer dans la MMU</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Translation_lookaside_buffer">https://en.wikipedia.org/wiki/Translation_lookaside_buffer</a></p>
+</div>
+</div>
+<p>POur éviter les 4 appels à la mémoire au moindre chargement de page, la MMU possède un cache, la <a href="https://fr.wikipedia.org/wiki/Translation_lookaside_buffer">TLB</a> qui possède habituellement 16 entrées, assez pour la plupart des process. Le <a href="https://en.wikichip.org/wiki/intel/microarchitectures/sunny_cove#Architecture">sunny cove core</a> possède ainsi deux TLB, un pour les instructions et un pour les données de 16 entrées chacune.</p>
+<h2>Et le cache dans tout ça ?</h2>
+<p>Le problème de cette transformation est que les caches L1 et L2 sont a priori placés avant la MMU et travaillent donc sur des adresses logiques. Ceci est fâcheux car :</p>
+<ul>
+<li>des adresses logiques différentes peuvent appartenir à la même adresse physique</li>
+<li>en changeant de processus la table change et invalide tous les caches</li>
+</ul>
+<p>C'est pourquoi les caches sont en fait stocké avec le tag de l'adresse physique. La taille de page fait que que tag sera identique pour l'adresse logique et physique.</p>
+<p>On accélère le processus en faisant un appel à la page (le tag) en même temps que l'on cherche l'index dans le cache.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

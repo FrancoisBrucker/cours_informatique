@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cryptographie</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Cryptographie</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/cryptographie/">Cryptographie</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <blockquote>
+<p>TBD montrer avec openssh comment le faire (voir serious cryptography)</p>
+</blockquote>
+<p>La thématique de la <em>sécurité</em> en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :</p>
+<ul>
+<li><em><strong>confidentialité</strong></em> : le message ne doit pouvoir être lu que par son destinataire.</li>
+<li><em><strong>intégrité</strong></em> : le message ne doit pas être altéré entre son envoi et sa réception</li>
+<li><em><strong>authentification</strong></em> :
+<ul>
+<li>l'expéditeur doit être sur de l'identité du destinataire</li>
+<li>le destinataire doit être sur de l'identité de l'expéditeur</li>
+</ul>
+</li>
+<li><em><strong>non-répudiation</strong></em> : l'expéditeur ne doit pas pouvoir nier être l'auteur du message a posteriori</li>
+</ul>
+<p>Les expéditeurs et destinataires du messages ne sont pas forcement distincts, lors du chiffrage de données sur un disque dur par exemple. On distingue ainsi deux mode de chiffrement :</p>
+<ul>
+<li>transport : le message est chiffré avant le transport et déchiffré une fois arrivé à bon port</li>
+<li>stockage : le message est chiffré pour être stocké en mémoire ou sur le disque. Il est déchiffré avant d'être lu.</li>
+</ul>
+<p>La mise en œuvre de ces quatres principes va nécessiter la mise en place de <em><strong>protocoles</strong></em> : une séries d'étapes à effectuer par au moins <strong>deux</strong> entités (homme ou machine) en vu de réaliser une tâche.</p>
+<p>Enfin, ces protocoles vont souvent nécessiter des algorithmes (une séries d'étapes à effectuer par <strong>une</strong> entité) pour être correctement mis en œuvre.</p>
+<p>L'usage (depuis &quot;applied cryptography&quot; ?) est de personifier les différentes parties prenantes d'un protocole :</p>
+<ul>
+<li>Les <em><strong>joueurs</strong></em> sont les personnes voulant s'échanger un message en suivant un protocole donné :
+<ul>
+<li>Alice veut envoyer un message sécurisé à Bob</li>
+<li>on ajoute Carol puis Dave si d'autres personnes sont impliquées</li>
+</ul>
+</li>
+<li>Les <em><strong>adversaires</strong></em> voulant perturber le protocole. Ces adversaires sont de deux niveaux de difficulté :
+<ul>
+<li>Niveau 1 : Eve. Elle ne peut qu'observer le protocole et les échanges</li>
+<li>Niveau 2 : Mallory. Il peut en plus modifier tout ce qui est public : messages et paramètres public du protocole</li>
+</ul>
+</li>
+<li>Les <em><strong>tiers de confiance</strong></em> (arbitres incorruptibles), non impliquées dans l'échange du message mais nécessaires au bon fonctionnement du protocole (tous les protocoles ne nécessitent pas de tiers de confiance)</li>
+</ul>
+<p>On supposera de plus toujours que le protocole, les algorithmes utilisés et leurs implémentations effectives sont connus de tous, joueurs et adversaires. La confidentialité ne devant être garantie que via un paramètre du protocole nommé <em><strong>clé</strong></em>, uniquement connu des joueurs. Cette hypothèse est connue sous le nom de <a href="https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs">le principe de Kerckhoffs</a>.</p>
+<p>Enfin, on considérera que les adversaires ne sont pas stupides et ont à leur disposition des outils modernes et performants.</p>
+<h2>Cryptologie</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.ssi.gouv.fr/particulier/bonnes-pratiques/crypto-le-webdoc/cryptologie-art-ou-science-du-secret/">Introduction à la cryptologie (ANSSI)</a></p>
+</div>
+</div>
+<p>La cryptologie, ou science du secret est l'étude des protocoles de sécurités. Elle possède deux branches :</p>
+<ul>
+<li>la <a href="https://fr.wikipedia.org/wiki/Cryptographie">cryptographie</a> qui crée les algorithmes et protocoles de sécurité</li>
+<li>la <a href="https://fr.wikipedia.org/wiki/Cryptanalyse">cryptanalyse</a> qui attaque ces algorithmes pour tester leurs robustesse</li>
+</ul>
+<p>À moins d'être un professionnel du domaine, ne créez pas votre propre protocole ni n'implémentez vous même les algorithmes de cryptographies qui les composent. Utilisez les protocoles connus via des bibliothèques reconnues, cela vous évitera de vous croire en sécurité alors que vous ne l'êtes pas (il vaut mieux pas de sécurité qu'une mauvaise sécurité).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://cyber.gouv.fr/">Site de l'ANSSI</a></p>
+</div>
+</div>
+<h3>Cryptographie</h3>
+<p>Pour qu'un message $m$ puisse passer de Alice à Bob via un canal public sans qu'Eve ne puisse le lire, il faut qu'il soit <em><strong>chiffré</strong></em> (<em>encrypted</em>) par une fonction $E(m) = c$ pendant son passage dans le canal public, puis <em><strong>déchiffré</strong></em> (<em>decrypted</em>) par une autre fonction $D(c) = m$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les fonctions de chiffrements et de déchiffrements sont appelés <em>cipher</em> en anglais ; le message $m$ est appelé <em>plain text</em> et le message chiffré $c$ : <em>ciphertext</em>.</p>
+</div>
+</div>
+<p>Mais comme Eve connaît (ou peut soudoyer quelqu'un pour connaître) $E()$ et $D()$, il faut que ces fonctions possèdent un paramètre en plus : une clé $k$, connue uniquement d'Alice et Bob :</p>
+<pre><code>    Alice    |  Eve   |     Bob
+-------------|--------|-------------- 
+    m, k     |        |      k 
+             |        |
+E(k, m) = c -|-- c ---|----&gt; c
+             |        | D(k, c) = m
+             |        |
+espace privé | public |    privé  
+</code></pre>
+<p>En supposant qu'Eve ne possède pas d'autre information que le message chiffré, si elle veut prendre connaissance de $m$ sans connaître $k$, on dit <em><strong>décrypter</strong></em> $c$, il lui faut tester $E(k', m)$ pour toutes les combinaisons $k'$ de clés possibles.</p>
+<p>La communication est alors confidentielle si le temps nécessaire pour faire tout ces essais est supérieur à la durée de validité du message chiffré.</p>
+<p>De part la nature algorithmique de secret, la confidentialité de la transmission de $m$ via $E(k, m)$ n'est garantie que si :</p>
+<ul>
+<li>$D(k, E(k, m)) = m$</li>
+<li>Eve ne peut obtenir aucune information sur $k$ ou $m$ à partir de $E(k, m)$</li>
+<li>le temps nécessaire pour décrypter le message en utilisant toutes les clé possible est prohibitif.</li>
+</ul>
+<p>Formalisons tout cela.</p>
+<h4>Cohérence</h4>
+<p>Dans toutes leur généralité les fonctions $E$ et $D$ sont définies :</p>
+<ul>
+<li>$E : \mathcal{K} \times \mathcal{M} \rightarrow \mathcal{C}$</li>
+<li>$D : \mathcal{K} \times \mathcal{C} \rightarrow \mathcal{M}$</li>
+</ul>
+<p>Pour le chiffrement soit effectif, il faut qu'il soit :</p>
+<ul>
+<li><em><strong>cohérent</strong></em> : $D(k, E(k, m)) = m$ pour tout $m \in \mathcal{M}$</li>
+<li><em><strong>efficace</strong></em> (<em>efficient</em>) : $D$ et $E$ sont des algorithmes polynomiaux et s'ils sont linéaires c'est encore mieux.</li>
+</ul>
+<p>On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :</p>
+<ul>
+<li>$\mathcal{K} = \{0, 1\}^K$</li>
+<li>$\mathcal{M} = \mathcal{C} = \{0, 1\}^L$</li>
+<li>$E$ et $D$ doivent être de complexité $\mathcal{O}((K+L)^d)$ avec $d$ une constante valant de préférence 1.</li>
+</ul>
+<h4>Robustesse</h4>
+<p>Il faut que le code puisse résister aux tentatives de décryptage. La résistance d'un code dépend du type d'attaque auquel il doit faire face.</p>
+<p>Cependant, tout code doit faire en sorte qu'aucune information sur $m$ ou $k$ ne puisse être déduite à partir de $E(k, m)$. Toute information, même minuscule, peut être transformée en algorithme par un cryptanalyste et utilisé pour compromettre la sécurité du code.</p>
+<h3>Cryptanalyse</h3>
+<p>Les tentatives de décryptage d'un message chiffré, on parle d'<em><strong>attaques</strong></em> peuvent s'échelonner en 4 niveaux, selon les possibilités de l'attaquant :</p>
+<ol>
+<li><em><strong>chiffres uniquement</strong></em> (<em>Ciphertext-only attackers, COA</em>). L'attaquant est passif et n'a accès qu'a des textes chiffrés $c$ sans connaître les messages initiaux.</li>
+<li><em><strong>messages connus</strong></em> (<em>Known-plaintext attackers, KPA</em>). L'attaquant est passif et des message ainsi que leurs chiffrement</li>
+<li><em><strong>messages choisis</strong></em> (<em>Chosen-plaintext attackers, CPA</em>). L'attaquant est actif et peut choisir des messages à chiffrer.</li>
+<li><em><strong>chiffres choisis</strong></em> (<em>Chosen-ciphertext attackers, CCA</em>). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.</li>
+</ol>
+<h2>Confidentialité</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="confidentialit%C3%A9" class="interne">Confidentialité</a></p>
+</div>
+</div>
+<h2>Intégrité</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="int%C3%A9grit%C3%A9" class="interne">Intégrité</a></p>
+</div>
+</div>
+<h2>Authentification</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="authentification" class="interne">Authentification</a></p>
+</div>
+</div>
+<h2>Communication</h2>
+<h3>TLS</h3>
+<p>Le protocole derrière toute communication sécurisée</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="tls" class="interne">Transport Layer Security</a></p>
+</div>
+</div>
+<h3>https</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=OU-e_Qz-v4U&amp;list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN">https</a></p>
+</div>
+</div>
+<p><a href="https://fr.wikipedia.org/wiki/X.509">Certificats X.509</a> :</p>
+<ol>
+<li>certifiant (<em>issuer</em>) :
+<ol>
+<li>nom</li>
+<li>adresse</li>
+</ol>
+</li>
+<li>possesseur du certificat (<em>subject</em>) :
+<ol>
+<li>nom</li>
+<li>adresse</li>
+<li>clé publique</li>
+</ol>
+</li>
+<li>plage de validités du certificat (de quand à quand)</li>
+<li>signature du certifiant : un hash du certificat chiffré avec sa clé privée</li>
+</ol>
+<p>Lorsque l'on reçoit la signature :</p>
+<ol>
+<li>hash le certificat</li>
+<li>déchiffre la signature du certificat avec la clé publique du certifiant</li>
+<li>si les hash coincident c'est bon</li>
+</ol>
+<p>Qui certifie :</p>
+<ol>
+<li>root authority délivre des certificat aux intermediate authority</li>
+<li>les intermediate authority certifient :
+<ol>
+<li>d'autres intermediate authority</li>
+<li>des serveur directement</li>
+</ol>
+</li>
+</ol>
+<p>C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.</p>
+<h2>Arithmétique</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="arithm%C3%A9tique" class="interne">Arithmétique</a></p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=oRM-gNrbcgE&amp;list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&amp;index=1">arithmétique pour la cryptographie</a></li>
+</ul>
+</div>
+</div>
+<h2>Bibliographie</h2>
+<ul>
+<li><a href="https://www.amazon.fr/Applied-Cryptography-Protocols-Algorithms-Source/dp/1119096723"><em>Applied Cryptography, protocols algorithms and source code in C</em> de Bruce Schneier</a>. Un peu vieux maintenant concernant les algorithmes, mais toujours utile pour une description des protocoles (qui eux sont toujours utilisés)</li>
+<li><a href="https://www.amazon.fr/Serious-Cryptography-Practical-Introduction-Encryption/dp/1593278268"><em>Serious Cryptography: A Practical Introduction to Modern Encryption</em>, Jean-Philippe Aumasson</a> Très bonne introduction aux méthodes actuelles de cryptographie</li>
+<li><a href="https://www.amazon.fr/PGP-GPG-confidentialit%C3%A9-mails-fichiers/dp/221212001X"><em>pgp &amp; gpg assurer la confidentialité de ses e-mails et fichiers</em></a> pour l'utilisation de GPG</li>
+<li><a href="https://toc.cryptobook.us/"><em>A Graduate Course in Applied Cryptography</em> de Dan Boneh et   Victor Shoup</a> cours détaillé donné à Standford</li>
+<li><a href="https://www.ssi.gouv.fr/">ANSSI</a></li>
+<li><a href="https://www.youtube.com/watch?v=Js9dCUFjAhc&amp;list=PL9mNSKC0i-d8VKahrLPoEbUJgo9BwfMQ5&amp;index=1">proof in cryptography</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

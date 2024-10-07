@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>DM</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>DM</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/DM/">DM</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <h2>Téléchargements de fichiers</h2>
+<p>Le <a href="https://www.gutenberg.org/">projet Gutenberg</a> contient de nombreux ouvrages libres de droits. Vous allez y récupérer des fichiers avec du scripting shell</p>
+<h3>Récupération du fichier</h3>
+<p>Essayez de faire les différentes question de cette partie en une seule ligne de shell.</p>
+<h4>Url</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=APtOavXTv5M&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=9">Utiliser curl</a></p>
+</div>
+</div>
+<p>En utilisant la commande <code>curl</code> (au pire installez là), téléchargez <a href="https://www.gutenberg.org/ebooks/search/?query=Le+comte+de+Monte-Cristo">le 1er tome du Comte de Monte-Cristo</a> au format utf-8 (récupérez son adresse sur le site) et affichez le résultat dans stdout.</p>
+<h4>Sauvegarde</h4>
+<p>Sauvegardez le contenu de l'url dans un fichier dont vous choisirez le nom en utilisant la redirection de stdout vers un fichier.</p>
+<h3>Métrologie</h3>
+<p>Vous utiliserez le fichier de la question précédente pour faire cette partie. La encore, vous devriez pouvoir répondre à toutes les questions en une seule chaîne de commandes, mais ne vous forcez pas à y arriver si vous ne trouver la pas la solution.</p>
+<h4>Nombres</h4>
+<p>en Utilisant <code>wc</code>, rendez le nombre de lignes, de mots et de caractères de ce fichier.</p>
+<h4>Entête du Roman</h4>
+<ol>
+<li>A quelle ligne commence effectivement le Roman ?</li>
+<li>. Quelle option de <code>grep</code> permet de donner la ligne contenant le pattern à chercher ?</li>
+<li>Quel pattern utiliseriez vous avec grep pour trouver la fin de l'entête ajoutée par le site Gutenberg (on considère que la table des matière fait partie du roman) ?</li>
+<li>Utilisez cette option pour trouver le numéro de ligne du début du roman</li>
+<li>Combinez la recherche précédente avec la commande <code>cut</code> pour avoir <strong>uniquement</strong> le numéro de ligne</li>
+<li>Comptez le nombre de lignes, de mots et de caractères de ce fichier à partir du début du roman</li>
+</ol>
+<h4>Marseille</h4>
+<ol>
+<li>Quelle est la différence entre <code>grep</code> et <code>grep -E</code> ?</li>
+<li>En utilisant <a href="https://www.redhat.com/sysadmin/find-text-files-using-grep">la commande <code>grep -E</code></a>, comptez le nombre de fois où l'on parle de Marseille ou de Marseillais dans ce Tome.</li>
+</ol>
+<h3>Stockage</h3>
+<p>On vous demande de créer un script pour répondre aux questions suivantes</p>
+<h4><span id="tout-le-comte"></span>Tout le comte</h4>
+<ol>
+<li>Créez un script qui crée sort sur stdout le contenu à la suite des 4 tomes du comte de monté Cristo</li>
+<li>affinez le résultat en ne prenant pas les entêtes des 4 romans</li>
+</ol>
+<p>Vous utiliserez une boucle for pour télécharger les 4 tomes à la suite des autres, à partir d'un tableau dans lequel vous aurez au préalable stocké les 4 urls.</p>
+<h4>Le comte est bon</h4>
+<p>Sauvez avec une redirection le contenu du roman dans un fichier. Utilisez ce fichier pour :</p>
+<ol>
+<li>Refaire la partie métrologie pour le roman entier.</li>
+<li>calculez le nombre moyen de mot par ligne (divisez le nombre de mots par rapport au nombre de lignes)</li>
+</ol>
+<h3>Script final</h3>
+<p>Créez un script qui :</p>
+<ol>
+<li>crée le fichier <code class="fichier">comte-monte-cristo.txt</code> uniquement s'il n'existe pas déjà dans le dossier courant.</li>
+<li>Si le fichier existe :
+<ol>
+<li>le script  prévient l'utilisateur sur stderr</li>
+<li>rend un code de sortie de 1</li>
+</ol>
+</li>
+<li>si le fichier n'existe pas :
+<ol>
+<li>il crée le fichier et y met les 4 tomes du cote de Monte-Cristo (partie <a href="#tout-le-comte">&quot;Tout le comte&quot;</a>)</li>
+<li>affiche sur stderr, le nombre de ligne du fichier</li>
+<li>rend un code de sortie de 0</li>
+</ol>
+</li>
+</ol>
+<h2>Poubelle</h2>
+<p>La commande <code>rm</code> ne fait aucune sauvegarde d'un fichier avant de le supprimer. On vous demande de :</p>
+<ol>
+<li>créer une commande <code>poubelle</code> qui prend un unique paramètre. Vous placerez cette commande dans <code>$HOME/.local/bin</code> et ferez en sorte que la commande soit accessible en changeant le PATH.</li>
+<li>cette commande doit prendre un argument. SOn fonctionnement est le suivant :
+<ol>
+<li>elle sauve le fichier argument dans le dossier <code>$POUBELLE</code></li>
+<li>elle supprime le fichier argument</li>
+</ol>
+</li>
+<li>si la variable d'environnement <code>$POUBELLE</code> n'existe pas, elle sauve le fichier argument dans le dossier <code>$HOME/.config/poubelle</code></li>
+<li>si l'argument existe déjà dans <code>$POUBELLE</code> (ou dans <code>$HOME/.config/poubelle</code> si <code>$POUBELLE</code> n'est pas positionné), la commande doit :
+<ol>
+<li>prévenir dans stderr que ce fichier est déjà sauvé</li>
+<li>si l'option -f n'est pas positionner, s'arrêter avec un code de sortie de 1.</li>
+<li>si l'option -f est positionner, elle doit remplacer le fichier par le nouveau et rendre un code de sortie de 0</li>
+</ol>
+</li>
+<li>si la commande est langée avec l'option <code>-r</code> et avec un argument : elle doit
+<ol>
+<li>récupérer le fichier sauvé dans <code>$POUBELLE</code> (ou dans <code>$HOME/.config/poubelle</code> si <code>$POUBELLE</code> n'est pas positionné) s'il existe (sinon on prévient l'utilisateur dans stderr et on sort avec un code de 2)</li>
+<li>copier le fichier dans le dossier courant</li>
+<li>supprimer de <code>$POUBELLE</code> (ou dans <code>$HOME/.config/poubelle</code> si poubelle n'est pas positionné)</li>
+</ol>
+</li>
+<li>si la commande est lancée avec la commande <code>-l</code> et sans argument, elle doit lister les fichiers sauvés (ceux de <code>$POUBELLE</code> ou de <code>$HOME/.config/poubelle</code> si <code>$POUBELLE</code> n'est pas positionné)</li>
+<li>la commande doit avoir une option <code>-h</code> (et <code>--help</code>) permettant de rendre son aide.</li>
+<li>si la commande est lancée sans arguments, avec des arguments incompatibles ou incomplet, la commande doit s'arrêter avec un code de 3 et afficher l'aide de la commande.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez lire <a href="https://stackabuse.com/how-to-parse-command-line-arguments-in-bash/">ce tuto</a> pour gérer au mieux les options.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Shell</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Shell</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/bash/">Shell</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Essayer d'être portable. On fait du du bash (voir du sh) pour pouvoir être exécuté partout</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=tK9Oc6AEnR4">tuto</a></li>
+<li><a href="https://www.youtube.com/watch?v=KG97VzMjfMg">un autre tuto</a></li>
+</ul>
+<p>Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)</p>
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
+<h2>Gestion des paramètres</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://coderwall.com/p/85jnpq/bash-built-in-variables">Gestion des paramètres d'un script</a></p>
+</div>
+</div>
+<h2>Fonctions</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://linuxize.com/post/bash-functions/">Fonctions bash en texte</a></li>
+<li><a href="https://www.youtube.com/watch?v=aqvc9kYnz0U&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=2">fonctions bash YouTube</a></li>
+</ul>
+</div>
+</div>
+<p>Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. POur le reste effectuez vos sorties sur la sortie standard (avec <code>echo</code>).</p>
+<h2>Structures de contrôle</h2>
+<h3>if/then</h3>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span> 
+commandes
+<span class="token keyword">then</span>
+commandes
+<span class="token keyword">fi</span>
+</code></pre>
+<p>Avec un else :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span> 
+commandes
+<span class="token keyword">then</span>
+commandes
+<span class="token keyword">else</span>
+commandes
+<span class="token keyword">fi</span>
+</code></pre>
+<p>C'est le retour de la dernière commande avant la ligne avec <code>then</code> qui décide du branchement :</p>
+<ul>
+<li>s'il vaut 0 on fait le bloc allant de <code>then</code> à <code>else</code> (ou <code>fi</code> s'il n'y a pas de bloc <code>else</code>)</li>
+<li>sinon on fait le bloc allant de <code>else</code> à <code>fi</code></li>
+</ul>
+<p>Par exemple, en utilisant les commandes <a href="https://man7.org/linux/man-pages/man1/true.1.html"><code>true</code></a> et <a href="https://man7.org/linux/man-pages/man1/false.1.html"><code>false</code></a> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span>
+<span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span>
+</code></pre>
+<p>Ou encore :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span>
+<span class="token boolean">false</span>
+<span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span>
+</code></pre>
+<p>On peut aussi avoir la forme où la première commande peut être placée après le if :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span> <span class="token boolean">true</span>
+<span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span>
+</code></pre>
+<p>La forme précédente qui est très pratique lorsque l'on a qu'une seule commande.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une commande doit précéder l'instruction <code>then</code> si on peut avoir sur une même ligne le if et le then, il faut terminer la commande de test avec un <code>;</code> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token keyword">if</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+<span class="token builtin class-name">echo</span> oui
+<span class="token keyword">else</span>
+<span class="token builtin class-name">echo</span> non
+<span class="token keyword">fi</span>
+</code></pre>
+</div>
+</div>
+<p>La commande <a href="https://linux.die.net/man/1/test"><code>test</code></a> qui est aussi la commande <code>[</code> (oui, <code>[</code> est un fichier de <code>/usr/bin</code>) permet de faire de nombreux test courant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.shellscript.sh/test.html">Utiliser la commande <code>test</code> ou <code>[</code></a></p>
+</div>
+</div>
+<p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec <code>[</code> ou <code>test</code>, plus portable.</p>
+<p>Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
+</div>
+</div>
+<h3>boucles for/while/until</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html">boucles en bash</a></p>
+</div>
+</div>
+<p>Les constructions sont identiques à la construction du if. La seule particularité est la boucle for qui itère sur une suite de mot séparé par des espaces :</p>
+<pre><code>for x in salut les gars
+do                     
+echo $x      
+done                   
+</code></pre>
+<p>Ou, de façon équivalente :</p>
+<pre><code>for x in salut les gars; do
+echo $x      
+done                   
+</code></pre>
+<p>On utilise parfois la boucle <code>while</code> pour lire l'entrée standard, en combinaison avec la commande <a href="https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/gnulinux/programmation-shell-sous-gnulinux/les-bases-de-la-programmation-shell/la-commande-read"><code>read</code></a> :</p>
+<pre><code>while read line
+do
+  echo &quot;$line&quot;
+done &lt; /dev/stdin
+</code></pre>
+<p>Ou le redoutable :</p>
+<pre><code>while read line
+do
+  echo &quot;$line&quot;
+done &lt; &quot;${1:-/dev/stdin}&quot;
+</code></pre>
+<p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de bash pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">gérer les variables</a>.</p>
+<h2>Variables</h2>
+<ul>
+<li>Méta-caractères commençant par <code>$</code> :
+<ul>
+<li><code>$?</code> : le code de sortie de la dernière commande</li>
+<li><code>$$</code> : le PID du shell courant</li>
+<li><code>$(expression)</code> : pour exécuter l'expression et donner son affichage comme argument. Par exemple <code>echo $(expr 3 + 4)</code>. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.</li>
+<li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
+<li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
+</ul>
+</li>
+<li>variables internes : <a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></li>
+</ul>
+<h2>Process et shell</h2>
+<blockquote>
+<p>TBD mieux faire</p>
+</blockquote>
+<ul>
+<li><code class="fichier">./truc.sh</code> exécution dans un nouveau shell enfant</li>
+<li><code class="fichier">source ./truc.sh</code> exécution ligne à ligne dans le shell actuel</li>
+<li><code class="fichier">exec ./truc.sh</code>` nouveau shell qui remplace le shell existant</li>
+</ul>
+<p>Supposons que vous ayez un fichier exécutable <code class="fichier">pid.sh</code> contenant :</p>
+<pre><code>#! /bin/sh
+
+echo $$
+</code></pre>
+<ol>
+<li>Le pid du shell courant est accessible avec : <code>echo $$</code></li>
+<li>Le pid précédent est différent du pid du shell exécutant le script : <code>./pid.sh</code></li>
+<li>On devrait retrouver le même pid en tapant : <code>source ./pid.sh</code></li>
+</ol>
+<p>C'est très utile lorsque l'on exécute un fichier de configuration qui doit s'appliquer au shell courant.</p>
+<p>Attention, si vous exécutez <code>exec ./pid.sh</code> le shell faisant le echo vq remplacer le shell courant et donc fermer la fenêtre. Pour l'exécuter sans soucis faite le dans un sous-shell :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span>
+$ <span class="token function">bash</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">exec</span> ./pid.sh 
+<span class="token number">705824</span>
+$ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
+<span class="token number">704757</span>
+</code></pre>
+<h2>Pipe</h2>
+<blockquote>
+<p>TBD créer ses propres pipe avec <code>mkfifo</code></p>
+</blockquote>
+<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
+</code></pre>
+<p>Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :</p>
+<pre><code>-  
+  \
+----&gt; stdin   |pipe|  stdout ----&gt; 
+  /
+-
+</code></pre>
+<p>Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier</p>
+<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
+                              \
+                                -&gt; fichier
+</code></pre>
+<h2>Autres shell</h2>
+<p>Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)</p>
+<p>perso : mon shell c'est zsh mais les script je les écris en (ba)sh.</p>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=8L7cM4q6TL8">sh ou bash pour nos scripts ?</a></p>
+</li>
+<li>
+<p>le script se fait avec le shell le plus courant : bash (présent sous macos)</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/watch?v=FI_bZhV7wpI">histoire du design sh</a></p>
+</li>
+</ul>
+<pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
+</code></pre>
+<p><a href="https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/">https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/</a></p>
+<h2>Bibliographie</h2>
+<ul>
+<li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/">un cours</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

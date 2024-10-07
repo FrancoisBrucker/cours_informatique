@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Compilation</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Compilation</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/compilation/">Compilation</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Reprenons le code du fichier <code class="fichier">hello.c</code> :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Compiler un programme C se fait en plusieurs étapes, dont les 4 principales sont :</p>
+<ol>
+<li><a href="https://fr.wikipedia.org/wiki/Pr%C3%A9processeur_C">préprocesseur</a></li>
+<li>compilateur en ASM</li>
+<li>compilateur ASM vers objet</li>
+<li>édition de lien</li>
+</ol>
+<h2>Étapes</h2>
+<h3>Préprocesseur</h3>
+<pre><code>clang -E hello.c -o hello.i
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Par défaut la sortie de l'option <code>-E</code> est la sortie standard. On précise donc le fichier de sortie par l'option <code>-o</code>.</p>
+</div>
+</div>
+<p>Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable</p>
+<p>Le but ce cette partie est :</p>
+<ol>
+<li>d'inclure les fichiers <code>.h</code> des directives <code>#define</code> au code du programme que l'on compile, ici les deux fichiers <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code>. Ces fichiers sont présent dans les dossiers systèmes</li>
+<li>de remplacer les constantes par leurs valeurs</li>
+</ol>
+<p>Cette étape permet d'avoir un code où toutes les références sont explicites pour permettre une compilation du code.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Dans le code précédent quelle est l'intérêt d'inclure <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code> ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On supprime une ligne et on recompile pour voir.</p>
+<p>En supprimant la ligne <code>#include &lt;stdlib.h&gt;</code> on obtient l'erreur de compilation :</p>
+<pre><code>hello.c:7:12: error: use of undeclared identifier 'EXIT_SUCCESS'
+    return EXIT_SUCCESS; 
+           ^
+1 error generated.
+</code></pre>
+<p>Et en supprimant la ligne <code>#include &lt;stdio.h&gt;</code> on obtient l'erreur de compilation :</p>
+<pre><code>hello.c:5:5: error: call to undeclared library function 'printf' with type 'int (const char *, ...)'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    printf(&quot;Hello World!\n&quot;);
+    ^
+hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a declaration for 'printf'
+1 error generated.
+</code></pre>
+<p>Ne supprimez pas les 2 lignes en même temps, lors d'un processus de compilation, seule la 1ère erreur est significative. La seconde peut découler de la première...</p>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD ajout de chemins de .h avec <code>-I</code></p>
+</blockquote>
+<h3>Compilation en assembleur</h3>
+<pre><code>clang -S hello.c
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Par défaut la sortie de l'option <code>-S</code> est un fichier d'extension <code>.a</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.s</code></p>
+</div>
+</div>
+<p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe <a href="https://www.nasm.us/">nasm</a>, il faut rajouter des options :</p>
+<pre><code>clang -S hello.c -masm=intel   
+</code></pre>
+<h3>Compilation en Objets</h3>
+<pre><code>clang -c hello.c 
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Par défaut la sortie de l'option <code>-c</code> est un fichier d'extension <code>.o</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.o</code></p>
+</div>
+</div>
+<p>Cette phase transforme le code en fichier objet, au format ELF sous Linux. Ce fichier n'est pas exécutable car il ne possède pas le code de toutes les fonctions en particulier la fonction <code>printf</code>.</p>
+<p>En effet, la directive include ne fait que donner la signature des fonctions que l'on a le droit d'utiliser. En l'état, notre code est identique à :</p>
+<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
+
+<span class="token keyword">int</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> format<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Sa compilation fonctionnera de la même manière : le fichier objet contient :</p>
+<ul>
+<li>le code du fichier compilé</li>
+<li>une liste de signatures de fonctions utilisées mais non définies</li>
+</ul>
+<p>C'est la partie suivante qui en fera un tout cohérent.</p>
+<h3>Edition de liens</h3>
+<p>Le but de l'édition de lien est d'assembler les <em>bouts de codes</em> en un tout cohérent. Un <em>bout de code</em> étant :</p>
+<ul>
+<li>les objets compilées (les <code class="fichier">.o</code>)</li>
+<li>les bibliothèques statiques (les <code>.a</code> sous Linux) qui seront incluses dans le code final</li>
+<li>les bibliothèques partagées (les <code>.so</code> sous Linux, <code>.dylib</code> sous Macos et <code>.DLL</code> sous windows) : dont seule une référence sera incluse dans le code final.</li>
+</ul>
+<pre><code>clang hello.o
+</code></pre>
+<p>Le compilateur <code>clang</code> v ajouter les bibliothèques standard par défaut. On le voit en regardant les bibliothèques dynamiques utilisées par l'exécutable produit (grâce à la commande <a href="https://man7.org/linux/man-pages/man1/ldd.1.html"><code>ldd</code></a>, <code>otool -L</code> sous macos):</p>
+<pre><code>ldd a.out
+</code></pre>
+<p>La <a href="https://www.gnu.org/software/libc/manual/html_node/index.html">libc</a> est en particulier incluse. Cette bibliothèque est incluse dans quasi tout exécutable issu de <code>C</code>. C'est en particulier elle qui contient le code de la fonction <a href="https://www.gnu.org/software/libc/manual/html_node/Formatted-Output-Basics.html"><code>printf</code></a>.</p>
+<p>On peut tenter une édition de lien sans l'inclusion de bibliothèques par défaut :</p>
+<pre><code>clang hello.c -nostdlib
+</code></pre>
+<p>Qui va produire l'erreur :</p>
+<pre><code>Undefined symbols for architecture x86_64:
+  &quot;_printf&quot;, referenced from:
+      _main in hello-ab8cef.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+
+</code></pre>
+<p>On peut alors inclure la bibliothèque à la main avec l'option <code>-l</code> :</p>
+<pre><code>clang hello.c -nostdlib -lc
+</code></pre>
+<p>L'édition de lien fait deux choses :</p>
+<ul>
+<li>elle associe le code d'une fonction à son utilisation via sa <a href="https://developer.mozilla.org/fr/docs/Glossary/Signature/Function">signature</a>. C'est pourquoi il faut déclarer la fonction même si on a pas son code</li>
+<li>elle donne le point d'entrée du programme, la fonction <code>main</code></li>
+</ul>
+<h2>Règles de survie</h2>
+<p>Un célèbre dicton dit qu' <em>&quot;en C, les soucis commencent lorsque le code compile&quot;</em>.</p>
+<p>Le C ne fait en effet aucune vérification par défaut ni n'installe de protection : il fait une confiance aveugle au développeur.</p>
+<p>Ceci permet de faire du code qui s'exécute très rapidement, mais qui se conçoit lentement car il faut être assuré qu'il fonctionne parfaitement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Utilisez toujours les options de compilation très strictes :</p>
+<pre><code>clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
+</code></pre>
+<p>(ou <code>-std=c2x</code> si votre compilateur n'est pas le plus récent)</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>A quoi correspondent les <a href="https://clang.llvm.org/docs/UsersManual.html">options llvm</a> ajoutées ?</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li><code>-Wall -Wextra</code> : tous les warnings</li>
+<li><code>-Werror</code> : les warnings sont considérés comme des erreurs, cela stope le process de compilation</li>
+<li><code>-std=c23</code> : se conforme au standard de code <code>c23</code> du C</li>
+<li><code>-pedantic</code> : vérifie que le standard <code>c23</code> et uniquement lui est bien respecté.</li>
+</ul>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pour référence :</p>
+<p><a href="https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23">https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23</a></p>
+<p>Pour l'instant cela doit vous sembler incompréhensible, c'est normal.</p>
+</div>
+</div>
+<p>De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.</p>
+<h2>Détails</h2>
+<ul>
+<li><a href="pr%C3%A9processeur" class="interne">préprocesseur</a></li>
+<li><a href="%C3%A9dition-liens" class="interne">Édition de liens</a></li>
+</ul>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

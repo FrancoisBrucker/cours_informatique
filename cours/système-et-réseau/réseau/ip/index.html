@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Routage IP</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Routage IP</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/ip/">Routage IP</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Internet_Protocol">Internet Protocol (IP)</a></li>
+<li>nombre d'adresses : <a href="https://xkcd.com/865/">https://xkcd.com/865/</a></li>
+<li><a href="https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html">ipv4 vers ipv6 (chiffres ARCEP)</a></li>
+</ul>
+</div>
+</div>
+<h2>Adresse IP</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Adresse_IPv6">adresse IP</a></li>
+<li><a href="https://www.rfc-editor.org/rfc/rfc4291">RFC IPv6</a></li>
+</ul>
+</div>
+</div>
+<p>Une adresse IP est un nombre sur 16B = 128b décrit mot par mot (2B par 2B) sous sa forme hexadécimale. Par exemple (repris de Wikipedia):</p>
+<pre><code>2001:0db8:0000:85a3:0000:0000:ac1f:8001
+</code></pre>
+<p>Ou de façon abrégée (0 de tête supprimés et une suite de 0 concaténée):</p>
+<pre><code>2001:db8:0:85a3::ac1f:8001
+</code></pre>
+<p>Une adresse IP différente est associée à toute machine sur le réseau internet, c'est ce qui permet de les différentier. Il y a donc $2^{128}$ adresses possibles, ce qui en fait plus que de particules dans l'univers ($10^{80}$)</p>
+<p>Actuellement coexiste deux standard pour les adresse IP, les adresse IPv6 qu'on vient de voir et les adresse IPv4, sur 4B, écrite byte par byte sous sa forme décimale. Par exemple :</p>
+<pre><code>172.18.32.190
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a du changer de version d'adressage car on est arrivé à court d'adresse disponibles pour les adresses IPv4 ($2^32$).</p>
+</div>
+</div>
+<p>Nous allons essentiellement parler ici de IPv6, la plupart des concepts étant identiques en IPv4 et IPv6.</p>
+<p>On fait parfois suivre l'adresse par un <code>/x</code> où <code>x</code> est un nombre entre 1 et 128. Ce type d'adresse représente un réseau et sont pour cela appelé <a href="https://fr.wikipedia.org/wiki/Adresse_IPv6#Notation_des_masques_de_sous-r%C3%A9seau">masque de sous réseau</a>. Par exemple (encore une fois repris de Wikipédia) :</p>
+<pre><code>2001:db8:1:1a0::/59
+</code></pre>
+<p>Cette adresse correspond aux adresses dont :</p>
+<ul>
+<li>les 59 premiers bits correspondant à l'adresse</li>
+<li>les $128-59 = 69$ derniers bits sont libres</li>
+</ul>
+<p>Elle encode donc au maximum $2^{69}$ machines possibles pour ce sous-réseau.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Le préfixe 2001:db8::/32 est un préfixe IPv6 spécial utilisé spécifiquement dans les exemples de documentation.</p>
+</div>
+</div>
+<p>La commande <a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf">ip</a> permet d'identifier toutes les adresses IP, par exemple :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ip</span> addr show dev en0
+en0: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">886</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST<span class="token operator">></span> mtu <span class="token number">1500</span>
+	ether f8:4d:89:8e:77:7e
+	inet6 fe80::418:6a98:fca5:e83f/64 secured scopeid 0xf
+	inet <span class="token number">172.18</span>.32.190/22 brd <span class="token number">172.18</span>.35.255 en0
+	inet6 <span class="token number">2001</span>:660:5404:f232:1ccc:db68:4b11:59dc/64 autoconf secured
+	inet6 <span class="token number">2001</span>:660:5404:f232:a4b7:59d7:f780:855c/64 autoconf temporary
+</code></pre>
+<p>On y voit :</p>
+<ul>
+<li>l'adresse mac (ether)</li>
+<li>une adresse ipv6 locale (de type <code>fe80::/10</code>)</li>
+<li>l'adresse IPv4 et sont broadcast</li>
+<li>deux adresse IP en /64</li>
+</ul>
+<blockquote>
+<p>TBD :<br>
+There appear to be four different types of IPv6 addresses:</p>
+<p>Main address, using your ISP prefix + derivation of your network-interface MAC-address.<br>
+<a href="https://www.rfc-editor.org/rfc/rfc4941">Temporary addresses</a>, based on your main address but with randomization to prevent tracking. (a new one is generated every so often)<br>
+Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)<br>
+Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)</p>
+</blockquote>
+<p>Ceci signifie que l'adresse IP de ma machine est <code>2001:660:5404:f232::/64</code> c'est à dire que j'ai en fait $2^{64}$ adresses possibles et que mon ordinateur a choisi d'utiliser <code>2001:660:5404:f232:a4b7:59d7:f780:855c</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il y a tellement d'adresse IPv6 de disponibles (en tous cas, <a href="https://xkcd.com/865/">pour l'instant...</a>) qu'on assigne par défaut un réseau en <code>/64</code> à toute machine. Quite à elle d'en choisir une (ou plusieurs) parmi toute ces possibilités.</p>
+</div>
+</div>
+<p>On peut trouver une machine sur le réseau en la <em>pinguant</em>. On peut ainsi d'une autre machine de l'internet trouver ma machine en :</p>
+<pre><code>ping6 2001:660:5404:f232:a4b7:59d7:f780:855c
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Pinguez vous les uns les autres.</p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme n'importe qui peut le faire depuis n'importe où, il arrive que les paquets ping soient bloqués par le routeur de votre sous-réseau.</p>
+</div>
+</div>
+<p>Il existe également la version IPv4 :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ping</span> <span class="token number">172.18</span>.32.190
+</code></pre>
+<p>Attention, contrairement à IPv6, IPv4 a de nombreux <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9">réseaux locaux</a>, inaccessible de l'internet. Mon adresse IPv4 en fait parti. Ces réseaux locaux existent de part la pénurie des adresse Ipv4, ils n'ont plus de raison d'être en IPv6.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Les messages ping sont envoyés en utilisant le protocole <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a>, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/">attaques DDos</a></p>
+</div>
+</div>
+<h2>Routage</h2>
+<p>Cette notion de sous-réseau est importante pour l'organisation des machines sur le réseau. On considère que des machines de numéro proches donc d'un même sous-réseau, sont aussi proche physiquement et peuvent être routé par le même routeur.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <strong><em>routeur</em></strong> est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.</p>
+</div>
+</div>
+<p>On peut considérer le réseau ci-après, à 5 machines (de A à E) et 4 routeurs (1 à 4)</p>
+<pre><code>A----1---2---4----E
+      \ /    |
+       3 --- D
+      / \
+     B   C
+</code></pre>
+<p>Pour envoyer un paquet de l'ordinateur A à E il y a plusieurs chemins, par exemple A-1-2-4-E ou encore A-1-3-2-4-E. Savoir à quel route aller, se fait via une <a href="https://en.wikipedia.org/wiki/Routing_table">table de routage</a> qui determine le prochain routeur</p>
+<p>Par exemple la table de routage de A ressemble à :</p>
+<pre><code>dest.  via coût
+A       A    0
+B       1    3
+C       1    3
+D       1    4
+E       1    4
+default 1
+</code></pre>
+<p>Où la route <code>default</code> correspond à toutes les autres destinations possibles. Et celle du routeur 2 pourrait ressembler à :</p>
+<pre><code>dst.   via coût
+2       2    0
+A       1    2
+B       3    2
+B       1    3  # non optimal
+C       3    2
+D       3    2
+D       4    2
+E       4    2
+</code></pre>
+<p>Les autres routes sont à accès direct et n'ont donc pas de routage. Remarquez que on peut aller à D de deux façon différentes, qui sont listées dans la table.</p>
+<p>Des différentes tables un paquets peut aller à bon port en suivant la prochaine direction à prendre à chaque routeur, pour finalement arriver à bon port.</p>
+<p>On peut voir la table de routage de sa machine avec la commande :</p>
+<ul>
+<li><code>ip route show</code> pour le routage IPv4, qui est plus simple</li>
+<li><code>ip -6 route show</code> pour le routage IPv6</li>
+</ul>
+<p>Cette table est également accessible via la commande <a href="https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat">netstat</a> :</p>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">netstat</span> <span class="token parameter variable">-r</span>
+</code></pre>
+<p>Ce n'est que la table de notre propre ordinateur qui va le plus souvent avoir 3 types de routes :</p>
+<ul>
+<li>si on reste sur la machine, on ne prend pas le réseau</li>
+<li>si on reste dans le réseau local, on va directement à la machine concernée</li>
+<li>sinon on passe par le routeur de la box.</li>
+</ul>
+<p>Lorsque le réseau va grossir, on ne peut plus garder les route vers toutes les machines du réseau, on est obligé d'utiliser les sous-réseaux qui vont donner des directions générales à prendre, selon le début de l'adresse.</p>
+<p>Pour que ceci fonctionne :</p>
+<ul>
+<li>il faut <em>en gros</em> qu'un routeur route son sous-réseau.</li>
+<li>il faut que des ordinateurs d'adresses proches soient proche physiquement</li>
+</ul>
+<h2>Structure d'internet</h2>
+<p>Du petit réseau géré de façon ad-hoc, internet est devenu un réseau mondial composé d'une myriade de petites area interconnectées entre elle.</p>
+<h3>LAN</h3>
+<ul>
+<li>LAN : <strong>Local Area Network</strong>. Le réseau de la maison où toutes les machines sont connectée les unes au autres. Ce réseau ne possède qu'une porte de d'entrée/sortie, son routeur (la box).<br>
+Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d'une LAN car chaque machine peut communiquer directement avec une autre. La nécessité d'un routeur vient lorsque l'on veut faire sortir ou entrer des paquet dans la LAN. Le routeur est ainsi connecté à0 deux réseaux, celui de la LAN et l'extérieur.</li>
+</ul>
+<p>Ce réseau extérieur est de notre provider internet, et plus vraisemblablement à une partie de celui-ci (celui de notre région).</p>
+<h3>Réseau ad-hoc</h3>
+<p>Un réseau ad-hoc est un réseau qui s'auto-configure et ne repose sur aucune unité centralisée. C'est pour ça que le réseau initial (<a href="https://fr.wikipedia.org/wiki/ARPANET">ARPANET</a>) a été crée. Il devait survivre à une attaque nucléaire qui détruirait tout réseau centralisé.</p>
+<p>Le protocole RIP de configuration des tables de routage en est issu.</p>
+<h3>Internet</h3>
+<p>De nombreux réseaux connectés ensembles. Des routeurs se chargeant de gérer le traffic interne au réseau et les interconnections. De grosses entités autonomes liées entre elle par des GGP. Chaque entité autonome étant à son tour formées d'aires elles mêmes encore subdivisées en sous-aires.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des <a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)">firewall</a> par exemple.</p>
+</div>
+</div>
+<p>Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.</p>
+<h4>Area et AS</h4>
+<p>Le réseau géré par notre provider est une région (area.1) relié à un <em>backbone</em> reliant un ensemble de région formant une <strong><em>région autonome (Autonomous System)</em></strong> d'internet. Disons, l'internet Français. Une <a href="https://fr.wikipedia.org/wiki/Autonomous_System">région autonome</a> est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :</p>
+<pre><code>  LAN                            ...
+   |                              |
+  ...                     ...  subarea - ...
+   |                        \   /
+area.1   area.2   .....     area.i
+   |      |                   |
+---------------------------------- : backbone
+</code></pre>
+<p>Dans ce genre de réseau, les routeurs sont dédiés soit à la connection entre sub-area, soit au routage d'une subarea en elle-même.</p>
+<p>Exemple :</p>
+<ol>
+<li>AS : eduroam</li>
+<li>area : universités de France</li>
+<li>sub-area :
+<ol>
+<li>salles informatiques</li>
+<li>réseaux des départements de recherche
+<ol>
+<li>info</li>
+<li>math</li>
+<li>biologie</li>
+<li>...</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>L'accès à chaque aire et sous-aire est faite via un routeur qui autorise les entrée et gère le routage à l'intérieur de son aire et liens avec ses sous-aires.</p>
+<h4>BGP</h4>
+<p>Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a><br>
+Impossible de tout garder dans les réseaux actuel. On segmente le réseau en régions autonomes liées par des routeurs spécialisés. Routeurs BGP (O) entre AS :</p>
+<pre><code>AS-O-----O-AS-O-AS
+    \   /
+     \ /
+      O
+      |
+   AS-O-AS
+</code></pre>
+<p>Ces différentes structuration de routage assurent une fluidité du routage sans surcharger les tables des routeurs qui la constitue. Un peu comme un réseau routier.</p>
+<h2>paquets IP</h2>
+<blockquote>
+<p>TBD : structure paquet</p>
+</blockquote>
+<ul>
+<li>si choix alors le plus court et sinon, random : routage de toutes les adresses Et donne direction 1 hop (prog dynamique)</li>
+<li>255 hop = discard</li>
+</ul>
+<h2>Mise à jour des tables de routage</h2>
+<p>mise à jour des table grace à des <a href="https://en.wikipedia.org/wiki/Routing_protocol">protocole de routage</a> :</p>
+<h3>Protocole RIP</h3>
+<ul>
+<li>réseau petit ou très changeant : <a href="https://en.wikipedia.org/wiki/Routing_Information_Protocol">RIP</a></li>
+<li>métrique du hop.</li>
+</ul>
+<p>Chemin calculé avec . Toutes les 30s, chaque routeur reçoit la table de routage de sous ses voisins (il envoie également la sienne à ses voisins) avec la métrique du nombre de hop. Il peut alors mettre à jour sa propre table en utilisant l'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Bellman-Ford">Bellman ford</a>.</p>
+<h3>Protocole OSPF</h3>
+<ul>
+<li>moyen (autonomous system) : <a href="https://fr.wikipedia.org/wiki/Open_Shortest_Path_First">OSPF</a></li>
+<li>autre métrique que hop</li>
+</ul>
+<p>Dijkstra</p>
+<h3>Protocole BGP</h3>
+<p>Relie des gros réseaux entre eux : <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a></p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
