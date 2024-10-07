@@ -77,7 +77,29 @@ La page des animaux à bootstraper :
 
 ## cours 4 : js (2h)
 
-## cours 5 : projet front (4h+)
+Bases de javascript
+
+## cours 5&6 : projet front
+
+### cours 5 : Sujet
+
+Choisir un sujet et coder les pages
+
+{% lien %}
+[règles du décathlon](https://www.ludism.fr/regles_files/fr/DECATHLONfr.pdf)
+{% endlien %}
+
+### cours 6
+
+Lier les pages dans un projet front et un serveur web de fichiers statiques.
+
+{% aller %}
+[Site statique](/cours/web/projet-front/){.interne}
+{% endaller %}
+
+### cours 7
+
+Presentation des projets.
 
 ## Projet final
 

@@ -9,9 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD on a déjà vu dans le problème du postier chinois.
-> greedy algo : <https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf>. On avait montré qu'il était au pire 1/2 moins bon.
-> approximation 1/2 : <https://www.sciencedirect.com/science/article/abs/pii/S0020019002003939?via%3Dihub>
 
 Le problème de couplage peut être défini ainsi :
 
@@ -44,31 +41,42 @@ Montrez que le graphe précédent admet un autre couplage parfait.
 ![couplage exemple parfait 2](couplage-exemple-parfait-2.png)
 {% enddetails %}
 
-> TBD perfect matching :
->
-> - tutte 47 graph with perfect matching dans NP cap co-NP
-> - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf> 
-> - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
-> Tutte, c'est déterminent et c'est idem que multiplication de matrice. - <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
-
-
 > TBD taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
 
+## Algorithme glouton
+
+On peut faire la même chose que ce qu'on a vu pour [le problème du postier chinois](../projet-postier-chinois/) en prenant des arêtes une à une tant que c'est possible.
+
+Cet algorithme possède au pire deux fois moins d'arêtes qu'un couplage maximum
+
+> TBD preuve : <https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf>.
+
 ## Chemin augmentant
+
+Dans les exercices de modélisation par des flots, [le problème du transport amoureux](../projet-flots-modélisation/#transport-amoureux) permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :
+
+- têtes bêches de la source au puits
+- les arcs allant vers le puits sont de flot 0 et peuvent être augmentés
+- les arcs allant vers la source sont de flot 1 et peuvent être diminués.
+
+Essayons d'adapter ceci à notre problème de couplage. Commençons par décrire le graphe des relations entre les deux couples de personnes :
+
 
 > TBD chemin augmentant, comme mariage
 
 ### Chemin augmentant et couplage maximum
 
+> faire jusqu'aux fleurs (cycles)
+> 
 > TBD caractérisation de Berge
 >
 ### Trouver un chemin augmentant ?
 
 > TBD pb de trouver un chemin augmentant : marche pas si cycle de longueur impaire.
 
-> TBD général, histoire de la résolution : <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
-
 ## Graphe biparti
+
+### Couplage parfait dans un graphe biparti
 
 1. graphe biparti
    1. propriétés
@@ -81,6 +89,19 @@ Montrez que le graphe précédent admet un autre couplage parfait.
 > TBD : méthode hongroise <https://www.youtube.com/watch?v=fMAmtE0UyzI>
 
 ## Graphe quelconque
+
+### Couplage parfait dans un graphe quelconque
+
+> TBD perfect matching :
+>
+> - tutte 47 graph with perfect matching dans NP cap co-NP
+> - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf> 
+> - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
+> Tutte, c'est déterminent et c'est idem que multiplication de matrice. - <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
+
+> TBD perfect matching général : <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
+
+### Algorithme
 
 1. général
    1. les fleurs d'Edmonds $\mathcal{O}(n^4)$: <https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages>, <https://math.nist.gov/~JBernal/p_t_f.pdf>

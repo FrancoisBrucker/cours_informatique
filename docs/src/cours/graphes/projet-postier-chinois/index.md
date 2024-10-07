@@ -71,9 +71,31 @@ On a $\sum\delta(x) = 2 \cdot \vert E \vert$. De là, comme la somme des degrés
 
 {% enddetails %}
 
+### Couplage
+
+On va utiliser un algorithme glouton simple pour résoudre cette partie : On classe les couples par poids croissants et on les passe en revue en ajoutant le couple courant à notre ensemble de couples si on a pas encore ajouter de couple avec une des extrémités.
+
+Cet algorithme est au pire moitié moins bon que l'algorithme optimal.
+
+Pour chaque couple $\\{x_i, y_i\\}$ non pris, il existe :
+
+- $\\{x_j, y_j\\}$ avec $j < i$ pris dans notre ensemble
+- $f(\\{x_j, y_j\\}) \leq f(\\{x_i, y_i\\})$
+- soit $x_i = x_j$ soit $y_i = y_j$
+
+Donc pour tout couple $(x_i, y_i)$ d'un ensemble maximum de coup minimum qui n'est pas dans notre ensemble on a au pire deux couples $\\{x_i, y_j\\}$ et $\\{x_k, y_i\\}$ avec $k, j \leq i$ et pris dans notre ensemble.
+
+On en déduit que le poids total de nos éléments est plus petit que 2 fois le poids de l'ensemble min.
+
+Supposons qu'il existe un couplage de poids plus faible.
+
 > TBD faire avec un heuristique pour le couplage parfait et dire qu'il existe des algos exact : on verra plus tard.
 > <https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w>
 > <https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf>
+
+
+### Algorithme
+
 > TBD finir
 
 ## Projet
