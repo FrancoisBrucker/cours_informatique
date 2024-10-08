@@ -123,14 +123,23 @@ Exercices sur les flots :
 3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
 4. $k$-connectivités d'un graphe
 
+### Cours 6 : Graphes biparti
+
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/)
+2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/)
+
+### DS
+
+> TBD
+
 ### Couplages
 
-1. graphes bi-parti
-   - définitions et propriétés
-   - Couplage bi-parti
-     - simple
-     - méthode hongroise
-2. Couplage général
+#### Cours 7
+
+- Couplage bi-parti
+  - simple
+  - méthode hongroise
+- Couplage général
 
 #### Coloriabilité
 

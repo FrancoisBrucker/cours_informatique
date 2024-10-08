@@ -13,7 +13,9 @@ eleventyComputed:
 Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).
 
 {% lien %}
-[Aperçu du protocole http](https://developer.mozilla.org/fr/docs/Web/HTTP/Overview)
+
+- [Aperçu du protocole http](https://developer.mozilla.org/fr/docs/Web/HTTP/Overview)
+- [différentes version de http](https://www.youtube.com/watch?v=UMwQjFzTQXw)
 
 {% endlien %}
 

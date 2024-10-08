@@ -233,7 +233,7 @@ Si l'on suppose que nos capacités sont entières on pourra augmenter au minimum
 - au maximum $\max \mbox{val}(f)$ itérations où $\max \mbox{val}(f)$ est la valeur de flot maximum
 - au maximum $\vert V \vert \cdot c_\max$ itérations où $c_\max$ est la capacité maximale (pour montrer ça on considère la coupe $(\\{s\\}, V \backslash \\{s \\})$ : $s$ a au plus $\vert V\vert$ voisins et chacun de capacité maximale au plus $c_\max$)
 
-### <span id="#ford-fulkerson"></span> Ford et Fulkerson
+### <span id="ford-fulkerson"></span> Ford et Fulkerson
 
 L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme _marquer/ examiner_
 
