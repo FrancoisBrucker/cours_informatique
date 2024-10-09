@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Shell</title>
+    <title>Redirection de ports</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Shell</h1>
+  <h1>Redirection de ports</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Shell</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/ssh/">ssh</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/ssh/redirection-ports/">Redirection de ports</a>
 
 </div>
 </div>
@@ -92,56 +92,46 @@
     
   
 
-  <p>Le shell est ce via quoi on exécute des commandes. Pour que l'environnement de travail soit :</p>
+  <blockquote>
+<p>TBD faire grossir et expliquer mieux</p>
+</blockquote>
+<p>Amusons-nous avec la redirection de ports.</p>
+<h2>Une redirection de port</h2>
+<pre><code>              22               22
+so-high ---------  sas1  --------- roucas100.etu
+</code></pre>
+<p>La commande <code>ssh -L4000:roucas100.etu:22 fbrucker@sas1.ec-m.fr</code> depuis ma machine nommée so-high demande à :</p>
+<ol>
+<li>faire une connexion ssh (depuis le port 22) sur le sas</li>
+<li>que cette connexion fasse un lien entre :
 <ul>
-<li>vérifiable</li>
-<li>modifiable</li>
+<li>le port 4000 de so-high</li>
+<li>le port 22 de roucas100.etu</li>
 </ul>
-<p>Pour cela le shell possède des <strong><em>variables</em></strong> que l'on peut manipuler:</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="variables" class="interne">Variables shell</a></p>
-</div>
-</div>
-<p>Certaines variables sont dites d'<strong><em>environnement</em></strong> car elles sont comprises par le shell et permettent la personnalisation de son environnement :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="variables-environnement" class="interne">Variables d'environnement</a></p>
-</div>
-</div>
-<h2>Configuration</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="configuration" class="interne">Configuration du shell</a></p>
-</div>
-</div>
-<h2>Scripting</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="scripting" class="interne">Scripting</a></p>
-</div>
-</div>
-<h2>Exercices</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="exercices" class="interne">exercices</a></p>
-</div>
-</div>
+</li>
+</ol>
+<p>Ceci est possible puisque sas1 &quot;voit&quot; roucas100.etu et so-high.</p>
+<p>En laissant cette connexion ouverte, dans un autre terminal on peut maintenant se connecter directement sur le port 22 de roucas100.etu (c'est à dire le démon ssh de roucas100.etu) en utilisant le port 4000 de so-high :</p>
+<pre><code>ssh -p4000 fbrucker@localhost
+</code></pre>
+<h2>Plusieurs redirection de port</h2>
+<p>On suppose que la première redirection est faite :</p>
+<pre><code>ssh -L4000:roucas100.etu:22 fbrucker@sas1.ec-m.fr`
+</code></pre>
+<p>Le port 4000 de so-high est le port 22 de roucas100.etu (via la connexion sas puisqu'il est impossible d'aller directement de l'un à l'autre)</p>
+<p>On peut maintenant ramener un autre port de roucas100.etu sur notre machine, par exemple le port 9090 :</p>
+<pre><code>ssh -L9090:localhost:9090 -p4000 fbrucker@localhost
+</code></pre>
+<p>On effectue une connexion sur le port 4000 de localhost (qui est du coup aussi le port 22 de roucas100.etu) et on demande de faire une redirection du port 9090 sur cette machine sur notre machine locale.</p>
+<p>Attention, il y a deux fois marqué <code>localhost</code> mains ce nest pas le même :</p>
+<ol>
+<li>le deuxième localhost correspond à la machine qui se connecte, ici so-high</li>
+<li>le premier localhost correspond à la machine connectée, ici roucas100.etu</li>
+</ol>
+<p>Supposons que l'on ait un service uniquement accessible depuis roucas100.etu sur le port 9090. Par exemple une écoute de port (que vous aurez lancé depuis un autre terminal connecté sur roucas100.etu) :</p>
+<pre><code>nc -l -p 9090 127.0.0.1
+</code></pre>
+<p>On peut maintenant directement y accéder avec <code>nc 127.0.0.1 9090</code></p>
 
 
 </article>

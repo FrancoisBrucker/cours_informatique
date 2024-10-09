@@ -109,12 +109,10 @@
     
   
 
-  <!-- début résumé -->
-<p>Installation et utilisation (basique) de ssh.</p>
-<!-- fin résumé -->
+  <p>Installation et utilisation (basique) de ssh.</p>
 <h2>Installation</h2>
 <p>la commande <code>ssh</code> doit être Doit être installée par défaut :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">ssh</span>                
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">ssh</span>
 usage: <span class="token function">ssh</span> <span class="token punctuation">[</span>-46AaCfGgKkMNnqsTtVvXxYy<span class="token punctuation">]</span> <span class="token punctuation">[</span>-B bind_interface<span class="token punctuation">]</span> <span class="token punctuation">[</span>-b bind_address<span class="token punctuation">]</span>
            <span class="token punctuation">[</span>-c cipher_spec<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D <span class="token punctuation">[</span>bind_address:<span class="token punctuation">]</span>port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-E log_file<span class="token punctuation">]</span>
            <span class="token punctuation">[</span>-e escape_char<span class="token punctuation">]</span> <span class="token punctuation">[</span>-F configfile<span class="token punctuation">]</span> <span class="token punctuation">[</span>-I pkcs11<span class="token punctuation">]</span> <span class="token punctuation">[</span>-i identity_file<span class="token punctuation">]</span>
@@ -217,7 +215,7 @@ Start-Service ssh-agent
 The authenticity of <span class="token function">host</span> <span class="token string">'roucas100.etu.ec-m.fr (147.94.25.100)'</span> can't be established.
 ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
 This key is not known by any other names.
-Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>? 
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?
 </code></pre>
 <p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
 <blockquote>
@@ -241,13 +239,13 @@ Host key verification failed.
 
 </code></pre>
 <p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code>~/.ssh/known_hosts</code>.</p>
-<pre><code>       A                   B 
-     -----               ----- 
-     |   |               |   | 
+<pre><code>       A                   B
+     -----               -----
+     |   |               |   |
      |   |--------------&gt;|   |
      -----               -----
-  known_hosts       
-clé de machine      
+  known_hosts
+clé de machine
 </code></pre>
 <h2>Identification des utilisateurs</h2>
 <p>Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.</p>
@@ -259,7 +257,7 @@ clé de machine
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Comme vous allez vous servir de cette clé pour vous connecter automatiquement à des ordinateurs distant, Il <em><strong>faut</strong></em> mettre une passphrase sécurisée à votre clé.</p>
+<p>Comme vous allez vous servir de cette clé pour vous connecter automatiquement à des ordinateurs distant, Il <strong><em>faut</em></strong> mettre une passphrase sécurisée à votre clé.</p>
 </div>
 </div>
 <p>Si vous suivez les comportement par défaut, vous aller créer deux fichier dans votre dossier <code class="fichier">~/.ssh</code> :</p>
@@ -304,13 +302,13 @@ clé de machine
 <p>Il faut donc récupérer votre clé ssh là où vous l'avez laissée. Rien de nouveau ici, c'est simplement une routine à prendre.</p>
 <h3>Connexion avec agent</h3>
 <p>Pour que vous puissiez vous connecter à une machine via vos clés, il faut que votre clé publique soit disponible sur la machine distante, dans le fichier <code class="fichier">~.ssh/authorized-keys</code>. Chaque ligne de ce fichier contient une clé publique qui est autorisée à se connecter.</p>
-<p>Connectez vous sur <code>roucas100.etu.ec-m.fr</code> et ajoutez (ou créez) une ligne au fichier  <code class="fichier">~.ssh/authorized-keys</code> contenant votre clé publique :</p>
+<p>Connectez vous sur <code>roucas100.etu.ec-m.fr</code> et ajoutez (ou créez) une ligne au fichier <code class="fichier">~.ssh/authorized-keys</code> contenant votre clé publique :</p>
 <pre><code>cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
 </code></pre>
 <p>Vous pouvez ensuite vous déconnecter, puis vous reconnecter sans avoir besoin de taper un mot de passe.</p>
-<pre><code>       A                   B 
-     -----               ----- 
-     |   |               |   | 
+<pre><code>       A                   B
+     -----               -----
+     |   |               |   |
      |   |--------------&gt;|   |
      -----               -----
   known_hosts        authorized_keys
@@ -343,43 +341,24 @@ clé de machine      clé d'utilisateur
 <pre><code>scp chemin/index.html mon_herbe@ovh1.ec-m.fr:www/index.html
 </code></pre>
 <p>Si vous allez vérifier sur <code>ovh1.ec-m.fr</code>, votre fichier a bien remplacé l'ancien index.html.</p>
+<h2>Exercices</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="exercices-connexion" class="interne">exercices</a></p>
+</div>
+</div>
 <h2>Amusons-nous avec la redirection de ports</h2>
-<h3>Une redirection de port</h3>
-<pre><code>              22               22
-so-high ---------  sas1  --------- roucas100.etu
-</code></pre>
-<p>La commande <code>ssh -L4000:roucas100.etu:22 fbrucker@sas1.ec-m.fr</code> depuis ma machine nommée so-high demande à :</p>
-<ol>
-<li>faire une connexion ssh (depuis le port 22) sur le sas</li>
-<li>que cette connexion fasse un lien entre :
-<ul>
-<li>le port 4000 de so-high</li>
-<li>le port 22 de roucas100.etu</li>
-</ul>
-</li>
-</ol>
-<p>Ceci est possible puisque sas1 &quot;voit&quot; roucas100.etu et so-high.</p>
-<p>En laissant cette connexion ouverte, dans un autre terminal on peut maintenant se connecter directement sur le port 22 de roucas100.etu (c'est à dire le démon ssh de roucas100.etu) en utilisant le port 4000 de so-high :</p>
-<pre><code>ssh -p4000 fbrucker@localhost
-</code></pre>
-<h3>Plusieurs redirection de port</h3>
-<p>On suppose que la première redirection est faite :</p>
-<pre><code>ssh -L4000:roucas100.etu:22 fbrucker@sas1.ec-m.fr`
-</code></pre>
-<p>Le port 4000 de so-high est le port 22 de roucas100.etu (via la connexion sas puisqu'il est impossible d'aller directement de l'un à l'autre)</p>
-<p>On peut maintenant ramener un autre port de roucas100.etu sur notre machine, par exemple le port 9090 :</p>
-<pre><code>ssh -L9090:localhost:9090 -p4000 fbrucker@localhost
-</code></pre>
-<p>On effectue une connexion sur le port 4000 de localhost (qui est du coup aussi le port 22 de roucas100.etu) et on demande de faire une redirection du port 9090 sur cette machine sur notre machine locale.</p>
-<p>Attention, il y a deux fois marqué <code>localhost</code> mains ce nest pas le même :</p>
-<ol>
-<li>le deuxième localhost correspond à la machine qui se connecte, ici so-high</li>
-<li>le premier localhost correspond à la machine connectée, ici roucas100.etu</li>
-</ol>
-<p>Supposons que l'on ait un service uniquement accessible depuis roucas100.etu sur le port 9090. Par exemple une écoute de port (que vous aurez lancé depuis un autre terminal connecté sur roucas100.etu) :</p>
-<pre><code>nc -l -p 9090 127.0.0.1
-</code></pre>
-<p>On peut maintenant directement y accéder avec <code>nc 127.0.0.1 9090</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="redirection-ports" class="interne">Redirection de ports</a></p>
+</div>
+</div>
 
 
 </article>
