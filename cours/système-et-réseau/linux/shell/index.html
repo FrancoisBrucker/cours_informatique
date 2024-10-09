@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Scripting</title>
+    <title>Shell</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Scripting</h1>
+  <h1>Shell</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Scripting</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Shell</a>
 
 </div>
 </div>
@@ -92,94 +92,56 @@
     
   
 
-  <blockquote>
-<p>TBD à refaire mieux.</p>
-</blockquote>
-<p>Le scripting c'est l'exécution de fichiers textes pour résoudre un problème spécifique. Un langage de script est un langage interprété. Cela peut-être :</p>
+  <p>Le shell est ce via quoi on exécute des commandes. Pour que l'environnement de travail soit :</p>
 <ul>
-<li>du shell</li>
-<li>mais aussi python</li>
-<li>ou d'autres langage de script comme awk, perl, ruby, …</li>
+<li>vérifiable</li>
+<li>modifiable</li>
 </ul>
-<h2>Exécution d'un fichier texte</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://fr.wikipedia.org/wiki/Shebang">shebang</a></p>
-</div>
-</div>
-<p>Le fonctionnement est divinement simple. Lors de 'exécution du fichier, le noyau vérifie s'il commence par <code>#!</code> si oui la fin de la ligne correspond au chemin absolu d'un programme auquel on passe en 1er paramètre le fichier à exécuter.</p>
-<p>Par exemple si on a le fichier exécutable suivant, nommé <code>bonjour</code> :</p>
-<pre><code>#! /usr/bin/python
-
-print(&quot;Coucou monde !&quot;)
-</code></pre>
-<p>Les deux commandes suivantes sont équivalente (si on est dans le dossier contenant le fichier) :</p>
-<ul>
-<li><code>bonjour</code></li>
-<li><code>/usr/bin/python bonjour</code></li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.in-ulm.de/~mascheck/various/shebang/#blankrequired">Histoire du shebang</a></p>
-</div>
-</div>
-<p>C'est la raison fondamentale pour laquelle les commentaires dans un langage de script est toujours le <code>#</code>, la première ligne contenant le shebang n'est pas interprétée lors de l'exécution du script.</p>
-<p>Il y a deux moyens classique d'utiliser le shebang :</p>
-<ul>
-<li>appeler directement le programme : <code>/bin/bash</code></li>
-<li>passer via env : <code>/usr/bin/env bash</code></li>
-</ul>
-<p>La différence est que pour le deuxième appel, c'est le bash du PATH qui est pris et pas celui dans /bin. Ces deux programmes pouvant être différent. bash peut être dans /bin, dans /usr/bin, dans /usr/local/bin ou encore ailleurs selon le système et la méthode d'installation, pour python il est courant d'avoir plusieurs versions d'installées. En revanche, tous les systèmes ont /usr/bin/env (tapez <code>/usr/bin/env bash</code> dans une console pour comprendre le fonctionnement)</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://www.baeldung.com/linux/bash-shebang-lines">Quel shebang utiliser</a></p>
-</div>
-</div>
-<h2>Interpréteurs</h2>
-<h3>python</h3>
-<ul>
-<li><a href="https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in">https://dev.to/husseinalamutu/bash-vs-python-scripting-a-simple-practical-guide-16in</a> : manipulation fichier, bash plus utile que python.</li>
-</ul>
-<p><a href="https://www.digitalocean.com/community/tutorials/read-stdin-python">python stdin</a></p>
-<h3>bash</h3>
+<p>Pour cela le shell possède des <strong><em>variables</em></strong> que l'on peut manipuler:</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<ol>
-<li><a href="environnement-configuration" class="interne">Environnement</a></li>
-<li><a href="bash" class="interne">bash scripting</a></li>
-</ol>
+<p><a href="variables" class="interne">Variables shell</a></p>
 </div>
 </div>
-<p>Exercices :</p>
-<ul>
-<li><a href="exercices" class="interne">petits scripts bash</a></li>
-<li><a href="DM" class="interne">DM</a></li>
-</ul>
-<h3>sed/awk</h3>
+<p>Certaines variables sont dites d'<strong><em>environnement</em></strong> car elles sont comprises par le shell et permettent la personnalisation de son environnement :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="sed-awk" class="interne">sed-awk</a></p>
+<p><a href="variables-environnement" class="interne">Variables d'environnement</a></p>
 </div>
 </div>
-<h2>Bibliographie</h2>
-<ul>
-<li><a href="https://doc.lagout.org/operating%20system%20/linux/Classic%20Shell%20Scripting.pdf">classic shell scripting</a></li>
-</ul>
+<h2>Configuration</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="configuration" class="interne">Configuration du shell</a></p>
+</div>
+</div>
+<h2>Scripting</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="scripting" class="interne">Scripting</a></p>
+</div>
+</div>
+<h2>Exercices</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="DM" class="interne">DM</a></p>
+</div>
+</div>
 
 
 </article>

@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/bash/">Shell</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Shell</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/scripting/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/scripting/bash/">Shell</a>
 
 </div>
 </div>
@@ -98,7 +98,14 @@
 <li><a href="https://www.youtube.com/watch?v=KG97VzMjfMg">un autre tuto</a></li>
 </ul>
 <p>Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
 <p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
+</div>
+</div>
 <h2>Gestion des paramètres</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -238,8 +245,8 @@ done &lt; &quot;${1:-/dev/stdin}&quot;
 </code></pre>
 <p>Qui lit l'entrée standard si le premier paramètre (<code>$1</code>) n'est pas positionné. Cela utilise une spécificité de bash pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion">gérer les variables</a>.</p>
 <h2>Variables</h2>
-<ul>
-<li>Méta-caractères commençant par <code>$</code> :
+<h3>Métacaractères</h3>
+<p>On a déjà vu <a href="../../bases-linux/commandes#meta-caracteres">les métacaractères du shell</a>, ils commencent par <code>$</code> et peuvent être utilisés dans les scripts :</p>
 <ul>
 <li><code>$?</code> : le code de sortie de la dernière commande</li>
 <li><code>$$</code> : le PID du shell courant</li>
@@ -247,16 +254,25 @@ done &lt; &quot;${1:-/dev/stdin}&quot;
 <li><code>$((arithmétique))</code> : pour <a href="https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic">exécuter des opérations arithmétiques</a>, par exemple <code>echo $((3+4))</code></li>
 <li><code>${variable}</code> : pour afficher le contenu d'une variable, par exemple <code>echo ${PAH}</code></li>
 </ul>
-</li>
-<li>variables internes : <a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></li>
-</ul>
+<h3>Variables internes</h3>
+<p>Des variables créés par le shell et pouvant être utilisé dans les scripts. A utiliser avec parcimonie car cela rend vos scripts spécifiques à bash.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></p>
+</div>
+</div>
 <h2>Process et shell</h2>
 <blockquote>
 <p>TBD mieux faire</p>
 </blockquote>
+<p>Le script est par défaut exécuté dans un nouveau shell. Mais ce n'est pas toujours ce que l'on veut :</p>
 <ul>
 <li><code class="fichier">./truc.sh</code> exécution dans un nouveau shell enfant</li>
 <li><code class="fichier">source ./truc.sh</code> exécution ligne à ligne dans le shell actuel</li>
+<li><code class="fichier">. ./truc.sh</code> exécution ligne à ligne dans le shell actuel (identique à <code>source</code>)</li>
 <li><code class="fichier">exec ./truc.sh</code>` nouveau shell qui remplace le shell existant</li>
 </ul>
 <p>Supposons que vous ayez un fichier exécutable <code class="fichier">pid.sh</code> contenant :</p>
@@ -281,41 +297,6 @@ $ <span class="token builtin class-name">exec</span> ./pid.sh
 $ <span class="token builtin class-name">echo</span> <span class="token variable">$$</span>
 <span class="token number">704757</span>
 </code></pre>
-<h2>Pipe</h2>
-<blockquote>
-<p>TBD créer ses propres pipe avec <code>mkfifo</code></p>
-</blockquote>
-<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
-</code></pre>
-<p>Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :</p>
-<pre><code>-  
-  \
-----&gt; stdin   |pipe|  stdout ----&gt; 
-  /
--
-</code></pre>
-<p>Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier</p>
-<pre><code>----&gt; stdin   |pipe|  stdout ----&gt; 
-                              \
-                                -&gt; fichier
-</code></pre>
-<h2>Autres shell</h2>
-<p>Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)</p>
-<p>perso : mon shell c'est zsh mais les script je les écris en (ba)sh.</p>
-<ul>
-<li>
-<p><a href="https://www.youtube.com/watch?v=8L7cM4q6TL8">sh ou bash pour nos scripts ?</a></p>
-</li>
-<li>
-<p>le script se fait avec le shell le plus courant : bash (présent sous macos)</p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=FI_bZhV7wpI">histoire du design sh</a></p>
-</li>
-</ul>
-<pre><code>curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2&gt;/dev/null | wc
-</code></pre>
-<p><a href="https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/">https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/</a></p>
 <h2>Bibliographie</h2>
 <ul>
 <li><a href="https://michael-herbst.com/teaching/advanced-bash-scripting-2017/">un cours</a></li>
