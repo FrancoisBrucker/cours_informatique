@@ -21,7 +21,9 @@ Essayer d'être portable. On fait du du bash (voir du sh) pour pouvoir être ex�
 
 Taper des commandes = script. Comme python. Il faut trouver un moyen de faire des bouts de commandes san les executer a=à la fin d'une ligne. Python fait des blocs. shell fait autrement. De plus, tout est orienté commandes sans pratiquement aucune surcouche du shell (on le verra avec les if/then/else qui fonctionnent bien différemment du reste des langages de programmation)
 
+{% aller %}
 <https://www.gnu.org/software/bash/manual/html_node/>
+{% endaller %}
 
 ## Gestion des paramètres
 
@@ -178,20 +180,33 @@ Qui lit l'entrée standard si le premier paramètre (`$1`) n'est pas positionné
 
 ## Variables
 
-- Méta-caractères commençant par `$` :
-  - `$?` : le code de sortie de la dernière commande
-  - `$$` : le PID du shell courant
-  - `$(expression)` : pour exécuter l'expression et donner son affichage comme argument. Par exemple `echo $(expr 3 + 4)`. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.
-  - `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic), par exemple `echo $((3+4))`
-  - `${variable}` : pour afficher le contenu d'une variable, par exemple `echo ${PAH}`
-- variables internes : <https://tldp.org/LDP/abs/html/internalvariables.html>
+### Métacaractères
+
+On a déjà vu [les métacaractères du shell](../../bases-linux/commandes#meta-caracteres), ils commencent par `$` et peuvent être utilisés dans les scripts :
+
+- `$?` : le code de sortie de la dernière commande
+- `$$` : le PID du shell courant
+- `$(expression)` : pour exécuter l'expression et donner son affichage comme argument. Par exemple `echo $(expr 3 + 4)`. C'est bien ce qui est affiché qui est rendu, pas son code de sortie.
+- `$((arithmétique))` : pour [exécuter des opérations arithmétiques](https://www.gnu.org/software/bash/manual/bash.html#Shell-Arithmetic), par exemple `echo $((3+4))`
+- `${variable}` : pour afficher le contenu d'une variable, par exemple `echo ${PAH}`
+
+### Variables internes
+
+Des variables créés par le shell et pouvant être utilisé dans les scripts. A utiliser avec parcimonie car cela rend vos scripts spécifiques à bash.
+
+{% lien %}
+<https://tldp.org/LDP/abs/html/internalvariables.html>
+{% endlien %}
 
 ## Process et shell
 
 > TBD mieux faire
 
+Le script est par défaut exécuté dans un nouveau shell. Mais ce n'est pas toujours ce que l'on veut :
+
 - `./truc.sh`{.fichier} exécution dans un nouveau shell enfant
 - `source ./truc.sh`{.fichier} exécution ligne à ligne dans le shell actuel
+- `. ./truc.sh`{.fichier} exécution ligne à ligne dans le shell actuel (identique à `source`)
 - `exec ./truc.sh`{.fichier}` nouveau shell qui remplace le shell existant
 
 Supposons que vous ayez un fichier exécutable `pid.sh`{.fichier} contenant :
@@ -221,50 +236,6 @@ $ exec ./pid.sh
 $ echo $$
 704757
 ```
-
-
-## Pipe
-
-> TBD créer ses propres pipe avec `mkfifo`
-
-```
-----> stdin   |pipe|  stdout ----> 
-```
-
-Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :
-
-```
--  
-  \
-----> stdin   |pipe|  stdout ----> 
-  /
--
-```
-
-Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier
-
-```
-----> stdin   |pipe|  stdout ----> 
-                              \
-                                -> fichier
-```
-
-## Autres shell
-
-Plusieurs sortes de shell (sh : shell historique, bash : shell par défaut dans Linux, zsh : shell par défaut macos, ...)
-
-perso : mon shell c'est zsh mais les script je les écris en (ba)sh.
-
-- [sh ou bash pour nos scripts ?](https://www.youtube.com/watch?v=8L7cM4q6TL8)
-
-- le script se fait avec le shell le plus courant : bash (présent sous macos)
-- [histoire du design sh](https://www.youtube.com/watch?v=FI_bZhV7wpI)
-
-```
-curl https://www.gutenberg.org/cache/epub/1184/pg1184.txt 2>/dev/null | wc
-```
-
-https://itslinuxfoss.com/how-parse-json-shell-scripting-linux/
 
 ## Bibliographie
 

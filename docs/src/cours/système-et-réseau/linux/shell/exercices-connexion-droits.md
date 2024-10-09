@@ -13,16 +13,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD à mettre lorsque l'on ssh
+
+
 ## Personnalisation
 
-Le fichier `.bashrc`{.fichier} crée un alias `ll`. À quoi cela correspond-t-il ?
-
-Créez dans un shell les deux alias suivant :
-
-- `cd..` pour `cd ..`
-- `cd...` pour `cd ../..`.
-
-Le fichier de configuration `.bashrc`{.fichier} tente d'exécuter un fichier dédié aux alias. Lequel ? Ajoutez y vos deux nouveaux alias pour qu'ils soient toujours disponible.
 
 ## Sur une machine de l'ecm
 

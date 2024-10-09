@@ -13,7 +13,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 ## Téléchargements de fichiers
 
 Le [projet Gutenberg](https://www.gutenberg.org/) contient de nombreux ouvrages libres de droits. Vous allez y récupérer des fichiers avec du scripting shell

@@ -240,7 +240,7 @@ Si truc existe et est un fichier. Il va cependant y avoir un soucis...
 On peut grouper de commandes de deux façons :
 
 - `{ cmd1; cmd2; }` : les commandes sont exécutées dans le shell courant
-- `(cmd1 ; cmd2 ; ...)` : un shell enfant est crée pur exécuter les commandes dans la parenthèse. Ceci permet d'isoler ces exécutions
+- `(cmd1 ; cmd2 ; ...)` : un shell enfant est crée pour exécuter les commandes dans la parenthèse. Ceci permet d'isoler ces exécutions
 
 Notez que c'est bien l'accolade qui est début et la fin de l'instruction de groupement, il faut les prendre comme des commandes spéciales :
 
@@ -258,7 +258,9 @@ Quelle est la différence entre les deux instructions suivantes :
 On ne conserve pas les dossiers courants dans un sous-shell. ON est donc toujours dans `/` à la fin du second jeu d'instructions.
 {% enddetails %}
 
-## Interactions avec le shell
+La création d'un shell enfant pour exécuter des commandes est un principe fondamental en unix. Il permet de compartimenter les exécutions de commandes comme on la vue dans l'exercice précédent.
+
+## <scan id="meta-caracteres"></span>Interactions avec le shell
 
 {% lien %}
 [Les métacaractères du shell](https://www.youtube.com/watch?v=4W5NG3jZXHU&list=PLQqbP89HgbbbD0WSKRR90R5yjmTpSNNIl&index=6)
@@ -304,6 +306,8 @@ J'ai tendance à préférer cette dernière notation qui est selon moi plus clai
   
 ## I/O
 
+> TBD en faire plus. Car les `|`, `>` et `>>` c'est pas clair.
+
 {% lien %}
 
 - <https://linuxhint.com/bash_stdin_stderr_stdout/>
@@ -331,7 +335,13 @@ wc
 
 Il lit l'entrée standard. Stopper la commande avec ctrl+C arrêter tout et interrompt la commande. Il faut terminer l'entrée standard en lui faisant lire la séquence de contrôle EOF ctrl+D.
 
-### redirection de la sortie vers une autre commande
+### Redirection de la sortie vers une autre commande
+
+{% note "**Commande**" %}
+La redirection de la sortie vers l'entrée se fait via le *pipe* : `|`.
+{% endnote %}
+
+> TBD expliciter les commandes ci-dessous.
 
 Le très utilisé :
 
@@ -345,17 +355,53 @@ Ou plus compliqué :
 cat /etc/passwd | cut -d : -f 1 | lolcat
 ```
 
+### Pipe et tee
+
+> TBD créer ses propres pipe avec `mkfifo`
+> TBD faire mieux. Mettre dans une partie à part. Un peu comme un cheveux sur la soupe là.
+
+```
+----> stdin   |pipe|  stdout ----> 
+```
+
+Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirections :
+
+```
+-  
+  \
+----> stdin   |pipe|  stdout ----> 
+  /
+-
+```
+
+
+Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier
+
+```
+----> stdin   |pipe|  stdout ----> 
+                              \
+                                -> fichier
+```
+
 ### redirection de la sortie vers un fichier
+
+{% note "**Commande**" %}
+La redirection de la sortie vers un **nouveau** fichier se fait avec : `>`.
+{% endnote %}
 
 ```
 echo "toto" > truc
 ```
 
+{% note "**Commande**" %}
+La redirection de la sortie vers **la fin** d'un fichier existant se fait avec : `>>`.
+{% endnote %}
+
 ```
 echo "toto" >> truc
 ```
 
-### redirection de l'erreur
+### Redirection de l'erreur
 
 ```
 ls /truc 2>&1 | lolcat
@@ -415,6 +461,8 @@ Vidéos
 
 ## Exercice
 
+> TBD en faire des petits commandes à suivre.
+ 
 On aura besoin de tout ce qu'on a appris
 
 ```
