@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: DM
+title: Exercices de scripting
 
 eleventyNavigation:
     order: 1
@@ -12,6 +12,8 @@ eleventyComputed:
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
+
+Quelques exercices de base de scripting shell.
 
 ## Téléchargements de fichiers
 

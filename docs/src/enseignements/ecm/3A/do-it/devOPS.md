@@ -26,6 +26,8 @@ Support de cours : [Le cours de système et réseau](/cours/système-et-réseau)
 
 ### Programme
 
+Base de Linux
+
 - Ordinateur
   - [partie matériel](/cours/système-et-réseau/architecture-ordinateur/){.interne}
   - [partie logicielle](/cours/système-et-réseau/système-exploitation/){.interne}
@@ -43,12 +45,29 @@ Et m'envoyer un compte rendu par mail.
 
 ### Programme
 
-- ssh
-- le shell :
+Système Linux et connexions distantes
+
+- [ssh](/cours/système-et-réseau/ssh/){.interne} :
+  - principe
+  - connexion à aioli
+- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/)
+- [le shell](/cours/système-et-réseau/linux/shell/){.interne} :
   - sa configuration
   - scripting
-- bases de réseau
+- [bases de réseau](/cours/système-et-réseau/réseau/){.interne}
 
 ### A faire pour la prochaine fois
 
-> TBD
+{% faire %}
+[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/){.interne}
+{% endfaire %}
+
+## Cours 3
+
+On fait du web.
+
+### Préparation
+
+{% faire %}
+Venez avec vos sites en local, genre réact, vue.
+{% endfaire %}

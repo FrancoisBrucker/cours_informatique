@@ -54,6 +54,6 @@ Certaines variables sont dites d'**_environnement_** car elles sont comprises pa
 
 {% aller %}
 
-[DM](DM){.interne}
+[exercices](exercices){.interne}
 
 {% endaller %}
