@@ -64,7 +64,13 @@ Système Linux et connexions distantes
 
 ## Cours 3
 
-On fait du web.
+- mise en production :
+  - déploiement
+  - démon
+  - log
+- séparer développement et de production via des variables d'environnement
+- gestion des bases données
+- mots de passes et git
 
 ### Préparation
 
