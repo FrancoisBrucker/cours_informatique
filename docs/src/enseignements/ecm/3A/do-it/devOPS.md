@@ -50,7 +50,7 @@ Système Linux et connexions distantes
 - [ssh](/cours/système-et-réseau/ssh/){.interne} :
   - principe
   - connexion à aioli
-- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/)
+- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/){.interne}
 - [le shell](/cours/système-et-réseau/linux/shell/){.interne} :
   - sa configuration
   - scripting
