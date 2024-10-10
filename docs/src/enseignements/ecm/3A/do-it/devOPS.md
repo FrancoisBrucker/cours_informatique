@@ -50,19 +50,27 @@ Système Linux et connexions distantes
 - [ssh](/cours/système-et-réseau/ssh/){.interne} :
   - principe
   - connexion à aioli
-- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/){.interne}
-- [le shell](/cours/système-et-réseau/linux/shell/){.interne} :
-  - sa configuration
-  - scripting
 - [bases de réseau](/cours/système-et-réseau/réseau/){.interne}
 
 ### A faire pour la prochaine fois
 
 {% faire %}
-[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/){.interne}
+
+- se connecter depuis son ordinateur personnel à aioli
+- mettre un fichier html dans son dossier static et le voir s'afficher sur un navigateur
+
 {% endfaire %}
 
 ## Cours 3
+
+- [organisation d'un système Linux](/cours/système-et-réseau/linux/système-exploitation-linux/){.interne}
+- [le shell](/cours/système-et-réseau/linux/shell/){.interne} :
+  - sa configuration
+  - scripting
+
+{% faire %}
+[Exercices de scripting](/cours/système-et-réseau/linux/shell/exercices/){.interne}
+{% endfaire %}
 
 - mise en production :
   - déploiement
