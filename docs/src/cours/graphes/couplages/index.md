@@ -166,38 +166,62 @@ Un chemin augmentant est un chemin alternant qui commence et qui fii par un somm
    1. la première marque donne le sommet libre de départ
    2. la seconde indique si arrivée à ce sommet le chemin alternant est Pair ou Impair
    3. la dernière marque donne le prédécesseur
-2. on examine toutes les arêtes $uv$ telle que $u$ est possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
-   1. $v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
+2. on examine toutes les arêtes $uv$ telle que $u$ possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
+   1. si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant
+   2. $v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
       1. $v$ par $[s, I, u]$
       2. $w$ par $[s, P, v]$
       3. on recommence l'étape 2
-   2. si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant
    3. si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant
    4. si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.
 
 Reprenons [le graphe exemple](#graphe-exemple){.interne} avec un couplage initial vide $M = \varnothing$.
 
-Au départ tous les sommets sont libres, leurs marques vaut $[x, P, \varnothing]$ et l'algorithme s'arrête dès l'examen de la première arête.
+Au départ tous les sommets sont libres, leurs marques valent $[x, P, \varnothing]$ :
 
-On se retrouve dans le cas 3
+![Edmonds exemple 1](./edmonds-exemple-1.png)
 
-> TBD exemple début et étape avec 1 et 2
+#### Étape 2.1
 
-#### Étape 3
+L'algorithme s'arrête dès l'examen de la première arête, disons $\\{2, 6\\}$, dans le cas 2.1. Le marquage de l'étape suivant est alors :
 
-Le cas 3 de l'algorithme précédent fonctionne car le chemin alternant de $v$ à $s'\neq s$ ne peut couper le chemin de $s$ à $u$ sinon deux arêtes avec une extrémité commune seraient dans le couplage.
+![Edmonds exemple 2](./edmonds-exemple-2.png)
 
-> TBD exemple
+On peut recommencer l'algorithme et encore une fois s'arrêter dans le cas 2.1 en choisissant d'arête $\\{8, 10\\}$. Le marquage de l'étape suivant est alors :
+
+![Edmonds exemple 3](./edmonds-exemple-3.png)
+
+On peut recommencer et choisir $\\{7, 9\\}$ et arriver à :
+
+![Edmonds exemple 4](./edmonds-exemple-4.png)
+
+#### Étape 2.2
+
+En considérant l'arête $\\{4, 8\\}$, on se retrouve dans le cas 2.2. On obtient le marquage :
+
+![Edmonds exemple 5](./edmonds-exemple-5.png)
+
+Et l'on faire de même en choisissant ensuite $\\{3, 7\\}$ :
+
+![Edmonds exemple 6](./edmonds-exemple-6.png)
+
+#### Étape 2.3
+
+Choisir l'arête $\\{9, 10\\}$, nous fait visiter le cas 2.3 : on obtient un chemin augmentant 3, 7, 9, 8, 4 et on obtient le graphe et le couplage :
+
+![Edmonds exemple 7](./edmonds-exemple-7.png)
+
+Le cas 2.3 de l'algorithme précédent fonctionne car le chemin alternant de $v$ à $s'\neq s$ ne peut couper le chemin de $s$ à $u$ sinon deux arêtes avec une extrémité commune seraient dans le couplage.
 
 #### Étape 4
 
-L'étape 4 est problématique car on arrive à des structures en fleur :
+Choisir l'arête $\\{1, 2\\}$ nous permettrait de terminer l'algorithme sans obtenir de cas problématique mais choisissons $\\{5, 2\\}$ puis $\\{6, 4\\}$ et enfin $\\{8, 10\\}$. On arrive dans le cas suivant :
+
+![Edmonds exemple 8](./edmonds-exemple-8.png)
+
+Le choix de l'arête $\\{8, 10\\}$ nous mène au cas 2.4 problématique : on boucle comme le montre le chemin vert suivi par les marques. On appelle ces structures des **_fleurs_** :
 
 ![fleur](fleur.png)
-
-Ces structures bouclent et ne nous permettent pas de trouver à coup sur un chemin augmentant.
-
-> TBD exemple
 
 Nous verrons plus tard comment résoudre le problème des fleurs (spoiler : en les coupant), pour l'instant étudions le cas où l'on ne peut pas trouver de fleurs :
 
@@ -210,10 +234,6 @@ Une corolle ne peut exister que s'il existe un cycle de longueur impair.
 
 {% enddetails %}
 
-#### Exemple
-
-> TBD on progresse le truc.
->
 ## Graphe biparti
 
 Les graphes biparti sont exactement les graphes sans cycle impair.
@@ -225,7 +245,8 @@ L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes bip
 
 Une corolle ne peut exister que s'il existe un cycle de longueur impair, ce qui n'existe pas pour les graphes biparti.
 
-> TBD fonctionne toujours s'il existe un chemin augmentant
+De plus dans le cas des graphes bi-parti, l'algorithme de recherche de chemin augmentant est identique à la recherche d'une chaîne augmentante en modélisant le couplage sous la forme d'[un problème du transport amoureux](../projet-flots-modélisation/#transport-amoureux){.interne}. On est donc garanti d'obtenir un couplage maximum si l'on ne trouve pas de chemin augmentant.
+
 {% enddetails %}
 
 ### Couplage parfait et maximum dans un graphe biparti
