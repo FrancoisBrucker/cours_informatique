@@ -16,7 +16,12 @@ Le problème de couplage peut être défini ainsi :
 Soit $G=(V, E)$ un graphe. Un **_couplage_** est un ensemble $M \subseteq E$ tel que si $xy, x'y' \in E$ alors $xy \cap x'y' = \varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).
 {% endnote %}
 
-Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, les arêtes rouges du graphe ci-dessous :
+Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, le graphe ci-dessous :
+
+<span id="graphe-exemple"></span>
+![couplage exemple](./graphe-exemple.png)
+
+Admet l'ensemble des arêtes rouges comme couplage :
 
 ![couplage exemple](couplage-exemple.png)
 
@@ -50,7 +55,7 @@ Cet algorithme possède au pire deux fois moins d'arêtes qu'un couplage maximum
 > TBD preuve : <https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf>
 >
 
-Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement comme va le voir, d'abord dans le cas particulier des graphes biparti puis dans le cas général.
+Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement. Commençons par caractériser les couplages maximum.
 
 ## Chemin augmentant
 
@@ -157,18 +162,24 @@ Trouver un chemin augmentant peux se fait exactement comme pour trouver des cha�
 
 Un chemin augmentant est un chemin alternant qui commence et qui fii par un sommet libre. On va donc commencer par un sommet libre et l'augmenter de façon alternée jusqu'à arriver sur un autre sommet libre.
 
-1. marque tous les sommets libres par $[s, P, \varnothing]$
+1. marque tous les sommets libres $s$ par $[s, P, \varnothing]$
    1. la première marque donne le sommet libre de départ
    2. la seconde indique si arrivée à ce sommet le chemin alternant est Pair ou Impair
    3. la dernière marque donne le prédécesseur
-2. on examine toutes les arêtes $uv$ telle que $u$ est possède une marque Paire $[s, P, p]$ (second élément de la liste de marquage valant $P$). Si :
+2. on examine toutes les arêtes $uv$ telle que $u$ est possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
    1. $v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
       1. $v$ par $[s, I, u]$
       2. $w$ par $[s, P, v]$
       3. on recommence l'étape 2
-   2. si $v$ est libre, on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant
+   2. si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant
    3. si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant
    4. si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.
+
+Reprenons [le graphe exemple](#graphe-exemple){.interne} avec un couplage initial vide $M = \varnothing$.
+
+Au départ tous les sommets sont libres, leurs marques vaut $[x, P, \varnothing]$ et l'algorithme s'arrête dès l'examen de la première arête.
+
+On se retrouve dans le cas 3
 
 > TBD exemple début et étape avec 1 et 2
 
@@ -275,7 +286,7 @@ $$
 > TBD perfect matching :
 >
 > - tutte 47 graph with perfect matching dans NP cap co-NP
-> - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf> 
+> - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
 > - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
 > Tutte, c'est déterminent et c'est idem que multiplication de matrice. - <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
 

@@ -71,6 +71,8 @@ On a $\sum\delta(x) = 2 \cdot \vert E \vert$. De là, comme la somme des degrés
 
 {% enddetails %}
 
+> TBD exemple
+
 ### Couplage
 
 On va utiliser un algorithme glouton simple pour résoudre cette partie : On classe les couples par poids croissants et on les passe en revue en ajoutant le couple courant à notre ensemble de couples si on a pas encore ajouter de couple avec une des extrémités.
@@ -92,7 +94,6 @@ Supposons qu'il existe un couplage de poids plus faible.
 > TBD faire avec un heuristique pour le couplage parfait et dire qu'il existe des algos exact : on verra plus tard.
 > <https://math.stackexchange.com/questions/1146224/proof-for-why-maximum-weight-matching-using-greedy-guarantees-at-least-1-2-the-w>
 > <https://www.cis.upenn.edu/~aaroth/courses/slides/privacymd/Lecture7.pdf>
-
 
 ### Algorithme
 
