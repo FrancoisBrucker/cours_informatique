@@ -103,7 +103,10 @@
 <p>Soit $G=(V, E)$ un graphe. Un <strong><em>couplage</em></strong> est un ensemble $M \subseteq E$ tel que si $xy, x'y' \in E$ alors $xy \cap x'y' = \varnothing$ (le degré de tout sommet du graphe $G'=(V, M)$ est strictement inférieur à 2).</p>
 </div>
 </div>
-<p>Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, les arêtes rouges du graphe ci-dessous :</p>
+<p>Dans un couplage tout extrémité d'une arête n'apparaît qu'une seule fois. Par exemple, le graphe ci-dessous :</p>
+<p><span id="graphe-exemple"></span><br>
+<img src="graphe-exemple.png" alt="couplage exemple"></p>
+<p>Admet l'ensemble des arêtes rouges comme couplage :</p>
 <p><img src="couplage-exemple.png" alt="couplage exemple"></p>
 <p>On définit plusieurs types de couplages selon le graphe :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -156,7 +159,7 @@
 <blockquote>
 <p>TBD preuve : <a href="https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf">https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf</a></p>
 </blockquote>
-<p>Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement comme va le voir, d'abord dans le cas particulier des graphes biparti puis dans le cas général.</p>
+<p>Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement. Commençons par caractériser les couplages maximum.</p>
 <h2>Chemin augmentant</h2>
 <p>Dans les exercices de modélisation par des flots, <a href="../projet-flots-mod%C3%A9lisation/#transport-amoureux" class="interne">le problème du transport amoureux</a> permettait de résoudre un problème de couplage. En utilisant cette modélisation, et en augmentant les flots d'une valeur entière (toujours 1) une chaîne augmentante est un chemin tel que les arcs sont :</p>
 <ul>
@@ -297,14 +300,14 @@ $$
 <p>Trouver un chemin augmentant peux se fait exactement comme pour trouver des chaînes augmentante dans <a href="../flots/#ford-fulkerson">l'algorithme de Ford et Fulkerson</a>, par un algorithme de marquage examen qui va faire grossir des chemins alternants.</p>
 <p>Un chemin augmentant est un chemin alternant qui commence et qui fii par un sommet libre. On va donc commencer par un sommet libre et l'augmenter de façon alternée jusqu'à arriver sur un autre sommet libre.</p>
 <ol>
-<li>marque tous les sommets libres par $[s, P, \varnothing]$
+<li>marque tous les sommets libres $s$ par $[s, P, \varnothing]$
 <ol>
 <li>la première marque donne le sommet libre de départ</li>
 <li>la seconde indique si arrivée à ce sommet le chemin alternant est Pair ou Impair</li>
 <li>la dernière marque donne le prédécesseur</li>
 </ol>
 </li>
-<li>on examine toutes les arêtes $uv$ telle que $u$ est possède une marque Paire $[s, P, p]$ (second élément de la liste de marquage valant $P$). Si :
+<li>on examine toutes les arêtes $uv$ telle que $u$ est possède une marque Paire (second élément de la liste de marquage valant $P$) $[s, P, p]$. Si :
 <ol>
 <li>$v$ n'a pas de marque, il existe une arête $vw \in M$. On marque alors :
 <ol>
@@ -313,12 +316,15 @@ $$
 <li>on recommence l'étape 2</li>
 </ol>
 </li>
-<li>si $v$ est libre, on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant</li>
+<li>si $v$ est libre ($s = v$), on le marque par $[s, I, u]$ et on s'arrête on a trouvé un chemin augmentant</li>
 <li>si $v$ est marqué $[s', P, p']$ avec $s\neq s'$ on peut remonter jusqu'à $s'$ et on a trouvé un chemin augmentant</li>
 <li>si $v$ est marqué $[s, P, p']$ on se retrouve devant un cas problématique.</li>
 </ol>
 </li>
 </ol>
+<p>Reprenons <a href="#graphe-exemple" class="interne">le graphe exemple</a> avec un couplage initial vide $M = \varnothing$.</p>
+<p>Au départ tous les sommets sont libres, leurs marques vaut $[x, P, \varnothing]$ et l'algorithme s'arrête dès l'examen de la première arête.</p>
+<p>On se retrouve dans le cas 3</p>
 <blockquote>
 <p>TBD exemple début et étape avec 1 et 2</p>
 </blockquote>
