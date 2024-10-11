@@ -135,7 +135,7 @@ De là même manière, si $c=v_0 \dots v_p$ est un chemins non élémentaire, il
 {% enddetails %}
 
 {% attention %}
-La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou circuit) de longueur nulle ! e n'est pas le cas pour tous les autres cas.
+La réduction d'un pseudo-cycles (ou pseudo-circuit) peut engendrer un cycle (ou circuit) de longueur nulle ! Ce n'est pas le cas pour tous les autres cas.
 {% endattention %}
 
 ## Connexité
@@ -189,7 +189,7 @@ Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus im
 Soit $G$ un graphe connexe.
 
 - Un **isthme** est une arête qui déconnecte le graphe si on la supprime
-- Un **nœud d'articulation** est une arête qui déconnecte le graphe si on le supprime
+- Un **nœud d'articulation** est un sommet qui déconnecte le graphe si on le supprime
 
 {% endnote %}
 

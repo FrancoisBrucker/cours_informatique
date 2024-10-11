@@ -472,7 +472,7 @@ Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seu
 
 ![cliques](cliques.png)
 
-On appelle **_clique maximum** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
+On appelle **_clique maximum_** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
 
 Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
 
@@ -487,12 +487,12 @@ Pour ce genre de preuves, il faut procéder en deux temps :
 
 Le sous ensemble des sommets bleus suivant est une clique :
 
-![cliques](cliques.png)
+![cliques](cliques2.png)
 
 Si on prend 5 éléments, cela revient à supprimer 1 élément du graphe et aucuns de ceux ci n'est une clique.
 {% enddetails %}
 
-Ll est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
+Il est facile, itérativement à partir d'une clique possiblement réduite à un point, de trouver une clique maximale :
 
 > TBD exercice où il faut trouver l'algo.
 
