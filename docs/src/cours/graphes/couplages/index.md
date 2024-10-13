@@ -226,7 +226,7 @@ Le choix de l'arête $\\{8, 10\\}$ nous mène au cas 2.4 problématique : on bou
 Nous verrons plus tard comment résoudre le problème des fleurs (spoiler : en les coupant), pour l'instant étudions le cas où l'on ne peut pas trouver de fleurs :
 
 {% note "**Proposition**" %}
-L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes cycle impair
+L'algorithme de recherche d'un chemin augmentant fonctionne pour les graphes sans cycle impair.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -249,6 +249,8 @@ De plus dans le cas des graphes bi-parti, l'algorithme de recherche de chemin au
 
 {% enddetails %}
 
+On peut donc utiliser l'algorithme de chemin augmentant ou la modélisation par les flot pour trouver un couplage maximum dans un graphe bi-parti.
+
 ### Couplage parfait et maximum dans un graphe biparti
 
 {% note "**Proposition**" %}
@@ -258,44 +260,204 @@ Cette borne est atteinte, entre autre, pour les graphes biparti complet.
 {% endnote %}
 {% details "preuve", "open" %}
 
-> TBD
+C'est évident.
 
 {% enddetails %}
 
-On en déduit la propriété fondamentale :
+La proposition précédente nous permet d'énoncer le corollaire suivant  :
 
-{% note "**Proposition**" %}
-Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables avec $\vert A \vert \leq \vert B \vert$.
+{% note "**corollaire**"  %}
+Un graphe biparti n'admet de couplage parfait que si toute bipartition en deux stables $A$ et $B$ est telle que $\vert A \vert = \vert B \vert$.
+{% endnote %}
+
+Ce n'est cependant pas une equivalence, comme le montre le graphe suivant :
+
+![contre exemple biparti parfait](bipatri-pas-parfait.png)
+
+La condition nécessaire et suffisante existe cependant mais elle est plus complexe :
+
+{% note "**Théorème (Hall, 1935)**" %}
+Soit $G = (A\cup B, E)$ un graphe bi-parti admettant $A$ et $B$ comme stables.
 
 Il existe un couplage couvrant $A$ si et seulement si pour tout $S \subseteq A$ on a :
 
 <div>
 $$
-\vert {y | xy \in E, x \in S}\vert \geq \vert S \vert
+\vert \{y | xy \in E, x \in S\}\vert \geq \vert S \vert
 $$
 </div>
 
 {% endnote %}
 {% details "preuve", "open" %}
 
+Si $\vert A \vert > \vert B \vert$, c'est impossible et en prenant $S = A$, on a \vert \{y | xy \in E, x \in S\}\vert = \vert B \vert < \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$
+
+Soit $M$ un couplage maximum qui ne couvre pas $x_0 \in A$ et on note :
+
+- $S_0 = \\{x_0\\}$
+- $T_0 = \\{ y \vert yx_0 \in E\\}$
+
+Tous les éléments de $T_0$ sont couverts sinon le couplage $M$ n'est pas maximum.
+
+Si $\vert T_0 \vert < \vert S_0 \vert$ ($T_0$ est vide) la propriété est démontrée. Sinon, soit $y_0 \in T_0$. Si $y_0$ n'était pas couvert $x_0y_0$ serait un chemin augmentant et donc il existe $x_1 \in A \backslash S_0$ tel que $x_1y_0 \in M$ et on note $S_1 = S_0 \cup \\{x_1 \\}$ et on a $\vert S_1 \vert = \vert S_0 \vert + 1$ puis on pose $T_1 = \\{ y \vert yx \in E, x \in S_1\\}$.
+
+Si $\vert T_1 \vert < \vert S_1 \vert$ la propriété est démontrée et sinon soit $y_1 \in T_1\backslash T_0$. Si $y_1$ n'était pas couvert $x_0y_0x_1y_1$ serait un chemin augmentant et donc il existe $x_2 \in A \backslash S_1$ $x_2y_1 \in M$ et on note $S_2 = S_1 \cup \\{x_2 \\}$ et on a $\vert S_2 \vert = \vert S_1 \vert + 1$ puis on pose $T_2 = \\{ y \vert yx \in E, x \in S_2\\}$.
+
+On peut recommencer cette procédure par finitude du graphe, il va arriver un moment où $\vert T_i \vert < \vert S_i \vert$ ce qui conclue la preuve.
+{% enddetails %}
+
+Le théorème précédent nous permet de résoudre l'exercice suivant :
+
+{% exercice %}
+Un graphe biparti $G=(A\cup B, E)$ tel que $\delta(x) = k > 0$ pour tout sommet $x$ admet un couplage parfait.
+{% endexercice %}
+{% details "corrigé" %}
+On a clairement $\vert A\vert = \vert B \vert$ (puisque $\vert E \vert = \sum_{x \in A}\delta(x) = \sum_{x \in B}\delta(x)$).
+
+On conclut la preuve en remarquant que pour tout $S \subseteq A$, on a alors $\vert \\{y | xy \in E, x \in S\\}\vert = k \vert S \vert \geq \vert S \vert$.
+{% enddetails %}
+
+Montrons un corollaire immédiat du théorème de Hall :
+
+{% note "**corollaire**" %}
+Soit $G = (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables.  Il admet un couplage $\vert M \vert \geq k$ si et seulement si pour tout $S\subseteq A$ :
+
+<div>
+$$
+\vert \{y | xy \in E, x \in S\}\vert \geq \vert S \vert + k - \vert A \vert
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+Comme pour la démonstration du théorème, on peut supposer sans perte de généralité  avec $k < \vert A \vert \leq \vert B \vert$.
+
+En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de $A$ pour former le graphe biparti $G'=(A\cup B, E')$ où $B'$ est le graphe contenant $B$ et tous les nouveaux sommets, on a que $G'$ contient un couplage de taille $\vert A \vert$. Même si ce couplage couvre tous les nouveaux sommets il couvre tout de même $k$ sommets de $G$ ce qui conclut la preuve.
+
+{% enddetails %}
+
+Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti. On reverra cet algorithme.
+
+### Couplage et couverture
+
+{% note "**Définition**" %}
+Soit $G=(V, E)$ un graphe. Une couverture de $G$ est un ensemble $K \subseteq V$ telle que toute arête de $G$ à au moins un sommet dans $K$.
+{% endnote %}
+
+Remarquons immédiatement que couplage et couverture sont liées puisque si $M$ est un couplage et $K$ une couverture d'un graphe, on a évidemment $\vert M \vert \leq \vert K \vert$.
+
+> TBD exemple
+
+On a alors immédiatement la proposition suivante :
+
+{% note "**Définition**" %}
+Soit $G=(V, E)$ un graphe. La cardinalité minimum de ses couvertures est plus grande la cardinalité maximum de ses couplages.
+
+{% endnote %}
+
+Attention, ce n'est pas forcément égal dans le cas général. On le déduit aisément de l'exercice suivant :
+
+{% exercice %}
+Pour tout $n>0$ il faut au moins des ensembles de $n-1$ éléments pour couvrir $K_n$.
+{% endexercice %}
+{% details "corrigé" %}
+C'est vrai pour $n < 2$ et pour $n \geq 2$, s'il existait une couverture à strictement moins de $n-1$ éléments, il existerait $x$ et $y$, deux sommets différents qui n'y sont pas, ce qui n'est pas possible puisque $xy$ est une arête de $K_n$.
+{% enddetails %}
+
+Mais pour les graphes biparti ça l'est :
+
+<div id="König-Egerváry"></div>
+
+{% note "**Théorème (König-Egerváry, 1931)**" %}
+Pour tout graphe biparti, la cardinalité minimum de ses couvertures est égale à la cardinalité maximum de ses couplages.
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit $G= (A\cup B, E)$ un graphe biparti admettant $A$ et $B$ comme stables. On suppose de plus que $\vert A \vert \leq \vert B \vert$.
+Soit $M$ un couplage maximum de $A$.
+
+Si $\vert M \vert = \vert A\vert$ alors comme $A$ est une couverture on a bien le résultat demandé.
+
+Sinon, soit $L\subseteq A$ les éléments non couverts par $M$ (on a $\vert M\vert = \vert A \vert - \vert L \vert$) et $C$ l'ensemble des sommets $x$ tels qu'il existe un chemin alternant partant d'un élément de $L$ et finissants en $x$. On pose alors :
+
+- $A' = A \cap C$
+- $B' = B \cap C$
+
+Tout élément $x$ dans $B'$ sera un élément pair d'un chemin alternant et puisqu'il ne peut être libre par maximalité de $M$, il existe $xy \in M$ avec $y\in A'$. On a donc $\vert A' \vert = \vert B' \vert$ et comme $K = L \cup B' \cup (A\backslash A')$ est trivialement une couverture on a bien le résultat demandé.
+
+> TBD dessin
+
+{% enddetails %}
+
+La preuve du théorème précédent donne de plus une construction de la couverture de taille minimum à partir d'un couplage maximum, ce qui montre que le problème de la recherche de la couverture minimale est polynomiale dans le cas des graphes biparti alors qu'il est NP-complet dans le cas général :
+
+{% exercice %}
+Montrez que le problème de recherche d'une couverture de taille minimale inférieure à $k$ est NP-complet.
+{% endexercice %}
+{% details "corrigé" %}
+
 > TBD
 
 {% enddetails %}
 
-> Propriétés
-
-### Algorithme de résolution
-
-### Couplage et couverture
+La dualité couverture minimale et couplage maximal rappelle la dualité coupe minimale et flot maximum. On va pouvoir généraliser cette dualité et l'utiliser de la même manière dans les flots dans la partie suivante pour trouver un couplage de poids maximum dans les graphes bipartis.
 
 ### Couplage de poids maximum
 
-> TBD min couverture = max couplage, sorte de dual comme flots.
+> TBD couplage à poids maximum = couplage maximum à coût min.
+> TBD def $p(M)$
 
-1. on peut toujours se ramener à un couplage parfait de $K_{n,n}$ en mettant des 0 sur les arêtes qui n'existent pas
-2. <https://webia.lip6.fr/~bampise/kuhn-munkres.pdf>
+On préfère celui-ci car cela permet d'ajouter des arêtes de poids nul et de ne considérer que des couplage de poids maximum pour des graphes bi-partis complets. Et en ajoutant des sommets relié uniquement à des arêtes de coût nul on peut même uniquement chercher des couplages parfait de $K_{n,n}$.
 
-> TBD : méthode hongroise <https://www.youtube.com/watch?v=fMAmtE0UyzI>
+{% note "**Problème du couplage biparti de poids maximum**" %}
+Soit $K_{n,n}=(V, E)$ le graphe biparti complet valué par $p:E\to \mathbb{R}^+$.
+
+On cherche un couplage $M$ tel que $\sum_{xy\in M}p(xy) \geq \sum_{xy\in M'}p(xy)$ pour tout couplage $M'$ de $K_{n,n}$
+{% endnote %}
+
+> TBD c'est des cas pratiques à foison <https://webia.lip6.fr/~bampise/kuhn-munkres.pdf>
+
+L'algorithme que l'on va utiliser pour cela est appelé **_méthode hongroise_** et utilise le principe de dualité entre couverture et couplage pour les graphes bipartis.
+
+Pour cela, il faut avant tout définir une **_couverture valuée_** :
+
+{% note "**définition**" %}
+Une **_couverture valuée_** d'un graphe $G=(V, E)$ valué par $p$ est une fonction $c:V\to \mathbb{R}^+$ telle que : $c(x) + c(y)\geq p(xy)$ pour tout $xy \in E$.
+
+Le **_coût_** d'une couverture valué est $c(V) = \sum_{x\in V}c(x)$.
+{% endnote %}
+
+Nous allons généraliser [le théorème de König-Egerváry](./#König-Egerváry) au cas valué. Commençons par remarquer que :
+
+{% note "**Proposition**" %}
+Soit $G=(v, E)$ un graphe valué par $p$, $c$ une de ses couverture valuée et $M$ un de ses couplages. On a :
+
+<div>
+$$
+c(V) \geq p(M)
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+Pour toute arête $xy$ de $M$ on a $c(x)+c(y)\geq p(xy)$ et comme chaque sommet apparaît au plus une fois dans le couplage on a bien l'inégalité demandée.
+{% enddetails %}
+
+L'algorithme va petit à petit augmenter un couplage en diminuant une couverture valuée jusqu'à arriver à une valuation égale.
+
+> TBD algorithme
+
+> TBD exemple
+
+> TBD primal/dual fondamental en optimisation un qui monte l'autre qui descent et solution optimale égale.
+
+{% lien %}
+
+- <https://webia.lip6.fr/~bampise/kuhn-munkres.pdf>
+- [méthode hongroise](https://www.youtube.com/watch?v=fMAmtE0UyzI)
+
+{% endlien %}
 
 ## Graphe quelconque
 
@@ -314,6 +476,11 @@ $$
 > TBD perfect matching général : <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
 
 ### Algorithme
+
+#### Fleur
+
+#### Valué
+> TBD par primal dual. Donner l'algo et dire qu'on ne le démontrera pas ici.
 
 > TBD min couverture = max couplage, ne marche pas ici (exemple ?)
 > 
