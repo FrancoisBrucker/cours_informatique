@@ -446,11 +446,34 @@ Pour toute arête $xy$ de $M$ on a $c(x)+c(y)\geq p(xy)$ et comme chaque sommet 
 
 L'algorithme va petit à petit augmenter un couplage en diminuant une couverture valuée jusqu'à arriver à une valuation égale.
 
-> TBD algorithme
+- Donnée : pne valuation $p$ du graphe biparti complet $K_{n,n} =(A\cup B, E)$ (avec $A$ et $B$ ses 2 stables)
+- algorithme
+   1. on note $c$ le couplage valué tel que :
+      - $c(x) = \max(\\{ p(xy) \vert xy \in E \\})$ si $x\in A$
+      - $c(x) = 0$ si $x\in B$
+   2. soit $G[c] = (A\cup B, E[c])$ le graphe tel que $xy \in E$ si et seulement si $c(x) + c(y) - p(xy) = 0$
+   3. Soit $M$ un couplage maximum de $G[c]$
+   4. **si** $M$ couvre $A$ **rendre** $M$ et $c$
+   5. soit $C$ une couverture de taille $\vert M \vert$. On pose :
+      - $A' = A \cap C$
+      - $B' = B \cap C$
+      - $\lambda = \min(\\{c(x) + c(y) - p(xy) \vert x\in A\backslash A', y\in B\backslash B' \\})$
+      - $c(x) = c(x) -\lambda$ si $x \in A\backslash A'$
+      - $c(x) = c(x)  + \lambda$ si $x \in B\backslash B'$
+   6. retour à l'étape 2.
+
+L'algorithme va forcément trouver un couplage parfait car à chaque étape $G[c]$ va avoir strictement plus d'arête :
+
+- si $c(x) + c(y) - p(xy) = 0$ à une étape donné c'est vrai aussi à l'étape suivante
+- à l'étape 5. aucune arête $xy$ avec $x\in A\backslash A'$ et $y \in B\backslash B'$ n'est dans $G[c]$, ce qui implique que $\lambda > 0$
+
+De plus, à la fin on a clairement que $c(A\cup B) = p(M)$ ce qui montre que le couplage est bien de poids maximum et la couverture valuée de poids minimum.
+
+Tout ce fait de façon polynomiale puisque  trouver la couverture max peut se faire comme dans la preuve [du théorème de König-Egerváry](./#König-Egerváry).
 
 > TBD exemple
 
-> TBD primal/dual fondamental en optimisation un qui monte l'autre qui descent et solution optimale égale.
+Cet algorithme démontre un principe fondamental dans le design d’algorithme par primal/dual : une solution augmente pendant que l'autre diminue, la solution étant trouvée lorsque les deux coïncident.
 
 {% lien %}
 
@@ -461,25 +484,77 @@ L'algorithme va petit à petit augmenter un couplage en diminuant une couverture
 
 ## Graphe quelconque
 
+Le problème du couplage dans un graphe quelconque se résout aussi de façon polynomiale, mais les algorithmes sont plus complexes.
+
 ### Couplage parfait et maximum dans un graphe quelconque
 
-> TBD taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
-
-
-> TBD perfect matching :
+> TBD :
+> 
+> - taille du couplage MAX : <https://fr.wikipedia.org/wiki/Formule_de_Tutte-Berge>
 >
-> - tutte 47 graph with perfect matching dans NP cap co-NP
-> - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
-> - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
-> Tutte, c'est déterminent et c'est idem que multiplication de matrice. - <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
+> - perfect matching :
+>   - <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
+>   - tutte 47 graph with perfect matching dans NP cap co-NP
+>   - <https://www.dimap.ufrn.br/~mfsiqueira/Marcelo_Siqueiras_Web_Spot/Talks_files/matching-1.pdf>
+>   - <http://users.cms.caltech.edu/~schulman/Courses/18cs150/lec11.pdf>
 
-> TBD perfect matching général : <https://ti.inf.ethz.ch/ew/lehre/GA07/lec-matching-alg.pdf>
+{% info %}
+Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matrice : <https://www.cs.mcgill.ca/~amehra13/Presentations/max_matching.pdf>
+
+{% endinfo %}
 
 ### Algorithme
 
 #### Fleur
 
+À partir d'une fleur :
+
+![contraction fleur 1](./contraction-fleur-1.png)
+
+On peut contracter la corolle en un seul sommet, les arˆ´tes parant de la corolle étant fusionné sur le nouveau sommet :
+
+![contraction fleur 2](./contraction-fleur-2.png)
+
+Aucune autre arête contracté ou partant de la corolle (les arêtes vertes) ne peut être dans le couplage. On a alors la propriété fondamentale suivante de l'algorithme :
+
+{% note "**Proposition**" %}
+S'il existe un chemin augmentant dans le graphe contracté, il existe un chemin augmentant dans le graphe initial.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Plusieurs cas sont à envisager :
+
+- si le chemin augmentant ne passe pas par la corolle, c'est évident
+- si le nouveau sommet est une extrémité, la tige n'existe pas et soit :
+  - l'arête partant du nouveau point est une arête du graphe initial et du coup tout le chemin est aussi dans le graphe initial
+  - l'arête partant du nouveau point n'est pas une arête du graphe initial on peut y aller dans le graphe initial sans casser le chemin augmentant
+  ![dé-corolle](./de-contraction-fleur-1.png)
+- le chemin passe par le nouveau sommet. La tige, ou au moins son dernier élément, est alors une des extrémités et au peut retrouver l'autre en passant par la corolle.
+  ![dé-corolle 2](./de-contraction-fleur-2.png)
+{% enddetails %}
+
+Dans l'exemple, si on a pas de chance pn peut encore contracter
+On peut alors contracter la corolle en un seul sommet et en conservant les arêtes qui en partent :
+![contraction fleur exemple](./contraction-fleur-exemple-1.png)
+
+Que l'on peut encore contracter une fois :
+
+![contraction fleur exemple 2](./contraction-fleur-exemple-2.png)
+
+Que l'on peut contracter une dernière fois pour obtenir un graphe biparti contenant un chemin augmentant :
+
+![contraction fleur exemple 3](./contraction-fleur-exemple-3.png)
+
+Ce chemin peut se détracter en un chemin augmentant du graphe initial.
+
+On peut transformer petit à petit notre graphe. Si on a pas de chance, on obtiendra après toutes les contractions possible un graphe sans corolle, donc biparti et on sait ue pour ces graphes notre algorithme trouve toujours un chemin augmentant s'il existe.
+
+Enfin, toute cette construction se fait de plus de façon polynomiale !
+
+> TBD la complexité. Plus les améliorations.
+
 #### Valué
+
 > TBD par primal dual. Donner l'algo et dire qu'on ne le démontrera pas ici.
 
 > TBD min couverture = max couplage, ne marche pas ici (exemple ?)
@@ -499,5 +574,5 @@ L'algorithme va petit à petit augmenter un couplage en diminuant une couverture
 
 ## Implémentation
 
-- networkx : <https://stackoverflow.com/questions/27132313/maximum-weighted-pairing-algorithm-for-complete-graph>
+- [NetworkX](https://networkx.org/) : <https://stackoverflow.com/questions/27132313/maximum-weighted-pairing-algorithm-for-complete-graph>
 - <https://cs.stackexchange.com/questions/109021/perfect-matching-in-complete-weighted-graph>
