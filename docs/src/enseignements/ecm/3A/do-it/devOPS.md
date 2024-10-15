@@ -85,3 +85,21 @@ Système Linux et connexions distantes
 {% faire %}
 Venez avec vos sites en local, genre réact, vue.
 {% endfaire %}
+
+### A faire
+
+Sur aioli
+
+1. fichier html static
+2. serveur :
+   1. nc et vérifier qu'on y accède
+   2. node basique et vérifier que tout fonctionne
+3. survivre à la déconnexion :
+   1. nohup
+   2. tmux (ou screen) <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html>
+4. npm en front
+5. script d'installation :
+   1. sur aioli
+   2. chez soit qui pousse le tout avec un scp/git et configure là-bas (<https://stackoverflow.com/questions/18522647/run-ssh-and-immediately-execute-command>)
+   3. env dev et prod : <https://nodejs.org/en/learn/command-line/how-to-read-environment-variables-from-nodejs>
+6. redirection de ports

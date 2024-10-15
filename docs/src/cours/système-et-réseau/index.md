@@ -47,17 +47,14 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    2. fork
    3. pipe (passe dans le fork)
 7. [clients serveurs](./client-serveur){.interne}
-8. Sécurité
-   1. [cryptographie](./cryptographie){.interne}
-   2. [OpenPGP](./openpgp){.interne}
-9. Concurrence
+8. Concurrence
    1. IPC
       1. fifo, message queues
       2. file locking
    2. Threads
       1. mutex (métaphores ?)
       2. opérations atomique
-10. docker
+9. docker
 
 {% info %}
 Les documentations techniques que l'on donnera ici seront toujours en anglais. Faite l'effort de vous y mettre. Les documentations anglaises :

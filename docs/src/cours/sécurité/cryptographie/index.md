@@ -11,8 +11,6 @@ eleventyComputed:
 ---
 
 
-> TBD montrer avec openssh comment le faire (voir serious cryptography)
-
 La thématique de la *sécurité* en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :
 
 - ***confidentialité*** : le message ne doit pouvoir être lu que par son destinataire.
@@ -41,7 +39,7 @@ L'usage (depuis "applied cryptography" ?) est de personifier les différentes pa
   - Niveau 2 : Mallory. Il peut en plus modifier tout ce qui est public : messages et paramètres public du protocole
 - Les ***tiers de confiance*** (arbitres incorruptibles), non impliquées dans l'échange du message mais nécessaires au bon fonctionnement du protocole (tous les protocoles ne nécessitent pas de tiers de confiance)
 
-On supposera de plus toujours que le protocole, les algorithmes utilisés et leurs implémentations effectives sont connus de tous, joueurs et adversaires. La confidentialité ne devant être garantie que via un paramètre du protocole nommé ***clé***, uniquement connu des joueurs. Cette hypothèse est connue sous le nom de [le principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs).
+On supposera de plus toujours que le protocole, les algorithmes utilisés et leurs implémentations effectives sont connus de tous, joueurs et adversaires. La confidentialité ne devant être garantie que via un paramètre du protocole nommé ***clé***, uniquement connu des joueurs. Cette hypothèse est connue sous le nom du [principe de Kerckhoffs](https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs).
 
 Enfin, on considérera que les adversaires ne sont pas stupides et ont à leur disposition des outils modernes et performants.
 
@@ -134,6 +132,10 @@ Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** p
 [Confidentialité](./confidentialité){.interne}
 {% endaller %}
 
+{% lien %}
+Rapport de stage sur les codes LSFR : [projet codes LSFR](Rapport_de_Stage_Laura_Michelutti.pdf)
+{% endlien %}
+
 ## Intégrité
 
 {% aller %}
@@ -145,61 +147,6 @@ Les tentatives de décryptage d'un message chiffré, on parle d'***attaques*** p
 {% aller %}
 [Authentification](./authentification){.interne}
 {% endaller %}
-
-## Communication
-
-### TLS
-
-Le protocole derrière toute communication sécurisée
-
-{% aller %}
-[Transport Layer Security](./tls){.interne}
-{% endaller %}
-
-### https
-
-{% lien %}
-[https](https://www.youtube.com/watch?v=OU-e_Qz-v4U&list=PLql0J2JIDXdOREGUibCXlsevKDK4o8EzN)
-{% endlien %}
-
-[Certificats X.509](https://fr.wikipedia.org/wiki/X.509) :
-
-1. certifiant (*issuer*) :
-   1. nom
-   2. adresse
-2. possesseur du certificat (*subject*) :
-   1. nom
-   2. adresse
-   3. clé publique
-3. plage de validités du certificat (de quand à quand)
-4. signature du certifiant : un hash du certificat chiffré avec sa clé privée
-
-Lorsque l'on reçoit la signature :
-
-1. hash le certificat
-2. déchiffre la signature du certificat avec la clé publique du certifiant
-3. si les hash coincident c'est bon
-
-Qui certifie :
-
-1. root authority délivre des certificat aux intermediate authority
-2. les intermediate authority certifient :
-   1. d'autres intermediate authority
-   2. des serveur directement
-
-C'est une chaîne de confiance. Lorsqu'un serveur se connecte on lui présente son certificat. On peut alors remonter la chaîne de confiance, en allant sur le site web du certifiant pour examiner le certifiant du certifiant, jusqu'à root si nécessaire.
-
-## Arithmétique
-
-{% aller %}
-[Arithmétique](./arithmétique){.interne}
-{% endaller %}
-
-{% lien %}
-
-- [arithmétique pour la cryptographie](https://www.youtube.com/watch?v=oRM-gNrbcgE&list=PL024XGD7WCIEii2U_HKeprCTJA4xb-uJ6&index=1)
-
-{% endlien %}
 
 ## Bibliographie
 

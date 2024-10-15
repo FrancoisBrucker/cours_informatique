@@ -82,7 +82,7 @@ A rendre pour le 18 octobre.
 >    2. faire le premier exercice
 > 2. pendant le cours faire le système avec [radare2](https://book.rada.re/intro/overview.html) qui décompile à la volée comme dans <https://www.youtube.com/watch?v=76acHVJfziw.
 
-### Graphes
+### Bases de la théorie des graphes
 
 #### Cours 1
 
@@ -110,66 +110,61 @@ A rendre pour le 18 octobre.
       - Cayley et Prüfer
    2. [Arbres couvrants](/cours/graphes/arbres-couvrants/){.interne}
 
-#### Cours 4
+### Problèmes de flots
+
+#### Cours 1 : problèmes
 
 [Problème et résolutions flots](/cours/graphes/flots/){.interne}
 
-#### Cours 5
+#### Cours 2 : applications
 
 Exercices sur les flots :
 
-1. [applications directs](/cours/graphes/flots-exercices/)
+1. [applications directs](/cours/graphes/flots-exercices/){.interne}
 2. [Problèmes de transport](/cours/graphes/projet-flots-modélisation/){.interne}
 3. [Bataille de la Marne](/cours/graphes/projet-bataille-de-la-marne/){.interne}
-4. $k$-connectivités d'un graphe
 
-### Cours 6 : Graphes biparti
+### Graphes biparti
 
-1. [graphes bi-parti](/cours/graphes/graphe-biparti/)
-2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/)
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} bases
+2. [parcours de graphes classiques](/cours/graphes/parcours-largeur-profondeur/){.interne}
 
 ### DS
 
-> TBD
+Temporellement placé juste après le cours 6.
 
-### Couplages
+[sujet](./DS/ds.pdf)
 
-#### Cours 7
+### Couplages dans les graphes
 
-- Couplage bi-parti
-  - simple
-  - méthode hongroise
-- Couplage général
+Cours 1 et 2
 
-#### Coloriabilité
-
-#### Planarité
-
-#### Graphes aléatoires et infini
+1. [graphes bi-parti](/cours/graphes/graphe-biparti/){.interne} (fin) :
+   1. théorème de Graham-Pollack
+   2. NP-complétude de la reconnaissance triparti
+2. [couplage](/cours/graphes/couplage/){.interne}
+3. Application : algorithme de Chritofides
+4. [$k$-connectivité d'un graphe](/cours/graphes/connectivité/){.interne}
 
 ### Cryptographie
 
-> TBD 3 cours
+Cours 1, 2 et 3
 
 {% aller %}
-[Cryptographie](/cours/système-et-réseau/cryptographie/){.interne}
+[Cryptographie](/cours/sécurité/){.interne}
 {% endaller %}
 
-#### TBD
+### Coloriabilité
 
-3. Graphes 1 :
-   1. connectivités : arbres
-   2. parcours en largeur/profondeur
-4. Arbres :
-   1. arbres preuves Prufer effeuillage ...
-   2. parcours en profondeur et arborescence
-5. graphes, arbre (nb) et k-connexité (Menger)
-6. Christofides pour résoudre le problème du voyageur de commerce et idée du couplage sur graphe complet valué
-7. flots (idée de la programmation linéaire) + flot de poids min/max
-8. coupe min/max et couplage max graphe bi-parti
-9. Graphes aléatoires et infinis (intro)
-10. Coloriabilité de graphes
-11. graphes planaires
+> TBD
+
+### Planarité
+
+> TBD
+
+### Graphes aléatoires et infini
+
+#### TBD
 
 ## Modalités de contrôle
 
