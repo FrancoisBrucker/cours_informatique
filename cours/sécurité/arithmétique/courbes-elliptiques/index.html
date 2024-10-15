@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Enseignements MPCI</title>
+    <title>Courbes elliptiques</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,21 +67,8 @@
       
 <article>
 
-  <h1 class="mb-1">Enseignements MPCI</h1>
-  <div class="mb-4">
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Tags : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">enseignement</li>
-          
-            <li class="before:content-['•'] before:px-1">ECM</li>
-          
-        </ul>
-      </div>
+  <h1>Courbes elliptiques</h1>
+  <div>
     
 
     
@@ -96,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/">Enseignements MPCI</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/">Arithmétique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/arithmétique/courbes-elliptiques/">Courbes elliptiques</a>
 
 </div>
 </div>
@@ -105,17 +92,45 @@
     
   
 
-  
-<!-- début résumé -->
+  <blockquote>
+<p>TBD</p>
+<ul>
+<li>Utilisées pour les problèmes de logarithmes discret</li>
+<li>Ils permettent d'avoir des clés bien plus petite.<br>
+<a href="https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl">https://www.youtube.com/watch?v=A2KNrgiWquU&amp;list=PLYpVTXjEi1oe1OeAllJpNhFoI4B7Ws8Yl</a></li>
+</ul>
+</blockquote>
+<p>L'équation générale d'une courbe elliptique :</p>
+<div>
+$$
+y^2 + a_1 x \cdot y + a_3 \cdot y= x^3 + a_2\cdot x^2 + a_4\cdot x + a_6
+$$
+</div>
+<p>Avec les $a_i$ pris dans un corps.</p>
+<p>Si on utilise le corps des réels, on peut utiliser l'<a href="https://fr.wikipedia.org/wiki/%C3%89quation_de_Weierstrass">équation de Weierstrass</a> pur simplifier<br>
+Forme de Weierstrass :</p>
+<div>
+$$
+y^2 = x^3 + a\cdot x^2 + b\cdot x
+$$
+</div>
+<blockquote>
+<p>TBD forme de Weierstrass</p>
+</blockquote>
+<p>La courbe utilisée généralement en cryptographie est la <a href="https://fr.wikipedia.org/wiki/Curve25519">Curve25519</a> :</p>
+<div>
+$$
+y^2 = x^3 + 486662\cdot x^2 + x
+$$
+</div>
+<p>Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}, avec $p=2^{255} - 19$, le plus grand entier signé premier sur 256b (le dernier bit est un bit de signe).</p>
+<p>Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y$ sont dans le corps sous-jacent.</p>
+<blockquote>
+<p>TBD : définition de l'addition sérieusement<br>
+on se place dans le groupe avec l'addition.<br>
+<a href="https://perso.univ-rennes1.fr/christophe.ritzenthaler/cours/point-counting-ec.pdf">compter les points d'une courbe elliptique</a></p>
+</blockquote>
 
-Formations données en MPCI.
-
-<!-- fin résumé -->
-
-<ul><li><a href="/cours_informatique/enseignements/MPCI/outil-informatique/">S1 : Ordinateur comme outil</a></li>
-<li><a href="/cours_informatique/enseignements/MPCI/programmation-algorithmes/">S2 : Programmation et Algorithmes</a></li>
-<li><a href="/cours_informatique/enseignements/MPCI/programmation-avancée/">S5 : Algorithmie avancée</a></li>
-<li><a href="/cours_informatique/enseignements/MPCI/informatique-concours/">S6 : Informatique au concours</a></li></ul>
 
 </article>
     </main>

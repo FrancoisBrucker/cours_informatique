@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Authentification</title>
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Authentification</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/">Authentification</a>
+
+</div>
+</div>
+
+
+    
+  
+
+  <p>Les problèmes de confidentialité et d'intégrité ne sont d'intérêt que si on parle à la bonne personne.</p>
+<p>Il n'y a du point de vue d'Alice et Bib en effet aucune différence entre :</p>
+<pre><code>Alice &lt;-------------------------&gt; Bob
+  k                                k
+</code></pre>
+<p>et :</p>
+<pre><code>Alice &lt;--------&gt;Mallory&lt;--------&gt; Bob
+  k              k  k'             k' 
+</code></pre>
+<p>Mallory interceptant tous les messages entre Alice et Bob, en particulier l'échange de clés initial.</p>
+<p>Il faut trouver un moyen d'authentifier avec certitude le correspondant.</p>
+<p>Un moyen de parvenir à cela est la <a href="https://fr.wikipedia.org/wiki/Cryptographie_asym%C3%A9trique">cryptographie asymétrique</a> :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple $(k, k')$ de clés d'avoir les deux conditions d'intégrité suivante, de façon sécurisée :</p>
+<ul>
+<li>$D(k', E(k, m)) = m$</li>
+<li>$D(k, E(k', m)) = m$</li>
+</ul>
+<p>Enfin, la connaissance d'une des deux clés n'entraîne aucune information sur la seconde.</p>
+</div>
+</div>
+<p>Les fonction $E$ et $D$ étant connues, on a coutume d'uniquement s'échanger les clés. Chaque personne garde une clé pour elle, cette clé est appelée <em>clé privée</em>, et distribue l'autre, la <em>clé publique</em>, à tout le monde.</p>
+<p>La clé privé est personnelle et permet :</p>
+<ul>
+<li>de signer des message en chiffrant avec sa clé privé</li>
+<li>de recevoir des messages privés chiffrés avec sa clé publique</li>
+</ul>
+<p>La clé publique est ...publique et permet à une autre personne :</p>
+<ul>
+<li>de vérifier une signature déchiffrant avec sa clé publique de la personne signataire</li>
+<li>d'envoyer des messages privés chiffrés avec la clé publique de la personne destinataire.</li>
+</ul>
+<h2><span id="signature"></span> Signature électronique avec clé publique/clé privée</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique">Certificat Électronique</a></p>
+</div>
+</div>
+<p>La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification en utilisant le couple $(k, k')$ de clé privée / publique :</p>
+<ul>
+<li>$S(m) = E(k, h(m))$ : On signe un hash du message avec sa clé privée</li>
+<li>$V(m, c) = (h(m)m == D(k', m))$ : on vérifie que le hash du message correspond à la signature</li>
+</ul>
+<p>Les rôles des clés sont connus :</p>
+<ul>
+<li>la clé <strong>privée</strong> permettant de <strong>signer</strong></li>
+<li>la clé <strong>publique</strong>, connue de tous, permet de <strong>vérifier</strong> la signature</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Comme fonction de hash on utilise souvent <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>, préférez la version 2 à la version 1 qui n'est plus sécurisée pour des applications cryptographies.</p>
+</div>
+</div>
+<p>Par exemple :</p>
+<p>Alice veut envoyer un message $m$ à Bob et prouver qu'elle est bien l'autrice de celui-ci :</p>
+<ol>
+<li>elle signe son message s = E(k, h(m))$</li>
+<li>elle envoie à Bob le message $m$ et sa signature $s$</li>
+</ol>
+<p>À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) == D(k', s)$</p>
+<h2><span id="authentification"></span> Authentification avec clé publique/clé privée</h2>
+<h3>Présentation de la clé publique</h3>
+<p>Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} == D(k_\text{Alice-pub}, c)$.</p>
+<p>Attention cependant au <strong>message d'authentification envoyé</strong>. C'est lui qui garanti l'authenticité de la personne. Le message d'authentification doit avoir un format déterminé et vérifiable (comme $(\text{bonjour}, S_{\text{Alice}}(\text{bonjour}))$ par exemple).</p>
+<p>Ceci est cruciale si la vérification est automatique et non supervisée par un humain qui peut vérifier le message.</p>
+<p>En effet, si le format du message d'authentification n'est pas vérifié, Mallory peut envoyer n'importe quoi comme message d'authentification, comme par exemple : $(V_{\text{Alice}}(\text{ha ha ha}), \text{ha ha ha})$ qui fonctionne puisque $V_{\text{Alice}}(\text{ha ha ha})$ est bien égale à $V_{\text{Alice}}(\text{ha ha ha})$.</p>
+<h3>Tiers de confiance</h3>
+<p>Si on ne connaît pas la clé publique de la personne qui nous a envoyé un message, on peut utiliser l'annuaire d'un tiers de confiance dont on connaît la clé publique. Ce tiers de confiance signe la clé publique de la personne recherchée pour assurer de sa véracité.</p>
+<ul>
+<li>Tiers de confiance : certificat (pour le https, boot sécurisé)</li>
+<li>Keyring : ensemble de clés publique de confiance (pour l'installation de packages de mainteneur connu par exemple)</li>
+</ul>
+<p><a href="https://wiki.archlinux.org/title/Pacman/Package_signing">https://wiki.archlinux.org/title/Pacman/Package_signing</a></p>
+<ul>
+<li>keyring ubuntu : <a href="https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/">https://www.malekal.com/comment-ajouter-des-cles-de-signature-a-apt-sur-debian-ubuntu-mint/</a></li>
+<li>exemple vscode : <a href="https://code.visualstudio.com/docs/setup/linux">https://code.visualstudio.com/docs/setup/linux</a></li>
+</ul>
+<h2>Chiffrement des documents</h2>
+<p>Bien que la cryptographie asymétrique soit majoritairement utilisée pour l'authentification on peut aussi l'utiliser pour chiffrer des messages ayant un destinataire unique.</p>
+<p>On peut en effet chiffrer un message avec la clé publique $k'$ d'une personne, $E(k', m) =c$. Seule la personne concernée pourra déchiffrer le message avec sa clé privée $k$ : $D(k, c) = m$.</p>
+<p>Le chiffrement asymétrique étant beaucoup plus lent que le chiffrement symétrique, cette méthode est utilisée couramment pour chiffrer la clé symétrique ayant servi à chiffrer un long message et non le message tout entier.</p>
+<h2>Exemples</h2>
+<h3>Chiffrement asymétrique RSA</h3>
+<p>RAS est le protocole très largement utilisé de cryptographie asymétrique. Il est basé sur le problème de la factorisation entière. Il permet chiffrer et de signer très efficacement des documents car sa fonction de chiffrement et de déchiffrement est la même.</p>
+<ul>
+<li>$E(k_\text{pub}, E(k_\text{priv}, m)) = m$</li>
+<li>$E(k_\text{priv}, E(k_\text{pub}, m)) = m$</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="RSA" class="interne">Méthode de chiffrement RSA</a></p>
+</div>
+</div>
+<h3>Chiffrement ElGamal</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="ElGamal" class="interne">Méthode de chiffrement ElGamal</a></p>
+</div>
+</div>
+<h3>Signature DSA</h3>
+<p>La méthode DSA de signature utilise le problème du logarithme discret comme fonctionnement, ce qui la rend compatible avec l'utilisation de courbes elliptiques :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="DSA" class="interne">Méthode de signature DSA</a></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>DSA est une variante de la méthode de signature ElGamal, qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.</p>
+</div>
+</div>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique à l'école centrale Marseille
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
