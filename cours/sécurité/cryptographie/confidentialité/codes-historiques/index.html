@@ -115,6 +115,11 @@ $$
 </div>
 </div>
 <p>Le code de César est un exemple de <em><strong>Codage par flux</strong></em> (<em>stream cipher</em>) : chaque lettre est chiffrée une à une avec le même algorithme.</p>
+<blockquote>
+<p>TBD expliciter</p>
+</blockquote>
+<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token builtin class-name">echo</span> <span class="token string">"Longtemps je me suis couché de bonne heure"</span> <span class="token operator">|</span> recode <span class="token parameter variable">-f</span> utf8<span class="token punctuation">..</span>flat <span class="token operator">|</span> <span class="token function">tee</span> /dev/tty <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"A-Za-z"</span> <span class="token string">"N-ZA-Mn-za-m"</span> <span class="token operator">|</span> <span class="token function">tee</span> /dev/tty <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"A-Za-z"</span> <span class="token string">"N-ZA-Mn-za-m"</span>
+</code></pre>
 <h3><span id="César-analyse"></span>Cryptanalyse</h3>
 <ol>
 <li>Ne résiste pas au calcul exhaustif des clés : 26</li>
@@ -180,9 +185,6 @@ $$
 <p><a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/che">Chiffre du Che</a></p>
 </div>
 </div>
-<blockquote>
-<p>TBD en faire un.</p>
-</blockquote>
 <h2>Chiffre Vernam</h2>
 <p>La version informatisée du OTP est appelée <a href="https://www.cryptage.org/vernam.html">chiffre de Vernam</a>.</p>
 <p>Ici les messages, les chiffres et les clés sont des mots de $\{0, 1\}^L$ et on a, avec $\oplus$ le ou exclusif binaire :</p>
@@ -197,9 +199,16 @@ $$
 $$
 </div>
 <p>On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.</p>
-<blockquote>
-<p>TBD en faire un.</p>
-</blockquote>
+<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"fascina"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
+66617363696e61
+❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"message"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
+6d657373616765
+❯ <span class="token builtin class-name">printf</span> <span class="token string">"0x%x<span class="token entity" title="\n">\n</span>"</span> <span class="token variable"><span class="token variable">$((</span><span class="token number">0xb040010080904</span> <span class="token operator">^</span> <span class="token number">0x66617363696e61</span><span class="token variable">))</span></span>
+0x6d657373616765
+❯ <span class="token builtin class-name">echo</span> 0x6d657373616765 <span class="token operator">|</span> xxd <span class="token parameter variable">-r</span> <span class="token punctuation">;</span> <span class="token builtin class-name">echo</span>
+message
+❯ 
+</code></pre>
 <p>Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).</p>
 <p>En conséquence, un attaquant devant un message crypté de peut le décrypter s'il ne connaît pas $k$ puisque $m$ pouvant être tout élément de $\{0, 1\}^L$</p>
 <p>Formalisons cette intuition.</p>
