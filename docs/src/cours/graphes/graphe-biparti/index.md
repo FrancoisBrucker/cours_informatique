@@ -300,7 +300,7 @@ La réduction de la preuve de la proposition précédente est plus complexe que 
 
 Ce qui donne le graphe final :
 
-![ex G](npc-ex-G.png)
+![ex G](npc-ex-g.png)
 
 Ce graphe est tripartite (on a associé une couleur à chaque stable) :
 
