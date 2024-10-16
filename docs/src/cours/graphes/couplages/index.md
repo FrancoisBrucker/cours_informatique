@@ -58,7 +58,6 @@ On peut faire la même chose que ce qu'on a vu pour [le problème du postier chi
 Montrez que l'algorithme précédent possède au pire deux fois moins d'arêtes qu'un couplage maximum.
 {% endexercice %}
 {% details "corrigé" %}
-Pour chaque arête $xy$ du graphe, au moins un de ses sommet est couvert par $M$. Donc pour chaque arête d'un couplage maximum $M^\star$, il existe au plus deux arêtes de notre couplage $M$ ayant une extrémité commune : $\vert M \vert \leq 2 \cdot \vert M^\star \vert$.
 {% enddetails %}
 
 Cette borne est même atteinte si le graphe est un chemin de longueur 3 et que notre algorithme prend malencontreusement l'arête du milieu.
