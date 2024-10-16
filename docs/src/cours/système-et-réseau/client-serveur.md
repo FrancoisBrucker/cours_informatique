@@ -198,7 +198,6 @@ nc localhost 9090
 
 <https://www.geeksforgeeks.org/how-to-kill-a-detached-screen-session-in-linux/>
 
-
 ### cours web
 
 remplacer screen par tmux.

@@ -37,6 +37,12 @@ Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ est l'ancê
 
 Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme.
 
+> TBD expliciter
+
+```sh
+echo "Longtemps je me suis couché de bonne heure" | recode -f utf8..flat | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m" | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m"
+```
+
 ### <span id="César-analyse"></span>Cryptanalyse
 
 1. Ne résiste pas au calcul exhaustif des clés : 26
@@ -94,8 +100,6 @@ Technique utilisée pour le téléphone rouge lors de la guerre froide.
 [Chiffre du Che](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/che)
 {% endinfo %}
 
-> TBD en faire un.
-
 ## Chiffre Vernam
 
 La version informatisée du OTP est appelée [chiffre de Vernam](https://www.cryptage.org/vernam.html).
@@ -115,7 +119,17 @@ $$
 
 On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.
 
-> TBD en faire un.
+```shell
+❯ echo -n "fascina" | xxd -ps
+66617363696e61
+❯ echo -n "message" | xxd -ps
+6d657373616765
+❯ printf "0x%x\n" $((0xb040010080904 ^ 0x66617363696e61))
+0x6d657373616765
+❯ echo 0x6d657373616765 | xxd -r ; echo
+message
+❯ 
+```
 
 Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).
 

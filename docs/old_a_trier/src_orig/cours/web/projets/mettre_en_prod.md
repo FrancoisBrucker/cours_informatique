@@ -117,7 +117,7 @@ vim node/server.js
 node node/server.js
 ~~~
 
-Votre page web est maintenant accesible à l'adresse :
+Votre page web est maintenant accessible à l'adresse :
 
 VotrePlante.ovh1.ec-m.fr
 

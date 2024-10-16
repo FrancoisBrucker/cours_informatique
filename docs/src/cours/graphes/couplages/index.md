@@ -50,10 +50,27 @@ Montrez que le graphe précédent admet un autre couplage parfait.
 
 On peut faire la même chose que ce qu'on a vu pour [le problème du postier chinois](../projet-postier-chinois/) en prenant des arêtes une à une tant que c'est possible.
 
-Cet algorithme possède au pire deux fois moins d'arêtes qu'un couplage maximum
+1. $M = \varnothing$
+2. pour chaque arête $xy$ de $G$ :
+   1. si $x$ et $y$ ne sont pas couvert par $M$, alors ajouter $xy$ à $M$
 
-> TBD preuve : <https://people.cs.uchicago.edu/~laci/HANDOUTS/greedymatching.pdf>
->
+{% exercice %}
+Montrez que l'algorithme précédent possède au pire deux fois moins d'arêtes qu'un couplage maximum.
+{% endexercice %}
+{% details "corrigé" %}
+Pour chaque arête $xy$ du graphe, au moins un de ses sommet est couvert par $M$. Donc pour chaque arête d'un couplage maximum $M^\star$, il existe au plus deux arêtes de notre couplage $M$ ayant une extrémité commune : $\vert M \vert \leq 2 \cdot \vert M^\star \vert$.
+{% enddetails %}
+
+Cette borne est même atteinte si le graphe est un chemin de longueur 3 et que notre algorithme prend malencontreusement l'arête du milieu.
+
+{% exercice %}
+Montrez que quelques soit $n$, il existe un graphe connexe à plus de $n$ sommets tel que l'algorithme peut trouver 2 fois moins d'arête que son couplage maximum.
+{% endexercice %}
+{% details "corrigé" %}
+
+![exemple 2 fois moins](./exemple-2-moins.png)
+
+{% enddetails %}
 
 Le problème n'est cependant pas NP-complet comme on pourrait s'y attendre, il est même facile à résoudre algorithmiquement. Commençons par caractériser les couplages maximum.
 
@@ -100,7 +117,7 @@ S'il existe un chemin augmentant $x_0\dots x_{2p+1}$ alors l'ensemble :
 
 <div>
 $$
-M' = (M \backslash \\{ x_{1+2i}x_{2i+2} \vert 0 \leq i < p\\}) \cup \\{ x_{2i}x_{2i+1} \vert 0\leq i \leq p\\}
+M' = (M \backslash \{ x_{1+2i}x_{2i+2} \vert 0 \leq i < p\}) \cup \{ x_{2i}x_{2i+1} \vert 0\leq i \leq p\}
 $$
 </div>
 
@@ -108,7 +125,7 @@ Est un couplage tel que $\vert M' \vert = \vert M \vert +1$
 {% endnote %}
 {% details "preuve", "open" %}
 
-Clair.
+Clair puisque $x_0$ et $x_{2p+1}$ sont libres.
 
 {% enddetails %}
 
@@ -143,13 +160,13 @@ Si par exemple aucune des extrémité du chemin ci dessous ne se prolonge (qu'il
 
 ![couplage optimal](couplage-opt-2.png)
 
-La parité des cycles et des chemin montre que $\vert M^\star\vert = \vert M\vert$.
+La parité des cycles et des chemins montre que $\vert M^\star\vert = \vert M\vert$.
 
 {% enddetails %}
 
-On a alors l'équivalence suivante, que l'on doit à Claude Berge :
+On a alors l'équivalence suivante :
 
-{% note "**Proposition**" %}
+{% note "**Proposition (Berge)**" %}
 Soit $G=(V, E)$ un graphe et $M$ un de ses couplages.
 
 $M$ est maximum si et seulement si il existe n'existe pas de chemin augmentant.
@@ -290,7 +307,7 @@ $$
 {% endnote %}
 {% details "preuve", "open" %}
 
-Si $\vert A \vert > \vert B \vert$, c'est impossible et en prenant $S = A$, on a \vert \{y | xy \in E, x \in S\}\vert = \vert B \vert < \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$
+Si $\vert A \vert > \vert B \vert$, c'est impossible et en prenant $S = A$, on a $\vert \\{y | xy \in E, x \in S\\}\vert = \vert B \vert < \vert A \vert$. On peut donc considérer que $\vert A \vert \leq \vert B \vert$
 
 Soit $M$ un couplage maximum qui ne couvre pas $x_0 \in A$ et on note :
 
@@ -299,7 +316,7 @@ Soit $M$ un couplage maximum qui ne couvre pas $x_0 \in A$ et on note :
 
 Tous les éléments de $T_0$ sont couverts sinon le couplage $M$ n'est pas maximum.
 
-Si $\vert T_0 \vert < \vert S_0 \vert$ ($T_0$ est vide) la propriété est démontrée. Sinon, soit $y_0 \in T_0$. Si $y_0$ n'était pas couvert $x_0y_0$ serait un chemin augmentant et donc il existe $x_1 \in A \backslash S_0$ tel que $x_1y_0 \in M$ et on note $S_1 = S_0 \cup \\{x_1 \\}$ et on a $\vert S_1 \vert = \vert S_0 \vert + 1$ puis on pose $T_1 = \\{ y \vert yx \in E, x \in S_1\\}$.
+Si $\vert T_0 \vert < \vert S_0 \vert$ ($T_0$ est vide) la propriété est démontrée. Sinon, soit $y_0 \in T_0$. Si $y_0$ n'était pas couvert $x_0y_0$ serait un chemin augmentant et donc il existe $x_1 \in A \backslash S_0$ tel que $x_1y_0 \in M$ et on note $S_1 = S_0 \cup \\{x_1 \\}$, on a $\vert S_1 \vert = \vert S_0 \vert + 1$, puis on pose $T_1 = \\{ y \vert yx \in E, x \in S_1\\}$
 
 Si $\vert T_1 \vert < \vert S_1 \vert$ la propriété est démontrée et sinon soit $y_1 \in T_1\backslash T_0$. Si $y_1$ n'était pas couvert $x_0y_0x_1y_1$ serait un chemin augmentant et donc il existe $x_2 \in A \backslash S_1$ $x_2y_1 \in M$ et on note $S_2 = S_1 \cup \\{x_2 \\}$ et on a $\vert S_2 \vert = \vert S_1 \vert + 1$ puis on pose $T_2 = \\{ y \vert yx \in E, x \in S_2\\}$.
 
@@ -332,7 +349,7 @@ $$
 {% details "preuve", "open" %}
 Comme pour la démonstration du théorème, on peut supposer sans perte de généralité  avec $k < \vert A \vert \leq \vert B \vert$.
 
-En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de $A$ pour former le graphe biparti $G'=(A\cup B, E')$ où $B'$ est le graphe contenant $B$ et tous les nouveaux sommets, on a que $G'$ contient un couplage de taille $\vert A \vert$. Même si ce couplage couvre tous les nouveaux sommets il couvre tout de même $k$ sommets de $G$ ce qui conclut la preuve.
+En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de $A$ pour former le graphe biparti $G'=(A\cup B', E')$ où $B'$ est le graphe contenant $B$ et tous les nouveaux sommets, on a que $G'$ contient un couplage de taille $\vert A \vert$. Même si ce couplage couvre tous les nouveaux sommets il couvre tout de même $k$ sommets de $G$ ce qui conclut la preuve.
 
 {% enddetails %}
 

@@ -430,13 +430,13 @@ Soient $x_1, \dots, x_n$, $n$ variables réelles. On considère alors [Le systè
 
 Si $m + 1 < n$ [ce système va posséder une solution non nulle](https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27%C3%A9quations_lin%C3%A9aires#Nombre_de_solutions_d%E2%80%99un_syst%C3%A8me_d'%C3%A9quations) $(c_1, \dots, c_n)$ (il existe $i$ tel que $c_i \neq 0$). Nous allons montrer que ceci est impossible.
 
-En effet, comme pour tout $i \neq j$, il n'existe qu'un unique $k$ tel que $x_i \in U_k$ et $x_j \in V_k$, de là on a l'égalité :
+Comme pour tout $i \neq j$, il n'existe qu'un unique $k$ tel que $x_i \in U_k$ et $x_j \in V_k$, on a l'égalité :
 
 <div>
 $$
 \begin{array}{lcl}
 \sum\limits_{i < j}x_ix_j &=& \sum\limits_{1\leq k \leq m}(\sum\limits_{(i, j) \in U_k\times V_k} x_i \cdot x_j)\\
-&=& \sum\limits_{1\leq k \leq m}[(\sum\limits_{i \in U_k} x_i)\cdot (\sum\limits_{i \in V_k} x_j)]
+&=& \sum\limits_{1\leq k \leq m}((\sum\limits_{i \in U_k} x_i)\cdot (\sum\limits_{j \in V_k} x_j))
 \end{array}
 $$
 </div>
@@ -448,7 +448,7 @@ $$
 \begin{array}{lcl}
 0 &=& (\sum\limits_{1\leq i\leq n}c_i)^2\\
 &=&\sum\limits_{1\leq i\leq n}c_i^2 + \sum\limits_{i < j}c_ic_j\\
-&=&\sum\limits_{1\leq i\leq n}c_i^2 + \sum\limits_{1\leq k \leq m}[(\sum\limits_{i \in U_k} c_i)\cdot (\sum\limits_{i \in V_k} c_j)]\\
+&=&\sum\limits_{1\leq i\leq n}c_i^2 + \sum\limits_{1\leq k \leq m}((\sum\limits_{i \in U_k} c_i)\cdot (\sum\limits_{j \in V_k} c_j))\\
 \end{array}
 $$
 </div>

@@ -96,7 +96,7 @@ Sur aioli
    2. node basique et vérifier que tout fonctionne
 3. survivre à la déconnexion :
    1. nohup
-   2. tmux (ou screen) <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html>
+   2. tmux <https://brainhack-princeton.github.io/handbook/content_pages/hack_pages/tmux.html> ou screen `/usr/bin/screen -d -m -S node node exemple.js`
 4. npm en front
 5. script d'installation :
    1. sur aioli

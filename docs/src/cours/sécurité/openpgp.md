@@ -107,7 +107,7 @@ Envoyez par mail votre clé **publique** à la personne avec laquelle vous voule
 
 ### Clé du chiffrement symétrique
 
-Créons une clé de 256b pour être utilisée par chacha20.
+Créons une clé de 32B = 256b pour être utilisée par chacha20.
 
 ```sh
 openssl rand -hex -out symmetric_key 32

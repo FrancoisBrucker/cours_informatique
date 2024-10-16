@@ -29,8 +29,6 @@ Embryon de cours de sécurité. On y verra essentiellement les fondements grypto
 
 {% endaller %}
 
-
-
 ## Communication
 
 ### OpenPGP
