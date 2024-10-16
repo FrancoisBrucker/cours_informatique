@@ -436,6 +436,7 @@ Comme pour tout $i \neq j$, il n'existe qu'un unique $k$ tel que $x_i \in U_k$ e
 $$
 \begin{array}{lcl}
 \sum\limits_{i < j}x_ix_j &=& \sum\limits_{1\leq k \leq m}(\sum\limits_{(i, j) \in U_k\times V_k} x_i \cdot x_j)\\
+&=& \sum\limits_{1\leq k \leq m}(\sum\limits_{i \in U_k} (x_i \cdot (\sum\limits_{j \in V_k} x_j))\\
 &=& \sum\limits_{1\leq k \leq m}((\sum\limits_{i \in U_k} x_i)\cdot (\sum\limits_{j \in V_k} x_j))
 \end{array}
 $$
