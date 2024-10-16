@@ -170,7 +170,7 @@ Le graphe $K_{2, 3}$ est par exemple :
 ![$K_{2, 3}$](k23.png)
 
 {% info %}
-Les graphes bipartis complets sont aussi parfois appelé [**_une biclique**_](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
+Les graphes bipartis complets sont aussi parfois appelé [**_une biclique_**](https://fr.wikipedia.org/wiki/Graphe_biparti_complet)
 
 {% endinfo %}
 
