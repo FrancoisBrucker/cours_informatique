@@ -186,7 +186,8 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Pour chaque arête $xy$ du graphe, au moins un de ses sommets est couvert par $M$. Donc pour chaque arête d'un couplage maximum $M^\star$, il existe au plus deux arêtes de notre couplage $M$ ayant une extrémité commune : $\vert M \vert \leq 2 \cdot \vert M^\star \vert$.</p>
+<p>Il est tout d'abord clair que $M$ est un couplage maximal. De là,  chaque arête dans $M^\star$ au moins 1 de ses sommets couvert par $M$, sinon les deux sommets constituant l'arête sont libres et $M$ n'est pas maximal.<br>
+Donc au moins la moitié ($\frac{1}{2}$) des sommets couverts  par $M^\star$ ($2 \cdot \vert M^\star \vert$) sont couverts par les sommets de $M$ ($2\cdot \vert M \vert$), on a ainsi $\frac{1}{2}\cdot(2 \cdot \vert M^\star \vert) \leq 2 \cdot \vert M \vert$ ce qui conclut la preuve.</p>
 </div>
 </details>     
 </div>
