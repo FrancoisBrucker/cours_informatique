@@ -128,6 +128,17 @@
 <p><a href="https://shapeshed.com/unix-find/">find</a><br>
 trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mtime +30 -print)</p>
 <p>Déterminez quel est le dossier contenant le plus de méga de votre système.(du -h | sort -h | tail)</p>
+<blockquote>
+<p>TBD Attention, <code>du</code> va lister tous les fichiers à partir du dossier où tu es et si tu es à la maison il n’a pas le droit de tout regarder, d’ou le &quot;operation not permitted&quot;. Placez-vous dans un dossier qui ne possède pas trop de fichiers. Par exemple dans un dossier de Documents et refait la commande.</p>
+<p>Pour comprendre ce que fait la commande, il faut que tu la sépares en ses éléments constitutifs :</p>
+<ul>
+<li>la sortie de <code>du -h</code> est envoyée en entrée de</li>
+<li>la commande sort -h dont la sortie est envoyée en entrée de</li>
+<li>la commande tail</li>
+</ul>
+<p>Commence par regarder (avec un man par exemple) ce qu’est sensé faire chaque commande. Une fois que tu auras compris les 3 commandes séparées, la commande en entier deviendra claire.</p>
+<p>Si tu veux voir comment gérer le <code>|</code>  (pipe) tu peux prendre un petit fichier texte, disons fichier.txt et l’envoyer en entrée à la place, par exemple <code>cat fichier.txt | sort -h</code> ou encore <code>cat fichier.txt | tail</code> cela te permettra de voir ce que font en vrai ces commandes</p>
+</blockquote>
 <h2>Process</h2>
 <ol>
 <li>Lister tous les process de tous les utilisateurs (avec la commande <code>ps</code> et ses options)</li>
