@@ -33,20 +33,19 @@ Nous verrons dans ce cours quelques fondamentaux de ce que doit savoir un dével
    4. [Linux](linux){.interne}
 2. [connexions ssh](./ssh){.interne}
 3. [Bases de réseau](réseau){.interne}
+4. [clients serveurs](./client-serveur){.interne}
 
-4. Langages
+5. Langages
     1. [langage **C**](./langage-c){.interne}
     2. assembleur
     3. ABI
-5. Gestion des fichiers
+6. Gestion des fichiers
    1. [Fichiers en **C**](fichiers-C){.interne}
    2. [Memory mapping](memory-mapping){.interne}
-   3. [Fichiers Unix](fichiers){.interne}
-6. Gestion des process
+7. Gestion des process
    1. signaux (SIGINT et ctrl+C), attention on ne peut pas tout faire dans une gestion de signal
    2. fork
    3. pipe (passe dans le fork)
-7. [clients serveurs](./client-serveur){.interne}
 8. Concurrence
    1. IPC
       1. fifo, message queues

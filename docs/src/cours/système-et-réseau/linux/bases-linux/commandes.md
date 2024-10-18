@@ -359,6 +359,7 @@ cat /etc/passwd | cut -d : -f 1 | lolcat
 
 > TBD créer ses propres pipe avec `mkfifo`
 > TBD faire mieux. Mettre dans une partie à part. Un peu comme un cheveux sur la soupe là.
+> TBD dire que la sortie de l'un va dans l'autre.
 
 ```
 ----> stdin   |pipe|  stdout ----> 
@@ -373,7 +374,6 @@ Une seule sortie mais l'entrée peut venir de plusieurs endroits par des redirec
   /
 -
 ```
-
 
 Un tee permet d'avoir 2 sorties, stdout et une sortie vers un fichier
 

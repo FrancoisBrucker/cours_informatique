@@ -49,6 +49,18 @@ trouver les fichiers qui ont été modifié il y a moins de 7 jours (find . -mti
 
 Déterminez quel est le dossier contenant le plus de méga de votre système.(du -h | sort -h | tail)
 
+> TBD Attention, `du` va lister tous les fichiers à partir du dossier où tu es et si tu es à la maison il n’a pas le droit de tout regarder, d’ou le "operation not permitted". Placez-vous dans un dossier qui ne possède pas trop de fichiers. Par exemple dans un dossier de Documents et refait la commande.
+>
+> Pour comprendre ce que fait la commande, il faut que tu la sépares en ses éléments constitutifs :
+>
+> - la sortie de `du -h` est envoyée en entrée de
+> - la commande sort -h dont la sortie est envoyée en entrée de 
+> - la commande tail
+>
+> Commence par regarder (avec un man par exemple) ce qu’est sensé faire chaque commande. Une fois que tu auras compris les 3 commandes séparées, la commande en entier deviendra claire. 
+>
+> Si tu veux voir comment gérer le `|`  (pipe) tu peux prendre un petit fichier texte, disons fichier.txt et l’envoyer en entrée à la place, par exemple `cat fichier.txt | sort -h` ou encore `cat fichier.txt | tail` cela te permettra de voir ce que font en vrai ces commandes
+
 ## Process
 
 1. Lister tous les process de tous les utilisateurs (avec la commande `ps` et ses options)

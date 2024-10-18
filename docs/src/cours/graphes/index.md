@@ -145,7 +145,7 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD revenir sur le problème du voyage de commerce avec Christophides pour les distances
+> TBD revenir sur le problème du voyage de commerce avec Christophides : <https://en.wikipedia.org/wiki/Christofides_algorithm>
 
 ## Colorabilité d'un graphe
 

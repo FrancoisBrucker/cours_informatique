@@ -159,9 +159,17 @@ Avec nc :
 nc localhost 9090
 ```
 
-### web server avec socat
+### web server avec python/socat
+
+```shell
+python -m http.serveur 8080
+```
 
 > TBD en écrire un.
+
+> <https://dev.to/leandronsp/building-a-web-server-in-bash-part-ii-parsing-http-14kg>
+
+> <https://fazlearefin.blogspot.com/2021/05/http-and-https-simple-web-server-using.html>
 
 - [web minimal](https://gist.github.com/baleyko/003a089deb4f532552ef674e9ff4cea9)
 - <https://fabianlee.org/2022/10/26/linux-socat-used-as-secure-https-web-server/>

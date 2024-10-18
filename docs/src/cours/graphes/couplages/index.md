@@ -355,7 +355,11 @@ En ajoutant à $G$ $\vert A \vert - k$ sommets reliés à tous les éléments de
 
 {% enddetails %}
 
-Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti. On reverra cet algorithme.
+Terminons cette partie en remarquant que la preuve du Théorème de Hall nous donne un algorithme alternatif à la modélisation par flots pour trouver un couplage maximum d'un graphe bi-parti.
+
+> TBD arbre de chemins alternant à partir d'un sommet non couvert. ON trouvera forcément soit un chemin augmentant soit un ensemble prouvant la maximalité du couplage.
+
+On reverra cet algorithme.
 
 ### Couplage et couverture
 
@@ -494,7 +498,7 @@ De plus, à la fin on a clairement que $c(A\cup B) = p(M)$ ce qui montre que le 
 
 Tout ce fait de façon polynomiale puisque  trouver la couverture max peut se faire comme dans la preuve [du théorème de König-Egerváry](./#König-Egerváry).
 
-> TBD exemple
+> TBD exemple avec augmentation sur l'arbre des chemin (comme non valué)
 
 Cet algorithme démontre un principe fondamental dans le design d’algorithme par primal/dual : une solution augmente pendant que l'autre diminue, la solution étant trouvée lorsque les deux coïncident.
 
@@ -526,15 +530,13 @@ Tutte, c'est un calcul de déterminant et c'est idem que multiplication de matri
 
 {% endinfo %}
 
-### Algorithme
+### Chemin augmentant dans un graphe quelconque
 
-#### Fleur
-
-À partir d'une fleur :
+On a vu que l'algorithme de recherche d'un chemin augmentant fonctionnait sauf s'il constituait une fleur :
 
 ![contraction fleur 1](./contraction-fleur-1.png)
 
-On peut contracter la corolle en un seul sommet, les arˆ´tes parant de la corolle étant fusionné sur le nouveau sommet :
+Si cela arrive, on peut contracter la corolle en un seul sommet, les arêtes parant de la corolle étant fusionné sur le nouveau sommet :
 
 ![contraction fleur 2](./contraction-fleur-2.png)
 
@@ -576,17 +578,23 @@ Enfin, toute cette construction se fait de plus de façon polynomiale !
 
 > TBD la complexité. Plus les améliorations.
 
-#### Valué
+### Couplage parfait de poids maximum
 
-> TBD par primal dual. Donner l'algo et dire qu'on ne le démontrera pas ici.
+L'algorithme également proposé par Edmonds est similaire à celui utilisé pour les graphes bi-partis.
 
-> TBD min couverture = max couplage, ne marche pas ici (exemple ?)
-> 
-1. général
-   1. les fleurs d'Edmonds $\mathcal{O}(n^4)$: <https://fr.wikipedia.org/wiki/Algorithme_d%27Edmonds_pour_les_couplages>, <https://math.nist.gov/~JBernal/p_t_f.pdf>
-   2. couplage d'un graphe valué : <https://en.wikipedia.org/wiki/Maximum_weight_matching>
-      1. on peut toujours se ramener à un couplage parfait en doublant le graphe et en mettant des 0 sur les arêtes qui relient les 2 copies du graphe
-      2. on cherche des chaînes augmentantes dans des graphes particuliers. <https://theory.stanford.edu/~jvondrak/MATH233B-2017/lec6.pdf>. [Framework primal/dual](https://math.mit.edu/~goemans/PAPERS/book-ch4.pdf) : ceci dépasse le cadre de ce cours mais généralise ce qu'on a vu pour les graphes bipartis
+> TBD : idée est de faire comme pour le graphe bi-parti en cherchant un chemin augmentant. Si on trouve une fleur on fusionne la corolle et on recommence. Au final, soit on trouve un chemin augmentant soit on est dans un graphe bi-parti et on augmente les arêtes du graphe.
+
+ est le premier cas connu de résolution par [le framework primal/dual](https://math.mit.edu/~goemans/PAPERS/book-ch4.pdf). Sa démonstration dépasse le cadre de ce cours mais il est tres similaire à celui vu pour les graphes bi-partis.
+
+Trouver un couplage de poids maximum peut toujours se ramener à un couplage parfait d'un graphe complet en doublant le graphe et en mettant des 0 sur les arêtes qui relient les 2 copies du graphe.
+
+L'algorithme suivant permet de trouver un couplage parfait de poids maximum d'un graphe complet avec un nombre pair de sommets.
+
+> TBD l'écrire et le prouver avec : <https://theory.stanford.edu/~jvondrak/MATH233B-2017/lec6.pdf>
+
+1. graphe
+2. cherche un chemin augmentant avec l'algorithme des fleurs
+3. si pas de chemin augmentant, on ajoute des arêtes au graphe et on recommence
 
 {% lien %}
 
