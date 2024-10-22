@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Le ***chiffrement par flux*** *stream cicher* reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :
+Le **_chiffrement par flux_** _stream cicher_ reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :
 
 - une clé plus petite que le message
 - des algorithmes rapides
@@ -23,7 +23,7 @@ On cherche une fonction permettant de générer $n$ bits à partir de $s <<n$
   ---------
   :        \
   :         \
-  :          \ 
+  :          \
   :           \
   --------------
   |G(k) à n bits|
@@ -46,12 +46,12 @@ Générer des nombres purement aléatoire est impossible pour un algorithme. Il 
 
 ### Reconnaissance
 
- On définit la ***reconnaissance $G: K \rightarrow U$*** par un jeu :
+On définit la **_reconnaissance $G: K \rightarrow U$_** par un jeu :
 
 ```
       testeur                            adversaire A
  b  -----------                         -------------
---->|   N     |                         |           | 
+--->|   N     |                         |           |
     |   k     |   G(k) si b=1 N sinon   |           |
     |         |------------------------>|           | A(X) = b'
     |         |                         |           |------------>
@@ -62,10 +62,10 @@ A l'initialisation :
 
 - un bit $b$ est choisi uniformément
 - une valeur $k$ de $K$ est choisie uniformément
-- une valeur $N$ de $U$ est choisie  uniformément
+- une valeur $N$ de $U$ est choisie uniformément
 
 {% note "**Définition**" %}
-L'***avantage*** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
+L'**_avantage_** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
 
 <div>
 $$
@@ -82,7 +82,7 @@ L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploi
 L'exemple précédent n'es pas utilisable en pratique car sans clé on ne retrouve plus l'entrée.
 
 {% note "**Définition**" %}
-Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure pseudo random generator*) doit avoir les propriétés suivantes :
+Un **générateur de nombres pseudo-aléatoire sécurisé** (_secure PRG, secure pseudo random generator_) doit avoir les propriétés suivantes :
 
 - $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - $G$ doit être implémentable par algorithme efficace
@@ -90,10 +90,10 @@ Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure
 
 {% endnote %}
 {% info %}
-Le paramètre de $G$ est appelé *seed*
+Le paramètre de $G$ est appelé _seed_
 {% endinfo %}
 
-La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la *seed* choisie.
+La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la _seed_ choisie.
 
 {% note %}
 En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.
@@ -191,28 +191,28 @@ Pour chiffrer un message, il faut à priori pouvoir écrire des message de taill
 
 Il faut donc aller plus loin pour pouvoir générer des clés selon la taille du message.
 
-## PRF
+## <span id="PRF"></span>PRF
 
 On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF
 
 ### Définition
 
 {% note "**Définition**" %}
-Une **fonction pseudo-aléatoire sécurisée** (*secure PRF, pseudo random function*) doit avoir les propriétés suivantes :
+Une **fonction pseudo-aléatoire sécurisée** (_secure PRF, pseudo random function_) doit avoir les propriétés suivantes :
 
 - $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$, avec $s <<n$
 - $F$ doit être implémentable par algorithme efficace.
 - tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$
-{% endnote %}
+  {% endnote %}
 
-Pour reconnaître  une fonction, il faut un peut modifier le jeu de la reconnaissance :
+Pour reconnaître une fonction, il faut un peut modifier le jeu de la reconnaissance :
 
-On définit la ***reconnaissance de $G: K \times U \rightarrow U$*** par un jeu :
+On définit la **_reconnaissance de $G: K \times U \rightarrow U$_** par un jeu :
 
 ```
       testeur                                adversaire A
  b  -----------            x1               -------------
---->|   H     |<----------------------------|           | 
+--->|   H     |<----------------------------|           |
     |   k     |                             |           |
     |         | F(k, x1) si b=1 H(x1) sinon |           |
     |         |---------------------------->|           |
@@ -295,7 +295,7 @@ Une fonction $F : \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est à sens unique si :
 
 - il existe un algorithme efficace pour calculer $F(x)$ quelque soit $x$
 - Que pour tout algorithme $G$, $Pr[F(G(F(x))) = F(x)]$ soit négligeable.
-{% endnote %}
+  {% endnote %}
 
 La définition stipule que $F$ soit difficile à inverser en moyenne et pas seulement dans le pire des cas comme en théorie de la complexité classique. De là, si une telle fonction existe :
 
@@ -310,7 +310,7 @@ Comme on pense très fort à l'existence de problèmes dont la résolution néce
 
 Pour construire un code à flux il faut être capable de créer des générateurs pseudo-aléatoires de taille quelconque. Ceci peut être compliqué. On préfère découper le message à chiffrer $m$ en blocs $m_i$ de taille fixe que l'on traite séparément.
 
-Il faut cependant faire **très** attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam.
+Il faut cependant faire **très** attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a vu avec le chiffre de Vernam.
 
 On peut utiliser le fait que si $F$ est une PRF alors $F(\cdot, x)$ est un PRG quelque soit $x$.
 
@@ -326,23 +326,26 @@ est un codage par flus sécurisé.
 {% info %}
 L'opérateur `||` est la concaténation.
 {% endinfo %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
+
 > BD theorem 3.30 introduction to cryptography
 {% enddetails %}
+
+Cette construction permet également de déchiffrer rapidement le message en parallèle. Il suffit de connaître la clé $k$ et la position du bloc à déchiffrer.
 
 On peut même ajouter un élément en clair dans le cryptage sans en altérer la sécurité. Le schéma général d'un codage en flux avec compteur est alors :
 
 ```
-     N || 1       N || 2            N || i            N || l  
-        |            |                 |                 |    
-      -----        -----             -----             -----  
- k-->|     |  k-->|     |  ...  k-->|     |  ...  k-->|     |  
-      -----        -----             -----             -----   
-        |            |                 |                 |     
- m1--->XOR    m2--->XOR         mi--->XOR         ml--->XOR    
-        |            |                 |                 |     
-        |            |                 |                 |    
-       c1           c2                ci                cl     
+     N || 1       N || 2            N || i            N || l
+        |            |                 |                 |
+      -----        -----             -----             -----
+ k-->|     |  k-->|     |  ...  k-->|     |  ...  k-->|     |
+      -----        -----             -----             -----
+        |            |                 |                 |
+ m1--->XOR    m2--->XOR         mi--->XOR         ml--->XOR
+        |            |                 |                 |
+        |            |                 |                 |
+       c1           c2                ci                cl
 ```
 
 {% note "**proposition**" %}
@@ -354,9 +357,10 @@ $$
 
 est un codage par flux sécurisé.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
+
 > TBD : construction 3.25 Introduction to modern cryptography
-{% enddetails %}
+> {% enddetails %}
 
 Remarquer que le $\text{NONCE}$ est transmis en clair, ce n'est pas grave. L'utilisation de ce $\text{NONCE}$ est courante dans les méthodes de chiffrement en flux.
 
@@ -367,7 +371,7 @@ Un [NONCE](https://en.wikipedia.org/wiki/Cryptographic_nonce) est un nombre util
 Il st utilisé dans de nombreux protocoles cryptographiques pour distinguer des encodages au sein de l'envoie d'un message.
 {% endnote %}
 
-## PRG et *prédictabilité*
+## PRG et _prédictabilité_
 
 {% note %}
 Une suite $g(k,1), \dots g(k, m + 1)$ est non prédictible si tout algorithme efficace ne peut peut prédire $g(k, m + 1)$ sachant $g(k, 1), \dots, g(k, m)$ qu'avec un avantage négligeable.

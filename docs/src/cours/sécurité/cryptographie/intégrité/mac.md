@@ -53,7 +53,7 @@ Un MAC est ***sécurisé*** si un adversaire efficace ne peut gagner le jeu suiv
 
 ```
 
-Ce jeu simule le fait qu'un attaquant peut influencer la teneur de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tout un MAC valide.
+Ce jeu simule le fait qu'un attaquant peut influencer la teneur de messages envoyés (en comptant sur un reply lors d'un envoie de mail par exemple) et ne peut forger à son tour un MAC valide.
 
 ## Attaque
 
@@ -62,14 +62,14 @@ Remarquez qu'un MAC peut toujours être attaqué avec une probabilité au moins 
 ## MAC pour message de taille fixe
 
 {% note "**MAC à taille fixe**" %}
-Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une PRF, alors :
+Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une [PRF](../../confidentialité/chiffre-flux/#PRF){.interne}, alors :
 
 - $S(k, m) = F(k, m)$
-- $V(k, m, t) = (F(k, m) == t)$
+- $V(k, m, t) = (F(k, m) = t)$
 
 Est un MAC sécurisé pour tout message de taille $n$.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Soit $F$ une PRF, $(S, V)$, le MAC qui lui est associé et $A$ un algorithme efficace permettant de gagner au jeu *existential forgery against a chosen message attack* contre $(S, V)$ avec une probabilité $\epsilon(n)$.
 
@@ -87,7 +87,7 @@ On peut maintenant créer un algorithme efficace $B$ jouant au jeu de la disting
     |         |                             | m'   (m', t) | A  ||
     |         |<----------------------------|---  <--------|    ||
     |         | F(k, m') si b=1 sinon H(m') | r            ------|    
-    |         |-----------------------------|--->                | rép(b)=(r==t)
+    |         |-----------------------------|--->                | rép(b)=(r=t)
     |         |                             |                    |-------------->   
     -----------                             ----------------------
 ```
@@ -117,11 +117,11 @@ Soient :
 Alors :
 
 - $S(k, m) = M(k, H(m))$
-- $V(k, m, t) = (S(k, m) == t)$
+- $V(k, m, t) = (S(k, m) = t)$
 
 Est un MAC sécurisé pour tout message.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 > TBD
 {% enddetails %}
 

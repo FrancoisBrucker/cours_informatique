@@ -13,11 +13,12 @@ eleventyComputed:
 La thématique de la _sécurité_ en informatique traite de l'échange de messages entre un expéditeur et un destinataire via un canal public tout en respectant les quatre principes suivant :
 
 - **_confidentialité_** : le message ne doit pouvoir être lu que par son destinataire.
-- **_intégrité_** : le message ne doit pas être altéré entre son envoi et sa réception
+- **_intégrité_** : le message ne doit pas être altéré entre son envoi et sa réception.
 - **_authentification_** :
-  - l'expéditeur doit être sur de l'identité du destinataire
-  - le destinataire doit être sur de l'identité de l'expéditeur
-- **_non-répudiation_** : l'expéditeur ne doit pas pouvoir nier être l'auteur du message a posteriori
+  - l'expéditeur doit être sur de l'identité du destinataire,
+  - le destinataire doit être sur de l'identité de l'expéditeur.
+
+On ajoute souvent aux trois conditions ci-dessus la condition de **_non-répudiation_** : l'expéditeur ne doit pas pouvoir nier être l'auteur du message a posteriori.
 
 Les expéditeurs et destinataires du messages ne sont pas forcement distincts, lors du chiffrage de données sur un disque dur par exemple. On distingue ainsi deux mode de chiffrement :
 

@@ -303,7 +303,7 @@ $$
 </div>
 
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Les deux dernières égalités se déduisent aisément des deux premières.
 
@@ -360,6 +360,8 @@ $$
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
 
 De ce qui découle on en déduit une règle universelle de toute fonction de hash :
+
+<div id="paradoxe-anniversaires"></div>
 
 {% note "**Paradoxe des anniversaires**" %}
 Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.

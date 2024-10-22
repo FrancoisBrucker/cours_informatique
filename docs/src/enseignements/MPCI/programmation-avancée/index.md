@@ -164,7 +164,7 @@ Cours 1, 2 et 3
 
 ### Graphes aléatoires et infini
 
-#### TBD
+> TBD
 
 ## Modalités de contrôle
 

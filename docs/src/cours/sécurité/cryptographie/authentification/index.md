@@ -63,7 +63,7 @@ La clé publique est ...publique et permet à une autre personne :
 La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification en utilisant le couple $(k, k')$ de clé privée / publique :
 
 - $S(m) = E(k, h(m))$ : On signe un hash du message avec sa clé privée
-- $V(m, c) = (h(m)m == D(k', m))$ : on vérifie que le hash du message correspond à la signature
+- $V(m, c) = (h(m) = D(k', m))$ : on vérifie que le hash du message correspond à la signature
 
 Les rôles des clés sont connus :
 
@@ -81,13 +81,13 @@ Alice veut envoyer un message $m$ à Bob et prouver qu'elle est bien l'autrice d
 1. elle signe son message s = E(k, h(m))$
 2. elle envoie à Bob le message $m$ et sa signature $s$
 
-À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) == D(k', s)$
+À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) = D(k', s)$
 
 ## <span id="authentification"></span> Authentification avec clé publique/clé privée
 
 ### Présentation de la clé publique
 
-Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} == D(k_\text{Alice-pub}, c)$.
+Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} = D(k_\text{Alice-pub}, c)$.
 
 Attention cependant au **message d'authentification envoyé**. C'est lui qui garanti l'authenticité de la personne. Le message d'authentification doit avoir un format déterminé et vérifiable (comme $(\text{bonjour}, S_{\text{Alice}}(\text{bonjour}))$ par exemple).
 

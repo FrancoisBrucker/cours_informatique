@@ -32,6 +32,8 @@ La seule différence est que toutes les opérations de Chacha sont inversible, l
 
 ## PRP
 
+<div id="PRP"></div>
+
 {% note "**Définition**" %}
 Une **permutation pseudo-aléatoire sécurisée** (*secure PRP, pseudo random permutation*) doit avoir les propriétés suivantes :
 
@@ -41,13 +43,13 @@ Une **permutation pseudo-aléatoire sécurisée** (*secure PRP, pseudo random pe
 - tout algorithme efficace ne peut avoir qu'un avantage négligeable au jeu de la reconnaissance $F(k, \cdot)$
 {% endnote %}
 
-Une PRP est une restriction des PRF aux permutation de $\\{0, 1\\}^n$. Si $n4 est grand, ce n'est cependant pas un problème, on ne peux distinguer les deux avec un avantage négligeable :
+Une PRP est une restriction des PRF aux permutation de $\\{0, 1\\}^n$. Si $n$ est grand, ce n'est cependant pas un problème, on ne peux distinguer les deux qu'avec un avantage négligeable :
 
 {% note "**Proposition**" %}
 Une **PRP** ne peut être distinguée d'une fonction aléatoire avec un avantage non négligeable par un algorithme efficace.
 
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 > TBD : proposition 3.29 (trouver un point fixe est rare, donc pas efficace). Introduction to modern cryptography
 {% enddetails %}
 
@@ -62,4 +64,3 @@ Une **PRP** ne peut être distinguée d'une fonction aléatoire avec un avantage
 
 > TBD : à approfondir
 > TBD : faire dessin deu chiffrement. Et laisser la place pour poly1305
-

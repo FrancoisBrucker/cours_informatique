@@ -17,10 +17,10 @@ eleventyComputed:
 
 {% endlien %}
 
-Une fonction de hash cryptographique doit être conçue pour éviter les collision, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
+Une fonction de hash cryptographique doit être conçue pour éviter les collisions, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$
 
 {% note "**Définition**" %}
-Une fonction $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ est une fonction de ***hash cryptographique*** si elle est résistante aux collision.
+Une fonction $H: \\{0, 1\\}^\star \rightarrow \\{0, 1\\}^n$ est une fonction de ***hash cryptographique*** si elle est résistante aux collisions.
 
 Tout algorithme efficace ne peut rendre un couple $(x, x')$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.
 {% endnote %}
@@ -37,7 +37,7 @@ La première condition étant plus restrictive que la condition 2.
 
 ### Intégrité non sécurisée
 
-On accole le hash au message envoyé :$m || H(m)$
+On accole le hash au message envoyé : $m || H(m)$
 
 Le message est bien transmis si le hash du message arrivé correspond au hash concaténé. Couple $(S, V)$ signe et vérifie :
 
@@ -67,15 +67,15 @@ Git utilise par défaut la fonction de hash SHA-1.
 
 ### Attaque des anniversaires
 
-L'attaque générique des anniversaire est l'attaque brute force associée aux fonctions de hash cryptographique.
+L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.
 
-Grace aux paradoxe des anniversaires, on sait qu'il suffit de $2^{n/2}$ mots de $\\{0, 1\\}^n$ plur avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x)c = H(x')$.
+Grace au [paradoxe des anniversaires](/cours/algorithmie/structure-conteneurs/fonctions-hash/#paradoxe-anniversaires){.interne}, on sait qu'il suffit de $2^{n/2}$ mots de $\\{0, 1\\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.
 
 Il n'est pas nécessaire de stocker tous les mots en mémoire, on peut montrer qu'il suffit de :
 
 {% note "**Algorithme attaque par point fixe**" %}
 
-1. prendre $x_1$ et $y_1$ deux mots aléatoires de $\\{0, 1\\}^n$
+1. prendre $x_1 = y_1$ un mot aléatoire de $\\{0, 1\\}^n$
 2. créer itérativement $x_i = H(x_{i−1})$ et $y_i = H(H(y_{i−1}))$ jusqu'à ce que $x_m = y_m$
 3. on a alors $H(x_{m−1}) = H(H(y_{m−1}))$ si $x_{m-1} \neq H(y_{m−1})$ (ce qui est très probable)
 
@@ -131,7 +131,7 @@ Il faut toujours modifier un peu un document que l'on signe, histoire que l'atta
 [Construction Davies–Meyer](https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer)
 {% endlien %}
 
-On utilise la construction Davies–Meyer qui permet de transformer un PRP $P : \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
+On utilise la construction Davies–Meyer qui permet de transformer [un PRP](../../confidentialité/chacha20/#PRP){.interne} $P : \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.
 
 On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante $\text{IV}$ (initial value) à la place de la où habituellement se place un message.
 
@@ -158,7 +158,7 @@ IV ----|   v   |--- XOR ---
 
 Si le bloc est une PRP, alors la résistance à la collision est maximale.
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 > TBD : preuve avec <https://crypto.stackexchange.com/questions/8023/why-are-the-davies-meyer-and-miyaguchi-preneel-constructions-secure>
 
 {% enddetails %}
@@ -210,7 +210,7 @@ On a alors $H_n = H'_{n'}$ ce qui implique :
 
 <div>
 $$
-F(H_{m-1}, m_n \ ||\  \text{pad}) = F(H'_{m'-1}, m'_{n'} \ ||\  \text{pad}')
+P(H_{m-1}, m_n \ ||\  \text{pad}) = P(H'_{m'-1}, m'_{n'} \ ||\  \text{pad}')
 $$
 </div>
 
