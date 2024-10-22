@@ -142,7 +142,7 @@
 <p>La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification en utilisant le couple $(k, k')$ de clé privée / publique :</p>
 <ul>
 <li>$S(m) = E(k, h(m))$ : On signe un hash du message avec sa clé privée</li>
-<li>$V(m, c) = (h(m)m == D(k', m))$ : on vérifie que le hash du message correspond à la signature</li>
+<li>$V(m, c) = (h(m) = D(k', m))$ : on vérifie que le hash du message correspond à la signature</li>
 </ul>
 <p>Les rôles des clés sont connus :</p>
 <ul>
@@ -163,10 +163,10 @@
 <li>elle signe son message s = E(k, h(m))$</li>
 <li>elle envoie à Bob le message $m$ et sa signature $s$</li>
 </ol>
-<p>À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) == D(k', s)$</p>
+<p>À la réception du message, Bob utilise la clé publique $k'$ d'Alice pour vérifier l'authenticité de $m$ : $h(m) = D(k', s)$</p>
 <h2><span id="authentification"></span> Authentification avec clé publique/clé privée</h2>
 <h3>Présentation de la clé publique</h3>
-<p>Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} == D(k_\text{Alice-pub}, c)$.</p>
+<p>Pour garantir son identité, Alice envoie un message à Bob couplé à sa signature : $(\text{bonjour}, c)$, avec $c = E(k_\text{Alice-priv}, \text{bonjour})$. Bob peut alors vérifier l'identité d'Alice avec sa clé publique : $\text{bonjour} = D(k_\text{Alice-pub}, c)$.</p>
 <p>Attention cependant au <strong>message d'authentification envoyé</strong>. C'est lui qui garanti l'authenticité de la personne. Le message d'authentification doit avoir un format déterminé et vérifiable (comme $(\text{bonjour}, S_{\text{Alice}}(\text{bonjour}))$ par exemple).</p>
 <p>Ceci est cruciale si la vérification est automatique et non supervisée par un humain qui peut vérifier le message.</p>
 <p>En effet, si le format du message d'authentification n'est pas vérifié, Mallory peut envoyer n'importe quoi comme message d'authentification, comme par exemple : $(V_{\text{Alice}}(\text{ha ha ha}), \text{ha ha ha})$ qui fonctionne puisque $V_{\text{Alice}}(\text{ha ha ha})$ est bien égale à $V_{\text{Alice}}(\text{ha ha ha})$.</p>

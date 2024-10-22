@@ -92,7 +92,7 @@
     
   
 
-  <p>Le <em><strong>chiffrement par flux</strong></em> <em>stream cicher</em> reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :</p>
+  <p>Le <strong><em>chiffrement par flux</em></strong> <em>stream cicher</em> reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :</p>
 <ul>
 <li>une clé plus petite que le message</li>
 <li>des algorithmes rapides</li>
@@ -103,7 +103,7 @@
   ---------
   :        \
   :         \
-  :          \ 
+  :          \
   :           \
   --------------
   |G(k) à n bits|
@@ -119,10 +119,10 @@ $$
 <h2>Générateur de nombre</h2>
 <p>Générer des nombres purement aléatoire est impossible pour un algorithme. Il faut donc trouver une façon de simuler ce hasard, ou tout du moins de garantir qu'un algorithme efficace ne puisse voir la supercherie.</p>
 <h3>Reconnaissance</h3>
-<p>On définit la <em><strong>reconnaissance $G: K \rightarrow U$</strong></em> par un jeu :</p>
+<p>On définit la <strong><em>reconnaissance $G: K \rightarrow U$</em></strong> par un jeu :</p>
 <pre><code>      testeur                            adversaire A
  b  -----------                         -------------
----&gt;|   N     |                         |           | 
+---&gt;|   N     |                         |           |
     |   k     |   G(k) si b=1 N sinon   |           |
     |         |------------------------&gt;|           | A(X) = b'
     |         |                         |           |------------&gt;
@@ -132,7 +132,7 @@ $$
 <ul>
 <li>un bit $b$ est choisi uniformément</li>
 <li>une valeur $k$ de $K$ est choisie uniformément</li>
-<li>une valeur $N$ de $U$ est choisie  uniformément</li>
+<li>une valeur $N$ de $U$ est choisie uniformément</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -141,7 +141,7 @@ $$
 <div class="pl-8  mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'<em><strong>avantage</strong></em> d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :</p>
+<p>L'<strong><em>avantage</em></strong> d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :</p>
 <div>
 $$
 \vert Pr_{k \xleftarrow{R} \mathcal{U}}[A(G(k))=1] - Pr_{X \xleftarrow{R} \mathcal{K}}[A(X)=1] \vert
@@ -281,7 +281,7 @@ $$
 <h3>Changer de clé</h3>
 <p>Pour chiffrer un message, il faut à priori pouvoir écrire des message de taille quelconque, ce qui n'est pas pas possible avec notre générateur. De plus, on a vue qu'il ne faut pas réutiliser la clé.</p>
 <p>Il faut donc aller plus loin pour pouvoir générer des clés selon la taille du message.</p>
-<h2>PRF</h2>
+<h2><span id="PRF"></span>PRF</h2>
 <p>On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF</p>
 <h3>Définition</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -299,11 +299,11 @@ $$
 </ul>
 </div>
 </div>
-<p>Pour reconnaître  une fonction, il faut un peut modifier le jeu de la reconnaissance :</p>
-<p>On définit la <em><strong>reconnaissance de $G: K \times U \rightarrow U$</strong></em> par un jeu :</p>
+<p>Pour reconnaître une fonction, il faut un peut modifier le jeu de la reconnaissance :</p>
+<p>On définit la <strong><em>reconnaissance de $G: K \times U \rightarrow U$</em></strong> par un jeu :</p>
 <pre><code>      testeur                                adversaire A
  b  -----------            x1               -------------
----&gt;|   H     |&lt;----------------------------|           | 
+---&gt;|   H     |&lt;----------------------------|           |
     |   k     |                             |           |
     |         | F(k, x1) si b=1 H(x1) sinon |           |
     |         |----------------------------&gt;|           |
@@ -439,7 +439,7 @@ $$
 <p>Comme on pense très fort à l'existence de problèmes dont la résolution nécessite plus qu'un algorithme polynomial pour être résolu, donc que $P \neq NP$, on croit très fort que les PRG et PRF existent.</p>
 <h2>Construction générale</h2>
 <p>Pour construire un code à flux il faut être capable de créer des générateurs pseudo-aléatoires de taille quelconque. Ceci peut être compliqué. On préfère découper le message à chiffrer $m$ en blocs $m_i$ de taille fixe que l'on traite séparément.</p>
-<p>Il faut cependant faire <strong>très</strong> attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam.</p>
+<p>Il faut cependant faire <strong>très</strong> attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a vu avec le chiffre de Vernam.</p>
 <p>On peut utiliser le fait que si $F$ est une PRF alors $F(\cdot, x)$ est un PRG quelque soit $x$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -464,7 +464,7 @@ $$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -486,17 +486,18 @@ $$</p>
 </div>
 </details>     
 </div>
+<p>Cette construction permet également de déchiffrer rapidement le message en parallèle. Il suffit de connaître la clé $k$ et la position du bloc à déchiffrer.</p>
 <p>On peut même ajouter un élément en clair dans le cryptage sans en altérer la sécurité. Le schéma général d'un codage en flux avec compteur est alors :</p>
-<pre><code>     N || 1       N || 2            N || i            N || l  
-        |            |                 |                 |    
-      -----        -----             -----             -----  
- k--&gt;|     |  k--&gt;|     |  ...  k--&gt;|     |  ...  k--&gt;|     |  
-      -----        -----             -----             -----   
-        |            |                 |                 |     
- m1---&gt;XOR    m2---&gt;XOR         mi---&gt;XOR         ml---&gt;XOR    
-        |            |                 |                 |     
-        |            |                 |                 |    
-       c1           c2                ci                cl     
+<pre><code>     N || 1       N || 2            N || i            N || l
+        |            |                 |                 |
+      -----        -----             -----             -----
+ k--&gt;|     |  k--&gt;|     |  ...  k--&gt;|     |  ...  k--&gt;|     |
+      -----        -----             -----             -----
+        |            |                 |                 |
+ m1---&gt;XOR    m2---&gt;XOR         mi---&gt;XOR         ml---&gt;XOR
+        |            |                 |                 |
+        |            |                 |                 |
+       c1           c2                ci                cl
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -513,7 +514,7 @@ $$</p>
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
