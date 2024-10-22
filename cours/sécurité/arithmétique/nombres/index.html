@@ -127,7 +127,7 @@ valeur : x = 010100110
 </ul>
 </li>
 </ul>
-<h3>décalages de bits</h3>
+<h3>Décalages de bits</h3>
 <p>On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).</p>
 <ul>
 <li>$x &lt;&lt; k$ : <em><strong>shift</strong></em> de $k$ bit vers la gauche. Les $k$ bits de poids faibles sont des $0$ (identique à une multiplication par $2^k$)</li>
@@ -197,7 +197,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté cqr leurs valeurs ajoutée est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.</p>
+<p>Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.</p>
 </div>
 </div>
 <h3>Division euclidienne</h3>
@@ -221,7 +221,7 @@ $$
 </code></pre>
 <p>On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mod 0b1011 = 100$</p>
 <p>$37 / 11 = 3$ et $37 \mod 11 = 4$</p>
-<h2>Exponentiation</h2>
+<h2><span id="exponentiation">Exponentiation</span></h2>
 <p>L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.</p>
 <p>Rappelons l'algorithme d'exponentiation indienne qui calcule $x^y$ :</p>
 <pre><code>expo(x, y):

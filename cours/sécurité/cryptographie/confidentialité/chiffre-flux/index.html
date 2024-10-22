@@ -124,7 +124,7 @@ $$
  b  -----------                         -------------
 ---&gt;|   N     |                         |           | 
     |   k     |   G(k) si b=1 N sinon   |           |
-    |         |------------------------&gt;|           | A(G, b) = b'
+    |         |------------------------&gt;|           | A(X) = b'
     |         |                         |           |------------&gt;
     -----------                         -------------
 </code></pre>
@@ -144,13 +144,14 @@ $$
 <p>L'<em><strong>avantage</strong></em> d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :</p>
 <div>
 $$
-\vert Pr[A(G, 1)=1] - Pr[A(G, 0)=1] \vert
+\vert Pr_{k \xleftarrow{R} \mathcal{U}}[A(G(k))=1] - Pr_{X \xleftarrow{R} \mathcal{K}}[A(X)=1] \vert
 $$
 </div>
 </div>
 </div>
 <p>L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploitable par un algorithme. Moins cette écart est grand, moins il est exploitable par une attaque.</p>
 <h3>PRG</h3>
+<p>L'exemple précédent n'es pas utilisable en pratique car sans clé on ne retrouve plus l'entrée.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -175,36 +176,14 @@ $$
 </div>
 </div>
 <p>La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la <em>seed</em> choisie.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
 <div class="pl-8 mr-8">
-<p>Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.</p>
+<p>En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.</p>
 </div>
 </div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</div>
-</details>     
-</div>
-<p>En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.</p>
 <h3>Construction d'un code par flux avec un PRG</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -238,13 +217,50 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.</p>
-<p>On peut alors utiliser l'algorithme qui prend en entrée un mot de $\{0, 1\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.</p>
+<p>Si la méthode n'est pas sémantiquement sécurisée, il existe deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$. On a alors :</p>
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &=& |Pr[b'=1 | b=1] - Pr[b'=1 | b=0]|\\
+&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(G(k) \oplus m_0) =1]\cdot Pr[X=G(k)]|\\
+&\leq&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n| +\\
+&&|\frac{1}{2}\sum_{X\in \{0, 1\}^n} Pr[A(G(k) \oplus m_0) =1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n|\\
+\end{array}
+$$
+</div>
+<p>On peut supposer sans perte de généralité que :</p>
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &\leq&2\cdot|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n|
+\end{array}
+$$
+</div>
+<p>Puisque $X\oplus m_1$ est distribué de façon uniforme, on a donc aussi :</p>
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &\leq&2\cdot|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X\oplus m_1) = 1]\cdot (1/2)^n|
+\end{array}
+$$
+</div>
+<p>On peut alors utiliser l'algorithme $A'$ qui prend en entrée un mot $y\in \{0, 1\}^n$ et qui rend $A'(y) = A(y \oplus m_1)$.</p>
+<p>Son avantage vaut :</p>
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A') &=& Pr[b'=1 | b=1] - Pr[b'=1 | b=0]\\
+&=&\frac{1}{2}\sum_{X\in \{0, 1\}^n}|Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X \oplus m_1) =1]\cdot (1/2)^n|\\
+\end{array}
+$$
+</div>
+<p>On a alors que l'avantage de $A$ ne peut être non négligeable puisque que $A'$ discrimine $G(k)$ d'une loi uniforme et est statistiquement sécurisé.</p>
 </div>
 </details>     
 </div>
 <h2>Attaque</h2>
-<p>Notez d'un générateur de nombre donne des résultats loin d'être aléatoires.</p>
+<h3>Taille de clé</h3>
+<p>Notez qu'un générateur de nombre donne des résultats loin d'être aléatoires.</p>
 <p>En effet :</p>
 <ul>
 <li>le nombre de chaînes atteignable depuis sa seed : $2^s$</li>
@@ -257,11 +273,14 @@ $$
 </ol>
 <p>Il reconnaît $D$ avec l'avantage suivant :</p>
 <ul>
-<li>$Pr[D(G, 1) = 1] = 1$</li>
-<li>$Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)</li>
+<li>$Pr[D(G) = 1 | b=1] = 1$</li>
+<li>$Pr[D(G) = 1 | b=0] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)</li>
 </ul>
 <p>Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n&gt;&gt;s$</p>
 <p>Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.</p>
+<h3>Changer de clé</h3>
+<p>Pour chiffrer un message, il faut à priori pouvoir écrire des message de taille quelconque, ce qui n'est pas pas possible avec notre générateur. De plus, on a vue qu'il ne faut pas réutiliser la clé.</p>
+<p>Il faut donc aller plus loin pour pouvoir générer des clés selon la taille du message.</p>
 <h2>PRF</h2>
 <p>On peut créer des PRG en utilisant des fonctions moins contraignantes, les PRF</p>
 <h3>Définition</h3>
@@ -294,15 +313,15 @@ $$
     |         |             xq              |           |
     |         |&lt;----------------------------|           |
     |         | F(k, xq) si b=1 H(xq) sinon |           |
-    |         |----------------------------&gt;|           | A(F, b) = b'
-    |         |                             |           |------------&gt;
+    |         |----------------------------&gt;|           | A(X1, ..., Xq) = b'
+    |         |                             |           |---------------------&gt;
     -----------                             -------------
 </code></pre>
 <p>A l'initialisation :</p>
 <ul>
 <li>un bit $b$ est choisi uniformément</li>
 <li>une valeur $k$ de $K$ est choisie uniformément</li>
-<li>une fonction $H: U \rightarrow $U$ est choisie  uniformément</li>
+<li>une fonction $H: U \rightarrow U$ choisie uniformément</li>
 </ul>
 <p>Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -315,12 +334,14 @@ $$
 <p>L'avantage d'un algorithme $A$ au jeu de la reconnaissance de $F$ est :</p>
 <div>
 $$
-\vert Pr[A(F, 1) == 1] - Pr[A(F, 0) == 1] \vert
+\begin{array}{lcl}
+\text{avantage}(A) &=& Pr[A(X_1, \dots, X_q) = 1 | b=1] - Pr[A(X_1, \dots, X_q) = 1 | b=0]\\
+\end{array}
 $$
 </div>
 </div>
 </div>
-<p>Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.</p>
+<p>Notez que le fait que l'on utilise des algorithmes efficaces implique que $q$ ne peut être que polynomial.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -344,9 +365,16 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>Si $H$ est une fonction quelconque de $\{0, 1\}^n$ dans $\{0, 1\}^n$ alors la probabilité que $H(x) = \mathbb{0}$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit). L'algorithme $A$ qui répond 1 si $X_1\neq \mathbb{0}$ et 0 sinon a un avantage de :</p>
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &=& Pr[A(X_1) = 1 | b=1] - Pr[A(X_1) = 1 | b=0]\\
+&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}(Pr[A(0) = 1]\cdot (1/2)^n - Pr[A(H(x)) = 0]\cdot (1/2)^n)|\\
+&=&1-(1/2)^n
+\end{array}
+$$
+</div>
 </div>
 </details>     
 </div>
@@ -362,7 +390,7 @@ $$
 </div>
 </div>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -379,7 +407,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>Si $H$ est une fonction quelconque de $\{0, 1\}^n$ dans $\{0, 1\}^n$ alors la probabilité que $H(x) = F(k, x)$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit).</p>
-<p>De là, si $G(k)$ n'est pas un secure PRG, il existe un algorithme efficace $A$ ayant un avantage non négligeable.</p>
+<p>De là, si $G(k)$ n'est pas un secure PRG, il existe un algorithme efficace $A$ ayant un avantage non négligeable le distinguant de la loi uniforme.</p>
 <p>On peut utiliser cet algorithme dans la reconnaissance de $F$ comme un secure PRF en ne demandant que la valeur en $x$ et reconnaître F avec le même avantage non négligeable : $F$ n'est pas un secure PRF ce qui contredit notre hypothèse.</p>
 </div>
 </details>     
@@ -468,7 +496,7 @@ $$</p>
  m1---&gt;XOR    m2---&gt;XOR         mi---&gt;XOR         ml---&gt;XOR    
         |            |                 |                 |     
         |            |                 |                 |    
-       c1           c1                c1                c1     
+       c1           c2                ci                cl     
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -613,8 +641,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>[Article originel de Yao, 1982](<a href="https://www.di.ens.fr/users/phan/">https://www.di.ens.fr/users/phan/</a><br>
-secuproofs/yao82.pdf)</p>
+<p><a href="https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf">Article originel de Yao, 1982</a></p>
 </div>
 </div>
 

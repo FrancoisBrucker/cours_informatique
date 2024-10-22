@@ -108,7 +108,7 @@
 </li>
 <li>$x \mod n$ vaut le reste de la division entière de $x$ par $n$</li>
 </ul>
-<p>Si $n$ est premier, on dit alors $\mathbb{Z}/n\mathbb{Z}$ c'est même un corps :</p>
+<p>Si $n$ est premier, $\mathbb{Z}/n\mathbb{Z}$ est même un corps :</p>
 <ul>
 <li>tout élément $x$ a un inverse noté $x^{-1}$</li>
 <li>il est intègre : $x\cdot y = 0$ implique que soit $x$ soit $y$ vaut $0$.</li>
@@ -154,7 +154,12 @@
 <p><a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn">théorème de Wedderburn</a> montre que tout corps fini est commutatif.</p>
 </div>
 </div>
-<h2>Exponentiation modulaire</h2>
+<h2><span id="groupe-cyclique"></span>Groupe cyclique</h2>
+<p>Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un <a href="https://fr.wikipedia.org/wiki/Groupe_cyclique">groupe cyclique</a>.</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2><span id="exponentiation-modulaire">Exponentiation modulaire</span></h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -179,7 +184,7 @@
   rendre r
 </code></pre>
 <p>On peut même stocker les valeurs des exposants trouvés dans un dictionnaire pour ne pas avoir à recalculer deux fois la même chose.</p>
-<p>La complexité totale de cet algo est donc $\mathcal{O}(n^3)$ en considérant que la multiplication et le mod se font en $\mathcal{O}(n^2)$ opérations.</p>
+<p>Lorsque les nombres sont stockés sur $k$ bits, <a href="../nombres#exponentiation" class="interne">la complexité totale de cet algo est donc $\mathcal{O}(k^3)$</a>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -221,7 +226,7 @@
 <p>Cette propriété est connue sous le nom de <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat">petit théorème de Fermat</a></p>
 </div>
 </div>
-<h2>Logarithme discret</h2>
+<h2><span id="logarithme-discret"></span>Logarithme discret</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>

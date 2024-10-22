@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/codes-historiques/">Codes historiques</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/codes-historiques/">Codes historiques</a>
 
 </div>
 </div>
@@ -114,20 +114,192 @@ $$
 <p>Le <a href="https://fr.wikipedia.org/wiki/ROT13">ROT(13)</a>, César où $k=13$ est l'ancêtre du floutage NSFW.</p>
 </div>
 </div>
-<p>Le code de César est un exemple de <em><strong>Codage par flux</strong></em> (<em>stream cipher</em>) : chaque lettre est chiffrée une à une avec le même algorithme.</p>
-<blockquote>
-<p>TBD expliciter</p>
-</blockquote>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token builtin class-name">echo</span> <span class="token string">"Longtemps je me suis couché de bonne heure"</span> <span class="token operator">|</span> recode <span class="token parameter variable">-f</span> utf8<span class="token punctuation">..</span>flat <span class="token operator">|</span> <span class="token function">tee</span> /dev/tty <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"A-Za-z"</span> <span class="token string">"N-ZA-Mn-za-m"</span> <span class="token operator">|</span> <span class="token function">tee</span> /dev/tty <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">"A-Za-z"</span> <span class="token string">"N-ZA-Mn-za-m"</span>
+<p>Le code de César est un exemple de <em><strong>Codage par flux</strong></em> (<em>stream cipher</em>) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)</p>
+<table>
+<thead>
+<tr>
+<th>lettre</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+<th>J</th>
+<th>K</th>
+<th>L</th>
+<th>M</th>
+<th>N</th>
+<th>O</th>
+<th>P</th>
+<th>Q</th>
+<th>R</th>
+<th>S</th>
+<th>T</th>
+<th>U</th>
+<th>V</th>
+<th>W</th>
+<th>X</th>
+<th>Y</th>
+<th>Z</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>M</td>
+<td>N</td>
+<td>O</td>
+<td>P</td>
+<td>Q</td>
+<td>R</td>
+<td>S</td>
+<td>T</td>
+<td>U</td>
+<td>V</td>
+<td>W</td>
+<td>X</td>
+<td>Y</td>
+<td>Z</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+<td>G</td>
+<td>H</td>
+<td>I</td>
+<td>J</td>
+<td>K</td>
+<td>L</td>
+</tr>
+</tbody>
+</table>
+<p>Faisons ça en shell, parce que pourquoi pas. Chaîne à coder :</p>
+<pre><code>Longtemps je me suis couché de bonne heure.
+</code></pre>
+<p>On ne peut avoir que des code ASCII, don con transforme tout, pour supprimer les accents :</p>
+<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat
+
+Longtemps je me suis couche de bonne heure.
+</code></pre>
+<p>On chiffre :</p>
+<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
+
+Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+</code></pre>
+<p>On déchiffre. L'intérêt du ROT13 est que c'est le même algorithme pour le chiffrage et le déchiffrage :</p>
+<pre><code>❯ echo &quot;Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.&quot; | recode -f utf8..flat | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
+
+Longtemps je me suis couche de bonne heure.
+</code></pre>
+<p>Le tout en une seule fois (avec des tee pour afficher les résultats intermédiaires) :</p>
+<pre><code>❯ echo &quot;Longtemps je me suis couché de bonne heure.&quot; | recode -f utf8..flat | tee /dev/tty | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot; | tee /dev/tty | tr &quot;A-Za-z&quot; &quot;N-ZA-Mn-za-m&quot;
+
+Longtemps je me suis couche de bonne heure.
+Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+Longtemps je me suis couche de bonne heure.
 </code></pre>
 <h3><span id="César-analyse"></span>Cryptanalyse</h3>
 <ol>
 <li>Ne résiste pas au calcul exhaustif des clés : 26</li>
 <li>Ne résiste pas à l'analyse en <a href="https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d'apparition_des_lettres">fréquence de chaque lettre</a></li>
 </ol>
-<blockquote>
-<p>TBD : le montrer</p>
-</blockquote>
+<p>&quot;Longtemps je me suis couche de bonne heure.&quot;. les 4 premières fréquences:</p>
+<ul>
+<li><code>E</code> 22%85</li>
+<li><code>U</code> 8%57</li>
+<li><code>S</code> 8%57</li>
+<li><code>O</code> 8%57</li>
+</ul>
+<p>Français :</p>
+<table>
+<tbody>
+<tr>
+<td>E</td>
+<td>17.76</td>
+<td>O</td>
+<td>5.34</td>
+<td>B</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>S</td>
+<td>8.23</td>
+<td>D</td>
+<td>3.60</td>
+<td>H</td>
+<td>0.64</td>
+</tr>
+<tr>
+<td>A</td>
+<td>7.68</td>
+<td>C</td>
+<td>3.32</td>
+<td>X</td>
+<td>0.54</td>
+</tr>
+<tr>
+<td>N</td>
+<td>7.61</td>
+<td>P</td>
+<td>3.24</td>
+<td>Y</td>
+<td>0.21</td>
+</tr>
+<tr>
+<td>T</td>
+<td>7.30</td>
+<td>M</td>
+<td>2.72</td>
+<td>J</td>
+<td>0.19</td>
+</tr>
+<tr>
+<td>I</td>
+<td>7.23</td>
+<td>Q</td>
+<td>1.34</td>
+<td>Z</td>
+<td>0.07</td>
+</tr>
+<tr>
+<td>R</td>
+<td>6.81</td>
+<td>V</td>
+<td>1.27</td>
+<td>K</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>U</td>
+<td>6.05</td>
+<td>G</td>
+<td>1.10</td>
+<td>W</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>L</td>
+<td>5.89</td>
+<td>F</td>
+<td>1.06</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres">https://fr.wikipedia.org/wiki/Fréquence_d'apparition_des_lettres</a></p>
+</div>
+</div>
+<p>La lettre arrivant le plus souvent dans le message chiffré, <code>r</code> a donc toute les chances d'être <code>e</code> ce qui donne le décalage.</p>
 <h2>Vigenère</h2>
 <h3><span id="Vigenère-chiffre"></span>Chiffrement</h3>
 <p>Remplace la clé unique par un tableau de clés $k =[k_0,\dots, k_{p-1}]$</p>
@@ -142,7 +314,12 @@ $$
 \right.
 $$
 </div>
-<p>Le code de Vigenère est un exemple de <em><strong>Codage par blocs</strong></em> (<em>bloc cipher</em>) :  : chaque bloc de $p$ lettres est codé avec le même algorithme.</p>
+<p>Le code de Vigenère est un exemple de <em><strong>Codage par blocs</strong></em> (<em>bloc cipher</em>) : chaque bloc de $p$ lettres est codé avec le même algorithme.</p>
+<p>Par exemple, si on encode notre chaîne par <code>PROUST</code>, cela revient à encoder toute les 7 lettres par un césar commençant par <code>P</code>, toutes les 8 lettres par un césar commençant par <code>R</code>, etc... Notre texte se code alors par :</p>
+<pre><code>Message : Longtemps je me suis couché de bonne heure.
+Clé     : PROUSTPRO US TP ROUS TPROUS TP ROUST PROUS
+Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
+</code></pre>
 <h3><span id="Vigenère-analyse"></span>Chiffrement</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -161,10 +338,51 @@ $$
 </ol>
 </li>
 </ol>
-<blockquote>
-<p>TBD : le montrer<br>
-<a href="https://www.youtube.com/watch?v=yHXOnCKh4iE">https://www.youtube.com/watch?v=yHXOnCKh4iE</a></p>
-</blockquote>
+<p>Pour retrouver la taille de la clé, on utilise <a href="https://fr.wikipedia.org/wiki/Indice_de_co%C3%AFncidence">l'indice de coïncidence mutuelle</a>, développé par Friedman dans les années 1920, qui calcule pour une langue donnée la probabilité que deux lettres choisie aléatoirement dans un texte soient égales.</p>
+<p>Soit $T = c_1\dots c_n$ un texte de longueur $n&gt;&gt;1$ formé des 26 lettres de l'alphabet $\mathcal{A} = \{a_1, \dots,. a_{26}\}$. On suppose que la lettre $a_i$ apparaît $n_i$ fois dans $T$ ($\sum_i n_i = n$). On note :</p>
+<div>
+$$
+\text{IC}(T) = \sum_{1\leq i \leq 26}\frac{n_i(n_i-1)}{n(n-1)}
+$$
+</div>
+<p>L'indice de coïncidence de $T$. Il correspond à la probabilité de prendre deux lettres au hasard dans le texte et qu'elles soient égales. En effet, cela revient à considérer un tirage de 2 boules parmi $n$ de 26 couleurs différentes. La probabilité que les deux boules tirées soient de la couleur de $a_i$ est $C_2^{n_i}/C_2^{n} = \frac{n_i(n_i-1)}{n(n-1)}$.</p>
+<p>Friedman a remarqué que ce nombre dépend de la langue choisie. En Français c'est de l'ordre 0.074.</p>
+<p>Pour un codage de Vigenère, le même chiffrement est utilisé tout les $m$ caractères où $m$ est la taille de la clé, on devrait donc retrouver l'IC Français tous les 6 caractères de notre texte chiffré. En les classant par ordre croissant, de 1 à 10 on a :</p>
+<ul>
+<li>IC = 0.033333 décalage = 10</li>
+<li>IC = 0.038095 décalage = 5</li>
+<li>IC = 0.042857 décalage = 7</li>
+<li>IC = 0.044118 décalage = 2</li>
+<li>IC = 0.045378 décalage = 1</li>
+<li>IC = 0.054167 décalage = 8</li>
+<li>IC = 0.055556 décalage = 9</li>
+<li>IC = 0.057576 décalage = 3</li>
+<li>IC = 0.062500 décalage = 4</li>
+<li>IC = 0.072222 décalage = 6</li>
+</ul>
+<p>C'est bien pour un décalage de 6 que l'IC est le plus proche d'un texte Français. Une fois la longueur de clé trouvée, on continue comme un César, le caractère le plus fréquent est le <code>E</code>.</p>
+<p>En prenant les fréquences les plus élevées :</p>
+<ul>
+<li>toutes les 6 lettres à partir de la 1ere position  : <code>'T'</code> 0.33% : clé <code>P</code>. Ok !</li>
+<li>toutes les 6 lettres à partir de la 2nde position  : <code>'V'</code>, <code>'S'</code>, <code>'L'</code>, <code>'J'</code> à 0.16.  Ko !</li>
+<li>toutes les 6 lettres à partir de la 3eme position  : <code>'I'</code> 0.33 : clé <code>E</code>.  Ko !</li>
+<li>toutes les 6 lettres à partir de la 4eme position  : <code>'L'</code>, <code>'H'</code>, <code>'D'</code> 0.16.  Ko !</li>
+<li>toutes les 6 lettres à partir de la 5eme position  : <code>'W'</code> 0.5: clé <code>S</code>. Ok !</li>
+<li>toutes les 6 lettres à partir de la 6eme position  : <code>'X'</code> 0.33 : clé <code>T</code>. Ok !</li>
+</ul>
+<p>On trouve une clé potentielle de <code>PVELST</code> :</p>
+<pre><code>Message : Longtemps je me suis couché de bonne heure.
+Décrypte  LKXPTEMLC SE ME OERS COQMQE DE XYWNE HAEAE
+</code></pre>
+<p>Il suffit ensuite d'affiner avec les mots reconnus ou de poursuivre les investigations sur les bouts de clés où les pourcentages sont trop proches. On trouve cependant la moitié des clés pour un texte devenu très petit. Plus le texte à chiffré est grand par rapport à la clé plus cette méthode devient efficace.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=yHXOnCKh4iE">Décrypter Vigenère</a></p>
+</div>
+</div>
 <h3>One time Pad (OTP)</h3>
 <p>L'idée est de faire un Vigenère avec comme taille de clé le message !</p>
 <p>C'est la technique du :</p>
@@ -185,6 +403,12 @@ $$
 <p><a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/che">Chiffre du Che</a></p>
 </div>
 </div>
+<p>Ce qui donne :</p>
+<pre><code>Longtemps je me suis couche de bonne heure.
+ALarecher ch ed utem psperd ud eMarc elPro
+LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
+</code></pre>
+<p>Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.</p>
 <h2>Chiffre Vernam</h2>
 <p>La version informatisée du OTP est appelée <a href="https://www.cryptage.org/vernam.html">chiffre de Vernam</a>.</p>
 <p>Ici les messages, les chiffres et les clés sont des mots de $\{0, 1\}^L$ et on a, avec $\oplus$ le ou exclusif binaire :</p>
@@ -334,6 +558,13 @@ $$</p>
 </code></pre>
 <p>Ce qui est super Sympa de votre part !</p>
 <p>Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ <code>FROM</code> et un champ <code>TO</code>, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.</p>
+<h3>Authentification</h3>
+<p>Rien ne garanti que c'est bien l'expéditeur voulu qui a envoyé le message :</p>
+<pre><code>           cle k                   cle k'
+Alice &lt;-------------&gt; Mallory &lt;--------------&gt; Bob
+
+</code></pre>
+<p>Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peux le soupçonner.</p>
 
 
 </article>
