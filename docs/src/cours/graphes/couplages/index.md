@@ -498,7 +498,7 @@ De plus, à la fin on a clairement que $c(A\cup B) = p(M)$ ce qui montre que le 
 
 Tout ce fait de façon polynomiale puisque  trouver la couverture max peut se faire comme dans la preuve [du théorème de König-Egerváry](./#König-Egerváry).
 
-> TBD exemple avec augmentation sur l'arbre des chemin (comme non valué)
+> TBD exemple avec augmentation sur l'arbre des chemin (comme non valué). Les arêtes du couplage sont telle que un des sommets est de degré 1 das l'arbre (cf poly)
 
 Cet algorithme démontre un principe fondamental dans le design d’algorithme par primal/dual : une solution augmente pendant que l'autre diminue, la solution étant trouvée lorsque les deux coïncident.
 

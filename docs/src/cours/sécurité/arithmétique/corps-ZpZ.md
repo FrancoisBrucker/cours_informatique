@@ -10,7 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wikipedia.org/wiki/Anneau_unitaire#D%C3%A9finition) commutatif tel que :
 
 - les éléments de l'anneau sont des entiers allant de 0 à $n-1$
@@ -21,7 +20,7 @@ On définit $(\mathbb{Z}/n\mathbb{Z}, +, \cdot)$ comme l'[anneau](https://fr.wik
   - l'élément neutre est 1
 - $x \mod n$ vaut le reste de la division entière de $x$ par $n$
 
-Si $n$ est premier, on dit alors $\mathbb{Z}/n\mathbb{Z}$ c'est même un corps :
+Si $n$ est premier, $\mathbb{Z}/n\mathbb{Z}$ est même un corps :
 
 - tout élément $x$ a un inverse noté $x^{-1}$
 - il est intègre : $x\cdot y = 0$ implique que soit $x$ soit $y$ vaut $0$.
@@ -37,7 +36,13 @@ Si $p$ est premier, $(\mathbb{Z}/p\mathbb{Z}, +, \cdot)$ est un corps commutatif
 [théorème de Wedderburn](https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Wedderburn) montre que tout corps fini est commutatif.
 {% endinfo %}
 
-## Exponentiation modulaire
+## <span id="groupe-cyclique"></span>Groupe cyclique
+
+Si $n$ est premier $(\mathbb{Z}/p\mathbb{Z}^\star, \cdot)$ est un [groupe cyclique](https://fr.wikipedia.org/wiki/Groupe_cyclique).
+
+> TBD
+
+## <span id="exponentiation-modulaire">Exponentiation modulaire
 
 {% lien %}
 [square and multiply](https://www.youtube.com/watch?v=cbGB__V8MNk)
@@ -64,7 +69,7 @@ expo(x, y):
 
 On peut même stocker les valeurs des exposants trouvés dans un dictionnaire pour ne pas avoir à recalculer deux fois la même chose.
 
-La complexité totale de cet algo est donc $\mathcal{O}(n^3)$ en considérant que la multiplication et le mod se font en $\mathcal{O}(n^2)$ opérations.
+Lorsque les nombres sont stockés sur $k$ bits, [la complexité totale de cet algo est donc $\mathcal{O}(k^3)$](../nombres#exponentiation){.interne}.
 
 {% note "**Proposition**" %}
 Si $p$ est premier : $a^{p-1} = 1 \mod p$.
@@ -78,7 +83,7 @@ Si $p$ est premier : $a^{p-1} = 1 \mod p$.
 Cette propriété est connue sous le nom de [petit théorème de Fermat](https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat)
 {% endlien %}
 
-## Logarithme discret
+## <span id="logarithme-discret"></span>Logarithme discret
 
 {% lien %}
 [Logarithme discret](https://fr.wikipedia.org/wiki/Logarithme_discret)

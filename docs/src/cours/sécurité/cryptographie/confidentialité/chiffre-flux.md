@@ -53,7 +53,7 @@ Générer des nombres purement aléatoire est impossible pour un algorithme. Il 
  b  -----------                         -------------
 --->|   N     |                         |           | 
     |   k     |   G(k) si b=1 N sinon   |           |
-    |         |------------------------>|           | A(G, b) = b'
+    |         |------------------------>|           | A(X) = b'
     |         |                         |           |------------>
     -----------                         -------------
 ```
@@ -69,7 +69,7 @@ L'***avantage*** d'un algorithme $A$ au jeu de la reconnaissance de $G$ est :
 
 <div>
 $$
-\vert Pr[A(G, 1)=1] - Pr[A(G, 0)=1] \vert
+\vert Pr_{k \xleftarrow{R} \mathcal{U}}[A(G(k))=1] - Pr_{X \xleftarrow{R} \mathcal{K}}[A(X)=1] \vert
 $$
 </div>
 
@@ -78,6 +78,8 @@ $$
 L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploitable par un algorithme. Moins cette écart est grand, moins il est exploitable par une attaque.
 
 ### PRG
+
+L'exemple précédent n'es pas utilisable en pratique car sans clé on ne retrouve plus l'entrée.
 
 {% note "**Définition**" %}
 Un **générateur de nombres pseudo-aléatoire sécurisé** (*secure PRG, secure pseudo random generator*) doit avoir les propriétés suivantes :
@@ -93,14 +95,9 @@ Le paramètre de $G$ est appelé *seed*
 
 La définition explicite le fait qu'il est impossible de distinguer efficacement $G(k)$ d'un mot aléatoire et ce, quelque soit la *seed* choisie.
 
-{% exercice %}
-Le générateur avec un biais négligeable de la partie précédente est bien un PRG sécurisé.
-{% endexercice %}
-{% details "preuve" %}
-> TBD
-{% enddetails %}
-
-En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de protéger.
+{% note %}
+En règle générale, en cryptographie, utilisez des générateurs fait pour cela. Ils sont plus lent mais sont non prédictible : simuler (le monde physique) est différent de se protéger.
+{% endnote %}
 
 ### Construction d'un code par flux avec un PRG
 
@@ -113,15 +110,61 @@ Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, a
 est une méthode de chiffrement sécurisée.
 {% endnote %}
 {% details "preuve", "open" %}
-Si la méthode n'est pas sémantiquement sécurisée, il deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$.
+Si la méthode n'est pas sémantiquement sécurisée, il existe deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$. On a alors :
 
-On peut alors utiliser l'algorithme qui prend en entrée un mot de $\\{0, 1\\}^n$ et qui rend $A(y \oplus m_0)$. Il rendra avec le même avantage que $A$ la distinction entre $y \oplus m_0$ et $G(k) \oplus m_0$. Comme l'avantage est non négligeable on en déduit que $G(k)$ n'est pas un secure PRG ce qui est impossible.
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &=& |Pr[b'=1 | b=1] - Pr[b'=1 | b=0]|\\
+&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(G(k) \oplus m_0) =1]\cdot Pr[X=G(k)]|\\
+&\leq&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n| +\\
+&&|\frac{1}{2}\sum_{X\in \{0, 1\}^n} Pr[A(G(k) \oplus m_0) =1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n|\\
+\end{array}
+$$
+</div>
+
+On peut supposer sans perte de généralité que :
+
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &\leq&2\cdot|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X) = 1]\cdot (1/2)^n|
+\end{array}
+$$
+</div>
+
+Puisque $X\oplus m_1$ est distribué de façon uniforme, on a donc aussi :
+
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &\leq&2\cdot|\frac{1}{2}\sum_{X\in \{0, 1\}^n}Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X\oplus m_1) = 1]\cdot (1/2)^n|
+\end{array}
+$$
+</div>
+
+On peut alors utiliser l'algorithme $A'$ qui prend en entrée un mot $y\in \\{0, 1\\}^n$ et qui rend $A'(y) = A(y \oplus m_1)$.
+
+Son avantage vaut :
+
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A') &=& Pr[b'=1 | b=1] - Pr[b'=1 | b=0]\\
+&=&\frac{1}{2}\sum_{X\in \{0, 1\}^n}|Pr[A(G(k)\oplus m_1) = 1]\cdot Pr[X=G(k)] - Pr[A(X \oplus m_1) =1]\cdot (1/2)^n|\\
+\end{array}
+$$
+</div>
+
+On a alors que l'avantage de $A$ ne peut être non négligeable puisque que $A'$ discrimine $G(k)$ d'une loi uniforme et est statistiquement sécurisé.
 
 {% enddetails %}
 
 ## Attaque
 
-Notez d'un générateur de nombre donne des résultats loin d'être aléatoires.
+### Taille de clé
+
+Notez qu'un générateur de nombre donne des résultats loin d'être aléatoires.
 
 En effet :
 
@@ -135,12 +178,18 @@ Considérons l'algorithme **non efficace** $D$ suivant :
 
 Il reconnaît $D$ avec l'avantage suivant :
 
-- $Pr[D(G, 1) = 1] = 1$
-- $Pr[D(G, 0) = 1] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)
+- $Pr[D(G) = 1 | b=1] = 1$
+- $Pr[D(G) = 1 | b=0] = 2^s/2^n = 1/2^{n-s}$ qui correspond à la probabilité que $N$ soit choisit parmi les mots possibles de $G$ ($2^s$ mots de $G$ parmi les $2^n$ mots possibles)
 
 Son avantage est donc $1-1/2^{n-s}$ qui peut être énorme si $n>>s$
 
 Cette attaque brute force nous donne une borne min acceptable pour une attaque : il faut que $s$ soit assez grand pour que générer toute les solutions soient non efficace.
+
+### Changer de clé
+
+Pour chiffrer un message, il faut à priori pouvoir écrire des message de taille quelconque, ce qui n'est pas pas possible avec notre générateur. De plus, on a vue qu'il ne faut pas réutiliser la clé.
+
+Il faut donc aller plus loin pour pouvoir générer des clés selon la taille du message.
 
 ## PRF
 
@@ -173,8 +222,8 @@ On définit la ***reconnaissance de $G: K \times U \rightarrow U$*** par un jeu 
     |         |             xq              |           |
     |         |<----------------------------|           |
     |         | F(k, xq) si b=1 H(xq) sinon |           |
-    |         |---------------------------->|           | A(F, b) = b'
-    |         |                             |           |------------>
+    |         |---------------------------->|           | A(X1, ..., Xq) = b'
+    |         |                             |           |--------------------->
     -----------                             -------------
 ```
 
@@ -182,7 +231,7 @@ A l'initialisation :
 
 - un bit $b$ est choisi uniformément
 - une valeur $k$ de $K$ est choisie uniformément
-- une fonction $H: U \rightarrow $U$ est choisie  uniformément
+- une fonction $H: U \rightarrow U$ choisie uniformément
 
 Après $q$ requêtes successives, l'adversaire $A$ doit choisir si les $q$ mots fournis viennent de $F$ ou de $H$ (une fonction quelconque).
 
@@ -191,19 +240,32 @@ L'avantage d'un algorithme $A$ au jeu de la reconnaissance de $F$ est :
 
 <div>
 $$
-\vert Pr[A(F, 1) == 1] - Pr[A(F, 0) == 1] \vert
+\begin{array}{lcl}
+\text{avantage}(A) &=& Pr[A(X_1, \dots, X_q) = 1 | b=1] - Pr[A(X_1, \dots, X_q) = 1 | b=0]\\
+\end{array}
 $$
 </div>
 
 {% endnote %}
 
-Notez que le fait que l'on utilise des algorithme efficaces implique que $q$ ne peut être que polynomial.
+Notez que le fait que l'on utilise des algorithmes efficaces implique que $q$ ne peut être que polynomial.
 
 {% exercice %}
 Montrez que la fonction constante $F(k,x) = \mathbb{0}$ n'est pas sécurisée.
 {% endexercice %}
 {% details "preuve" %}
-> TBD
+Si $H$ est une fonction quelconque de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^n$ alors la probabilité que $H(x) = \mathbb{0}$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit). L'algorithme $A$ qui répond 1 si $X_1\neq \mathbb{0}$ et 0 sinon a un avantage de :
+
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &=& Pr[A(X_1) = 1 | b=1] - Pr[A(X_1) = 1 | b=0]\\
+&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}(Pr[A(0) = 1]\cdot (1/2)^n - Pr[A(H(x)) = 0]\cdot (1/2)^n)|\\
+&=&1-(1/2)^n
+\end{array}
+$$
+</div>
+
 {% enddetails %}
 
 ### Construction d'un PRG avec un PRF
@@ -212,10 +274,10 @@ Montrez que la fonction constante $F(k,x) = \mathbb{0}$ n'est pas sécurisée.
 Si $F: \\{0, 1\\}^s \times \\{0, 1\\}^n \rightarrow \\{0, 1\\}^n$ est une secure PRF, alors $G(k) = F(k, x)$ est un secure PRG pour tout $x$.
 {% endnote %}
 
-{% details "preuve" %}
+{% details "preuve", "open" %}
 Si $H$ est une fonction quelconque de $\\{0, 1\\}^n$ dans $\\{0, 1\\}^n$ alors la probabilité que $H(x) = F(k, x)$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit).
 
-De là, si $G(k)$ n'est pas un secure PRG, il existe un algorithme efficace $A$ ayant un avantage non négligeable.
+De là, si $G(k)$ n'est pas un secure PRG, il existe un algorithme efficace $A$ ayant un avantage non négligeable le distinguant de la loi uniforme.
 
 On peut utiliser cet algorithme dans la reconnaissance de $F$ comme un secure PRF en ne demandant que la valeur en $x$ et reconnaître F avec le même avantage non négligeable : $F$ n'est pas un secure PRF ce qui contredit notre hypothèse.
 {% enddetails %}
@@ -248,7 +310,7 @@ Comme on pense très fort à l'existence de problèmes dont la résolution néce
 
 Pour construire un code à flux il faut être capable de créer des générateurs pseudo-aléatoires de taille quelconque. Ceci peut être compliqué. On préfère découper le message à chiffrer $m$ en blocs $m_i$ de taille fixe que l'on traite séparément.
 
-Il faut cependant faire **très** attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam. 
+Il faut cependant faire **très** attention à ce que l'on fait et ne pas réutiliser les clés ! Sinon on peut très facilement déchiffrer le message comme on a  vu avec le chiffre de Vernam.
 
 On peut utiliser le fait que si $F$ est une PRF alors $F(\cdot, x)$ est un PRG quelque soit $x$.
 
@@ -280,7 +342,7 @@ On peut même ajouter un élément en clair dans le cryptage sans en altérer la
  m1--->XOR    m2--->XOR         mi--->XOR         ml--->XOR    
         |            |                 |                 |     
         |            |                 |                 |    
-       c1           c1                c1                c1     
+       c1           c2                ci                cl     
 ```
 
 {% note "**proposition**" %}
@@ -348,6 +410,5 @@ le générateur $G(k) [:i]\\; ||\\; R[i:]$ est donc sécurisé pour tout $i$ don
 {% endinfo %}
 
 {% lien %}
-[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/
-secuproofs/yao82.pdf)
+[Article originel de Yao, 1982](https://www.di.ens.fr/users/phan/secuproofs/yao82.pdf)
 {% endlien %}

@@ -35,12 +35,50 @@ $$
 Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ est l'ancêtre du floutage NSFW.
 {% endinfo %}
 
-Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme.
+Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)
 
-> TBD expliciter
+lettre |A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
+-------|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+code   |M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|A|B|C|D|E|F|G|H|I|J|K|L|
 
-```sh
-echo "Longtemps je me suis couché de bonne heure" | recode -f utf8..flat | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m" | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m"
+Faisons ça en shell, parce que pourquoi pas. Chaîne à coder :
+
+```
+Longtemps je me suis couché de bonne heure.
+```
+
+On ne peut avoir que des code ASCII, don con transforme tout, pour supprimer les accents :
+
+```
+❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat
+
+Longtemps je me suis couche de bonne heure.
+```
+
+On chiffre :
+
+```
+❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tr "A-Za-z" "N-ZA-Mn-za-m"
+
+Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+```
+
+On déchiffre. L'intérêt du ROT13 est que c'est le même algorithme pour le chiffrage et le déchiffrage :
+
+```
+❯ echo "Ybatgrzcf wr zr fhvf pbhpur qr obaar urher." | recode -f utf8..flat | tr "A-Za-z" "N-ZA-Mn-za-m"
+
+Longtemps je me suis couche de bonne heure.
+```
+
+Le tout en une seule fois (avec des tee pour afficher les résultats intermédiaires) :
+
+```
+❯ echo "Longtemps je me suis couché de bonne heure." | recode -f utf8..flat | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m" | tee /dev/tty | tr "A-Za-z" "N-ZA-Mn-za-m"
+
+Longtemps je me suis couche de bonne heure.
+Ybatgrzcf wr zr fhvf pbhpur qr obaar urher.
+Longtemps je me suis couche de bonne heure.
 ```
 
 ### <span id="César-analyse"></span>Cryptanalyse
@@ -48,7 +86,31 @@ echo "Longtemps je me suis couché de bonne heure" | recode -f utf8..flat | tee 
 1. Ne résiste pas au calcul exhaustif des clés : 26
 2. Ne résiste pas à l'analyse en [fréquence de chaque lettre](https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d'apparition_des_lettres)
 
-> TBD : le montrer
+"Longtemps je me suis couche de bonne heure.". les 4 premières fréquences:
+
+- `E` 22%85
+- `U` 8%57
+- `S` 8%57
+- `O` 8%57
+
+Français :
+
+-|-----|-|-----|-|-----|
+E|17.76|O| 5.34|B| 0.80|
+S| 8.23|D| 3.60|H| 0.64|
+A| 7.68|C| 3.32|X| 0.54|
+N| 7.61|P| 3.24|Y| 0.21|
+T| 7.30|M| 2.72|J| 0.19|
+I| 7.23|Q| 1.34|Z| 0.07|
+R| 6.81|V| 1.27|K| 0.00|
+U| 6.05|G| 1.10|W| 0.00|
+L| 5.89|F| 1.06|
+
+{% lien %}
+<https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres>
+{% endlien %}
+
+La lettre arrivant le plus souvent dans le message chiffré, `r` a donc toute les chances d'être `e` ce qui donne le décalage.
 
 ## Vigenère
 
@@ -69,7 +131,15 @@ $$
 $$
 </div>
 
-Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) :  : chaque bloc de $p$ lettres est codé avec le même algorithme.
+Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) : chaque bloc de $p$ lettres est codé avec le même algorithme.
+
+Par exemple, si on encode notre chaîne par `PROUST`, cela revient à encoder toute les 7 lettres par un césar commençant par `P`, toutes les 8 lettres par un césar commençant par `R`, etc... Notre texte se code alors par :
+
+```
+Message : Longtemps je me suis couché de bonne heure.
+Clé     : PROUSTPRO US TP ROUS TPROUS TP ROUST PROUS
+Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
+```
 
 ### <span id="Vigenère-analyse"></span>Chiffrement
 
@@ -82,8 +152,56 @@ Le code de Vigenère est un exemple de ***Codage par blocs*** (*bloc cipher*) : 
    1. si on a la taille on refait de l'analyse par fréquence
    2. [on peut trouver la taille](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=poly/viganalyse)
 
-> TBD : le montrer
-> <https://www.youtube.com/watch?v=yHXOnCKh4iE>
+Pour retrouver la taille de la clé, on utilise [l'indice de coïncidence mutuelle](https://fr.wikipedia.org/wiki/Indice_de_co%C3%AFncidence), développé par Friedman dans les années 1920, qui calcule pour une langue donnée la probabilité que deux lettres choisie aléatoirement dans un texte soient égales.
+
+Soit $T = c_1\dots c_n$ un texte de longueur $n>>1$ formé des 26 lettres de l'alphabet $\mathcal{A} = \\{a_1, \dots,. a_{26}\\}$. On suppose que la lettre $a_i$ apparaît $n_i$ fois dans $T$ ($\sum_i n_i = n$). On note :
+
+<div>
+$$
+\text{IC}(T) = \sum_{1\leq i \leq 26}\frac{n_i(n_i-1)}{n(n-1)}
+$$
+</div>
+
+L'indice de coïncidence de $T$. Il correspond à la probabilité de prendre deux lettres au hasard dans le texte et qu'elles soient égales. En effet, cela revient à considérer un tirage de 2 boules parmi $n$ de 26 couleurs différentes. La probabilité que les deux boules tirées soient de la couleur de $a_i$ est $C_2^{n_i}/C_2^{n} = \frac{n_i(n_i-1)}{n(n-1)}$.
+
+Friedman a remarqué que ce nombre dépend de la langue choisie. En Français c'est de l'ordre 0.074.
+
+Pour un codage de Vigenère, le même chiffrement est utilisé tout les $m$ caractères où $m$ est la taille de la clé, on devrait donc retrouver l'IC Français tous les 6 caractères de notre texte chiffré. En les classant par ordre croissant, de 1 à 10 on a :
+
+- IC = 0.033333 décalage = 10
+- IC = 0.038095 décalage = 5
+- IC = 0.042857 décalage = 7
+- IC = 0.044118 décalage = 2
+- IC = 0.045378 décalage = 1
+- IC = 0.054167 décalage = 8
+- IC = 0.055556 décalage = 9
+- IC = 0.057576 décalage = 3
+- IC = 0.062500 décalage = 4
+- IC = 0.072222 décalage = 6
+
+C'est bien pour un décalage de 6 que l'IC est le plus proche d'un texte Français. Une fois la longueur de clé trouvée, on continue comme un César, le caractère le plus fréquent est le `E`.
+
+En prenant les fréquences les plus élevées :
+
+- toutes les 6 lettres à partir de la 1ere position  : `'T'` 0.33% : clé `P`. Ok !
+- toutes les 6 lettres à partir de la 2nde position  : `'V'`, `'S'`, `'L'`, `'J'` à 0.16.  Ko !
+- toutes les 6 lettres à partir de la 3eme position  : `'I'` 0.33 : clé `E`.  Ko !
+- toutes les 6 lettres à partir de la 4eme position  : `'L'`, `'H'`, `'D'` 0.16.  Ko !
+- toutes les 6 lettres à partir de la 5eme position  : `'W'` 0.5: clé `S`. Ok !
+- toutes les 6 lettres à partir de la 6eme position  : `'X'` 0.33 : clé `T`. Ok !
+
+On trouve une clé potentielle de `PVELST` :
+
+```
+Message : Longtemps je me suis couché de bonne heure.
+Décrypte  LKXPTEMLC SE ME OERS COQMQE DE XYWNE HAEAE
+```
+
+Il suffit ensuite d'affiner avec les mots reconnus ou de poursuivre les investigations sur les bouts de clés où les pourcentages sont trop proches. On trouve cependant la moitié des clés pour un texte devenu très petit. Plus le texte à chiffré est grand par rapport à la clé plus cette méthode devient efficace.
+
+{% lien %}
+[Décrypter Vigenère](https://www.youtube.com/watch?v=yHXOnCKh4iE)
+{% endlien %}
 
 ### One time Pad (OTP)
 
@@ -99,6 +217,16 @@ Technique utilisée pour le téléphone rouge lors de la guerre froide.
 {% info %}
 [Chiffre du Che](https://www.bibmath.net/crypto/index.php?action=affiche&quoi=moderne/che)
 {% endinfo %}
+
+Ce qui donne :
+
+```
+Longtemps je me suis couche de bonne heure.
+ALarecher ch ed utem psperd ud eMarc elPro
+LZNXXGTTJ LL QH MNME RGJGYH XH FANEG LPJIS
+```
+
+Ce code est réputé (on va le prouver) inviolable. S'il n'est pas réutilisé.
 
 ## Chiffre Vernam
 
@@ -260,3 +388,15 @@ Ce qui est donne une fois déchiffré :
 Ce qui est super Sympa de votre part !
 
 Ça à l'air un peu tiré par les cheveux vu comme ça, mais si vous chiffrés des mails par exemple, ils commencent tous par un champ `FROM` et un champ `TO`, si le cryptanalyse sait ce que vous codez et que c'est issu d'un protocole, il y a de forte chances qu'il y ait des paramètres à emplacement fixe que l'on peut modifier.
+
+### Authentification
+
+Rien ne garanti que c'est bien l'expéditeur voulu qui a envoyé le message :
+
+```
+           cle k                   cle k'
+Alice <-------------> Mallory <--------------> Bob
+
+```
+
+Si Mallory se fait passer d'un côté pour Bob et de l'autre côté pour Alice, aucun des deux ne peux le soupçonner.

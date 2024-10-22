@@ -35,16 +35,16 @@ On considère **en 2024** que si le [nombre de clés est supérieur $2^{128}$](h
 [recommendations ANSSI taille de clés](https://www.ssi.gouv.fr/administration/guide/mecanismes-cryptographiques/)
 {% endlien %}
 
-## Codes historiques
-
-{% aller %}
-[Codes historiques](codes-historiques){.interne}
-{% endaller %}
-
 ## Qu-est ce que la confidentialité ?
 
 {% aller %}
 [Définitions de la confidentialité](définitions){.interne}
+{% endaller %}
+
+Le message ne doit pouvoir être lu que par son destinataire. Comment partager la clé en secret ?
+
+{% aller %}
+[Partager la clé](partager-secret){.interne}
 {% endaller %}
 
 ## Types de code
@@ -62,7 +62,7 @@ La cryptanalyse linéaire va chercher des corrélations linéaires entre le mess
 
 <div>
 $$
-Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)] \leq 1/2 + $\epsilon$
+Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)] \leq 1/2 + \epsilon
 $$
 </div>
 
@@ -114,14 +114,6 @@ Il faut que l'algorithme :
 3. ...
 
 Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.
-
-## Partager le secret
-
-Le message ne doit pouvoir être lu que par son destinataire.
-
-{% aller %}
-[Partager la clé](partager-secret){.interne}
-{% endaller %}
 
 ## Générer des clés
 

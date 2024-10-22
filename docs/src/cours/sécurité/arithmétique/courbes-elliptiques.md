@@ -47,7 +47,7 @@ y^2 = x^3 + 486662\cdot x^2 + x
 $$
 </div>
 
-Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}, avec $p=2^{255} - 19$, le plus grand entier signé premier sur 256b (le dernier bit est un bit de signe).
+Où les nombres sont pris dans le corps fini $\mathbb{Z}/p\mathbb{Z}$, avec $p=2^{255} - 19$, le plus grand entier signé premier sur 256b (le dernier bit est un bit de signe).
 
 Les éléments considérés sont les couples $(x, y)$ de la courbe où $x$ et $y$ sont dans le corps sous-jacent.
 

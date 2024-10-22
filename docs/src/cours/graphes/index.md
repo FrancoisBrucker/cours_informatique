@@ -59,8 +59,7 @@ Algorithmes généraux :
 
 {% aller %}
 
-1. [Mots de Bruijn](projet-mots-bruijn){.interne}
-2. [Problème du postier chinois](projet-postier-chinois){.interne}
+[Mots de Bruijn](projet-mots-bruijn){.interne}
 
 {% endaller %}
 
@@ -145,7 +144,16 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD revenir sur le problème du voyage de commerce avec Christophides : <https://en.wikipedia.org/wiki/Christofides_algorithm>
+> TBD revenir sur le problème du voyage de commerce avec
+
+Projets :
+
+{% aller %}
+
+1. chritofides <https://en.wikipedia.org/wiki/Christofides_algorithm>
+2. [Problème du postier chinois](projet-postier-chinois){.interne}
+
+{% endaller %}
 
 ## Colorabilité d'un graphe
 

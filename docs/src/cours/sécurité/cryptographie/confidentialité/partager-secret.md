@@ -21,8 +21,8 @@ Comment se partager un secret alors que tout le monde nous espionne ? Le protoco
 {% note "**Protocole Diffie-Hellman**" %}
 Dans le domaine public :
 
-- $n$ premier
-- $g < n$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$
+- $p$ premier
+- $g < p$ un générateur du groupe cyclique $(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$
 
 1. Échange de la première partie des clés
    - Alice choisit un nombre $a$ et envoie à Bob $A = g^a \mod p$
@@ -36,7 +36,9 @@ Au final, Alice et Bob partagent un nombre $k$ compris entre $0$ et $p-1$.
 
 ## Pourquoi ça marche
 
-> TBD renvoyer à la partie partie groupe Z/pZ du cours. Et groupe cyclique
+1. si $n$ est premier, [$(\mathbb{Z}/p\mathbb{Z}^{\star}, \cdot)$ est un groupe cyclique](../../../arithmétique/corps-ZpZ#groupe-cyclique){.interne}
+2. il est très facile de faire [l'exponentiation modulaire](../../../arithmétique/corps-ZpZ#exponentiation-modulaire){.interne} dans le cas général et encore plus rapide en notation binaire
+3. [le logarithme discret](../../../arithmétique/corps-ZpZ#logarithme-discret){.interne} est une opération coûteuse
 
 ### Existence
 
@@ -55,8 +57,10 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 
 ## Courbes elliptiques
 
-> TBD le protocole fonctionne bien en utilisant des courbes elliptiques plutôt que des nombres.
-> TBD introduire les courbes elliptiques à ce moment là
+{% aller %}
+[Courbes elliptiques](../../../arithmétique/courbes-elliptiques){.interne}
+{% endaller %}
+
 > TBD taille clé 256b actuellement (curve de bernstein)
 
 ## Attaque
@@ -67,8 +71,7 @@ Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 
 
 ### Brute force
 
-La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du
-[crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
+La meilleure attaque connue est l'attaque brute force en utilisant l'algorithme du [crible général](https://fr.wikipedia.org/wiki/Crible_alg%C3%A9brique) qui est une méthode de factorisation.
 
 {% info %}
 Pour un nombre premier de 2058bit, l'attaque brute force en utilisant le crible général prend de l'ordre de $2^{90}$ opérations.

@@ -40,7 +40,7 @@ Les opérateurs sont à la base dédiés aux éléments binaire, mais ils s'éte
   - $1 \vee 1 \coloneqq 1$
   - $0 \vee 1 = 1 \vee 0 = 0 \vee 0 \coloneqq 0$
   
-### décalages de bits
+### Décalages de bits
 
 On utilise deux direction de décalage (gauche et droite) et deux types de décalage selon que les bit poussés à l'extérieur sont réinjectés de l'autre côté ou disparaissent (les bit qui arrivent sont à 0).
 
@@ -124,7 +124,7 @@ La complexité de l'algorithme est en $\mathcal(O)(n^2)$.
 On trouve que $0b100101 \cdot 0b1011 = 0b110010111$ ($37 \cot 11 = 407$).
 
 {% info %}
-Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté cqr leurs valeurs ajoutée est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
+Les meilleurs algorithmes connus pour effectuer la multiplication sont en $\mathcal(O)(n\log(n))$ mais ne sont presque jamais implémenté car leurs valeurs ajoutées est asymptotique et est atteinte pour des nombres trop grand par rapport aux nombres utilisés.
 {% endinfo %}
 
 ### Division euclidienne
@@ -155,7 +155,7 @@ On trouve que : $0b100101 / 0b1011 = 0b11$ et $0b100101 \mod 0b1011 = 100$
 
 $37 / 11 = 3$ et $37 \mod 11 = 4$
 
-## Exponentiation
+## <span id="exponentiation">Exponentiation
 
 L'algorithme suivant est décrit intensivement dans Knuth, volume XXX. C'est une utilisation de l'exponentiation indienne en utilisant l'écriture binaire des nombres.
 
