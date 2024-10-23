@@ -279,15 +279,15 @@ Plaçons nous à un index $i$ fixé. On a :
 Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :
 
 $$
-Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_y = 0] + Pr[X_i = 1, Y_y = 1]
+Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1]
 $$
 
-Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_y = b] = Pr[X_i = a]\cdot Pr[Y_y = b]$. Donc :
+Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_i = b] = Pr[X_i = a]\cdot Pr[Y_i = b]$. Donc :
 
-- $Pr[X_i = 0, Y_y = 0] = Pr[X_i = 0]\cdot Pr[Y_y = 0] = .5\cdot p_i$
-- $Pr[X_i = 1, Y_y = 1] = Pr[X_i = 1]\cdot Pr[Y_y = 1] = .5\cdot (1-p_i)$
+- $Pr[X_i = 0, Y_i = 0] = Pr[X_i = 0]\cdot Pr[Y_i = 0] = .5\cdot p_i$
+- $Pr[X_i = 1, Y_i = 1] = Pr[X_i = 1]\cdot Pr[Y_i = 1] = .5\cdot (1-p_i)$
 
-Ce qui entraîne que $Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_y = 0] + Pr[X_i = 1, Y_y = 1] = .5$, et donc que $(X \oplus Y)$ est une variable aléatoire uniforme.
+Ce qui entraîne que $Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1] = .5$, et donc que $(X \oplus Y)$ est une variable aléatoire uniforme.
 
 {% enddetails %}
 
