@@ -126,7 +126,7 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 3. **_messages choisis_** (_Chosen-plaintext attackers, CPA_). L'attaquant est actif et peut choisir des messages à chiffrer.
 4. **_chiffres choisis_** (_Chosen-ciphertext attackers, CCA_). L'attaquant est actif et peut chiffrer et déchiffrer les message. Dans ce type d'attaque, l'attaquant chercher à connaître la clé de chiffrage.
 
-## Codes historiques
+### Codes historiques
 
 {% aller %}
 [Codes historiques](codes-historiques){.interne}
