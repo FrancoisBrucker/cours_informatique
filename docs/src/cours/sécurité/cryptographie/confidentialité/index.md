@@ -47,14 +47,40 @@ Le message ne doit pouvoir être lu que par son destinataire. Comment partager l
 [Partager la clé](partager-secret){.interne}
 {% endaller %}
 
-## Types de code
+## Comment chiffrer
 
 Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
 
 - les codes en flux qui vont se comporter comme le code de Vernam
 - les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.
 
-### Non linéarité
+### Schéma général
+
+> TBD
+>
+> 1. Vernam. Mais
+> 2. doit avoir une clé pour déchiffrer, donc taille max. Mais
+> 3. doit réutiliser la clé ? Ajouter un paramètre
+> 4. on peut maintenant chiffrer et déchiffrer des message. Mais
+> 5. est-ce vraiment sécurisé ? On le vérifie avec des preuves de théorie des jeux.
+>
+
+### Chiffrement par flux
+
+> TBD preuves avec les jeux et les avantages et on le fait dans l'autre sens en revenant au truc le plus simple à la fin : PRF qui est un générateur à une clé coupée en 2.
+> TBD insister sur le PRF qui est la brique algorithmique de base pour créer le générateur. Dire ici qu'il y a aussi le PRP, plus simple à mettre en oeuvre et qui est souvent utilisé dans les algos courants.
+
+{% aller %}
+[Chiffrement en flux](chiffre-flux){.interne}
+{% endaller %}
+
+### Exemple de PRP
+
+{% aller %}
+[Algorithme chacha20](chacha20){.interne}
+{% endaller %}
+
+> TBD Linéarité
 
 Bien que basés sur des approches différentes, ces deux types de code ont en commun le soucis d'être robuste aux attaques classiques en particulier celles par [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
 
@@ -78,16 +104,6 @@ Enfin, pour que le calcul de ces non-linéarité soit aisé elles sont souvent p
 Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
 {% endinfo %}
 
-### Stream cipher
-
-{% aller %}
-[Chiffrement en flux](chiffre-flux){.interne}
-{% endaller %}
-
-{% aller %}
-[Algorithme chacha20](chacha20){.interne}
-{% endaller %}
-
 ### Bloc cipher
 
 > TBD : pas encore fait
@@ -103,8 +119,8 @@ Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipe
 
 #### Side channel Attack
 
-- [exemples de side channel attack](https://www.youtube.com/watch?v=GPwNFrpd1KU)
 - [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
+- [exemples de side channel attack](https://www.youtube.com/watch?v=GPwNFrpd1KU)
 - [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
 
 Il faut que l'algorithme :
