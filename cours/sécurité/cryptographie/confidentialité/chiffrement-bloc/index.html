@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>S6 : Informatique au concours</title>
+    <title>Chiffrer un message de taille fixe</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>S6 : Informatique au concours</h1>
+  <h1>Chiffrer un message de taille fixe</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/enseignements/">Enseignements</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/">Enseignements MPCI</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/enseignements/MPCI/informatique-concours/">S6 : Informatique au concours</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/chiffrement-bloc/">Chiffrer un message de taille fixe</a>
 
 </div>
 </div>
@@ -92,30 +92,29 @@
     
   
 
-  <p>Petit recueil de ce qui peut/est déjà tombé au concours.</p>
-<h2>Algorithmie</h2>
+  <p>PRF et PRP</p>
+<blockquote>
+<p>TBD</p>
+<ol>
+<li>Vernam. Mais</li>
+<li>doit avoir une clé pour déchiffrer, donc taille max. Mais</li>
+<li>doit réutiliser la clé ? Ajouter un paramètre</li>
+<li>on peut maintenant chiffrer et déchiffrer des message. Mais</li>
+<li>est-ce vraiment sécurisé ? On le vérifie avec des preuves de théorie des jeux.</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>TBD attention : ECB pas semantically secure : <a href="https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf">https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf</a></p>
+</blockquote>
+<p>sécurité du bloc = taille de la clé ou moitié d la taille du bloc (attaque par anniversaire si pas de counter mode)</p>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=oVCCXZfpu-w">tuto encryption</a></p>
+</blockquote>
 <ul>
-<li>variations et calcul sur 3-SUM</li>
-<li>sac à dos en programmation dynamique</li>
-<li>graphes bi-parti</li>
-<li>algorithme du lièvre et de la tortue pour :
-<ul>
-<li>détecter des cycles</li>
-<li>trouver des doublons dans un tableau d'entiers ($n$ entiers dont les valeurs vont de $1$ à $n-1$) en $\mathcal{O}(n)$ opérations et $\mathcal{O}(1)$ en mémoire (cf. <a href="https://medium.com/@simrangarg0501/finding-the-duplicate-number-using-floyds-tortoise-and-hare-algorithm-618ced80e98e">https://medium.com/@simrangarg0501/finding-the-duplicate-number-using-floyds-tortoise-and-hare-algorithm-618ced80e98e</a>)</li>
+<li><a href="https://www.youtube.com/watch?v=DLjzI5dX8jc">SP network</a></li>
+<li><a href="https://braincoke.fr/blog/2020/08/the-aes-key-schedule-explained/#key-expansion">key schedule</a></li>
+<li><a href="https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf">inverse</a></li>
 </ul>
-</li>
-</ul>
-<h2>Java</h2>
-<p>Le java n'est pas enseigné en MPCI, mais est présent au concours, en particulier pour le QCM de GIE.</p>
-<p>Sarah a effectué un stage sous ma direction visant à apprendre le java et à donner des liens nécessaires aux MPCI pour qu'ils puissent eux aussi l'apprendre. Consultez son rapport pour vous permettre de bien vous préparer :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="Rapport_de_stage_KEGHIAN_2024.pdf">Rapport de Sarah sur son stage d'apprentissage de Java</a></p>
-</div>
-</div>
 
 
 </article>

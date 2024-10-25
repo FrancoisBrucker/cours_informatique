@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Chiffrement en flux</title>
+    <title>Schéma général du chiffrement</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Chiffrement en flux</h1>
+  <h1>Schéma général du chiffrement</h1>
   <div>
     
 
@@ -83,7 +83,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/chiffre-flux/">Chiffrement en flux</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/schéma-général/">Schéma général du chiffrement</a>
 
 </div>
 </div>
@@ -92,7 +92,12 @@
     
   
 
-  <p>Le <strong><em>chiffrement par flux</em></strong> <em>stream cicher</em> reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :</p>
+  <p>On montre ici le schéma général qui nous permet de créer un chiffrement sémantiquement sécurisé d'un message de taille quelconque à partir d'une brique de base permettant de chiffrer une séquence de <a href="../chiffrement-bloc" class="interne">blocs de taille fixée</a>.</p>
+<blockquote>
+<p>TBD réorganiser.</p>
+</blockquote>
+<p>Nous allons utiliser ici<br>
+Le <strong><em>chiffrement par flux</em></strong> <em>stream cicher</em> reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :</p>
 <ul>
 <li>une clé plus petite que le message</li>
 <li>des algorithmes rapides</li>
