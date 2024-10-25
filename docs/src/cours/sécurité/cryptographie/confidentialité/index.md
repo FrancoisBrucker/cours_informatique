@@ -47,38 +47,24 @@ Le message ne doit pouvoir être lu que par son destinataire. Comment partager l
 [Partager la clé](partager-secret){.interne}
 {% endaller %}
 
-## Comment chiffrer
+## Chiffrer un message de taille fixe
 
-Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
+Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçu pour chiffrer des blocs de taille fixes.
 
-- les codes en flux qui vont se comporter comme le code de Vernam
-- les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.
-
-### Schéma général
+### Principe général
 
 > TBD
->
-> 1. Vernam. Mais
-> 2. doit avoir une clé pour déchiffrer, donc taille max. Mais
-> 3. doit réutiliser la clé ? Ajouter un paramètre
-> 4. on peut maintenant chiffrer et déchiffrer des message. Mais
-> 5. est-ce vraiment sécurisé ? On le vérifie avec des preuves de théorie des jeux.
->
-
-### Chiffrement par flux
 
 > TBD preuves avec les jeux et les avantages et on le fait dans l'autre sens en revenant au truc le plus simple à la fin : PRF qui est un générateur à une clé coupée en 2.
 > TBD insister sur le PRF qui est la brique algorithmique de base pour créer le générateur. Dire ici qu'il y a aussi le PRP, plus simple à mettre en oeuvre et qui est souvent utilisé dans les algos courants.
 
 {% aller %}
-[Chiffrement en flux](chiffre-flux){.interne}
+[Chiffrer un bloc](chiffrement-bloc){.interne}
 {% endaller %}
 
-### Exemple de PRP
+### Exemples
 
-{% aller %}
-[Algorithme chacha20](chacha20){.interne}
-{% endaller %}
+> TBD rappeler que leur existence n'est pas prouvée. DOnc on fait des essais et on donne l'algo. Pas grave puisque si PRF ou PRP c'est semantically secure.
 
 > TBD Linéarité
 
@@ -104,32 +90,53 @@ Enfin, pour que le calcul de ces non-linéarité soit aisé elles sont souvent p
 Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
 {% endinfo %}
 
-### Bloc cipher
-
-> TBD : pas encore fait
+{% aller %}
+[Algorithme via générateur pseudo-aléatoire](générateur-xor){.interne}
+{% endaller %}
 
 {% aller %}
-[chiffrement par bloc](chiffre-bloc){.interne}
+[Algorithme chacha20](chacha20){.interne}
 {% endaller %}
+
 {% aller %}
 [Algorithme AES](aes){.interne}
 {% endaller %}
 
+## Chiffrer un message de taille quelconque
+
+Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
+
+- les codes en flux qui vont se comporter comme le code de Vernam
+- les code en bloc qui vont découper le message en blocs et chiffrer chacun d'entre eux avec un permutation.
+
+{% aller %}
+[Schéma général](./schéma-général){.interne}
+{% endaller %}
+
+### Bloc cipher
+
+> TBD : pas encore fait. mettre bloc dans schéma général alternatif
+
+{% aller %}
+[chiffrement par bloc](chiffre-bloc){.interne}
+{% endaller %}
+
 ### Attention aux implémentations
 
-#### Side channel Attack
-
-- [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
-- [exemples de side channel attack](https://www.youtube.com/watch?v=GPwNFrpd1KU)
-- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
-
-Il faut que l'algorithme :
+Les [side channel attacks](partager-secret/#side-channel-attack){.interne} permettent, on l'a vue, de tirer parie de l'implémentation de l'algorithme pour obtenir un avantage npn négligeable. Pour qu'aucune information ne transparaisse, il faut que l'algorithme :
 
 1. fasse tout le temps la même chose
 2. consomme la même énergie
 3. ...
 
 Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations éprouvées.
+
+{% lien %}
+
+- [channel attack exemples](https://www.youtube.com/watch?v=GPwNFrpd1KU)
+- [Attaques sur Machines embarquées](https://www.ssi.gouv.fr/agence/publication/combined-fault-and-side-channel-attack-on-protected-implementations-of-aes/)
+
+{% endlien %}
 
 ## Générer des clés
 

@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Chiffrement par bloc
+title: Chiffrer un message de taille fixe
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,14 +10,20 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD *bloc cicher*
 
-1. un bloc
-2. plusieurs blocs (on les transforme en code stream)
+PRF et PRP
 
-> TBD : PRP -> block
 
-> TBD : nonce
+> TBD
+>
+> 1. Vernam. Mais
+> 2. doit avoir une clé pour déchiffrer, donc taille max. Mais
+> 3. doit réutiliser la clé ? Ajouter un paramètre
+> 4. on peut maintenant chiffrer et déchiffrer des message. Mais
+> 5. est-ce vraiment sécurisé ? On le vérifie avec des preuves de théorie des jeux.
+>
+
+> TBD attention : ECB pas semantically secure : <https://crypto.stanford.edu/~dabo/courses/cs255_winter19/lectures/PRP-PRF.pdf>
 
 sécurité du bloc = taille de la clé ou moitié d la taille du bloc (attaque par anniversaire si pas de counter mode)
 

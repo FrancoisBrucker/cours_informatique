@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title: Chiffrement en flux
+title: Schéma général du chiffrement
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,6 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+On montre ici le schéma général qui nous permet de créer un chiffrement sémantiquement sécurisé d'un message de taille quelconque à partir d'une brique de base permettant de chiffrer une séquence de [blocs de taille fixée](../chiffrement-bloc){.interne}.
+
+> TBD réorganiser.
+
+Nous allons utiliser ici
 Le **_chiffrement par flux_** _stream cicher_ reprend directement l'idée du code de Vernam et l'adapte aux contraintes d'utilisation réelle :
 
 - une clé plus petite que le message

@@ -138,10 +138,6 @@ Les tentatives de décryptage d'un message chiffré, on parle d'**_attaques_** p
 [Confidentialité](./confidentialité){.interne}
 {% endaller %}
 
-{% lien %}
-Rapport de stage sur les codes LSFR : [projet codes LSFR](Rapport_de_Stage_Laura_Michelutti.pdf)
-{% endlien %}
-
 ## Intégrité
 
 {% aller %}

@@ -65,9 +65,17 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 
 ## Attaque
 
-### Side channel attack
+### <span id="side-channel-attack"></span>Side channel attack
 
 Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
+
+{% lien %}
+
+- [side channel attack](https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire)
+- [cours du MIT](https://www.youtube.com/watch?v=3v5Von-oNUg)
+- [exemples de side channel attack](https://www.youtube.com/watch?v=2-zQp26nbY8)
+
+{% endlien %}
 
 ### Brute force
 

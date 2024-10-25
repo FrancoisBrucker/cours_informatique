@@ -32,14 +32,14 @@ $$
 </div>
 
 {% info %}
-Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ est l'ancêtre du floutage NSFW.
+Le [ROT(13)](https://fr.wikipedia.org/wiki/ROT13), César où $k=13$ (`A` est remplacé par `N`) est l'ancêtre du floutage NSFW.
 {% endinfo %}
 
 Le code de César est un exemple de ***Codage par flux*** (*stream cipher*) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)
 
 lettre |A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|
 -------|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
-code   |M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|A|B|C|D|E|F|G|H|I|J|K|L|
+code   |N|O|P|Q|R|S|T|U|V|W|X|Y|Z|A|B|C|D|E|F|G|H|I|J|K|L|M|
 
 Faisons ça en shell, parce que pourquoi pas. Chaîne à coder :
 

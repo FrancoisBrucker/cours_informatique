@@ -65,6 +65,10 @@ Git utilise par défaut la fonction de hash SHA-1.
 
 ## Attaque
 
+{% lien %}
+[Attaque des fonction de hash](https://people.cs.uchicago.edu/~davidcash/284-autumn-21/12-hash.pdf)
+{% endlien %}
+
 ### Attaque des anniversaires
 
 L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.
@@ -96,6 +100,8 @@ On pose :
 Soit $x$ le plus petit entier tel que $\lambda +x$ soit un multiple de $\mu$. On a $0 \leq x \leq \mu$ puisque la division euclidienne de $\lambda$ par $\mu$ donne $\lambda = q\cdot \mu +r$ et donc $x=\mu-r$
 
  On a alors : $2(\lambda +x) = \lambda +x + k\cdot \mu$ et donc $H^{2(\lambda +x)}(x) = H^{\lambda +x}(x)$.
+
+> TBD aussi en analysant si lapin en arrière de k de la tortue sur le cycle : à l'étape d'après k-1 en arrière.
 
 {% enddetails %}
 
