@@ -92,14 +92,14 @@
     
   
 
-  <pre><code>         k               k
-         |               | 
-         v               v
-        ---             ---
-       | v |           | v |
-       |   |           |   |
- m --&gt; | E | --&gt; c --&gt; | D | --&gt; m
-        ---             --- 
+  <pre><code>           k                   k
+           |                   | 
+           v                   v
+        -------             -------
+       |       |           |       |
+ m --&gt; |   E   | --&gt; c --&gt; |   D   | --&gt; m
+       |       |           |       | 
+        -------             ------- 
 </code></pre>
 <p>Deux types d'attaques :</p>
 <ul>
@@ -146,7 +146,7 @@
 </blockquote>
 <blockquote>
 <p>TBD preuves avec les jeux et les avantages et on le fait dans l'autre sens en revenant au truc le plus simple à la fin : PRF qui est un générateur à une clé coupée en 2.<br>
-TBD insister sur le PRF qui est la brique algorithmique de base pour créer le générateur. Dire ici qu'il y a aussi le PRP, plus simple à mettre en oeuvre et qui est souvent utilisé dans les algos courants.</p>
+TBD insister sur le PRP qui est la brique de base. Dire ici qu'il y a aussi le PRF, qu'on peut utiliser comme brique de base d'un vernam, mais montrer qu'un prp marche aussi.</p>
 </blockquote>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

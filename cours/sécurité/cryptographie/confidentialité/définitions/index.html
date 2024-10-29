@@ -151,8 +151,48 @@ $$
 </div>
 </details>     
 </div>
+<p>Shannon montre cependant qu'avoir une confidentialité parfaite est trop restrictive en pratique :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8  mb-2 mr-8">
+<p><strong>Théorème</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 &lt; Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.</p>
+<p>On en déduit que l'ensemble $M' = \{m \vert E(k, m)=c^{\star}, k \in K\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.</p>
+</div>
+</details>     
+</div>
+<p>De là, tout comme le code de Vernam, si on encode des mots de $\{0, 1\}^L$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?</p>
+<p>Il faut donc :</p>
+<ol>
+<li>relâcher la contrainte de confidentialité parfaite</li>
+<li>assumer que l'on donnera de toute façons des informations à l'adversaire.</li>
+<li>faire en sorte de quantifier la quantité d'information consentie.</li>
+</ol>
 <h2>Jeu du chiffrement</h2>
-<p>La confidentialité parfaite peut s'écrire sous la forme d'un <em>jeu</em> où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.</p>
+<p>La confidentialité peut s'écrire sous la forme d'un <em>jeu</em> où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.</p>
 <p>Formalisons ce jeu à deux joueurs :</p>
 <ul>
 <li>un <strong><em>adversaire</em></strong> qui essaie de trouver une information</li>
@@ -175,12 +215,36 @@ $$
 <pre><code>
      testeur                      adversaire
     ---------        m0, m1      ------------
- b  |   k   | &lt;----------------- |          |  rép(E(k,mb)) = b'
+ b  |   k   | &lt;----------------- |          |  A(E(k,mb)) = b'
 ---&gt;|       |       E(k,mb)      |          | --------------------&gt;
     |       | -----------------&gt; |          |
     ---------                    ------------
 </code></pre>
-<p>L'adversaire possède un <strong><em><a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a></em></strong> si la probabilité que rép(E(k,mb))=b' coïncide avec $b$ est supérieure à 1/2 :</p>
+<p>Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où <code>E(k,m0) = E(k', m1)</code>. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Par exemple si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.</p>
+<p>L'exemple précédent montre trois choses :</p>
+<ol>
+<li>un adversaire motivé et ayant du temps pourra toujours déchiffrer un message</li>
+<li>on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force</li>
+<li>La méthode $A(\cdot)$ utilisé doit être rapide : c'est un algorithme</li>
+</ol>
+<p>Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps. Formalisons tout ça.</p>
+<h3>Sécurité en pratique</h3>
+<p>Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ opérations à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $1/2\leq \epsilon \leq 1$.</p>
+<p>Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^k})$-sécurisée.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On peut aussi mesurer le temps mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par unité de temps.</p>
+</div>
+</div>
+<p>Il est cruciale de garde ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.</p>
+<blockquote>
+<p>TBD exemple un ordi à 5Ghz pour 35 ans et une clé de taille 128b. Modern cryptography, exemple 3.1 p49</p>
+</blockquote>
+<h3>Avantage Probabiliste</h3>
+<p>L'adversaire possède un <strong><em><a href="https://en.wikipedia.org/wiki/Advantage_(cryptography)">avantage</a></em></strong> si la probabilité que <code>A(E(k,mb))=b'</code> coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -196,7 +260,8 @@ $$
 </div>
 </div>
 </div>
-<p>Si le jeu n'a pas d'avantage, on a 50% de chance de gagner et $\epsilon = 0$.</p>
+<p>Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon = 0$.</p>
+<p>Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -254,56 +319,33 @@ $$
 <p>Confidentialité parfaite et avantage nul au jeu du chiffrement sont deux notions équivalentes.</p>
 </div>
 </div>
-<p>Shannon montre cependant que cette définition est trop restrictive en pratique :</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8  mb-2 mr-8">
-<p><strong>Théorème</strong></p>
-</div><div class="pl-8 mr-8">
-<p>Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.</p>
+<h3>Exemple du Code de Vernam</h3>
+<p>Reprenons l'exemple du code de Vernam pour montrer que quelque soit l'adversaire, son avantage vaut 0.</p>
+<div>
+$$
+\vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[A(k\oplus m_1) = 1] - Pr[A(k\oplus m_0) = 1] \vert
+$$
 </div>
-</div>
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 &lt; Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.</p>
-<p>On en déduit que l'ensemble $M' = \{m \vert E(k, m)=c^{\star}, k \in K\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.</p>
-</div>
-</details>     
-</div>
-<p>De là, tout comme le code de Vernam, si on encode des mots de $\{0, 1\}^L$, il faut que la taille de la clé soit plus grande que $L$.</p>
-<p>Ceci rend les code à confidentialité parfaite inutile en pratique : si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?</p>
-<p>Il faut donc :</p>
-<ol>
-<li>relâcher la contrainte de confidentialité parfaite</li>
-<li>assumer que l'on donnera de toute façons des informations à l'adversaire.</li>
-<li>faire en sorte de quantifier la quantité d'information consentie.</li>
-</ol>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On sait qu'il va y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial.</p>
-</div>
-</div>
+<p>Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $Pr[A(U) = 1] = Pr[A(k\oplus m_1) = 1] = Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.</p>
 <h2>Sémantiquement Sécurisée</h2>
+<p>La méthode précédente donne idée de la sécurité <em>actuelle</em> d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées.</p>
+<p>Pour tenir compte de ceci on va prendre le parti pris de la complexité algorithmique car les seuls algorithmes dépendant de la rapidité d'un ordinateurs sont ceux qui sont polynomiaux :</p>
+<ol>
+<li>Une méthode de cryptanalyse ne peut efficacement exploiter un avantage, que si celle ci s'exécute en temps polynomial.</li>
+<li>L'avantage donné par une méthode de cryptanalyse dépend de ce qu'il a à décrypter.</li>
+</ol>
+<p>Par exemple l'algorithme brute force a un avantage valant $\epsilon(k+m) = \frac{m}{2^k}$ pour déchiffrer un chiffre de Vernam avec un message de taille $m$ et une clé de taille $k$.</p>
+<p>Le nombre $n=k+m$ représente la taille de l'entrée du problème de chiffrement.</p>
+<h3>Exemple 1</h3>
+<blockquote>
+<p>TBD Modern cryptography, exemple 3.2 p51</p>
+</blockquote>
+<h3>Exemple 2</h3>
+<p>Rapide peut aussi aider la défense</p>
+<blockquote>
+<p>TBD Modern cryptography, exemple 3.3 p51</p>
+</blockquote>
+<h3>Définition formelle</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -371,18 +413,32 @@ $$
 </ul>
 </div>
 </div>
-<p>La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire.</p>
-<h3>Valeurs numériques</h3>
-<p>Le gain ne doit pas permettre de créer des algos en effectuant l'algorithme $1/\epsilon$ fois.</p>
-<p>Si plus petit que $1/2^{30}$ pas ok. Cela ne fait d'un millions de fois. On peut considérer que $1/2^{80}$ ça devient raisonnable et devient comparable au brute force.</p>
-<h3>Négligeable</h3>
-<p>Propagation de la négligeabilité :</p>
+<p>La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire. Propagation de la négligeabilité :</p>
 <ul>
 <li>$p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est</li>
 <li>$\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
 <li>$\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont</li>
 </ul>
+<h3>Valeurs numériques</h3>
+<blockquote>
+<p>TBD refaire</p>
+</blockquote>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'avantage ne doit pas permettre de créer des algorithmes de cryptanalyse ayant une probabilité moyenne de gagner supérieure à 50% en les relançant $1/\epsilon$ fois.</p>
+</div>
+</div>
+<p>Un avantage de $1/2^{30}$ par exemple est insuffisant. Il suffit de relancer $2^{30}$ fois notre algorithme, ce qui ne fait que un millions de fois. En <strong>2024</strong>, on considère que si $\epsilon \leq 1/2^{80}$, on peut se considérer <strong><em>sémantiquement sécurisé</em></strong>, car cela correspond à une attaque brute force sur une clé de taille 128b</p>
+<blockquote>
+<p>TBD pourquoi ? <a href="https://www.cs.purdue.edu/homes/ninghui/courses/526_Fall13/handouts/526_topic04.pdf">https://www.cs.purdue.edu/homes/ninghui/courses/526_Fall13/handouts/526_topic04.pdf</a></p>
+</blockquote>
 <h2>Jeu de la reconnaissance</h2>
+<blockquote>
+<p>TBD dire et montrer que le jeu de la sécurité est un cas particulier du jeu de la reconnaissance.</p>
+</blockquote>
 <p>Tout le jeu en cryptographie est de savoir si la suite générée est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.</p>
 <p>On peut modéliser ceci par un jeu, le jeu de la reconnaissance de deux distributions en adaptant le jeu du chiffrement.</p>
 <p>Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \{0, 1\}$ deux lois de distribution. On cherche à distinguer si un élément de $\mathcal{U}$ a été tiré selon la loi $D_0$ ou $D_1$.</p>
