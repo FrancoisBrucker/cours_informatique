@@ -12,14 +12,14 @@ eleventyComputed:
 
 
 ```
-         k               k
-         |               | 
-         v               v
-        ---             ---
-       | v |           | v |
-       |   |           |   |
- m --> | E | --> c --> | D | --> m
-        ---             --- 
+           k                   k
+           |                   | 
+           v                   v
+        -------             -------
+       |       |           |       |
+ m --> |   E   | --> c --> |   D   | --> m
+       |       |           |       | 
+        -------             ------- 
 ```
 
 Deux types d'attaques :
@@ -56,7 +56,7 @@ Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des mess
 > TBD
 
 > TBD preuves avec les jeux et les avantages et on le fait dans l'autre sens en revenant au truc le plus simple à la fin : PRF qui est un générateur à une clé coupée en 2.
-> TBD insister sur le PRF qui est la brique algorithmique de base pour créer le générateur. Dire ici qu'il y a aussi le PRP, plus simple à mettre en oeuvre et qui est souvent utilisé dans les algos courants.
+> TBD insister sur le PRP qui est la brique de base. Dire ici qu'il y a aussi le PRF, qu'on peut utiliser comme brique de base d'un vernam, mais montrer qu'un prp marche aussi.
 
 {% aller %}
 [Chiffrer un bloc](chiffrement-bloc){.interne}

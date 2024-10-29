@@ -85,7 +85,7 @@ L'avantage montre l'écart à l'uniformité de $G$ reconnaissable et donc exploi
 
 ### PRG
 
-L'exemple précédent n'es pas utilisable en pratique car sans clé on ne retrouve plus l'entrée.
+L'exemple précédent n'est pas utilisable en pratique car sans clé on ne retrouve plus l'entrée.
 
 {% note "**Définition**" %}
 Un **générateur de nombres pseudo-aléatoire sécurisé** (_secure PRG, secure pseudo random generator_) doit avoir les propriétés suivantes :
@@ -116,6 +116,9 @@ Si $G: \\{0, 1\\}^s \rightarrow \\{0, 1\\}^n$, avec $s <<n$ est un secure PRG, a
 est une méthode de chiffrement sécurisée.
 {% endnote %}
 {% details "preuve", "open" %}
+
+> TBD preuve : <https://www.youtube.com/watch?v=4vbwxPR_D2U>
+
 Si la méthode n'est pas sémantiquement sécurisée, il existe deux mots $m_0$ et $m_1$ et un algorithme A ayant un avantage non négligeable pour reconnaître $G(k) \oplus m_0$ de $G(k) \oplus m_1$. On a alors :
 
 <div>

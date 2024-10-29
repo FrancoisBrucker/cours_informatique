@@ -45,9 +45,30 @@ La variable aléatoire $(k \xleftarrow{R} \mathcal{K}) \oplus m$ est uniforme qu
 
 {% enddetails %}
 
+Shannon montre cependant qu'avoir une confidentialité parfaite est trop restrictive en pratique :
+
+{% note "**Théorème**" %}
+Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
+
+On en déduit que l'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
+
+{% enddetails %}
+
+De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^L$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
+
+Il faut donc :
+
+1. relâcher la contrainte de confidentialité parfaite
+2. assumer que l'on donnera de toute façons des informations à l'adversaire.
+3. faire en sorte de quantifier la quantité d'information consentie.
+
 ## Jeu du chiffrement
 
-La confidentialité parfaite peut s'écrire sous la forme d'un _jeu_ où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.
+La confidentialité peut s'écrire sous la forme d'un _jeu_ où si un adversaire présente deux messages et qu'on lui en rend un des deux chiffré, il ne peut déterminer lequel c'est avec ue probabilité supérieure à $1/2$.
 
 Formalisons ce jeu à deux joueurs :
 
@@ -69,13 +90,39 @@ Le jeu consiste alors en 6 étapes :
 
      testeur                      adversaire
     ---------        m0, m1      ------------
- b  |   k   | <----------------- |          |  rép(E(k,mb)) = b'
+ b  |   k   | <----------------- |          |  A(E(k,mb)) = b'
 --->|       |       E(k,mb)      |          | -------------------->
     |       | -----------------> |          |
     ---------                    ------------
 ```
 
-L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que rép(E(k,mb))=b' coïncide avec $b$ est supérieure à 1/2 :
+Il est clair que si l'adversaire essaie toutes les possibilités il trouvera toujours la solution (presque toujours en fait, car il peut exister des cas où `E(k,m0) = E(k', m1)`. Mais comme l'adversaire peut choisir ses mots il peut minimiser – voir supprimer ce cas). Cela prendra cependant un temps énorme. Par exemple si la clé $k$ possède 128bits, il y a $2^{128}$ possibilité et même si l'adversaire peut tester 1000 milliards de possibilités par seconde ($10^{12}$) il lui faudrait tout de même plus de $10^{17}$ siècles pour tester toutes les possibilités.
+
+L'exemple précédent montre trois choses :
+
+1. un adversaire motivé et ayant du temps pourra toujours déchiffrer un message
+2. on peut être en sécurité assez longtemps si la seule attaque possible est l'attaque brute force
+3. La méthode $A(\cdot)$ utilisé doit être rapide : c'est un algorithme
+
+Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter de garante d'être en sécurité assez longtemps. Formalisons tout ça.
+
+### Sécurité en pratique
+
+Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ opérations à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $1/2\leq \epsilon \leq 1$.
+
+Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^k})$-sécurisée.
+
+{% info %}
+On peut aussi mesurer le temps mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par unité de temps.
+{% endinfo %}
+
+Il est cruciale de garde ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
+
+> TBD exemple un ordi à 5Ghz pour 35 ans et une clé de taille 128b. Modern cryptography, exemple 3.1 p49
+
+### Avantage Probabiliste
+
+L'adversaire possède un **_[avantage](<https://en.wikipedia.org/wiki/Advantage_(cryptography)>)_** si la probabilité que `A(E(k,mb))=b'` coïncide avec $b$ soit supérieure à 1/2. Comme $P[b=1] = P[b=0] = 1/2$ cet avantage vaut :
 
 {% note "**Définition**" %}
 L'avantage dans ce jeu est $\epsilon$ :
@@ -88,7 +135,9 @@ $$
 
 {% endnote %}
 
-Si le jeu n'a pas d'avantage, on a 50% de chance de gagner et $\epsilon = 0$.
+Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon = 0$.
+
+Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.
 
 {% note "**Corollaire**" %}
 Si $m_0$ est traité de façon équivalente à $m_1$, l'avantage est aussi :
@@ -127,34 +176,42 @@ On a clairement que :
 Confidentialité parfaite et avantage nul au jeu du chiffrement sont deux notions équivalentes.
 {% endnote %}
 
-Shannon montre cependant que cette définition est trop restrictive en pratique :
+### Exemple du Code de Vernam
 
-{% note "**Théorème**" %}
-Un code à confidentialité parfaite nécessite un nombre de clés différentes supérieure ou égale au nombre de messages à chiffrer.
-{% endnote %}
-{% details "preuve", "open" %}
+Reprenons l'exemple du code de Vernam pour montrer que quelque soit l'adversaire, son avantage vaut 0.
 
-Soit $k^{\star} \in K$, $m^{\star} \in M$ et notons $c^{\star} = E(k^{\star}, m^{\star})$. S'il existe un message $m'$ tel que $E(k, m') \neq c^\star$ quelque soit la clé $k$ alors $Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m') = c^\star] = 0 < Pr_{k \xleftarrow{R} \mathcal{K}}[E(k, m^\star) = c^\star]$ et le code ne peut être à confidentialité parfaite.
+<div>
+$$
+\vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[A(k\oplus m_1) = 1] - Pr[A(k\oplus m_0) = 1] \vert
+$$
+</div>
 
-On en déduit que l'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ des messages chiffrés en $c^\star$ doit être égal à $\mathcal{M}$ et comme $\vert M' \vert \leq \vert \mathcal{K} \vert$ on a que $\vert \mathcal{M} \vert \leq \vert \mathcal{K} \vert$.
-
-{% enddetails %}
-
-De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^L$, il faut que la taille de la clé soit plus grande que $L$.
-
-Ceci rend les code à confidentialité parfaite inutile en pratique : si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
-
-Il faut donc :
-
-1. relâcher la contrainte de confidentialité parfaite
-2. assumer que l'on donnera de toute façons des informations à l'adversaire.
-3. faire en sorte de quantifier la quantité d'information consentie.
-
-{% note %}
-On sait qu'il va y avoir un avantage, mais encore faut-il pouvoir le trouver puis l'exploiter en temps polynomial.
-{% endnote %}
+Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $Pr[A(U) = 1] = Pr[A(k\oplus m_1) = 1] = Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
 
 ## Sémantiquement Sécurisée
+
+La méthode précédente donne idée de la sécurité _actuelle_ d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées.
+
+Pour tenir compte de ceci on va prendre le parti pris de la complexité algorithmique car les seuls algorithmes dépendant de la rapidité d'un ordinateurs sont ceux qui sont polynomiaux :
+
+1. Une méthode de cryptanalyse ne peut efficacement exploiter un avantage, que si celle ci s'exécute en temps polynomial.
+2. L'avantage donné par une méthode de cryptanalyse dépend de ce qu'il a à décrypter.
+
+Par exemple l'algorithme brute force a un avantage valant $\epsilon(k+m) = \frac{m}{2^k}$ pour déchiffrer un chiffre de Vernam avec un message de taille $m$ et une clé de taille $k$.
+
+Le nombre $n=k+m$ représente la taille de l'entrée du problème de chiffrement.
+
+### Exemple 1
+
+> TBD Modern cryptography, exemple 3.2 p51
+
+### Exemple 2
+
+Rapide peut aussi aider la défense
+
+> TBD Modern cryptography, exemple 3.3 p51
+
+### Définition formelle
 
 {% lien %}
 
@@ -192,23 +249,27 @@ Le couple $(E, D)$ d'algorithmes efficaces est une **_méthode de chiffrement s�
 - tout algorithme efficace n'a qu'un avantage négligeable au jeu du chiffrement.
   {% endnote %}
 
-La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire.
-
-### Valeurs numériques
-
-Le gain ne doit pas permettre de créer des algos en effectuant l'algorithme $1/\epsilon$ fois.
-
-Si plus petit que $1/2^{30}$ pas ok. Cela ne fait d'un millions de fois. On peut considérer que $1/2^{80}$ ça devient raisonnable et devient comparable au brute force.
-
-### Négligeable
-
-Propagation de la négligeabilité :
+La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire. Propagation de la négligeabilité :
 
 - $p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est
 - $\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
 - $\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
 
+### Valeurs numériques
+
+> TBD refaire
+
+{% note %}
+L'avantage ne doit pas permettre de créer des algorithmes de cryptanalyse ayant une probabilité moyenne de gagner supérieure à 50% en les relançant $1/\epsilon$ fois.
+{% endnote %}
+
+Un avantage de $1/2^{30}$ par exemple est insuffisant. Il suffit de relancer $2^{30}$ fois notre algorithme, ce qui ne fait que un millions de fois. En **2024**, on considère que si $\epsilon \leq 1/2^{80}$, on peut se considérer **_sémantiquement sécurisé_**, car cela correspond à une attaque brute force sur une clé de taille 128b
+
+> TBD pourquoi ? <https://www.cs.purdue.edu/homes/ninghui/courses/526_Fall13/handouts/526_topic04.pdf>
+
 ## Jeu de la reconnaissance
+
+> TBD dire et montrer que le jeu de la sécurité est un cas particulier du jeu de la reconnaissance.
 
 Tout le jeu en cryptographie est de savoir si la suite générée est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.
 
