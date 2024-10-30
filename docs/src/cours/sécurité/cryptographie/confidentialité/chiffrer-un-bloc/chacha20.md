@@ -12,9 +12,7 @@ eleventyComputed:
 
 
 
-> TBD : tout est à faire.
-> Faire des exemple d'utilisation.
-
+> TBD : dire qu'on ne présente que le bloc principal. Ensuite il s'imbrique dans la suite du cours (taille quelconque et intégrité)
 
 {% lien %}
 
@@ -22,16 +20,6 @@ eleventyComputed:
 - [RFC](https://datatracker.ietf.org/doc/html/rfc8439)
 
 {% endlien %}
-
-Chacha20 est le chiffrement en flux le plus populaire. Son chiffrement est identique au principe général :
-
-- chiffrement d'un bloc
-- aggregation des blocs entre eux.
-
-La seule différence est que toutes les opérations de Chacha sont inversible, le générateur pseudo-aléatoire n'est donc pas créer à partir d'une PRF, mais d'une PRP.
-
-## PRP
-
 
 ## Fonctionnement
 
@@ -43,4 +31,5 @@ La seule différence est que toutes les opérations de Chacha sont inversible, l
 {% endlien %}
 
 > TBD : à approfondir
-> TBD : faire dessin deu chiffrement. Et laisser la place pour poly1305
+> TBD : faire dessin du chiffrement.
+> TBD : Faire des exemple d'utilisation.

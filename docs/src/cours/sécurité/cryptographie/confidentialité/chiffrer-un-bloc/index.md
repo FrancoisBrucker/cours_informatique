@@ -43,6 +43,7 @@ Pour que ce genre de fonctions soient valides pour un usage cryptographique, il 
 ## PRP
 
 <div id="PRP"></div>
+<div id="PRF"></div>
 
 {% note "**Définition**" %}
 Soit $F: \\{0, 1\\}^s \times \\{0, 1\\}^t \rightarrow \\{0, 1\\}^t$ une fonction telle que :
@@ -146,10 +147,12 @@ Si $\epsilon$ est non négligeable, on peut en déduire un algorithme qui va ex�
 
 Chaque méthode de chiffrement intègre ainsi en son sein des transformations non linéaires permettant de casser ce genre d'attaque.
 
-### One tTime Pad
+### Chiffrement par flux
+
+Le chiffrement le plus générique. Il utilise habituellement d'autre méthodes de chiffrement comme composant.
 
 {% aller %}
-[Algorithme via générateur pseudo-aléatoire](générateur-xor){.interne}
+[Chiffrement par flux](chiffrement-flux){.interne}
 {% endaller %}
 
 ### Chacha20
