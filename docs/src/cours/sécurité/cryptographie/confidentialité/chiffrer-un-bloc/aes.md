@@ -13,6 +13,8 @@ eleventyComputed:
 > TBD : tout est à faire.
 > Faire des exemple d'utilisation.
 
+- [inverse](https://tratliff.webspace.wheatoncollege.edu/2016_Fall/math202/inclass/sep21_inclass.pdf)
+
 - [AES en dessin](https://www.youtube.com/watch?v=pSCoquEJsIo)
 - aes-128 symétrique aujourd'hui <https://www.youtube.com/watch?v=VYech-c5Dic>
 - [aes explication](https://www.di.ens.fr/~fouque/mpri/des-aes.pdf)

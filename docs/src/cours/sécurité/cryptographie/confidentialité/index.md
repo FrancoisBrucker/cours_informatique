@@ -47,62 +47,17 @@ Le message ne doit pouvoir être lu que par son destinataire. Comment partager l
 [Partager la clé](partager-secret){.interne}
 {% endaller %}
 
-## Chiffrer un message de taille fixe
+## Chiffrer un message
 
-Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçu pour chiffrer des blocs de taille fixes.
+Les algorithmes de chiffrement classiques ne permettent pas de chiffrer des message de taille quelconque. Ils sont conçus pour chiffrer des blocs de taille fixes.
 
-### Principe général
-
-> TBD
-
-> TBD preuves avec les jeux et les avantages et on le fait dans l'autre sens en revenant au truc le plus simple à la fin : PRF qui est un générateur à une clé coupée en 2.
-> TBD insister sur le PRP qui est la brique de base. Dire ici qu'il y a aussi le PRF, qu'on peut utiliser comme brique de base d'un vernam, mais montrer qu'un prp marche aussi.
+### Chiffrer un message de taille fixe
 
 {% aller %}
-[Chiffrer un bloc](chiffrement-bloc){.interne}
+[Chiffrer un bloc](chiffrer-un-bloc){.interne}
 {% endaller %}
 
-### Exemples
-
-> TBD rappeler que leur existence n'est pas prouvée. DOnc on fait des essais et on donne l'algo. Pas grave puisque si PRF ou PRP c'est semantically secure.
-
-> TBD Linéarité
-
-Bien que basés sur des approches différentes, ces deux types de code ont en commun le soucis d'être robuste aux attaques classiques en particulier celles par [cryptanalyse linéaire](https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire).
-
-La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :
-
-<div>
-$$
-Pr[(\oplus_{i \in I} m_i) \oplus (\oplus_{j \in J} c_j) = (\oplus_{l \in L} k_l)] \leq 1/2 + \epsilon
-$$
-</div>
-
-Si $\epsilon$ est non négligeable, on peut en déduire un algorithme qui va exécuter $1/\epsilon$ fois cette relation et trouver avec une grande probabilité cette corrélation, et donc l'information nécessaire à sa cryptanalyse.
-
-> TBD calcul probabilité avec une binomiale $Pr[B(n, p) \geq 1]$.
-
-Chaque méthode de chiffrement intègre ainsi en son sein des transformations non linéaires permettant de casser ce genre d'attaque. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.
-
-Enfin, pour que le calcul de ces non-linéarité soit aisé elles sont souvent placées dans des tables de conversions, nommées [S-box](https://fr.wikipedia.org/wiki/S-Box).
-
-{% info %}
-Le chiffrement DES, proposé par la NSA, proposait des [S-box](https://fr.wikipedia.org/wiki/S-Box) obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.
-{% endinfo %}
-
-{% aller %}
-[Algorithme via générateur pseudo-aléatoire](générateur-xor){.interne}
-{% endaller %}
-
-{% aller %}
-[Algorithme chacha20](chacha20){.interne}
-{% endaller %}
-
-{% aller %}
-[Algorithme AES](aes){.interne}
-{% endaller %}
-
-## Chiffrer un message de taille quelconque
+### Chiffrer un message de taille quelconque
 
 Il existe historiquement deux types de codes même si les différences commencent à s'estomper entres eux :
 
@@ -111,14 +66,6 @@ Il existe historiquement deux types de codes même si les différences commencen
 
 {% aller %}
 [Schéma général](./schéma-général){.interne}
-{% endaller %}
-
-### Bloc cipher
-
-> TBD : pas encore fait. mettre bloc dans schéma général alternatif
-
-{% aller %}
-[chiffrement par bloc](chiffre-bloc){.interne}
 {% endaller %}
 
 ### Attention aux implémentations
@@ -139,6 +86,14 @@ Bref, n'implémentez pas vous même les algorithmes, prenez des implémentations
 {% endlien %}
 
 ## Générer des clés
+
+### Générateur de nombre aléatoire cryptographique
+
+> TBD LSFR
+
+{% lien %}
+Rapport de stage sur les codes LSFR : [projet codes LSFR](Rapport_de_Stage_Laura_Michelutti.pdf)
+{% endlien %}
 
 ### Trouver la clé
 

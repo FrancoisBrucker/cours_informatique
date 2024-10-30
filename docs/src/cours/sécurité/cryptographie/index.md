@@ -107,9 +107,9 @@ Pour le chiffrement soit effectif, il faut qu'il soit :
 
 On peut se restreindre, sans perte de généralité, aux messages binaires et supposer que $\mathcal{M} = \mathcal{C}$. On a alors :
 
-- $\mathcal{K} = \\{0, 1\\}^K$
-- $\mathcal{M} = \mathcal{C} = \\{0, 1\\}^L$
-- $E$ et $D$ doivent être de complexité $\mathcal{O}((K+L)^d)$ avec $d$ une constante valant de préférence 1.
+- $\mathcal{K} = \\{0, 1\\}^s$
+- $\mathcal{M} = \mathcal{C} = \\{0, 1\\}^m$
+- $E$ et $D$ doivent être de complexité $\mathcal{O}((s+m)^d)$ avec $d$ une constante valant de préférence 1.
 
 #### Robustesse
 

@@ -262,7 +262,9 @@ $$
 À chaque tirage, la probabilité que la fonction de hash soit égale à $h$ est $\frac{1}{m}$, la probabilité de ne pas être égale à $h$ est donc $1-\frac{1}{m}$. Les tirages étant équiprobables, la probabilité est bien celle demandée.
 {% enddetails %}
 
-Et cell d'obtenir deux fois le même nombre :
+Et celle d'obtenir deux fois le même nombre :
+
+<div id="paradoxe-anniversaires"></div>
 
 {% note "**Proposition**" %}
 Pour une fonction de hachage $f: \mathbb{N} \rightarrow [0 \mathrel{ {.}\,{.} } m[$ uniforme, la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$, c'est à dire sans avoir de collisions est de :
@@ -360,8 +362,6 @@ $$
 Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
 
 De ce qui découle on en déduit une règle universelle de toute fonction de hash :
-
-<div id="paradoxe-anniversaires"></div>
 
 {% note "**Paradoxe des anniversaires**" %}
 Pour toute fonction de hash rendant un mot de $p$ bits, il faut : $n \simeq 1.2 \cdot 2^{p/2}$ tirages différents pour avoir 50% de chance d'avoir 2 tirages de même hash.

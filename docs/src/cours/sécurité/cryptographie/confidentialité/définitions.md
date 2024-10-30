@@ -58,13 +58,19 @@ On en déduit que l'ensemble $M' = \\{m \vert E(k, m)=c^{\star}, k \in K\\}$ des
 
 {% enddetails %}
 
-De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^L$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
+De là, tout comme le code de Vernam, si on encode des mots de $\\{0, 1\\}^m$, il faut que la taille de la clé soit plus grande que $L$. Mais alors, si on peut se partager un secret de taille $L$, pourquoi ne pas directement se partager le message ?
 
 Il faut donc :
 
 1. relâcher la contrainte de confidentialité parfaite
 2. assumer que l'on donnera de toute façons des informations à l'adversaire.
 3. faire en sorte de quantifier la quantité d'information consentie.
+
+{% lien %}
+De nombreux exemples et preuves sont tirées du livre suivant, que tout informaticien désireux d'avoir des connaissances théoriques sur la cryptanalyse devrait avoir :
+
+[Introduction to modern cryptography](https://www.cs.umd.edu/~jkatz/imc.html)
+{% endlien %}
 
 ## Jeu du chiffrement
 
@@ -108,17 +114,27 @@ Il n'est donc pas possible d'être sécurisé pour toujours, mais on peut tenter
 
 ### Sécurité en pratique
 
-Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ opérations à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $1/2\leq \epsilon \leq 1$.
+Une méthode de chiffrement sera dite $(t, \epsilon)$-sécurisée si tout algorithme passant $t$ secondes à résoudre le problème ne peut réussir à résoudre le problème avec une probabilité supérieure à $0\leq \epsilon \leq 1$.
 
-Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^k})$-sécurisée.
+Comme l'algorithme brute force teste une clé en plus d'une opération, toute méthode de chiffrement sera au maximum $(t, \frac{t}{2^s})$-sécurisée où $s$ est la taille de la clé et $t$ le temps mis pour tester une clé.
 
 {% info %}
-On peut aussi mesurer le temps mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par unité de temps.
+On peut aussi mesurer le nombre d'opérations mis pour exécuter l'algorithme puis mesurer sa probabilité de réussite. On aura alors une sécurité définie par nombre d'opérations effectuées.
 {% endinfo %}
 
-Il est cruciale de garde ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
+Il est cruciale de garder ceci en tête pour toujours vérifier que la méthode brute force ne soit pas utilisable en pratique.
 
-> TBD exemple un ordi à 5Ghz pour 35 ans et une clé de taille 128b. Modern cryptography, exemple 3.1 p49
+{% exercice %}
+
+Quelle taille de clé faut-il avoir pour qu'un algorithme brute force tournant pendant 35 ans ne puisse avoir qu'une chance en 100 siècles de déchiffrer un message ?
+{% endexercice %}
+{% details "corrigé" %}
+100 siècles vaut environ $2^{39}$ secondes et 35 ans environ $2^{30}$ secondes. on veut donc que notre méthode soit : $(2^{30}, 2^{-39})$-sécurisée.
+
+L'algorithme étant brute force, on a : $2^{-39} = \frac{2^{30}}{2^k}$ ce qui donne $k = 69$.
+
+Attention, les algorithmes tournent souvent en parallèle pour diminuer leur temps de calcul. C'est pourquoi, en 2024, on recommande des tailles de clés d'au moins 128bits.
+{% enddetails %}
 
 ### Avantage Probabiliste
 
@@ -135,7 +151,7 @@ $$
 
 {% endnote %}
 
-Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon = 0$.
+Si l'adversaire n'a pas d'idée de comment gagner au jeu, il peut toujours répondre au hasard : au pire il a 50% de chance de gagner et $\epsilon = 0$. Au contraire s'il ne se trompe jamais son avantage vaut $\epsilon = 1$.
 
 Le corollaire ci-après montre que l'avantage est également la différence entre gagner ou perdre en choisissant tout le temps $m_0$ ou $m_1$. C'est cette définition que nous utiliserons dans tous les autres jeux que nous définirons.
 
@@ -176,10 +192,12 @@ On a clairement que :
 Confidentialité parfaite et avantage nul au jeu du chiffrement sont deux notions équivalentes.
 {% endnote %}
 
-### Exemple du Code de Vernam
+Terminons cette partie par un petit exercice qui montre, faut il encore le faire, que le code de Vernam est une excellente façon de chiffrer ses messages :
 
-Reprenons l'exemple du code de Vernam pour montrer que quelque soit l'adversaire, son avantage vaut 0.
-
+{% exercice %}
+Montrer que tout adversaire ne peut avoir un avantage différent de 0 au au jeu du chiffrement utilisant le chiffre le Vernam.
+{% endexercice %}
+{% details "corrigé" %}
 <div>
 $$
 \vert Pr[b' = 1 | b = 1] - Pr[b' = 1 | b = 0] \vert = \vert Pr[A(k\oplus m_1) = 1] - Pr[A(k\oplus m_0) = 1] \vert
@@ -187,31 +205,61 @@ $$
 </div>
 
 Or $k\oplus m_1$ et $k\oplus m_0$ suivent une loi uniforme ($U$) puisque $k$ est uniforme : $Pr[A(U) = 1] = Pr[A(k\oplus m_1) = 1] = Pr[A(k\oplus m_0) = 1]$ et l'avantage est bien nul quelque soit l'algorithme utilisé.
+{% enddetails %}
 
-## Sémantiquement Sécurisée
+## <span id="sémantiquement-sécurisé"></span>Sémantiquement Sécurisée
 
-La méthode précédente donne idée de la sécurité _actuelle_ d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées.
+La méthode précédente donne idée de la sécurité _actuelle_ d'une méthode de chiffrement puisqu'elle mesure le nombre d'opérations ou le temps pris pour décrypter une méthode de chiffrement. Cela ne dit rien de ce qui pourra se passer dans 5 ou 10 ans lorsque les ordinateurs iront plus vite ou que les méthodes de résolutions seront plus évoluées. De plus, un algorithme brute force qui teste toutes les possibilités aura toujours un avantage de 1 (ou quasi 1 si l'on prend en compte les collisions) si on lui laisse un temps exponentiel par rapport à la taille de la clé pour s'exécuter.
 
-Pour tenir compte de ceci on va prendre le parti pris de la complexité algorithmique car les seuls algorithmes dépendant de la rapidité d'un ordinateurs sont ceux qui sont polynomiaux :
+Il faut donc d'un côté :
 
-1. Une méthode de cryptanalyse ne peut efficacement exploiter un avantage, que si celle ci s'exécute en temps polynomial.
-2. L'avantage donné par une méthode de cryptanalyse dépend de ce qu'il a à décrypter.
+- trouver une autre mesure que le temps pour déterminer la sécurité,
+- ne prendre en compte que les adversaires s'exécutant en temps raisonnable
 
-Par exemple l'algorithme brute force a un avantage valant $\epsilon(k+m) = \frac{m}{2^k}$ pour déchiffrer un chiffre de Vernam avec un message de taille $m$ et une clé de taille $k$.
+La solution est d'utiliser la complexité algorithmique et son analyse asymptotique. On considérera alors :
 
-Le nombre $n=k+m$ représente la taille de l'entrée du problème de chiffrement.
+- des clés assez grandes pour que l'attaque brute force nécessite un temps exponentiel non réalisable
+- les adversaires qui ont une chances de terminer assez rapidement, c'est à dire ceux dont les algorithmes de résolution sont polynomiaux,
+- qu'un avantage est acceptable s'il est  exponentiellement petit par rapport à la taille de la clé.
 
-### Exemple 1
+Par exemple l'algorithme brute force pour lequel on ne lui accorde qu'un nombre d'exécution polynomial, disons $\mathcal{O}(s^d)$, aura un avantage de $\epsilon(s) = \frac{1}{2^{s-d}}$ qui devient exponentiellement petit lorsque la taille de la clé $s$ augmente !
 
-> TBD Modern cryptography, exemple 3.2 p51
+{% note "**Définition**" %}
+Pour calculer une complexité, il faut connaître la taille de l'entrée, c'est à dire les informations données à l'adversaire.
 
-### Exemple 2
+De façon classique, la taille de cette entrée ($n$), nommé **_paramètre de sécurité_**, consiste en la taille de la clé ($k$) plus la taille du message à chiffrer ($m$) : $n=s+m$.
 
-Rapide peut aussi aider la défense
+{% endnote %}
 
-> TBD Modern cryptography, exemple 3.3 p51
+L'augmentation de la taille des clés va certes avoir un effet sur le temps d'exécution mais ce sera surtout sur l'avantage que cela se fera sentir, s\il est exponentiellement petit par rapport au paramètre de sécurité :
 
-### Définition formelle
+{% exercice %}
+On suppose que l'exécution d'un adversaire de complexité temporelle (en s) $n^3$ ait un avantage de $\min(1, \frac{2^{40}}{2^n})$.
+
+Pour $n=40$, combien faut-il de temps pour qu'il puisse décrypter la méthode de façon certaine ? Quel est son avantage pour $n=50$ et en combien de temps s'exécute-t-il ?
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour $n=40$, il aura besoin de $40^3$ secondes pour s'exécuter, c'est à dire un peut moins de 18 heures, et son avantage de sera de 1.
+
+Pour $n=40$, il aura besoin de $50^3$ secondes pour s'exécuter, c'est à dire un peut moins de 35 heures, mais son avantage ne sera plus que de $10^{-3}$.
+{% enddetails %}
+
+Autre exemple, on la vitesse de calcul ne bénéficie pas forcément à l'adversaire :
+
+{% exercice %}
+Supposons qu'une méthode de chiffrement se chiffre et se déchiffre en $n^2$ opérations et qu'un adversaire possède un algorithme en $n^4$ pour le décrypter.
+
+Soit $n=50$. Si l'on prend un ordinateur qui va 16 fois plus vite, quelle est la taille de $n$ que l'on peut se permettre en gardant le même temps de chiffrement ? Que s'est-il passé pour l'adversaire ?
+{% endexercice %}
+{% details "corrigé" %}
+
+On cherche $n'$ tel que : $16\cdot 50^2 = n'^2$, c'est à dire $n' = 200$. On a pu augmenter le paramètre de sécurité de 4.
+
+Pour l'adversaire, c'est moins profitable puisque son temps d'exécution est multiplié par $200^4/50^4 = 256$.
+{% enddetails %}
+
+Définissons formellement les adversaire et les avantages que l'on admet pour qu'une méthode soit sécurisée.
 
 {% lien %}
 
@@ -246,34 +294,20 @@ Une méthode de chiffrement est **_sécurisée_** (_Semantically secured_) si to
 Le couple $(E, D)$ d'algorithmes efficaces est une **_méthode de chiffrement sécurisée_** si :
 
 - $D(k, E(k, m)) = m$
-- tout algorithme efficace n'a qu'un avantage négligeable au jeu du chiffrement.
+- tout algorithme **efficace** n'a qu'un **avantage négligeable** au jeu du chiffrement.
   {% endnote %}
 
-La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire. Propagation de la négligeabilité :
+La négligeabilité permet de définir théoriquement les avantages que l'on peut accepter de la part de l'adversaire.
+
+La négligeabilité se compose tout comme la polynomialité (somme et produit de polynôme restent des polynôme) :
 
 - $p(n) \cdot \epsilon$ reste négligeable si $\epsilon$ l'est
 - $\epsilon + \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
 - $\epsilon \cdot \epsilon'$ reste négligeable si $\epsilon$ et $\epsilon'$ le sont
 
-### Valeurs numériques
+## <span id="jeu-reconnaissance"></span>Jeu de la reconnaissance
 
-> TBD refaire
-
-{% note %}
-L'avantage ne doit pas permettre de créer des algorithmes de cryptanalyse ayant une probabilité moyenne de gagner supérieure à 50% en les relançant $1/\epsilon$ fois.
-{% endnote %}
-
-Un avantage de $1/2^{30}$ par exemple est insuffisant. Il suffit de relancer $2^{30}$ fois notre algorithme, ce qui ne fait que un millions de fois. En **2024**, on considère que si $\epsilon \leq 1/2^{80}$, on peut se considérer **_sémantiquement sécurisé_**, car cela correspond à une attaque brute force sur une clé de taille 128b
-
-> TBD pourquoi ? <https://www.cs.purdue.edu/homes/ninghui/courses/526_Fall13/handouts/526_topic04.pdf>
-
-## Jeu de la reconnaissance
-
-> TBD dire et montrer que le jeu de la sécurité est un cas particulier du jeu de la reconnaissance.
-
-Tout le jeu en cryptographie est de savoir si la suite générée est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences.
-
-On peut modéliser ceci par un jeu, le jeu de la reconnaissance de deux distributions en adaptant le jeu du chiffrement.
+Le jeu du chiffrement est un cas particulier du cas du jeu de la reconnaissance ci-dessous (on chercher à différentier la loi suivie par $E(k, m_0)$ de celle suivi par $E(k, m_0)$ lorsque $k$ est distribué de façon uniforme).
 
 Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distribution. On cherche à distinguer si un élément de $\mathcal{U}$ a été tiré selon la loi $D_0$ ou $D_1$.
 
@@ -288,7 +322,7 @@ Soient $D_i: \mathcal{U} \to [0, 1]$ pour $i \in \\{0, 1\\}$ deux lois de distri
     ---------                            ------------
 ```
 
-Ce jeu généralise le jeu du chiffrement et est la base de tous les autres jeu que nous verrons en cryptographie. L'avantage de l'adversaire est, comme pour le jeu du chiffrage, défini tel que :
+Ce jeu explicite le fait que toute la cryptographie se résume à savoir si la suite générée par notre méthode de chiffrement est assez proche de l'aléatoire pour que l'on ne puisse pas, en pratique, en exploiter les différences. L'avantage de l'adversaire est, comme pour le jeu du chiffrage, défini tel que :
 
 <div>
 $$
@@ -302,8 +336,11 @@ Les deux lois seront dites :
 - **_statistiquement sécurisés_** si le meilleur algorithme de reconnaissance ne peut obtenir qu'un avantage négligeable
 - **_sémantiquement sécurisés_** si le meilleur algorithme **efficace** de reconnaissance ne peut obtenir qu'un avantage négligeable
 
-On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Pour ce jeu
-il est facile de formaliser le meilleur algorithme possible permettant de résoudre ce problème :
+On cherchera toujours à obtenir un comportement sémantiquement sécurisé. Ceci est facilité par la remarque ci-dessous :
+
+{% note %}
+
+Pour ce jeu il est facile de formaliser le meilleur algorithme possible permettant de résoudre ce problème :
 
 - Entrée :
   - un X
@@ -312,7 +349,28 @@ il est facile de formaliser le meilleur algorithme possible permettant de résou
   2. calculer la probabilité p1 d'obtenir x selon la loi D1
   3. si p0 ≥ p1 rendre 0, sinon rendre 1
 
-Si son avantage est négligeable, tous les algorithmes auront aussi un seulement un avantage négligeable.
+Si son avantage est négligeable, tous les adversaires, qu'ils soient efficaces ou non, n'auront également qu'un avantage négligeable.
+
+{% endnote %}
+
+Pour se fixer les idée commençons par un petit exercice :
+{% exercice %}
+Montrez que l'on peut distinguer la loi uniforme sur $\\{0, 1\\}^n$ de la fonction constante $F(x) = \mathbb{0}$ avec un avantage non négligeable.
+{% endexercice %}
+{% details "preuve" %}
+Si $X$ est un nombre quelconque de $\\{0, 1\\}^n$, la probabilité que $X = \mathbb{0}$ vaut $1/2^n$ (il faut que les valeurs coïncident bit à bit). L'algorithme $A$ qui répond 1 si $X_1\neq \mathbb{0}$ et 0 sinon a un avantage de :
+
+<div>
+$$
+\begin{array}{lcl}
+\text{avantage}(A) &=& Pr[A(X_1) = 1 | b=1] - Pr[A(X_1) = 1 | b=0]\\
+&=&|\frac{1}{2}\sum_{X\in \{0, 1\}^n}(Pr[A(0) = 1]\cdot (1/2)^n - Pr[A(H(x)) = 0]\cdot (1/2)^n)|\\
+&=&1-(1/2)^n
+\end{array}
+$$
+</div>
+
+{% enddetails %}
 
 Prenons par exemple la distribution de Bernoulli $B$ telle que $B(1) = 1/2 + \epsilon/2$. et $B^n$ la distribution sur $\\{0, 1\\}^n$ où chaque bit est tiré indépendamment avec $B$. On essaie de comparer cette distribution au tirage uniforme de distribution de probabilité $N$.
 
@@ -362,7 +420,9 @@ $$
 $$
 </div>
 
-Si $\epsilon$ est négligeable, la génération d'éléments de $\\{0, 1\\}^n$ l'est aussi. De là, on peut alors créer un chiffrement statistiquement sécurisé en utilisant un chiffre de Vernam avec notre générateur aléatoire.
+Si $\epsilon$ est négligeable, la génération d'éléments de $\\{0, 1\\}^n$ l'est aussi.
+
+On peut utiliser ce qui précède pour créer un chiffrement statistiquement sécurisé en utilisant un chiffre de Vernam avec notre générateur aléatoire :
 
 {% exercice %}
 Montrez que si $U$ est la loi uniforme sur $\\{0, 1\\}^n$ et $m$ un élément de $\\{0, 1\\}^n$, alors la loi de distribution associée à la variable aléatoire $X \oplus m$ où $X$ suit la loi de $B^n$ est statistiquement sécurisé.

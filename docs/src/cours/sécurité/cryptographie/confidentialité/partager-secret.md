@@ -55,17 +55,20 @@ Trouver $a$ à partir de $g^a$ n'est pas évident. On ne sait pas faire efficace
 
 > TBD taille clé 2048b actuellement
 
-## Courbes elliptiques
+### Utilisation de courbes elliptiques
 
-{% aller %}
-[Courbes elliptiques](../../../arithmétique/courbes-elliptiques){.interne}
-{% endaller %}
+Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.
 
 > TBD taille clé 256b actuellement (curve de bernstein)
+
+> Renvoyer à [Courbes elliptiques](../../../arithmétique/courbes-elliptiques){.interne}
+> pour la def et les propriétés basiques d'une courbe elliptique.
 
 ## Attaque
 
 ### <span id="side-channel-attack"></span>Side channel attack
+
+> TBD expliciter pourquoi square and multiply. Faire un test en python pour mesurer le temps.
 
 Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.
 
