@@ -149,20 +149,20 @@
 <blockquote>
 <p>TBD taille clé 2048b actuellement</p>
 </blockquote>
-<h2>Courbes elliptiques</h2>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="../../../arithm%C3%A9tique/courbes-elliptiques" class="interne">Courbes elliptiques</a></p>
-</div>
-</div>
+<h3>Utilisation de courbes elliptiques</h3>
+<p>Un des intérêt du protocole de Diffie-Hellman est qu'il peut s'écrire sous la forme de courbes elliptiques, ce qui permet de réduire la taille de la clé tout en évitant l'attaque brute force.</p>
 <blockquote>
 <p>TBD taille clé 256b actuellement (curve de bernstein)</p>
 </blockquote>
+<blockquote>
+<p>Renvoyer à <a href="../../../arithm%C3%A9tique/courbes-elliptiques" class="interne">Courbes elliptiques</a><br>
+pour la def et les propriétés basiques d'une courbe elliptique.</p>
+</blockquote>
 <h2>Attaque</h2>
 <h3><span id="side-channel-attack"></span>Side channel attack</h3>
+<blockquote>
+<p>TBD expliciter pourquoi square and multiply. Faire un test en python pour mesurer le temps.</p>
+</blockquote>
 <p>Algorithme square and multiply : deux fois plus de travail pour un bit valant 1 que pour un bit valant 0.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
