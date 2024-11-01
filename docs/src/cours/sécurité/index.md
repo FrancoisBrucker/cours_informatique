@@ -5,6 +5,7 @@ title: Sécurité
 tags: ['cours', 'sécurité', 'cryptographie']
 authors:
     - "François Brucker"
+resume: "Cours de sécurité. On y verra essentiellement les fondements cryptographiques."
 
 eleventyComputed:
     eleventyNavigation:
@@ -13,11 +14,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Embryon de cours de sécurité. On y verra essentiellement les fondements gryptographique de la sécurité.
-
-<!-- fin résumé -->
+Embryon de cours de sécurité. On y verra essentiellement les fondements cryptographiques de la sécurité.
 
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
 

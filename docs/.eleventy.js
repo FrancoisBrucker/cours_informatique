@@ -1,25 +1,22 @@
-const { EleventyRenderPlugin } = require("@11ty/eleventy");
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
+import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
+import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+import setupMarkdown from './config/markdown/index.js';
+import assetsConfig from "./config/assets.js";
+import filtersConfig from "./config/filters.js";
 
-const embedYouTube = require("eleventy-plugin-youtube-embed");
-const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+import postCompilation from "./config/post-build.js";
 
-const markdownConfig = require("./config/markdown")
-const assetsConfig = require("./config/assets")
-const filtersConfig = require("./config/filters")
-
-module.exports = function (eleventyConfig) {
+export default function(eleventyConfig) {
 
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-
-
-  eleventyConfig.addPlugin(embedYouTube);
   eleventyConfig.addPlugin(eleventyNavigationPlugin);
   
-  markdownConfig(eleventyConfig);
   assetsConfig(eleventyConfig);
+  setupMarkdown(eleventyConfig);
   filtersConfig(eleventyConfig);
+  
+  postCompilation(eleventyConfig); // tailwind
 
   return {
     dir: {

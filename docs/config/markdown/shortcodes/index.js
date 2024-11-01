@@ -1,7 +1,6 @@
+import {template} from "./quotes/utils.js";
+import quotes from "./quotes/index.js";
 
-module.exports = function (eleventyConfig) {
-
-    require('./quotes')(eleventyConfig);
-    require('./resume')(eleventyConfig);
-};
-
+export default function setupShortcodes(eleventyConfig) {
+    quotes(eleventyConfig);
+}

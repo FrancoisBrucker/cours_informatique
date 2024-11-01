@@ -14,11 +14,11 @@ eleventyComputed:
 ---
 
 <p>
-  <!-- début résumé -->
+
 
 Liste des cours qui constituent les différents enseignements.
 
-<!-- fin résumé --></p>
+</p>
 
   {% for post in collections.cours %}
   {% if post.data.tags %}
@@ -40,8 +40,7 @@ Liste des cours qui constituent les différents enseignements.
       <div class=" pt-1 px-4 flex items-top">
         <div class="flex-none">Résumé : </div>
         <div class="pl-2 m-0 grow quote">
-          
-          {% résumé post %}
+          {{  post.data.resume }}
 
         </div>
       </div>

@@ -5,7 +5,7 @@ title: Système et réseau
 tags: ['cours', 'unix', 'système']
 authors:
     - "François Brucker"
-
+resume: "Cours d'introduction"
 eleventyNavigation:
     prerequis:
         - "/cours/coder-et-développer/ordinateur-développement/"

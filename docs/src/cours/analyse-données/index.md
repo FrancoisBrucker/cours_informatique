@@ -5,6 +5,7 @@ title: Analyse de données
 tags: ["cours", "données", "viz", "python"]
 authors:
   - "François Brucker"
+resume: "Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données."
 
 eleventyNavigation:
   prerequis:
@@ -17,11 +18,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.
-
-<!-- fin résumé -->
 
 Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec anaconda, vscode ou autre)
 

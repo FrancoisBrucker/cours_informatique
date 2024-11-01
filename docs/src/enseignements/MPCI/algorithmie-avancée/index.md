@@ -154,7 +154,7 @@ Cours 1, 2 et 3
 [Cryptographie](/cours/sécurité/){.interne}
 {% endaller %}
 
-### Coloriabilité
+### Colorabilité
 
 > TBD
 

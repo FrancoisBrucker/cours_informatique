@@ -6,6 +6,7 @@ tags: ['cours', 'code', 'python']
 authors:
     - François Brucker
 
+resume: "Ce cours est dédié au code informatique. Comment l'écrire, le tester et l'exécuter."
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,7 +15,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
 
 Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple),
 

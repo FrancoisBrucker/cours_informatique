@@ -1,7 +1,6 @@
+import {escapeHtml} from "./utils.js";
 
-const { escapeHtml } = require("./utils")
-
-module.exports = function (eleventyConfig) {
+export default async function(eleventyConfig) {
 
     eleventyConfig.addPairedShortcode('details', (content, arg, arg2) => {
       if(typeof arg2 === "undefined")

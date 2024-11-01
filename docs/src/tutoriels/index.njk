@@ -14,11 +14,7 @@ eleventyComputed:
 
 <p class="prose m-4">
 
-<!-- début résumé -->
-
 Tutoriels abordant toute une gamme de sujets différents.
-
-<!-- fin résumé -->
 
 </p>
 
@@ -131,7 +127,7 @@ Tutoriels abordant toute une gamme de sujets différents.
         <div class="flex-none">Résumé : </div>
         <div class="pl-2 m-0 grow quote">
 
-          {% résumé post %}
+          {{  post.data.resume }}
 
         </div>
       </div>

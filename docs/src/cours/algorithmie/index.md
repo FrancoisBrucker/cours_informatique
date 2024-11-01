@@ -5,6 +5,7 @@ title: Algorithmie
 tags: ["cours", "algorithmie"]
 authors:
   - François Brucker
+resume: "Un cours d'algoritmie"
 
 eleventyComputed:
   eleventyNavigation:

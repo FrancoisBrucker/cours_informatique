@@ -5,6 +5,7 @@ title: Théorie des graphes
 tags: ["cours", "graphes"]
 authors:
   - "François Brucker"
+resume: "Cette introduction a pour but d'exposer quelques définitions, concepts et méthodes de résolution de problèmes propre aux graphes."
 
 eleventyNavigation:
   prerequis:

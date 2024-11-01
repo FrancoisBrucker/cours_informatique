@@ -2,6 +2,7 @@
   "name": "Cours d'informatique",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -16,18 +17,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@11ty/eleventy": "latest",
-    "@11ty/eleventy-navigation": "latest",
-    "@11ty/eleventy-plugin-syntaxhighlight": "latest",
-    "@pborenstein/eleventy-md-syntax-highlight": "latest",
-    "@tailwindcss/typography": "^0.5.9",
-    "autoprefixer": "^10.4.14",
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@pborenstein/eleventy-md-syntax-highlight": "^1.1.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
     "eleventy-plugin-mathjax": "^2.0.4",
-    "eleventy-plugin-youtube-embed": "^1.8.1",
+    "eleventy-plugin-youtube-embed": "^1.11.0",
     "eleventy-postcss-extension": "^1.0.0",
-    "markdown-it-attrs": "^4.1.6",
-    "markdown-it-multimd-table": "^4.2.1",
-    "moment": "^2.29.4",
-    "tailwindcss": "^3.2.7"
+    "markdown-it-attrs": "^4.2.0",
+    "markdown-it-multimd-table": "^4.2.3",
+    "moment": "^2.30.1",
+    "tailwindcss": "^3.4.14"
   }
 }

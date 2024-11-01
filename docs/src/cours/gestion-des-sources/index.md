@@ -5,6 +5,7 @@ title: Gestion des sources
 tags: ["cours", "projet"]
 authors:
   - François Brucker
+resume: "Comment gérer les sources d'un projet avec git et github."
 
 eleventyComputed:
   eleventyNavigation:

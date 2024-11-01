@@ -1,4 +1,4 @@
-module.exports = function (eleventyConfig) {
+export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("siteUrl", function (url, base="/") {
     try {
