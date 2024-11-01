@@ -115,9 +115,17 @@ Comme on pense très fort à l'existence de problèmes dont la résolution néce
 
 > TBD rappeler qu'on a vu ça en algorithmie.
 
+## Design du chiffrement par flux
+
+Le chiffrement le plus générique. Il utilise habituellement d'autre méthodes de chiffrement comme composant.
+
+{% aller %}
+[Chiffrement par flux](chiffrement-flux){.interne}
+{% endaller %}
+
 ## En pratique
 
-Comme l'existence d'une PRP n'est pas prouvée, il faut prendre toute proposition de chiffrement avec pincette. Il n'est pas improbable que l'on découvre des failles de sécurité et qu'il faille changer de méthode de chiffrement (c'est arrivé et ça arrivera encore) ou qu'il faille augmenter la taille de la clé pour maintenir la confidentialité que ce soit par le développement de nouveaux ordinateur de nouvelles attaques (c'est arrivé et ça arrivera encore).
+Comme l'existence d'une PRP n'étant pas prouvée, il faut prendre toute proposition de chiffrement avec pincette. Il n'est pas improbable que l'on découvre des failles de sécurité et qu'il faille changer de méthode de chiffrement (c'est arrivé et ça arrivera encore) ou qu'il faille augmenter la taille de la clé pour maintenir la confidentialité que ce soit par le développement de nouveaux ordinateur de nouvelles attaques (c'est arrivé et ça arrivera encore).
 
 S'il faut retenir une chose c'est :
 
@@ -146,14 +154,6 @@ Si $\epsilon$ est non négligeable, on peut en déduire un algorithme qui va ex�
 > TBD calcul probabilité avec une binomiale $Pr[B(n, p) \geq 1]$.
 
 Chaque méthode de chiffrement intègre ainsi en son sein des transformations non linéaires permettant de casser ce genre d'attaque.
-
-### Chiffrement par flux
-
-Le chiffrement le plus générique. Il utilise habituellement d'autre méthodes de chiffrement comme composant.
-
-{% aller %}
-[Chiffrement par flux](chiffrement-flux){.interne}
-{% endaller %}
 
 ### Chacha20
 

@@ -105,6 +105,13 @@ Algorithmes généraux :
 
 {% endaller %}
 
+## Exercices
+
+> TBD
+>
+> - Chritofides <https://en.wikipedia.org/wiki/Christofides_algorithm> (en gardant l'algorithme heuristique, 1/2 approximation donc 2 approximation. On verra plus tard que 3/2 approximation)
+> - Théorie de Buneman et X-arbres
+
 ## Problèmes de flots
 
 Problèmes de flots. Définition, algorithmes et applications
@@ -140,28 +147,41 @@ Un exemple particulier de graphes, les graphes bipartis :
 
 Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des graphes bi-parti avant d'aborder le cas général.
 
+> TBD couper en bi-parti et quelconque et ajouter des exercices
+
 {% aller %}
 [Couplages](./couplages/){.interne}
 {% endaller %}
 
-> TBD revenir sur le problème du voyage de commerce avec
+### Graphe bi-parti
 
-Projets :
+> TBD
+
+### Graphe quelconque
+
+> TBD
+
+### Projet
+
+> TBD revenir sur le problème du voyage de commerce avec
 
 {% aller %}
 
-1. chritofides <https://en.wikipedia.org/wiki/Christofides_algorithm>
-2. [Problème du postier chinois](projet-postier-chinois){.interne}
+[Problème du postier chinois](projet-postier-chinois){.interne}
 
 {% endaller %}
 
 ## Colorabilité d'un graphe
 
-> c'est k-parti renommé.
-> 
-> <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
-> 3 colorable np-complet.
-> tbd glouton
+{% aller %}
+
+[Colorabilité](./colorabilité){.interne}
+
+{% endaller %}
+
+## Graphes parfaits
+
+> TBD définition + thm Lovaz + parler du gros théorème
 
 ## Graphes Planaires
 
@@ -170,14 +190,30 @@ Projets :
 
 > secret sans informations.
 
+> TBD kuratowski
+> TBD dessin sans courbure dans un triangle.
+
+## Graphes aléatoires
+
+### Process de Galton-Watson
+
+> erdos-rado
+>
+> TBD <https://fr.wikipedia.org/wiki/Processus_de_Galton-Watson>
+
+### Graphes aléatoires et infinis
+
+> TBD erdos-rado
+> graphe infini unique
+> grosse partie connexe
+> pas connexe puis tout d'un coup connexe
+> mes amis ont plus d'amis que moi
+
 ## Algorithmes randomisés
 
 > TBD Partie 3, après algo random et hasard en algorithmie.
 
-### Graphes aléatoires et infinis
-
-> erdos-rado
->
+> TBD <https://www.cse.iitd.ac.in/~ssen/chapters/randgraph.pdf>
 
 ### couplage
 
