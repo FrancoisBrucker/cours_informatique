@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/chemins-cycles/">Chemins et cycles</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/chemins-cycles/étude/">Étude</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -99,8 +99,8 @@
 <div class="pl-8 mr-8">
 <p>Les différents algorithmes que nous allons voir sont pour la plupart des cas particuliers d'algorithmes plus généraux de la théorie des graphes.</p>
 <p>Les algorithmes présentés sont de plus pas forcément les meilleurs en terme de complexité.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le problème que nous voulons résoudre est la création d'un réseau ferré. On reprend les notations utilisées lors de la partie consacrée à la programmation dynamique :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -108,19 +108,19 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#donn%C3%A9es" class="interne">Données du réseau ferré</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Dans la partie programmation dynamique on s'intéressait à un réseau déjà créé, ici, on va le construire.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Étant donné un ensemble de villes $V$ décrites par leurs coordonnées GPS et un prix de construction de tronçon entre deux gares proportionnelle au kilomètre, comment relier les gares des villes entres-elles au prix le plus bas ?</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple les 5 villes ci-dessous :</p>
 <p><img src="5-villes-discret.png" alt="5 villes"></p>
 <p>Aucun tronçon n'a été construit et on ne peut voyager de ville en ville.</p>
@@ -130,8 +130,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi est-on sur que la figure de droite possède le nombre minimum de tronçons ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -226,8 +226,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ensemble des points est en <a href="https://fr.wikipedia.org/wiki/Position_g%C3%A9n%C3%A9rale">position générale</a>, c'est à dire que <strong>3 points ne sont jamais alignés</strong>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce n'est pas une contrainte forte puisque la probabilité que ça arrive est nulle (si on tire au hasard des coordonnées réelles aux points), et – même si ça arrivait – il suffirait de déplacer un des trois points d'epsilon pour que ça n'arrive plus.</p>
 <p>La raison fondamentale de cette hypothèse est que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -236,8 +236,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Si $P$ est un ensemble de points en <strong><em>position générale</em></strong>, alors pour toute paire de points $x, y \in P$ aucun autre point de $P$ n'est sur le segment entre $x$ et $y$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ceci va simplifier nombre de preuves de ce qui va suivre.</p>
 <h3>Connexité</h3>
 <p>Le but final est d'obtenir un réseau ferré où l'on puisse librement aller d'une ville à l'autre. Formalisons ceci en commençant par étudier des réseaux ferrés déjà constitués</p>
@@ -247,8 +247,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Un réseau ferré de villes est <strong><em>connexe</em></strong> si quelque soient deux villes $x$ et $y$, il existe un chemin entre $x$ et $y$.</p>
-</div>
-</div>
+</div></div>
+
 <p>On reprend la relation $C$ du deuxième exemple de la partie consacrée à la programmation dynamique :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -256,22 +256,22 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="/cours_informatique/cours/algorithmie/programmation-dynamique/principe/#relation-C" class="interne">La relation <em>chemin</em></a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le fait que la relation <em>chemin</em>  soit une relation d'équivalence montre que le réseau ferré est connexe si et seulement si cette relation n'admet qu'une seule classe d'équivalence ($C(x) = C(y)$ quelques soient les villes $x$ et $y$).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $C$ est une relation d'équivalence sur $V$, la <strong><em>classe d'équivalence</em></strong> de $x \in V$ est :</p>
-<p>$$<br>
-C(x) = \{ y | C[x][y] == \text{Vrai}, y \in V \}<br>
+<p>$$
+C(x) = \{ y | C[x][y] == \text{Vrai}, y \in V \}
 $$</p>
-</div>
-</div>
+</div></div>
+
 <p>Si un réseau ferré n'est pas connexe, les classes d'équivalences de la relation chemin donnent les <strong><em>composantes connexes</em></strong> du réseau ferré. Le réseau ferré de la figure suivante contient 2 composantes connexes :</p>
 <p><img src="2-composantes-connexes.png" alt="2 composantes connexes"></p>
 <p>Notez que :</p>
@@ -285,8 +285,8 @@ $$</p>
 <li>$V_1 \cap V_2 = \emptyset$</li>
 <li>si on ajoute <strong>un</strong> tronçon entre une ville de $V_1$ et une ville de $V_2$, alors $V_1 \cup V_2$ devient une composantes connexe du nouveau réseau</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple, en ajoutant le tronçon entre B et P, on obtient un réseau ferré connexe :</p>
 <p><img src="1-composantes-connexes.png" alt="1 partie connexe"></p>
 <p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau ferré uniquement à partir de sa relation tronçon.</p>
@@ -308,14 +308,14 @@ pour chaque tronçon (x, y):
         R(u) = R(y)
 </code></pre>
 <p>Qui est faux.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi est-ce faux ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -354,8 +354,8 @@ pour chaque ville u:
 </svg>
 <div class="pl-8 mr-8">
 <p>A la fin de l'algorithme composantes connexes les villes ayant même valeur de $R$ forment une composante connexe.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -393,8 +393,8 @@ pour chaque ville u:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez qu'il ne peut y avoir plus de $n-1$ fois où la ligne 3 de l'algorithme est vérifiée.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -420,8 +420,8 @@ pour chaque ville u:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En déduire que la complexité d l'algorithme est en $\mathcal{O}(n^2)$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -448,26 +448,26 @@ pour chaque ville u:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>le <strong><em>coût de construction</em></strong> d'un tronçon entre deux gares $x$ et $y$ est $K \cdot d(x, y)$ où $d(x, y)$ est la distance entre les coordonnées géographiques de $x$ et de $y$</li>
 <li>le <strong><em>coût de construction</em></strong> d'un réseau ferré est la somme des coûts de construction des tronçons qui le composent.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On peut maintenant reformuler notre problème d'optimisation :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Trouver un réseau ferré de coût de construction minimum pour notre ensemble de villes.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les tronçons.</p>
 <p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.</p>
 <p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a> :</p>
@@ -510,7 +510,7 @@ pour chaque tronçon (x, y) examiné par distance croissante:
 </svg>
 <div class="pl-8 mr-8">
 <p>On en a aussi profité pour changer de couleur en utilisant <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">cette documentation</a></p>
-</div>
+</div></div>
 </div>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">as</span> mcolors
@@ -544,20 +544,20 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
     <span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-</div>
-</details>     
-</div>
+</details></div>
+     
+
 <p>Avant de montrer que l'algorithme de Kruskal est optimal, commençons par montrer une propriété intéressante de ce réseau :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Propriété</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le réseau ferré donné par l'algorithme de Kruskal ne contient pas de cycle.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -586,8 +586,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>L'algorithme de Kruskal produit un réseau de construction connexe à coût de construction minimal.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -658,8 +658,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Un réseau ferré de coût de construction minimal n'a pas d'intersection de segments</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -705,8 +705,8 @@ $$
 <li>la ville courante</li>
 <li>la ville précédente (pour éviter de rebrousser chemin)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -794,8 +794,8 @@ $$
 <p>Améliorez la méthode précédente pour qu'elle rende le chemin parcouru. Pour cela ajoutez un paramètre chemin à l'algorithme qui va grandir à chaque nouvelle ville visitée.</p>
 <p>Pour cela, vous ajoutez un chemin en paramètre, qui sera passé à toutes les récursions de l'algorithme. Ce chemin sera <strong>modifié</strong> à chaque progression (c'est à dire lorsqu'une nouvelle ville est découverte, donc lorsque le précédent algorithme l'affichait à l'écran).</p>
 <p>Il est indispensable que l'objet soit modifié et non recréer pour que toutes les récursions de l'algorithme partagent le <strong>même</strong> objet.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -841,8 +841,8 @@ affiche à l'écran : chemin
 <li>ajouter la destination à la fin du chemin une fois celle-ci trouvée (le chemin est alors non vide et contient juste lq destination) puis sortir de l'algorithme</li>
 <li>à chaque retour de récursion (la ligne suivant un appel de récursion), si le chemin est non vide, ou ajoute la ville courante à la fin du chemin et on sort de l'algorithme.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -893,22 +893,22 @@ affiche à l'écran : chemin
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème du voyageur de commerce</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Étant donné un ensemble de villes, trouver l'itinéraire le plus court passant par chaque ville une et une seule fois.</p>
-</div>
-</div>
+</div></div>
+
 <p>Sous la forme d'un problème d'optimisation on cherche, pour un ensemble de villes $V$ donné, un cycle $v_1 v_2\dots v_1$ passant par toutes les villes 1 fois minimisant la quantité :</p>
-<p>$$<br>
-\sum_{i=1}^nd(v_i, v_{i+1}) + d(v_n, v_1)<br>
+<p>$$
+\sum_{i=1}^nd(v_i, v_{i+1}) + d(v_n, v_1)
 $$</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Combien de solutions possibles possède un problème du voyageur de commerce à $n$ villes ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -937,8 +937,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quel est la complexité d'un algorithme énumérant tous les cycles pour en trouver le moins coûteux ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -967,8 +967,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Un cycle optimal est composé de chemins optimaux.</p>
-</div>
-</div>
+</div></div>
+
 <p>Cette constatation nous incite à utiliser le principe de la <a href="https://fr.wikipedia.org/wiki/Programmation_dynamique"><strong>programmation dynamique</strong></a> pour résoudre notre problème. Le principe de création d'algorithmes utilisant la programmation dynamique est toujours le même : on essaie de créer des solutions optimales avec des solutions partielles elles-même optimales. Ceci se concrétise souvent par une équation récurrente à vérifier.</p>
 <p>Dans le cas de notre problème du voyageur de commerce à $n$ villes $(v_i)_{1\leq i \leq n}$, on peut construire un algorithme de programmation dynamique en remarquant que :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -983,8 +983,8 @@ $$
 C(I, j) = \min_{k \in I \backslash \{ 1 \}} (C(I \backslash \{ k\}, k) + d(v_k, v_j))
 $$
 </div>
-</div>
-</div>
+</div></div>
+
 <p>L'équation ci-dessous nous donne un moyen de construire itérativement des chemins minimaux jusqu'à arriver au calcul final :</p>
 <div>
 $$
@@ -996,8 +996,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En supposant que l'on connaisse $C(I, j)$ pour tous les sous-ensembles $I$ à $k$ éléments et tous les $j$, écrivez l'algorithme qui calcule tous les $C(I', j)$ pour tous les sous-ensembles $I'$ à $k+1$ éléments.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1038,8 +1038,8 @@ $$
                     C(I + {l}, j) = min(C(I + {l}, j), m)
 </code></pre>
 <p>La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :</p>
-<p>$$<br>
-\mathcal{O}(2^k(n-k)^2)<br>
+<p>$$
+\mathcal{O}(2^k(n-k)^2)
 $$</p>
 </div>
 </details>     
@@ -1049,8 +1049,8 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>Écrivez l'algorithme de résolution du problème du voyageur de commerce itérativement en partant de l'ensemble $E = {{1}}$.</p>
 <p>Montrez que sa complexité peut être estimée à $\mathcal{O}(n^22^n)$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1080,8 +1080,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Trouver la solution optimale pour un ensemble de ville de 100 est impossible avec un unique ordinateur personnel. Nous ne sommes donc pas en mesure de donner le coût minimum pour notre exemple fil rouge.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Algorithme glouton</h3>
 <p>Le nombre astronomique de solutions possibles nous empêche de toutes les essayer. De plus, on peut montrer (nous ne le ferons pas ici) qu'il est illusoire de trouver une solution exacte (du moins pendant une séance de code) car le problème du voyageur de commerce est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_NP-complet">NP-complet</a> (plus précisément NP-difficile, mais ne chipotons pas).</p>
 <p>Couramment, l'algorithme glouton utilisé pour approximer ce problème est :</p>
@@ -1099,8 +1099,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Exhibez un exemple simple pour lequel l'algorithme glouton ne trouvera jamais la solution optimale.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1129,12 +1129,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une solution du problème du voyageur de commerce n'a pas de croisements.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -1154,7 +1154,7 @@ $$</p>
 <div class="mx-8 pb-2">
 <p>Supposons qu'un cycle comporte un croisement. On peut alors sans perte de généralité considérer que l'on est dans le cas ci-après :</p>
 <p><img src="cycle-croisement.png" alt="cycle croisement"></p>
-<p>Le quadrilatère $xvyu$ est alors convexe et en supprimant les segments $(x, y)$ et $(u, v)$ on obtient les composantes connexes $A$ et $B$.<br>
+<p>Le quadrilatère $xvyu$ est alors convexe et en supprimant les segments $(x, y)$ et $(u, v)$ on obtient les composantes connexes $A$ et $B$.
 Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux de ses côtés, est alors strictement meilleur :</p>
 <p><img src="cycle-d%C3%A9croisement.png" alt="cycle décroisement"></p>
 </div>
@@ -1181,8 +1181,8 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 </svg>
 <div class="pl-8 mr-8">
 <p>Sans croisement ne veut pas forcément dire optimal !</p>
-</div>
-</div>
+</div></div>
+
 <h2>Algorithmes à performances garanties</h2>
 <p>L'algorithme glouton précédant ainsi que son optimisation ne garantissent rien sur la solution. Il existe cependant des algorithmes heuristiques dont on peut garantir la performance.</p>
 <p>On peut commencer par donner une borne min du coût du voyageur de commerce :</p>
@@ -1190,8 +1190,8 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrer que le coût du voyageur de commerce est plus grand que le coût du réseau connexe optimal</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -1219,13 +1219,13 @@ Le cycle ci-après, obtenu en changeant les diagonales du quadrilatère par deux
 <p>On peut le parcourir en suivant ses tronçons de cette façon par exemple :</p>
 <p><img src="performance-garantie-2.png" alt="performance garantie 2"></p>
 <p>Ce qui donne le cycle :</p>
-<p>$$<br>
-[1, 2, 3, 2, 4, 2, 1, 5, 1, 6]<br>
+<p>$$
+[1, 2, 3, 2, 4, 2, 1, 5, 1, 6]
 $$</p>
 <p>Il parcours 2 fois le réseau son coût est donc de deux fois le coût du réseau connexe optimal.</p>
 <p>En supprimant les sommets déjà parcourus, on obtient le cycle :</p>
-<p>$$<br>
-[1, 2, 3, 4, 5, 6]<br>
+<p>$$
+[1, 2, 3, 4, 5, 6]
 $$</p>
 <p>Remarquez que c'est l'<a href="#profondeur" class="interne">algorithme du parcours en profondeur</a> qui ajoute dans chemin toutes les villes parcouru permet de trouver ce cycle.</p>
 <p>Le coût de ce parcours est plus faible que le parcours précédent (on a une distance, donc elle respecte l'inégalité triangulaire). On en conclut que :</p>
@@ -1233,12 +1233,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>propriété</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le coût du cycle issu du parcours du réseau optimal est au pire deux fois plus grans que le cycle optimal.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le parcours donne, sur nos 100 villes :</p>
 <p><img src="performance-garantie-villes.png" alt="100 villes"></p>
 <blockquote>

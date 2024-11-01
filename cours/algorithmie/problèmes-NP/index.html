@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problèmes-NP/">Problèmes NP</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -103,13 +103,13 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un problème algorithmique est dit <strong><em>polynomial</em></strong> s'il existe un pseudo-code de complexité polynomiale en la taille de son entrée permettant de le résoudre.</p>
 <p>L'ensemble des problèmes polynomiaux est nommé $P$.</p>
-</div>
-</div>
+</div></div>
+
 <p>On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :</p>
 <ul>
 <li>Trouver le maximum d'un tableau d'entiers dont <a href="../../complexit%C3%A9-probl%C3%A8me/#recherche" class="interne">on a démontré que sa complexité était linéaire</a>,</li>
@@ -123,11 +123,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si pour être rigoureux et formel il est nécessaire de considérer qu'une case mémoire ne peut contenir qu'un seul bit plutôt qu'un entier quelconque, cela alourdit les calculs de complexité sans réel apport.<br>
+<p>Si pour être rigoureux et formel il est nécessaire de considérer qu'une case mémoire ne peut contenir qu'un seul bit plutôt qu'un entier quelconque, cela alourdit les calculs de complexité sans réel apport.
 En effet l'entier étant la donnée élémentaire, toute opération qui en manipule (c'est à dire presque toutes les opérations) devra lire chaque bits les constituant, ce qui ne fait qu'ajouter un facteur linéaire en la taille des données.</p>
 <p>Enfin, les entiers sont usuellement bornés, sur 64bits pour un processeur courant, ce qui permet d'avoir assez d'entiers pour ne pas être limité en pratique et de bien avoir une taille en $\mathcal{O}(1)$ (64 étant une constante).</p>
-</div>
-</div>
+</div></div>
+
 <h3>Vérification efficace</h3>
 <p>Il existe de nombreux problèmes dont on ne connaît pas la complexité, ou dont on ne connaît pas d'algorithmes polynomiaux pour les résoudre. Citons en 3 pour se fixer les idées :</p>
 <ul>
@@ -141,21 +141,21 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>vérifieur</em></strong> est un algorithme de :</p>
 <p>$$v: \{0, 1\}^\star \times \{0, 1\}^\star \rightarrow \{0, 1\}$$</p>
 <p>Il est dit <strong><em>efficace</em></strong> s'il est de complexité polynomiale.</p>
-</div>
-</div>
+</div></div>
+
 <p>Cette notion de vérification est cruciale. Si on ne sait pas construire de solutions nous même mais que quelqu'un arrive avec une solution potentielle, il faut pouvoir vérifier qu'elle est correcte avant de l'utiliser. Sans cette condition le problème n'a pas de solution réaliste : toute valeur peut être solution on ne peut pas savoir avant d'essayer. On peut voir le vérifieur comme une preuve (il y a équivalence entre preuve mathématique et algorithme, rappelons-le) automatisée et efficace (polynomiale, donc pouvant être écrite puis lue par des humains) de l'exactitude d'une solution.</p>
 <p>Formalisons cette notion de vérification efficace :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>vérifieur efficace d'un problème décidable</em></strong> $p$ ayant pour entrée $e \in E$ et pour sortie $s \in S$ est un algorithme $V: E \times S \rightarrow \{0, 1\}$ tel que :</p>
@@ -163,8 +163,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>$V(e, s)$ vaut 1 si et seulement si $s$ est une sortie de $p(e)$</li>
 <li>la complexité de $V$ est <strong>polynomiale</strong> en la taille de $e$ et ne <strong>dépend pas</strong> de la taille de $s$.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD ne dépend pas de la sortie mais cela borne sa taille par rapport à l'entrée : elle doit être au max de la taille de la complexité du vérifieur, sinon le vérifieur ne pourrait pas parcourir toute la solution.</p>
 </blockquote>
@@ -190,7 +190,7 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Données :</p>
@@ -209,8 +209,8 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <li>les produits choisis tiennent dans le sac,</li>
 <li>le prix du sac est supérieur à $P$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une solution du sac à dos peut être une liste des indices des produits mis dans le sac. Il suffit alors :</p>
 <ol>
 <li>de vérifier que chaque indice est entre 1 et $n$ et n'apparaisse qu'une fois (on peut le faire en $\mathcal{O}(n)$ avec un <a href="https://fr.wikipedia.org/wiki/Tri_par_paquets">bucket sort</a>)</li>
@@ -221,14 +221,14 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 <blockquote>
 <p>TBD def : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_somme_de_sous-ensembles">https://fr.wikipedia.org/wiki/Problème_de_la_somme_de_sous-ensembles</a></p>
 </blockquote>
-<p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$<br>
-en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$<br>
+<p>Prenons par exemple une instance $E$ du problème de somme de sous-ensemble et quelqu'un affirme que $E'$
+en est une solution. Il est aisé de vérifier la véracité de cette affirmation avec l'algorithme ci-dessous, qui prend deux paramètres, $E$
 et $E'$ :</p>
 <ol>
-<li>On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$<br>
+<li>On vérifie que $\vert E \vert \leq \vert E' \vert$ ce qui peut se faire en $\mathcal{O}(\vert E \vert)$ opérations en comptant chaque élément de $E'$
 et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque le compte dépasse strictement $\vert E \vert$.</li>
 <li>On vérifie que $E'$ est bien un sous-ensemble de $E$, ce qui peut se faire en $\mathcal{O}(\vert E \vert \cdot \vert E' \vert) = \mathcal{O}(\vert E \vert^2)$ opérations (on vérifie que chaque élément de $E'$ est dans $E$).</li>
-<li>On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$<br>
+<li>On somme les éléments de $E'$ et on vérifie que la somme finale vaut $t$
 , ce qui se fait en $\mathcal{O}(\vert E' \vert) = \mathcal{O}(\vert E \vert)$ opérations.</li>
 </ol>
 <p>La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.</p>
@@ -240,24 +240,24 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Problèmes NP</h2>
 <p>Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p><strong><em>Un problème algorithmique est dit</em></strong> $NP$ s'il existe un vérifieur efficace de ses solutions.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce qui donne le schéma suivant :</p>
 <p><img src="NP-NP-1.png" alt="décidable"></p>
 <p>La définition ci-dessus appelle une remarque : le nom a été très mal choisi. Il signifie <em>Non Déterministe Polynomial</em> (et <strong><em>pas du tout</em></strong> non polynomial...) car cette classe de problème a initialement été déterminée par rapport aux <a href="https://fr.wikipedia.org/wiki/Machine_de_Turing_non_d%C3%A9terministe">machines de Turing non déterministes</a> que l'on ne verra que bien plus tard : un problème est dans NP s'il peut être résoluble de façon polynomiale par une machine de Turing non déterministe. Dans ce cadre la définition fait sens puisqu'elle est identique à $P$ pour un autre type de machine.</p>
@@ -265,7 +265,7 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un problème est dans $NP$ s'il existe un vérifieur efficace de ses solutions. Ce sont exactement les problèmes algorithmiques utilisable en pratique car :</p>
@@ -273,8 +273,8 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <li>On peut énumérer toutes les solutions possibles en temps fini, mais possiblement exponentiel (ce qui fonctionne lorsque la taille d'entrée est faible).</li>
 <li>On peut vérifier efficacement (en temps polynomial) si une proposition de solution est réellement une solution.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.</p>
 <p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 <p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
@@ -295,8 +295,8 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 </svg>
 <div class="pl-8 mr-8">
 <p>Le lecteur intéresser pourra consulter <a href="https://fr.wikipedia.org/wiki/Classe_de_complexit%C3%A9">la page Wikipedia sur les classes de complexité</a> qui en liste certaines.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

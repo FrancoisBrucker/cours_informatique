@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/données-mémoire/">Mémoire, variables et objets</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -99,8 +99,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les explications ci-après sont <strong>très simplifiées</strong>. Nous nous contentons d'expliquer les principes pour que vous compreniez les enjeux de la gestion de la mémoire et l'intérêt qu'il y a à travailler par références lorsque l'on code avec des objets.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut considérer la mémoire d'un ordinateur comme un long tableau de taille fixe, mesurée en <a href="https://fr.wikipedia.org/wiki/Octet">octet</a> (appelé <em>byte</em> en anglais).</p>
 <p><img src="m%C3%A9moire.png" alt="mémoire"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -109,8 +109,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un octet correspond à 8bits, permettant d'encoder $2^8 = 256$ informations ou nombres de $00000000$ (0 en base 10) à $11111111$ ($255=2^8-1$ en base 10).</p>
-</div>
-</div>
+</div></div>
+
 <p>Comme un programme n'est jamais seul à être exécuté sur un ordinateur et que — pour des raisons de sécurité — un programme $A$ ne doit pas pouvoir accéder à la mémoire utilisée par un programme $B$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -118,8 +118,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <strong>système d'exploitation</strong> est le seul à pouvoir accéder à une case donnée de la mémoire via son indice, comme on pourrait le faire avec un tableau normal. Un programme spécifique en revanche, ne peut accéder qu'à la partie de la mémoire qui lui a été allouée par le système d'exploitation.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Accéder/allouer de la mémoire</h2>
 <p>Comme le système d'exploitation alloue de la mémoire et que plusieurs programmes se la partagent, il est uniquement possible pour un programme donné :</p>
 <ul>
@@ -139,8 +139,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est impossible d'augmenter simplement la taille d'un tableau alloué en mémoire. Il faut le recréer et recopier toutes ses valeurs dans un autre endroit de la mémoire.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Stocker en mémoire</h2>
 <p>Avant de parler des moyens qu'a un programme de se rappeler ce qu'il a stocké, regardons comment on peut stocker des objets en mémoire en prenant l'exemple d'un entier.</p>
 <p>La façon courante de stocker des objets est d'utiliser des <strong>références</strong>. Mais pour bien comprendre ce que c'est il faut commencer par parler (un peu) des valeurs.</p>
@@ -159,8 +159,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans l'ancien temps une variable était l'indice en mémoire dans le lequel était stocké la donnée.</p>
-</div>
-</div>
+</div></div>
+
 <p><img src="m%C3%A9moire-int.png" alt="un int"></p>
 <p>Ce type de fonctionnement a ses avantages :</p>
 <ul>
@@ -180,8 +180,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on fait de la programmation système (en codant en C ou encore en Rust par exemple), tout ceci est toujours vrai. Les entiers ne sont pas aussi grand qu'on veut comme lorsque l'on code en python. Ceci dit, un entier sur 32bits (4 octets) permet tout de même d'encoder $2^{32} = 4294967296$ entiers, ce qui est la plupart du temps largement suffisant.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Stockage d'objets</h3>
 <p>Actuellement — si l'on ne fait pas de programmation système — on préfère ne pas avoir à gérer directement la mémoire et surtout, on veut dissocier la variable de sa valeur : écrire <code class="language-">i = j</code> doit signifier que l'objet désigné par la variable <code class="language-">j</code> doit <strong>aussi</strong> être désigné par <code class="language-">i</code>. Pour cela, on dissocie la variable de l'emplacement en mémoire de l'objet.</p>
 <p>La définition actuelle d'une <em>variable</em> est alors :</p>
@@ -191,8 +191,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une <strong><em>variable</em></strong> est une référence à un objet stocké en mémoire.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le moyen de le plus simple de définir une référence, c'est de prendre l'indice de la première case mémoire contenant l'objet.</p>
 <p>Prenons un exemple : supposons que notre ordinateur dispose de 16Go (gigaoctets) de RAM. L'indice de notre tableau de mémoire va alors de $0$ à $10^9-1$ : il faut 4 octets pour stocker un indice en mémoire.</p>
 <p><img src="m%C3%A9moire-r%C3%A9f%C3%A9rence.png" alt="référence"></p>
@@ -203,8 +203,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les ordinateurs actuels codent une adresse mémoire sur 64bit, ce qui permet d'allouer $2^{64}\text{O} \simeq 18446744\text{TO}$, ce qui est largement plus que la mémoire courante qui est d'environ $32\text{GO} = 0.03\text{TO}$ pour une machine de bureau.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les bénéfices de cette méthode sont énormes :</p>
 <ul>
 <li>les objets sont uniques, en écrivant <code class="language-">i = j</code> les deux variables ont le même objet en référence</li>
@@ -217,8 +217,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme on manipule directement les objets, il faut faire attention aux effets de bords lorsqu'on les modifie.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple en python :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
 u <span class="token operator">=</span> t
@@ -285,8 +285,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 <li>la <strong><em>pile (stack)</em></strong> permet d'entasser les variable (des références). Chaque case de la pile a exactement la taille d'un indice de la mémoire</li>
 <li>le <strong><em>tas (heap)</em></strong> est un espace contigu de la mémoire (un tableau) dont on peut allouer ou dé-allouer une partie.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>A chaque fois qu'une variable est crée, le programme :</p>
 <ul>
 <li>alloue de la mémoire dans le tas qui contiendra l'objet. Si c'est un nouvel objet, ou incrémente le nombre de variables pointant sur cet objet</li>
@@ -304,8 +304,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p>Certains langages comme le C ou le Rust par exemple permettent également de stocker certaines variables directement dans la pile (les entiers par exemple, mais en vrai tout objet dont on peut connaître précisément la taille). Ceci accélère le code (on a pas besoin d'un sauter de la pile à la mémoire du tas ce qui fait gagner une indirection) mais complique le codage (la manipulation du tas est explicite et il faut faire très attention à sa gestion).</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour plus d'informations, vous pouvez par exemple regarder la vidéo ci-après qui explicite le tas et la pile :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -313,8 +313,8 @@ u<span class="token punctuation">[</span><span class="token number">1</span><spa
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=5OJRqkYbK-4">Pile et tas</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

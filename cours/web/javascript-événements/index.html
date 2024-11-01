@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/javascript-événements/">Javascript : événements</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -111,12 +111,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/setInterval">https://developer.mozilla.org/en-US/docs/Web/API/setInterval</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pas à proprement parlé un événement, mais le principe que nous utiliserons ici sera identique pour eux.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -148,23 +148,23 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>Que fait l'exécution de ce <a href="timer" class="interne">fichier</a> ?</p>
-</div>
-</div>
+</div></div>
+
 <p>Un timer exécute la fonction en paramètre toute les secondes.</p>
 <h2>Un événement</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Element#%C3%A9v%C3%A8nements">https://developer.mozilla.org/fr/docs/Web/API/Element#évènements</a></li>
 <li><a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLElement#%C3%A9v%C3%A8nements">https://developer.mozilla.org/fr/docs/Web/API/HTMLElement#évènements</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Il existe de nombreux événements que l'on peut associer à un <code class="language-">Element</code> ou à un <code class="language-">HTMLElement</code>. La façon la plus simple de les utiliser est d'associer une fonction à la propriété associé.</p>
 <p>Par exemple, en regardant la <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/click_event">documentation de l'événement <code>click</code></a>, on voit que la propriété associées est <code>onclick</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -199,22 +199,22 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
 <p>Ouvrez <a href="%C3%A9v%C3%A9nement-click" class="interne">le</a> avec votre navigateur et comprenez le.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé le fait que les variable sont par défaut globales en javascript (on modifie la variable compte)</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier html qui change la couleur d'un paragraphe de lorem ipsum lorsque la souris passe dessus, et qui redevient à la normal, une fois que la souris n'est plus sur le paragraphe.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -270,12 +270,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers">https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Dans les cas complexe, avoir une unique fonction associée à un événement est limitant. Pour avoir plusieurs fonctions associées à un même événement, on utilise la méthode <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener"><code class="language-">addEventListener</code></a> pour ajouter une fonction et <a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener"><code class="language-">removeEventListener</code></a> pour le supprimer.</p>
 
 

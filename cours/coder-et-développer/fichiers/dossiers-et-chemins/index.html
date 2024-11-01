@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/dossiers-et-chemins/">Dossiers et chemins</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -101,8 +101,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On ne présuppose jamais de l'endroit où un fichier est stocké sur un ordinateur.</p>
-</div>
-</div>
+</div></div>
+
 <p>Supposons  que vous ayez un fichier python dans le dossier <code class="fichier">/Users/fbrucker/Documents/mon_projet/main.py</code> et que ce programme python utilise le fichier <code class="fichier">/Users/fbrucker/Documents/mon_projet/donnees.txt</code>.</p>
 <p>Si votre programme <code class="fichier">main.py</code> utilise le fichier <code class="fichier">donnees.txt</code> de cette façon :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/Users/fbrucker/Documents/mon_projet/donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -123,8 +123,8 @@
 <p>Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable <code class="language-">__file__</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>On n'a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module <a href="https://docs.python.org/fr/3/library/os.path.html"><code>os.path</code> de python</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -139,8 +139,8 @@
 <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># le dossier</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># le nom du fichier                                     </span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès aux fichiers de données sur toutes les machines où votre projet sera copié.</p>
 <p>Un fois un dossier de référence trouvé, on pourra l'utiliser pour accéder à nos données. Mais <strong>jamais</strong> à la main :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -149,8 +149,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on manipule des fichiers ou que l'on combine des dossiers on utilise <strong>toujours</strong> une bibliothèque dédiée pour cela, on ne manipule <strong>jamais</strong> les noms de fichiers et de dossiers en utilisant des méthodes de chaînes de caractères</p>
-</div>
-</div>
+</div></div>
+
 <p>On va voir deux façons de faire en python, l'une classique avec le module <a href="https://docs.python.org/fr/3/library/os.path.html">os.path</a>, l'autre plus moderne qui utilise le module <a href="https://docs.python.org/fr/3/library/pathlib.html">pathlib</a>.</p>
 <h2>Module <code class="language-">os.path</code></h2>
 <p>On suppose que la variable <code class="language-">__file__</code> corresponde au chemin <code class="fichier">/Users/fbrucker/Documents/mon_projet/main.py</code> sur le disque dur. On suppose aussi que le module <code class="language-">os</code> a été importé.</p>
@@ -169,8 +169,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://jefftriplett.com/2017/pathlib-is-wonderful/">Ce tutoriel</a> est parfait pour vous montrer comment l'utiliser.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="fichiers-distants"></span>Fichiers distants</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -178,8 +178,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://requests.readthedocs.io/en/latest/">Module requests</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Les fichiers stockés sur internet peuvent aussi être récupérés en python <em>via</em> leur <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a>. On utilise la bibliothèque <a href="https://requests-fr.readthedocs.io/en/latest/">requests</a> (<code>python -m pip install requests</code>).</p>
 <p>Par exemple, le site <a href="https://www.gutenberg.org">https://www.gutenberg.org</a> possède de nombreux livres au format utf-8 à télécharger. Par exemple <a href="https://www.gutenberg.org/ebooks/14155">https://www.gutenberg.org/ebooks/14155</a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> requests
@@ -201,8 +201,8 @@ page <span class="token operator">=</span> requests<span class="token punctuatio
 </svg>
 <div class="pl-8 mr-8">
 <p>La fonction <code class="language-">requests.get</code> va chercher le fichier sur internet. Donc utilisez cette fonction avec parcimonie car les accès réseau sont toujours lents par rapport aux fichiers sur le disque dur en local.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.exists"><code class="language-">os.path.exists</code></a>), et sinon il le télécharge :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
 

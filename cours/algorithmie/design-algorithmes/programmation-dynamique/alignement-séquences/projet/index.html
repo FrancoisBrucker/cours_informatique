@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/">Programmation dynamique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/">Alignement de séquences</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/alignement-séquences/projet/">Projet</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -109,8 +109,8 @@
               </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -146,8 +146,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple, on doit être capable d'exécuter le cod suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> alignement <span class="token keyword">import</span> Alignement
 
@@ -186,8 +186,8 @@ un_alignement<span class="token punctuation">.</span>affiche<span class="token p
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Vous vérifierez bien que les 3 alignements suivants sont corrects :</p>
 <ul>
 <li>&quot;ACTGATT&quot; et &quot;GCTAATCG&quot;</li>
@@ -203,8 +203,8 @@ un_alignement<span class="token punctuation">.</span>affiche<span class="token p
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la classe <code class="language-">Alignement</code> ajoutez une méthode <code class="language-">evolution()</code> qui rend la liste de chaînes permettant de passer de $a$ à $b$ en suivant l'alignement $(a^\star, b^\star)$</p>
-</div>
-</div>
+</div></div>
+
 <p>Le code python suivant doit pouvoir s'exécuter :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> alignement <span class="token keyword">import</span> Alignement
 
@@ -240,8 +240,8 @@ un_alignement<span class="token punctuation">.</span>evolution<span class="token
 </svg>
 <div class="pl-8 mr-8">
 <p>Définissez la fonction de coût pour l'exemple du cas général de l'étude</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut maintenant créer l'alignement général :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -255,8 +255,8 @@ un_alignement<span class="token punctuation">.</span>evolution<span class="token
 <li>cette classe doit contenir les même méthodes que la classe <code class="language-">DistanceElem</code>.</li>
 </ul>
 <p>Arrangez-vous pour conserver le plus de code possible entre les deux classes.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Pour aller plus loin : étude biologique</h2>
 <p>Le fichier texte <a href="pro-opsines.edi">pro-opsines.edi</a> contient le code (sous la formes d'acides aminées) de 3 protéines d'<a href="https://fr.wikipedia.org/wiki/Opsine">opsines</a> qui permettent aux humains de voir en couleur. Ces 3 protéines dérivent d'un ancêtre commun.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -269,8 +269,8 @@ un_alignement<span class="token punctuation">.</span>evolution<span class="token
 <li>Récupérez sous la forme de 3 chaînes de caractères les 3 protéines (les lignes commençant par un &quot;;&quot; sont considérées comme des commentaires pour ce type de fichier)</li>
 <li>faites l'alignement élémentaire des 3 protéines 2 à 2</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>La distance élémentaire n'est pas très utilisée en pratique. Pour l'étude de séquences protéiques, on utilise souvent la matrice de similarité <a href="https://en.wikipedia.org/wiki/BLOSUM">BLOSUM62</a> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">PROTEINS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"A"</span><span class="token punctuation">,</span> <span class="token string">"R"</span><span class="token punctuation">,</span> <span class="token string">"N"</span><span class="token punctuation">,</span> <span class="token string">"D"</span><span class="token punctuation">,</span> <span class="token string">"C"</span><span class="token punctuation">,</span> <span class="token string">"Q"</span><span class="token punctuation">,</span> <span class="token string">"E"</span><span class="token punctuation">,</span> <span class="token string">"G"</span><span class="token punctuation">,</span> <span class="token string">"H"</span><span class="token punctuation">,</span> <span class="token string">"I"</span><span class="token punctuation">,</span> <span class="token string">"L"</span><span class="token punctuation">,</span> <span class="token string">"K"</span><span class="token punctuation">,</span> <span class="token string">"M"</span><span class="token punctuation">,</span> <span class="token string">"F"</span><span class="token punctuation">,</span> <span class="token string">"P"</span><span class="token punctuation">,</span> <span class="token string">"S"</span><span class="token punctuation">,</span> <span class="token string">"T"</span><span class="token punctuation">,</span> <span class="token string">"W"</span><span class="token punctuation">,</span> <span class="token string">"Y"</span><span class="token punctuation">,</span> <span class="token string">"V"</span><span class="token punctuation">,</span> <span class="token string">"B"</span><span class="token punctuation">,</span> <span class="token string">"Z"</span><span class="token punctuation">,</span> <span class="token string">"X"</span><span class="token punctuation">]</span>
 
@@ -309,8 +309,8 @@ BLOSUM_MATRIX <span class="token operator">=</span> <span class="token punctuati
 <li>pour la transformer en matrice de coût, il faut prendre l'opposé de sa valeur !</li>
 <li>l'identité n'est plus de coût nul.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -318,16 +318,16 @@ BLOSUM_MATRIX <span class="token operator">=</span> <span class="token punctuati
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites un alignement 2 à 2 de ces 3 protéines en utilisant la matrice de coût associée.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez utiliser un dictionnaire pour créer la distance entre deux acides aminés.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

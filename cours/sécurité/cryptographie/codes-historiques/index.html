@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/codes-historiques/">Codes historiques</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -112,8 +112,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le <a href="https://fr.wikipedia.org/wiki/ROT13">ROT(13)</a>, César où $k=13$ (<code>A</code> est remplacé par <code>N</code>) est l'ancêtre du floutage NSFW.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le code de César est un exemple de <em><strong>Codage par flux</strong></em> (<em>stream cipher</em>) : chaque lettre est chiffrée une à une avec le même algorithme (il ne change pas à chaque lettre à coder)</p>
 <table>
 <thead>
@@ -297,8 +297,8 @@ Longtemps je me suis couche de bonne heure.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Fr%C3%A9quence_d%27apparition_des_lettres">https://fr.wikipedia.org/wiki/Fréquence_d'apparition_des_lettres</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La lettre arrivant le plus souvent dans le message chiffré, <code>r</code> a donc toute les chances d'être <code>e</code> ce qui donne le décalage.</p>
 <h2>Vigenère</h2>
 <h3><span id="Vigenère-chiffre"></span>Chiffrement</h3>
@@ -327,8 +327,8 @@ Chiffre : AFBALXBGG DW FT JICK VDLQBW WT SCHFX WVILW.
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re">Chiffre de Vigenère</a></p>
-</div>
-</div>
+</div></div>
+
 <ol>
 <li>Calcul exhaustif des clés : $26^p$, si $p \geq 30$ alors environ $2^{128}$ opérations, c'est safe.</li>
 <li>si la clé est choisie de façon aléatoire, par bloc cela semble sécurisé, chaque lettre peut équiprobablement être choisie. Mais :
@@ -439,8 +439,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=yHXOnCKh4iE">Décrypter Vigenère</a></p>
-</div>
-</div>
+</div></div>
+
 <p>On voit que le décryptage d'un texte peut prendre des voies détournées. Il ne faut <strong>jamais</strong> sous-estimer l'intelligence et l'inventivité de l'adversaire : il est nécessaire en sécurité et en cryptographie de se munir d'outils théorique permettant de garantir et de démontrer la sécurité d'un système de chiffrement.</p>
 <h3>One time Pad (OTP)</h3>
 <p>L'idée est de faire un Vigenère avec comme taille de clé le message !</p>
@@ -451,8 +451,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Masque_jetable">masque jetable</a>, <em>One Time Pad</em>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Technique utilisée pour le téléphone rouge lors de la guerre froide.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -460,8 +460,8 @@ TEQIJXSRBMDXHZZYFVTUSFSGJZHUDTSFIWWNGGFIUAPZBYVNGVHIMK
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.bibmath.net/crypto/index.php?action=affiche&amp;quoi=moderne/che">Chiffre du Che</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Ce qui donne :</p>
 <pre><code>Longtemps je me suis couche de bonne heure.
 ALarecher ch ed utem psperd ud eMarc elPro
@@ -499,13 +499,13 @@ message
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $X$ et $Y$ deux variables aléatoires indépendantes sur $M = \{0, 1\}$ et telle que $X$ soit uniforme.</p>
 <p>Alors la variable aléatoire $X \oplus Y$ est uniforme sur $\{0, 1\}^L$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -529,8 +529,8 @@ message
 <li>$Pr[Y_i = 0] = p_i$ et donc $Pr(Y_i = 1) = 1-p_i$</li>
 </ul>
 <p>Comme $(X \oplus Y)_i$ vaut 0 que si $X_i$ et $Y_i$ valent conjointement 0 ou 1, on en déduit que :</p>
-<p>$$<br>
-Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1]<br>
+<p>$$
+Pr[(X \oplus Y)_i = 0] = Pr[X_i = 0, Y_i = 0] + Pr[X_i = 1, Y_i = 1]
 $$</p>
 <p>Comme $X$ et $Y$ sont indépendants, $X_i$ et $Y_i$ le sont également et on a : $Pr[X_i = a, Y_i = b] = Pr[X_i = a]\cdot Pr[Y_i = b]$. Donc :</p>
 <ul>
@@ -549,8 +549,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ceci pose les bases que tout code doit avoir une clé choisie uniformément et indépendante du message.</p>
-</div>
-</div>
+</div></div>
+
 <p>Attention cependant.</p>
 <h3>Ne répétez pas la clé</h3>
 <p>La code de Vernam est inviolable si on ne possède aucune information supplémentaire. Si on chiffre deux messages différents avec la même clé $k \oplus m$ et $k \oplus m'$, Eve na qu'à combiner les deux messages chiffrées pour faire disparaître la clé : $k \oplus m \oplus k \oplus m' = k \oplus k \oplus m \oplus m' = m \oplus m'$. De là, si Eve sait que le message est en Français, il lui suffit de déplacer des mots sur le code pour voit apparaître d'autres mots :</p>
@@ -581,10 +581,10 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>C'est arrivé en vrai.<br>
+<p>C'est arrivé en vrai.
 <a href="https://fr.wikipedia.org/wiki/Projet_Venona">Projet Venona</a></p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="Vernam-intégrité"></span>Intégrité</h3>
 <p>Si le message est inviolable, il n'est pas infalsifiable.</p>
 <pre><code>  Je donne 12 euros à François

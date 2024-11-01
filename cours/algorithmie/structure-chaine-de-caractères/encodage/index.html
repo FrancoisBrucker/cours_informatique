@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/">Structure chaine de caractères</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/encodage/">Encodage des caractères</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -99,8 +99,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)</p>
-</div>
-</div>
+</div></div>
+
 <h2>Codage des caractères</h2>
 <blockquote>
 <p>TBD un nombre pour un caractère</p>
@@ -122,8 +122,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut de votre éditeur de texte.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Unicode</h2>
 <p>Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.</p>
 <p>Pour rationaliser cela, le format <a href="https://fr.wikipedia.org/wiki/Unicode">Unicode</a> a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de <a href="https://fr.wikipedia.org/wiki/Tengwar">Tengwar</a>, de <a href="https://fr.wikipedia.org/wiki/Klingon_(langue)">Klingon</a> ou encore de <a href="https://fr.wikipedia.org/wiki/Khuzdul">Khuzdul</a> dans Unicode)</p>
@@ -135,8 +135,8 @@
 <div class="pl-8 mr-8">
 <p>On a coutume de faire précéder ce nombre par <code>U+</code> pour préciser que c'est un code Unicode écrit en hexadécimal.</p>
 <p>Ainsi <code>U+1823</code> correspond à la lettre mongole o : ᠣ, retrouvez là dans la la liste des <a href="http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html">différents codes</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Les caractères sont organisés <a href="https://www.compart.com/fr/unicode/block">en blocs</a>, par exemple :</p>
 <ul>
 <li>de <a href="https://www.compart.com/fr/unicode/block/U+0000">0 à 7F</a> : Latin de base</li>
@@ -151,8 +151,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Unicode permet d'unifier tous les encodages de caractères en associant à tout caractère d'une langue humaine un numéro.</p>
-</div>
-</div>
+</div></div>
+
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
 <h2><span id="utf8"></span>utf-8</h2>
 <blockquote>
@@ -168,8 +168,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://onlineutf8tools.com/convert-utf8-to-hexadecimal">Convertisseur utf8 vers hexadécimal</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour cela résoudre deux problèmes épineux :</p>
 <ul>
 <li>connaître le nombre d'octets nécessaires pour décoder un caractère</li>
@@ -200,7 +200,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>En python</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -208,8 +208,8 @@
 <li>convertir un nombre en binaire ou en hex via les fonctions <code class="language-">bin</code> et <code class="language-">hex</code> rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi <code class="language-">bin(42)</code> donne <code class="language-">'0b101010'</code> et <code class="language-">hex(42)</code> donne <code class="language-">'0x2a'</code>.</li>
 <li>notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Python et chaînes de caractères</h2>
 <p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peut être considérée comme un tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
 <p>En python, la concaténation est symbolisée par l'opérateur <code language-="">+</code>.</p>
@@ -225,8 +225,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><strong>Toujours</strong> convertir les données entrées par un utilisateur ou lues d'un fichier dans le type voulu.</p>
-</div>
-</div>
+</div></div>
+
 <h3><code class="language-">byte</code> et <code class="language-">str</code></h3>
 <p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code>  des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
 <p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code class="language-">str</code> :</p>
@@ -242,8 +242,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Notez <code>m27</code> le 27ième nombre de Mersenne $2^{44497} -1$ :</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -270,8 +270,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Combien de chiffres en base 10, 2 et 16 possède ce nombre ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -303,8 +303,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Index de la première occurrence de <code>1234</code> dans m27. Et de la deuxième ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -337,15 +337,15 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
   </svg>
 <div class="pl-8 mr-8">
 <p>Comme pour les listes, on peut <a href="/cours_informatique/cours/utiliser-python/listes/#slice" class="interne">utiliser les <em>slices</em></a> pour copier des parties de chaîne.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ainsi <code>&quot;abcdefghijklmnopqrstuvwxyz&quot;[2:15:4]</code> vaut : <code>'cgko'</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quels sont les 10 premiers chiffres de m27 ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -371,8 +371,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quels sont les 10 derniers chiffres de m27 ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -398,8 +398,8 @@ re_x <span class="token operator">=</span> x_en_byte<span class="token punctuati
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Est-ce que m27 est un <a href="https://fr.wikipedia.org/wiki/Palindrome">palindrome</a> ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

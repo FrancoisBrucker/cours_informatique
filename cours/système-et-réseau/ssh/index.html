@@ -102,8 +102,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/ssh/">ssh</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -142,8 +142,8 @@ Could not <span class="token function">open</span> a connection to your authenti
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous voulez plus d'options vous pouvez aussi copier-coller le contenu de ce lien : <a href="https://gist.github.com/gabetax/3756756">ajout ssh-agent</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Sous windows sans WSL</h3>
 <ol>
 <li><a href="https://davidaugustat.com/windows/windows-11-setup-ssh">https://davidaugustat.com/windows/windows-11-setup-ssh</a></li>
@@ -164,8 +164,8 @@ Start-Service ssh-agent
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=3-MDtASgSo8">ssh en 10min</a></p>
-</div>
-</div>
+</div></div>
+
 <p><strong>Secure Shell (SSH)</strong> est à la fois un programme informatique et un protocole de communication sécurisé. Le protocole de connexion impose un échange de clés de chiffrement en début de connexion. Par la suite, tous les segments TCP sont authentifiés et chiffrés. Il devient donc impossible d'utiliser un sniffer pour voir ce que fait l'utilisateur. Il utilise <a href="../tls" class="interne">tls</a> pour les connexions entre ordinateurs.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -176,8 +176,8 @@ Start-Service ssh-agent
 <li><a href="https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html">ssh handshake</a></li>
 <li><a href="https://bash-prompt.net/guides/bash-ssh-ciphers/">chiffrements utilisés</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On utilise ssh pour garantir de l'authenticité et des ordinateurs sur lesquels on se connecte et des utilisateur qui s'y connecte. Il y aura ainsi essentiellement 2 jeux de clés asymétriques :</p>
 <ol>
 <li>la paire de clé identifiant l'ordinateur sur lequel un utilisateur veut se connecter</li>
@@ -193,20 +193,20 @@ Start-Service ssh-agent
 <li><a href="https://www.youtube.com/watch?v=hQWRp-FdTpc">ssh crash course</a></li>
 <li><a href="https://tusharf5.com/posts/ssh-deep-dive/">deep dive</a></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h2>Connexion</h2>
 <p>Supposons que je veuille me connecter à une machine distante dont je connais le nom : <code>roucas100.etu.ec-m.fr</code> (cette machine n'est accessible que si vous êtes déjà sur le réseau de l'école centrale méditerranée).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Connection depuis l'extérieur</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si vous n'êtes pas initialement connecté sur le réseau de l'école, remplacez <code>roucas100.etu.ec-m.fr</code> par <code>sas1.ec-m.fr</code> qui est kl'ordinateur accessible depuis internet.</p>
-</div>
-</div>
+</div></div>
+
 <p>Je dois me connecter en tant qu'utilisateur de cette machine. Pour cela la connection s'effectue toujours en utilisant le schéma d'une URL : <code>identifiant@machine</code>. Dan sle cs présent :</p>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
 </code></pre>
@@ -258,8 +258,8 @@ clé de machine
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme vous allez vous servir de cette clé pour vous connecter automatiquement à des ordinateurs distant, Il <strong><em>faut</em></strong> mettre une passphrase sécurisée à votre clé.</p>
-</div>
-</div>
+</div></div>
+
 <p>Si vous suivez les comportement par défaut, vous aller créer deux fichier dans votre dossier <code class="fichier">~/.ssh</code> :</p>
 <ul>
 <li><code>id_rsa</code> qui contient votre clé privée</li>
@@ -272,8 +272,8 @@ clé de machine
 </svg>
 <div class="pl-8 mr-8">
 <p>Regardez les droits de ces deux fichiers ainsi que du dossier <code>~/.ssh</code>.</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : <a href="https://www.vidarholen.net/contents/blog/?p=24">ssh et RSA</a></p>
 </blockquote>
@@ -284,8 +284,8 @@ clé de machine
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art">randomart</a></p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-keygen <span class="token parameter variable">-lv</span>
 </code></pre>
 <h3>Stocker sa clé dans l'agent</h3>
@@ -321,8 +321,8 @@ clé de machine      clé d'utilisateur
 </svg>
 <div class="pl-8 mr-8">
 <p>Faire cette procédure pour vous connecter sans mot de passe.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Stockage des clés</h3>
 <p>Il est de coutume de stocker ses clés sur un ordinateur accessible de l'internet. Il est alors possible d'y accéder depuis de multiple ordinateurs sans avoir à dupliquer la clé.</p>
 <p>Pour cela, il fut pouvoir se connecter sur la machine distance en <em>emportant l'agent avec soit</em>. Ceci se fait en ajoutant l'option <code>-A</code> à la connection ssh. Le principe est alors le suivant :</p>
@@ -348,8 +348,8 @@ clé de machine      clé d'utilisateur
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="exercices-connexion" class="interne">exercices</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Amusons-nous avec la redirection de ports</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -357,8 +357,8 @@ clé de machine      clé d'utilisateur
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="redirection-ports" class="interne">Redirection de ports</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

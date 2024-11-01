@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-mélange/">Étude : mélanger un tableau</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -103,14 +103,14 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un projet vscode pour implémenter, tester et utiliser les différents algorithmes.</p>
-</div>
-</div>
+</div></div>
+
 <p>Commençons par identifier le problème. Nous allons utiliser le problème suivant, qui consiste à rendre une permutation des $n$ premiers entiers :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong> :</p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -118,15 +118,15 @@
 <li><strong>entrée</strong> : un tableau d'entiers</li>
 <li><strong>sortie</strong> : une permutation aléatoire du tableau en entrée</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une permutation d'un tableau $T$ de taille $n$ est un tableau $\sigma(T)$ de taille $n$ où $\sigma(T)[i] = T[\sigma(i)]$ avec $\sigma$ une bijection de $[0 .. n-1]$.</p>
 <p>L'algorithme que nous allons montrer ici nécessite que l'on puisse obtenir un entier aléatoire plus petit qu'un nombre donné $n$. On va donc considérer que l'on a une fonction <code class="language-">randrange</code> de complexité $\mathcal{O}(1)$ qui résout le problème <em>&quot;randrange&quot;</em> suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong> :</p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -134,8 +134,8 @@
 <li><strong>entrées</strong> : un entier $a$</li>
 <li><strong>sortie</strong> : un entier aléatoire $b$ tel que $0 \leq b &lt; a$.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On ne va pas définir plus que ça la notion d'aléatoire en informatique. On va ici prendre la définition mathématique : <em>rend un nombre entre $a$ et $b$ de façon équiprobable</em>, et considérer que c'est ok.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -143,8 +143,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Il n'existe pas d'aléatoire au sens mathématique en informatique. On ne peut atteindre que des nombre <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire">pseudo-aléatoires</a>, mais c'est une autre histoire.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Remarques préliminaires</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -160,8 +160,8 @@
 
     <span class="token keyword">return</span> T_prim
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -190,15 +190,15 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez cette méthode (on a utilisé la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> du module <a href="https://docs.python.org/fr/3/library/random.html">random</a>) pour vous rendre compte par vous-même qu'elle ne résout pas le problème.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Borne min du problème</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez la borne min du problème <em>&quot;permutation&quot;</em>, même si on se sait pas si un tel algorithme existe.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -238,8 +238,8 @@ rendre P[i]
 </svg>
 <div class="pl-8 mr-8">
 <p>Trouver $\mathcal{S}$, l'ensemble de toutes les permutations de $S = [0, 1, \dots, n-1]$</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour trouver toutes les permutations d'un tableau on peu utiliser une technique similaire à celle utilisée pour <a href="../complexit%C3%A9s/amortie#compteur-binaire" class="interne">le compteur binaires</a> : créer une fonction qui trouve le successeur d'un tableau.</p>
 <p>Pour cela, il nous faut :</p>
 <ol>
@@ -251,7 +251,7 @@ rendre P[i]
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'<em><strong>ordre lexicographique</strong></em> entra tableaux d'entiers est définit tel que si $T_1$ et $T_2$ sont deux tableaux d'entiers :</p>
@@ -265,15 +265,15 @@ rendre P[i]
 </li>
 <li>$T_1 &gt; T_2$ si $T_2 &lt; T_1$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Dans notre cas, nous ne considérons pas pas tous les tableaux d'entiers, uniquement toutes les permutations de $[0 .. n-1]$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quelle est la plus petite $S_1$ et la plus grande $S_{n!}$ des permutations de S ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -298,14 +298,14 @@ rendre P[i]
 </div>
 </details>     
 </div>
-<p>Essayons de trouver le <em><strong>successeur</strong></em> d'une permutation $S_i$ , c'est à la plus petite des permutations plus grande que $S_i$. Ceci peut se faire de façon efficace en considérant l'indice<br>
+<p>Essayons de trouver le <em><strong>successeur</strong></em> d'une permutation $S_i$ , c'est à la plus petite des permutations plus grande que $S_i$. Ceci peut se faire de façon efficace en considérant l'indice
 $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé par ordre décroissant.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant $i^{\star}$, caractérisez le successeur de la permutation $S_{i}$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -362,8 +362,8 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez la fonction successeur qui prend une permutation de $S$ en entrée et la modifie en son successeur. Cette fonction devra être de complexité $\mathcal{O}(n-i^\star)$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -420,13 +420,13 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 <li>$S[n-i+j] &gt; S[n-i+j+1]$ pour tout $0 &lt; j &lt; i-1$</li>
 </ol>
 <p>est de cardinal $\frac{n!}{2^i}$. Comme il faut de plus de l'ordre de $i$ opérations pour traiter une permutation de $\mathcal{S}_i$, on en conclut que la complexité totale de l'énumération de toutes les permutations vaut :</p>
-<p>$$<br>
-C = \sum_{i=1}^{n}i\cdot \frac{n!}{2^i} + n = n! \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n<br>
+<p>$$
+C = \sum_{i=1}^{n}i\cdot \frac{n!}{2^i} + n = n! \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
 $$</p>
 <p>En effet, l'union des $\mathcal{S}_i$ plus l'ensemble contenant uniquement la partition triée par ordre décroissant (qui nécessite $n$ opérations pour être traitée) partitionne l'ensemble des permutations.</p>
 <p>En poussant le calcul <a href="../complexit%C3%A9-amortie/#compteur-agr%C3%A9gat-partition" class="interne">comme on a fait pour le compteur binaires</a>, on trouve :</p>
-<p>$$<br>
-C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)<br>
+<p>$$
+C = n! \cdot (2-\frac{n+2}{2^n}) + n = \mathcal{O}(n!)
 $$</p>
 <p>Comme pour le compteur binaire, on remarque que la complexité de l'énumération de toutes les permutations est de l'ordre du nombre de permutations et qu'en moyenne $n-i^\star$ vaut 2.</p>
 <h3>Toutes les permutations de $T$</h3>
@@ -494,8 +494,8 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>Vérifiez expérimentalement que l'on obtient bien toutes les permutations d'un tableau à 5 éléments si on exécute <code>melange(5, 1000)</code>.</p>
 <p>Pour une liste à 5 éléments, chaque liste devrait apparaître $\frac{1000}{5!} \simeq 8$ fois. Est-ce le cas ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -555,8 +555,8 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 </svg>
 <div class="pl-8 mr-8">
 <p>L'intérêt de <code class="language-">mélange</code> est théorique. Il montre qu'il existe un algorithme pour résoudre le problème (et en donne par là également une borne max).</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="algorithme-fisher-yates"></span> Algorithme de Fisher-Yates ou de Knuth</h2>
 <p>L'algorithme que l'on va montrer maintenant, dit de <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">fisher-yates ou encore de Knuth</a>, va également résoudre le problème &quot;permutation&quot;, mais de façon bien plus élégante.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -565,8 +565,8 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme <em>algorithme de Knuth</em> plutôt qu'<em>algorithme de Fisher-Yates</em>. Cependant comme Knuth a créé de très nombreux algorithmes, googler &quot;algorithme de fisher-yates&quot; donne directement le résultat attendu alors que googler &quot;algorithme de Knuth&quot; donne plein de résultats différents (mais tous sont de superbes algorithmes !).</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> mélange_Knuth<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -583,16 +583,16 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez cet algorithme pour voir s'il rend bien des permutations du tableau en entrée.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que la boucle for pourrait aussi s'écrire <code class="language-">for i in range(len(T2) - 1, -1, -1)</code> sans perte de généralité.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="finitude-Knuth"></span> Finitude</h3>
 <p>Une unique boucle for sur la longueur du tableau : l'algorithme finit toujours.</p>
 <h3><span id="complexité-Knuth"></span> Complexité</h3>
@@ -629,8 +629,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, une fonction à tout à fait le droit d'être un paramètre, ce qui est vraiment chouette pour écrire du code générique.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> compte_mélange_générique<span class="token punctuation">(</span>fonction_mélange<span class="token punctuation">,</span> taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>taille_liste<span class="token punctuation">)</span><span class="token punctuation">)</span>
     P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
@@ -673,8 +673,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez <code class="language-">graphique_mélange_générique(mélange_Knuth, 6, 10000)</code> et comparez la vitesse d'exécution par rapport à <code class="language-">graphique_mélange_générique(mélange, 6, 10000)</code></p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez obtenir le résultat suivant :</p>
 <p><img src="m%C3%A9lange_Knuth.png" alt="mélange de Knuth"></p>
 <p>Le nombre de permutations trouvé oscille bien autour de la valeur théorique.</p>
@@ -684,8 +684,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour vérifier que notre résultat est bien conforme à un tirage aléatoire, on devrait <a href="https://fr.wikipedia.org/wiki/Test_du_%CF%87%C2%B2#Test_du_%CF%872_d'ind%C3%A9pendance">fair un test du chi2 d'indépendance</a>, mais cela nous éloignerait trop d'un cours d'algorithmie.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Preuve de programme</h3>
 <p>On suppose que le tableau d'entrée possède $n$ éléments.</p>
 <p>On va montrer que les probabilités de sortie de chaque permutation sont bien équiprobables de trois façons différentes. Toutes les démonstrations reposent sur le fait :</p>
@@ -722,8 +722,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette preuve permet aussi de montrer que l'algorithme ne peut pas boucler et retrouver deux fois la même permutation avec 2 exécutions différentes.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Méthodes de python</h2>
 <p>Python utilise la méthode <a href="https://docs.python.org/fr/3/library/random.html#random.shuffle">shuffle</a> du module random pour mélanger une liste.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -732,15 +732,15 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La méthode shuffle ne rend pas une nouvelle liste, elle mélange la liste en entrée. Si l'on veut créer une nouvelle liste il faut utiliser la méthode <a href="https://docs.python.org/fr/3/library/random.html#random.sample">sample</a> avec les paramètres suivants : <code>sample(x, k=len(x))</code></p>
-</div>
-</div>
+</div></div>
+
 <p>La méthode utilisée par shuffle est l'algorithme de Knuth / Fisher-Yates.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Regardez les 4 différentes méthodes pour mélanger en python de cet article : <a href="https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/">https://www.geeksforgeeks.org/python-ways-to-shuffle-a-list/</a>. La 4ème méthode n'est pas optimale en complexité. Pourquoi ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -799,8 +799,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez cet algorithme et exécutez : <code class="language-">graphique_mélange_générique(mélange_transposition, 6, 10000)</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez obtenir quelque chose du type :</p>
 <p><img src="m%C3%A9lange_transposition.png" alt="mélange de transpositions"></p>
 <p>On remarque que les premières permutations sont surreprésentées par rapport à ce qu'on devrait avoir. On remarque aussi qui'l y a des pics réguliers que l'on n'observe pas avec le mélange de Knuth. Ceci est du au fait que l'on peut produire une même permutation de plusieurs manière avec cet algorithme : on produit plus facilement certaines permutations que d'autres, ce qui rend l'algorithme non équiprobable.</p>
@@ -810,14 +810,14 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Lisez et comprenez l'article : <a href="https://datagenetics.com/blog/november42014/index.html">https://datagenetics.com/blog/november42014/index.html</a>. Il explique pourquoi cette méthode n'est pas efficace.</p>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons ici juste montrer que les permutations en sorties ne sont pas équiprobables. La probabilité que l'élément d'indice $l$ ne soit jamais choisi pendant l'algorithme est :</p>
 <p>$$P_n = (\frac{n-1}{n} \cdot \frac{n-1}{n})^n$$</p>
 <p>Puisque l'algorithme a choisi pour chacune des $n$ étapes de la boucle for un élément différent de $l$ pour les lignes 4 et 5.</p>
 <p>Or :</p>
-<p>$$<br>
-P_n = ((1 - \frac{1}{n})^n)^2 \xrightarrow[n\to\infty]{} (\frac{1}{e})^2 &gt; 0<br>
+<p>$$
+P_n = ((1 - \frac{1}{n})^n)^2 \xrightarrow[n\to\infty]{} (\frac{1}{e})^2 &gt; 0
 $$</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -852,8 +852,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les remarques ci-dessus montrent que pour $n$ assez grand, la probabilité que l'élément $l$ soit en position $l$ à la fin de l'algorithme est strictement plus grande que l'équiprobabilité.</p>
-</div>
-</div>
+</div></div>
+
 <p>C'est bien ce qu'on remarque sur la figure avec la surreprésentation de la première permutation qui est la permutation où rien n'a bougé.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -861,8 +861,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le fait que l'on ne soit pas équiprobable vient du fait que l'on procède à exactement $\mathcal{O}(n)$ tirages. Si le nombre de tirages n'est pas borné, c'est bien équiprobable.</p>
-</div>
-</div>
+</div></div>
+
 <h3><code class="language-">randrange</code> doit être puissant</h3>
 <p>En informatique, il est impossible de tirer un nombre au hasard. On est obligé d'utiliser des suites périodiques qui se comportent comme des nombre aléatoires. On appelle ces suites <a href="https://fr.wikipedia.org/wiki/G%C3%A9n%C3%A9rateur_de_nombres_pseudo-al%C3%A9atoires">pseudo-aléatoires</a>.</p>
 <p>La période de cette suite doit être très grande pour pouvoir générer toutes les permutations : la période doit être plus grande que $n!$. Sinon, certaines permutations seront sur-représentées.</p>
@@ -873,16 +873,16 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une suite pseudo-aléatoire simple a souvent une période de $2^{64}$, ce qui n'est vraiment pas assez grand pour pouvoir mélanger de façon équiprobable un jeu de carte.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>La partie <em>A Shortage Of Random Numbers!</em> du lien suivant <a href="https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html">https://www.i-programmer.info/programming/theory/2744-how-not-to-shuffle-the-kunth-fisher-yates-algorithm.html</a> qui explique cela.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Attention aux humains</h3>
 <p>La perception de ce qu'est l'aléatoire n'est pas aisée. Lorsque l'on joue à un jeu de cartes par exemple, le <a href="https://fr.wikipedia.org/wiki/Biais_de_confirmation">biais de confirmation</a> tend à se rappeler les évènement très défavorables au détriment de ceux juste <em>normaux</em>. De plus, lorsque l'on demande à des humains de tirer des nombres aléatoires, souvent ils ne le sont pas :</p>
 <ul>
@@ -895,8 +895,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Lisez l'article de <a href="https://draftsim.com/mtg-arena-shuffler/">https://draftsim.com/mtg-arena-shuffler/</a> qui montre cela avec le mélangeur de <a href="https://magic.wizards.com/fr/mtgarena">MTGA</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Autres références</h2>
 <p>Quelques autres articles sur le sujet :</p>
 <ul>

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/Turing-non-déterministe/">Machine de Turing non déterministe</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,15 +98,15 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<div id="5VRjCk7R-Xg" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/5VRjCk7R-Xg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-</div>
-</div>
+<p><a href="https://www.youtube.com/watch?v=5VRjCk7R-Xg">https://www.youtube.com/watch?v=5VRjCk7R-Xg</a></p>
+</div></div>
+
 <h2>Définition</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing non déterministe</em></strong> $M$ est une machine de Turing  telle que :</p>
@@ -114,8 +114,8 @@
 <li>à chaque transition $\delta(q, r)$ on a plusieurs choix possibles : la fonction de transition est définie sur $2^{Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}}$.</li>
 <li>pour une entrée $E$, s'il existe une succession de choix de transitions pouvant amener la machine à <a href="../#accepte-rejette">accepter $E$</a> (elle s'arrête pour $E$ et la case sous le ruban vaut 1), elle choisira une de ces successions de choix.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Cette machine se distingue de la machine de Turing normale parce que la fonction de transition rend un sous ensemble fini de $Q \times \{0, 1\} \times \{\leftarrow, \rightarrow\}$ et non juste un nouvel état, un nouveau caractère et une direction : elle donne plusieurs possibilités. Une machine de Turing normale est un cas particulier de machine de Turing non déterministe. C'est la machine elle même qui fait les choix pour arriver, si c'est possible à un choix de 1. Si aucun choix ne fait arriver à 1, il est possible que parfois elle s'arrête sur 0 et parfois ne s'arrête pas.</p>
 <p>Prenons par exemple la machine de Turing non déterministe suivante :</p>
 <ul>
@@ -144,12 +144,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing non déterministe polynomiale</em></strong> $M$ est une machine de Turing non déterministe qui s'arrête sur toutes les entrées $E$ quelques soient les transitions effectuées en $\mathcal{O}(\vert E \vert^k)$ opérations.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour rendre notre machine de Turing déterministe précédente polynomiale, il faut lui interdire d'avoir des transitions infinies. Par exemple ne pas refaire boucler sur $\text{START}$. :</p>
 <ul>
 <li>$\delta(\text{START}, 0) = \{(\text{UN}, 1, \leftarrow), (\text{UN}, 0, \rightarrow)\}$</li>
@@ -174,8 +174,8 @@
 <div class="pl-8 mr-8">
 <p>Les choix effectués pour accepter une entrée constituent un <strong><em>certificat</em></strong> de réussite.</p>
 <p>Connaître la machine et le certificat pour une entrée permet de vérifier qu'elle fait bien partie du langage : le certificat rendant l'exécution de la machine déterministe.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="exemple"></span>Exemple</h2>
 <p>Prenons la machine non déterministe suivante :</p>
 <table>
@@ -230,8 +230,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que la machine précédente s'arrête sur toute entrée en temps linéaire</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -257,8 +257,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que la machine précédente reconnaît les entrées commençant par une suite de <code>1</code> puis suivie par la chaîne <code>01</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -286,13 +286,13 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour toute machine de Turing non déterministe, on peut créer une machine de Turing <em>normale</em> qui reconnaîtra les même entrées.</p>
 <p>De plus, si la machine de Turing non déterministe décide son langage. la machine de Turing associée également.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -333,23 +333,23 @@ Tant que Vrai:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une machine de Turing non déterministe polynomiale est équivalente à une machine de Turing de complexité exponentielle.</p>
-</div>
-</div>
+</div></div>
+
 <p>La machine de Turing non déterministe n'est qu'une façon plus simple de décrire les mêmes choses. Dans notre cas, cela va unifier la définition des classes $P$ et $NP$. En effet :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $M$ une machine de Turing non déterministe polynomiale. Le vérifieur $v(E, C)$ avec $v$ une entrée et $C$ une suite de transition possible qui consiste à exécuter $M$ en choisissant itérativement les les élément de $C$ est un vérifieur efficace du langage de $M$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Si on rend déterministe la machine non déterministe exemple, on voit qu ele non déterministe permet de simuler une boucle tant que non <code>101</code> avancer de 1 case vers la droite : le non-déterminisme est une façon de condenser une énumération de choix.</p>
 
 

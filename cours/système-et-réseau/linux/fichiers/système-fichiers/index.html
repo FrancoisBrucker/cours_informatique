@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/système-fichiers/">Système de fichiers et fichiers système</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.n0tes.fr/2015/09/22/Types-fichiers-Linux/">Type de fichiers Linux</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le système de fichiers de Linux possède plusieurs types de fichiers différents. Ils permettent d'accéder non seulement à des données stockées sur le disque dur, mais également à tout ce qui se passe en interne dans le noyaux et les processus.</p>
 <p>Commençons par identifier les fichiers les plus courant, en considérant ce bout de résultat d'un <code>ls</code> de mon dossier maison :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ls</span> <span class="token parameter variable">-la</span> ~
@@ -125,8 +125,8 @@ drwxr-xr-x  <span class="token number">2</span> fbrucker fbrucker  <span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <a href="https://doc.ubuntu-fr.org/lien_physique_et_symbolique#exemple_de_lien_symbolique">lien symbolique</a> aura un <code>l</code> comme premier élément et est un type de fichier spécial, le lien physique <strong>est</strong> le même fichier.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Fichiers d'accès aux données systèmes</h2>
 <p>Il existe tout un tas d'autres types de fichiers, qui sont remplis par le noyau lorsque l'on y accède. Par exemple le dossier <code class="fichier">/proc</code> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -139,8 +139,8 @@ drwxr-xr-x  <span class="token number">2</span> fbrucker fbrucker  <span class="
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ls</span> /proc
 </code></pre>
 <p>Et trouvez le nombre de secondes depuis que votre système est en marche en lisant la mage man de /proc : <code>man proc</code> ou <code>man 5 proc</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -172,8 +172,8 @@ drwxr-xr-x  <span class="token number">2</span> fbrucker fbrucker  <span class="
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://chengdol.github.io/2020/02/03/linux-proc-$$-self/"><code class="fichier">/proc/$$</code> vs <code class="fichier">/proc/self</code></a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le dossier <code class="fichier">/proc/$$</code> Contient un dossier <code class="fichier">cwd</code> qui est un fichier spécial (c'est un lien) :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">cd</span> ~
 $ <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/cwd
@@ -206,8 +206,8 @@ crw-rw-rw-   <span class="token number">1</span> root     root      <span class=
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=6lik_f1Vp54">FIFO shell</a></p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> ma_fifo 
 prw-rw-r-- <span class="token number">1</span> fbrucker fbrucker <span class="token number">0</span> oct.  <span class="token number">16</span> <span class="token number">11</span>:45 ma_fifo
 </code></pre>
@@ -230,8 +230,8 @@ C &gt;--
 <li>exécutez la commande <code>cat ~/ma_fifo</code></li>
 <li>ouvrez un autre terminal et exécutez la commande <code>cat &gt; ~/ma_fifo</code>, puis écrivez du texte. Lorsque vous appuyez sur la touche entrée,  vous devriez voir apparaître le texte dans l'autre terminal.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

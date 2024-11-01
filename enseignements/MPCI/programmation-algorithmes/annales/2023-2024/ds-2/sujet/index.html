@@ -92,7 +92,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Consignes</strong></p>
 </div><div class="pl-8 mr-8">
 <p><strong>Durée du contrôle</strong> : 3 heures.</p>
@@ -101,8 +101,8 @@
 <li>n'inventez pas votre propre structure, suivez celle demandée</li>
 <li>rendez sur <a href="hhttps://ametice.univ-amu.fr/mod/assign/view.php?id=350820">Amétice</a> un dossier contenant tout votre code ainsi qu'un fichier texte contenant les numéros des questions auxquelles vous avez répondu</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Vous aurez besoin de la bibliothèque <a href="https://pyglet.readthedocs.io/en/latest/">pyglet</a> pour coder les fenêtres et gérer les évènements claviers (avec la méthode <code class="language-">on_key_press</code>) et souris (avec la méthode <code class="language-">on_mouse_press</code>). Nous n'aurons pas besoin de gérer le temps dans ce DS.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -114,8 +114,8 @@
 <li><a href="https://fr.wikipedia.org/wiki/2048_(jeu_vid%C3%A9o)">la description du jeu sur sa page wikipedia</a></li>
 <li><a href="https://play2048.co/">cette implémentation du jeu</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Commencez par bien lire la page wikipedia précédente et faites une ou deux partie pour bien comprendre comment fonctionne le jeu.</p>
 <h2>Documents à rendre</h2>
 <p>Un dossier contenant les divers fichiers python dont vous avez eu besoin. Ce dossier <strong>doit contenir</strong> un fichier <code class="language-">main.py</code> qui contient votre jeu.</p>
@@ -128,8 +128,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Chaque étape est un jalon du projet et n'est pas triviale. Que cela vous prenne un peu de temps pour le faire est normal.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Étape 1 : le fichier <code class="fichier">main.py</code></h2>
 <p>Cette étape va créer l'aire de jeu. À l'exécution du fichier <code class="language-">main.py</code>, vous devez obtenir la fenêtre suivante :</p>
 <p><img src="%C3%A9tape-1.png" alt="étape 1"></p>
@@ -167,8 +167,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est dans la classe <code class="language-">DeuxMilleQuaranteHuit</code> que vous placerez les fonctions de gestion des évènements comme <code class="language-">on_mouse_press(self, x, y, button, modifiers)</code> à l'étape 2 ou <code class="language-">on_key_press(self, symbol, modifiers)</code> à l'étape 5.</p>
-</div>
-</div>
+</div></div>
+
 <h3>La classe <code class="language-">Grille</code></h3>
 <p>Implémentez les classes <code class="language-">Grille</code> et <code class="language-">Carré</code> en respectant le diagramme UML suivant :</p>
 <p><img src="grille-1.png" alt="grille 1"></p>
@@ -182,8 +182,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li><a href="https://pyglet.readthedocs.io/en/latest/modules/shapes.html#pyglet.shapes.Rectangle">Classe <code class="language-">pyglet.shapes.Rectangle</code></a></li>
 <li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#matrices">Comment créer une matrice</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Étape 2</h2>
 <p>Pour pouvoir manipuler les cases de la grille, nous allons ajouter plusieurs méthodes. On ne pourra tester nos méthodes qu'à la toute fin de l'étape, lorsque l'on utilisera l'évènement qui gère les cliques de souris.</p>
 <p>Commençons par pouvoir cliquer sur une case précise.</p>
@@ -199,8 +199,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez utiliser les attributs <code class="language-">x</code> <code class="language-">y</code>, <code class="language-">width</code> et <code class="language-">height</code> de la classe <code class="language-">pyglet.shapes.rectangle</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Méthode <code class="language-">intérieur(x, y)</code> pour la <code class="language-">Grille</code></h3>
 <p>Ajoutez une méthode <code class="language-">intérieur(x, y)</code> à la classe <code class="language-">Grille</code> qui rend :</p>
 <ul>
@@ -243,8 +243,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Design pattern factory</h3>
 <p>Lors de la création de la classe <code class="language-">Grille</code> on utilise des maintenant des objets de type <code class="language-">Case</code> de valeur 1 et non plus des <code class="language-">Carré</code>. Pour que ce soit facile à faire, faite un design pattern factory pour créer des objets de valeur 1. La signature de ce factory doit être :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">vide<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> taille<span class="token punctuation">)</span>
@@ -259,8 +259,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette étape n'est pas utile pour le jeu en lui-même, mais la coder vous aidera à avancer. Conservez cette partie même si vous allez plus loin.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Méthode <code class="language-">set_valeur(v)</code> de la classe <code class="language-">Case</code></h3>
 <p>Le jeu du 2048 passe son temps à modifier les valeurs des cases. Implémentez une une méthode <code class="language-">set_valeur(v)</code> à la classe <code class="language-">Case</code> dont la fonction est de modifier la valeur de la case puis de changer son fond et son label en conséquence.</p>
 <p>Utilisez cette méthode dans le constructeur de <code class="language-">Case</code>.</p>
@@ -278,8 +278,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous avez un mac, vous pouvez soit simuler le clique droit soit l'activer en suivant <a href="https://support.apple.com/fr-fr/guide/mac-help/mh35853/mac">cette aide d'apple</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Étape 5</h2>
 <p>Tout est en place pour implémenter la mécanique de jeu.</p>
 <p>Lorsque l'on appuie sur une flèche de direction, les cases de valeurs strictement plus grandes que 1 se déplacent, une à une, dans le sens de la flèche. L'ordre dans lequel les cases se déplacent est important :</p>
@@ -337,8 +337,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <li><a href="https://docs.python.org/fr/3/library/random.html#random.choice"><code class="language-">choice</code></a> pour prendre un élément au hasard parmi la liste des cases de valeur 1</li>
 <li><a href="https://docs.python.org/fr/3/library/random.html#random.random"><code class="language-">random</code></a> pour gérer les probabilités.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Étape 6</h2>
 <p>Déplacement complet.</p>
 <h3>Déplacement de plusieurs cases</h3>
@@ -353,8 +353,8 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <div class="pl-8 mr-8">
 <p>Vous pourrez faire cela en ajoutant un attribut à la classe <code class="language-">Case</code>. Cet attribut est faux avant chaque déplacement et devient vrai après un incrément.</p>
 <p>Une case ne peut fusionner qu'avec une case de même valeur et dont ce nouvel attribut est faux.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Étape 7</h2>
 <p>Détectez après un déplacement si la partie est terminée et affichez à sur le terminal avec la fonction <code class="language-">print</code> si le jeu est fini.</p>
 

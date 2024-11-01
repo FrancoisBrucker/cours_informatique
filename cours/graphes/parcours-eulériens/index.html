@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/parcours-eulériens/">Parcours Eulériens</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -110,20 +110,20 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G= (V, E)$ un multi-graphe non orienté. Un <strong>cycle eulérien</strong> de $G$ est un cycle passant par toutes les arêtes du graphe.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme les arêtes d'un cycle n'y apparaissent qu'une seule fois, un cycle eulérien passe exactement une fois par toutes les arêtes du graphe.</p>
-</div>
-</div>
+</div></div>
+
 <h3>C'est impossible dans l'exemple</h3>
 <p>Avec notre graphe c'est <strong>impossible</strong> car il faut pouvoir repartir d'un sommet après en être arrivé. Si un tel cycle existait pour tout $u_i$ : $u_{i-1}u_i$ et $u_iu_{i+1}$ seraient des arêtes du graphes. Comme le chemin passe une seule fois par chaque arête du graphe on en conclut que $\delta(u_i)$ serait paire.</p>
 <p>Comme $\delta(C) = 3$ et est impair, il est impossible de trouver un cycle eulérien dans notre graphe.</p>
@@ -133,12 +133,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Remarque</strong></p>
 </div><div class="pl-8 mr-8">
 <p>S'il existe un cycle eulérien pour un multi-graphe non-orienté $G$, alors tout sommet de ce graphe est de degré pair.</p>
-</div>
-</div>
+</div></div>
+
 <h3>La réciproque sur un exemple ?</h3>
 <p>Le graphe suivant a tous ses degrés pair :</p>
 <p><img src="possible_eulerien.png" alt="est-ce possible"></p>
@@ -146,8 +146,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pouvez-vous trouver un cycle eulérien ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -177,12 +177,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un multi-graphe non orienté connexe admet un cycle eulérien si et seulement si le degré de tout ses sommets est pair.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -265,16 +265,16 @@ G2 <span class="token operator">=</span> copie<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>Il faut <strong>aussi</strong> copier les valeurs du dictionnaire (les ensembles) !</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On aurait pu faire la copie en une ligne avec les <a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> de python : <code class="language-">G2 = {x: set(y) for x, y in G.items()}</code></p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="principe-algorithme"></span> Principe de l'Algorithme</h3>
 <p>La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -315,8 +315,8 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <div class="pl-8 mr-8">
 <p>On a ajouté une <em>sentinelle</em> qui traite le cas où $G$ est vide. Ceci permet de rendre un cycle (même vide) quelque soit le graphe.</p>
 <p>Sans cette sentinelle, l'algorithme planterait car on ne peut <code class="language-">pop</code> une liste vide.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Décomposition du graphe en cycles</h3>
 <p>Commençons par créer une fonction qui supprime un cycle du graphe :</p>
 <p><span id="fonction-supprime"></span></p>
@@ -343,8 +343,8 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <div class="pl-8 mr-8">
 <p>On ne modifie <strong>jamais</strong> ce sur quoi on itère !</p>
 <p>Ici on commence par récupérer la liste des sommets de $G$ (les clés du dictionnaire G) avant peut-être de modifier G (supprimer des cls du dictionnaire).</p>
-</div>
-</div>
+</div></div>
+
 <p>Puis, en affichant les cycles trouvés par l'algorithme général de décomposition :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">while</span> G<span class="token punctuation">:</span>
@@ -394,8 +394,8 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 </svg>
 <div class="pl-8 mr-8">
 <p>La fonction <code class="language-">concatène_cycles</code> modifie la liste <code class="language-">cycles</code> passé en paramètres : à la fin de l'algorithme cycles ne contient plus qu'un seul élément : le cycle eulérien.</p>
-</div>
-</div>
+</div></div>
+
 <p>J'obtiens, avec les cycles précédents :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">]</span>
 </code></pre>
@@ -407,18 +407,18 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G= (V, E)$ un multi-graphe non orienté. Un <strong>chemin eulérien entre $x$ et $y$</strong> est un chemin entre $x$ et $y$ qui prend toutes les arêtes du graphe</p>
-</div>
-</div>
+</div></div>
+
 <p>Connaître les multigraphes qui possèdent un chemin eulérien est facile à partir de la caractérisation des graphes eulérien :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un multi-graphe non orienté $G= (V, E)$ possède un chemin eulérien entre deux de ses sommets $x$ et $y$ si et seulement si :</p>
@@ -426,8 +426,8 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <li>les degrés des sommets $x$ et $y$ sont impair</li>
 <li>les degrés des autres sommets sont tous pair.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -454,23 +454,23 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G= (V, E)$ un multi-graphe orienté. Un <strong>circuit eulérien</strong> de $G$ est un circuit passant par tous les arcs du graphe.</p>
-</div>
-</div>
+</div></div>
+
 <p>La encore les multi-graphes orientés qui possèdent un circuit eulérien est facile à partir de la caractérisation des graphes eulérien :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un multi-graphe orienté $G= (V, E)$ possède un circuit eulérien si et seulement si on a $\delta^+(x) = \delta^-(x)$ pour tout sommet $x$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -500,12 +500,12 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G= (V, E, A)$ un multi-graphe mixte. Un <strong>circuit eulérien</strong> de $G$ est alors un circuit de $G$ prenant tous les arc et toutes les arêtes de $G$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce qui est intéressant ici, c'est que la condition nécessaire et suffisante pour que le multi-graphe mixte soit eulérien n'est pas juste l'union des conditions pour les multi-graphes non orienté et orienté. S'il est clair que l'union de ces deux conditions fonctionne (tout se passe comme si on avait deux graphes disjoints que l'on raboute ensuite), la condition nécessaire et suffisante est plus générale comme le montre l'exemple suivant, qui fonctionne mais ne correspond pas à l'union des conditions orientées et non orientées :</p>
 <p><img src="multi-euler.png" alt="multi euler"></p>
 <p>Pour que cela fonctionne, on doit modifier la condition de parité pour prendre en compte les deux types d'arêtes et ajouter une condition dites d'équilibre :</p>
@@ -513,7 +513,7 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un (multi-)graphe mixte $G$ possède un circuit eulérien si et seulement si :</p>
@@ -521,11 +521,11 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <li>il est <strong>pair</strong> : pour tout sommet $x$ le nombre $\delta(x) + \delta^+(x) + \delta^-(x)$ est pair</li>
 <li>il est <strong>équilibré</strong> : quelque soit $S \subseteq V$ :</li>
 </ul>
-<p>$$<br>
-\vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert \leq \vert \{ xy \in E \mid x \in S, y \in V \backslash S\} \vert<br>
+<p>$$
+\vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert \leq \vert \{ xy \in E \mid x \in S, y \in V \backslash S\} \vert
 $$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -543,7 +543,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Tout d'abord, on peut toujours s'arranger pour que $<br>
+<p>Tout d'abord, on peut toujours s'arranger pour que $
 \vert \{ xy \in A \mid x \in S, y \in V \backslash S\} \vert - \vert \{ yx \in A \mid x \in S, y \in V \backslash S\} \vert$ soit positif, au pire on prend le complémentaire $S\backslash V$ de $S$.</p>
 <p>La condition d'équilibre est nécessaire puisque si un circuit eulérien existe il faut pouvoir passer un nombre égal de fois de $V$ à $S\backslash V$ et de $S\backslash V$ à $S$. De plus comme pour le circuit eulérien on entre et on sort de chaque sommet à chacune de ses apparition sur le cycle la parité est également nécessaire.</p>
 <p>Réciproquement, si le degré est pair, on peut trouver un cycle mixte au multi-graphe mixte en utilisant <a href="../chemins-cycles-connexite/#prop-cycles-graphe" class="interne">la technique classique</a> et en progressant s'il existe un arc ou une arête permettant de faire grandir le chemin, soit en reculant car s'il n'existe pas d'arc sortant du chemin, il existe forcément un arc (ou une arête entrant).</p>

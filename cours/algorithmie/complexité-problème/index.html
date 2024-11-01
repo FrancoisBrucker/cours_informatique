@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-problème/">Complexité d&#39;un problème algorithmique</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -97,12 +97,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La <strong><em>complexité (maximale) d'un problème</em></strong> algorithmique est la complexité (maximale) du meilleur algorithme (celui de complexité a plus faible) qui le résout.</p>
-</div>
-</div>
+</div></div>
+
 <p>Cette complexité existe toujours car :</p>
 <ol>
 <li>le problème étant algorithmique il admet au moins un algorithme pour le résoudre.</li>
@@ -126,16 +126,16 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si l'on arrive à encadrer le problème à gauche par un $\Omega$ et à droite par un $\mathcal{O}$ avec le même algorithme :</p>
-<p>$$<br>
-\Omega(\text{complexité de l'algorithme A le résolvant}) = \text{complexité du problème} = \mathcal{O}(\text{complexité de l'algorithme A le résolvant})<br>
+<p>$$
+\Omega(\text{complexité de l'algorithme A le résolvant}) = \text{complexité du problème} = \mathcal{O}(\text{complexité de l'algorithme A le résolvant})
 $$</p>
 <p>on aura trouvé la complexité du problème : $\Theta(\text{complexité de l'algorithme A le résolvant})$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Nous illustrerons ici cette problématique avec l'exemple de la recherche d'un élément dans un tableau qui permet d'illustrer plusieurs facettes de ce qu'est un problème algorithmique.</p>
 <h2><span id="recherche"></span>Exemple : recherche d'un élément dans un tableau</h2>
 <p>On va chercher à résoudre le problème de décision suivant :</p>
@@ -143,7 +143,7 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème de décision</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -151,8 +151,8 @@ $$</p>
 <li><strong>données</strong> : une valeur et un tableau d'entiers</li>
 <li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Ce qu'on peut déjà dire de notre problème :</p>
 <ul>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
@@ -172,7 +172,7 @@ $$</p>
 <li>$T'[i] = T[i]$ si $i \neq i^\star$</li>
 <li>$T'[i^\star] = \mbox{valeur}$</li>
 </ul>
-<p>Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,<br>
+<p>Comme $T$ et $T'$ sont identiques sauf pour la case d'indice $i^\star$,
 si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour $T$, il ne regardera pas non plus la case $T'[i^\star]$ lors de son exécution pour $T'$. Il ne pourra donc répondre que la même chose pour $T$ et $T'$, ce qui est impossible puisque la réponse est NON pour $T$ et OUI pour $T'$.</p>
 <p>Notre hypothèse était fausse : un algorithme qui résout le problème de la recherche doit accéder au moins une fois à toutes les cases du tableau, il doit au moins être de complexité $\mathcal{O}(n)$ : la complexité du problème de la recherche est en $\Omega(n)$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -181,8 +181,8 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </svg>
 <div class="pl-8 mr-8">
 <p>Ca ne veut pas dire qu'il n'existe pas des instances où l'algorithme va plus vite (si valeur est le 1er élément du tableau par exemple), mais que pour toute taille $n$ du tableau, il existe des tableaux pour lesquels on est obligé de vérifier toutes les cases (si valeur n'est pas dans tableau).</p>
-</div>
-</div>
+</div></div>
+
 <p>Au final on a :</p>
 <ul>
 <li>une borne minimale de la complexité de la recherche de $\Omega(n)$</li>
@@ -193,31 +193,31 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du problème de la recherche est en $\mathcal{O}(n)$ où $n$ est la taille du tableau.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut en déduire une règle générale de la complexité d'un problème :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si les données n'ont pas de structure particulière — très souvent — la complexité d'un problème est au moins égale à la taille de ses données.</p>
 <p>Si ce n'est pas vrai, c'est que notre problème est vraisemblablement mal posé et qu'on peut se passer de certaines entrées.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Cas particulier des tableaux ordonnés</h3>
 <p>Un cas particulier courant de recherche est le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème de décision</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -225,8 +225,8 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <li><strong>données</strong> : une valeur et un tableau d'entiers triés par ordre croissant</li>
 <li><strong>question</strong> : valeur est-elle présente dans le tableau ?</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
 <p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
@@ -253,8 +253,8 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <div class="pl-8 mr-8">
 <p>Lorsque l'on code la recherche dichotomique, il faut faire <strong>très attention</strong> à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.</p>
 <p>On a utilisé ici le fait que <code class="language-">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-">(fin + debut) / 2</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Étudions l'algorithme :</p>
 <ul>
 <li><strong>fonctionnement</strong>. On vérifie que pour :
@@ -309,12 +309,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'algorithme <code class="language-">recherche_dichotomique</code> résout le problème &quot;recherche ordonnée&quot; en $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau)</p>
-</div>
-</div>
+</div></div>
+
 <h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
 <p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">est_dans_tableau</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
 <p>Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
@@ -324,8 +324,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Remarquez bien que la preuve que l'on a donné pour la complexité de <em>&quot;recherche&quot;</em> ne fonctionne pas dans le cas de &quot;recherche ordonnée&quot;. On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.</p>
-</div>
-</div>
+</div></div>
+
 <p>Commençons par remarquer que <code class="language-">valeur</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
 <ul>
 <li>soit <code class="language-">valeur</code> n'est pas dans tableau</li>
@@ -368,12 +368,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si un algorithme doit distinguer parmi $n$ cas, il devra posséder au moins $\log_2(n)$ tests. Sa complexité sera ainsi en $\Omega(\ln(n))$</p>
-</div>
-</div>
+</div></div>
+
 <p>Comme il y a $n+1$ cas au moins à traiter, notre algorithme sera de complexité $\Omega(\ln(n + 1)) = \Omega(\ln(n))$ opérations.</p>
 <p>Au final, le problème de la <em>&quot;recherche ordonnée&quot;</em> pour un tableau à $n$ éléments :</p>
 <ul>
@@ -384,12 +384,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du problème de la <em>&quot;recherche ordonnée&quot;</em> est en $\Theta(\ln(n))$ où $n$ est la taille du tableau.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

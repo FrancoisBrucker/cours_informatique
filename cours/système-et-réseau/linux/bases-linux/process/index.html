@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/">Bases Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/bases-linux/process/">Process</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=ls5cGi12kGw&amp;list=PLtK75qxsQaMKLUENMaPlD_O2qS8ZBGjuy">process</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Un process correspond à l'exécution d'un fichier. Les process sont organisés en arbre et descendent tous du premier process crée : <code>systemd</code>. Créer un process se fait en plusieurs temps :</p>
 <ol>
 <li>le process appelant est dupliqué en utilisant l'appel système <a href="https://fr.wikipedia.org/wiki/Fork_(programmation)">fork</a> (<em>ie</em> le shell qui lance la commande). Le process appelant est le process parent, le nouveau process le process enfant. Le fait que le process est dupliqué fait que :
@@ -165,7 +165,7 @@ ps aux
 </ul>
 <p>créer des process par clone d'un process (on choisit ce qu'on partage avec le père), ex une commande shell : comment ça marche le clone/fork</p>
 <blockquote>
-<p>TBD tuer une xterm dans une xterm. Même avec un &amp;<br>
+<p>TBD tuer une xterm dans une xterm. Même avec un &amp;
 tmux ou screen pour sauver un shell. Mieux que hohup <code>/usr/bin/screen -d -m -S node node exemple.js</code></p>
 </blockquote>
 

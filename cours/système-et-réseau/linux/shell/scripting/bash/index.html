@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/">Shell</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/scripting/">Scripting</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/shell/scripting/bash/">Shell</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -104,8 +104,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.gnu.org/software/bash/manual/html_node/">https://www.gnu.org/software/bash/manual/html_node/</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Gestion des paramètres</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -113,8 +113,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://coderwall.com/p/85jnpq/bash-built-in-variables">Gestion des paramètres d'un script</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Fonctions</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -125,8 +125,8 @@
 <li><a href="https://linuxize.com/post/bash-functions/">Fonctions bash en texte</a></li>
 <li><a href="https://www.youtube.com/watch?v=aqvc9kYnz0U&amp;list=PLShDm2AZYnK1SdG3dufPdCqk08sOahUBP&amp;index=2">fonctions bash YouTube</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Les fonctions ne peuvent rendre qu'un entier, c'est leur code de sortie. POur le reste effectuez vos sorties sur la sortie standard (avec <code>echo</code>).</p>
 <h2>Structures de contrôle</h2>
 <h3>if/then</h3>
@@ -190,8 +190,8 @@ commandes
 <span class="token builtin class-name">echo</span> non
 <span class="token keyword">fi</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>La commande <a href="https://linux.die.net/man/1/test"><code>test</code></a> qui est aussi la commande <code>[</code> (oui, <code>[</code> est un fichier de <code>/usr/bin</code>) permet de faire de nombreux test courant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -199,8 +199,8 @@ commandes
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.shellscript.sh/test.html">Utiliser la commande <code>test</code> ou <code>[</code></a></p>
-</div>
-</div>
+</div></div>
+
 <p>Bash permet également d'utiliser une construction utilisant <a href="https://tldp.org/LDP/abs/html/testconstructs.html#DBLBRACKETS"><code>[[ expression ]]</code></a> qui rend certains tests plus clair mais est spécifique à bash et ne fonctionnera pas avec d'autres shell (<code>[[</code> n'est pas une commande, c'est une instruction interne à bash). Préférez donc les constructions avec <code>[</code> ou <code>test</code>, plus portable.</p>
 <p>Il est possible de tester de nombreuses choses, allant de conditions logique à l'existence de fichiers :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -209,8 +209,8 @@ commandes
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikibooks.org/wiki/Programmation_Bash/Tests">comment réaliser des tests en bash</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>boucles for/while/until</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -218,8 +218,8 @@ commandes
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.gnu.org/software/bash/manual/html_node/Looping-Constructs.html">boucles en bash</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Les constructions sont identiques à la construction du if. La seule particularité est la boucle for qui itère sur une suite de mot séparé par des espaces :</p>
 <pre><code>for x in salut les gars
 do                     
@@ -262,8 +262,8 @@ done &lt; &quot;${1:-/dev/stdin}&quot;
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://tldp.org/LDP/abs/html/internalvariables.html">https://tldp.org/LDP/abs/html/internalvariables.html</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Process et shell</h2>
 <blockquote>
 <p>TBD mieux faire</p>

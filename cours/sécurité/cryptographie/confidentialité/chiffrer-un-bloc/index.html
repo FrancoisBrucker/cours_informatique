@@ -85,14 +85,14 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/">Confidentialité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/confidentialité/chiffrer-un-bloc/">Chiffrer un message de taille fixe</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
   
 
-  <p>On va analyser ici les conditions théoriques pour pouvoir chiffrer un message de taille donnée. Cette partie sera ensuite<br>
+  <p>On va analyser ici les conditions théoriques pour pouvoir chiffrer un message de taille donnée. Cette partie sera ensuite
 utilisé dans la suite pour chiffrer un message de taille quelconque.</p>
 <p>Reprenons le schéma général :</p>
 <pre><code>           k                   k
@@ -123,7 +123,7 @@ utilisé dans la suite pour chiffrer un message de taille quelconque.</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $F: \{0, 1\}^s \times \{0, 1\}^t \rightarrow \{0, 1\}^t$ une fonction telle que :</p>
@@ -141,19 +141,19 @@ utilisé dans la suite pour chiffrer un message de taille quelconque.</p>
 <li>une fonction $F(k, \cdot)$ pour $k$ uniformément choisie,</li>
 <li>une permutation $f$ uniformément choisie parmi toutes les permutations de $\{0, 1\}^t$ dans $\{0, 1\}^t$.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une PRP est un cas particulier de PRF, mais si $n$ est grand, elle est indistinguable d'une fonction quelconque avec un avantage non négligeable :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong>PRP</strong> ne peut être distinguée d'une fonction <strong>PRF</strong> qu'avec un avantage non négligeable par un algorithme efficace.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -194,7 +194,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une fonction $F : \{0, 1\}^n \rightarrow \{0, 1\}^n$ est à sens unique si :</p>
@@ -202,8 +202,8 @@ $$
 <li>il existe un algorithme efficace pour calculer $F(x)$ quelque soit $x$</li>
 <li>Que pour tout algorithme $G$, $Pr[F(G(F(x))) = F(x)]$ soit négligeable.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La définition stipule que $F$ soit difficile à inverser en moyenne et pas seulement dans le pire des cas comme en théorie de la complexité classique. De là, si une telle fonction existe :</p>
 <ul>
 <li>il n'existerait pas d'algorithme polynomial produisant la fonction $G(F(x)) = y$ tel que $F(y) = F(x)$</li>
@@ -222,8 +222,8 @@ $$
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="chiffrement-flux" class="interne">Chiffrement par flux</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>En pratique</h2>
 <p>Comme l'existence d'une PRP n'étant pas prouvée, il faut prendre toute proposition de chiffrement avec pincette. Il n'est pas improbable que l'on découvre des failles de sécurité et qu'il faille changer de méthode de chiffrement (c'est arrivé et ça arrivera encore) ou qu'il faille augmenter la taille de la clé pour maintenir la confidentialité que ce soit par le développement de nouveaux ordinateur de nouvelles attaques (c'est arrivé et ça arrivera encore).</p>
 <p>S'il faut retenir une chose c'est :</p>
@@ -233,8 +233,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez des bibliothèques de chiffrement développés par des professionnels reconnus comme <a href="https://fr.wikipedia.org/wiki/OpenSSL">openssl</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Nécessité de la non linéarité</h3>
 <p>Pour éviter une attaque classique, nommée <a href="https://fr.wikipedia.org/wiki/Cryptanalyse_lin%C3%A9aire">cryptanalyse linéaire</a>, tous les PRP vont avoir à la fois des transformations linéaires $\oplus$, décalage ou circulation de bits ainsi que des choses non linéaire, souvent encapsulé dans des matrices de transformation appelées <a href="https://fr.wikipedia.org/wiki/S-Box">S-box</a>. Il faut bien sûr que ces opérations soient choisies avec soin pour éviter tout biais, la moindre linéarité cachée pouvant être facilement utilisée comme attaque.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -243,8 +243,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le chiffrement DES, proposé par la NSA, proposait des <a href="https://fr.wikipedia.org/wiki/S-Box">S-box</a> obscures qui ont toujours laissé des doutes quant à la sincérité de ses non-linéarités.</p>
-</div>
-</div>
+</div></div>
+
 <p>La cryptanalyse linéaire va chercher des corrélations linéaires entre le message $m$, le chiffre $c$ et la clé $k$, c'est à dire si :</p>
 <div>
 $$
@@ -263,8 +263,8 @@ $$
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="chacha20" class="interne">Algorithme chacha20</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>AES</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -272,8 +272,8 @@ $$
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="aes" class="interne">Algorithme AES</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

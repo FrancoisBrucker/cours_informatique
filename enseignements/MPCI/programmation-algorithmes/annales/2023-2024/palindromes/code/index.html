@@ -87,8 +87,8 @@
 <li>faire les tests unitaires de chaque fonction. Ils devront tous se lancer via la commande <code>python -m pytest</code></li>
 <li>organiser votre code en autant de fichiers que nécessaire.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Palindromes</h2>
 <h3>Algorithme palindrome</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Implémentez <a href="../algorithmie/#palindrome_lin%C3%A9aire" class="language-">l'algorithme <code class="language-">palindrome(s: str) -&gt; bool</code> linéaire de la partie algorithmie</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Programme principal palindrome</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -108,8 +108,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un programme principal nommé <code class="fichier">main-palindrome.py</code> qui demande à l'utilisateur de donner une chaîne de caractères et le programme répond &quot;oui&quot; si la chaîne est un palindrome et &quot;non&quot; sinon.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Bonus</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -121,8 +121,8 @@
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> mystère<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
    <span class="token keyword">return</span> s <span class="token operator">==</span> s<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h2>Phrases palindromes</h2>
 <h3>Prétraitement</h3>
 <p>Pour traiter des phrases palindromes à partir d'un texte en français, il faut commencer par pré-traiter le texte pour qu'il ne contienne plus que des lettres non accentuées en majuscules.</p>
@@ -138,8 +138,8 @@
 <li><a href="https://docs.python.org/fr/3/library/stdtypes.html#str.upper">la méthode <code class="language-">upper</code></a> des chaînes de caractères qui majuscule les lettres</li>
 <li>l'instruction <code class="language-">re.sub(&quot;[^A-Za-z]&quot;,&quot;&quot;,s)</code> (<code class="language-">sub</code> est une fonction <a href="https://docs.python.org/fr/3/library/re.html">du module <code>re</code></a> de python) qui rend une chaîne ne possédant que les caractères alphabétiques de <code class="language-">s</code>.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -151,8 +151,8 @@
 <li>elle ne conservera que les éléments décrits par le premier paramètre (ici <code class="language-">&quot;[^A-Z]&quot;</code> qui signifie toutes les lettres en majuscules)</li>
 <li>les autres caractères sont remplacés par le second paramètre (ici <code class="language-">&quot;&quot;</code>, la chaîne vide)</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h3>Programme principal phrase palindrome</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -161,8 +161,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un programme principal nommé <code class="fichier">main-phrase-palindrome.py</code> qui demande à l'utilisateur de donner une chaîne de caractères et le programme répond &quot;oui&quot; si la chaîne est une phrase palindrome et &quot;non&quot; sinon.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Fichier texte</h3>
 <p>On peut très facilement lire un fichier texte en python en utilisant l'instruction :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">s <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>nom_du_fichier<span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -180,8 +180,8 @@
 <li>Implémentez l'algorithme le plus efficace que vous êtes arrivé à produire dans la partie algorithmie pour résoudre le problème du sous-palindrome.</li>
 <li>Utilisez la question précédente pour créer une fonction <code class="language-">sous_palindrome(s: str) -&gt; (int, int)</code> qui rend l'indice de début et la longueur d'un plus grand sous-palindrome de <code class="language-">s</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h3>Programme principal</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -190,8 +190,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un programme principal nommé <code class="fichier">main-sous-palindrome.py</code> qui demande à l'utilisateur de donner une chaîne de caractères et le programme : écrit la phrase entrée en écrivant en rouge le plus grand sous-palindrome.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -199,8 +199,8 @@
 <div class="pl-8 mr-8">
 <p>Pour changer de couleur dans un affichage à l'écran, il vous faudra utiliser un module que vous devrez installer. Vous pourrez utiliser <a href="https://pypi.org/project/PyTermGUI/">le module <code class="language-">pytermgui</code></a> par exemple qui permet de faire plein de choses.</p>
 <p>En lisant <a href="https://ptg.bczsalba.com/tim/">la documentation de son sous-module tim</a> vous devriez comprendre comment faire pour colorer un affichage de plein de façons différentes.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Fichier texte</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -215,8 +215,8 @@
 <li>trouve l'indice et la longueur d'un plus grand sous-palindrome</li>
 <li>représente à l'écran le sous-palindrome retenu (écrit en rouge) entouré des 100 caractères le précédant et le succédant (écrits de façon normale).</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Vous pourrez utiliser comme textes des grands classiques de la littérature française prises sur le site <a href="https://www.gutenberg.org/">https://www.gutenberg.org/</a>. Choisissez toujours la version texte brute (<em>plain text</em>) en utf-8.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -224,8 +224,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour les fleurs du mal de Baudelaire c'est là : <a href="https://www.gutenberg.org/ebooks/6099">https://www.gutenberg.org/ebooks/6099</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Amélioration</h3>
 <p>Trouver des sous-phrases palindromes d'un texte peut être rigolo, mais sans caractères de ponctuation, il peut être difficile de s'y retrouver.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -240,8 +240,8 @@
 <li>la chaîne <code class="language-">s123</code> correspondant au prétraitement complet de <code class="language-">s12</code> (<code class="language-">s12</code> auquel on a fait l'étape 3 du prétraitement)</li>
 </ul>
 <p>Cette fonction rend un tableau $t$ de correspondance où $t[i]$ correspond à l'indice dans <code class="language-">s12</code> de l'indice <code class="language-">i</code> dans <code class="language-">s123</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -252,8 +252,8 @@
 <li>$t[0]$ correspond au plus petit indice $i$ tel que <code class="language-">s12[i] == s123[0]</code></li>
 <li>$t[u]$ correspond au plus petit indice $i &gt; t[u-1]$ tel que <code class="language-">s12[i] == s123[u]</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple, le résultat de <code class="language-">correspondance(&quot;OH LA  LA!&quot;, &quot;OHLALA&quot;)</code> sera le tableau : <code class="language-">[0, 1, 3, 4, 7, 8]</code></p>
 <p>En remarquant qu'entre la chaîne initiale <code class="language-">s</code> et la chaîne <code class="language-">s12</code> seules les lettres ont été modifiées (<code class="language-">&quot;ôh la  là!&quot;</code> et <code class="language-">&quot;OH LA  LA!&quot;</code>) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -263,8 +263,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Plutôt que d'afficher à l'écran le sous-palindrome de la chaîne après traitement, utilisez le texte initial en écrivant en rouge la portion de texte qui est le sous-palindrome.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

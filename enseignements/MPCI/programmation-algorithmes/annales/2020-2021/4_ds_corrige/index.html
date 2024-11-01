@@ -492,7 +492,7 @@ E<span class="token punctuation">:</span>  <span class="token keyword">for</span
                 grille<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">None</span>
                 libre <span class="token operator">+=</span> <span class="token number">1</span>
 </code></pre>
-<p>Tasser un élément revient à le mettre au premier élément vide de la colonne que l'on considère. Si l'on parcourt une colonne de bas en haut, cet élément vide sera vu avant l' élément à tasser.<br>
+<p>Tasser un élément revient à le mettre au premier élément vide de la colonne que l'on considère. Si l'on parcourt une colonne de bas en haut, cet élément vide sera vu avant l' élément à tasser.
 De là on parcourt chaque colonne de haut en bas et garder un pointeur vers la première place libre (lorsque <code class="language-">(libre == None) and grille[i][j] == VIDE</code>). A partir de cet indice <code class="language-">j</code> on a que <code class="language-">libre != None</code>. Un élément à tasser vérifiera la condition <code class="language-">(libre != None)  and grille[i][j] != VIDE</code>.</p>
 <h2>Question 13</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-front/">Projet front</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-front/gestion-dépendances/">Gestion des dépendances</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -145,8 +145,8 @@
 <div class="pl-8 mr-8">
 <p>Il n'y a pas de règle pour savoir quoi récupérer. Mais normalement, vous devriez trouver ce qu'il faut dans les dossiers js ou css et prenez les fichiers <a href="https://www.cloudflare.com/fr-fr/learning/performance/why-minify-javascript-code/">minifiés</a> (moins lisible pour un humains mais plus léger pour traverser le réseau).</p>
 <p>Parfois, la bibliothèque vient également avec son code source, vous avez alors deux dossiers, <code class="fichier">src/</code> pour les sources et <code class="fichier">dist</code> pour les fichiers utilisables.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le fichier <code class="fichier">filmographie/index.html</code> devient :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -206,8 +206,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifier le site de la partie précédente pour utiliser les modules de node.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'intérêt principal de passer via l'installeur de package de node (<code>npm</code>) plutôt que de tout télécharger soit même est que le fichier <code class="fichier">package.json</code> contient toutes les dépendances de votre projet. Pour partager le projet on a pas besoin d'intégrer' le dossier <code class="fichier">node_modules/</code> qui peut être gros, il suffit de le reconstruire à partir du fichier <code class="fichier">package.json</code> en utilisant, dans un terminal placé à la racine du site, la commande :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span>
 </code></pre>
@@ -222,16 +222,16 @@
 <li>installez les dépendances</li>
 <li>créez un serveur statique pour le servir</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous n'installez pas les dépendance, le site ne peut fonctionner puisqu'il ne contient pas de dossier <code class="fichier">node_modules/</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>On conserve également parfois le fichier <code class="fichier">package-lock.json</code> dans la distribution d'un projet node. Vois le lien suivant pour le pourquoi de son existence et son utilisation courante :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -239,11 +239,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://blog.boris.sh/blog/package-lock-les-mauvaises-pratiques-a-bannir-pour-un-projet-stable">gestion du fichier</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Compiler un site statique</h2>
 <blockquote>
-<p>TBD sass; script node avec npx : <code>npm install sass</code> ; <code>npx sass</code><br>
+<p>TBD sass; script node avec npx : <code>npm install sass</code> ; <code>npx sass</code>
 TBD webpack ?</p>
 </blockquote>
 

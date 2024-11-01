@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/">Authentification</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -108,7 +108,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La cryptographie asymétrique est un chiffre $(E, D)$ qui permet, avec un couple $(k, k')$ de clés d'avoir les deux conditions d'intégrité suivante, de façon sécurisée :</p>
@@ -117,8 +117,8 @@
 <li>$D(k, E(k', m)) = m$</li>
 </ul>
 <p>Enfin, la connaissance d'une des deux clés n'entraîne aucune information sur la seconde.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les fonction $E$ et $D$ étant connues, on a coutume d'uniquement s'échanger les clés. Chaque personne garde une clé pour elle, cette clé est appelée <em>clé privée</em>, et distribue l'autre, la <em>clé publique</em>, à tout le monde.</p>
 <p>La clé privé est personnelle et permet :</p>
 <ul>
@@ -137,8 +137,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Certificat_%C3%A9lectronique">Certificat Électronique</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La cryptographie asymétrique permet alors d'avoir un couple $(S, V)$ de signature / vérification en utilisant le couple $(k, k')$ de clé privée / publique :</p>
 <ul>
 <li>$S(m) = E(k, h(m))$ : On signe un hash du message avec sa clé privée</li>
@@ -155,8 +155,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme fonction de hash on utilise souvent <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>, préférez la version 2 à la version 1 qui n'est plus sécurisée pour des applications cryptographies.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple :</p>
 <p>Alice veut envoyer un message $m$ à Bob et prouver qu'elle est bien l'autrice de celui-ci :</p>
 <ol>
@@ -198,8 +198,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="RSA" class="interne">Méthode de chiffrement RSA</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Chiffrement ElGamal</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -207,8 +207,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="ElGamal" class="interne">Méthode de chiffrement ElGamal</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Signature DSA</h3>
 <p>La méthode DSA de signature utilise le problème du logarithme discret comme fonctionnement, ce qui la rend compatible avec l'utilisation de courbes elliptiques :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -217,16 +217,16 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="DSA" class="interne">Méthode de signature DSA</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>DSA est une variante de la méthode de signature ElGamal, qu'il ne faut pas confondre avec la méthode de chiffrement ElGamal.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

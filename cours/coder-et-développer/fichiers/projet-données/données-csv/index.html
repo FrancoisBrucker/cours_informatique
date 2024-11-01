@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/">Fichiers de données csv et json</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-données/données-csv/">Formats de données : csv</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -120,8 +120,8 @@ Gordon, Zola, 10
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Format csv</h2>
 <p>Le format csv peut sembler bien défini, mais il n'en est rien.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -130,8 +130,8 @@ Gordon, Zola, 10
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est crucial de toujours soigneusement vérifier le format csv de vos données.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple :</p>
 <ul>
 <li>Le délimiteur est par défaut une <code class="language-">,</code>, mais peut tout aussi bien être un <code>;</code> (par défaut lorsque l'on exporte un fichier au format csv depuis un excel en langue française), une tabulations, voir un espace.</li>
@@ -151,8 +151,8 @@ Gordon, Zola, 10
 <div class="pl-8 mr-8">
 <p>Utilisez un plugin vscode pour pouvoir visualiser clairement les fichiers csv.</p>
 <p>Il en existe de nombreux. J'ai installé le tout simple <a href="https://marketplace.visualstudio.com/items?itemName=mechatroner.rainbow-csv">rainbow CSV</a> pour rapidement connaître le format csv d'un fichier particulier.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Python et fichier csv</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -160,8 +160,8 @@ Gordon, Zola, 10
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/library/csv.html">Documentation csv python</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour la suite, on supposera que l'on ait dans le dossier du projet courant le fichier <code class="fichier">notes.csv</code> contenant :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Prénom, nom, note
 Harry, Cover, 12.5
@@ -187,8 +187,8 @@ lecteur <span class="token operator">=</span> csv<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Par défaut, tout attribut sera considéré comme une chaîne de caractères. Il faut convertir chaque champ à son bon type. Si vous voulez traiter à part les chaînes de caractères, il faut les entourer de <code>&quot;</code>.</p>
-</div>
-</div>
+</div></div>
+
 <ol>
 <li><code class="language-">import csv</code> pour pouvoir utiliser le module <code class="language-">csv</code></li>
 <li>ouvrir le fichier à lire avec <a href="https://docs.python.org/fr/3/library/functions.html#open"><code class="language-">open</code></a> avec une gestion de la fin de ligne.</li>
@@ -220,8 +220,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Le lecteur de csv fonctionne avec tout <a href="https://docs.python.org/fr/3.7/glossary.html#term-iterator">itérateur</a>. Il fonctionne donc aussi en remplaçant le fichier <code class="language-">f</code> par une liste de chaînes de caractères par exemple.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Écrire des fichiers csv</h3>
 <p>Ajoutons la note de Mlle Debbie Scott qui a eu 13.5</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -230,8 +230,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Il faut ouvrir le fichier en <strong>ajout</strong>. Si vous l'ouvrez juste en écriture tout votre fichier disparaît.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> csv
 <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'notes.csv'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> newline<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
     écrivain <span class="token operator">=</span> csv<span class="token punctuation">.</span>writer<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
@@ -246,8 +246,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Téléchargez la base officielle des codes postaux au format csv à partir de <a href="https://www.data.gouv.fr/fr/datasets/base-officielle-des-codes-postaux">cette page</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>En utilisant ce fichier csv :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -264,8 +264,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 </ul>
 </li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h3>Prénoms</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -274,8 +274,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 </svg>
 <div class="pl-8 mr-8">
 <p>En utilisant <a href="https://www.insee.fr/fr/statistiques/7633685">cette page</a>, récupérez le fichier des naissances en France (hors Mayotte) depuis 1900.</p>
-</div>
-</div>
+</div></div>
+
 <p>En utilisant ce fichier :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -287,8 +287,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 <li>Quel le prénom le plus donné chez les garçons et chez les filles l'année de votre naissance ? Et en 2022 ?</li>
 <li>Représentez graphiquement l'évolution au cours du temps (de l'année 1900 à 2022) de votre prénom (ou d'un prénom que vous aimez bien)</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Utilisez-maintenant le fichier des prénoms ventilés par département :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -298,8 +298,8 @@ titres <span class="token operator">=</span> <span class="token builtin">next</s
 <div class="pl-8 mr-8">
 <p>Créez un dictionnaire dont les clés sont le numéro de département et la valeur, le nombre de fois où votre prénom a été donné dans ce département pour toutes les années.</p>
 <p>Dans quel département votre prénom a-t-il été le plus donné ?</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

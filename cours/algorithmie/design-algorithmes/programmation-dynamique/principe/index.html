@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/">Programmation dynamique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/programmation-dynamique/principe/">Principe</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,19 +98,19 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Programmation_dynamique">Page Wikipedia sur la programmation dynamique</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le principe de la programmation dynamique est simple :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Principe</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une solution optimale à un problème est constituée de solutions optimales de sous-problèmes.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il s'applique aux problèmes d'optimisations et en particulier ceux que l'on peut écrire sous une forme récursive. Illustrons le avec la recherche de chemins le plus rapide. Supposons que le chemin le plus rapide entre la ville A et la ville B soit celui ci-dessous :</p>
 <p><img src="opti-1.png" alt="opti A˜B"></p>
 <p>Prenons une ville sur ce chemin, par exemple la ville C :</p>
@@ -134,7 +134,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>tronçon</em></strong> entre deux gares $x$ et $y$ est une ligne de rails connectant directement les deux gares, sans gare intermédiaire.</p>
@@ -144,14 +144,14 @@
 <li>$T[x][y]$ vaut $+\infty$ s'il n'existe pas de tronçon entre la gare $x$ et la gare $y$,</li>
 <li>$T[x][x]$ vaut 0 pour toute gare $x$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Aller d'une gare à une autre revient à suivre une suite de tronçons. Formalisons ceci :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>chemin</em></strong> entre deux gares $x$ et $y$ est soit :</p>
@@ -165,8 +165,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Problème à résoudre</h3>
 <p>On cherche à connaitre le temps minimal de trajet $M[x]$ entre une gare $A$ (donnée) et chaque autre gare $x$.</p>
 <h3>Méthode de résolution</h3>
@@ -384,15 +384,15 @@ $$
 <li>On a utilisé <a href="https://docs.python.org/fr/3/library/math.html#math.inf"><code class="language-">inf</code> qui représente l'infini</a></li>
 <li>l'utilisation de $D$ permet d'éviter les effets de bord</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La complexité de cet algorithme est clairement en $\mathcal{O}(n^3)$ avec $n$ le nombre de gares.</p>
 <h2>Méthode de résolution</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Méthode</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour résoudre un problème d'optimisation en utilisant la programmation dynamique se fait en 3 étapes :</p>
@@ -401,8 +401,8 @@ $$
 <li><strong>détermination</strong> de l'équation de récurrence liant les sous-problèmes entre eux</li>
 <li>résolution de l'équation en <strong>stockant</strong> les résultats intermédiaires (très souvent les solutions optimales des sous-problèmes) pour éviter de les recalculer</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Le gain algorithmique de l'utilisation de la programmation dynamique résulte dans le fait de stocker les résultats intermédiaires (les sous-problèmes optimaux) pour ne pas avoir à les recalculer. Cette approche est d'autant plus efficace que :</p>
 <ol>
 <li>l'équation de récurrence est simple à calculer,</li>
@@ -415,7 +415,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour un ensemble de gares $G$, on note $C$ <strong><em>la relation chemin</em></strong>  telle que :</p>
@@ -424,8 +424,8 @@ $$
 <li>$C[x][y]$ est <strong>faux</strong> s'il n'existe pas de chemin entre les gares $x$ et $y$</li>
 <li>$C[x][x]$ est <strong>vrai</strong> pour toute gare $x$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Le premier exemple montre que la programmation dynamique permet de trouver le temps de chemin optimal entre une gare et toutes les autres en $\mathcal{O}(n^3)$ opérations. On peut alors résoudre notre problème en effectuant l'algorithme du premier exemple pour chaque gare $x$ et dire que $C[x][y]$ si et seulement si le temps minimum de trajet entre $x$ et $y$ est fini. Ceci nous prendrait en tout $\mathcal{O}(n^4)$ opérations.</p>
 <p>Il est possible de faire mieux, encore une fois en utilisant la programmation dynamique, mais en changeant les sous-problèmes considérés. Ceci montre que les sous-problèmes que l'on peut considérer sont multiples, et peuvent conduire à complexités différentes.</p>
 <p>La notion de chemin s'écrit très bien sous la forme d'une relation $C$ car elle est :</p>
@@ -444,8 +444,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Soit $G = \{ g_1, \dots g_n \}$ les gares d'un réseau ferré et $T$ sa relation tronçon.</p>
 <p>Montrez que si on note $G_i = \{ g_1, \dots g_i \}$, un chemin entre les gares $x$ et $y$ ayant comme gares de passage uniquement des éléments de $G_{i}$ peut se déduire de chemins ayant uniquement des gares de $G_{i-1}$ comme gares de passage.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -481,8 +481,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Déduire un algorithme utilisant la programmation dynamique en $\mathcal{O}(n^3)$ permettant de trouver la relation chemin à partir de la relation tronçon.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -506,8 +506,8 @@ $$
 <li>$C_{k-1}[i][k]$ et $C_{k-1}[k][j]$ sont vrais</li>
 </ul>
 <p>Qui se résume en :</p>
-<p>$$<br>
-C_k[i][j] = C_{k-1}[i][j] \text{ OU } (C_{k-1}[i][k] \text{ ET } C_{k-1}[k][j])<br>
+<p>$$
+C_k[i][j] = C_{k-1}[i][j] \text{ OU } (C_{k-1}[i][k] \text{ ET } C_{k-1}[k][j])
 $$</p>
 <p>Ce qui donne l'algorithme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -544,8 +544,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Modifiez l'algorithme précédent pour remplacer la création de la matrice $C$ par la matrice $M[i][j]$ qui donne, comme pour le premier exemple) le temps minimum du chemin entre la gare $i$ et la gare $j$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -613,15 +613,15 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Tout comme l'algorithme de Bellman-Ford, on peut On facilement modifier l'algorithme précédent pour qu'il conserve le chemin permettant de réaliser le temps de trajet minium.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'algorithme de la question précédente est de même complexité que celui du premier exemple et résout un problème plus général ! Il est connu sous le nom d'algorithme de <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Floyd-Warshall">Roy-Floyd-Warshall</a>. Mais se pose alors la question :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quel est l'intérêt de l'algorithme du premier exemple (algorithme de Bellman-Ford) par rapport au second (algorithme de Roy-Floyd-Warshall) ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -645,8 +645,8 @@ $$</p>
 </div>
 <h2>Stockage des résultats intermédiaires</h2>
 <p>Il existe deux approches pour le stockage des résultats intermédiaires : <a href="https://fr.wikipedia.org/wiki/Approches_ascendante_et_descendante#Approche_ascendante"><strong><em>l'approche bottom-up</em></strong></a> et la <a href="https://fr.wikipedia.org/wiki/M%C3%A9mo%C3%AFsation"><strong><em>mémoïsation</em></strong></a>. Nous allons montrer les deux techniques en nous aidant de la suite de Fibonacci dont l'équation de récurrence est :</p>
-<p>$$<br>
-F(n) = F(n-1) + F(n-2)<br>
+<p>$$
+F(n) = F(n-1) + F(n-2)
 $$</p>
 <p>L'algorithme récursif naïf calculant $F(n)$ est :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">F</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -700,19 +700,19 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante">Problème de la sous-suite croissante maximum</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le problème est le suivant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $T$ un tableau à $n$ éléments. On cherche la longueur de la suite ${(s_i)}_{i\geq 0}$ strictement croissante la plus grande possible telle que $T[s_i] &lt; T[s_{i+1}]$ pour tout $i$.</p>
-</div>
-</div>
+</div></div>
+
 <p>En reprenant l'exemple de wikipediam la suite $(6, 1, 4, 9, 5, 11)$ posède plusieurs sous-suites croissantes, comme $(6, 9, 11)$, $(1, 4, 9, 11)$ ou encore $(1,4, 5, 11)$. Les plus longues sous-suites étant de longueur 4.</p>
 <p>Nous allons résoudre ce problème par programmation dynamique en définissant $N[i]$ comme étant la longueur maximale de la suite pour le tableau $T[i:]$ (on a supprimé les $i$ premiers éléments de $T$. Le tableau $T[0:]$ est le tableau initial et $T[2:]$ est le tableau auquel on a supprimé les deux premiers éléments).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -723,8 +723,8 @@ $$</p>
 <li>$N[i] \geq 1$ pour tout $0\leq i &lt; n$</li>
 <li>$N[n-1] = 1$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -751,8 +751,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Déterminez une relation de récurrence entre $N[i]$ et les $N[j]$ pour les $j&gt;i$ tels que $T[i] &lt; T[j]$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -783,8 +783,8 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez un algorithme récursif et utilisant la mémoïsation pour résoudre le problème.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -822,7 +822,7 @@ $$
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>sous_suite<span class="token punctuation">(</span>T<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Tout comme pour la mémoïsation de la suite de Fibonacci, on ne calcule <code class="language-">sous_suite(T, i)</code> qu'une seule fois.<br>
+<p>Tout comme pour la mémoïsation de la suite de Fibonacci, on ne calcule <code class="language-">sous_suite(T, i)</code> qu'une seule fois.
 Chaque calcul peut demander le calcul de tous les <code class="language-">sous_suite(T, j)</code>, pour tous les $j&gt;i$, donc une complexité de $\mathcal{O}(n)$ lorsque tous les résultats seront dans le cache. La complexité totale de <code class="language-">sous_suite(T, 0)</code> est donc de $\mathcal{O}(n^2)$.</p>
 </div>
 </details>     
@@ -831,8 +831,8 @@ Chaque calcul peut demander le calcul de tous les <code class="language-">sous_s
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez un algorithme itératif et bottom-up pour résoudre le problème.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

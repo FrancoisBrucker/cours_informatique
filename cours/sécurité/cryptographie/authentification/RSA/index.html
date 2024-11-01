@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/">Authentification</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/authentification/RSA/">Code RSA</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -101,8 +101,8 @@
 <li><a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA">Chiffrement RSA</a></li>
 <li>[preuves RSA](<a href="https://www.youtube.com/watch?v=Xlal_d4zyfo">chiffrement RSA</a>)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Cet algorithme a été présenté en 1977 par Ronald Rivest, Adi Shamir et Leonard Adleman. Le chiffrement RSA s’appuie sur le fait que factoriser un produit de deux nombres premiers distincts est difficile.</p>
 <p>Le code RSA est basé sur des principes arithmétiques. Le message à coder/décoder sera donc un entier $m$.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -118,8 +118,8 @@
 <li>$xy \pmod{n} \equiv [(x \pmod{n})\cdot(y \pmod{n})] \pmod{n}$</li>
 <li>$k (x \pmod{n}) \equiv kx \pmod{n}$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Principe</h2>
 <p>Soient $p$ et $q$ deux nombres premiers différents, strictement plus grand que 1, et tels que $pq &gt; m$. On note :</p>
 <ul>
@@ -135,12 +135,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>codage</p>
 </div><div class="pl-8 mr-8">
 <p>Le couple $(e, n)$ constitue la <strong>clé de chiffrement</strong> et la fonction de codage est $f(m) = m^e \pmod{n}$</p>
-</div>
-</div>
+</div></div>
+
 <p>Soit alors $d$ l'unique entier tel que :</p>
 <ul>
 <li>un entier $0 &lt; d &lt; \phi(n)$</li>
@@ -150,19 +150,19 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>décodage</p>
 </div><div class="pl-8 mr-8">
 <p>Le couple $(d, n)$ constitue la <strong>clé de déchiffrement</strong> et la fonction de décodage est $f^{-1}(m) = m^d \pmod{n}$</p>
-</div>
-</div>
+</div></div>
+
 <h2>Existence et calcul de $d$</h2>
 <p>L'existence de $d$ est lié à une conséquence du <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Bachet-B%C3%A9zout">théorème de Bézout</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>Théorème de Bézout</p>
 </div><div class="pl-8 mr-8">
 <p>Deux entiers positifs $a$ et $b$ sont premiers entre eux si et seulement il existe deux entiers relatifs $x$ et $y$ tels que :</p>
@@ -171,8 +171,8 @@ $$
 ax + by = 1
 $$
 </div>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -202,7 +202,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>Corollaire</p>
 </div><div class="pl-8 mr-8">
 <p>Si entiers positifs $a$ et $b$ sont premiers entre eux, il existe un unique $0&lt; x &lt; b$ tel que  :</p>
@@ -212,8 +212,8 @@ ax = 1 + by
 $$
 </div>
 <p>Avec $y$ un entier positif.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -245,22 +245,22 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Voir le code RSA en action :<br>
+<p>Voir le code RSA en action :
 <a href="https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html">https://www.onebigfluke.com/2013/11/public-key-crypto-math-explained.html</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Preuve des bijections</h2>
 <p>Le fait que les fonctions $f =  m^e \pmod{n}$ et $f^{-1} =  m^d \pmod{n}$ sont bien inverse l'une de l'autre pour l'ensemble des entiers inférieurs à $n$ est due à un autre résultat de la théorie des nombre nommé le <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat">petit théorème de Fermat</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>petit théorème de Fermat</p>
 </div><div class="pl-8 mr-8">
 <p>Si $p$ est un nombre premier et que $a$ est un entier alors : $a^{p} - a$ est un multiple de $p$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -280,12 +280,12 @@ $$
 <div class="mx-8 pb-2">
 <p>Nous allons le faire par récurrence.</p>
 <p>Si $a=1$, $a^{p}-a = 0$ qui est bien un multiple de $p$. On suppose la propriété vraie pour $a \geq 1$ et on s'intéresse à $a+1$ :</p>
-<p>$$<br>
-(a+1)^{p}-(a+1) = \sum_{i=0}^pC_p^ia^i1^{p-i} -(a+1) = 1 + \sum_{i=1}^{p-1}C_p^ia^i + a^p -(a+1) = \sum_{i=1}^{p-1}C_p^ia^i + (a^p-a)<br>
+<p>$$
+(a+1)^{p}-(a+1) = \sum_{i=0}^pC_p^ia^i1^{p-i} -(a+1) = 1 + \sum_{i=1}^{p-1}C_p^ia^i + a^p -(a+1) = \sum_{i=1}^{p-1}C_p^ia^i + (a^p-a)
 $$</p>
 <p>Comme par hypothèse de récurrence $p$ divise $(a^p-a)$, il nous reste à prouver que $p$ divise $\sum_{i=1}^{p-1}C_p^ia^i$. Nous allons le faire en montrant que $p$ divise $C_p^i$ pour tout $0 &lt; i &lt;p$. En effet :</p>
-<p>$$<br>
-C_p^i = \frac{p!}{i!(p-i)!} = p \frac{(p-1)!}{i!(p-i)!} = p \frac{\Pi_{j=1}^{p-i+1}(p-j)}{i!}<br>
+<p>$$
+C_p^i = \frac{p!}{i!(p-i)!} = p \frac{(p-1)!}{i!(p-i)!} = p \frac{\Pi_{j=1}^{p-i+1}(p-j)}{i!}
 $$</p>
 <p>Et comme $p$ ne peut diviser aucun $j$ pour tout $0 &lt; j &lt; p$ on en conclut que comme il est de plus premier, il ne peut pas non plus diviser $\Pi_{1\leq j \leq i}j = i!$ Ceci prouve que puisque $C_p^i$ est un entier, la quantité $\frac{\Pi_{j=1}^{p-i+1}(p-j)}{i!}$ est entière : $p$ divise $C_p^i$ pour tout $0 &lt; i &lt;p$.</p>
 <p>$p$ divise bien $(a+1)^{p}-(a+1)$ s'il divise $a^{p}-a$, ce qui conclut la preuve par récurrence.</p>

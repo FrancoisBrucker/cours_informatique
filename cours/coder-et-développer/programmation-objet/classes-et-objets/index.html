@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/classes-et-objets/">Classes et objets</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -108,8 +108,8 @@
             </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -130,8 +130,8 @@
 <div class="pl-8 mr-8">
 <p>Un <strong><em>objet</em></strong> est une structure de données (les champs de la structure de donnée sont appelés <strong><em>attributs</em></strong>) sur laquelle on peut effectuer des opérations (appelées <strong><em>méthodes</em></strong>).</p>
 <p>Pour pouvoir facilement créer une structure particulière et donner un moyen simple d'effectuer les opérations sur celle-ci, on utilise des <strong><em>classes</em></strong> comme patron de ces objets.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour résumer, une classe :</p>
 <ul>
 <li>permet de créer un type d'objet (une structure de donnée précise)</li>
@@ -156,8 +156,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ces principes sont mis en œuvre de façon différentes selon les langages mais on retrouvera toujours ces notions.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Exemple d'objets en python</h3>
 <h4>Chaîne de caractères</h4>
 <p>Les chaines de caractères sont des objets de la classe (<a href="https://docs.python.org/fr/3/library/string.html">str</a>) :</p>
@@ -180,8 +180,8 @@ Traceback <span class="token punctuation">(</span>most recent call last<span cla
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
 NameError<span class="token punctuation">:</span> name <span class="token string">'upper'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -222,8 +222,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Remarquez que l'opération <code class="language-">+</code> n'est pas identique pour <code class="language-">1 + 2</code> et <code class="language-">1.0 + 2</code>. Dans le premier cas c'est l'addition définie dans <code class="language-">int</code> qui est utilisé, dans le second cas c'est celle définie dans <code class="language-">float</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Créer des objets</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -234,8 +234,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>En python, le retour de l'<strong><em>exécution d'une classe</em></strong> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Ainsi :</p>
 <ul>
 <li><code class="language-">list()</code> : crée un objet de type <code class="language-">list</code> (une liste), sans paramètre.</li>
@@ -250,8 +250,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Certains objets se créent juste avec leur valeur comme les entiers, les réels ou encore les chaines de caractères. En python <code class="language-">3</code> est équivalent à <code class="language-">int(3)</code> par exemple.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Outils</h2>
 <p>On va utiliser un outil <em>papier</em> (l'<a href="https://fr.wikipedia.org/wiki/UML_(informatique)">UML</a>) et un outil clavier (le python) pour écrire nos classes.</p>
 <h3>UML</h3>
@@ -262,8 +262,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez suivre ce petit <a href="https://www.sparxsystems.fr/resources/tutorials/uml/datamodel.html">tutoriel UML</a> pour comprendre sa notation et son utilité.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'UML peut être très compliqué. Nous allons uniquement l'utiliser ici comme une représentation synthétique d'une classe/objet. Vous le verrez dans les exemples ci-dessous mais, en gros, une classe en UML c'est le diagramme :</p>
 <p><img src="classes-1.png" alt="une classe UML"></p>
 <ul>
@@ -278,8 +278,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, beaucoup de choses sont des <a href="https://en.wikipedia.org/wiki/Convention_over_configuration">conventions</a> (variable privée, premier nom est self, ...) mais tout le monde s'y tient car la lecture du code en devient aisée.</p>
-</div>
-</div>
+</div></div>
+
 <p>N'hésitez pas à jeter un coup d'œil au <a href="https://docs.python.org/fr/3/tutorial/classes.html">tutoriel de python sur ses classes</a>. Ce cours est là pour vous montrer tout ce qu'il y a dedans, à part (peut-être) la partie sur l'héritage et les itérateurs.</p>
 <h4>Constructeur</h4>
 <p>En python, le constructeur d'une classe sera <strong>toujours</strong> la méthode : <code class="language-">__init__</code>. C'est une méthode spéciale.</p>
@@ -289,8 +289,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>La méthode <code class="language-">__init__</code> n'a pas de <code class="language-">return</code>, mais elle est utilisée dans le processus de création d'un objet.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Espace de noms (namespaces)</h4>
 <p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms" class="interne">espaces de noms</a>. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 <h4>Processus de création d'un objet</h4>
@@ -337,13 +337,13 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est facile de savoir de quel type est le nom rencontré en python si l'on utilise les façons de faire classiques, décrites dans la <a href="https://peps.python.org/pep-0008/">PEP 8</a> de python.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Convenions de nommage en python</strong></p>
 </div><div class="pl-8 mr-8">
 <p>En résumé :</p>
@@ -363,16 +363,16 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </li>
 <li>les noms commençant par <code>__</code> et se finissant par <code>__</code> (comme <code>__name__</code>) ont des significations précises</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Toutes les <a href="https://peps.python.org/pep-0008/#prescriptive-naming-conventions">conventions de nommage de python</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>On suppose donc que <code class="language-">Compteur</code> est une <em>classe</em>, par conséquent son exécution correspond à la création d'objets : <code class="language-">c1</code> et <code class="language-">c2</code> des objets de type <code class="language-">Compteur</code>.</p>
 <p>De là, <code class="language-">incrémente</code> est une méthode de la classe <code class="language-">Compteur</code> et <code class="language-">valeur</code> un attribut des objets <code class="language-">c1</code> et <code class="language-">c2</code></p>
 <ul>
@@ -386,8 +386,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </svg>
 <div class="pl-8 mr-8">
 <p>Un code dont les objets sont bien nommés doit pouvoir se lire et être interprétable sans connaître le corps des fonctions et méthodes utilisées.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Exécution du programme</h4>
 <p>A la lecture du code, on a donc <em>envie</em> que le code :</p>
 <ol>
@@ -412,7 +412,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Pour créer un diagramme UML</strong></p>
 </div><div class="pl-8 mr-8">
 <ol>
@@ -420,8 +420,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <li>on explicite ses méthodes, c'est à dire comment on va utiliser les objets (ici incrémenter un compteur).</li>
 <li>on crée la structure de données qui va permettre de stocker les informations nécessaires à son utilisation : ce sont les attributs (ici un entier pour stocker le nombre de fois où on l'a incrémenté).</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Ce qui donne le diagramme UML du compteur :</p>
 <p><img src="classes-2.png" alt="compteur"></p>
 <h3>Code python</h3>
@@ -462,8 +462,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, lorsque l'on définit une méthode d'une classe, le 1er paramètre de chaque méthode est <strong>toujours</strong> <code class="language-">self</code>. A l'exécution, python donnera à ce paramètre l'objet qui appelle la méthode, on ne le voit pas lorsque l'on écrit le code.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple dans le code la ligne <code class="language-">c1.incrémente()</code> sera transformée par python en : <code class="language-">Compteur.incrémente(c1)</code> qui peut se lire : on exécute la fonction <code class="language-">incrémente</code> de l'espace de noms du bloc <code class="language-">Compteur</code> avec comme paramètre <code class="language-">c1</code>.</p>
 <p>La première façon d'écrire (<code class="language-">c1.incrémente()</code>) est plus simple à comprendre <strong>pour un humain</strong> et évite les erreurs (la méthode est appliquée à l'objet à gauche du point), alors que la seconde est plus facile à comprendre <strong>pour un ordinateur</strong> en utilisant les espaces de noms et le passage explicite de l'objet appelant.</p>
 <p><code class="language-">self</code> peut souvent paraître magique. Une façon simple de comprendre ce qu'il fait est :</p>
@@ -474,8 +474,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <div class="pl-8 mr-8">
 <p>le premier paramètre de la définition d'une méthode noté <code class="language-">self</code>, est l'objet à gauche du <code class="language-">.</code> lors de l'appel à celle-ci par une notation pointée.</p>
 <p>C'est la manière explicite de python de montrer quel objet est utilisé lors de l'appel de méthodes.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous pouvez appeler ce premier paramètre comme vous voulez, mais c'est <strong>très très</strong> déconseillé car votre code en deviendra moins lisible (tout le monde utilise le nom <code class="language-">self</code>).</p>
 <p>Par exemple, considérons la ligne de code <code class="language-">&quot;coucou&quot;.upper().count(&quot;U&quot;)</code> :</p>
 <ol>
@@ -491,8 +491,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définit dans la classes y seront consignés.</p>
-</div>
-</div>
+</div></div>
+
 <p>Dans l'exemple du compteur, lorsque le fichier <code class="fichier">main.py</code> importe le fichier <code class="fichier">compteur.py</code>, la classe <code class="language-">Compteur</code> y est définie. Dans son namespace seront alors placés les noms :</p>
 <ul>
 <li><code class="language-">__init__</code></li>
@@ -507,8 +507,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <div class="pl-8 mr-8">
 <p>Lorsque l'on crée un objet, python lui associe un espace de noms.</p>
 <p>Son espace de noms parent est celui de sa classe.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'espace de noms de l'objet est important, il est utilisé à chaque notation pointée. Par exemple dans la méthode <code class="language-">__init__</code>, la ligne <code class="language-">self.valeur = 0</code> crée un objet entier (valant 0) et l'affecte au nom <code class="language-">valeur</code> dans l'espace de noms de l'objet nommé <code class="language-">self</code>.</p>
 <p>Reprenons le code de <code class="fichier">main.py</code>, et exécutons le ligne à ligne :</p>
 <ol>
@@ -560,8 +560,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 </svg>
 <div class="pl-8 mr-8">
 <p><code class="language-">objet.nom</code> est <strong>toujours</strong> résolu de façon identique en python : on commence par chercher le nom dans l'objet et si on ne le trouve pas on cherche dans sa classe.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

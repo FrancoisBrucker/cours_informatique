@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/chemins-cycles/">Chemins et cycles</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/chemins-cycles/projet/">Projet : chemins cycles</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -378,8 +378,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Placez cette liste dans une variable que vous nommerez <code class="language-">LISTE_PAYS</code> dans un fichier nommé <code class="fichier">données</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Nous n'allons pas directement utiliser ces données. Il est plus pratique de les décrire sous la forme d'un dictionnaire.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -392,8 +392,8 @@
 <li>les clés : sont les identifiants de chaque pays</li>
 <li>les valeurs : un couple (longitude, latitude)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Vous pouvez ensuite afficher la carte en utilisant le code suivant, que vous placerez dans un fichier <code class="fichier">dessins.py</code>.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">as</span> mcolors
@@ -429,8 +429,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>En utilisant les données du fichier <code class="fichier">données.py</code> et la fonction <code class="language-">draw</code> du fichier <code class="fichier">dessins.py</code>, représentez graphiquement les pays.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ca fait beaucoup de pays pour les tests :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -443,23 +443,23 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 <li>-10 &lt; longitude &lt; 40</li>
 <li>35 ≤ latitude &lt; 70</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Distance</h2>
 <p>Pour créer une solution au voyageur de commerce, il va nous falloir une fonction permettant de calculer la distance entre 2 pays.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant le dictionnaire <code class="language-">PAYS</code>, créez un fonction <code class="language-">d(p1, p2)</code> dans le fichier <code class="fichier">données.py</code> qui rend la distance au carré (plus rapide à calculer que la distance normale) entre les pays <code class="language-">p1</code> et <code class="language-">p2</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vérifiez que votre distance est ok :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Mesurez dans le fichier <code class="fichier">main.py</code> la distance minimale, moyenne et maximale entre deux pays ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -496,8 +496,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme glouton et testez le sur les pays européens.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -505,8 +505,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Représentez graphiquement le résultat en traçant le chemin sur la carte.</p>
-</div>
-</div>
+</div></div>
+
 <p>On voit que le résultat n'est pas terrible.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -515,8 +515,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une fonction <code class="language-">coût(cycle)</code> permettant de calculer le coût de construction du cycle. Et testez cette fonction sur le cycle obtenu pas l'algorithme glouton.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Algorithme glouton aléatoire</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -525,8 +525,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez un algorithme glouton qui à chaque étape ajoute un pays aléatoire (et pas juste le plus proche comme dans le cas classique).</p>
-</div>
-</div>
+</div></div>
+
 <p>Ses performances devraient être bien pire que celle de l'algorithme glouton classique :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -535,8 +535,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez la fonction <code class="language-">coût(cycle)</code> pour mesurer le coût moyen sur 10 essais de l'algorithme glouton aléatoire.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Optimisation</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -546,8 +546,8 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme de décroisement de l'étude et effectuez 100 passes complètes d'optimisation sur l'algorithme glouton classique et aléatoire.</p>
 <p>Le résultat final après décroisement des 2 algorithme est-il très différent ?</p>
-</div>
-</div>
+</div></div>
+
 <h2>Recuit simulé</h2>
 <p>Le problème de ne modifier la solution que lorsque l'on améliore celle-ci est que l'on est souvent bloqué dans des minima locaux :</p>
 <p><img src="recuit-1.png" alt="minimum local"></p>
@@ -572,8 +572,8 @@ pour k allant de 1 à max_essai:
 rendre cycle_min
 </code></pre>
 <p>Dans le recuit simulé, la probabilité de choisir une solution moins bonne est égale à :</p>
-<p>$$<br>
-P_k = e^\frac{-(C'-C)}{T_k}<br>
+<p>$$
+P_k = e^\frac{-(C'-C)}{T_k}
 $$</p>
 <p>Où :</p>
 <ul>
@@ -587,8 +587,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez le recuit simulé avec la fonction <code class="language-">deux_opt_aléatoire</code> qui choisit une origine aléatoire puis un indice $i$ aléatoire également.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

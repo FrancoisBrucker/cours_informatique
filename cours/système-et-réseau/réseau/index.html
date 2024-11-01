@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -99,8 +99,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous aurez besoin d'avoir la commande <code>ip</code> très utile en réseau. Ils font parti de la suite logicielle <a href="https://en.wikipedia.org/wiki/Iproute2">iproute2</a> et s'installe via les paquets <code>iproute2</code> sous Debian et <code>iproute2mac</code> avec brew.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Communications par paquets</h2>
 <p>Réseau filaire : une ligne par communication de bout en bout, comme le téléphone à son origine.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -114,8 +114,8 @@
 <li><a href="https://www.youtube.com/watch?v=vqGk7P-Rwto">les centres</a></li>
 <li><a href="https://www.youtube.com/watch?v=qwoFJT7MQBE">le fonctionnement</a></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Si A communique avec B et C avec D, chacun à besoin d'un fil :</p>
 <pre><code>             =======------ B
            //       \
@@ -156,16 +156,16 @@ C ++++++++
 <div class="pl-8 mr-8">
 <p>Ouvrez un <a href="https://www.wireshark.org/">Wireshark</a> et regardez tous les paquets qui viennent sur votre machine.</p>
 <p>Si peux de paquets arrivent, faîtes une requête google par exemple.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il vous faudra peut-être exécuter <code>sudo wireshark</code> pour pouvoir récupérer tous les paquets passant par votre ordinateur.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Schéma global</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -173,8 +173,8 @@ C ++++++++
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html">Linux Networking-concepts HOWTO</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le but d'un réseau est de faire communiquer deux applications situées sur deux ordinateurs différents. Cette tâche est effectuée en appliquant le théorème fondamentale de l’ingénierie système : l'indirection.</p>
 <p>L'indirection étant ici matérialisée par des <em>couches</em>. Prenons l'exemple d'un navigateur qui essaie d'ouvrir la page web d'une url située sur un serveur distant :</p>
 <pre><code>application  : navigateur -------------------------------- serveur
@@ -210,16 +210,16 @@ liaisons     :    |__________________________________________|
 </svg>
 <div class="pl-8 mr-8">
 <p>Avec Wireshark, attrapez une communication http (faite une recherche google depuis votre navigateur) et voyez ses encapsulations.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une fois la communication http faite avec votre navigateur vous pouvez stopper l'enregistrement des paquets de Wireshark (le carré rouge de la barre d'actions)</p>
-</div>
-</div>
+</div></div>
+
 <p>Connection entre deux ordinateurs :</p>
 <pre><code>X--------X
 </code></pre>
@@ -253,8 +253,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce modèle en quatre couches se décline en granularité plus fine de 7 couche, appelé <a href="https://fr.wikipedia.org/wiki/Mod%C3%A8le_OSI">modèle OSI</a> (aussi appelé couches ISO).</p>
-</div>
-</div>
+</div></div>
+
 <p>IL existe de très nombreux protocoles réseaux, et donc de très nombreux types de paquets :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">netstat</span> <span class="token parameter variable">-s</span>
 </code></pre>
@@ -264,8 +264,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.oracle.com/cd/E19455-01/806-0916/6ja85399h/index.html">Commande netstat</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Couches</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -273,8 +273,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://beej.us/guide/bgnet0/html/">Beej's Guide to Network Concepts</a></p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : on se restreint à internet et ipv6 si on peut (on ne parlera de ipv4 que si nécessaire)</p>
 </blockquote>
@@ -284,7 +284,7 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>definition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <a href="https://fr.wikipedia.org/wiki/Client-serveur">protocole client-serveur</a> permet à deux applications nommées <em><strong>client</strong></em> et <em><strong>serveur</strong></em> respectivement de communiquer par question-réponse.</p>
@@ -298,8 +298,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 <li>il y a un serveur et une multitude de client</li>
 <li>la communication est initiée par la requête du client et terminée par la réponse du serveur.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons illustrer ce type de protocole en utilisant le protocole http 1.1 encore très utilisé (et le dernier facilement manipulable).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -307,8 +307,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="http" class="interne">Aperçu du protocole http</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Transmission</h3>
 <p>La transmission se fait d'une application sur un ordinateur A à une application sur un ordinateur B.</p>
 <p>Comme il peut y a voir plusieurs communication simultanée sur un même ordinateur (web, mail, jeu en ligne, ...), il faut un moyen de les distinguer : les ports.</p>
@@ -318,8 +318,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="ports" class="interne">Port logiciel</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La transmission de données en elle meme peut se faire selon de multiples protocoles, nous en verront deux qui sont les plus utilisés : UDP et TCP</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -330,8 +330,8 @@ liaison      : ATIE --------&gt; ATIE    ATIE   --------&gt; ATIE
 <li><a href="https://www.youtube.com/watch?v=V1CxV6Vg7_U">paquets UDP et TCP</a></li>
 <li><a href="https://www.reddit.com/r/ProgrammerHumor/comments/9gcwgw/tcp_vs_udp/">meme tcp et udp</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons utiliser <a href="https://doc.fedora-fr.org/wiki/Netcat,_connexion_client/serveur_en_bash"><code>nc</code></a> pour gérer nos connexion réseau. Commençons par voir comment tout cela fonctionne en créant une connexion vers l'ordinateur <code>www.google.fr</code> sur le port 80 :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">nc</span> www.google.fr <span class="token number">80</span>
 </code></pre>
@@ -364,8 +364,8 @@ Host: www.google.fr
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="udp" class="interne">Protocole UDP</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Si l'on veut transmettre des données de façon sûre, il faut utiliser un autre protocole, TCP</p>
 <h4>TCP</h4>
 <p>Le protocole TCP est utilisé dès qu'il faut transmettre de façon sûre et ordonnée.</p>
@@ -375,8 +375,8 @@ Host: www.google.fr
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="tcp" class="interne">Protocole TCP</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>IP et Routage</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -384,8 +384,8 @@ Host: www.google.fr
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="ip" class="interne">Routage IP</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>DNS</h3>
 <p>Transformer un nom en numéro IP : <a href="https://fr.wikipedia.org/wiki/Domain_Name_System">DNS</a>, voir comment faire avec <a href="https://www.hostinger.fr/tutoriels/comment-utiliser-la-commande-dig-sous-linux">dig</a></p>
 <p>Un nom de machine se fini toujours par un <code>.</code> qui est invisible. C'est lui le premiers serveur dns à être appelé, et qui transmet ensuite au serveur plus précis. Exemple :</p>
@@ -481,8 +481,8 @@ Z -R- C
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="ethernet" class="interne">Ethernet</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Odds and ends</h2>
 <h3>Default gateway</h3>
 <blockquote>

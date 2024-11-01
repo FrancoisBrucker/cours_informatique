@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/">Bases du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/">Structurer son code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/creation-fonctions/">Créer ses fonctions</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -108,16 +108,16 @@
     instruction n
     <span class="token keyword">return</span> <span class="token operator">&lt;</span>objet<span class="token operator">></span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les paramètres et la dernière la dernière ligne avec <code class="language-">return</code> sont optionnelles.</p>
-</div>
-</div>
+</div></div>
+
 <p>La partie de programme suivant définit une fonction :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span>
@@ -137,8 +137,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une <strong>fonction</strong> s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Nom d'une fonction</h2>
 <p>Un nom de fonction est variable comme une autre. Elle est affectée dans l'espace de nom du bloc dans lequel elle est défini.</p>
 <p>Dans le code suivant, exécuté dans un interpréteur on regarde le type d'un nom associé à une fonction :</p>
@@ -182,8 +182,8 @@ TypeError<span class="token punctuation">:</span> <span class="token string">'in
 <div class="pl-8 mr-8">
 <p>Les fonctions ne sont pas les seules objets appelables, les types le sont également : le résultat de l'appel du type <code class="language-">list</code> (c'est à dire <code class="language-">list()</code>) crée une liste vide.</p>
 <p>Il en existe de nombreux autres, python étant friand de ce genre d'opérations.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Paramètres d'une fonction</h2>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus_moins</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> nombre <span class="token operator">></span> <span class="token number">42</span><span class="token punctuation">:</span>
@@ -191,7 +191,7 @@ TypeError<span class="token punctuation">:</span> <span class="token string">'in
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Inférieur à 42"</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors <code class="language-">plus_moins(17)</code>.<br>
+<p>Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors <code class="language-">plus_moins(17)</code>.
 La variable nombre sera associée à l'objet entier de valeur 17 dans la fonction. La variable nombre n'existe que dans la fonction.</p>
 <p>Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -200,8 +200,8 @@ La variable nombre sera associée à l'objet entier de valeur 17 dans la fonctio
 </svg>
 <div class="pl-8 mr-8">
 <p>Les <em>paramètres</em> d'une fonction sont des <strong>noms</strong> de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.</p>
-</div>
-</div>
+</div></div>
+
 <p>Regardons le bout de code suivant, qui utilise la fonction <code class="language-">plus_moins</code> définie précédemment :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">12</span>
 plus_moins<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
@@ -218,8 +218,8 @@ plus_moins<span class="token punctuation">(</span>x<span class="token punctuatio
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez et testez une fonction nommée <code class="language-">cube</code> qui prend un entier en paramètre et affiche cet élément au cube.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -249,8 +249,8 @@ cube<span class="token punctuation">(</span><span class="token number">2</span><
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez et testez une fonction nommée <code class="language-">puissance</code> qui prend deux entiers en paramètre et affiche à l'écran le premier paramètre élevé à la puissance du second paramètre.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -292,14 +292,14 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme le paramètre par défaut est le deuxième on peut aussi l'utiliser sans le nommer : <code class="language-">plus_moins(20, 10)</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez et testez une fonction nommée <code class="language-">puissance</code> qui prend deux entiers en paramètre et affiche le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -340,8 +340,8 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 <p>Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>double<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Le résultat de la cellule devrait être : 42.</p>
 <p>Le code précédent exécute la fonction de nom <code class="language-">double</code> avec comme paramètre un entier de valeur <code class="language-">21</code>. La fonction commence par associer à une variable nommée <code class="language-">valeur</code> l'objet passé en paramètre (ici un entier de valeur <code class="language-">21</code>), puis crée une variable de nom <code class="language-">x</code> à laquelle est associée un entier de valeur <code class="language-">42</code> et enfin se termine en retournant comme valeur l'objet de nom <code class="language-">x</code>. Les variables <code class="language-">valeur</code> et <code class="language-">x</code> définies à l'intérieur de la fonction sont ensuite effacées (pas les objets, seulement les noms).</p>
 <p>Cette valeur retournée est utilisée par la commande <code class="language-">print</code> pour être affichée à l'écran.</p>
@@ -351,14 +351,14 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Les noms de paramètres d'une fonction et les variables déclarée à l'intérieur de la fonction n'existent qu'à l'intérieur de celle-ci. En dehors de ce blocs, ces variables n'existent plus.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez et testez une fonction nommée <code class="language-">puissance</code> qui prend deux entiers en paramètre et rend le premier paramètre élevé à la puissance du second paramètre. Le second paramètre vaut 2 par défaut.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -399,8 +399,8 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le code précédent et expliquer son fonctionnement</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -444,8 +444,8 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html">https://python-reference.readthedocs.io/en/latest/docs/operators/lambda.html</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Les lambda sont ue façon d'écrire rapidement une fonction avec une unique instruction.</p>
 <p>Les deux codes suivant sont identiques :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">double <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token operator">*</span> x
@@ -478,8 +478,8 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -523,8 +523,8 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3.10/library/typing.html">https://docs.python.org/fr/3.10/library/typing.html</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Les annotations de types permettent de renseigner le type des entrées et de la sortie d'une fonction python. Il n'est pas nécessaire de le faire, mais si vous avez besoin d'expliciter une signature de fonction comme on le ferait dans un langage compilé comme java, vous pouvez le faire en ajoutant :</p>
 <ul>
 <li>son type à chaque paramètre (précédé d'un <code>:</code>)</li>
@@ -551,8 +551,8 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <div class="pl-8 mr-8">
 <p>La plupart du temps, pour de petits programme, ce genre de précision n'est pas importante. Elle ne devient cruciale que lorsque la base de code grossit et que spécifier les types d'entrée évite les bug.</p>
 <p>Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langage que python... Plus adapté au développement de grosses applications comme le java ou encore le rust.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

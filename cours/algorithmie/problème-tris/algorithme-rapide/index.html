@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-rapide/">Algorithme du tri rapide</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -119,8 +119,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension" class="interne">les list comprehension</a> de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="preuve-rapide"></span> Preuve</h2>
 <p>Comme <code class="language-">rapide</code> est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré <strong>si</strong> les récursions s'arrêtent.</p>
 <p>C'est effectivement le cas ici puisque les tableaux  <code class="language-">T1</code> et  <code class="language-">T2</code> sont strictement plus petit que  <code class="language-">T</code> et qu'il y a une condition d'arrêt sur la taille du tableau.</p>
@@ -132,8 +132,8 @@ C(n) = \underbracket{\mathcal{O}(n)}_{\mbox{cr\'eation des tableaux}}{} + \under
 }$$
 </div>
 <p>Où $n_1$ est la taille du tableau de gauche et $n_2$ celle de droite ($n_1 + n_2 = n-1$). Pour trouver $n_1$ et $n_2$, il faut résoudre l'équation :</p>
-<p>$${<br>
-C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
+<p>$${
+C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))
 }$$</p>
 <p><a href="../algorithme-fusion/#master-theorem" class="interne">Le master theorem</a> ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.</p>
 <p>On va montrer que :</p>
@@ -141,7 +141,7 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour trier un tableau de longueur $n$, les complexités de <code class="language-">rapide</code> sont :</p>
@@ -150,20 +150,20 @@ C(n) = \mathcal{O}(n) + \max_{0 \leq i &lt; n}(C(i) + C(n-i-1))<br>
 <li>la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,</li>
 <li>la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.</p>
 <h3>Complexité (maximale) du tri rapide</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du tri rapide est en $\mathcal{O}(n^2)$ avec $n$ la taille tu tableau à trier.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -197,8 +197,8 @@ C_{\mbox{tri\'e}}(n) &=& \mathcal{O}(n) + C_{\mbox{tri\'e}}(0) +  C_{\mbox{tri\'
 $$
 </div>
 <p>Et donc :</p>
-<p>$$<br>
-C_{\max}(n) = \mathcal{O}(n^2)<br>
+<p>$$
+C_{\max}(n) = \mathcal{O}(n^2)
 $$</p>
 </div>
 </details>     
@@ -221,7 +221,7 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Formellement, nous ne venons que de montrer que $\mathcal{O}(n^2) \leq C_{\max}(n)$. Pour conclure la preuve, il nous reste à montrer la réciproque, c'est à dire $\mathcal{O}(n^2) \geq C_{\max}(n)$.</p>
-<p>Faisons-le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$<br>
+<p>Faisons-le par récurrence. Notre hypothèse de récurrence est : il existe $k$ tel que $C(n) \leq k \cdot n^2$
 Cette hypothèse est trivialement vraie pour $n=1$ et supposons la vraie pour $n-1$. Examinons le cas $n$ :</p>
 <div>
 $$
@@ -247,12 +247,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -273,8 +273,8 @@ $$
 <p>On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe</p>
 <p><img src="tris-4.png" alt="croissance convexe"></p>
 <p>On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc <strong>toujours</strong> plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et <a href="../algorithme-fusion/#master-theorem">le master theorem</a> nous permet de conclure que :</p>
-<p>$$<br>
-C_{\min(n)} = \mathcal{O}(n\ln(n))<br>
+<p>$$
+C_{\min(n)} = \mathcal{O}(n\ln(n))
 $$</p>
 </div>
 </details>     
@@ -285,8 +285,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -318,8 +318,8 @@ $$</p>
 <p>Comme chaque exécution de l'algorithme est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :</p>
 <p>$$C =  \mathcal{O}(\sum_{i} n_i)$$</p>
 <p>Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot, ala complexité $C$ de l'algorithme vaut également :</p>
-<p>$$<br>
-C = \mathcal{O}(\sum_{x \in T_0}e(x))<br>
+<p>$$
+C = \mathcal{O}(\sum_{x \in T_0}e(x))
 $$</p>
 <p>En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot.</p>
 <p>Quelque soit $T_1$, tous les arbres tels que les éléments de $T_i$ sauf 1 sont répartis dans $T_{2\cdot i}$ et $T_{2\cdot i +1}$) sont des exécutions possibles de l'algorithme, nous allons maintenant caractériser les arbres qui engendrent la complexité minimale.</p>
@@ -369,12 +369,12 @@ $$
 $$
 </div>
 <p>Ceci nous donne — effectivement — une forme plus sympathique de la la complexité :</p>
-<p>$$<br>
-C_\min \geq \mathcal{O}(K \cdot 2^K)<br>
+<p>$$
+C_\min \geq \mathcal{O}(K \cdot 2^K)
 $$</p>
 <p>Enfin, comme $K \geq \log_{2}(n)$ (le nombre de fois où l'on peut diviser $n$ par 2) on a que :</p>
-<p>$$<br>
-C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))<br>
+<p>$$
+C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))
 $$</p>
 </div>
 </details>     
@@ -384,12 +384,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -430,17 +430,17 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Il faut résoudre l'équation :</p>
-<p>$${<br>
-C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+<p>$${
+C_{\mbox{moy}}(n) = \mathcal{O}(n) + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 }$$</p>
 <p>où $p_i$ est la probabilité que le pivot soit le $i+1$ plus petit élément du tableau.</p>
 <p>Pour éviter de nous trimballer des $\mathcal{O}(n)$ partout, on va considérer que l'on y effectue $K\cdot n$ opérations où $K$ est une constante. On peut alors écrire :</p>
-<p>$${<br>
-C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+<p>$${
+C_{\mbox{moy}}(n) = K\cdot n + \sum_{0 \leq i &lt; n}p_i(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 }$$</p>
 <p>De plus on va considérer que nos données sont équiprobables, c'est à dire que le pivot a la même probabilité d'être le $u$ème ou le $v$ ème plus petit élément du tableau : $p_i = \frac{1}{n}$. On a alors à résoudre :</p>
-<p>$${<br>
-C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))<br>
+<p>$${
+C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(i) + C_{\mbox{moy}}(n-i-1))
 }$$</p>
 <p>Comme :</p>
 <ul>
@@ -448,8 +448,8 @@ C_{\mbox{moy}}(n) = K\cdot n + \frac{1}{n}\sum_{0 \leq i &lt; n}(C_{\mbox{moy}}(
 <li>$\sum_{0 \leq i &lt; n}C_{\mbox{moy}}(n-i-1) = \sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)$</li>
 </ul>
 <p>On a :</p>
-<p>$${<br>
-C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)<br>
+<p>$${
+C_{\mbox{moy}}(n) = K\cdot n + \frac{2}{n}\sum_{1 \leq i \leq n}C_{\mbox{moy}}(i-1)
 }$$</p>
 <p>Il va maintenant y avoir 2 astuces coup sur coup. La première astuce est de considérer l'équation $n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1)$ qui va nous permettre d'éliminer la somme :</p>
 <div>
@@ -463,16 +463,16 @@ n\cdot C_{\mbox{moy}}(n) - (n-1)\cdot C_{\mbox{moy}}(n-1) & = & K\cdot n^2 +2\su
 $$
 </div>
 <p>On en déduit :</p>
-<p>$$<br>
-n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)<br>
+<p>$$
+n\cdot C_{\mbox{moy}}(n) = K(2n - 1) + (n+1)\cdot C_{\mbox{moy}}(n-1)
 $$</p>
 <p>Et maintenant la seconde astuce : on divise l'équation ci-dessus par $n(n+1)$ pour obtenir un terme générique identique des deux côtés de l'équation :</p>
-<p>$$<br>
-\frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}<br>
+<p>$$
+\frac{C_{\mbox{moy}}(n)}{n+1}=\frac{C_{\mbox{moy}}(n-1)}{n} + K\cdot\frac{2n - 1}{n(n+1)}
 $$</p>
 <p>On peut alors poser $A(n) = \frac{1}{n+1} \cdot C_{\mbox{moy}}(n)$ et on doit maintenant résoudre :</p>
-<p>$$<br>
-A(n) = A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}<br>
+<p>$$
+A(n) = A(n-1) + K\cdot\frac{2n - 1}{n(n+1)}
 $$</p>
 <p>Ce qui donne :</p>
 <div>
@@ -498,14 +498,14 @@ A(n) &=& 2K\sum_{i=1}^{n}\frac{1}{(i+1)} + \mathcal{O}(1)\\
 $$
 </div>
 <p>La suite $A(n)$ se comporte comme un $\mathcal{O}(H(n))$ où $H(n) = \sum_{i=1}^{n}\frac{1}{i}$.</p>
-<p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,<br>
+<p>Cette fonction est connue, elle s'appelle la <a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_harmonique">série harmonique</a>,
 et est <a href="https://fr.wikipedia.org/wiki/%C3%89quivalent">équivalente</a> à $\ln(n)$ lorsque $n$ tend vers $+\infty$.  On a alors que $\mathcal{O}(H(n)) = \mathcal{O}(\ln(n))$, et de là :</p>
-<p>$$<br>
-A(n) = \mathcal{O}(\ln(n))<br>
+<p>$$
+A(n) = \mathcal{O}(\ln(n))
 $$</p>
 <p>En revenant aux $C_{\mbox{moy}}(n) = n\cdot A(n)$ :</p>
-<p>$$<br>
-C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))<br>
+<p>$$
+C_{\mbox{moy}}(n) = \mathcal{O}(n\ln(n))
 $$</p>
 <p>ouf.</p>
 <p>La complexité en moyenne du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n\ln(n))$</p>
@@ -523,12 +523,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Fun fact</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Commencer par mélanger un tableau pour le trier avec <code class="language-">rapide</code> ensuite est plus rapide en moyenne que de le trier directement.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

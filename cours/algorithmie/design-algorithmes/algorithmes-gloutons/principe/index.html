@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/">Design d&#39;algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/">Algorithmes gloutons</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/">Algorithmes gloutons</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -106,8 +106,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <a href="https://fr.wikipedia.org/wiki/Algorithme_glouton">algorithme glouton</a> choisit à chaque étape la meilleure possibilité localement et ne se remet jamais en question.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le schéma général d'un algorithme glouton est alors le suivant :</p>
 <div id="schéma-algo"></div>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Ordonner E en (x_0, x_1, ..., x_n)
@@ -139,8 +139,8 @@ pour chaque i de 1 à n:
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce type d'algorithmes est très utilisé pour résoudre des problèmes où l'on veut une réponse rapidement, mais pas forcément une réponse optimale. D'un point de vue théorique, ces algorithmes sont extrêmement importants. Il sont, par exemple, en bijection avec la <a href="https://fr.wikipedia.org/wiki/Matro%C3%AFde">structure de matroïde</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour beaucoup de problèmes d'optimisation réels, un algorithme glouton est optimal pour une version simplifiée du problème. Comme l'algorithme va vite, on peut recommencer plusieurs fois pour trouver une meilleure solution.</p>
 <h3>Comment designer un algorithme glouton</h3>
 <ol>
@@ -173,7 +173,7 @@ pour chaque i de 1 à n:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>schéma de preuve d'optimalité par l'absurde</p>
 </div><div class="pl-8 mr-8">
 <ol>
@@ -192,8 +192,8 @@ pour chaque i de 1 à n:
 </li>
 <li>On prouve que l'on peut construire une autre solution optimale qui coïncide avec le glouton jusqu'à l'étape $i$ ce qui invalide l'hypothèse de non optimalité du glouton.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h2><span id="exemple-le-rendu-de-pièces"></span>Exemple 1 : le rendu de pièces</h2>
 <p>Proposons un algorithme glouton permettant de rendre la monnaie $R$ d'un achat en un nombre minimum de pièces valant $v=5$, $v=2$ et $v=1$ pokédollar.</p>
 <h3>Design de l'algorithme</h3>
@@ -219,8 +219,8 @@ pour chaque i de 1 à n:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme en python.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -320,7 +320,7 @@ pour chaque i de 1 à n:
 <div class="pl-8 mr-8">
 <p>On a utilisé quelques astuces de programmation python :</p>
 <ul>
-<li><code class="language-">l[-1]</code> rend le dernier élément d'une liste.<br>
+<li><code class="language-">l[-1]</code> rend le dernier élément d'une liste.
 boucle <code class="language-">for</code>.</li>
 <li>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).</li>
 <li>on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction <code class="language-">fonction_lambda_anonyme</code> suivante :</li>
@@ -328,8 +328,8 @@ boucle <code class="language-">for</code>.</li>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction_lambda_anonyme</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h4>Preuve de l'algorithme : maximum de films</h4>
 <p>On prouve notre algorithme en utilisant la technique de preuve par l'absurde : on suppose que l'algorithme glouton ne donne pas une solution optimale et on considère la solution optimale à $m^\star$ films dont l'ordre de visionnage des films coïncide le plus longtemps possible avec la solution donnée par celui-ci.</p>
 <p>Soit $i$ l'indice de l'étape de la première différence. Bornons cet indice :</p>
@@ -363,8 +363,8 @@ boucle <code class="language-">for</code>.</li>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme en python.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -416,8 +416,8 @@ boucle <code class="language-">for</code>.</li>
 </svg>
 <div class="pl-8 mr-8">
 <p>Un ensemble de produits est compatible si et seulement si la production par date $d_i$ croissante permet de tous les vendre.</p>
-</div>
-</div>
+</div></div>
+
 <p>Preuve :</p>
 <ul>
 <li>si la production par date croissante permet de tout vendre il est compatible</li>
@@ -436,8 +436,8 @@ boucle <code class="language-">for</code>.</li>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez l'algorithme en python.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

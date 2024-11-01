@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/lire-données/">Lire des données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/lire-données/fichiers-node/">Lire des fichiers avec node</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -137,8 +137,8 @@
 <li><code class="language-">const fs = require('fs');</code> : import commonJS</li>
 </ul>
 <p>Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer une écriture par l'autre pour que tout fonctionne.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notre projet est prêt à être utilisé.</p>
 <h2>Code initial</h2>
 <p>Dans le dossier de votre projet, créez un fichier <code class="fichier">fichier-texte.txt</code> contenant :</p>
@@ -206,8 +206,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous avez une version très récente de node, il existe <a href="https://nodejs.org/api/esm.html#no-__filename-or-__dirname">une alternative</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut ensuite toutes nos lectures de fichier au dossier <code class="language-">__dirname</code> en utilisant la fonction <a href="https://nodejs.org/api/path.html#pathjoinpaths"><code class="language-">path.join</code></a> qui colle des chemins entre eux.</p>
 <p>On obtient alors le code final suivant :</p>
 <pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
@@ -270,8 +270,8 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">node-asynchrone.js</code> dans le dossier racine de votre projet (le dossier <code class="fichier">fichier-node</code>) et copiez/collez-y le code précédent.</p>
 <p>Exécutez le fichier avec node pour voir que le fichier <code class="fichier">fichier-texte.txt</code> est bien lu.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il y a deux différences par rapport au code précédant :</p>
 <ol>
 <li>on importe une autre bibliothèque : <code class="language-">fs/promises</code> en non plus juste <code class="language-">fs</code></li>
@@ -285,8 +285,8 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez vérifier que la lecture du fichier n'est pas immédiate en ajoutant la ligne <code class="language-">console.log(&quot;coucou !&quot;)</code> à la fin du fichier et voir que &quot;coucou !&quot; est affiché avant le contenu du fichier.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Promesses</h3>
 <p>Le mécanisme à l'œuvre ici est appelé <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
 <p>Le retour de la fonction <code class="language-">fs.readFile</code> est une promesse qui possède une méthode <code class="language-">then</code> dont le paramètre est une fonction à un paramètre qui est exécutée à la fin de la promesse si la fonction s'est terminé sans erreur. Le retour est passé en paramètre du paramètre de <code class="language-">then</code></p>

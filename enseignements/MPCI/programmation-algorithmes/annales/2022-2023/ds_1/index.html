@@ -80,13 +80,13 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Sujet</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le sujet du DS 1 est <a href="../mines-info-2017-sujet.pdf" class="fichier">L'épreuve commune d'informatique mines/ponts 2017</a> (sans la partie VI).</p>
 <p>Durée du contrôle : 3h.</p>
-</div>
-</div>
+</div></div>
+
 <p>La durée du contrôle était de 3h, le double de celui normalement alloué à l'épreuve. Le but était de se concentrer sur la justesse de vos raisonnement et de vos justifications avant de travailler la rapidité. On reprend ainsi la célèbre maxime de Kent Beck sur l'ordre de développement d'un bon code (un bon code doit avoir les 3, mis en œuvre dans cet ordre) :</p>
 <ol>
 <li>make if work</li>
@@ -186,8 +186,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les complexités des deux fonctions <strong>sont les mêmes</strong>. La comparaison de deux listes en python avec l'opérateur <code>==</code> est de complexité égal à la taille de la plus petite des listes.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Q7</h3>
 <p>Le retour de la fonction <code class="language-">égal</code> est un booléen.</p>
 <h4><span id="rq-q7"></span> Remarque suite à la correction des copies</h4>
@@ -216,7 +216,7 @@ P2 : ⇨▢⇨▢⇨⇨▢▢▢▢▢
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">avancer_fin</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> L<span class="token punctuation">[</span><span class="token punctuation">:</span>m<span class="token punctuation">]</span> <span class="token operator">+</span> avancer<span class="token punctuation">(</span>L<span class="token punctuation">[</span>m<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span>
 </code></pre>
-<p>La complexité de la fonction précédente est en $\mathcal{O}(n)$ où $n$ est la taille de la liste. Car la créations<br>
+<p>La complexité de la fonction précédente est en $\mathcal{O}(n)$ où $n$ est la taille de la liste. Car la créations
 des listes partielles et la fonction avancer sont toutes de complexités égales à la longueur des listes qu'elles manipulent.</p>
 <h4><span id="rq-q9"></span> Remarques suite à la correction des copies</h4>
 <ul>
@@ -259,8 +259,8 @@ des listes partielles et la fonction avancer sont toutes de complexités égales
 </svg>
 <div class="pl-8 mr-8">
 <p>Le sujet demande de rendre une <strong>copie</strong> de la liste.</p>
-</div>
-</div>
+</div></div>
+
 <h4><span id="rq-q11"></span> Remarque suite à la correction des copies</h4>
 <p>Pour cette question en particulier, utiliser les questions et les algorithmes précédents rend le code bien plus clair et facile à lire.</p>
 <h3>Q12</h3>
@@ -448,13 +448,13 @@ L1 ▢▢▢▢⇨⇨⇨⇨?
 <p>Il est donc <strong>beaucoup</strong> plus judicieux de d'utiliser <code class="language-">in2</code> plutôt que <code class="language-">in1</code>.</p>
 <h3>Q22</h3>
 <p>un entier $x$ se représente de façon binaire par l'équation :</p>
-<p>$$<br>
-x = \sum_{i=0}^{i = \log_2(x)} x_i 2^i<br>
+<p>$$
+x = \sum_{i=0}^{i = \log_2(x)} x_i 2^i
 $$</p>
 <p>Où les $x_i$ valent soit $1$ soit $0$. L'entier $x$ est représenté par $\log_2(x)$ bits valant chacun $x_i$.</p>
 <p>On peut alors associer à une liste $L$ de $n$ booléens les $x^L_i$ valant $1$ si <code class="language-">L[n-1-i] == True</code> et 0 si <code class="language-">L[i] == False</code>. La représentation binaire de $L$ est alors représentée par le nombre :</p>
-<p>$$<br>
-N(l) = \sum_{i=0}^n x^L_i 2^i<br>
+<p>$$
+N(l) = \sum_{i=0}^n x^L_i 2^i
 $$</p>
 <p>Pour $L = [True, False, False]$ on a $0 \cdot 2^0 + 0 \cdot 2^1 + 1 \cdot 2^2$, ce qui correspond au nombre binaire $100$ qui vaut 4.</p>
 <p>L'algorithme ci-après en est un calcul. Sa complexité est en $\mathcal{O}(n)$</p>
@@ -492,7 +492,7 @@ $$</p>
     <span class="token keyword">return</span> s
 </code></pre>
 <h3>Q23</h3>
-<p>Il faut que la taille de <code class="language-">L</code> soit au minimum égal à la valeur entière du $\log_2(n)$.<br>
+<p>Il faut que la taille de <code class="language-">L</code> soit au minimum égal à la valeur entière du $\log_2(n)$.
 Il faut que <code class="language-">i &gt;= 0</code> pour que la boucle de fasse pas d'erreur lors de l'affectation à <code class="language-">res[i]</code>.</p>
 <h3>Q24</h3>
 <p>Comme on supprime les doublons et que l'on s'arrête si l'espace de solutions n'a pas grossi, au pire, l'algorithme s'arrêtera lorsque tous les croisements possibles seront vus, comme il y en a un nombre fini (borné par $2 * 2^n$ listes de 2 files au maximum) l'algorithme va s'arrêter.</p>

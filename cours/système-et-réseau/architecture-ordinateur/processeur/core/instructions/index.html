@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/core/">Core</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/core/instructions/">Instructions</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -113,8 +113,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=a4kgtygCZBc">RISK vs CISC</a> et <a href="https://www.youtube.com/watch?v=AADZo73yrq4">ARM vs x86</a>. Et une comparaison avec le petit dernier <a href="https://www.youtube.com/watch?v=Ps0JFsyX2fU">RISC-V</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour la suite de ce cours, nous allons cependant uniquement nous occuper d'architecture <a href="https://en.wikipedia.org/wiki/X86-64">x86-64</a>, donc CISC car la majorité des pc en sont équipés.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -122,8 +122,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.felixcloutier.com/x86/">Instructions x86_64</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Registres</h2>
 <p>Les <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a> sont la mémoire dont dispose un core. Cette mémoire est très rapide, donc très chère : il n'y en a que peu.</p>
 <p>Un registre est un espace mémoire de 64b ou le core stocke les paramètres et les résultats de ses instructions.</p>
@@ -145,8 +145,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Toutes les façons de faire ADD : <a href="https://www.felixcloutier.com/x86/add">la commande ADD</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il y a un petit nombre de <a href="https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture#x86_Architecture">registres x86-64</a>. Les registres 64b commencent par <code>R</code>.</p>
 <h3>Registres généraux</h3>
 <p>Il en existe 14 de 64b. Ils sont utilisées dans une grande variété de cas.</p>
@@ -202,8 +202,8 @@
 <li><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding">Construire l'opcode d'une instruction</a></li>
 <li>liste de <a href="http://ref.x86asm.net/">toutes les instructions x86-64</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Heureusement, il existe des site pour nous aider :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -213,8 +213,8 @@
 <div class="pl-8 mr-8">
 <p>Utilisez <a href="https://defuse.ca/online-x86-assembler.htm">ce site</a> ci-après pour connaître l'opcode de l'instruction <code>ADD RAX, 42</code> :</p>
 <p>Attention au fait qu'il faut que vous soyez en x64, RAX n'étant pas défini en 32bits.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -223,8 +223,8 @@
 <div class="pl-8 mr-8">
 <p>Que fait l'instruction : <code>MOV RAX, 0</code> ? Et celle ci : <code>XOR RAX, RAX</code> ?</p>
 <p>Quel est l'instruction à privilégier ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/couverture-de-code/">Couverture de code</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -101,16 +101,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Installez l'outil de couverture de code en suivant <a href="../%C3%A9diteur-vscode/extensions/python/code-coverage" class="interne">le tutoriel d'installation de <em>code coverage</em></a>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans vos futurs projets, faites en sorte d'avoir toujours 100% de couverture de code.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Fichiers exemple</h2>
 <p>Pour les besoin de cet exemple, prenons <a href="../programmation-objet/coder-ses-objets/" class="interne">le compteur (final) du cours coder ses objets</a> du cours sur les classes et les objets.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
@@ -201,8 +201,8 @@ TOTAL            23      2    91%
 </svg>
 <div class="pl-8 mr-8">
 <p>On a supprimé tous les fichiers dont le chemin contient <code class="fichier">/_distutils_hack/</code> (on a mis les jokers <code>**</code> avant et après)</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut maintenant voir les lignes qui ne sont pas exécutées dans <code>compteur.py</code> en utilisant le paramètre <code>--show-missing</code> :</p>
 <pre><code>» python -m coverage report --omit=&quot;**/_distutils_hack/**&quot; --show-missing
 Name          Stmts   Miss  Cover   Missing
@@ -221,8 +221,8 @@ TOTAL            23      2    91%
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que vous avez la même chose pour votre projet.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Utilisation via <code>pytest</code></h2>
 <p>L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests. Exécutons les tests en même temps que coverage avec le l'extension <code>pytest-cov</code> que nous venons d'installer :</p>
 <ol>
@@ -257,8 +257,8 @@ TOTAL                 26     14    50%
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que vous avez la même chose pour votre projet.</p>
-</div>
-</div>
+</div></div>
+
 <p>On voit que l'exécution des tests a eu besoin d'utiliser 100% du fichier <code class="fichier">test_compteur.py</code> (ce qui est normal) mais seulement 69% du fichier <code class="fichier">compteur.py</code>. Le fichier <code class="fichier">main.py</code> n'a quant à lui pas été utilisé du tout (aucune des 9 lignes non vides n'a été vue), ce qui est normal.</p>
 <p>Cinq lignes de <code>compteur.py</code> n'ont pas été vues. Pour savoir exactement les quelles, la commande <code>python -m pytest --cov=. --cov-report term-missing</code> donne :</p>
 <pre><code>» python -m pytest --cov=.  --cov-report term-missing                                               130 ↵
@@ -290,8 +290,8 @@ TOTAL                 26     13    50%
 </svg>
 <div class="pl-8 mr-8">
 <p>Analysez le résultat précédents. Quelles sont les lignes non <em>vues</em> par les tests ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

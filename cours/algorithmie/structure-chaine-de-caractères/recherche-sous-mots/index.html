@@ -85,16 +85,16 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/">Structure chaine de caractères</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-chaine-de-caractères/recherche-sous-mots/">Recherche de sous chaines</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
   
 
   <blockquote>
-<p>TBD rabin karp avec dictionnaire<br>
-TBD horspool en exercice : cf ET 21/22 à mettre en exercice<br>
+<p>TBD rabin karp avec dictionnaire
+TBD horspool en exercice : cf ET 21/22 à mettre en exercice
 Mettre le knuth morris pratt en &quot;pour aller plus loin&quot; complexité linéaire dans le cas le pire.</p>
 </blockquote>
 <p>Nous allons dans cette partie analyser le problème de la <em>recherche d'une sous-chaîne</em> :</p>
@@ -102,7 +102,7 @@ Mettre le knuth morris pratt en &quot;pour aller plus loin&quot; complexité lin
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème de la recherche d'une sous-chaîne</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -115,23 +115,23 @@ Mettre le knuth morris pratt en &quot;pour aller plus loin&quot; complexité lin
 <li><strong>question</strong> : $b$ est-il une <em>sous-chaîne</em> de $a$ ?</li>
 <li><strong>réponse</strong> : l'indice d'un début de $b$ dans $a$ si $b$ est une sous chaine de $a$ et $-1$ sinon</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une définition formelle de <em>sous-chaîne</em> étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soient $a$ et $b$ deux chaines de caractères de longueurs $n$ et $m &lt;n$ respectivement.</p>
 <p>La chaîne $b$ est une <strong>sous-chaîne</strong> de $a$ s'il existe $0 \leq i &lt; n$ tel que l'on ait pour tout $0 \leq j &lt; m$ :</p>
-<p>$$<br>
-b[j] = a[i + j]<br>
+<p>$$
+b[j] = a[i + j]
 $$</p>
-</div>
-</div>
+</div></div>
+
 <h2>Algorithme naïf</h2>
 <p>La première idée pour résoudre le problème de <em>la recherche d'une sous-chaîne</em> est de vérifier pour pour tout $0 \leq i &lt; n$ si la définition est correcte :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -167,8 +167,8 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -205,8 +205,8 @@ $$</p>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
     <span class="token keyword">return</span> <span class="token boolean">False</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -241,8 +241,8 @@ $$</p>
                 <span class="token keyword">return</span> <span class="token boolean">False</span>
     <span class="token keyword">return</span> <span class="token boolean">True</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -278,8 +278,8 @@ $$</p>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
     <span class="token keyword">return</span> trouvé
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -391,12 +391,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Bonne pratique algorithmique</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'utilisation de <code>break</code> et de <code>continue</code> permet de distinguer clairement dan l'algorithme ce qui est de l'ordre du cas général (la boucle) et du cas particulier (sortie de boucle)</p>
-</div>
-</div>
+</div></div>
+
 <h4>Calcul de la complexité en moyenne</h4>
 <p>On suppose que l'on ait dans le cas où $b$ n'est pas une sous-chaine de $a$. Pour ce calcul on va se placer dans le cas fictif où chaque lettre est équiprobable. La probabilité que deux lettres soient égales est alors $p = \frac{1}{A}$ où $A$ est la taille de l'alphabet utilisé. C'est le cas le plus défavorable pour notre calcul.</p>
 <p>A $i$ fixé, on a alors :</p>
@@ -420,16 +420,16 @@ $$</p>
 <li>$m$ itérations de la boucle <code class="language-">for</code> en $j$ est égale à $p^{m-1}(1-p)$</li>
 </ul>
 <p>Le nombre moyens d'itérations de la boucle <code class="language-">for</code> en $j$ est alors :</p>
-<p>$$<br>
-1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k<br>
+<p>$$
+1\cdot (1-p) + 2 \cdot p(1-p) + 3 \cdot p^2(1-p) + ... + m \cdot p^{m-1}(1-p) = \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k
 $$</p>
 <p>Et comme chaque itération se fait en $\mathcal{O}(1)$ opérations, La complexité en moyenne du passage dans la boucle <code class="language-">for</code> en $j$ vaut :</p>
-<p>$$<br>
-\mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)<br>
+<p>$$
+\mathcal{O}(1) \cdot \frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k = \mathcal{O}(\frac{1-p}{p}\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\sum_{k=1}^{m}k\cdot p^k)
 $$</p>
 <p>Comme :</p>
-<p>$$<br>
-\sum_{k=1}^mk\cdot p^k = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)<br>
+<p>$$
+\sum_{k=1}^mk\cdot p^k = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
 $$</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -449,23 +449,23 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>Si l'on note $f_m(x) = \sum_{k=1}^mx^k$, on a : $\sum_{k=1}^mk\cdotp^k = p\cdot f'_m(p)$. De là, une récurrence immédiate montre que $f_m(x) = \frac{x^{m+1} - 1}{x-1}$. Ainsi :</p>
-<p>$$<br>
-\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)<br>
+<p>$$
+\sum_{k=1}^mk\cdot p^k = p \frac{(m+1)p^m(p-1)-(p^{m+1}-1)}{(p-1)^2} = \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1)
 $$</p>
 </div>
 </details>     
 </div>
 <p>Comme $p &lt; 1$, on a que :</p>
-<p>$$<br>
-\lim_{m \rightarrow +\infty} \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1) = \frac{p}{(p-1)^2}<br>
+<p>$$
+\lim_{m \rightarrow +\infty} \frac{p}{(p-1)^2}\cdot(mp^{m+1}-(m+1)p^m + 1) = \frac{p}{(p-1)^2}
 $$</p>
 <p>Et donc, pour tout $m$ :</p>
-<p>$$<br>
-\sum_{k=1}^mk\cdot p^k \leq \frac{p}{(p-1)^2}<br>
+<p>$$
+\sum_{k=1}^mk\cdot p^k \leq \frac{p}{(p-1)^2}
 $$</p>
 <p>Donc :</p>
-<p>$$<br>
-\mathcal{O}(\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\frac{p}{(p-1)^2}) = \mathcal{O}(1)<br>
+<p>$$
+\mathcal{O}(\sum_{k=1}^{m}k\cdot p^k) = \mathcal{O}(\frac{p}{(p-1)^2}) = \mathcal{O}(1)
 $$</p>
 <p>Le nombre moyen d'itérations de la boucle for en $j$ est donc toujours plus petit qu'une constante : c'est indépendant de $m$ et ne dépend que de $p$ !</p>
 <p>Ceci s'explique par le fait que la probabilité de s'arrêter au bout de $j$ itération devient très vite très petite, et d'autant plus petite que l'alphabet augmente. On s'arrêtera quasi toujours avant d'arriver à la fin de $b$.</p>
@@ -476,8 +476,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité en moyenne de l'algorithme naif est $\mathcal{O}(n)$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Un simple <code class="language-">break</code> a rendu linéaire la complexité en moyenne de l'algorithme.</p>
 <h3>Trouver toutes les sous-chaines</h3>
 <p>Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :</p>
@@ -497,8 +497,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez les complexités de ce nouvel algorithme.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -553,7 +553,7 @@ $$</p>
 <li>ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations</li>
 <li>ce qu'on fait en moins : on ne parcourt plus que certains indices $i$ et pas tous.</li>
 </ul>
-<p>Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver.<br>
+<p>Mais au final, on ne gagne rien... En effet le temps gagné pour ne parcourir que certains indices est compensé par le fait qu'il faut les trouver.
 L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i] \neq b[0]$ on passe tout de suite à l'indice suivant.</p>
 <p>Si on veut augmenter la rapidité de l'algorithme, il faut travailler sur $b$ pour optimiser les décalages.</p>
 <h3>Prétraitement sur $b$</h3>
@@ -715,7 +715,7 @@ b:              bbbbbbbb
 <li>$a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$</li>
 <li>$a[i + j] \neq b[j]$</li>
 </ul>
-<p>Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$).<br>
+<p>Soit $k'$ le plus petit entier tel que $b[:k'] == b[j-k':j]$ (au pire $k'=0$).
 Alors en notant :</p>
 <ul>
 <li>$i' = i + j - k$</li>
@@ -727,8 +727,8 @@ Alors en notant :</p>
 <li>$a[i' + l] = b[l]$ pour tout $0 \leq l &lt; j'$</li>
 </ul>
 <p>On a de plus l'égalité : $i + j = i' + j'$</p>
-</div>
-</div>
+</div></div>
+
 <p>Remplir le Tableau $T_b$ avec les valeurs de $k'$ pour tout $j$ nous donne un moyen encore pus efficace de décalage puisque l'on va décaler $i$ <strong>et</strong> $j$ de sorte que la somme $i+j$ soit croissante.</p>
 <p>C'est cette procédure que met (optimalement) en œuvre l'algorithme de Knuth, Morris et Pratt.</p>
 <h2>Algorithme de Knuth-Morris-Pratt</h2>
@@ -767,8 +767,8 @@ ACGAGACGACT   : la chaîne b
 <li>T_b[0] = 0</li>
 <li>pour tout $1 \leq j &lt; m-1$, on note $T_b[j]$ le plus grand entier $k &lt; j +1$ tel que $b[:k] = b[j+1-k:j+1]$.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.</p>
 <p>On peut facilement calculer $T_b$, par exemple avec cet algorithme :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">algo_naif_construction_t</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -841,8 +841,8 @@ i/j:           i j
 </svg>
 <div class="pl-8 mr-8">
 <p>Par rapport à l'algorithme précédent, $T_b$ est différent et la mise à jour de $j$ n'est plus forcément égale à 0.</p>
-</div>
-</div>
+</div></div>
+
 <p>Comme à chaque itération, soit $i+j$ croit strictement, soit $i$ croit strictement il y a au plus $2n$ étapes à l'algorithme et donc sa complexité est de l'ordre $\mathcal{O}(n + K(m))$ où $K(m)$ est la complexité de la fonction <code>cree_tableau(b)</code></p>
 <h3>Création de la table de décalage</h3>
 <p>L'algorithme naïf de création de la table est en $\mathcal{O}(m^3)$ ce qui n'est pas vraiment optimal. L'algorithme utilisé par Knutt, Morris-et Pratt est de complexité bien meilleure puisqu'il permet de créer le tableau $T_b$ en $\mathcal{O}(m)$ opérations !</p>
@@ -910,13 +910,13 @@ i/j:           i j
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de la création de $T_b$ est en $\mathcal{O(m)}$.</p>
 <p>La complexité de l'algorithme de Knuth-Morris-Pratt est en $\mathcal{O}(n +n)$ opérations : elle est minimale.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Autres algorithmes</h2>
 <p>Nous ne détaillerons pas les autres algorithmes, nous nous contenteront de donner les liens wikipedia et d'indiquer leur intérêt</p>
 <ul>

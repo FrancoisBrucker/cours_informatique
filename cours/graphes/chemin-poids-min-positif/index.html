@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/chemin-poids-min-positif/">Algorithme de Dijkstra</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -110,7 +110,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G =(V, E)$ un graphe orienté, $f$ une valuation positive des arcs de $G$ et $x$ un sommet du graphe. Une <strong><em>arborescence</em></strong> $T_{x} = (V', E')$ est un graphe tel que :</p>
@@ -120,8 +120,8 @@
 <li>il existe un chemin $c^T_{xy}$ <strong>unique</strong> entre $x$ et $y$ dans $T_{x}$ pour tout sommet $y \in V'$</li>
 <li>pour tout $y \in V'$, tout chemin $c^G_{xy}$ entre $x$ et $y$ dans $G$ est tel que $f(c^G_{xy}) \geq f(c^T_{xy})$ : le chemin dans $T_x$ est <strong>minimum</strong></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple :</p>
 <p><img src="g_g_prim.png" alt="G et G'"></p>
 <p>La définition d'une arborescence garantit le fait que tout ses chemins sont de poids minimum pour $G$. Remarquez de plus que pour tout graphe orienté $G$, il existe au moins une arborescence pour chacun de ses sommets puisque $T_{x} = (\{x\}, \varnothing)$ en est une quelque soient $x$ et $G$.</p>
@@ -130,23 +130,23 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $G =(V, E)$ un graphe orienté valué par une fonction positive $f$. Et $T_x = (V', E')$ une de ses arborescence.</p>
 <p>Si :</p>
-<p>$$<br>
-W = \{ uv \mid uv \in E, u \in V', v \in V \backslash V' \}<br>
+<p>$$
+W = \{ uv \mid uv \in E, u \in V', v \in V \backslash V' \}
 $$</p>
 <p>N'est pas vide alors il existe un arc $u^\star v^\star \in W$ tel que :</p>
 <p>$$f(c^T_{xu}) + f(u^\star v^\star) = \min_{uv \in W}(f(c^T_{xu}) + f(uv))$$</p>
 <p>Et</p>
-<p>$$<br>
-T' = (V' \cup \{v^\star\}, E' \cup \{ u^\star v^\star \})<br>
+<p>$$
+T' = (V' \cup \{v^\star\}, E' \cup \{ u^\star v^\star \})
 $$</p>
 <p>est également une arborescence de $G$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -318,8 +318,8 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Faites un déroulé séquentiel de l'algorithme. Dans quel ordre les sommets sont-ils ajoutés dans <code class="language-">V_dijkstra</code> ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -353,12 +353,12 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour un graphe orienté valué positivement $(G, f)$ et deux sommet $a$ et $b$ de $G$, l'algorithme de Dijkstra rend un chemin élémentaire de longueur minimum entre $a$ et $b$ (s'il existe).</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -389,12 +389,12 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert E\vert + (\vert V \vert)^2)$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -427,12 +427,12 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>En déduire que la complexité de l'algorithme de Dijkstra est en $\mathcal{O}(\vert V \vert^2)$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -477,8 +477,8 @@ Retour <span class="token punctuation">:</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il faut souvent en algorithmie choisir l'algorithme ou l'implémentation de l'algorithme en fonction des données que l'on aura à traiter. Il n'y a que très rarement des solutions meilleurs dans tous les cas.</p>
-</div>
-</div>
+</div></div>
+
 <p>Comme souvent les graphes sont peu dense lorsque l'on cherche un chemin de poids min — pensez à google maps où il y a bien peu de routes par rapport aux nombre d'endroit où l'on peu aller — on utilise souvent cette implémentation.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -486,8 +486,8 @@ Retour <span class="token punctuation">:</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>La <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Dijkstra#Complexit%C3%A9_de_l'algorithme">page wikipédia</a> précise qu'en utilisant un tas amélioré, dit tas de Fibonacci, on arrive même à faire descendre la complexité totale à $\mathcal{O}(\vert E \vert + \vert V \vert\log_2(\vert V \vert))$, ce qui est du coup tout le temps mieux que la prise de minimum naïve, mais nécessite une structure bien plus compliquée.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="arborescence"></span> Arborescence</h2>
 <p>On peut continuer l'algorithme de Dijkstra après que $y$ ait été rentré dans <code class="language-">V_dijkstra</code> et s'arrêter lorsque l'on a plus que des éléments de coût infini à faire rentrer dans <code class="language-">V_dijkstra</code> ou que <code class="language-">V_dijkstra</code> soit égal à $V$.</p>
 <p><span id="preuve-Dijkstra-arborescence"></span></p>
@@ -495,8 +495,8 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Montrez que pour tous les sommets $x$ qui ne peuvent pas entrer dans <code class="language-">V_dijkstra</code>, il n'existe pas de chemin entre <code class="language-">départ</code> et $x$ dans $G$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -527,8 +527,8 @@ Retour <span class="token punctuation">:</span>
 <li>il existe un unique chemin entre $d$ et tout autre sommet</li>
 <li>le chemin entre $d$ et $x$ dans $G'$ est de poids minimum dans $G$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -569,13 +569,13 @@ Retour <span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Propriétés</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'heuristique $h$ est dite <strong><em>consistante</em></strong> si $h(x) \leq f(c) + h(y)$ pour tout sommet $x$, tout sommet $y$ et $c$ un chemin de poids minimum entre $x$ et $y$</p>
 <p>Si $h$ est consistante alors $A^\star$ trouvera un chemin de poids minimum.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -605,20 +605,20 @@ Retour <span class="token punctuation">:</span>
 <li>$\mbox{coût}[u']$ est égal au coût d'un chemin de poids minimum entre $\mbox{départ}$ à $u'$</li>
 </ol>
 <p>De plus, comme $u'$ n'a pas été choisit à cette étape on a :</p>
-<p>$$<br>
-\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u)<br>
+<p>$$
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u)
 $$</p>
 <p>Comme notre hypothèse est que $f(c) &lt; \mbox{coût}[c]$ on a :</p>
-<p>$$<br>
-\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) &gt; f(c) + h(u)<br>
+<p>$$
+\mbox{coût}[u'] + h(u') \geq \mbox{coût}[u] + h(u) &gt; f(c) + h(u)
 $$</p>
 <p>En notant $c'$ la fin du chemin $c$ qui commence par $u'$, on a $f(c) = \mbox{coût}[u'] + f(c')$ et donc :</p>
-<p>$$<br>
-\mbox{coût}[u'] + h(u') &gt; f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)<br>
+<p>$$
+\mbox{coût}[u'] + h(u') &gt; f(c) + h(u) = \mbox{coût}[u'] + f(c') + h(u)
 $$</p>
 <p>On en déduit que :</p>
-<p>$$<br>
-h(u')  &gt; f(c') + h(u)<br>
+<p>$$
+h(u')  &gt; f(c') + h(u)
 $$</p>
 <p>Ce qui est impossible car $h$ est consistante.</p>
 </div>
@@ -631,11 +631,11 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Une heuristique $h$ est <strong><em>consistante</em></strong> si et seulement si pour tout arc $uv$ on a :</p>
-<p>$$<br>
-h(u) \leq f(uv) + h(v)<br>
+<p>$$
+h(u) \leq f(uv) + h(v)
 $$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -663,8 +663,8 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez une implémentation de l'algorithme $A^*$ qui trouvera un chemin de poids minimum pour le parcours dans une salle d'un petit robot.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -698,8 +698,8 @@ $$</p>
 <div class="pl-8 mr-8">
 <p>Une heuristique $h$ est dite <strong><em>admissible</em></strong> si $h(x)$ est plus petite que le poids d'un chemin minimum entre $x$ et $\mbox{arrivée}$ pour tout sommet $x$.</p>
 <p>Si l’heuristique de $A^\star$ est admissible <strong>et</strong> qu'à chaque étape de l'algorithme il existe un chemin de poids minimum entre $\mbox{départ}$ et $\mbox{arrivé}$ tel que si deux voisins sont dabs $V'$ alors l'arc est dans l'arborescence <strong>alors</strong> $A^\star$ trouvera un chemin de poids minimum.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -730,8 +730,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est possible de rendre l'algorithme $A^\star$ optimal en utilisant uniquement une heuristique admissible, mais au prix d'une complexité potentiellement exponentielle.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

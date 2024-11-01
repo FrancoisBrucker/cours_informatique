@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/compilation/">Compilation</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -120,8 +120,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Par défaut la sortie de l'option <code>-E</code> est la sortie standard. On précise donc le fichier de sortie par l'option <code>-o</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notez que l'on directement compiler la sortie du préprocesseur, c'est toujours un code c valable</p>
 <p>Le but ce cette partie est :</p>
 <ol>
@@ -133,8 +133,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Dans le code précédent quelle est l'intérêt d'inclure <code class="fichier">stdlib.h</code> et <code class="fichier">stdio.h</code> ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -182,8 +182,8 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 </svg>
 <div class="pl-8 mr-8">
 <p>Par défaut la sortie de l'option <code>-S</code> est un fichier d'extension <code>.a</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.s</code></p>
-</div>
-</div>
+</div></div>
+
 <p>Par défaut c'est la syntaxe GNU qui est utilisée. Pour utiliser la syntaxe <a href="https://www.nasm.us/">nasm</a>, il faut rajouter des options :</p>
 <pre><code>clang -S hello.c -masm=intel   
 </code></pre>
@@ -196,8 +196,8 @@ hello.c:5:5: note: include the header &lt;stdio.h&gt; or explicitly provide a de
 </svg>
 <div class="pl-8 mr-8">
 <p>Par défaut la sortie de l'option <code>-c</code> est un fichier d'extension <code>.o</code>. On précise donc pas le fichier de sortie par l'option <code>-o</code>, la commande va produire un fichier <code class="fichier">hello.o</code></p>
-</div>
-</div>
+</div></div>
+
 <p>Cette phase transforme le code en fichier objet, au format ELF sous Linux. Ce fichier n'est pas exécutable car il ne possède pas le code de toutes les fonctions en particulier la fonction <code>printf</code>.</p>
 <p>En effet, la directive include ne fait que donner la signature des fonctions que l'on a le droit d'utiliser. En l'état, notre code est identique à :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
@@ -262,14 +262,14 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 <pre><code>clang hello.c -Wall -Wextra -Werror -pedantic -std=c23
 </code></pre>
 <p>(ou <code>-std=c2x</code> si votre compilateur n'est pas le plus récent)</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>A quoi correspondent les <a href="https://clang.llvm.org/docs/UsersManual.html">options llvm</a> ajoutées ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -304,8 +304,8 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 <p>Pour référence :</p>
 <p><a href="https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23">https://linuxfr.org/news/nouveautes-du-langage-c-dans-sa-prochaine-version-c23</a></p>
 <p>Pour l'instant cela doit vous sembler incompréhensible, c'est normal.</p>
-</div>
-</div>
+</div></div>
+
 <p>De plus, le compilateur C est très efficace pur trouver des optimisations à votre code. Pour ne pas le prendre en traître, restez simple dans votre code.</p>
 <h2>Détails</h2>
 <ul>

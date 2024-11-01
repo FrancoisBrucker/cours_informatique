@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/">Projet numérologie / partie 1 : front</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/">Projet numérologie / partie 1 : front / niveau 1</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/2-code_js/">Projet numérologie / partie 1 : front / niveau 1 / code javascript</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -114,8 +114,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>L'<a href="https://unicode-table.com/fr/">ensemble des caractères Unicode</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Comme cela fait beaucoup de caractères, on utilise des encodages à tailles variables pour que le moindre bout de texte ne fasse des mégaoctets. Le standard est l'encodage <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> (on peut aussi le noter &quot;utf8&quot;) : tous vos textes doivent être encodés en utf-8 (sinon c'est <em>bad karma</em>).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -123,8 +123,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne confondez pas utf8 et Unicode. Même s'ils sont liés ce n'est pas la même chose. En particulier il existe d'autres façon d'encoder l’Unicode comme l'<a href="https://fr.wikipedia.org/wiki/UTF-16">utf-16</a> par exemple.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notez que l'usage veut que les nombre associé à chaque caractères soient écrit en <a href="(https:/fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal)">hexadécimal</a> sur 4 digit précédé de <code>U+</code> pour indiquer que c'est un code Unicode : <a href="https://unicode-table.com/fr/00E9/">U+00E9</a> correspond ainsi à 'é' et au nombre décimal 233.</p>
 <p>On utilise la méthode <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt"><code>charCodeAt</code></a>.</p>
 <p>On va commencer par faire des petits tests en js pour voir comment on peut résoudre notre tâche (trouver les bonnes méthodes à utiliser), puis un codera la fonction proprement dite.</p>
@@ -150,8 +150,8 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 </svg>
 <div class="pl-8 mr-8">
 <p>Testez la fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt"><code>parseInt</code></a> pour convertir une chaîne de caractères en nombre (<code>parseInt(&quot;4F60&quot;, 16)</code> par exemple) et la méthode des nombres <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Number/toString"><code>toString</code></a> qui fait le contraire (<code>(20320).toString(16)</code> par exemple).</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="tache-2"></span> Tâche 2 : nombre associé à une chaîne de caractères</h2>
 <h3>code js de <code class="language-">nombre(chaîne)</code></h3>
 <p>Fort de nos expérimentations, on peut maintenant écrire un fichier <code class="fichier">numérologie/numérologie.js</code> qui va rendre la somme de tous les code Unicode de ses caractères le constituant.</p>
@@ -161,8 +161,8 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 </svg>
 <div class="pl-8 mr-8">
 <p>Je jette ici un voile pudique sur ce qu'est un &quot;caractère&quot; dans une chaîne Unicode. Cela peut vite être <a href="https://fr.wikipedia.org/wiki/%C3%89quivalence_Unicode">très compliqué</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Fichier <code class="fichier">numérologie/numérologie.js</code> :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter">chaîne</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> somme <span class="token operator">=</span> <span class="token number">0</span>
@@ -194,8 +194,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour trouver ce raccourci, je suis allé dans la palette de commande et j'ai tapé <em>comment</em> pour voir mes possibilités.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il existe en javascript <a href="https://www.w3schools.com/js/js_comments.asp">deux façons de commenter du code</a>, le commentaire de bloc et le commentaire de lignes. Je préfère toujours utiliser le commentaire de ligne car c'est d'une part plus visible (chaque ligne est commentée) et on peut plus facilement dé-commenter un bout du commentaire. Comme en plus c'est faisable avec un unique raccourci clavier, c'est efficace.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,8 +203,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Plutôt qu'utiliser la <a href="https://www.w3schools.com/js/js_loop_for.asp">façon standard de faire des boucles en javascript</a> qui me rappelle trop le C/C++ et que j'ai envie d'oublier, j'ai utilisé <a href="https://www.w3schools.com/js/js_loop_forof.asp">une façon de faire des boucle qui ressemble au python</a> que je préfère.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="tache-3"></span> Tâche 3 : somme des chiffres d'un nombre</h2>
 <p>Maintenant qu'on a un nombre associé à une chaîne de caractère, il nous reste à réduire ce nombre à un chiffre. Plusieurs méthodes sont possibles. On va choisir ici de sommer les chiffres du nombre.</p>
 <p>Pour faire ça, expérience prouve que les élèves choisissent (presque) toujours la méthode la plus compliquée en se la jouant matheuse :  diviser le nombre par 10 autant de fois que nécessaire et en prenant les parties entières.</p>
@@ -215,8 +215,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette somme n'est peut-être pas un chiffre, on réglera ce problème dans la partie suivante.</p>
-</div>
-</div>
+</div></div>
+
 <h3>code js de <code class="language-">somme(nombre)</code></h3>
 <p>Ajouter le code ci-après après la déclaration de la fonction <code class="language-">nombre(chaîne)</code> <code class="fichier">numérologie/numérologie.js</code> :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
@@ -238,8 +238,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>On a coutume de mettre des <code class="language-">// ...</code> pour dire que le reste du code du fichier n'est pas changé. Ce n'est pas la peine de les copier/coller.</p>
-</div>
-</div>
+</div></div>
+
 <h3>test de <code class="language-">somme(nombre)</code></h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -247,8 +247,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Comment marche le code de <code class="language-">somme(nombre)</code> ?</p>
-</div>
-</div>
+</div></div>
+
 <p>Plutôt que de réfléchir des heures pour tenter de comprendre, rien de tel qu'utiliser le code pour voir. Ca va bien plus vite et au moins on est sur du résultat.</p>
 <p>Pour l'instant, on va utiliser ce code <em>à la sauvage</em>, c'est à dire en ajoutant du code à la fin de <code class="fichier">numérologie.js</code> et en affichant le résultat à l'écran grâce à la fonction <a href="https://nodejs.org/api/console.html#console_console_log_data_args"><code>console.log</code></a>.</p>
 <p>On peut alors ajouter le code suivant (qu'on enlèvera ensuite ou que l'on commentera pour le conserver) à la fin de <code class="fichier">numérologie/numérologie.js</code> :</p>

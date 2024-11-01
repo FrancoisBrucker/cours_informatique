@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Les $\mathcal{O}()$ pour le calcul de complexité</title>
+    <title>Les $&#92;mathcal{O}()$ pour le calcul de complexité</title>
 
     <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
@@ -67,7 +67,7 @@
       
 <article>
 
-  <h1>Les $\mathcal{O}()$ pour le calcul de complexité</h1>
+  <h1>Les $&#92;mathcal{O}()$ pour le calcul de complexité</h1>
   <div>
     
 
@@ -83,10 +83,10 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/O-pour-l-algorithmie/">Les $\mathcal{O}()$ pour le calcul de complexité</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/O-pour-l-algorithmie/">Les $&#92;mathcal{O}()$ pour le calcul de complexité</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -105,8 +105,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>C'est le grand informaticien D. Knuth qui a popularisé l'usage de ces fonctions dans le calcul de la complexité avec son célèbre article <a href="https://danluu.com/knuth-big-o.pdf" class="fichier">BIG OMICRON AND BIG OMEGA AND BIG THETA</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Gérer les constantes additives et multiplicatives</h2>
 <p>Les constantes additives et multiplicatives ne changent pas l'allure de la complexité.</p>
 <p>Le plus grand intérêt dans le comptage de complexité algorithmique est que <a href="../comparaisons-asymptotiques/#OA-constantes-additives" class="interne">la règle des constantes</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique" class="interne">instructions basiques</a> est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :</p>
@@ -114,39 +114,39 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.</p>
-</div>
-</div>
+</div></div>
+
 <p>De là :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un nombre constant d'instructions basiques nécessite $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.</p>
-</div>
-</div>
+</div></div>
+
 <p>Enfin, <a href="../comparaisons-asymptotiques/#OA-constantes-multiplicatives" class="interne">la règle des constantes multiplicatives</a> montre la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'exécution un nombre constant de fois d'un bloc d'instruction de complexité $f(N)$ nécessite $\Theta(f(N))$ (donc également $\mathcal{O}(f(N))$) opérations.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'exécution un nombre constant de fois d'un bloc d'instruction :</p>
@@ -154,8 +154,8 @@
 <li>de complexité $\Theta(f(N))$ nécessite $\Theta(f(N))$ opérations.</li>
 <li>de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie <a href="../pseudo-code#complexit%C3%A9" class="interne">complexité des pseudo-code</a> :</p>
 <pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
 if ((x > 12) AND (x < 36)):
@@ -174,17 +174,17 @@ if ((x > 12) AND (x < 36)):
 </svg>
 <div class="pl-8 mr-8">
 <p>Si le nombre d'opérations élémentaires est variable on a : $n \cdot \mathcal{O}(1) = \mathcal{O}(n)$. <strong>On ne peut pas simplifier les éléments variables</strong>.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Gérer des polynômes</h2>
 <p>Enfin, comme en algorithmie on manipulera souvent des polynômes, montrez que l'on peut, avec <a href="../comparaisons-asymptotiques/#r%C3%A8gles">les différentes règles <em>fonctions</em> asymptotiques</a> que :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>On a :<br>
+<p>On a :
 $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -218,7 +218,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On cherchera à borner la complexité par une allure de complexité :</p>
@@ -229,8 +229,8 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <li><em><strong>complexité polynomiale</strong></em> en $\mathcal{O}(n^k)$ avec $k&gt;1$ constant le plus petit possible</li>
 <li><em><strong>complexité exponentielle</strong></em> en $\mathcal{O}(k^n)$ avec $k&gt;1$ constant le plus petit possible</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
 <h2>Usage de $\Omega$ et $\Theta$</h2>
 <p>On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.</p>
@@ -271,8 +271,8 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
-</div>
-</div>
+</div></div>
+
 <p>La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -280,8 +280,8 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>La complexité minimale de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

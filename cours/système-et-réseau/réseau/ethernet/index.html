@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/ethernet/">Ethernet</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="ethernet" class="interne">Ethernet</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le schema classique d'un réseau Ethernet est :</p>
 <pre><code>   A  B     C
    |  |     |
@@ -126,8 +126,8 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://aruljohn.com/mac.pl">MAC address lookup</a></p>
-</div>
-</div>
+</div></div>
+
 <p>L'idée est que dans un réseau local, il n'y ait pas deux machine avec la même adresse MAC, ce qui va identifier de façon unique un ordinateur.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -135,8 +135,8 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut changer la mac adresse de façon logicielle, et donc se faire passer pour quelqu'un d'autre sur un réseau Ethernet. C'est le <a href="https://wiki.archlinux.org/title/MAC_address_spoofing_(Fran%C3%A7ais)">MAC spoofing</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Ethernet</h2>
 <p>On parle de <em><strong>trame Ethernet</strong></em> (<em>Ethernet frame</em>) et non pas de paquet Ethernet. L'<a href="https://fr.wikipedia.org/wiki/Ethernet#Trames_Ethernet">entête</a> du paquet Ethernet contient principalement :</p>
 <ul>
@@ -162,8 +162,8 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=UgQM0rVDIQE">hidden node problem</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Plus le réseau est brouillé, plus il va y avoir de collisions et, pire encore, il va s'adapter à l'émetteur le plus lent. C'est pourquoi il ne faut pas jouer sur un réseau Wifi : trop de paquets sont perdus.</p>
 <p>Il reste un problème à résoudre, comment connaître l'adresse MAC du destinataire alors que l'on a que son adresse IP à disposition.</p>
 <h2>ARP et NDS</h2>
@@ -174,8 +174,8 @@ en1: <span class="token assign-left variable">flags</span><span class="token ope
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.oracle.com/cd/E19957-01/820-2982/chapter1-41/index.html">NDP vs arp</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Ce protocole envoie simplement une requête sur la LAN et demande qui possède cette adresse IP. Pour éviter de faire cette demande à chaque fois, l'ordinateur demandeur va conserver une table de correspondance.</p>
 <pre><code>ip nei
 </code></pre>

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/exercices-sujets-a-rajouter/">Algorithmes classiques</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -154,8 +154,8 @@ $$
 <h2>Chaînes de caractères</h2>
 <h3>Sous-séquence</h3>
 <p>Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante</p>
-<p>$$<br>
-f : {0,\ldots, len(S_2)-1} \longrightarrow {0,\ldots, len(S_1)-1}<br>
+<p>$$
+f : {0,\ldots, len(S_2)-1} \longrightarrow {0,\ldots, len(S_1)-1}
 $$</p>
 <p>Telle que $S_1[f(j)] = S_2[ j]$ pour tout $j$ de ${0,\ldots, len(S_2)-1}$.</p>
 <p>Proposez, prouvez et donnez la complexité d'un algorithme qui détermine si $S_2$ est une sous-séquence de $S_1$.</p>
@@ -195,7 +195,7 @@ $$</p>
 <li>Donnez un algorithme $\text{Permut}(L, k)$ qui, avec une liste $L$ et un entier $k$ en entrées, construit une nouvelle liste $L'$, permutation circulaire de $L$.</li>
 <li>Si on veut transformer $L$ en $\text{Permut}(L,k)$, montrez que la place mémoire utilisée (en plus de celle des données du problème ($L$)) par votre algorithme est $O(n)$.</li>
 </ul>
-<p>On veut maintenant faire une permutation circulaire sur site, <em>ie.</em> sans utiliser plus que $O(1)$ place mémoire supplémentaire (il arrive (par exemple quand on étudie le génome) que $n$ soit très grand). Il faut pour cela<br>
+<p>On veut maintenant faire une permutation circulaire sur site, <em>ie.</em> sans utiliser plus que $O(1)$ place mémoire supplémentaire (il arrive (par exemple quand on étudie le génome) que $n$ soit très grand). Il faut pour cela
 remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières lettres de $L$ et à les mettre en tête. On note $L^R$ la liste $L$ <strong><em>renversée</em></strong> (par exemple, si $L =\text{Couché}$, $L^R = \text{éhcuoC}$).</p>
 <ul>
 <li>Donnez un algorithme en $O(n)$ et utilisant $O(1)$ place mémoire supplémentaire, qui transforme $L$ en $L^R$.</li>
@@ -218,14 +218,14 @@ remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières 
 <p>(- <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Strassen">produit de Strassen</a>)</p>
 <h2>Méthodes de tri</h2>
 <h3>Tri par monotonies</h3>
-<p>Étant donné un tableau $T$, <strong><em>une monotonie</em></strong> est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :<br>
+<p>Étant donné un tableau $T$, <strong><em>une monotonie</em></strong> est une suite croissante maximale d'éléments consécutifs de $T$. Par exemple :
 si $T = [2,6, 1,3, 3, 5,2,6, 4,0, 1,8,9,1,3, 2,0,1,0]$, alors $[2,6]$, $[1,3,3,5]$, $[2,6]$, $[4]$, $[0, 1,8,9]$, $[1,3]$, $[2]$, $[0,1]$ et $[0]$ sont les monotonies de $T$.</p>
-<p>Donnez un algorithme qui, étant donné un tableau $T$ construit une liste (de listes) $L$, chaque élément de $L$ étant une monotonie de $T$ (et vice versa). À partir de notre exemple, on obtient :<br>
+<p>Donnez un algorithme qui, étant donné un tableau $T$ construit une liste (de listes) $L$, chaque élément de $L$ étant une monotonie de $T$ (et vice versa). À partir de notre exemple, on obtient :
 $L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$.</p>
 <p>Donnez un algorithme qui fusionne deux monotonies ; par exemple, à partir de $[2,6]$ et $[1,3,3,5]$, on obtient $[1,2,3,3,5,6]$ (ceci est aussi une question de cours).</p>
-<p>Donnez un algorithme qui, étant donnée une liste $L$ de monotonies, les fusionne deux-à-deux (en en laissant éventuellement une ``toute seule&quot; à la fin) et met le résultat dans une liste (de listes) $L'$. Par exemple, à partir de<br>
+<p>Donnez un algorithme qui, étant donnée une liste $L$ de monotonies, les fusionne deux-à-deux (en en laissant éventuellement une ``toute seule&quot; à la fin) et met le résultat dans une liste (de listes) $L'$. Par exemple, à partir de
 $L = [[2,6], [1,3,3,5],[2,6], [4], [0, 1,8,9], [1,3], [2] ,[0,1], [0]]$, on obtient $L' = [[1,2,3,3,5,6], [2,4,6],[0,1,1,3,8,9], [0,1,2], [0]]$.</p>
-<p>En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur et dans le cas<br>
+<p>En déduire un algorithme de tri. Donnez sa complexité dans le cas le meilleur et dans le cas
 le pire.</p>
 <p>Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?</p>
 

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/hash/">Hash cryptographiques</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -101,20 +101,20 @@
 <li><a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage_cryptographique">Hash cryptographique</a></li>
 <li><a href="https://membres-ljk.imag.fr/Bruno.Grenet/IntroCrypto/4.HashFunctions.pdf">Hash propriétés et autres</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une fonction de hash cryptographique doit être conçue pour éviter les collisions, c'est à dire qu'en connaissant $a$ il est très difficile de trouver $b \neq a$ tel que $f(b) = f(a)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une fonction $H: \{0, 1\}^\star \rightarrow \{0, 1\}^n$ est une fonction de <em><strong>hash cryptographique</strong></em> si elle est résistante aux collisions.</p>
 <p>Tout algorithme efficace ne peut rendre un couple $(x, x')$ tel que $H(x) = H(x')$ qu'avec un avantage négligeable.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut relâcher la condition de résistance à la collision en :</p>
 <ol>
 <li>
@@ -149,8 +149,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Git utilise par défaut la fonction de hash SHA-1.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Attaque</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -158,8 +158,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://people.cs.uchicago.edu/~davidcash/284-autumn-21/12-hash.pdf">Attaque des fonction de hash</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Attaque des anniversaires</h3>
 <p>L'attaque générique des anniversaires est l'attaque brute force associée aux fonctions de hash cryptographique.</p>
 <p>Grace au <a href="/cours_informatique/cours/algorithmie/structure-conteneurs/fonctions-hash/#paradoxe-anniversaires" class="interne">paradoxe des anniversaires</a>, on sait qu'il suffit de $2^{n/2}$ mots de $\{0, 1\}^n$ pour avoir une probabilité supérieure à 1/2 d'avoir deux éléments $x$ et $x'$ tels que $H(x) = H(x')$.</p>
@@ -168,7 +168,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Algorithme attaque par point fixe</strong></p>
 </div><div class="pl-8 mr-8">
 <ol>
@@ -177,8 +177,8 @@
 <li>on a alors $H(x_{m−1}) = H(H(y_{m−1}))$ si $x_{m-1} \neq H(y_{m−1})$ (ce qui est très probable)</li>
 </ol>
 <p>Il faut, comme l'attaque brute force du dictionnaire de l'ordre de $\mathcal{O}(2^{n/2})$ opération avant de trouver une collision</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -225,8 +225,8 @@
 </ol>
 <p>Il suffit ensuite de faire signer la version $A$ du texte puis de présenter la version $B$, prétendument signée.</p>
 <p>Il faut toujours modifier un peu un document que l'on signe, histoire que l'attaquant doive tout refaire.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Differential Analysis</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -234,8 +234,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Differential_cryptanalysis">differential analysis</a></p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : à étoffer</p>
 </blockquote>
@@ -247,8 +247,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Construction_de_Davies-Meyer">Construction Davies–Meyer</a></p>
-</div>
-</div>
+</div></div>
+
 <p>On utilise la construction Davies–Meyer qui permet de transformer <a href="../../confidentialit%C3%A9/chacha20/#PRP" class="interne">un PRP</a> $P : \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ ($P(k, x)$ est une permutation aléatoire de $x$) en hash à taille fixe.</p>
 <p>On fait rentrer le message là où normalement arrive la clé. Et un utilisant une constante $\text{IV}$ (initial value) à la place de la où habituellement se place un message.</p>
 <div>
@@ -270,12 +270,12 @@ IV ----|   v   |--- XOR ---
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si le bloc est une PRP, alors la résistance à la collision est maximale.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -305,8 +305,8 @@ IV ----|   v   |--- XOR ---
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.cs.ucdavis.edu/~rogaway/papers/hash.pdf">article de la preuve</a></p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : <a href="https://crypto.stackexchange.com/questions/75304/what-is-the-difference-between-pseudorandom-permutation-pseudorandom-function-bl">pseudo-random function et permutation pareil sous le paradoxe anniversaire</a></p>
 </blockquote>
@@ -320,8 +320,8 @@ IV ----|   v   |--- XOR ---
 <li><a href="https://fr.wikipedia.org/wiki/Construction_de_Merkle-Damg%C3%A5rd">Construction de Merkel Damgard</a></li>
 <li><a href="https://www.youtube.com/watch?v=s7arHByjSOw">Merkel Damgard preuve</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On utilise la construction de Merkel-Damgard pour étendre la portée du hash à taille fixe.</p>
 <pre><code>        m1 |                           mi |                
            |                              |                
@@ -343,12 +343,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si le bloc est résistant à la collision, la construction l'est.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -401,8 +401,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>SHA-3 est basé sur une autre construction : les <a href="https://en.wikipedia.org/wiki/Sponge_function">sponge function</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

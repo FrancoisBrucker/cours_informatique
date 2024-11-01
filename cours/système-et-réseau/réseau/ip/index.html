@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/ip/">Routage IP</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -102,8 +102,8 @@
 <li>nombre d'adresses : <a href="https://xkcd.com/865/">https://xkcd.com/865/</a></li>
 <li><a href="https://www.arcep.fr/cartes-et-donnees/nos-publications-chiffrees/transition-ipv6/barometre-annuel-de-la-transition-vers-ipv6-en-france.html">ipv4 vers ipv6 (chiffres ARCEP)</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Adresse IP</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -114,8 +114,8 @@
 <li><a href="https://fr.wikipedia.org/wiki/Adresse_IPv6">adresse IP</a></li>
 <li><a href="https://www.rfc-editor.org/rfc/rfc4291">RFC IPv6</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Une adresse IP est un nombre sur 16B = 128b décrit mot par mot (2B par 2B) sous sa forme hexadécimale. Par exemple (repris de Wikipedia):</p>
 <pre><code>2001:0db8:0000:85a3:0000:0000:ac1f:8001
 </code></pre>
@@ -132,8 +132,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On a du changer de version d'adressage car on est arrivé à court d'adresse disponibles pour les adresses IPv4 ($2^32$).</p>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons essentiellement parler ici de IPv6, la plupart des concepts étant identiques en IPv4 et IPv6.</p>
 <p>On fait parfois suivre l'adresse par un <code>/x</code> où <code>x</code> est un nombre entre 1 et 128. Ce type d'adresse représente un réseau et sont pour cela appelé <a href="https://fr.wikipedia.org/wiki/Adresse_IPv6#Notation_des_masques_de_sous-r%C3%A9seau">masque de sous réseau</a>. Par exemple (encore une fois repris de Wikipédia) :</p>
 <pre><code>2001:db8:1:1a0::/59
@@ -150,8 +150,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le préfixe 2001:db8::/32 est un préfixe IPv6 spécial utilisé spécifiquement dans les exemples de documentation.</p>
-</div>
-</div>
+</div></div>
+
 <p>La commande <a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf">ip</a> permet d'identifier toutes les adresses IP, par exemple :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ip</span> addr show dev en0
 en0: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">886</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST<span class="token operator">></span> mtu <span class="token number">1500</span>
@@ -169,11 +169,11 @@ en0: <span class="token assign-left variable">flags</span><span class="token ope
 <li>deux adresse IP en /64</li>
 </ul>
 <blockquote>
-<p>TBD :<br>
+<p>TBD :
 There appear to be four different types of IPv6 addresses:</p>
-<p>Main address, using your ISP prefix + derivation of your network-interface MAC-address.<br>
-<a href="https://www.rfc-editor.org/rfc/rfc4941">Temporary addresses</a>, based on your main address but with randomization to prevent tracking. (a new one is generated every so often)<br>
-Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)<br>
+<p>Main address, using your ISP prefix + derivation of your network-interface MAC-address.
+<a href="https://www.rfc-editor.org/rfc/rfc4941">Temporary addresses</a>, based on your main address but with randomization to prevent tracking. (a new one is generated every so often)
+Link-local address, identified by starting with fe80:. (not usable globally, tied to routing)
 Unique local address, identified by starting with fd00:. (not usable globally, not tied to routing)</p>
 </blockquote>
 <p>Ceci signifie que l'adresse IP de ma machine est <code>2001:660:5404:f232::/64</code> c'est à dire que j'ai en fait $2^{64}$ adresses possibles et que mon ordinateur a choisi d'utiliser <code>2001:660:5404:f232:a4b7:59d7:f780:855c</code>.</p>
@@ -183,8 +183,8 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 </svg>
 <div class="pl-8 mr-8">
 <p>Il y a tellement d'adresse IPv6 de disponibles (en tous cas, <a href="https://xkcd.com/865/">pour l'instant...</a>) qu'on assigne par défaut un réseau en <code>/64</code> à toute machine. Quite à elle d'en choisir une (ou plusieurs) parmi toute ces possibilités.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut trouver une machine sur le réseau en la <em>pinguant</em>. On peut ainsi d'une autre machine de l'internet trouver ma machine en :</p>
 <pre><code>ping6 2001:660:5404:f232:a4b7:59d7:f780:855c
 </code></pre>
@@ -195,16 +195,16 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 </svg>
 <div class="pl-8 mr-8">
 <p>Pinguez vous les uns les autres.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme n'importe qui peut le faire depuis n'importe où, il arrive que les paquets ping soient bloqués par le routeur de votre sous-réseau.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il existe également la version IPv4 :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ping</span> <span class="token number">172.18</span>.32.190
 </code></pre>
@@ -215,20 +215,20 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 </svg>
 <div class="pl-8 mr-8">
 <p>Les messages ping sont envoyés en utilisant le protocole <a href="https://fr.wikipedia.org/wiki/Internet_Control_Message_Protocol">ICMP</a>, qui est un protocole de contrôle (Internet Control Message Protocol) également utilisé pour de nombreuses autres opérations de maintenance du système. Il est aussi détourné pour réaliser les <a href="https://www.cloudflare.com/fr-fr/learning/ddos/glossary/internet-control-message-protocol-icmp/">attaques DDos</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Routage</h2>
 <p>Cette notion de sous-réseau est importante pour l'organisation des machines sur le réseau. On considère que des machines de numéro proches donc d'un même sous-réseau, sont aussi proche physiquement et peuvent être routé par le même routeur.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>routeur</em></strong> est un ordinateur du réseau permettant de rediriger des paquets IP d'un sous-réseau à un autre.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut considérer le réseau ci-après, à 5 machines (de A à E) et 4 routeurs (1 à 4)</p>
 <pre><code>A----1---2---4----E
       \ /    |
@@ -283,7 +283,7 @@ E       4    2
 <p>Du petit réseau géré de façon ad-hoc, internet est devenu un réseau mondial composé d'une myriade de petites area interconnectées entre elle.</p>
 <h3>LAN</h3>
 <ul>
-<li>LAN : <strong>Local Area Network</strong>. Le réseau de la maison où toutes les machines sont connectée les unes au autres. Ce réseau ne possède qu'une porte de d'entrée/sortie, son routeur (la box).<br>
+<li>LAN : <strong>Local Area Network</strong>. Le réseau de la maison où toutes les machines sont connectée les unes au autres. Ce réseau ne possède qu'une porte de d'entrée/sortie, son routeur (la box).
 Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d'une LAN car chaque machine peut communiquer directement avec une autre. La nécessité d'un routeur vient lorsque l'on veut faire sortir ou entrer des paquet dans la LAN. Le routeur est ainsi connecté à0 deux réseaux, celui de la LAN et l'extérieur.</li>
 </ul>
 <p>Ce réseau extérieur est de notre provider internet, et plus vraisemblablement à une partie de celui-ci (celui de notre région).</p>
@@ -298,8 +298,8 @@ Il n'y a pas besoin de routeur pour fire transiter des paquets à l'intérieur d
 </svg>
 <div class="pl-8 mr-8">
 <p>L'entrée dans ces aires et sous-aires se fait par un nombre très limité de routeurs (souvent 1) garantissant une certaine protection du réseau, via des <a href="https://fr.wikipedia.org/wiki/Pare-feu_(informatique)">firewall</a> par exemple.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce fonctionnement en entités (plus ou moins) autonomes interconnectées permet de maintenir des tables de routages petites sans perdre en efficacité.</p>
 <h4>Area et AS</h4>
 <p>Le réseau géré par notre provider est une région (area.1) relié à un <em>backbone</em> reliant un ensemble de région formant une <strong><em>région autonome (Autonomous System)</em></strong> d'internet. Disons, l'internet Français. Une <a href="https://fr.wikipedia.org/wiki/Autonomous_System">région autonome</a> est une partie d'internet stable d'un point de vue du routage. Région autonome (AS) :</p>
@@ -332,7 +332,7 @@ area.1   area.2   .....     area.i
 </ol>
 <p>L'accès à chaque aire et sous-aire est faite via un routeur qui autorise les entrée et gère le routage à l'intérieur de son aire et liens avec ses sous-aires.</p>
 <h4>BGP</h4>
-<p>Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a><br>
+<p>Enfin les différentes régions autonomes d'internet sont reliées entre elle par des routers <a href="https://fr.wikipedia.org/wiki/Border_Gateway_Protocol">BGP</a>
 Impossible de tout garder dans les réseaux actuel. On segmente le réseau en régions autonomes liées par des routeurs spécialisés. Routeurs BGP (O) entre AS :</p>
 <pre><code>AS-O-----O-AS-O-AS
     \   /

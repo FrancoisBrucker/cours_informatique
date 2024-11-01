@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion des sources</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/bonnes-pratiques/">Bonnes pratiques</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -129,7 +129,7 @@
 <h4>Branches</h4>
 <p>Il existe une sémantique des branches, libre à chacun de se la réapproprier mais faire comme tout le monde ça aide souvent à la compréhension !</p>
 <h4><code>main</code></h4>
-<p>Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).<br>
+<p>Cette branche contient le code de production (celui actuellement utilisé sur votre produit/système fonctionnel).
 Tout le code de développement(branch develop) est fusionné dans master au fur et à mesure que les features,etc... ont été dûment testées et validées.</p>
 <h4><code>develop</code></h4>
 <p>Cette branche contient le code de pré-production. Lorsque les fonctionnalités sont terminées, elles sont fusionnées dans la branche de développement pour de futurs tests avant validation pour &quot;partir en prod&quot;.</p>
@@ -145,12 +145,12 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html">https://danielkummer.github.io/git-flow-cheatsheet/index.fr_FR.html</a></p>
-</div>
-</div>
+</div></div>
+
 <p>git flow est une extension git qui une fois installée et initialisée pour votre projet (avec la commande <code>git flow init</code>) crée automatiquement toutes ces branches.</p>
 <p>Une liste de commandes est associées directement à cet outil afin de gérer au mieux l'utilisation du workflow.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -159,19 +159,19 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est clair qu'initialiser ce workflow pour un petit travail de rendu pour les cours est surdimensionné. Ce dernier est à utiliser dans des cas de projets sur long terme pour assurer une bonne intégration continue.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Nom des Commits</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://www.conventionalcommits.org/en/v1.0.0/">https://www.conventionalcommits.org/en/v1.0.0/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La forme du nom de ses commits est aussi important, une liste de commits mal nommés peut vite devenir illisible et occasionner des pertes de fluidité pour la relecture.</p>
 <p>Message de commit :</p>
 <ul>
@@ -209,12 +209,12 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://gitmoji.dev/">https://gitmoji.dev/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour aller encore plus loin on peut voir apparaître désormais des émojis dans les commits pour améliorer la relecture.</p>
 <p>Il est conseillé de le mettre soit avant votre scope soit directement le remplacer avec.</p>
 <p>Exemple de commits:</p>
@@ -240,16 +240,16 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 </svg>
 <div class="pl-8 mr-8">
 <p>Personnellement je préfère garder le scope.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Le tableau <a href="https://gist.github.com/parmentf/035de27d6ed1dce0b36a">ici</a> vous aide à trouver l'émoji associé au commit que vous souhaitez.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous pouvez vous même rédiger votre tableau dans votre <strong>CONTRIBUTING</strong> ! (On en parle plus bas)</p>
 <h2>Pull Request (PR)</h2>
 <p>Il est fortement conseillé de passer par une Pull Request à chaque fois que l'on souhaite ajouter une modification sur un projet. Il permet d'avoir une première relecture par un ou plusieurs relecteurs pouvant commenter votre code là où il ferait défaut.</p>
@@ -298,12 +298,12 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://www.makeareadme.com/">https://www.makeareadme.com/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>C'est le fichier <code class="fichier">README.md</code> visible directement sur votre repo quand on arrive dessus, il est à placer dans le fichier racine de votre projet. Il contient les informations qui sont généralement nécessaires pour comprendre le sujet du projet. Il est écrit en <strong>markdown</strong>(.md), comme tout ce site d'ailleurs, qui est un langage de balisage léger.</p>
 <p>On y retrouve en général :</p>
 <ul>
@@ -323,20 +323,20 @@ Tout le code de développement(branch develop) est fusionné dans master au fur 
 </ul>
 <p>Vous pouvez vous inspirer du <strong>CONTRIBUTING</strong> de <a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom</a>, ainsi que celui de <a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">GodotEngine</a> (Moteur de jeux open-source).</p>
 <p>Ces derniers sont très explicites et aident vraiment à obtenir des commits, pull requests de qualités étant une grande aide à toute personne souhaitant participer.</p>
-<p><a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom_contributing</a><br>
+<p><a href="https://github.com/atom/atom/blob/master/CONTRIBUTING.md">Atom_contributing</a>
 <a href="https://github.com/godotengine/godot/blob/master/CONTRIBUTING.md">Godot_contributing</a></p>
 <h2>Versioning - sémantique des versions</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://semver.org/lang/fr/">https://semver.org/lang/fr/</a></p>
-</div>
-</div>
-<p>Pour les versions de votre projet il existe une sémantique précise.<br>
+</div></div>
+
+<p>Pour les versions de votre projet il existe une sémantique précise.
 On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>major<span class="token operator">></span>.<span class="token operator">&lt;</span>minor<span class="token operator">></span>.<span class="token operator">&lt;</span>patch<span class="token operator">></span>-<span class="token operator">&lt;</span>label<span class="token operator">></span>
 </code></pre>
@@ -348,7 +348,7 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 <li>le numéro de version <strong>MAJEUR</strong> : Quand les changements apportés ne sont pas rétrocompatibles, vulgairement de gros changements</li>
 <li>le numéro de version <strong>MINEUR</strong> : Quand les ajouts sont rétrocompatibles</li>
 <li>le numéro de version de <strong>CORRECTIF/PATCH</strong> : Pas d'ajouts de fonctionnalités mais uniquement des corrections.</li>
-<li>un <strong>LABEL</strong> facultatif: Pour apporter des précisions sur le type de version<br>
+<li>un <strong>LABEL</strong> facultatif: Pour apporter des précisions sur le type de version
 (ex: beta/alpha/stable)</li>
 </ul>
 <h2>Bibliographie</h2>
@@ -366,8 +366,8 @@ On peut résumer cette sémantique à l'aide de ce graphe ci-dessous.</p>
 <li><a href="https://zepel.io/blog/5-git-workflows-to-improve-development/">https://zepel.io/blog/5-git-workflows-to-improve-development/</a></li>
 <li><a href="https://gitmoji.dev/">https://gitmoji.dev/</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

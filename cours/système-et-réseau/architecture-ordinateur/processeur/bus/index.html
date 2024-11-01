@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/">Processeur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/processeur/bus/">Bus</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -106,8 +106,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Control_bus">Canal de contrôle</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Détermine :</p>
 <ul>
 <li>l'action à mener : essentiellement lire ou écrire des données, mais peut aussi être des actions de maintenance ou une demande d'interruption de la part d'un device.</li>
@@ -120,8 +120,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Bus_(computing)#Address_bus">Canal d'adresse</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La partie adresse du bus doit permettre de déterminer à la fois déterminer le device et l'endroit sur celui-ci où lire/écrire l'information. Par exemple, si la taille du bus d'adresse est de 64 bit, on peut (c'est un exemple) :</p>
 <ul>
 <li>réserver 4bits pour le choix du device (on a $2^4=16$ possibilités, de $0000$ à $1111$)</li>
@@ -146,8 +146,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=2Cbcb2yGjiM">Mise en œuvre électronique</a></p>
-</div>
-</div>
+</div></div>
+
 <p>L'exemple précédent est très simplifié car les devices hors mémoire n'ont pas besoin de beaucoup d'adressage. Il est en effet impossible d'accéder directement à tout byte. La communication avec ces devices se fait par un protocole similaire aux protocoles de communication réseaux la communication via des paquets de taille fixe, en lecture et en écriture : l'essentiel de la communication passe par la partie donnée du bus et non la partie adresse.</p>
 <p>Ceci pose cependant un problème car l'accès à chaque byte d'un disque dur va mobiliser le processeur et l'accès à un disque dur est relativement lent par rapport à la vitesse d'un processeur, ce qui ralentie inutilement le système puisque le processeur va passer son temps à attendre que l'accès disque soit terminé. Pour palier ce problème on utilise un procédé nommé <a href="https://en.wikipedia.org/wiki/Direct_memory_access">Direct Memory Access</a>. Par exemple pour lire des données :</p>
 <ol>
@@ -168,8 +168,8 @@
 <li><a href="https://www.youtube.com/watch?v=dDA3PUr16As&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=4">les interruptions</a></li>
 <li><a href="https://www.youtube.com/watch?v=M16l_ymlfcs&amp;list=RDCMUCOPmCMY3ROyg04_y5bYPyyw&amp;index=8">Direct memory Access</a></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Ces IO mapping sont placés dans la partie réservée au noyau d'un OS :</p>
 <ul>
 <li>un process ne peut y accéder directement</li>

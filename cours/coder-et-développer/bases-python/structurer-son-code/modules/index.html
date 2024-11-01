@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/">Bases du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/">Structurer son code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/modules/">Modules</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez un notebook de <a href="https://notebook.basthon.fr/">https://notebook.basthon.fr/</a> pour exécuter les divers exemples et exercices</p>
-</div>
-</div>
+</div></div>
+
 <!-- début résumé -->
 <p>Import et utilisation des modules en python.</p>
 <!-- fin résumé -->
@@ -118,10 +118,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google<br>
+<p>Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
 est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de <a href="https://docs.python.org/3/library/index.html">nombreux</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Utiliser un module</h2>
 <p>Pour utiliser un module, il faut commencer par l'importer avec la commande <code class="language-">import</code>. Par exemple avec le module <code class="language-">math</code>.</p>
 <p>Il existe plusieurs façon de faire, mais toutes fonctionnent sur le même principe : python va lire le module et associer les noms qu'il trouve à un espace de nom. Le mot clé utilisé est <code class="language-">import &lt;nom de module&gt;</code> ou une de ses variations.</p>
@@ -138,8 +138,8 @@ x <span class="token operator">=</span> math<span class="token punctuation">.</s
 </svg>
 <div class="pl-8 mr-8">
 <p>La notation <code>A.B</code> : se lit ainsi on cherche le nom <code>B</code> dans l'espace de nom <code>A</code></p>
-</div>
-</div>
+</div></div>
+
 <h3>Importation d'une méthode particulière</h3>
 <p>Ceci peut être dangereux si des fonctions différentes possèdent le même nom.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> cos<span class="token punctuation">,</span> pi <span class="token comment">#importation directe de cos et de pi</span>
@@ -152,8 +152,8 @@ x <span class="token operator">=</span> cos<span class="token punctuation">(</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans cette façon de faire, on associe des noms du module math à l'espace de nom global. Il n'y a aucune manière d'accéder aux autres noms défini dans math avec cette façon de faire.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Importation de toutes les fonctions du modules</h3>
 <p>Déconseillée dans la plupart des cas car on ne sait pas vraiment ce qui a été importé.</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
@@ -181,8 +181,8 @@ y <span class="token operator">=</span> log<span class="token punctuation">(</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Générez un entier aléatoire entre 10 et 234.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -215,8 +215,8 @@ y <span class="token operator">=</span> log<span class="token punctuation">(</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Générez un nombre réel uniformément dans $[0, 1[$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -249,8 +249,8 @@ y <span class="token operator">=</span> log<span class="token punctuation">(</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Choisissez 2 éléments <strong>avec</strong> remise de la liste <code class="language-">[&quot;pomme&quot;, &quot;abricot&quot;, &quot;orange&quot;, &quot;cerise&quot;]</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -283,8 +283,8 @@ y <span class="token operator">=</span> log<span class="token punctuation">(</sp
 </svg>
 <div class="pl-8 mr-8">
 <p>Choisissez 2 éléments <strong>sans</strong> remise de la liste <code class="language-">[&quot;pomme&quot;, &quot;abricot&quot;, &quot;orange&quot;, &quot;cerise&quot;]</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

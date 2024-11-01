@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,12 +98,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Tout ce qui peut s'écrire en pseudo-code peut s'exécuter sur un ordinateur.</p>
-</div>
-</div>
+</div></div>
+
 <p>Mais se pose alors 2 questions :</p>
 <ol>
 <li>Comment ?</li>
@@ -118,8 +118,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="pseudo-assembleur" class="interne">Pseudo-assembleur</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le pseudo-assembleur a permit de montrer qu'il faut peu de choses pour pouvoir écrire et exécuter du code :</p>
 <ol>
 <li>une mémoire finie pour stocker et gérer des données</li>
@@ -133,8 +133,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="von-neumann" class="interne">Architecture de Von Neumann</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>MMIX</h3>
 <p>Nous n'avons montré que le principe d'un pseudo-assembleur et de son utilisation dans un modèle de Von Neumann, juste assez pour nous convaincre que l'on peut exécuter du code.</p>
 <p>Donald Knuth a formellement décrit un pseudo-assembleur complet dans le modèle de Von Neumann, nommée <a href="https://fr.wikipedia.org/wiki/MMIX">MMIX</a>. Il contient bien plus d'opérations que juste <code>NAND</code> et se rapproche en cela d'un véritable assembleur.</p>
@@ -145,8 +145,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://mmix.cs.hm.edu/">https://mmix.cs.hm.edu/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Une fois que vous serez à l'aise avec cette architecture, vous pourrez vous lancer dans le grand bain et faire vos propres programme en assembleur utilisant des processeurs réels, intel ou arm.</p>
 <h3>Processeurs</h3>
 <p>Ce qui est fascinant, c'est que les choses fonctionnent quasiment à l'identique entre un pseudo-assembleur théorique et le code d'un assembleur pouvant exécuter des instructions sur un processeur ARM ou intel.</p>
@@ -178,8 +178,8 @@
 <li><a href="https://www.youtube.com/watch?v=GYlNoAMBY6o">transistor et processeur</a></li>
 </ul>
 <p>Je ne saurais trop vous conseiller de lire le livre <a href="https://www.amazon.fr/Code-Language-Computer-Hardware-Software/dp/0137909101/">Code</a> qui part du poteau télégraphique pour arriver au 8086 d'intel.</p>
-</div>
-</div>
+</div></div>
+
 <p>Attention, il y a le système en plus (qui est aussi un programme) qui gère plusieurs exécution des programmes. Cela rajoute une couche de complexité mais à chaque moment il n'y a qu'un seul programme qui tourne en même temps par processeur. C'est une autre histoire (renvoyer au cours système)</p>
 <h2>Compilation</h2>
 <p>Un ordinateur peut exécuter du code, transcription du pseudo-assembleur, lui même équivalent à du pseudo-code. On n'écrit cependant pas de gros programme en assembleur, on utilise des langages plus proches du pseudo-code comme le python, le java ou encore le rust, le code écrit dans ces langages est ensuite transformé, on dit compilé, en assembleur lui même ensuite transformé au format binaire directement exécutable sur un processeur.</p>
@@ -193,8 +193,8 @@
 <li><a href="https://docs.python.org/fr/3.11/reference/grammar.html">Grammaire de python</a></li>
 <li><a href="https://docs.python.org/fr/3/reference/lexical_analysis.html">Analyse syntaxique de python</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Ce processus de compilation peut être fait en une fois sur tout le programme, c'est ce qui est fait en C ou en rust par exemple. Le processus de compilation produit un <a href="https://fr.wikipedia.org/wiki/Fichier_ex%C3%A9cutable">fichier exécutable</a> qui peut ensuite être directement exécuté. L’intérêt de cette méthode est que l'on ne fait le processus de compilation, qui est lent, qu'une seule fois, le problème est que cela dépend du système d'exploitation (un fichier exécutable windows ne fonctionnera pas sur mac et réciproquement)</p>
 <p>On peut aussi, c'est ce que font les <a href="https://fr.wikipedia.org/wiki/Interpr%C3%A8te_(informatique)">langages interprétés</a> comme python par exemple, compiler ligne à ligne le code pour l'exécuter au moment de l'exécution. On a alors besoin que de l'interpréteur (qui lui est un programme compilé), qui se chargera de transcrire puis d'exécuter ligne à ligne le code écrit dans le langage (souvent ce n'est pas directement en assembleur qu'est transcrit le programme mais en <a href="https://fr.wikipedia.org/wiki/Bytecode">bytecode</a>, état intermédiaire entre pseudo-code et langage binaire). L’intérêt de cette méthode est que l'on peut donner directement le code écrit dans le langage sans avoir besoin de le compiler, le problème est que ces programmes sont souvent plus lent à exécuter puisqu'il faut compiler chaque ligne à chaque fois qu'on veut l'exécuter.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -206,8 +206,8 @@
 <li>voir l'assembleur produit à partir d'un code : <a href="https://godbolt.org/">https://godbolt.org/</a></li>
 <li><a href="https://www.fevrierdorian.com/carnet/pages/python-sous-le-capot-chapitre-1-fonctionnement-de-la-vm-cpython.html">processus de compilation et d'exécution de python</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

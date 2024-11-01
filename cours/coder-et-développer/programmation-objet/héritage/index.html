@@ -98,8 +98,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/héritage/">Héritage</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -148,10 +148,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La flèche qui montre la relation d'héritage est :<br>
+<p>La flèche qui montre la relation d'héritage est :
 <img src="fl%C3%A8che_h%C3%A9ritage.png" alt="flèche héritage"></p>
-</div>
-</div>
+</div></div>
+
 <p>Toutes les classes filles  <em><strong>héritent</strong></em> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
 <span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
@@ -183,8 +183,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé <a href="https://docs.python.org/fr/3/library/datetime.html#">le module <code class="language-">datetime</code> de python</a> qui est fait pour gérer les dates. Utilisez <strong>toujours</strong> des modules spécifique pour gérer les dates et ne cédez pas à la tentation d'utiliser des chaines de caractères par exemple, vous le payerez tôt ou tard car il y a trop de cas particuliers et de bizarrerie de formats de date (format Américain ? Français ? Chinois ?) pour faire attention à tous les cas soit-même.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Classes filles</h3>
 <p>Pour écrire le code des classes filles il faut pouvoir faire deux choses :</p>
 <ol>
@@ -218,8 +218,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>Un petit tuto sur <a href="https://he-arc.github.io/livre-python/super/index.html">la fonction super</a></p>
-</div>
-</div>
+</div></div>
+
 <p>L'appel des fonctions de la classe mère est obligatoire en python. Si on omettait la ligne 3 dans le code de définition de la classe <code class="language-">Étudiant</code>, ces derniers n'auraient pas d'attributs <code class="language-">nom</code> <code class="language-">prénom</code>, ni <code class="language-">année_naissance</code> définis dans le constructeur de la classe mère, <code class="language-">Personne</code>.</p>
 <h3>Appels de méthodes</h3>
 <p>L'appel de méthodes se fait en &quot;remontant&quot; la hiérarchie jusqu'à trouver la méthode à exécuter. Lors de l'exécution de la ligne <code class="language-">print(prof_info.donne_age())</code>, celà se passe ainsi :</p>
@@ -244,8 +244,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>En python, toutes les classes héritent de la classe <code class="language-">object</code>. Par exemple <code class="language-">issubclass(list, object)</code> répond <code class="language-">True</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le fait que toutes les classes héritent d'<code class="language-">object</code> est très pratique puisque cela permet de créer des comportements par défaut à tous les objets : si une méthode existe dans la classe alors qu'on ne l'a pas définie explicitement, c'est qu'elle est définie dans la classe <code class="language-">object</code>. C'est le cas de la méthode <code class="language-">__str__</code> par exemple.</p>
 <h3>Chercher dans la hiérarchie</h3>
 <p>Supposons que j'ai un objet nommé <code class="language-">obj</code> de classe <code>classe 2</code> qui veut appeler la méthode 1 : <code class="language-">obj.méthode1()</code></p>
@@ -260,8 +260,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>Si l'on arrive jusqu'à la classe <code>object</code> et qu'elle ne contient pas le nom recherché une erreur est lancée.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Appeler directement une sous/sur-classe</h3>
 <p>Supposons que dans la définition de <code class="language-">méthode1</code> de la <code>classe 2'</code>, on particularise la méthode <code class="language-">méthode1</code> de la <code>classe 1</code>. On peut alors appeler la méthode <code class="language-">méthode1</code> de la <code>classe 1</code> dans la définition de la <code class="language-">méthode1</code> de la <code>classe 2'</code>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -270,8 +270,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>Si l'on ne retrouve pas la méthode dans la classe mère, on remonte la hiérarchie. De là, tenter d'utiliser la méthode <code>méthode1</code>  de la <code>classe 1'</code> en définissant la  méthode <code>méthode1</code>  de la <code>classe 2''</code> va en fait exécuter la méthode  méthode <code>méthode1</code>  de la classe <code>object</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Connaître la hiérarchie</h3>
 <p>En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-">mro()</code>. Par exemple, dans un interpréteur :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -284,8 +284,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </svg>
 <div class="pl-8 mr-8">
 <p>La classe <code class="language-">object</code> est toujours le dernier élément de la liste.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notez bien que la méthode <code class="language-">mro</code> est appliquée <strong>à la classe</strong> et nom à l'objet. Par exemple pour la classe <code class="language-">EnseignantChercheur</code> de l'exemple 1, on aurait :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> EnseignantChercheur<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
@@ -330,8 +330,8 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme un point n'est <strong>pas</strong> un cas particulier de polygone, ni réciproquement, ces deux classes ne peuvent pas avoir de lien d'héritage.</p>
-</div>
-</div>
+</div></div>
+
 <p>Point et polygone entretiennent un lien d'agrégation (les points sont passés au polygone à sa construction). Le modèle UML suivant :</p>
 <p><img src="h%C3%A9ritage_point_poly.png" alt="point polygone"></p>
 <h4>Code python</h4>
@@ -431,8 +431,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> 
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h2><span id="exemple-D&D"></span> Exemple 3 : donjons et dragons</h2>
 <p>On va simuler des personnage d'<em>heroic fantasy</em>. Pour cela, on commence par créer une classe <code class="language-">Personnage</code> qui sera particularisée petit à petit.</p>
 <h3>Classe Personnage</h3>
@@ -494,8 +494,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise <strong>toujours</strong> le constructeur de la classe mère pour garantir que les méthodes définies dans la classe mère fonctionnent avec les objets de la classe fille. Sinon ici, <code class="language-">se_faire_taper</code> ne fonctionnerait pas puisque vie et attaque ne seraient pas définies</p>
-</div>
-</div>
+</div></div>
+
 <h3>Le magicien</h3>
 <p>Le magicien peut faire tout ce que peut faire un personnage normal mais il dispose en plus d'un score d'attaque magique qui détermine les dégâts qu'il fait en lançant un sort.</p>
 <h4>Modèle UML du magicien</h4>
@@ -514,12 +514,12 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p>Dans l'implémentation de notre classe <code class="language-">Personnage</code>, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Pour faire plus joli :</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Remplacez la manipulation directe de l'attribut <code class="language-">vie</code> par un <code class="language-">@property</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -569,8 +569,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/tutorial/classes.html#multiple-inheritance">Héritage multiple en Pyton</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe <code class="language-">Doctorant</code> qui serait <strong>à la fois</strong> <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> :</p>
 <p><img src="th%C3%A9sard.png" alt="doctorant"></p>
 <p>Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :</p>
@@ -591,8 +591,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 <div class="pl-8 mr-8">
 <p>Les problèmes d'ordre en héritage multiple sont décrits sous le nom de <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_diamant">problème du diamant</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple <a href="https://realpython.com/python-super/#super-in-multiple-inheritance">cette étude</a>), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -613,8 +613,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <li>une méthode <code class="language-">truc_que_fait_a()</code> qui affiche &quot;Truc défini dans la classe mère&quot;</li>
 <li>une méthode <code class="language-">autre_truc()</code> qui affiche &quot;Autre truc dans la classe mère&quot;</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -655,8 +655,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <li>une méthode <code class="language-">autre_truc()</code> qui affiche &quot;C'est mon autre truc à moi&quot;</li>
 <li>une méthode <code class="language-">que_de_b()</code> qui affiche &quot;Méthode seulement de la classe fille&quot;</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -694,8 +694,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez dans <code class="language-">A</code> un attribut de classe <code class="language-">CTE</code> constante valant <code class="language-">un attribut de classe</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -737,8 +737,8 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <li>dans la  classe <code class="language-">A</code> : une méthode <code class="language-">j_hérite(x)</code> qui prend un paramètre <code class="language-">x</code> qui est une chaîne de caractère et affiche la valeur de x</li>
 <li>dans la  classe <code class="language-">B</code> : une méthode <code class="language-">j_hérite(x)</code> qui commence par appeler la méthode de la classe mère puis affiche la valeur de x en majuscules</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

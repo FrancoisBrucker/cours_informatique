@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Parties <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/#bases" class="interne">bases</a> et <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/#d%C3%A9velopper" class="interne">développer</a> du <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper" class="interne">cours de développement</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Étude du problème du tri et implémentation de quelques algorithmes pour <em>voir</em> les différentes façon de trier et leurs complexités.</p>
 <p>Les informaticiens adorent <a href="https://fr.wikipedia.org/wiki/Algorithme_de_tri">les algorithmes de tris</a>. Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -108,14 +108,14 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les algorithmes de tri que nous verrons dans cette partie nous permettrons non seulement de mettre en oeuvre tout ce que nous avons vu sur les techniques de preuves et de calcul de complexités, mais également d'apprendre de nouveaux outils, comme le master theorem.</p>
-</div>
-</div>
+</div></div>
+
 <p>Commençons par définir le problème :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Problème</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -123,8 +123,8 @@
 <li><strong>données</strong> : un tableau d'entiers</li>
 <li><strong>réponse</strong> : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Reconnaissance</h2>
 <p>Commençons par travailler sur un problème connexe au problème du tri, celui de savoir si un tableau d'entiers est trié ou non. Le problème du tri présuppose en effet que l'on sache ce qu'est un tableau trié et, en creux, qu'on puisse vérifier (rapidement) qu'un tableau est trié ou non.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -133,8 +133,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="reconnaissance" class="interne">Reconnaissance d'un tableau trié</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pouvoir vérifier qu'une solution à un problème en est vraiment une est un point crucial en algorithmie. Nous y reviendrons intensivement lorsque nous parlerons de classes de problèmes.</p>
 <h2>Algorithmes Tris simples</h2>
 <p>Deux Algorithmes simples pour trier un tableau.</p>
@@ -146,8 +146,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="algorithme-s%C3%A9lection" class="interne">Tri par sélection</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Tri par insertion</h3>
 <p>Son implémentation va nécessiter d'utiliser une nouvelle technique, le placement de sentinelles, et démontrer ses complexités va demander un peu de travail car son nombre d'instructions est très variable selon le tableau donné en paramètre.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -156,8 +156,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="algorithme-insertion" class="interne">Tri par insertion</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Complexité du problème du tri</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -165,8 +165,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="complexit%C3%A9-probl%C3%A8me" class="interne">Complexité du problème</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Algorithmes de tris optimaux</h2>
 <h3>Tri fusion</h3>
 <p>Le tri fusion utilise une technique de création d'algorithme classique nommée <em>diviser pour régner</em> et nous utiliserons le très utile master Theorem pour en calculer la complexité.</p>
@@ -176,8 +176,8 @@
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="algorithme-fusion" class="interne">Algorithme du tri fusion</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Tri de python</h3>
 <p>L'algorithme <a href="https://en.wikipedia.org/wiki/Timsort">timsort</a> est l'algorithme utilisé par python pour trier des listes :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
@@ -192,7 +192,7 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Complexités du timsort</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour un tableau de taille $n$, l'algorithme <a href="https://en.wikipedia.org/wiki/Timsort">timsort</a> a :</p>
@@ -201,16 +201,16 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <li>une complexité min de $\mathcal{O}(n)$</li>
 <li>une complexité en moyenne de $\mathcal{O}(n\ln(n))$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne perdez donc pas de temps à recoder un algorithme de tri : utilisez celui de python !</p>
-</div>
-</div>
+</div></div>
+
 <h2>Cas du tri rapide</h2>
 <p>Le tri rapide est, malgré sa simplicité apparente, le plus difficile à implémenter proprement et pour en calculer la complexité. Il vous apprendra à avoir une intuition de la complexité d'un algorithme.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -219,8 +219,8 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="algorithme-rapide" class="interne">Algorithme du tri rapide</a></p>
-</div>
-</div>
+</div></div>
+
 <h2>Implémentations</h2>
 <p>Projet de développement pour voir les tris se trier.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -229,8 +229,8 @@ T<span class="token punctuation">.</span>sort<span class="token punctuation">(</
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="projet-tris" class="interne">Projet implémentation des algorithmes de tri</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

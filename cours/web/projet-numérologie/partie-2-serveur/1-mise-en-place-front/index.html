@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-2-serveur/">Projet numérologie / partie 2 serveur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-2-serveur/1-mise-en-place-front/">Projet numérologie : partie 2 / mise en place front</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -116,8 +116,8 @@
 <li>déplacer les fichiers <code class="fichier">index.html</code>, <code class="fichier">main.css</code> et <code class="fichier">numérologie.js</code> dans un dossier <code class="fichier">static</code></li>
 <li>créer un fichier vide <code class="fichier">index.js</code> à la racine du projet pour simuler notre serveur.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On obtient la structure classique d'un serveur web en node :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">.
 ├── index.js
@@ -133,8 +133,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On vérifie que le front n'est pas cassé en ouvrant le fichier <code class="fichier">index.html</code> avec notre navigateur.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Packages Express</h3>
 <p>Il nous reste à préparer la partie serveur en mettant en place node et express.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -149,8 +149,8 @@
 <li>ajouter la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code> pour utiliser la gestion javascript des modules plutôt que celle de node</li>
 <li>ajout du package express et sauvegarde dans le fichier de configuration <code class="fichier">package.json</code> : <code>npm add --save express</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h2>Routes</h2>
 <p>On reprend le code de la partie <a href="../../serveur-web/express" class="interne">server express</a> pour notre site, uniquement en front pour l'instant :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>

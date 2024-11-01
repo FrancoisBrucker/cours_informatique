@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/">Projet numérologie / partie 1 : front</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/">Projet numérologie / partie 1 : front / niveau 1</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-1-front/niveau-1/3-html_css/">Projet numérologie / partie 1 : front / niveau 1 / code html&amp;css</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -150,8 +150,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Glisser/déposez le fichier <code class="fichier">numérologie/index.html</code> depuis l'explorateur de fichier vers une fenêtre chrome pour que chrome interprète votre fichier (vous pouvez aussi taper <em>ctrl+o</em> sous windows ou <em>menu Fichier &gt; ouvrir le fichier</em> sous mac).</p>
-</div>
-</div>
+</div></div>
+
 <p>Bon c'est un peu nul mais on voit bien les différentes <em>balises</em> html :</p>
 <ul>
 <li>le titre (c'est sur l'onglet du fichier) : c'est la balise <code class="language-">&lt;title&gt;&lt;/title&gt;</code></li>
@@ -170,8 +170,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La plupart des balises peuvent être en plusieurs exemplaires, comme plusieurs paragraphes <code class="language-">&lt;p&gt;&lt;/p&gt;</code> ou plusieurs formulaires <code class="language-">&lt;form&gt;&lt;/form&gt;</code>. En revanche, il ne doit y avoir qu'une seule balise <code class="language-">&lt;html&gt;&lt;/html&gt;</code>, <code class="language-">&lt;head&gt;&lt;/head&gt;</code> et <code class="language-">&lt;body&gt;&lt;/body&gt;</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="tache-2"></span> Tâche 2 : css</h2>
 <p>Le <a href="https://developer.mozilla.org/fr/docs/Learn/CSS/First_steps">css</a> est un langage déclaratif permettant d'associer un style à une balise. Donnons un peu de style à notre page html.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -180,8 +180,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que la page, même moche a déjà du style. Le paragraphe par exemple n'est pas collé au formulaire et le texte a une police de caractère. Toutes ces styles par défaut sont donné parle navigateur.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="tache-2.1"></span> Style dans la page html</h3>
 <p>Modifions notre fichier html pour y inclure du style, grâce à la balise <code class="language-">&lt;style&gt;&lt;/style&gt;</code>, que l'on met usuellement dans la balise <code class="language-">&lt;head&gt;&lt;/head&gt;</code> :</p>
 <p>Ajoutons le style au fichier <code class="fichier">numérologie/index.html</code> :</p>
@@ -240,10 +240,10 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Il n'est pas nécessaire de mettre la balise <code class="language-">&lt;style&gt;&lt;/style&gt;</code> dans la balise <code class="language-">&lt;head&gt;&lt;/head&gt;</code>, on peut<br>
+<p>Il n'est pas nécessaire de mettre la balise <code class="language-">&lt;style&gt;&lt;/style&gt;</code> dans la balise <code class="language-">&lt;head&gt;&lt;/head&gt;</code>, on peut
 a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si vous mettez du style pour un paragraphe après celui-ci, il ne sera pas reconnu.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les possibilités de style sont <a href="https://developer.mozilla.org/fr/docs/Web/CSS/Reference">très nombreuses</a>.</p>
 <h3><span id="tache-2.2"></span> Feuille de style séparée du html</h3>
 <p>On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu'il <em>pollue</em> le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.</p>
@@ -297,8 +297,8 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 </svg>
 <div class="pl-8 mr-8">
 <p>Normalement, une bibliothèque css va définir plein de classes que l'on pourra utiliser pour ses pages. Elles vont servir à mettre de jolies couleurs ou à organiser les pages (le <em>layout</em>).</p>
-</div>
-</div>
+</div></div>
+
 <p>Re-modifions le fichier <code class="fichier">numérologie/index.html</code> pour y inclure un lien vers la bibliothèque :</p>
 <pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -336,8 +336,8 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que l'on met <strong>toujours</strong> ses propres css à la fin, car les propriétés sont appliquées dans l'ordre où elles sont lues, les nôtres seront donc toujours appliquées, car en dernier.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

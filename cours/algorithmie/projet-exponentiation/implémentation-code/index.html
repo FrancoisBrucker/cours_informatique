@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/">Problème de l&#39;exponentiation</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-exponentiation/implémentation-code/">Projet exponentiation</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -113,8 +113,8 @@
               </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -139,8 +139,8 @@
 </ul>
 </li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h3>Vérifications</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -153,8 +153,8 @@
 <li>on vérifie que le linter est actif dans vscode</li>
 <li>on vérifie que les tests fonctionnent (en créant un test bidon dans <code class="fichier">tests_exponentiation.py</code> et en vérifiant que <code>pytest</code> et vscode le trouvent)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -162,8 +162,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On se force, jusqu'à que cela devienne un automatisme, à écrire du code stylé. C'est à dire sans que le linter ne se fâche.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Le code</h2>
 <h3>Algorithme naif</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -182,8 +182,8 @@
 </li>
 </ul>
 <p>Vérifier que vos tests se lancent bien dans le terminal.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour les tests, on utilisera les règles suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -196,8 +196,8 @@
 <li>chaque test sera nommé en 3 parties : <code class="language-">test_[nom de la fonction_testée]_[ce que l'on teste]</code> où <code class="language-">[nom de la fonction_testée]</code> est le nom de la fonction testée (ne mettez pas les <code>[]</code>) et <code class="language-">[ce que l'on teste]</code> une description succincte (en 1 ou 2 mots max) de ce que l'on teste.</li>
 <li>un test doit tester <strong>une unique chose</strong>. On peut se permettre d'avoir plusieurs <code class="language-">assert</code> par fonction de test du moment que ce qu'on test peut être qualifié par un nom précis (la partie <code class="language-">[ce que l'on teste]</code> du nom de la fonction de test)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Algorithme rapide</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -210,8 +210,8 @@
 <li>dans le fichier <code class="fichier">test_exponentiation.py</code> : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :</li>
 </ul>
 <p>Vérifier que vos tests se lancent bien dans le terminal.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -219,8 +219,8 @@
 <div class="pl-8 mr-8">
 <p>Ne supprimez pas les tests de l'algorithme naïf en créant ceux pour l'algorithme rapide ! Vos deux fonctions <strong>DOIVENT</strong> être testées.</p>
 <p>Si l'on modifie notre algorithme naif plus tard il faudra toujours qu'il soit testé.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Complexité temporelle</h2>
 <p>La seule façon de mesurer expérimentalement la complexité d'un algorithme est de mesurer la <a href="../../complexit%C3%A9-calculs/d%C3%A9finitions/#complexit%C3%A9-temps" class="interne">complexité en temps</a> de celui-ci pour une entrée réalisant la complexité maximale.</p>
 <p>Ce n'est cependant pas si simple de mesurer ce temps précisément parce que :</p>
@@ -239,7 +239,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour mesurer le temps d'exécution d'un algorithme :</p>
@@ -249,8 +249,8 @@
 <li>on note le temps $t_2$ utilisé par le programme juste après exécution l'algorithme</li>
 </ol>
 <p>La complexité temporelle sera alors : $\Delta = t_2 - t_1$.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Comment faire</h3>
 <p>On va utiliser les fonctions simple du module <a href="https://docs.python.org/fr/3/library/time.html">time</a>. Faisons une petite fonction de test pour voir comment on peut utiliser la mesure du temps dans notre programme.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -273,16 +273,16 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Temps d'attente :"</span><span class="token punctuation">,</span> delta<span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise à dessein un calcul long $x^{x^2}$ pour que vous voyiez le temps passé à le calculer.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le code précédent utilise une fonction du module <a href="https://docs.python.org/fr/3/library/time.html"><code class="language-">time</code></a> : <a href="https://docs.python.org/3/library/time.html#time.perf_counter"><code class="language-">perf_counter</code></a> qui mesure le temps utilisé par le programme python en secondes, indépendamment des autres programmes tournant sur votre ordinateur (Youtube, Instagram, etc). On utilise une fonction longue à calculer (ici $1000^{1000^2}$, vous pouvez essayer $2000^{2000^2}$ ou $500^{500^2}$ pour voir les différences de temps)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -300,8 +300,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </ul>
 </li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Voua devriez voir que le temps d'exécution de chaque fonction est similaire mais non identique.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -309,8 +309,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on calcule des complexités temporelles, on réalise plusieurs mesures pour en rendre la moyenne et ainsi atténuer les fluctuations.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Expérimentations</h3>
 <h4>Un temps d'exécution</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -320,8 +320,8 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer un programme principal (dans le fichier <code class="fichier">main.py</code>) qui demande à l'utilisateur un exposant $n$. Ce programme donne ensuite le temps mis pour exécuter $3^n$ avec l'algorithme naïf et avec l'algorithme rapide.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Temps max</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -330,16 +330,16 @@ delta <span class="token operator">=</span> t2 <span class="token operator">-</s
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer dans un fichier nommé <code class="fichier">main_temps.py</code> un programme permettant de trouver $K$ et $N$ tels que $N = 2^K$ soit la première puissance de 2 pour laquelle le temps mis pour exécuter l’exponentiation naïve de $3^N$ dure plus de 1 seconde.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On trouve que $K$ vaut de l'ordre de 20.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -386,16 +386,16 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez (et testez) une fonction <code class="language-">donne_pas(nombre_pas: int, min_valeur: int, max_valeur: int) -&gt; [int]</code> qui rend une liste d'entiers allant de <code class="language-">min_valeur</code> à au plus <code class="language-">max_valeur</code> par pas de <code class="language-">(max_valeur - min_valeur) //  nombre_pas</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p><code class="language-">donne_pas(4, 2, 23)</code> rendra la liste <code class="language-">[2, 7, 12, 17, 22]</code>. Elle est très facile à créer avec la fonction <code class="language-">range</code></p>
-</div>
-</div>
+</div></div>
+
 <p>Puis mesurons le temps pris pour calculer $3^n$, pour 20 points de contrôles entre $1$ et $N$ :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -409,8 +409,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 <li>la liste <code class="language-">mesures_temps_naif</code> telle que <code class="language-">mesures_temps_naif[i]</code> corresponde au temps mis pour exécuter la fonction calculer <code class="language-">puissance_naif(3, exposant[i])</code></li>
 <li>la liste <code class="language-">mesures_temps_rapide</code>corresponde au temps mis pour exécuter la fonction calculer <code class="language-">puissance_rapide(3, exposant[i])</code></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La complexité de l'algorithme naif doit être linéaire et celui de l'algorithme rapide logarithmique, donc :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -419,8 +419,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que le rapport <code class="language-">mesures_temps_naif[i] / mesures_temps_rapide[i]</code> augmente lorsque $i$ augmente (il doit tendre vers l'infini).</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -432,8 +432,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 <li><code class="language-">mesures_temps_naif[i] / exposant[i]</code> reste à peut prêt constant</li>
 <li><code class="language-">mesures_temps_rapide[i] / log(exposant[i])</code> reste à peut prêt constant (<code class="language-">log</code> est une fonction du <a href="https://docs.python.org/fr/3/library/math.html">module <code class="language-">math</code> de python</a>)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>Graphiques</h2>
 <p>Nous allons dans cette partie représenter graphiquement nos mesures. Nous utiliserons pour cela la bibliothèque <a href="https://matplotlib.org/">Matplotlib</a>.</p>
 <h3><span id="Matplotlib"></span>Bibliothèque Matplotlib</h3>
@@ -447,8 +447,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 <p>Dans un terminal, tapez la commande suivante pour installer <a href="https://matplotlib.org/">Matplotlib</a> :</p>
 <pre><code>python -m pip install matplotlib
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Utiliser cette bibliothèque ne s'improvise pas. Commencez par lire le tutoriel suivant pour en comprendre les bases :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -456,8 +456,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
   </svg>
 <div class="pl-8 mr-8">
 <p>Suivez le <a href="/cours_informatique/tutoriels/matplotlib" class="interne">tutoriel Matplotlib</a>. Il est fait pour être utilisé avec un notebook, mais vous devriez pouvoir facilement convertir les exemples pour pouvoir les utiliser dans un fichier python normal.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Temps naïf</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -467,8 +467,8 @@ N <span class="token operator">=</span> <span class="token number">1</span>
 <div class="pl-8 mr-8">
 <p>Ajoutez le code suivant au code du fichier <code class="fichier">temps_exponentiation.py</code> pour afficher le temps mis pour afficher le temps mis pour calculer <code class="language-">puissance_naif(3, exposant[i])</code> en fonction de <code class="language-">exposant[i]</code>.</p>
 <p>Est-ce conforme à ce qui était attendu ?</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 fig<span class="token punctuation">,</span> ax <span class="token operator">=</span> plt<span class="token punctuation">.</span>subplots<span class="token punctuation">(</span>figsize<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -490,8 +490,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8 mr-8">
 <p>Adaptez le code précédent pour afficher les mesures de temps pour l'exponentiation rapide.</p>
 <p>Est-ce conforme à ce qui était attendu ?</p>
-</div>
-</div>
+</div></div>
+
 <h3>Combinaison des deux</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -500,8 +500,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 </svg>
 <div class="pl-8 mr-8">
 <p>Superposez en un seul graphique les deux courbes (on pourra faire deux plot l'un à la suite des autres).</p>
-</div>
-</div>
+</div></div>
+
 <p>Le temps mis par l'exponentiation rapide est très inférieur à celui effectué par l'algorithme d'exponentiation naif, on ne le voit pratiquement p[as.</p>
 <h3>Deux axes des ordonnées</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -512,8 +512,8 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="pl-8 mr-8">
 <p>Utilisez le code de <a href="https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html#multiple-yaxis-with-spines">ce lien</a> pour utiliser <code class="language-">ax.twinx</code> qui permet de partager l'axe des abscisse en ayant deux axes des ordonnées et permettre de voir les 2 courbes,chacune ayant son axe des ordonnées.</p>
 <p>Vous pourrez également changer la couleur d'un des dessins en remplaçant le paramètre <code class="language-">'o-'</code> d'un des 2 plot par <code class="language-">'ro-'</code> pour dessiner en rouge (red).</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

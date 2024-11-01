@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/exercices/">Exercices</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/exercices/matrices/">Matrices</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -104,8 +104,8 @@
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span><span class="token function">matrice_create</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Qui crée dynamiquement une matrice où chaque élément vaut 0.</p>
-</div>
-</div>
+</div></div>
+
 <p>On va ajouter une fonction pour afficher la matrice à l'écran :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -120,16 +120,16 @@
 <p>Sa signature sera :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">matrice_show</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez utiliser le <a href="https://www.lix.polytechnique.fr/~liberti/public/computing/prog/c/C/FUNCTIONS/format.html">formatage des entiers</a> de printf pour justifier les entiers à droite (en supposant par exemple qu'ils ont tous au plus 3 chiffres).</p>
-</div>
-</div>
+</div></div>
+
 <p>Utilisons les matrices :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -138,8 +138,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Le programme principal crée une matrice à 4 lignes et 6 colonnes et affecte $i+j$ à l'élément de ligne $i$ et de colonne $j$. Puis affichez là.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il nous rest à créer la fonction qui supprime la matrice :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -151,8 +151,8 @@
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Qui supprime une matrice précédemment crée avec la fonction <code class="language-">matrice_create</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -162,8 +162,8 @@
 <li>supprimant le paramètre <code class="language-">nombre_lignes</code> ?</li>
 </ul>
 <p>Si oui, le faire.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -198,8 +198,8 @@
 <span class="token keyword">void</span> <span class="token function">matrice_destroy</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">matrice_show</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_lignes<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Il est cependant maintenant plus dur d'accéder directement à un élément de la matrice. Créons des fonctions pour nous aider :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -211,16 +211,16 @@
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">matrice_get</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">matrice_set</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>matrice<span class="token punctuation">,</span> <span class="token keyword">int</span> element<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h2>Implémentation v3 : pointeur opaque</h2>
 <p>Manipuler une matrice devient très lourd puisqu'il faut connaître et stocker les dimension de la matrice. Améliorons ça :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Proposez une structure permettant de stocker la matrice et tous ses paramètres</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -260,8 +260,8 @@
 <span class="token keyword">int</span> <span class="token function">matrice_get</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">matrice_set</span><span class="token punctuation">(</span>matrice <span class="token operator">*</span>m<span class="token punctuation">,</span> <span class="token keyword">int</span> element<span class="token punctuation">,</span> <span class="token class-name">size_t</span> ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> colonne<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Pour que les utilisateurs ne puissent pas connaître le contenu de la structure on peut organiser les fichiers de telle sorte de cacher la structure proprement dite.</p>
 <p>On appelle cette façon de faire :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -270,8 +270,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://interrupt.memfault.com/blog/opaque-pointers">Technique du pointeur opaque</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour que la technique du pointeur opaque fonctionne, il faut séparer les déclarations des fonctions (les <code>.h</code>) et leurs implémentations (les <code>.c</code>) :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -280,8 +280,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Séparer le fichier unique en trois fichiers : <code class="fichier">matrice.h</code>, <code class="fichier">matrice.c</code> et <code class="fichier">main.c</code> et créez un fichier <code class="fichier">Makefile</code> pour compiler le projet.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour le pointeur opaque on doit modifier les <code>.h</code> pour qu'ils connaissent un pointeur sur la structure mais pas la structure. Ce qui donne pour notre matrice :</p>
 <p>Fichier <code class="fichier">matrice.h</code> :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_MATRICE</span></span>
@@ -311,8 +311,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Implémentez cette nouvelle (et dernière) façon d'utiliser des matrices.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -320,8 +320,8 @@
 <li>Pourquoi appelle-t-on ce pattern de création de structure <em>&quot;pointeur opaque&quot;</em> ?</li>
 <li>en quoi cela peut-il faire penser à de la programmation objet ?</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -355,8 +355,8 @@
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">matrice_transpose</span><span class="token punctuation">(</span><span class="token class-name">matrice_t</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>Qui transpose la matrice.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -369,8 +369,8 @@
 <li>terminer en affectant <code class="language-">m2-&gt;matrice</code> à <code class="language-">m-&gt;matrice</code></li>
 <li>libérer la mémoire allouée par <code class="language-">m2</code> (sans libérer la matrice en elle même).</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -378,8 +378,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans le programme principale, après avoir affiché la matrice, transposez là et affichez la à nouveau.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

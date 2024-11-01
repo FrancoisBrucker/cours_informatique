@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/">Écrire des Algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/prouver-un-algorithme/">Prouver un algorithme</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -109,8 +109,8 @@
               </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -122,14 +122,14 @@
 <div class="pl-8 mr-8">
 <p>Dans la suite, les algorithmes seront tous donnés en python.</p>
 <p>Le language python est très proche du pseudo-code et il devrait être facile de les comprendre, mais je vous conseille fortement de vous y mettre en suivant les prérequis de ce cours.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le but d'un algorithme est de résoudre un problème algorithmique. Prouver un algorithme signifie qu'il fait bien ce qu'il est sensé faire :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Prouver un algorithme $A$ c'est démontrer qu'il résout un problème algorithmique $P$. Pour cela :</p>
@@ -143,8 +143,8 @@
 </li>
 <li>on démontrera que le résultat de l'exécution de $A$ avec une instance d'entrées de $P$ est bien une réponse à $P$.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>A chaque fois que l'on nous de demandera de créer un algorithme pour résoudre un problème il nous faudra :</p>
 <ol>
 <li>s'assurer que l'on écrit un programme</li>
@@ -157,15 +157,15 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>Pour prouver un algorithme on cherchera à établir :</p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>une équation de récurrence plus une condition d'arrêt pour prouver un algorithme récursif.</li>
 <li><a href="https://fr.wikipedia.org/wiki/Invariant_de_boucle">un invariant de boucle</a> pour des algorithme itératifs. Ces invariants vont alors être conservés jusqu'à la fin de l'algorithme et nous permettre de prouver son résultat.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Notez que bien souvent prouver un algorithme et le créer est la même chose. Comprendre comment on peut résoudre un problème donné nous donnera l'algorithme et réciproquement.</p>
 <p>A part la recommandation ci-dessus, il n'existe pas vraiment de règles à appliquer pour prouver un algorithme. Seule l'expérience et l'étude des algorithmes classiques vous permettra de trouver facilement comment prouver un algorithme.</p>
 <h2>Factorielle</h2>
@@ -174,12 +174,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>Schéma de preuve :</p>
 </div><div class="pl-8 mr-8">
 <p>Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">1</span>
@@ -189,7 +189,7 @@
 <p>Si $n$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
 <h4>Preuve</h4>
 <p>Par récurrence sur $n$, avec $n$ entier positif.</p>
-<p>Pour $n \leq 1$ <code class="language-">factorielle(0)</code> et <code class="language-">factorielle(1)</code> valent bien bien $1 = 0! = 1!$.<br>
+<p>Pour $n \leq 1$ <code class="language-">factorielle(0)</code> et <code class="language-">factorielle(1)</code> valent bien bien $1 = 0! = 1!$.
 On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt; 1$, le retour de <code class="language-">factorielle(n)</code> est <code class="language-">n * factorielle(n-1)</code> qui vaut donc $n \cdot (n-1)! = n!$ par hypothèse de récurrence.</p>
 <h3><span id="facto-iter"></span> Algorithme itératif</h3>
 <p>On va voir ici 2 versions du même algorithme. L'un qui construit la factorielle en <em>montant</em>, et l'autre qui la construit en <em>descendant</em>. On prouvera ces 2 algorithmes en utilisant des invariants de boucles :</p>
@@ -197,7 +197,7 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p>Schéma de preuve :</p>
 </div><div class="pl-8 mr-8">
 <p>Pour les preuves par invariant de boucle, le schéma de preuve est le suivant :</p>
@@ -211,8 +211,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <li>l'invariant étant toujours vrai, il est vrai à la sortie de la boucle. A ce moment là, sa valeur doit servir à démontrer le résultat voulu.</li>
 </ol>
 <p>Pour simplifier l'écriture, on note avec un <code>'</code> (prim) les variables à la fin de la boucle d'itération $k+1$ pour les différentier des variables de la fin de l'itération $k$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Un invariant doit résumer ce que fait la boucle avec une équation qui est toujours vérifiées, même si on modifie des variables.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -220,8 +220,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </svg>
 <div class="pl-8 mr-8">
 <p>Il existe des variantes dans les preuves par invariants selon que l'on vérifie juste à la fin de la boucle ou au début et à la fin de l'itération. Les deux formes sont équivalentes, mais il est parfois plus aisée d'utiliser l'une que l'autre.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Première version</h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     r <span class="token operator">=</span> <span class="token number">1</span>
@@ -237,8 +237,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise la possibilité que donne python d'écrire <code class="language-">x += y</code> (<em>resp.</em> <code class="language-">x -= y</code>, <code class="language-">x *= y</code> ou encore <code class="language-">x /= y</code>) à la place de <code class="language-">x = x + y</code> (<em>resp.</em> <code class="language-">x = x - y</code>, <code class="language-">x = x * y</code>, <code class="language-">x = x / y</code>).</p>
-</div>
-</div>
+</div></div>
+
 <h5><span id="F-iter-1"></span> Finitude</h5>
 <p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car l'entier $i$ croît strictement de 1 à chaque itération de la boucle <code class="language-">while</code>.</p>
 <h5><span id="P-iter-1"></span> Preuve</h5>
@@ -255,8 +255,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <li>comprendre la boucle c'est comprendre comment se modifient les variables</li>
 <li>la modification des variables peut s'exprimer sous la forme d'un invariant</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Allons-y :</p>
 <ol>
 <li>l'algorithme retourne $r$ à la fin : ce doit donc être le résultat et il doit valoir $n!$</li>
@@ -299,8 +299,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </svg>
 <div class="pl-8 mr-8">
 <p>L'algorithme construit la factorielle en <em>descendant</em>.</p>
-</div>
-</div>
+</div></div>
+
 <h5><span id="F-iter-2"></span>  Finitude</h5>
 <p>Si $n$ est un entier non nul, l'algorithme va s'arrêter car $n$ décroît strictement à chaque itération de la boucle <code class="language-">while</code>.</p>
 <h5><span id="P-iter-2"></span>  Preuve</h5>
@@ -309,8 +309,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Trouvez un invariant de boucle et servez-vous en pour prouver l'algorithme.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -365,8 +365,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </svg>
 <div class="pl-8 mr-8">
 <p>On a utilisé la <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#slice" class="interne">copie de sous-listes (<em>slicing</em>)</a> de python : <code class="language-">tab[1:]</code> est la liste contenant les éléments de <code class="language-">tab</code> à partir de l'index 1 (donc sans le premier élément de <code class="language-">tab</code>).</p>
-</div>
-</div>
+</div></div>
+
 <h4><span id="M-F-rec-1"></span> Finitude</h4>
 <p>À chaque récursion, la taille du tableau diminue strictement. La récursion s'arrêtera donc forcément lorsque le tableau sera de taille 1.</p>
 <h4><span id="M-P-rec-1"></span> Preuve</h4>
@@ -427,8 +427,8 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le retour de la fonction est un <a href="https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences">tuple</a> à 2 éléments (c'est à dire un tableau à 2 éléments que l'on ne peut pas modifier)</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="div-fini"></span> Finitude</h3>
 <p>le programme s'arrête ? : Oui si a et b sont des entiers positifs. Car</p>
 <ul>

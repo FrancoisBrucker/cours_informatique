@@ -85,14 +85,14 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/">Bases du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/">Structurer son code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/">Conteneurs</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/">Ensembles et dictionnaires</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
   
 
-  <p>Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.<br>
+  <p>Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.
 Elles partagent beaucoup de chose, en particulier elles sont créés de la même manière (en utilisant des <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash" class="interne">fonctions de hash</a>).</p>
 <h2>Ensembles</h2>
 <p>Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :</p>
@@ -120,8 +120,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p>Un ensemble peut être codé en utilisant la structure de dictionnaire en considérant que les valeurs sont toutes les mêmes. On ne considère que les clés qui représentent les éléments de l'ensemble.</p>
-</div>
-</div>
+</div></div>
+
 <h2>En python</h2>
 <p>ce que c'est :</p>
 <ul>
@@ -149,8 +149,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://realpython.com/python-sets/">https://realpython.com/python-sets/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>On peut créer des ensemble de multiples manières :</p>
 <ul>
 <li>directe : <code class="language-">{1, 2, 3}</code></li>
@@ -163,8 +163,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ensemble vide se crée avec l'instruction <code class="language-">set()</code>. L'instruction <code class="language-">{}</code> rend un dictionnaire vide.</p>
-</div>
-</div>
+</div></div>
+
 <p>Leur utilisation est très simple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> S <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> S<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
@@ -182,8 +182,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ordre d'itération n'est <strong>PAS</strong> connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ou savoir si un élément est dans l'ensemble :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"poire"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span>
 <span class="token boolean">True</span>
@@ -198,8 +198,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://realpython.com/python-dicts/">https://realpython.com/python-dicts/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>On peut créer des dictionnaires de multiples manières. Les 3 façons ci-dessous créent le même dictionnaire :</p>
 <ul>
 <li>directe : <code class="language-">{&quot;un&quot;: 1, &quot;deux&quot;: 2}</code></li>
@@ -238,8 +238,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ordre d'itération des clés n'est <strong>PAS</strong> connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire  contient des éléments stockés sans ordre particulier.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut aussi itérer sur les clés en utilisant la méthode <code class="language-">keys</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les clés</span>
@@ -277,8 +277,8 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 <div class="pl-8 mr-8">
 <p>Combien de mots différents contient le texte <code class="language-">&quot;coucou les gars coucou les filles&quot;</code> ?</p>
 <p>Vous pourrez utiliser la méthode <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.split">split des <code class="language-">str</code></a></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -313,8 +313,8 @@ mots <span class="token operator">=</span> <span class="token builtin">set</span
 <div class="pl-8 mr-8">
 <p>Comptez les occurrences de chaque mot du texte <code class="language-">&quot;coucou les gars coucou les filles&quot;</code> ?</p>
 <p>Vous pourrez utiliser la méthode <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.split">split des <code>str</code></a></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

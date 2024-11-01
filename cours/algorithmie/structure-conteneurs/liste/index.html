@@ -85,14 +85,14 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-conteneurs/">Structure de données linéaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-conteneurs/liste/">La liste</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
   
 
-  <p>Une liste est une amélioration de la <a href="../../%C3%A9crire-algorithmes/pseudo-code/#tableaux" class="interne">structure de tableau</a> et sont les conteneurs de base du langage python.<br>
+  <p>Une liste est une amélioration de la <a href="../../%C3%A9crire-algorithmes/pseudo-code/#tableaux" class="interne">structure de tableau</a> et sont les conteneurs de base du langage python.
 Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -100,8 +100,8 @@ Tout comme les tableaux ce sont des objets pouvant contenir une succession d'aut
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/" class="interne">listes</a> du cours sur les bases du code.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Tableau</h2>
 <blockquote>
 <p>TBD UML</p>
@@ -111,7 +111,7 @@ Tout comme les tableaux ce sont des objets pouvant contenir une succession d'aut
 <li>le tableau $t$ en lui-même</li>
 <li>le nombre $n$ d'éléments du tableau</li>
 </ul>
-<p>Pour simplifier, on écrira $T[i]$ plutôt que $T.t[i]$.<br>
+<p>Pour simplifier, on écrira $T[i]$ plutôt que $T.t[i]$.
 Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :</p>
 <ul>
 <li>la complexité dans le cas le pire de la création de la structure : $\mathcal{O}(1)$</li>
@@ -167,8 +167,8 @@ Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :
 </svg>
 <div class="pl-8 mr-8">
 <p>L'ajout de $N$ éléments à une liste initialement vide prend $\mathcal{O}(N)$ opérations au maximum</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -228,16 +228,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le calcul est toujours vrai si l'on part d'une liste non vide au départ.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations. On peut considérer sans erreur que la complexité de l'ajout d'un élément en fin de liste vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.</p>
-</div>
-</div>
+</div></div>
+
 <p>On appelle ce genre de raisonnement <a href="../../complexit%C3%A9-amortie/" class="interne">analyse en complexité amortie</a> et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.</p>
 <p>La structure de liste est un cas <em>simple</em> où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -247,8 +247,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Dans nos calculs de complexité on pourra utiliser $\mathcal{O}(1)$ comme complexité d'ajout d'un élément en fin de liste sans erreur puisque c'est sa complexité amortie.</p>
 <p>De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'opérations d'un facteur 2.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Attention</h2>
 <p>Un piège courant lorsque l'on débute avec les liste en python est d'ajouter un élément en fin de liste avec la commande : <code class="language-">l = l + [x]</code>. C'est une erreur car la complexité est beaucoup plus importante que si l'on utilise la méthode <code class="language-">append</code> :</p>
 <ul>
@@ -265,8 +265,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>$N$ utilisations successives des méthodes d'ajout ou de suppression du dernier élément d'une liste prend $\mathcal{O}(N)$ opérations au maximum.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

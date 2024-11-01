@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/openpgp/">OpenPGP</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/OpenPGP">OpenPGP</a></p>
-</div>
-</div>
+</div></div>
+
 <p>RSA peut encrypter un nombre plus petit que $n$. On pourrait décomposer un message plus gros en paquets de $T$ bits avec $2^T &lt; n$ mais ce n'est quasi-jamais fait car le codage/décodage est algorithmiquement long.</p>
 <p>On utilise alors une technique mixte, issue de <a href="https://fr.wikipedia.org/wiki/Pretty_Good_Privacy">PGP</a>, pour cela.</p>
 <p>Supposons qu'Alice veut envoyer un message $m$ à Bob. Il faut de :</p>
@@ -142,8 +142,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://en.wikibooks.org/wiki/Cryptography/Generate_a_keypair_using_OpenSSL">RAS openSSL</a></p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">openssl genkpey <span class="token parameter variable">-help</span>
 </code></pre>
 <p>On commence par <a href="https://www.openssl.org/docs/man3.0/man1/openssl-genpkey.html">générer un couple de clés publique/privée</a> avec RSA :</p>
@@ -162,8 +162,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pour bien faire, changez les droits du fichier <code class="fichier">private_key.pem</code> pour qu'il ne soit lisible que par vous.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -198,8 +198,8 @@
 <li>vous devrez avoir la clé publique de l'autre personne pour chiffrer la clé symétrique</li>
 <li>l'autre personne devra avoir votre clé publique pour vérifier la signature du message chiffré</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Clé du chiffrement symétrique</h3>
 <p>Créons une clé de 32B = 256b pour être utilisée par chacha20.</p>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">openssl rand <span class="token parameter variable">-hex</span> <span class="token parameter variable">-out</span> symmetric_key <span class="token number">32</span>
@@ -209,8 +209,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Vérifiez que la taille du fichier <code class="fichier">symmetric_key.pem</code> est bien compatible avec une clé de 256b.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -257,18 +257,18 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On utilise ici un passphrase qui va dériver les paramètres de chacha : une clé de chiffrement et un IV.<br>
+<p>On utilise ici un passphrase qui va dériver les paramètres de chacha : une clé de chiffrement et un IV.
 On a utilisé ici des clés explicites. On peut aussi passer <em>via</em> des passphrases dont sont dérivées les clés et IV :</p>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">openssl enc <span class="token parameter variable">-p</span> <span class="token parameter variable">-chacha20</span> <span class="token parameter variable">-in</span> msg.txt.zip <span class="token parameter variable">-out</span> msg.txt.zip.encrypted <span class="token parameter variable">-K</span> <span class="token variable"><span class="token variable">$(</span>openssl rand <span class="token parameter variable">-hex</span> <span class="token parameter variable">-out</span> symmetric_key <span class="token number">32</span><span class="token variable">)</span></span> <span class="token parameter variable">-iv</span> <span class="token variable"><span class="token variable">$(</span>openssl rand <span class="token parameter variable">-hex</span> <span class="token number">16</span><span class="token variable">)</span></span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD faire avec K et IV</p>
 </blockquote>
 <h3>Chiffrement asymétrique de la clé symétrique</h3>
 <blockquote>
-<p>TBD faire avec sign then encrypt. COmme ça on cache l'expéditeur<br>
+<p>TBD faire avec sign then encrypt. COmme ça on cache l'expéditeur
 puis zip les trois fichiers à envoyer.</p>
 </blockquote>
 <h4>Signature</h4>
@@ -319,8 +319,8 @@ puis zip les trois fichiers à envoyer.</p>
 <li><a href="https://www.gnupg.org/">GnuPG</a></li>
 <li><a href="https://smarttech101.com/how-to-encrypt-and-sign-your-files-using-gpg/">tuto gpg</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Le logiciel gnuPG permet de rendre plus pratique les diverses opérations faites précédemment. Il permet également un partage de clés publique via un réseau de confiance. Une clé publique va être signée par d'autres personnes, ce qui permet de la <em>valider</em> : si une clé est signée par une personne que vous connaissez, vous aurez confiance en sa véracité.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -328,8 +328,8 @@ puis zip les trois fichiers à envoyer.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ne signez les clés publique que des personnes que vous connaissez.</p>
-</div>
-</div>
+</div></div>
+
 <p>On utilise la version 2.4.3 de GnuPG :</p>
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ gpg <span class="token parameter variable">--version</span>
 gpg <span class="token punctuation">(</span>GnuPG<span class="token punctuation">)</span> <span class="token number">2.4</span>.3
@@ -400,8 +400,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 </svg>
 <div class="pl-8 mr-8">
 <p>Envoyez votre clé publique à votre correspondant, et récupérez la sienne.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">gpg <span class="token parameter variable">--import</span> public-key.pgp
 </code></pre>
 <p>Vous pouvez ensuite voir que la clé a bien été ajoutée à votre trousseau de clés :</p>
@@ -432,8 +432,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <blockquote>
 <p>TBD <a href="https://unix.stackexchange.com/questions/60213/gpg-asks-for-password-even-with-passphrase">https://unix.stackexchange.com/questions/60213/gpg-asks-for-password-even-with-passphrase</a></p>
 </blockquote>
-</div>
-</div>
+</div></div>
+
 <h3>Gestion des clés GPG</h3>
 <blockquote>
 <p>TBD : faire mieux et plus clair.</p>
@@ -447,8 +447,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 <li><a href="https://wiki.debian.org/fr/Subkeys">clés et sous clés GPG</a></li>
 <li><a href="https://mikeross.xyz/create-gpg-key-pair-with-subkeys/">sous clés GPG</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h4>utilitaire</h4>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -456,11 +456,11 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://github.com/orhun/gpg-tui">GPG TUI</a></p>
-</div>
-</div>
+</div></div>
+
 <h4>serveur de clés</h4>
 <blockquote>
-<p>TBD Permet d'utiliser des clés stockées dans un serveur de clé<br>
+<p>TBD Permet d'utiliser des clés stockées dans un serveur de clé
 <a href="https://www.gnupg.org/gph/en/manual.html#AEN464">https://www.gnupg.org/gph/en/manual.html#AEN464</a></p>
 <ol>
 <li>le faire.</li>
@@ -474,8 +474,8 @@ Faut-il vraiment mettre à jour les préférences ? <span class="token punctuati
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration.html">Fichiers de configurations</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Dans le dossier <code>~/.gnupg</code>.</p>
 
 

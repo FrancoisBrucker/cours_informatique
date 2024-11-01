@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/">Écrire des Algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/briques-de-base/">Briques de base</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -137,12 +137,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Variables</h2>
 <p>Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme <strong><em>une mémoire</em></strong>, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir <strong><em>un objet basique</em></strong>.</p>
 <p>Une <strong><em>variables</em></strong> est alors associé à la première case de la mémoire contenant l'objet. D'un point de vue algorithmique, cela revient à référencer un objet, à le nommer :</p>
@@ -150,12 +150,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>variable</em></strong> est un nom auquel est associé un objet.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les instructions autorisées sur les variables sont :</p>
 <ul>
 <li><strong><em>l'affectation</em></strong> : <code class="language-">a = 3</code> défini le nom <code class="language-">a</code> (appelé <em>variable</em>) qui est associé à un entier valant <code class="language-">3</code>. (vous verrez parfois utilisé $a \leftarrow 3$ à la place de $a = 3$ pour qu'il n'y ait pas de confusion si l'on utilise <code class="language-">=</code> pour l'égalité)</li>
@@ -172,26 +172,26 @@
 b <span class="token operator">=</span> a
 </code></pre>
 <p>Dans la seconde instruction, on commence par retrouver l'objet nommé par <code class="language-">a</code> et on le nomme <code class="language-">b</code> : la case où est stocké l'entier dans la mémoire est donné à <code class="language-">a</code> et à <code class="language-">b</code></p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="structures"></span> Structures</h2>
 <p>Les objets basiques sont les briques élémentaires permettant de créer tout ce dont un algorithme à besoin. Un nombre complexe est composé de 2 approximations de réels ou une phrases d'une suite de caractères par exemples. Gérer ces objets complexes, appelés <strong><em>structures</em></strong>, se fait aux <strong><em>tableaux</em></strong>. Comme une structure est toujours <em>in fine</em> composée d'objet basiques :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On considérera toujours que la taille d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="tableaux"></span>Tableaux</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>tableau</em></strong> est un conteneur nommé pouvant contenir $n$ variables. $n$ est la <strong><em>longueur</em></strong> ou la <strong><em>taille</em></strong> du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée.</p>
@@ -200,8 +200,8 @@ b <span class="token operator">=</span> a
 <li>$t[i]$ est sa variable d'indice $i$ si $0 \leq i &lt; n$</li>
 <li>$t[-i]$ vaut $t[n-i]$ si si $0 &lt; i  \leq n$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.</p>
 <p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
 <p>On considérera que :</p>
@@ -222,19 +222,19 @@ b <span class="token operator">=</span> a
 </svg>
 <div class="pl-8 mr-8">
 <p>On considère que créer un tableau prend 1 instruction car celui-ce est de taille fixée. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les opérations sur les tableaux sont faites graces aux opérations des objets basiques qui les composent. Il n'y a pas d'opérations spécifiques à ceux-ci :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="str"></span>Chaînes de caractères</h3>
 <p>Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.</p>
 <p>Une <strong><em>chaîne de caractères</em></strong> est un tableau constitué uniquement de caractères.</p>
@@ -255,8 +255,8 @@ b <span class="token operator">=</span> a
 </svg>
 <div class="pl-8 mr-8">
 <p>Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction. <a href="../../complexit%C3%A9-calculs/O-pour-l-algorithmie">On justifiera ceci proprement plus tard</a> (les chaînes crées sont des constantes).</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="instruction"></span> Instructions de contrôle</h2>
 <p>Si un des deux buts d'une instruction est de créer des objets à partir d'autres (ce que l'on vient de voir), le second but est de contrôler le flux d'instructions à exécuter. Ces instructions sont de deux types :</p>
 <ul>
@@ -307,8 +307,8 @@ sinon si (autre condition logique) est vraie:
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut dériver toutes les variantes de la forme initiale.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="répétition"></span> Répétition</h3>
 <blockquote>
 <p>TBD : dire que l'on en a de deux types : for et while. Que l'on peut tout faire en while mais les boucles for sont plus lisible, en particulier leur condition d'arrêt est claire.</p>
@@ -332,8 +332,8 @@ sinon si (autre condition logique) est vraie:
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut dériver la variante <code class="language-">pour chaque</code> de la forme initiale <code class="language-">tant que</code>.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

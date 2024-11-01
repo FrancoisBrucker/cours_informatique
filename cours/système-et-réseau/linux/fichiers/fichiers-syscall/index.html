@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/fichiers-syscall/">Appels systèmes fichiers</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -101,8 +101,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=BQJBe4IbsvQ">fopen vs open</a></p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD faire un fopen et voir avec un strace que c'est bien open qui est utilisé.</p>
 </blockquote>
@@ -112,8 +112,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=ayMPFUGE_b4&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=20">fichiers et appels systèmes</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La création et gestion des fichiers est du ressort du noyau. Il faut donc faire un appel système à chaque manipulation.</p>
 <p>La gestion effective des fichiers lorsque l'on code en <strong>C</strong> se fait souvent via d'autres fonctions (que nous verrons plus tard), plus pratiques à utiliser.</p>
 <p>Les cinq principaux appels systèmes pour gérer un fichier sont :</p>
@@ -131,8 +131,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>La section 2 de la commande <code>man</code> renseigne sur les appels systèmes. Faites l'essai pour les 5 fonctions ci-dessus</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : un buffer ?</p>
 </blockquote>
@@ -143,8 +143,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=tKvm_qOeRpU">file descriptor en C</a></p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD ici. faire les programmes et expliquer. Puis strace/ltrace après chacun.</p>
 </blockquote>
@@ -191,8 +191,8 @@
 <li>modifiez le contenu de <code class="fichier">mon-fichier.txt</code> dans un éditeur puis re-exécutez le code. Le fichier devrait à nouveau être vide</li>
 <li>changez le code pour que les autres n'aient pas le droit de lire le fichier créé</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>En utilisant <code>ltrace</code> pour voir les appels aux bibliothèques :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ ltrace ./a.out
 __libc_start_main<span class="token punctuation">(</span>0xaaaacf2e0854, <span class="token number">1</span>, 0xffffc805d068, <span class="token number">0</span> <span class="token operator">&lt;</span>unfinished <span class="token punctuation">..</span>.<span class="token operator">></span>
@@ -211,8 +211,8 @@ __cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=mBfurelWwPQ">strace ouverture de fichiers</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -223,8 +223,8 @@ __cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e
 <li><a href="https://www.youtube.com/watch?v=-gP58pozNuM">appels systèmes fichiers avec strace</a></li>
 <li><a href="https://www.youtube.com/watch?v=j_w-vQ3UriM&amp;list=PLn6POgpklwWq1YUQsMHzddjoiwJzPiqcf">playlist <code>strace</code></a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">strace</span> ./a.out
 execve<span class="token punctuation">(</span><span class="token string">"./a.out"</span>, <span class="token punctuation">[</span><span class="token string">"./a.out"</span><span class="token punctuation">]</span>, 0xfffffb9635d0 /* <span class="token number">46</span> vars */<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
 brk<span class="token punctuation">(</span>NULL<span class="token punctuation">)</span>                               <span class="token operator">=</span> 0xaaab1d30f000
@@ -276,8 +276,8 @@ exit_group<span class="token punctuation">(</span><span class="token number">0</
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Dé-commentez la ligne 16 du code et trouvez l'appel système correspondant.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -306,7 +306,7 @@ exit_group<span class="token punctuation">(</span><span class="token number">0</
 <li><a href="https://www.youtube.com/watch?v=8AXEHrQTf3I">popen : fifo</a></li>
 </ul>
 <blockquote>
-<p>TBD lseek et monter ce que ça donne sur un fichier ?<br>
+<p>TBD lseek et monter ce que ça donne sur un fichier ?
 adapter  <a href="https://www.youtube.com/watch?v=EA2MVIgu7Q4">fseek</a></p>
 </blockquote>
 <h2>Buffers</h2>
@@ -316,8 +316,8 @@ adapter  <a href="https://www.youtube.com/watch?v=EA2MVIgu7Q4">fseek</a></p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.learntosolveit.com/cprogramming/chapter8/sec_8.2_getchar.html">N'oubliez pas le buffer</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

@@ -93,8 +93,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous avez 15min pour faire le test.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Rendu</h2>
 <p>On vous rappelle que toute fonction (hors du programme principal) doit être testée.</p>
 <h3>Type de rendu</h3>
@@ -137,8 +137,8 @@
 <li>Afficher à l'écran le plus petit indice (ou -1) de <code class="language-">chaine_entrée</code> valant <code class="language-">caractère_entrée</code> (vous pourrez utiliser <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.find">la méthode <code class="language-">find</code></a> des chaines de caractères)</li>
 <li>Retournez à l'étape 1. de cet algorithme à part si <code class="language-">chaîne_entrée</code> valait <code class="language-">&quot;sortie&quot;</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h2>2. Prochain indice</h2>
 <p>On veut savoir si le caractère <code class="language-">caractère_entrée</code> apparait plusieurs fois dans la chaine <code class="language-">chaine_entrée</code>. Comme on connait déjà le premier indice où il apparait, on cherche s'il apparait aussi plus tard.</p>
 <h3>Fonction <code class="language-">donne_prochain_indice(chaine:str, indice:int) -&gt; int</code></h3>
@@ -153,8 +153,8 @@
 <li>Le plus petit indice $j$ strictement plus grand que le paramètre <code class="language-">indice</code> tel que <code class="language-">chaine[j] == chaine[indice]</code>,</li>
 <li><code class="language-">None</code> si cet indice n'existe pas.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Tests de <code class="language-">donne_prochain_indice(chaine:str, indice:int) -&gt; int</code></h3>
 <p>Vous pourrez tester que :</p>
 <ul>
@@ -170,8 +170,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans l'étape 3. de l'algorithme du programme principal, <strong>utilisez la fonction que vous venez de coder</strong> pour ajouter un affichage qui indique si <code class="language-">caractère_entrée</code> apparait plusieurs fois dans <code class="language-">chaine_entrée</code> ou pas.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -182,8 +182,8 @@
 <li>Afficher à l'écran le plus petit indice (ou -1) de <code class="language-">chaine_entrée</code> valant <code class="language-">caractère_entrée</code> (vous pourrez utiliser <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.find">la méthode <code class="language-">find</code></a> des chaines de caractères) (<em><strong>question 1</strong></em>)</li>
 <li>Afficher si <code class="language-">caractère_entrée</code> est présent plus d'une fois dans <code class="language-">chaine_entrée</code> (<em><strong>question 2</strong></em>)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>3. Compte</h2>
 <p>On veut finalement savoir combien de fois apparaît <code class="language-">caractère_entrée</code> dans la chaîne <code class="language-">chaine_entrée</code>. Comme on connait sa première position grace à la question 1 et qu'on peut connaitre la suivante grace  à la question 2, on va terminer le boulot et compter combien de fois apparaît <code class="language-">caractère_entrée</code> dans <code class="language-">chaine_entrée</code>.</p>
 <h3>Fonction <code class="language-">compte_caractère(chaine: str, indice: int) -&gt; int</code></h3>
@@ -194,8 +194,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer la fonction <code class="language-">compte_caractère(chaine: str, indice: int) -&gt; int</code> qui rend le nombre de fois où le caractère <code class="language-">chaine[indice]</code> est présent dans le paramètre <code class="language-">chaine</code></p>
-</div>
-</div>
+</div></div>
+
 <h3>Tests de <code class="language-">compte_caractère(chaine: str, indice: int) -&gt; int</code></h3>
 <p>Vous pourrez tester avec :</p>
 <ul>
@@ -210,8 +210,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans l'étape 3. de l'algorithme du programme principal, <strong>utilisez la fonction que vous venez de coder</strong> pour ajouter un affichage qui indique le nombre de fois où  <code class="language-">caractère_entrée</code> apparait dans <code class="language-">chaine_entrée</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -223,8 +223,8 @@
 <li>Afficher à l'écran si <code class="language-">caractère_entrée</code> est présent plus d'une fois dans <code class="language-">chaine_entrée</code> (<em><strong>question 2</strong></em>)</li>
 <li>Afficher à l'écran le nombre de fois où  <code class="language-">caractère_entrée</code> apparait dans <code class="language-">chaine_entrée</code> (<em><strong>question 3</strong></em>)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>4. Maximum</h2>
 <p>Cerise sur le gateau, on cherche à savoir si <code class="language-">caractère_entrée</code> est le caractère qui apparait le plus de fois dans <code class="language-">chaine_entrée</code>.</p>
 <h3>Fonction <code class="language-">donne_max_doublon(chaine: str) -&gt; str</code></h3>
@@ -236,8 +236,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créer la fonction  <code class="language-">donne_max_doublon(chaine: str) -&gt; str</code> qui rend le caractère de <code class="language-">chaine</code> apparaissant le plus de fois.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Tests</h3>
 <p>Vous pourrez tester avec une chaine admettant plusieurs caractères répétés un nombre différent de fois.</p>
 <h3>Ajout de question 4 au programme principal</h3>
@@ -248,8 +248,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans l'étape 3. de l'algorithme du programme principal, <strong>utilisez la fonction que vous venez de coder</strong> pour  ajouter un affichage qui le nombre maximum de répétition d'un caractère, et affichez un message de victoire si <code class="language-">caractère_entrée</code> réalise ce maximum.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -262,8 +262,8 @@
 <li>Afficher à l'écran le nombre de fois où  <code class="language-">caractère_entrée</code> apparait dans <code class="language-">chaine_entrée</code> (<em><strong>question 3</strong></em>)</li>
 <li>Afficher à l'écran  le nombre maximum de répétition d'un caractère, et affichez un message de victoire si <code class="language-">caractère_entrée</code> réalise ce maximum. (<em><strong>question 4</strong></em>)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

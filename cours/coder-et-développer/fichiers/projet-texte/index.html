@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/">Fichiers</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/fichiers/projet-texte/">Projet : fichiers</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -106,8 +106,8 @@
 <li>créez un dossier nommé <code class="fichier">fichiers-donnees</code> où vous placerez vos fichiers</li>
 <li>créez un projet vscode dans ce dossier</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et d'utiliser au maximum les méthodes de listes de python :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -115,8 +115,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">Méthodes de chaines de caractères</a></p>
-</div>
-</div>
+</div></div>
+
 <p>De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variables puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.</p>
 <h2>Jouons sur les mots</h2>
 <p><a href="https://github.com/hbenbel/French-Dictionary/tree/master/dictionary">Ce repo github</a> contient plusieurs fichiers csv contenant des mots français.</p>
@@ -127,8 +127,8 @@
 <li>récupérez directement le fichier <code class="fichier">dictionary.csv</code> à l'adresse : <a href="https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv">https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv</a></li>
 <li>sauvez le dans le dossier de votre projet (<code class="fichier">fichiers-donnees</code>) sous le nom <code class="fichier">mots.txt</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Le fichier contient une liste de mots, un mot par ligne.</p>
 <h3>Lecture du fichier en une seule fois</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -142,16 +142,16 @@
 <li>afficher la chaîne de caractères à l'écran.</li>
 <li>Combien de caractères <code class="language-">&quot;\n&quot;</code> possède ce fichier ?</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les caractères <code class="language-">&quot;\n&quot;</code> sont des <a href="https://www.dynamic-mess.com/php/signification-retours/">retour à la ligne</a> et permettre de délimiter les lignes d'un fichier texte.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Lecture du fichier ligne à ligne</h3>
 <p>Notre fichier contient une donnée (un mot) par ligne. Il peut donc être utile de stocker chaque mot dans un tableau :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -164,8 +164,8 @@
 <li>En utilisant la lecture ligne à ligne d'un fichier. Construisez une liste <code class="language-">mots</code> dont chaque élément est une ligne du fichier.</li>
 <li>Affichez la 42ième ligne du texte (l'indice 41 de la liste).</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Vous avez du remarquer que l'affichage de la ligne 42 va 2 fois à la ligne. Ceci s'explique par le fait que :</p>
 <ol>
 <li>la commande <code class="language-">print</code> termine son affichage par un retour à la ligne</li>
@@ -180,8 +180,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifier votre liste <code class="language-">mots</code> pour que chaque élément contienne la version <em>stripée</em> de la ligne.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -222,8 +222,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>Combien de mots finissent par <code>g</code> ?</li>
 <li>Combien de mots contiennent un <code>ç</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Enfin :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -232,8 +232,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>Répondez à cette question existentielle : <code>nycthémères</code> est-il un mot français ? Et si oui, quel est son numéro de ligne ? Et quel est la signification de ce mot ?</p>
-</div>
-</div>
+</div></div>
+
 <h2>Le compte de Monte-Cristo</h2>
 <p>Utilisez python pour :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -243,16 +243,16 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>Téléchargez <a href="http://www.gutenberg.org/cache/epub/17989/pg17989.txt">le comte de Monte-Cristo</a> et sauvez le sur votre disque dur.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les accès réseau sont toujours coûteux en temps, on a donc coutume de ne télécharger le fichier qu'une fois puis d'utiliser une copie locale pour tous les traitements.</p>
-</div>
-</div>
+</div></div>
+
 <p>Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est iomportant et pas une ligne particulière :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -261,8 +261,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 </svg>
 <div class="pl-8 mr-8">
 <p>Récupérez tout le fichier dans une chaine de caractères que vous appellerez <code class="language-">monte_cristo</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Avec cette chaine de caractères :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -276,8 +276,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>En déduire le nombre de mots utilisés dans le texte</li>
 <li>En déduire le nombre de mots <strong>différents</strong> utilisés dans le texte</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -287,8 +287,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>Vous pourrez utiliser la méthode <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.split">split</a> des chaînes de caractères pour découper le texte. Il ne faudra <strong>pas</strong> donner explicitement de séparateur. Pourquoi ?</li>
 <li>Si vous voulez des mots différents, les ensembles sont fait pour ça.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -328,8 +328,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>Quels sont les mots qui reviennent au moins $\frac{n}{2}$ fois où $n$ est le nombre de fois où apparaît le mot le plus fréquent.</li>
 <li>Quel est le mot le plus fréquent pour chaque longueur de mots ?</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -398,8 +398,8 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <li>En moyenne, combien de mots différents précèdent un mot donné ?</li>
 <li>Créez des phrases aléatoires de 10 mots, où chaque paire de mot successive apparaît dans le texte.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

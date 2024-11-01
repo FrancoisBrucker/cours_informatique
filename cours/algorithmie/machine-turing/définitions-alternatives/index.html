@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/">Machine de Turing</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/machine-turing/définitions-alternatives/">Définitions alternatives</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -105,7 +105,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing à accès aléatoire en mémoire</em></strong> est composée :</p>
@@ -122,8 +122,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>À l'exécution d'une machine de Turing à accès aléatoire en mémoire, le curseur peut se déplacer d'autant de case vers la droite (si positif) ou la gauche (si négatif) qu'il le souhaite.</p>
 <h3>Simulation d'une machine à accès aléatoire en mémoire par une machine simple</h3>
 <p>Comme le nombre de cases où se déplace le curseur est dans la fonction de transition, c'est une constante associée à chaque état. On peut alors pour chaque état ajouter une chaîne d'état se déplaçant que d'une case et modifier la machine à accès aléatoire en mémoire pour qu'elle ne se déplace plus que d'une case à droite ou une case à gauche.</p>
@@ -153,20 +153,20 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute machine de Turing à  accès aléatoire en mémoire peut être simulée par une machine de Turing simple.</p>
 <p>Les deux notions sont donc équivalentes.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="plusieurs-curseurs"></span>Machine à plusieurs curseurs</h2>
 <p>Une machine de Turing à $k$ curseurs peut être définie comme suit.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing à $k$ curseurs</em></strong> est composée :</p>
@@ -183,8 +183,8 @@
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Cette machine permet de prendre en compte plusieurs cases du ruban pour les transition. La gestion des curseurs est faite ainsi :</p>
 <ul>
 <li>A l'initialisation, les $k$ curseurs sont considérés être sur la même case</li>
@@ -317,7 +317,7 @@ curseur                   :     ^
 
 </code></pre>
 <blockquote>
-<p>TBD finir l'exemples<br>
+<p>TBD finir l'exemples
 faire l'exemple avec 2 curseurs. Parler des différentes parties. En particulier le décalage de la borne</p>
 </blockquote>
 <p>Cela fait tout un tas de transitions, mais on arrive bien à simuler les $2$ curseurs par un seul !</p>
@@ -326,20 +326,20 @@ faire l'exemple avec 2 curseurs. Parler des différentes parties. En particulier
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute machine de Turing à $k$ curseurs peut être simulée par une machine de Turing simple.</p>
 <p>Les deux notions sont donc équivalentes.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="plusieurs-rubans"></span>Machine à plusieurs rubans</h2>
 <p>Une machine de Turing à $k$ rubans peut être définie comme suit.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing à $k$ rubans</em></strong> est composée :</p>
@@ -356,8 +356,8 @@ faire l'exemple avec 2 curseurs. Parler des différentes parties. En particulier
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>L'<strong><em>exécution</em></strong> est alors identique à la machine simple. Tout se passe comme si on avait $k$ machines différentes, mais un seul état et une fonction de transition dépendant de tous les rubans.</p>
 <p>De même, l'entrée et la sortie se généralise aisément en considérant l'ensemble des $k$ rubans.</p>
 <p>Cette généralisation semble permettre plein de choses nouvelles ! Mais il n'en est rien : on peut toujours transformer une machine à plusieurs rubans en une machine de Turing normale équivalente.</p>
@@ -392,26 +392,26 @@ ruban initial :    212121212121212
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute machine de Turing à $k$ rubans peut être simulée par une machine de Turing simple.</p>
 <p>Les deux notions sont donc équivalentes.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Machines à plusieurs curseurs et rubans</h2>
 <p>On peut bien sur combiner les deux approches et construire une machine de Turing à $k$ rubans et $k'$ curseurs répartis sur les rubans. Mais, comme vous devez vous en douter :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute machine de Turing à $k$ rubans et $k'$ curseurs peut être simulée par une machine de Turing simple.</p>
 <p>Les deux notions sont donc équivalentes.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -443,7 +443,7 @@ ruban initial :    212121212121212
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>machine de Turing sur un alphabet $\mathcal{A}$</em></strong> est composée :</p>
@@ -462,8 +462,8 @@ ruban initial :    212121212121212
 </ul>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>L'<strong><em>exécution</em></strong> est alors identique à la machine simple, sauf pour l'initialisation où le ruban est rempli de caractères blanc plutôt que de <code>0</code>.</p>
 <h3><span id="alphabet-equivalence"></span>Equivalence avec la machine de Turing classique</h3>
 <p>On simule une machine de Turing sur un alphabet $\mathcal{A}$ par une machine de Turing à $|\mathcal{A}|-1$ rubans.</p>
@@ -494,20 +494,20 @@ ruban initial :    212121212121212
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute machine de Turing d'alphabet $\mathcal{A}$ peut être simulée par une machine de Turing simple.</p>
 <p>Les deux notions sont donc équivalentes.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="MT-01#"></span>Machine de Turing <code>01#</code></h2>
 <p>La définition d'une machine de Turing la plus couramment utilisée en algorithmie théorique est la machine de Turing d'alphabet $\{0, 1, \sharp\}$ avec <code>#</code> comme caractère blanc et la possibilité de ne pas avancer le ruban :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Nous nommerons : <strong><em>Machine de Turing <code>01#</code></em></strong> une machine $M$ de Turing d'alphabet $\{0, 1, \sharp\}$ avec <code>#</code> comme caractère blanc avec les caractéristiques suivantes :</p>
@@ -522,20 +522,20 @@ ruban initial :    212121212121212
 </li>
 </ul>
 <p>Une machine <strong><em>Machine de Turing <code>01#</code> à $k$ rubans</em></strong> aura comme entrée $M(E_1, \dots, E_k)$, $M([E_1], \dots, [E_k])$ ou une combinaison de ceux-ci.</p>
-</div>
-</div>
+</div></div>
+
 <p>La fait d'accepter de ne pas se déplacer permet des transitions de type $\delta_i(q, r_1, \dots, r_p) = (q, r_i, \emptyset)$ pour tout $i \neq I$ et $\delta_I(q, r_1, \dots, r_p) = (q, r'_I, \leftarrow)$. On peut bouger les rubans indépendamment les uns des autres !</p>
 <p>Mais, comme toujours, ce n'est qu'une facilité d'écriture, on ne peut faire plus qu'avec une machine de Tuning <em>simple</em> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut simuler une machine de Turing <code>01#</code> à plusieurs rubans et plusieurs curseurs par une machine de Turing.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">

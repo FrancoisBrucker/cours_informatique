@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/langage/pointeurs/">Les variables et leurs types</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -181,7 +181,7 @@ p <span class="token operator">=</span> <span class="token operator">&amp;</span
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Ne définissez jamais un pointeur uniquement par : <code>int *p;</code> sans le spécifier immédiatement après.</p>
@@ -191,8 +191,8 @@ p <span class="token operator">=</span> <span class="token operator">&amp;</span
 <li>de la moins grave : le programme plante</li>
 <li>à la plus grave : le programme modifie une valeur dans le programme, mais on ne sait pas laquelle. Ce qui produira un bug plus tard, mais on ne sait pas bien quand ni quoi.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>On peut avoir autant d'indirection que l'on veut. Par exemple :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 </code></pre>
@@ -214,7 +214,7 @@ type     :      int         int*         int**
 </code></pre>
 <p>Cette double indirection est très fréquente, en particulier pour les caractères, comme nous le verrons.</p>
 <h2>Pointeurs et fonctions</h2>
-<p>Outre l'allocation dynamique de mémoire (comme on le verra plus tard),<br>
+<p>Outre l'allocation dynamique de mémoire (comme on le verra plus tard),
 l'intérêts des pointeurs est qu'il permet d'accéder à une variable de multiples façons.</p>
 <p>Une utilisation courante des pointeurs consiste à passer l'adresse d'une variable (un pointeur sur elle) à une fonction pour pouvoir la modifier.</p>
 <p>Par exemple le code suivant ne modifie bien sur pas la variable <code class="language-">i</code> :</p>
@@ -314,8 +314,8 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créer une fonction qui échange deux variables passées en paramètre.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -382,12 +382,12 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Ne pas rendre un pointeur sur une variable crée dans une fonction.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Pointeurs de fonctions</h2>
 <p>Il est tout à fait possible d'avoir un pointeur sur une fonction et d'utiliser le pointeur pour l'appeler.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -396,8 +396,8 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=axngwDJ79GY">Pointeur sur une fonction</a></p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> 
@@ -413,13 +413,13 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les parenthèses sont importantes car : <code class="language-">double *p(int)</code> correspond à la signature d'une fonction nommée p qui rend un pointeur sur un double en sortie.</p>
 <p>Dans le doute mettez <strong>toujours</strong> des parenthèses lorsque vous voulez une indirection.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le code suivant est alors tout à fait fonctionnel :</p>
 <pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -446,8 +446,8 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 
 </code></pre>
 <p>On a <code>fahrenheit = &amp;fahrenheit</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Cette technique permet d'utiliser des fonctions en paramètre d'autres fonctions. Par exemple :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -478,8 +478,8 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.codeproject.com/Articles/7042/How-to-interpret-complex-C-C-declarations#funct_ptrs">Comprendre tous les types de fonctions</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/debugger/">Déboguer son code</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://code.visualstudio.com/docs/editor/debugging">documentation vscode</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -110,8 +110,8 @@
 <li><a href="https://www.youtube.com/watch?v=7qZBwhSlfOo">https://www.youtube.com/watch?v=7qZBwhSlfOo</a></li>
 <li><a href="https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi">https://www.youtube.com/watch?v=KEdq7gC_RTA&amp;list=PLQzZ4krxwT9Yay3kz8ly4wXiYJHzMtsWi</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Le <em><strong>débogueur</strong></em> (<em><strong>debugger</strong></em>) est un moyen d'exécuter le code ligne à ligne et de pouvoir visualiser et modifier l'état interne de l'interpréteur. Ceci permet de très rapidement corriger un programme.</p>
 <p>Comprendre comment fonctionne un débogueur vous permet également de comprendre comment fonction un interpréteur et par là comment s'exécute un programme informatique.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -121,8 +121,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un dossier que vous nommerez <code class="fichier">debugger</code> et ouvrez le en tant que projet dans vscode.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'idée est de remplacer les divers <code class="language-">print</code> utilisés pour visualiser un problème par une exécution contrôlée du code et de pouvoir stopper son exécution à des endroit prédéterminés appelés breakpoint.</p>
 <h2>Breakpoint et exécution pas à pas</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -132,8 +132,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">boucle.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">4</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
@@ -149,8 +149,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Faites en sorte que les numéros de lignes correspondent.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Exécution du debugger</h3>
 <p>On peut exécuter le programme via le debugger de plusieurs façons :</p>
 <ul>
@@ -163,16 +163,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>À la première utilisation, il vous sera demandé de choisir une configuration de débogage , choisissez : <code>Fichier python Déboguer le fichier Python actuellement actif</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez refaire votre choix en allant dans le <code>menu Exécuter</code> puis en choisissant soit <code>Ouvrir les configurations</code> soit <code>Afficher les configurations</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p><img src="fen%C3%AAtre_d%C3%A9bogage.png" alt="fenêtre de débogage"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -184,16 +184,16 @@
 <li>Allez dans le menu exécuter : <code>menu affichage &gt; exécuter</code></li>
 <li>cliquez sur le bouton bleu <code>Exécuter et déboguer</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous n'avez pas de bouton bleu c'est peut-être que vous avez ajouté des configurations de débogage à l'insu de votre plein gré. POur les supprimer, supprimez le dossier <code class="fichier">.vscode</code> qui a du apparaître dans votre projet (clique droit dessus puis choisissez supprimer).</p>
-</div>
-</div>
+</div></div>
+
 <p>Une fois le programme lancé il a du s'exécuter et afficher dans le terminal :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">0
 1
@@ -226,8 +226,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Placez un breakpoint à la ligne 1 du fichier <code class="fichier">boucle.py</code> (identique à l'image ci-dessus).</p>
-</div>
-</div>
+</div></div>
+
 <p>On voit que le breakpoint est actif car il est sélectionné en bas à gauche du panneau du débogueur</p>
 <h3>Lancement du débogueur</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -237,8 +237,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Avec le breakpoint de la ligne 1 actif, exécutez le débogueur en cliquant sur le bouton <code>Exécuter et déboguer</code>. Vous devriez vous retrouver dans l'état de la figure ci-dessous.</p>
-</div>
-</div>
+</div></div>
+
 <p><img src="d%C3%A9bogueur-lanc%C3%A9.png" alt="débogueur lancé"></p>
 <p>Le breakpoint est placé à la ligne 1 :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -248,8 +248,8 @@ c'est fini.
 <div class="pl-8 mr-8">
 <p>Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
 <p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
-</div>
-</div>
+</div></div>
+
 <p>On a plusieurs types d'actions possibles (le nom de l'action apparaît lorsque la souris est placée dessus) :</p>
 <ul>
 <li>les actions bleues, <code>Continuer</code>, <code>pas à pas principal</code>, <code>pas à pas détaillé</code> et <code>pas à pas sortant</code>  qui gèrent l'exécution de l'interpréteur :
@@ -271,8 +271,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action bleue <code>continuer</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'interpréteur à continué son exécution jusqu'à trouver une ligne avec un breakpoint, ce qu'il n'a pas trouvé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -285,8 +285,8 @@ c'est fini.
 <li>re-exécutez le débogueur</li>
 <li>cliquez sur l'action <code>Continuer</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez vous retrouver dans l'état suivant :</p>
 <p><img src="d%C3%A9bogueur-actions-variables.png" alt="débogueur 2 breakpoint"></p>
 <p>On voit l'état interne de l'interpréteur avec les deux variables <code class="language-">i</code> (valant 0) et <code class="language-">x</code> valant 4 (ces deux variables sont également ici des variables globales, on verra pourquoi plus tard).</p>
@@ -296,8 +296,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>L'action <code>Continuer</code> active l'exécution de l'interpréteur. Il va rester en action jusqu'à la rencontre d'une instruction munie d'un breakpoint.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Action <code>pas à pas principal</code></h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -306,8 +306,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'interpréteur est remonté en ligne 2. Puisque <code class="language-">i</code> est différent de <code>x</code>, le bloc conditionnel n'est pas considéré. Voyez que l'instruction <code class="language-">for</code> n'est pas exécuté puisque <code class="language-">i</code> vaut toujours 0.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -316,8 +316,8 @@ c'est fini.
 <div class="pl-8 mr-8">
 <p>L'action <code>pas à pas principal</code> pas Un <em><strong>breakpoint</strong></em> (<em><strong>point d'arrêt</strong></em>) sur une ligne du code permet de stopper l'interpréteur <strong>juste avant l'exécution de cette ligne</strong>.</p>
 <p>Si l'interpréteur ne passe pas par cette ligne lors de l'exécution du code, le breakpoint n'a aucun effet</p>
-</div>
-</div>
+</div></div>
+
 <p>Continuons d'exécuter cette action :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -326,8 +326,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>La ligne 2 a été exécutée :  <code class="language-">i</code> vaut bien 1.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -336,8 +336,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>Continuer</code> jusqu'à ce que <code>i</code> soit égal à 4.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devez vous retrouver devant l'état suivant :</p>
 <p><img src="d%C3%A9bogueur-action-i-4.png" alt="i==4"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -347,8 +347,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'interpréteur à du s'arrêter en ligne 5</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -357,8 +357,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>pas à pas principal</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez voir la ligne <code>égalité</code> s'afficher dans le terminal.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -367,16 +367,16 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Supprimez le breakpoint de la ligne 4 en cliquant sur le disque rouge qui lui est associé dans la gouttière.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez également supprimer un breakpoint en lui cliquant droit dessus dans le panneau du débogueur et en choisissant <code>Supprimer le point d'arrêt</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -384,8 +384,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>Continuer</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>L'interpréteur va continuer son exécution jusqu'à la fin du programme.</p>
 <h3>Breakpoint conditionnel</h3>
 <p>Supposons que l'on veuille juste vérifier que notre condition if fonctionne bien. On s'en fiche des cas où <code class="language-">i</code> est différent de <code class="language-">x</code> lors de l'exécution du programme, donc inutile de s'arrêter à chaque fois que l'interpréteur passe en ligne 4.</p>
@@ -400,8 +400,8 @@ c'est fini.
 <li>Cliquez droit dans la gouttière de la ligne 4 et choisissez <code>Point d'arrêt conditionnel...</code></li>
 <li>Choisissez comme condition d'arrêt l'expression <code class="language-">i == x</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Placement du breakpoint conditionnel :</p>
 <p><img src="breakpoint-conditionnel.png" alt="breakpoint conditionnel"></p>
 <p>Valeur du breakpoint conditionnel, en passant la souris dessus :</p>
@@ -413,8 +413,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécuter le débogueur puis cliquer sur <code>Continuer</code> une fois l'interpréteur arrêté au breakpoint de la ligne 1.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez vous arrêter au breakpoint de la ligne 4, mais <code class="language-">i</code> vaut 4 (donc <code class="language-">x</code>).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -422,8 +422,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>L'utilisation de breakpoints conditionnels permet d'accéder à <strong>un point d’intérêt temporel</strong> (ligne + condition) dans l'exécution du programme.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour finir cette partie, sortons du débogueur :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -432,16 +432,16 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquer sur l'action <code>Arrêter</code> pour stopper le débogueur.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>l'action <code>Arrêter</code> interrompt l'exécution du programme. Utile lorsque l'on a plus besoin du débogueur.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Autre Breakpoint</h3>
 <p>Outre les breakpoint simple et les breakoint conditionnel, il existe deux autres types de points d'arrêts:</p>
 <ul>
@@ -456,8 +456,8 @@ c'est fini.
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">boucle-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"fonction test_égalité avec comme paramètre :"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
     <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
@@ -492,8 +492,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 <li>la variable <code class="language-">x</code> vaut 4</li>
 <li>le programme a affiché 0 dans le terminal (instruction de la ligne 9)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons voir la différence entre les différents types d'actions.</p>
 <h4><code>pas à pas principal</code></h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -503,8 +503,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>pas à pas principal</code> (celle que nous avons utilisé jusque là).</p>
-</div>
-</div>
+</div></div>
+
 <p>Normalement, l'interpréteur a :</p>
 <ol>
 <li>effectué la ligne 10 et exécuté la fonction <code class="language-">test_égalité</code>. On sait que la fonction a été exécutée car :
@@ -529,8 +529,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 <li>que la variable <code class="language-">x</code> vaut 4</li>
 <li>le programme a affiché 1 dans le terminal (instruction de la ligne 9)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Changeons de type d'action.</p>
 <h4><code>pas à pas détaillé</code></h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -540,8 +540,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>pas à pas détaillé</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous voyiez que l'interpréteur ne s'est pas arrêté à la ligne 8 comme précédemment, mais à la ligne 2 c'est à dire juste avant le début de l'exécution de la fonction <code class="language-">test_égalité</code> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -549,8 +549,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>l'action <code>pas à pas détaillé</code> <em>rentre</em> dans l'exécution des fonctions : <em><strong>Il arrête l'interpréteur à la prochaine ligne de code du programme</strong></em> rencontrée.</p>
-</div>
-</div>
+</div></div>
+
 <p>La prochaine ligne de code à exécuter est la ligne 2, qui est un print.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -559,8 +559,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>pas à pas détaillé</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous remarquez que l'interpréteur est maintenant arrêté au début de la ligne 3 et a affiché <code>fonction test_égalité avec comme paramètre : 1 4</code> sur le terminal :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -568,8 +568,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>l'action <code>pas à pas détaillé</code> <em><strong>ne rentre pas</strong></em> dans l'exécution des fonctions que l'on a pas écrite, en particulier les fonctions et méthodes de python.</p>
-</div>
-</div>
+</div></div>
+
 <p>Continuons notre programme jusqu'à la prochaine exécution de la fonction :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -578,8 +578,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>Continuer</code> puis l'action <code>pas à pas détaillé</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez vous retrouver en début de ligne deux.</p>
 <h4><code>pas à pas sortant</code></h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -589,8 +589,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>pas à pas sortant</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devez vous retrouver ligne 10.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -598,8 +598,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>l'action <code>pas à pas sortant</code> <em><strong>sort</strong></em> de l'exécution de la fonction : il effectue toutes les instructions de la fonction et <strong>s'arrête juste après son appel</strong>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -610,8 +610,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 <li>avant l'instruction pour les actions <code>continuer</code>, <code>pas à pas principal</code> et <code>pas à pas détaillé</code></li>
 <li>après l'exécution de la fonction pour <code>pas à pas sortant</code></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons exhiber ce comportant en créant un petit programme. Mais avant tout sortons de débogueur :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -620,8 +620,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Effectuez l'action <code>Arrêter</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Faisons le test en créant le petit programme suivant :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -630,8 +630,8 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">sortant-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x <span class="token operator">+</span> y
 
@@ -655,8 +655,8 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 <li>effectuez l'action <code>pas à pas entrant</code> pour rentrer dans la fonction <code class="language-">somme</code></li>
 <li>effectuez l'action <code>pas à pas sortant</code> pour sortir de la fonction <code class="language-">somme</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Analysons les variables présentes :</p>
 <ul>
 <li>le retour de la fonction somme, valant 12</li>
@@ -671,16 +671,16 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécutez l'action <code>pas à pas principal</code> pour finir l'instruction en cours et s'arrêter juste avant l'instruction suivante.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On aurait pu très bien utiliser l'action <code>pas à pas détaillé</code> pour obtenir le même résultat</p>
-</div>
-</div>
+</div></div>
+
 <p>Remarquez que la variable <code class="language-">s</code> a été créée et vaut 12.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -688,8 +688,8 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p>Utiliser <code>pas à pas sortant</code> alors que l'on est pas dans une fonction est équivalent à l'action <code>Continuer</code>,</p>
-</div>
-</div>
+</div></div>
+
 <h2>Pile des appels</h2>
 <p>Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif  : on peut appeler une fonction à l'intérieur d'une fonction...</p>
 <p>Ce mécanisme est gérféavec ce que l'on appelle <a href="https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution">une pile d'exécution (ou pile d'appels)</a> :</p>
@@ -699,8 +699,8 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on appelle une fonction, l'instruction courante est stockée (on dit <em><strong>empilée</strong></em>) A la fin de la fonction, on dépile cette instruction pour pouvoir y revenir.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour visualiser ce mécanisme, créons un petit programme :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -709,8 +709,8 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">pile-appel.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> n
@@ -735,8 +735,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 <li>effectuez l'action <code>Continue</code></li>
 <li>effectuez l'action <code>Continue</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>La fonction étant récursive, à chaque appel de la fonction, on va passer par le breakpoint et s'arrêter. Vous devriez vous retrouver dans une situation identique celle ci-dessous :</p>
 <p><img src="pile-appels.png" alt="pile d'appels"></p>
 <p>Dans la partie <code>VARIABLES</code> :</p>
@@ -763,8 +763,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur la fonction en-dessous de la fonction courante (la fonction surlignée en gris) dans la pile d'appels.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez vous retrouver dans une situation identique celle ci-dessous :</p>
 <p><img src="pile-appels-2.png" alt="pile d'appels suite"></p>
 <p>On voit :</p>
@@ -779,8 +779,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur la fonction nommée <code>&lt;module&gt;</code> de la pile des appels.</p>
-</div>
-</div>
+</div></div>
+
 <p>On se trouve au niveau du programme principal :</p>
 <ul>
 <li>les parties <em>locals</em> et <em>globals</em> de la section <code>VARIABLES</code> coincident</li>
@@ -794,8 +794,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquez sur l'action <code>Continuer</code> jusqu'à ce que la variable <code class="language-">n</code> locale vale 1.</p>
-</div>
-</div>
+</div></div>
+
 <p>On est en fin de récursion. On peut maintenant voir toutes les différentes récursions se terminer :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -804,8 +804,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cliquer sur l'action <code>Pas à pas détaillé</code> jusqu'à la fin du programme.</p>
-</div>
-</div>
+</div></div>
+
 <p>Remarquez que la première fonction <code class="language-">factorielle</code> à s'arrêter le fait en ligne 3, et toutes les autres en ligne 5. Remarquez alors que l'on connaît le retour de la fonction dans la partie locals de la section <code>VARIABLES</code>.</p>
 <h2>Espions</h2>
 <p>Lorsque l'on a beaucoup de variables, on peut spécifier des espions qui permettent d'avoir toujours la variable souhaitée à portée de main. Ces espions sont des expressions, ils permettent donc d'afficher la valeur de nombres possibilités :</p>
@@ -829,8 +829,8 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>L'utilisation d'espions est très pratique pour accélérer le débogage de programmes complexes.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Exercice</h2>
 <p>Le code ci-dessous est une implémentation python <a href="https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne">du crible d’Ératosthène</a> :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -887,8 +887,8 @@ n <span class="token operator">=</span> <span class="token number">13</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Exécutez le code et vérifier qu'il donne bien la bonne réponse.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -896,8 +896,8 @@ n <span class="token operator">=</span> <span class="token number">13</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez les outils de débogage pour comprendre comment il fonctionne. En particulier déterminez la raison d'être des différentes fonctions.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il y a cependant une erreur...</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -910,8 +910,8 @@ n <span class="token operator">=</span> <span class="token number">13</span>
 <li>Exécutez le programme</li>
 <li>constatez qu'il y a une erreur</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>A vous de corriger le code :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -920,8 +920,8 @@ n <span class="token operator">=</span> <span class="token number">13</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Utilisez les outils de débogage vue dans cette partie pour trouver l'erreur et la corriger.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

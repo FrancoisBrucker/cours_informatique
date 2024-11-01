@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/">Théorie des graphes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/graphes/encodage/">Encodage de graphes</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -120,8 +120,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Les différentes implémentations sont faites en python.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Opérations à implémenter</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -130,8 +130,8 @@
 <div class="pl-8 mr-8">
 <p>On se restreint ici à la <strong>structure de graphe orienté avec boucle</strong>, un graphe (non orienté) étant un cas particulier.</p>
 <p>Nous ne nous intéresserons pas à la structure de multi-graphe, qui s'implémente difficilement autrement que par une liste d'arcs.</p>
-</div>
-</div>
+</div></div>
+
 <p>Lorsque l'on encode une structure en informatique, il faut commencer par définir les opérations que l'on veut pouvoir effectuer. On distingue usuellement des opérations en deux groupes : les opération de construction/suppression et les opérations de manipulation. Pour un graphe :</p>
 <ul>
 <li>construction de la structure :
@@ -166,8 +166,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>L'encodage utilisé pour exécuter un algorithme va dépendre des opérations qu'il va effectuer sur la structure.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="liste"></span> Encodage par une liste</h2>
 <p>Structure simple, on utilise deux listes (une pour les sommets, une pour les arcs).</p>
 <h3><span id="exemple-liste"></span> Construction</h3>
@@ -185,7 +185,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><em><strong>python</strong></em></p>
 </div><div class="pl-8 mr-8">
 <p>Ajouter ou supprimer un élément dans une liste prend :</p>
@@ -194,8 +194,8 @@
 <li>$\mathcal{O}(\vert L\vert)$ opérations si c'est un élément quelconque (il faut décaler les éléments après l'élément ajouté/supprimé)</li>
 </ul>
 <p>On essaiera <strong>toujours</strong> d'ajouter/supprimer des éléments en fin de liste.</p>
-</div>
-</div>
+</div></div>
+
 <ul>
 <li>ajout d'un sommet : $\mathcal{O}(1)$ car on l'ajoute en fin de liste</li>
 <li>ajout d'un arc : $\mathcal{O}(1)$ car on l'on ajoute en fin de liste</li>
@@ -236,8 +236,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce n'est pas parce qu'en python on peut écrire <code class="language-">'a' in V</code> que sa complexité est $\mathcal{O}(1)$... Il <strong>faut</strong> parcourir toute la liste <code class="language-">V</code> pour savoir si <code class="language-">'a'</code> y est.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="liste-adjacence"></span> Encodage par une liste d'adjacence</h2>
 <p>Structure plus complexe que la liste, elle nécessite un re-codage des sommets sous la forme d'entiers pour fonctionner.</p>
 <h3><span id="exemple-liste-adj"></span> Construction</h3>
@@ -251,8 +251,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour utiliser cette structure, on considère  que <strong>les sommets sont des entiers</strong> allant de $0$ à $n-1$. La liste $V$ n'est là que pour pouvoir associer plus tard un sommet à autre chose qu'un entier (dépendant de l'application).</p>
-</div>
-</div>
+</div></div>
+
 <ul>
 <li>complexité de stockage : $\mathcal{O}(n+m)$ ($E$ est de taille $\sum_x\delta^+(x) = m$)</li>
 <li>création de la structure : $\mathcal{O}(n + m)$</li>
@@ -276,8 +276,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise souvent une variante de cette structure qui utilise des <a href="https://fr.wikipedia.org/wiki/Tableau_associatif">tableaux associatifs</a> à la place des listes. Voir par exemple <a href="https://www.python.org/doc/essays/graphs/">l'implémentation en python</a>. On troque alors les complexités maximale par des complexités en moyennes, mais on a plus besoin de l'encodage des éléments sous la forme d'entiers.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="prop-liste-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que certaines opérations sont optimisées :</p>
 <ul>
@@ -328,8 +328,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour utiliser cette structure, on considère  que <strong>les sommets sont des entiers</strong> allant de $0$ à $n-1$. La liste $V$ n'est là que pour pouvoir associer plus tard un sommet à autre chose qu'un entier (dépendant de l'application).</p>
-</div>
-</div>
+</div></div>
+
 <ul>
 <li>complexité de stockage : $\mathcal{O}(n^2)$ ($E$ est matrice carré à $n$ lignes)</li>
 <li>création de la structure : $\mathcal{O}(n + m)$</li>
@@ -348,8 +348,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cet encodage permet de traiter les <em><strong>graphes valués</strong></em> (la valeurs de $E[i][j]$ est la valuation de l'arête $xy$).</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="prop-mat-adj"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que le fait de savoir si un arête est présente dans le graphe est optimisé :</p>
 <ul>
@@ -401,8 +401,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>On remplace parfois l'ensemble de voisinage par une liste de voisinage. Cela augmente cependant la complexité de savoir si un élément est un voisin.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="prop-prop"></span> Opérations</h3>
 <p>L'intérêt de cette encodage est que l'on arrive à obtenir le meilleurs des deux mondes <strong>en moyenne</strong>.</p>
 <ul>
@@ -457,8 +457,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quand utiliser cette structure ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -499,8 +499,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quand utiliser cette structure ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -541,8 +541,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quand utiliser cette structure ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -581,8 +581,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Quand utiliser cette structure ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -610,8 +610,8 @@ E <span class="token operator">=</span> <span class="token punctuation">[</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans la suite de ce cours on utilisera toujours cet encodage par défaut car elle est efficace globalement et facile à implémenter (elle ne nécessite pas de ré-encodage).</p>
-</div>
-</div>
+</div></div>
+
 <h2>Bibliothèques</h2>
 <p>Il existe plusieurs bibliothèques de gestion de graphes en python. <a href="https://wiki.python.org/moin/PythonGraphLibraries">Cette page</a> en cite trois, activement maintenues.</p>
 

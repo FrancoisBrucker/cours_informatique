@@ -100,8 +100,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/6-tests-utilisateurs/">Projet numérologie : partie 5 / tests utilisateurs</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -110,15 +110,15 @@
   <!-- début résumé -->
 <p>User stories.</p>
 <!-- fin résumé -->
-<p>Lorsque l'on fabrique un site, on a envie de l'utiliser d'une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d'utilisation<br>
+<p>Lorsque l'on fabrique un site, on a envie de l'utiliser d'une certaine manière, de pouvoir naviguer et récupérer des informations. On peut regrouper ces utilisations en  petites saynètes d'utilisation
 appelées <em>user stories</em> ou <em>test fonctionnels</em>. Elles dépendent souvent de <a href="https://fr.wikipedia.org/wiki/Persona_(marketing)">persona</a>, sorte d'utilisateurs idéaux, qui ont des besoins précis et identifiés.</p>
 <p>Le but est de tester que les intentions d'un utilisateurs peuvent être satisfaites. C'est un enchaînement de tests fonctionnels qui racontent une histoire d'<strong>un</strong> utilisateur voulant réaliser <strong>une</strong> tache sur notre application/site.</p>
 <p>Comme toujours, on va automatiser ce processus en utilisant un script qui fera les manipulation et vérifiera le résultat pour nous.</p>
 <h2>User Stories et Tests Fonctionnels</h2>
 <p>Le concept de User Story rejoint celui d'expérience utilisateur.  En effet il s’agit de comment on imagine que l’utilisateur va utiliser le produit, quel est le chemin qu’il va parcourir, surtout quel est le chemin qu’on veut qu’il parcoure. Définir une user story permet également de définir comment sera utilisé le site qu’on va écrire.</p>
-<p>Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.<br>
+<p>Ici, on souhaite tester le comportement du site en fonction du parcours d'un utilisateur.
 On doit donc réaliser des tests fonctionnels: On veut observer le résultat d'une séquence d'opérations complexes.</p>
-<p>Pour cela, on va utiliser <a href="https://www.selenium.dev">Selenium</a>, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.<br>
+<p>Pour cela, on va utiliser <a href="https://www.selenium.dev">Selenium</a>, un outil qui permet d’automatiser un navigateur web. On peut l’utiliser pour simuler un utilisateur, et donc vérifier que le site fonctionne comme il devrait d’un point de vue utilisateur.
 C’est un outil très générique puisqu’il supporte de nombreux navigateurs, il est utilisable avec de nombreux langages également.</p>
 <h2>Selenium</h2>
 <p><a href="https://www.selenium.dev/">Selenium</a> est une bibliothèque permettant de contrôler les actions d'un navigateur.</p>
@@ -128,8 +128,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 </svg>
 <div class="pl-8 mr-8">
 <p>La <a href="https://www.selenium.dev/documentation/">documentation officielle</a> est très précieuse. Il y a en effet plein de possibilités.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Installation</h3>
 <p>Pour utiliser selenum il nous <a href="https://www.selenium.dev/documentation/webdriver/getting_started/">faudra installer</a> :</p>
 <ul>
@@ -166,8 +166,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <li>tapez <a href="https://www.google.fr">https://www.google.fr</a></li>
 <li>vérifiez que le titre de la fenêtre contient <code class="language-">&quot;Google&quot;</code></li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Testez la user story <em>&quot;à la main&quot;</em> :</p>
 <ol>
 <li>dans une fenêtre normale</li>
@@ -203,8 +203,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 </svg>
 <div class="pl-8 mr-8">
 <p>NOtez le 10000 à la fin du test qui donne 10secondes au test pour s'exécuter. Par défaut, jest donne 5 secondes, ce qui est souvent insuffisant pour des tests selenium.</p>
-</div>
-</div>
+</div></div>
+
 <p>On exécute le fichier avec jest :</p>
 <pre><code>npm test -- --testRegex='__user-stories__/look-at-google.js'
 </code></pre>
@@ -214,8 +214,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le <code>--</code> permet d'ajouter des arguments à la commande.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -224,8 +224,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <p>Pour exécuter tous les fichier d'un dossier, il faut des paramètres différents :</p>
 <pre><code>npm test -- --testMatch='**/__user-stories__/**/*.js'
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>On a pas mis nos tests fonctionnels dans les recherches par défaut de jest car ils prennent trop de temps.</p>
 <p>Si vous voulez utiliser Chrome à la place de Firefox, remplacez les lignes :</p>
 <ul>
@@ -247,8 +247,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <li>rechercher <em>Carole Deumié</em></li>
 <li>prendre un screenshot</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Testez la user story <em>&quot;à la main&quot;</em>  dans une fenêtre de navigation privée</p>
 <p>Fichier : <code class="fichier">__user-stories__/recherche-goole.js</code> :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
@@ -292,8 +292,8 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <p><a href="https://www.youtube.com/watch?v=NzxejXTumLQ">Étonnant, non ?</a></p>
 </blockquote>
 <h2>Fonctionnement de selenium</h2>
-<p>Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.<br>
-Celui-ci communique avec un driver dépendant du navigateur web qu'on souhaite utiliser.<br>
+<p>Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.
+Celui-ci communique avec un driver dépendant du navigateur web qu'on souhaite utiliser.
 Voici à quoi ressemble le code dans ce cas:</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -323,7 +323,7 @@ Voici à quoi ressemble le code dans ce cas:</p>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>Ici on a utilisé Chrome et son driver associé <code class="language-">'chromedriver'</code>. On peut de la même manière utiliser d'autres navigateurs comme Firefox, Edge, Opera...<br>
+<p>Ici on a utilisé Chrome et son driver associé <code class="language-">'chromedriver'</code>. On peut de la même manière utiliser d'autres navigateurs comme Firefox, Edge, Opera...
 Il suffit dans le code de changer les noms du driver et du navigateur.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -331,14 +331,14 @@ Il suffit dans le code de changer les noms du driver et du navigateur.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour installer et utiliser d'autres drivers <a href="https://www.selenium.dev/documentation/fr/webdriver/driver_requirements/">consultez cette page</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Trouver un Élément Web</h3>
-<p>Pour naviguer sur le site, on recherche en général des éléments précis sur cette page avec lesquels interagir.<br>
+<p>Pour naviguer sur le site, on recherche en général des éléments précis sur cette page avec lesquels interagir.
 Pour trouver un élément sur une page web, on utilise <code class="language-">findElement</code>.</p>
-<p>Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM,<br>
-en prenant en argument un contexte de recherche.<br>
-Par exemple, la ligne suivante permet de trouver l'élément dont l'<code>id</code> est &quot;introduction&quot;,<br>
+<p>Cette fonction renvoie un objet WebElement qui représente un noeud de l'arbre DOM,
+en prenant en argument un contexte de recherche.
+Par exemple, la ligne suivante permet de trouver l'élément dont l'<code>id</code> est &quot;introduction&quot;,
 et de stocker cet objet dans la variable intro :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 </code></pre>
@@ -359,8 +359,8 @@ et de stocker cet objet dans la variable intro :</p>
 <span class="token comment">// possédant a minima les attributs css "#machin" et "bidule":</span>
 <span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"#machin bidule"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>De manière générale, il est conseillé de rechercher des éléments par leur <code class="language-">id</code> unique s'il existe,<br>
-ou par leurs sélecteurs CSS.<br>
+<p>De manière générale, il est conseillé de rechercher des éléments par leur <code class="language-">id</code> unique s'il existe,
+ou par leurs sélecteurs CSS.
 Cela évite de parcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.</p>
 <p>On peut aussi rechercher un élément en fonction de sa position par rapport à un autre élément :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Trouve un bouton en dessous de intro</span>
@@ -368,7 +368,7 @@ Cela évite de parcourir l'arbre DOM avec plusieurs recherches, ce qui prend plu
 <span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
                                         <span class="token punctuation">.</span><span class="token function">below</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>On utilise <code class="language-">withTagName</code> qui remplace <code class="language-">By.name</code>.<br>
+<p>On utilise <code class="language-">withTagName</code> qui remplace <code class="language-">By.name</code>.
 On peut rechercher :</p>
 <ul>
 <li>au dessus avec <code class="language-">.above</code></li>
@@ -383,7 +383,7 @@ On peut rechercher :</p>
                                         <span class="token punctuation">.</span><span class="token function">toRightOf</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">cssSelector</span><span class="token punctuation">(</span><span class="token string">"#menu"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3>Réaliser des actions sur la page</h3>
-<p>Une fois qu'un élément est trouvé, on peut automatiser les actions de l'utilisateur sur le site.<br>
+<p>Une fois qu'un élément est trouvé, on peut automatiser les actions de l'utilisateur sur le site.
 Les exemples les plus fréquents sont :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Cliquer sur un bouton</span>
 <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -395,18 +395,18 @@ Les exemples les plus fréquents sont :</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Des actions plus précises peuvent être faites<br>
-<a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/">à la souris</a><br>
+<p>Des actions plus précises peuvent être faites
+<a href="https://www.selenium.dev/documentation/fr/support_packages/mouse_and_keyboard_actions_in_detail/">à la souris</a>
 comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/">au clavier</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Quelques commandes utiles</h3>
 <p>Pour prendre une capture d'écran et l'enregistrer, on utilise :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'img.png'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe">iframe</a>.<br>
+<p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe">iframe</a>.
 Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accéder à son contenu :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> iframe <span class="token operator">=</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On trouve d'abord l'iframe</span>
 
@@ -432,8 +432,8 @@ Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accé
 <li>je remarque que ce nom est associé au chiffre 4 et que la spontanéité, ce n'est pas son truc.</li>
 <li>Je vais ensuite sur la page des prénoms et je vérifie que j'ai bien &quot;Carole&quot; qui est affiché.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>On veut exécuter le test en mode test pour ne pas polluer la base de donnés. Il faut donc :</p>
 <ol>
 <li>exécuter le serveur en mode test : <code>NODE_ENV=test npm start</code> (ou <code>$env:NODE_ENV=test; npm start</code> sous powershell)</li>
@@ -502,8 +502,8 @@ process<span class="token punctuation">.</span>env<span class="token punctuation
 <div class="pl-8 mr-8">
 <p>On devrait en toute logique exécuter notre site en mode test pour ne pas polluer la base de données.</p>
 <p>On ne peut cependant pas le faire directement ici, car la base serait vide, sans messages associé aux chiffres. Il faudrait ajouter le message associé au chiffre 4 à la base avant de commencer proprement le test.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/tcp/">Protocole TCP</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -99,8 +99,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Transmission_Control_Protocol">protocole TCP</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Ce protocole est certainement le plus utilisé sur internet. D'un point de vue protocole, TCP est bien plus compliqué que UDP car il garantit non seulement l'exactitude des données mais également :</p>
 <ul>
 <li>que toutes les données envoyées sont reçues</li>
@@ -138,16 +138,16 @@
 <li>les numéros de paquet augmenter (à partir d'un début qui ne vaut pas 0)</li>
 <li>les réponses du client qui envoie des requêtes ACK au serveur.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>La taille totale du ficher html transmis peut être encodé dans l'entête http (c'est l'option <code>Content-length</code>), ou si elle n'est pas connu à l'avance, déterminée dynamiquement grâce à l'option <a href="https://fr.wikipedia.org/wiki/Chunked_transfer_encoding">Transfer-Encoding: chunked</a> (c'est le cas de cette requête).</p>
-</div>
-</div>
+</div></div>
+
 <p>Une connexion TCP se fait sous un mode client-serveur bi-directionnelle. Elle contient 3 phases :</p>
 <ol>
 <li><strong>connexion</strong> entre le client et le serveur</li>
@@ -162,8 +162,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Three-way_handshake">https://fr.wikipedia.org/wiki/Three-way_handshake</a></p>
-</div>
-</div>
+</div></div>
+
 <pre><code>                SYN
 Client:port -----------&gt; Serveur:port
                SYN-ACK
@@ -184,8 +184,8 @@ Client:port -----------&gt; Serveur:port
 <div class="pl-8 mr-8">
 <p>Une fois que la connexion est établie, le flag ACK est toujours positionné.</p>
 <p>Il n'est important qu'à l'établissement de la connexion.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -193,8 +193,8 @@ Client:port -----------&gt; Serveur:port
 </svg>
 <div class="pl-8 mr-8">
 <p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>, et cherchez le three-way handshake de la connexion.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Transmission</h3>
 <p>Comme la transmission TCP est bi-directionnelle, le client et le serveur peuvent s'envoyer des messages. Les deux programmes ont deux numéros et qui rendent comptes du nombre de bytes envoyés (<em><strong>numéro de séquence</strong></em>) et reçus (<em><strong>numéro d'aquittement</strong></em>).</p>
 <p>Si tout se passe comme prévu, les nombres doivent coïncider :</p>
@@ -210,8 +210,8 @@ reçu   : Y               reçu   : X
 <div class="pl-8 mr-8">
 <p>Les numéros de séquences initiaux sont déterminés aléatoirement à la connexion, ils ne valent donc pas automatiquement 0 au départ.</p>
 <p>En revanche, comme les deux nombres sont non signés, il peuvent boucler sans soucis et supportent donc une transmission de $2^{16}$B (ce qui est bien plus que nécessaire).</p>
-</div>
-</div>
+</div></div>
+
 <h4>Envoi et bonne réception d'un paquet</h4>
 <p>Supposons que A envoie un paquet de K bytes à B. Dans l'entête de ce paquet :</p>
 <ul>
@@ -248,16 +248,16 @@ reçu   : Y               reçu   : X+K
 <li>client vers serveur demandant le GET</li>
 <li>serveur vers client donnant le fichier html</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez restreindre l'affichage des paquets à ceux qui vous intéresse. Dans ma session, le port éphémère était le 52765, j'ai donc tapé dans la barre de filtre : <code>tcp.srcport == 52675 or tcp.srcport == 80</code></p>
-</div>
-</div>
+</div></div>
+
 <h4>Temporisation</h4>
 <p>Il n'est pas nécessaire ni surtout utile de répondre à chaque paquet reçu. Souvent le récepteur attend quelque temps avant de répondre. Ceci lui permet :</p>
 <ul>
@@ -272,8 +272,8 @@ reçu   : Y               reçu   : X+K
 </svg>
 <div class="pl-8 mr-8">
 <p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>. Vous devriez voir que le client ne renvoie que très peu de packets d'acquittements par rapport aux paquets qu'il reçoit.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Fin</h3>
 <p>La fin d'une transmission se fait comme la connexion, d'un commun accord. L'initiateur de la fin de la connexion peut être soit le client, soit le serveur.</p>
 <pre><code>                FIN
@@ -289,8 +289,8 @@ initiateur -----------&gt; récepteur
 </svg>
 <div class="pl-8 mr-8">
 <p>Le récepteur peut accuser réception de la demande de fin, sans envoyer dans le même paquet sa propre demande de fin.</p>
-</div>
-</div>
+</div></div>
+
 <p>Terminer d'un commun accord permet de finaliser les paquets envoyés et de s'assurer que les paquets envoyés sont bien les paquets reçu avant de stopper la communication.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -299,8 +299,8 @@ initiateur -----------&gt; récepteur
 </svg>
 <div class="pl-8 mr-8">
 <p>Reprenez avec Wireshark la connexion http liée au <code>curl http://www.google.fr</code>. Vous devriez voir la procédure de fin initiée par le client.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Retransmission</h2>
 <p>Deux types de paquets peuvent se perdre.</p>
 <h3>Perte d'un paquet d'acquittement</h3>
@@ -320,8 +320,8 @@ initiateur -----------&gt; récepteur
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=LfiRKZze0HM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=32">transmission tcp rate</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Si le réseau est saturé, tous les émetteurs vont constamment renvoyer des données, ce qui va à son tour ajouter de la congestion : les FIFOs des routeurs ne se désengorgent pas. Pour éviter ça :</p>
 <ol>
 <li>le débit initial est très bas (slow start)</li>

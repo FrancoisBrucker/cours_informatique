@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/pseudo-assembleur/">Pseudo-assembleur</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,12 +98,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les objets que peut manipuler le pseudo-assembleur sont les caractères <code>0</code> et <code>1</code> et les suites finies de ces caractères.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple l'objet de nom <code>o</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span>
 </code></pre>
@@ -112,12 +112,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La <strong><em>mémoire</em></strong> est un tableau $M$ de taille $N$ où chaque case peut contenir soit le caractère <code>0</code>, soit le caractère <code>1</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de <code>0</code> et de <code>1</code>, est stocké dans des cases contiguës de la mémoire.</p>
 <p>L'objet <code>o</code> de tout à l'heure sera alors rangé :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token number">01234567</span>
@@ -140,52 +140,52 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <div class="pl-8 mr-8">
 <p>Les bits de l'objet sont numérotés dans l'ordre opposé de leur lecture. On appelle cette <strong>convention</strong> <a href="https://fr.wikipedia.org/wiki/Boutisme"><strong><em>big endian</em></strong> (ou gros boutisme en français)</a>.</p>
 <p>Comme toute convention, certains prennent la convention opposée, dite <strong><em>little endian</em></strong> (ou petit boutisme en français).</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce stockage permet de définir les références :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>référence</strong></em> d'un objet est l'adresse du premier indice en mémoire le contenant.</p>
-</div>
-</div>
+</div></div>
+
 <p>Une variable est alors une référence nommée :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>variable</strong></em> est un nom auquel est associé une référence à un objet.</p>
-</div>
-</div>
+</div></div>
+
 <p>La mémoire étant finie, la référence à un objet est toujours codée sur $S = \log_2(N)$ bits.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La taille $N$ de la mémoire sera toujours une puissance de $2$. On notera $S = \log_2(N)$$, la taille (entière et en bit) du codage binaire d'une adresse.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ceci permet de définir rigoureusement un tableau :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <em><strong>tableau</strong></em> de taille $n$ est suite finie et contiguë de $n \cdot S$ cases mémoire. Chaque $S$ bits successifs en mémoire contient la référence d'un objet.</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : exemple avec mémoire, objet et tableau. Et variables nommées qui les références. Pour l'instant, les variables ne sont pas en mémoire (on le fera avec la pile et le modèle de von Neumann).</p>
 <p>TBD : le fait que ce soit fini ne change rien :</p>
@@ -217,12 +217,12 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des objets.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Fonctions et appel de fonctions</h2>
 <p>En pseudo-code, on appelle les fonctions via des paramètres :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ma_fonction<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">)</span>
@@ -285,12 +285,12 @@ p
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pseudo-assembleur et pseudo-code sont équivalent pour la gestion des fonctions.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Structures de contrôles</h2>
 <p>On associe à chaque ligne du programme en pseudo-assembleur un <strong><em>label</em></strong>, qui correspond à son numéro de ligne. Cet ajout va permettre de gérer les structures de contrôles et les tests sans blocs : uniquement avec des sauts.</p>
 <h3>Saut</h3>
@@ -332,20 +332,20 @@ GOTO <span class="token number">11</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'appel de fonction en pseudo-assembleur se fait avec des instructions de saut et une variable contenant la ligne de retour.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans ce cas là, le nombre de ligne de code est borné par l'adressage possible en mémoire. Ce n'est pas gênant en pratique, un adressage sur 64bit permet d'écrire $2^{64}$ lignes de code...</p>
-</div>
-</div>
+</div></div>
+
 <p>On le voit, l'utilisation de saut peut vite être difficile à lire, on recommande de l'utiliser de façon parcimonieuse.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -353,8 +353,8 @@ GOTO <span class="token number">11</span>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf">Célèbre article de Dijkstra contre l'utilisation des sauts en programmation</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Test</h3>
 <p>Les tests en pseudo-code sont de deux types :</p>
 <ul>
@@ -366,12 +366,12 @@ GOTO <span class="token number">11</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>drapeau</em></strong> (<strong><em>flag</em></strong>)  est une variable binaire affectée automatiquement après une opération.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple :</p>
 <ul>
 <li>$a \leq b$ pourra être effectué en regardant la valeur du drapeau <code>NÉGATIF</code> après l'opération $b-a$.</li>
@@ -383,30 +383,30 @@ GOTO <span class="token number">11</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur possède un drapeau <code>ZÉRO</code> qui vaut <code>1</code> si la dernière opération arithmétique ou logique a donné un résultat de zéro, et <code>0</code> sinon.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce drapeau nous permet de faire tous les tests possibles en pseudo-code et donc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut créer les mêmes tests en pseudo-assembleur et en pseudo-code.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Saut conditionnel</h3>
 <p>Enfin, pour permettre de construire les structures de contrôle du pseudo-code, on ajoute les <strong><em>sauts conditionnels</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un saut conditionnel est de la forme :</p>
@@ -417,8 +417,8 @@ GOTO <span class="token number">11</span>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTOIFNOT drapeau label
 </code></pre>
 <p>La prochaine instruction exécutée sera celle de la ligne <code>label</code> si le drapeau de nom <code>drapeau</code> vaut <code>0</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
@@ -435,12 +435,12 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut créer les mêmes structure de contrôles et les boucles en pseudo-assembleur et en pseudo-code.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Opérations</h2>
 <p>Les opérations autorisées en pseudo-code sont de deux ordres : logique et arithmétiques. Les autres opérations (concaténation de chaines de caractères, manipulation d'approximation de réels, ...) se déduisent de ces deux catégories. Les opérations logiques et arithmétiques fonctionnent toutes de la même manière :</p>
 <ul>
@@ -452,7 +452,7 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le schéma général d'une <strong><em>opération</em></strong> en pseudo-assembleur est :</p>
@@ -463,15 +463,15 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <li><code>OP</code> est le <a href="https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique">code mnémonique</a> associée (le nom) à l'opération</li>
 <li><code>#1</code>, <code>#2</code> et <code>#3</code> représentent les paramètres de l'opération et peuvent représenter soit des entrées soit une sortie selon l'opération.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Les paramètres d'entrées et la sortie sont stockés dans des <a href="https://fr.wikipedia.org/wiki/Registre_de_processeur">registres</a> qui sont des variables spéciales.</p>
 <h3>Registres</h3>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <strong><em>registre</em></strong> est une mémoire de taille $S$ (donc suffisante pour stocker une adresse). Il en existe deux types :</p>
@@ -479,8 +479,8 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <li>les registres génériques qui peuvent indépendamment être utilisé comme entrée et sortie d'une opération. Ils sont désignés par un numéro <code>$1</code>, <code>$2</code>, etc.</li>
 <li>les registres spécifiques qui véhiculent des informations précisent et sont souvent en lecture seule (les drapeaux sont des registres spécifiques par exemple).</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Les registres permettent de faire fonctionner le pseudo-assembleur et forment les liens entre opérations et mémoire. Les opérations permettant de déplacer les valeurs des registres à la mémoire et inversement sont :</p>
 <ul>
 <li><code>LOAD $X $Y</code> qui place la valeur en mémoire <code>M[u($Y):u($Y)+S]</code>  (<code>u($Y)</code> est la valeur du registre de numéro <code>Y</code> prise comme une adresse) dans le registre de numéro <code>X</code></li>
@@ -507,7 +507,7 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La fonction $\text{NOT}(x) = \bar{x}$ est définie selon la table de vérité suivante :</p>
@@ -530,14 +530,14 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 </tbody>
 </table>
 <p>Elle <em>inverse</em> son paramètre.</p>
-</div>
-</div>
+</div></div>
+
 <p>Si $p$ vaut 2, on a coutume d'utiliser les deux fonctions suivantes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La fonction $\text{AND}(x, y) = x \land y$ est définie selon la table de vérité suivante :</p>
@@ -573,13 +573,13 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 </tbody>
 </table>
 <p>Elle est vraie si $x$ et $y$ sont vrais.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La fonction $\text{OR}(x, y) = x \lor y$ est définie selon la table de vérité suivante :</p>
@@ -615,8 +615,8 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 </tbody>
 </table>
 <p>Elle est vraie si $x$ ou $y$ est vrai.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ces trois fonctions sont fondamentales :</p>
 <blockquote>
 <p>TBD voir si la preuve est identique à <a href="https://people.csail.mit.edu/rrw/6.045-2020/notenp.pdf">https://people.csail.mit.edu/rrw/6.045-2020/notenp.pdf</a></p>
@@ -625,12 +625,12 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute fonction de $\{0, 1\}^2 \rightarrow \{0, 1\}$ peut s'écrire comme combinaison des fonctions $\text{NOT}(x)$, $\text{AND}(x, y)$, et $\text{OR}(x, y)$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -774,12 +774,12 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Toute fonction de $\{0, 1\}^n$ dans $\{0, 1\}$ peut s'écrire sous une <a href="https://fr.wikipedia.org/wiki/Forme_normale_disjonctive">forme normale disjonctive</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -799,8 +799,8 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <div class="mx-8 pb-2">
 <p>Soit $f(x_1, \dots, x_n)$ une fonction de $\{0, 1\}^n$ dans $\{0, 1\}$.</p>
 <p>À tout élément $x=(x_1, \dots, x_n)$ de $\{0, 1\}^n$ on peut associer la fonction $l^x(y_1, \dots, y_n) = l^x_1 \land \dots \land l^x_i \land \dots \land l^x_n$ où $l^x_i = y_i$ si $x_i = 1$ et $l^x_i = \overline{y_i}$ sinon. La fonction $f$ est alors égale à :</p>
-<p>$$<br>
-f(x) = \lor \{l^y(x) | f(y) = 1\}<br>
+<p>$$
+f(x) = \lor \{l^y(x) | f(y) = 1\}
 $$</p>
 </div>
 </details>     
@@ -810,12 +810,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les fonctions $\text{NOT}(x)$, $\text{OR}(x, y)$ et $\text{AND}(x, y)$ pour des variables $x$ et $y$ binaires peuvent s'écrire comme compositions de fonctions $\text{NAND}(x, y) = \text{NOT}(\text{AND}(x, y))$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -847,22 +847,22 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Cela marche aussi avec le <a href="https://fr.wikipedia.org/wiki/Fonction_OU_exclusif">OU exclusif</a> ($\text{XOR}(x, y) = \text{AND}(\text{OR}(x, y), \text{NAND}(x, y))$).</p>
-</div>
-</div>
+</div></div>
+
 <p>On en conclut donc qu'il suffit que le pseudo-assembleur ne doit posséder que la fonction $\text{NAND}(x, y)$ pour 1bit pour pouvoir effectuer toutes les opérations logiques. D'où la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations logiques du pseudo-code s'il possède l'opération :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
 </code></pre>
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Arithmétiques</h4>
 <p>Pour générer toutes les opérations arithmétiques sur les entiers relatifs, il suffit de posséder les opérations d'addition et de soustraction. En utilisant le complément à deux pour noter les entiers négatifs, addition et soustractions sont équivalents :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -871,8 +871,8 @@ $$</p>
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Compl%C3%A9ment_%C3%A0_deux">Complément à deux</a></p>
-</div>
-</div>
+</div></div>
+
 <p>On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits <code>M[0]</code> et <code>M[1]</code> pour rendre la valeur <code>M[3]</code> et la retenue, <code>M[2]</code>, s'il y en a une:</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
 
@@ -884,29 +884,29 @@ M<span class="token punctuation">[</span><span class="token number">2</span><spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ADD $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
 </code></pre>
 <p>et le drapeau <code>RETENUE</code> telle que <code>ADD</code> additionne les valeurs des registres <code>$1</code> et <code>$2</code> en tenant compte du drapeau <code>RETENUE</code> et affecte le résultat dans le registre <code>$3</code> en mettant à jour la valeur du drapeau <code>RETENUE</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Come l'addition bit à bit permet de créer l'addition sur un registre complet et que celle ci se fait uniquement avec des opérations logiques, on a de plus :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
 </code></pre>
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Autres opérations</h4>
 <p>Les autres opérations possibles par un pseudo-code (gestion des réels, concaténation de chaines, etc) sont facilement codable avec les opérations logique et arithmétiques sur les entiers.</p>
 <p>La factorielle finale serait alors quelque chose du genre, en supposant que l'on ait les opérations de somme et de multiplications :</p>
@@ -926,12 +926,12 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les structure de contrôles, les variables en mémoire et l'unique opération <code>NAND</code> permettent de simuler toutes les structures de données possibles ainsi que leurs opérations.</p>
-</div>
-</div>
+</div></div>
+
 <h2>I/O</h2>
 <p><a href="https://fr.wikipedia.org/wiki/Entr%C3%A9e-sortie">Les entrées/sorties</a> ne sont pas indispensables au bon fonctionnement d'un pseudo-assembleur (il suffit d'écrire ou de lire directement en mémoire) on peut supposer qu'il existe des fonctions permettant de lire des données ou d'afficher des résultat à l'écran mais qu'elles ne sont pas directement gérées par le pseudo-assembleur.</p>
 <h2>Pseudo-assembleur minimal</h2>
@@ -955,12 +955,12 @@ affiche à l'écran u<span class="token punctuation">(</span>$<span class="token
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-code ne peut pas faire plus que du pseudo-assembleur, c'est juste plus agréable à écrire.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

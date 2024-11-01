@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/projet-objets-dés-accesseur/">Projet : Amélioration des objets dés</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -109,8 +109,8 @@
               </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -123,8 +123,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un <strong><em>mutateur</em></strong> (<strong><em>setter</em></strong>) est une méthode dont le but est de modifier un attribut. On la nomme usuellement : <code class="language-">set_[nom de l'attribut](nouvelle_valeur)</code></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -134,8 +134,8 @@
 <p>Créez une méthode <code class="language-">Dé.set_position(nouvelle_position)</code> qui modifie la position du dé.</p>
 <p>Faites en sorte que la position ne puisse être plus petite que 1 (si <code class="language-">nouvelle_position</code> &lt; 1 alors l'attribut vaut 1) ni plus grande que 6 (si <code class="language-">nouvelle_position</code> &gt; 6 alors l'attribut vaut 6).</p>
 <p>Créez un test pour la méthode <code class="language-">Dé.set_position(nouvelle_position)</code> et modifiez, s'ils y en a, les tests qui modifient directement l'attribut positions pour qu'ils utilisent le <em>setter</em>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le but est de faire disparaître l'utilisation directe de l'attribut dans le code. Une fois qu'on ne le verra plus, c'est comme s'il n'existait plus.</p>
 <p>Avant de continuer, nous allons éliminer les 2 constantes non nommées 1 et 6 que nous venons certainement de créer (si vous ne l'avez pas fait, bravo !).</p>
 <p>Les nombres 1 et 6 sont les bornes du dé, il faut les nommer en tant que tel, sinon on va oublier leur signification et le code sera plus dire à modifier plus tard :</p>
@@ -144,12 +144,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Coding mantra</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Nombre_magique_(programmation)#Constantes_num%C3%A9riques_non_nomm%C3%A9es">NO MAGIC NUMBER</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -157,16 +157,16 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajouter les constantes <code class="language-">MIN_VALEUR = 1</code> et <code class="language-">MAX_VALEUR = 6</code> dans le fichier <code class="fichier">dé.py</code> et utilisez les dans tout le code. Y compris le test du lacer de dé.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Changer ses valeurs changera la nature de tous les dés crées.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Accesseur ou <em>getter</em></h2>
 <p>Si l'on veut accéder à un attribut sans l'utiliser directement, il faut le faire <em>via</em> une méthode. Cela peut être pratique si l'attribut n'est pas directement donné dans l'objet mais est construit (par exemple des coordonnées polaires d'un objet point2D où ses attributs sont en réalité ses coordonnées cartésiennes)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -177,8 +177,8 @@
 <div class="pl-8 mr-8">
 <p>Créez une méthode <code class="language-">Dé.get_position()</code> qui rend la position du dé.</p>
 <p>Créez un test pour cette méthode.</p>
-</div>
-</div>
+</div></div>
+
 <p>Afin de faire disparaître l'existence de l'attribut dans le code :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -187,20 +187,20 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>modifiez tous les tests et les codes des programmes qui utilisent directement l'attribut <code class="language-">position</code> pour qu'ils utilisent l'accesseur.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut maintenant rendre l'attribut <code class="language-">position</code> privé.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un attribut <strong><em>privé</em></strong> est un attribut qui ne doit pas être utilisé autre-part que dans les définitions de méthodes de la classe. Les attribut directement utilisables dans le code sont dit <strong><em>public</em></strong>.</p>
 <p>Tout code voulant accéder ou modifier à cet attribut <strong>doit</strong> passer par son accesseur/mutateur.</p>
-</div>
-</div>
+</div></div>
+
 <p>En python, un attribut privé est précédé d'<strong>un</strong> <code class="language-">_</code>. Par exemple, l'attribut <code class="language-">position</code> est public alors que l'attribut <code class="language-">_position</code> est privé.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -209,8 +209,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Rendez l'attribut <code class="language-">position</code> de la classe <code class="language-">Dé</code> privé.</p>
-</div>
-</div>
+</div></div>
+
 <p>En python, la notion d'attribut privé ou public n'existe pas vraiment, ce sont juste des conventions entre codeur. Il est ainsi tout à fait possible d'utiliser un attribut privé partout (mais c'est <em>bad karma</em>). Le seul endroit où l'utilisation directe d'un attribut privé est autorisé, c'est dans le test de son accesseur.</p>
 <h2><span id="property"></span> Property</h2>
 <p>Python a une superbe fonctionnalité qui permet d'utiliser les accesseur les mutateur <em>comme</em> si l'on utilisait directement un attribut !</p>
@@ -220,8 +220,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://docs.python.org/fr/3.11/library/functions.html#property">Le décorateur <code class="language-">@property</code></a></p>
-</div>
-</div>
+</div></div>
+
 <p>La façon la plus clair d'utiliser cela est d'utiliser des <a href="https://realpython.com/primer-on-python-decorators/">décorateurs</a>. Leur utilisation générale en programmation dépasse le cadre de ce cours, nous allons juste utiliser ceux de python permettant de décorer des accesseurs et des mutateurs ici.</p>
 <p>Considérons une classe qui possède, entre autres choses un attribut nommé <code class="language-">toto</code> :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
@@ -292,8 +292,8 @@
 <div class="pl-8 mr-8">
 <p>Utilisez l'attribut privé <code class="language">Dé._position</code> avec un décorateur <code class="language-">@property</code>.</p>
 <p>Modifiez tous les tests et les programmes principaux.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Finalement</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -307,8 +307,8 @@
 <li>la user story</li>
 <li>le programme principal</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

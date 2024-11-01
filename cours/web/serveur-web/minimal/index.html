@@ -96,8 +96,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/minimal/">Serveur web minimal</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -115,8 +115,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un dossier <code class="fichier">serveur_web</code> où vous stockerez les fichiers de notre serveur.</p>
-</div>
-</div>
+</div></div>
+
 <p>Comme on va utiliser node pour gérer notre serveur, on crée le fichier node du projet :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -125,8 +125,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans le dossier <code class="fichier">serveur_web</code>, initialisez le projet en tapant la commande : <code>npm init</code> puis en tapant entrée à chaque question pour utiliser les réponses par défaut.</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous devriez maintenant avoir un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
 <pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
@@ -148,8 +148,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajouter la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code>, juste en-dessous de la ligne 5</p>
-</div>
-</div>
+</div></div>
+
 <p>A la fin de cette opération, vous devriez avoir le fichier un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
 <pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"code"</span><span class="token punctuation">,</span>
@@ -175,8 +175,8 @@
 <li><code class="language-">const http = require('http');</code> : import commonJS</li>
 </ul>
 <p>Lorsque vous importez des bibliothèques node, il suffit souvent de remplacer une écriture par l'autre pour que tout fonctionne.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Le code</h2>
 <p>Créez un fichier <code class="fichier">serveur_web/index.js</code> qui sera le point d'entrée de notre serveur :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">'http'</span><span class="token punctuation">;</span>
@@ -200,8 +200,8 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce serveur est celui donné dans <a href="https://nodejs.org/api/synopsis.html#synopsis_example">la doc de node</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour exécuter ce fichier, dans un terminal placé dans le dossier où se trouve <code class="fichier">index.js</code> (normalement <code class="fichier">serveur_web</code>), tapez la commande :</p>
 <pre><code>node index.js
 </code></pre>
@@ -217,16 +217,16 @@ server<span class="token punctuation">.</span><span class="token function">liste
 <li><code>127.0.0.1</code> avec des nombres</li>
 <li><code>localhost</code> avec des lettres</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Allez du côté de la partie <a href="../../anatomie-url#port" class="interne">port du cours sur les url</a> pour vous rappeler ce qu'est un port.</p>
-</div>
-</div>
+</div></div>
+
 <p>Regardons la syntaxe du code :</p>
 <ul>
 <li><code class="language-">const</code> : déclaration de constantes.</li>
@@ -248,8 +248,8 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </svg>
 <div class="pl-8 mr-8">
 <p>La réponse aux requêtes du serveur est un objet qui existe déjà, ce n'est pas la réponse de notre fonction. Le boulot d'un serveur node est de renseigner les champs de cet objet puis de l'envoyer (avec <a href="https://nodejs.org/api/http.html#http_response_end_data_encoding_callback"><code>res.end()</code></a> par exemple).</p>
-</div>
-</div>
+</div></div>
+
 <h2>Protocole http</h2>
 <p>On ne va pas faire un long cours sur le <a href="https://fr.wikipedia.org/wiki/Hypertext_Transfer_Protocol">protocole http</a>, on va juste décrire succinctement les requêtes (ce que le serveur reçoit du navigateur) et les réponses (ce que le serveur envoie au navigateur).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -258,8 +258,8 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </svg>
 <div class="pl-8 mr-8">
 <p>Utiliser node nous permet de nous concentrer sur ce qui est important : répondre correctement aux demandes du navigateur, sans avoir besoin d'écrire des requêtes http conformes (ce qui n'est pas très marrant).</p>
-</div>
-</div>
+</div></div>
+
 <h3>Requête http</h3>
 <p>On peut afficher l'url de la requête : On récupère les variables <em>hostname</em> et <em>port</em> et on les affiche dans la console.</p>
 <p>Une requête http est en deux parties :</p>
@@ -294,8 +294,8 @@ server<span class="token punctuation">.</span><span class="token function">liste
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on modifie le serveur, il faut arrêter l'ancien (avec les touches <code>ctrl+c</code>) et le relancer. Même si l'o modifie le code de <code class="fichier">serveur_web/index.js</code> il n'est pas pris automatiquement en compte par le serveur.</p>
-</div>
-</div>
+</div></div>
+
 <p>Si l'on recharge le serveur dans le navigateur, on obtient quelque chose du genre :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">-------
 /
@@ -353,8 +353,8 @@ GET
 </svg>
 <div class="pl-8 mr-8">
 <p>A chaque actualisation, le serveur est <strong>sollicité deux fois</strong>, une fois pour l'url <code>/</code> et une autre fois pour l'url <a href="https://fr.wikipedia.org/wiki/Favicon"><code>/flavicon.ico</code></a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour résumer :</p>
 <ul>
 <li>le navigateur parle en http 1.1 (ce qui est ok)</li>
@@ -365,15 +365,15 @@ GET
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Pour répondre à une requête http de façon satisfaisante, le serveur à toujours besoin de</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>l'url</li>
 <li>de la méthode http utilisée par le serveur</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La version de l'http n'est pas importante pour nous, c'est node qui s'occupe de communiquer directement avec le navigateur.</p>
 <h3>Réponse http</h3>
 <p>Une réponse http <strong>est toujours</strong> en trois parties :</p>
@@ -404,8 +404,8 @@ GET
 </svg>
 <div class="pl-8 mr-8">
 <p>Les informaticiens aiment rigoler. Le status 418 fait parti d'une RFC publiée le 1/04/1998.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

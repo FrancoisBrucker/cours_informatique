@@ -101,7 +101,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Objectif du test</strong></p>
 </div><div class="pl-8 mr-8">
 <p>En 15 minutes :</p>
@@ -110,8 +110,8 @@
 <li><strong>un bon élève</strong> doit parvenir à réussir les 3 premières questions. Ce qui lui permet d'avoir 3/5 et donc 18/20</li>
 <li><strong>un très bon élève</strong> fait plus que les 3 premières questions.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La ventilation des notes est :</p>
 <table>
 <thead>
@@ -216,8 +216,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Beaucoup d'entres vous sont venus sans réelle préparation au test. Cela se ressent dans les notes (la moité des élèves ont moins de dix et un quart moins de six) !</p>
-</div>
-</div>
+</div></div>
+
 <p>Vous <strong>devez</strong> préparer chaque test pour obtenir une note correcte (12 ou plus). Le cours est en ligne, il y a des annales et les profs — très sympas — répondent à vos questions en direct ou par mail.</p>
 <p>Outre le manque de préparation, j'ai vu beaucoup de code ou de tests qui ne s'exécutent manifestement pas. Votre code <strong>doit</strong> être exécutable sinon le correcteur peut penser que vous tentez de l'enfumer et ça le force à modifier votre code pour le faire fonctionner, en particulier pour lancer les tests (ce qui le rend irritable et moins enclin à être bienveillant).</p>
 <p>Enfin, cela masque les fonctions ou les tests qui sont corrects !</p>
@@ -232,8 +232,8 @@
 <li>vos tests sont exécutables avec pytest (on peut tolérer un test qui rate si vous expliquez que vous n'avez pas eu le temps de corriger le bug)</li>
 </ul>
 <p>Pour cela, vous <strong>devez</strong> lancer régulièrement vos tests <strong>pendant</strong> le test.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ci-après quelques remarques plus ponctuelles</p>
 <h3>Trop lent</h3>
 <p>Vous prenez globalement  bien trop de temps à écrire des algorithmes simples. La première question est une application directe du S1 et la seconde ne devrait pas vous prendre plus de 5min. Presque tout le monde aurait du arriver à la question 3, ce qui est loin d'être le cas.</p>
@@ -256,8 +256,8 @@
 <li>faire un assert sans fonction de test n'est <strong>pas</strong> un test</li>
 <li>une fonction de test n'a <strong>pas</strong> de paramètres.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Chaque test <strong>doit</strong> commencer par <code class="language-">test_</code> suivi du nom de la fonction à tester. S'il y a plusieurs tests pour une même fonction, on ajoute ce que le test teste :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_<span class="token punctuation">[</span>nom de la fonction à tester<span class="token punctuation">]</span>_<span class="token punctuation">[</span>ce que ça teste<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -268,8 +268,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ici, différentier les 2 tests proposés par fonction n'était pas évident. Regrouper les 2 tests en une seule fonction comme je le fais dans le corrigé était légitime.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Misc</h3>
 <p>Quelques remarques sur des erreurs ou lourdeurs que j'ai vu chez certains. Essayez d'y faire attention pour vos prochains codes et rendus.</p>
 <h4>Nom des fichiers</h4>
@@ -310,7 +310,7 @@ sinon:
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Pourquoi c'est mal</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
@@ -323,8 +323,8 @@ sinon:
 </ol>
 </li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h4>Variable différent d'une chaîne de caractère</h4>
 <p>Je ne l'ai vu qu'une fois mais je préfère prévenir. Ne confondez pas la variable ou le paramètre d'une fonction <code class="language-">x</code> avec une chaîne de caractères contenant le caractère x, notée <code class="language-">'x'</code>.</p>
 <h2>Corrigé de la question 1. Fonction <code class="language-">est_une_lettre(lettre, mot)</code></h2>
@@ -340,8 +340,8 @@ sinon:
 </svg>
 <div class="pl-8 mr-8">
 <p>Pas besoin d'écrire <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;) == True</code>, c'est équivalent à <code class="language-">assert est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>fonction <code class="language-">est_une_lettre(lettre, mot)</code></h3>
 <p>Plusieurs possibilités. Commençons par la plus simple, que <strong>tout le monde</strong> devrait arriver à faire, c'est une retranscription directe d'un algorithme du cours :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_une_lettre</span><span class="token punctuation">(</span>lettre<span class="token punctuation">,</span> mot<span class="token punctuation">)</span><span class="token punctuation">:</span>

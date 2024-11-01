@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/">Sécurité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/">Cryptographie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/">Intégrité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/sécurité/cryptographie/intégrité/mac/">Message Authentification Code</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -135,7 +135,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>MAC à taille fixe</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $F: \{0, 1\}^s \times \{0, 1\}^n \rightarrow \{0, 1\}^n$ est une <a href="../../confidentialit%C3%A9/chiffre-flux/#PRF" class="interne">PRF</a>, alors :</p>
@@ -144,8 +144,8 @@ $$
 <li>$V(k, m, t) = (F(k, m) = t)$</li>
 </ul>
 <p>Est un MAC sécurisé pour tout message de taille $n$.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -195,7 +195,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>HMAC</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soient :</p>
@@ -209,8 +209,8 @@ $$
 <li>$V(k, m, t) = (S(k, m) = t)$</li>
 </ul>
 <p>Est un MAC sécurisé pour tout message.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -241,8 +241,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette technique est utilisée pour assurer l'intégrité des messages chacha20 (voir partie <a href="../aead" class="interne">AEAD</a>).</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD utilisé pour le AEAD de chacha20 avec poly1305</p>
 </blockquote>
@@ -254,8 +254,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=z0lJ2k0sl1g">Universal hash function</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Comme le message $m$ est une suite de 0 et de 1, on peut très bien le considérer comme un nombre. On va se placer dans le corps $\mathbb{Z}/p\mathbb{Z}$, avec $p$ premier.</p>
 <p>Le one-time MAC que l'on considère est :</p>
 <div>
@@ -267,8 +267,8 @@ $$
 <p>Posséder $(m, c)$ avec $c = a\cdot m + b \mod p$ ne donne pas d'informations sur (a, b). Il y a $p$ paires possibles puisqu'une fois $a$ choisi, $b = c- a\cdot m \mod p$.</p>
 <p>Supposons que Mallory choisisse la paire $(a^\star, c- a^\star\cdot m \mod p)$ et remplace le message $m$ par $m'$. Il enverra le couple $(m', c')$ avec $c' = a^\star\cdot m' + (c- a^\star\cdot m) \mod p = a^\star(m'-m) + c \mod p$.</p>
 <p>Lorsque Bob va décoder le message il voudra vérifier que :</p>
-<p>$$<br>
-am'+b \mod p = a^\star(m'-m) + c \mod p<br>
+<p>$$
+am'+b \mod p = a^\star(m'-m) + c \mod p
 $$</p>
 <p>et donc que :</p>
 <div>
@@ -300,8 +300,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>exemple tiré de <a href="https://web.mit.edu/6.857/OldStuff/Fall97/lectures/lecture3.pdf">ce texte</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Faire grossir un MAC à taille fixe</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -309,8 +309,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette technique est utilisée pour assurer l'intégrité des messages AES (voir partie <a href="../aead" class="interne">AEAD</a>).</p>
-</div>
-</div>
+</div></div>
+
 <p>Cela semble la manière la plus naturelle et cependant c'est la plus risquée. Pour garantir la sécurité du MAC, il faut en effet utiliser 2 clés de chiffrement :</p>
 <ul>
 <li>$k_1 = F(k, 0)$</li>

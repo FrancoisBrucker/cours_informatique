@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/">Serveur Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/serveur-web/routes-paramètres/">Routes avec paramètres</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -136,8 +136,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Si vous exécutez ce code, et utilisez les outils de développement pour voir le résultat de la requête <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> par exemple, vos verrez que le navigateur chrome ajoute des choses au texte pour le transformer en html. Ce n'est <strong>pas</strong> le serveur qui le fait.</p>
-</div>
-</div>
+</div></div>
+
 <p>Si on veut ajouter un prénom, il faut ajouter des routes. Par exemple si on veut dire saluer toutes les Carole :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
@@ -171,12 +171,12 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://expressjs.com/en/guide/routing.html#route-parameters">https://expressjs.com/en/guide/routing.html#route-parameters</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour la route bonjour par exemple :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
@@ -199,16 +199,16 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <div class="pl-8 mr-8">
 <p>C'est triste mais il est impossible d'utiliser des variables accentuées. En remplaçant <code class="language-">:prenom</code> par <code class="language-">:prénom</code> le code ne fonctionne plus. C'est lié à la façon dont express gère les urls.</p>
 <p>En revanche, la requête <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois">http://127.0.0.1:3000/bonjour/François</a> fonctionne parfaitement, les paramètre étant eux bien traité en utf8.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notez que comme on a juste ajouté la route paramétrée, notre serveur sert bien les  deux routes <a href="http://127.0.0.1:3000/bonjour/">http://127.0.0.1:3000/bonjour/</a> <strong>et</strong> <a href="http://127.0.0.1:3000/bonjour/Fran%C3%A7ois">http://127.0.0.1:3000/bonjour/François</a> !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Créez une route qui prend également en compte le nom de famille. On doit pouvoir effectuer des routes de style :</p>
 <p><a href="http://127.0.0.1:3000/bonjour/Jimi/Hendrix">http://127.0.0.1:3000/bonjour/Jimi/Hendrix</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -247,12 +247,12 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://en.wikipedia.org/wiki/Query_string">https://en.wikipedia.org/wiki/Query_string</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Cette méthode, appelée <a href="https://en.wikipedia.org/wiki/Query_string">query string</a>, est utilisée par exemple par google maps ou encore amazon pour spécifier ses requêtes. Elle consiste à donner explicitement les paramètres dans la requête sous la forme d'un couple <code class="language">clé=valeur</code>.</p>
 <p>Dans notre ças, cela correspondrait à des routes du style :</p>
 <ul>
@@ -268,8 +268,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <li>On entame la query par un <code class="language-">?</code></li>
 <li>on sépare les différents paramètres par des <code class="language-">&amp;</code></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Du côté de express, la query est mis dans le dictionnaire <code class="language-">req.query</code>. Pour la route bonjour cela donne :</p>
 <pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
 <span class="token comment">// ...</span>
@@ -295,8 +295,8 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <div class="pl-8 mr-8">
 <p>Créez une route qui prend également en compte le nom de famille. On doit pouvoir effectuer des routes de style :</p>
 <p><a href="http://localhost:3000/bonjour?pr%C3%A9nom=Harry&amp;nom=Cover">http://localhost:3000/bonjour?prénom=Harry&amp;nom=Cover</a></p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">

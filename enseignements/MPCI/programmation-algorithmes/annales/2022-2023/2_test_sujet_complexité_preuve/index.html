@@ -93,14 +93,14 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous avez 15min pour faire le test.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le but de ce test est d'étudier les <em><strong>cols</strong></em> d'un tableau.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un <em><strong>col</strong></em> d'un tableau d'entiers $T$ de taille $n &gt; 1$ est un indice $0 \leq i &lt; n$ tel que :</p>
@@ -109,8 +109,8 @@
 <li>soit $i = n-1$ et $T[i] \leq T[n-2]$</li>
 <li>soit $0 &lt; i &lt; n-1$ et $T[i] \leq \min(T[i-1], T[i+1])$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>1. Existence</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -119,8 +119,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Montrer que tout tableau d'entiers $T$ de taille $n &gt; 1$ contient au moins 1 col.</p>
-</div>
-</div>
+</div></div>
+
 <h2>2. Découverte</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -134,8 +134,8 @@
 <li>que la complexité de votre algorithme est bien celle demandée,</li>
 <li>qu'il trouve bien un col.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>3. Rapidité</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -144,8 +144,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'entiers $T$ de taille $n &gt; 1$ passé en paramètre.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve_vite</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">0</span>
@@ -177,8 +177,8 @@
 <li><code class="language-">T[-1]</code> soit le dernier élément du tableau et <code class="language-">T[-2]</code> l'avant dernier.</li>
 <li><code class="language-">a // b</code> rende la division entière de <code class="language-">a</code> par <code class="language-">b</code></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h2>4. Complexité</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -187,8 +187,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Donnez la complexité de l'algorithme <code class="language-">trouve_vite(T)</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h2>5. complexité du problème</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -197,8 +197,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Après avoir formalisé le problème de la recherche d'un col dans un tableau, vous démontrerez que sa complexité est égale à la complexité de l'algorithme <code class="language-">trouve_vite(T)</code> de la question 3.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

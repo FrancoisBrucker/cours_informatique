@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/">Architecture d&#39;un ordinateur</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/architecture-ordinateur/mémoire/">Mémoire</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -115,8 +115,8 @@ Valeur b : 0000110010010001
 </svg>
 <div class="pl-8 mr-8">
 <p>L'unité fondamentale de lecture est <strong>toujours</strong> le byte, on inverse donc les bytes, pas les bits qui le compose.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ceci est loin d'être anecdotique et s'appelle l'<a href="https://fr.wikipedia.org/wiki/Boutisme">Endianness</a> :</p>
 <ul>
 <li>les processeurs ARM, tout comme les protocoles réseau ou PCIe sont dit <em>big endian</em> les bytes sont lu de droite à gauche (sens de lecture usuel)</li>
@@ -129,16 +129,16 @@ Valeur b : 0000110010010001
 </svg>
 <div class="pl-8 mr-8">
 <p>Il est important de connaître la taille des objets que l'on manipule et de laisser le système gérer l'Endianness pour nous.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>L'Endianness est un exemple parmi tant d'autre que s'il existe une convention vous pouvez être sur que les deux choix seront choisis (écrire de gauche à droite, nord vers le haut, etc)</p>
-</div>
-</div>
+</div></div>
+
 <h3>Padding</h3>
 <p>La quasi totalité des données manipulées par un processeur sont sur 64b (8B), parfois moins moins, mais quasi tout le temps strictement plus qu'un byte. Les transferts de données entre la mémoire et le processeurs sont optimisées pour une taille de 8B : si l'on cherche à lire à l'adresse A de la mémoire, la mémoire transférera les valeurs des cases A à A + 8.</p>
 <p>Pour des raisons de coût, il est cependant impossible d'avoir ce comportement à toutes les adresses. La lecture des données se fait <strong>toutes les 8 adresses</strong> et non à chaque adresse. Si les données à lire ne sont pas sur un multiple de sa taille de lecture, il faudra faire deux lectures avant de rassembler les données. Par exemple pour une taille de lecture de 8B :</p>
@@ -175,8 +175,8 @@ recollage bus   : 0000XXXX
 </svg>
 <div class="pl-8 mr-8">
 <p>Cet adressage est dit <em><strong>logique</strong></em> (ou virtuel) car c'est l'adressage vu depuis le processeur. L'adressage <em><strong>physique</strong></em>, directement sur la RAM, est lui autorisé sur 52bits.</p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

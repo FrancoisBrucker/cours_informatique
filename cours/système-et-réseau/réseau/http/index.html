@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/">Réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/réseau/http/">Protocole http</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -102,8 +102,8 @@
 <li><a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Overview">Aperçu du protocole http</a></li>
 <li><a href="https://www.youtube.com/watch?v=UMwQjFzTQXw">différentes version de http</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Avec le protocole http le client est souvent un navigateur web, par exemple <a href="https://fr.wikipedia.org/wiki/Google_Chrome">chrome</a>, qui accède à l'application serveur via une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a> comme <a href="http://www.google.fr">http://www.google.fr</a>, qui lie le nom de la machine qui héberge le serveur (ici <code>www.google.fr</code>) et le protocole (http) : il n'y a qu'un seul serveur et de multiples clients.</p>
 <p>Exemple de requête et de réponse en utilisant la commande <a href="https://curl.se/"><code>curl</code></a> :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">curl</span> http://www.google.fr 
@@ -163,10 +163,10 @@ Transfer-Encoding: chunked
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">curl</span> http://www.google.fr <span class="token parameter variable">-s</span> <span class="token parameter variable">-v</span> <span class="token operator">></span> /dev/null
 </code></pre>
 <p>Retrouvez les messages transmis (headers et body) de la requête et de la réponse.</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
-<p>TBD header GET + host en 1.1<br>
+<p>TBD header GET + host en 1.1
 option nom:valeur</p>
 <p>body peut être ce que l'on veut. Aide avec le type mime.</p>
 </blockquote>

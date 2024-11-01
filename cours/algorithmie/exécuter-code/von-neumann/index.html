@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/">Exécuter du Code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/exécuter-code/von-neumann/">Architecture de Von Neumann</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -114,12 +114,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Il existe une injection permettant d'associer une suite de <code>0</code> et de <code>1</code> de taille $S$ à toute instruction de pseudo-assembleur.</p>
-</div>
-</div>
+</div></div>
+
 <p>Par exemple si l'on associe 42 à l'opération <code>NAND</code>, l'instruction <code>NAND $2 $1 $3</code> sera codée par le quadruplet : $(42, 2, 1, 3)$ ce qui sur 32bit donne le code (on a séparé les 32bits par paquet de 8 pour plus de clarté):</p>
 <pre><code>00101010 00000010 00000001 00000011
 </code></pre>
@@ -128,7 +128,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Dans une architecture de Von Neumann, le code est placé en mémoire sous la forme d'une suite de <code>0</code> et de <code>1</code>. So exécution est contrôlée par un registre spécial, $I$ appelé pointeur d'instruction dont la valeur est l'adresse de la <strong>prochaine</strong> instruction à exécuter.</p>
@@ -138,8 +138,8 @@
 <li>incrémenter la valeur de $I$ de la taille de l'instruction lue</li>
 <li>exécuter l'instruction lue</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>L'utilisation d'un pointeur d'instruction et le fait qu'il pointe sur l'instruction suivante permet de gérer simplement les sauts : il suffit de modifier sa valeur.</p>
 <h2>Variable et pile</h2>
 <p>L'architecture de Von Neumann utilise le concept de <a href="https://fr.wikipedia.org/wiki/Pile_(informatique)">pile</a> :</p>
@@ -147,7 +147,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong><em>Définition</em></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <strong><em>pile</em></strong> est une structure de donnée qui comprend deux fonctions :</p>
@@ -157,8 +157,8 @@
 <li>accès(0) : accède au i+1 ème élément de la pile en lecture ou en écriture</li>
 </ul>
 <p>Le <strong>premier</strong> élément de la pile est le <strong>dernier</strong> empilé.</p>
-</div>
-</div>
+</div></div>
+
 <p>Prenons l'exemple suivant :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">empile<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 empile<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
@@ -174,8 +174,8 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
 </svg>
 <div class="pl-8 mr-8">
 <p>La pile est un concept ancien et déjà présent chez Turing pour l'appel de fonctions. Je ne saurais trop vous conseiller de regarder cette <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">vidéo qui détaille l'invention et les diverses utilisations de la pile</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Implémentation et fonctionnement</h3>
 <p>La pile est composée de cases contiguës en mémoire : classiquement les derniers.</p>
 <p>Pour gérer la pile le modèle de Von Neumann possède :</p>
@@ -203,8 +203,8 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
 <li>On ne peut placer que des valeurs de taille $S$ dans la pile</li>
 <li>Lorsque l'on empile des éléments à la pile, la valeur <code>u(SP)</code> <strong>décroît</strong>.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>La pile est ainsi constituée du segment de mémoire $M[u(SP):u(FP)]$, que l'on appelle un <strong><em>frame</em></strong> et à chaque fois qu'une valeur est ajoutée dans la pile, le registre <code>SP</code> est décrémenté de $S$. Ainsi :</p>
 <ul>
 <li>le dernier élément ajouté à la pile sera dans le segment $M[u(SP):u(SP) + S]$</li>
@@ -219,12 +219,12 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong><em>Définition</em></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Dans une architecture de de Von Neumann la pile contient les adresses des données stockées en mémoire : ce sont les variables du programme</p>
-</div>
-</div>
+</div></div>
+
 <h4>Stocker des variables</h4>
 <p>Lorsqu'une variable est créée en mémoire son adresse est empilée et le code y accède via la pile.</p>
 <p>On peut y accéder via le registre <code>SP</code>. Par exemple avec cette boucle for qui calcule factorielle 4 :</p>
@@ -252,8 +252,8 @@ GOTOIFNOT ZÉRO <span class="token number">9</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Qu'affiche à l'écran le code précédent ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -301,10 +301,10 @@ GOTOIFNOT ZÉRO <span class="token number">9</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Ce n'est pas Von Neumann mais Dijkstra qui a a proposé cette façon de faire (utiliser la pile pour appeler des fonctions et stocker les variables locales), toujours utilisée dans nos ordinateurs actuels.</p>
-<p>Le, célèbre article où il présente cette idée est là :<br>
+<p>Le, célèbre article où il présente cette idée est là :
 <a href="https://ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf">Recursive programming</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Pour pouvoir exécuter des fonctions il faut pouvoir faire deux choses :</p>
 <ol>
 <li>gestion des variables locales à la fonction ainsi que ses paramètres</li>
@@ -381,8 +381,8 @@ POP IP          <span class="token comment"># retour de la fonction</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En supposant que le registre $p$ contienne l'adresse maximum en mémoire, modifiez le code de la factorielle.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -425,7 +425,7 @@ POP IP
 </details>     
 </div>
 <h2>Structure du programme en mémoire</h2>
-<p>La mémoire doit permettre de stocker à la fois le code, les variables via la pile et les données. Ces dernières se<br>
+<p>La mémoire doit permettre de stocker à la fois le code, les variables via la pile et les données. Ces dernières se
 Avoir de la place pour</p>
 <ul>
 <li>code</li>

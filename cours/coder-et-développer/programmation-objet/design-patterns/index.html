@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/design-patterns/">Design Patterns</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
   <blockquote>
 <p>TBD : refaire propre.</p>
 </blockquote>
-<p>Les <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.<br>
+<p>Les <a href="https://fr.wikipedia.org/wiki/Patron_de_conception">design patterns</a>, ou façons de faire, sont pour ainsi dire de l'algorithmie objet : ils permettent de résoudre nombre de problèmes courants en développement et d'éviter les <a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">erreurs classiques</a>, aussi appelées <a href="https://fr.wikipedia.org/wiki/Antipattern">anti-pattern</a>.
 Il existe 3 grands types de design pattern, on pourra en donner un exemple pour chaque.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -103,8 +103,8 @@ Il existe 3 grands types de design pattern, on pourra en donner un exemple pour 
 </svg>
 <div class="pl-8 mr-8">
 <p>Le terme de <em>design pattern</em> a été initialement donné dans le livre <a href="https://en.wikipedia.org/wiki/Design_Patterns">Design Patterns: Elements of Reusable Object-Oriented Software</a> pour le langage C++.</p>
-</div>
-</div>
+</div></div>
+
 <p>On classe habituellement les designs patterns en trois types :</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Creational_pattern"><strong>les types creational</strong></a> qui créent des objets.</li>
@@ -118,8 +118,8 @@ Il existe 3 grands types de design pattern, on pourra en donner un exemple pour 
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://refactoring.guru/design-patterns">Refactoring GURU : design pattern</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Il existe aussi leurs doubles maléfiques, les anti-patterns, qui sont des solutions évidentes -- et mauvaises -- à des problèmes courants. Là aussi, il est bon de connaître une liste actualisée d'anti-pattern, comme par exemple :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -127,8 +127,8 @@ Il existe 3 grands types de design pattern, on pourra en donner un exemple pour 
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="http://sahandsaba.com/nine-anti-patterns-every-programmer-should-be-aware-of-with-examples.html">Quelques anti patterns</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons, encore une fois, utiliser la classe <code class="language-">Dé</code> et l'<em>améliorer</em> selon le problème posé.</p>
 <h2>Les bases</h2>
 <blockquote>
@@ -169,8 +169,8 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Regardez le code de la méthode <code>roll</code> pourquoi rendre <code>self</code> ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -243,8 +243,8 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 <h2>pattern factory</h2>
 <p><a href="https://refactoring.guru/fr/design-patterns/factory-method">Le pattern factory</a> en est un exemple, il permet de créer des objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu'avec un constructeur avec des milliers de paramètres</p>
 <blockquote>
-<p>TBD: faire avec les fonctions et constantes dans le fichier<br>
-en amélioration, mettre les constantes en attributs de classes (les valeurs des dés) et en méthodes de classes (les factory)<br>
+<p>TBD: faire avec les fonctions et constantes dans le fichier
+en amélioration, mettre les constantes en attributs de classes (les valeurs des dés) et en méthodes de classes (les factory)
 Un dé 6, un dé 20 et un dé avec ce qu'on veut.</p>
 </blockquote>
 <h3>Premières expérimentations</h3>
@@ -264,8 +264,8 @@ Un dé 6, un dé 20 et un dé avec ce qu'on veut.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>On prendra soin de créer une constante N, pour éviter l'anti-pattern &quot;magic number&quot;</p>
-</div>
-</div>
+</div></div>
+
 <p>Refaite la même chose pour simuler la somme d'un lancer de 2 dés à 6 faces (2d6 si on jargonne) avec un seul objet <code>Choice</code>.</p>
 <h3>On place le tout dans le fichier de la classe</h3>
 <p>Une fois que vous êtes satisfait de vos fonctions, ajoutez les dans le fichier <code>choices.py</code>, ce qui rajoutera des fonctions de créations d'objets et modifiez votre <code>main.py</code> pour utiliser ces nouvelles fonctions.</p>
@@ -276,18 +276,18 @@ Un dé 6, un dé 20 et un dé avec ce qu'on veut.</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour que vos tests ne soient pas trop fastidieux, vous pouvez vérifier que les possibilités correspondent aux comptes que vous avez effectués avec les objets Counter (du module collections).</p>
-</div>
-</div>
+</div></div>
+
 <h2>Composite</h2>
 <blockquote>
-<p>TBD: <a href="https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)">https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)</a><br>
+<p>TBD: <a href="https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)">https://fr.wikipedia.org/wiki/Composite_(patron_de_conception)</a>
 enseignements/MPCI/programmation-algorithmes/annales/2022-2023/4_test_sujet_composition_agrégation_héritage/</p>
 </blockquote>
 <h2>Memento</h2>
 <blockquote>
-<p>TBD: <a href="https://refactoring.guru/fr/design-patterns/memento">https://refactoring.guru/fr/design-patterns/memento</a><br>
-premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/<br>
-behavioural pattern<br>
+<p>TBD: <a href="https://refactoring.guru/fr/design-patterns/memento">https://refactoring.guru/fr/design-patterns/memento</a>
+premiere partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
+behavioural pattern
 un dé et une autre classe, la liste avec un save du test. . avec et sans</p>
 </blockquote>
 <h3>Adaptation des objets au pattern</h3>
@@ -365,9 +365,9 @@ undo<span class="token punctuation">.</span>restore<span class="token punctuatio
 <p>Faites le même essai avec 10 utilisations de la méthode <code>roll()</code>.</p>
 <h2>Observer</h2>
 <blockquote>
-<p>TBD: base de la programmation évènementielle<br>
-savoir lorsqu'un dé change. S'abonner à la valeur ?<br>
-seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/<br>
+<p>TBD: base de la programmation évènementielle
+savoir lorsqu'un dé change. S'abonner à la valeur ?
+seconde partie /enseignements/MPCI/programmation-algorithmes/annales/2021-2022/5_test_sujet/
 <a href="https://en.wikipedia.org/wiki/Observer_pattern">https://en.wikipedia.org/wiki/Observer_pattern</a></p>
 </blockquote>
 

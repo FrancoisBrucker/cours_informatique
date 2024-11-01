@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/langage/">Langage C</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/langage/gestion-tas/">Gestion du tas</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=P0NWSHbNooA&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=26">gestion de la mémoire</a></p>
-</div>
-</div>
+</div></div>
+
 <p>La pile c'est chouette mais son utilisation est impossible pour des données dont on ne connaît pas la taille à la compilation, de taille changeante ou encore trop grandes (la taille de la pile est limitée).</p>
 <p>Il faut pouvoir utiliser le tas et gérer soit même ses données. Le <code>C</code> propose une gestion du tas dans la libc, sous la forme de 2 fonctions définies dans <code class="fichier">stdlib.h</code> :</p>
 <ul>
@@ -150,12 +150,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une fois la mémoire libérée prenez l'habitude de toujours repositionner le pointeur à <code class="language-">NULL</code>. Ceci évitera des bugs futurs où utilisera <code>p</code> en oubliant que la mémoire avait été désallouée.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Gestion des erreurs</h3>
 <p>L'allocation peut échouer (s'il n'y a plus de place par exemple), il faut donc toujours vérifier que tout s'est bien passé avant de continuer :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
@@ -207,12 +207,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>danger !</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La gestion de la mémoire est un travail ingrat et souvent compliqué. Mais il est nécessaire car un programme <code>C</code> doit pouvoir tourner indéfiniment sans gaspiller de la mémoire.</p>
-</div>
-</div>
+</div></div>
+
 <blockquote>
 <p>TBD : memory leak detection : <a href="https://github.com/google/sanitizers/wiki/AddressSanitizer">https://github.com/google/sanitizers/wiki/AddressSanitizer</a> (<a href="https://clang.llvm.org/docs/AddressSanitizer.html">https://clang.llvm.org/docs/AddressSanitizer.html</a>) pour remplacer <a href="https://valgrind.org/">https://valgrind.org/</a> qui ne marche pas sous ARM.</p>
 </blockquote>
@@ -223,8 +223,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Malloc">gestion mémoire en C</a></p>
-</div>
-</div>
+</div></div>
+
 <ul>
 <li><code class="language-">void *calloc(size_t nmemb, size_t size)</code> : alloue <code class="language-">size * nmemb</code> bytes contiguës en mémoire (<code class="language-">nmemb</code> éléments de taille <code class="language-">size</code>) et initialise la mémoire avec des <code>0</code></li>
 <li><code class="language-">void *realloc(void *ptr, size_t size)</code> : réalloue la place mémoire commençant au pointeur <code class="language-">ptr</code> (obtenu par un <code class="language-">malloc</code> ou <code class="language-">realloc</code>) pour en changer sa taille en <code class="language-">size</code></li>
@@ -235,12 +235,12 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<div id="UTii4dyhR5c" class="eleventy-plugin-youtube-embed" style="position:relative;width:100%;padding-top: 56.25%;"><iframe style="position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;" width="100%" height="100%" frameborder="0" title="Embedded YouTube video" src="https://www.youtube-nocookie.com/embed/UTii4dyhR5c" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-</div>
-</div>
+<p><a href="https://www.youtube.com/watch?v=UTii4dyhR5c&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=27">https://www.youtube.com/watch?v=UTii4dyhR5c&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=27</a></p>
+</div></div>
+
 <blockquote>
 <p>TBD en dessous de malloc, il y a brk. <a href="https://www.youtube.com/watch?v=XV5sRaSVtXQ">https://www.youtube.com/watch?v=XV5sRaSVtXQ</a></p>
-<p>TBD on a vue dans la partie noyau que le tas n'est pas tout<br>
+<p>TBD on a vue dans la partie noyau que le tas n'est pas tout
 TBD On peut se passer de malloc si on veut mais il faut gérer les allocation/dé-allocation de la mémoire (reprendre la vidéo du dessus et le faire) avec <a href="https://man7.org/linux/man-pages/man2/brk.2.html">brk</a> pour augmenter le tas. Mais il faut gérer à la main les allocation/dé allocations.</p>
 <p>TBD : en faire un exemple come dans la 2ne vidéo avec le brk qui bouge td avancé (après que les étudiants aient utilisé malloc) ?</p>
 </blockquote>

@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/">Mesures de complexités</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/complexité-calculs/règles-de-calcul/">Règles de calcul</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -105,7 +105,7 @@ tant que condition<span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Complexité d'une boucle tant que</strong></p>
 </div><div class="pl-8 mr-8">
 <div>
@@ -113,8 +113,8 @@ $$
 \mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
 $$
 </div>
-</div>
-</div>
+</div></div>
+
 <p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
 pour chaque element de structure<span class="token punctuation">:</span>
@@ -125,7 +125,7 @@ pour chaque element de structure<span class="token punctuation">:</span>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Complexité d'une boucle pour chaque</strong></p>
 </div><div class="pl-8 mr-8">
 <div>
@@ -133,8 +133,8 @@ $$
 \mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instruction})
 $$
 </div>
-</div>
-</div>
+</div></div>
+
 <p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
 <p>Exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
@@ -147,12 +147,12 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle</p>
-</div>
-</div>
+</div></div>
+
 <h3>Boucles imbriquées indépendantes</h3>
 <p>Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
@@ -167,12 +167,12 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Complexité de boucles imbriquées indépendantes</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité des boucles imbriquées est le produit du nombre de fois où l'on rentre dans chaque boucle pris indépendamment multiplié par la complexité du bloc d'instructions.</p>
-</div>
-</div>
+</div></div>
+
 <p>Exemple :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
 de i <span class="token operator">=</span> <span class="token number">1</span> à n <span class="token operator">-</span> <span class="token number">1</span> faire<span class="token punctuation">:</span>
@@ -191,13 +191,13 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$.</p>
 <p>Une boucle de $n-3$ exécutions pouvant être avantageusement remplacé par $\mathcal{O}(n)$</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="règle-croissance"></span>Boucles dépendantes mais monotones</h3>
 <p>Il arrive souvent que les boucles imbriquées d'un algorithme soient dépendantes les unes des autres. Dans le cas général on ne peut pas factoriser le calcul de la complexité et il faut alors dérouler tout l'algorithme en additionnant les complexités de chaque ligne comme s'il n'y avait pas de boucles.</p>
 <p>Il existe cependant un cas pratique (et qui arrive assez souvent) où l'on peut factoriser :</p>
@@ -205,12 +205,12 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Complexité de boucles dépendantes monotones</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si une boucle s'exécute un nombre variable de fois, mais que cette variation est croissante (respectivement décroissante), on peut considérer pour le calcul de la complexité qu'elle s'exécute à chaque fois de l'ordre du maximum de fois et se ramener au cas <a href="#complexit%C3%A9-boucles-ind%C3%A9pendantes">des boucles indépendantes</a>.</p>
-</div>
-</div>
+</div></div>
+
 <p>On va vérifier cela avec un exemple :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">total<span class="token operator">=</span><span class="token number">0</span>
 de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token operator">-</span><span class="token number">1</span> faire <span class="token punctuation">:</span>
@@ -306,12 +306,12 @@ Rendre total
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour illustrer ce calcul, prenons l'exemple suivant :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">fonction maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     si n <span class="token operator">==</span> <span class="token number">1</span>
@@ -341,18 +341,18 @@ Rendre total
 <li>retour de fonction d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
 <p>Ce qui donne en sommant le tout :</p>
-<p>$$<br>
-\begin{array}{lcl}<br>
-C(n) &amp; = &amp; \mathcal{O}(1) + \\<br>
-&amp;  &amp; \mathcal{O}(1) + \\<br>
-&amp;  &amp; \mathcal{O}(1) + \\<br>
-&amp;  &amp; \mathcal{O}(1) + C(n-1) + \\<br>
-&amp; &amp; \mathcal{O}(1) + \\<br>
-&amp; &amp; \mathcal{O}(1) + \\<br>
-&amp; &amp; \mathcal{O}(1) \\<br>
-&amp; = &amp; 8 \cdot \mathcal{O}(1) + C(n-1) \\<br>
-&amp; = &amp; \mathcal{O}(1) + C(n-1) \\<br>
-\end{array}<br>
+<p>$$
+\begin{array}{lcl}
+C(n) &amp; = &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + \\
+&amp;  &amp; \mathcal{O}(1) + C(n-1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1) + \\
+&amp; &amp; \mathcal{O}(1) \\
+&amp; = &amp; 8 \cdot \mathcal{O}(1) + C(n-1) \\
+&amp; = &amp; \mathcal{O}(1) + C(n-1) \\
+\end{array}
 $$</p>
 <p>La complexité est définie par l'équation de récurrence $C(n) = \mathcal{O}(1) + C(n-1)$. Notre condition d'arrêt est obtenue pour <code class="language-">n</code> valant 1 et dans ce cas on a $C(1) = \mathcal{O}(1)$</p>
 <p>Trouver $C(n)$ revient à résoudre :</p>

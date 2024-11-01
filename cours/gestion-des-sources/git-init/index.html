@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/">Gestion des sources</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/gestion-des-sources/git-init/">Installation et configuration de Git</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -113,8 +113,8 @@
               </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -126,8 +126,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On ne montrera pas ici comment utiliser git en ligne de commande.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Installation</h2>
 <h3>Git</h3>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -153,13 +153,13 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://git-scm.com/download/linux">https://git-scm.com/download/linux</a></p>
-</div>
+</div></div>
 </div>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">git</span>
 </code></pre>
-</div>
-</details>     
-</div>
+</details></div>
+     
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -214,8 +214,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>CLI signifie Command Line Interface.</p>
-</div>
-</div>
+</div></div>
+
 <p>Nous ne l'utiliserons pas ici, mais je vous invite à lire <a href="https://cli.github.com/manual/">sa documentation</a>, il permet d'interagir avec github uniquement à la ligne de commande sans cliquer sur aucun bouton, ce qui est plus rapide.</p>
 <h2>Configuration</h2>
 <p>Vous allez travailler sur vos projets git à plusieurs. Il faut pouvoir à tout moment savoir qui a fait quoi sur le projet. Il est donc impératif que vos données personnelles soient à jour.</p>
@@ -226,14 +226,14 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez les commandes</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"Your name here"</span>
 <span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"your_email@example.com"</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h3>Rebase comme fusion</h3>
 <p>On définie tout de suite la stratégie de fusion.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -241,13 +241,13 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> pull.rebase merges
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Ceci nous permettra par défaut :</p>
 <ul>
 <li>de faire un rebase de l'origin sur votre branche locale</li>
@@ -262,13 +262,13 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> init.defaultBranch <span class="token string">"main"</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h3>Éditeur de messages</h3>
 <p>On va mettre vim comme éditeur par défaut pour renseigner les commits.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -276,13 +276,13 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> core.editor <span class="token function">vim</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Vous n'utiliserez que très peu l'éditeur par défaut une fois que vous ferez vos commit avec l'option <code>-m</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -290,8 +290,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pouvez également mettre votre <a href="https://docs.github.com/en/github/using-git/associating-text-editors-with-git">éditeur favori</a> bien sur, mais <code>vim</code> sera toujours présent quelque soit l'endroit où au aurez besoin de faire un commit (genre un serveur distant). Il est donc bien d'avoir quelque notions de vim et de les utiliser de temps en temps, d'où cette configuration.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Configurations optionnelles</h3>
 <p>On met de la couleur dans le terminal par défaut.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -299,26 +299,26 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> color.ui <span class="token boolean">true</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Pour éviter d'avoir un pager lors des <code>git log</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Dans un terminal, tapez la commande</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> config <span class="token parameter variable">--global</span> pager.log <span class="token boolean">false</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Si l'on ne met pas cette option, les logs seront automatiquement passé à <code>more</code> par défaut pour paginer les résultats.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -326,31 +326,31 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>On obtiendrait le même résultat sans utiliser la config ci-dessus en utilisant l'argument de git <code>--no-pager</code>, par exemple :<code>git --no-pager log</code>. Notez que <code>--no-pager</code> est un argument de git, pas de sa commande <code>log</code>, il est donc placé avant celle-ci.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Initialiser un projet pour github</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories">https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Cloner un projet existant</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository">https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository</a></p>
-</div>
-</div>
-<p>le projet existe déjà sur github et je le <em>clone</em> chez moi C'est dans le menu déroulant <code>clone</code> sur la page github du projet. Par exemple pour le <a href="../projet-github-desktop#nouveau-projet" class="interne">projet animaux</a> :<br>
+</div></div>
+
+<p>le projet existe déjà sur github et je le <em>clone</em> chez moi C'est dans le menu déroulant <code>clone</code> sur la page github du projet. Par exemple pour le <a href="../projet-github-desktop#nouveau-projet" class="interne">projet animaux</a> :
 <a href="clone-1.png">cloner un projet</a></p>
 <p>Il existe plusieurs façon de procéder :</p>
 <ul>
@@ -386,8 +386,8 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 </svg>
 <div class="pl-8 mr-8">
 <p>J'ai utilisé le terminal pour le faire, mais vous pouvez très bien utiliser l'explorateur de fichier, à condition d'avoir activé <a href="/cours_informatique/cours_informatique/tutoriels/fichiers-navigation#fichier-cache">la vue des fichiers cachés</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Selon la méthode de clonage utilisé, seule la méthode d'authentification dans le fichier de configuration changera.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -395,8 +395,8 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 </svg>
 <div class="pl-8 mr-8">
 <p>A moins que vous n'ayez une clé ssh, utilisez le clonage utilisant le protocole <code>https</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Clonage https</h4>
 <ol>
 <li>dans un terminal, placez vous dans un dossier où seront rangés vos projets github. Pour mon mac, j'ai choisi <code class="fichier">~/Documents/git-projets/</code></li>
@@ -435,8 +435,8 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <div class="pl-8 mr-8">
 <p>C'est la méthode à privilégier si vous êtes informaticien. C'est à dire que vous allez faire des commits tous les jours et jongler avec les repos de votre projet.</p>
 <p>Sinon, vous pouvez ne pas utiliser cette méthode.</p>
-</div>
-</div>
+</div></div>
+
 <p>MOntrons juste les différences de configuration entre les méthodes précédentes et celle-ci :</p>
 <ul>
 <li>
@@ -470,12 +470,12 @@ drwxr-xr-x  <span class="token number">12</span> fbrucker  staff  <span class="t
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Documentation</strong></p>
 </div><div class="pl-8 mr-8">
 <p><a href="https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line">https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le projet existe en dehors de github et je veux le mettre sur github. Par exemple :</p>
 <ol>
 <li>un dossier <code class="fichier">planètes</code> contenant un fichier <code class="fichier">solaire.txt</code> :</li>
@@ -519,8 +519,8 @@ drwxr-xr-x  <span class="token number">4</span> fbrucker  staff  <span class="to
 </svg>
 <div class="pl-8 mr-8">
 <p>L'item 3 permet que la commande <code>git push</code> soit équivalente à la commande <code>git push origin main</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>A la fin, le fichier de config du projet ressemble à ca :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">fbrucker@so-high git-projets/planètes ±main » <span class="token function">cat</span> .git/config                    
 <span class="token punctuation">[</span>core<span class="token punctuation">]</span>

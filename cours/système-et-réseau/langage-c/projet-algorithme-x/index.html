@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/">C pour le système</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/langage-c/projet-algorithme-x/">Projet : Algorithme X</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -112,20 +112,20 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>formulation ensembliste</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soient $X$ un ensemble fini et $\mathcal{A}$ un ensemble de sous-ensembles de $X$</p>
 <p>Une <em><strong>couverture exacte</strong></em> est un sous-ensemble $\mathcal{A}'$ de $\mathcal{A}$ tel que tout élément de $X$ se retrouve dans <strong>exactement</strong> un ensemble de $\mathcal{A}'$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Notez que l'on ne suppose pas qu'il existe une solution au problème.</p>
 <p>Informatiquement parlant, on préfère une formulation matricielle, utilisant des matrices binaires :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <em><strong>matrice binaire</strong></em> est une matrice à $n$ lignes et $m$ colonnes</p>
@@ -135,19 +135,19 @@ M = (m_{i,j})_{1\leq i \leq n, 1\leq j \leq m}
 $$
 </div>
 <p>dont les éléments sont soient 0 soit 1 : $M[i][j] = m_{i,j} \in \{0, 1\}$ pour toutes ligne $i$ et colonne $j$.</p>
-</div>
-</div>
+</div></div>
+
 <p>On peut alors définir le problème de la couverture exacte matricielle :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>formulation matricielle</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $M$ une matrice binaire à $n$ lignes et $m$ colonnes. Une <em><strong>couverture exacte</strong></em> de $M$ est un ensemble $I$ de lignes tel que pour toute colonne $1 \leq j \leq m$, il existe exactement un élément $i$ de $I$ tel que $m_{i, j} = 1$.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce problème est NP-complet, c'est à dire qu'on ne connaît pas d'autre algorithme que de tester toutes les solutions possible.</p>
 <h2>Génération d'instances</h2>
 <p>Vous allez créez une unité fonctionnelle dont le but est de générer des instances matricielle au problème.</p>
@@ -164,8 +164,8 @@ $$
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_quelconque</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> nombre_ligne<span class="token punctuation">,</span> <span class="token class-name">size_t</span> nombre_colonnes<span class="token punctuation">,</span> <span class="token keyword">double</span> proba<span class="token punctuation">)</span>
 </code></pre>
 <p>La fonction doit générer une matrice binaire avec une proportion de 1 égale à <code class="language-">proba</code>.</p>
-</div>
-</div>
+</div></div>
+
 <p>La fonction ci-dessus génère une matrice binaire, mais il n'est pas sur qu'e;;e possède une couverture exacte. Pour nos tests, il sera important d'avoir des cas particuliers d'instances qui ont ou qui n'ont pas de solutions.</p>
 <h3>Instances sans solution</h3>
 <p>Soit $M$ une matrice binaire carrée à $p=2n+1$ lignes. Si $m_{i, j} = 1$ si et seulement si :</p>
@@ -183,8 +183,8 @@ $$
 <p>Créez une telle fonction. Sa signature doit être :</p>
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_sans_solution</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> p<span class="token punctuation">)</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h3>Instances avec solution</h3>
 <p>Soient $(m_1, \dots, m_k)$ une suite de $k$ entiers strictement positifs  et $M$ une matrice binaire à $n &gt; k$ lignes et $\sum m_j$ colonnes telle que :</p>
 <ul>
@@ -207,8 +207,8 @@ $$
 <pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">matrice_t</span> <span class="token function">instance_solution</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> m<span class="token punctuation">)</span>
 </code></pre>
 <p>Qui crée une matrice carrée $M$ avec les $m_k$ pris aléatoirement entre $1$ et $m$</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -220,8 +220,8 @@ $$
 <li>la fonction <code class="language-">int *aléatoire_01_tab(double proba)</code> pour générer les lignes strictement plus grandes que $k$</li>
 </ul>
 <p>Les deux fonctions ci-dessus vous permettrons de créer la matrice $M$, qu'il vous suffira ensuite de mélanger (vous pourrez implémenter <a href="https://fr.wikipedia.org/wiki/M%C3%A9lange_de_Fisher-Yates">l'algorithme de Fisher-Yates</a> pour trouver une permutation des lignes et/ou des colonnes).</p>
-</div>
-</div>
+</div></div>
+
 <h2>Algorithme</h2>
 <p>On peut utiliser l'algorithme récursif suivant :</p>
 <pre><code>def couverture_exacte(M, lignes_restantes, colonnes_restantes, solution_courante):
@@ -257,8 +257,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Quels paramètre utiliser pour exécuter l'algorithme ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -270,8 +270,8 @@ $$
 <li><code>NULL</code> si la matrice n'admet pas de couverture exacte</li>
 <li>une couverture exacte de $M$ si le retour est non <code>NULL</code></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -280,8 +280,8 @@ $$
 <div class="pl-8 mr-8">
 <p>Implémentez cet algorithme.</p>
 <p>Vous utiliserez les <a href="../exercices/#liste">listes implémentés dans l'exercice</a> pour gérer les paramètres <code class="language-">lignes_restantes</code>, <code class="language-">colonnes_restantes</code> et <code class="language-">solution_courante</code>.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -294,8 +294,8 @@ $$
 <li><code>impossible</code> : qui génère une matrice aléatoire n'ayant pas de solution avec le paramètre, l'affiche, cherche une solution puis affiche le résultat de l'algorithme.</li>
 <li><code>possible</code> : qui génère une matrice aléatoire carrée générique avec le paramètre, l'affiche, cherche une solution puis affiche le résultat de l'algorithme.</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -303,16 +303,16 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>A partir de quelle taille, le temps mis pour résoudre le problème devient trop grand ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Vous pourrez utiliser la commande <a href="https://linuxize.com/post/linux-time-command/"><code>time</code></a> pour mesurer le temps sous unix, ou <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-command?view=powershell-7.4">measure-Command</a> sous windows.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Amélioration</h2>
 <p>Notre algorithme est une variante grossière d'un algorithme de Knuth pour résoudre le problème :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -321,8 +321,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Algorithme_X_de_Knuth">Algorithme X</a></p>
-</div>
-</div>
+</div></div>
+
 <h3>Colonne min</h3>
 <p>L'algorithme de Knuth ne prend pas la première colonne venue, il choisit celle avec le minimum de 1 restant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -332,8 +332,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Codez cette variante et montrez qu'elle est plus rapide pour trouver une solution que l'algorithme originel.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Dancing links</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -341,8 +341,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Cette partie est optionnelle.</p>
-</div>
-</div>
+</div></div>
+
 <p>Knuth utilise des listes doublement chaînées pour accélérer le processus. Comprenez comment il fait et pourquoi cette solution est à la fois efficace et élégante.</p>
 
 

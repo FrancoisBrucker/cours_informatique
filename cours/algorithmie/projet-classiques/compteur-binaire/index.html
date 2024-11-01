@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/compteur-binaire/">Compteur binaire</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,8 +98,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Un entier écrit sous forme binaire peut s'écrire comme une liste $x$ composées de 0 et de 1. Par exemple l'entier 19 s'écrira $[1, 0, 0, 1, 1]$</p>
 <p>On vous demande d'écrire la fonction <code class="language-">succ(n)</code> qui prend en paramètre un entier écrit sous sa forme binaire et qui <strong>le modifie</strong> pour que sa valeur soit l'entier suivant. On supposera que l'on n'augmente pas sa taille et donc que <code class="language-">succ([1, 1, 1, 1])</code> change la liste ne entrée en <code class="language-">[0, 0, 0, 0]</code>.</p>
 <p>Cette fonction permet d'écrire le code suivant :</p>
@@ -114,8 +114,8 @@ succ<span class="token punctuation">(</span>n<span class="token punctuation">)</
 </svg>
 <div class="pl-8 mr-8">
 <p>Les fonctions qui ne rendent rien modifient souvent leurs paramètres.</p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="successeur"></span>L'algorithme</h3>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
@@ -142,7 +142,7 @@ $$
 <p>Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez expérimentalement qu'en moyenne, si l'on appelle successeur $2^N$ fois à partir de $[0] * N$ :</p>
 <ul>
 <li>on a bien cyclé sur tous les éléments</li>
-<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.<br>
+<li>en moyenne le nombre d'itération dans la boucle vaut bien 1.
 Pour cela vous pouvez :</li>
 </ul>
 <ol>

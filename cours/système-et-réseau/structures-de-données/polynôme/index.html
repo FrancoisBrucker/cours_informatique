@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/structures-de-données/">Structure de données</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/structures-de-données/polynôme/">Polynômes</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -123,12 +123,12 @@
 <h2>réponses</h2>
 <p>L'exercice portait sur la structure de <a href="https://fr.wikipedia.org/wiki/Polyn%C3%B4me">polynômes</a>.</p>
 <p>Un polynôme est défini mathématiquement par la fonction :</p>
-<p>$$<br>
-P(x) = \sum_{i=0}^n a_i x^i<br>
+<p>$$
+P(x) = \sum_{i=0}^n a_i x^i
 $$</p>
 <p>Et informatiquement par une liste à $n+1$ éléments.</p>
-<p>$$<br>
-[a_0, \dots, a_n]<br>
+<p>$$
+[a_0, \dots, a_n]
 $$</p>
 <h3>$P(x) + Q(x)$</h3>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -180,7 +180,7 @@ $$</p>
 <p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
 <h2>Méthode de Horner</h2>
 <p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
-<p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.<br>
+<p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 i</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">evaluation</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token builtin">eval</span> <span class="token operator">=</span> P<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>

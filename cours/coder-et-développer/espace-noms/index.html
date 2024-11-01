@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/espace-noms/">Espace de noms</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -110,8 +110,8 @@
 <li>un moyen de stocker des données et de les manipuler (les objets et leurs méthodes)</li>
 <li>un moyen d'y accéder (les variables)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <h3>Objets</h3>
 <p>On y reviendra, mais pour l'instant considérez qu'un objet est une structure de donnée générique permettant de gérer tout ce dont à besoin un programme :</p>
 <ul>
@@ -132,8 +132,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Un variable n'est <strong>PAS</strong> une chaîne de caractères. Une chaîne de caractères est un objet alors qu’une variable est un alias vers un objet.</p>
-</div>
-</div>
+</div></div>
+
 <p>Il est important de comprendre que l’opérateur d’affectation <code class="language-">=</code> n’est pas symétrique. À gauche, des variables et à droite, des objets.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -141,8 +141,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une variable n'est <strong>pas</strong> l'objet, c'est une référence à celui-ci</p>
-</div>
-</div>
+</div></div>
+
 <p>La variable peut être vue comme un <strong>nom</strong> de l'objet à ce moment du programme. Un objet pourra avoir plein de noms différents au cours de l'exécution du programme, voire plusieurs noms en même temps.</p>
 <p>Pour s'y retrouver et avoir une procédure déterministe pour retrouver les objets associés aux variables, voire choisir parmi plusieurs variables de même nom, elles sont regroupées par ensembles — nommés <strong>espaces de noms</strong> — hiérarchiquement ordonnés.</p>
 <h2><span id="espace-noms"></span> Espaces de noms</h2>
@@ -163,8 +163,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour expliciter comment tout ça se passe, on va se concentrer sur le <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">langage python</a>, mais la procédure est similaire pour les autres langages à objets.</p>
-</div>
-</div>
+</div></div>
+
 <p>Lorsque l'on exécute un programme, un premier espace de noms est créé :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -172,8 +172,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Au démarrage d'une exécution d'un programme, l'espace de noms principal, nommé <code class="language-">global</code> est créé. C'est à partir de lui que toutes les variables doivent être atteintes.</p>
-</div>
-</div>
+</div></div>
+
 <p>Au départ, il ne contient rien, à part des noms commençant et finissant par <code class="language-">__</code>, qui sont utilisés par python.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -186,8 +186,8 @@
 <span class="token punctuation">{</span><span class="token string">'__name__'</span><span class="token punctuation">:</span> <span class="token string">'__main__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__package__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__loader__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'_frozen_importlib.BuiltinImporter'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__spec__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__annotations__'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span>module <span class="token string">'builtins'</span> <span class="token punctuation">(</span>built<span class="token operator">-</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">}</span>
 
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>A tout moment de l'exécution d'un programme, un espace de noms pourra être créé. En revanche :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -195,8 +195,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>A tout moment du programme, on pourra créer un nouvel espace de noms : de nombreux espaces de noms pourront être définis, mais il existera toujours <strong>un</strong> espace de noms courant où l'on créera les variables et où on cherchera les noms par défaut.</p>
-</div>
-</div>
+</div></div>
+
 <p>On donnera dans la suite de cette partie des exemples qui permettront de mieux comprendre ce processus.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -204,8 +204,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour voir les noms définis dans l'espace de noms courant, on utilise en python la fonction <code class="language-">locals()</code>.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Noms et variables</h3>
 <p>Prenons plusieurs exemples, qui illustreront les cas principaux.</p>
 <h4>Association objet et noms</h4>
@@ -217,21 +217,21 @@ y <span class="token operator">=</span> <span class="token number">1</span>
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">y</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">y</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-1-3.png" alt="cas-1-3"></li>
 </ol>
 </li>
@@ -245,21 +245,21 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-2-1.png" alt="cas-2-1"></li>
 </ol>
 </li>
@@ -271,8 +271,8 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un espace de noms, chaque nom est différent. Réutiliser le même nom remplace le nom précédent.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le programme a créé <strong>2 objets</strong> (un entier valant 1 et un entier valant 3), mais à la fin de la deuxième ligne du programme, seul l'entier valant 3 a un nom (<code class="language-">x</code>).</p>
 <p>Comme il est maintenant impossible d'accéder à l'entier valant <code class="language-">1</code> : python le détruit.</p>
 <p><img src="cas-2-2.png" alt="cas-2-2"></p>
@@ -282,8 +282,8 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 </svg>
 <div class="pl-8 mr-8">
 <p>Tout objet qui n'est plus référencé par une variable est détruit par un mécanisme appelé <a href="https://fr.wikipedia.org/wiki/Ramasse-miettes_(informatique)">ramasse-miettes</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h4>Un objet peut avoir plusieurs noms</h4>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
 y <span class="token operator">=</span> x
@@ -292,21 +292,21 @@ y <span class="token operator">=</span> x
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code class="language-">global</code>) qui est l'espace courant (en vert sur la figure)
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
 <li>on exécute la première ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on crée un objet de type entier</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-1-2.png" alt="cas-1-2"></li>
 </ol>
 </li>
 <li>on exécute la deuxième ligne. Elle s'exécute ainsi :
 <ol>
 <li>on commence à droite du <code class="language-">=</code> : on cherche le nom <code class="language-">x</code> dans l'espace de noms courant. On le trouve et on lui substitue son objet (un entier valant 1)</li>
-<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.<br>
+<li>on crée le nom <code class="language-">x</code> dans l'espace de noms courant (ici <code class="language-">global</code>) et on lui affecte l'objet.
 <img src="cas-3-1.png" alt="cas-3-1"></li>
 </ol>
 </li>
@@ -318,8 +318,8 @@ y <span class="token operator">=</span> x
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un même espace de noms, un même objet peut être référencé plusieurs fois, sous plusieurs noms différents.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les noms ne sont jamais utilisés en tant que tel. Dès qu'ils sont rencontrés, ils sont immédiatement remplacés par les objets qu'ils référencent.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,8 +327,8 @@ y <span class="token operator">=</span> x
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour exécuter une instruction, on commence <strong>toujours</strong> par remplacer les variables par les objets qu'elles référencent.</p>
-</div>
-</div>
+</div></div>
+
 <p>La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
 y <span class="token operator">=</span> <span class="token number">3</span>
@@ -380,8 +380,8 @@ x<span class="token punctuation">,</span> y <span class="token operator">=</span
 <li>le parent de $F$ devient le nouvel espace de noms courant</li>
 <li>on supprime l'espace de noms $F$</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <h4>Exécution d'une fonction</h4>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
    i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
@@ -394,15 +394,15 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <ol>
 <li>avant l'exécution de la première ligne :
 <ol>
-<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)<br>
+<li>on a un unique espace de noms (<code>global</code>) qui est l'espace courant (en vert sur la figure)
 <img src="cas-1-1.png" alt="cas-1-1"></li>
 </ol>
 </li>
-<li>la ligne 2 définit une fonction de nom <code class="language-">f</code> qui est ajouté à l'espace de noms courant.<br>
+<li>la ligne 2 définit une fonction de nom <code class="language-">f</code> qui est ajouté à l'espace de noms courant.
 <img src="cas-4-1.png" alt="cas-4-1"></li>
 <li>on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
 <ol>
-<li>Cette ligne crée un objet entier (valant 2) et l'affecte au nom <code class="language-">i</code>.<br>
+<li>Cette ligne crée un objet entier (valant 2) et l'affecte au nom <code class="language-">i</code>.
 <img src="cas-4-2.png" alt="cas-4-2"></li>
 </ol>
 </li>
@@ -411,19 +411,19 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <li>on cherche l'objet associé à <code class="language-">i</code> qui sera le (premier) paramètre de la fonction</li>
 <li>on crée un espace de noms qui devient l'espace de noms courant :
 <ol>
-<li>l'ancien espace de noms courant devient son parent<br>
+<li>l'ancien espace de noms courant devient son parent
 <img src="cas-4-3.png" alt="cas-4-3"></li>
 </ol>
 </li>
 <li>on affecte le premier paramètre de <code class="language-">f</code> au nom <code class="language-">x</code> (le nom du premier paramètre de <code class="language-">f</code> lors de sa définition)
 <ol>
-<li>les nouveaux noms sont <strong>toujours</strong> créés dans l'espace de noms courant<br>
+<li>les nouveaux noms sont <strong>toujours</strong> créés dans l'espace de noms courant
 <img src="cas-4-4.png" alt="cas-4-4"></li>
 </ol>
 </li>
 <li>on exécute la ligne 2 qui est la première ligne de la fonction <code class="language-">f</code> :
 <ol>
-<li>on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du <code class="language-">=</code> (notez que le nom <code class="language-">x</code> est bien défini dans l'espace de noms courant) et on l'affecte au nom <code class="language-">i</code> dans l'espace de noms courant<br>
+<li>on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du <code class="language-">=</code> (notez que le nom <code class="language-">x</code> est bien défini dans l'espace de noms courant) et on l'affecte au nom <code class="language-">i</code> dans l'espace de noms courant
 <img src="cas-4-5.png" alt="cas-4-5"></li>
 </ol>
 </li>
@@ -431,7 +431,7 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <ol>
 <li>on crée l'objet résultant de l'opération somme (un entier valant 7)</li>
 <li>la fonction est terminée, son espace de noms courant est détruit</li>
-<li>l'espace de noms courant devient le parent de l'espace de noms détruit<br>
+<li>l'espace de noms courant devient le parent de l'espace de noms détruit
 <img src="cas-4-6.png" alt="cas-4-6"></li>
 <li>on rend l'objet résultat de la fonction</li>
 </ol>
@@ -439,7 +439,7 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <li>la droite du signe <code class="language-">=</code> de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable <code class="language-">x</code> de l'espace de noms courant (qui est à nouveau <code>global</code>)
 <ol>
 <li><img src="cas-4-7.png" alt="cas-4-7"></li>
-<li>les objets sans nom sont détruits<br>
+<li>les objets sans nom sont détruits
 <img src="cas-4-8.png" alt="cas-4-8"></li>
 </ol>
 </li>
@@ -454,8 +454,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
    i <span class="token operator">=</span> C <span class="token operator">*</span> x
    <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
@@ -473,8 +473,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Les variables sont <strong>toujours</strong> créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Import de module</h3>
 <p>Lorsque l'on importe un fichier, un espace de noms est créé et le fichier entier est lu. Lors de sa lecture, les noms définis sont placés dans cet espace.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -483,8 +483,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Les modules possèdent un espace de noms qui contient les variables qui y sont définies</p>
-</div>
-</div>
+</div></div>
+
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
 <span class="token keyword">from</span> math <span class="token keyword">import</span> log
 
@@ -499,8 +499,8 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez que le module <code class="language-">math</code> n'a plus d'espace de noms associé puisque l'on a juste <em>récupéré</em> un nom qui y est défini.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="notation-pointée"></span> Notation pointée</h2>
 <p>En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.</p>
 <p>on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :</p>

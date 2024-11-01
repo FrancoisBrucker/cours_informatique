@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-insertion/">Algorithme du tri par insertion</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -122,12 +122,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La technique <a href="https://en.wikipedia.org/wiki/Sentinel_value">des sentinelles</a> est très pratique, cela vaut le coup de la connaître.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="fonctionnement-insertion"></span> Fonctionnement</h2>
 <p>Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme fonctionne pour :</p>
 <ul>
@@ -142,24 +142,24 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de boucle</strong></p>
 </div><div class="pl-8 mr-8">
 <p>À la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
-</div>
-</div>
+</div></div>
+
 <p>Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle <code class="language-">while</code> de la ligne 5, c'est à dire lui trouver un invariant.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de la boucle <code class="language-">while</code></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Chaque itération de la boucle <code class="language-">while</code> va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :</p>
 <p>A la fin de chaque itération de la boucle <code class="language-">while</code> $T[j] \leq T[j+1]$ si $j &lt;i$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -186,12 +186,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de la boucle <code class="language-">for</code></strong></p>
 </div><div class="pl-8 mr-8">
 <p>A la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -282,9 +282,9 @@ $$
 <li>la <strong>complexité min</strong> est atteinte pour $K=0$, c'est à dire lorsque le tableau est déjà trié, et vaut $\mathcal{O}(n)$</li>
 <li>la <strong>complexité (max)</strong> est atteinte pour $K=n-1$, c'est à dire lorsque le tableau est trié par ordre décroissant, et vaut $\mathcal{O}(n^2)$</li>
 </ul>
-</div>
-</div>
-<p>La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données <em>standard</em>.<br>
+</div></div>
+
+<p>La complexité min est différente de la complexité maximale. On va donc calculer la complexité en moyenne pour connaître la complexité pour des données <em>standard</em>.
 Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle de données : prenons le équiprobable.</p>
 <p>Cela signifie que pour chaque itération $i$ :</p>
 <ul>
@@ -299,12 +299,12 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>De façon intuitive</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si les données sont équiprobables, la boucle while remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -342,8 +342,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>La <strong>complexité en moyenne</strong> de l'algorithme <code class="language-">insertion</code> est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.</p>
-</div>
-</div>
+</div></div>
+
 <p>Le cas le meilleur arrive très rarement par rapport au cas le pire (parmi les $n!$ ordres possibles, il y en a très peu qui sont presque triés).</p>
 <p>Si l'on change le modèle de données et que l'on considère des tableaux <em>presque triées</em>, la complexité en moyenne va être de l'ordre de la complexité minimale, à savoir : $\mathcal{O}(n)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -352,18 +352,18 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>On utilise le tri par insertion lorsque nos données seront presque toujours déjà triées ou très peu en désordre.</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce calcul de complexité nous permet d'utiliser la règle suivante, qui va se révéler très utile :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.<br>
+<p>Soit $A$ un ensemble de $n$ nombres aléatoires, et $x$ un nombre également aléatoire.
 Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyenne $\frac{n}{2}$ éléments de $A$ qui sont plus grand que $x$.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Optimisation</h2>
 <p>Une implémentation courante du tri par insertion est la suivante :</p>
 <pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">insertion</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>

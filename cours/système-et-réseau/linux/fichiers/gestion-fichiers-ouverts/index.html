@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/">Système et réseau</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/">Linux</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/">Fichiers Unix</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/système-et-réseau/linux/fichiers/gestion-fichiers-ouverts/">Gestion des fichiers ouverts</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -111,8 +111,8 @@
 <div class="pl-8 mr-8">
 <p>Les fichiers <code class="fichier">stdin</code>, <code class="fichier">stdout</code> et <code class="fichier">stderr</code>  présent dans <code class="fichier">/dev/</code> sont des liens.</p>
 <p>Vers quoi pointent-ils ?</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -153,8 +153,8 @@
 <li>vérifiez que les 3 FD ne pointent pas vers le même tty</li>
 <li>écrivez dans le stdout de l'un à partir de l'autre.</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>Vous pouvez connaître leurs informations dans le dossier <code>fdinfo</code> :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fdinfo/1
 </code></pre>
@@ -165,8 +165,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=Gr2IbTZdnvI">Commande lsof</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Si vous utilisez la commande <code>lsof -p $$</code> vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">lsof</span> <span class="token parameter variable">-p</span> <span class="token variable">$$</span>
 COMMAND    PID     <span class="token environment constant">USER</span>   FD   TYPE DEVICE SIZE/OFF    NODE NAME
@@ -201,8 +201,8 @@ COMMAND    PID     <span class="token environment constant">USER</span>   FD   T
 <li>trouver son PID avec <code>ps aux | grep less</code></li>
 <li>voir ses fichiers ouverts</li>
 </ol>
-</div>
-</div>
+</div></div>
+
 <p>On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande <a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command"><code>fuser</code></a> :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">fuser</span> <span class="token parameter variable">-v</span> /usr/bin/bash
                      UTIL.       PID ACCÈS  COMMANDE
@@ -237,8 +237,8 @@ Max realtime <span class="token function">timeout</span>      unlimited         
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=rW_NV6rf0rM&amp;list=PLhy9gU5W1fvUND_5mdpbNVHC1WCIaABbP&amp;index=21">FD et FT</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Le noyau maintient à jour une table globale contenant tous les fichiers ouverts par tous les process. Cette table, nommé <em><strong>file table</strong></em> contient :</p>
 <ul>
 <li>le type d'accès au fichier : lecture ou écriture</li>
@@ -269,8 +269,8 @@ Max realtime <span class="token function">timeout</span>      unlimited         
 $ <span class="token function">cat</span> /proc/sys/fs/file-max
 <span class="token number">9223372036854775807</span>
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <h2>Fork</h2>
 <p>Lors de la création de nouveaux process, les files descriptors sont dupliqués :</p>
 <ol>

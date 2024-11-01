@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/">Problèmes et algorithmes de décision</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/décision-problèmes/SAT-NPC/">SAT est un problème NP complet</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -109,8 +109,8 @@
 <li><a href="https://www.youtube.com/watch?v=0LZ39iyLMog">https://www.youtube.com/watch?v=0LZ39iyLMog</a></li>
 <li><a href="https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf">https://www.enseignement.polytechnique.fr/informatique/INF412/uploads/Main/chap12-goodINF412.pdf</a></li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Nous allons prendre comme exemple <a href="../Turing-non-d%C3%A9terministe/#exemple" class="interne">la machine non déterministe exemple</a> $M$ avec comme entrée $E=101$. Le nombre d'opération est linéaire et on peut montrer qu'il n'y aura jamais plus de $\vert E \vert + 1$ opérations.</p>
 <h2>Variables</h2>
 <h3>Ruban</h3>
@@ -379,8 +379,8 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le système de clauses est satisfiable si et seulement si l'entrée est reconnue par la machine !</p>
-</div>
-</div>
+</div></div>
+
 <p>Ce qui donne pour <a href="../Turing-non-d%C3%A9terministe/#exemple" class="interne">la machine non déterministe exemple</a> a uniquement 5 transitions :</p>
 <div>
 $$
@@ -393,12 +393,12 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Théorème</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour problème de décision $D$ de la classe NP il existe une réduction polynomiale telle que $D \leq \text{SAT}$</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -426,13 +426,13 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Les problèmes de décision $d$ de $NP$ tels que SAT ≤ d sont dit <strong><em>NP-complets</em></strong>.</p>
 <p>Les problèmes $p$ qui ne sont pas dans NP et tels que SAT ≤ p sont dit <strong><em>NP-difficiles</em></strong>.</p>
-</div>
-</div>
+</div></div>
+
 <p>Les problèmes NP-complets signifient qu'ils sont universels : les solutions peuvent apparaître partout ; ils n'ont pas de structure qui permettent d'inférer une solution par rapport à une entrée.</p>
 <p>On suppose très fortement qu'il n'existe pas d’algorithme polynomial pour résoudre SAT et donc que P ≠ NP mais toutes les recherches faites en ce sens n'ont pour l'instant pas été couronné de succès. Certains se demandent même si le fait de savoir si P ≠ NP ne serait pas un problème non décidable. Ceci dit, on l'a vu même si P = NP les constantes multiplicatives risquent d'être prohibitive pour avoir une solution acceptable en pratique.</p>
 <p>Pour <a href="../Turing-non-d%C3%A9terministe/#exemple" class="interne">la machine non déterministe exemple</a> il faut ajouter un état non déterministe juste avant l'état <code>STOP</code> pour garantir qu'il existe toujours une exécution prenant 8 instructions et pouvant se terminer sur un <code>1</code>. Comme l'état <code>STOP</code> est atteint depuis <code>STEP</code> ou <code>START</code>, on ajouter une boucle non déterministe de taille 2 :</p>

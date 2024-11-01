@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/">Web</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/">Projet numérologie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/">Projet numérologie / partie 5 maintenance</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/">Projet numérologie : partie 5 / tests unitaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/web/projet-numérologie/partie-5-maintenance/4-tests-unitaires/js-jest/">Projet numérologie : partie 5 / tests unitaires : js</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -155,8 +155,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://jestjs.io/docs/configuration/#testmatch-arraystring">Chemins par défaut des fichiers de tests</a> pour jest.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Utilisation de jest</h2>
 <h3>Fonctionnement</h3>
 <p>Essayons ça en créant un fichier <code class="fichier">__tests__/essais.js</code> :</p>
@@ -184,8 +184,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Changez ensuite le vrai en faux pour voir le test planter.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Import ES6</h2>
 <p>Par défaut, <code>jest</code>ne fonctionne qu'avec les import commonJs de node. <a href="https://jestjs.io/docs/ecmascript-modules">Pour utiliser les modules ES6</a> il faut le préciser à <code>jest</code> avec une variable d'environnement :</p>
 <pre><code>NODE_OPTIONS=--experimental-vm-modules npx jest
@@ -197,8 +197,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le script d'exécution des tests <code class="fichier">package.json</code> pour qu'il puisse utiliser les imports ES6.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Tests</h2>
 <p>Nous allons tester ici les fonctions de <code class="fichier">numérologie.js</code></p>
 <p>Pour l'instant, le fichier numérologie exporte un objet contenant une référence vers la fonction <code class="language-">chiffreAssocie</code>. Exportons les 2 autres fonctions :</p>
@@ -243,8 +243,8 @@
 <li>ça ne prouve pas que les fonctionnalités de votre code sont correctes</li>
 <li>certaines fonctions n'ont pas besoin d'être testées (comme les constantes ou les affichages à l'écran par exemple)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <p>Le code coverage est particulièrement utile pour savoir si on a bien testé ce <em>else</em> d'un <em>if/then/else</em> qui n'arrivent que rarement.</p>
 <p>Il suffit de rajouter <code>--coverage</code>à jest pour qu'il fasse le coverage tout seul : <code>npm test -- --coverage</code> (ou <code>./node_modules/.bin/jest --coverage</code>).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -253,8 +253,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.valentinog.com/blog/jest-coverage/">https://www.valentinog.com/blog/jest-coverage/</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Modifions le test de chiffreAssocie pour s'en convaincre :</p>
 <pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"nombre associé au prénom de plusieurs lettres"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">expect</span><span class="token punctuation">(</span>numérologie<span class="token punctuation">.</span><span class="token function">chiffreAssocie</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
@@ -275,8 +275,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://jestjs.io/docs/mock-functions">https://jestjs.io/docs/mock-functions</a></p>
-</div>
-</div>
+</div></div>
+
 
 
 </article>

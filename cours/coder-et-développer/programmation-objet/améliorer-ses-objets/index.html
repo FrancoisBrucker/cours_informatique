@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/">Programmation Objet</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/programmation-objet/améliorer-ses-objets/">Améliorer ses objets</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -95,7 +95,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 
 <b>Prérequis :</b>
 
@@ -108,8 +108,8 @@
             </li></ul>
       
 
-</div>
-</div>
+</div></div>
+
 
     
   
@@ -140,8 +140,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Notez bien que le premier paramètre de la définition de la classe est <strong>TOUJOURS</strong> self. Le premier paramètre de l'utilisation de la méthode est alors le second dans sa définition.</p>
-</div>
-</div>
+</div></div>
+
 <p>Et il faut modifier la méthode <code class="language-">incrémente(self)</code> pour qu'elle prenne en compte le pas :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -154,12 +154,12 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>On définira <strong>toujours</strong> les différents attributs de l'objet dans le constructeur <code class="language-">__init__</code>.<br>
+<p>On définira <strong>toujours</strong> les différents attributs de l'objet dans le constructeur <code class="language-">__init__</code>.
 On le fera de cette façon :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">self<span class="token punctuation">.</span>nom_attribut <span class="token operator">=</span> valeur_attribut
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Cette façon de faire :</p>
 <ul>
 <li>attributs dans les objets</li>
@@ -172,8 +172,8 @@ On le fera de cette façon :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Lors de l'utilisation d'une méthode, l'objet est passé en premier paramètre, ce qui permet de réutiliser tous ses attributs.</p>
-</div>
-</div>
+</div></div>
+
 <h3>Paramètres par défaut</h3>
 <p>Le souci avec la méthode précédente, c'est que même si le pas est de <code class="language-">1</code>, il faut le définir dans la construction de l'objet. Nous allons changer ça en mettant un <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">paramètre par défaut</a>.</p>
 <p>En python cela donne (fichier <code class="fichier">compteur.py</code>) :</p>
@@ -225,8 +225,8 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <h2><span id="méthodes-spéciales"></span> Méthodes spéciales</h2>
 <p>Python dispose de méthodes spéciales qui peuvent être invoquées en utilisant une syntaxe particulière. On a déjà vu <code class="language-">__init__</code>, mais il y en a d'autres.</p>
 <p>Elles sont rès pratiques car elles permettent d'utiliser nos objets de façon intuitive, comme si on utilisait des objets de python (affichage à l'écran, comparaison, exécution comme une fonction, ...).</p>
-<p>Vous en trouverez une liste<br>
-exhaustive dans la <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">documentation officielle</a>. Nous allons<br>
+<p>Vous en trouverez une liste
+exhaustive dans la <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names">documentation officielle</a>. Nous allons
 en utiliser ici quelques-unes sur notre classe. Ces méthodes se présentent toujours sous la forme <code class="language-">__nom_de_la_méthode__</code></p>
 <h3><span id="représentation"></span>Représentation</h3>
 <p>Essayez de taper dans le fichier <code class="fichier">main.py</code> :</p>
@@ -260,8 +260,8 @@ c2 <span class="token operator">=</span> Compteur<span class="token punctuation"
 <p>Si on teste ça avec votre code tel qu'il est, on obtiendra :</p>
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">TypeError: '<' not supported between instances of 'Compteur' and 'Compteur'
 </code></pre>
-<p>Python vous explique qu'il ne connaît pas l'opérateur <code class="language-">&lt;</code> pour les objets de notre classe. Pour pouvoir utiliser<br>
-directement les opérateurs <code class="language-">&lt;</code> et <code class="language-">&gt;</code>, il faut définir respectivement les méthodes <code class="language-">__lt__(self, other)</code> (<em>lower than</em>) et<br>
+<p>Python vous explique qu'il ne connaît pas l'opérateur <code class="language-">&lt;</code> pour les objets de notre classe. Pour pouvoir utiliser
+directement les opérateurs <code class="language-">&lt;</code> et <code class="language-">&gt;</code>, il faut définir respectivement les méthodes <code class="language-">__lt__(self, other)</code> (<em>lower than</em>) et
 <code class="language-">__gt__(self, other)</code> (<em>greater than</em>). On pourra aussi ajouter <code class="language-">__eq__(self, other)</code> pour tester l'égalité.</p>
 <p>Par exemple pour ajouter la comparaison <em>strictement plus petit que</em>, on ajoute la méthode :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span>
@@ -276,8 +276,8 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut maintenant comparer 2 compteurs, ou un compteur à toute autre objet qui possède l'attribut valeur.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -290,16 +290,16 @@ directement les opérateurs <code class="language-">&lt;</code> et <code class="
 <li>égal</li>
 </ul>
 <p>Au compteur.</p>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Les différents opérateurs de comparaison que l'on peut ajouter à nos objets sont décrits <a href="https://docs.python.org/fr/3/reference/datamodel.html#object.__lt__">dans la documentation</a>.</p>
-</div>
-</div>
+</div></div>
+
 <h2><span id="code-final"></span> Code</h2>
 <p>Les deux fichiers sont dans le même dossier <code class="fichier">compteur/</code> qui fait office de projet vscode.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>

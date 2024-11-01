@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-SAT/">Problème SAT</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -103,7 +103,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soient $x_1, \dots, x_n$, $n$ variables binaires. On définit :</p>
@@ -112,24 +112,24 @@
 <li>une <strong><em>clause</em></strong> comme étant une disjonction de littéraux $c = l_1 \lor \dots \lor l_k$ (avec $l_1, \dots l_k$ littéraux)</li>
 <li>une <strong><em>conjonction de clauses</em></strong> comme étant $c = c_1 \land \dots \land c_m$ (avec $c_1, \dots c_m$ des clauses)</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">nom: SAT
 entrée : f une conjonction de clauses sur les variables x[1] à x[n]
 Question: existe-t-il une assignation de x[1] à x[n] tel que f soit égale à 1 ?
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>Le problème <code>SAT</code> cherche à savoir s'il existe des valeurs pour lesquelles $f$ est vraie. Si telle est le cas, la conjonction de clause est dite <strong><em>satisfiable</em></strong>.</p>
 <blockquote>
-<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).<br>
+<p>TBD dire que si on a une solution potentielle alors facile de savoir si vrai solution (donner algo) mais que trouver l'algo on ne sait pas trop à part essayer toutes les solution (donner nb de solutions).
 TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</p>
 </blockquote>
 <blockquote>
@@ -149,8 +149,8 @@ TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=v2uW258qIsM">Transformation de Tseitin</a></p>
-</div>
-</div>
+</div></div>
+
 <p>Évite l'exponentialité si on utilise <a href="https://fr.wikipedia.org/wiki/Forme_normale_conjonctive#Conversion_lin%C3%A9aire_%C3%A9quisatisfiable">que la distributivité</a> pour convertir les formules.</p>
 <h3>Exemple du sudoku</h3>
 <blockquote>
@@ -165,8 +165,8 @@ TBD Résolution basique énumération en $2^n$ vrai/faux pour chaque variable.</
 </svg>
 <div class="pl-8 mr-8">
 <p><a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_3-SAT#Description">Exemple de Wikipédia</a></p>
-</div>
-</div>
+</div></div>
+
 <div>
 $$
 (x_1 \lor x_2 \lor x_3) \land (\overline{x_1} \lor x_2 \lor x_4) \land (\overline{x_1} \lor x_2 \lor \overline{x_5})\land (\overline{x_3} \lor x_4 \lor x_5)
@@ -268,7 +268,7 @@ $$
 <h2>2-SAT</h2>
 <blockquote>
 <p>Réduction ne fonctionne pas. Autre problème</p>
-<p>Algo poly par limited backtracking : <a href="https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking">https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking</a><br>
+<p>Algo poly par limited backtracking : <a href="https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking">https://en.wikipedia.org/wiki/2-satisfiability#Limited_backtracking</a>
 limited backatracking car chaque cas est indépendant donc si on doit rbacktracker impossible.</p>
 </blockquote>
 <blockquote>

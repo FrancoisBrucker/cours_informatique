@@ -85,8 +85,8 @@
 
 <a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/">Problème du tri</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/problème-tris/algorithme-fusion/">Algorithme de tri fusion</a>
 
-</div>
-</div>
+</div></div>
+
 
 
     
@@ -98,7 +98,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un algorithme de la forme <em><strong>diviser pour régner</strong></em> fonctionne en deux parties :</p>
@@ -116,8 +116,8 @@
 
     rendre solution
 </code></pre>
-</div>
-</div>
+</div></div>
+
 <p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'<code class="language-">algorithme</code> également.</p>
 <h2>Combiner</h2>
 <p>Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on tri, le but de la fonction <code class="language-">combiner</code> est de créer un tableau trié à partir de tableaux <strong>triés</strong>.</p>
@@ -158,12 +158,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de boucle</strong></p>
 </div><div class="pl-8 mr-8">
 <p>À la fin de chaque itération, <code class="language-">T[:i1 +i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
-</div>
-</div>
+</div></div>
+
 <h3><span id="complexités-colle"></span> Complexités</h3>
 <p>Allons un peu plus vite :</p>
 <ul>
@@ -174,12 +174,12 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité max et min de <code class="language-">colle</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-">T1</code> et <code class="language-">T2</code> respectivement.</p>
-</div>
-</div>
+</div></div>
+
 <h2>Pseudo-code</h2>
 <p>Avec notre fonction <code class="language-">combiner(T1, T2)</code> le pseudo code de l'algorithme fusion est :</p>
 <pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
@@ -216,7 +216,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Forme O <a href="https://fr.wikipedia.org/wiki/Master_theorem">du master theorem</a></strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une complexité de la forme :</p>
@@ -231,8 +231,8 @@ $$
 <li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
 <li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
 </ul>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
@@ -307,19 +307,19 @@ $$
 </svg>
 <div class="pl-8 mr-8">
 <p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
-</div>
-</div>
+</div></div>
+
 <p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8  mb-2 mr-8">
+<div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est $\mathcal{O}(n\ln(n))$ où $n$ est la taille de la liste en entrée</p>
-</div>
-</div>
+</div></div>
+
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
 <summary class="list-none py-0.5">
