@@ -6,8 +6,10 @@
 
     <title>Analyse de données</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.css" rel="stylesheet">
+    
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
     <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
@@ -131,9 +133,22 @@
 
 
       <ul>
-            <li>
-              <a href="/cours_informatique/cours/utiliser-python/">/cours/utiliser-python/</a>
-            </li></ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-python/">Bases du langage python</a>
+              </li>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/tutoriels/matplotlib/">Introduction à &lt;https://matplotlib.org&gt;</a>
+              </li>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/terminal/">Terminal</a>
+              </li>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/terminal-utilisation/">Utiliser le terminal</a>
+              </li></ul>
       
 
 </div></div>
@@ -143,12 +158,61 @@
   
 
   <p>Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse <em>classique</em> de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.</p>
-<p>Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec anaconda, vscode ou autre)</p>
+<h2>Rappel</h2>
+<p>Il est important que vous ayez compris les bases sur lesquels nous allons coder nos analyses. Ce n'est pas un cours de code, mais comprendre ce que l'on fait vous permettra de créer des analyses plus fines.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vérifiez que vous avez bien les prérequis en les relisant.</p>
+</div></div>
+
+<p>En particulier on suppose que :</p>
+<ol>
+<li>vous savez ce qu'est un interpréteur python et comment lui ajouter des modules</li>
+<li>vous savez utiliser soit jupyterlab soit vscode</li>
+</ol>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/" class="interne">le cours de développement</a></p>
+</div></div>
+
+<h2>Installation des modules pythons</h2>
+<p>Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> jupyterlab
 </code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement ajouter le paramètre <code>--break-system-packages</code>.</p>
+</div></div>
+
 <p>Puis :</p>
 <pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> jupyter lab
 </code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement commencer par construire jupyterlab : <code>python -m jupyter lab build</code>.</p>
+</div></div>
+
+<p>Vous aurez besoin d'installer :</p>
+<ul>
+<li><a href="https://pandas.pydata.org/">pandas</a> : <code>python -m pip install pandas</code></li>
+<li><a href="https://seaborn.pydata.org/">seaborn</a> : <code>python -m pip install seaborn</code></li>
+<li><a href="https://scikit-learn.org/stable/">scikit-learn</a> : <code>python -m pip install scikit-learn</code></li>
+</ul>
+<blockquote>
+<p>TBD : <code>scikit-learn</code> et <code>statsmodels</code>. Autre truc ?</p>
+</blockquote>
 <h2>Méthodes d'analyse des données</h2>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -158,14 +222,6 @@
 <p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse">cette adresse</a></p>
 </div></div>
 
-<p>Vous aurez besoin d'installer :</p>
-<ul>
-<li><a href="https://pandas.pydata.org/">pandas</a> : <code>python -m pip install pandas</code></li>
-<li><a href="https://seaborn.pydata.org/">seaborn</a> : <code>python -m pip install seaborn</code></li>
-</ul>
-<blockquote>
-<p>TBD : <code>scikit-learn</code> et <code>statsmodels</code>. Autre truc ?</p>
-</blockquote>
 <h3><span id="pandas"></span>Utilisation de pandas</h3>
 <blockquote>
 <p>TBD : tuto jupyterlab</p>
@@ -511,7 +567,7 @@
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
-            Cours d'informatique à l'école centrale Marseille
+            Cours d'informatique de François Brucker
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">

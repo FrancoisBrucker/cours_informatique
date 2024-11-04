@@ -6,8 +6,10 @@
 
     <title>Graphes parfaits</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.css" rel="stylesheet">
+    
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
 
     <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
@@ -92,8 +94,46 @@
     
   
 
-  <blockquote>
-<p>TBD</p>
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=C4Zr4cOVm9g">Graphes parfait avec Maria Chudnovsky</a></p>
+</div></div>
+
+<ul>
+<li><a href="../structure/#definition-notation-clique-stable-maximum" class="interne">$\omega(G)$</a></li>
+<li><a href="../colorabilit%C3%A9/#definition-notation-coloration-minimum" class="interne">$\chi(G)$</a></li>
+</ul>
+<blockquote>
+<p>TBD def</p>
+<p>TBD différence non bornée : <a href="https://perso.ens-lyon.fr/edouard.bonnet/publi/tree-zykov.pdf">https://perso.ens-lyon.fr/edouard.bonnet/publi/tree-zykov.pdf</a> et <a href="https://math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf">https://math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf</a>
+TBD dessins de quelques graphes parfait</p>
+<p>NP complet en general mais poly en perfect graphs : <a href="https://www.graphclasses.org/classes/gc_56.html">https://www.graphclasses.org/classes/gc_56.html</a> et <a href="https://en.wikipedia.org/wiki/Perfect_graph#Algorithms">https://en.wikipedia.org/wiki/Perfect_graph#Algorithms</a></p>
+</blockquote>
+<p>On en connaît déjà :</p>
+<ul>
+<li>graphes biparti (donc les arbres)</li>
+<li>line graphs</li>
+</ul>
+<p>Et il y en a plein d'autres :</p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Graphe_cordal">graphes cordées</a> (<a href="https://math.stackexchange.com/questions/4045122/why-are-chordal-graphs-always-perfect-graphs">https://math.stackexchange.com/questions/4045122/why-are-chordal-graphs-always-perfect-graphs</a>), donc aussi <a href="https://fr.wikipedia.org/wiki/Graphe_d%27intervalles">les graphes d'intervalles</a></li>
+<li><a href="https://fr.wikipedia.org/wiki/Graphe_de_comparabilit%C3%A9">graphes de comparabilités</a></li>
+<li>...</li>
+</ul>
+<blockquote>
+<p>TBD exo : Threshold graphs are perfect : <a href="https://en.wikipedia.org/wiki/Threshold_graph">https://en.wikipedia.org/wiki/Threshold_graph</a></p>
+</blockquote>
+<p><a href="https://annals.math.princeton.edu/wp-content/uploads/annals-v164-n1-p02.pdf">Strong Perfect Graph Theorem (179 pages sans un seul dessin)</a></p>
+<p>Le théorème fort des graphes parfait permet de faire des algorithmes de reconnaissance polynomiaux : <a href="https://algorithms.leeds.ac.uk/wp-content/uploads/sites/117/2017/09/FOCS03final.pdf">https://algorithms.leeds.ac.uk/wp-content/uploads/sites/117/2017/09/FOCS03final.pdf</a></p>
+<p>On va montrer ici un théorème plus simple :</p>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=Koc63QhxPgk">Weak Perfect Graph Theorem</a></p>
+</blockquote>
+<blockquote>
+<p>tbd le line graph d'un graphe biparti est parfait.</p>
 </blockquote>
 
 
@@ -104,7 +144,7 @@
       <div class="max-w-[1200px] mx-auto px-4 relative">
         <div class="min-h-[50px] flex justify-center items-center">
           <p>
-            Cours d'informatique à l'école centrale Marseille
+            Cours d'informatique de François Brucker
           </p>
         </div>
         <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
