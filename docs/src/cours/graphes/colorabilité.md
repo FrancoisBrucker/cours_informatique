@@ -19,8 +19,6 @@ Enfin, ces deux types de colorations ont des applications pratiques nombreuses e
 - comment organiser un plan de table ou résoudre un sudoku pour la coloration des sommets (voir par exemple [cette video](https://www.youtube.com/watch?v=y4RAYQjKb5Y))
 - comment organiser un tournoi sportif pour la coloration des arêtes (via l'algorithme de [round robin scheduling](https://nrich.maths.org/articles/tournament-scheduling). On verra plus tard que c'est optimal)
 
-> TBD lien sur vertex/edge et planar : <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>
-
 ## Coloration des sommets
 
 Certainement la plus populaires des colorations de graphe.
@@ -61,6 +59,8 @@ Montrer que :
 
 {% enddetails %}
 
+Le nombre chromatique est lié aux cliques :
+
 {% exercice %}
 Montrer que :
 
@@ -71,6 +71,22 @@ Montrer que :
 > TBD
 
 {% enddetails %}
+
+On peut facilement prouver une première proposition :
+
+{% note "**Définition**" %}
+Pour tout graphe $G = (V, E)$, on a :
+
+<div>
+$$
+\omega(G) \leq \chi(G) \neq \vert V \vert
+$$
+</div>
+{% endnote %}
+
+Les inégalités peuvent être strictes, comme pour les cycles de longueur impair par exemple. Ou encore en prenant les [graphe de Mycielski](https://fr.wikipedia.org/wiki/Graphe_de_Mycielski) qui sont sans triangles mais dont le nombre chromatique peut être aussi grand que l'on veut.
+
+> TBD faire la preuve de <https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf>. Dire qu'il en existe d'autres.
 
 Le lecteur attentif aura remarqué que la notion de colorabilité est équivalente à la notion [de graphes $k$-parti](../graphe-biparti/#k-parti){.interne} :
 
@@ -115,28 +131,119 @@ La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c
 ### Heuristique gloutonne
 
 {% lien %}
-[Algorithme glouton en action](https://www.youtube.com/watch?v=L2csXWQMsNg)
+
+- [Algorithme glouton](https://fr.wikipedia.org/wiki/Coloration_gloutonne)
+- [Algorithme glouton en action](https://www.youtube.com/watch?v=L2csXWQMsNg)
+
 {% endlien %}
 
-> tbd glouton + améliorations en classant par ordre décroissant et en utilisant [dsatur](https://en.wikipedia.org/wiki/DSatur)
+> TBD cours papier :  glouton + améliorations en classant par ordre décroissant (nb couleur dépend uniquement du nombre de voisins déjà placées).
 >
+> TBD parler de [dsatur](https://en.wikipedia.org/wiki/DSatur)
 
 ### Majorations de la colorabilité
 
-tbd permet de déduire des bornes !
+L'algorithme glouton permet immédiatement de dire :
 
-> tbd glouton amélioré. Pas fait en pratique car compliqué alors glouton doit être simple.
->
-> TBD entre clique et degré. Montrer que pas égal.
+{% note "**Proposition**" %}
+Pour tout graphe $G$ on a :
+
+<div>
+$$
+\chi(G) \leq \Delta(G) +1
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+On a vu que chaque couleur associée dépendait du nombre de voisins déjà placés. On a alors pour un ordonnancement des sommets $v_1, \dots v_n$ :
+
+<div>
+$$
+\chi(G) \leq \max(\{ \min(\{\delta(v_i), i-1\}) \vert 1\leq i \leq n\}) + 1
+$$
+</div>
+
+ce qui donne immédiatement la borne voulue.
+
+{% enddetails %}
+
+Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois :
+
+{% note "**Proposition (Brooks, 1941)**" %}
+Pour tout graphe $G$ qui n'est pas un graphe complets ni un cycle impair on a :
+
+<div>
+$$
+\chi(G) \leq \Delta(G)
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+Il existe ne nombreuses preuves de cette proposition, nous en présentons une qui utilise ici un ordonnancement astucieux de l'algorithme glouton.
+
+La preuve est construite en examinant plusieurs cas :
+
+**Premier cas :** Il existe $x^\star$ tel que $\delta(x^\star) < \Delta(G)$.
+
+On ordonne alors les $n$ sommets du graphe de telle sorte que $^\star = v_n$ et on ordonne en suivant l'algorithme :
+
+```python
+k = n
+i = n-1
+
+tant que i > 0:
+  si k > i et qu'il existe un voisin x de vk non encore placé alors:
+    vi = x
+    i = i- 1
+  sinon:
+    k = -1 
+```
+
+Si le graphe est connexe, il est clair que cet ordre va placer tous les sommets par ordre décroissant en commençant par tous les voisins de $x_n$, puis tous les voisins de $x_{n-1}$ non encore placés, et ainsi de suite jusqu'à avoir placé tout le monde.
+
+Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister $j > i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un no,bre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).
+
+**Second cas :** le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.
+
+En supprimant $x^\star$ de $G$ il y aura $p>1$ composantes connexes $G_i = (v_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $X_i \cup \\{x^\star\\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.
+
+**Troisième cas :** le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$.
+
+Il existe alors $u$ et $v$ et $w$ trois sommets de $G$ tels que :
+
+- $vw$ n'est pas une arête de $G$,
+- $uv$ et $uw$ sont deux arêtes de $G$,
+- supprimer $v$ et $w$ de $G$ ne le déconnecte pas.
+
+On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ et trouver les autres éléments en utilisant l'algorithme du cas 1.
+
+L'existence de ces trois sommets est garantie car :
+
+1. comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête
+2. comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
+   - $y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,
+   - $z$ comme étant le sommet juste après $y'$ sur ce chemin.
+3. On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.
+
+Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :
+
+- $G$ privé de $x_1$ et $x_2$ est connexe
+- $xx_1$ et $xx_2$ sont des arêtes de $G$.
+
+Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.
+
+{% enddetails %}
 
 ### Colorabilité et isomorphisme de graphe
 
-> test heuristique d'isomorphisme de graphe <https://en.wikipedia.org/wiki/Colour_refinement_algorithm> et <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
+> TBD test heuristique d'isomorphisme de graphe <https://en.wikipedia.org/wiki/Colour_refinement_algorithm> et <https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test>
 
 ## Coloration des arêtes
 
 {% note "**Définition**" %}
-Soit $G=(V, E)$ un graphe. Une **_$k$-coloration des arêtes_** $G$ est une fonction $c: E \to \\{1,\dots, k\\}$ telle que pour triplet de sommets $x \neq y \nea z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.
+Soit $G=(V, E)$ un graphe. Une **_$k$-coloration des arêtes_** $G$ est une fonction $c: E \to \\{1,\dots, k\\}$ telle que pour triplet de sommets $x \neq y \neq z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.
 {% endnote %}
 
 > TBD exemples :
@@ -157,14 +264,45 @@ Soit $G=(V, E)$ un graphe. On note $\chi'(G)$ le nombre minimum de couleurs qu'i
 
 {% endnote %}
 
-Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$.
+Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion [de couplage](../couplages) : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui donne immédiatement une borne minimum à notre problème :
 
-> TBD : Pour nous ok. Au moins n-1 et la construction du début fonctionne.
+{% note "**Proposition**" %}
+Pour tout graphe $G$ on a :
 
-> - cas particulier du Théorème de Baranyai: <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+<div>
+$$
+\Delta(G)\leq \chi'(G)
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
 
+clair
 
-> NP-complet. Sketch of proof là : <<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>>
+{% enddetails %}
+
+On a montré en introduction que l'on peut le faire en $n-1$ couplages de $n/2$ arêtes pour $K_n$ on a donc :
+
+{% note "**Proposition**" %}
+<div>
+$$
+\chi'(K_n) = n-1
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
+On utilise un algorithme en [tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes) comme on l'a fait en introduction.
+
+{% enddetails %}
+{% note %}
+cas particulier du [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem).
+
+> TBD <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+
+{% endnote %}
+
+> TBD NP-complet. Sketch of proof là : <<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>>
 
 ### Lien avec la colorabilité des sommets
 
@@ -184,7 +322,21 @@ Via le [line graph](https://en.wikipedia.org/wiki/Line_graph).
 
 ### Bornes la colorabilité des arêtes
 
+{% note "**Proposition (Vizing, 1964)**" %}
+Pour tout graphe $G$ on a :
+
+<div>
+$$
+\Delta(G) \chi'(G) \leq \Delta(G) +1
+$$
+</div>
+{% endnote %}
+{% details "preuve", "open" %}
+
 > TBD preuve théorème de Vizings plus d'autres trucs : <https://math.uchicago.edu/~may/REU2015/REUPapers/Green.pdf>
+
+{% enddetails %}
+
 
 [Vizing's Theorem](https://www.youtube.com/watch?v=OZWZpQmGp0g)
 
