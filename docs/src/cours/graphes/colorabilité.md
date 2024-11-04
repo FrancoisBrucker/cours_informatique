@@ -295,18 +295,20 @@ $$
 On utilise un algorithme en [tournoi toutes rondes](https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes) comme on l'a fait en introduction.
 
 {% enddetails %}
-{% note %}
+{% info %}
 cas particulier du [Théorème de Baranyai](https://en.wikipedia.org/wiki/Baranyai%27s_theorem).
 
-> TBD <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
+> TBD en DM. C'est ds flots. <https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem> et p20 <http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf>
 
-{% endnote %}
+{% endinfo %}
 
 > TBD NP-complet. Sketch of proof là : <<https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf>>
 
 ### Lien avec la colorabilité des sommets
 
 Via le [line graph](https://en.wikipedia.org/wiki/Line_graph).
+
+> TBD en faire un DM. C'est des jolis preuve d'isomorphisme qui fonctionnent.
 
 - line graph edge veterx coloring <=>  edge coloring. Mais tout n'est pas un line graph (demo par comfiguration exclue) <https://www.labri.fr/perso/mbonamy/917U/3-Edge-Colouring.pdf>
 > preuve par sous graphe exclus : <https://core.ac.uk/download/pdf/82132835.pdf>
