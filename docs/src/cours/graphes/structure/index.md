@@ -244,6 +244,20 @@ Pour un graphe à $n$ sommet, le degré de tout sommet est entre 0 et $n-1$, soi
 
 {% enddetails %}
 
+Enfin :
+
+<span id="degré-max-min-graphe"></span>
+{% note "**Définitions**" %}
+Si $G=(V, E)$  est un graphe, on note :
+
+- $\Delta(G) = \max(\\{\delta(x) \vert x \in V\\})$
+- $\delta(G) = \min(\\{\delta(x) \vert x \in V\\})$
+
+{% endnote %}
+
+<span id="graphe-régulier"></span>
+Un graphe $G$ est dit **k-_régulier_** (ou parfois juste **_régulier_**) si $\Delta(G) = \delta(G) = k$.
+
 ## Voisinages et arêtes
 
 Nous allons présenter une première relation fondamentale pour les graphes. Cette propriété va lier une notion locale : les voisinages de sommets, à une notion globale : le nombre d'arêtes du graphe.
@@ -331,8 +345,8 @@ Soit $G = (V, E)$ un (multi-)graphe (non) orienté.
 
 - si $V' \subsetneq V$, $\left.G\right|_{V'} = (V', V' \times V' \cap E)$ est un **sous-graphe de $G$ induit par $V'$**.
 - si $E' \subsetneq E$, $\left.G\right|_{E'} = (V, E')$ est un **graphe partiel de $G$ induit par $V'$**.
-- si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
-  {% endnote %}
+
+{% endnote %}
 
 Et si on a besoin de supprimer les deux :
 
@@ -340,7 +354,7 @@ Et si on a besoin de supprimer les deux :
 Soit $G = (V, E)$ un (multi-)graphe (non) orienté. Si $V' \subsetneq V$ et $E' \subsetneq E$ $\left.G\right|_{(V', E')} = (V', V' \times V' \cap E')$ est un **sous-graphe partiel de $G$ induit par $V'$ et $E'$**.
 {% endnote %}
 
-### Composition de graphes
+### <span id="composition-graphes"></span>Composition de graphes
 
 Coller plusieurs graphes ensemble pour en former un plus gros peut se faire de multiples façons. Nous allons en montrer trois, classiques, mais il doit en exister bien d'autres.
 
@@ -414,6 +428,9 @@ Le graphe suivant est le produit cartésien de deux graphes, lesquels ?
 {% endexercice %}
 {% details "**Solution**" %}
 ![g carré g solution](./quel_carré_solution.png)
+
+> TBD montrer comment le prouve. On commence par un triangle qu'on note (1, 1), (2, 1) et (3, 1) puis on propage pour voir comment on peut associer un label à chaque sommet.
+
 {% enddetails %}
 
 ## Graphes dérivés
@@ -462,6 +479,7 @@ Une **_clique_** $C$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe 
 Un **_stable_** est l'opposé :
 
 <span id="definition-stable"></span>
+
 {% note "**Définitions**" %}
 Une **_stable_** $S$ d'un graphe $G=(V, E)$ est un ensemble de sommet de graphe tel que quelque soient $x \neq y \in S$, $xy \notin E$.
 {% endnote %}
@@ -474,16 +492,25 @@ Dans le graphe suivant, les ensembles rouges et verts sont des cliques, mais seu
 
 On appelle **_clique maximum_** (_resp._ **_stable maximum_**) une clique maximale (_resp._ **_stable maximal_**) maximum pour l'inclusion (il n'en existe pas de plus grande).
 
+<span id="definition-notation-clique-stable-maximum"></span>
+{% note "**Définitions**" %}
+Soit $G$ iun graphe. On note :
+
+- $\omega(G)$ la taille de ses cliques maximum
+- $\alpha(G)$ la taille de ses stables maximum
+
+{% endnote %}
+
 Notez que pour l'exemple précédent, l'ensemble de sommets rouges n'est pas une clique maximum.
 
 {% exercice %}
-Montrez que pour le graphe précédent, la taille maximum de la clique est 4.
+Montrez que pour le graphe $G$ précédent, $\omega(G) = 4$.
 {% endexercice %}
 {% details "corrigé" %}
 Pour ce genre de preuves, il faut procéder en deux temps :
 
 1. exhiber une clique de taille 4
-2. montrer que tout ensemble de 5 sommet n'est pas une clique.
+2. montrer que tout ensemble de 5 sommets n'est pas une clique.
 
 Le sous ensemble des sommets bleus suivant est une clique :
 

@@ -197,7 +197,7 @@ Si le graphe biparti complet $K_{p, p}$ est composé des stables $\\{x_1,\dots x
 
 {% enddetails %}
 
-### Graphes $k$-partis
+### <span id="k-parti"></span>Graphes $k$-partis
 
 Une généralisation possible des graphes biparti est d'augmenter le nombre de stables :
 
@@ -222,7 +222,7 @@ On remarque que $k$ fait parti du problème, ce n'est pas une entrée. Il existe
 
 {% note "**Proposition**" %}
 
-Le problème de la reconnaissance d'un graphe $k$-parti est dans NP plur tout $k\geq 1$
+Le problème de la reconnaissance d'un graphe $k$-parti est dans NP pour tout $k\geq 1$
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -247,6 +247,7 @@ Soit $G=(V, E)$ dont on cherche à savoir s'il est $k$-parti. Soit alors $G'=(V 
 
 Pour terminer, il nous reste à montrer que `Rec-3-parti` est NP-complet :
 
+<span id="Rec-3-parti-NPC"></span>
 {% note "**Proposition**" %}
 
 Le problème de la reconnaissance d'un graphe $3$-parti est NP-complet.

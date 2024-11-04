@@ -1,5 +1,6 @@
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
+
 import setupMarkdown from './config/markdown/index.js';
 import assetsConfig from "./config/assets.js";
 import filtersConfig from "./config/filters.js";
@@ -15,7 +16,7 @@ export default function(eleventyConfig) {
   assetsConfig(eleventyConfig);
   setupMarkdown(eleventyConfig);
   filtersConfig(eleventyConfig);
-  
+
   postCompilation(eleventyConfig); // tailwind
 
   return {

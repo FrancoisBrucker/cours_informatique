@@ -9,7 +9,10 @@ resume: "Cours d'analyse des données. Il comporte deux parties, l'une consacré
 
 eleventyNavigation:
   prerequis:
-    - "/cours/utiliser-python/"
+    - "/cours/coder-et-développer/bases-python/"
+    - "/tutoriels/matplotlib/"
+    - "/cours/coder-et-développer/ordinateur-développement/terminal/"
+    - "/cours/coder-et-développer/ordinateur-développement/terminal-utilisation/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -20,11 +23,35 @@ eleventyComputed:
 
 Cours d'analyse des données. Il comporte deux parties, l'une consacrée à l'analyse _classique_ de données décrites par des attributs réels et l'autre consacrée à la visualisation de données.
 
-Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec anaconda, vscode ou autre)
+## Rappel
+
+Il est important que vous ayez compris les bases sur lesquels nous allons coder nos analyses. Ce n'est pas un cours de code, mais comprendre ce que l'on fait vous permettra de créer des analyses plus fines.
+
+{% attention %}
+Vérifiez que vous avez bien les prérequis en les relisant.
+{% endattention %}
+
+En particulier on suppose que :
+
+1. vous savez ce qu'est un interpréteur python et comment lui ajouter des modules
+2. vous savez utiliser soit jupyterlab soit vscode
+
+{% info %}
+Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans [le cours de développement](/cours/coder-et-développer/){.interne}
+
+{% endinfo %}
+
+## Installation des modules pythons
+
+Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)
 
 ```shell
 python -m pip install jupyterlab
 ```
+
+{% info %}
+Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement ajouter le paramètre `--break-system-packages`.
+{% endinfo %}
 
 Puis :
 
@@ -32,18 +59,23 @@ Puis :
 python -m jupyter lab
 ```
 
-## Méthodes d'analyse des données
-
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
+Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), il vous faudra sûrement commencer par construire jupyterlab : `python -m jupyter lab build`.
 {% endinfo %}
 
 Vous aurez besoin d'installer :
 
 - [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
 - [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
+- [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
 
 > TBD : `scikit-learn` et `statsmodels`. Autre truc ?
+
+## Méthodes d'analyse des données
+
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
+{% endinfo %}
 
 ### <span id="pandas"></span>Utilisation de pandas
 

@@ -10,6 +10,7 @@ eleventyComputed:
 ---
 
 > TBD <https://www.youtube.com/watch?v=DiXMoBMWMmA>
+> TBD <https://www.youtube.com/watch?v=5vbk0TwkokM>
 
 Une classe de langages particulier, décidables, sont très utiles, c'est ceux que l'on peut créer avec un **_automate (fini)_** :
 

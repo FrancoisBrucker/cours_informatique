@@ -36,6 +36,8 @@ Le cours va être séparé en petites entités qui se suivent pour former un tou
 
 {% endaller %}
 
+> TBD ajouter exercices sur cliques/independent set
+
 ## Parcours
 
 Un parcours d'un graphe est une suite de sommets ou d'arêtes ayant un propriété donné. On en verra plusieurs types ayant chacun leur propre intérêt.
@@ -182,17 +184,19 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 ## Graphes parfaits
 
-> TBD définition + thm Lovaz + parler du gros théorème
+{% aller %}
+
+[Graphes parfaits](./graphes-parfaits){.interne}
+
+{% endaller %}
 
 ## Graphes Planaires
 
-> TBD isomorphisme de graphe planaire
-> 5 et 4 coloriable. 3 coloriable np-complet.
+{% aller %}
 
-> secret sans informations.
+[Graphes planaires](./graphes-planaires){.interne}
 
-> TBD kuratowski
-> TBD dessin sans courbure dans un triangle.
+{% endaller %}
 
 ## Graphes aléatoires
 
@@ -209,6 +213,7 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 > grosse partie connexe
 > pas connexe puis tout d'un coup connexe
 > mes amis ont plus d'amis que moi
+> Beaucoup de graphes ne sont pas parfait en prenant H = C5 : <https://math.stackexchange.com/questions/4729419/let-h-be-a-graph-prove-that-almost-every-graph-g-in-mathcalg-n-p-has>
 
 ## Algorithmes randomisés
 

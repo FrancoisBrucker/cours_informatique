@@ -15,9 +15,54 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Le cours est basé sur le cours suivant :
+
 {% aller %}
-[Cours analyse des données](/cours/analyse-données)
+[Cours analyse des données](/cours/analyse-données){.interne}
 {% endaller %}
+
+Chaque semaine de cours, un travail est à rendre pour la semaine de cours prochaine (environ un mois après) les rendus sont à rendre sur moodle :
+
 {% attention %}
-Les rendus sont à [déposer sur moodle](https://moodle.centrale-marseille.fr/course/view.php?id=1221#section-1)
+[adresse des rendus moodle](https://moodle.centrale-med.fr/course/view.php?id=1221)
 {% endattention %}
+
+## Semaine 1
+
+Deux cours d'introductions aux méthodes d'analyse des données en python en utilisant la bibliothèque pandas.
+
+Basé sur [la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}.
+
+### Cours 1.1
+
+On vérifie que l'on a les bases nécessaire en python :
+
+- base du langage python
+- notion d'interpréteur
+- installation de modules
+- utilisation de vscode et/ou de jupyterlab
+
+### Cours 1.2
+
+Pandas et les premières analyses.
+
+### Rendu
+
+Basées sur les [à vous de la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}. Vous devrez rendre 2 notebooks :
+
+1. **Premier notebook** : Utilisez un prénom que vous aimez (le votre ?) et procédez à des analyses similaires à celles du cours et la partie exercice. Vous devrez pour chaque analyse :
+   1. explicitez clairement la question que vous cherchez à résoudre (_e.g._ combien de François par année ?)
+   2. donnez le code de résolution
+   3. conclure en utilisant le résultat donné par le code
+2. **Second notebook** : prenez un jeu de données sur internet au format excel ou csv et importez le avec Pandas (par exemple un des autres jeux de l'insee. Il en existe plein de différents sur les prénoms par exemple). Il vous faudra :
+   1. importer le document sous la forme d'un data frame de la façon la plus claire possible
+   2. donner quelques méthodes qui vous permettent de vérifier que vous avez bien importé les bonnes donnés (nombre de lignes, type des colonnes, etc)
+   3. Montrer comment accéder à une donnée précise (ligne, colonne)
+   4. faire une sélection pertinente de vos données. Pour cela :
+      1. explicitez clairement la question que vous cherchez à résoudre (_e.g._ combien de François par année ?)
+      2. donnez le code de résolution
+      3. conclure en utilisant le résultat donné par le code
+
+{% attention  %}
+Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
+{% endattention  %}
