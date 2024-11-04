@@ -101,9 +101,6 @@
 <li>comment organiser un plan de table ou résoudre un sudoku pour la coloration des sommets (voir par exemple <a href="https://www.youtube.com/watch?v=y4RAYQjKb5Y">cette video</a>)</li>
 <li>comment organiser un tournoi sportif pour la coloration des arêtes (via l'algorithme de <a href="https://nrich.maths.org/articles/tournament-scheduling">round robin scheduling</a>. On verra plus tard que c'est optimal)</li>
 </ul>
-<blockquote>
-<p>TBD lien sur vertex/edge et planar : <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf</a></p>
-</blockquote>
 <h2>Coloration des sommets</h2>
 <p>Certainement la plus populaires des colorations de graphe.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -172,6 +169,7 @@
 </div>
 </details>     
 </div>
+<p>Le nombre chromatique est lié aux cliques :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -204,6 +202,26 @@
 </div>
 </details>     
 </div>
+<p>On peut facilement prouver une première proposition :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G = (V, E)$, on a :</p>
+<div>
+$$
+\omega(G) \leq \chi(G) \neq \vert V \vert
+$$
+</div>
+</div></div>
+
+<p>Les inégalités peuvent être strictes, comme pour les cycles de longueur impair par exemple. Ou encore en prenant les <a href="https://fr.wikipedia.org/wiki/Graphe_de_Mycielski">graphe de Mycielski</a> qui sont sans triangles mais dont le nombre chromatique peut être aussi grand que l'on veut.</p>
+<blockquote>
+<p>TBD faire la preuve de <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf</a>. Dire qu'il en existe d'autres.</p>
+</blockquote>
 <p>Le lecteur attentif aura remarqué que la notion de colorabilité est équivalente à la notion <a href="../graphe-biparti/#k-parti" class="interne">de graphes $k$-parti</a> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -300,21 +318,142 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=L2csXWQMsNg">Algorithme glouton en action</a></p>
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Coloration_gloutonne">Algorithme glouton</a></li>
+<li><a href="https://www.youtube.com/watch?v=L2csXWQMsNg">Algorithme glouton en action</a></li>
+</ul>
 </div></div>
 
 <blockquote>
-<p>tbd glouton + améliorations en classant par ordre décroissant et en utilisant <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a></p>
+<p>TBD cours papier :  glouton + améliorations en classant par ordre décroissant (nb couleur dépend uniquement du nombre de voisins déjà placées).</p>
+<p>TBD parler de <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a></p>
 </blockquote>
 <h3>Majorations de la colorabilité</h3>
-<p>tbd permet de déduire des bornes !</p>
-<blockquote>
-<p>tbd glouton amélioré. Pas fait en pratique car compliqué alors glouton doit être simple.</p>
-<p>TBD entre clique et degré. Montrer que pas égal.</p>
-</blockquote>
+<p>L'algorithme glouton permet immédiatement de dire :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ on a :</p>
+<div>
+$$
+\chi(G) \leq \Delta(G) +1
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On a vu que chaque couleur associée dépendait du nombre de voisins déjà placés. On a alors pour un ordonnancement des sommets $v_1, \dots v_n$ :</p>
+<div>
+$$
+\chi(G) \leq \max(\{ \min(\{\delta(v_i), i-1\}) \vert 1\leq i \leq n\}) + 1
+$$
+</div>
+<p>ce qui donne immédiatement la borne voulue.</p>
+</div>
+</details>     
+</div>
+<p>Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Brooks, 1941)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ qui n'est pas un graphe complets ni un cycle impair on a :</p>
+<div>
+$$
+\chi(G) \leq \Delta(G)
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il existe ne nombreuses preuves de cette proposition, nous en présentons une qui utilise ici un ordonnancement astucieux de l'algorithme glouton.</p>
+<p>La preuve est construite en examinant plusieurs cas :</p>
+<p><strong>Premier cas :</strong> Il existe $x^\star$ tel que $\delta(x^\star) &lt; \Delta(G)$.</p>
+<p>On ordonne alors les $n$ sommets du graphe de telle sorte que $^\star = v_n$ et on ordonne en suivant l'algorithme :</p>
+<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">k <span class="token operator">=</span> n
+i <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span>
+
+tant que i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+  si k <span class="token operator">></span> i et qu'il existe un voisin x de vk non encore placé alors<span class="token punctuation">:</span>
+    vi <span class="token operator">=</span> x
+    i <span class="token operator">=</span> i<span class="token operator">-</span> <span class="token number">1</span>
+  sinon<span class="token punctuation">:</span>
+    k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> 
+</code></pre>
+<p>Si le graphe est connexe, il est clair que cet ordre va placer tous les sommets par ordre décroissant en commençant par tous les voisins de $x_n$, puis tous les voisins de $x_{n-1}$ non encore placés, et ainsi de suite jusqu'à avoir placé tout le monde.</p>
+<p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un no,bre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
+<p><strong>Second cas :</strong> le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.</p>
+<p>En supprimant $x^\star$ de $G$ il y aura $p&gt;1$ composantes connexes $G_i = (v_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $X_i \cup \{x^\star\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.</p>
+<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$.</p>
+<p>Il existe alors $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
+<ul>
+<li>$vw$ n'est pas une arête de $G$,</li>
+<li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
+<li>supprimer $v$ et $w$ de $G$ ne le déconnecte pas.</li>
+</ul>
+<p>On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ et trouver les autres éléments en utilisant l'algorithme du cas 1.</p>
+<p>L'existence de ces trois sommets est garantie car :</p>
+<ol>
+<li>comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête</li>
+<li>comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
+<ul>
+<li>$y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
+<li>$z$ comme étant le sommet juste après $y'$ sur ce chemin.</li>
+</ul>
+</li>
+<li>On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.</li>
+</ol>
+<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :</p>
+<ul>
+<li>$G$ privé de $x_1$ et $x_2$ est connexe</li>
+<li>$xx_1$ et $xx_2$ sont des arêtes de $G$.</li>
+</ul>
+<p>Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.</p>
+</div>
+</details>     
+</div>
 <h3>Colorabilité et isomorphisme de graphe</h3>
 <blockquote>
-<p>test heuristique d'isomorphisme de graphe <a href="https://en.wikipedia.org/wiki/Colour_refinement_algorithm">https://en.wikipedia.org/wiki/Colour_refinement_algorithm</a> et <a href="https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test">https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test</a></p>
+<p>TBD test heuristique d'isomorphisme de graphe <a href="https://en.wikipedia.org/wiki/Colour_refinement_algorithm">https://en.wikipedia.org/wiki/Colour_refinement_algorithm</a> et <a href="https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test">https://en.wikipedia.org/wiki/Weisfeiler_Leman_graph_isomorphism_test</a></p>
 </blockquote>
 <h2>Coloration des arêtes</h2>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -324,7 +463,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soit $G=(V, E)$ un graphe. Une <strong><em>$k$-coloration des arêtes</em></strong> $G$ est une fonction $c: E \to \{1,\dots, k\}$ telle que pour triplet de sommets $x \neq y \nea z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.</p>
+<p>Soit $G=(V, E)$ un graphe. Une <strong><em>$k$-coloration des arêtes</em></strong> $G$ est une fonction $c: E \to \{1,\dots, k\}$ telle que pour triplet de sommets $x \neq y \neq z \in E$ si $xy, xz \in E$ alors $c(xy) \neq c(xz)$.</p>
 </div></div>
 
 <blockquote>
@@ -349,17 +488,92 @@
 <p>Soit $G=(V, E)$ un graphe. On note $\chi'(G)$ le nombre minimum de couleurs qu'il faut pour colorier ses arêtes et on l'appelle <strong><em>nombre chromatique des arêtes de $G$</em></strong>.</p>
 </div></div>
 
-<p>Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion <a href="../couplages">de couplage</a> : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$.</p>
+<p>Le lecteur attentif aura remarqué que la notion de colorabilité des arêtes se rapproche de la notion <a href="../couplages">de couplage</a> : la $k$ colorabilité des arêtes correspond à une partition en couplages de $G$. Ce qui donne immédiatement une borne minimum à notre problème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ on a :</p>
+<div>
+$$
+\Delta(G)\leq \chi'(G)
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>clair</p>
+</div>
+</details>     
+</div>
+<p>On a montré en introduction que l'on peut le faire en $n-1$ couplages de $n/2$ arêtes pour $K_n$ on a donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<div>
+$$
+\chi'(K_n) = n-1
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On utilise un algorithme en <a href="https://fr.wikipedia.org/wiki/Tournoi_toutes_rondes">tournoi toutes rondes</a> comme on l'a fait en introduction.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>cas particulier du <a href="https://en.wikipedia.org/wiki/Baranyai%27s_theorem">Théorème de Baranyai</a>.</p>
 <blockquote>
-<p>TBD : Pour nous ok. Au moins n-1 et la construction du début fonctionne.</p>
+<p>TBD <a href="https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem">https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem</a> et p20 <a href="http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf">http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf</a></p>
 </blockquote>
+</div></div>
+
 <blockquote>
-<ul>
-<li>cas particulier du Théorème de Baranyai: <a href="https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem">https://math.stackexchange.com/questions/1827816/proof-of-baranyais-theorem</a> et p20 <a href="http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf">http://discretemath.imp.fu-berlin.de/DMII-2018-19/connectivity-flows-baranyai.pdf</a></li>
-</ul>
-</blockquote>
-<blockquote>
-<p>NP-complet. Sketch of proof là : &lt;<a href="https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf">https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf</a>&gt;</p>
+<p>TBD NP-complet. Sketch of proof là : &lt;<a href="https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf">https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf</a>&gt;</p>
 </blockquote>
 <h3>Lien avec la colorabilité des sommets</h3>
 <p>Via le <a href="https://en.wikipedia.org/wiki/Line_graph">line graph</a>.</p>
@@ -381,9 +595,44 @@ TBD : Harary theorem 8.3 unique line graph et thm 1.7.4 de <a href="https://facu
 </ul>
 </blockquote>
 <h3>Bornes la colorabilité des arêtes</h3>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition (Vizing, 1964)</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour tout graphe $G$ on a :</p>
+<div>
+$$
+\Delta(G) \chi'(G) \leq \Delta(G) +1
+$$
+</div>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <blockquote>
 <p>TBD preuve théorème de Vizings plus d'autres trucs : <a href="https://math.uchicago.edu/~may/REU2015/REUPapers/Green.pdf">https://math.uchicago.edu/~may/REU2015/REUPapers/Green.pdf</a></p>
 </blockquote>
+</div>
+</details>     
+</div>
 <p><a href="https://www.youtube.com/watch?v=OZWZpQmGp0g">Vizing's Theorem</a></p>
 <blockquote>
 <p>TBD la preuve donne un algo pour edge colorier avec delta+1 couleurs.</p>
