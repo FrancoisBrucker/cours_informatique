@@ -17,8 +17,6 @@ eleventyComputed:
 
 > TBD exos graphes <http://www.discmath.ulg.ac.be/cours/Graphes22-23.pdf>
 
-> TBD reprendre cours L1. On formalise ce que l'on a vu comme ça en L1.
-> complexité amortie, NP, graphes, design et approximation.
 
 > TBD théorie de Galois : <https://www.maths.ed.ac.uk/~tl/galois/> et version papier <https://arxiv.org/abs/2408.07499>
 >
@@ -193,7 +191,7 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
   - <https://www.youtube.com/watch?v=V5uVKZn3F_4>
 - factorization :
   - statut inconnu : <https://en.wikipedia.org/wiki/Integer_factorization>
-  - mais surement pas NP-complet <https://cstheory.stackexchange.com/a/160> car dans np/co-np
+  - mais sûrement pas NP-complet <https://cstheory.stackexchange.com/a/160> car dans np/co-np
   - <https://www.youtube.com/watch?v=vfjN7MmSB6g&list=PLkvhuSoxwjI_UudECvFYArvG0cLbFlzSr>
 - problèmes dont on ne sait pas s'il sont NPC. Ils sont dures partout et pas seulement au max. Exemple du protocole avec sac a dos qui ne fonctionne pas car les instances dures sont rares (<https://www-users.cse.umn.edu/~odlyzko/doc/arch/knapsack.survey.pdf>) Idem pour 3-coloriable si K4 c'est foutu c'est non.
 - LLL : <https://www.youtube.com/watch?v=U8MI2a_BHHo>
@@ -233,7 +231,6 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 
 ### Graphes
 
-- Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
 - 2-sat et graphes :
   - Graphes médians = 2-sat
   - composantes fortement connexes :
@@ -269,27 +266,12 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 - Christophides : <https://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec9.pdf>
 - structures implique de nombreuses classes de problèmes et donc d'algorithmes. POuvant être adaptés a ses propres solution s. eg voyageur de commerce. matching. etc.
 - bi-parti
-- planaire :
-  - <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
-  - <https://perso.ens-lyon.fr/eric.thierry/Graphes2010/planar-slides.pdf>
-  - théorème des 4 couleurs : <https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html>
-  - 4 colorier un graphe planaire 3 coloriable : <https://perso.ens-lyon.fr/eric.thierry/ER02/esperet-col.pdf>
-  - 5 coloration <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
-- coloration
-- k-connectivité
 
 - postier chinois
 - couplage
 - graphes infinis
 - random graphs
 - union-find
-- coloriable :
-  - 3 coloriable et problème de la galerie d'art : <<https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>>
-  - 3 coloriable et lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>
-  - <http://o.togni.u-bourgogne.fr/CMGraphesCh3.pdf>
-  - 3 coloriable :
-    - NP complet <https://perso.eleves.ens-rennes.fr/people/pierre.le-barbenchon/devinfo/3colo.pdf>
-    - planaire aussi : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD11-correction.pdf>
 - nombres de Ramsey :
   - <https://www.youtube.com/watch?v=eHXeOnIrVxU&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=19>
   - <https://en.wikipedia.org/wiki/Ramsey%27s_theorem>
@@ -299,31 +281,12 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 
 - independant set : <https://www.youtube.com/watch?v=eXYXWbMs5lw&list=PLkvhuSoxwjI_JL7GYcJHK7-EK55t0KYGO&index=20>
 - LLL in graphs : <https://www.youtube.com/playlist?list=PLCgtM0JzEuDOI6dYyK20U6tdy_km3RcfM>
-- 4 couleurs : <https://inria.hal.science/hal-04034866/document>
 
 - arbre binary lifting : <https://www.youtube.com/watch?v=oib-XsjFa-M&list=PLl0KD3g-oDOHpWRyyGBUJ9jmul0lUOD80&index=15>
-
-- planaire et embedding : <https://www.youtube.com/watch?v=MNgKx4A1pXM&list=PLriUvS7IljvkGesFRuYjqRz4lKgodJgh2&index=13>
 
 - mineur : en parler un peu et donner les principaux résultats que l'on précisera dans des cas particuliers : <https://fr.wikipedia.org/wiki/Mineur_(th%C3%A9orie_des_graphes)>
   - <https://www.labri.fr/perso/bousquet/Exposes/forum-fr.pdf>
   - bel ordre et mineurs : <https://perso.ens-lyon.fr/eric.thierry/Graphes2007/denis-kuperberg.pdf>
-- graphe planaire :
-  - preuve Kuratowski juste avec 2-connexité: <https://www.math.cmu.edu/~mradclif/teaching/228F16/Kuratowski.pdf>
-  - définitions et propriétés + Kuratowsky : <https://perso.ens-lyon.fr/eric.thierry/Graphes2009/theophile-trunck.pdf>. On a besoin de :
-    - coloriabilité via le problème de la galerie d'art :
-      - <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
-      - exercices : <https://static.idm314.org/resources/activities/idm-art-gallery-fr.pdf>
-      - TIPE : <https://cpge-paradise.com/TIPE/Baudoin_Solal/PPT_Baudoin_Solal.pdf>
-      - théorème de Jordan : <https://minerve.ens-rennes.fr/images/Le_Th%C3%A9or%C3%A8me_de_Jordan_S.Quayle_V.Le_Gruiec..pdf>
-    - k-connectivité
-  - placement sur la grille :
-    - <https://ics.uci.edu/~eppstein/gina/schnyder/>
-    - papier : <https://acm.math.spbu.ru/~sk1/courses/1617f_au3/papers/schnyder-grid-embedding.pdf>
-    - <https://ics.uci.edu/~eppstein/163/lecture10c.pdf>
-  - topologie et courbe fermée Jordan  : <https://pagesperso.g-scop.grenoble-inp.fr/~lazarusf/Enseignement/graphesPlans.pdf>
-  - exercices : <http://www.gymomath.ch/javmath/polycopie/th_graphe5.pdf>
-  - preuve simple ? <https://www.sciencedirect.com/science/article/pii/0012365X80901454>
 
 ### Complexité
 

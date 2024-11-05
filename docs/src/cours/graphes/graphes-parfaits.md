@@ -16,6 +16,7 @@ eleventyComputed:
 
 - [$\omega(G)$](../structure/#definition-notation-clique-stable-maximum){.interne}
 - [$\chi(G)$](../colorabilité/#definition-notation-coloration-minimum){.interne}
+
 > TBD def
 >
 > TBD différence non bornée : <https://perso.ens-lyon.fr/edouard.bonnet/publi/tree-zykov.pdf> et <https://math.uchicago.edu/~may/VIGRE/VIGRE2008/REUPapers/Zhang.pdf>
