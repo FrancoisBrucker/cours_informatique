@@ -40,7 +40,8 @@ On vérifie que l'on a les bases nécessaire en python :
 - base du langage python
 - notion d'interpréteur
 - installation de modules
-- utilisation de vscode et/ou de jupyterlab
+- utilisation de vscode et/ou de jupyterlab (affichage à l'écran et html)
+- matplotlib et seaborn
 
 ### Cours 1.2
 
