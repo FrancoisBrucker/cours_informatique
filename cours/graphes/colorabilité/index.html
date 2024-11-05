@@ -101,6 +101,14 @@
 <li>comment organiser un plan de table ou résoudre un sudoku pour la coloration des sommets (voir par exemple <a href="https://www.youtube.com/watch?v=y4RAYQjKb5Y">cette video</a>)</li>
 <li>comment organiser un tournoi sportif pour la coloration des arêtes (via l'algorithme de <a href="https://nrich.maths.org/articles/tournament-scheduling">round robin scheduling</a>. On verra plus tard que c'est optimal)</li>
 </ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">cours sur la coloration</a></p>
+</div></div>
+
 <h2>Coloration des sommets</h2>
 <p>Certainement la plus populaires des colorations de graphe.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -573,7 +581,7 @@ $$
 </div></div>
 
 <blockquote>
-<p>TBD NP-complet. Sketch of proof là : &lt;<a href="https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf">https://www.lirmm.fr/~bessy/GraphesStructM1/DM3/Papers/LevenGalil.pdf</a>&gt;</p>
+<p>TBD NP-complet. exercice 8.16 de <a href="https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf">https://www-sop.inria.fr/members/Frederic.Havet/Cours/coloration.pdf</a></p>
 </blockquote>
 <h3>Lien avec la colorabilité des sommets</h3>
 <p>Via le <a href="https://en.wikipedia.org/wiki/Line_graph">line graph</a>.</p>
@@ -630,24 +638,47 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Le théorème va se prouver en utilisant <a href="https://en.wikipedia.org/wiki/Kempe_chain">des chaînes de Kempe</a> appliquées à la coloration d'arêtes.</p>
+<p>On suppose que $G$ admet une coloration de ses arêtes $f$ et on note $F(u) = \{f(ux) \vert x \in V, ux \in E \}$. Une chaîne de Kempe est une suite $uv_0, \dots, uv_k$ de $k+1$ arêtes de $G$ telle que la couleur $c_i = f(uv_{i+1})$ n'est pas dans $F(v_i)$ pour tout $0 \leq i &lt;k$</p>
+<p>Pour toute chaîne de Kempe, il est clair que l'on peut remplacer les couleurs de $uv_{i}$ par $c_i$. Enfin, s'il existe $c$ une couleur qui n'est ni dans $F(u)$ ni dans $F(v_k)$ on peut également changer la couleur de $uv_k$ en $c$.</p>
+<p>On va construire une coloration des arêtes de $G$ en $\Delta(G) + 1$ couleurs en commençant par le graphe discret et ajoutant une arête à la fois. Supposons que l'on ait une coloration d'un graphe partiel $G'$ de $G$ en $\Delta(G) + 1$ couleurs et on ajoute l'arête $uv_0$. Comme on a à notre disposition $\Delta(G) + 1$ couleurs, il existe forcément une couleur qui n'est pas dans
+$F(u)$ et une couleur qui n'est pas dans $F(v_0)$ ce qui permet d'initialiser une chaîne de Kempe que l'on peut itérativement faire grossir construire (la couleur $c_i = f(uv_{i+1})$ n'est pas dans $F(v_i)$ pour tout $0 \leq i &lt;k$) jusqu'à :</p>
+<ul>
+<li>soit arriver à un point où il existe $c$ une couleur qui n'est ni dans $F(u)$ ni dans $F(v_k)$ et l'on peut colorier l'arête $uv_0$ en utilisant la propriété des chaînes de Kempe</li>
+<li>soit arriver à un point où toutes les couleurs qui ne sont pas dans $F(v_k)$ ont déjà été utilisées.</li>
+</ul>
+<p>Dans ce deuxième cas, soit $c_k$ une des couleurs qui n'est pas dans $F(v_k)$ et $l$ le plus petit indice tel que $f(uv_l) = c_k$. On peut maintenant construire une autre chaîne $w_0\dots w_p$ telle que $w_0 = u$, $w_1 = v_l$ et telle que si $f(w_iw_{i+1}) = c_k$, alors $f(w_{i+1}w_{i+2}) = c_0$. Cette chaîne ne peut revenir sur ces pas : on va arriver à un moment où la chaîne ne peut être prolongée.</p>
+<p>On peut alors :</p>
+<ol>
+<li>changer les couleurs de la chaîne $uv_0, \dots, uv_l$</li>
+<li>échanger les couleurs sur la chaîne $w_0\dots w_p$</li>
+</ol>
+<p>Ce qui donne une coloration en $\Delta(G) + 1$ couleurs de $G'$ auquel on a ajouté l'arête $uv_0$.</p>
 <blockquote>
-<p>TBD preuve théorème de Vizings plus d'autres trucs : <a href="https://math.uchicago.edu/~may/REU2015/REUPapers/Green.pdf">https://math.uchicago.edu/~may/REU2015/REUPapers/Green.pdf</a></p>
+<p>TBD rendre la preuve plus clair</p>
 </blockquote>
 </div>
 </details>     
 </div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p><a href="https://www.youtube.com/watch?v=OZWZpQmGp0g">Vizing's Theorem</a></p>
+</div></div>
+
+<p>Notez que la preuve donne un algo pour edge colorier avec delta+1 couleurs.</p>
 <blockquote>
-<p>TBD la preuve donne un algo pour edge colorier avec delta+1 couleurs.</p>
+<p>TBD :</p>
+<ul>
+<li>C'est NP-complet de savoir si le graphe est de classe 1 ou 2. On le verra plus tard (graphe aléatoires) qu'un graphe est presque sûrement de type 1.</li>
+<li>c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.</li>
+</ul>
 </blockquote>
-<p>C'est NP-complet de savoir si le graphe est de classe 1 ou 2. On le verra plus tard (graphe aléatoires) qu'un graphe est presque sûrement de type 1.</p>
 <blockquote>
-<p>TBD c'est une illustration de ce qu'est NP-complet. Presque tout le temps facile, sauf quelques exemples qui sont inextricables.</p>
+<p>TBD exo graphe biparti type 1. TBD preuve générale sur edge coloring <a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 </blockquote>
-<blockquote>
-<p>TBD exo graphe biparti type 1. TBD preuve générale sur edge coloring.</p>
-</blockquote>
-<p><a href="https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf">https://mathweb.ucsd.edu/~gptesler/154/slides/154_graphcoloring_20-handout.pdf</a></p>
 <blockquote>
 <p>TBD fun fact. Graphes réguliers avec un nombre impair de sommet sont de classe 2.
 TBD la NP-complétude se niche donc uniquement sur les graphes 3-réguliers avec un nombre pair de sommets</p>
