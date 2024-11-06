@@ -221,7 +221,7 @@
 <p>Pour tout graphe $G = (V, E)$, on a :</p>
 <div>
 $$
-\omega(G) \leq \chi(G) \neq \vert V \vert
+\omega(G) \leq \chi(G) \leq \vert V \vert
 $$
 </div>
 </div></div>
@@ -238,7 +238,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe $G$ est $\chi(G)$-parti si et n'est pas $(\chi(G)-1)$-parti.</p>
+<p>Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.</p>
 </div></div>
 
 <p>On en déduit donc immédiatement :</p>
@@ -333,8 +333,8 @@ $$
 </div></div>
 
 <blockquote>
-<p>TBD cours papier :  glouton + améliorations en classant par ordre décroissant (nb couleur dépend uniquement du nombre de voisins déjà placées).</p>
-<p>TBD parler de <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a></p>
+<p>TBD cours papier :  glouton + améliorations en classant par ordre décroissant de degré (nb couleur dépend uniquement du nombre de voisins déjà placées).</p>
+<p>TBD parler de <a href="https://en.wikipedia.org/wiki/DSatur">dsatur</a> et leur faire montrer qu'il fonctionne sur les cycles, les graphes bi-parti et les roues.</p>
 </blockquote>
 <h3>Majorations de la colorabilité</h3>
 <p>L'algorithme glouton permet immédiatement de dire :</p>
@@ -388,7 +388,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un graphe $k$-régulier avec $\geq 3$ 2-connexe admet trois sommets $u$ et $v$ et $w$  tels que :</p>
+<p>Un graphe 2-connexe et $k$-régulier avec $3\leq k &lt; \vert V(G)\vert - 1$ admet trois sommets $u$ et $v$ et $w$  tels que :</p>
 <ul>
 <li>$vw$ n'est pas une arête de $G$,</li>
 <li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
