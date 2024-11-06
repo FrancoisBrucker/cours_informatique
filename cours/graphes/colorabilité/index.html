@@ -380,13 +380,66 @@ $$
 </div>
 </details>     
 </div>
-<p>Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois :</p>
+<p>Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois. Pour le démontrer on aura besoin de la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Proposition (Brooks, 1941)</strong></p>
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un graphe $k$-régulier avec $\geq 3$ 2-connexe admet trois sommets $u$ et $v$ et $w$  tels que :</p>
+<ul>
+<li>$vw$ n'est pas une arête de $G$,</li>
+<li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
+<li>supprimer $v$ et $w$ de $G$ ne le déconnecte pas.</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'existence de ces trois sommets est garantie car :</p>
+<ol>
+<li>comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête</li>
+<li>comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
+<ul>
+<li>$y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
+<li>$z$ comme étant le sommet juste après $y'$ sur ce chemin.</li>
+</ul>
+</li>
+<li>On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.</li>
+</ol>
+<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :</p>
+<ul>
+<li>$G$ privé de $x_1$ et $x_2$ est connexe</li>
+<li>$xx_1$ et $xx_2$ sont des arêtes de $G$.</li>
+</ul>
+<p>Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.</p>
+</div>
+</details>     
+</div>
+<p>On peut maintenant démontrer le théorème :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Théorème (Brooks, 1941)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout graphe $G$ qui n'est pas un graphe complets ni un cycle impair on a :</p>
 <div>
@@ -431,31 +484,13 @@ tant que i <span class="token operator">></span> <span class="token number">0</s
 <p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un no,bre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
 <p><strong>Second cas :</strong> le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.</p>
 <p>En supprimant $x^\star$ de $G$ il y aura $p&gt;1$ composantes connexes $G_i = (v_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $X_i \cup \{x^\star\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.</p>
-<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$.</p>
-<p>Il existe alors $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
+<p><strong>Troisième cas :</strong> le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$. On se retrouve dans le cadre de la proposition suivant et il existe $u$ et $v$ et $w$ trois sommets de $G$ tels que :</p>
 <ul>
 <li>$vw$ n'est pas une arête de $G$,</li>
 <li>$uv$ et $uw$ sont deux arêtes de $G$,</li>
 <li>supprimer $v$ et $w$ de $G$ ne le déconnecte pas.</li>
 </ul>
 <p>On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ et trouver les autres éléments en utilisant l'algorithme du cas 1.</p>
-<p>L'existence de ces trois sommets est garantie car :</p>
-<ol>
-<li>comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête</li>
-<li>comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
-<ul>
-<li>$y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,</li>
-<li>$z$ comme étant le sommet juste après $y'$ sur ce chemin.</li>
-</ul>
-</li>
-<li>On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.</li>
-</ol>
-<p>Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :</p>
-<ul>
-<li>$G$ privé de $x_1$ et $x_2$ est connexe</li>
-<li>$xx_1$ et $xx_2$ sont des arêtes de $G$.</li>
-</ul>
-<p>Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.</p>
 </div>
 </details>     
 </div>
