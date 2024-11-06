@@ -178,7 +178,7 @@ Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles im
 
 {% note "**Proposition**" %}
 
-Un graphe 2-connexe $k$-régulier avec $3\leq k < \vert V(G)\vert - 1$ admet trois sommets $u$ et $v$ et $w$  tels que :
+Un graphe 2-connexe et $k$-régulier avec $3\leq k < \vert V(G)\vert - 1$ admet trois sommets $u$ et $v$ et $w$  tels que :
 
 - $vw$ n'est pas une arête de $G$,
 - $uv$ et $uw$ sont deux arêtes de $G$,
