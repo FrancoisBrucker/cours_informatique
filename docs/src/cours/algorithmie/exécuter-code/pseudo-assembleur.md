@@ -147,7 +147,7 @@ affiche à l'écran factorielle(3)
 
 Deviendrait en pseudo-assembleur :
 
-```python#
+```python/
 def factorielle(p):
   si u(M[p:p+S]) ≤ 1:
     return 1
@@ -221,7 +221,7 @@ GOTO label
 
 L'instruction `GOTO` ("go to" : "aller à") _saute_ à l'instruction de label `label`. Par exemple le programme suivant qui est une version itérative (et infinie) de la factorielle :
 
-```python#
+```python/
 M[0:S] = b(1)
 M[S:2S] = b(1)
 
@@ -327,7 +327,7 @@ La prochaine instruction exécutée sera celle de la ligne `label` si le drapeau
 
 Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :
 
-```python#
+```python/
 M[0:S] = b(1)
 M[S:2S] = b(4)
 

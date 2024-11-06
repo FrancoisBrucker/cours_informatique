@@ -274,7 +274,7 @@ En supposant que le registre $p$ contienne l'adresse maximum en mémoire, modifi
 {% endexercice %}
 {% details "corrigé" %}
 
-```python#
+```python/
 #### factorielle recursive
 
 PUSH FP           

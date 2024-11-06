@@ -242,7 +242,7 @@ Les deux fichiers sont dans le même dossier `compteur/`{.fichier} qui fait offi
 
 Fichier `compteur.py`{.fichier} :
 
-```python#
+```python/
 class Compteur:
     def __init__(self, pas=1, valeur=0):
         self.valeur = valeur
@@ -267,7 +267,7 @@ class Compteur:
 
 Fichier `main.py`{.fichier} :
 
-```python#
+```python/
 from compteur import Compteur
 
 c1 = Compteur(3)

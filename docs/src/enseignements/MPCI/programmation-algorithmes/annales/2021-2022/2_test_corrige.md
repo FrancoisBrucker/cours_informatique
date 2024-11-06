@@ -36,7 +36,7 @@ Attention, $k$ fait partie des données de l'algorithme. Pour une taille de tabl
 
 Les deux algorithmes ne varient que de 1 test, les deux complexités sont donc égales. On ne calculera que la complexité de `maximum`{.language-} :
 
-```python#
+```python/
 def maximum(T):
     m = 0
     for i in range(len(T)):
@@ -76,7 +76,7 @@ On en conclut que la complexité des algorithmes `maximum`{.language-} et `minim
 
 ### Complexité de `copie`{.language-}
 
-```python#
+```python/
 def copie(T):
     nouveau = []
     for x in T:
@@ -113,7 +113,7 @@ On en conclut que la complexité des algorithmes `copie`{.language-} ne dépend 
 
 ### Complexité de `recherche`{.language-}
 
-```python#
+```python/
 def recherche(T, k):
     max_value = T[maximum(T)]
 

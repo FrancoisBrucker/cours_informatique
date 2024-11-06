@@ -56,7 +56,7 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 
 Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :
 
-```python#
+```python/
 def recherche(t, x):
     for e in t:
         if e == x:

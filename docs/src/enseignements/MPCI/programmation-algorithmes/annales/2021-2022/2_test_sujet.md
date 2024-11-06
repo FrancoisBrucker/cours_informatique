@@ -13,7 +13,7 @@ Toute tentative d'enfumage sera sanctionnée avec des points en moins :
 
 On considère le code suivant :
 
-```python#
+```python/
 def copie(T):
     nouveau = []
     for x in T:

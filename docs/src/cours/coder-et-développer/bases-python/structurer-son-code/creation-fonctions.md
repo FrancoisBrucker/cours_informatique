@@ -280,7 +280,7 @@ Exécutez le code précédent et expliquer son fonctionnement
 
 Le code final doit définir produit avant son utilisation. Il faut par exemple avoir le code :
 
-```python#
+```python/
 def calcul(fct, z):
     return fct(2, 17) + z
 

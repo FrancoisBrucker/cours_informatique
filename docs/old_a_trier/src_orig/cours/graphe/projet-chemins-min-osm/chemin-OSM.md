@@ -22,7 +22,7 @@ Utilisation d'openstreetmap pour trouver des chemin de longueur minimum.
 
 ## Code
 
-Il existe de nombreuses bibliothèques de graphes en python, nous allons utiliser ici [`networkx`{.language-}](https://networkx.org), en utilisant la bibliothèque [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/>. Commençons par l'[installer]({{ "/tutoriels/installation-python#packages" }})
+Il existe de nombreuses bibliothèques de graphes en python, nous allons utiliser ici [`networkx`{.language-}](https://networkx.org), en utilisant la bibliothèque [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/>. Commençons par l'[installer]({{ "/tutoriels/installation-python/packages" }})
 
 ```
 python -m pip install osmnx scikit-learn

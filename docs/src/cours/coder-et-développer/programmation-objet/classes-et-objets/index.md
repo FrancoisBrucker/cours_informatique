@@ -213,7 +213,7 @@ A partir d'un exemple de code, on va essayer de :
 
 Cette modélisation doit être capable de répondre au code suivant, dans le fichier `main.py`{.fichier} :
 
-```python#
+```python/
 from compteur import Compteur
 
 c1 = Compteur()

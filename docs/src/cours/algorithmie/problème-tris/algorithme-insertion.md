@@ -31,7 +31,7 @@ On vérifie itérativement que `T[i] >= T[i-1]`{.language-} et si ce n'est pas l
 
 Ce qui se traduit en pseudo-code :
 
-```python#
+```python/
 def insertion(T):
     for i in range(1, len(T)):
         j = i
@@ -216,7 +216,7 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 Une implémentation courante du tri par insertion est la suivante :
 
-```python#
+```python/
 def insertion(T):
     for i in range(1, len(T)):
         courant = T[i]

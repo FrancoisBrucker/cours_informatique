@@ -42,7 +42,7 @@ Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on t
 
 L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :
 
-```python#
+```python/
 def combiner(T1, T2):
     i1 = i2 = 0
     T = []

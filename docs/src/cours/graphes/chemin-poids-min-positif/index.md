@@ -86,7 +86,7 @@ L'idée de l'algorithme de Dijkstra est d'implémenter le principe précédent d
 
 On cherche à trouver un plus court chemin entre deux sommets, nommées `départ` et `arrivé`, d'un graphe orienté $G$ valué par une fonction positive $f$.
 
-```python#
+```python/
 Entrées :
     Un graphe G=(V,E)
     une fonction de coût f positive
@@ -138,7 +138,7 @@ L'astuce est de voir que si l'on stocke les coûts, on a uniquement besoin de le
 
 Une implémentation en python en utilisant le codage par dictionnaire des graphes et une valuation également codée par un dictionnaire dont les clés sont les arcs et les valeurs la valuation est donnée ci-après :
 
-```python#
+```python/
 def dijkstra(G, f, départ, arrivé):
     prédécesseur = {départ: départ}
     coût = {départ: 0}
@@ -352,7 +352,7 @@ Un algorithme beaucoup utilisé lorsque le graphe peut changer ou s'il est très
 
 Son principe est identique à celui de Dijkstra, mais plutôt que de prendre à chaque fois l'élément de coût minimum on choisit un élément dont le coût + une distance heuristique $h$ sur sa distance à l'arrivée est minimum. Son pseudo-code est donc identique à celui de Dijkstra à part l'ajout d'un élément à la structure (lignes 23 à 27) qui devient :
 
-```python#23
+```python/23
         # ajout d'un élément à la structure
         soit u un élément de V \ V_dijkstra tel que coût[u] + h(u) soit minimum
 

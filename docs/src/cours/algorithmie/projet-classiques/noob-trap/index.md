@@ -18,7 +18,7 @@ Un piège classique dans lequel tombent les débutants.
 
 On considère le code suivant :
 
-```python#
+```python/
 def f(n):
     if n < 2:
         return 1

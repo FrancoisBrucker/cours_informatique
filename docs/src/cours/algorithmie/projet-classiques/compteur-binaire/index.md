@@ -34,7 +34,7 @@ Les fonctions qui ne rendent rien modifient souvent leurs paramètres.
 
 ### <span id="successeur"></span>L'algorithme
 
-```python#
+```python/
 def successeur(n):
     i = len(n) - 1
 
@@ -80,7 +80,7 @@ Que le nombre moyen d'itération valent 1 est assez contre intuitif. Vérifiez e
 
 Montrez que l'algorithme ci-dessous est une façon (récursive d'afficher tous les nombres binaires à $N$ bits.
 
-```python#
+```python/
 def compteur(n, N):
     if N == 0:
         print(n)

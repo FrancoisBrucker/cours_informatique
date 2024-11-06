@@ -47,7 +47,7 @@ On montre par récurrence sur la taille $n$ du tableau qu'il existe toujours un 
 
 La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :
 
-```python#
+```python/
 def trouve(T):
     if T[0] <= T[1]:
         return 0

@@ -189,7 +189,7 @@ Implémentez la fonction successeur qui prend une permutation de $S$ en entrée 
 {% endexercice %}
 {% details "corrigé", "open" %}
 
-```python#
+```python/
 def successeur(T):
     i = len(T) - 2
     while i >= 0 and T[i] > T[i + 1]:
@@ -391,7 +391,7 @@ L'algorithme que l'on va montrer maintenant, dit de [fisher-yates ou encore de K
 Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme *algorithme de Knuth* plutôt qu'*algorithme de Fisher-Yates*. Cependant comme Knuth a créé de très nombreux algorithmes, googler "algorithme de fisher-yates" donne directement le résultat attendu alors que googler "algorithme de Knuth" donne plein de résultats différents (mais tous sont de superbes algorithmes !).
 {% endinfo %}
 
-```python#
+```python/
 from random import randrange
 
 def mélange_Knuth(T):

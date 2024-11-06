@@ -255,7 +255,7 @@ On peut remonter de proche en proche jusqu'à obtenir une équation du type : $\
 
 De façon surprenante, cet enchaînement s'écrit très bien sous la forme de [pseudo code](https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu#Pseudo-code) si o peut assigner 6 variables en même temps :
 
-```python#
+```python/
 (r, u, v, ) = (a, 1, 0, b, 0, 1)
 
 tant que r2 != 0:

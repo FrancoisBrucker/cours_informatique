@@ -101,7 +101,7 @@ Pour écrire le code des classes filles il faut pouvoir faire deux choses :
 
 Voyons comment tout ça est fait en python (on ajoute les classes filles dans le fichier contenant la classe mère) :
 
-```python#
+```python/
 class Étudiant(Personne):
     def __init__(self, nom, prénom, date_naissance, numéro_étudiant):
         super().__init__(nom, prénom, date_naissance)
@@ -523,7 +523,7 @@ Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exe
 
 Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :
 
-```python#
+```python/
 class Doctorant(Étudiant, EnseignantChercheur):
     def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
         ...  
@@ -548,7 +548,7 @@ Les problèmes d'ordre en héritage multiple sont décrits sous le nom de [probl
 
 Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple [cette étude](https://realpython.com/python-super/#super-in-multiple-inheritance)), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :
 
-```python#
+```python/
 class Doctorant:
     def __init__(self, nom, prénom, date_naissance, numéro_étudiant, laboratoire):
         self.étudiant = Étudiant(nom, prénom, date_naissance, numéro_étudiant)

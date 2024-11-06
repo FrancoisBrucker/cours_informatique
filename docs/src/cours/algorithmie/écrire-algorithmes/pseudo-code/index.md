@@ -77,7 +77,7 @@ Programme :
 
 ou de manière équivalente, en un mélange de python et de français :
 
-```python#
+```python/
 def recherche(t, x):
     pour chaque élément e de t:
         si e == x:
@@ -89,7 +89,7 @@ Ou encore, complètement en python :
 
 <div id="fonction-recherche"></div>
 
-```python#
+```python/
 def recherche(t, x):
     for e in t:
         if e == x:

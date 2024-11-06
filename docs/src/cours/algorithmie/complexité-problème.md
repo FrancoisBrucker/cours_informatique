@@ -135,7 +135,7 @@ Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.
 
 #### Algorithme de la recherche dichotomique
 
-```python#
+```python/
 def recherche_dichotomique(valeur, tableau_trie):
     debut = 0
     fin = len(tableau_trie) - 1

@@ -75,7 +75,7 @@ Programme :
 
 {% details "solution"  %}
 
-```python#
+```python/
 def puissance(nombre, exposant):
     résultat = nombre
     compteur = exposant - 1

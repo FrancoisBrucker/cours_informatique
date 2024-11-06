@@ -124,7 +124,7 @@ Si une boucle s'exécute un nombre variable de fois, mais que cette variation es
 
 On va vérifier cela avec un exemple :
 
-```python#
+```python/
 total=0
 de i=1 à n-1 faire :
     de j=i+1 à n faire :
@@ -220,7 +220,7 @@ Pour calculer la complexité d'un algorithme récursif en fonction de la taille 
 
 Pour illustrer ce calcul, prenons l'exemple suivant :
 
-```python#
+```python/
 fonction maximum(t, n):
     si n == 1
         rendre t[0]

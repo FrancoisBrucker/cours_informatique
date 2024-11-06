@@ -163,7 +163,7 @@ print(l.max())
 
 ### Avec lignes numérotées
 
-```python#
+```python/
 permutations(T):
 l = [1, 3, 2, 6, 4, 5]
 print(l.max())

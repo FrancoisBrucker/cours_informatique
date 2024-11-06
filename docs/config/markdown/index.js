@@ -1,7 +1,6 @@
 import markdownIt from "markdown-it"
 import markdownItAttrs from "markdown-it-attrs"
 import markdownItMultimdTable from "markdown-it-multimd-table"
-import eleventyMdSyntaxHighlight from "@pborenstein/eleventy-md-syntax-highlight"
 
 import shortcodes from "./shortcodes/index.js"
 
@@ -22,11 +21,6 @@ export default async function(eleventyConfig) {
           multibody: true,
           aotolabel: true,
       });
-
-
-  eleventyConfig.addPlugin(eleventyMdSyntaxHighlight,
-      {showLineNumbers: false}
-  )
 
   // eleventyConfig.addPlugin(require("eleventy-plugin-mathjax"));
 

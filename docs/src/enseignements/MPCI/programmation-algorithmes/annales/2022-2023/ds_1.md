@@ -403,7 +403,7 @@ Ce *trou* ne peut être comblé en une étape : la position de l'étape (c) est 
 
 La liste étant triée, un doublon est tel que $L[i] = L[i+1]$. On peut alors supprimer les doublons en parcourant la liste $L$ et en ne considérant que les éléments tels que $L[i] > L[i-1]$. Ceci donne l'algorithme suivant :
 
-```python#
+```python/
 def élimine_double(L):
     L2 = [L[0]]
     

@@ -339,7 +339,7 @@ L'encodage par défaut des graphes sera toujours celui [par dictionnaires](../en
 
 ### <span id="algorithme-connexe"></span> Algorithme de recherche de composante connexe
 
-```python#
+```python/
 def composante_connexe(G, origine):
     composante = {origine}
     suivant = [origine]
@@ -448,7 +448,7 @@ Notez qu'il existe un autre algorithme utilisant le parcours en profondeur et qu
 
 L'algorithme suivant, nommé `chemin`{.language-}, prend un graphe et deux sommets $a$ et $b$ en paramètres. Il rend soit un chemin entre $a$ et $b$ s'il existe soit le chemin vide si $a$ et $b$ sont dans deux composantes connexes différentes.
 
-```python#
+```python/
 def chemin(G, a, b):
     examinés = {a}
     chemin = [a]
@@ -537,7 +537,7 @@ L'algorithme ne fonctionne que dans le cadre de la proposition.
 
 <span id="algo-cycle-oriente"></span>
 
-```python#
+```python/
 def circuit(G, a):
     chemin = [a]
 
@@ -555,7 +555,7 @@ def circuit(G, a):
 <span id="algo-cycle-non-oriente"></span>
 Il faut s'assurer que l'on n'utilise pas l'arête retour lorsque le graphe est non orienté :
 
-```python#
+```python/
 def cycle_non_orienté(G, a):
     chemin = [a]
 

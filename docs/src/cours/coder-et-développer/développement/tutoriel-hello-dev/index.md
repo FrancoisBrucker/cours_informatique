@@ -90,7 +90,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](../../éditeur-vscode/python#exécuter-programme){.interne} :
+En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](../../éditeur-vscode/python/exécuter-programme){.interne} :
 
 {% faire %}
 Exécutez le code de deux manières différentes :

@@ -149,12 +149,12 @@ Pour l'instant utilisons l'environnement de base. En cliquant sur le triangle ve
 Vous pouvez [connaître l'interpréteur](https://docs.anaconda.com/anaconda/user-guide/tasks/integration/python-path/).
 {% endinfo %}
 
-Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et Linux pour entrer dans un [interpréteur python](../installation-de-python#interpréteur-id){.interne}.
+Vous pouvez ensuite taper `python` sous windows et `python3` sous mac et Linux pour entrer dans un [interpréteur python](../installation-de-python/interpréteur-id){.interne}.
 
 ### Python avec un terminal normal
 
 Ouvrez un [terminal](../terminal){.interne} et tapez `python` sous windows et `python3` sous mac et Linux pour entrer dans un
-[interpréteur python](installation-python#interpréteur-id){.interne}.
+[interpréteur python](installation-python/interpréteur-id){.interne}.
 
 {% attention %}
 Si cela ne fonctionne pas, c'est qu'il faudra sûrement [modifier le path](../terminal-utilisation#modification-permanente-path){.interne} en ajoutant le dossier où se trouve python dans le path.

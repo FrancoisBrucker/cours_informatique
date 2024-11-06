@@ -256,7 +256,7 @@ Lorsque l'on exécute une fonction on procède comme suit :
 
 #### Exécution d'une fonction
 
-```python#
+```python/
 def f(x):
    i = 2 * x
    return i + 3
@@ -305,7 +305,7 @@ L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini d
 Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.
 {% endnote %}
 
-```python#
+```python/
 def f(x):
    i = C * x
    return i + 3

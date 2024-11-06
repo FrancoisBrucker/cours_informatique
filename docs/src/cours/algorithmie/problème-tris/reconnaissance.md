@@ -23,7 +23,7 @@ Il existe un algorithme très simple pour le résoudre.
 
 ## <span id="algo-est-trie"></span> Algorithme
 
-```python#
+```python/
 def est_trie(T):
 
     for i in range(1, len(T)):

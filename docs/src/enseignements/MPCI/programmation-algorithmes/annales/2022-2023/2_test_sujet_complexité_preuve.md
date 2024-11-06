@@ -43,7 +43,7 @@ Vous expliciterez :
 Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'entiers $T$ de taille $n > 1$ passé en paramètre.
 {% endfaire %}
 
-```python#
+```python/
 def trouve_vite(T):
     if T[0] <= T[1]:
         return 0

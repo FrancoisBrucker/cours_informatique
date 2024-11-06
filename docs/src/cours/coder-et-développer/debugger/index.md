@@ -41,7 +41,7 @@ L'idée est de remplacer les divers `print`{.language-} utilisés pour visualise
 Créez un fichier `boucle.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
 {% endfaire %}
 
-```python#
+```python/
 x = 4
 for i in range(10):
     print(i)
@@ -286,7 +286,7 @@ Outre les breakpoint simple et les breakoint conditionnel, il existe deux autres
 Créez un fichier `boucle-fonction.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
 {% endfaire %}
 
-```python#
+```python/
 def test_égalité(i, x):
     print("fonction test_égalité avec comme paramètre :", i, x)
     if x == i:
@@ -412,7 +412,7 @@ Faisons le test en créant le petit programme suivant :
 Créez un fichier `sortant-fonction.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
 {% endfaire %}
 
-```python#
+```python/
 def somme(x, y):
     return x + y
 
@@ -470,7 +470,7 @@ Pour visualiser ce mécanisme, créons un petit programme :
 Créez un fichier `pile-appel.py`{.fichier} dans votre projet et copiez/collez y le code ci-après.
 {% endfaire %}
 
-```python#
+```python/
 def factorielle(n):
     if n <= 1:
         return n
@@ -573,7 +573,7 @@ L'utilisation d'espions est très pratique pour accélérer le débogage de prog
 
 Le code ci-dessous est une implémentation python [du crible d’Ératosthène](https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne) :
 
-```python#
+```python/
 def élague(x, crible):
     y = 2 * x
     while y < len(crible):

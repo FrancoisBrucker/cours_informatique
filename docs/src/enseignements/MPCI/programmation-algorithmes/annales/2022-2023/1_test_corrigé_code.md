@@ -339,7 +339,7 @@ Une proposition de programme principal :
 
 ### `pendu.py`{.fichier}
 
-```python#
+```python/
 def est_une_lettre(lettre, mot):
     return lettre in mot
 
@@ -373,7 +373,7 @@ def caché(mot):
 
 ### `test_pendu.py`{.fichier}
 
-```python#
+```python/
 from pendu import est_une_lettre, caractères, découvre, caché
 
 
@@ -401,7 +401,7 @@ def test_caché():
 
 ### `main.py`{.fichier}
 
-```python#
+```python/
 from pendu import caché, est_une_lettre, découvre, caractères
 
 

@@ -41,7 +41,7 @@ $$
 
 La première idée pour résoudre le problème de _la recherche d'une sous-chaîne_ est de vérifier pour pour tout $0 \leq i < n$ si la définition est correcte :
 
-```python#
+```python/
 def sous_chaine_naif(a, b):
     for i in range(len(a) - len(b) + 1):
         trouvé = True

@@ -183,7 +183,7 @@ L'invariant de boucle que l'on va utiliser pour prouver l'algorithme `compte`{.l
 
 > Utilisez la question précédente pour créer algorithme en $\mathcal{O}(n^2)$ qui prend un tableau d'entiers en paramètre et rend un élément majoritaire de ce tableau s'il existe, ou `None` sinon.
 
-```python#
+```python/
 
 def élément_majoritaire(T):
     for x in T:

@@ -13,7 +13,7 @@ Le tri par sélection est un algorithme simple qui fonctionne de la même maniè
 
 On en déduit l'algorithme en pseudo-code suivant :
 
-```python#
+```python/
 def sélection(T):
     for i in range(len(T) - 1):
         min_index = i
@@ -96,7 +96,7 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 
 Sélection est identique à l'algorithme ci-dessous :
 
-```python#
+```python/
 def sélection(T):
     for i in range(len(T)):
         for j in range(i + 1, len(T)):
@@ -108,7 +108,7 @@ Pourquoi ?
 
 Et celui ci tri dans le sens opposé :
 
-```python#
+```python/
 def sélection(T):
     for i in range(len(T)):
         for j in range(len(T)):

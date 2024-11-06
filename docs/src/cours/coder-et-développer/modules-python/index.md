@@ -64,14 +64,14 @@ Importer un module revient à exécuter un fichier python et à renommer son esp
 
 - `mon_module.py`{.fichier} vale :
 
-    ```python#
+    ```python/
     MA_CONSTANTE = 42
     va_variable = None
     ```
 
 - `programme_principal.py`{.fichier} vale :
 
-    ```python#
+    ```python/
     import mon_module
 
     print(mon_module.MA_CONSTANTE)

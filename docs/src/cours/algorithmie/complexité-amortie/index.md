@@ -59,7 +59,7 @@ Dans ce problème, on encode un nombre binaire de $n$ bits par une liste $N$ à 
 
 Soit lors l'algorithme suivant, écrit en python :
 
-```python#
+```python/
 def successeur(N):
     i = len(N) - 1
 

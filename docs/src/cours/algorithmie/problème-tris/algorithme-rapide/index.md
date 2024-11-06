@@ -25,7 +25,7 @@ Une fois ce découpage des données fait, la fonction `combiner`{.language-} est
 
 En pseudo-code cela donne :
 
-```python#
+```python/
 def rapide(T):
     if len(T) <= 1:
         return T

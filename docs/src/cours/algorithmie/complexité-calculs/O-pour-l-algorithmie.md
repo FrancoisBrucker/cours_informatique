@@ -116,7 +116,7 @@ En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsqu
 
 Prenons par exemple l'algorithme suivant, écrit en python :
 
-```python#
+```python/
 def est_dans_tableau(valeur, tableau):
     for x in tableau:
         if x == valeur:

@@ -270,7 +270,7 @@ Retour :
 
 {% details "en python" %}
 
-```python#
+```python/
 def marquage(G, c, s, p, f):
 
     marques = {s: (s, None)}
