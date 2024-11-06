@@ -66,13 +66,11 @@ Un graphe $G$est parfait si et seulement pour tout sous graphe $H$ de $G$ à $V(
 {% endnote %}
 {% details "preuve", "open" %}
 
-
 > TBD thm 3.1 <https://ahmadabdi.com/ltcc/lecture_2.pdf>
 
 {% enddetails %}
 
 > [Weak Perfect Graph Theorem](https://www.youtube.com/watch?v=Koc63QhxPgk)
-
 
 {% note "**Théorème (Lovàsz, 1972)**" %}
 Un graphe est parfait si et seulement si son complémentaire est parfait.

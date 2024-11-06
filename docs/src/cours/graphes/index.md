@@ -198,6 +198,10 @@ Problèmes de couplage dans un graphe. On passera un peu de temps sur le cas des
 
 {% endaller %}
 
+## Projets Autres
+
+> TBD [DM line graph](./line-graph){.interne}
+
 ## Graphes aléatoires
 
 ### Process de Galton-Watson

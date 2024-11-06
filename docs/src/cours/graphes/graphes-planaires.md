@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD : Il sont aussi extrêmement utilisés pour les mesh 3D. C'est une surface sans trous.
+
 {% lien %}
 [Graphes planaires avec Maria Chudnovski](https://www.youtube.com/watch?v=xBkTIp6ajAg)
 {% endlien %}
@@ -26,11 +28,10 @@ eleventyComputed:
 > TBD
 >
 > 1. définition
-> 2. formule euler sur les faces
+> 2. formule Euler sur les faces
 > 3. majoration nombre d'arêtes : il n'y en a pas beaucoup
 > 4. existe un sommet de degré ≤ 5
 
-> TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
 > TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représentation, il l'est pour toute ?
 
 ## Théorème de Kuratowski
@@ -55,6 +56,9 @@ eleventyComputed:
 
 ### Reconnaissance
 
+> Par blocks (2-connexe maximals).
+> puis reconnaissance de blocs
+
 ### Dessin
 
 > TBD dessin sans courbure dans un triangle.
@@ -66,33 +70,60 @@ eleventyComputed:
 
 ## Coloration de graphes planaires
 
-- 4 colorier un graphe planaire 3 coloriable p27 : <https://perso.ens-lyon.fr/eric.thierry/ER02/esperet-col.pdf>
-- 5 coloration <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
+> TBD pareil que colorier les faces.
+
+> TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf>
+
 - coloriable :
-- 3 coloriable et problème de la galerie d'art : <<https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>>
-- 3 coloriable et lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>
 
 ### Théorème des 4 couleurs
 
-> TBD 6, 5 par notre algo de coloration 3 colorable np-complet.
-> TBD Une démo du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>. Elle ne fonctionne pas. Pourquoi ? Peut-on l'utiliser comme preuve alternative de 5 couleurs ?
+> TBD 6 par notre algo de coloration
+> TBD 5 couleur : démonstration de Kempe.
+
+> Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
+> TBD Une démo du théorème des 4 couleurs par Kempe : <https://www.youtube.com/watch?v=adZZv4eEPs8>
 > TBD théorème des 4 couleurs :
 >
 > - <https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html>
 > - 4 couleurs : <https://inria.hal.science/hal-04034866/document>
 
-### NP-complétude
+### Algorithmes de coloration
 
-> TBD 3 color planaire est NP-complet : <https://graal.ens-lyon.fr/~yrobert/algoL3/color-np.pdf>, <https://www.youtube.com/watch?v=MJNpclV45rw>
+> - 6 coloration avec l'algo de coloration
+> - 5 coloration linéaire <https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf>
+> - 4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?
 
-- 3 coloriable :
-  - NP complet <https://perso.eleves.ens-rennes.fr/people/pierre.le-barbenchon/devinfo/3colo.pdf>
-  - planaire aussi : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD11-correction.pdf>
+### Variantes
+
+> TBD pays non connexes
+> TBD colonies lunaires
 
 ## Colorabilité et partage de secrets
 
-> ce qui peut ensuite servir pour les [zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
+> TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.
 
-## Isomorphisme de graphes planaires
+> <https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance>
+>
+{% lien %}
 
+- [Avi Wigderson parle des zero knowledge proof](https://www.youtube.com/watch?v=5ovdoxnfFVc)
+- [le papier](https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf)
+
+{% endlien %}
+
+> [Curry howard correspondance](https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard)
+## Odds and ends
+
+Nombreux problèmes NP-complets sont facile à les graphes planaires.
+
+### Propriétés
+
+- 3 coloriable et problème de la galerie d'art : <https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art>
+
+- Lemme de Sperner <https://www.youtube.com/watch?v=cpIexccvYjI&list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&index=18>, on peut le démontrer avec la planarité : <https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf>. Attention, ce n'est **pas** de la coloration de graphes (pas de contrainte sur les voisins).
+
+### Facile pour les graphes planaires
+
+> TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
 > TBD isomorphisme de graphe planaire
