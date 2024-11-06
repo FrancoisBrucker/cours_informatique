@@ -35,6 +35,11 @@ Un **_multi-graphe_** est un couple $G = (V, E)$ où :
 
 {% endnote %}
 
+Pour ne pas avoir à toujours rappeler l'ensemble des sommets et des arêtes d'une graphe, on utilisera parfois la notation :
+
+- $V(G)$ pour noter l'ensemble des sommets d'un multi-graphe,
+- $E(G)$ pour noter l'ensemble des arcs d'un multi-graphe.
+
 ### Exemple
 
 Le multi-graphe $G = (V, E)$ avec :

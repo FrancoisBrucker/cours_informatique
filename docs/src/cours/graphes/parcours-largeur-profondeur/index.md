@@ -28,7 +28,6 @@ Deux parcours classiques d'un graphe : largeur et profondeur.
 
 {% endlien %}
 
-
 > TBD application quand il faut parcourir de proche en proche
 
 ### BFS et chemin/cycle/circuits
@@ -83,7 +82,15 @@ De plus un tri topologique fait que lorsque l'on s'attelle à la tache $v_i$ on 
 
 C'est encore un exemple où les contraintes sont locales et ou l'on cherche une solution globale.
 
-### DFS et calcul des composantes fortement connexes
+### DFS et calcul de composantes
+
+#### Composantes 2-connexes
+
+> TBD
+
+#### Composantes fortement connexes
+
+> TBD  connexes
 
 - Kosaraju en 2 passes : <https://www.youtube.com/watch?v=RpgcYiky7uw>
 - Tarjan en une passe : <https://www.youtube.com/watch?v=wUgWX0nc4NY>

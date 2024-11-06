@@ -71,6 +71,12 @@ Vous aurez besoin d'installer :
 
 > TBD : `scikit-learn` et `statsmodels`. Autre truc ?
 
+{% info %}
+
+Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fait que vous l'ayez installé, essayez d'installer les [bibliothèques DLL de visual C++](https://pypi.org/project/msvc-runtime/) : `python -m pip install msvc-runtime`.
+
+{% endinfo %}
+
 ## Méthodes d'analyse des données
 
 {% info %}

@@ -174,7 +174,7 @@ Si $G=(V, E)$ est un graphe, l'ensemble $\mathcal{C} = \{ V_1, \dots, V_p \}$ de
 Si le le graphe est orienté, on a le même résultat en considérant l'ensemble de des composantes fortement connexes.
 
 {% endnote %}
-{% details "**Preuve**", "open" %}
+{% details "preuve", "open" %}
 L'union de deux ensemble fortement connexes non disjointes est encore un ensemble fortement connexe : deux composantes fortement connexes sont forcément disjointes.
 {% enddetails %}
 {% attention %}
@@ -183,6 +183,7 @@ Les composantes connexes d'un graphe orienté ne sont pas forcément disjointes,
 ![g carré g solution](./connexe_pas_fortement.png)
 
 {% endattention %}
+
 Enfin, Du point de vue de la connexité, certains sommet ou arêtes sont plus important que d'autres :
 
 {% note "**Définition**" %}
@@ -194,6 +195,28 @@ Soit $G$ un graphe connexe.
 {% endnote %}
 
 Par exemple, dans des réseau routiers, les isthme et les nœuds n'articulations vont créer des bouchons s'ils sont saturés (le tunnel sous Fourvière par exemple).
+
+<span id="k-connexité"></span>
+Finissons par définir la $k$-connexité :
+
+<span id="définition-k-connexité"></span>
+
+{% note "**Définition**" %}
+
+Un graphe est dit $k$-connexe si la suppression de $k-1$ sommet de déconnecte pas $G$.
+
+{% endnote %}
+
+Il est clair qu'un graphe est connexe si et seulement si il est $1$-connexe. Les graphes 2-connexes vont avoir une certaine importance plus tard (lorsque l'on parlera de colorabilité et de planarité des graphes). Ils permettent d'avoir des graphes connexes qui résistent à la suppression d'un sommet. Les cycles sont un exemple canoniques de graphes 2-connexes :
+
+<span id="2-connexité-cycle"></span>
+
+{% exercice %}
+Soit $G$ un graphe 2-connexe. Montrez que quelques soient $u \neq v$ deux de ses sommets, il existe un cycle dans $G$ passant par $u$ et $v$.
+{% endexercice %}
+{% details "corrigé" %}
+> TBD
+{% enddetails %}
 
 ## Propriétés fondamentales d'existence
 

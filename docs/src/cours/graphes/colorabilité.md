@@ -174,9 +174,38 @@ ce qui donne immédiatement la borne voulue.
 
 {% enddetails %}
 
-Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois :
+Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles impair... Et c'est la seule fois. Pour le démontrer on aura besoin de la proposition suivante :
 
-{% note "**Proposition (Brooks, 1941)**" %}
+{% note "**Proposition**" %}
+
+Un graphe $k$-régulier avec $\geq 3$ 2-connexe admet trois sommets $u$ et $v$ et $w$  tels que :
+
+- $vw$ n'est pas une arête de $G$,
+- $uv$ et $uw$ sont deux arêtes de $G$,
+- supprimer $v$ et $w$ de $G$ ne le déconnecte pas.
+
+{% endnote %}
+{% details "preuve", "open" %}
+L'existence de ces trois sommets est garantie car :
+
+1. comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête
+2. comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
+   - $y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,
+   - $z$ comme étant le sommet juste après $y'$ sur ce chemin.
+3. On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.
+
+Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :
+
+- $G$ privé de $x_1$ et $x_2$ est connexe
+- $xx_1$ et $xx_2$ sont des arêtes de $G$.
+
+Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.
+
+{% enddetails %}
+
+On peut maintenant démontrer le théorème :
+
+{% note "**Théorème (Brooks, 1941)**" %}
 Pour tout graphe $G$ qui n'est pas un graphe complets ni un cycle impair on a :
 
 <div>
@@ -215,30 +244,13 @@ Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affecta
 
 En supprimant $x^\star$ de $G$ il y aura $p>1$ composantes connexes $G_i = (v_i, E_i)$ le sommet $x^\star$ du graphe $G$ restreint à $X_i \cup \\{x^\star\\}$ aura strictement moins que $\Delta(G)$ sommets et on est ramené au cas 1 pour les $p$ graphes $G_i$. On peut ensuite en déduire un coloriage de $G$ en donnant à $x^\star$ la même couleur pour chaque coloriage.
 
-**Troisième cas :** le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$.
-
-Il existe alors $u$ et $v$ et $w$ trois sommets de $G$ tels que :
+**Troisième cas :** le graphe est régulier et il n'existe pas de sommets tel que si on le supprime on déconnecte $G$. On se retrouve dans le cadre de la proposition suivant et il existe $u$ et $v$ et $w$ trois sommets de $G$ tels que :
 
 - $vw$ n'est pas une arête de $G$,
 - $uv$ et $uw$ sont deux arêtes de $G$,
 - supprimer $v$ et $w$ de $G$ ne le déconnecte pas.
 
 On peut alors utiliser l'ordre entre sommets : $v_1 = v$, $v_2 = w$, $u = v_n$ et trouver les autres éléments en utilisant l'algorithme du cas 1.
-
-L'existence de ces trois sommets est garantie car :
-
-1. comme $G$ n'est pas complet il existe $x$ et $y$ tels que $xy$ n'est pas une arête
-2. comme $G$ est connexe il existe un chemin entre $x$ et $y$ et on prend :
-   - $y'$ comme étant le sommet le plus éloigné de $x$ sur ce chemin tel que $xy'$ soit une arête de $G$,
-   - $z$ comme étant le sommet juste après $y'$ sur ce chemin.
-3. On a alors $xz'$ qui n'est pas une arête alors que $xy'$ et $y'z$ en sont.
-
-Si le graphe $G$ privé de $x$ et de $z$ n'est pas connexe alors pour chaque partie connexe $G_i = (V_i, E_i)$ il existe $x_i, z_i \in X_i$ tels que $x_ix$ et $z_iz$ soient des arêtes de $G$. Comme en supprimant $x_i$ ou $z_i$ de $G$, le graphe reste connexe : pour tout $i$ il existe $y_i \neq x_i$ tel que $y_ix_i$ ou $y_iz_i$ soit une arête de $G$. On en déduit que :
-
-- $G$ privé de $x_1$ et $x_2$ est connexe
-- $xx_1$ et $xx_2$ sont des arêtes de $G$.
-
-Et on a prouvé un triplet de point qui correspond à ce que l'on cherche.
 
 {% enddetails %}
 
