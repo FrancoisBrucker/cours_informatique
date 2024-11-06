@@ -100,7 +100,7 @@
 <p>Si l'on continue comme ça, notre fichier <code class="fichier">numérologie/index.js</code> va devenir énorme et contenir toutes les routes de notre projet. Il faut rationaliser tout ça en organisant les routes par <em>thème</em>.</p>
 <h2>Routeur</h2>
 <p>Pour cela, commençons par créer un fichier <code class="fichier">numérologie/routes/index.js</code> où on va déporter toutes nos routes non statiques :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../back/numérologie.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span>
@@ -153,8 +153,7 @@ router<span class="token punctuation">.</span><span class="token function">get</
 
 <span class="token keyword">export</span> <span class="token punctuation">{</span>
     router
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -173,7 +172,7 @@ router<span class="token punctuation">.</span><span class="token function">get</
 </div></div>
 
 <p>On utilise ce fichier dans <code class="fichier">numérologie/index.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -213,14 +212,13 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>On importe le router avec la ligne <code class="language-">import {router as routes} from &quot;./routes/index.js&quot;;</code>. Ceci a de plus permi de renommer notre <code class="language-">router</code> <code class="language-">routes</code> ici.</p>
 <p>Notre serveur est bien plus petit !</p>
 <h2>API</h2>
 <p>Finissons cette partie en ajoutant une indirection à nos routes. On va créer un nouveau dossier <code class="fichier">numérologie/routes/api/</code> qui va contenir toutes les routes de l'api CRUD (pour l'instant embryonnaire puisqu'il n'y a qu'une route).</p>
 <p>Comme avant, on crée aussi un fichier <code class="fichier">numérologie/routes/api/index.js</code> qui va contenir nos routes :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../../back/numérologie.js'</span>
 <span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../../db.js"</span>
@@ -246,10 +244,9 @@ router<span class="token punctuation">.</span><span class="token function">get</
 
 <span class="token keyword">export</span> <span class="token punctuation">{</span>
     router
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>On va utiliser ce fichier dans notre notre gestionnaire de route — le fichier <code class="fichier">numérologie/routes/index.js</code> — que l'on modifie en:</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'../back/numérologie.js'</span>
 <span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span>
@@ -292,8 +289,7 @@ router<span class="token punctuation">.</span><span class="token function">use</
 
 <span class="token keyword">export</span> <span class="token punctuation">{</span>
     router
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Toutes les routes de <code>apiRoutes</code> commencerons par <code>/api</code>. Un tel procédé rend très simple la concaténation de routes (ce n'est pas la peine d'éditer plein de fichier lors d'un changement d'architecture des routes) et permet de bien séparer les groupes de routes en dossier séparés.</p>
 <h2>Routes</h2>
 <p>Les routes non statiques que possèdent maintenant notre serveur sont :</p>

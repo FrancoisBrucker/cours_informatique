@@ -144,15 +144,14 @@ Il existe 3 grands types de design pattern, on pourra en donner un exemple pour 
 </ul>
 <p>On commence avec les 3 fichiers ci-après. Exécutez le main et les tests. Les 3 tests doivent passer.</p>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
 
 d6 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> etape <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Fichier <code class="fichier">choices.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 
 <span class="token keyword">class</span> <span class="token class-name">Choice</span><span class="token punctuation">:</span>
@@ -165,8 +164,7 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 
     <span class="token keyword">def</span> <span class="token function">roll</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>position <span class="token operator">=</span> self<span class="token punctuation">.</span>choices<span class="token punctuation">[</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>choices<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-        <span class="token keyword">return</span> self
-</code></pre>
+        <span class="token keyword">return</span> self</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -191,15 +189,14 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 </summary>
 <div class="mx-8 pb-2">
 <p>Pour pouvoir chaîner nos opérations. En rendant self, on peut écrire des choses du genre :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">choice <span class="token operator">=</span> Choices<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">choice <span class="token operator">=</span> Choices<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>choice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>choice<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
 <p>Fichier <code class="fichier">tests.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> choice <span class="token keyword">import</span> Choice
 
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -215,8 +212,7 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 <span class="token keyword">def</span> <span class="token function">test_roll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
-</code></pre>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
 <h2>Première amélioration</h2>
 <p>Choice prend l'objet <code>choices</code> et le garde. Cela pose plusieurs problèmes. En particulier :</p>
 <ul>
@@ -225,22 +221,20 @@ d6 <span class="token operator">=</span> Choice<span class="token punctuation">(
 </ul>
 <p>Pour résoudre ces soucis on va copier l'objet <code>choices</code> et rendre l'attribut non modifiable. Pour cela, on va écrire des tests pour mettre en  lumière le problème puis corriger le code. Il faudra certainement changer d'autres tests dans le processus de réécriture du code.</p>
 <p>On commence par écrire un petit test :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_copy_choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_copy_choices</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     initial_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">]</span>
     d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span>initial_list<span class="token punctuation">)</span>
     initial_list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"CHANGE"</span>
     d1<span class="token punctuation">.</span>roll<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"a"</span>
-</code></pre>
+    <span class="token keyword">assert</span> d1<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"a"</span></code></pre>
 <p>Regardez-le planter. Que s'est-il passé ? Puis proposez une solution.</p>
 <p>Enfin, on peut tester la deuxième objection avec le test ci-après. Le but de ce test est de vérifier que l'attribut  <code>choices</code> est non mutable. Il cherche à produire une erreur : modifier un élément <a href="https://medium.com/@meghamohan/mutable-and-immutable-side-of-python-c2145cf72747">non mutable</a>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pytest
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pytest
 
 <span class="token keyword">def</span> <span class="token function">test_no_modification</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     d1 <span class="token operator">=</span> Choice<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">with</span> pytest<span class="token punctuation">.</span>raises<span class="token punctuation">(</span>Exception<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        d1<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
-</code></pre>
+        d1<span class="token punctuation">.</span>choices<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span></code></pre>
 <p>La façon dont pytest gère les erreurs est décrite <a href="https://docs.pytest.org/en/latest/assert.html#assertions-about-expected-exceptions">ici</a> : le test précédent est vrai si le code plante et produit une erreur. essayer de comprendre la structure de ce test.</p>
 <h2>pattern factory</h2>
 <p><a href="https://refactoring.guru/fr/design-patterns/factory-method">Le pattern factory</a> en est un exemple, il permet de créer des objets via des méthodes presque sans paramètre et avec un nom adapté plutôt qu'avec un constructeur avec des milliers de paramètres</p>
@@ -311,7 +305,7 @@ un dé et une autre classe, la liste avec un save du test. . avec et sans</p>
 <li>une méthode <code>restore()</code> qui permet à l'objet sauvé de reprendre la valeur qu'il avait à la création du memento.</li>
 </ul>
 <p>Vous pouvez par exemple transformer le code ci-après en test(s) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> choice 
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice 
 
 dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
 dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
@@ -320,8 +314,7 @@ memento <span class="token operator">=</span> Memento<span class="token punctuat
 dice<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
 
 memento<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># doit valoir 2</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># doit valoir 2</span></code></pre>
 <h3>Undo list</h3>
 <p>Nous pouvons maintenant créer une classe <code>Undo</code> (dans le fichier <code>undo.py</code>) qui va nous permettre de sauver des dés (et leurs valeurs) et de les restaurer à la demande. Cette classe doit pouvoir :</p>
 <ul>
@@ -330,7 +323,7 @@ memento<span class="token punctuation">.</span>restore<span class="token punctua
 <li>connaître le nombre d'items sauvegardés avec une méthode <code>nb_undos()</code></li>
 </ul>
 <p>Bien sur vous créerez un fichier de tests <code>test_undo.py</code> qui testera les 3 fonctionnalités ci-dessus. Une façon d'utiliser les différents objets est décrite ci-après :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> choice 
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> choice 
 <span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
 
 dice <span class="token operator">=</span> choice<span class="token punctuation">.</span>dice<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -345,11 +338,10 @@ dice<span class="token punctuation">.</span>roll<span class="token punctuation">
 
 
 undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dice<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># vaut 5</span></code></pre>
 <h3>Un undo dans dice</h3>
 <p>Pour ne pas toujours avoir à sauver le dé avant un roll, on pourra utiliser une classe fille de <code>Choice</code> dont le <code>set_position</code> sauve l'état dans un undo avant de modifier la position. L'objet undo devant être unique dans le programme, il faudrait que le code suivant fonctionne :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> undo <span class="token keyword">import</span> Undo
 <span class="token keyword">from</span> choiceUndo <span class="token keyword">import</span> ChoiceUndo
 
 undo <span class="token operator">=</span> Undo<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -361,8 +353,7 @@ d<span class="token punctuation">.</span>set_position<span class="token punctuat
 d<span class="token punctuation">.</span>set_position<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 4</span>
 undo<span class="token punctuation">.</span>restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>get_position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 1</span></code></pre>
 <p>Respectez le DRY ! Ne recodez que le minimum possible, c'est à dire une classe <code>ChoiceUndo</code> qui hérite de <code>Choice</code> et qui ne diffère de celle-ci que par la méthode <code>set_position</code> (et le constructeur bien sûr).</p>
 <p>Faites le même essai avec 10 utilisations de la méthode <code>roll()</code>.</p>
 <h2>Observer</h2>

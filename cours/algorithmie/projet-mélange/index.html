@@ -152,7 +152,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>L'algorithme suivant ne résout pas le problème &quot;<em>permutation</em>&quot;. Pourquoi ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> aléatoire<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -160,8 +160,7 @@
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         T_prim<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T<span class="token punctuation">[</span>randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> T_prim
-</code></pre>
+    <span class="token keyword">return</span> T_prim</code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -224,11 +223,10 @@
 </div>
 <h2>Existence d'un algorithme</h2>
 <p>Avant de chercher plus loin commençons par montrer qu'il existe un algorithme pour résoudre le problème. Si l'on possède une liste de toutes les permutations possibles, l'algorithme suivant fonctionne :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">soit P un tableau contenant chaque permutation de T une fois
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">soit P un tableau contenant chaque permutation de T une fois
 
 i = randrange(n!)
-rendre P[i]
-</code></pre>
+rendre P[i]</code></pre>
 <p>Il nous reste à créer toutes les permutations possibles d'un tableau. C'est ce que fait l'algorithme suivant.</p>
 <h2><span id="algo-toutes-permutations"></span>Toutes les permutations</h2>
 <p>Remarquez que dans le cas général, trouver toutes les permutations d'un tableau d'entier de taille $n$ revient à trouver toutes les bijections de $[0 .. n-1]$, donc toutes les permutations de $S = [0, 1, \dots, n-1]$.</p>
@@ -383,27 +381,26 @@ $i^{\star}$ le plus petit indice tel que $S_i[i^{\star}:]$ est un tableau rangé
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span>
-    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        i <span class="token operator">-=</span> <span class="token number">1</span>
-
-    i1 <span class="token operator">=</span> i
-    i_star <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
-
-    i <span class="token operator">=</span> i_star
-    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        i <span class="token operator">+=</span> <span class="token number">1</span>
-        j <span class="token operator">-=</span> <span class="token number">1</span>
-
-    
-    <span class="token keyword">for</span> i2 <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i_star<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span>
-            <span class="token keyword">return</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">successeur</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    i <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span></span>
+<span class="highlight-line">    <span class="token keyword">while</span> i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token keyword">and</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        i <span class="token operator">-=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    i1 <span class="token operator">=</span> i</span>
+<span class="highlight-line">    i_star <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    i <span class="token operator">=</span> i_star</span>
+<span class="highlight-line">    j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> j<span class="token punctuation">:</span></span>
+<span class="highlight-line">        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></span>
+<span class="highlight-line">        i <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line">        j <span class="token operator">-=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">    <span class="token keyword">for</span> i2 <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i_star<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i2<span class="token punctuation">]</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span></span></code></pre>
 <p>Cet algorithme est bien exact car :</p>
 <ul>
 <li>il s'arrête</li>
@@ -433,7 +430,7 @@ $$</p>
 <p>Comme pour le compteur binaire, on remarque que la complexité de l'énumération de toutes les permutations est de l'ordre du nombre de permutations et qu'en moyenne $n-i^\star$ vaut 2.</p>
 <h3>Toutes les permutations de $T$</h3>
 <p>Si l'énumération de toutes les permutations est de l'ordre du nombre de permutations, si l'on veut toutes les stocker il va falloir dupliquer la liste rendue par <code class="language-">successeur</code> car cet algorithme <strong>modifie</strong> la liste qui lui est passée en paramètre. La complexité devient alors $\mathcal{O}(n\cdot n!)$.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">permutations</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
     P <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>  <span class="token comment"># va contenir les permutations de T</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -447,19 +444,17 @@ $$</p>
         P<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>données<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> T<span class="token punctuation">]</span><span class="token punctuation">)</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> P
-</code></pre>
+    <span class="token keyword">return</span> P</code></pre>
 <p>L'algorithme <code class="language-">permutations</code> rend un tableau contenant toutes les permutations du tableau passé en entrée. La taille de la sortie est donc très grande.</p>
 <p>Par exemple pour <code class="language-">permutations([1, 2, 3, 4])</code> va rendre la liste :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
- <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+ <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>On remarque que :</p>
 <ul>
 <li>le premier élément du tableau de sortie est le tableau initial</li>
@@ -468,19 +463,18 @@ $$</p>
 </ul>
 <h2>Un premier algorithme</h2>
 <p>Un algorithme de mélange utilisant <code class="language-">permutations</code> est alors de choisir 1 permutation parmi toutes les permutations d'un tableau en entrée :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">def</span> mélange<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     i <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-
 </code></pre>
 <p>Si la la fonction <a href="https://docs.python.org/fr/3/library/random.html#random.randrange">randrange</a> de python rend un nombre aléatoire équiprobable <code>mélange</code> doit bien rendre chaque permutation de façon équiprobable.</p>
 <h3>Expérimentations</h3>
 <p>Vérifions expérimentalement que notre algorithme rend bien une permutation équiprobable.</p>
 <p>On va compter le nombre de fois où chaque permutation apparaît :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> compte_mélange<span class="token punctuation">(</span>taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> compte_mélange<span class="token punctuation">(</span>taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>taille_liste<span class="token punctuation">)</span><span class="token punctuation">)</span>
     P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
@@ -489,8 +483,7 @@ $$</p>
         T2 <span class="token operator">=</span> mélange<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
         N<span class="token punctuation">[</span>P<span class="token punctuation">.</span>index<span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
     
-    <span class="token keyword">return</span> N
-</code></pre>
+    <span class="token keyword">return</span> N</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -515,16 +508,15 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 nombre <span class="token operator">=</span> compte_mélange<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">min</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">sum</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token builtin">len</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
 <p>Représentons graphiquement les résultats !</p>
 <p>On a mis en abscisse les différentes permutations et en ordonnée leur nombre</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 <span class="token keyword">def</span> graphique_mélange<span class="token punctuation">(</span>taille_tableau<span class="token punctuation">,</span> nombre_iteration<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
@@ -543,8 +535,7 @@ nombre <span class="token operator">=</span> compte_mélange<span class="token p
 
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-graphique_mélange<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span>
-</code></pre>
+graphique_mélange<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span></code></pre>
 <p>Pour une exécution de <code class="language-">graphique_mélange(6, 10000)</code>, j'obtiens le résultat suivant :</p>
 <p><img src="m%C3%A9lange_1.png" alt="mélange"></p>
 <p>Les permutations semblent bien équiprobables.</p>
@@ -569,15 +560,14 @@ graphique_mélange<span class="token punctuation">(</span><span class="token num
 <p>Comme Fisher et Yates étaient des mathématiciens et Knuth un (grand) informaticien, les informaticiens préfèrent appeler cet algorithme <em>algorithme de Knuth</em> plutôt qu'<em>algorithme de Fisher-Yates</em>. Cependant comme Knuth a créé de très nombreux algorithmes, googler &quot;algorithme de fisher-yates&quot; donne directement le résultat attendu alors que googler &quot;algorithme de Knuth&quot; donne plein de résultats différents (mais tous sont de superbes algorithmes !).</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
-
-<span class="token keyword">def</span> mélange_Knuth<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    T2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        j <span class="token operator">=</span> randrange<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> T2
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> mélange_Knuth<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    T2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        j <span class="token operator">=</span> randrange<span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">        T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> T2</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -633,7 +623,7 @@ $$
 <p>En python, une fonction à tout à fait le droit d'être un paramètre, ce qui est vraiment chouette pour écrire du code générique.</p>
 </div></div>
 
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> compte_mélange_générique<span class="token punctuation">(</span>fonction_mélange<span class="token punctuation">,</span> taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> compte_mélange_générique<span class="token punctuation">(</span>fonction_mélange<span class="token punctuation">,</span> taille_liste<span class="token punctuation">,</span> nombre_lancer<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span>taille_liste<span class="token punctuation">)</span><span class="token punctuation">)</span>
     P <span class="token operator">=</span> permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     N <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span>
@@ -660,14 +650,11 @@ $$
     ax<span class="token punctuation">.</span>set_title<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>nombre_iteration<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" permutations d'un tableau à "</span> <span class="token operator">+</span> <span class="token builtin">str</span><span class="token punctuation">(</span>taille_tableau<span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" éléments"</span><span class="token punctuation">)</span>
 
     plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>De là, pour utiliser la fonction <code class="language-">mélange</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">graphique_mélange_générique<span class="token punctuation">(</span>mélange<span class="token punctuation">,</span> taille_tableau<span class="token punctuation">,</span> nombre_iteration<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">graphique_mélange_générique<span class="token punctuation">(</span>mélange<span class="token punctuation">,</span> taille_tableau<span class="token punctuation">,</span> nombre_iteration<span class="token punctuation">)</span></code></pre>
 <p>et pour utiliser la fonction <code class="language-">mélange_Knuth</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">graphique_mélange_générique<span class="token punctuation">(</span>mélange_Knuth<span class="token punctuation">,</span> taille_tableau<span class="token punctuation">,</span> nombre_iteration<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">graphique_mélange_générique<span class="token punctuation">(</span>mélange_Knuth<span class="token punctuation">,</span> taille_tableau<span class="token punctuation">,</span> nombre_iteration<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -785,15 +772,14 @@ $$
 </ol>
 </li>
 </ol>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> mélange_transposition<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> mélange_transposition<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T2 <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         i <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">)</span>
         j <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
         T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    <span class="token keyword">return</span> T2
-</code></pre>
+    <span class="token keyword">return</span> T2</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>

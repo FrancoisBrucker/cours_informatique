@@ -141,8 +141,7 @@
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url (Uniform Resource Locator)</a> est un moyen de retrouver n'importe quelle élément du web. Elle est composée de 3 parties :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span>/<span class="token operator">&lt;</span>ressource<span class="token operator">></span><span class="token punctuation">[</span> ? <span class="token operator">&lt;</span>requête<span class="token operator">></span> <span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token comment">#&lt;lien>]</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span>/<span class="token operator">&lt;</span>ressource<span class="token operator">></span><span class="token punctuation">[</span> ? <span class="token operator">&lt;</span>requête<span class="token operator">></span> <span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token comment">#&lt;lien>]</span></code></pre>
 </div></div>
 
 <p>Ce qui donne pour l'url <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">https://fr.wikipedia.org/wiki/Uniform_Resource_Locator</a> :</p>
@@ -212,8 +211,7 @@
 </ul>
 <h2><span id="port"></span> Port</h2>
 <p>Dans le schéma d'une url, la machine sur sur laquelle on va chercher la ressource est identifiée par deux composantes, le serveur et le port :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token operator">&lt;</span>protocole<span class="token operator">></span>://<span class="token operator">&lt;</span>serveur<span class="token operator">></span><span class="token punctuation">[</span>:port<span class="token punctuation">]</span></code></pre>
 <p>En effet, une machine sur internet peut avoir plusieurs utilisations. Pour séparer chacune de ses utilisation, on associe un <a href="https://fr.wikipedia.org/wiki/Port_(logiciel)">un port</a> à chacune d'elle : l'url est alors de la forme <code>protocole://serveur:port/ressource</code>).</p>
 <p>Chaque protocole a cependant un port par défaut qui est utilisé s'il aucun port n'est précisé. Par exemple, le port par défaut du protocole https est le 443 et donc les urls <code>https://www.google.fr</code> et <code>https://www.google.fr:443</code> sont identiques.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">

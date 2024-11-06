@@ -107,8 +107,7 @@
 </div></div>
 
 <p>Par exemple l'objet de nom <code>o</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">o <span class="token operator">=</span> <span class="token number">1011001</span></code></pre>
 <p>Dans un pseudo-code, l'endroit où sont stockés les objets n'est pas défini, dans le pseudo-assembleur, on les stocke explicitement dans un tableau nommé <strong><em>mémoire</em></strong> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -122,7 +121,7 @@
 
 <p>Chaque objet $o = o_0\dots o_{p-1}$, une suite finie de <code>0</code> et de <code>1</code>, est stocké dans des cases contiguës de la mémoire.</p>
 <p>L'objet <code>o</code> de tout à l'heure sera alors rangé :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token number">01234567</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token number">01234567</span>
 o <span class="token operator">=</span> <span class="token number">11010100</span>
 
 M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
@@ -132,8 +131,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
 M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
 M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
-</code></pre>
+M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span></code></pre>
 <p>Attention à la lecture, <strong><em>le bit de poids fort</em></strong> de l'objet, celui le plus à gauche, est d'indice le plus petit.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -227,8 +225,7 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 
 <h2>Fonctions et appel de fonctions</h2>
 <p>En pseudo-code, on appelle les fonctions via des paramètres :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ma_fonction<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ma_fonction<span class="token punctuation">(</span>p1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> pn<span class="token punctuation">)</span></code></pre>
 <p>En pseudo-assembleur, une fonction est appelée avec un unique paramètre $p$ qui correspond à une adresse mémoire d'un tableau à $n$ adresses telle que :</p>
 <ol>
 <li>$M[p+(i-1)S:p+iS]$ corresponde à l'adresse du paramètre $p_i$</li>
@@ -236,25 +233,23 @@ M<span class="token punctuation">[</span>i <span class="token operator">+</span>
 </ol>
 <p>La  première condition permet de ne pas faire de différence entre paramètre de fonctions et objet de l'algorithme et la seconde permet d'appeler facilement des fonction de manière récursive !</p>
 <p>Par exemple la fonction factorielle que l'on pourrait écrire en pseudo-code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
   si n ≤ <span class="token number">1</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token number">1</span>
   sinon<span class="token punctuation">:</span>
     <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 
-affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-</code></pre>
+affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span></code></pre>
 <p>Deviendrait en pseudo-assembleur :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
-  si u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> ≤ <span class="token number">1</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token number">1</span>
-  sinon<span class="token punctuation">:</span>
-    M<span class="token punctuation">[</span>p <span class="token operator">+</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>p <span class="token operator">+</span> S<span class="token punctuation">)</span>
-
-M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">  si u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> ≤ <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token number">1</span></span>
+<span class="highlight-line">  sinon<span class="token punctuation">:</span></span>
+<span class="highlight-line">    M<span class="token punctuation">[</span>p <span class="token operator">+</span> S<span class="token punctuation">:</span>p <span class="token operator">+</span><span class="token number">2</span><span class="token operator">*</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>p<span class="token punctuation">:</span>p<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>p <span class="token operator">+</span> S<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">affiche à l'écran factorielle<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></span></code></pre>
 <p>Lors de l'exécution du code précédent, la fonction factorielle va être appelée quatre fois. Voyons ça pour $S=4$ et donc une taille mémoire de 32bits.</p>
 <p>premier appel depuis la ligne 9 du programme <code>factorielle(0)</code> :</p>
 <pre><code>0         1         2         3
@@ -297,22 +292,20 @@ p
 <p>On associe à chaque ligne du programme en pseudo-assembleur un <strong><em>label</em></strong>, qui correspond à son numéro de ligne. Cet ajout va permettre de gérer les structures de contrôles et les tests sans blocs : uniquement avec des sauts.</p>
 <h3>Saut</h3>
 <p>On ajoute au pseudo-assembleur une instruction de saut :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTO label
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">GOTO label</code></pre>
 <p>L'instruction <code>GOTO</code> (&quot;go to&quot; : &quot;aller à&quot;) <em>saute</em> à l'instruction de label <code>label</code>. Par exemple le programme suivant qui est une version itérative (et infinie) de la factorielle :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
-affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-GOTO <span class="token number">3</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">GOTO <span class="token number">3</span></span></code></pre>
 <p>Contrairement à la version récursive précédente, la taille de la mémoire utilisée de change pas.</p>
 <p>Notez que les sauts peuvent être utilisés pour des appels de fonctions ! Il suffit de permettre le saut à partir d'une variable. Le code suivant utilise une variable pour stocker l'endroit où sauter après l'exécution de la fonction :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTO <span class="token number">6</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">GOTO <span class="token number">6</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
 GOTO u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -328,8 +321,7 @@ M<span class="token punctuation">[</span><span class="token number">0</span><spa
 M<span class="token punctuation">[</span>2S<span class="token punctuation">:</span>3S<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">17</span>
 GOTO <span class="token number">3</span>
 
-GOTO <span class="token number">11</span>
-</code></pre>
+GOTO <span class="token number">11</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -412,26 +404,23 @@ GOTO <span class="token number">11</span>
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un saut conditionnel est de la forme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTOIF drapeau label
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">GOTOIF drapeau label</code></pre>
 <p>La prochaine instruction exécutée sera celle de la ligne <code>label</code> si le drapeau de nom <code>drapeau</code> vaut <code>1</code>.</p>
 <p>De même :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">GOTOIFNOT drapeau label
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">GOTOIFNOT drapeau label</code></pre>
 <p>La prochaine instruction exécutée sera celle de la ligne <code>label</code> si le drapeau de nom <code>drapeau</code> vaut <code>0</code>.</p>
 </div></div>
 
 <p>Le code ci-après utilise le saut conditionnel pour afficher factorielle de 4 :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
-
-M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-GOTOIF ZÉRO <span class="token number">3</span>
-
-affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>S<span class="token punctuation">:</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">GOTOIF ZÉRO <span class="token number">3</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span></span></code></pre>
 <p>Comme on le voit, il est facile de remplacer les structures de contrôles et les répétitions du pseudo-code par une utilisation combinée des labels et des sauts conditionnels :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -458,8 +447,7 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le schéma général d'une <strong><em>opération</em></strong> en pseudo-assembleur est :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span></code></pre>
 <p>Où :</p>
 <ul>
 <li><code>OP</code> est le <a href="https://fr.wikipedia.org/wiki/Code_mn%C3%A9monique">code mnémonique</a> associée (le nom) à l'opération</li>
@@ -490,7 +478,7 @@ affiche à l'écran u<span class="token punctuation">(</span>M<span class="token
 <li><code>SET $X Y</code> qui place la constante <code>Y</code> (un entier relatif) dans le registre de numéro <code>X</code></li>
 </ul>
 <p>Encore et toujours factorielle, mais avec des registres</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
 SET $<span class="token number">2</span> <span class="token number">4</span>
 
 $<span class="token number">1</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>u<span class="token punctuation">(</span>$<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -498,7 +486,6 @@ $<span class="token number">2</span> <span class="token operator">=</span> b<spa
 GOTOIF ZÉRO <span class="token number">3</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Types d'opérations</h3>
 <p>Les opérations d'un pseudo-assembleur, comme pour un pseudo-code sont essentiellement arithmétique</p>
@@ -860,8 +847,7 @@ $$</p>
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations logiques du pseudo-code s'il possède l'opération :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span></code></pre>
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
 </div></div>
 
@@ -876,11 +862,10 @@ $$</p>
 </div></div>
 
 <p>On peut de plus additionner bit à bit deux nombres en utilisant la retenue. Par exemple, ci-dessous le code de la fonction additionnant deux bits <code>M[0]</code> et <code>M[1]</code> pour rendre la valeur <code>M[3]</code> et la retenue, <code>M[2]</code>, s'il y en a une:</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
 
 M<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> XOR<span class="token punctuation">(</span>XOR<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> OR<span class="token punctuation">(</span>AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> AND<span class="token punctuation">(</span>M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> M<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>En reprenant la sortie de l'algorithme précédent et en l'itérant autant de fois que nécessaire (les paramètres d'entrées seront les deux bit à additionner et la retenue précédente), on peut peut additionner des entiers de toute taille :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -890,8 +875,7 @@ M<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ADD $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ADD $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span></code></pre>
 <p>et le drapeau <code>RETENUE</code> telle que <code>ADD</code> additionne les valeurs des registres <code>$1</code> et <code>$2</code> en tenant compte du drapeau <code>RETENUE</code> et affecte le résultat dans le registre <code>$3</code> en mettant à jour la valeur du drapeau <code>RETENUE</code>.</p>
 </div></div>
 
@@ -904,15 +888,14 @@ M<span class="token punctuation">[</span><span class="token number">2</span><spa
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le pseudo-assembleur peut effectuer toutes les opérations arithmétiques du pseudo-code s'il possède l'opération :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">NAND $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">3</span></code></pre>
 <p>Qui effectue l'opération $\text{NAND}$ pour les 2 objets de longueur 1 des registres <code>$1</code> et <code>$2</code> et affecte le résultat dans le registre <code>$3</code>.</p>
 </div></div>
 
 <h4>Autres opérations</h4>
 <p>Les autres opérations possibles par un pseudo-code (gestion des réels, concaténation de chaines, etc) sont facilement codable avec les opérations logique et arithmétiques sur les entiers.</p>
 <p>La factorielle finale serait alors quelque chose du genre, en supposant que l'on ait les opérations de somme et de multiplications :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SET $<span class="token number">1</span> <span class="token number">1</span>
 SET $<span class="token number">2</span> <span class="token number">4</span>
 
 MUL $<span class="token number">1</span> $<span class="token number">2</span> $<span class="token number">1</span>
@@ -920,8 +903,7 @@ ADD $<span class="token number">2</span> <span class="token operator">-</span><s
 
 GOTOIF ZÉRO <span class="token number">3</span>
 
-affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+affiche à l'écran u<span class="token punctuation">(</span>$<span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <h3>Conclusion</h3>
 <p>La seule opération que doit pouvoir faire un pseudo-assembleur pour pouvoir faire tout ce que peut faire un pseudo-code est l'opération <code>NAND</code>. Tout le reste peut être construit grâce à du code.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

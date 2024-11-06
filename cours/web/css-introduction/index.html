@@ -130,7 +130,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">exemple.html</code> contenant le code suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -147,8 +147,7 @@
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Bienvenue sur ma page web.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Comment allez vous ?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Sauvez le fichier et rechargez votre page dans le navigateur.</p>
 <p>Vous pouvez voir que le texte dans le paragraphe est devenu rouge.</p>
 </div></div>
@@ -179,21 +178,18 @@
 <h3>Propriété simple</h3>
 <p>Un attribut et une valeur.</p>
 <p>Peut être du texte, comme pour la <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-align">justification d'un texte</a> :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
   <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Ou un <a href="https://www.w3schools.com/cssref/css_units.php">nombre avec son unité</a>, comme pour la taille de la police de caractère  :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> 25px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3>propriétés combinée</h3>
 <p>Beaucoup de commandes peuvent se combiner. Par exemple <a href="https://www.w3schools.com/css/css_font.asp">les fontes</a> ont de nombreuses sous-propriétés qui <a href="https://www.w3schools.com/css/css_font_shorthand.asp">peuvent se combiner</a> en une seule directive css :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
   <span class="token property">font</span><span class="token punctuation">:</span> 20px Arial<span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -249,10 +245,9 @@
 <h3>Attribut de la balise</h3>
 <p>Enfin, on peut utiliser l'attribut style présent dans n'importe quelle balise html.</p>
 <p>Par exemple :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.5<span class="token punctuation">;</span> <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">margin</span><span class="token punctuation">:</span> 15px<span class="token punctuation">;</span> <span class="token property">line-height</span><span class="token punctuation">:</span> 1.5<span class="token punctuation">;</span> <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">></span></span>
 Romani ite domum !
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>On Utilise souvent cette façon de faire en javascript ou on modifie les propriétés css d'un élément avec du code. C'est aussi pratique lorsque l'on veut changer un petit truc dans une balise particulière.</p>
 
 

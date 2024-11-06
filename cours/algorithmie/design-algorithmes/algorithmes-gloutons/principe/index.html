@@ -112,13 +112,12 @@
 
 <p>Le schéma général d'un algorithme glouton est alors le suivant :</p>
 <div id="schéma-algo"></div>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Ordonner E en (x_0, x_1, ..., x_n)
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Ordonner E en (x_0, x_1, ..., x_n)
 S = {}
 
 pour chaque i de 1 à n:
     si S union {x_i} est une solution possible :
-        ajouter x_i à S
-</code></pre>
+        ajouter x_i à S</code></pre>
 <p>On voit en creux que ce type d'algorithmes :</p>
 <ol>
 <li>va être utilisé dans des problèmes d'optimisation où l'on cherche la <em>meilleure solution</em> parmi un ensemble de possibilités.</li>
@@ -240,7 +239,7 @@ pour chaque i de 1 à n:
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">,</span> pieces<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">rendu</span><span class="token punctuation">(</span>R<span class="token punctuation">,</span> pieces<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     pieces <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>pieces<span class="token punctuation">)</span>
     pieces<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
     pieces<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -252,8 +251,7 @@ pour chaque i de 1 à n:
 
         rendu<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>v<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> rendu
-</code></pre>
+    <span class="token keyword">return</span> rendu</code></pre>
 </div>
 </details>     
 </div>
@@ -301,7 +299,7 @@ pour chaque i de 1 à n:
 <li><strong>entrée</strong> : liste de films, chaque liste étant une liste <code class="language-">[depart, fin, nom]</code></li>
 <li><strong>sortie</strong> : liste ordonnée de films possible</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_films_maximal</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_films_maximal</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     films<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
@@ -312,8 +310,7 @@ pour chaque i de 1 à n:
         <span class="token keyword">if</span> fin_dernier_film <span class="token operator">&lt;=</span> début_nouveau_film<span class="token punctuation">:</span>
             films_a_voir<span class="token punctuation">.</span>append<span class="token punctuation">(</span>film<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> films_a_voir
-</code></pre>
+    <span class="token keyword">return</span> films_a_voir</code></pre>
 <p>La sortie de l'algorithme glouton correspond à un ordre de visionnage de films maximisant le nombre de films vus.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,9 +324,8 @@ boucle <code class="language-">for</code>.</li>
 <li>on a un peu fait de magie noire sur les tris en utilisant le paramètre <a href="https://docs.python.org/fr/3/howto/sorting.html#key-functions">key</a> qui permet de passer une fonction en paramètre. Cette fonction est appelé pour chaque élément. C'est pratique pour ne trier que selon 1 élément d'une liste (ici le 2ème élément).</li>
 <li>on utilise aussi l'écriture lambda qui permet de créer des fonction d'une ligne anonyme. Notre fonction lambda est équivalente à la fonction <code class="language-">fonction_lambda_anonyme</code> suivante :</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction_lambda_anonyme</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction_lambda_anonyme</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 </div></div>
 
 <h4>Preuve de l'algorithme : maximum de films</h4>
@@ -384,7 +380,7 @@ boucle <code class="language-">for</code>.</li>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_salles</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">nombre_salles</span><span class="token punctuation">(</span>films<span class="token punctuation">)</span><span class="token punctuation">:</span>
     films<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     salles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>films<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
@@ -397,8 +393,7 @@ boucle <code class="language-">for</code>.</li>
                 nouvelle_salle <span class="token operator">=</span> <span class="token boolean">False</span>
                 <span class="token keyword">break</span>
         <span class="token keyword">if</span> nouvelle_salle<span class="token punctuation">:</span>
-            salles<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>film<span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+            salles<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>film<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -457,7 +452,7 @@ boucle <code class="language-">for</code>.</li>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produits_est_compatible</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produits_est_compatible</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
     liste_produit<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> date<span class="token punctuation">,</span> produit <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>liste_produit<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -474,8 +469,7 @@ boucle <code class="language-">for</code>.</li>
         <span class="token keyword">if</span> produits_est_compatible<span class="token punctuation">(</span>ensemble_max <span class="token operator">+</span> <span class="token punctuation">[</span>produit<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             ensemble_max<span class="token punctuation">.</span>append<span class="token punctuation">(</span>produit<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> ensemble_max
-</code></pre>
+    <span class="token keyword">return</span> ensemble_max</code></pre>
 </div>
 </details>     
 </div>

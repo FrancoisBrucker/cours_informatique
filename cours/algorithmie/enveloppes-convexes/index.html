@@ -703,10 +703,9 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On vérifie que deux segments non consécutifs du polygone ne se croisent jamais :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">de i allant de 1 à h-2:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">de i allant de 1 à h-2:
    de j allant de i+2 à h:
-      vérifier que les segments [p[i], p[i+1]] et [p[j], p[(j+1) % h]] ne se croisent pas
-</code></pre>
+      vérifier que les segments [p[i], p[i+1]] et [p[j], p[(j+1) % h]] ne se croisent pas</code></pre>
 <p>On a utilisé l'opérateur <code class="language-">%</code> qui est le reste de la division entière (ou modulo).</p>
 </div>
 </details>     
@@ -1217,7 +1216,7 @@ $$
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2><span id="division-préa"></span>Les divisions de Préa</h2>
 <p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a>, mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction diviser(P):
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée minimum
 
@@ -1259,8 +1258,7 @@ fonction convexe(P):
     C = P + Q
     Faire une simplification de Sklansky sur C
 
-    rendre C
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    rendre C</code></pre>
 <p>L'algorithme va séparer l'espace en 2 à chaque appel de <code class="language-">diviser</code> et ne va garder que le demi-espace utile.</p>
 <p>Par exemple :</p>
 <p><img src="pr%C3%A9a-1.png" alt="Divisions de Préa"></p>

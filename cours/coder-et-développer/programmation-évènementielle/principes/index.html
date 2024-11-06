@@ -133,7 +133,7 @@
 <p>Il y a plusieurs moyen me mettre en place une fenêtre pyglet. Nous allons utiliser la méthode la plus proche de la programmation objet qui consiste à faire de l'héritage.</p>
 <h3>une fenêtre</h3>
 <p>Fichier : <code class="fichier">essais-pyglet/fenêtre.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -152,7 +152,6 @@ window <span class="token operator">=</span> HelloWorldWindow<span class="token 
 
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -221,7 +220,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -230,7 +229,6 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Coucou du rafraîchissement !"</span><span class="token punctuation">)</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <p><code class="language-">print</code> affiche du texte à l'endroit où vous avez exécuté le programme. Vous verrez donc l'affichage dans le terminal et non dans le fenêtre.</p>
 </div>
@@ -240,11 +238,10 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant la fonction <a href="https://docs.python.org/fr/3/library/datetime.html#datetime.datetime.now"><code class="language-">datetime.now()</code></a> du module <a href="https://docs.python.org/fr/3/library/datetime.html"><code class="language-">datetime</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token number">2023</span><span class="token operator">-</span><span class="token number">03</span><span class="token operator">-</span><span class="token number">13</span> <span class="token number">08</span><span class="token punctuation">:</span><span class="token number">44</span><span class="token punctuation">:</span><span class="token number">13.740575</span>
-<span class="token operator">>></span><span class="token operator">></span> 
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span> </code></pre>
 <p>Déterminez le nombre d'images par secondes de notre application.</p>
 </div></div>
 
@@ -265,7 +262,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
 
 <span class="token comment"># ...</span>
@@ -278,8 +275,7 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 
         <span class="token keyword">print</span><span class="token punctuation">(</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Le texte s'affiche toutes les 20ms environ soit, $1000/20 = 50$ IPS.</p>
 </div>
 </details>     
@@ -318,20 +314,19 @@ En revanche, le texte <code class="language-">c'est fini !</code> ne devrait app
 </summary>
 <div class="mx-8 pb-2">
 <p>C'est le paramètre <code class="language-">resizable</code> qu'il faut positionner à <code class="language-">True</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token string">"texte"</span><span class="token punctuation">,</span> resizable<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 
         <span class="token comment"># ...</span>
     
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
 <p>La méthode <code class="language-">on_draw</code> est une méthode spéciale. A chaque fois que l'événement <code class="language-">draw</code> est activé, cette méthode est exécutée. Pour le voir concrètement, regardons l'effet d'un redimensionnement sur la taille de la fenêtre :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -351,7 +346,6 @@ window <span class="token operator">=</span> HelloWorldWindow<span class="token 
 
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -375,14 +369,13 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le code de la méthode <code class="language-">on_draw</code> pour qu'il soit identique au code ci-dessous :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">on_draw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>draw<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div></div>
 
 <h3>Texte au milieu de la fenêtre</h3>
@@ -396,7 +389,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 
 <p>Un label est un objet non modifiable qui peut-être affiché (dans la méthode <code class="language-">on_draw</code>).</p>
 <p>Remplacez sa création dans le fichier <code class="fichier">essais-pyglet/fenêtre.py</code> par :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 self<span class="token punctuation">.</span>label <span class="token operator">=</span> pyglet<span class="token punctuation">.</span>text<span class="token punctuation">.</span>Label<span class="token punctuation">(</span>
     <span class="token string">"Hello, world!"</span><span class="token punctuation">,</span>
@@ -406,8 +399,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
     anchor_y<span class="token operator">=</span><span class="token string">"center"</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>En exécutant le code, le texte est placé au milieu de l'écran ! En revanche, lorsque vous modifiez la taille de la fenêtre pendant l'exécution du programme, la position ne change pas.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -444,7 +436,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </summary>
 <div class="mx-8 pb-2">
 <p>l'origine est en bas à gauche de la fenêtre.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment">#...</span>
 
     <span class="token keyword">def</span> <span class="token function">on_resize</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -452,8 +444,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
         self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">=</span> width <span class="token operator">//</span> <span class="token number">2</span>
         self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">=</span> height <span class="token operator">//</span> <span class="token number">2</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -473,7 +464,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </ul>
 <p>Le paramètre <code class="language-">symbol</code> est un entier qui correspond au code de la touche et <code class="language-">modifiers</code> gère les touches comme <code>shift</code>, <code>control</code> ou encore <code>alt</code>.</p>
 <p>Ajoutons une gestion basique du clavier dans le programme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment">#...</span>
 
     <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -482,8 +473,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
     <span class="token keyword">def</span> <span class="token function">on_key_release</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"release:"</span><span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -551,7 +541,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
 
@@ -570,8 +560,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
         <span class="token keyword">elif</span> symbol <span class="token operator">==</span> key<span class="token punctuation">.</span>RIGHT<span class="token punctuation">:</span>
             self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>x <span class="token operator">+=</span> <span class="token number">10</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -584,7 +573,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </ul>
 <p>Les différents modificateurs <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html#modifiers">sont donnés</a>
 :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">)</span>
 <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">bin</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -593,8 +582,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 <span class="token number">4</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">bin</span><span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_ALT<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token number">0b100</span>
-<span class="token operator">>></span><span class="token operator">></span>
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span></code></pre>
 <p>Savoir si un modificateur particulier est appuyé se fait avec des conditions sur les bits comme <code class="language-">&amp;</code> ou <code class="language-">|</code> par exemple.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -611,7 +599,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 <div class="pl-8 mr-8">
 <p>Essayez le code suivant pour savoir si la touche <code>shift</code> est enfoncée ou non :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> key
 
 <span class="token comment"># ...</span>
 
@@ -623,7 +611,6 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift appuyée"</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span>
-
 </code></pre>
 </div></div>
 
@@ -651,15 +638,14 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
     
     <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> modifiers <span class="token operator">&amp;</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift ou ctrl appuyée"</span><span class="token punctuation">)</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -686,15 +672,14 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
     
     <span class="token keyword">def</span> <span class="token function">on_key_press</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> symbol<span class="token punctuation">,</span> modifiers<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>modifiers <span class="token operator">&amp;</span> <span class="token punctuation">(</span>key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> key<span class="token punctuation">.</span>MOD_SHIFT <span class="token operator">|</span> key<span class="token punctuation">.</span>MOD_CTRL<span class="token punctuation">:</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"touche shift ou ctrl appuyée"</span><span class="token punctuation">)</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -708,7 +693,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </div></div>
 
 <p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/time.html">La gestion du temps</a> se fait également par un événement. Sa mise en place est cependant différente des événements que l'on a vu jusqu'à présent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -724,8 +709,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
         <span class="token keyword">print</span><span class="token punctuation">(</span>dt<span class="token punctuation">)</span>
 
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Le code précédent fait en sorte que la méthode <code class="language-">update</code> soit exécutée toute les secondes. Le paramètre <code class="language-">dt</code> donne le nombre de secondes exactes depuis le dernier appel de la fonction. Cela permet de gérer le lag s'il existe (remarquez qu'il vaut toujours un peut plus que 1).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -756,7 +740,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -803,8 +787,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
     
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -834,7 +817,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
@@ -851,8 +834,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
         <span class="token keyword">elif</span> self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">></span> self<span class="token punctuation">.</span>height<span class="token punctuation">:</span>
             self<span class="token punctuation">.</span>label<span class="token punctuation">.</span>y <span class="token operator">=</span> self<span class="token punctuation">.</span>height
     
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -866,7 +848,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
 </div></div>
 
 <p><a href="https://pyglet.readthedocs.io/en/latest/programming_guide/mouse.html">Pour gérer la souris</a>, comme vous pouvez vous en douter, il s'agit de s'abonner à des événements. Il en existe plusieurs. Commençons par voir ce que ça donne avec les événements <code class="language-">on_mouse_press(x, y, button, modifiers)</code> et <code class="language-">on_mouse_release(x, y, button, modifiers)</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
@@ -886,8 +868,7 @@ self<span class="token punctuation">.</span>label <span class="token operator">=
         <span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"relâcher le bouton dans le label"</span><span class="token punctuation">)</span>
     
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Lorsque vous cliquez sur un bouton de la souris puis que vous le relâchez, vous devriez voir affiché à l'écran la position du curseur ainsi que le numéro du bouton de la souris qui a servi à cliquer.</p>
 <p>Cerise sur le gâteau, lorsque vous cliquez ou relâchez le bouton de la souris sur le label, cela devrait vous l'indiquer.</p>
 <h3>Boutons</h3>
@@ -922,7 +903,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> mouse
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> mouse
 
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -939,7 +920,6 @@ par les constantes suivantes, accessibles après l'import <code class="language-
             <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"clique dans le label"</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span>
-
 </code></pre>
 </div>
 </details>     
@@ -968,7 +948,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">HelloWorldWindow</span><span class="token punctuation">(</span>pyglet<span class="token punctuation">.</span>window<span class="token punctuation">.</span>Window<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
@@ -986,8 +966,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
             <span class="token punctuation">)</span><span class="token punctuation">:</span>
                 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"sort du label"</span><span class="token punctuation">)</span>
     
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1003,7 +982,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
 <p>La documentation permet de voir que l'on peut facilement dessiner des cercle ou des rectangles en pyglet.</p>
 <p>De façon générale, la gestion des graphique en <code>pyglet</code> se fait directement en opengl, ce qui dépasse de loin le cadre de ce cours (même si c'est chouette de parler directement à la carte graphique). Nous allons donc uniquement nous restreindre au dessin d'un cercle et d'un rectangle ce qui sera suffisant pour notre projet.</p>
 <p>Fichier : <code class="fichier">essais-pyglet/forme.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyglet
 <span class="token keyword">from</span> pyglet <span class="token keyword">import</span> shapes
 <span class="token keyword">from</span> pyglet<span class="token punctuation">.</span>window <span class="token keyword">import</span> mouse
 
@@ -1034,8 +1013,7 @@ par les constantes suivantes, accessibles après l'import <code class="language-
 forme <span class="token operator">=</span> Formes<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini !"</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>

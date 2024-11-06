@@ -129,27 +129,26 @@
 </ul>
 <h2>Rapidité</h2>
 <p>Démontrez que l'algorithme suivant permet de trouver un col d'un tableau d'entiers $T$ de taille $n &gt; 1$ passé en paramètre.</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve_vite</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">0</span>
-
-    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    début <span class="token operator">=</span> <span class="token number">0</span>
-    fin <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> début<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>milieu <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>milieu <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> milieu
-
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>milieu <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            fin <span class="token operator">=</span> milieu
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            début <span class="token operator">=</span> milieu
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">trouve_vite</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">0</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    début <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    fin <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> début<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>milieu <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>milieu <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> milieu</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>milieu <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            fin <span class="token operator">=</span> milieu</span>
+<span class="highlight-line">        <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            début <span class="token operator">=</span> milieu</span>
+<span class="highlight-line"></span></code></pre>
 <p>On a utilisé dans le code précédent le fait que :</p>
 <ul>
 <li><code class="language-">T[-1]</code> soit le dernier élément du tableau et <code class="language-">T[-2]</code> l'avant dernier.</li>

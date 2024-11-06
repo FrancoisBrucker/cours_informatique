@@ -183,11 +183,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>les deux fonctions <a href="../algorithme-s%C3%A9lection" class="interne"><code class="language-">sélection</code></a> et <a href="../algorithme-insertion" class="interne"><code class="language-">insertion</code></a> du cours sur les tris ne rendent rien. Elles <strong>modifient</strong> leurs paramètres. Pour tester de telles fonctions, il faut créer un objet dont on va tester s'il est bien modifié après être passé en paramètre de la fonction à tester. Le test suivant par exemple vérifie que la fonction <code class="language-">sélection</code> trie bien un tableau trié par ordre décroissant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_sélection_décroissant<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> test_sélection_décroissant<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
     sélection<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-    <span class="token keyword">assert</span> t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-</code></pre>
+    <span class="token keyword">assert</span> t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span></code></pre>
 </div></div>
 
 <h3>Complexités min et max</h3>
@@ -245,7 +244,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> time
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> time
 
 <span class="token keyword">def</span> temps_sélection<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     t1 <span class="token operator">=</span> time<span class="token punctuation">.</span>perf_counter<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -254,8 +253,7 @@
 
     delta <span class="token operator">=</span> t2 <span class="token operator">-</span> t1
 
-    <span class="token keyword">return</span> delta
-</code></pre>
+    <span class="token keyword">return</span> delta</code></pre>
 </div>
 </details>     
 </div>
@@ -405,7 +403,7 @@
 <div class="pl-8 mr-8">
 <p>Pour ne pas refaire la même chose que pour le calcul de la complexité en moyenne du tri par <code class="language-">insertion</code>, vous pourrez utiliser le fait que l'on peut passer une fonction en paramètre d'une autre !</p>
 <p>Vous pourrez ainsi utiliser l'exemple ci-dessous qui crée une fonction de mesure de temps générique :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 <span class="token keyword">import</span> time
 
 <span class="token keyword">def</span> <span class="token function">temps_tri</span><span class="token punctuation">(</span>fonction_tri<span class="token punctuation">,</span> T<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -425,8 +423,7 @@
 
 
 <span class="token keyword">def</span> <span class="token function">temps_bulles</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> temps_tri<span class="token punctuation">(</span>bulles<span class="token punctuation">,</span> T<span class="token punctuation">)</span>  <span class="token comment"># en supposant qu'une fonction bulles existe</span>
-</code></pre>
+    <span class="token keyword">return</span> temps_tri<span class="token punctuation">(</span>bulles<span class="token punctuation">,</span> T<span class="token punctuation">)</span>  <span class="token comment"># en supposant qu'une fonction bulles existe</span></code></pre>
 </div></div>
 
 <p>Les complexités maximales (pour les tableau triés par ordre décroissant) et moyenne du tri à bulles sont de $\mathcal{O}(n^2)$ opérations où $n$ est la taille du tableau et la complexité minimale (pour les tableau triés par ordre croissant) de $\mathcal{O}(n^2)$ opérations. Vérifiez le expérimentalement :</p>
@@ -445,7 +442,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Copiez le code suivant dans un fichier <code class="fichier">main_visu.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
@@ -480,8 +477,7 @@ random<span class="token punctuation">.</span>shuffle<span class="token punctuat
 ax<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>tab<span class="token punctuation">,</span> <span class="token string">'ro'</span><span class="token punctuation">)</span>
 insertion_visu<span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>Le code précédent modifie l'algorithme <code class="language-">insertion</code> pour qu'il affiche dans un graphique le tableau après chaque modification.</p>

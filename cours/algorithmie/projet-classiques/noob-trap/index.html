@@ -104,11 +104,10 @@
 
 <p>Un piège classique dans lequel tombent les débutants.</p>
 <p>On considère le code suivant :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">*</span> f<span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">)</span></span></code></pre>
 <p>Quelle est l'équation de récurrence de la complexité :</p>
 <ol>
 <li>$C(n) = C(n/2) * C(n/4)$</li>

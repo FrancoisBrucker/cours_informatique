@@ -155,14 +155,13 @@
 </div></div>
 
 <p>La commande <a href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf">ip</a> permet d'identifier toutes les adresses IP, par exemple :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ip</span> addr show dev en0
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ip</span> addr show dev en0
 en0: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">886</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST<span class="token operator">></span> mtu <span class="token number">1500</span>
 	ether f8:4d:89:8e:77:7e
 	inet6 fe80::418:6a98:fca5:e83f/64 secured scopeid 0xf
 	inet <span class="token number">172.18</span>.32.190/22 brd <span class="token number">172.18</span>.35.255 en0
 	inet6 <span class="token number">2001</span>:660:5404:f232:1ccc:db68:4b11:59dc/64 autoconf secured
-	inet6 <span class="token number">2001</span>:660:5404:f232:a4b7:59d7:f780:855c/64 autoconf temporary
-</code></pre>
+	inet6 <span class="token number">2001</span>:660:5404:f232:a4b7:59d7:f780:855c/64 autoconf temporary</code></pre>
 <p>On y voit :</p>
 <ul>
 <li>l'adresse mac (ether)</li>
@@ -208,8 +207,7 @@ Unique local address, identified by starting with fd00:. (not usable globally, n
 </div></div>
 
 <p>Il existe également la version IPv4 :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ping</span> <span class="token number">172.18</span>.32.190
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ping</span> <span class="token number">172.18</span>.32.190</code></pre>
 <p>Attention, contrairement à IPv6, IPv4 a de nombreux <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9">réseaux locaux</a>, inaccessible de l'internet. Mon adresse IPv4 en fait parti. Ces réseaux locaux existent de part la pénurie des adresse Ipv4, ils n'ont plus de raison d'être en IPv6.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -267,8 +265,7 @@ E       4    2
 <li><code>ip -6 route show</code> pour le routage IPv6</li>
 </ul>
 <p>Cette table est également accessible via la commande <a href="https://www.quennec.fr/trucs-astuces/syst%C3%A8mes/windows/toutes-versions/la-commande-netstat">netstat</a> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">netstat</span> <span class="token parameter variable">-r</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">netstat</span> <span class="token parameter variable">-r</span></code></pre>
 <p>Ce n'est que la table de notre propre ordinateur qui va le plus souvent avoir 3 types de routes :</p>
 <ul>
 <li>si on reste sur la machine, on ne prend pas le réseau</li>

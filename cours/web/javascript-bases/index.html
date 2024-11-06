@@ -180,7 +180,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une fichier <code class="fichier">hello_javascript.html</code> avec le contenu suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span> 
@@ -195,17 +195,15 @@
             console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour monde !"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Puis ouvrez <a href="hello_javascript" class="interne">le</a>. Ouvrez le dans un navigateur.</p>
 </div></div>
 
 <p>Le fichier html précédent écrit dans la console javascript du navigateur. Vous voyez l'utilisation du javascript via la balise <code class="language-">&lt;script&gt;&lt;/script&gt;</code>. On place généralement le code javascript à exécuter à la fin de la page comme ça il pourra avoir accès à tout le contenu de la page.</p>
 <p>En effet, le code est exécuté au <strong>moment où il est lu</strong>. Si vous le placer au début de votre page, il sera exécuté avant que le contenu de la page ne soit affiché.</p>
 <p>On utilise ce comportement lorsque l'on charge une bibliothèque javascript. On veut exécuter le code de cette bibliothèque avant toute chose, on la place donc dans le header. Par exemple pour utiliser le plugin <a href="https://tabulator.info/">https://tabulator.info/</a>, on ajoute dans les header du fichier html les deux lignes suivantes, qui charge depuis internet le css et le js de la bibliothèque :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-</code></pre>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/css/tabulator.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/tabulator-tables/dist/js/tabulator.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <p>Il y a donc deux façon d'inclure du javascript dans vos fichiers html via la balise script :</p>
 <ol>
 <li>soit du code et dans ce cas là on l'ajoute <strong>à la fin de la page</strong> pour qu'il puisse utiliser tous les éléments définis dans la page</li>
@@ -214,7 +212,7 @@
 <h4>Attention aux erreurs</h4>
 <p>Tout comme python, un script javascript est exécuté ligne à ligne. <strong>À la moindre erreur</strong>, le script s'arrête.</p>
 <p>Considérons le code suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -229,8 +227,7 @@
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -275,7 +272,7 @@
 </div></div>
 
 <p>D'un terminal il vous suffit de taper <code>node</code> pour exécuter l'interpréteur :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">$ node                 
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">$ node                 
 Welcome to Node<span class="token punctuation">.</span>js v20<span class="token punctuation">.</span><span class="token number">8.1</span><span class="token punctuation">.</span>
 Type <span class="token string">".help"</span> <span class="token keyword">for</span> more information<span class="token punctuation">.</span>
 <span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour de node"</span><span class="token punctuation">)</span>
@@ -283,8 +280,7 @@ Bonjour de node
 <span class="token keyword">undefined</span>
 <span class="token operator">></span> x <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span>
 <span class="token number">42</span>
-<span class="token operator">></span> 
-</code></pre>
+<span class="token operator">></span> </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -313,13 +309,11 @@ Bonjour de node
 <li><code>42</code> qui est la valeur de l'affectation</li>
 </ol>
 <p>Ce comportement est différent de l'exécution de code javascript dans un fichier. Créez par exemple un fichier <code class="fichier">exemple.js</code> contenant :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour de node"</span><span class="token punctuation">)</span>
-x <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span>
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Bonjour de node"</span><span class="token punctuation">)</span>
+x <span class="token operator">=</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token number">2</span></code></pre>
 <p>Puis placez vous dans le dossier contenant ce fichier dans le terminal et exécutez la comande suite :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">node</span> exemple.js 
-Bonjour de <span class="token function">node</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">node</span> exemple.js 
+Bonjour de <span class="token function">node</span></code></pre>
 <p>Vous ne verrez ni <code>undefined</code> ni <code>42</code>. Dans le mode exécution de fichier, <a href="https://nodejs.org/">https://nodejs.org/</a> exécute le fichier ligne à ligne mais n'affiche pas le résultat des commandes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -337,30 +331,26 @@ Bonjour de <span class="token function">node</span>
 <p>Les blocs de javascript sont distingués par des <code class="language-">{}</code>.</p>
 <h4>Variables</h4>
 <p>Les variables se déclarent avec le mot-clé <code class="language-">let</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
 <p>On peut modifier une variable en omettant <code class="language-">let</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
 
 pi <span class="token operator">=</span> <span class="token string">"trois virgule quatorze !"</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
 <p>C'est en revanche une erreur de redéclarer la même variable. Le code suivant va produire une erreur :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
-<span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"trois virgule quatorze !"</span>
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
+<span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"trois virgule quatorze !"</span></code></pre>
 <p>Enfin, <a href="https://fr.wikipedia.org/wiki/Port%C3%A9e_(informatique)">la portée</a> d'une variable est son bloc. Le code suivant est donc légitime (on redéfinie une nouvelle variable qui disparaît à la fin du bloc) et affichera 3.14 à l'écran :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token number">3.14</span>
 <span class="token punctuation">{</span>
   <span class="token keyword">let</span> pi <span class="token operator">=</span> <span class="token string">"po"</span>
 <span class="token punctuation">}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-
 </code></pre>
 <p>La documentation ci-après explicite tout ce qu'il y a à savoir sur les variables :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -428,7 +418,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Functions</a></p>
 </div></div>
 
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -473,7 +463,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-
 </code></pre>
 <p>Le bout de code ci-dessus montre plusieurs spécificités de javascript :</p>
 <ul>
@@ -518,11 +507,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </svg>
 <div class="pl-8 mr-8">
 <p>Contrairement à python, javascript vous laisse faire la ligne suivante qui ne fait habituellement pas ce qu'on veut :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">x<span class="token operator">=</span><span class="token number">0</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">x<span class="token operator">=</span><span class="token number">0</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"ah ben vla aut' chose"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Rappelez vous que  <code>=</code> est une <strong>affectation</strong>.</p>
 </div></div>
 

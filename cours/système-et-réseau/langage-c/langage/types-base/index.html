@@ -101,8 +101,7 @@
 <li>les caractères</li>
 </ul>
 <p>Contrairement à python, chaque variable de C a un type qui ne peut changer. On déclare une variable de cette façon :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">type nom <span class="token operator">=</span> valeur<span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">type nom <span class="token operator">=</span> valeur<span class="token punctuation">;</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -141,20 +140,19 @@
 </div></div>
 
 <p>On peut connaître la taille d'une variable grâce à l'opérateur <a href="https://fr.wikipedia.org/wiki/Sizeof"><code>sizeof</code></a>.</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token keyword">double</span> d <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
-<span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token char">'A'</span><span class="token punctuation">;</span>
+int i = 1;
+double d = 3.14;
+char c = 'A';
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un entier : %luB\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un réel : %luB\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Taille d'un caractère : %luB\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Taille d'un entier : %luB\n", sizeof(i));
+printf("Taille d'un réel : %luB\n", sizeof(d));
+printf("Taille d'un caractère : %luB\n", sizeof(c));
+}
+</stdio.h></code></pre>
 <p>Le code ci-dessus donne le résultat suivant sur ma machine :</p>
 <pre><code>Taille d'un entier : 4B
 Taille d'un réel : 8B
@@ -205,36 +203,34 @@ Taille d'un caractère : 1B
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-<span class="token keyword">double</span> d <span class="token operator">=</span> <span class="token number">3.14</span><span class="token punctuation">;</span>
-<span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token char">'A'</span><span class="token punctuation">;</span>
+int i = 1;
+double d = 3.14;
+char c = 'A';
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un entier : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un réel : %f\n"</span><span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Un caractère : %c\n"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Un entier : %i\n", i);
+printf("Un réel : %f\n", d);
+printf("Un caractère : %c\n", c);
+}
+</stdio.h></code></pre>
 </div>
 </details>     
 </div>
 <p>La fonction <code class="language-">printf</code> et son fonctionnement est un bon moyen pour réaffirmer que la valeur d'une donnée dépend de son type (presque) indépendamment de sa valeur binaire effective. Prenez le code suivant comme exemple où l'on utilise la fonction <code class="language-">printf</code> sur une même variable selon deux types différents :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+int i = -1;
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier (signé) : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier non signé : %u\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"flottant : %f\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Entier (signé) : %i\n", i);
+printf("Entier non signé : %u\n", i);
+printf("flottant : %f\n", i);
+}
+</stdio.h></code></pre>
 <ul>
 <li>le premier affichage on utilise le format <code>%i</code> pour représenter un entier signé</li>
 <li>le premier affichage on utilise le format <code>%u</code> pour représenter un entier non signé (il ne peut que être positif)</li>
@@ -318,7 +314,7 @@ Taille d'un caractère : 1B
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;limits.h></span></span>
 
 
@@ -329,8 +325,7 @@ Taille d'un caractère : 1B
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un entier non signé : %u\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 i <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un entier non signé : %u\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -394,9 +389,8 @@ little/ big endian selon le système.</p>
 </div></div>
 
 <p>Les caractères s'écrivent entre quote <code>'</code> et sont remplacé par leur code selon l'encodage par défaut (souvent utf8).</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %c\n"</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %i\n"</span><span class="token punctuation">,</span> <span class="token char">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %c\n"</span><span class="token punctuation">,</span> <span class="token number">65</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un caractère : %i\n"</span><span class="token punctuation">,</span> <span class="token char">'A'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -454,8 +448,7 @@ double k = (double)i / 13;
 </details>     
 </div>
 <p>Lorsque vous manipulez des nombres et vous voulez vous assurer que ce sont les opérations réelles qui sont utilisées, même si vous manipulez des entiers, écrivez-les sous la forme de réels. Par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token number">1.0</span> <span class="token operator">/</span> <span class="token number">3</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token number">1.0</span> <span class="token operator">/</span> <span class="token number">3</span></code></pre>
 <p>vous assurera d'utiliser la division réelle.</p>
 <blockquote>
 <p>TBD exemple plus tordu entre 1 int valant 128 et 1 (signed/unsigned) char.</p>
@@ -464,8 +457,7 @@ double k = (double)i / 13;
 <p>Le <code>C</code> ne possède qu'un nombre limité de types qui correspondant à une taille de stockages et pas à leurs utilisations. Il est alors courant de renommer ces types pour rendre leur usage explicite et faciliter la lecture du code.</p>
 <p>Par exemple le type de retour de <a href="https://fr.wikipedia.org/wiki/Sizeof"><code>sizeof</code></a> est <code>size_t</code>. Ce type correspond chez moi à un entier long non signé (il est défini dans le fichier <code>stddef.h</code>).</p>
 <p>Ce renommage utilise l'opérateur <code class="language-">typedef</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token keyword">int</span> <span class="token class-name">size_t</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">long</span> <span class="token keyword">int</span> <span class="token class-name">size_t</span><span class="token punctuation">;</span></code></pre>
 <p>L'opérateur <code>typedef</code> renomme un type (<code>unsigned long long</code>) en un autre (<code>size_t</code>)</p>
 <p>Ce type est défini pour pouvoir contenir le nombre maximum d'élément d'un ensemble. Attention, cette quantité est dépendante de la structure. Elle vaut $2^{64}$ pour une architecture x64 mais peut–être plus petite pour un Raspberry PI par exemple.</p>
 <p>C utilise cette techniques à de nombreux endroits, et nous l'utiliserons aussi lorsque cela nous permettra de :</p>
@@ -496,7 +488,7 @@ double k = (double)i / 13;
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
@@ -507,8 +499,7 @@ petit_entier i <span class="token operator">=</span> <span class="token number">
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un petit entier : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -522,8 +513,7 @@ petit_entier i <span class="token operator">=</span> <span class="token number">
 <p><span id="qualifier"></span>
 Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifier#C/C++">Qualifiées</a>. Cette qualification est utilisée par le compilateur pour optimiser le code produit, il n'a pas d'autre utilité en <code>C</code>.</p>
 <p>Le qualifier se place au début de la déclaration, Par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">const</span> <span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">const</span> <span class="token keyword">double</span> PI <span class="token operator">=</span> <span class="token number">3.14</span></code></pre>
 <p>Il existe 3 types de <em>qualifier</em> :</p>
 <ul>
 <li><code>const</code> : la variable est constante. Le compilateur va produire une erreur lorsque le code tentera de la modifier.</li>
@@ -563,11 +553,10 @@ Les variables peuvent être <a href="https://en.wikipedia.org/wiki/Type_qualifie
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que fait le code ci-dessous :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un int : %i\n"</span><span class="token punctuation">,</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un int : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">" un int : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </div></div>
 
 

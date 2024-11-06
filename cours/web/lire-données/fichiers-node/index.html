@@ -101,33 +101,31 @@
 <li>dans un terminal et dans ce dossier, initialisez votre projet avec la commande <code>npm init</code></li>
 </ol>
 <p>Vous devriez maintenant avoir un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
-<pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"fichier-node"</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-json#" tabindex="0" data-language="json#"><code class="language-json#">{
+  "name": "fichier-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}</code></pre>
 <p>Nous allons utiliser des bibliothèques pour notre projet, bibliothèques qu'il va falloir importer. Node utilise par défaut un mode d'import nommé <a href="https://nodejs.org/api/modules.html#modules-commonjs-modules">commonjs</a>, alors que javascript en utilise une autre basée sur la norme <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Modules">ES6 modules</a>.</p>
 <p>Nous allons dire à node que nous allons utiliser la gestion javascript des modules en ajoutant la ligne <code class="language-">&quot;type&quot;: &quot;module&quot;,</code> dans le fichier de configuration <code class="fichier">package.json</code>, juste en-dessous de la ligne 5. A la fin de cette opération, vous devriez avoir le fichier un fichier nommé <code class="fichier">package.json</code> qui contient la configuration minimale d'un projet utilisant node :</p>
-<pre class="language-json line-numbers" style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"fichier-node"</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"module"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-json#" tabindex="0" data-language="json#"><code class="language-json#">{
+  "name": "fichier-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -150,41 +148,38 @@ Bonjour cher lecteur !
 
 </code></pre>
 <p>Puis un fichier <code class="fichier">code.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> contenu <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">"./fichier-texte.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>contenu<span class="token punctuation">)</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>contenu<span class="token punctuation">)</span></code></pre>
 <p>En exécutant le code on obtient, comme attendu, le contenu du fichier dans la console :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">node</span> code.js 
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">node</span> code.js 
 Je suis le contenu <span class="token function">du</span> fichier.
 
 Bonjour cher lecteur <span class="token operator">!</span>
-
 </code></pre>
 <h2>Dossier courant</h2>
 <p>Le code précédent charge le fichier de façon relative, donc depuis le dossier courant, qui est celui du terminal. Il ne fonctionnera donc plus si on exécute le fichier <code class="fichier">code.js</code> depuis un autre dossier. Par exemple si on remonte vers le dossier parent avant de l'exécuter :</p>
-<pre class="language-shell line-numbers" style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>                    
-$ <span class="token function">node</span> fichier-node/code.js 
+<pre class="language-shell#" tabindex="0" data-language="shell#"><code class="language-shell#">$ cd ..                    
+$ node fichier-node/code.js 
 node:fs:453
-    <span class="token builtin class-name">return</span> binding.readFileUtf8<span class="token punctuation">(</span>path, stringToFlags<span class="token punctuation">(</span>options.flag<span class="token punctuation">))</span><span class="token punctuation">;</span>
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
                    ^
 
-Error: ENOENT: no such <span class="token function">file</span> or directory, <span class="token function">open</span> <span class="token string">'./fichier-texte.txt'</span>
-    at Object.readFileSync <span class="token punctuation">(</span>node:fs:453:20<span class="token punctuation">)</span>
+Error: ENOENT: no such file or directory, open './fichier-texte.txt'
+    at Object.readFileSync (node:fs:453:20)
     at file:///Users/fbrucker/fichier-node/code.js:3:18
-    at ModuleJob.run <span class="token punctuation">(</span>node:internal/modules/esm/module_job:218:25<span class="token punctuation">)</span>
-    at async ModuleLoader.import <span class="token punctuation">(</span>node:internal/modules/esm/loader:329:24<span class="token punctuation">)</span>
-    at async loadESM <span class="token punctuation">(</span>node:internal/process/esm_loader:34:7<span class="token punctuation">)</span>
-    at async handleMainPromise <span class="token punctuation">(</span>node:internal/modules/run_main:113:12<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    at ModuleJob.run (node:internal/modules/esm/module_job:218:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:329:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:113:12) {
   errno: -2,
-  code: <span class="token string">'ENOENT'</span>,
-  syscall: <span class="token string">'open'</span>,
-  path: <span class="token string">'./fichier-texte.txt'</span>
-<span class="token punctuation">}</span>
+  code: 'ENOENT',
+  syscall: 'open',
+  path: './fichier-texte.txt'
+}
 
-Node.js v21.1.0
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Node.js v21.1.0</code></pre>
 <p>Le fichier <code class="fichier">fichier-texte.txt</code> n'est plus dans le dossier courant mais est à <code class="fichier">./fichier-node/fichier-texte.txt</code>, node ne trouve pas le fichier,</p>
 <p>Une solution pour palier ces problèmes de localisation de fichiers est de se fixer un point de référence, comme la localisation du fichier entrain d'être exécuté. On peut facilement trouver ces valeurs avec node qui définit deux variables :</p>
 <ul>
@@ -192,7 +187,7 @@ Node.js v21.1.0
 <li><code class="language-">__dirname</code> : qui contient la localisation du dossier du fichier entrain d'être exécuté</li>
 </ul>
 <p>Comme rien ne peut être simple, ces deux variables dépendant de l'import commonjs et ne sont pas directement disponibles lorsque l'on utilise des modules ES6 (comme nous). Il faut donc recréer ces deux variables, heureusement que c'est simple :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
 
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -200,7 +195,6 @@ Node.js v21.1.0
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">)</span>
-
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -212,20 +206,19 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <p>On peut ensuite toutes nos lectures de fichier au dossier <code class="language-">__dirname</code> en utilisant la fonction <a href="https://nodejs.org/api/path.html#pathjoinpaths"><code class="language-">path.join</code></a> qui colle des chemins entre eux.</p>
 <p>On obtient alors le code final suivant :</p>
-<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<pre class="language-js#" tabindex="0" data-language="js#"><code class="language-js#">import fs from 'fs';
 
-<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
+import path from 'path'
+import {fileURLToPath} from 'url'
 
-<span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-<span class="token keyword">let</span> localisation_fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  <span class="token string">"./fichier-texte.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> contenu <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>contenu<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+let localisation_fichier = path.join(__dirname,  "./fichier-texte.txt");
+let contenu = fs.readFileSync(localisation_fichier, {encoding:'utf8'})
+console.log(contenu)</code></pre>
 <p>Ce code est portable, il peut être exécuté de n'importe où :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">node</span> code-final.js 
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">node</span> code-final.js 
 Je suis le contenu <span class="token function">du</span> fichier.
 
 Bonjour cher lecteur <span class="token operator">!</span>
@@ -235,12 +228,10 @@ $ <span class="token function">node</span> fichier-node/code-final.js
 Je suis le contenu <span class="token function">du</span> fichier.
 
 Bonjour cher lecteur <span class="token operator">!</span>
-
 </code></pre>
 <h2>Lecture Asynchrone</h2>
 <p>La lecture de fichier précédente (ligne 10) :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> contenu <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> contenu <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Était <em><strong>synchrone</strong></em>, c'est à dire que le retour de la fonction <code class="language-">fs.readFileSync</code> est le contenu du fichier. C'est le comportement attendu de tout programme. On passe à la ligne suivant que si la ligne précédente est terminé.</p>
 <p>Ce n'est cependant pas ce qu'il se passe dans la majorité des cas dans le web. En effet la lecture d'un fichier peut prendre temps s'il est :</p>
 <ul>
@@ -251,19 +242,18 @@ Bonjour cher lecteur <span class="token operator">!</span>
 <p>Ce mode de programmation est dit évènementiel. Le code réagit à des évènements en exécutant une fonction déterminée à l'avance.</p>
 <h3>Code asynchrone</h3>
 <p>Dans notre cas le code serait le suivant :</p>
-<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
+<pre class="language-js#" tabindex="0" data-language="js#"><code class="language-js#">import fs from 'fs/promises';
 
-<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
+import path from 'path'
+import {fileURLToPath} from 'url'
 
-<span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-<span class="token keyword">let</span> localisation_fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  <span class="token string">"./fichier-texte.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+let localisation_fichier = path.join(__dirname,  "./fichier-texte.txt");
+fs.readFile(localisation_fichier, {encoding:'utf8'}).then(data => (
+    console.log(data)
+))</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -293,7 +283,7 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 <p>Le mécanisme à l'œuvre ici est appelé <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesse</a>.</p>
 <p>Le retour de la fonction <code class="language-">fs.readFile</code> est une promesse qui possède une méthode <code class="language-">then</code> dont le paramètre est une fonction à un paramètre qui est exécutée à la fin de la promesse si la fonction s'est terminé sans erreur. Le retour est passé en paramètre du paramètre de <code class="language-">then</code></p>
 <p>Explicitons ceci modifiant notre code :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
@@ -307,17 +297,15 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 promesse<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"tout s'est bien passé. Le contenu du fichier lu est :"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Souvent, on lie le tout en un seul grand appel (le retour de then est la promesse) :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">promesse
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">promesse
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">réponse</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// exécuté lorsque la longue fonction s'arrête</span>
     <span class="token comment">// le paramètre de cette fonction étant de retour de la longue fonction</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Le côté sympathique des promesses c'est qu'elle <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises#chaining">peuvent s'enchaîner</a> si le retour de <code class="language-">then</code> est aussi une promesse :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">promesse
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">promesse
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// then de la promesse</span>
 
@@ -326,10 +314,9 @@ promesse<span class="token punctuation">.</span><span class="token function">the
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// c'est le then de une_autre_promesse</span>
 
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Enfin, comme on l'a vu tout au début souvent on combine la fonction et son retour sous la forme d'une promesse en seule grosse instruction sans déclarer explicitement de promesse :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ... </span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ... </span>
 
 fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -337,12 +324,11 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ... </span>
-</code></pre>
+<span class="token comment">// ... </span></code></pre>
 <h3>await/async</h3>
 <p>Il peut cependant parfois être utile d'écrire du code, <em>à l'ancienne</em>, c'est à dire un exécutant ligne à ligne notre code. Il n'y a en effet dans notre cas pas grand intérêt à utiliser du code asynchrone.</p>
 <p>Le javascript permet d'utiliser des promesses de façon synchrone en utilisant l'instruction : <code class="language-">await</code>. Cette instruction attend que la promesse se termine pour aller à la ligne d'après. Dans notre cas, cela donnerait :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
@@ -351,18 +337,16 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
 <span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> localisation_fichier <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span>  <span class="token string">"./fichier-texte.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> contenu <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">let</span> contenu <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>localisation_fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>On ne peut cependant pas utiliser <code class="language-">await</code> partout. On ne peut le faire que dans le corps du programme ou à l'intérieur d'une fonction taguée <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"><code class="language-">async</code></a>.</p>
 <p>Dans notre cas, si on voulait déporter la lecture de notre fichier dans une fonction séparée il faudrait l'écrire de cette façon :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token parameter">fichier</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">lire</span><span class="token punctuation">(</span><span class="token parameter">fichier</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> contenu <span class="token operator">=</span> <span class="token keyword">await</span> fs<span class="token punctuation">.</span><span class="token function">readFile</span><span class="token punctuation">(</span>fichier<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">encoding</span><span class="token operator">:</span><span class="token string">'utf8'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> contenu
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3>Gestion des erreurs</h3>
 <p>Les promesses contiennent aussi une gestion des erreurs avec la méthode <code class="language-">catch</code> dont le paramètre est une fonction à un paramètre qui est exécutée à la fin de la promesse si la fonction a échoué. Le type d'erreur est passé en paramètre du paramètre de <code class="language-">catch</code></p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs/promises'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>fileURLToPath<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span>
@@ -379,7 +363,6 @@ fs<span class="token punctuation">.</span><span class="token function">readFile<
   <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">erreur</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"une erreur :"</span><span class="token punctuation">,</span> erreur<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
 </code></pre>
 
 

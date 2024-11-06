@@ -279,16 +279,15 @@
 <p>Lisez aussi l'énoncé. On vous demande de rendre l'<strong>indice</strong> d'un col, pas s'il en existe un ou non (retour d'un booléen). Surtout que la question 1 montre qu'il en existe toujours un, vous auriez pu vous douter que votre algorithme ne répondait pas à la question.</p>
 <h4>Retour de fonction</h4>
 <p>Le pattern :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
         <span class="token keyword">return</span> une<span class="token operator">-</span>chose
     <span class="token keyword">elif</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
         <span class="token keyword">return</span> autre<span class="token operator">-</span>chose
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc
-</code></pre>
+        <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc</code></pre>
 <p>Ou pire, ce pattern là :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
         i <span class="token operator">=</span> une<span class="token operator">-</span>chose
     <span class="token keyword">elif</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
@@ -296,18 +295,16 @@
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         i <span class="token operator">=</span> un<span class="token operator">-</span>troisième truc
     
-    <span class="token keyword">return</span> i
-</code></pre>
+    <span class="token keyword">return</span> i</code></pre>
 <p>N'est pas joli et il confuse. Un <code class="language-">return</code> sort de la fonction, donc autant écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fonction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> condition<span class="token punctuation">:</span>
         <span class="token keyword">return</span> une<span class="token operator">-</span>chose
 
     <span class="token keyword">if</span> autre<span class="token operator">-</span>condition<span class="token punctuation">:</span>
         <span class="token keyword">return</span> autre<span class="token operator">-</span>chose
 
-    <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc
-</code></pre>
+    <span class="token keyword">return</span> un<span class="token operator">-</span>troisième truc</code></pre>
 <p>Qui est plus compacte et plus clair.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -327,14 +324,13 @@
 </div></div>
 
 <p>En particulier, j'ai vu plusieurs :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         i <span class="token operator">+=</span> <span class="token number">1</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Ca ne marche pas. Au début de la prochaine boucle, $i$ sera à nouveau égal à $i+1$.</p>
 <h3>Question 4</h3>
 <p>Cela vaut le coup de connaître et de reconnaître une dichotomie (on coupe le tableau en 2 à chaque fois) <strong>et</strong> sa complexité $\mathcal{O}(\log_2(n)) = \mathcal{O}(\ln(n))$ opérations.</p>
@@ -392,18 +388,17 @@
 </div></div>
 
 <p>La preuve de la 1ère question montrant qu'il existe forcément un col, l'algorithme suivant qui mime directement la définition (lignes 2-3 : 1ère condition, lignes 5-6 : 2ème condition et lignes 8-10 la troisième condition) trouvera forcément un col :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">0</span>
-
-    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> i
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token number">0</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> i</span>
+<span class="highlight-line"></span></code></pre>
 <p>Sa complexité dans le cas le pire a lieu pour les tableaux dont le premier et seul col se trouve à l'avant dernier indice (comme pour la liste $[5, 4, 3, 2, 1, 2]$ par exemple), forçant l'algorithme à :</p>
 <ul>
 <li>faire échouer le 1er test de la ligne 2 en $\mathcal{O}(1)$ opérations</li>
@@ -420,7 +415,7 @@
 C(n) = \mathcal{O}(1) + \mathcal{O}(1) + \mathcal{O}(n) \cdot (\mathcal{O}(1) + \mathcal{O}(1)) = \mathcal{O}(n)
 $$</p>
 <p>On peut aussi utiliser la preuve précédente et <em>simplifier</em> la boucle <code class="language-">for</code> en gardant la même complexité :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">trouve</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">0</span>
 
@@ -430,7 +425,6 @@ $$</p>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> T<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> i
-
 </code></pre>
 <h2>Corrigé de la question 3. Rapidité</h2>
 <p>La preuve d'existence du 1 montre que pour tout $i + 1 &lt; j$, si $T[i] &gt; T[i+1]$ et $T[j] &gt; T[j-1]$, alors il existe un indice $i &lt; k &lt; j$  tel que $k$ soit un col de la matrice.</p>

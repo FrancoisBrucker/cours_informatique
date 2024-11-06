@@ -176,10 +176,9 @@ $$</p>
 <p>Cette définition de distance est cependant un peu frustre puisque qu'elle ne permet de comparer que deux mots ayant le même nombre de caractères. Il faut donc généraliser pour permettre de comparer deux chaînes de longueur différentes.</p>
 <p>Pour cela, on va ajouter un caractère noté <code>-</code> qui correspond à un caractère <em>vide</em> et dont le but est d'allonger artificiellement une chaîne. Par exemple : <code>MEROU</code> et <code>ME-R-OU</code> correspondent aux même chaînes, mais l'une est de longueur 6 et la seconde de longueur 8.</p>
 <p>On peut donc maintenant comparer <code>MEROU</code> et <code>MARLOU</code> via un <em>allongement</em> de <code>MEROU</code>. Par exemple comparer <code>MERO-U</code> et <code>MARLOU</code>, ce qui donne une distance de 3. Le dessin ci-dessous représente cette distance. On a mis des <code>|</code> entre les lettres identiques :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MERO-U
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">MERO-U
 | |  |
-MARLOU
-</code></pre>
+MARLOU</code></pre>
 <p>La distance est donc égale :</p>
 <ul>
 <li>au nombre de lettres différentes</li>
@@ -189,17 +188,15 @@ MARLOU
 <ol>
 <li>
 <p>selon l'allongement choisi, la distance n'est pas la même :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MER-OU
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">MER-OU
 | | ||
-MARLOU
-</code></pre>
+MARLOU</code></pre>
 </li>
 <li>
 <p>on peut utiliser l'allongement pour changer la distance de 2 chaînes de mêmes longueurs :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MEROUS       MER-OUS
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">MEROUS       MER-OUS
 | |      ≠   | | ||
-MARLOU       MARLOU-
-</code></pre>
+MARLOU       MARLOU-</code></pre>
 </li>
 </ol>
 <p>Il faut donc tout refaire... Une solution pour unifier les deux approches est de formaliser la notion d'<strong>alignement</strong> entre séquences, puis d'utiliser cet outil pour définir la distance d'édition entre deux séquences.</p>
@@ -235,10 +232,9 @@ $$
 </div>
 <h3>Evolution d'une séquence en l'autre</h3>
 <p>Un alignement permet de simuler le passage d'une séquence à l'autre. Par exemple en considérant l'alignement suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">MER-OUS
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">MER-OUS
 | | ||
-MARLOU-
-</code></pre>
+MARLOU-</code></pre>
 <p>En allant de gauche à droite on passe de <code>MEROUS</code> à <code>MARLOU</code> :</p>
 <ol start="0">
 <li>MEROUS (mot initial)</li>
@@ -276,18 +272,15 @@ MARLOU-
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTG-C
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">ACTG-C
 |  |
-A-CGTC
-</code></pre>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGC
+A-CGTC</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">ACTGC
 ||  |
-ACGTC
-</code></pre>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTG-C
+ACGTC</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">ACTG-C
 || | |
-AC-GTC
-</code></pre>
+AC-GTC</code></pre>
 <p>et bien d'autres encore sont possibles.</p>
 </div>
 </details>     
@@ -440,15 +433,14 @@ $$
 F[i][j] = F[i-1][j] + F[i][j-1] + F[i-1][j-1]
 $$</p>
 <p>Remplir la matrice $F$ nous donne le nombre d'alignements, ce qui se fait aisément en remarquant que l'on peut construire $F$ ligne à ligne :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">F <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">F <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># matrice de 1</span>
     ligne <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     F<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># ligne après ligne àn partir de la seconde</span>
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
+        F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 <p>On a utilisé l'astuce de placer $F[0][0] = 1$ pour que $F[1][1]$ puisse être calculé sans cas particulier.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -467,7 +459,7 @@ $$</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">41</span><span class="token punctuation">,</span> <span class="token number">61</span><span class="token punctuation">,</span> <span class="token number">85</span><span class="token punctuation">,</span> <span class="token number">113</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">181</span><span class="token punctuation">,</span> <span class="token number">221</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">63</span><span class="token punctuation">,</span> <span class="token number">129</span><span class="token punctuation">,</span> <span class="token number">231</span><span class="token punctuation">,</span> <span class="token number">377</span><span class="token punctuation">,</span> <span class="token number">575</span><span class="token punctuation">,</span> <span class="token number">833</span><span class="token punctuation">,</span> <span class="token number">1159</span><span class="token punctuation">,</span> <span class="token number">1561</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -477,8 +469,7 @@ $$</p>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">113</span><span class="token punctuation">,</span> <span class="token number">575</span><span class="token punctuation">,</span> <span class="token number">2241</span><span class="token punctuation">,</span> <span class="token number">7183</span><span class="token punctuation">,</span> <span class="token number">19825</span><span class="token punctuation">,</span> <span class="token number">48639</span><span class="token punctuation">,</span> <span class="token number">108545</span><span class="token punctuation">,</span> <span class="token number">224143</span><span class="token punctuation">,</span> <span class="token number">433905</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">833</span><span class="token punctuation">,</span> <span class="token number">3649</span><span class="token punctuation">,</span> <span class="token number">13073</span><span class="token punctuation">,</span> <span class="token number">40081</span><span class="token punctuation">,</span> <span class="token number">108545</span><span class="token punctuation">,</span> <span class="token number">265729</span><span class="token punctuation">,</span> <span class="token number">598417</span><span class="token punctuation">,</span> <span class="token number">1256465</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">181</span><span class="token punctuation">,</span> <span class="token number">1159</span><span class="token punctuation">,</span> <span class="token number">5641</span><span class="token punctuation">,</span> <span class="token number">22363</span><span class="token punctuation">,</span> <span class="token number">75517</span><span class="token punctuation">,</span> <span class="token number">224143</span><span class="token punctuation">,</span> <span class="token number">598417</span><span class="token punctuation">,</span> <span class="token number">1462563</span><span class="token punctuation">,</span> <span class="token number">3317445</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
- <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">221</span><span class="token punctuation">,</span> <span class="token number">1561</span><span class="token punctuation">,</span> <span class="token number">8361</span><span class="token punctuation">,</span> <span class="token number">36365</span><span class="token punctuation">,</span> <span class="token number">134245</span><span class="token punctuation">,</span> <span class="token number">433905</span><span class="token punctuation">,</span> <span class="token number">1256465</span><span class="token punctuation">,</span> <span class="token number">3317445</span><span class="token punctuation">,</span> <span class="token number">8097453</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+ <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">221</span><span class="token punctuation">,</span> <span class="token number">1561</span><span class="token punctuation">,</span> <span class="token number">8361</span><span class="token punctuation">,</span> <span class="token number">36365</span><span class="token punctuation">,</span> <span class="token number">134245</span><span class="token punctuation">,</span> <span class="token number">433905</span><span class="token punctuation">,</span> <span class="token number">1256465</span><span class="token punctuation">,</span> <span class="token number">3317445</span><span class="token punctuation">,</span> <span class="token number">8097453</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>On voit que l'approximation précédente n'est pas encore trop valide lorsque $n$ est petit. Elle le devient de plus en plus à mesure que $n$ augmente.</p>
 </div>
 </details>     
@@ -512,7 +503,7 @@ $$</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>On remarque que l'algorithme n'a uniquement besoin que de la ligne précédente à chaque itération. On peut alors le modifier :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ligne_précédente <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> m
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ligne_précédente <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">*</span> m
 ligne_actuelle <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -523,8 +514,7 @@ ligne_actuelle <span class="token operator">=</span> <span class="token punctuat
     ligne_précédente <span class="token operator">=</span> ligne_actuelle
     ligne_actuelle <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
-f_nm <span class="token operator">=</span> ligne_précédente<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
+f_nm <span class="token operator">=</span> ligne_précédente<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1299,10 +1289,9 @@ $$
 </tbody>
 </table>
 <p>On obtient alors l'alignement :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGAT-T
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">ACTGAT-T
  || ||
-GCTAATCG
-</code></pre>
+GCTAATCG</code></pre>
 <p>Notez qu'il y a un autre alignement possible :</p>
 <table>
 <thead>
@@ -1421,10 +1410,9 @@ GCTAATCG
 </tbody>
 </table>
 <p>Qui donne l'alignement :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">ACTGATT-
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">ACTGATT-
  || ||
-GCTAATCG
-</code></pre>
+GCTAATCG</code></pre>
 </div>
 </details>     
 </div>
@@ -1488,10 +1476,9 @@ D_d(a[:i+1], b[:j+1]) = \min \begin{cases}
 $$
 </div>
 <p>Et le terme général de la matrice d'édition :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                       M<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span><span class="token operator">-</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                      M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+                      M<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> d<span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h3>exemple du cas général</h3>
 <p>Considérons le coût :</p>
 <table>

@@ -122,9 +122,8 @@
 </ul>
 <h3>Algorithme équivalents aux comptes très différents</h3>
 <p>De plus, selon l'implémentation, un même algorithme peut avoir plusieurs complexités :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour i allant de 2 à 9:
-  affiche à l'écran i
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour i allant de 2 à 9:
+  affiche à l'écran i</code></pre>
 <p>Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que :</p>
 <ul>
 <li>la première ligne est constituée de :
@@ -136,11 +135,10 @@
 <li>l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$</li>
 </ul>
 <p>En remplaçant la boucle for par une boucle tant que, on obtient :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i = 2
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i = 2
 tant que i ≤ 9:
   affiche à l'écran i
-  i = i + 1
-</code></pre>
+  i = i + 1</code></pre>
 <p>Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !</p>
 <p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>
 <h3>Dépend du code/pseudo-code</h3>

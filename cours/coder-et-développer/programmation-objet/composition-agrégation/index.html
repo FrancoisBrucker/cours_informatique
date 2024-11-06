@@ -138,7 +138,7 @@
 </ul>
 <h3>Code python</h3>
 <p>Ceci s'implémente aisément en python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
@@ -149,10 +149,9 @@
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>stock
 
     <span class="token keyword">def</span> <span class="token function">supprime</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fruit<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>stock<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
-</code></pre>
+        self<span class="token punctuation">.</span>stock<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>fruit<span class="token punctuation">)</span></code></pre>
 <p>On peut alors utiliser notre classe, par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
@@ -166,8 +165,7 @@ panier<span class="token punctuation">.</span>ajoute<span class="token punctuati
 <span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 panier<span class="token punctuation">.</span>supprime<span class="token punctuation">(</span><span class="token string">"pomme"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h3>Attention</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -179,7 +177,7 @@ panier<span class="token punctuation">.</span>supprime<span class="token punctua
 
 <p>Dans notre exemple, une méthode retourne un objet qui est un attribut. Une fois qu'un objet a été <em>donné</em> au monde extérieur on ne contrôle plus son état et il peut être utilisé a priori par n'importe quoi d'autre dans le programme.</p>
 <p>Regardez le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -189,8 +187,7 @@ panier<span class="token punctuation">.</span>ajoute<span class="token punctuati
 copie <span class="token operator">=</span> panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 copie<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"champignon"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>On a ajouté un champignon à notre panier sans que l'objet panier ne le sache !</p>
 <p>Ce n'est pas forcément un problème, sauf si on vérifiait que ce qu'on ajoute dans le panier doit être un fruit.</p>
 <p>Pour que tout se passe comme prévu, il faut donc s'assurer que pour les attributs , soit :</p>
@@ -203,17 +200,16 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 <p>La 1ère solution est ce qu'on a pour l'instant.</p>
 <h4>2nde solution</h4>
 <p>La seconde solution reviendrait à donner un nouveau panier à chaque fois en modifiant la méthode <code class="-">montre_panier()</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">montre_panier</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       <span class="token keyword">return</span> <span class="token builtin">list</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>stock<span class="token punctuation">)</span>
     
-    <span class="token comment">#...</span>
-</code></pre>
+    <span class="token comment">#...</span></code></pre>
 <h4>3ère solution</h4>
 <p>Enfin, la dernière solution reviendrait à ne pas pouvoir modifier l'attribut et à le recréer à chaque modification, dans les méthodes <code class="language-">ajoute()</code> et <code class="language-">supprime()</code>. On utilise un <a href="https://python.doctor/page-apprendre-tuples-tuple-python">tuple</a> qui est une liste sans possibilité de modification. Le code suivant crée un nouveau tuple en utilisant l'opération <code class="language-">+</code> des tuples qui crée un nouvel objet. :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
       self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -228,7 +224,6 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
         self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span>stock_temporaire<span class="token punctuation">)</span>
 
     <span class="token comment">#...</span>
-
 </code></pre>
 <p>Selon que l'on aura beaucoup d'ajouts ou beaucoup de visualisation du panier, on choisira l'une ou l'autre solution. Mais si on a pas d'idée, on préférera <strong>toujours</strong> la 3ème solution qui est la plus robuste.</p>
 <p>Le fait d'avoir des objets qui ne se modifient pas est appelé <a href="https://en.wikipedia.org/wiki/Value_object">value object</a>.</p>
@@ -251,7 +246,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 <p>Dans la mesure du possible, on ne teste pas la valeur des attributs. On utilise des méthodes publique pour tester. En effet les attributs montrent l'implémentation de la classe et pas son usage.</p>
 <h3>Exemple</h3>
 <p>Par exemple, pour notre panier. Fichier <code class="fichier">test_panier.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
 
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -275,8 +270,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
     panier<span class="token punctuation">.</span>ajoute<span class="token punctuation">(</span><span class="token string">"pomme"</span><span class="token punctuation">)</span>
     panier<span class="token punctuation">.</span>supprime<span class="token punctuation">(</span><span class="token string">"pomme"</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">assert</span> panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">assert</span> panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -293,7 +287,7 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 <p>Vous devez avoir 3 fichiers :</p>
 <h3>Code de la classe</h3>
 <p>Fichier : <code class="fichier">panier.py</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Panier</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
@@ -305,11 +299,10 @@ copie<span class="token punctuation">.</span>append<span class="token punctuatio
 
     <span class="token keyword">def</span> <span class="token function">supprime</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> fruit<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>stock<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
-        
-</code></pre>
+        </code></pre>
 <h3>Programme principal</h3>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
 
 panier <span class="token operator">=</span> Panier<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -327,11 +320,10 @@ panier<span class="token punctuation">.</span>ajoute<span class="token punctuati
 panier<span class="token punctuation">.</span>supprime<span class="token punctuation">(</span><span class="token string">"pomme"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Tests</h3>
 <p>Fichier <code class="fichier">test_panier.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> panier <span class="token keyword">import</span> Panier
 
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -356,7 +348,6 @@ panier<span class="token punctuation">.</span>supprime<span class="token punctua
     panier<span class="token punctuation">.</span>supprime<span class="token punctuation">(</span><span class="token string">"pomme"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">assert</span> panier<span class="token punctuation">.</span>montre_panier<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">tuple</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
 </code></pre>
 
 

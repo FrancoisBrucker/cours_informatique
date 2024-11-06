@@ -133,9 +133,8 @@
 <p>On va coder petit à petit la classe.</p>
 <h3>Préparation du projet</h3>
 <p>Notre projet est pour l'instant organisé de cette manière :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">coder-objets
-└── main.py
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">coder-objets
+└── main.py</code></pre>
 <p>Nous allons avoir besoin d'un objet <code>Compteur</code> donc :</p>
 <ol>
 <li>on crée un fichier un fichier <code class="fichier">compteur.py</code> dans notre projet</li>
@@ -144,10 +143,9 @@
 </ol>
 <h4>classe <code class="language">Compteur</code> minimale</h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
-
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -165,10 +163,9 @@
 <p>On a utilisé l'instruction <a href="https://www.docstring.fr/glossaire/pass/"><code class="language-">pass</code></a> qui ne fait rien. Nous l’utilisons ici car la définition d'une classe crée un bloc (il y a un <code>:</code>) et que tout bloc <strong>doit</strong> contenir une instruction.</p>
 <h4>création d'un objet dans le programme principal</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Lorsque l'on exécute le programme <code class="fichier">main.py</code> il ne se passe rien. C'est une bonne nouvelle ! Ca signifie que notre programme n'a pas d'erreur et qu'un objet a bien été créé.</p>
 <h4>Convertir notre essai en test</h4>
@@ -203,11 +200,10 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 </ol>
 <p>Pour l'instant, on crée un objet et on en fait rien. Vérifions qu'il est bien de la bonne classe, <code class="language-">Compteur</code> :</p>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">type</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>En exécutant le fichier main, on obtient :</p>
 <pre><code>» python main.py
 &lt;class 'compteur.Compteur'&gt;
@@ -223,11 +219,10 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 </div></div>
 
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>En exécutant le fichier main dans le terminal, j'obtiens :</p>
 <pre><code>» /usr/local/bin/python3 main.py
 True
@@ -247,13 +242,12 @@ True
 
 <p>Maintenant que notre vérification est transformée en quelque chose qui doit <code class="language-">True</code> ou <code class="language-">False</code>, on peut la transformer en un test. Pour cela on crée un fichier <code class="fichier">test_compteur.py</code> qui retranscrit notre vérification:</p>
 <p>Fichier <code class="fichier">test_compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> <span class="token builtin">isinstance</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> Compteur<span class="token punctuation">)</span>
-
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -265,11 +259,10 @@ True
 </div></div>
 
 <p>A la fin de cette partie, notre projet ressemble à :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">coder-objets
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">coder-objets
 ├── compteur.py
 ├── main.py
-└── test_compteur.py
-</code></pre>
+└── test_compteur.py</code></pre>
 <h3>Coder l'attribut <code class="language-">valeur</code></h3>
 <p>Maintenant qu'on est assuré que l'on peut créer des objets, on peut améliorer les fonctionnalités de notre compteur (c'est facile, pour l'instant il ne fait rien). On décide de commencer par ajouter l'attribut <code class="language-">valeur</code> et son accesseur <code class="language-">donne_valeur()</code></p>
 <p>On utilise la boucle de programmation vue précédemment :</p>
@@ -281,24 +274,21 @@ True
 <p>Donc dans notre cas :</p>
 <h4>Coder l'attribut</h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
-
 </code></pre>
 <h4>Vérification du fonctionnement de l'attribut</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></code></pre>
 <p>puis, une fois que tout marche :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -313,7 +303,7 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <h4>Test de la fonctionnalité</h4>
 <p>On <strong>ajoute</strong> le test à notre fichier de test, pour avoir :</p>
 <p>Fichier <code class="fichier">test_compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -324,7 +314,6 @@ c <span class="token operator">=</span> Compteur<span class="token punctuation">
 <span class="token keyword">def</span> <span class="token function">test_valeur_initiale</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">0</span>
-
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -360,17 +349,16 @@ test_compteur.py ..                                                             
 <p>On procède de la même manière pour incrémente.</p>
 <h4>Code de la méthode <code class="language-">incrémente</code></h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">+=</span> <span class="token number">1</span>
-
 </code></pre>
 <h4>Vérification du fonctionnement de la méthode</h4>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -378,12 +366,11 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 <span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
 c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>c<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-
 </code></pre>
 <p>On a mis deux appels à la méthode incrémente, car si on ne garde qu'une unique vérification, on est pas assuré que la valeur incrémente (<code>self.valeur = 1</code> plutôt que <code>self.valeur += 1</code> dans le code de la méthode par exemple).</p>
 <h4>Ajout des tests</h4>
 <p>Fichier <code class="fichier">test_compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 
 <span class="token keyword">def</span> <span class="token function">test_constructeur</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -404,7 +391,6 @@ c<span class="token punctuation">.</span>incrémente<span class="token punctuati
 
     c<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> c<span class="token punctuation">.</span>valeur <span class="token operator">==</span> <span class="token number">2</span>
-
 </code></pre>
 <p>Chaque test doit être indépendant, on recrée donc notre objet <strong>à chaque</strong> test.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

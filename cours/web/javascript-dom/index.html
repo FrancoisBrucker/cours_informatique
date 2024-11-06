@@ -116,7 +116,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier <code class="fichier">javascript-dom.html</code> et copiez/collez le contenu suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Magie javascript<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
 
@@ -154,8 +154,7 @@
                 <span class="token punctuation">.</span>backgroundColor <span class="token operator">=</span> <span class="token string">"blue"</span>
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Ouvrez <a href="javascript_dom" class="interne">le</a> avec votre navigateur.</p>
 </div></div>
 
@@ -181,11 +180,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Seul la méthode <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById"><code class="language-">document.getElementById</code></a> rend directement un élément. Les autres méthodes rendent un conteneur de type <a href="https://developer.mozilla.org/fr/docs/Web/API/HTMLCollection">HTMLCollection</a> que l'on peut manipuler comme un tableau :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">let</span> list <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">let</span> list <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">"p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> list<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>list<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -254,7 +252,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez au fichier <code class="fichier">javascript_dom.html</code> le code ci-après pour ajouter une liste dans le div :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
     <span class="token keyword">let</span> liste_non_orientée <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'ul'</span><span class="token punctuation">)</span>
     <span class="token keyword">let</span> tab <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"oui"</span><span class="token punctuation">,</span> <span class="token string">"non"</span><span class="token punctuation">,</span> <span class="token string">"peut-être"</span><span class="token punctuation">,</span> <span class="token string">"je ne sais pas"</span><span class="token punctuation">]</span>
     tab<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">cat</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -277,8 +275,7 @@
         <span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"mon_div"</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span>style
         <span class="token punctuation">.</span>height <span class="token operator">=</span> <span class="token string">'auto'</span>
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-</code></pre>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 </div></div>
 
 

@@ -136,15 +136,14 @@
 <p>Créez un fichier <code class="fichier">boucle.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">4</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">x <span class="token operator">=</span> <span class="token number">4</span></span>
+<span class="highlight-line"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -197,7 +196,7 @@
 </div></div>
 
 <p>Une fois le programme lancé il a du s'exécuter et afficher dans le terminal :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">0
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">0
 1
 2
 3
@@ -208,8 +207,7 @@
 7
 8
 9
-c'est fini.
-</code></pre>
+c'est fini.</code></pre>
 <p>Il ne s'est rien passé de plus que si vous aviez exécuté votre programme python normalement.</p>
 <p>C'est normal par il faut demander explicitement au débogueur de s'arrêter un créant un <a href="https://fr.wikipedia.org/wiki/Point_d'arr%C3%AAt_(informatique)"><em><strong>point d'arrêt</strong></em></a> (<em><strong>breakpoint</strong></em>).</p>
 <h3>Création d'un breakpoint</h3>
@@ -460,20 +458,19 @@ c'est fini.
 <p>Créez un fichier <code class="fichier">boucle-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"fonction test_égalité avec comme paramètre :"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span>
-
-
-x <span class="token operator">=</span> <span class="token number">4</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-    test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"fonction test_égalité avec comme paramètre :"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> x<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> x <span class="token operator">==</span> i<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"égalité !"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">x <span class="token operator">=</span> <span class="token number">4</span></span>
+<span class="highlight-line"><span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span></span>
+<span class="highlight-line">    test_égalité<span class="token punctuation">(</span>i<span class="token punctuation">,</span> x<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"c'est fini."</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <p>Ce programme va vous permettre de voir :</p>
 <ul>
 <li>les actions <code>pas à pas détaillée</code> et <code>pas à pas sortant</code></li>
@@ -634,17 +631,16 @@ x <span class="token operator">=</span> <span class="token number">4</span>
 <p>Créez un fichier <code class="fichier">sortant-fonction.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x <span class="token operator">+</span> y
-
-
-x <span class="token operator">=</span> <span class="token number">2</span>
-y <span class="token operator">=</span> <span class="token number">10</span>
-s <span class="token operator">=</span> somme<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" La somme de"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> <span class="token string">"et"</span><span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">"vaut :"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> x <span class="token operator">+</span> y</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">x <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">y <span class="token operator">=</span> <span class="token number">10</span></span>
+<span class="highlight-line">s <span class="token operator">=</span> somme<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">" La somme de"</span><span class="token punctuation">,</span> x<span class="token punctuation">,</span> <span class="token string">"et"</span><span class="token punctuation">,</span> y<span class="token punctuation">,</span> <span class="token string">"vaut :"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -713,17 +709,16 @@ s <span class="token operator">=</span> somme<span class="token punctuation">(</
 <p>Créez un fichier <code class="fichier">pile-appel.py</code> dans votre projet et copiez/collez y le code ci-après.</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> n
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
-
-n <span class="token operator">=</span> <span class="token number">10</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>factorielle<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> n</span>
+<span class="highlight-line">    <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">n <span class="token operator">=</span> <span class="token number">10</span></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>factorielle<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -835,53 +830,52 @@ n <span class="token operator">=</span> <span class="token number">10</span>
 
 <h2>Exercice</h2>
 <p>Le code ci-dessous est une implémentation python <a href="https://fr.wikipedia.org/wiki/Crible_d'%C3%89ratosth%C3%A8ne">du crible d’Ératosthène</a> :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
-    <span class="token keyword">while</span> y <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        crible<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-        y <span class="token operator">+=</span> x
-
-
-<span class="token keyword">def</span> <span class="token function">nouveau_max_premier</span><span class="token punctuation">(</span>ancien_max<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    nouveau_max <span class="token operator">=</span> ancien_max
-    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_max<span class="token punctuation">]</span><span class="token punctuation">:</span>
-        nouveau_max <span class="token operator">-=</span> <span class="token number">1</span>
-
-    <span class="token keyword">return</span> nouveau_max
-
-
-<span class="token keyword">def</span> <span class="token function">nouveau_min_premier</span><span class="token punctuation">(</span>ancien_min<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    nouveau_min <span class="token operator">=</span> ancien_min
-    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_min<span class="token punctuation">]</span><span class="token punctuation">:</span>
-        nouveau_min <span class="token operator">+=</span> <span class="token number">1</span>
-
-    <span class="token keyword">return</span> nouveau_min
-
-
-<span class="token keyword">def</span> érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    crible <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    crible<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-    crible<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span>
-
-    x <span class="token operator">=</span> <span class="token number">2</span>
-    max_premier <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> x <span class="token operator">**</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
-        élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-        max_premier <span class="token operator">=</span> nouveau_max_premier<span class="token punctuation">(</span>max_premier<span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-
-        <span class="token keyword">if</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span>
-            x <span class="token operator">=</span> nouveau_min_premier<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> crible<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> crible<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-
-
-n <span class="token operator">=</span> <span class="token number">13</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Les nombres premiers plus petits que"</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token string">"sont :"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    y <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x</span>
+<span class="highlight-line">    <span class="token keyword">while</span> y <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        crible<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span></span>
+<span class="highlight-line">        y <span class="token operator">+=</span> x</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">nouveau_max_premier</span><span class="token punctuation">(</span>ancien_max<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    nouveau_max <span class="token operator">=</span> ancien_max</span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_max<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        nouveau_max <span class="token operator">-=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> nouveau_max</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">nouveau_min_premier</span><span class="token punctuation">(</span>ancien_min<span class="token punctuation">,</span> crible<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    nouveau_min <span class="token operator">=</span> ancien_min</span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token keyword">not</span> crible<span class="token punctuation">[</span>nouveau_min<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        nouveau_min <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> nouveau_min</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    crible <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    crible<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span></span>
+<span class="highlight-line">    crible<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">False</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    x <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">    max_premier <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> x <span class="token operator">**</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span></span>
+<span class="highlight-line">        élague<span class="token punctuation">(</span>x<span class="token punctuation">,</span> crible<span class="token punctuation">)</span></span>
+<span class="highlight-line">        max_premier <span class="token operator">=</span> nouveau_max_premier<span class="token punctuation">(</span>max_premier<span class="token punctuation">,</span> crible<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">if</span> x <span class="token operator">&lt;</span> max_premier<span class="token punctuation">:</span></span>
+<span class="highlight-line">            x <span class="token operator">=</span> nouveau_min_premier<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> crible<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>crible<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> crible<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">n <span class="token operator">=</span> <span class="token number">13</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Les nombres premiers plus petits que"</span><span class="token punctuation">,</span> n<span class="token punctuation">,</span> <span class="token string">"sont :"</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>érathostène<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>

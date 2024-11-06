@@ -106,12 +106,10 @@
 <h2>Fonctions</h2>
 <p>Une fonction est un type d'objet pouvant être exécuté. Par exemple la fonction <code class="language-">print</code>.</p>
 <p>C'est un objet :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token keyword">print</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'builtin_function_or_method'</span><span class="token operator">></span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token keyword">print</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'builtin_function_or_method'</span><span class="token operator">></span></code></pre>
 <p>On <em>exécute</em> l'objet en faisant suivre son nom de parenthèses :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 <p>L'exécution de la fonction <code class="language-">print</code> à produit un retour à la ligne.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -120,14 +118,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>De nombreuses fonctions peuvent être exécutées avec des <em>paramètres</em> qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">nom_de_la_fonction<span class="token punctuation">(</span>paramètre1<span class="token punctuation">,</span> paramètre2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">nom_de_la_fonction<span class="token punctuation">(</span>paramètre1<span class="token punctuation">,</span> paramètre2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>Prenons par exemple la fonction print de python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les gens"</span><span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">)</span>
-coucou les gens !
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les gens"</span><span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">)</span>
+coucou les gens !</code></pre>
 <p>L'exécution de la fonction <code class="language-">print</code> avec les trois paramètres <code class="language-">&quot;coucou&quot;</code>, <code class="language-">&quot;les gens&quot;</code> et <code class="language-">&quot;!&quot;</code> affichera à l'écran les 3 paramètres espacé d'un caractère (séparé par un caractère espace &quot; &quot;) puis ira à la ligne.</p>
 <p>Toutes les fonctions de python sont documentées. On peut y accéder :</p>
 <ul>
@@ -157,7 +153,7 @@ coucou les gens !
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">help</span><span class="token punctuation">(</span><span class="token keyword">print</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">help</span><span class="token punctuation">(</span><span class="token keyword">print</span><span class="token punctuation">)</span>
 Help on built<span class="token operator">-</span><span class="token keyword">in</span> function <span class="token keyword">print</span> <span class="token keyword">in</span> module builtins<span class="token punctuation">:</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
@@ -169,7 +165,6 @@ Help on built<span class="token operator">-</span><span class="token keyword">in
     sep<span class="token punctuation">:</span>   string inserted between values<span class="token punctuation">,</span> default a space<span class="token punctuation">.</span>
     end<span class="token punctuation">:</span>   string appended after the last value<span class="token punctuation">,</span> default a newline<span class="token punctuation">.</span>
     flush<span class="token punctuation">:</span> whether to forcibly flush the stream<span class="token punctuation">.</span>
-
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -203,9 +198,8 @@ Help on built<span class="token operator">-</span><span class="token keyword">in
 </div></div>
 
 <p>On cependant bien sur utiliser, en le nommant, un paramètre ayant une valeur par défaut :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les gens"</span><span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"***"</span><span class="token punctuation">)</span>
-coucou<span class="token operator">**</span><span class="token operator">*</span>les gens<span class="token operator">**</span><span class="token operator">*</span>!
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les gens"</span><span class="token punctuation">,</span> <span class="token string">"!"</span><span class="token punctuation">,</span> sep<span class="token operator">=</span><span class="token string">"***"</span><span class="token punctuation">)</span>
+coucou<span class="token operator">**</span><span class="token operator">*</span>les gens<span class="token operator">**</span><span class="token operator">*</span>!</code></pre>
 <h4>Ordre des paramètres</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -276,9 +270,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <ol>
 <li>
 <p>crochets extérieurs absents : <code class="language-">complex()</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token number">0j</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token number">0j</span></code></pre>
 <p>On vient de créer le complexe nul.</p>
 </li>
 <li>
@@ -286,15 +279,13 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 <ol>
 <li>
 <p>crochets absents :  <code class="language-">complex(real)</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">0j</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">0j</span><span class="token punctuation">)</span></code></pre>
 </li>
 <li>
 <p>crochets présents : <code class="language-">complex(real, imag)</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">complex</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span></code></pre>
 </li>
 </ol>
 </li>
@@ -378,9 +369,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">"anticonstitutionnellement"</span><span class="token punctuation">)</span>
-<span class="token number">25</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string">"anticonstitutionnellement"</span><span class="token punctuation">)</span>
+<span class="token number">25</span></code></pre>
 </div>
 </details>     
 </div>
@@ -411,9 +401,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </summary>
 <div class="mx-8 pb-2">
 <p>On utilise le paramètre base de la classe <code class="language-">int</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token string">"1001100011"</span><span class="token punctuation">,</span> base<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token number">611</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token string">"1001100011"</span><span class="token punctuation">,</span> base<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token number">611</span></code></pre>
 </div>
 </details>     
 </div>
@@ -441,9 +430,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token number">13395</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token number">13395</span></code></pre>
 </div>
 </details>     
 </div>
@@ -459,11 +447,10 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div></div>
 
 <p>Permet de demander une chaîne de caractère à un utilisateur. Par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token number">23</span>
 <span class="token operator">>></span><span class="token operator">></span> x
-<span class="token string">'23'</span>
-</code></pre>
+<span class="token string">'23'</span></code></pre>
 <p>On demande à l'utilisateur de taper quelque chose puis d'appuyer sur la touche entrée. Ce qu'à taper l'utilisateur est rendu sous la forme d'une <strong>chaîne de caractère</strong>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -475,8 +462,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 
 <h2><span id="méthodes"></span> Méthodes</h2>
 <p>Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">objet<span class="token punctuation">.</span>méthode<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> paramètre <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> paramètre <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span></code></pre>
 <p>On applique <code class="language-">méthode</code> à <code class="language-">objet</code> en utilisant les paramètres de la méthode.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -524,8 +510,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -553,9 +538,8 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </summary>
 <div class="mx-8 pb-2">
 <p>Dans un interpréteur :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span>
-<span class="token number">1332</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span>
+<span class="token number">1332</span></code></pre>
 </div>
 </details>     
 </div>
@@ -583,8 +567,7 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </summary>
 <div class="mx-8 pb-2">
 <p>Dans un interpréteur :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"7"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> y <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"7"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -616,30 +599,26 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"ou"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">"ou"</span><span class="token punctuation">)</span>
 <span class="token number">2</span>
 <span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">)</span>
 <span class="token number">9</span>
 <span class="token operator">>></span><span class="token operator">></span> mot<span class="token punctuation">.</span>rindex<span class="token punctuation">(</span><span class="token string">"e"</span><span class="token punctuation">)</span>
-<span class="token number">16</span>
-</code></pre>
+<span class="token number">16</span></code></pre>
 </div>
 </details>     
 </div>
 <p>On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de la prochaine. Par exemple, avec 2 méthodes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Signifie que méthode2() est appliquée à l'objet résultat de <code class="language-">objet.méthode_1()</code></p>
 <p>Et avec $n$ méthodes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span>méthode_n<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">objet<span class="token punctuation">.</span>méthode_1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>méthode_2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">.</span>méthode_n<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Signifie que <code class="language-">méthode_n()</code> est appliquée au résultat de <code class="language-">objet.méthode_1(). ... .méthode_n-1()</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que fait :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"7"</span><span class="token punctuation">,</span><span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">,</span><span class="token string">"7"</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token builtin">str</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> <span class="token number">44497</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"2"</span><span class="token punctuation">,</span><span class="token string">"x"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"7"</span><span class="token punctuation">,</span><span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"x"</span><span class="token punctuation">,</span><span class="token string">"7"</span><span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -678,11 +657,10 @@ coucou<span class="token operator">**</span><span class="token operator">*</span
 </div>
 <h2>Fonctions vs. méthodes</h2>
 <p>Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alors qu'une méthode a besoin d'un objet sur lequel elle s'applique (celui avant le <code class="language-">.</code>). Vous pouvez voir ça comme un 1er paramètre indispensable à l'exécution d'une méthode. Considérez le programme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ma_chaîne <span class="token operator">=</span> <span class="token string">"coucou !"</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> ma_chaîne <span class="token operator">=</span> <span class="token string">"coucou !"</span>
 <span class="token operator">>></span><span class="token operator">></span> en_majuscules <span class="token operator">=</span> ma_chaîne<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>en_majuscules<span class="token punctuation">)</span>
-COUCOU !
-</code></pre>
+COUCOU !</code></pre>
 <p>La première ligne crée une chaîne de caractères. La seconde instruction est une <em>méthode</em> (<code class="language-">upper</code>) qui s'applique à l'objet de nom <code class="language-">ma_chaîne</code> et qui n'a pas de paramètre.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -695,11 +673,10 @@ COUCOU !
 <h2>Attributs d'une classe</h2>
 <p>C'est plus rare, mais certaines classes possèdent  des également des <em>attributs</em> en plus des méthodes. Ce sont des valeurs associées à l'objet.</p>
 <p>Par exemple les objets de la classe <code class="language-">complex</code> qui possède les attributs <code class="language-">real</code> et <code class="language-">imag</code> pour rendre la partie réelle et imaginaire d'un complexe.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span><span class="token punctuation">.</span>real
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span><span class="token punctuation">.</span>real
 <span class="token number">1.0</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">2j</span><span class="token punctuation">)</span><span class="token punctuation">.</span>imag
-<span class="token number">2.0</span>
-</code></pre>
+<span class="token number">2.0</span></code></pre>
 
 
 </article>

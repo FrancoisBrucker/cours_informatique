@@ -143,7 +143,7 @@
 <h3>Résolution par un algorithme glouton</h3>
 <p>Un algorithme <em>&quot;glouton&quot;</em> ajoute itérativement un élément à une solution possible pour rendre au final une solution la plus grande possible. Dans le cas du sac à dos, on ajoute petit à petit des produit jusqu'à ce que le sac soit plein. Reste à choisir l'ordre dans lequel ajouter les poudre et comme on veut maximiser le profit, on choisi de prendre les poudres par prix au kilo décroissant.</p>
 <p>On obtient donc in fine l'algorithme suivant, écrit en python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
@@ -160,8 +160,7 @@
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             <span class="token keyword">break</span>
 
-    <span class="token keyword">return</span> sac_a_dos
-</code></pre>
+    <span class="token keyword">return</span> sac_a_dos</code></pre>
 <ul>
 <li>entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés <code class="language-">&quot;prix&quot;</code> et <code class="language-">&quot;kg&quot;</code></li>
 <li>sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.</li>
@@ -176,7 +175,7 @@
 
 <p>La complexité de cet algorithme est déterminée par le tri, puisque l'intérieure de la boucle <code class="language-">for</code> est en temps constant.</p>
 <p>Testons cet algorithme sur l'exemple. Si on devait coder les données de l'exemple, on aurait quelque chose du genre :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">EXEMPLE <span class="token operator">=</span> <span class="token punctuation">[</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">EXEMPLE <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
         <span class="token string">"nom"</span><span class="token punctuation">:</span> <span class="token string">"poudre 1"</span><span class="token punctuation">,</span>
         <span class="token string">"kg"</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
@@ -208,7 +207,6 @@
         <span class="token string">"prix"</span><span class="token punctuation">:</span> <span class="token number">800</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span>
-
 </code></pre>
 <p>Notez que l'on a ajouté une clé <code class="language-">&quot;nom&quot;</code> pour retrouver l'objet dans le sac à dos.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -366,7 +364,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
 </div>
 <h2>Algorithme glouton</h2>
 <p>Comme les solutions du sac à dos sont des solutions admissible du sac à dos fractionnel, on peut tenter d'adapter l'algorithme glouton (optimal) précédent au problème du sac à dos :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">glouton</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
@@ -378,8 +376,7 @@ On suppose que notre solution n'est pas optimale et, parmi toutes les solutions 
             sac_a_dos<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
             masse_totale <span class="token operator">-=</span> x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span>
 
-    <span class="token keyword">return</span> sac_a_dos
-</code></pre>
+    <span class="token keyword">return</span> sac_a_dos</code></pre>
 <ul>
 <li>entrée : une liste de produits, où chaque produit est un dictionnaire contenant les clés <code class="language-">&quot;prix&quot;</code> et <code class="language-">&quot;kg&quot;</code></li>
 <li>sortie : une liste tel que l'élément d'indice i contienne la fraction de poudre (entre 0 et 1) du produit d'indice i dans le sac à dos.</li>
@@ -554,7 +551,7 @@ $$</p>
 </ul>
 <p>Pour minimiser le temps pris pour faire cet algorithme il faut s'assurer de ne pas refaire une affectation déjà faite. On peut pour cela reprendre <a href="../../projet-classiques/compteur-binaire/#successeur" class="interne">l'algorithme successeur</a> qui permet de trouver le successeur d'un nombre écrit sous sa forme binaire.</p>
 <p>L'algorithme peut alors être, avec des produits organisés comme l'<code class="language-">EXEMPLE</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> énumération<span class="token punctuation">(</span>produits<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> énumération<span class="token punctuation">(</span>produits<span class="token punctuation">,</span> K<span class="token punctuation">)</span><span class="token punctuation">:</span>
     kg <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> produits<span class="token punctuation">]</span>
     prix <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> produits<span class="token punctuation">]</span>
     n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span>
@@ -573,8 +570,7 @@ $$</p>
                 sac_à_dos_profit_max <span class="token operator">=</span> profit
                 sac_à_dos_max <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>sac_à_dos<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> sac_à_dos_max
-</code></pre>
+    <span class="token keyword">return</span> sac_à_dos_max</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -797,7 +793,7 @@ $$</p>
 <li><code class="language-">première_valeur_fractionnelle(sac_à_dos_fractionnel)</code> qui rend le plus petit indice tel que la valeur du tableau est strictement entre 0 et 1 ou <code class="language-">None</code> si un tel indice n'existe pas. Pour notre exemple, on aurait ainsi que : <code class="language-">première_valeur_fractionnelle([1, 0.3, 1, 1, 0])</code> aurait rendu 1 et <code class="language-">première_valeur_fractionnelle([1, 0, 1, 1, 0])</code> aurait rendu <code class="language-">None</code></li>
 <li><code class="language-">profit(sac_à_dos_fractionnel, produits)</code> qui rend le profit associé au sac à dos fractionnel passé en entrée</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">branch_and_bound</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">branch_and_bound</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ordre <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>produits<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     ordre<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> i<span class="token punctuation">:</span> <span class="token operator">-</span>produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"prix"</span><span class="token punctuation">]</span> <span class="token operator">/</span> produits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
@@ -826,8 +822,7 @@ $$</p>
                     nouvelle_solution_ouverte<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> v
                     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token builtin">sum</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token string">"kg"</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x<span class="token punctuation">,</span> o <span class="token keyword">in</span> <span class="token builtin">zip</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> nouvelle_solution_ouverte<span class="token punctuation">)</span> <span class="token keyword">if</span> o <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
                         solutions_ouvertes_possibles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nouvelle_solution_ouverte<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> sac_à_dos
-</code></pre>
+    <span class="token keyword">return</span> sac_à_dos</code></pre>
 <p>Si on a pas de chance, il faut explorer toutes les possibilités, la complexité est donc égale au nombre de solutions possible multiplié par la somme de la complexité des deux algorithmes gloutons. Dans notre cas $\mathcal{o}(2^n \cdot n \log(n))$. Notez que comme les deux algorithmes gloutons dépendent tous du même tri, on peut ne trier qu'une seule fois puis utiliser des algorithmes en $\mathcal{O}(n)$. La complexité totale est alors $\mathcal{O}(n \log(n) + 2^n \cdot n) = \mathcal{O}(2^n \cdot n)$, identique à la complexité de la recherche exhaustive.</p>
 <p>Enfin, on peut accélérer l'algorithme en prenant comme valeur de départ le résultat de l'algorithme glouton.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

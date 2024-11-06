@@ -105,12 +105,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez le type <code>liste</code> associé à la structure <code class="language-">struct liste</code> dans un fichier <code>liste.h</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">liste</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">liste</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> <span class="token operator">*</span>t<span class="token punctuation">;</span>
         <span class="token class-name">size_t</span> taille<span class="token punctuation">;</span>
         <span class="token class-name">size_t</span> nombre<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> liste<span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span> liste<span class="token punctuation">;</span></code></pre>
 <p>Cette structure permet de stocker une structure de liste contenant des entiers (via le pointeur <code>t</code>). La création d'une structure par une fonction doit nécessairement rendre un pointeur car il faut créer l'élément dans le tas.</p>
 </div></div>
 
@@ -143,8 +142,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi une fonction avec la signature suivante ne fonctionnerait pas ?</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">liste_ajoute</span><span class="token punctuation">(</span>liste<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">liste_ajoute</span><span class="token punctuation">(</span>liste<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -174,8 +172,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Pourquoi une fonction avec la signature suivante fonctionnerait parfaitement ?</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">liste_remplace</span><span class="token punctuation">(</span>liste<span class="token punctuation">,</span> <span class="token class-name">size_t</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">liste_remplace</span><span class="token punctuation">(</span>liste<span class="token punctuation">,</span> <span class="token class-name">size_t</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -218,13 +215,12 @@
 
 <h2>Amélioration</h2>
 <p>On remarque que presque toutes les fonctions manipulant les listes la modifie. Seule la création rend un objet de type liste. L'usage veut que l'on ne manipule les structures en C que via des pointeurs. On utilise alors plutôt ce type de structure :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_liste</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_liste</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> <span class="token operator">*</span>t<span class="token punctuation">;</span>
         <span class="token class-name">size_t</span> taille<span class="token punctuation">;</span>
         <span class="token class-name">size_t</span> nombre<span class="token punctuation">;</span>
 <span class="token punctuation">}</span> _liste<span class="token punctuation">;</span>
-<span class="token keyword">typedef</span> _liste<span class="token operator">*</span> liste<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">typedef</span> _liste<span class="token operator">*</span> liste<span class="token punctuation">;</span></code></pre>
 <p>Ce qui fait que l'on a à notre disposition deux types :</p>
 <ul>
 <li><code class="language-">_liste</code> qui est la composition de la structure, utile pour le <code class="language-">malloc</code> de la création,</li>

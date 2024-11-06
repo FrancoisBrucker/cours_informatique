@@ -124,7 +124,7 @@
 <p>La représentation graphique de la boite est contrôlé par de nombreuses propriétés css, que nous allons passer en revue.</p>
 <p>Nous utiliserons ce code html pour nos expérimentations :</p>
 <p><span id="exemple"></span></p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -153,8 +153,7 @@
       lectus odio, rutrum sed gravida vel, ultrices eget mi.
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -189,12 +188,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Remplacez le style du fichier <code class="fichier">boites.html</code> par :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
       <span class="token selector">strong</span> <span class="token punctuation">{</span>
         <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-</code></pre>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
 <p>rechargez le fichier et voyez comment les éléments <code class="language-">&lt;strong&gt;&lt;/strong&gt;</code> ont disparu.</p>
 </div></div>
 
@@ -301,15 +299,14 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Voyez les différences de représentation en supprimant ou pas la propriété <code class="language-">display: inline-block;</code> du style suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
       <span class="token selector">strong</span> <span class="token punctuation">{</span>
         <span class="token property">padding</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
         <span class="token property">margin</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
         <span class="token property">border</span><span class="token punctuation">:</span> 1px solid<span class="token punctuation">;</span>
         <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-</code></pre>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
 </div></div>
 
 <h2>width et height</h2>
@@ -372,13 +369,12 @@
 <p>Si deux éléments de display <code class="language-">block</code> se suivent, la marge entre les deux block sera du maximum des deux marge et non la somme. C'est ce que l'on appelle : <a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">fusion des marges</a>.</p>
 <p>Les marges hautes et basses des éléments de display <code class="language-">inline</code> ne sont pas prises en compte.</p>
 <p>Un cas classique d'utilisation des marges est pour les images. L'élément <code class="language-">&lt;img&gt;&lt;/img&gt;</code> sont normalement de display <code class="language-">inline</code>. Si l'on veut centrer une image, la solution habituelle est de placer comme style :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
       <span class="token selector">img</span> <span class="token punctuation">{</span>
         <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
         <span class="token property">margin</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-</code></pre>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -408,13 +404,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez le style ci-après et voyez comment le bord est influencé par le padding, bien que ce dernier ne soit pas pris en compte dans la représentation de la boite.</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
       <span class="token selector">strong</span> <span class="token punctuation">{</span>
         <span class="token property">padding</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
         <span class="token property">border</span><span class="token punctuation">:</span> 1px solid<span class="token punctuation">;</span>
       <span class="token punctuation">}</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-</code></pre>
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre>
 </div></div>
 
 

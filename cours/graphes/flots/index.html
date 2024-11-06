@@ -326,7 +326,7 @@ $$</p>
 <p>L'algorithme de Ford et Fulkerson (1955) est une implémentation de ce principe. Il cherche une chaîne augmentante puis la résout. La procédure de recherche de chaîne est paradigmatique des algorithme <em>marquer/ examiner</em></p>
 <h4>Algorithme de marquage</h4>
 <p>Son algorithme de recherche de chaîne commence par marquer les sommets</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Entrée :
     un graphe orienté G = (V, E)
     une capacité c qui associe un réel strictement positif à toute arc de G
     deux sommets s et p
@@ -349,8 +349,7 @@ Algorithme :
                 marquer y par (x, -β)
         considérer x comme examiné
 Retour :
-    les marques des sommets
-</code></pre>
+    les marques des sommets</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -368,38 +367,37 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">marquage</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
-
-    marques <span class="token operator">=</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
-    examiné <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token keyword">not</span> <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-        <span class="token keyword">for</span> y <span class="token keyword">in</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> y <span class="token keyword">in</span> marques<span class="token punctuation">:</span>
-                <span class="token keyword">continue</span>
-
-            <span class="token keyword">if</span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">></span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-        <span class="token keyword">for</span> y <span class="token keyword">in</span> G<span class="token punctuation">:</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> G<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">continue</span>
-
-            <span class="token keyword">if</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                <span class="token keyword">else</span><span class="token punctuation">:</span>
-                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-        examiné<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> marques
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">marquage</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    marques <span class="token operator">=</span> <span class="token punctuation">{</span>s<span class="token punctuation">:</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span>
+<span class="highlight-line">    examiné <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token keyword">not</span> <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>marques<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> examiné<span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">for</span> y <span class="token keyword">in</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">if</span> y <span class="token keyword">in</span> marques<span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">continue</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">            <span class="token keyword">if</span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">></span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">if</span> <span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> c<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">                <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">for</span> y <span class="token keyword">in</span> G<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">if</span> <span class="token punctuation">(</span>y <span class="token keyword">in</span> marques<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>x <span class="token keyword">not</span> <span class="token keyword">in</span> G<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">continue</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">            <span class="token keyword">if</span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                <span class="token keyword">if</span> <span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">></span> f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">                <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                    marques<span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        examiné<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> marques</span></code></pre>
 </div>
 </details>     
 </div>
@@ -436,7 +434,7 @@ Retour :
 <p>Si le sommet p est marqué à la fin de l'algorithme, il existe une chaîne augmentante.</p>
 <h4>Chaîne augmentante à partir des marques</h4>
 <p>La chaîne augmentante est retrouvée à partir des marques par l'algorithme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Entrée :
     deux sommets s et p
     les marques de l'algorithme de marquage
 Initialisation :
@@ -448,8 +446,7 @@ Algorithme :
         x = y
         ajouter x au début de C
 Retour :
-    C
-</code></pre>
+    C</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -467,7 +464,7 @@ Retour :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> chaîne_augmentante<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> chaîne_augmentante<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">)</span><span class="token punctuation">:</span>
     C <span class="token operator">=</span> <span class="token punctuation">[</span>p<span class="token punctuation">]</span>
     x <span class="token operator">=</span> p
     <span class="token keyword">while</span> x <span class="token operator">!=</span> s<span class="token punctuation">:</span>
@@ -477,15 +474,14 @@ Retour :
 
     C<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> C
-</code></pre>
+    <span class="token keyword">return</span> C</code></pre>
 </div>
 </details>     
 </div>
 <p>Pour se convaincre que l'algorithme trouve bien une chaîne augmentante si elle existe, il suffit de remarquer qu'un sommet est marqué que si et seulement si il existe une chaîne augmentante allant de s à lui. Ceci fonctionne car s'il existe une chaîne augmentante allant de $s$ à $x$ et une chaîne augmentante allant de $x$ à $y$ alors il existe une chaîne augmentante allant de $s$ à $y$.</p>
 <h4>Mise à jour du flot</h4>
 <p>De là, si p n'est pas marqué, il n'existe pas de chaîne augmentante, et le flot est maximum. Sinon, on peut augmenter le flot avec l'algorithme suivant et recommencer :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Entrée :
     une chaîne augmentante c=c[0] ... c[k] entre s et p
     les marques
     deux sommets s et p
@@ -496,8 +492,7 @@ Algorithme
         si le premier paramètre de de la marque de c[i] est positif alors :
             f((c[i-1],c[i])) += ⍺
         sinon :
-            f((c[i],c[i-1])) -= ⍺
-</code></pre>
+            f((c[i],c[i-1])) -= ⍺</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -515,15 +510,14 @@ Algorithme
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">augmentation_flot</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">,</span> chaîne<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">augmentation_flot</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">,</span> chaîne<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
     alpha <span class="token operator">=</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>marques<span class="token punctuation">[</span>p<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> marques<span class="token punctuation">[</span>chaîne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
             f<span class="token punctuation">[</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> chaîne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+=</span> alpha
         <span class="token keyword">else</span><span class="token punctuation">:</span>
-            f<span class="token punctuation">[</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> chaîne<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-=</span> alpha
-</code></pre>
+            f<span class="token punctuation">[</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> chaîne<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">-=</span> alpha</code></pre>
 </div>
 </details>     
 </div>
@@ -546,14 +540,13 @@ Algorithme
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ford_et_fulkerson</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">ford_et_fulkerson</span><span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
     marques <span class="token operator">=</span> marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
 
     <span class="token keyword">while</span> p <span class="token keyword">in</span> marques<span class="token punctuation">:</span>
         chaîne <span class="token operator">=</span> chaîne_augmentante<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">)</span>
         augmentation_flot<span class="token punctuation">(</span>s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> marques<span class="token punctuation">,</span> chaîne<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
-        marques <span class="token operator">=</span> marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
-</code></pre>
+        marques <span class="token operator">=</span> marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> s<span class="token punctuation">,</span> p<span class="token punctuation">,</span> f<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -718,7 +711,7 @@ $\mathcal{O}(c(S, \overline{S}) \cdot \vert E\vert)$ opérations.</p>
 </summary>
 <div class="mx-8 pb-2">
 <p>:</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -757,7 +750,6 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 </div>
 </details>     
@@ -790,7 +782,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On exécute la fonction <code class="language-">marquage(G, c, 's', 'p', f)</code> qui rend le dictionnaire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token string">'s'</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'a'</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'b'</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -798,10 +790,9 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'d'</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'e'</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'p'</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><strong>Attention</strong>, d'autres possibilités existent ! En relançant plusieurs fois l'algorithme vous trouverez des marques différentes, comme par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -809,8 +800,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'e'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'p'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -841,8 +831,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On exécute la fonction <code class="language-">chaîne_augmentante('s', 'p', marques)</code> où marques est le résultat de la fonction <code class="language">marquage</code> précédent et on obtient le chemin :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">]</span></code></pre>
 <p>Pour le second jeu de marques, on aurait eu une chaîne différente (en l’occurrence : <code class="language-">['s', 'a', 'd', 'p']</code>)</p>
 </div>
 </details>     
@@ -876,7 +865,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On exécute la fonction <code class="language-">augmentation_flot('s', 'p', marques, chaîne, f)</code> où <code class="language-">marques</code> et <code class="language-">chaîne</code> sont les résultats précédents des fonctions <code class="language-">marquage</code> et <code class="language-">chaîne_augmentante</code>. Le dictionnaire <code class="language-">f</code> est modifié en :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span>
     <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span>
     <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span>
@@ -889,8 +878,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span>
     <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span>
     <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -927,7 +915,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>On exécute la fonction <code class="language-">marquage(G, c, 's', 'p', f)</code> où $f$ est le flot maximal :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
@@ -940,18 +928,16 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">1</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Et on obtient :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'e'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'c'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -993,7 +979,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> graphe_écart<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> graphe_écart<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
     Gf <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">}</span>
 
     <span class="token keyword">for</span> xy <span class="token keyword">in</span> c<span class="token punctuation">:</span>
@@ -1003,8 +989,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> f<span class="token punctuation">[</span>xy<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
             Gf<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> Gf
-</code></pre>
+    <span class="token keyword">return</span> Gf</code></pre>
 </div>
 </details>     
 </div>
@@ -1065,7 +1050,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </summary>
 <div class="mx-8 pb-2">
 <p>L'idée de l'algorithme est de regarder si on a déjà créé la valuation on non. Si oui, on prend le minimum et sinon on place la valuation de l'arc considéré.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> graphe_écart_valuation<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> graphe_écart_valuation<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
     Gf <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">}</span>
     vf <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -1087,8 +1072,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
             <span class="token keyword">else</span><span class="token punctuation">:</span>
                 vf<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">[</span><span class="token punctuation">(</span>y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> Gf<span class="token punctuation">,</span> vf
-</code></pre>
+    <span class="token keyword">return</span> Gf<span class="token punctuation">,</span> vf</code></pre>
 </div>
 </details>     
 </div>
@@ -1120,7 +1104,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">{</span>
     <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">}</span>
     <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">}</span>
     <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span>
@@ -1128,8 +1112,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'d'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">}</span>
     <span class="token string">'e'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'p'</span><span class="token punctuation">}</span>
     <span class="token string">'p'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'d'</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>

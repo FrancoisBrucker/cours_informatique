@@ -95,40 +95,39 @@
 <li>justifiez toutes vos réponses</li>
 </ul>
 <p>On considère le code suivant :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    nouveau <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
-        nouveau<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-
-    <span class="token keyword">return</span> nouveau
-
-
-<span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            m <span class="token operator">=</span> i
-    <span class="token keyword">return</span> m
-
-
-<span class="token keyword">def</span> <span class="token function">minimum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> T<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            m <span class="token operator">=</span> i
-    <span class="token keyword">return</span> m
-
-
-<span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    max_value <span class="token operator">=</span> T<span class="token punctuation">[</span>maximum<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">]</span>
-
-    T_copie <span class="token operator">=</span> copie<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">min</span> <span class="token operator">=</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span>
-        T_copie<span class="token punctuation">[</span><span class="token builtin">min</span><span class="token punctuation">]</span> <span class="token operator">=</span> max_value <span class="token operator">+</span> <span class="token number">1</span>
-
-    <span class="token keyword">return</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    nouveau <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span></span>
+<span class="highlight-line">        nouveau<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> nouveau</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    m <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            m <span class="token operator">=</span> i</span>
+<span class="highlight-line">    <span class="token keyword">return</span> m</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">minimum</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    m <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> T<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            m <span class="token operator">=</span> i</span>
+<span class="highlight-line">    <span class="token keyword">return</span> m</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    max_value <span class="token operator">=</span> T<span class="token punctuation">[</span>maximum<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    T_copie <span class="token operator">=</span> copie<span class="token punctuation">(</span>T<span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token builtin">min</span> <span class="token operator">=</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span></span>
+<span class="highlight-line">        T_copie<span class="token punctuation">[</span><span class="token builtin">min</span><span class="token punctuation">]</span> <span class="token operator">=</span> max_value <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">return</span> minimum<span class="token punctuation">(</span>T_copie<span class="token punctuation">)</span></span></code></pre>
 <h2>1</h2>
 <p>Donnez la complexité de la fonction <code class="language-">recherche(T, k)</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

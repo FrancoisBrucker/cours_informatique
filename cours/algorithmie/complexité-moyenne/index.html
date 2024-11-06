@@ -137,12 +137,11 @@
 <p>Si l'on a pas de modèle a priori, on considérera que chaque donnée est équiprobable : chaque entrée a la même probabilité d'être choisie, $p_e = \frac{1}{\vert \mathcal{E} \vert}$.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Reprenons l'exemple de <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">la recherche d'un élément d'un un tableau</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
         <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>On avait déterminé ses complexités par rapport à la taille $n$ du tableau :</p>
 <ul>
 <li>la complexité maximale de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(n)$ (on parcourt tout le tableau sans trouver <code class="language-">valeur</code>)</li>

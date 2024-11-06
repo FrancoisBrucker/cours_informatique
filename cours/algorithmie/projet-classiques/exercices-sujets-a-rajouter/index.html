@@ -169,7 +169,7 @@ $$</p>
 </ul>
 <h2>Algorithme mystère</h2>
 <p>L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> mystère<span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> mystère<span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
     k <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
     tempo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
     sortie <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
@@ -184,7 +184,6 @@ $$</p>
         tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
 
     <span class="token keyword">return</span> sortie
-
 </code></pre>
 <ul>
 <li>Donnez la complexité de cet algorithme.</li>

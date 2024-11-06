@@ -117,15 +117,14 @@
 
 <h2>Premier programme</h2>
 <p>Fichier <code class="fichier">hello.c</code> :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span> </span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdlib.h> 
+#include <stdio.h>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
-    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+int main() { 
+    printf("Hello World!\n");
 
-    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span> 
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    return EXIT_SUCCESS; 
+}</stdio.h></stdlib.h></code></pre>
 <h3>Détails du code</h3>
 <p>ligne à ligne</p>
 <p>En comparant par rapport à un code python :</p>
@@ -147,8 +146,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Venant du python, il peut sembler grisant de pouvoir écrire plusieurs instructions sur une ligne, par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span><span class="token punctuation">}</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello World!\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span><span class="token punctuation">}</span></code></pre>
 <p>Est tout à fait valable.</p>
 <p>Mais ne le faite pas. Du code non clairement indenté vous sautera tôt ou tard à la figure.</p>
 </div></div>

@@ -111,7 +111,7 @@
 </ol>
 <h2>Fichiers</h2>
 <p>Fichier <code class="fichier">main.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -122,17 +122,15 @@
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i \n"</span><span class="token punctuation">,</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Fichier <code class="fichier">celcius.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>celcius <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> celcius <span class="token operator">+</span> <span class="token number">273</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>On peut ensuite procéder à notre compilation en plusieurs étapes :</p>
 <ol>
@@ -149,11 +147,10 @@
 <h2>Fichiers d'entêtes</h2>
 <p>Pour ne pas avoir à déclarer explicitement les fonctions de <code class="fichier">celcius.c</code> dans <code class="fichier">main.c</code>, on va utiliser un fichier annexe qui va les contenir :</p>
 <p>Fichier <code class="fichier">celcius.h</code> à inclure au projet dans le même dossier que <code class="fichier">main.c</code> et <code class="fichier">celcius.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Le fichier <code class="fichier">main.c</code> devient alors :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"celcius.h"</span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -162,20 +159,18 @@
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i \n"</span><span class="token punctuation">,</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Notez que comme le fichier <code class="fichier">celcius.h</code> est spécifique au projet (il est dans le même dossier que le reste du programme), on utilise des <code>&quot;</code> pour l'inclure. Le préprocesseur <code>C</code> allant chercher ces fichiers en priorité dans le projet.</p>
 <h2>Prévenir l'inclusion multiple</h2>
 <p>A chaque fois qu'un fichier aura besoin d'utiliser des fonction de <code class="fichier">celcius.c</code>, il lui faudra inclure son fichier de headers <code class="fichier">celcius.h</code>. S'il est inclus plusieurs fois, le préprocesseur le recopiera plusieurs fois.</p>
 <p>Par exemple le fichier <code class="fichier">test.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"celcius.h"</span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"celcius.h"</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"celcius.h"</span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Donnera après la phase du préprocesseur (<code>clang -E test.c</code>) le fichier :</p>
 <pre><code># 1 &quot;celcius.c&quot;
 # 1 &quot;&lt;built-in&gt;&quot; 1
@@ -201,14 +196,13 @@ return 0;
 </code></pre>
 <p>Qui inclut bien deux fois dans le même fichier le fichier <code class="fichier">celcius.h</code>.</p>
 <p>POur éviter ceci on ajoute <a href="https://gcc.gnu.org/onlinedocs/cpp/Once-Only-Headers.html">une astuce</a> qui utilise le préprocesseur. Le fichier <code class="fichier">celcius.h</code> sera écrit :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_CELCIUS</span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_CELCIUS</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">FILE_CELCIUS</span></span>
 
 <span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
-</code></pre>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span></code></pre>
 <p>A la première lecture, la constante <code>FILE_CELCIUS</code> n'existe pas et on écrit tout le fichier, à la deuxième la constante est définie et donc le préprocesseur saute la partie définition.</p>
 <p>La preuve en regardant le résultat de la phase du préprocesseur du fichier <code class="fichier">test.c</code> avec ce nouveau fichier d'entête :</p>
 <pre><code># 1 &quot;celcius.c&quot;
@@ -248,7 +242,7 @@ return 0;
 </ol>
 <p>Dans le cadre de notre exemple, on a 3 fichiers :</p>
 <p><code class="fichier">celcius.h</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">
 <span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifndef</span> <span class="token expression">FILE_CELCIUS</span></span>
@@ -258,20 +252,18 @@ return 0;
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
-
 </code></pre>
 <p><code class="fichier">celcius.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>celcius <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> celcius <span class="token operator">+</span> <span class="token number">273</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p><code class="fichier">main.c</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"celcius.h"</span></span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -280,7 +272,6 @@ return 0;
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%i \n"</span><span class="token punctuation">,</span> <span class="token function">kelvin</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Phases de compilation :</p>
 <ol>

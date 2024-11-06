@@ -112,14 +112,13 @@
 <p>Toutes les machines sont connectées deux à deux, Le hub permettant de retransmettre une donnée arrivant à tous les participants du réseau. Il n'est donc pas nécessaire d'avoir de routage puisque toutes les données sont envoyées à tout le monde, mais il faut tout de même un protocole pour s'assurer que chaque participant puisse reconnaître les données qui lui sont adressées. Ceci se fait via l'adresse MAC de la carte réseau.</p>
 <h2>Adresse MAC</h2>
 <p>Chaque <code>interface</code> (ie carte réseau, comme <code>en0</code> par exemple) a une <a href="https://fr.wikipedia.org/wiki/Adresse_MAC">adresse MAC</a> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ip</span> <span class="token function">link</span> show en1
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ip</span> <span class="token function">link</span> show en1
 en1: <span class="token assign-left variable">flags</span><span class="token operator">=</span><span class="token number">886</span><span class="token operator"><span class="token file-descriptor important">3</span>&lt;</span>UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST<span class="token operator">></span> mtu <span class="token number">1500</span>
 	<span class="token assign-left variable">options</span><span class="token operator">=</span><span class="token number">40</span><span class="token operator"><span class="token file-descriptor important">0</span>&lt;</span>CHANNEL_IO<span class="token operator">></span>
 	ether <span class="token number">38</span>:f9:d3:17:40:bd 
 	nd6 <span class="token assign-left variable">options</span><span class="token operator">=</span><span class="token number">20</span><span class="token operator"><span class="token file-descriptor important">1</span>&lt;</span>PERFORMNUD,DAD<span class="token operator">></span>
 	media: autoselect
 	status: active
-
 </code></pre>
 <p>L'adresse MAC de cet ordinateur (un mac) est : <code>38:f9:d3:17:40:bd</code>. Les 3 premiers octets (moins les 2 premiers bits) correspondent au fabriquant (ici apple) et les trois derniers sont aléatoires.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">

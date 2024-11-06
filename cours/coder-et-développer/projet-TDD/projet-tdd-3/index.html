@@ -164,15 +164,14 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span>plus<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">monnaie.py</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -182,8 +181,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -214,16 +212,15 @@
 <div class="mx-8 pb-2">
 <p><em>easy peasy</em>, on remplace juste <code class="language-">plus</code> par <code class="language-">+</code></p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>et  <code class="language-">plus</code> par <code class="language-">__add__</code></p>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -233,8 +230,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -258,17 +254,16 @@
 </ul>
 <h3><span id="faire-add-2-1"></span> Faire</h3>
 <p>Pour imaginer cela rien de mieux qu'un test ! On va l'écrire à l'envers, en partant du résultat, car  on sait où on veut arriver : à $10 :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment">### ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
     
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Ces $10 viennent d'une conversion en dollar d'une somme de deux monnaies, conversion qui -- d'un point de vue métier -- ne peut venir que d'une banque :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment">### ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -277,10 +272,9 @@
 
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Banque qu'il faut créer :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment">### ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -290,10 +284,9 @@
 
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Il ne reste plus qu'à fabriquer notre expression pur avoir notre test final :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">### ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment">### ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_conversion_addition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
@@ -302,8 +295,7 @@
 
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">==</span> conversion
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -328,14 +320,13 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> currency<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> dollar<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -378,7 +369,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_plus_est_une_Somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     somme <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
@@ -386,10 +377,9 @@
     <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>gauche <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> somme<span class="token punctuation">.</span>droite <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -406,8 +396,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -459,14 +448,13 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>expression<span class="token punctuation">.</span>gauche<span class="token punctuation">.</span>montant <span class="token operator">+</span> expression<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -522,7 +510,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -538,8 +526,7 @@
 
     <span class="token comment"># ... </span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -592,16 +579,15 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_banque_conversion_monnaie_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -611,8 +597,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -668,7 +653,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_banque_change_identique</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>change<span class="token punctuation">(</span><span class="token string">"USD"</span><span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
@@ -684,10 +669,9 @@
     banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Banque</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">conversion</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> expression<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -721,8 +705,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Remarquez qu'on a du également modifier <code class="language-">Somme.conversion</code> pour que les tests continuent de passer.</p>
 </div>
 </details>     
@@ -773,15 +756,14 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_somme_conversion_deux_monnaies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -803,8 +785,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Remarquez qu'on a du également modifier <code class="language-">Somme.conversion</code> pour que les tests continuent de passer.</p>
 </div>
 </details>     
@@ -839,15 +820,14 @@
 <p>A priori, une partie de la somme de sommes est déjà implémentée. Regardez comment <code class="language-">Somme</code> est construite, en particulier la méthode <code class="language-">__add__</code>.</p>
 <p>Par exemple, le test suivant doit passer :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_somme_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
     expression <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -877,15 +857,14 @@
 </div>
 <p>En revanche, ce test ne passe pas encore :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_somme_de_somme_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
     expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -910,12 +889,11 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Le résultat des tests donne :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">
     def test_somme_de_somme_2():
         banque = monnaie.Banque()
 >       expression = (monnaie.dollar(1) + monnaie.franc(2)) + monnaie.dollar(1)
-E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
-</code></pre>
+E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'</code></pre>
 <p>Nous n'avons pas implémenté de méthode <code class="language-">__add__</code> pour les <code class="language-">Somme</code>.</p>
 </div>
 </details>     
@@ -944,7 +922,7 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -954,20 +932,18 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
 <h3><span id="faire-exp-2"></span> Faire</h3>
 <p>Il ne reste plus qu'à tester la multiplication pour finir.</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_mult_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_mult_de_somme</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     banque <span class="token operator">=</span> monnaie<span class="token punctuation">.</span>Banque<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span>
-    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -992,7 +968,7 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -1002,8 +978,7 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
     
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1038,7 +1013,7 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 <p>Vous avez suivi tout un projet de développement par les tests. J'espère vous avoir convaincu que cette méthode permet de développer rapidement et proprement du code (<em>&quot;clean code that works&quot;</em>).</p>
 <h3>code</h3>
 <h4><code class="fichier">test_monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
 <span class="token keyword">import</span> monnaie
 
 
@@ -1123,10 +1098,9 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 
     expression <span class="token operator">=</span> <span class="token punctuation">(</span>monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> banque<span class="token punctuation">.</span>conversion<span class="token punctuation">(</span>expression<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h4><code class="fichier">monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
 
 
@@ -1180,7 +1154,6 @@ E       TypeError: unsupported operand type(s) for +: 'Somme' and 'Monnaie'
 
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplier<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">.</span>gauche <span class="token operator">*</span> multiplier<span class="token punctuation">,</span> self<span class="token punctuation">.</span>droite <span class="token operator">*</span> multiplier<span class="token punctuation">)</span>
-
 </code></pre>
 
 

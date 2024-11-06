@@ -550,14 +550,13 @@ On a alors $2(p+q-1) = p+3q$, ce qui donne $p = q + 2$ et termine la preuve.</p>
 <p><strong>Code de Prüfer</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit $T = (V, E)$ un arbre dont les $n$ sommets peuvent être totalement ordonnés. Le code de Prüfer de $T$ est une liste $L$ de $n-2$ sommets construite selon l'algorithme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">L  <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">L  <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 tant que <span class="token operator">|</span>V<span class="token operator">|</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">:</span>
     soit x la plus petite feuille de T et xy son arête
     ajoute y à la fin de L
     supprime x de T
 
-rendre L
-</code></pre>
+rendre L</code></pre>
 </div></div>
 
 <p>En utilisant l'arbre suivant :</p>
@@ -684,7 +683,7 @@ Soit $T = (V, E)$ un arbre à $n+1$ sommets et $x$ la plus petite de ses feuille
 <p><strong>Décodage de Prüfer</strong></p>
 </div><div class="pl-8 mr-8">
 <p>$V$ un ensemble de $n$ éléments pouvant être totalement ordonnés. et $L$ une suite de $n-2$ éléments de $V$. On associe un arbre $T=(V, E)$ à $L$ en suivant l'algorithme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">E <span class="token operator">=</span> ø
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">E <span class="token operator">=</span> ø
 tant que L est non vide<span class="token punctuation">:</span>
     soit x le plus petit élément de V qui n'est pas dans L
     soit y le premier élément de L
@@ -695,8 +694,7 @@ tant que L est non vide<span class="token punctuation">:</span>
 soient x et y les deux derniers éléments de V
 ajoute l'arête xy à E
 
-rendre E
-</code></pre>
+rendre E</code></pre>
 </div></div>
 
 <p>Procédons au décodage de notre code précédent $L=[11, 11, 12, 12, 3, 4, 8, 8, 8, 4]$ pour l'ensemble $V = \{1,\dots, 12\}$&gt; On a obtenir les graphes suivants :</p>

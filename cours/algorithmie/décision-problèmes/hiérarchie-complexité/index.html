@@ -122,7 +122,7 @@
 
 <h2>Exécution de pseudo-code</h2>
 <p>Considérons le programme suivant, qui prend en paramètre un pseudo-code :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exécution (on le notera E(e, K))
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Exécution (on le notera E(e, K))
 Entrées :
     - un mot e correspondant à un pseudo-code [e] à un paramètre
     - un entier K
@@ -140,8 +140,7 @@ Programme :
 
         K = K - 1
         si K ≤ 0 :
-            Rendre 0
-</code></pre>
+            Rendre 0</code></pre>
 <p>Le code ci-dessus est bien un programme car il est syntaxiquement correct. C'est de plus un algorithme puisqu'il s'arrête forcément : soit après l'exécution de $[e](e)$, soit si le pseudo-code de $[e]$ contient une instruction non syntaxiquement correcte, soit enfin après l'exécution de $K$ instructions de $[e](e)$.</p>
 <p>Enfin, il va rendre :</p>
 <ul>
@@ -160,7 +159,7 @@ Programme :
 
 <h2>Décideur final</h2>
 <p>On a maintenant tous les ingrédients pour créer le décideur, dépendant d'une fonction calculable $f$, qui va nous servir de preuve.</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : complexité-f (on va le noter cf(n))
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : complexité-f (on va le noter cf(n))
 Entrée : un entier n
 Programme :
     K = f(n)
@@ -169,7 +168,6 @@ Programme :
         rendre 0
     sinon
         Rendre E(e, K)
-
 </code></pre>
 <p>On a bien affaire à un algorithme puisque :</p>
 <ul>
@@ -209,9 +207,8 @@ Programme :
 </summary>
 <div class="mx-8 pb-2">
 <p>Comme tout pseudo-code sera encodé par un entier, il existe $n_0$ l'entier correspondant au programme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que Vrai:
-    ne rien faire
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">tant que Vrai:
+    ne rien faire</code></pre>
 <p>Qui ne va jamais s'arrêter.</p>
 <p>Comme $[e] = [e + 00000000000000000000000000001010]$ il va exister une infinité d'entiers avec $[e_0]$ comme pseudo-code associé et que pour ces entrées $E(e, f(n))$ va effectuer $f(n)$ instructions de $[e_0]$ qui boucle à l'infini, on a bien que $C_{cf}(n) = \Omega(f(n))$</p>
 </div>

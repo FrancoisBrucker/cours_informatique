@@ -132,7 +132,7 @@ TBD Faire en C :</p>
 </code></pre>
 <p>Les stdin/out sont liés.</p>
 <p>Nc n'admet qu'une connexion. Pour créer un serveur acceptant plusieurs client, il faut utiliser une autre commande : <a href="https://www.redhat.com/sysadmin/getting-started-socat">socat</a> :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 socat tcp-listen:9090,fork,reuseaddr <span class="token punctuation">\</span>
 <span class="token string">'system:
@@ -143,7 +143,6 @@ while read CLIENT_MESSAGE; do
   echo "le serveur répond : $CLIENT_MESSAGE"
 done
 '</span>
-
 </code></pre>
 <h2>outil de connexion</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -159,7 +158,7 @@ done
 <li><a href="https://jameshfisher.com/2018/12/31/how-to-make-a-webserver-with-netcat-nc/">shell server avec nc</a></li>
 </ul>
 <h3>echo serveur</h3>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> 
     <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span>
@@ -176,13 +175,11 @@ while read CLIENT_MESSAGE; do
   echo "le serveur répond : $CLIENT_MESSAGE"
 done
 '</span>
-
 </code></pre>
 <h3>mono ligne</h3>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span><span class="token punctuation">;</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">9090</span><span class="token punctuation">;</span> socat tcp-listen:<span class="token variable">$PORT</span>,fork,reuseaddr <span class="token string">'system: while read CLIENT_MESSAGE; do echo "le serveur répond : $CLIENT_MESSAGE"; done'</span></code></pre>
 <h3>echo à tous serveur</h3>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token shebang important">#! /bin/sh</span>
 
 <span class="token function">rm</span> /tmp/pns_* <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
 
@@ -217,18 +214,14 @@ done
 kill $PID
 rm $PIPE
 '</span>
-
 </code></pre>
 <h3>client</h3>
 <p>Avec socat :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">socat - TCP4:localhost:9090
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">socat - TCP4:localhost:9090</code></pre>
 <p>Avec nc :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">9090</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">nc</span> localhost <span class="token number">9090</span></code></pre>
 <h3>web server avec python/socat</h3>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> http.serveur <span class="token number">8080</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> http.serveur <span class="token number">8080</span></code></pre>
 <blockquote>
 <p>TBD en écrire un.</p>
 </blockquote>

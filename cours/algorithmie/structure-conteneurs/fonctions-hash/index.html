@@ -141,15 +141,14 @@ $$
 </div></div>
 
 <p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code class="language-">hash</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token number">1</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token number">3.14</span><span class="token punctuation">)</span>
-<span class="token number">322818021289917443</span>
-</code></pre>
+<span class="token number">322818021289917443</span></code></pre>
 <p>Remarquez que la fonction de hash utilisée dépend du type d'objet.</p>
 <p>De plus, comme un hash est défini à la création d'un objet, il n'existe pas de hash pour des objets mutable en python. Ainsi <code class="language-">hash([])</code> produira une erreur (<code class="language-">TypeError: unhashable type: 'list'</code>).</p>
 <p>La principale raison de l'utilisation es fonctions de hachage est :</p>
@@ -250,14 +249,13 @@ $$
 </div>
 <p>Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
 <p>De la un pseudo-code du calcul du modulo de $n$ :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
 exp <span class="token operator">=</span> <span class="token number">1</span>
 res <span class="token operator">=</span> n_0 mod m
 <span class="token keyword">for</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> i <span class="token operator">&lt;=</span> l<span class="token punctuation">:</span>
     exp <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
     c <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
-    res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m
-</code></pre>
+    res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m</code></pre>
 <h4>Équiprobable</h4>
 <p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2, sont disjoints et recouvrent tous les entier: un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$).</p>
 <p>Attention cependant :</p>
@@ -291,10 +289,9 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 <h2>Hash de structures composées</h2>
 <p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.</p>
 <p>En java par exemple, une façon classique de procéder est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">res = 0
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">res = 0
 pour chaque élément e du tuple:
     res = hash(31 * res + hash(e))
-
 </code></pre>
 <p>Ceci assure :</p>
 <ul>

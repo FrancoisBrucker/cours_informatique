@@ -142,8 +142,7 @@
 
 <h3>Paramètres</h3>
 <p>Tout Ce qui suit l'instruction ou le fichier exécutable dans une ligne de commande sont les <em><strong>paramètres</strong></em>.</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python mon_script.py
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_script.py</code></pre>
 <p>Dans la ligne de commande précédente on a :</p>
 <ul>
 <li>un fichier à exécuter : <code class="fichier">python</code></li>
@@ -202,13 +201,11 @@
 <h4>Fichier et dossiers du dossier courant</h4>
 <p>La commande <code class="language-">ls</code> donne les dossiers et les fichiers du dossier courant.</p>
 <p>La commande <code class="language-">ls</code> est en fait plus générale car on peut l'utiliser avec un paramètre qui est un chemin absolu ou relatif où lister les fichiers/dossiers. Par exemple, sur mon mac, si je tape :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> /
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> /</code></pre>
 <p>J'obtiens tous les dossier de la racine :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">Applications Users        cores        home         sbin         var
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Applications Users        cores        home         sbin         var
 Library      Volumes      dev          opt          tmp
-System       bin          etc          private      usr
-</code></pre>
+System       bin          etc          private      usr</code></pre>
 <p>La commande <code class="language-">ls</code> a beaucoup de paramètres possible. Dans le monde du terminal, une commande va faire une unique chose mais de plein de façon disponible. C'est souvent ce qui fait peur, mais au final on utilisera jamais toutes les possibilités. Par exemple la <a href="http://manpagesfr.free.fr/man/man1/ls.1.html">documentation de la commande ls</a> nous permet :</p>
 <ul>
 <li>afficher toutes les informations :
@@ -246,8 +243,7 @@ System       bin          etc          private      usr
 <h3>Création et suppression de fichiers/dossiers</h3>
 <h4>Créer un dossier</h4>
 <p>Commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">mkdir</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à créer<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à créer<span class="token operator">></span></code></pre>
 <p>Par exemple : <code class="language-">mkdir truc/chose</code>  crée le dossier chose dans le dossier truc lui même placé dans le dossier courant (si le dossier <em>&quot;./truc&quot;</em> n'existe pas, il y a une erreur)</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -262,9 +258,8 @@ System       bin          etc          private      usr
 </div></div>
 
 <h4>Supprimer un fichier/dossier</h4>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
-<span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">rm</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le fichier à supprimer<span class="token operator">></span>
+<span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>chemin absolu ou relatif vers le dossier à supprimer<span class="token operator">></span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

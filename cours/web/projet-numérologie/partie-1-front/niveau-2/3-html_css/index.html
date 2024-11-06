@@ -258,18 +258,16 @@
 </ul>
 <p>Si on est pas riche à millions pour acheter une font propriétaire, choisir une fonte spéciale peut se faire facilement grâce à : <a href="https://fonts.google.com/">https://fonts.google.com/</a>.</p>
 <p>Cela fonctionne de façon assez finaude. Une fois la font choisie et ses styles choisis, google nous donne un lien à mettre dans notre balise head. Ici :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-</code></pre>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>Ce lien télécharge la font et ses styles. On peut <strong>ensuite</strong> les utiliser dans nos css. Par exemple en changeant la police des paragraphes dans le fichier <code class="fichier">numérologie/main.css</code> :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token comment">/* ...  */</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token comment">/* ...  */</span>
 
 <span class="token selector">p</span> <span class="token punctuation">{</span>
     <span class="token property">font-size</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
     <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Lobster'</span><span class="token punctuation">,</span> cursive<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/* ... */</span>
-</code></pre>
+<span class="token comment">/* ... */</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

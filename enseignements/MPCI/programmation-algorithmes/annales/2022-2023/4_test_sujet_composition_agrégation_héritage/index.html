@@ -129,7 +129,7 @@
 </div></div>
 
 <h2>Question 1</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -141,7 +141,6 @@
     
     <span class="token keyword">def</span> <span class="token function">lancer</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_position <span class="token operator">=</span> randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> self<span class="token punctuation">.</span>_max <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Question 1.1</h3>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -246,12 +245,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez La classe <code class="language-">Somme</code> en y ajoutant la méthode spéciale <code class="language-">Somme.__add__(other)</code> afin qu'il soit possible d'écrire le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">un_d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">un_d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
 un_autre_d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
 un_d20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-d6_plus_d6_plus_d20 <span class="token operator">=</span> <span class="token punctuation">(</span>un_d6 <span class="token operator">+</span> un_d20<span class="token punctuation">)</span> <span class="token operator">+</span> un_autre_d6
-</code></pre>
+d6_plus_d6_plus_d20 <span class="token operator">=</span> <span class="token punctuation">(</span>un_d6 <span class="token operator">+</span> un_d20<span class="token punctuation">)</span> <span class="token operator">+</span> un_autre_d6</code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">

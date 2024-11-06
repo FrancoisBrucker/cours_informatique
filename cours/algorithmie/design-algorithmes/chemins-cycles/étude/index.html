@@ -177,17 +177,16 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Code python pour générer les 100 villes que l'on stocke dans un <a href="../structure-de-donn%C3%A9es/dictionnaire" class="interne">dictionnaire</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 villes <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> nom <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     villes<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>nom<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> random<span class="token punctuation">.</span>random<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-<span class="token keyword">return</span> villes
-</code></pre>
+<span class="token keyword">return</span> villes</code></pre>
 <p>Puis que l'on affiche avec matplotlib :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 
 TAILLE <span class="token operator">=</span> <span class="token number">10</span>
 
@@ -216,8 +215,7 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
         <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         color<span class="token operator">=</span>mcolors<span class="token punctuation">.</span>CSS4_COLORS<span class="token punctuation">[</span><span class="token string">"brown"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -293,22 +291,20 @@ $$</p>
 <p><img src="1-composantes-connexes.png" alt="1 partie connexe"></p>
 <p>La propriété ci-dessus nous permet de créer un algorithme glouton permettant de trouver toutes les parties connexes d'un réseau ferré uniquement à partir de sa relation tronçon.</p>
 <p>Algorithme composante connexe :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">pour chaque ville v : R(v) = v
 pour chaque tronçon (x, y):
     si R(x) ≠ R(y):
         pour chaque gare z telle que R(z) = R(y):
-            R(z) = R(x)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            R(z) = R(x)</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Lorsque l'on code l'algorithme il arrive souvent que l'on écrive changement de marques :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville u:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque ville u:
     si R(u) == R(x) alors:
-        R(u) = R(y)
-</code></pre>
+        R(u) = R(y)</code></pre>
 <p>Qui est faux.</p>
 </div></div>
 
@@ -337,11 +333,10 @@ pour chaque tronçon (x, y):
 <div class="mx-8 pb-2">
 <p>Si u vaut x, on change sa marque et plus aucun changements ne sera effectué pour les villes suivantes.</p>
 <p>Il faut stocker la valeur test :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">à_changer = R(x)
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">à_changer = R(x)
 pour chaque ville u:
     si R(u) == à_changer alors:
-        R(u) = R(y)
-</code></pre>
+        R(u) = R(y)</code></pre>
 </div>
 </details>     
 </div>
@@ -473,13 +468,12 @@ pour chaque ville u:
 <p>L'analyse préliminaire précédente nous permet d'aborder sereinement ce problème d'optimisation. On peut utiliser l'algorithme &quot;composante connexe&quot; en choisissant l'ordre dans lequel examiner les tronçons.</p>
 <p>Cet ordre semble évident puisque l'on veut minimiser le coût : on examine les tronçons par coût croissant.</p>
 <p>Commençons par écrire cet algorithme, initialement proposé par <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Kruskal">Kruskal</a> :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">pour chaque ville v : R(v) = v
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">pour chaque ville v : R(v) = v
 pour chaque tronçon (x, y) examiné par distance croissante:
     si R(x) ≠ R(y):
         on ajoute (x, y) aux tronçons choisis
         pour chaque ville z telle que R(z) = R(y):
-            R(z) = R(x)
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            R(z) = R(x)</code></pre>
 <p>L'étude précédente nous indique d'ores et déjà que :</p>
 <ol>
 <li>on choisira exactement $n-1$ tronçons</li>
@@ -514,7 +508,7 @@ pour chaque tronçon (x, y) examiné par distance croissante:
 <p>On en a aussi profité pour changer de couleur en utilisant <a href="https://matplotlib.org/stable/gallery/color/named_colors.html">cette documentation</a></p>
 </div></div>
 </div>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">as</span> mcolors
 
 TAILLE <span class="token operator">=</span> <span class="token number">10</span>
@@ -544,8 +538,7 @@ ax<span class="token punctuation">.</span>scatter<span class="token punctuation"
         <span class="token punctuation">[</span>villes<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> villes<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         color<span class="token operator">=</span>mcolors<span class="token punctuation">.</span>CSS4_COLORS<span class="token punctuation">[</span><span class="token string">"brown"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">)</span>
-plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 </details></div>
      
 
@@ -726,12 +719,11 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante):
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">fonction tronçons_rec(précédente, courante):
     affiche à l'écran : courante
     pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                tronçons_rec(u, v)
-</code></pre>
+                tronçons_rec(u, v)</code></pre>
 <p>Prenons par exemple le réseau ci-dessous :</p>
 <p><img src="performance-garantie-1.png" alt="réseau"></p>
 <p>Avec 1 comme ville de départ et en supposant l'on regarde les villes par ordre croissant :</p>
@@ -779,7 +771,7 @@ $$
 </details>     
 </div>
 <p>En utilisant le réseau exemple, et en partant de 0, on peut par exemple parcourir (et afficher) les villes dans l'ordre suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span> <span class="token string">'0'</span><span class="token punctuation">,</span> <span class="token string">'28'</span><span class="token punctuation">,</span> <span class="token string">'93'</span><span class="token punctuation">,</span> <span class="token string">'31'</span><span class="token punctuation">,</span> <span class="token string">'88'</span><span class="token punctuation">,</span> <span class="token string">'68'</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">,</span> <span class="token string">'43'</span><span class="token punctuation">,</span> <span class="token string">'61'</span><span class="token punctuation">,</span> <span class="token string">'36'</span><span class="token punctuation">,</span> <span class="token string">'18'</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span> <span class="token string">'0'</span><span class="token punctuation">,</span> <span class="token string">'28'</span><span class="token punctuation">,</span> <span class="token string">'93'</span><span class="token punctuation">,</span> <span class="token string">'31'</span><span class="token punctuation">,</span> <span class="token string">'88'</span><span class="token punctuation">,</span> <span class="token string">'68'</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">,</span> <span class="token string">'43'</span><span class="token punctuation">,</span> <span class="token string">'61'</span><span class="token punctuation">,</span> <span class="token string">'36'</span><span class="token punctuation">,</span> <span class="token string">'18'</span><span class="token punctuation">,</span>
   <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'52'</span><span class="token punctuation">,</span> <span class="token string">'14'</span><span class="token punctuation">,</span>  <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'80'</span><span class="token punctuation">,</span> <span class="token string">'66'</span><span class="token punctuation">,</span> <span class="token string">'85'</span><span class="token punctuation">,</span> <span class="token string">'87'</span><span class="token punctuation">,</span> <span class="token string">'25'</span><span class="token punctuation">,</span> <span class="token string">'60'</span><span class="token punctuation">,</span> <span class="token string">'90'</span><span class="token punctuation">,</span> <span class="token string">'16'</span><span class="token punctuation">,</span>
   <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'97'</span><span class="token punctuation">,</span> <span class="token string">'15'</span><span class="token punctuation">,</span> <span class="token string">'11'</span><span class="token punctuation">,</span> <span class="token string">'81'</span><span class="token punctuation">,</span> <span class="token string">'78'</span><span class="token punctuation">,</span> <span class="token string">'82'</span><span class="token punctuation">,</span> <span class="token string">'47'</span><span class="token punctuation">,</span> <span class="token string">'73'</span><span class="token punctuation">,</span> <span class="token string">'48'</span><span class="token punctuation">,</span> <span class="token string">'58'</span><span class="token punctuation">,</span> <span class="token string">'44'</span><span class="token punctuation">,</span>
  <span class="token string">'72'</span><span class="token punctuation">,</span> <span class="token string">'22'</span><span class="token punctuation">,</span> <span class="token string">'63'</span><span class="token punctuation">,</span>  <span class="token string">'8'</span><span class="token punctuation">,</span> <span class="token string">'53'</span><span class="token punctuation">,</span> <span class="token string">'27'</span><span class="token punctuation">,</span> <span class="token string">'89'</span><span class="token punctuation">,</span> <span class="token string">'76'</span><span class="token punctuation">,</span> <span class="token string">'74'</span><span class="token punctuation">,</span> <span class="token string">'56'</span><span class="token punctuation">,</span> <span class="token string">'35'</span><span class="token punctuation">,</span> <span class="token string">'37'</span><span class="token punctuation">,</span>
@@ -787,8 +779,7 @@ $$
   <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'84'</span><span class="token punctuation">,</span> <span class="token string">'77'</span><span class="token punctuation">,</span> <span class="token string">'10'</span><span class="token punctuation">,</span> <span class="token string">'38'</span><span class="token punctuation">,</span> <span class="token string">'83'</span><span class="token punctuation">,</span> <span class="token string">'32'</span><span class="token punctuation">,</span> <span class="token string">'29'</span><span class="token punctuation">,</span> <span class="token string">'39'</span><span class="token punctuation">,</span> <span class="token string">'17'</span><span class="token punctuation">,</span> <span class="token string">'40'</span><span class="token punctuation">,</span> <span class="token string">'26'</span><span class="token punctuation">,</span>
  <span class="token string">'71'</span><span class="token punctuation">,</span> <span class="token string">'49'</span><span class="token punctuation">,</span> <span class="token string">'23'</span><span class="token punctuation">,</span>  <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'95'</span><span class="token punctuation">,</span> <span class="token string">'12'</span><span class="token punctuation">,</span> <span class="token string">'64'</span><span class="token punctuation">,</span> <span class="token string">'33'</span><span class="token punctuation">,</span> <span class="token string">'70'</span><span class="token punctuation">,</span> <span class="token string">'96'</span><span class="token punctuation">,</span> <span class="token string">'24'</span><span class="token punctuation">,</span>  <span class="token string">'7'</span><span class="token punctuation">,</span>
  <span class="token string">'98'</span><span class="token punctuation">,</span> <span class="token string">'46'</span><span class="token punctuation">,</span> <span class="token string">'42'</span><span class="token punctuation">,</span> <span class="token string">'21'</span><span class="token punctuation">,</span>  <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'94'</span><span class="token punctuation">,</span> <span class="token string">'55'</span><span class="token punctuation">,</span> <span class="token string">'54'</span><span class="token punctuation">,</span> <span class="token string">'65'</span><span class="token punctuation">,</span> <span class="token string">'79'</span><span class="token punctuation">,</span> <span class="token string">'99'</span><span class="token punctuation">,</span> <span class="token string">'51'</span><span class="token punctuation">,</span>
- <span class="token string">'91'</span><span class="token punctuation">,</span> <span class="token string">'92'</span><span class="token punctuation">,</span> <span class="token string">'86'</span><span class="token punctuation">,</span> <span class="token string">'50'</span><span class="token punctuation">]</span>
-</code></pre>
+ <span class="token string">'91'</span><span class="token punctuation">,</span> <span class="token string">'92'</span><span class="token punctuation">,</span> <span class="token string">'86'</span><span class="token punctuation">,</span> <span class="token string">'50'</span><span class="token punctuation">]</span></code></pre>
 <div id="profondeur"></div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -815,20 +806,17 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante, chemin):
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">fonction tronçons_rec(précédente, courante, chemin):
     ajoute courante à la fin du chemin
     pour chaque tronçon (u, v) du réseau ferré:
         si u == courante et v != précédente:
-                tronçons_rec(u, v, chemin)
-</code></pre>
+                tronçons_rec(u, v, chemin)</code></pre>
 <p>L'algorithme récursif ne va pas rendre quelque chose, mais il va modifier petit à petit le paramètre chemin. On exécute alors la fonction de la façon suivante :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = []
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">chemin = []
 tronçons_rec(1, 1, chemin)
-affiche à l'écran : chemin
-</code></pre>
+affiche à l'écran : chemin</code></pre>
 <p>L'algorithme va afficher l'ordre de passage de chaque ville. Si cet ordre est identique à l'exercice précédent il affichera :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[1, 2, 3, 4, 5, 6]
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">[1, 2, 3, 4, 5, 6]</code></pre>
 </div>
 </details>     
 </div>
@@ -862,7 +850,7 @@ affiche à l'écran : chemin
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">fonction tronçons_rec(précédente, courante, destination, chemin):
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">fonction tronçons_rec(précédente, courante, destination, chemin):
     si courante == destination:
         ajoute courante à la fin de chemin
         retour
@@ -872,16 +860,13 @@ affiche à l'écran : chemin
                 si chemin est non vide:
                     ajoute courante à la fin de chemin
                     retour
-
 </code></pre>
 <p>Si cet ordre est identique à l'exercice précédent, en lançant l'algorithme avec :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">chemin = []
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">chemin = []
 tronçons_rec(1, 1, 4, chemin)
-affiche à l'écran : chemin
-</code></pre>
+affiche à l'écran : chemin</code></pre>
 <p>Il affichera :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[4, 2, 1]
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">[4, 2, 1]</code></pre>
 </div>
 </details>     
 </div>
@@ -1030,15 +1015,14 @@ C(I', j) = \min_{I \cup \{ \{ k\}\} = I'} (C(I, k) + c(v_k, v_j))
 $$
 </div>
 <p>On peut donc écrire :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    pour chaque I de E:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    pour chaque I de E:
         pour chaque l de [1..n] qui n'est pas dans I:
             pour chaque j de [1..n] qui n'est pas dans I et qui n'est pas l:
                 m = C(I, l) + c(v_l, v_j)
                 si C(I + {l}, j) n'existe pas:
                     C(I + {l}, j) = m
                 sinon:
-                    C(I + {l}, j) = min(C(I + {l}, j), m)
-</code></pre>
+                    C(I + {l}, j) = min(C(I + {l}, j), m)</code></pre>
 <p>La complexité de cet algorithme est en $\mathcal{O}((n-k)(n-k-1))$ pour chaque élément de $E$ et comme il y en a $2^k$ éléments, la complexité totale de cet algorithme est :</p>
 <p>$$
 \mathcal{O}(2^k(n-k)^2)

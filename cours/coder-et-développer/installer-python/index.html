@@ -202,20 +202,17 @@
 <pre><code>brew install python-tk
 </code></pre>
 <p>Enfin, la commande pour taper python est <code>python3</code>. Pour avoir le même comportement que sous windows où cette commande s'appelle juste <code>python</code>, vous pouvez taper dans un terminal :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"alias python=python3"</span> <span class="token operator">>></span> ~/.zshrc
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"alias python=python3"</span> <span class="token operator">>></span> ~/.zshrc</code></pre>
 </div>
 </details>     
 </div>
 <h3><span id="quel-python-jai"></span> J'ai quoi comme python ?</h3>
 <p>Nous y reviendrons, mais si vous pouvez exécuter du code python mais vous ne savez pas trop quel interpréteur vous utilisez (par exemple vous utilisez <a href="https://jupyter.org/">Jupyter</a> via un intranet, <a href="https://www.spyder-ide.org/">spider</a> ou <a href="https://basthon.fr/">https://basthon.fr/</a>), il existe quelques lignes de code simples pour savoir quelle version de python on utilise.</p>
 <p>Pour connaître la version spécifique de python, on peut utiliser <a href="https://docs.python.org/fr/3/library/sys.html#sys.version">la constante <code>version</code>du module <code>sys</code>de python</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>version<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>version<span class="token punctuation">)</span></code></pre>
 <p>qui rend chez moi :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token number">3.11</span>.4 <span class="token punctuation">(</span>main, Jun <span class="token number">20</span> <span class="token number">2023</span>, <span class="token number">17</span>:23:00<span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">14.0</span>.3 <span class="token punctuation">(</span>clang-1403.0.22.14.1<span class="token punctuation">)</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token number">3.11</span>.4 <span class="token punctuation">(</span>main, Jun <span class="token number">20</span> <span class="token number">2023</span>, <span class="token number">17</span>:23:00<span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">14.0</span>.3 <span class="token punctuation">(</span>clang-1403.0.22.14.1<span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre>
 <p>C'est à dire que j'utilise la version 3.11.4 de python et que mon interpréteur a été compilé par <a href="https://clang.llvm.org/">Clang</a> (c'est sur un mac).</p>
 <h3>Et python 2 ?</h3>
 <p>Depuis le 1er janvier 2020, la version majeure 2 de python est obsolète, <strong>il ne faut plus l'utiliser</strong>. Vos programmes seront en effet difficilement maintenable, peu utilisable et vous passerez pour un (gros) nul.</p>
@@ -317,11 +314,9 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">which</span> python
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">which</span> python</code></pre>
 <p>Ou, si <code>python</code> est un alias vers <code>python3</code> (sous Macos par exemple):</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">which</span> python3
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">which</span> python3</code></pre>
 </div>
 </details>     
 </div>

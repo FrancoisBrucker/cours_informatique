@@ -222,18 +222,16 @@
 </ul>
 <h4>merge</h4>
 <p>La situation actuelle est celle-ci :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">
 main : A -> B -> C -> F
                    \
 feature :            -> D -> E
-
 </code></pre>
 <p>Et nous voulons arriver à ceci :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">
 main : A -> B -> C -> F ---------> G
                    \          /
 feature :            -> D -> E
-
 </code></pre>
 <p>Il faut fusionner (<code>merge</code>) la branche <code>feature</code> dans la branche <code>main</code> puis supprimer <code>feature</code> car elle n'est plus utile.</p>
 <p>Pour cela :</p>
@@ -246,12 +244,11 @@ feature :            -> D -> E
 <li>Qui sont dans le fichier <code>programme.txt</code>: <img src="github-merge-5.2.png" alt="requête conflits diff"></li>
 <li>Chaque conflit (il peut y en avoir plusieurs par fichier) est toujours représenté comme ça :</li>
 </ol>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"><<<<<< [nom d'une branche ou d'un commit]
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text"><<<<<< [nom d'une branche ou d'un commit]
 [contenu de la branche]
 ====== autre branche
 [contenu de l'autre branche]
->>>>>> [nom de l'autre branche ou de l'autre commit]
-</code></pre>
+>>>>>> [nom de l'autre branche ou de l'autre commit]</code></pre>
 <p>Résoudre un confit consiste à choisir une branche ou à faire un mélange des branches pour arriver à un texte sans les <code>&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>&gt;&gt;&gt;&gt;&gt;&gt;</code> et <code>=====</code>. Puis cliquez sur `mark as resolved Pour notre problème : <img src="github-merge-6.png" alt="résolution"></p>
 <p>Une fois la fusion exécutée, notre graphe de dépendance est :</p>
 <p><img src="github-merge-7.png" alt="graphe de dépendance après fusion"></p>

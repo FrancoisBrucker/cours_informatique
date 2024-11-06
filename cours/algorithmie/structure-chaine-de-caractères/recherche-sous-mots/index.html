@@ -136,16 +136,15 @@ $$</p>
 
 <h2>Algorithme naïf</h2>
 <p>La première idée pour résoudre le problème de <em>la recherche d'une sous-chaîne</em> est de vérifier pour pour tout $0 \leq i &lt; n$ si la définition est correcte :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
-        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
-                trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
-        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        trouvé <span class="token operator">=</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                trouvé <span class="token operator">=</span> <span class="token boolean">False</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
 <h3>Pièges</h3>
 <p>L'algorithme semble une application directe de la définition, et pourtant... Attention aux multiples pièges de ce genre d'algorithme. Il faut <strong>toujours</strong> vérifier très consciencieusement :</p>
 <ul>
@@ -159,7 +158,7 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le programme suivant contient une erreur, laquelle ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -167,8 +166,7 @@ $$</p>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -197,7 +195,7 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le programme suivant contient une erreur, laquelle ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -205,8 +203,7 @@ $$</p>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -236,13 +233,12 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le programme suivant contient une erreur, laquelle ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_3</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
                 <span class="token keyword">return</span> <span class="token boolean">False</span>
-    <span class="token keyword">return</span> <span class="token boolean">True</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">True</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -272,14 +268,13 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le programme suivant contient une erreur, laquelle ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_4</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_FAUX_4</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> b<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> j<span class="token punctuation">]</span><span class="token punctuation">:</span>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
-    <span class="token keyword">return</span> trouvé
-</code></pre>
+    <span class="token keyword">return</span> trouvé</code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -330,18 +325,17 @@ $$</p>
 <p>Le second cas est le cas le pire et à un nombre constant d'opérations : $\mathcal{O}(nm)$.</p>
 <h4>Attention</h4>
 <p>Attention ! L'algorithme suivant, qui utilise la comparaison de listes en python, n'est <strong>pas</strong> de complexité inférieure.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> b <span class="token operator">==</span> a<span class="token punctuation">[</span>i <span class="token punctuation">:</span> i <span class="token operator">+</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>En effet, la complexité de l'égalité entre deux liste est égale à la taille de la plus petite des listes.</p>
 <h3>Une amélioration subtile</h3>
 <p>La boucle en $j$ (lignes 4-6) de l'algorithme <code class="language-">sous_chaine_naif</code> pourrait être améliorée en l'arrêtant dès que <code class="language-">trouvé</code> est mis à <code>False</code>.</p>
 <p>On peut pour cela utiliser l'instruction <code class="language-">break</code> qui permet de sortir de la boucle la plus imbriquée (ici la boucle for en $j$ de la ligne 4). Lisez la <a href="https://docs.python.org/fr/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">documentation</a> à ce sujet, elle est éclairante.</p>
 <p>On a alors l'algorithme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -350,12 +344,11 @@ $$</p>
                 <span class="token keyword">break</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>Dès le premier élément qui ne correspond pas, on sort de la boucle for. Cela peut sembler une amélioration de bout de chandelles car cela ne change pas la complexité maximale de l'algorithme. Mais on le verra, cela va changer la complexité en moyenne lorsque $b$ n'est pas une sous-chaine de $a$.</p>
 <h4><code class="language-">break</code>, <code class="language-">continue</code> et <code class="language-">while</code></h4>
 <p>L'instruction <code class="language-">break</code> de l'algorithme <code class="language-">sous_chaine_naif_amélioré</code> aurait très bien pu s'écrire avec une boucle <code class="language-">while</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré_sans_break<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> sous_chaine_naif_amélioré_sans_break<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         j <span class="token operator">=</span> <span class="token number">0</span>
@@ -367,8 +360,7 @@ $$</p>
                 j <span class="token operator">+=</span> <span class="token number">1</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p><strong>Mais</strong> la lecture aurait été moins aisée. L'utilisation de l'instruction <code>break</code> permet :</p>
 <ul>
 <li>d'expliciter le cas général (la boucle for)</li>
@@ -377,17 +369,15 @@ $$</p>
 <p>Le pendant de l'instruction <code class="language-">break</code> est l'instruction <code class="language-">continue</code> qui permet d'aller à la prochaine itération de la boucle la plus imbriquée.</p>
 <p>Comparez par exemple ces 2 implémentations d'un même algorithme dont le but est à partir d'une liste d'entiers $L$ de faire un traitement uniquement si l'élément est non nul.</p>
 <p>Sans utilisation de <code class="language-">continue</code>, le cas général est traité dans un bloc <code class="language-">if</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
     <span class="token keyword">if</span> element <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token comment"># ...</span>
-</code></pre>
+        <span class="token comment"># ...</span></code></pre>
 <p>Utilisation de <code class="language-">continue</code>, le cas particulier est évacué directement.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> element <span class="token keyword">in</span> L<span class="token punctuation">:</span>
     <span class="token keyword">if</span> element <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">continue</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Le second cas est bien plus clair.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -483,7 +473,7 @@ $$</p>
 <p>Un simple <code class="language-">break</code> a rendu linéaire la complexité en moyenne de l'algorithme.</p>
 <h3>Trouver toutes les sous-chaines</h3>
 <p>Si l'on cherche à trouver tous les indices où se trouvent $b$ dans $a$, il faut modifier l'algorithme pour stocker les indices où $b$ commence. Ceci se fait aisément :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_tous</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_tous</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     indices <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
@@ -493,8 +483,7 @@ $$</p>
                 <span class="token keyword">break</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             indices<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> indices
-</code></pre>
+    <span class="token keyword">return</span> indices</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -540,7 +529,7 @@ $$</p>
 <h3>Prétraitement utilisant $a$</h3>
 <p>Une première idée que l'on peut avoir pour accélérer le processus et de remarquer que ça ne sert à rien de faire commencer la recherche de $b$ dans $a$ à l'index $i$ si $a[i] \neq b[0]$.</p>
 <p>Ceci peut se faire en $\mathcal{O}(n)$ opérations en utilisant <code class="language-">sous_chaine_naif_tous(a, b[0])</code>. On utilise ensuite ces indices dans notre algorithme accéléré :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_1</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> sous_chaine_naif_tous<span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         trouvé <span class="token operator">=</span> <span class="token boolean">True</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -548,8 +537,7 @@ $$</p>
                 trouvé <span class="token operator">=</span> <span class="token boolean">False</span>
         <span class="token keyword">if</span> trouvé<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>Il faut maintenant tenir compte du prétraitement dans le calcul de la complexité.</p>
 <ul>
 <li>ce qu'on fait en plus : on parcourt toute la chaine $a$ pour rendre le tableau d'indices. Cela se fait en $\mathcal{O}(n)$ opérations</li>
@@ -562,56 +550,49 @@ L'algorithme naïf ne prend pas plus de temps que notre optimisation car si $a[i
 <p>Notre objectif est toujours de rendre la somme $i+j$ la plus croissante possible pour éviter les répétitions. Comment adapter l'idée précédente en ne travaillant que sur $b$ ?</p>
 <p>Pour comprendre, regardons tous les cas possibles avec notre algorithme naïf :</p>
 <p>On débute une recherche en comparant $a[i + 0]$ à $b[0] :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">             i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             i
 a:     ...aaa?aaaaaaaa....
 b:           bbbbbb
-             j
-</code></pre>
+             j</code></pre>
 <p>Si $a[i] = b[0]$ alors on décale $j$ d'un cran :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">             i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             i
 a:     ...aaab?aaaaaaa....
 b:           bbbbbb
-              j
-</code></pre>
+              j</code></pre>
 <p>Sinon, on a pas vraiment d'autre choix que de décaler i de 1 :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">              i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">              i
 a:     ...aaaa?aaaaaaa....
 b:            bbbbbb
-              j
-</code></pre>
+              j</code></pre>
 <p>Il n'y a pas vraiment de moyen de gagner des opérations dans ce cas là.</p>
 <p>Supposons maintenant que l'on ait un peu avancé :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">             i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             i
 a:     ...aaabbb?aaaaa....
 b:           bbbbbb
-                j
-</code></pre>
+                j</code></pre>
 <p>On a $a[i + k] = b[k]$ pour tout $0 \leq k &lt; j$. Et on compare $a[i + j]$ à $b[j]$.</p>
 <p>Si $a[i + j] = b[j]$ alors on décale $j$ d'un cran et on recommence si $j &lt; m$ et sinon on s'arrête puisque l'on a trouvé $b$ dans $a$. Mais si $a[i + j] \neq b[j]$ on replace $j$ à 0 et on augmente $i$. Cette augmentation peut être de 1 à $j$ :</p>
 <ul>
 <li>
 <p>augmentation de 1 (comme pour le l'algorithme naïf)</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">             i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">             i
 a:     ...aaabbb?aaaaa....
 b:            bbbbbb
-              j
-</code></pre>
+              j</code></pre>
 </li>
 <li>
 <p>augmentation max :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">                i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">                i
 a:     ...aaabbb?aaaaa....
 b:              bbbbbb
-                j
-</code></pre>
+                j</code></pre>
 </li>
 <li>
 <p>augmentation entre les deux :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">               i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">               i
 a:     ...aaabbb?aaaaa....
 b:             bbbbbb
-               j
-</code></pre>
+               j</code></pre>
 </li>
 </ul>
 <p>En réutilisant la partie précédente, on a clairement que l'augmentation minimale de $i$ que l'on peut avoir est :</p>
@@ -639,7 +620,7 @@ b:             bbbbbb
 </ul>
 <p>Par exemple, pour $b=ACATGA$, on aurait : $T_b = [0, 0, 1, 2, 3]$</p>
 <p>Avec ce tableau, notre algorithme devient alors :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_naif_acceleration_2</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T_b <span class="token operator">=</span> creation_tableau_opti_1<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
 
     i <span class="token operator">=</span> <span class="token number">0</span>
@@ -658,8 +639,7 @@ b:             bbbbbb
             <span class="token keyword">else</span> <span class="token punctuation">:</span>
                 i <span class="token operator">=</span> i <span class="token operator">+</span> j <span class="token operator">-</span> T_b<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
                 j <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>On a donc 2 décalages possibles :</p>
 <ul>
 <li>soit on déplace $i$ sur $j$ (on est avant le nouveau début)</li>
@@ -669,11 +649,10 @@ b:             bbbbbb
 <p>Cependant, la forme de $T_b$ sera toujours $[0, 0, ..., 0, 1, 2, ..., k]$. On gagne de l'optimisation puisque l'on avance toujours du maximum possible jusqu'à la 1ère répétition.</p>
 <h3>Amélioration de l'amélioration</h3>
 <p>L'amélioration précédente permet d'avancer $i$ jusqu'au second départ de $b$ — le premier indice $p &gt; 0$ tel que $b[0] = b[p]$ — si $j &gt; p$. Plaçons nous dans ce cas là :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">            i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            i
 a:     .....abbbaa?aaa....
 b:          bbbbbbbb
-                p j
-</code></pre>
+                p j</code></pre>
 <p>On a :</p>
 <ul>
 <li>$p&gt;0$ le premier indice tel que $b[0] = b[p]$</li>
@@ -688,13 +667,12 @@ b:          bbbbbbbb
 <li>$j' = 0$</li>
 </ul>
 <p>On se retrouve alors dans ce cas là :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">            i
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">            i
                 i'
 a:     .....abbbaa?aaa....
 b:              bbbbbbbb
                 j'
-                  j
-</code></pre>
+                  j</code></pre>
 <p>Avec :</p>
 <ul>
 <li>$a[i'] = b[0] = b[p]$</li>
@@ -739,12 +717,11 @@ Alors en notant :</p>
 <h3>Décalage adapté</h3>
 <p>L'idée force de l'algorithme est que les éléments $T_b[j]$ ne sont plus la distance à la première répétition du premier caractère, mais compte le nombre de caractères dont la fin de $b[:j+1]$ sont un début de $b$ différent de $b[:j+1]$.</p>
 <p>Ce tableau permet également d'avancer $i$ plus que l'algorithme naïf. Avant de formaliser tout ça regardons ce que ça donne sur un exemple :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">0123456789    : index
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">0123456789    : index
 ACGAGACGACT   : la chaîne b
    A          : une répétition de 1 caractères
      ACGA     : une répétition de 4 caractères
-        AC    : une répétition de 2 caractères
-</code></pre>
+        AC    : une répétition de 2 caractères</code></pre>
 <p>Le tableau $T_b$ vaudra alors : $[0, 0, 0, 1, 0, 1, 2, 3, 4, 2]$.</p>
 <ol start="0">
 <li>$j=0$ par convention on note $T_b[0] = 0$</li>
@@ -773,7 +750,7 @@ ACGAGACGACT   : la chaîne b
 
 <p>On peut noter que $T_b[j]$ existe toujours puisque $b[:0]$ et $b[k:k]$ sont la chaine vide pour tout $k$.</p>
 <p>On peut facilement calculer $T_b$, par exemple avec cet algorithme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">algo_naif_construction_t</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">algo_naif_construction_t</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T_b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -783,39 +760,34 @@ ACGAGACGACT   : la chaîne b
             <span class="token keyword">if</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> chaîne<span class="token punctuation">[</span><span class="token operator">-</span>k<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
                 T_b<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> k
 
-    <span class="token keyword">return</span> T_b
-</code></pre>
+    <span class="token keyword">return</span> T_b</code></pre>
 <p>La complexité de cet algorithme est cependant assez grande, puisqu'elle est en $\mathcal{O}(m^3)$.</p>
 <h3>Algorithme</h3>
 <p>Avec le tableau $T_b$ défini comme précédemment, on a un gain monumental par rapport à l'optimisation précédente. On a plus besoin de revenir en arrière : on peut faire augmenter (au sens large) $i+j$ à chaque étape.</p>
 <p>Prenons un cas concret. Supposons que l'on se trouve dans cette configuration :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i + j :         v
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i + j :         v
 a:       ....ATATGACT....
 b:           ATATCG
-i/j:         i  j
-</code></pre>
+i/j:         i  j</code></pre>
 <p>Comme les caractères $a[i +j]$ et $b[j]$ coïncident, l'étape suivante consistera à augmenter $j$ pour continuer la vérification :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i + j :          v
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i + j :          v
 a:       ....ATATGACT....
 b:           ATATCG
-i/j:         i   j
-</code></pre>
+i/j:         i   j</code></pre>
 <p>Le nombre $i+j$ aura augmenté strictement.</p>
 <p>Si en revanche, la comparaison échoue, par exemple dans ce cas là :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i + j :          v
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i + j :          v
 a:       ....ATATGACT....
 b:           ATATCG
-i/j:         i   j
-</code></pre>
+i/j:         i   j</code></pre>
 <p>On peut continuer la comparaison à la même position, mais en décalant $i$ de $T_b[j-1] = T_b[3] = 2$ :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">i + j :          v
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i + j :          v
 a:       ....ATATGACT....
 b:             ATATCG
-i/j:           i j
-</code></pre>
+i/j:           i j</code></pre>
 <p>Le nombre $i+j$ n'augmentera pas, mais $i$ aura augmenté strictement.</p>
 <p>En supposant que la fonction <code>cree_tableau(b)</code> crée $T_b$, l'algorithme de recherche d'une sous-chaine de Knuth, Morris et Pratt est alors :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_KMP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sous_chaine_KMP</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     Tb <span class="token operator">=</span> cree_tableau<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
 
     i <span class="token operator">=</span> <span class="token number">0</span>
@@ -835,8 +807,7 @@ i/j:           i j
                 l <span class="token operator">=</span> j <span class="token operator">-</span> Tb<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
                 i <span class="token operator">+=</span> l
                 j <span class="token operator">-=</span> l
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -873,7 +844,7 @@ i/j:           i j
 </li>
 </ol>
 <p>Cette procédure peut s'écrire très simplement avec l'algorithme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cree_tableau</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cree_tableau</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T_b <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
 
     j <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T_b<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
@@ -895,8 +866,7 @@ i/j:           i j
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             j <span class="token operator">=</span> k <span class="token operator">+</span> <span class="token number">1</span>
 
-    <span class="token keyword">return</span> T_b
-</code></pre>
+    <span class="token keyword">return</span> T_b</code></pre>
 <p>Calculons la complexité de cette algorithme. Elle est proportionnelle au nombre d'étapes puisque toutes les autres opérations sont en $\mathcal{O}(1)$.</p>
 <p>À chaque étape :</p>
 <ul>

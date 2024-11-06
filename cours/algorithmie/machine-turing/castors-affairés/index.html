@@ -213,7 +213,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Supposons que $\beta$ soit calculable. Il existe alors une machine $F$ qui exécute le code suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : F
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : F
 Entrées : 
     n : un entier écrit de façon unaire
 Programme :
@@ -222,15 +222,13 @@ Programme :
     i = 0
     tant que i < 2 * β(n):
         écrire 1 sur le ruban et décaler le curseur un cran à droite
-        i = i + 1
-</code></pre>
+        i = i + 1</code></pre>
 <p>Comme l'entrée de $F$ est un nombre écrit en <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_unaire">système unaire</a> ($n$ est composée de n $1$ consécutifs) on peut également construire la machine $M$ :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : M
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : M
 Programme :
     M_n()
     déplace le curseur à gauche jusqu'à obtenir un blanc puis déplace le curseur d'un cran à droite
-    F(n)
-</code></pre>
+    F(n)</code></pre>
 <p>Cette machine enchaîne $M_n$ à $F$. Pour la sorite de $M_n()$ soit l'entrée de $F$, il faut décaler le ruban pour le placer jusqu'au premier 1 (ceci se fait avec une machine à 3 états). Cette machine à un nombre d'états égal au nombre d'état de $M_n$ plus le nombre d'état de la machine qui déplace le ruban (3) plus le nombre d'état de $F$ (disons $k$) moins les liants entre les machines (les états finaux des machines intermédiaires sont les états initiaux des machines suivantes), c'est à dire 2. Au final, la machine $M$ à : $n + 3 + k - 2 = n + k +1$ états et est telle que $\rho(M) = \beta(2n)$.</p>
 <p>On en déduit l'inégalité : $\beta(n + k + 1) \geq \beta(2n)$ et comme $\beta$ est strictement croissante on a l'inégalité : $2n \leq n + k + 1$ pour tout $n &gt; 0$ ce qui est impossible.</p>
 </div>

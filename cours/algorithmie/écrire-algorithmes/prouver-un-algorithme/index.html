@@ -182,11 +182,10 @@
 <p>Pour les preuves d'algorithme récursif, le schéma de preuve est quasi-toujours le même : faire une preuve par récurrence.</p>
 </div></div>
 
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <h4>Finitude</h4>
 <p>Si $n$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
 <h4>Preuve</h4>
@@ -225,14 +224,13 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </div></div>
 
 <h4>Première version</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     r <span class="token operator">=</span> <span class="token number">1</span>
     i <span class="token operator">=</span> <span class="token number">1</span>
     <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">:</span>
         r <span class="token operator">*=</span> i
         i <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> r
-</code></pre>
+    <span class="token keyword">return</span> r</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -287,14 +285,13 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </ol>
 <p>L'invariant étant vérifié à la fin de chaque itération, il est donc aussi vrai à la fin de la dernière itération. A ce moment là, on a $i=n+1$ et donc $r = n!$</p>
 <h4>Seconde version</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     r <span class="token operator">=</span> <span class="token number">1</span>
     i <span class="token operator">=</span> n
     <span class="token keyword">while</span> i <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
         r <span class="token operator">*=</span> i
         i <span class="token operator">-=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> r
-</code></pre>
+    <span class="token keyword">return</span> r</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -352,15 +349,14 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <h2>Maximum d'un tableau</h2>
 <p>On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.</p>
 <h3><span id="max-rec"></span> Algorithme récursif</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">></span> x
         <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> x
-</code></pre>
+        <span class="token keyword">return</span> x</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -374,13 +370,12 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <h4><span id="M-P-rec-1"></span> Preuve</h4>
 <p>Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</p>
 <h3><span id="max-iter"></span> Algorithme itératif</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
     m <span class="token operator">=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> x <span class="token keyword">in</span> t<span class="token punctuation">:</span>
         <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
             m <span class="token operator">=</span> x
-    <span class="token keyword">return</span> m
-</code></pre>
+    <span class="token keyword">return</span> m</code></pre>
 <h4><span id="M-F-iter-1"></span> Finitude</h4>
 <p>Clair car une unique boucle for.</p>
 <h4><span id="M-P-iter-1"></span> Preuve</h4>
@@ -392,14 +387,13 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 </ol>
 <p>Notre invariant doit donc lier les $i$ premiers éléments du tableaux à la $i$ème itération : $m$ doit être le plus grand éléments des $i$ premiers éléments du tableaux pour que notre algorithme puisse fonctionner et avec $t'$ et avec $t$.</p>
 <p>Lorsque l'on étudie des algorithmes avec des boucles <code class="language-">for</code> il est parfois plus simple d'exhiber directement le nombre d'itérations pour formaliser l'invariant. On utilise alors l'algorithme suivant (qui est strictement équivalent à l'algorithme <code class="language-">maximum</code>) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
     m <span class="token operator">=</span> t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         x <span class="token operator">=</span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         <span class="token keyword">if</span> m <span class="token operator">&lt;</span> x<span class="token punctuation">:</span>
             m <span class="token operator">=</span> x
-    <span class="token keyword">return</span> m
-</code></pre>
+    <span class="token keyword">return</span> m</code></pre>
 <p>L'invariant est alors :</p>
 <blockquote>
 <p>Invariant : à la fin d'une itération, $m$ vaut le maximum des $i+1$ premiers élément du tableau.</p>
@@ -415,14 +409,13 @@ On suppose notre hypothèse de récurrence vraie pour $n-1 \geq 1$. Pour $n &gt;
 <p>L'invariant est donc aussi vrai à la fin des itérations : $m$ vaut le maximum du tableau à la fin de la boucle <code class="language-">for</code> : $m$ est le maximum des valeurs du tableau.</p>
 <h2>Division euclidienne</h2>
 <p>Prouvons l'algorithme de la division euclidienne ci-après :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">division_euclidienne</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">division_euclidienne</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
     r <span class="token operator">=</span> a
     q <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">while</span> r <span class="token operator">>=</span> b<span class="token punctuation">:</span>
         r <span class="token operator">-=</span> b
         q <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>q<span class="token punctuation">,</span> r<span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>q<span class="token punctuation">,</span> r<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

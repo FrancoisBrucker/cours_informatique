@@ -100,7 +100,7 @@
 <p>Ajout des scripts permettant l'installation et l'exécution du serveur.</p>
 <h2>Scripts utiles</h2>
 <p>L'usage veut que l'on lance le serveur en exécutant la commande : <code>npm start</code>. Ceci se fait en ajoutant un script <code>&quot;start&quot;</code> au fichier <code class="fichier">numérologie/package.json</code> :</p>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
 
 <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"init"</span><span class="token operator">:</span> <span class="token string">"node db-init.js"</span><span class="token punctuation">,</span>
@@ -108,13 +108,12 @@
     <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"node index.js"</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-...
-</code></pre>
+...</code></pre>
 <p>On exécute alors le serveur avec la commande <code>npm start</code> qui est classique et est un raccourci pour <code>npm run start</code>.</p>
 <p>On a pas encore de script de tests, mais ça va venir. C'est le boulot de la partie suivante.</p>
 <h2>Instructions</h2>
 <p>On modifie aussi le <a href="http://README.md">README.md</a> pour ne pas prendre à dépourvu un utilisateur voulant utiliser notre programme.</p>
-<pre class="language-markdown " style="counter-reset: linenumber 0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Numérologie</span>
+<pre class="language-markdown" tabindex="0" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Numérologie</span>
 
 Voyez la vie en base 10 en associant un chiffre à votre prénom.
 
@@ -127,8 +126,7 @@ Une fois cloné le projet on :
 
 <span class="token title important"><span class="token punctuation">##</span> Lancement du serveur</span>
 
-<span class="token code-snippet code keyword">`npm start`</span>
-</code></pre>
+<span class="token code-snippet code keyword">`npm start`</span></code></pre>
 <h2>Plus tard</h2>
 <p>Lorsque l'on aura plus qu'une commande à utiliser pour installer le serveur (des dépendances front et back par exemple), on créera un dossier script où l'on placera nos scripts shell unix (et windows si nécessaire) pour gérer tout ça.</p>
 <p>Il est indispensable que tout se fasse le plus simplement possible pour un utilisateur voulant utiliser ou mettre à jour son serveur. Si la mise à jour du serveur est aisée, il sera facile de le mettre en production et on aura plus peur de modifier le code.</p>

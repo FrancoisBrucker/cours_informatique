@@ -122,11 +122,9 @@
 <h2>Environnement Virtuel</h2>
 <p>Python ajoute une contrainte supplémentaire à la gestion des dépendances : les modules dépendent d'un interpréteur.</p>
 <p>Si l'on a plusieurs interpréteurs installés, on peut avoir un module installé pour 1 interpréteur mais pas pour un autre. Pour s'assurer d'installer un module pour le bon interpréteur on utilise <code>pip</code> avec celui-ci en utilisant la commande (que l'on a utilisée à chaque installation de module) :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token punctuation">[</span>nom de l'interpréteur<span class="token punctuation">]</span> <span class="token parameter variable">-m</span> pip <span class="token function">install</span> <span class="token punctuation">[</span>nom <span class="token function">du</span> module<span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>nom de l'interpréteur<span class="token punctuation">]</span> <span class="token parameter variable">-m</span> pip <span class="token function">install</span> <span class="token punctuation">[</span>nom <span class="token function">du</span> module<span class="token punctuation">]</span></code></pre>
 <p>Si l'on veut par exemple installer le module <code class="language-">numpy</code> pour l'interpréteur python dans le dossier <code>/usr/bin/</code> on utilise la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/usr/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> numpy
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">/usr/bin/python3 <span class="token parameter variable">-m</span> pip <span class="token function">install</span> numpy</code></pre>
 <p>Pour que chaque projet ait ses propres modules d'installer pour éviter les incompatibilités, il n'y a qu'une solution :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -149,10 +147,9 @@
 </li>
 <li>
 <p>Créez un fichier <code class="fichier">main.py</code> contenant le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>executable<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>executable<span class="token punctuation">)</span></code></pre>
 </li>
 </ol>
 </div></div>
@@ -184,8 +181,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans un terminal, assurez vous d'être dans le dossier du projet (<code class="fichier">environnement_virtuel/</code>), puis tapez la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> venv venv/
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> venv venv/</code></pre>
 </div></div>
 
 <p>La commande précédente va utiliser le module <code class="language-">venv</code> de python pour créer tout ce qui est nécessaire à un environnement virtuel dans le dossier <code class="fichier">venv/</code> du projet.</p>
@@ -215,13 +211,12 @@
 <p><img src="virt-2.png" alt="code exécution"></p>
 <p>Ce n'est bien plus le même interpréteur qui a exécuté notre fichier.</p>
 <p>Les packages installés sont visible en utilisant le module pip pour le nouvel interpréteur :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ venv/bin/python <span class="token parameter variable">-m</span> pip list
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ venv/bin/python <span class="token parameter variable">-m</span> pip list
 Package Version
 ------- -------
-pip     <span class="token number">24.0</span>
-</code></pre>
+pip     <span class="token number">24.0</span></code></pre>
 <p>À comparer avec les modules installés pour l'interpréteur classique :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python <span class="token parameter variable">-m</span> pip list
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python <span class="token parameter variable">-m</span> pip list
 Package           Version
 ----------------- -----------
 appnope           <span class="token number">0.1</span>.4
@@ -237,7 +232,6 @@ tornado           <span class="token number">6.4</span>
 traitlets         <span class="token number">5.14</span>.2
 wcwidth           <span class="token number">0.2</span>.13
 wheel             <span class="token number">0.43</span>.0
-
 </code></pre>
 <h3>Utilisation</h3>
 <p>Il est possible, mais peu pratique d'utiliser l'environnement virtuel comme on l'a fait précédemment, uniquement en précisant le bon interpréteur dans le terminal.</p>
@@ -286,12 +280,11 @@ wheel             <span class="token number">0.43</span>.0
 <li>sous windows : <code>venv\Scripts\Activate.ps1</code></li>
 </ul>
 <p>Chez moi cela donne :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python main.py
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python main.py
 /opt/homebrew/opt/python@3.12/bin/python3.12
 $ <span class="token builtin class-name">source</span> venv/bin/activate
 $ python main.py
-/Users/fbrucker/Documents/temp/environnement_virtuel/venv/bin/python3
-</code></pre>
+/Users/fbrucker/Documents/temp/environnement_virtuel/venv/bin/python3</code></pre>
 <p>Après activation, en tapant <code>python</code>, c'est bien l'environnement virtuel qui est exécuté.</p>
 <p>Cette transformation est liée au terminal. Si vous en changez, il faudra re activer l'environnement.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -319,11 +312,10 @@ $ python main.py
 </ol>
 <p>La commande précédente a créée un fichier <code class="fichier">requirements.txt</code> qui contient tous les modules installés.</p>
 <p>Par exemple chez moi, j'ai juste installé le module <code class="language-">pytest</code> et mon fichier requirements.txt est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">iniconfig==2.0.0
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">iniconfig==2.0.0
 packaging==24.0
 pluggy==1.5.0
-pytest==8.2.1
-</code></pre>
+pytest==8.2.1</code></pre>
 <p>Il contient le module <code class="language-">pytest</code>, ses dépendances et les versions installées.</p>
 <p>Pour partager votre code, vous n'avez qu'à donner le fichier <code class="fichier">requirements.txt</code> en plus de celui-ci. La personne recevant votre code :</p>
 <ol>

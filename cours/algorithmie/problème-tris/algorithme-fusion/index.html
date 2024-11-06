@@ -109,39 +109,37 @@
 <li><strong>combiner</strong> les $k$ solutions des sous-problèmes en une solution du problème initial</li>
 </ol>
 <p>Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme générale est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">def algorithme(données):
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">def algorithme(données):
     A partir de données créer k données_partielles_i (1 ≤ i ≤ k)
     pour chaque i allant de 1 à k:
         solution_i = algorithme(données_partielles_i)
     
     solution = combiner(solution_1, ..., solution_k)
 
-    rendre solution
-</code></pre>
+    rendre solution</code></pre>
 </div></div>
 
 <p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'<code class="language-">algorithme</code> également.</p>
 <h2>Combiner</h2>
 <p>Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on tri, le but de la fonction <code class="language-">combiner</code> est de créer un tableau trié à partir de tableaux <strong>triés</strong>.</p>
 <p>L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">combiner</span><span class="token punctuation">(</span>T1<span class="token punctuation">,</span> T2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    i1 <span class="token operator">=</span> i2 <span class="token operator">=</span> <span class="token number">0</span>
-    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">while</span> i1 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token keyword">or</span> i2 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> i2 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            i1 <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">elif</span> i1 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            i2 <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">elif</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            i1 <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span>
-            i2 <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> T
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">combiner</span><span class="token punctuation">(</span>T1<span class="token punctuation">,</span> T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    i1 <span class="token operator">=</span> i2 <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    <span class="token keyword">while</span> i1 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token keyword">or</span> i2 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> i2 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">            i1 <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">elif</span> i1 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">            i2 <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">elif</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">            i1 <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">            i2 <span class="token operator">+=</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> T</span></code></pre>
 <h3><span id="fonctionnement-colle"></span> Fonctionnement</h3>
 <p>On vérifie pour deux petits tableaux <strong>triés</strong>. Par exemple pour <code class="language-">T1=[1, 4, 7]</code> et <code class="language-">T2=[0, 2, 3, 98]</code>. <code class="language-">T</code> vaudra :</p>
 <ol>
@@ -184,7 +182,7 @@
 
 <h2>Pseudo-code</h2>
 <p>Avec notre fonction <code class="language-">combiner(T1, T2)</code> le pseudo code de l'algorithme fusion est :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">fusion</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> T
@@ -198,7 +196,6 @@
         T_trié <span class="token operator">=</span> combiner<span class="token punctuation">(</span>T1_trié<span class="token punctuation">,</span> T2_trié<span class="token punctuation">)</span>
     
         <span class="token keyword">return</span> T_trié 
-
 </code></pre>
 <h2><span id="preuve-fusion"></span> Preuve</h2>
 <p>Comme  <code class="language-">milieu &lt; len(T)</code> si <code class="language-">len(T) &gt; 1</code>, l'algorithme va bien converger et s'arrêter. De plus, comme l'algorithme <code class="language-">combiner</code> est démontré, <code class="language-">fusion</code> est bien un algorithme de tri.</p>

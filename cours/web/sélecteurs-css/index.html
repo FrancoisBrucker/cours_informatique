@@ -121,11 +121,10 @@
 <p>Un sélecteur css peut-être beaucoup de choses. Il permet de sélectionner une ou plusieurs balises html pour lesquelles le style sera appliqué.</p>
 <h3>Une combinaison de sélecteur</h3>
 <p>On peut lier des sélecteurs en utilisant la <code class="language-">,</code>. Par exemple :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css">
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css">
 <span class="token selector">p, h1</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>S'applique aux balises <code class="language-">&lt;p&gt;&lt;/p&gt;</code> et <code class="language-">&lt;h1&gt;&lt;/h1&gt;</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -149,10 +148,9 @@
 </div></div>
 
 <p>On peut sélection une balise selon les attributs qu'elle possède. Par exemple toutes les balises ayant un attribut style :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">*[style]</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">*[style]</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h3>Une spécialisation</h3>
 <ul>
@@ -180,16 +178,14 @@
 <li><code class="language-">a:active</code> : lorsque l’on clique dessus</li>
 </ul>
 <p>Pour que les liens non encore visités et les liens visités aient le même rendu, on pourra écrire :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">a, a:visited</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">a, a:visited</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Mais c'est utile pour plein de choses. Changer de couleur lorsque l'on passe sur une balise :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css">
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css">
 <span class="token selector">p:hover</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3>Un pseudo élément</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -203,18 +199,16 @@
 
 <p>Permet de sélectionner une partie d'une balise. A ne pas confondre avec une pseudo-classe qui sélectionne la balise en entier.</p>
 <p>Par exemple :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css">
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css">
 <span class="token selector">p::first-letter</span> <span class="token punctuation">{</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Ou encore, le pseudo-élément suivant qui dépend de la taille de l'écran :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p::first-line</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">p::first-line</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Enfin, on utilise souvent les pseudo-éléments <code>::before</code> et <code>::after</code> pour ajouter des éléments avant et après une balise :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">p::before</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">p::before</span> <span class="token punctuation">{</span>
   <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">">>>>>"</span><span class="token punctuation">;</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> 2em
 <span class="token punctuation">}</span>
@@ -222,7 +216,6 @@
   <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"&lt;&lt;&lt;&lt;"</span><span class="token punctuation">;</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> .5em
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h3>class et id</h3>
 <p>On en reparlera dans la partie sur les <a href="../balises-anonymes#s%C3%A9lecteur-css" class="interne">balises anonymes</a>, nous ne ferons que les mentionner ici pour la référence. Il existe deux sélecteurs css très utilisés :</p>

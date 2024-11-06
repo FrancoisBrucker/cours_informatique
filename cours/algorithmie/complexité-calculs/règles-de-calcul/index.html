@@ -98,10 +98,9 @@
 <h2>Une boucle simple</h2>
 <p>Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est évident.</p>
 <p>Par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 tant que condition<span class="token punctuation">:</span>
     bloc d'instructions
-
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -118,10 +117,9 @@ $$
 </div></div>
 
 <p>Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 pour chaque element de structure<span class="token punctuation">:</span>
     bloc d'instructions
-
 </code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -139,11 +137,10 @@ $$
 
 <p>Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{O}(1)$, on pourra ne pas en tenir compte dans le calcul et la complexité est alors égale à la taille de la structure.</p>
 <p>Exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
 de i <span class="token operator">=</span> <span class="token number">1</span> à n <span class="token operator">-</span> <span class="token number">1</span> faire<span class="token punctuation">:</span>
     total <span class="token operator">=</span> total <span class="token operator">+</span> <span class="token number">1</span>
-Rendre total
-</code></pre>
+Rendre total</code></pre>
 <p>En conclusion :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -157,12 +154,11 @@ Rendre total
 
 <h3>Boucles imbriquées indépendantes</h3>
 <p>Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">boucle <span class="token number">1</span> exécutée n1 fois<span class="token punctuation">:</span>
     boucle <span class="token number">2</span> exécutée n2 fois<span class="token punctuation">:</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
             boucle i exécutée ni fois<span class="token punctuation">:</span>
-                bloc d'instructions
-</code></pre>
+                bloc d'instructions</code></pre>
 <p>On peut utiliser la règle précédente de façon récursive, la partie $\mathcal{O}$(complexité du bloc d'instruction) contenant elle même une ou plusieurs boucles.</p>
 <div id="complexité-boucles-indépendantes"></div>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -176,12 +172,11 @@ Rendre total
 </div></div>
 
 <p>Exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">total <span class="token operator">=</span> <span class="token number">0</span>
 de i <span class="token operator">=</span> <span class="token number">1</span> à n <span class="token operator">-</span> <span class="token number">1</span> faire<span class="token punctuation">:</span>
     de j <span class="token operator">=</span> <span class="token number">1</span> à n faire<span class="token punctuation">:</span>
         total <span class="token operator">=</span> total <span class="token operator">+</span> <span class="token number">1</span>
-Rendre total
-</code></pre>
+Rendre total</code></pre>
 <p>La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d'instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut :</p>
 <p>
 \[
@@ -214,12 +209,11 @@ Rendre total
 </div></div>
 
 <p>On va vérifier cela avec un exemple :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">total<span class="token operator">=</span><span class="token number">0</span>
-de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token operator">-</span><span class="token number">1</span> faire <span class="token punctuation">:</span>
-    de j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> à n faire <span class="token punctuation">:</span>
-        total<span class="token operator">=</span>total<span class="token operator">+</span><span class="token number">1</span>
-Rendre total
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">total<span class="token operator">=</span><span class="token number">0</span></span>
+<span class="highlight-line">de i<span class="token operator">=</span><span class="token number">1</span> à n<span class="token operator">-</span><span class="token number">1</span> faire <span class="token punctuation">:</span></span>
+<span class="highlight-line">    de j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span> à n faire <span class="token punctuation">:</span></span>
+<span class="highlight-line">        total<span class="token operator">=</span>total<span class="token operator">+</span><span class="token number">1</span></span>
+<span class="highlight-line">Rendre total</span></code></pre>
 <p>Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle  on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.</p>
 <p>Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :</p>
 <ul>
@@ -315,16 +309,15 @@ Rendre total
 </div></div>
 
 <p>Pour illustrer ce calcul, prenons l'exemple suivant :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">fonction maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    si n <span class="token operator">==</span> <span class="token number">1</span>
-        rendre t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    sinon<span class="token punctuation">:</span>
-        x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-        si x <span class="token operator">></span> t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            rendre x
-        sinon<span class="token punctuation">:</span>
-            rendre t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">fonction maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    si n <span class="token operator">==</span> <span class="token number">1</span></span>
+<span class="highlight-line">        rendre t<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">    sinon<span class="token punctuation">:</span></span>
+<span class="highlight-line">        x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">        si x <span class="token operator">></span> t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            rendre x</span>
+<span class="highlight-line">        sinon<span class="token punctuation">:</span></span>
+<span class="highlight-line">            rendre t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></span></code></pre>
 <p>On exécute cette fonction avec comme paramètres initiaux un tableau nommé <code class="language-">t</code> de taille <code class="language-">n</code>. On vérifie qu'avec ces paramètres initiaux :</p>
 <ol>
 <li>l'algorithme converge bien</li>

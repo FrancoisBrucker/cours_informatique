@@ -170,9 +170,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une variable est un nom, elle ne copie ni ne modifie un objet dans le pseudo-code suivant, les deux variables <code class="language-">a</code> et <code class="language-">b</code> référencent le même objet entier.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">a <span class="token operator">=</span> <span class="token number">3</span>
-b <span class="token operator">=</span> a
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">3</span>
+b <span class="token operator">=</span> a</code></pre>
 <p>Dans la seconde instruction, on commence par retrouver l'objet nommé par <code class="language-">a</code> et on le nomme <code class="language-">b</code> : la case où est stocké l'entier dans la mémoire est donné à <code class="language-">a</code> et à <code class="language-">b</code></p>
 </div></div>
 
@@ -268,40 +267,36 @@ b <span class="token operator">=</span> a
 <p>Ces formes d'instruction nécessitent de grouper les instructions en blocs.</p>
 <h3>Blocs</h3>
 <p>Lier les instructions en blocs. On va utiliser ici le formalisme de python pour définir un bloc :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">type de bloc:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">type de bloc:
     instruction 1
     instruction 2
     ...
-    instruction n
-</code></pre>
+    instruction n</code></pre>
 <p>On décale les instructions du bloc de sa définition. C'est un truc clair qui permet de voir du premier coup d'œil les instructions d'un bloc.</p>
 <h3><span id="tests"></span> Exécution conditionnelle d’instructions</h3>
 <p>On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">si (condition logique) est vraie:
     instruction 1
     ...
-    instruction n
-</code></pre>
+    instruction n</code></pre>
 <p>Cette instruction basique peut avoir plein de variantes comme :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">si (condition logique) est vraie:
     instruction 1
     ...
     instruction n
 sinon:
     instruction 1
     ...
-    instruction n'
-</code></pre>
+    instruction n'</code></pre>
 <p>ou encore :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">si (condition logique) est vraie:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">si (condition logique) est vraie:
     instruction 1
     ...
     instruction n
 sinon si (autre condition logique) est vraie:
     instruction 1
     ...
-    instruction n'
-</code></pre>
+    instruction n'</code></pre>
 <p>Ou tout mix de tout ça, du moment que c'est clair !</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -316,17 +311,15 @@ sinon si (autre condition logique) est vraie:
 <p>TBD : dire que l'on en a de deux types : for et while. Que l'on peut tout faire en while mais les boucles for sont plus lisible, en particulier leur condition d'arrêt est claire.</p>
 </blockquote>
 <p>On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle <em>while</em>):</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">tant que (condition logique) est vraie:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">tant que (condition logique) est vraie:
     instruction 1
     ...
-    instruction n
-</code></pre>
+    instruction n</code></pre>
 <p>Il existe une variation de ce bloc très utile (boucle <em>for</em>):</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">pour chaque élément x d'un tableau:
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque élément x d'un tableau:
     instruction 1
     ...
-    instruction n
-</code></pre>
+    instruction n</code></pre>
 <p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code>x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

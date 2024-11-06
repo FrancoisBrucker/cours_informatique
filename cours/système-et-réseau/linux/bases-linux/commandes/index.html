@@ -641,7 +641,7 @@ TBD dire que la sortie de l'un va dans l'autre.</p>
 <h3>car particulier de l'affichage à l'écran</h3>
 <p>Souvent les commandes savent si leur stdout est dirigé vers un terminal (doit être affiché à l'écran) ou un fichier, et vont se comporter différemment selon le cas.</p>
 <p>Par exemple va lister les fichier les uns à la suite ds autres pour une sortie écran et un par ligne pour une sortie fichier ou pipe</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ls</span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span>
 Bureau     Images   Musique  snap             temp  truc
 Documents  Modèles  Public   Téléchargements  <span class="token builtin class-name">test</span>  Vidéos
 $ <span class="token function">ls</span> <span class="token operator">></span> ls.result
@@ -658,10 +658,9 @@ Téléchargements
 temp
 <span class="token builtin class-name">test</span>
 truc
-Vidéos
-</code></pre>
+Vidéos</code></pre>
 <p>Si on &quot;<em>voir</em>&quot;  ce qui se passe si on redirige vers un fichier, on peut rediriger vers <code>cat</code> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">cat</span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">cat</span>
 Bureau
 Documents
 Images
@@ -675,7 +674,6 @@ temp
 <span class="token builtin class-name">test</span>
 truc
 Vidéos
-
 </code></pre>
 <h2>Exercice</h2>
 <blockquote>

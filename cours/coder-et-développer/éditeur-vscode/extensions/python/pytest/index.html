@@ -117,8 +117,7 @@
 </div></div>
 
 <h2><span id="installation-pytest"></span> Installation</h2>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest</code></pre>
 <h2><span id="configuration-pytest"></span> Configuration</h2>
 <ol>
 <li>dans les préférences (<em>menu file/code &gt; Préférences &gt; settings</em>) tapez <code>python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).</li>
@@ -132,13 +131,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier que vous appellerez <code class="fichier">test_projet.py</code> dans votre projet. Collez-y- le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_oui</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_oui</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token number">4</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span>
 
 
 <span class="token keyword">def</span> <span class="token function">test_non</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> <span class="token string">"4"</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span>
-</code></pre>
+    <span class="token keyword">assert</span> <span class="token string">"4"</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span></code></pre>
 </div></div>
 
 <p>Le fichier créé est un fichier de test. Il faut l'utiliser via la bibliothèque <code>pytest</code> que vous venez d'installer. Ceci peut se faire directement avec vscode en ouvrant la fenêtre de tests avec <em>Menu Affichage testing</em> (le petit erlenmeyer de la <a href="https://code.visualstudio.com/docs/getstarted/userinterface">barre d'activité</a>).</p>

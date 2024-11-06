@@ -168,16 +168,14 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </div></div>
 
 <p>Leur utilisation est très simple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> S <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> S <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> S<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> S<span class="token punctuation">.</span>add<span class="token punctuation">(</span><span class="token string">"une chaîne de caractères"</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> S
-<span class="token punctuation">{</span><span class="token string">'une chaîne de caractères'</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">{</span><span class="token string">'une chaîne de caractères'</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">}</span></code></pre>
 <p>On peut itérer sur les éléments d'un ensemble :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -187,11 +185,10 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </div></div>
 
 <p>Ou savoir si un élément est dans l'ensemble :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"poire"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"poire"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span>
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"scoubidou"</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token string">"pomme"</span><span class="token punctuation">,</span> <span class="token string">"poire"</span><span class="token punctuation">,</span> <span class="token string">"scoubidou"</span><span class="token punctuation">}</span>
-<span class="token boolean">False</span>
-</code></pre>
+<span class="token boolean">False</span></code></pre>
 <p>N'hésitez pas à regarder les méthodes associées aux ensembles, ils permettent de réaliser toutes les opérations courantes sur les ensembles et vous permettrons de gagner un temps fou dans vos programmes.</p>
 <h3><span id="dictionnaire"></span> Dictionnaire</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -220,15 +217,13 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </ul>
 <h4>Itération</h4>
 <p>supposons que l'on ait le dictionnaire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">d <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">d <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"a"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
     <span class="token string">"b"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Affichera les clés du dictionnaires. On affichera donc :</p>
 <ul>
 <li>peut être <code class="language-">'a'</code> puis <code class="language-">'b'</code></li>
@@ -243,33 +238,28 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </div></div>
 
 <p>On peut aussi itérer sur les clés en utilisant la méthode <code class="language-">keys</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les clés</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les clés</span></code></pre>
 <p>On peut aussi itérer sur les valeurs en utilisant la méthode <code class="language-">values</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les valeurs</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les valeurs</span></code></pre>
 <p>Ou encore itérer sur les couples (clé, valeur) avec la méthode <code class="language-">items</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les couples (clé, valeur)</span>
-     
-</code></pre>
+     </code></pre>
 <h3>Présence</h3>
 <p>L'opérateur  <code class="language-">in</code> appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"utile"</span> <span class="token keyword">in</span> d
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token number">42</span> <span class="token keyword">in</span> d
-<span class="token boolean">False</span>
-</code></pre>
+<span class="token boolean">False</span></code></pre>
 <p>On peut aussi utiliser les résultats des méthodes <code class="language-">.keys()</code> et <code class="language-">.values()</code> avec l'opérateur <code class="language-">in</code></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token number">42</span> <span class="token keyword">in</span> d<span class="token punctuation">.</span>values<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"utile"</span> <span class="token keyword">in</span> d<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token boolean">True</span>
-</code></pre>
+<span class="token boolean">True</span></code></pre>
 <h2>Exercices</h2>
 <blockquote>
 <p>TBD ajouter exercice dictionnaires.</p>
@@ -298,14 +288,13 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">texte <span class="token operator">=</span> <span class="token string">"coucou les gars coucou les filles"</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">texte <span class="token operator">=</span> <span class="token string">"coucou les gars coucou les filles"</span>
 
 mots <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> x <span class="token keyword">in</span> texte<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     mots<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mots<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mots<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Attention cependant aux caractères de ponctuation lors du <code class="language-">split</code>. <code class="language-">&quot;x, x. x ?&quot;.split()</code> donne <code class="language-">['x,', 'x.', 'x', '?']</code>.</p>
 </div>
 </details>     
@@ -334,7 +323,7 @@ mots <span class="token operator">=</span> <span class="token builtin">set</span
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">texte <span class="token operator">=</span> <span class="token string">"coucou les gars coucou les filles"</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">texte <span class="token operator">=</span> <span class="token string">"coucou les gars coucou les filles"</span>
 
 mots <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> x <span class="token keyword">in</span> texte<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -343,8 +332,7 @@ mots <span class="token operator">=</span> <span class="token builtin">dict</spa
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         mots<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>mots<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>mots<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>

@@ -484,7 +484,7 @@ $$
 $$
 </div>
 <p>On a bien $m = k \oplus c$ puisque $k \oplus k \oplus m = m$.</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"fascina"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"fascina"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
 66617363696e61
 ❯ <span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"message"</span> <span class="token operator">|</span> xxd <span class="token parameter variable">-ps</span>
 6d657373616765
@@ -492,8 +492,7 @@ $$
 0x6d657373616765
 ❯ <span class="token builtin class-name">echo</span> 0x6d657373616765 <span class="token operator">|</span> xxd <span class="token parameter variable">-r</span> <span class="token punctuation">;</span> <span class="token builtin class-name">echo</span>
 message
-❯ 
-</code></pre>
+❯ </code></pre>
 <p>Intuitivement, comme $k$ peut être ce que l'on veut, $k \oplus m$ l'est aussi. En particulier pour tous $m$ et $c$ on peut trouver $k$ tel que $c = k \oplus m$ (il suffit de prendre $k = c \oplus m$).</p>
 <p>En conséquence, un attaquant devant un message crypté de peut le décrypter s'il ne connaît pas $k$ puisque $m$ pouvant être tout élément de $\{0, 1\}^L$</p>
 <p>Formalisons cette intuition.</p>

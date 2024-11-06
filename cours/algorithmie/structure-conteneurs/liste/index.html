@@ -136,18 +136,16 @@ Les complexité de manipulation pour un tableau sont, on l'a vu, les suivantes :
 <p>A la création de la liste, on crée un tableau de taille $n_0$, telle que $n_0$ soit une constante ni trop petite, ni trop grande.</p>
 <h3>Ajout d'un élément</h3>
 <p>L'astuce des listes opère à chaque ajout d'un nouvel élément en fin de liste où l'on effectue l'algorithme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> insère_à_la_fin<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> insère_à_la_fin<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">:</span>
     si n <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">==</span> t<span class="token punctuation">.</span>n<span class="token punctuation">:</span>
         on alloue un tableau t2 à <span class="token number">2</span> <span class="token operator">*</span> t<span class="token punctuation">.</span>n éléments et on recopie les t<span class="token punctuation">.</span>n éléments de t dans t2
         t <span class="token operator">=</span> t2
     n <span class="token operator">=</span> n <span class="token operator">+</span> <span class="token number">1</span>
-    t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a
-</code></pre>
+    t<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> a</code></pre>
 <p>Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du i ème et enfin on affecte le nouvel élément à $t[i]$.</p>
 <h3>Suppression d'un élément</h3>
 <p>Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <p>Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$</p>
 <h2>Complexités</h2>
 <p>Dans le cas le pire :</p>

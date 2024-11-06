@@ -113,7 +113,7 @@
 <p>Créez le fichier <code class="fichier">numérologie/db.js</code> et copiez/collez y le code suivant, qui crée le modèle :</p>
 </div></div>
 
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
@@ -145,8 +145,7 @@
     <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token literal-property property">Signification</span><span class="token operator">:</span> Signification<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3>Initialisation</h3>
 <p>On crée un fichier pour stocker les données initiales dans la base.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -158,7 +157,7 @@
 <p>Créez le fichier <code class="fichier">numérologie/db.init.js</code> et copiez/collez y le code suivant :</p>
 </div></div>
 
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"./db.js"</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"./db.js"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">await</span> db<span class="token punctuation">.</span>sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -213,8 +212,7 @@
 <span class="token function">initDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"base initialisée"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h3>Script d'initialisation de la base</h3>
 <p>On a coutume de mettre les différents scripts utiles dans la partie <code>script</code> du fichier <code class="fichier">package.json</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -226,15 +224,14 @@
 <p>Ajoutez un script d'initialisation au fichier <code class="fichier">package.json</code>. Copiez/collez y le code suivant au bon endroit :</p>
 </div></div>
 
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
 
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"init"</span><span class="token operator">:</span> <span class="token string">"node db.init.js"</span><span class="token punctuation">,</span>
     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-...
-</code></pre>
+...</code></pre>
 <p>On pourra ensuite exécuter ce script (juste une commande pour l'instant) en tapant la commande :</p>
 <pre><code>npm run init
 </code></pre>
@@ -248,14 +245,13 @@
 <p>Créez un fichier <code class="fichier">numérologie/readme.md</code> où vous placerez les lignes suivantes :</p>
 </div></div>
 
-<pre class="language-markdown " style="counter-reset: linenumber 0"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Numérologie</span>
+<pre class="language-markdown" tabindex="0" data-language="markdown"><code class="language-markdown"><span class="token title important"><span class="token punctuation">#</span> Numérologie</span>
 
 Voyez la vie en base 10 en associant un chiffre à votre prénom.
 
 <span class="token title important"><span class="token punctuation">##</span> initialisation</span>
 
-<span class="token code-snippet code keyword">`npm run init`</span>
-</code></pre>
+<span class="token code-snippet code keyword">`npm run init`</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -268,7 +264,7 @@ Voyez la vie en base 10 en associant un chiffre à votre prénom.
 <p>Nous allons donner le message associé au numéro en plus du reste.</p>
 <h3>Côté serveur</h3>
 <p>Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce numéro (méthode <a href="https://sequelize.org/master/manual/model-querying-finders.html#-code-findone--code-">findOne</a>) et on le renvoie dans le json de résultat. On modifie le fichier <code class="fichier">numérologie/index.js</code> pour cela :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 <span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"./db.js"</span>
 
@@ -291,12 +287,11 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>Notez que l'accès en base est asynchrone, il faut donc attendre le résultat (avec le <code class="language-">then</code> des promesses) avant de finir la requête.</p>
 <h3>Côté client</h3>
 <p>On va créer un div qui va afficher le message reçu en plus du chiffre (pour l'instant le front ne récupère que le chiffre associé). Il faut donc modifier le fichier <code class="fichier">numérologie/static/index.html</code> :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token comment">&lt;!-- ... --></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- ... --></span>
 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -340,13 +335,12 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 
 <span class="token comment">&lt;!-- ... --></span>
-
 </code></pre>
 <h2>Base en écriture</h2>
 <p>Ajoutons un autre modèle qui stocke les prénoms recherchés. On ne va cependant stocker qu'une seule fois le prénom.</p>
 <h3>Modèle prénom</h3>
 <p>On modifie <code class="fichier">numérologie/db.js</code> pour qu'il inclut le nouveau modèle :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 <span class="token keyword">const</span> Prénoms <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'Prénoms'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">prénom</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -365,14 +359,13 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
         <span class="token literal-property property">Signification</span><span class="token operator">:</span> Signification<span class="token punctuation">,</span>
         <span class="token literal-property property">Prénoms</span><span class="token operator">:</span> Prénoms<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Puis on recrée notre base de données avec la commande :</p>
 <pre><code>npm run init
 </code></pre>
 <h3>Création des éléments de la base</h3>
 <p>Il nous reste plus qu'à ajouter, si nécessaire, le prénom dans la base. On modifie la route dans <code class="fichier">numérologie/index.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prénom'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
@@ -403,8 +396,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">//...</span>
-</code></pre>
+<span class="token comment">//...</span></code></pre>
 <p>Le code précédent commence par tenter de chercher le prénom dans la base. S'il n'y est pas (le retour de la requête est <code class="language-">null</code>), on sauve le prénom.
 Les deux recherches sont asynchrones et indépendantes.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -419,7 +411,7 @@ Les deux recherches sont asynchrones et indépendantes.</p>
 <p>Pour voir les différents prénoms de la base, il faut que l'on implémente la méthode <strong>R</strong>ead pour notre modèle <code>Prénoms</code> (<strong>C</strong>reate est intégré à la route GET <code>/prénom</code>, <strong>U</strong>pdate et <strong>D</strong>elete sont pour l'instant inutiles).</p>
 <p>L'usage veut que l'accès aux données soient rangé dans une route qui commence par <code>/api</code>. Dans notre cas, on utiliser la route :
 GET <code>/api/prénoms/read/</code> pour lire tous nos prénoms. Ajoutons cette route à <code class="fichier">numérologie/index.js</code> (que l'on place <strong>avant</strong> la gestion des 404...) :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/api/prénoms/read'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     db<span class="token punctuation">.</span>model<span class="token punctuation">.</span>Prénoms<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -435,8 +427,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">//...</span>
-</code></pre>
+<span class="token comment">//...</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -448,7 +439,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <h3>Représenter les prénoms</h3>
 <p>On peut maintenant finir cette partie en ajoutant une page html <code class="fichier">numérologie/static/prénoms.html</code> qui liste tous les prénoms de la base :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -487,8 +478,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
             <span class="token punctuation">}</span><span class="token punctuation">)</span>
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Cette page affiche un texte par défaut (<code>&lt;p&gt;Chargement des prénoms...&lt;/p&gt;</code>) qui est remplacé après lecture des prénoms de la base. On distingue 2 cas : la base est vide (et on le signale) ou la base contient des prénoms et on les affiche.</p>
 <p>Notez comment on a fait pour :</p>
 <ul>

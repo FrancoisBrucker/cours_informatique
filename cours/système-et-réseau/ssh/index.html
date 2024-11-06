@@ -114,7 +114,7 @@
   <p>Installation et utilisation (basique) de ssh.</p>
 <h2>Installation</h2>
 <p>la commande <code>ssh</code> doit être Doit être installée par défaut :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">ssh</span>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span>
 usage: <span class="token function">ssh</span> <span class="token punctuation">[</span>-46AaCfGgKkMNnqsTtVvXxYy<span class="token punctuation">]</span> <span class="token punctuation">[</span>-B bind_interface<span class="token punctuation">]</span> <span class="token punctuation">[</span>-b bind_address<span class="token punctuation">]</span>
            <span class="token punctuation">[</span>-c cipher_spec<span class="token punctuation">]</span> <span class="token punctuation">[</span>-D <span class="token punctuation">[</span>bind_address:<span class="token punctuation">]</span>port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-E log_file<span class="token punctuation">]</span>
            <span class="token punctuation">[</span>-e escape_char<span class="token punctuation">]</span> <span class="token punctuation">[</span>-F configfile<span class="token punctuation">]</span> <span class="token punctuation">[</span>-I pkcs11<span class="token punctuation">]</span> <span class="token punctuation">[</span>-i identity_file<span class="token punctuation">]</span>
@@ -122,21 +122,17 @@ usage: <span class="token function">ssh</span> <span class="token punctuation">[
            <span class="token punctuation">[</span>-O ctl_cmd<span class="token punctuation">]</span> <span class="token punctuation">[</span>-o option<span class="token punctuation">]</span> <span class="token punctuation">[</span>-P tag<span class="token punctuation">]</span> <span class="token punctuation">[</span>-p port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-Q query_option<span class="token punctuation">]</span>
            <span class="token punctuation">[</span>-R address<span class="token punctuation">]</span> <span class="token punctuation">[</span>-S ctl_path<span class="token punctuation">]</span> <span class="token punctuation">[</span>-W host:port<span class="token punctuation">]</span> <span class="token punctuation">[</span>-w local_tun<span class="token punctuation">[</span>:remote_tun<span class="token punctuation">]</span><span class="token punctuation">]</span>
            destination <span class="token punctuation">[</span>command <span class="token punctuation">[</span>argument <span class="token punctuation">..</span>.<span class="token punctuation">]</span><span class="token punctuation">]</span>
-
 </code></pre>
 <h3>Agent</h3>
 <p>La seule chose à possiblement faire est de mettre en place le <a href="https://en.wikipedia.org/wiki/Ssh-agent">ssh-agent</a>. L'agent est un démon permettant de gérer sos clés pour vous.</p>
 <p>Pour savoir si vous avez un agent ssh opérationnel, tapez la commande :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span></code></pre>
 <p>Si cette commande répond :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ ssh-add <span class="token parameter variable">-l</span>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ ssh-add <span class="token parameter variable">-l</span>
 Could not <span class="token function">open</span> a connection to your authentication agent.
-
 </code></pre>
 <p>C'est que vous n'avez pas d'agent. Il faut lancer l'agent à la connexion de chaque shell. Via la commande :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>ssh-agent <span class="token parameter variable">-s</span><span class="token variable">)</span></span>"</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>ssh-agent <span class="token parameter variable">-s</span><span class="token variable">)</span></span>"</span></code></pre>
 <p>Si vous ne voulez pas le faire dans chaque terminal, la façon la plus simple est d'ajouter la ligne précédente à la à la fin de votre <code class="fichier">~/.profile</code> (s'il n'existe pas créez le).</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -210,21 +206,19 @@ Start-Service ssh-agent
 </div></div>
 
 <p>Je dois me connecter en tant qu'utilisateur de cette machine. Pour cela la connection s'effectue toujours en utilisant le schéma d'une URL : <code>identifiant@machine</code>. Dan sle cs présent :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh"><span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh"><span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr</code></pre>
 <p>Si c'est la première fois que je me connecte à cette machine, <code>ssh</code> me montre la clépublique de la machine <code>roucas100</code> et me demande de l'identifier :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
 The authenticity of <span class="token function">host</span> <span class="token string">'roucas100.etu.ec-m.fr (147.94.25.100)'</span> can't be established.
 ED25519 key fingerprint is SHA256:Jf65ebUXhQ1w6+zcCnL8R9cvBMEI8yDvcR+GxtvSHZg.
 This key is not known by any other names.
-Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?
-</code></pre>
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no/<span class="token punctuation">[</span>fingerprint<span class="token punctuation">]</span><span class="token punctuation">)</span>?</code></pre>
 <p>On voit que la clé est de type <a href="https://fr.wikipedia.org/wiki/EdDSA">ED25519</a> qui est un chiffrement par courbe elliptique (celle d'Edwards tordue). Si je peux certifier que c'est bien la machine sur laquelle je veux m'identifier, je tape <code>yes</code> et peut taper mon mot de passe pour me connecter.</p>
 <blockquote>
 <p>TBD : <a href="https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54">https://medium.com/risan/upgrade-your-ssh-key-to-ed25519-c6e8d60d3c54</a></p>
 </blockquote>
 <p>Si la clé de la machine change cela peut-être à cause d'une attaque de type <em>man in the middle</em> et ssh refuse de se connecter :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">$ <span class="token function">ssh</span> fbrucker@roucas100.etu.ec-m.fr
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -238,7 +232,6 @@ Add correct <span class="token function">host</span> key <span class="token keyw
 Offending ECDSA key <span class="token keyword">in</span> /users/home3/fbrucker/.ssh/known_hosts:32
 Host key <span class="token keyword">for</span> roucas100.etu.ec-m.fr has changed and you have requested strict checking.
 Host key verification failed.
-
 </code></pre>
 <p>La liste des ordinateurs connus ainsi que leur clé publique (sur lesquels on s'est déjà connecté) est stockée dans le fichier : <code>~/.ssh/known_hosts</code>.</p>
 <pre><code>       A                   B
@@ -252,8 +245,7 @@ clé de machine
 <h2>Identification des utilisateurs</h2>
 <p>Il est très utile de laisser ssh nous identifier sans avoir à taper de mots de passe, via notre couple de clé publique/privée.</p>
 <h3>Générer une clé</h3>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-keygen
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-keygen</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -288,16 +280,13 @@ clé de machine
 <p><a href="https://blog.benjojo.co.uk/post/ssh-randomart-how-does-it-work-art">randomart</a></p>
 </div></div>
 
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-keygen <span class="token parameter variable">-lv</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-keygen <span class="token parameter variable">-lv</span></code></pre>
 <h3>Stocker sa clé dans l'agent</h3>
 <p>Le rôle de l'agent est de stocker votre clé.</p>
 <p>Ajouter la :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-add
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-add</code></pre>
 <p>L'agent vous demandera de taper votre passphrase pour déchiffrer votre clé, puis l'ajoutera à son trousseau. Et voilà. Votre clé est chargée. vérifiez le en tapant :</p>
-<pre class="language-sh " style="counter-reset: linenumber 0"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span>
-</code></pre>
+<pre class="language-sh" tabindex="0" data-language="sh"><code class="language-sh">ssh-add <span class="token parameter variable">-l</span></code></pre>
 <p>Vous n'aurez plus besoin de taper cette passphrase tant que l'agent sera actif. C'est à dire jusqu'au reboot de votre machine. En démarrant une nouvelle session et en affichant la liste des identités représentées par l'agent avec <code>ssh-add -l</code>, vous obtenez donc le message suivant :</p>
 <pre><code>the agent has no identities
 </code></pre>

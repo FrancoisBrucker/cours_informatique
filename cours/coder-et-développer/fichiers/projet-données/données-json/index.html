@@ -103,7 +103,7 @@
 <li>aisé à lire et modifier en python : les données json se manipulent sous la forme d'un dictionnaire en python.</li>
 </ul>
 <p>Ci-après, un exemple de fichier json contenant des super-héros (adapté de la <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">documentation javascript de Mozilla</a>. Si vous voulez apprendre le web, c'est une bonne adresse), on supposera pour la suite que vous avez dans le dossier du projet courant le fichier <code class="fichier">données.csv</code> contenant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">[
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">[
   {
     "nom": "La Machine",
     "age": 33,
@@ -121,8 +121,7 @@
       "Calculatrice"
     ]
   }
-]
-</code></pre>
+]</code></pre>
 <p>C'est une liste de deux éléments, chaque élément étant composée de <em>clés</em> et de <em>valeurs</em> comme dans un dictionnaire python. La seule différence est qu'une clé est <strong>toujours</strong> une chaîne de caractère.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -136,28 +135,23 @@
 <h2>Json et dictionnaires en python</h2>
 <p>Un json c'est <strong>une chaîne de caractère</strong> qui est transformée en données (de type entier, réel, etc). Python utilise nativement le json via sa <a href="https://docs.python.org/fr/3/library/json.html">bibliothèque json</a>.</p>
 <p>Un dictionnaire python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mes_donnees_dictionnaire <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mes_donnees_dictionnaire <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"x"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token string">"y"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Se transforme en json (une chaîne de caractère) avec <a href="https://docs.python.org/fr/3/library/json.html#json.dumps"><code class="language-">json.dumps</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> json
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> json
 
-texte_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">)</span>
-</code></pre>
+texte_json <span class="token operator">=</span> json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">)</span></code></pre>
 <p>Pour le représenter de façon joli, on pourra ajouter les arguments :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>mes_donnees_dictionnaire<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Cette chaîne peut à nouveau être transformée en dictionnaire grâce à <a href="https://docs.python.org/fr/3/library/json.html#json.loads"><code class="language-">json.loads</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>texte_json<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">donnees <span class="token operator">=</span> json<span class="token punctuation">.</span>loads<span class="token punctuation">(</span>texte_json<span class="token punctuation">)</span></code></pre>
 <h2>Lecture de fichiers</h2>
 <p>Pour lire un fichier on utilise la méthode <a href="https://docs.python.org/fr/3/library/json.html#json.load"><code class="language-">json.load</code></a> (à ne pas confondre avec <code class="language-">json.loads</code> qui est pour les chaines de caractères).</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"données.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"données.json"</span><span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">)</span>
 data <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Une fois lu, le fichier json est converti en objet python. L'objet <code class="language-">data</code> est donc une liste composée de deux dictionnaires.</p>
 <h2>Écriture de fichiers</h2>
 <p>Pour lire un fichier on utilise la méthode <a href="https://docs.python.org/fr/3/library/json.html#json.dump"><code class="language-">json.dump</code></a> (à ne pas confondre avec <code class="language-">json.dumps</code> qui est pour les chaines de caractères).</p>
@@ -200,28 +194,24 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <h3>Dates en python</h3>
 <p>En python, cette bibliothèque s'appelle <a href="https://docs.python.org/fr/3.9/library/datetime.html"><code class="language-">datetime</code></a>. Pour le sujet qui nous intéresse, on a besoin de transformer une chaîne de caractères en date. Ceci est possible avec la méthode <a href="https://docs.python.org/fr/3.9/library/datetime.html#strftime-strptime-behavior"><code class="language-">strptime</code></a>.</p>
 <p>Si on veut par exemple convertir la date &quot;01/04/2020 à 14h34&quot; en date python, on passe la chaine de caractère et le format à <a href="https://docs.python.org/fr/3.7/library/datetime.html#strftime-strptime-behavior"><code class="language-">strptime</code></a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> datetime
 
 date_en_chaîne <span class="token operator">=</span> <span class="token string">"01/04/2020 à 14h34"</span>
 <span class="token builtin">format</span> <span class="token operator">=</span> <span class="token string">"%d/%m/%Y à %Hh%M"</span>
 
-date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span>date_en_chaîne<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token punctuation">)</span>
-</code></pre>
+date <span class="token operator">=</span> datetime<span class="token punctuation">.</span>strptime<span class="token punctuation">(</span>date_en_chaîne<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token punctuation">)</span></code></pre>
 <h3>Différences de dates</h3>
 <p>En python la différence de 2 dates est un objet spécial de type <a href="https://docs.python.org/fr/3.7/library/datetime.html#timedelta-objects"><code class="language-">timedelta</code></a>. Par exemple, la différence de temps entre le moment présent et la date précédemment calculée est :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 maintenant <span class="token operator">=</span> datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment">#  la date de maintenant</span>
 
-delta <span class="token operator">=</span> maintenant <span class="token operator">-</span> date
-</code></pre>
+delta <span class="token operator">=</span> maintenant <span class="token operator">-</span> date</code></pre>
 <p>On peut ensuite connaître le nombre de secondes de cette différence :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>total_seconds<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">delta<span class="token punctuation">.</span>total_seconds<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Ou le nombre de jours, secondes et microsecondes que cela représente :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">delta<span class="token punctuation">.</span>days
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">delta<span class="token punctuation">.</span>days
 delta<span class="token punctuation">.</span>seconds
-delta<span class="token punctuation">.</span>microseconds
-</code></pre>
+delta<span class="token punctuation">.</span>microseconds</code></pre>
 
 
 </article>

@@ -164,20 +164,18 @@
 </ul>
 <h3><code class="fichier">.profile</code> minimal</h3>
 <p>Ci-après un fichier <code class="fichier">.profile</code> minimal :</p>
-<pre class="language-sh line-numbers" style="counter-reset: linenumber 0"><code class="language-sh"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-r</span> ~/.bashrc <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    <span class="token builtin class-name">.</span> ~/.bashrc
-<span class="token keyword">fi</span>
+<pre class="language-sh#" tabindex="0" data-language="sh#"><code class="language-sh#">if [ -r ~/.bashrc ]; then
+    . ~/.bashrc
+fi
 
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=~</span>/.local/bin:<span class="token variable">${<span class="token environment constant">PATH</span>}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+export PATH=~/.local/bin:${PATH}
+</code></pre>
 <p>Les 3 premières lignes vérifient que le fichier <code class="fichier">.bashrc</code> existe avant de l'exécuter dans le même shell.</p>
 <p>Puis il ajoute une commande au path en définissant et créant la variable d'environnement <code>PATH</code>.</p>
 <h3><code class="fichier">.bashrc</code> minimal</h3>
-<pre class="language-sh line-numbers" style="counter-reset: linenumber 0"><code class="language-sh"><span class="token builtin class-name">export</span> <span class="token assign-left variable">MAILDIR</span><span class="token operator">=~</span>/Maildir
+<pre class="language-sh#" tabindex="0" data-language="sh#"><code class="language-sh#">export MAILDIR=~/Maildir
 
-<span class="token builtin class-name">alias</span> <span class="token assign-left variable">ll</span><span class="token operator">=</span><span class="token string">"ls -la"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+alias ll="ls -la"</code></pre>
 <p>Qui définie une variable d'environnement puis un alias.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

@@ -125,8 +125,7 @@
 <p>Tout est objet dans un langage objet.</p>
 <h3>Variables</h3>
 <p>Les variables sont des références aux objets. Pour ce faire, on utilise l’opérateur d’affectation <code class="language-">=</code> :</p>
-<pre class="language-txt " style="counter-reset: linenumber 0"><code class="language-txt">variable = objet
-</code></pre>
+<pre class="language-txt" tabindex="0" data-language="txt"><code class="language-txt">variable = objet</code></pre>
 <p>A gauche de l’opérateur <code class="language-">=</code> se trouve une <strong>variable</strong> (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un <strong>objet</strong>. Dans toute la suite du programme, dès que le programme rencontrera le nom, il le remplacera par l'objet.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -184,9 +183,8 @@
 <div class="pl-8 mr-8">
 <p>Pour voir les noms définit dans l'espace de noms global, on utilise en python la fonction <code class="language-">globals()</code> qui rend un dictionnaire contenant le nom et l'objet associé à chaque variable.</p>
 <p>Au démarrage del'interpréteur, il n'y pas grand chose dans globals :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">globals</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span><span class="token string">'__name__'</span><span class="token punctuation">:</span> <span class="token string">'__main__'</span><span class="token punctuation">,</span> <span class="token string">'__doc__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__package__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__loader__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'_frozen_importlib.BuiltinImporter'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token string">'__spec__'</span><span class="token punctuation">:</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">'__annotations__'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'__builtins__'</span><span class="token punctuation">:</span> <span class="token operator">&lt;</span>module <span class="token string">'builtins'</span> <span class="token punctuation">(</span>built<span class="token operator">-</span><span class="token keyword">in</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">}</span>
-
 </code></pre>
 </div></div>
 
@@ -212,9 +210,8 @@
 <p>Prenons plusieurs exemples, qui illustreront les cas principaux.</p>
 <h4>Association objet et noms</h4>
 <p>Considérons le programme suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
-y <span class="token operator">=</span> <span class="token number">1</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+y <span class="token operator">=</span> <span class="token number">1</span></code></pre>
 <p>Exécutons le ligne à ligne :</p>
 <ol>
 <li>avant l'exécution de la première ligne :
@@ -240,9 +237,8 @@ y <span class="token operator">=</span> <span class="token number">1</span>
 </ol>
 <p>A la fin du programme, il y a <strong>2 objets entiers différents</strong> (même si tous les 2 valent 1), dont les noms sont, dans l'espace de noms global, respectivement <code class="language-">x</code> et <code class="language-">y</code>.</p>
 <h4>Réutilisation du même nom</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
-x <span class="token operator">=</span> <span class="token number">3</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+x <span class="token operator">=</span> <span class="token number">3</span></code></pre>
 <p>Exécutons le ligne à ligne :</p>
 <ol>
 <li>avant l'exécution de la première ligne :
@@ -287,9 +283,8 @@ x <span class="token operator">=</span> <span class="token number">3</span>
 </div></div>
 
 <h4>Un objet peut avoir plusieurs noms</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
-y <span class="token operator">=</span> x
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+y <span class="token operator">=</span> x</code></pre>
 <p>Exécutons le ligne à ligne :</p>
 <ol>
 <li>avant l'exécution de la première ligne :
@@ -332,10 +327,9 @@ y <span class="token operator">=</span> x
 </div></div>
 
 <p>La remarque précédente permet de comprendre mieux ce que fait le code suivant (et pourquoi cela fonctionne) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
 y <span class="token operator">=</span> <span class="token number">3</span>
-x<span class="token punctuation">,</span> y <span class="token operator">=</span> y<span class="token punctuation">,</span> x
-</code></pre>
+x<span class="token punctuation">,</span> y <span class="token operator">=</span> y<span class="token punctuation">,</span> x</code></pre>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -385,13 +379,12 @@ x<span class="token punctuation">,</span> y <span class="token operator">=</span
 </div></div>
 
 <h4>Exécution d'une fonction</h4>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-   i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x
-   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
-
-i <span class="token operator">=</span> <span class="token number">2</span>
-x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   i <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> x</span>
+<span class="highlight-line">   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">i <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span></span></code></pre>
 <p>Exécutons le ligne à ligne :</p>
 <ol>
 <li>avant l'exécution de la première ligne :
@@ -458,14 +451,13 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <p>Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.</p>
 </div></div>
 
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-   i <span class="token operator">=</span> C <span class="token operator">*</span> x
-   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span>
-
-C <span class="token operator">=</span> <span class="token number">2</span>
-i <span class="token operator">=</span> <span class="token number">2</span>
-x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   i <span class="token operator">=</span> C <span class="token operator">*</span> x</span>
+<span class="highlight-line">   <span class="token keyword">return</span> i <span class="token operator">+</span> <span class="token number">3</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">C <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">i <span class="token operator">=</span> <span class="token number">2</span></span>
+<span class="highlight-line">x <span class="token operator">=</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span></span></code></pre>
 <p>Lors de l'exécution de la fonction <code class="language-">f</code> (instruction de la ligne 7), sa première ligne cherche la variable nommée <code class="language-">C</code>. On se trouve dans cet état là :</p>
 <p><img src="cas-5-1.png" alt="cas-5-1"></p>
 <p>La variable <code class="language-">C</code> n'existe pas dans l'espace de noms courant (celui de <code class="language-">f</code>), le programme va alors chercher dans l'espace de noms parent s'il existe. Ici c'est le cas puisque l'espace parent de <code class="language-">f</code> est <code>global</code> dans lequel <code class="language-">C</code> est défini : le programme ne produit donc pas une erreur et trouve le bon objet.</p>
@@ -487,11 +479,10 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <p>Les modules possèdent un espace de noms qui contient les variables qui y sont définies</p>
 </div></div>
 
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 <span class="token keyword">from</span> math <span class="token keyword">import</span> log
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>log<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>log<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">43</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Avant l'exécution de l'instruction <code class="language-">print</code> on est dans cet état :</p>
 <p><img src="cas-6-1.png" alt="cas-6-1"></p>
 <p>On accède à l'espace de noms du module par la notation pointée : <code class="language-">random.randrange</code> signifie le nom <code class="language-">randrange</code> dans l'espace de noms de <code class="language-">random</code>.</p>
@@ -506,13 +497,11 @@ x <span class="token operator">=</span> f<span class="token punctuation">(</span
 <h2><span id="notation-pointée"></span> Notation pointée</h2>
 <p>En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.</p>
 <p>on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">c <span class="token operator">=</span> <span class="token string">"coucou"</span>
-c2 <span class="token operator">=</span> c<span class="token punctuation">.</span>uppercase<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">c <span class="token operator">=</span> <span class="token string">"coucou"</span>
+c2 <span class="token operator">=</span> c<span class="token punctuation">.</span>uppercase<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Le nom <code class="language-">uppercase</code> est défini dans l'espace de noms de la chaîne de caractères <code class="language-">&quot;coucou&quot;</code> (en fait, c'est dans sa classe, mais on le verra précisément plus tard).</p>
 <p>C'est une notation <strong>très puissante</strong> ! Il ne faut pas avoir peur de chaîner ces notations. On appelle cela des chaînages :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c<span class="token punctuation">.</span>d<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">a<span class="token punctuation">.</span>b<span class="token punctuation">.</span>c<span class="token punctuation">.</span>d<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Signifie :</p>
 <ol>
 <li>On exécute <code class="language-">d</code> qui est dans l'espace de noms de <code class="language-">a.b.c</code></li>

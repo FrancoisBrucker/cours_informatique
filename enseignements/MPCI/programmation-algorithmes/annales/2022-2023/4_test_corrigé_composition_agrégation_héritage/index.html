@@ -143,7 +143,7 @@
 <h3>Question 1</h3>
 <h4>1.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
@@ -166,11 +166,10 @@
 <span class="token keyword">class</span> <span class="token class-name">D20</span><span class="token punctuation">(</span>DéGénérique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> position<span class="token punctuation">)</span>
-
 </code></pre>
 <h4>1.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20
 
 d6 <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span>
 d20 <span class="token operator">=</span> D20<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -179,12 +178,11 @@ d20 <span class="token operator">=</span> D20<span class="token punctuation">(</
 d6<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 d20<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>d6<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> d20<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Question 2</h3>
 <h4>2.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> gauche<span class="token punctuation">,</span> droite<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -199,11 +197,10 @@ d20<span class="token punctuation">.</span>lancer<span class="token punctuation"
         self<span class="token punctuation">.</span>droite<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h4>2.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> Somme
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> Somme
 
 <span class="token comment"># ...</span>
 
@@ -212,12 +209,11 @@ somme <span class="token operator">=</span> Somme<span class="token punctuation"
 <span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 somme<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>somme<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Question 3</h3>
 <h4>3.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -228,21 +224,19 @@ somme<span class="token punctuation">.</span>lancer<span class="token punctuatio
     <span class="token comment"># ...</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h4>3.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 somme <span class="token operator">=</span> d6 <span class="token operator">+</span> d20
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h3>Question 4</h3>
 <h4>4.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Somme</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -251,21 +245,19 @@ somme <span class="token operator">=</span> d6 <span class="token operator">+</s
         <span class="token keyword">return</span> Somme<span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h4>4.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 somme <span class="token operator">=</span> d6 <span class="token operator">+</span> d20
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h3>Question 5</h3>
 <h4>5.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Cte</span><span class="token punctuation">(</span>DéGénérique<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> position<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -298,11 +290,10 @@ somme <span class="token operator">=</span> d6 <span class="token operator">+</s
     <span class="token comment"># ...</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h4>5.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 marteau_magique <span class="token operator">=</span> D6<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">4</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>marteau_magique<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -310,12 +301,11 @@ marteau_magique<span class="token punctuation">.</span>lancer<span class="token 
 <span class="token keyword">print</span><span class="token punctuation">(</span>marteau_magique<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token comment"># ...</span>
-
 </code></pre>
 <h3>Question 6</h3>
 <h4>6.1</h4>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -353,22 +343,20 @@ marteau_magique<span class="token punctuation">.</span>lancer<span class="token 
     <span class="token keyword">def</span> <span class="token function">__rmul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Fois<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dé<span class="token punctuation">,</span> self<span class="token punctuation">.</span>multiplicateur <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-
 </code></pre>
 <h4>6.2</h4>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 les_dés <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">*</span> <span class="token punctuation">(</span>un_d6 <span class="token operator">+</span> d20<span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 les_dés<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Fichier finaux</h3>
 <p>Fichier <code class="fichier">dés.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> random <span class="token keyword">import</span> randrange
 
 
 <span class="token keyword">class</span> <span class="token class-name">D</span>éGénérique<span class="token punctuation">:</span>
@@ -448,10 +436,9 @@ les_dés<span class="token punctuation">.</span>lancer<span class="token punctua
 
     <span class="token keyword">def</span> <span class="token function">__rmul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Fois<span class="token punctuation">(</span>self<span class="token punctuation">.</span>dé<span class="token punctuation">,</span> self<span class="token punctuation">.</span>multiplicateur <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
-
 </code></pre>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20<span class="token punctuation">,</span> Somme
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dés <span class="token keyword">import</span> D6<span class="token punctuation">,</span> D20<span class="token punctuation">,</span> Somme
 <span class="token comment"># from dés import Somme  # pour la question 2</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"question 1 :"</span><span class="token punctuation">)</span>
@@ -497,7 +484,6 @@ les_dés <span class="token operator">=</span> <span class="token number">3</spa
 <span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 les_dés<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>les_dés<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 
 

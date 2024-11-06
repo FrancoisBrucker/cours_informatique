@@ -159,10 +159,9 @@
 </div></div>
 
 <p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie <a href="../pseudo-code#complexit%C3%A9" class="interne">complexité des pseudo-code</a> :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x = 30
 if ((x > 12) AND (x < 36)):
-    z = x * "coucou"
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    z = x * "coucou"</code></pre>
 <ol>
 <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
 <li>un test avec 2 comparaisons et un <code class="language-">AND</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
@@ -239,12 +238,11 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me" class="interne">problèmes algorithmiques</a> ou il faudra comparer plusieurs algorithmes entre eux.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Prenons par exemple l'algorithme suivant, écrit en python :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
 <p>Cet algorithme recherche si le paramètre <code class="language-">valeur</code> est un élément de <code class="language-">tableau</code>.</p>
 <p>Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
 <ol>

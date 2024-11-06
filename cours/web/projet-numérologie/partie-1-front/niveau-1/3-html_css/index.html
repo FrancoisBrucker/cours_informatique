@@ -111,7 +111,7 @@
 <p>Il n'est pas nécessaire d'avoir de connaissances en html/css, puisque tout vous sera donné à copier/coller. En revanche, une fois ce projet fait, il sera bon que vous (re)suiviez <a href="../../../../" class="interne">le cours de web</a></p>
 <h2><span id="tache-1"></span> Tâche 1 : squelette de la page html</h2>
 <p>Créez un fichier <code class="fichier">numérologie/index.html</code> :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -126,8 +126,7 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Petite analyse de ce qu'est un fichier html :</p>
 <ul>
 <li>des balises l'une ouvrante et l'autre fermante (le même nom avec un <code class="language-">/</code> avant, comme html) pour une balise donnée.</li>
@@ -187,7 +186,7 @@
 <h3><span id="tache-2.1"></span> Style dans la page html</h3>
 <p>Modifions notre fichier html pour y inclure du style, grâce à la balise <code class="language-">&lt;style&gt;&lt;/style&gt;</code>, que l'on met usuellement dans la balise <code class="language-">&lt;head&gt;&lt;/head&gt;</code> :</p>
 <p>Ajoutons le style au fichier <code class="fichier">numérologie/index.html</code> :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -223,15 +222,13 @@
           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Actualiser votre page en cliquant sur la flèche en rond à gauche de la barre d'url (ou <em>ctrl+R</em> sous windows ou <em>cmd+r</em> sous mac). Tout doit avoir changé !</p>
 <p>On a ajouté une balise inconnue pour l'instant : la balise <code class="language-">&lt;div&gt;&lt;/div&gt;</code>. C'est une balise sans signification proprement dite et qui est utilisée pour structurer la page.</p>
 <p>Vous voyez que les propriétés css se lisent bien :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">qui</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">qui</span> <span class="token punctuation">{</span>
   <span class="token property">quoi</span><span class="token punctuation">:</span> comment<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p><code class="language-">qui</code> peut prendre deux formes :</p>
 <ul>
 <li>le nom d'une balise : <code class="language-">p</code> ou <code class="language-">body</code> dans l'exemple</li>
@@ -250,7 +247,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 <h3><span id="tache-2.2"></span> Feuille de style séparée du html</h3>
 <p>On a souvent coutume de placer le fichier css dans un fichier à côté pour pas qu'il <em>pollue</em> le fichier html. En effet, ces petites bêtes là deviennent vite très grosses.</p>
 <p>Créez un fichier <code class="fichier">numérologie/main.css</code> :</p>
-<pre class="language-css " style="counter-reset: linenumber 0"><code class="language-css"><span class="token selector">html, body</span> <span class="token punctuation">{</span>
+<pre class="language-css" tabindex="0" data-language="css"><code class="language-css"><span class="token selector">html, body</span> <span class="token punctuation">{</span>
   <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> azure<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -265,10 +262,9 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 
 <span class="token selector">p</span> <span class="token punctuation">{</span>
     <span class="token property">font-size</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Et on modifie le fichier <code class="fichier">numérologie/index.html</code> pour qu'il puisse lire le fichier de style grâce à la balise <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/link"><code class="language-">&lt;link /&gt;</code></a>:</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -287,8 +283,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>La balise <code class="language-">&lt;link&gt;</code> qui va chercher le fichier css. L'emplacement du fichier est décrit de <a href="/cours_informatique/tutoriels/fichiers-navigation#block-.-..">façon relative</a>, par rapport à l'emplacement du fichier html sur le disque dur. Ici c'est simple c'est dans le même dossier.</p>
 <h2><span id="tache-3"></span> Tâche 3 : bibliothèque css</h2>
 <p>On ne va pas loin si on fait uniquement son propre css. L'usage veut que l'on utilise des bibliothèques css. il en existe plein. Nous allons ici utiliser une bibliothèque minimale : <a href="https://purecss.io/">https://purecss.io/</a></p>
@@ -302,7 +297,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 </div></div>
 
 <p>Re-modifions le fichier <code class="fichier">numérologie/index.html</code> pour y inclure un lien vers la bibliothèque :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -329,8 +324,7 @@ a priori la mettre partout, mais le style ne sera connu qu'une fois lu. Donc si 
 
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>Une fois <a href="https://purecss.io/">https://purecss.io/</a> chargé, on peut utiliser les classes qu'elle a définie (qui commencent toutes par <code>pure-</code>). On a utilisé le layout en <a href="https://purecss.io/grids/">grids</a> et des modifications du formulaire et du bouton.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

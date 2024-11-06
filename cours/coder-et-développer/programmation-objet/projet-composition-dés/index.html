@@ -138,7 +138,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>fichier <code class="fichier">dé.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 MIN_VALEUR <span class="token operator">=</span> <span class="token number">1</span>
 MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</span>
@@ -153,10 +153,9 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
         self<span class="token punctuation">.</span>position <span class="token operator">=</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span>MIN_VALEUR<span class="token punctuation">,</span> MAX_VALEUR <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
         <span class="token keyword">return</span> self
-
 </code></pre>
 <p>fichier <code class="fichier">test_dé.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> MIN_VALEUR<span class="token punctuation">,</span> MAX_VALEUR
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé<span class="token punctuation">,</span> MIN_VALEUR<span class="token punctuation">,</span> MAX_VALEUR
 
 <span class="token keyword">def</span> <span class="token function">test_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token builtin">type</span><span class="token punctuation">(</span>Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> Dé
@@ -167,7 +166,6 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 
 <span class="token keyword">def</span> <span class="token function">test_lancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> MIN_VALEUR <span class="token operator">&lt;=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>position <span class="token operator">&lt;=</span> MAX_VALEUR
-
 
 </code></pre>
 </div>
@@ -259,15 +257,14 @@ MAX_VALEUR <span class="token operator">=</span> <span class="token number">6</s
 <div class="mx-8 pb-2">
 <p><img src="uml_tapis_vert.png" alt="tapis vert"></p>
 <p><code class="fichier">story_jets.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
 
 tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 tapis_vert<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">for</span> dé <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -304,13 +301,12 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une méthode <code class="language-">Dé.__str__</code> qui permettent d'écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 <span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> d<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token number">4</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span>
 ⚃
-<span class="token operator">>></span><span class="token operator">></span> 
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span> </code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -329,15 +325,14 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez une méthode <code class="language-">TapisVert.__str__</code> qui permettent d'écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
 <span class="token operator">>></span><span class="token operator">></span> tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>tapis_vert<span class="token punctuation">)</span>
 ⚀ <span class="token operator">-</span> ⚀ <span class="token operator">-</span> ⚀ <span class="token operator">-</span> ⚀ <span class="token operator">-</span> ⚀
 <span class="token operator">>></span><span class="token operator">></span> tapis_vert<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span>tapis_vert<span class="token punctuation">)</span>
 ⚀ <span class="token operator">-</span> ⚁ <span class="token operator">-</span> ⚁ <span class="token operator">-</span> ⚀ <span class="token operator">-</span> ⚁
-<span class="token operator">>></span><span class="token operator">></span> 
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span> </code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -358,25 +353,22 @@ tapis_vert<span class="token punctuation">.</span>lancer<span class="token punct
 </summary>
 <div class="mx-8 pb-2">
 <p>On peut utiliser deux trucs. Le premier est de construire une liste avec les représentations sous la forme d'une chaîne de caractères des dés. Par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> dé <span class="token keyword">import</span> TapisVert
 <span class="token operator">>></span><span class="token operator">></span> tapis_vert <span class="token operator">=</span> TapisVert<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> tapis_vert<span class="token punctuation">.</span>dés<span class="token punctuation">]</span>
-<span class="token punctuation">[</span><span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">[</span><span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">,</span> <span class="token string">'⚀'</span><span class="token punctuation">]</span></code></pre>
 <p>Puis utiliser la méthode <code class="language-">str.join</code> de python qui est super utile pour concaténer des listes de chaînes de caractères :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les"</span><span class="token punctuation">,</span> <span class="token string">"amis"</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"coucou"</span><span class="token punctuation">,</span> <span class="token string">"les"</span><span class="token punctuation">,</span> <span class="token string">"amis"</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"*"</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-<span class="token string">'coucou*les*amis'</span>
-</code></pre>
+<span class="token string">'coucou*les*amis'</span></code></pre>
 <p>Ces deux astuces nous permettent d'écrire le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TapisVert</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">TapisVert</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
 
     <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token string">" - "</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> self<span class="token punctuation">.</span>dés<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
     <span class="token comment"># ...</span>
-
 </code></pre>
 </div>
 </details>     

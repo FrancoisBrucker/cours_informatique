@@ -102,7 +102,7 @@
 <h3>2.2</h3>
 <p>Si l'on place une station tous les kilomètres et que l'on achète qu'un litre à chaque fois, on aura bien $Q = d[n-1]$ mais on s'est arrêté bien trop de fois : si l'on avait acheté 2 litres d'essence à chaque station on serait arrêté 2 fois moins de fois.</p>
 <h2>3</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">p <span class="token operator">=</span> <span class="token number">0</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">p <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token keyword">while</span> p <span class="token operator">&lt;</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
     i <span class="token operator">=</span> p
     <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">and</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>p<span class="token punctuation">]</span> <span class="token operator">&lt;</span> r<span class="token punctuation">:</span>
@@ -110,8 +110,7 @@
         i <span class="token operator">+=</span> <span class="token number">1</span>
     i <span class="token operator">-=</span> <span class="token number">1</span>
     a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> d<span class="token punctuation">[</span>p<span class="token punctuation">]</span>
-    p <span class="token operator">=</span> i 
-</code></pre>
+    p <span class="token operator">=</span> i </code></pre>
 <p>L'algorithme précédent cherche la station la plus lointaine possible à partir de la station courante (celle de numéro $p$) puis met juste le nombre de litre nécessaire pour y arriver : on a $Q = d[n-1]$ à la fin de l'algorithme.</p>
 <p>Notre algorithme est optimal pour $Q$ car s'il existait  une solution telle que $Q &gt; d[n-1]$, on pourrait acheter 1 litre d'essence en moins à la dernière station service tout en arrivant à $B$ : cette solution n'est pas optimale pour $Q$.</p>
 <p>Montrons que notre solution est également minimale en nombre d'arrêt. Notons notre solution $S$. Pour tout autre solution $S'$, on note $i_{S'}$ la première station différente de notre solution (on a $i_{S'} &gt; 0$). Cette station est forcément avant celle choisie par $S$ car notre algorithme choisi toujours la station la plus éloignée de la station courante. On note $i_S$ cette station. On peut alors supprimer la station $i_{S'}$ et aller directement :</p>

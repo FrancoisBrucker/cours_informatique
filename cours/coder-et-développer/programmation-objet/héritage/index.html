@@ -155,18 +155,17 @@
 </div></div>
 
 <p>Toutes les classes filles  <em><strong>héritent</strong></em> des propriétés (attributs et méthodes des parents) en supposant le code des classes écrites dans le fichier <code class="fichier">personnel.py</code> on peut alors très bien écrire le code suivant bien que la méthode <code class="language-">donne_age</code> ne soit pas définie dans la classe <code class="language-">EnseignantChercheur</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> datetime <span class="token keyword">import</span> date
 <span class="token keyword">from</span> personnel <span class="token keyword">import</span> EnseignantChercheur
 
 
 prof_info <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span><span class="token string">"Turing"</span><span class="token punctuation">,</span> <span class="token string">"Alan"</span><span class="token punctuation">,</span> <span class="token string">"Mathématiques de Cambridge"</span><span class="token punctuation">,</span> date<span class="token punctuation">(</span><span class="token number">1936</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>prof_info<span class="token punctuation">.</span>donne_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Le principe même de l'héritage est de pouvoir facilement utiliser dans des classes filles des éléments définies dans les classes mères.</p>
 <h3>Code de la classe mère</h3>
 <p>Ce code est classique :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span>  datetime <span class="token keyword">import</span> date
 
 
 <span class="token keyword">class</span> <span class="token class-name">Personne</span><span class="token punctuation">:</span>
@@ -177,7 +176,6 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 
     <span class="token keyword">def</span> <span class="token function">donne_age</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>date_naissance <span class="token operator">-</span> date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>days <span class="token operator">/</span> <span class="token number">365</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -194,23 +192,21 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 <li>utiliser le code de la classe mère dans une classe fille</li>
 </ol>
 <p>Voyons comment tout ça est fait en python (on ajoute les classes filles dans le fichier contenant la classe mère) :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> Étudiant<span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>numéro_étudiant <span class="token operator">=</span> numéro_étudiant
-
-
-<span class="token keyword">class</span> <span class="token class-name">EnseignantChercheur</span><span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>laboratoire <span class="token operator">=</span> laboratoire
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> Étudiant<span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span></span>
+<span class="highlight-line">        self<span class="token punctuation">.</span>numéro_étudiant <span class="token operator">=</span> numéro_étudiant</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">EnseignantChercheur</span><span class="token punctuation">(</span>Personne<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">)</span></span>
+<span class="highlight-line">        self<span class="token punctuation">.</span>laboratoire <span class="token operator">=</span> laboratoire</span>
+<span class="highlight-line"></span></code></pre>
 <h3>Définir la classe mère</h3>
 <p>On définit la classe mère d'une classe en faisant suivre le nom de la classe fille, lors de sa définition, par le nom de la classe mère entre parenthèses :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fille</span><span class="token punctuation">(</span>Mère<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Fille</span><span class="token punctuation">(</span>Mère<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-
 </code></pre>
 <h3>Appels de fonctions de la classe mère</h3>
 <p>Utiliser une méthode de la classe mère dans la classe fille on utilise le mot clé <code class="language-">super()</code> suivi du nom de la méthode à utiliser. Dans l'exemple, le constructeur de la classe fille appelle le constructeur de la classe mère. Remarquez que l'on utilise la méthode <code class="language-">__init__</code> sans utiliser le premier paramètre (<code class="language-">self</code>) qui est implicitement l'objet courant.</p>
@@ -276,9 +272,8 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 
 <h3>Connaître la hiérarchie</h3>
 <p>En python, si l'on veut connaître l'ordre dans lequel les classes vont être examinées lors de la remontée de la hiérarchie, on peut utiliser la méthode <code class="language-">mro()</code>. Par exemple, dans un interpréteur :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">str</span><span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span></code></pre>
 <p>L'ordre dans lequel sont examinées les classes pour les chaines de caractères est donc : d'abord la classe <code class="language-">str</code> puis la classe <code class="language-">object</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -289,15 +284,13 @@ prof_info <span class="token operator">=</span> EnseignantChercheur<span class="
 </div></div>
 
 <p>Notez bien que la méthode <code class="language-">mro</code> est appliquée <strong>à la classe</strong> et nom à l'objet. Par exemple pour la classe <code class="language-">EnseignantChercheur</code> de l'exemple 1, on aurait :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> EnseignantChercheur<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> EnseignantChercheur<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span></code></pre>
 <p>Alors qu'avec un objet :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> prof_info<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> prof_info<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-AttributeError<span class="token punctuation">:</span> <span class="token string">'EnseignantChercheur'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'mro'</span>
-</code></pre>
+AttributeError<span class="token punctuation">:</span> <span class="token string">'EnseignantChercheur'</span> <span class="token builtin">object</span> has no attribute <span class="token string">'mro'</span></code></pre>
 <h2>Exemple 2 : héritage simple</h2>
 <p>L'héritage est une technique objet qui n'est pas utilisée indépendamment du reste. On l'utilise souvent en combinaison d'autres techniques comme la composition.</p>
 <p>On va ici manipuler des polygones. On veut pouvoir :</p>
@@ -338,7 +331,7 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 <p><img src="h%C3%A9ritage_point_poly.png" alt="point polygone"></p>
 <h4>Code python</h4>
 <p>On peut alors avoir le code python suivant pour créer les classes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> sqrt
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> sqrt
 
 
 <span class="token keyword">class</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
@@ -381,7 +374,6 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
         a <span class="token operator">+=</span> pivot<span class="token punctuation">.</span>x <span class="token operator">*</span> point<span class="token punctuation">.</span>y <span class="token operator">-</span> pivot<span class="token punctuation">.</span>y <span class="token operator">*</span> point<span class="token punctuation">.</span>x
 
         <span class="token keyword">return</span> <span class="token number">0.5</span> <span class="token operator">*</span> <span class="token builtin">abs</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-
 </code></pre>
 <p>Remarques :</p>
 <ol>
@@ -389,11 +381,10 @@ AttributeError<span class="token punctuation">:</span> <span class="token string
 <li>Notez que l'on ne recrée pas les points, ils peuvent donc changer car ils sont passés en paramètre de la construction du polygone</li>
 </ol>
 <p>On peut tester le code avec, par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">points <span class="token operator">=</span> <span class="token punctuation">[</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">points <span class="token operator">=</span> <span class="token punctuation">[</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
 polygone <span class="token operator">=</span> Polygone<span class="token punctuation">(</span>points<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>polygone<span class="token punctuation">.</span>périmètre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>polygone<span class="token punctuation">.</span>aire<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>polygone<span class="token punctuation">.</span>aire<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h3>Un polygone particulier</h3>
 <p>Comment modéliser une classe triangle ?</p>
 <p>Comme un triangle <strong>est un</strong> polygone simple, on peut utiliser l'héritage pour cela.</p>
@@ -404,15 +395,13 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <h4>Code python du Triangle</h4>
 <p>La classe <code class="language-">Triangle</code> hérite de <code class="language-">Polygon</code>, on appelle donc le constructeur de ce dernier lors de la création d'un <code class="language-">Triangle</code>.</p>
 <p>Ceci est explicite en python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Triangle</span><span class="token punctuation">(</span>Polygone<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Triangle</span><span class="token punctuation">(</span>Polygone<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> point1<span class="token punctuation">,</span> point2<span class="token punctuation">,</span> point3<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">[</span>point1<span class="token punctuation">,</span> point2<span class="token punctuation">,</span> point3<span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">[</span>point1<span class="token punctuation">,</span> point2<span class="token punctuation">,</span> point3<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <p>On peut maintenant utiliser toutes les méthodes définies dans Polygone puisque le constructeur de <code class="language-">Triangle</code> appelle directement le constructeur de <code class="language-">Polygone</code> : à la fin du constructeur, il existera une liste de points dans le triangle.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">triangle <span class="token operator">=</span> Triangle<span class="token punctuation">(</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">triangle <span class="token operator">=</span> Triangle<span class="token punctuation">(</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>triangle<span class="token punctuation">.</span>périmètre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>triangle<span class="token punctuation">.</span>aire<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>triangle<span class="token punctuation">.</span>aire<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Pour trouver le périmètre, python fonctionne ainsi :</p>
 <ol>
 <li>existe-t-il un nom <code class="language-">périmètre</code> dans l'objet <code class="language-">triangle</code> : NON</li>
@@ -426,13 +415,12 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 <div class="pl-8 mr-8">
 <p>Les objets de type <code class="language-">Triangle</code> sont <strong>aussi</strong> des objets de type <code class="language-">Polygone</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> triangle <span class="token operator">=</span> Triangle<span class="token punctuation">(</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> triangle <span class="token operator">=</span> Triangle<span class="token punctuation">(</span>Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Point<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> Triangle<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">isinstance</span><span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> Polygone<span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token boolean">True</span>
-<span class="token operator">>></span><span class="token operator">></span> 
-</code></pre>
+<span class="token operator">>></span><span class="token operator">></span> </code></pre>
 </div></div>
 
 <h2><span id="exemple-D&D"></span> Exemple 3 : donjons et dragons</h2>
@@ -450,7 +438,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p><img src="h%C3%A9ritage_personnage.png" alt="personnage"></p>
 <h4>Code python du personnage</h4>
 <p>On a décidé ici de ne pas mettre de méthode get et set, mais de laisser libre accès aux attributs. C'est un choix possible. L'UML dérive donc un peu du code python ce qui est normal, chaque langage ayant ses spécificités.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>vie <span class="token operator">=</span> vie
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
@@ -459,8 +447,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         self<span class="token punctuation">.</span>vie <span class="token operator">-=</span> personnage<span class="token punctuation">.</span>attaque
 
     <span class="token keyword">def</span> <span class="token function">taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        personnage<span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
-</code></pre>
+        personnage<span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>self<span class="token punctuation">)</span></code></pre>
 <p>Voyez comment on a utilisé la méthode <code class="language-">se_faire_taper</code> pour définir la méthode <code class="language-">taper</code>.</p>
 <h3>La classe guerrière</h3>
 <p>La guerrière dispose d'un score de blocage qui représente son pourcentage de chances de ne pas perdre de vie quand un autre personnage l'attaque.</p>
@@ -469,7 +456,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p><img src="h%C3%A9ritage_guerri%C3%A8re.png" alt="Guerrière"></p>
 <p>On ne met que les méthodes qui changent, donc le constructeur et se faire taper.</p>
 <h4>Code python de la guerrière</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ... </span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ... </span>
 
 <span class="token keyword">import</span> random
 
@@ -482,8 +469,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
     <span class="token keyword">def</span> <span class="token function">se_faire_taper</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> self<span class="token punctuation">.</span>blocage <span class="token operator">&lt;</span> random<span class="token punctuation">.</span>randrange<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>personnage<span class="token punctuation">)</span>
-</code></pre>
+            <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>se_faire_taper<span class="token punctuation">(</span>personnage<span class="token punctuation">)</span></code></pre>
 <p>Comprenez bien le code :</p>
 <ul>
 <li>On commence par appeler le constructeur de la classe mère (<code class="language-">super().__init__()</code>) puis on applique le cas particulier de notre classe (<code class="language-">self.blocage = blocage</code>).</li>
@@ -504,14 +490,13 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p>On ajoute une nouvelle méthode qui n'existe pas dans la classe mère :</p>
 <p><img src="h%C3%A9ritage_magicien.png" alt="Magicien"></p>
 <h4>Code python du magicien</h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Magicien</span><span class="token punctuation">(</span>Personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Magicien</span><span class="token punctuation">(</span>Personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">,</span> attaque_magique<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>attaque_magique <span class="token operator">=</span> attaque_magique
 
     <span class="token keyword">def</span> <span class="token function">lancer_sort</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> personnage<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        personnage<span class="token punctuation">.</span>vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique
-</code></pre>
+        personnage<span class="token punctuation">.</span>vie <span class="token operator">-=</span> self<span class="token punctuation">.</span>attaque_magique</code></pre>
 <h3>Pour aller plus loin</h3>
 <p>Dans l'implémentation de notre classe <code class="language-">Personnage</code>, on ne vérifie pas que notre vie passe en dessous de zéro. Il faut donc vérifier à chaque modification de l'attribut s'il est en dessous de zéro ou pas. Pour cela, on utilise en python les <code class="language-">@property</code> vues dans le <a href="../projet-objets-d%C3%A9s#property" class="interne">projet objets : Dés</a> :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -539,7 +524,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> vie<span class="token punctuation">,</span> attaque<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> vie
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
@@ -559,8 +544,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> valeur
         <span class="token keyword">if</span> self<span class="token punctuation">.</span>_vie <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">:</span>
             self<span class="token punctuation">.</span>_vie <span class="token operator">=</span> <span class="token number">0</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"je suis mort"</span><span class="token punctuation">)</span>
-</code></pre>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"je suis mort"</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -576,15 +560,13 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 <p>Il est parfois tentant de faire hériter une classe de plusieurs autres. Par exemple, en reprenant l'exemple 1, on pourrait définir une classe <code class="language-">Doctorant</code> qui serait <strong>à la fois</strong> <code class="language-">Étudiant</code> et <code class="language-">EnseignantChercheur</code> :</p>
 <p><img src="th%C3%A9sard.png" alt="doctorant"></p>
 <p>Ceci est tout à fait possible en python, en mettant plusieurs classes mères suivies par des virgules :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">(</span>Étudiant<span class="token punctuation">,</span> EnseignantChercheur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">(</span>Étudiant<span class="token punctuation">,</span> EnseignantChercheur<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>  </span></code></pre>
 <p>Ceci pose toutefois une foultitude de possibles problèmes lorsque la même méthode ou attribut est définie dans plusieurs classes mères.</p>
 <p>Python règle le problème en ordonnant les classes mères grace au mro :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> Doctorant<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> Doctorant<span class="token punctuation">.</span>mro<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Doctorant'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Étudiant'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.EnseignantChercheur'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'__main__.Personne'</span><span class="token operator">></span><span class="token punctuation">,</span> <span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'object'</span><span class="token operator">></span><span class="token punctuation">]</span>
-
 </code></pre>
 <p>Python suit cet ordre et s'arrête à la première classe définissant le nom recherché.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -596,12 +578,11 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </div></div>
 
 <p>Ceci ne règle cependant pas le problème du constructeur puisque l'on veut que les 2 constructeurs soient exécutés et pas juste le premier trouvé. Il n'y a pas de solution simple à ce problème (voir par exemple <a href="https://realpython.com/python-super/#super-in-multiple-inheritance">cette étude</a>), c'est pourquoi on préfère souvent remplacer l'héritage multiple par une composition :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>étudiant <span class="token operator">=</span> Étudiant<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span>
-        self<span class="token punctuation">.</span>enseignant_chercheur <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">class</span> <span class="token class-name">Doctorant</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        self<span class="token punctuation">.</span>étudiant <span class="token operator">=</span> Étudiant<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> numéro_étudiant<span class="token punctuation">)</span></span>
+<span class="highlight-line">        self<span class="token punctuation">.</span>enseignant_chercheur <span class="token operator">=</span> EnseignantChercheur<span class="token punctuation">(</span>nom<span class="token punctuation">,</span> prénom<span class="token punctuation">,</span> date_naissance<span class="token punctuation">,</span> laboratoire<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span></code></pre>
 <p>L'exemple précédent nécessitera toutefois de redéfinir toutes les méthodes, et -- surtout -- le nom et le prénom sont dupliqués. Lorsque ce genre de chose arrive c'est souvent le signe qu'il faut redesigner notre programme et déconstruire ses classes pour séparer clairement les responsabilités et supprimer les duplications.</p>
 <h2>On vérifie qu'on a compris</h2>
 <p>Quelques petit tests qui ne servent à rien en pratique mais qui permettent de vérifier qu'on a bien compris.</p>
@@ -634,7 +615,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>a <span class="token operator">=</span> a
 
@@ -642,8 +623,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Truc défini dans la classe mère"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">truc_que_fait_a</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  
-</code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  </code></pre>
 </div>
 </details>     
 </div>
@@ -676,7 +656,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>b <span class="token operator">=</span> b
@@ -685,8 +665,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C'est mon autre truc à moi"</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">que_de_b</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Méthode seulement de la classe fille"</span><span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Méthode seulement de la classe fille"</span><span class="token punctuation">)</span></code></pre>
 <p>Faites bien attention à utiliser proprement le mot-clé <code class="language-">super</code> dans le constructeur de la classe fille.</p>
 </div>
 </details>     
@@ -715,7 +694,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
     CTE <span class="token operator">=</span> <span class="token string">"un attribut de classe"</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -725,8 +704,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Truc défini dans la classe mère"</span><span class="token punctuation">)</span>
     
     <span class="token keyword">def</span> <span class="token function">truc_que_fait_a</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  
-</code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Autre truc dans la classe mère"</span><span class="token punctuation">)</span>  </code></pre>
 </div>
 </details>     
 </div>
@@ -758,7 +736,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">:</span>
     CTE <span class="token operator">=</span> <span class="token string">"un attribut de classe"</span>
 
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -787,8 +765,7 @@ polygone <span class="token operator">=</span> Polygone<span class="token punctu
 
     <span class="token keyword">def</span> j_hérite<span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>j_herite<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>

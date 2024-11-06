@@ -114,7 +114,7 @@
 <h3>Séparer routes et serveur</h3>
 <p>Pour que supertest fonctionne, il faut pouvoir lancer le serveur à la volée ce qui est impossible actuellement puisque <code class="fichier">index.js</code> crée les routes et lance le serveur tout seul. On sépare donc tout ça en deux fichiers.</p>
 <p><code class="fichier">app.js</code> qui crée les routes :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -152,10 +152,9 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">export</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
 </code></pre>
 <p>Et <code class="fichier">index.js</code> qui ne fait que lancer le serveur :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./app.js"</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./app.js"</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> logger <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./logger.js'</span><span class="token punctuation">;</span>
 
@@ -165,11 +164,10 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Start server at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-
 </code></pre>
 <h3>Tests</h3>
 <p>Créons notre fichier de tests de routes <code class="fichier">__tests__/routes.js</code> qui teste qu'il y a une redirection vers <code>/static/index/html</code> et que les 404 sont mis en œuvre :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../app.js'</span><span class="token punctuation">;</span>
 
@@ -209,7 +207,6 @@ logger<span class="token punctuation">.</span><span class="token function">info<
             <span class="token function">done</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>On utilise les méthodes <code class="language-">beforeAll</code> et <code class="language-">afterAll</code> pour gérer la création (avant tous les tests) et la suppression du serveur (après tous les tests).</p>
 <p>Gestion des promesses :</p>
@@ -233,7 +230,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 </div></div>
 
 <p>Commençons par changer le logger si on est en mode de test. Modifions le fichier <code class="fichier">logger.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> winston <span class="token keyword">from</span> <span class="token string">'winston'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> winston <span class="token keyword">from</span> <span class="token string">'winston'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> env <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">;</span>
 
@@ -257,15 +254,13 @@ logger<span class="token punctuation">.</span><span class="token function">info<
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> logger_choice<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> logger_choice<span class="token punctuation">;</span></code></pre>
 <p>Regardez comment l'environnement est géré dans ce fichier : on utilise la bibliothèque <a href="https://nodejs.org/api/process.html#process">process</a> qui contient — entre autre — les variables d'environnement. Par défaut jest exécute les tests en mode <code class="language-">&quot;test&quot;</code>, donc en appelant nos tests, il ne devrait plus y avoir de logs affiché.</p>
 <p>Changeons le mode d'exécution des tests pour le développement sous mac et linux :</p>
 <pre><code>NODE_ENV=development NODE_OPTIONS=--experimental-vm-modules npx jest
 </code></pre>
 <p>Sous powershell  :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token variable">$env</span>:NODE_ENV<span class="token operator">=</span><span class="token string">'development'</span> <span class="token punctuation">;</span> <span class="token assign-left variable">NODE_OPTIONS</span><span class="token operator">=</span>--experimental-vm-modules npx jest
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token variable">$env</span>:NODE_ENV<span class="token operator">=</span><span class="token string">'development'</span> <span class="token punctuation">;</span> <span class="token assign-left variable">NODE_OPTIONS</span><span class="token operator">=</span>--experimental-vm-modules npx jest</code></pre>
 <p>Vous devriez revoir les logs.</p>
 <blockquote>
 <p>TBD : qu'ajouter dans le <code class="fichier">package.json</code> pour que a marche sous powershell ?</p>

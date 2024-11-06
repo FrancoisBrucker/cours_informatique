@@ -223,26 +223,23 @@
 <ul>
 <li>
 <p><code class="fichier">poissons.txt</code></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Anchois
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Anchois
 Sardine
 Requin
-
 </code></pre>
 </li>
 <li>
 <p><code class="fichier">mammifères.txt</code></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Chat
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Chat
 Homme
 Girafe
-
 </code></pre>
 </li>
 <li>
 <p><code class="fichier">oiseaux.txt</code></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Pinson
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Pinson
 Mouette
 Goéland
-
 </code></pre>
 </li>
 </ul>
@@ -272,30 +269,25 @@ Goéland
 </ol>
 <h4>situation sur github</h4>
 <p>On modifie le fichier <code class="fichier">oiseaux.txt</code> :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Pinson du nord
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Pinson du nord
 Mouette
 Gabian
-Hibou petit duc
-</code></pre>
+Hibou petit duc</code></pre>
 <p>Et on commit les changements :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -> B
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B</code></pre>
 <h4>situation à la maison</h4>
 <p>On modifie le fichier <code class="fichier">oiseaux.txt</code> pour mettre les oiseaux dans l'ordre alphabétique :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Goéland
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Goéland
 Mouette
 Pinson
-
 </code></pre>
 <p>Et on commit les changements :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">nous : A -> C
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">nous : A -> C</code></pre>
 <h4>Situation globale</h4>
 <p>On se retrouve dans la situation suivante, sur la même branche <code>main</code> :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -> B
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
           \
-nous   :    -> C
-</code></pre>
+nous   :    -> C</code></pre>
 <p>Sur l'application desktop, notre bouton de communication avec le serveur dit*&quot;fetch origin&quot;* :</p>
 <p><img src="desktop-projet-3.png" alt="desktop-projet fetch"></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -311,10 +303,9 @@ nous   :    -> C
 <p>On voit que github et nous différons tous deux d'un commit.</p>
 <h4>Résolution du problème</h4>
 <p>Nous pourrions faire comme précédemment et faire un <em>merge</em> des deux histoires. On aurait du coup un historique comme ça :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -> B --> D
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B --> D
           \     /
-nous   :    -> C
-</code></pre>
+nous   :    -> C</code></pre>
 <p>Mais notre nouvelle branche n'est pas informative. Elle ne correspond à rien d'un point de vue sémantique. C'est juste une façon de rabouter les deux main ensemble. Pour ce genre de cas (c'est à dire 90% du temps) on préfère une autre solution : le <strong>rebase</strong></p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -325,25 +316,22 @@ nous   :    -> C
 </div></div>
 
 <p>On va re-écrire notre histoire en fonction de l'origine, c'est à dire transformer ça :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -> B
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
           \
-nous   :    -> C
-</code></pre>
+nous   :    -> C</code></pre>
 <p>en ça :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">origin : A -> B
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">origin : A -> B
                \
-nous   :         -> C'
-</code></pre>
+nous   :         -> C'</code></pre>
 <p>Il faut transformer notre commit C en le commit C' qui pourra s'intégrer tout seul dans l'histoire de l'origine : cette opération s'appelle un rebase.</p>
 <p>C'est exactement ce que va faire desktop lorsque l'on clique sur le bouton pull.</p>
 <p>Une fenêtre apparaît pour dire qu'il y a un soucis. Ne prenez pas peur et fermez cette fenêtre. On arrive à cette fenêtre là :</p>
 <p><img src="desktop-rebase-1.png" alt="rebase 1"></p>
 <p>On sait faire. Il suffit d'éditer le ficher dans vscode et de faire comme pour le merge dans le projet précédent. Le nouveau fichier <code>oiseaux.txt</code> devient :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Goéland
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Goéland
 Hibou petit duc
 Mouette
-Pinson du nord
-</code></pre>
+Pinson du nord</code></pre>
 <p>On a régler un problème dans le rebase. COmme c'était le seul, desktop nous permet de continuer :</p>
 <p><img src="desktop-rebase-2.png" alt="rebase 2"></p>
 <p>On clique sur le bouton <em>&quot;continue rebase&quot;</em>. Pour arriver à cette situation :</p>

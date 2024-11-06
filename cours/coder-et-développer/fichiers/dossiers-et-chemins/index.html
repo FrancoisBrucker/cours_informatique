@@ -107,12 +107,10 @@
 
 <p>Supposons  que vous ayez un fichier python dans le dossier <code class="fichier">/Users/fbrucker/Documents/mon_projet/main.py</code> et que ce programme python utilise le fichier <code class="fichier">/Users/fbrucker/Documents/mon_projet/donnees.txt</code>.</p>
 <p>Si votre programme <code class="fichier">main.py</code> utilise le fichier <code class="fichier">donnees.txt</code> de cette façon :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/Users/fbrucker/Documents/mon_projet/donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"/Users/fbrucker/Documents/mon_projet/donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Il ne pourra fonctionner <strong>que</strong> sur votre ordinateur ! En effet, si vous copiez le dossier <em>&quot;mon_projet&quot;</em>  et tout son contenu  de l'ordinateur A à l'ordinateur B, il est très peu probable qu'il soit placé au même endroit sur le disque dur.</p>
 <p>Une première solution est d'utiliser un chemin relatif :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">donnees <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"donnees.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>On voit que le chemin utilisé est <em>relatif</em> car il ne commence pas par un <code class="fichier">/</code>. On cherche le fichier <code class="fichier">donnees.txt</code> par rapport au dossier courant du terminal qui a exécuté le fichier python. De là, si vous êtes dans le dossier <em>&quot;mon_projet&quot;</em> lorsque vous tapez la commande <code>python main.py</code> votre programme marchera sur tous les ordinateurs.</p>
 <p>Si cette technique fonctionne souvent, elle n'est cependant pas optimale car vous ne pouvez pas garantir que votre programme sera <strong>toujours</strong> exécuté depuis le dossier <code class="fichier">mon_projet/</code>. S'il est par exemple exécuté depuis le parent de <code class="fichier">mon_projet/</code> : <code>python mon_projet/main.py</code> ; votre code ne fonctionnera plus puisque le dossier par défaut ne sera plus le bon...</p>
 <p>La solution qui fonctionne tout le temps est de déterminer à l'exécution l'emplacement du fichier*&quot;<a href="http://main.py">main.py</a>&quot;*. Ceci se fait grâce à la variable spéciale : <code class="language-">__file__</code>.</p>
@@ -123,8 +121,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Copiez le code suivant dans un fichier et exécutez le pour voir le fonctionnement de la variable <code class="language-">__file__</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>On n'a fait que la moitié du chemin, puisque l'on a l'emplacement du fichier, mais pas le dossier. Ceci peut se faire en utilisant le module <a href="https://docs.python.org/fr/3/library/os.path.html"><code>os.path</code> de python</a> :</p>
@@ -135,12 +132,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Copiez le code suivant dans un fichier et exécutez le pour voir comment récupérer le dossier à partir de <code class="language-">__file__</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> os
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>__file__<span class="token punctuation">)</span> <span class="token comment"># le chemin absolu jusqu'au fichier</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># le dossier</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># le nom du fichier                                     </span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># le nom du fichier                                     </span></code></pre>
 </div></div>
 
 <p>Cette méthode permet d'obtenir un chemin absolu de référence pour garantir l'accès aux fichiers de données sur toutes les machines où votre projet sera copié.</p>
@@ -184,18 +180,15 @@
 
 <p>Les fichiers stockés sur internet peuvent aussi être récupérés en python <em>via</em> leur <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">url</a>. On utilise la bibliothèque <a href="https://requests-fr.readthedocs.io/en/latest/">requests</a> (<code>python -m pip install requests</code>).</p>
 <p>Par exemple, le site <a href="https://www.gutenberg.org">https://www.gutenberg.org</a> possède de nombreux livres au format utf-8 à télécharger. Par exemple <a href="https://www.gutenberg.org/ebooks/14155">https://www.gutenberg.org/ebooks/14155</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> requests
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
 
-page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span><span class="token punctuation">)</span>
-</code></pre>
+page <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"https://www.gutenberg.org/ebooks/14155.txt.utf-8"</span><span class="token punctuation">)</span></code></pre>
 <p>Le code précédent à téléchargé le fichier contenu dans l'url <a href="https://www.gutenberg.org/ebooks/14155.txt.utf-8">https://www.gutenberg.org/ebooks/14155.txt.utf-8</a> dans la variable page.</p>
 <p>Cette variable est un objet qui contient de <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response">nombreux attributs</a>.</p>
 <p>Le <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response.text">texte</a> qui a été téléchargé, au format Unicode :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">page<span class="token punctuation">.</span>text
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">page<span class="token punctuation">.</span>text</code></pre>
 <p>Un fichier téléchargé par internet l'a été octet par octet. Le type par défaut est donc le <code class="language-">bytes</code> et le contenu brut est disponible avec l'attribut <a href="https://requests.readthedocs.io/en/latest/api/#requests.Response.content">content</a> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token builtin">type</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token builtin">type</span><span class="token punctuation">(</span>page<span class="token punctuation">.</span>content<span class="token punctuation">)</span></code></pre>
 <p>La bibliothèque fait une conversion pour rendre l'attribut text au format Unicode.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -206,7 +199,7 @@ page <span class="token operator">=</span> requests<span class="token punctuatio
 </div></div>
 
 <p>L'idéal esr de télécharger le fichier une fois, de le sauver sur votre disque dur puis d'utiliser ensuite tout le temps le fichier sauvegardé. Le code suivant regarde si un fichier donné existe (fonction <a href="https://docs.python.org/fr/3/library/os.path.html#os.path.exists"><code class="language-">os.path.exists</code></a>), et sinon il le télécharge :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> os<span class="token punctuation">.</span>path
 
 <span class="token keyword">import</span> requests
 
@@ -226,7 +219,6 @@ texte <span class="token operator">=</span> <span class="token string">""</span>
     f <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span>NOM_FICHIER_LOCAL<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
     texte <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
     f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
 </code></pre>
 
 

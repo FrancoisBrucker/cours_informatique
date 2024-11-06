@@ -470,7 +470,7 @@ $$
 <p>La preuve est construite en examinant plusieurs cas :</p>
 <p><strong>Premier cas :</strong> Il existe $x^\star$ tel que $\delta(x^\star) &lt; \Delta(G)$.</p>
 <p>On ordonne alors les $n$ sommets du graphe de telle sorte que $^\star = v_n$ et on ordonne en suivant l'algorithme :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">k <span class="token operator">=</span> n
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">k <span class="token operator">=</span> n
 i <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span>
 
 tant que i <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
@@ -478,8 +478,7 @@ tant que i <span class="token operator">></span> <span class="token number">0</s
     vi <span class="token operator">=</span> x
     i <span class="token operator">=</span> i<span class="token operator">-</span> <span class="token number">1</span>
   sinon<span class="token punctuation">:</span>
-    k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> 
-</code></pre>
+    k <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span> </code></pre>
 <p>Si le graphe est connexe, il est clair que cet ordre va placer tous les sommets par ordre décroissant en commençant par tous les voisins de $x_n$, puis tous les voisins de $x_{n-1}$ non encore placés, et ainsi de suite jusqu'à avoir placé tout le monde.</p>
 <p>Cet ordre va nous permettre d'obtenir la borne recherchée car lors de l'affectation des couleurs, il faudra toujours autant de couleurs que le nombre de ses voisins déjà placé plus 1. Comme l'ordre assure qu'il va exister $j &gt; i$ tel que $v_iv_j$ est une arête, ce nombre sera toujours inférieur à $\Delta(G)$. Une récurrence immédiate nous assure qu'il faudra au total moins de $\Delta(G)$ couleurs (au moins un no,bre entre 1 et $\Delta(G)$ sera disponible puisqu'il y aura au plus $\Delta(G)-1$ nombres déjà affectés).</p>
 <p><strong>Second cas :</strong> le graphe est régulier mais il existe $x^\star$ tel que si on le supprime on déconnecte $G$.</p>

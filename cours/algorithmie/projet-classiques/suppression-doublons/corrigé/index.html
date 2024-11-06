@@ -101,7 +101,7 @@
 <li>lire un élément d'une liste se fait en $\mathcal{O}(1)$ opérations.</li>
 </ul>
 <h2>Suppression de doublon en conservant l'ordre</h2>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Algorithme-2
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-2
 Entrées :
     L : une liste de n valeurs
 Programme :
@@ -110,8 +110,7 @@ Programme :
         x = L[0]
         ajoute x à la fin de L2
         L = algorithme-1(L, x)
-    Retour L2
-</code></pre>
+    Retour L2</code></pre>
 <h3>complexité de l'algorithme 2</h3>
 <p>Commençons par compter le nombre de fois où la boucle <code class="language-">tant que</code> sera exécutée. <code class="language-">L</code> est modifiée à chaque fin de boucle <code class="language-">L = algorithme-1(L, x)</code> avec <code class="language-">x = L[0]</code>. Comme l'algorithme de la question 1 rend la restriction de de <code class="language-">L</code> aux valeurs différentes de <code class="language-">x</code>, elle va forcément être strictement plus petite (puisque <code class="language-">x=L[0]</code> il est forcément dans la liste) : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de <code class="language-">L</code> initiale fois.</p>
 <p>La seule ligne de l'algorithme qui n'est pas de complexité $\mathcal{O}(1)$ est : <code class="language-">L = algorithme-1(L, x)</code>. Sa complexité est égale à une affectation ($\mathcal{O}(1)$) plus la complexité de l'algorithme de la question 1, qui vaut de l'ordre de la taille de la liste passée en entrée.</p>
@@ -142,7 +141,7 @@ Programme :
 <p>A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots, v_k]$</p>
 <h2>Suppression de doublon d'une liste ordonnée</h2>
 <p>Il suffit de parcourir tous les éléments de <code class="language-">L</code> dans l'ordre :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Algorithme-2'
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-2'
 Entrées :
     L : une liste de n valeurs
 Programme :
@@ -150,8 +149,7 @@ Programme :
     pour i allant de 1 à n-1:
         si L[i] != L[i-1]:
             ajoute L[i] à la fin de L2
-    Retour L2
-</code></pre>
+    Retour L2</code></pre>
 <h3>complexité de l'algorithme 2'</h3>
 <p>Clairement en $\mathcal{O}(n)$</p>
 <h3>preuve de l'algorithme 2'</h3>

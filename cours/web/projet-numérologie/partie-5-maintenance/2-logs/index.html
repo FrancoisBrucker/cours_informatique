@@ -130,7 +130,7 @@ log level : <a href="https://wiki.archlinux.org/title/Systemd/Journal">https://w
 
 <p>Nous allons utiliser <a href="https://github.com/winstonjs/winston">Winston</a> pour faire les logs de notre serveur car il est très versatile.</p>
 <p>Les <a href="https://github.com/winstonjs/winston">niveaux de log de Winston</a> sont par défaut :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> levels <span class="token operator">=</span> <span class="token punctuation">{</span> 
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> levels <span class="token operator">=</span> <span class="token punctuation">{</span> 
   <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
   <span class="token literal-property property">warn</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
   <span class="token literal-property property">info</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
@@ -138,14 +138,13 @@ log level : <a href="https://wiki.archlinux.org/title/Systemd/Journal">https://w
   <span class="token literal-property property">verbose</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
   <span class="token literal-property property">debug</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
   <span class="token literal-property property">silly</span><span class="token operator">:</span> <span class="token number">6</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>En production on pourra par exemple utiliser le level 0, en développement le 2 et en debug le 5.</p>
 <h3>Mise en place</h3>
 <p>Commençons par ajouter winston : <code>npm install --save winston</code></p>
 <p>Et créons un logger. Pour cela, on va créer un fichier <code class="fichier">logger.js</code> et mettre notre configuration winston à l'intérieur. Ce fichier sera ensuite importé dans tous les fichiers nécessitant des logs. Comme l'import est unique, ce sera le <strong>même</strong> logger qui sera utilisé partout (c'est ce qu'on appelle le <a href="https://nodejs.org/docs/latest/api/modules.html#modules_caching">caching</a>).</p>
 <p>Fichier <code class="fichier">logger.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> winston <span class="token keyword">from</span> <span class="token string">'winston'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> winston <span class="token keyword">from</span> <span class="token string">'winston'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">const</span> logger <span class="token operator">=</span> winston<span class="token punctuation">.</span><span class="token function">createLogger</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'verbose'</span><span class="token punctuation">,</span>
@@ -157,8 +156,7 @@ log level : <a href="https://wiki.archlinux.org/title/Systemd/Journal">https://w
     <span class="token keyword">new</span> <span class="token class-name">winston<span class="token punctuation">.</span>transports<span class="token punctuation">.</span>File</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'error.log'</span><span class="token punctuation">,</span> <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'error'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token keyword">new</span> <span class="token class-name">winston<span class="token punctuation">.</span>transports<span class="token punctuation">.</span>File</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'http.log'</span><span class="token punctuation">,</span> <span class="token literal-property property">level</span><span class="token operator">:</span> <span class="token string">'http'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>On a trois sorties :</p>
 <ul>
 <li>une dans la console pour (définie dans les options) tous les log de criticité inférieur à <code>'verbose'</code></li>
@@ -167,7 +165,7 @@ log level : <a href="https://wiki.archlinux.org/title/Systemd/Journal">https://w
 </ul>
 <h4><code class="fichier">index.js</code></h4>
 <p>Modifions notre fichier <code class="fichier">index.js</code> pour prendre en compte notre log :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -209,12 +207,11 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
 logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Start server at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
-
 </code></pre>
 <h4>Sequelize</h4>
 <p>On peut maintenant intégrer les logs de winston avec les sorties de sequelize en lui associant notre logger.</p>
 <p>Fichier <code class="fichier">db.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">
 <span class="token comment">// ...</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> logger <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./logger.js'</span><span class="token punctuation">;</span>
@@ -225,8 +222,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
   <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
   <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function-variable function">logging</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">msg</span><span class="token punctuation">)</span> <span class="token operator">=></span> logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>Winston daily rotate</h3>
 <p><a href="https://github.com/winstonjs/winston-daily-rotate-file">winston daily rotate</a> est un plugin winston qui permet de faire des log qui ne maintiennent qu'une durée fixe de log (une journée, semaine, etc) permettant ainsi aux logs de ne pas grossir indéfiniment.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -244,7 +240,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
 <h3>fin d'un fichier</h3>
 <p><code>tail -f http.log</code></p>
 <h3>clean</h3>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
 
 <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 
@@ -253,8 +249,7 @@ logger<span class="token punctuation">.</span><span class="token function">info<
         <span class="token property">"clean"</span><span class="token operator">:</span> <span class="token string">"rm *.log"</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-...
-</code></pre>
+...</code></pre>
 
 
 </article>

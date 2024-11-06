@@ -123,9 +123,8 @@
 <h2>Pointeurs</h2>
 <p>Exercices de manipulation de pointeurs.</p>
 <h3>Simple</h3>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -144,8 +143,7 @@
 </div></div>
 
 <h3>Allocation dynamique</h3>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>t <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>t <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">10</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -173,14 +171,13 @@
 <li><code class="language-">int donne_valeur(size_t i);</code> qui donne l'élément d'index <code class="language-">i</code> du tableau.</li>
 </ol>
 <p>Pour vos tests et pour le rendu, vous pourrez implémenter ces deux fonctions par des <a href="https://en.wikipedia.org/wiki/Method_stub"><em>stubs</em></a> (méthodes minimales pour répondre au problème) comme ceux-ci :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">donne_taille</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">donne_taille</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token number">10</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">donne_valeur</span><span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>i<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Si l'utilisateur final ne connaît ni <code class="language-">donne_taille</code> ni de <code class="language-">donne_valeur</code>, la fonction <code class="language-">donne_tableau</code> doit obligatoirement rendre deux informations :</p>
 <ul>
@@ -195,7 +192,7 @@
 
 <p>I faut donc pouvoir rendre 2 informations à l'utilisateur final alors que l'on ne peut en renvoyer qu'une avec un retour de fonction (<code class="language-">return</code>). La seconde information à donner à l'utilisateur final doit donc être rendue <em>via</em> un pointeur et il y a plusieurs façons de faire.</p>
 <p>On vous demande d'écrire la fonction <code class="language-">donne_tableau</code> selon différentes manières de rendre les deux données nécessaires. Le corps de la fonction <code class="language-">donne_tableau</code> est ci-après :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">XXX <span class="token function">donne_tableau</span><span class="token punctuation">(</span>XXX<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">XXX <span class="token function">donne_tableau</span><span class="token punctuation">(</span>XXX<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
   XXX
 
@@ -205,8 +202,7 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> XXX
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>On vous demande de remplir les <code class="language-">XXX</code> par le code nécessaire pour répondre à la question. Vous accompagnerez chaque implémentation d'un petit programme main illustrant son utilisation.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -288,8 +284,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Codez la fonction de décodage associée à <code class="language-">T</code>. La fonction doit avoir comme signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">decode</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">decode</span><span class="token punctuation">(</span><span class="token keyword">char</span> c<span class="token punctuation">)</span></code></pre>
 <p>Et devra rendre l'entier $i$ tel que $T[i] = c$.</p>
 </div></div>
 
@@ -318,8 +313,7 @@
 
 <p>Lorsque l'on utilise chaque <code class="language-">char</code> séparément pour un encodage en utf-8, il faut faire un peu attention car même si un <code class="language-">char</code> est codé sur 8 bits, il peut être considéré comme signé ou non. Comme nous avons besoin de considérer qu'un <code class="language-">char</code> est non signé pour rendre compte des caractères encodés sur plusieurs bytes : il nous faut convertir chaque <code class="language-">char</code> en entier non signé avant utilisation.</p>
 <p>Dans son standard c23, le <strong>C</strong> définit un type pour cela, <code class="language-">char8_t</code>, mais il n'est pas sûr que vous l'ayez déjà. Pour s'éviter tout soucis, définissez son type dans votre code :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token class-name">char8_t</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">unsigned</span> <span class="token keyword">char</span> <span class="token class-name">char8_t</span><span class="token punctuation">;</span></code></pre>
 <p>Et utilisez-le à chaque fois que vous devrez travailler avec un char d'une chaîne utf-8 sous la forme d'un entier (vous convertissant ce <code class="language-">char</code> en <code class="language-">char8_t</code>).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -333,11 +327,10 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Pour itérer sur chaque caractère d'une chaîne (sans le caractère <code class="language-">'\0'</code> final), vous pouvez utiliser ce genre de boucle <code class="language-">for</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">char8_t</span> x<span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">char8_t</span> x<span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">size_t</span> i<span class="token operator">=</span><span class="token number">0</span> <span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token function">strlen</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
    x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">char8_t</span><span class="token punctuation">)</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -359,8 +352,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant l'opérateur ET bit à bit <code class="language-">&amp;</code>, rendez l'entier correspondant au 4 bits de poids faible d'un <code class="language-">char8_t</code>. La fonction devra avoir comme signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">faible</span><span class="token punctuation">(</span><span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">faible</span><span class="token punctuation">(</span><span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -378,8 +370,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>En utilisant l'opérateur de décalage à droite bit à bit <code class="language-">&gt;&gt;</code>, rendez l'entier correspondant au 4 bits de poids fort d'un char. La fonction devra avoir comme signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">fort</span><span class="token punctuation">(</span><span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">size_t</span> <span class="token function">fort</span><span class="token punctuation">(</span><span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -398,8 +389,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez une fonction qui rend l'encodage en base16 d'un <code class="language-">char8_t</code> sous la forme d'une chaîne de caractères.</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span> <span class="token function">encode_char</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>sortie<span class="token punctuation">,</span> <span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">encode_char</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>sortie<span class="token punctuation">,</span> <span class="token class-name">char8_t</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>On suppose que <code class="language-">sortie</code> est assez grand pour contenir les deux caractères de la conversion plus le caractère '\0' de fin de chaîne, qu'il ne vous faudra pas oublier d'ajouter.</p>
 </div></div>
 
@@ -409,8 +399,7 @@
 <div class="pl-8 mr-8">
 <p>Implémentez une fonction qui rend l'encodage en base16 d'une chaîne de caractères.</p>
 <p>Votre fonction devra avoir la signature suivante :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">encode_base16</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">encode_base16</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Et devra rendre une chaîne de caractères.</p>
 </div></div>
 
@@ -427,8 +416,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Implémentez une fonction qui rend le <code class="language-">char8_t</code> associé à deux codes successifs. Cette fonction doit avoir comme signature :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token class-name">char8_t</span> <span class="token function">decode_char</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token class-name">char8_t</span> <span class="token function">decode_char</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>cs<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Où <code class="language-">cs</code> est un pointeur vers moins 2 <code class="language-">char</code> successifs.</p>
 </div></div>
 
@@ -446,8 +434,7 @@
 <div class="pl-8 mr-8">
 <p>Implémentez une fonction qui rend le décodage en base16 d'une chaîne de caractères.</p>
 <p>Votre fonction devra avoir la signature suivante :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">decode_base16</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">char</span> <span class="token operator">*</span><span class="token function">decode_base16</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Et devra rendre une chaîne de caractères.</p>
 </div></div>
 

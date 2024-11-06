@@ -137,7 +137,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>fichier <code class="fichier">carte.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">SEPT <span class="token operator">=</span> <span class="token string">"sept"</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">SEPT <span class="token operator">=</span> <span class="token string">"sept"</span>
 HUIT <span class="token operator">=</span> <span class="token string">"huit"</span>
 NEUF <span class="token operator">=</span> <span class="token string">"neuf"</span>
 DIX <span class="token operator">=</span> <span class="token string">"dix"</span>
@@ -195,10 +195,9 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">[
 
     <span class="token keyword">def</span> <span class="token function">__ge__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token punctuation">(</span>self <span class="token operator">==</span> other<span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>self <span class="token operator">></span> other<span class="token punctuation">)</span>
-
 </code></pre>
 <p>fichier <code class="fichier">test_carte.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> carte
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> carte
 <span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
 
 
@@ -225,7 +224,6 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">[
     <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span>
     <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span> <span class="token operator">></span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>CARREAU<span class="token punctuation">)</span>
     <span class="token keyword">assert</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>CARREAU<span class="token punctuation">)</span> <span class="token operator">&lt;</span> Carte<span class="token punctuation">(</span>carte<span class="token punctuation">.</span>DIX<span class="token punctuation">,</span> carte<span class="token punctuation">.</span>COEUR<span class="token punctuation">)</span>
-
 </code></pre>
 </div>
 </details>     
@@ -326,7 +324,7 @@ COULEURS <span class="token operator">=</span> <span class="token punctuation">[
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> random
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random
 
 <span class="token keyword">import</span> carte
 <span class="token keyword">from</span> carte <span class="token keyword">import</span> Carte
@@ -397,7 +395,6 @@ N <span class="token operator">=</span> <span class="token number">1</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"joueur 2 gagne."</span><span class="token punctuation">)</span>
 <span class="token keyword">else</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"match nul."</span><span class="token punctuation">)</span>
-
 </code></pre>
 </div>
 </details>     

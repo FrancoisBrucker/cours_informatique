@@ -144,18 +144,17 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre
-    <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
 </div>
 </details>     
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
 <p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exponentiation
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Exponentiation
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -164,8 +163,7 @@ Programme :
 3:    tant que c est strictement positif :
 4:        r = r * x
 5:        c = c - 1
-6:    Rendre r
-</code></pre>
+6:    Rendre r</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -189,14 +187,13 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    résultat <span class="token operator">=</span> nombre
-    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-        résultat <span class="token operator">*=</span> nombre
-        compteur <span class="token operator">-=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> résultat
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    résultat <span class="token operator">=</span> nombre</span>
+<span class="highlight-line">    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        résultat <span class="token operator">*=</span> nombre</span>
+<span class="highlight-line">        compteur <span class="token operator">-=</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> résultat</span></code></pre>
 </div>
 </details>     
 </div>
@@ -397,15 +394,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre
     <span class="token keyword">elif</span> exposant <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> puissance<span class="token punctuation">(</span>nombre <span class="token operator">*</span> nombre<span class="token punctuation">,</span> exposant <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> 
-</code></pre>
+    <span class="token keyword">return</span> </code></pre>
 <p>On a utilisé deux choses :</p>
 <ul>
 <li>L'opérateur <code class="language-">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si <code class="language-">exposant</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
@@ -417,7 +413,7 @@ $$
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :</p>
 <p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Exponentiation-indienne
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Exponentiation-indienne
 Entrées :
     x, n : deux entiers strictement positifs
 Programme :
@@ -432,8 +428,7 @@ Programme :
  9:            x = x * x
 10:            c = c / 2
 11:
-12:    Rendre r
-</code></pre>
+12:    Rendre r</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -457,7 +452,7 @@ Programme :
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     résultat <span class="token operator">=</span> nombre
     compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span>
 
@@ -469,8 +464,7 @@ Programme :
             nombre <span class="token operator">*=</span> nombre
             compteur <span class="token operator">/=</span> <span class="token number">2</span>
 
-    <span class="token keyword">return</span> résultat
-</code></pre>
+    <span class="token keyword">return</span> résultat</code></pre>
 </div>
 </details>     
 </div>
@@ -819,14 +813,13 @@ $$
 <li>$a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$</li>
 </ul>
 <p>Que l'on peut produire comme suit :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    a = [x]
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    a = [x]
     y = a[-1] * a[-1]
     tant que y < x ** n:        
         ajoute y à la fin de a
-        y = a[-1] * a[-1]
-</code></pre>
+        y = a[-1] * a[-1]</code></pre>
 <p>On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    c = n-1
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    c = n-1
     i = 0
     r = a[i]
     tant que c est strictement positif:
@@ -836,8 +829,7 @@ $$
             c = c - 1
         sinon:
             i = i + 1
-            c = c / 2
-</code></pre>
+            c = c / 2</code></pre>
 </div>
 </details>     
 </div>

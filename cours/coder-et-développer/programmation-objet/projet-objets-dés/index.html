@@ -204,7 +204,7 @@
 <div class="mx-8 pb-2">
 <p>Il y a une probabilité de $\frac{1}{6^{10}} = 1.6 \cdot 10^{-8}$ que le dé ne change jamais de position en 10 lancés.</p>
 <p>La user story donnerait en python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> dé <span class="token keyword">import</span> Dé
 
 <span class="token comment"># 1. créer un dé sans paramètre</span>
 dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span> 
@@ -215,8 +215,7 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <span class="token comment"># 3. lancer le dé 10 fois et affiche la position du dé après chaque lancé</span>
 <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
    dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span>
-</code></pre>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>dé<span class="token punctuation">.</span>position<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -321,13 +320,11 @@ dé <span class="token operator">=</span> Dé<span class="token punctuation">(</
 <div class="pl-8 mr-8">
 <p>Lorsque l'on décrit une méthode, on ne montre jamais <code class="language-">self</code>. Ce n'est en effet pas un paramètre de la méthode à proprement parlé, c'est l'<strong>objet</strong> de la méthode : il est à gauche du <code class="language-">.</code> lors de l'appel de la fonction.</p>
 <p>On pourrait (mais on ne le fait pas parce que c'est moins clair) replacer le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> un_dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> un_dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> un_dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> un_dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Par le code ci-après qui est équivalent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> un_dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> Dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span>un_dé<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> un_dé <span class="token operator">=</span> Dé<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> Dé<span class="token punctuation">.</span>lancer<span class="token punctuation">(</span>un_dé<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>Il <s>nous</s> vous reste à coder la méthode <code class="language-">Dé.lancer()</code> :</p>

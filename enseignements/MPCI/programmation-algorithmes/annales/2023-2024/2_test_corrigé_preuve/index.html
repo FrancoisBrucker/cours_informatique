@@ -214,12 +214,11 @@ C(n) = \mathcal{O}(1) + C(n-1)
 $$</p>
 <p>Ce qui donne une complexité de $C(n) = \mathcal{O}(n)$, et on en déduit que la complexité de <code class="language-">est_présent(chaine, caractère)</code> est en $\mathcal{O}(\text{len(chaine)})$.</p>
 <h3>2. Lettre dupliquée</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> possède_caractère_dupliqué<span class="token punctuation">(</span>chaine<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> possède_caractère_dupliqué<span class="token punctuation">(</span>chaine<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>chaine<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> est_présent_rec<span class="token punctuation">(</span>chaine<span class="token punctuation">,</span> chaine<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>Clair de part la définition de la fonctjion <code class="language-">est_présent_rec</code>.</p>
 <p>La complexité de la fonction <code class="language-">est_présent_rec</code>. est en $ \mathcal{O}(n)$ où la différence entre la longueur de chaine et i. <code class="language-">possède_caractère_dupliqué</code> est donc composée de deux boucles imbriquées dépendantes l'une de l'autre mais dont la seconde est strictement décroissante. Le cours donne alors comme complexité le produit des nombres max d'itérations fois la complexité de la boucle intérieure donc $\mathcal{O}(\text{len(chaine)}^2)$ ici.</p>
 <p>Si les deux premiers caractères sont identique, <code class="language-">est_présent_rec</code> ne va pas faire de récursions et dans ce cas là il faut $\mathcal{O}(1)$ opérations pour exécuter l'algorithme.</p>

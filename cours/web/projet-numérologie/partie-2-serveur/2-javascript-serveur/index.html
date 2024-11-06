@@ -101,29 +101,27 @@
 <p>TBD : à refaire sans json. Uniquement avec du texte.</p>
 </blockquote>
 <p>Le projet ressemble maintenant à ça, en excluant le dossier <code class="fichier">node_modules</code> :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">.
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">.
 ├── index.js
 ├── package-lock.json
 ├── package.json
 └── static
     ├── index.html
     ├── main.css
-    └── numérologie.js
-</code></pre>
+    └── numérologie.js</code></pre>
 <p>Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format <a href="https://www.json.org/json-fr.html">json</a> qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.</p>
 <p>Dans cette partie, retenez donc juste que l'on transfère (via le format json) des dictionnaires depuis le serveur vers le client.</p>
 <h2>Route avec paramètres</h2>
 <p>Pour passer les données au serveur, nous allons utiliser les <a href="/cours_informatique/cours_informatique/cours/web/serveur-web/routes-param%C3%A8tres#query">routes avec query du cours</a>. Pour notre projet, on veut qu'une fois que l'utilisateur a rempli le formulaire il appuie sur le bouton d'envoi qui demande au serveur le numéro associé au prénom. Une fois que l'on a reçu la réponse du serveur on met à jour la page.</p>
 <p>Commençons par traiter le plus simple, la réponse du serveur. Il doit répondre à la requête avec paramètres (<a href="http://127.0.0.1:3000/chaine/Fran%C3%A7ois">http://127.0.0.1:3000/chaine/François</a> ou <a href="http://localhost:3000/prenom?valeur=fran%C3%A7ois">http://localhost:3000/prenom?valeur=françois</a> selon la méthode choisie) par un dictionnaire contenant les réponses :</p>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json"><span class="token punctuation">{</span>
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
   prénom<span class="token operator">:</span> <span class="token string">"François"</span><span class="token punctuation">,</span>
   chiffre<span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>On va procéder en 2 temps. On commence par créer la route, puis on va y intégrer la logique de conversion</p>
 <h3>Route</h3>
 <p>Ce dictionnaire est envoyé au client sous la forme d'un objet objet <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/Objects/JSON">json</a>. Avant de donner une véritable valeur en utilisant <code class="fichier">numérologie.js</code> occupons nous d'envoyer notre dictionnaire au format json. Nous avons chois d'utiliser la méthode avec query :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/prenom'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
@@ -136,11 +134,10 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <h3>Logique de conversion</h3>
 <p>Pour associer un numéro spécifique à chaque prénom, on reprend le fichier <code class="fichier">static/numérologie.js</code> qu'il faut pouvoir intégrer au serveur. Pour cela, on va commencer par le placer dans un dossier particulier : <code class="fichier">numérologie/back/numérologie.js</code> puis il faut le modifier pour le transformer en module ES6 :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">
 <span class="token keyword">function</span> <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token parameter">chaîne</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> somme <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> chaîne<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -170,8 +167,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">chiffre</span><span class="token operator">:</span> chiffreAssocie<span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>A à la fin du module, on décrit ce que l'on veut exporter. Ici un dictionnaire qui va associer la fonction <code class="language-">chiffreAssocie</code> au nom <code class="language-">chiffre</code></p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -183,7 +179,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <p>Lorsque l'on <code class="language-">import toto from './titi.js'</code>, on rend l'objet <code class="language-">export default</code> du fichier <code class="fichier">titi.js</code> et on l'appelle <code class="language-">toto</code>. Pour <code class="fichier">numérologie.js</code>, j'exporte un objet qui a un attribut <code class="language-">chiffre</code> associé à la fonction chiffreAssocie.</p>
 <p>On peut alors l'utiliser comme ça dans <code class="fichier">serveur.js</code> :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 <span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">'./back/numérologie.js'</span><span class="token punctuation">;</span> <span class="token comment">//import</span>
 
@@ -200,8 +196,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -213,7 +208,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 <h2>Réception des données par le client</h2>
 <p>Pour récupérer les données côté client, il faut que l'on envoie une requête avec la query lorsque l'on clique sur le bouton et que l'on attende la réponse du serveur avant de changer la valeur dans le paragraphe.</p>
 <p>Ceci peut se faire simplement avec un petit bout de javascript côté client, en utilisant la fonction <a href="https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch">fetch</a>, très pratique, qui permet de récupérer des choses sur internet avec des <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Using_promises">promesses</a> :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> prenom <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#form-input"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>prenom<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/prenom/?valeur='</span> <span class="token operator">+</span> prenom<span class="token punctuation">)</span>
@@ -227,15 +222,14 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
     <span class="token punctuation">}</span>
 
     event<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Une promesse permet d'attendre que quelque chose d'asynchrone se fasse (ici le retour de notre appel serveur), puis (avec <code>.then</code>) de faire des choses. Ici :</p>
 <ol>
 <li>une fois que le serveur a répondu, on transforme le résultat en json</li>
 <li>avec le json (le second <code class="language-">.then</code>) on peut facilement accéder aux données pour changer le chiffre.</li>
 </ol>
 <p>Ce qui donne le fichier html suivant :</p>
-<pre class="language-html " style="counter-reset: linenumber 0"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<pre class="language-html" tabindex="0" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">doctype</span> <span class="token name">html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -279,8 +273,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>On a aussi supprimé l'appel au fichier <code class="fichier">numérologie.js</code> qui est maintenant inutile.</p>
 <h2>Url et utf8</h2>
 <p>Vous avez sûrement remarqué que nos routes ne sont pas du vrai français :</p>
@@ -300,25 +293,23 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </div></div>
 
 <p>Pour ne pas à avoir à se rappeler des encodages, on pourra utiliser les fonction <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/encodeURI">encodeURI()</a> et <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/decodeURI">decodeURI</a> pour simplifier l'écriture d'url en utf8. Ainsi, dans notre cas, on aurait pu écrire :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">chaîne</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">':prenom'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>params<span class="token punctuation">)</span>
     res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>ou :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token function">encodeURI</span><span class="token punctuation">(</span><span class="token string">'/prenom'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">)</span>
     res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>pour écrire nos urls sans faute de Français.</p>
 
 

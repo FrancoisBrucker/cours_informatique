@@ -255,7 +255,7 @@
 <p>Savoir si un graphe est biparti est <em>&quot;facile&quot;</em> en utilisant un algorithme de marquage qui associe une couleur à chaque sommet.</p>
 <p>On considère que le graphe est connexe dans l'algorithme suivant, o. S'il ne l'est pas on le relance sur chacune des parties connexes.</p>
 <p>On retrouve un algorithme de marquage puis examen de sommets, comme <a href="../flots">l'algorithme de recherche de chaîne augmentante de Ford et Fulkerson</a>. Ce principe général permet de résoudre efficacement beaucoup de problèmes en théorie des graphes.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">Initialisation <span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">Initialisation <span class="token punctuation">:</span>
 
     On possède deux couleurs<span class="token punctuation">.</span>
     Soit x un sommet du graphe que l'on marque avec une couleur
@@ -272,7 +272,6 @@ Boucle principale <span class="token punctuation">:</span>
                 marquer y avec la couleur différente de celle de x
     
     FIN <span class="token punctuation">:</span> le graphe est biparti et la couleur des sommets determine les <span class="token number">2</span> stables
-
 </code></pre>
 <blockquote>
 <p>TBD à écrire propre</p>

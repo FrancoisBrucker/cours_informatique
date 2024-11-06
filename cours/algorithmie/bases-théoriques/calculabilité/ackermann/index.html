@@ -140,7 +140,7 @@ $$
 </details>     
 </div>
 <p>La fonction étant définie on peut écrire l'algorithme suivant, qui va bien fonctionner :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : Ack
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Ack
 Entrées :
     m, n : entiers
 Programme :
@@ -150,8 +150,7 @@ Programme :
         rend Ack(m-1, 1)
     Sinon:
         n' = Ack(m, n-1)
-        rend Ack(m-1, n')
-</code></pre>
+        rend Ack(m-1, n')</code></pre>
 <p>Le calcul de la fonction en utilisant l'algorithme précédent est possible, mais le nombre de récursions est très très important. Pour calculer $\text{Ack}(2, 3)$ par exemple, on a les récurrences suivantes :</p>
 <ul>
 <li>$\text{Ack}(2, 1) = \text{Ack}(1, \text{Ack}(2, 0))$

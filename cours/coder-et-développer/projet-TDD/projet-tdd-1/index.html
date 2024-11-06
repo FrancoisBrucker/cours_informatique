@@ -133,15 +133,14 @@
 <p>Codons un test qui  valide cette item dans le fichier <code class="fichier">test_monnaie.py</code></p>
 </div></div>
 
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
     cinq<span class="token punctuation">.</span>fois<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
     
-    <span class="token keyword">assert</span> <span class="token number">10</span> <span class="token operator">==</span> cinq<span class="token punctuation">.</span>montant
-</code></pre>
+    <span class="token keyword">assert</span> <span class="token number">10</span> <span class="token operator">==</span> cinq<span class="token punctuation">.</span>montant</code></pre>
 <p>Nous n'avons pas encore écrit de classe <code class="language-">Dollar</code>, mais on l'utilise déjà...</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -163,7 +162,7 @@
 </ul>
 <h3><span id="faire-1.3"></span> Faire</h3>
 <p>Rien ne marche avec nos tests lorsqu'on les exécute via le terminal :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">» python -m pytest test_monnaie.py
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">» python -m pytest test_monnaie.py
 ======================== test session starts =========================
 platform darwin -- Python 3.9.9, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /projet-tdd
@@ -183,8 +182,7 @@ E   ModuleNotFoundError: No module named 'monnaie'
 ====================== short test summary info =======================
 ERROR test_monnaie.py
 !!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!
-========================= 1 error in 0.13s ===========================
-</module></code></pre>
+========================= 1 error in 0.13s ===========================</module></code></pre>
 <p>Ça en fait des erreurs !</p>
 <p>Mais c'est une chance, car les messages d'erreurs vont nous permettre de faire un programme qui fonctionne. Il suffit de les supprimer une à une.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -198,8 +196,7 @@ ERROR test_monnaie.py
 
 <p>On va donc lire attentivement les messages d'erreurs de python et les régler petit à petit. Un message d'erreur <strong>est informatif</strong> si on se force à les lire.</p>
 <p>Nos tests ratent à cause d'une erreur. On le voit à cette ligne :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E   ModuleNotFoundError: No module named 'monnaie'
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">E   ModuleNotFoundError: No module named 'monnaie'</code></pre>
 <p>L'erreur est explicite :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -211,8 +208,7 @@ ERROR test_monnaie.py
 </div></div>
 
 <p>On relance nos tests et maintenant l'erreur est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E   ImportError: cannot import name 'Dollar' from 'monnaie' (/projet-tdd/monnaie.py)
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">E   ImportError: cannot import name 'Dollar' from 'monnaie' (/projet-tdd/monnaie.py)</code></pre>
 <p>Encore une fois, l'erreur est explicite : il n'existe pas de module <code class="language-">monnaie</code>. Créons en un :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -224,14 +220,12 @@ ERROR test_monnaie.py
 </div></div>
 
 <p>Pour créer une classe vide, il suffit de mettre une unique instruction <code>pass</code> (qui ne fait rien mais permet de ne pas faire d'erreur lorsque l'on crée un bloc sans instructions) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span></code></pre>
 <p>On relance nos tests et maintenant l'erreur (toujours explicite) est :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    def test_multiplication():
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    def test_multiplication():
 >       cinq = Dollar(5)
-E       TypeError: Dollar() takes no arguments
-</code></pre>
+E       TypeError: Dollar() takes no arguments</code></pre>
 <p>Qu'à cela ne tienne, ajoutons un argument à la création de dollar :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -240,15 +234,13 @@ E       TypeError: Dollar() takes no arguments
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez un argument à la création d'un objet de la classe <code class="language-">Dollar</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
   <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-      <span class="token keyword">pass</span>
-</code></pre>
+      <span class="token keyword">pass</span></code></pre>
 </div></div>
 
 <p>On relance nos tests et maintenant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">E       AttributeError: 'Dollar' object has no attribute 'fois'
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">E       AttributeError: 'Dollar' object has no attribute 'fois'</code></pre>
 <p>On sait faire, on ajoute une méthode vide pour que cette erreur disparaisse :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -257,23 +249,21 @@ E       TypeError: Dollar() takes no arguments
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez une méthode <code class="language-">fois</code> vide dans la classe <code class="language-">Dollar</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">pass</span>
  
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
-</code></pre>
+        <span class="token keyword">pass</span></code></pre>
 </div></div>
 
 <p>On relance nos tests et... encore une erreur. Heureusement, comme toutes les autres elle est facile à résoudre :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    def test_multiplication():
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    def test_multiplication():
         cinq = Dollar(5)
         cinq.fois(2)
     
 >       assert 10 == cinq.montant
-E       AttributeError: 'Dollar' object has no attribute 'montant'
-</code></pre>
+E       AttributeError: 'Dollar' object has no attribute 'montant'</code></pre>
 <p>On voit de plus que <code class="language-">montant</code> doit être égal à 10, donc vite vite, on corrige cette erreur :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -282,17 +272,16 @@ E       AttributeError: 'Dollar' object has no attribute 'montant'
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez un attribut <code class="language-">montant</code> qui vaut 10 à tout objet <code class="language-">Dollar</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> <span class="token number">10</span>
  
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">pass</span>
-</code></pre>
+        <span class="token keyword">pass</span></code></pre>
 </div></div>
 
 <p>On relance nos tests et...</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">» python -m pytest test_monnaie.py
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">» python -m pytest test_monnaie.py
 ======================== test session starts =========================
 platform darwin -- Python 3.9.9, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /projet-tdd
@@ -300,8 +289,7 @@ plugins: dash-1.19.0, cov-3.0.0
 collected 1 item
 test_monnaie.py .
 
-========================== 1 passed in 0.01s =========================
-</code></pre>
+========================== 1 passed in 0.01s =========================</code></pre>
 <p><strong>Incroyable !</strong> Nos tests passent (c'est émouvant).</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -317,47 +305,42 @@ test_monnaie.py .
 <p>La première duplication évidente est le nombre <code class="language-">10</code> du test qui est dupliqué avec le <code class="language-">10</code> du <code class="language-">self.montant</code>. Comme on en a l'habitude maintenant, on va supprimer cette duplication petit à petit :</p>
 <p>Après chaque modification, on s'assure que les tests passent : on ne modifie du code que si tout est vert. Ceci nous assure que l'on ne casse pas le programme.</p>
 <p>Dans la classe <code class="language-">Dollar</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> <span class="token number">10</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Le <code class="language-">10</code> est en fait un <code class="language-">5 * 2</code> (On crée au départ $5).</p>
 <p>On effectue la modification :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> <span class="token number">5</span> <span class="token operator">*</span> <span class="token number">2</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Et on lance nos tests pour vérifier que rien n'est cassé.</p>
 <p>Le <code class="language-">5</code> qu'on vient de rajouter est aussi une duplication du test <code class="language-">cinq = Dollar(5)</code>. Modifions alors le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant <span class="token operator">*</span> <span class="token number">2</span>
 
-    <span class="token comment"># ...</span>
-</code></pre>
+    <span class="token comment"># ...</span></code></pre>
 <p>Et on vérifie que les tests passent.</p>
 <p>Le <code class="language-">2</code> est aussi une duplication, mais elle vient d'une autre ligne du test : <code class="language-">cinq.fois(2)</code>. Commençons donc pas déplacer notre 2 dans la méthode <code class="language-">fois</code> pour voir si c'est possible :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">*=</span> <span class="token number">2</span>
-
 </code></pre>
 <p>On lance nos tests... et... ça passe !</p>
 <p>On peut supprimer le 2 dans le code de la classe <code class="language-">Dollar</code> et supprimer cette duplication :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">*=</span> multiplicateur
-
 </code></pre>
 <p>Nos tests continuent de passer et nous n'avons plus de duplication: on peut supprimer la tâche de la todo list</p>
 <h3><span id="todo-list-1.3"></span> Todo list</h3>
@@ -430,7 +413,7 @@ test_monnaie.py .
 </ul>
 <h3><span id="faire-2.1"></span> Faire</h3>
 <p>Pour vérifier que nos 5 dollars restent 5 dollars, on peut faire un test du style :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> money <span class="token keyword">import</span> Dollar
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> money <span class="token keyword">import</span> Dollar
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -440,8 +423,7 @@ test_monnaie.py .
 
     cinq<span class="token punctuation">.</span>fois<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
         
-    <span class="token keyword">assert</span> <span class="token number">15</span> <span class="token operator">==</span> cinq<span class="token punctuation">.</span>montant
-</code></pre>
+    <span class="token keyword">assert</span> <span class="token number">15</span> <span class="token operator">==</span> cinq<span class="token punctuation">.</span>montant</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -488,7 +470,7 @@ test_monnaie.py .
 
 <p>Pour un <em>value object</em>, à la place de modifier un objet il faut en rendre un nouveau : la méthode <code class="language-">fois</code> doit rendre un objet. Modifions notre test  :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -500,7 +482,6 @@ test_monnaie.py .
     quinze <span class="token operator">=</span> cinq<span class="token punctuation">.</span>fois<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 
     <span class="token keyword">assert</span> <span class="token number">15</span> <span class="token operator">==</span> quinze<span class="token punctuation">.</span>montant
-
 </code></pre>
 <p>Le test est bien plus joli : il est lisible et compréhensible. Bon bien sur, ce n'est que le début :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -550,13 +531,12 @@ test_monnaie.py .
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
     <span class="token keyword">def</span> <span class="token function">fois</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -592,13 +572,12 @@ test_monnaie.py .
 <h3><span id="faire-3.1"></span> Faire</h3>
 <p>On va utiliser pour cela des méthodes spéciales de python qui permettent d'utiliser les opérateurs <code class="language-">==</code> et <code class="language-">!=</code> même si ce n'est pas pour comparer des entiers. Mais avant d'aller plus loin, les tests.</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_egalite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -612,7 +591,7 @@ test_monnaie.py .
 <p>L'implémentation n'étant pas forcément évidente :</p>
 <p>Commençons par faire marcher le test en utilisant la technique <em>fake it</em> :</p>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> amount<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>amount <span class="token operator">=</span> amount
 
@@ -620,8 +599,7 @@ test_monnaie.py .
         <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>self<span class="token punctuation">.</span>amount <span class="token operator">*</span> multiplier<span class="token punctuation">)</span>
         
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token boolean">True</span>
-</code></pre>
+        <span class="token keyword">return</span> <span class="token boolean">True</span></code></pre>
 <p>Avec ce code lorsque l'on écrit <code class="language-">x == y</code>, python le re-écrit en : <code class="language-">x.__eq__(y)</code>. Du coup notre <em>fake it</em> fait passer le test.</p>
 <p>Maintenant, les choses sérieuses : on supprime les duplications. On suppose que l'on ne sait pas résoudre le problème. Pour trouver une solution, on utilise le dernier pattern du TDD :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -661,7 +639,7 @@ test_monnaie.py .
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_egalite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -670,8 +648,7 @@ test_monnaie.py .
 <span class="token keyword">def</span> <span class="token function">test_non_egalite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Dollar<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -709,11 +686,10 @@ test_monnaie.py .
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant
-</code></pre>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant</code></pre>
 </div>
 </details>     
 </div>
@@ -761,7 +737,7 @@ test_monnaie.py .
 <h3><span id="faire-4.1"></span> Faire</h3>
 <p>Pour le test, il suffit de modifier le test de la multiplication :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -773,8 +749,7 @@ test_monnaie.py .
 
     <span class="token keyword">assert</span> <span class="token number">15</span> <span class="token operator">==</span> quinze<span class="token punctuation">.</span>montant
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -799,7 +774,7 @@ test_monnaie.py .
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
@@ -808,7 +783,6 @@ test_monnaie.py .
 
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant
-
 </code></pre>
 </div>
 </details>     
@@ -842,7 +816,7 @@ test_monnaie.py .
 <h3><span id="faire-5.1"></span> Faire</h3>
 <p>Il ne manque pas grand chose pour que <code class="language-">montant</code> soit privé. Il suffit de ne pas en parler dans les tests et de ne comparer que des objets entres eux :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -853,10 +827,9 @@ test_monnaie.py .
     quinze <span class="token operator">=</span> cinq <span class="token operator">*</span> <span class="token number">3</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">==</span> quinze
 
-<span class="token comment">#... </span>
-</code></pre>
+<span class="token comment">#... </span></code></pre>
 <p>On peut même encore faire plus joli :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -864,8 +837,7 @@ test_monnaie.py .
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">2</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">3</span>
 
-<span class="token comment">#... </span>
-</code></pre>
+<span class="token comment">#... </span></code></pre>
 <p>Notez que l'on a utilisé une fonctionnalité que l'on vient de créer (<code class="language-">__mul__</code>) pour améliorer un test. C'est normal les tests et le code forment une seule entité.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -911,7 +883,7 @@ test_monnaie.py .
 <h3><span id="code-fin-1"></span> Code</h3>
 <p>A la fin de cette partie, on a 2 fichiers.</p>
 <h4><code class="fichier">monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
@@ -920,10 +892,9 @@ test_monnaie.py .
 
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant
-
 </code></pre>
 <h4><code class="fichier">test_monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -939,7 +910,6 @@ test_monnaie.py .
 
 <span class="token keyword">def</span> <span class="token function">test_non_egalite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Dollar<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
-
 </code></pre>
 
 

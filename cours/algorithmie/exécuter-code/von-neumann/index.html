@@ -102,8 +102,7 @@
 <p>On se place donc dans le cas où l'on souhaite exécuter du code écrit en <a href="../pseudo-assembleur">pseudo-assembleur</a> sur une machine de $N=2^S$ cases mémoires. On supposera ici que $S$ vaut 64, ou plus.</p>
 <h2>Unifier mémoire et code</h2>
 <p>Chaque ligne de code du pseudo-assembleur est constituée de la même manière :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">OP <span class="token comment">#1 #2 #3 </span></code></pre>
 <p>Où <code>OP</code> est le nom de l'instruction et <code>#1</code>, <code>#2</code> et <code>#3</code> des registres ou des constantes.</p>
 <p>Comme on a un nombre fini d'opérations et de registres, on peut associer :</p>
 <ul>
@@ -162,13 +161,12 @@
 </div></div>
 
 <p>Prenons l'exemple suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">empile<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">empile<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 empile<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 2</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span>
 dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>accès<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># rendra 1</span></code></pre>
 <p>La pile est une structure fondamentale en algorithmie (on y reviendra) et permet de résoudre efficacement tout un tas de problèmes lié au stockage de données. Le modèle de Von Neumann l'utilise pour gérer efficacement les variables et les appels de fonctions.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -230,7 +228,7 @@ dépile<span class="token punctuation">(</span><span class="token punctuation">)
 <h4>Stocker des variables</h4>
 <p>Lorsqu'une variable est créée en mémoire son adresse est empilée et le code y accède via la pile.</p>
 <p>On peut y accéder via le registre <code>SP</code>. Par exemple avec cette boucle for qui calcule factorielle 4 :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 PUSH <span class="token number">0</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>SP<span class="token punctuation">:</span>SP<span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -242,8 +240,7 @@ M<span class="token punctuation">[</span>u<span class="token punctuation">(</spa
 affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>SP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-GOTOIFNOT ZÉRO <span class="token number">9</span>
-</code></pre>
+GOTOIFNOT ZÉRO <span class="token number">9</span></code></pre>
 <p>Le programme va créer 2 variables en faisant pour chacune 2 opérations :</p>
 <ol>
 <li>création de l'objet en mémoire</li>
@@ -278,7 +275,7 @@ GOTOIFNOT ZÉRO <span class="token number">9</span>
 </details>     
 </div>
 <p>Mais on a coutume d'accéder aux variables par rapport à <code>FP</code> car cela permet d'accéder à l'objet sans changer d'adresse. Le code précédent devient alors :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
 PUSH <span class="token number">0</span>
 
 affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
@@ -290,8 +287,7 @@ M<span class="token punctuation">[</span>u<span class="token punctuation">(</spa
 affiche à l'écran u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
 M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-GOTOIFNOT ZÉRO <span class="token number">9</span>
-</code></pre>
+GOTOIFNOT ZÉRO <span class="token number">9</span></code></pre>
 <p>Dans une frame, les données (en mémoire) sont toujours associé aux même variables (valeurs selon <code>FP</code>).</p>
 <h4>Supprimer des variables</h4>
 <p>Lorsque l'on a plus besoin d'un objet, on le dépile et on peut réutiliser la mémoire qu'il utilisait. Pour que cela fonctionne il faut créer et supprimer les variables dans l'ordre, on ne peux pas supprimer une variable sans supprimer également toutes celles qui ont étés crées après elle.</p>
@@ -350,7 +346,7 @@ GOTOIFNOT ZÉRO <span class="token number">9</span>
 </ol>
 <p>La partie 3.1.2 permet de gérer facilement les variables locales à la fonction. On remet tout en place en 3.3.3 où le replace le pointeur <code>FP</code> à sa valeur d'avant l'appel de la fonction.</p>
 <p>Voici un exemple avec le code de la factorielle itérative :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">#### Main</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment">#### Main</span>
 
 M<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">:</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>   <span class="token comment"># paramètre de la fonction</span>
 PUSH <span class="token number">0</span>          
@@ -376,8 +372,7 @@ GOTOIFNOT ZÉRO <span class="token number">19</span>
 POP $<span class="token number">1</span>          <span class="token comment"># retour de fonction</span>
 POP FP          <span class="token comment"># ancien frame</span>
 
-POP IP          <span class="token comment"># retour de la fonction</span>
-</code></pre>
+POP IP          <span class="token comment"># retour de la fonction</span></code></pre>
 <p>Si on avait utilisé le code de la factorielle récursive, il aurait fallut faire attention à où l'on stockait la variable locale. Pour cela, on peut réserver un registre qui indique la valeur maximum où sont stockés les données et on l'incrémente ou décrémente dès que l'on crée ou supprime des données.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -402,27 +397,26 @@ POP IP          <span class="token comment"># retour de la fonction</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment">#### factorielle recursive</span>
-
-PUSH FP           
-FP <span class="token operator">=</span> SP
-
-M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># une variable locale crée après p</span>
-PUSH S
-p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> S            <span class="token comment"># incrémente p</span>
-
-M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-GOTOIFNOT ZÉRO <span class="token number">19</span>
-
-POP $<span class="token number">1</span>          <span class="token comment"># retour de fonction</span>
-p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">-</span> S    
-POP FP          
-
-POP IP          
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token comment">#### factorielle recursive</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">PUSH FP           </span>
+<span class="highlight-line">FP <span class="token operator">=</span> SP</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>u<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token operator">+</span>S<span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># une variable locale crée après p</span></span>
+<span class="highlight-line">PUSH S</span>
+<span class="highlight-line">p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">+</span> S            <span class="token comment"># incrémente p</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">-</span>S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=</span> b<span class="token punctuation">(</span>u<span class="token punctuation">(</span>M<span class="token punctuation">[</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>2S<span class="token punctuation">:</span>u<span class="token punctuation">(</span>FP<span class="token punctuation">)</span><span class="token operator">+</span>3S<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">GOTOIFNOT ZÉRO <span class="token number">19</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">POP $<span class="token number">1</span>          <span class="token comment"># retour de fonction</span></span>
+<span class="highlight-line">p <span class="token operator">=</span> u<span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token operator">-</span> S    </span>
+<span class="highlight-line">POP FP          </span>
+<span class="highlight-line"></span>
+<span class="highlight-line">POP IP          </span>
+<span class="highlight-line"></span></code></pre>
 </div>
 </details>     
 </div>

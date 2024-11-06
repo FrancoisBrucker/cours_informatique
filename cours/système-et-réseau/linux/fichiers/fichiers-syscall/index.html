@@ -152,32 +152,31 @@
 </blockquote>
 <p>Plusieurs programmes :</p>
 <h3>Ouverture et/ou création</h3>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;errno.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/stat.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
+#include <errno.h>
+#include <sys types.h="">
+#include <sys stat.h="">
+#include <fcntl.h>
+#include <unistd.h>
 
-<span class="token keyword">extern</span> <span class="token keyword">int</span> errno<span class="token punctuation">;</span>
+extern int errno;
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span><span class="token punctuation">,</span>
-                  O_WRONLY<span class="token operator">|</span>O_CREAT<span class="token operator">|</span>O_TRUNC<span class="token punctuation">,</span>
-                  S_IRUSR <span class="token operator">|</span> S_IWUSR <span class="token operator">|</span> S_IRGRP <span class="token operator">|</span> S_IROTH <span class="token operator">|</span> S_IWOTH<span class="token punctuation">)</span><span class="token punctuation">;</span>
+int main()
+{
+    int fd = open("mon-fichier.txt",
+                  O_WRONLY|O_CREAT|O_TRUNC,
+                  S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH | S_IWOTH);
 
-    <span class="token comment">//printf("fd = %d\n", fd);</span>
+    //printf("fd = %d\n", fd);
 
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>fd <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"Erreur"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    if (fd == -1) {
+        perror("Erreur");
+    }
 
-    <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    close(fd);
+    return 0;
+}
+</unistd.h></fcntl.h></sys></sys></errno.h></stdio.h></code></pre>
 <p>une fois compilé, on peut exécuter le code. Il crée un fichier nommé <code>mon-fichier.txt</code> dans le dossier courant. En lisant la page <code>man 2 open</code> (la section 2 est pour les appels systèmes) on voit que l'on :</p>
 <ul>
 <li>crée ou ouvre un fichier en écriture</li>
@@ -196,7 +195,7 @@
 </div></div>
 
 <p>En utilisant <code>ltrace</code> pour voir les appels aux bibliothèques :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ ltrace ./a.out
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ ltrace ./a.out
 __libc_start_main<span class="token punctuation">(</span>0xaaaacf2e0854, <span class="token number">1</span>, 0xffffc805d068, <span class="token number">0</span> <span class="token operator">&lt;</span>unfinished <span class="token punctuation">..</span>.<span class="token operator">></span>
 open<span class="token punctuation">(</span><span class="token string">"mon-fichier.txt"</span>, <span class="token number">577</span>, 0646<span class="token punctuation">)</span>               <span class="token operator">=</span> <span class="token number">3</span>
 printf<span class="token punctuation">(</span><span class="token string">"fd = %d<span class="token entity" title="\n">\n</span>"</span>, 3fd <span class="token operator">=</span> <span class="token number">3</span>
@@ -204,7 +203,6 @@ printf<span class="token punctuation">(</span><span class="token string">"fd = %
 close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                         <span class="token operator">=</span> <span class="token number">0</span>
 __cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e0800, 0x10dd0, <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span>
 +++ exited <span class="token punctuation">(</span>status <span class="token number">0</span><span class="token punctuation">)</span> +++
-
 </code></pre>
 <p>On voit qu'il y en à 3 : <code>open</code>, <code>printf</code> et <code>close</code>. Ils correspondent à des appels à la libc. Pour utiliser des fichiers, le  process doit demander au noyau de le faire via des appels systèmes. On peut les voir avec la commande <code>strace</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -227,7 +225,7 @@ __cxa_finalize<span class="token punctuation">(</span>0xaaaacf2f1048, 0xaaaacf2e
 </ul>
 </div></div>
 
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">strace</span> ./a.out
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">strace</span> ./a.out
 execve<span class="token punctuation">(</span><span class="token string">"./a.out"</span>, <span class="token punctuation">[</span><span class="token string">"./a.out"</span><span class="token punctuation">]</span>, 0xfffffb9635d0 /* <span class="token number">46</span> vars */<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">0</span>
 brk<span class="token punctuation">(</span>NULL<span class="token punctuation">)</span>                               <span class="token operator">=</span> 0xaaab1d30f000
 mmap<span class="token punctuation">(</span>NULL, <span class="token number">8192</span>, PROT_READ<span class="token operator">|</span>PROT_WRITE, MAP_PRIVATE<span class="token operator">|</span>MAP_ANONYMOUS, -1, <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">=</span> 0xffff94947000
@@ -259,7 +257,6 @@ openat<span class="token punctuation">(</span>AT_FDCWD, <span class="token strin
 close<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>                                <span class="token operator">=</span> <span class="token number">0</span>
 exit_group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>                           <span class="token operator">=</span> ?
 +++ exited with <span class="token number">0</span> +++
-
 </code></pre>
 <p>Tout le début des appels systèmes est là pour mettre en mémoire le programme, charger la bibliothèque partagée <code>libc</code> et faire les différents liens pour permettre son exécution.</p>
 <p>Les 3 derniers appels sont en revanche issus de notre code :</p>

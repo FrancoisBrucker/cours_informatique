@@ -97,8 +97,7 @@
   <p>Un pointeur est une variable contenant une adresse.</p>
 <h2>Pointeur générique</h2>
 <p>En <code>C</code> cela se déclare ainsi :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">void</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">void</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span></code></pre>
 <p>La ligne ci-dessus définie une variable <code>p</code> contenant une adresse mémoire. On initialise cette adresse à <code>NULL</code>, qui correspond à <code>0x0</code>, c'est à dire l'adresse invalide.</p>
 <p>On peut bien sur afficher sa valeur :</p>
 <pre><code>printf(&quot;%p&quot;, p)
@@ -109,14 +108,12 @@
 <p>Qui vaut sur ma machine 8B=64b, ce qui semble raisonnable.</p>
 <p>Ce type de pointeur n'est cependant pas très utile car l'adresse sur laquelle il pointe n'est pas utilisable. Le principal intérêt des pointeurs est de pouvoir être associé à l'adresse d'une vraie donnée.</p>
 <p>Ceci se fait avec l'opérateur d'indirection <code>&amp;</code>. Si par exemple on a :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span></code></pre>
 <p>On peut affecter la valeur de l'adresse où est stocké 42 par <code>&amp;i</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">void</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
-
 </code></pre>
 <p>Le schéma en mémoire est le suivant :</p>
 <pre><code>adresse  :     &amp;i         &amp;p
@@ -127,14 +124,11 @@ type     :    int        void*
 <p>L'utilité d'un pointeur générique est cependant faible : il ne permet que de contenir l'adresse d'autres variables. Sans la connaissance du type de la variable, il est impossible de la modifier</p>
 <h2>Pointeur typé</h2>
 <p>En <code>C</code> tout est orienté autour du type des données. Un pointeur est une indirection vers une donnée. Pour rendre ceci explicite sépare le type pointé de l'indirection. Par exemple un pointeur sur un entier sera défini  avec la forme suivante (préférablement à <code class="language-">int* p = NULL;</code>, qui fonctionne aussi) :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span></code></pre>
 <p>En reprenant la symbolique du <code>C</code> :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">type variable <span class="token operator">=</span> valeur<span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">type variable <span class="token operator">=</span> valeur<span class="token punctuation">;</span></code></pre>
 <p>La déclaration du pointeur s'écrit :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span></code></pre>
 <p>Et on a bien que :</p>
 <ul>
 <li><code>*p</code> est une variable de type entier</li>
@@ -143,11 +137,10 @@ type     :    int        void*
 </ul>
 <p>L'opérateur <code>*</code> désigne une indirection : <code>p</code> est une indirection vers une donnée du type désigné. La donnée présente à l'indice <code>p</code> de la mémoire est un entier.</p>
 <p>Une fois que vous aurez l'habitude, le code ci-après deviendra limpide :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Le schéma en mémoire est le même qu'avec le pointeur générique  :</p>
 <pre><code>adresse  :     &amp;i         &amp;p
 mémoire  :   | 42 | ... | &amp;i | ....
@@ -155,16 +148,14 @@ variable :     i          p
 type     :    int        int*
 </code></pre>
 <p>Sauf que maintenant la valeur pointée est typée, on peut donc l'affecter :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
 
 <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"L'entier i vaut : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>L'indirection <code>*p</code> se lit : va à l'adresse présente dans la variable <code>p</code>, c'est à dire i. On a la formule suivante :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>i<span class="token punctuation">)</span> <span class="token operator">=</span> i
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>i<span class="token punctuation">)</span> <span class="token operator">=</span> i</code></pre>
 <p>Attention, ne confondez pas :</p>
 <ul>
 <li><code>int *p = &amp;i;</code> qui définit la valeur du pointeur <code>p</code></li>
@@ -173,12 +164,11 @@ type     :    int        int*
 <li><code>&amp;p</code> qui est l'adresse où est stockée la variable <code>p</code></li>
 </ul>
 <p>Si vous avez du mal écrivez plutôt :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
 p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
 
-<span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -196,8 +186,7 @@ p <span class="token operator">=</span> <span class="token operator">&amp;</span
 </div></div>
 
 <p>On peut avoir autant d'indirection que l'on veut. Par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span>p<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span></code></pre>
 <p>Signifie que p est une indirection d'indirection d'indirection vers un donnée de type entier.</p>
 <p>Le plus souvent on aura que 2 indirection. Comme par exemple :</p>
 <pre><code>int (**p);
@@ -220,76 +209,72 @@ type     :      int         int*         int**
 l'intérêts des pointeurs est qu'il permet d'accéder à une variable de multiples façons.</p>
 <p>Une utilisation courante des pointeurs consiste à passer l'adresse d'une variable (un pointeur sur elle) à une fonction pour pouvoir la modifier.</p>
 <p>Par exemple le code suivant ne modifie bien sur pas la variable <code class="language-">i</code> :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">void</span> <span class="token function">modification</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+void modification(int x) {
 
- x <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+ x = 12;
 
-<span class="token punctuation">}</span>
+}
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+int i = 0;
 
-<span class="token function">modification</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+modification(i)
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Entier : %i\n", i);
+}
+</stdio.h></code></pre>
 <p>La variable <code class="language-">x</code>, crée à l'exécution de la fonction sur la pile, contient la donnée de <code class="language-">i</code>, pas <code class="language-">i</code>. Pour modifier <code class="language-">i</code>, il faut la passer directement à la fonction via un pointeur :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">void</span> <span class="token function">modification_p</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+void modification_p(int *x) {
 
-  <span class="token operator">*</span>x <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+  *x = 12;
 
-<span class="token punctuation">}</span>
+}
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+int i = 0;
 
-<span class="token function">modification_p</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>i<span class="token punctuation">)</span>
+modification_p(&i)
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Entier : %i\n", i);
+}
+</stdio.h></code></pre>
 <p>Cette technique est très puissante et est utilisée massivement e <code>C</code>.</p>
 <h3><span id="scanf"></span> scanf</h3>
 <p>La fonction <a href="http://ressources.unit.eu/cours/Cfacile/co/ch4_p5_6.html"><code class="language-">scanf</code></a> demande à l'entrée standard (les champs sont séparés par des espaces par défaut) de renseigner une variable. On l'utilise de cette manière :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+int i = 0;
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Tapez un entier signé : "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%i"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier (signé) : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+printf("Tapez un entier signé : ");
+scanf("%i", &i);
+printf("Entier (signé) : %i\n", i);
+}
+</stdio.h></code></pre>
 <p>On voit l'utilité des pointeurs car sans eux il serait impossible de modifier une variable d'un type donnée. La fonction ne pouvant avoir qu'un type donné de sortie, le seul possible serait <code>void*</code> et elle devrait devrait allouer elle-même de la mémoire pour y stocker le retour demandé.</p>
 <h3>Retour multiples de fonctions</h3>
 <p>Une fonction en <code>C</code> rend toujours 1 unique résultat. Il est donc impossible de faire comme en python l'astuce suivante :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double_si_positif</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double_si_positif</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">if</span> x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> true<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token operator">*</span> x
   <span class="token keyword">else</span> <span class="token punctuation">:</span>
     <span class="token keyword">return</span> false<span class="token punctuation">,</span> x
 
-réussi<span class="token punctuation">,</span> x <span class="token operator">=</span> double_si_positif<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-</code></pre>
+réussi<span class="token punctuation">,</span> x <span class="token operator">=</span> double_si_positif<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Si l'on faire ce genre de chose, il faut :</p>
 <ul>
 <li>choisir quel sera le return</li>
 <li>modifier les autres choses via des pointeurs</li>
 </ul>
 <p>En reprenant l'exemple précédent, le paramètre de retour est clair, c'est le booléen. Il faut alors modifier <code>x</code> via un pointeur :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">int</span> <span class="token function">double_si_positif</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">*</span>x <span class="token operator">></span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -310,7 +295,6 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier (signé) : %i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -335,7 +319,7 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>x<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token operator">*</span>x<span class="token punctuation">;</span>
@@ -355,14 +339,13 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"après swap : i=%i, j=%i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 </div>
 </details>     
 </div>
 <h3>Retour de pointeurs</h3>
 <p>Les pointeurs rendus par une fonction doivent uniquement concerner des pointeurs qui seront toujours vrais après l'exécution de la fonction. Le code suivant est par exemple faux :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">int</span> <span class="token operator">*</span><span class="token function">retour_faux</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
@@ -377,7 +360,6 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Entier : i=%i\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>La variable <code>t</code> n'est plus valable en sorte de fonction : son adresse n'est plus utilisée !</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -400,16 +382,13 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <p><a href="https://www.youtube.com/watch?v=axngwDJ79GY">Pointeur sur une fonction</a></p>
 </div></div>
 
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">9</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> 
-</code></pre>
+<span class="token punctuation">}</span> </code></pre>
 <p>La signature de cette fonction est :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Son type est <code>double function(int)</code>. On peut alors créer un pointeur sur une fonction ayant sa signature en écrivant :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span></code></pre>
 <p>Puisque <code>(*p)</code> sera de type <code>int function(int)</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -423,35 +402,33 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 </div></div>
 
 <p>Le code suivant est alors tout à fait fonctionnel :</p>
-<pre class="language-c line-numbers" style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c#" tabindex="0" data-language="c#"><code class="language-c#">#include <stdio.h>
 
-<span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+double fahrenheit(int x) {
+  return (x * 9.0/5) + 32;
+}
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+int main() {
 
-<span class="token keyword">double</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>fahrenheit<span class="token punctuation">;</span>
+double (*p)(int) = &fahrenheit;
 
-<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f \n"</span><span class="token punctuation">,</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+printf("%f \n", p(1));
 
-<span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}
+</stdio.h></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>Dans le code précédent, on aurait aussi pu écrire en ligne 9 :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token keyword">double</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> fahrenheit<span class="token punctuation">;</span>
-
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token keyword">double</span> <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> fahrenheit<span class="token punctuation">;</span>
 </code></pre>
 <p>On a <code>fahrenheit = &amp;fahrenheit</code>.</p>
 </div></div>
 
 <p>Cette technique permet d'utiliser des fonctions en paramètre d'autres fonctions. Par exemple :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token keyword">double</span> <span class="token function">fahrenheit</span><span class="token punctuation">(</span><span class="token keyword">int</span> celcius<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>celcius <span class="token operator">*</span> <span class="token number">9.0</span><span class="token operator">/</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">32</span><span class="token punctuation">;</span>
@@ -472,7 +449,6 @@ réussi<span class="token punctuation">,</span> x <span class="token operator">=
 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%f \n"</span><span class="token punctuation">,</span> <span class="token function">conversion</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">,</span> kelvin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

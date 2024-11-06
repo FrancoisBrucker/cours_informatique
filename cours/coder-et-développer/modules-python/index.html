@@ -118,29 +118,23 @@
   
 
   <p>Les modules python sont des fichiers (on l'a vu) ou des dossiers (on le verra) que l'on peut <em>importer</em> dans un fichier en cours d'exécution. Il y a essentiellement 2 manières d'importer un module en python soit directement :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> math
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> math</code></pre>
 <p>L'importation du module crée, comme on l'a vu, <a href="../espace-noms" class="interne">des espaces de noms</a> utilisables dans le programme qui importe :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> math
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> math
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span></code></pre>
 <p>Soit en important un nom du module dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi</code></pre>
 <p>Le nom <code class="language-">pi</code> de l'espace de nom du module <code class="language-">math</code> est importé dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
 <p>Enfin on peut importer tout un espace de nom dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span></code></pre>
 <p>Cette pratique est <strong>fortement déconseillée</strong> car on ne sait pas ce qu'on importe :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -154,23 +148,20 @@
 <ul>
 <li>
 <p><code class="fichier">mon_module.py</code> vale :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span>
-va_variable <span class="token operator">=</span> <span class="token boolean">None</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span></span>
+<span class="highlight-line">va_variable <span class="token operator">=</span> <span class="token boolean">None</span></span></code></pre>
 </li>
 <li>
 <p><code class="fichier">programme_principal.py</code> vale :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> mon_module
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">.</span>MA_CONSTANTE<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> mon_module</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">.</span>MA_CONSTANTE<span class="token punctuation">)</span></span></code></pre>
 </li>
 </ul>
 <p>À la fin de l'exécution de la ligne 1 du fichier <code class="fichier">programme_principal.py</code>, on a les différents espaces de noms suivant :</p>
 <p><img src="import-1.png" alt="import"></p>
 <p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module, contenant un espace de nom. On peut accéder aux noms de son espace avec la notation pointée :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mon_module<span class="token punctuation">.</span>MA_CONSTANTE
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mon_module<span class="token punctuation">.</span>MA_CONSTANTE</code></pre>
 <p>On cherche le nom <code class="language-">MA_CONSTANTE</code> dans l'espace de nom associé à l'objet de nom <code class="language-">mon_module</code>.</p>
 <p>Faite l'exercice ci-dessous pour vous convaincre que l'import exécute bien le fichier importé :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -190,8 +181,7 @@ va_variable <span class="token operator">=</span> <span class="token boolean">No
 <h2>Exécution de modules</h2>
 <h3>Exécution d'un module comme un programme</h3>
 <p>On peut utiliser l'interpréteur python pour exécuter un module. Par exemple notre fichier <code class="fichier">mon_module.py</code> précédent :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python mon_module.py
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_module.py</code></pre>
 <p>Il n'y a pas de différence fondamentale entre un programme et un module en python. C'est juste un programme dont on garde trace de son espace de noms <code class="language-">global</code> après exécution.</p>
 <h3>Exécution d'un module python</h3>
 <p>Pour exécuter un module python, il n'est pas nécessaire de connaître son emplacement, on peut utiliser l'option <code>-m</code> de l'interpréteur python.</p>
@@ -204,8 +194,7 @@ va_variable <span class="token operator">=</span> <span class="token boolean">No
 </div></div>
 
 <p>On l'a déjà fait à de multiples reprises en utilisant le module pip :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">python <span class="token parameter variable">-m</span> pip
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip</code></pre>
 <p>Le résultat de la commande précédente dans le terminal affichera l'aide de <code class="fichier">pip</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -217,7 +206,7 @@ va_variable <span class="token operator">=</span> <span class="token boolean">No
 </div></div>
 
 <p>Si vous exécutez le module python <code class="language-">random</code>, vous verrez s'afficher tout un tas de choses sur l'écran :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ python <span class="token parameter variable">-m</span> random
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python <span class="token parameter variable">-m</span> random
 
 <span class="token number">0.000</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>
 avg <span class="token number">0.498948</span>, stddev <span class="token number">0.285393</span>, min <span class="token number">1</span>.74181e-05, max <span class="token number">0.999923</span>
@@ -234,8 +223,7 @@ avg <span class="token number">3.11325</span>, stddev <span class="token number"
 <span class="token number">0.009</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> binomialvariate<span class="token punctuation">(</span><span class="token number">15</span>, <span class="token number">0.6</span><span class="token punctuation">)</span>
 avg <span class="token number">8.9936</span>, stddev <span class="token number">1.89413</span>, min <span class="token number">2</span>, max <span class="token number">15</span>
 
-<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
 <p>Ces lignes montrent le temps mis pour générer des nombres aléatoires selon plusieurs lois de probabilités.</p>
 <p>Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?</p>
 <h3>Variable <code class="language-">__name__</code></h3>
@@ -259,17 +247,15 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier nommé <code class="fichier">test_exécution.py</code> et copiez/collez y le code suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></code></pre>
 <p>Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code <code class="language-">import test_exécution</code>.</p>
 </div></div>
 
 <p>Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># code pouvant être importé</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># code pouvant être importé</span>
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    <span class="token comment"># code du programme principal</span>
-</code></pre>
+    <span class="token comment"># code du programme principal</span></code></pre>
 <h2>Modules python et <em>packages</em></h2>
 <p>Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle <em>package</em>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -309,19 +295,17 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 </div></div>
 
 <p>vous pouvez le voir en exécutant le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> sys
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
 <span class="token keyword">for</span> dossier <span class="token keyword">in</span> sys<span class="token punctuation">.</span>path<span class="token punctuation">:</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>dossier<span class="token punctuation">)</span>
-</code></pre>
+   <span class="token keyword">print</span><span class="token punctuation">(</span>dossier<span class="token punctuation">)</span></code></pre>
 <p>Chez moi, sur un mac où python est installé avec <a href="https://brew.sh/">brew</a> ce programme rend :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
 /opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
 /opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
 /Users/fbrucker/Library/Python/3.11/lib/python/site-packages
 /opt/homebrew/lib/python3.11/site-packages
 /opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
-/opt/homebrew/opt/python-tk@3.11/libexec
-</code></pre>
+/opt/homebrew/opt/python-tk@3.11/libexec</code></pre>
 <p>Il y a plusieurs dossiers :</p>
 <ul>
 <li><code class="fichier">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11</code> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>&quot;<a href="http://random.py">random.py</a>&quot;</em> qui contient le code du package <code>random</code>)</li>

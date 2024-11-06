@@ -96,8 +96,7 @@
 
   <p>On a déjà l'habitude d'utiliser les 3 file descriptor stdin, stdout et stderr.</p>
 <p>Leurs numéros sont utilisés lorsqu'on écrit des choses comme cela :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">cd</span> /root/ <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">cd</span> /root/ <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null</code></pre>
 <p>On redirige le file descriptor 2 (stderr) vers le fichier <code class="fichier">/dev/null</code>.</p>
 <h2>Créer ses file descriptors</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -115,27 +114,24 @@
 <li>associé à un nouveau fichier</li>
 </ul>
 <p>Par exemple le code suivant qui crée un nouveau file descriptor qui est associé au <em>fichier</em> de la sortie standard:</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span>
 $ <span class="token builtin class-name">echo</span> coucou <span class="token operator">>&amp;</span><span class="token number">42</span>
 coucou
 <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
 lrwx------ <span class="token number">1</span> fbrucker fbrucker <span class="token number">64</span> oct.  <span class="token number">13</span> 09:20 /proc/704757/fd/42 -<span class="token operator">></span> /dev/pts/0
-
 </code></pre>
 <p>Ou créer un file descriptor associer à un nouveau fichier  :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span>texte
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>></span>texte
 $ <span class="token builtin class-name">echo</span> coucou <span class="token operator">>&amp;</span><span class="token number">42</span>
 $ <span class="token function">cat</span> texte 
 coucou
 $ <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
 l-wx------ <span class="token number">1</span> fbrucker fbrucker <span class="token number">64</span> oct.  <span class="token number">13</span> 09:20 /proc/704757/fd/42 -<span class="token operator">></span> /home/fbrucker/texte
-
 </code></pre>
 <p>Supprimer un file descriptor se fait ensuite avec <code>exec 42&gt;&amp;-</code> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>>&amp;</span>-
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token builtin class-name">exec</span> <span class="token number">4</span><span class="token operator"><span class="token file-descriptor important">2</span>>&amp;</span>-
 $ <span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd/42
-ls: impossible d<span class="token string">'accéder à '</span>/proc/704757/fd/42': Aucun fichier ou dossier de ce <span class="token builtin class-name">type</span>
-</code></pre>
+ls: impossible d<span class="token string">'accéder à '</span>/proc/704757/fd/42': Aucun fichier ou dossier de ce <span class="token builtin class-name">type</span></code></pre>
 <h2>Buffers</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

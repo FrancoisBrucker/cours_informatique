@@ -205,7 +205,7 @@
 <p>Le diagramme UML de la classe <code class="language-">Fenêtre</code> devrait être quelque chose du genre :</p>
 <p><img src="tache-1-UML.png" alt="fenêtre"></p>
 <p>Le fichier <code class="language-">main.py</code> ne bougera plus de tout le projet et doit être :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 <span class="token keyword">from</span> fenêtre <span class="token keyword">import</span> Fenêtre
 
@@ -214,7 +214,6 @@ window <span class="token operator">=</span> Fenêtre<span class="token punctuat
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Ça commence."</span><span class="token punctuation">)</span>
 pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"C'est fini !"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h2>Tâche 2</h2>
 <ul>
@@ -349,7 +348,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 <p>Nous allons gérer ceci en plusieurs temps.</p>
 <h3>Tâche 5.1</h3>
 <p>Ajoutez une méthode <code class="language-">collision(bille)</code> au vaisseau. Cette méthode doit répondre <code class="language-">True</code> si la bille touche le vaisseau, et <code>False</code> sinon. Pour cela vous pouvez utiliser l'algorithme suivant, qui regarde s'il y a collision entre un disque de centre $(x0, y0)$ et de rayon $R$ avec un rectangle dont le somment en bas à gauche est en $(x1, y1)$ :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision_disque_rectangle</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> hauteur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">collision_disque_rectangle</span><span class="token punctuation">(</span>x0<span class="token punctuation">,</span> y0<span class="token punctuation">,</span> rayon<span class="token punctuation">,</span> x1<span class="token punctuation">,</span> y1<span class="token punctuation">,</span> hauteur<span class="token punctuation">,</span> largeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         dist_x <span class="token operator">=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>
             <span class="token punctuation">(</span>x0 <span class="token operator">-</span> x1<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">,</span>
             <span class="token punctuation">(</span>x0 <span class="token operator">-</span> x1 <span class="token operator">-</span> largeur<span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">,</span>
@@ -368,8 +367,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
         <span class="token keyword">elif</span> y1 <span class="token operator">&lt;=</span> y0 <span class="token operator">&lt;=</span> y1 <span class="token operator">+</span> hauteur<span class="token punctuation">:</span>
             <span class="token keyword">return</span> dist_x <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span>
-</code></pre>
+            <span class="token keyword">return</span> dist_x <span class="token operator">+</span> dist_y <span class="token operator">&lt;</span> rayon <span class="token operator">**</span> <span class="token number">2</span></code></pre>
 <p>Testez cette méthode.</p>
 <p><img src="tache-51-UML.png" alt="fenêtre"></p>
 <h3>Tâche 5.2</h3>

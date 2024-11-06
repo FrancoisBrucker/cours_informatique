@@ -320,15 +320,13 @@ sur deux lignes.</p>
 
 <h2>Algorithmes</h2>
 <h3>Programme</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
 l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <h3>Avec lignes numérotées</h3>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">permutations<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span></code></pre>
 <h3>Dans le texte</h3>
 <ul>
 <li>par défaut : <code>l = [1, 3, 2, 6, 4, 5]</code></li>
@@ -399,12 +397,11 @@ $$
 <p>Un texte après.</p>
 <h2>Details</h2>
 <h3>Details dans le texte</h3>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"><div>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text"><div>
 &#123;% details "spoiler" %}
 Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
 &#123;% enddetails %}
-</div>
-</code></pre>
+</div></code></pre>
 <p>Un texte avant.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
@@ -429,12 +426,11 @@ Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
 </div>
 <p>Un texte après.</p>
 <h3>Details dans le texte ouvert</h3>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text"><div>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text"><div>
 &#123;% details "spoiler", "open" %}
 Quelque chose de caché. Que l'on peut *écrire* en `Markdown`
 &#123;% enddetails %}
-</div>
-</code></pre>
+</div></code></pre>
 <p>Un texte avant.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group" open="">
@@ -634,7 +630,7 @@ Content Cell</p>
 <li><code>&lt;!-- fin résumé --&gt;</code></li>
 </ul>
 <h3>Entête</h3>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">---
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">---
 layout: layout/post.njk 
 title: Vsc extension Markdown
 tags: ['vsc', 'tutoriel', 'markdown']
@@ -643,7 +639,6 @@ authors:
     - François Brucker
     - Esprit Lesaint
 ---
-
 </code></pre>
 <p>Changez le :</p>
 <ul>

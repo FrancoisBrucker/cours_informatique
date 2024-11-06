@@ -145,7 +145,7 @@ faire avec 1 fichier C et une commande, puis avec 2 fichiers C.</p>
 <p><a href="https://stackoverflow.com/questions/15883568/reading-from-stdin">stdin/out</a></p>
 <h2>TBD</h2>
 <p>aussi <a href="https://www.ibm.com/docs/en/i/7.3?topic=functions-getwchar-get-wide-character-from-stdin"><code class="language-">getwchar</code></a> ?</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
 <span class="token comment">// ...</span>
@@ -153,9 +153,8 @@ faire avec 1 fichier C et une commande, puis avec 2 fichiers C.</p>
 <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getchar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">putchar</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-  
-</code></pre>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+  </code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 FILE <span class="token operator">*</span>fp <span class="token operator">=</span> <span class="token constant">stdin</span><span class="token punctuation">;</span> <span class="token comment">// ou tout autre fichier</span>
 <span class="token keyword">char</span> c<span class="token punctuation">;</span>
 
@@ -164,8 +163,7 @@ FILE <span class="token operator">*</span>fp <span class="token operator">=</spa
 <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">=</span> <span class="token function">getc</span><span class="token punctuation">(</span>fp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">putc</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token constant">stdout</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-      
-</code></pre>
+      </code></pre>
 
 
 </article>

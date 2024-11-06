@@ -116,7 +116,7 @@
 <h2>Fichiers exemple</h2>
 <p>Pour les besoin de cet exemple, prenons <a href="../programmation-objet/coder-ses-objets/" class="interne">le compteur (final) du cours coder ses objets</a> du cours sur les classes et les objets.</p>
 <p>Fichier <code class="fichier">compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pas<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> valeur<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> valeur
         self<span class="token punctuation">.</span>pas <span class="token operator">=</span> pas
@@ -135,18 +135,16 @@
 
     <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> self<span class="token punctuation">.</span>pas
-
 </code></pre>
 <p>Implémentons lui 1 test dans le fichier <code class="fichier">test_compteur.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 
 <span class="token keyword">def</span> <span class="token function">test_lt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Compteur<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> Compteur<span class="token punctuation">(</span>valeur<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Et utilisons la classe dans un fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
 
 c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
 c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -158,7 +156,6 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>c1 <span class="token operator">&lt;</span> c2<span class="token punctuation">)</span>
-
 </code></pre>
 <h2>Utilisation directe</h2>
 <p>Le fonctionnement de la couverture de code est le suivant :</p>

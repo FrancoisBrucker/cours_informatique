@@ -156,7 +156,7 @@
 <h3>Format</h3>
 <p>Le pseudo-code d'un programme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie (son but). Par exemple :</p>
 <div id="problème-recherche"></div>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : recherche
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
 Entrées :
     t : un tableau d'entiers
     x : un entier
@@ -164,23 +164,20 @@ Programme :
     pour chaque élément e de t:
         si e == x:
             Retour vrai
-    Retour faux
-</code></pre>
+    Retour faux</code></pre>
 <p>ou de manière équivalente, en un mélange de python et de français :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    pour chaque élément e de t<span class="token punctuation">:</span>
-        si e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> vrai
-    <span class="token keyword">return</span> faux
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    pour chaque élément e de t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        si e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> vrai</span>
+<span class="highlight-line">    <span class="token keyword">return</span> faux</span></code></pre>
 <p>Ou encore, complètement en python :</p>
 <div id="fonction-recherche"></div>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
 <h3>Fonctions</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

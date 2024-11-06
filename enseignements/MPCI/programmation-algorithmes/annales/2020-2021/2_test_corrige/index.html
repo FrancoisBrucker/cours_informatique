@@ -106,13 +106,12 @@
 <h3>Que vaut n ?</h3>
 <p>Pour les exercices 3 et 4 en particulier, $\mathcal{O}(n)$ ne veut rien dire si $n$ n'est pas défini.</p>
 <h2>1. itératif</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment"># O(1)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment"># O(1)</span>
     f <span class="token operator">=</span> <span class="token number">1</span>               <span class="token comment"># O(1)</span>
     <span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>        <span class="token comment"># boucle O(n)</span>
         f <span class="token operator">=</span> f <span class="token operator">*</span> n       <span class="token comment"># O(1)</span>
         n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span>       <span class="token comment"># O(1)</span>
-    <span class="token keyword">return</span> f            <span class="token comment"># O(1)</span>
-</code></pre>
+    <span class="token keyword">return</span> f            <span class="token comment"># O(1)</span></code></pre>
 <ul>
 <li>A chaque étape du bloc <code class="language-">while</code>, n est décrémenté de 1 : on rentre $\mathcal{O}(n)$ fois dans la boucle.</li>
 <li>Les autres lignes de l'algorithmes sont en $\mathcal{O}(1)$ (affectation, multiplication et soustraction).</li>
@@ -120,33 +119,30 @@
 <p>La complexité de l'algorithme est en : $\mathcal{O}(1) + \mathcal{O}(1) +  \mathcal{O}(n) * (\mathcal{O}(1) + \mathcal{O}(1)) + \mathcal{O}(1)$</p>
 <p>Ce qui se simplifie en $\mathcal{O}(n)$</p>
 <h2>2. récursif</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token comment"># O(1)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">factorielle</span><span class="token punctuation">(</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>                <span class="token comment"># O(1)</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>                       <span class="token comment"># O(1)</span>
         <span class="token keyword">return</span> <span class="token number">1</span>                     <span class="token comment"># O(1)</span>
-    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment"># O(1) + C(n-1)</span>
-</code></pre>
+    <span class="token keyword">return</span> n <span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>      <span class="token comment"># O(1) + C(n-1)</span></code></pre>
 <p>En notant $C(n)$ la complexité de l'algorithme, on obtient l'équation de récurrence : $C(n) = 3 * \mathcal{O}(1) + C(n-1) = \mathcal{O}(1) + C(n-1)$</p>
 <p>Cette équation a été résolue dans le cours et donne : $C(n) = \mathcal{O}(n)$</p>
 <h2>3. puissance</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment"># O(1)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>     <span class="token comment"># O(1)</span>
     resultat <span class="token operator">=</span> <span class="token number">1</span>                     <span class="token comment"># O(1)</span>
     compteur <span class="token operator">=</span> exposant              <span class="token comment"># O(1)</span>
     <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>              <span class="token comment">#  boucle O(exposant)</span>
         resultat <span class="token operator">*=</span> nombre           <span class="token comment"># O(1)</span>
         compteur <span class="token operator">-=</span> <span class="token number">1</span>                <span class="token comment"># O(1)</span>
-    <span class="token keyword">return</span> resultat                  <span class="token comment"># O(1)</span>
-</code></pre>
+    <span class="token keyword">return</span> resultat                  <span class="token comment"># O(1)</span></code></pre>
 <p>Initialement <code class="language-">compteur</code> vaut <code class="language-">exposant</code> et à chaque itération de la boucle sa valeur est décrémentée de 1. On rentre donc $\mathcal{O}(exposant)$ fois dans la boucle.</p>
 <p>Comme toutes les autres lignes sont en $\mathcal{O}(1)$, la complexité totale de l'algorithme est en $\mathcal{O}(n)$.</p>
 <h2>4. tris</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>                                           <span class="token comment"># O(1)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">selection</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>                                           <span class="token comment"># O(1)</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                             <span class="token comment"># O(len(tab))</span>
         min_index <span class="token operator">=</span> i                                         <span class="token comment"># O(1)</span>
         <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>                      <span class="token comment"># O(len(tab) - i) boucle i allant de 0 à len(tab) -2 </span>
             <span class="token keyword">if</span> tab<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">:</span>                       <span class="token comment"># O(1)</span>
                 min_index <span class="token operator">=</span> j                                 <span class="token comment"># O(1)</span>
-        tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span>       <span class="token comment"># O(1)</span>
-</code></pre>
+        tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span> <span class="token operator">=</span> tab<span class="token punctuation">[</span>min_index<span class="token punctuation">]</span><span class="token punctuation">,</span> tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span>       <span class="token comment"># O(1)</span></code></pre>
 <p>Deux boucles imbriquées. La seconde boucle est en $\mathcal{O}(len(tab)- i)$ itérations, $i$ étant strictement croissant de $i=0$ à $i = len(tab) - 2$, on peut utiliser l'astuce du cours et dire que cette boucle est exécutée $\mathcal{O}(len(tab))$ fois à chaque fois.</p>
 <p>On en conclut que la complexité est en $\mathcal{O}(len(tab) ^2)$</p>
 

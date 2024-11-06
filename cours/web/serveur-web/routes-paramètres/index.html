@@ -99,7 +99,7 @@
 <!-- fin résumé -->
 <p>Nous utiliserons ici la bibliothèque express pour montrer ces concepts, mais ils existent dans toute bibliothèque permettant de créer des serveurs webs.</p>
 <p>Les routes que nous avons vus pour l'instant sont <em>statiques</em>, il faut créer une route pour chaque cas possible. Par exemple le site sous express suivant répond uniquement à 2 routes <a href="http://127.0.0.1:3000/aurevoir">http://127.0.0.1:3000/aurevoir</a> et <a href="http://127.0.0.1:3000/bonjour">http://127.0.0.1:3000/bonjour</a> (le reste fait un 404) :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
@@ -130,8 +130,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -141,7 +140,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div></div>
 
 <p>Si on veut ajouter un prénom, il faut ajouter des routes. Par exemple si on veut dire saluer toutes les Carole :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">
 <span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/bonjour/Carole'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -160,8 +159,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>Ceci n'est évidemment pas une solution acceptable si l'on veut dire bonjour à tout le monde sans avoir besoin de créer une route spécifique pour tous les prénoms du monde. Il faut pouvoir rendre nos urls paramétrables afin qu'elles puissent s'adapter au prénom de la route. Il y a plusieurs possibilités et nous allons en voir 2, les plus classiques. Supposons que l'on cherche à obtenir le code associé au prénom &quot;François&quot;. On peut :</p>
 <ul>
 <li>encoder le prénom dans l'url : <a href="http://localhost:3000/bonjour/fran%C3%A7ois">http://localhost:3000/bonjour/françois</a></li>
@@ -180,7 +178,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </div></div>
 
 <p>Pour la route bonjour par exemple :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">
 <span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/bonjour/:prenom'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -191,8 +189,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>Les différents paramètres sont placés dans le dictionnaire <code class="language-">req.params</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -228,7 +225,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/bonjour/:prenom/:nom'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
@@ -238,8 +235,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>On a utilisé ici un propriété bien sympathique du javascript qui permet de <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings#concatenating_strings">mettre des paramètres directement dans une chaîne de caractères</a>.</p>
 </div>
 </details>     
@@ -273,7 +269,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </div></div>
 
 <p>Du côté de express, la query est mis dans le dictionnaire <code class="language-">req.query</code>. Pour la route bonjour cela donne :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript">
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript">
 <span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/bonjour'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -284,8 +280,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>Plusieurs remarques :</p>
 <ul>
 <li>La route ci-dessus remplace notre route initiale : à ma connaissance, il n'y a aucun moyen de différentier les routes avec et sans query en express</li>
@@ -316,7 +311,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token comment">// ...</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token comment">// ...</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/bonjour'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
@@ -326,8 +321,7 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 </div>
 </details>     
 </div>

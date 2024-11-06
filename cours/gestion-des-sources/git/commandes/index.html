@@ -136,8 +136,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> clone <span class="token operator">&lt;</span>url<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone <span class="token operator">&lt;</span>url<span class="token operator">></span></code></pre>
 </div></div>
 
 <p><code>&lt;url&gt;</code> sera ce qui est copié depuis la page du projet :</p>
@@ -181,9 +180,8 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>là où on veut mettre le dossier<span class="token operator">></span>
-<span class="token function">mkdir</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>là où on veut mettre le dossier<span class="token operator">></span>
+<span class="token function">mkdir</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">></span></code></pre>
 </div></div>
 
 <h4>Initialisation de git</h4>
@@ -194,9 +192,8 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">></span>
-<span class="token function">git</span> init
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> <span class="token operator">&lt;</span>mon projet<span class="token operator">></span>
+<span class="token function">git</span> init</code></pre>
 </div></div>
 
 <h4>Liaisons</h4>
@@ -232,8 +229,7 @@
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Depuis la racine du projet (là où se trouve le dossier .git) :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> pull <span class="token parameter variable">--rebase</span><span class="token operator">=</span>merges
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> pull <span class="token parameter variable">--rebase</span><span class="token operator">=</span>merges</code></pre>
 </div></div>
 
 <p>En général, l'url peut être trouvée sous le menu &quot;Code&quot; ou &quot;Clone&quot; sur la page principale d'un projet.</p>
@@ -263,14 +259,12 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout main
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout main
 <span class="token function">git</span> branch ma_nouvelle_branche
-<span class="token function">git</span> checkout ma_nouvelle_branche
-</code></pre>
+<span class="token function">git</span> checkout ma_nouvelle_branche</code></pre>
 <p>Ou sous une forme plus condensée :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout main
-<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> ma_nouvelle_branche
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout main
+<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> ma_nouvelle_branche</code></pre>
 </div></div>
 
 <p>L'option <code>-b</code> appliquée à la commande <code>checkout</code> permet en effet de créer la branche de destination si celle-ci n'existe pas.</p>
@@ -292,13 +286,11 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
-<span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branche<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
+<span class="token function">git</span> push --set-upstream origin <span class="token operator">&lt;</span>branche<span class="token operator">></span></code></pre>
 <p>Version condensée :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
-<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin <span class="token operator">&lt;</span>branche<span class="token operator">></span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>branche<span class="token operator">></span>
+<span class="token function">git</span> push <span class="token parameter variable">-u</span> origin <span class="token operator">&lt;</span>branche<span class="token operator">></span></code></pre>
 </div></div>
 
 <h3>Pousser ses modifications sur le serveur</h3>
@@ -328,13 +320,11 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
-<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
 <p>Si l'on souhaite <em>commit</em> seulement un fichier (ou un groupe de fichiers) :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> fichier1.md fichier2.html
-<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span>
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> <span class="token function">add</span> fichier1.md fichier2.html
+<span class="token function">git</span> commit <span class="token parameter variable">-am</span> <span class="token string">"&lt;mon message décrivant le commit>"</span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -354,8 +344,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> push
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> push</code></pre>
 </div></div>
 
 <p>Si la branche sur laquelle on travaille existe aussi sur le serveur et que les deux branches sont liées, tout devrait bien se passer. Sinon, c'est qu'on a mal fait <a href="#pousser-une-branche-nouvelle-locale-sur-le-serveur-distant">ça</a>.</p>
@@ -380,11 +369,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase main branche
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase main branche
 <span class="token function">git</span> checkout main
 <span class="token function">git</span> merge branche
-<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche
-</code></pre>
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
 </div></div>
 
 <h4>Conserver une trace de la branche</h4>
@@ -396,11 +384,10 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Commandes</strong></p>
 </div><div class="pl-8 mr-8">
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">git</span> rebase main branche
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">git</span> rebase main branche
 <span class="token function">git</span> checkout main
 <span class="token function">git</span> merge branche --no-ff
-<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche
-</code></pre>
+<span class="token function">git</span> branch <span class="token parameter variable">-d</span> branche</code></pre>
 </div></div>
 
 <h2>Cheatsheet</h2>

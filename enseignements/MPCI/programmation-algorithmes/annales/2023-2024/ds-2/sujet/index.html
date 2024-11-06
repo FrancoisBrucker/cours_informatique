@@ -144,7 +144,7 @@
 <p><img src="grille-2.png" alt="grille 2"></p>
 <h3><code class="fichier">main.py</code></h3>
 <p>Le fichier qui exécutera votre programme est le suivant :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> pyglet
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> pyglet
 
 <span class="token keyword">from</span> grille <span class="token keyword">import</span> Grille
 
@@ -160,8 +160,7 @@
 
 
 window <span class="token operator">=</span> DeuxMilleQuaranteHuit<span class="token punctuation">(</span><span class="token punctuation">)</span>
-pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+pyglet<span class="token punctuation">.</span>app<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Vous modifierez la classe <code class="language-">DeuxMilleQuaranteHuit</code> lorsque vous aurez besoin de gérer les évènements.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -249,8 +248,7 @@ pyglet<span class="token punctuation">.</span>app<span class="token punctuation"
 
 <h3>Design pattern factory</h3>
 <p>Lors de la création de la classe <code class="language-">Grille</code> on utilise des maintenant des objets de type <code class="language-">Case</code> de valeur 1 et non plus des <code class="language-">Carré</code>. Pour que ce soit facile à faire, faite un design pattern factory pour créer des objets de valeur 1. La signature de ce factory doit être :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">vide<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> taille<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">vide<span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> taille<span class="token punctuation">)</span></code></pre>
 <h3>Vérification</h3>
 <p>Lors de la création de la fenêtre, modifiez la case de la ligne d'indice 2 et de colonne 1 de la matrice pour que ce soit un objet de la classe <code class="language-">Case</code> de valeur 512 (vous pourrez tester plusieurs valeurs pour vérifier que tout fonctionne)</p>
 <h2>Étape 4</h2>

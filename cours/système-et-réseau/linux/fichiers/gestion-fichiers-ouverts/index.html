@@ -98,8 +98,7 @@
 <h2>Process</h2>
 <p>Chaque process doit garder une liste des fichiers qu'il a ouvert et peut donc utiliser.</p>
 <p>A chaque fichier ouvert est associé un numéro nommé Un <a href="https://fr.wikipedia.org/wiki/Descripteur_de_fichier">descripteur de fichier (<em>file descriptor</em>)</a>. Les différents fichiers ouvert par un process donné sont accessibles via leurs file descriptor dans leurs <code class="fichier">/proc</code> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fd</code></pre>
 <p>Tout process a toujours 3 file descriptors :</p>
 <ul>
 <li>0 qui est stdin</li>
@@ -134,12 +133,10 @@
 <div class="mx-8 pb-2">
 <p>vers les files descriptor de <code class="fichier">/proc/self/</code> qui est le process actuellement entrain d'être exécuté (et il change de nombreuses fois par secondes...).</p>
 <p>A chaque lecture du fichier <code class="fichier">/proc/self/</code>, le noyau va donner le process actuellement entrain d'être exécuté, c'est à dire celui qui lit le dossier. Ainsi, si vous exécutez la commande :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/self
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-l</span> /proc/self</code></pre>
 <p>Cela vous affichera le process du <code>ls</code> entrain de lire <code>/proc/self</code>.</p>
 <p>De la même manière si vous écrivez :</p>
-<pre class="language-c " style="counter-reset: linenumber 0"><code class="language-c">echo <span class="token string">"coucou"</span> <span class="token operator">>></span> <span class="token operator">/</span>dev<span class="token operator">/</span><span class="token constant">stdout</span>
-</code></pre>
+<pre class="language-c" tabindex="0" data-language="c"><code class="language-c">echo <span class="token string">"coucou"</span> <span class="token operator">>></span> <span class="token operator">/</span>dev<span class="token operator">/</span><span class="token constant">stdout</span></code></pre>
 <p>C'est dans le stdout de echo que vous écrivez (et c'est donc identique à écrire <code>echo &quot;coucou&quot;</code>).</p>
 </div>
 </details>     
@@ -158,8 +155,7 @@
 </div></div>
 
 <p>Vous pouvez connaître leurs informations dans le dossier <code>fdinfo</code> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fdinfo/1
-</code></pre>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token function">ls</span> <span class="token parameter variable">-la</span> /proc/<span class="token variable">$$</span>/fdinfo/1</code></pre>
 <h3>Fichiers ouverts</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -170,7 +166,7 @@
 </div></div>
 
 <p>Si vous utilisez la commande <code>lsof -p $$</code> vous verrez que process ouvre plus de fichiers que les fide descriptors numériques (qui sont des entrées/sorties) :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">lsof</span> <span class="token parameter variable">-p</span> <span class="token variable">$$</span>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">lsof</span> <span class="token parameter variable">-p</span> <span class="token variable">$$</span>
 COMMAND    PID     <span class="token environment constant">USER</span>   FD   TYPE DEVICE SIZE/OFF    NODE NAME
 <span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  cwd    DIR   <span class="token number">0,24</span>        <span class="token number">4</span> <span class="token number">5241736</span> /proc/928549/fd
 <span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  rtd    DIR    <span class="token number">8,2</span>     <span class="token number">4096</span>       <span class="token number">2</span> /
@@ -183,8 +179,7 @@ COMMAND    PID     <span class="token environment constant">USER</span>   FD   T
 <span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    0u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
 <span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    1u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
 <span class="token function">bash</span>    <span class="token number">928549</span> fbrucker    2u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
-<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  255u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1
-</code></pre>
+<span class="token function">bash</span>    <span class="token number">928549</span> fbrucker  255u   CHR  <span class="token number">136,1</span>      0t0       <span class="token number">4</span> /dev/pts/1</code></pre>
 <p>Il y a :</p>
 <ul>
 <li>le dossier où est le shell (ici <code class="fichier">/proc/928549/fd</code>)</li>
@@ -206,13 +201,12 @@ COMMAND    PID     <span class="token environment constant">USER</span>   FD   T
 </div></div>
 
 <p>On peut également faire le contraire et regarder quel process ouvre tel fichier en utilisant la commande <a href="https://www.digitalocean.com/community/tutorials/how-to-use-the-linux-fuser-command"><code>fuser</code></a> :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">fuser</span> <span class="token parameter variable">-v</span> /usr/bin/bash
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">fuser</span> <span class="token parameter variable">-v</span> /usr/bin/bash
                      UTIL.       PID ACCÈS  COMMANDE
-/usr/bin/bash:       fbrucker  <span class="token number">928549</span> <span class="token punctuation">..</span>.e. <span class="token function">bash</span>
-</code></pre>
+/usr/bin/bash:       fbrucker  <span class="token number">928549</span> <span class="token punctuation">..</span>.e. <span class="token function">bash</span></code></pre>
 <h3>Limites</h3>
 <p>Un process particulier ne peut pas forcément ouvrir autant de fichier. Par défaut, la limite est 1024. Comme annoncée dans le fichier limits du process :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">cat</span> /proc/<span class="token variable">$$</span>/limits
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">cat</span> /proc/<span class="token variable">$$</span>/limits
 Limit                     Soft Limit           Hard Limit           Units     
 Max cpu <span class="token function">time</span>              unlimited            unlimited            seconds   
 Max <span class="token function">file</span> size             unlimited            unlimited            bytes     
@@ -229,8 +223,7 @@ Max pending signals       <span class="token number">7422</span>                
 Max msgqueue size         <span class="token number">819200</span>               <span class="token number">819200</span>               bytes     
 Max <span class="token function">nice</span> priority         <span class="token number">0</span>                    <span class="token number">0</span>                    
 Max realtime priority     <span class="token number">0</span>                    <span class="token number">0</span>                    
-Max realtime <span class="token function">timeout</span>      unlimited            unlimited       
-</code></pre>
+Max realtime <span class="token function">timeout</span>      unlimited            unlimited       </code></pre>
 <p>Vous pouvez aussi utiliser la commande : <code>ulimit -a</code> et ses différentes options pour particulariser la limite à chercher. Exemple <code>ulimit -n</code>.</p>
 <h2>Noyau</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -266,11 +259,10 @@ Max realtime <span class="token function">timeout</span>      unlimited         
 </svg>
 <div class="pl-8 mr-8">
 <p>On peut bien sur connaître le nombre de fichier actuellement ouvert : <code>cat /proc/sys/fs/nr_open</code> et le nombre de fichier maximum <code>cat /proc/sys/fs/file-max</code>. Chez moi cela donne :</p>
-<pre class="language-shell " style="counter-reset: linenumber 0"><code class="language-shell">$ <span class="token function">cat</span> /proc/sys/fs/nr_open
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ <span class="token function">cat</span> /proc/sys/fs/nr_open
 <span class="token number">1048576</span>
 $ <span class="token function">cat</span> /proc/sys/fs/file-max
-<span class="token number">9223372036854775807</span>
-</code></pre>
+<span class="token number">9223372036854775807</span></code></pre>
 </div></div>
 
 <h2>Fork</h2>

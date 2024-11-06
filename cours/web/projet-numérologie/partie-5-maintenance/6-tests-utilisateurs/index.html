@@ -177,28 +177,27 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 </ol>
 <p>Remarquez qu'il y a une fenêtre sur laquelle cliquer pour accéder à la barre de recherche lorsque l'on utilise une fenêtre de navigation privée. Il faut en tenir compte lors de nos tests automatisés c'est ce que l'on va avoir.</p>
 <p>Test automatisé dans le fichier : <code class="fichier">__user-stories__/look-at-goole.js</code> :</p>
-<pre class="language-js line-numbers" style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'https://www.google.com'</span>
+<pre class="language-js#" tabindex="0" data-language="js#"><code class="language-js#">const url = 'https://www.google.com'
 
-<span class="token keyword">import</span> webdriver <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
+import webdriver from 'selenium-webdriver';
 
-<span class="token keyword">import</span> <span class="token string">'geckodriver'</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> browser<span class="token punctuation">;</span>
+import 'geckodriver';
+let browser;
 
-<span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    browser <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">webdriver<span class="token punctuation">.</span>Builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forBrowser</span><span class="token punctuation">(</span><span class="token string">'firefox'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+beforeEach(() => {
+    browser =  new webdriver.Builder().forBrowser('firefox').build()
+})
 
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'it renders'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span>
-  <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">getTitle</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  <span class="token function">expect</span><span class="token punctuation">(</span>title<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toContain</span><span class="token punctuation">(</span><span class="token string">'Google'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+test('it renders', async () => {
+  await browser.get(url)
+  const title = await browser.getTitle()
+  expect(title).toContain('Google')
+})
 
-<span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">10000</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+afterEach(async () => {
+  await browser.quit()
+}, 10000)</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -253,7 +252,7 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 
 <p>Testez la user story <em>&quot;à la main&quot;</em>  dans une fenêtre de navigation privée</p>
 <p>Fichier : <code class="fichier">__user-stories__/recherche-goole.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'https://www.google.com'</span>
 
@@ -288,7 +287,6 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-
 </code></pre>
 <blockquote>
 <p><a href="https://www.youtube.com/watch?v=NzxejXTumLQ">Étonnant, non ?</a></p>
@@ -297,7 +295,7 @@ C’est un outil très générique puisqu’il supporte de nombreux navigateurs,
 <p>Pour réaliser des tests en ligne depuis un navigateur web, on utilise le WebDriver.
 Celui-ci communique avec un driver dépendant du navigateur web qu'on souhaite utiliser.
 Voici à quoi ressemble le code dans ce cas:</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">"url"</span><span class="token punctuation">;</span>
 
@@ -323,8 +321,7 @@ Voici à quoi ressemble le code dans ce cas:</p>
     <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">// Après chaque test...</span>
         <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// On ferme le navigateur</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Ici on a utilisé Chrome et son driver associé <code class="language-">'chromedriver'</code>. On peut de la même manière utiliser d'autres navigateurs comme Firefox, Edge, Opera...
 Il suffit dans le code de changer les noms du driver et du navigateur.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -342,34 +339,28 @@ Pour trouver un élément sur une page web, on utilise <code class="language-">f
 en prenant en argument un contexte de recherche.
 Par exemple, la ligne suivante permet de trouver l'élément dont l'<code>id</code> est &quot;introduction&quot;,
 et de stocker cet objet dans la variable intro :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
 <p>Pensez à charger le module <code>By</code> au début du fichier en rajoutant la ligne suivante :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>By<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>By<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'selenium-webdriver'</span><span class="token punctuation">;</span></code></pre>
 <p>Ensuite, si on veut trouver un élément contenu dans l'objet intro (par exemple l'image d'<code>id</code> <code>&quot;img-intro&quot;</code>), on écrit :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> imgIntro <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"img-intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> imgIntro <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"img-intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
 <p><code class="language-">findElements</code> renvoie une liste des éléments respectant les critères de recherche :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> listLinks <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElements</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> listLinks <span class="token operator">=</span> intro<span class="token punctuation">.</span><span class="token function">findElements</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
 <p>On peut rechercher un Élément en fonction de divers sélecteurs grâce à <code class="language-">By</code>. En voici quelques-uns :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// dont le nom est "a" (un lien):</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// dont le nom est "a" (un lien):</span>
 <span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// dont l'id est "truc":</span>
 <span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"truc"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// possédant a minima les attributs css "#machin" et "bidule":</span>
-<span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"#machin bidule"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">const</span> element <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"#machin bidule"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>De manière générale, il est conseillé de rechercher des éléments par leur <code class="language-">id</code> unique s'il existe,
 ou par leurs sélecteurs CSS.
 Cela évite de parcourir l'arbre DOM avec plusieurs recherches, ce qui prend plus de temps.</p>
 <p>On peut aussi rechercher un élément en fonction de sa position par rapport à un autre élément :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Trouve un bouton en dessous de intro</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// Trouve un bouton en dessous de intro</span>
 <span class="token keyword">const</span> intro <span class="token operator">=</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
-                                        <span class="token punctuation">.</span><span class="token function">below</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                                        <span class="token punctuation">.</span><span class="token function">below</span><span class="token punctuation">(</span><span class="token string">"intro"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>On utilise <code class="language-">withTagName</code> qui remplace <code class="language-">By.name</code>.
 On peut rechercher :</p>
 <ul>
@@ -380,18 +371,16 @@ On peut rechercher :</p>
 <li>à moins de 50px avec <code class="language-">.near</code></li>
 </ul>
 <p>On peut utiliser plusieurs de ces sélecteurs en même temps :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> button <span class="token operator">=</span> <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span><span class="token function">withTagName</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span>
                                         <span class="token punctuation">.</span><span class="token function">above</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"introduction"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                                        <span class="token punctuation">.</span><span class="token function">toRightOf</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">cssSelector</span><span class="token punctuation">(</span><span class="token string">"#menu"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                                        <span class="token punctuation">.</span><span class="token function">toRightOf</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">cssSelector</span><span class="token punctuation">(</span><span class="token string">"#menu"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3>Réaliser des actions sur la page</h3>
 <p>Une fois qu'un élément est trouvé, on peut automatiser les actions de l'utilisateur sur le site.
 Les exemples les plus fréquents sont :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// Cliquer sur un bouton</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// Cliquer sur un bouton</span>
 <span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// Remplir un champ et valider (penser à charger Key au début du fichier)</span>
-<span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span><span class="token string">"Manu"</span><span class="token punctuation">,</span> Key<span class="token punctuation">.</span><span class="token constant">ENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">await</span> driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span><span class="token string">"Manu"</span><span class="token punctuation">,</span> Key<span class="token punctuation">.</span><span class="token constant">ENTER</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -404,22 +393,19 @@ comme <a href="https://www.selenium.dev/documentation/fr/webdriver/keyboard/">au
 
 <h3>Quelques commandes utiles</h3>
 <p>Pour prendre une capture d'écran et l'enregistrer, on utilise :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">browser<span class="token punctuation">.</span><span class="token function">takeScreenshot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">'img.png'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token string">'base64'</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Certaines pages comme Google font apparaître un popup dans une <a href="https://developer.mozilla.org/fr/docs/Web/HTML/Element/iframe">iframe</a>.
 Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accéder à son contenu :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> iframe <span class="token operator">=</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On trouve d'abord l'iframe</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> iframe <span class="token operator">=</span> browser<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On trouve d'abord l'iframe</span>
 
 <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">frame</span><span class="token punctuation">(</span>iframe<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On rentre dans l'iframe</span>
 <span class="token comment">// On fait ici nos actions / recherches dans l'iframe</span>
-<span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">defaultContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On sort de l'iframe</span>
-</code></pre>
+<span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">switchTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">defaultContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// On sort de l'iframe</span></code></pre>
 <h3>Faire une pause</h3>
 <p>Utile pour debugger le code en ajoutant une pause :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">r</span> <span class="token operator">=></span> <span class="token function">setTimeout</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2>User story</h2>
 <p>On veut tester la user story suivante :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -442,7 +428,7 @@ Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accé
 <li>ajouter à la base de test le message associé au chiffre 4 (celui des &quot;Carole&quot;)</li>
 </ol>
 <p>On commence donc par ajouter les lignes suivante dans le fichier <code class="fichier">db.js</code> pour ajouter un message à la base :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 <span class="token keyword">if</span> <span class="token punctuation">(</span>env <span class="token operator">===</span> <span class="token string">"test"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> sequelize<span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -455,10 +441,9 @@ Dans ce cas, on doit utiliser <code class="language-">switchTo</code> pour accé
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <p>Puis la user storyFichier <code class="fichier">__user-stories__/ajout-prénom.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js">
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js">
 <span class="token keyword">const</span> <span class="token punctuation">{</span> By<span class="token punctuation">,</span> Key <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'selenium-webdriver'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> webdriver <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'selenium-webdriver'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -491,8 +476,7 @@ process<span class="token punctuation">.</span>env<span class="token punctuation
 
 <span class="token function">afterEach</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Il est souvent nécessaire d'ajouter des temps d'attente pour laisser le browser réagir. On a mis ici un <a href="https://www.selenium.dev/fr/documentation/webdriver/waits/#explicit-wait">temps d'attente explicite</a> pour laisser au browser le temps de réagir à la fin de la requête : on attend que la méthode <code>getText()</code> rende une valeur non nulle, et on attend au pire 10s.</p>
 <blockquote>
 <p>Si on veut attendre de façon certaine, 2s par exemple, on peut utiliser une fonction qui rend toujours faux : <code>await browser.wait(() =&gt; false, 2000)</code></p>

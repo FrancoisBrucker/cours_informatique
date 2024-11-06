@@ -117,7 +117,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'AD'</span><span class="token punctuation">,</span> <span class="token number">42.546245</span><span class="token punctuation">,</span> <span class="token number">1.601554</span><span class="token punctuation">,</span> <span class="token string">'Andorra'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'AD'</span><span class="token punctuation">,</span> <span class="token number">42.546245</span><span class="token punctuation">,</span> <span class="token number">1.601554</span><span class="token punctuation">,</span> <span class="token string">'Andorra'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token string">'AE'</span><span class="token punctuation">,</span> <span class="token number">23.424076</span><span class="token punctuation">,</span> <span class="token number">53.847818</span><span class="token punctuation">,</span> <span class="token string">'United Arab Emirates'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token string">'AF'</span><span class="token punctuation">,</span> <span class="token number">33.93911</span><span class="token punctuation">,</span> <span class="token number">67.709953</span><span class="token punctuation">,</span> <span class="token string">'Afghanistan'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token string">'AG'</span><span class="token punctuation">,</span> <span class="token number">17.060816</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">61.796428</span><span class="token punctuation">,</span> <span class="token string">'Antigua and Barbuda'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -362,8 +362,7 @@
  <span class="token punctuation">[</span><span class="token string">'ZA'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">30.559482</span><span class="token punctuation">,</span> <span class="token number">22.937506</span><span class="token punctuation">,</span> <span class="token string">'South Africa'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token string">'ZM'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">13.133897</span><span class="token punctuation">,</span> <span class="token number">27.849332</span><span class="token punctuation">,</span> <span class="token string">'Zambia'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token string">'ZW'</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">19.015438</span><span class="token punctuation">,</span> <span class="token number">29.154857</span><span class="token punctuation">,</span> <span class="token string">'Zimbabwe'</span><span class="token punctuation">]</span>
-<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">]</span></code></pre>
 </div>
 </details>     
 </div>
@@ -397,7 +396,7 @@
 </div></div>
 
 <p>Vous pouvez ensuite afficher la carte en utilisant le code suivant, que vous placerez dans un fichier <code class="fichier">dessins.py</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>colors <span class="token keyword">as</span> mcolors
 
 TAILLE <span class="token operator">=</span> <span class="token number">8</span>
@@ -422,8 +421,7 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         ax<span class="token punctuation">.</span>text<span class="token punctuation">(</span>x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> y<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> label<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+    plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -559,7 +557,7 @@ TAILLE <span class="token operator">=</span> <span class="token number">8</span>
 <p><img src="recuit-3.png" alt="solution moins bonne"></p>
 <p>Il existe plusieurs techniques pour faire cela, la méthode du <a href="https://fr.wikipedia.org/wiki/Recuit_simul%C3%A9">recuit simulé</a> accepte une solution moins bonne avec une probabilité qui va diminuer avec le nombre d'itérations.</p>
 <p>L'algorithme du recuit simulé appliqué au voyageur de commerce est alors (avec <code class="language-">P()</code> un réel aléatoire entre 0 et 1) :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">
 c = cycle initial
 cycle_min = c
 
@@ -571,8 +569,7 @@ pour k allant de 1 à max_essai:
     si le coût de c est strictement inférieur au coût de cycle_min:
         cycle_min = c
 
-rendre cycle_min
-</code></pre>
+rendre cycle_min</code></pre>
 <p>Dans le recuit simulé, la probabilité de choisir une solution moins bonne est égale à :</p>
 <p>$$
 P_k = e^\frac{-(C'-C)}{T_k}

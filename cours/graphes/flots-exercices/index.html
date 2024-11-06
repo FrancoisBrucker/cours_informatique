@@ -319,7 +319,7 @@ de temps) maximal.</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">'s'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">'a'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">'b'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -398,8 +398,7 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token punctuation">(</span><span class="token string">'j'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
     <span class="token punctuation">(</span><span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token number">12</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </details>     
 </div>
@@ -454,11 +453,10 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">Ge <span class="token operator">=</span> graphe_écart<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">Ge <span class="token operator">=</span> graphe_écart<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Graphe d'écart :"</span><span class="token punctuation">)</span>
 <span class="token keyword">for</span> x <span class="token keyword">in</span> Ge<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> Ge<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> Ge<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -515,10 +513,9 @@ f <span class="token operator">=</span> <span class="token punctuation">{</span>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">ford_et_fulkerson<span class="token punctuation">(</span>G<span class="token punctuation">,</span>c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span>f<span class="token punctuation">)</span>  <span class="token comment"># on rend le flot maximum</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">ford_et_fulkerson<span class="token punctuation">(</span>G<span class="token punctuation">,</span>c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span>f<span class="token punctuation">)</span>  <span class="token comment"># on rend le flot maximum</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coupe min :"</span><span class="token punctuation">,</span> <span class="token builtin">set</span><span class="token punctuation">(</span>marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># les sommets marqués sont la coupe min</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coupe min :"</span><span class="token punctuation">,</span> <span class="token builtin">set</span><span class="token punctuation">(</span>marquage<span class="token punctuation">(</span>G<span class="token punctuation">,</span> c<span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># les sommets marqués sont la coupe min</span></code></pre>
 </div>
 </details>     
 </div>

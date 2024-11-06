@@ -1158,7 +1158,8 @@ blockquote {
   border-left-width: 8px;
 }
 
-code[class*=language-]::before, code[class*=language-]::after {
+code[class*="language-"]::before,
+  code[class*="language-"]::after {
   content: "";
 }
 
@@ -1172,19 +1173,22 @@ img {
   padding: 0px;
 }
 
-a:not([class]), a:not([class]):visited {
+a:not([class]),
+  a:not([class]):visited {
   text-decoration-line: underline;
   text-decoration-color: #10b981;
   text-decoration-thickness: 2px;
 }
 
-a:not([class]):hover, a:not([class]):visited:hover {
+a:not([class]):hover,
+  a:not([class]):visited:hover {
   --tw-text-opacity: 1;
   color: rgb(6 95 70 / var(--tw-text-opacity));
   text-decoration-color: #065f46;
 }
 
-a:not([class]):active, a:not([class]):visited:active {
+a:not([class]):active,
+  a:not([class]):visited:active {
   text-decoration-thickness: 4px;
 }
 
@@ -1581,7 +1585,10 @@ table.no-border tr {
   text-decoration-thickness: 1px;
 }
 
-.quote p, .quote ul, .quote ol, .quote li {
+.quote p,
+.quote ul,
+.quote ol,
+.quote li {
   margin: 0px;
 }
 
@@ -1589,46 +1596,78 @@ details p {
   margin-bottom: 0px;
 }
 
-a.interne, a.interne:visited, 
-.interne a, .interne a:visited {
+a.interne,
+a.interne:visited,
+.interne a,
+.interne a:visited {
   text-decoration-line: underline;
   text-decoration-color: #a855f7;
   text-decoration-thickness: 2px;
 }
 
-a.interne:hover, a.interne:visited:hover, 
-.interne a:hover, .interne a:visited:hover {
+a.interne:hover,
+a.interne:visited:hover,
+.interne a:hover,
+.interne a:visited:hover {
   --tw-text-opacity: 1;
   color: rgb(107 33 168 / var(--tw-text-opacity));
   text-decoration-color: #6b21a8;
 }
 
-a.interne:active, a.interne:visited:active, 
-.interne a:active, .interne a:visited:active {
+a.interne:active,
+a.interne:visited:active,
+.interne a:active,
+.interne a:visited:active {
   text-decoration-thickness: 4px;
 }
 
-a.fichier, a.fichier:visited {
+a.fichier,
+a.fichier:visited {
   text-decoration-line: underline;
   text-decoration-color: #a855f7;
   text-decoration-thickness: 2px;
 }
 
-a.fichier:hover, a.fichier:visited:hover {
+a.fichier:hover,
+a.fichier:visited:hover {
   --tw-text-opacity: 1;
   color: rgb(107 33 168 / var(--tw-text-opacity));
   text-decoration-color: #6b21a8;
 }
 
-a.fichier:active, a.fichier:visited:active {
+a.fichier:active,
+a.fichier:visited:active {
   text-decoration-thickness: 4px;
 }
 
-a.fichier, a.fichier:visited {
-  padding-left:20px;
+a.fichier,
+a.fichier:visited {
+  padding-left: 20px;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" color="purple"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>');
   background-repeat: no-repeat;
   background-position: left;
+}
+
+/* Show line numbers on code */
+
+/* Source issue: https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/10 */
+
+pre {
+  counter-reset: lineNumber;
+}
+
+code .highlight-line:before {
+  -webkit-user-select: none;
+  border-right: 1px solid #404040;
+  color: #858585;
+  content: counter(lineNumber);
+  counter-increment: lineNumber;
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  margin-right: 1.2em;
+  padding-right: 1.2em;
+  text-align: right;
+  width: 2.4em;
 }
 
 .before\:px-1::before {
@@ -1660,4 +1699,3 @@ a.fichier, a.fichier:visited {
 .group[open] .group-open\:hidden {
   display: none;
 }
-

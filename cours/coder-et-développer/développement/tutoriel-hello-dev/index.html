@@ -183,12 +183,11 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Écrivez dans le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"bonjour les gens !"</span><span class="token punctuation">)</span>
-
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"bonjour les gens !"</span><span class="token punctuation">)</span>
 </code></pre>
 </div></div>
 
-<p>En vous rappelant ce que vous avez vu dans <a href="../../%C3%A9diteur-vscode/python#ex%C3%A9cuter-programme" class="interne">le tutorial python et vscode</a> :</p>
+<p>En vous rappelant ce que vous avez vu dans <a href="../../%C3%A9diteur-vscode/python/ex%C3%A9cuter-programme" class="interne">le tutorial python et vscode</a> :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -225,9 +224,8 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le fichier <code class="fichier">main.py</code> pour écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">print</span> <span class="token punctuation">(</span><span class="token string">"bonjour les gens !"</span><span class="token punctuation">)</span>
-
 </code></pre>
 </div></div>
 
@@ -299,21 +297,18 @@
 </div></div>
 
 <p>Fichier <code class="fichier">le_code.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">"Bonjour les gens !"</span>
-
 </code></pre>
 <p>Fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>On a importé le nom <code class="language-">bonjour</code> défini dans le fichier <code class="fichier">le_code.py</code> grâce à un import. L'autre façon aurait été d'importer juste le fichier code. On aurait alors eu :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> le_code
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> le_code
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>le_code<span class="token punctuation">.</span>bonjour<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>La notation pointée se lit alors : exécute le nom <code>bonjour</code> définit dans <code class="fichier">le_code.py</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -344,8 +339,7 @@
 <p>Les tests permettent de vérifier que notre code fonctionne. Ils font partie du programme et on peut s'y référer quand on veut. Lorsque l'on modifie le code, on pourra toujours exécuter <strong>tous les tests</strong> pour vérifier que notre programme fonctionne aussi bien qu'avant.</p>
 <h3>La commande assert</h3>
 <p>On utilise en python <a href="https://docs.python.org/fr/3/reference/simple_stmts.html#the-assert-statement">la commande assert</a>. Elle fonctionne ainsi :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">assert</span> <span class="token operator">&lt;</span>expression logique<span class="token operator">></span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">assert</span> <span class="token operator">&lt;</span>expression logique<span class="token operator">></span></code></pre>
 <p>Si l'expression logique est vraie, le programme continue sans rien dire et si l'expression logique est fausse, le programme s'arrête avec l'erreur : <code class="language-">AssertionError</code>.</p>
 <p>Essayons ça avec la plus simple des expressions logiques : <code class="language-">True</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -355,20 +349,18 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Créez un fichier nommé <code class="fichier">test_projet.py</code> qui contiendra le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"avant l'assert"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"avant l'assert"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">assert</span> <span class="token boolean">True</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"après l'assert"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Exécutez-le.</p>
 </div></div>
 
 <p>Lorsque vous exécutez ce fichier, vous devez obtenir le résultat suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">avant l'assert
-après l'assert
-</code></pre>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">avant l'assert
+après l'assert</code></pre>
 <p>La condition logique étant vraie, la commande <code class="language-">assert</code> n'a rien fait.</p>
 <p>Changeons ça en mettant une condition logique fausse :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -378,23 +370,21 @@ après l'assert
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez <code class="fichier">test_projet.py</code> pour qu'il contienne le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"avant l'assert"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"avant l'assert"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">assert</span> <span class="token boolean">False</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"après l'assert"</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
 </div></div>
 
 <p>Vous devez obtenir le résultat suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">avant l'assert
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">avant l'assert
 Traceback (most recent call last):
   File "/Users/fbrucker/Documents/temp/hello-dev/test_projet.py", line 3, in <module>
     assert False
-AssertionError
-</module></code></pre>
+AssertionError</module></code></pre>
 <p>La première ligne a bien été exécutée (on voit écrit <code>avant l'assert</code>), puis le programme a planté. La condition logique étant fausse, la commande <code class="language-">assert</code> a levé une exception nommée <code class="language-">AssertionError</code> qui a stoppé l'exécution du programme. La ligne <code class="language-">print(&quot;après l'assert&quot;)</code> n'a pas été exécutée.</p>
 <p>D'habitude, nos expressions logiques vérifie qu'un comportement observé (l'exécution d'une fonction) est conforme au comportement théorique (le résultat qu'on aimerait avoir). Pour ne pas se perdre on range ce test dans une fonction dont le nom décrit le test. Par exemple, testons la somme :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -404,7 +394,7 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez <code class="fichier">test_projet.py</code> pour qu'il contienne le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">test_somme_neutre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     tête_a_toto <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">assert</span> <span class="token number">0</span> <span class="token operator">+</span> <span class="token number">0</span> <span class="token operator">==</span> tête_a_toto
@@ -415,8 +405,7 @@ AssertionError
 
 <span class="token keyword">def</span> <span class="token function">test_somme_1_plus_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">3</span>
- 
-</code></pre>
+ </code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
 </div></div>
 
@@ -434,14 +423,13 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez la fonction <code class="language-">test_somme_neutre</code> du fichier <code class="fichier">test_projet.py</code> pour qu'elle soit égale à  :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_somme_neutre</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     tête_a_toto <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">assert</span> <span class="token number">0</span> <span class="token operator">+</span> <span class="token number">0</span> <span class="token operator">==</span> <span class="token number">42</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Exécutez le fichier <code class="fichier">test_projet.py</code>.</p>
 </div></div>
 
@@ -535,9 +523,8 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le fichier <code class="fichier">le_code.py</code> pour qu'il contienne le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span>nom<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span>nom<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token string">"bonjour "</span> <span class="token operator">+</span> nom <span class="token operator">+</span> <span class="token string">" !"</span>
-
 </code></pre>
 </div></div>
 
@@ -549,12 +536,11 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le fichier <code class="fichier">test_projet.py</code> pour qu'il contienne le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
 
 
 <span class="token keyword">def</span> <span class="token function">test_bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"bonjour monde !"</span>
-</code></pre>
+    <span class="token keyword">assert</span> bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"bonjour monde !"</span></code></pre>
 <p>Exécutez les tests pour vérifier que votre code fonctionne.</p>
 </div></div>
 
@@ -566,10 +552,9 @@ AssertionError
 </svg>
 <div class="pl-8 mr-8">
 <p>Modifiez le fichier <code class="fichier">main.py</code> pour qu'il contienne le code :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> le_code <span class="token keyword">import</span> bonjour
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">(</span><span class="token string">"monde"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <p>Exécutez le programme principal.</p>
 </div></div>

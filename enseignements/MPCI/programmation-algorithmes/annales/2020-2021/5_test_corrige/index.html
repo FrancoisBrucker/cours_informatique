@@ -93,7 +93,7 @@
 <p>Un code complet est <a href="5_python.py">disponible</a>.</p>
 <h2>1) créer le code python de la classe personnage en sachant qu'il doit pouvoir en plus exécuter le code suivant</h2>
 <p>La classe <code class="language-">Personnage</code> a tout ce qui est demandé par l'énoncé. On a implémenté la méthode <code class="language-">tape</code> pour qu'elle soit cohérente avec le code : l'assaillant enlève son attaque aux pv de l'assailli.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Personnage</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pv<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">,</span> attaque<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>pv <span class="token operator">=</span> pv
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
@@ -108,8 +108,7 @@
         self<span class="token punctuation">.</span>attaque <span class="token operator">=</span> attaque
 
     <span class="token keyword">def</span> <span class="token function">tape</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        other<span class="token punctuation">.</span>pv <span class="token operator">=</span> other<span class="token punctuation">.</span>pv <span class="token operator">-</span> self<span class="token punctuation">.</span>attaque
-</code></pre>
+        other<span class="token punctuation">.</span>pv <span class="token operator">=</span> other<span class="token punctuation">.</span>pv <span class="token operator">-</span> self<span class="token punctuation">.</span>attaque</code></pre>
 <h2>2) décrivez comment s'exécute la ligne balrog.tape(gandalf) du code précédent (en particulier les namespaces utilisés)</h2>
 <p>Lorsque la méthode s'éxécute, un <em>namespace</em> est crée pour elle.</p>
 <ol>
@@ -134,9 +133,8 @@
 </ol>
 <p>Lorsque la méthode se finie, le <em>namespace</em> créé pour elle disparaît.</p>
 <h2>3) comment créer une méthode se_fait_taper_par(un_perso) en utilisant tape() ?</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">se_faire_taper_par</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        other<span class="token punctuation">.</span>tape<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">se_faire_taper_par</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        other<span class="token punctuation">.</span>tape<span class="token punctuation">(</span>self<span class="token punctuation">)</span></code></pre>
 
 
 </article>

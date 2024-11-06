@@ -241,17 +241,16 @@
 <p>On va se restreindre aux graphes non-orienté. Pour cela, notre codage par dictionnaire fonctionne tout à fait. Prenons par exemple le graphe :</p>
 <p><img src="euler_exemple_1.png" alt="exemple Euler"></p>
 <p>Il se code en :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">G <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token string">"1"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"2"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"4"</span><span class="token punctuation">,</span> <span class="token string">"5"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"3"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"4"</span><span class="token punctuation">,</span> <span class="token string">"5"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"4"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"5"</span><span class="token punctuation">,</span> <span class="token string">"6"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"5"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"2"</span><span class="token punctuation">,</span> <span class="token string">"3"</span><span class="token punctuation">,</span> <span class="token string">"4"</span><span class="token punctuation">,</span> <span class="token string">"6"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token string">"6"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">"4"</span><span class="token punctuation">,</span> <span class="token string">"5"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>Ajoutons tout de suite une fonction pour copier le graphe, puisque notre algorithme va petit à petit supprimer ses arêtes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">copie</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     G_copie <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> x <span class="token keyword">in</span> G<span class="token punctuation">:</span>
@@ -259,8 +258,7 @@
 
     <span class="token keyword">return</span> G_copie
 
-G2 <span class="token operator">=</span> copie<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
-</code></pre>
+G2 <span class="token operator">=</span> copie<span class="token punctuation">(</span>G<span class="token punctuation">)</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -279,7 +277,7 @@ G2 <span class="token operator">=</span> copie<span class="token punctuation">(<
 
 <h3><span id="principe-algorithme"></span> Principe de l'Algorithme</h3>
 <p>La démonstration de la réciproque donne également un algorithme de construction d'un cycle Eulérien pour un multi-graphe $G = (V, E)$ vérifiant les conditions du théorème d'existence de cycle Eulérien :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">while</span> G<span class="token punctuation">:</span>
     c <span class="token operator">=</span> cycle<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
     les_cycles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
@@ -287,8 +285,7 @@ G2 <span class="token operator">=</span> copie<span class="token punctuation">(<
     supprime_sommets_degré_zéro<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
 
 concatène_cycles<span class="token punctuation">(</span>les_cycles<span class="token punctuation">)</span>
-cycle_eulérien <span class="token operator">=</span> cycles<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-</code></pre>
+cycle_eulérien <span class="token operator">=</span> cycles<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span></code></pre>
 <p>Où <code>cycle(G)</code> est un algorithme permettant de trouver un cycle pour G. Sur le graphe précédant cela donne :</p>
 <h4>1ère itération</h4>
 <p>En prenant $1231$ comme premier cycle :</p>
@@ -303,13 +300,12 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <p>Une fois le graphe vidé, on concatène les cycles ensemble en collant deux à deux des cycles ayant un élément en commun. Ici, en commençant par concaténer le second $43524$ et troisième cycle $4564$ ensemble en $43524564$. On peut ensuite rajouter le premier cycle faisant commencer le cycle $43524564$ par deux $24564352$ puis en les collant ensemble $24564352312$ pour donner le cycle eulérien final.</p>
 <h3>Trouver un cycle</h3>
 <p>Trouver un cycle peut se faire en utilisant l'algorithme du cours <a href="../chemins-cycles-connexite#algo-cycle-non-oriente" class="interne"><code class="language-">cycle_non_orienté(G,x)</code></a> (même s'il n'est pas optimal, pour de petits graphes le temps de calcul ne sera pas rédhibitoire). Il faut juste trouver un sommet de départ. Si on s'arrange pour supprimer du graphe les sommets sans arêtes, on peut prendre n'importe lequel :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cycle</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cycle</span><span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> <span class="token keyword">not</span> G<span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
     a <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> cycle_non_orienté<span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> cycle_non_orienté<span class="token punctuation">(</span>G<span class="token punctuation">,</span> a<span class="token punctuation">)</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -322,22 +318,20 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 <h3>Décomposition du graphe en cycles</h3>
 <p>Commençons par créer une fonction qui supprime un cycle du graphe :</p>
 <p><span id="fonction-supprime"></span></p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> supprime_arêtes_du_cycle<span class="token punctuation">(</span>c<span class="token punctuation">,</span> G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> supprime_arêtes_du_cycle<span class="token punctuation">(</span>c<span class="token punctuation">,</span> G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     x <span class="token operator">=</span> c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
     <span class="token keyword">for</span> y <span class="token keyword">in</span> c<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
         G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">.</span>remove<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
         G<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">.</span>remove<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-        x <span class="token operator">=</span> y
-</code></pre>
+        x <span class="token operator">=</span> y</code></pre>
 <p>Puis supprimons les sommets de degré zéro :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> supprime_sommets_degré_zéro<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> supprime_sommets_degré_zéro<span class="token punctuation">(</span>G<span class="token punctuation">)</span><span class="token punctuation">:</span>
     sommets <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>G<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> x <span class="token keyword">in</span> sommets<span class="token punctuation">:</span>
         <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>G<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            <span class="token keyword">del</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span>
-</code></pre>
+            <span class="token keyword">del</span> G<span class="token punctuation">[</span>x<span class="token punctuation">]</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -348,7 +342,7 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 </div></div>
 
 <p>Puis, en affichant les cycles trouvés par l'algorithme général de décomposition :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">les_cycles <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token keyword">while</span> G<span class="token punctuation">:</span>
     c <span class="token operator">=</span> cycle<span class="token punctuation">(</span>G<span class="token punctuation">)</span>
     les_cycles<span class="token punctuation">.</span>append<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
@@ -357,29 +351,25 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>les_cycles<span class="token punctuation">)</span>
-
 </code></pre>
 <p>J'obtiens (il y a d'autres possibilités) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <h3>Concaténation de deux cycles</h3>
 <p>Pour concaténer deux cycles ensemble, il faut pouvoir faire commencer un cycle par un sommet donné <code class="language-">x</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> décale<span class="token punctuation">(</span>cycle<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> décale<span class="token punctuation">(</span>cycle<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     cycle <span class="token operator">=</span> cycle<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
     i <span class="token operator">=</span> cycle<span class="token punctuation">.</span>index<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> cycle<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> cycle<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>cycle<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+    <span class="token keyword">return</span> cycle<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> cycle<span class="token punctuation">[</span><span class="token punctuation">:</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token punctuation">[</span>cycle<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>Puis coller deux cycles par un sommet commun <code class="language-">x</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> concatène<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> concatène<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     c1 <span class="token operator">=</span> décale<span class="token punctuation">(</span>c1<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
     c2 <span class="token operator">=</span> décale<span class="token punctuation">(</span>c2<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> c1 <span class="token operator">+</span> c2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
-</code></pre>
+    <span class="token keyword">return</span> c1 <span class="token operator">+</span> c2<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span></code></pre>
 <h3>Concaténation de tous les cycles</h3>
 <p>Il suffit d'itérer le processus pour deux cycles en cherchant des cycles ayant un élément en commun :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> concatène_cycles<span class="token punctuation">(</span>cycles<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> concatène_cycles<span class="token punctuation">(</span>cycles<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">while</span> <span class="token builtin">len</span><span class="token punctuation">(</span>cycles<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">:</span>
         c <span class="token operator">=</span> cycles<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>cycles<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -388,7 +378,6 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
                 x <span class="token operator">=</span> intersection<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
                 cycles<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> concatène<span class="token punctuation">(</span>cycles<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> c<span class="token punctuation">,</span> x<span class="token punctuation">)</span>
                 <span class="token keyword">break</span>
-
 </code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -399,8 +388,7 @@ cycle_eulérien <span class="token operator">=</span> cycles<span class="token p
 </div></div>
 
 <p>J'obtiens, avec les cycles précédents :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">]</span></code></pre>
 <h2>Généralisation</h2>
 <p>Il existe de nombreuses généralisations aux cycles eulérien. Citons en trois : les chemins eulériens, les circuits eulériens des graphes orientés et les cycles Eulérien des graphes mixtes.</p>
 <h3>Chemin eulérien</h3>

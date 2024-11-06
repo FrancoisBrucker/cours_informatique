@@ -233,7 +233,7 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez le code suivant dans <code class="fichier">test_pourcentage.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pourcentage <span class="token keyword">import</span> pourcent
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pourcentage <span class="token keyword">import</span> pourcent
 
 
 <span class="token keyword">def</span> <span class="token function">test_pourcent_0</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -242,7 +242,6 @@
 
 <span class="token keyword">def</span> <span class="token function">test_pourcent_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> pourcent<span class="token punctuation">(</span><span class="token string">'00'</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">100</span>
-
 </code></pre>
 <p>Testez ensuite que vos tests fonctionnent :</p>
 <ul>
@@ -302,7 +301,7 @@ test_pourcentage.py ..                                                          
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez le code suivant dans <code class="fichier">test_pourcentage.py</code>, et vérifiez que les tests passent toujours :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pytest <span class="token keyword">import</span> approx
 
 <span class="token keyword">from</span> pourcentage <span class="token keyword">import</span> pourcent
 
@@ -313,7 +312,6 @@ test_pourcentage.py ..                                                          
 
 <span class="token keyword">def</span> <span class="token function">test_pourcent_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> pourcent<span class="token punctuation">(</span><span class="token string">'00'</span><span class="token punctuation">)</span> <span class="token operator">==</span> approx<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
-
 </code></pre>
 </div></div>
 
@@ -340,13 +338,12 @@ test_pourcentage.py ..                                                          
 </svg>
 <div class="pl-8 mr-8">
 <p>Ajoutez à <code class="fichier">test_pourcentage.py</code> le test suivant, puis testez que les 3 tests passent.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_pourcent_01</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> pourcent<span class="token punctuation">(</span><span class="token string">'101'</span><span class="token punctuation">)</span> <span class="token operator">==</span> approx<span class="token punctuation">(</span><span class="token number">100</span><span class="token operator">/</span><span class="token number">3</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div></div>
 
 <p>On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.</p>
@@ -465,7 +462,7 @@ test_pourcentage.py ..                                                          
 </svg>
 <div class="pl-8 mr-8">
 <p>Mettez le code suivant dans <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> pourcentage <span class="token keyword">import</span> pourcent
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> pourcentage <span class="token keyword">import</span> pourcent
 
 correct <span class="token operator">=</span> <span class="token boolean">False</span>
 entier <span class="token operator">=</span> <span class="token number">0</span>
@@ -483,8 +480,7 @@ nombre_binaire <span class="token operator">=</span> <span class="token builtin"
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Votre nombre"</span><span class="token punctuation">,</span>
       chaîne<span class="token punctuation">,</span> <span class="token string">"contient "</span><span class="token punctuation">,</span> pourcent<span class="token punctuation">(</span>nombre_binaire<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      <span class="token string">"pourcent de 0 en base 2 ("</span> <span class="token operator">+</span> nombre_binaire <span class="token operator">+</span> <span class="token string">")."</span><span class="token punctuation">)</span>
-</code></pre>
+      <span class="token string">"pourcent de 0 en base 2 ("</span> <span class="token operator">+</span> nombre_binaire <span class="token operator">+</span> <span class="token string">")."</span><span class="token punctuation">)</span></code></pre>
 <p>Exécutez le code et comprenez comment il fonctionne. En particulier :</p>
 <ul>
 <li>comment fonctionne la boucle <code class="language-">while</code> ?</li>

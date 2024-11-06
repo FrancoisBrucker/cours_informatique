@@ -114,24 +114,22 @@
 <p>C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujours se poser la question de la terminaison de votre programme.</p>
 <h2>Problème de l'arrêt</h2>
 <p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. IL y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : vérité
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérité
 Entrées : 
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
-        dire à voix haute : "L'informatique c'est vraiment super chouette !"
-</code></pre>
+        dire à voix haute : "L'informatique c'est vraiment super chouette !"</code></pre>
 <p>Ou celui-ci qui l'est clairement :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : compte à rebours
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : compte à rebours
 Entrées : 
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
         dire à voix haute le nombre n
-        n = n - 1
-</code></pre>
+        n = n - 1</code></pre>
 <p>Mais si on prend le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">la célèbre conjecture de Syracuse</a> :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : syracuse
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : syracuse
 Entrées : 
     n : un entier strictement positif
 Programme :
@@ -140,8 +138,7 @@ Programme :
             n = n / 2
         sinon:
             n = 3n + 1
-    rendre 1
-</code></pre>
+    rendre 1</code></pre>
 <p>On ne sait pas (pas de démonstration) s'il s'arrête quelque soit $n$ ou pas.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -168,13 +165,12 @@ Programme :
 <p>Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.</p>
 <p>Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le <code class="language-">stop</code> :</p>
 <div id="algorithme-STOP"></div>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : stop
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : stop
 Entrée :
     n : un entier représentant un programme
 Sortie :
     rend 1 si le programme en entrée est un algorithme
-    rend 0 sinon
-</code></pre>
+    rend 0 sinon</code></pre>
 <p>On passe en entrée de notre algorithme <code class="language-">stop</code> <a href="../d%C3%A9finition/#encodage-algorithme">un entier encodant un programme</a>, comme on l'a déjà fait.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -214,11 +210,10 @@ Sortie :
 </summary>
 <div class="mx-8 pb-2">
 <p>Supposons que <code class="language-">stop</code> soit un algorithme et construisons le programme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : oups
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : oups
 Programme :
     si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1:
-        faire une boucle infinie
-</code></pre>
+        faire une boucle infinie</code></pre>
 <p>Le programme <code class="language-">oups</code> est infernal. En effet :</p>
 <ul>
 <li><code class="language-">oups</code> est programme, il a donc bien un numéro $N$,</li>
@@ -277,13 +272,12 @@ Programme :
 <p><strong>Théorème (Rice)</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Quelque soit la propriété $P$, l'algorithme suivant n'existe pas :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : propriété-P
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : propriété-P
 Entrée : 
     n : un entier représentant un programme
 Sortie :
     1 si l'algorithme en entrée vérifie la propriété P
-    0 sinon
-</code></pre>
+    0 sinon</code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -304,13 +298,12 @@ Sortie :
 </summary>
 <div class="mx-8 pb-2">
 <p>Soit $A_0 \in P$ et $A$ un programme. On peut alors construire l'algorithme suivant :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Nom : vérifie-P
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérifie-P
 Entrée : 
     n : un entier
 Sortie :
     A(n)
-    A_0(n)
-</code></pre>
+    A_0(n)</code></pre>
 <p>L'algorithme <code class="language-">vérifie-P</code> vérifie la propriété $P$ si et seulement si $A$ est un algorithme (s'il s'arrête).</p>
 <p>On en conclut qu'il ne peut exister une machine décidant si un programme vérifie une propriété que si l'algorithme <code class="language-">stop</code> existe, ce qui est impossible.</p>
 </div>

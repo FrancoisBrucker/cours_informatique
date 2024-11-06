@@ -187,13 +187,12 @@ $$
 <p>Comme $\varphi$ et $-\frac{1}{\varphi}$ sont les racines du polynôme $P(X) = X^2 - X -1$ on a :</p>
 <p>$F(n) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(\varphi^2) - \frac{1}{(-\varphi)^{n-2}}(\frac{1}{\varphi^2})) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})$</p>
 <h2>Itératif</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_iter</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_iter</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     a <span class="token operator">=</span> <span class="token number">1</span>
     b <span class="token operator">=</span> <span class="token number">1</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> rang<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         a<span class="token punctuation">,</span> b <span class="token operator">=</span> a<span class="token operator">+</span>b<span class="token punctuation">,</span> a
-    <span class="token keyword">return</span> a
-</code></pre>
+    <span class="token keyword">return</span> a</code></pre>
 <h2>Récursif terminal</h2>
 <p>La complexité étant terminale, il y a $\mathcal{O}(n)$ appels récursifs. Comme le reste de la fonction est en $\mathcal{O}(1)$ la complexité totale est en $\mathcal{O}(n)$.</p>
 <p>Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que <code>fibo_rec2(n, a, b)</code> rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.</p>

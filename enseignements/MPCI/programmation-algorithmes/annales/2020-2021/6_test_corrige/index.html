@@ -96,7 +96,7 @@
 <li>entrée : liste de produits, chaque produit étant une liste [prix au kilo, kg, nom]</li>
 <li>sortie : liste de produits [nom, kilo] où nom est le nom du produit dans la liste d'entrée et kilo, le nombre de kilo pris.</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_fractionel</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sac_a_dos_fractionel</span><span class="token punctuation">(</span>produits<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">:</span>
     produits<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
     produits<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
     sac_a_dos <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -110,8 +110,7 @@
             sac_a_dos<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>nom<span class="token punctuation">,</span> masse_totale<span class="token punctuation">)</span><span class="token punctuation">)</span>
             masse_totale <span class="token operator">=</span> <span class="token number">0</span>        
 
-    <span class="token keyword">return</span> sac_a_dos
-</code></pre>
+    <span class="token keyword">return</span> sac_a_dos</code></pre>
 <p>On trie la liste dans le code. Comme le 1er élément de chaque liste est le prix au kilo, le résultat sera une liste de produit trié par prix au kilo croissante. On la retourne (avec la méthode <code class="language-">reverse()</code>) pour avoir les produit triés par prix au kilo décroissant.</p>
 <p><strong>Remarques</strong> :</p>
 <ul>

@@ -104,12 +104,11 @@
 <pre><code>npm install --save-dev jest
 </code></pre>
 <p>Si vous regardez le fichier <code class="fichier">package.json</code>, vous voyez que jest est dans une section de dépendance spéciale, où sont listées les bibliothèque non utiles en production :</p>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
     <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"jest"</span><span class="token operator">:</span> <span class="token string">"^29.5.0"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
-...
-</code></pre>
+...</code></pre>
 <p>Une valeur a été ajoutée : <code>&quot;devDependencies&quot;</code> pour distinguer les dépendances utiles en production (<code>&quot;dependencies&quot;</code>) et celles utiles en développement. En tapant :</p>
 <ul>
 <li><code>npm install</code> : toutes les dépendances (<code>&quot;dependencies&quot;</code> et <code>&quot;devDependencies&quot;</code>) seront installées</li>
@@ -118,7 +117,7 @@
 <p>Voir <a href="https://docs.npmjs.com/cli/v7/commands/npm-install">la documentation</a> pour de plus amples informations.</p>
 <h3>Exécutable</h3>
 <p>Puis on va l'utiliser pour lancer nos tests avec la commande <code>npm run test</code>. Pour cela, modifions l'entrée test du <code class="fichier">package.json</code>  pour :</p>
-<pre class="language-json " style="counter-reset: linenumber 0"><code class="language-json">...
+<pre class="language-json" tabindex="0" data-language="json"><code class="language-json">...
 
 <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 
@@ -129,8 +128,7 @@
     ...
 <span class="token punctuation">}</span>
 
-...
-</code></pre>
+...</code></pre>
 <p>L'exécutable jest est présent dans le dossier <code class="fichier">node_modules/.bin/</code>. On peut alors l'exécuter :</p>
 <ul>
 <li>soit avec son nom complet <code>node_modules/.bin/jest</code></li>
@@ -162,10 +160,9 @@
 <h2>Utilisation de jest</h2>
 <h3>Fonctionnement</h3>
 <p>Essayons ça en créant un fichier <code class="fichier">__tests__/essais.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'test vide'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'test vide'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">expect</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Chaque test aura :</p>
 <ul>
 <li>un nom. Ici : <code class="language-">'test vide'</code></li>
@@ -204,13 +201,12 @@
 <h2>Tests</h2>
 <p>Nous allons tester ici les fonctions de <code class="fichier">numérologie.js</code></p>
 <p>Pour l'instant, le fichier numérologie exporte un objet contenant une référence vers la fonction <code class="language-">chiffreAssocie</code>. Exportons les 2 autres fonctions :</p>
-<pre class="language-javascript " style="counter-reset: linenumber 0"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">chiffre</span><span class="token operator">:</span> chiffreAssocie<span class="token punctuation">,</span>
     <span class="token literal-property property">nombre</span><span class="token operator">:</span> nombre<span class="token punctuation">,</span>
     <span class="token literal-property property">somme</span><span class="token operator">:</span> somme<span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">"../back/numérologie.js"</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">"../back/numérologie.js"</span>
 
 <span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">"Un chiffre associé à un prénom"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"65 -> 6 + 5 = 11 -> 1 + 1 = 2"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -226,8 +222,7 @@
         <span class="token function">expect</span><span class="token punctuation">(</span>numérologie<span class="token punctuation">.</span><span class="token function">chiffre</span><span class="token punctuation">(</span><span class="token string">"Amy"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Par défaut, on va grouper les tests similaire dans un même fichier. Si l'on a besoin de sous-groupes à l'intérieur d'un fichier, par exemple en faisant un groupe pour les tests d'une fonction, on peut utiliser un bloc <a href="https://jestjs.io/fr/docs/api#describename-fn">describe</a>.</p>
 <h2>Front</h2>
 <p>On peut tester de la même manière le js front. En revanche, on ne testera pas la manipulation de l'arbre DOM, il faut donc séparer les fichiers js en 2 types : ceux testables et les autres.</p>
@@ -258,17 +253,15 @@
 </div></div>
 
 <p>Modifions le test de chiffreAssocie pour s'en convaincre :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"nombre associé au prénom de plusieurs lettres"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"nombre associé au prénom de plusieurs lettres"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">expect</span><span class="token punctuation">(</span>numérologie<span class="token punctuation">.</span><span class="token function">chiffreAssocie</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Ou ajoutons un fichier et voyons comme tout n'est pas testé :</p>
 <p><code class="fichier">__tests__/numérologie.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">"../back/numérologie.js"</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> numérologie <span class="token keyword">from</span> <span class="token string">"../back/numérologie.js"</span>
 <span class="token keyword">import</span> db <span class="token keyword">from</span> <span class="token string">"../db.js"</span> <span class="token comment">// inutile. Juste pour voir le coverage</span>
 
-<span class="token comment">// ...</span>
-</code></pre>
+<span class="token comment">// ...</span></code></pre>
 <h2>Mocker des fonctions</h2>
 <p>Concept avancé mais très utile lorsque l'on veut tester un comportement spécifique d'une fonction sans avoir à tout paramétrer. On va l'utiliser ici de façon un peut surfaite, mais pensez-y pour les tests de pannes, d'erreurs ou de fonction nécessitant le réseau.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">

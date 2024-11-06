@@ -191,12 +191,11 @@ en pratique pas que des 0 et des 1, des lettres.</p>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">palindrome</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">palindrome</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">if</span> mot<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> mot<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>mot<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">False</span>
     <span class="token keyword">return</span> <span class="token boolean">True</span>
-
 </code></pre>
 </div>
 </details>     

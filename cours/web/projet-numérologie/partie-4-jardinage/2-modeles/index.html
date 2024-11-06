@@ -104,7 +104,7 @@
 <p>Avant de montrer le code des modèles, créons un dossier <code class="fichier">numérologie/modèles/</code> qui va contenir nos modèles.</p>
 <h3>Modèle <code class="language-">Signification</code></h3>
 <p>Le modèle <code class="language-">Signification</code> est alors crée dans le fichier <code class="fichier">numérologie/models/signification.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token parameter">sequelize</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 
@@ -122,13 +122,12 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Remarquez que l'objet exporté n'est plus un dictionnaire comme précédemment, mais une fonction. Lors de l'import dans le fichier <code class="fichier">db.js</code> (on le fera juste après) on passera en paramètre l'objet <code class="fichier">sequelize</code> qui contient notre lien à la base de donnée.</p>
 <p>Ceci nous permet d'avoir plusieurs fichiers de modèles avec un unique objet <code class="fichier">sequelize</code> : on injecte les dépendances dans l'initialisation des objets.</p>
 <h3>Modèle <code class="language-">Prénoms</code></h3>
 <p>De la même manière, on crée le modèle <code class="language-">Prénoms</code> dans le fichier <code class="fichier">numérologie/models/prénoms.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token parameter">sequelize</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 
@@ -142,11 +141,10 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h2>Base de donnée</h2>
 <p>Les modèles crées vont être importé puis exécutés dans notre fichier <code class="fichier">numérologie/db.js</code> remanié :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
@@ -169,7 +167,6 @@
         <span class="token literal-property property">Prénoms</span><span class="token operator">:</span> <span class="token function">prénoms</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>Voyez comment le modèle est tout d'abord chargé (<code class="language-">import signification from &quot;./modèles/signification.js&quot;</code>) puis exécuté à l'export (<code class="language-">Signification: signification(sequelize)</code>) en utilisant la base de donnée en injection de dépendance.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">

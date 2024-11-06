@@ -162,7 +162,7 @@
 <p><img src="xy_lc.png" alt="xy et lc"></p>
 <p>L'origine du repère de la fenêtre est en bas à gauche et toutes les formes pyglet dépendent d'elle, c'est ce que l'on appelle les <em>coordonnées écrans</em> (x, y) alors que chaque grille est organisée en <em>coordonnées matricielles</em> (ligne, colonne).</p>
 <p>Créez un fichier <code class="fichier">utils.py</code> où vous copierez les deux fonctions ci-dessous :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">xy_vers_lc</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> origine_grille_x<span class="token punctuation">,</span> origine_grille_y<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> nombre_lignes_grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">xy_vers_lc</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> origine_grille_x<span class="token punctuation">,</span> origine_grille_y<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> nombre_lignes_grille<span class="token punctuation">)</span><span class="token punctuation">:</span>
     ligne <span class="token operator">=</span> nombre_lignes_grille <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> <span class="token punctuation">(</span>y <span class="token operator">-</span> origine_grille_y<span class="token punctuation">)</span> <span class="token operator">//</span> dimension_case
     colonne <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">-</span> origine_grille_x<span class="token punctuation">)</span> <span class="token operator">//</span> dimension_case
 
@@ -173,8 +173,7 @@
     x <span class="token operator">=</span> origine_grille_x <span class="token operator">+</span> dimension_case <span class="token operator">*</span> colonne
     y <span class="token operator">=</span> origine_grille_y <span class="token operator">+</span> dimension_case <span class="token operator">*</span> <span class="token punctuation">(</span>nombre_lignes_grille <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> ligne<span class="token punctuation">)</span>
 
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span></code></pre>
 <p>Ces deux fonctions permettent de faire les conversions entre les coordonnées écrans et matricielles :</p>
 <ul>
 <li><code class="language-">xy_vers_lc</code> permet, à partir d'une coordonnée écrans <code class="language-">x</code> et <code class="language-">y</code> correspondant à un coin bas gauche d'une case de rendre la ligne et la colonne de celle ci dans grille. Par exemple si on rentre comme paramètres :
@@ -355,7 +354,7 @@
 <h4>Question 4.1.1</h4>
 <p>Nous ajoutons un attribut <code class="language-">cases</code> aux objets de type <code class="language-">Grille</code>. Cet attribut est une matrice aux dimensions de la grille permettant de gérer individuellement chaque case de la grille.</p>
 <p>Le code suivant crée cet attribut en remplissant chaque case avec des objets <code class="language-">None</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Grille</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Grille</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> nombre_lignes<span class="token punctuation">,</span> nombre_colonnes<span class="token punctuation">,</span> dimension_case<span class="token punctuation">,</span> couleur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># ..</span>
 
@@ -366,8 +365,7 @@
                 ligne<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">)</span>
             self<span class="token punctuation">.</span>cases<span class="token punctuation">.</span>append<span class="token punctuation">(</span>ligne<span class="token punctuation">)</span>
 
-        <span class="token comment"># ...</span>
-</code></pre>
+        <span class="token comment"># ...</span></code></pre>
 <p>Chaque élément, noté <code class="language-">cases[ligne][colonne]</code>, sera ensuite :</p>
 <ul>
 <li>soit <code class="language-">None</code> et la case est <em>libre</em></li>
@@ -430,15 +428,13 @@
 
 <p>Commencez par coder une fonction <code class="language-">rotation(matrice_carrée)</code> dans le fichier <code class="fichier">utils</code> qui rend la matrice carrée correspondant à la matrice donnée en entrée tournée d'un quart de tour. Ceci signifie que la ième ligne (d'indice $i-1$) devient la (n-i)ème colonne (d'indice $n-i-1$) où n est le nombre de lignes de la matrice (par exemple, la 1ère ligne devient la dernière colonne).</p>
 <p>Vous testerez dans <code class="fichier">test_utils</code> que si l'on donne en entrée la matrice :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
- <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+ <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>On obtient la matrice suivante en sortie :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
  <span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
- <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+ <span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <h4>Question 4.2.2</h4>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

@@ -439,15 +439,14 @@
 <blockquote>
 <p>Donnez le pseudo-code et la preuve d'une fonction <code class="language-">compte</code> de complexité $\mathcal{O}(n)$ telle que <code class="language-">compte(T, x)</code> est le nombre d'occurrences de $x$ dans $T$ (si $x\notin T$, <code class="language-">compte(T, x)</code> vaut 0).</p>
 </blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">compte</span><span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
 
     nombre <span class="token operator">=</span> <span class="token number">0</span>
     <span class="token keyword">for</span> element <span class="token keyword">in</span> T<span class="token punctuation">:</span>
         <span class="token keyword">if</span> element <span class="token operator">==</span> x<span class="token punctuation">:</span>
             nombre <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> nombre
-</code></pre>
+    <span class="token keyword">return</span> nombre</code></pre>
 <p>La complexité de la fonction est en $\mathcal{O}(n)$ où $n$ est la taille de $T$ puisque :</p>
 <ul>
 <li>toutes les lignes sont de complexité $\mathcal{O}(1)$</li>
@@ -463,13 +462,12 @@
 <blockquote>
 <p>Utilisez la question précédente pour créer algorithme en $\mathcal{O}(n^2)$ qui prend un tableau d'entiers en paramètre et rend un élément majoritaire de ce tableau s'il existe, ou <code>None</code> sinon.</p>
 </blockquote>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python">
-<span class="token keyword">def</span> élément_majoritaire<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> compte<span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> x
-    <span class="token keyword">return</span> <span class="token boolean">None</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> élément_majoritaire<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> x <span class="token keyword">in</span> T<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> compte<span class="token punctuation">(</span>T<span class="token punctuation">,</span> x<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> x</span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">None</span></span></code></pre>
 <p>Le test de la ligne 4 est en $\mathcal{O}(n)$ où $n$ est la taille de $T$ puisqu'il faut exécuter <code class="language-">compte</code>. Toutes les autres lignes sont de complexité $\mathcal{O}(1)$ et comme la boucle <code class="language-">for</code> est exécutée la taille de $T$ fois, on exécute <code class="language-">compte</code> $n$ fois ce qui porte la complexité de l'algorithme à $\mathcal{O}(n^2)$.</p>
 <p>L'invariant de boucle que l'on va utiliser pour prouver l'algorithme <code class="language-">élément_majoritaire</code> est : au bout de la $i$ ème itération,aucun des $i$ premières cases de $T$ n'est un élément majoritaire.</p>
 <ol>
@@ -523,13 +521,12 @@
 <blockquote>
 <p>Déduisez-en un algorithme itératif, dont vous donnerez le pseudo-code et la preuve, plus efficace que celui de l'exercice 1.3.2 pour résoudre le problème de l'élément majoritaire.</p>
 </blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">element_majoritaire</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     T<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">if</span> compte<span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> T<span class="token punctuation">[</span><span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">]</span>
-    <span class="token keyword">return</span> <span class="token boolean">None</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
 <p>L'algorithme commence par trier le tableau et compte le nombre d'occurence de l'élément au milieu. Ci cette occurence est majoritaire, on a trouvé notre  élément majoritaire et si elle ne l'est pas, la question 2.2.1 montre que le tableau ne peut avoir d'élément majoritaire,</p>
 <p>Sa complexité est ramené à la complexité du tri plus une fois la complexité de <code class="language-">compte</code> : la complexité est donc en $\mathcal{O}(len(T) \ln(len(T)))$.</p>
 <h4>2.2.3</h4>
@@ -561,20 +558,19 @@
 <p>Donnez un algorithme qui détermine, quand $x$ est un élément majoritaire de $T_1$, si $x$ est un élément majoritaire de $T$.</p>
 </blockquote>
 <p>Il suffit de regarder si <code class="language-">compte(x, T) &gt; len(T) // 2</code> avec <code class="language-">x</code> l'élément majoritaire de $T_1$ ou $T_2$ s'il est différent de <code class="language-">None</code>. Ce qui peut se traduire en pyhton en :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T1<span class="token punctuation">)</span>
 <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x
 
 x <span class="token operator">=</span> element_majoritaire<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
 <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x
-</code></pre>
+    <span class="token keyword">return</span> x</code></pre>
 <h4>3.2.3</h4>
 <blockquote>
 <p>Déduisez-en un algorithme récursif, plus efficace que celui de l'exercice 1.3.2, pour résoudre le problème.</p>
 </blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">def</span> <span class="token function">element_majoritaire</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
     n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span>
     <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
@@ -587,8 +583,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
     <span class="token keyword">if</span> x <span class="token operator">!=</span> <span class="token boolean">None</span> <span class="token keyword">and</span> compte<span class="token punctuation">(</span>x<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">></span> n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> x
 
-    <span class="token keyword">return</span> <span class="token boolean">None</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
 <p>La condition d'arrêt est pour des tailles de tableaux égales à $1 = 2^0$. Pour laquelle on trouve bien l'élément majoritaire.</p>
 <p>On suppose alors par récurrence que l'algoerithme fonctionne pour $n = 2^i$ et on vérifie qu'il continue de fnctionner pour $n'=2^{i+1}$. Ceci est évidant car on applique directement la condition de 3.2.2</p>
 <p>La complexité $C(n)$ de l'algoirthme est régit par l'équation de récurrence : $C(n) = 2 \cdot C(n/2) + \mathcal{O}(n)$ puisque la complexité de <code class="language-">compte</code> est linéaire. Cette équation est la méme que pour le tri fusion, ce qui donne une complexité de $C(n) = \mathcal{O}(n\log(n))$.</p>
@@ -614,7 +609,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 </ul>
 </blockquote>
 <p>On utilise des liste en python pour simuler des piles, avec les méthodes <code class="language-">append</code> et <code class="language-">pop</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> crée_pile_vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> crée_pile_vide<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
 
@@ -628,7 +623,6 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
         <span class="token keyword">return</span> x
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token boolean">None</span>
-
 </code></pre>
 <h4>4.2.1</h4>
 <blockquote>
@@ -703,7 +697,7 @@ x <span class="token operator">=</span> element_majoritaire<span class="token pu
 <blockquote>
 <p>Déduisez de la partie précédente un algorithme linéaire en la taille du tableau en entrée pour résoudre le problème de l'élément majoritaire.</p>
 </blockquote>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrées : Un tableau d'entiers T
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Entrées : Un tableau d'entiers T
 Programme :
     Soient P1 et P2 les piles issuent de Majorité(T)
     x = dépile(P2)
@@ -713,7 +707,6 @@ Programme :
     si x == None ou si compte(T, x) <= len(T) // 2:
         return None
     return x
-
 </code></pre>
 <p>L'algorithme est exacte puisque'il implémente directement la question 4.2.7. Sa complexité est celle de l'exécution de l'algorithme <code class="language-">Majorité</code> plus celle de <code class="language-">compte</code> plus des instruction en $\mathcal{O}(1)$ : sa complexité totale est en $\mathcal{O}(n)$ où $n$ est la taille de $T$.</p>
 <h4>4.3.2</h4>

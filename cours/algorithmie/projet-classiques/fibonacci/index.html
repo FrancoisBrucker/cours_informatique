@@ -111,11 +111,10 @@ $$
 <p>Si $n &gt; 2$ et $F(1) = F(2) = 1$</p>
 <p>Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs</p>
 <h3>Fibonacci récursif</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span>
-</code></pre>
+    <span class="token keyword">return</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></code></pre>
 <p>Cette partie vous donne le principe général lorsque l'on calcule des complexités d'algorithmes récursifs.</p>
 <ol>
 <li>Donnez l'équation de récurrence permettant de calculer le nombre $A(n)$ d'appels à la fonction dans l'exécution de <code>fibonacci_rec(n)</code>. Montrer que cette valeur est égale à $F(n)$.</li>
@@ -169,14 +168,13 @@ $$
 <li><code class="language-">fibo_rec_terminal(n, 1, 1)</code> calcule bien $F(n)$ :</li>
 <li>sa complexité est $\mathcal{O}(n)$</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_rec2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_rec2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> b
     <span class="token keyword">elif</span> n <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> a
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> fibo_rec2<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">return</span> fibo_rec2<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a<span class="token punctuation">)</span></code></pre>
 
 
 </article>

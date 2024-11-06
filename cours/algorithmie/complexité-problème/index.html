@@ -160,12 +160,11 @@ $$</p>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
 <li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
         <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.</p>
 <p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
@@ -232,22 +231,21 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
 <p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau_trie<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    debut <span class="token operator">=</span> <span class="token number">0</span>
-    fin <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tableau_trie<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> fin <span class="token operator">-</span> debut <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> debut<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
-
-        <span class="token keyword">if</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-        <span class="token keyword">elif</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;</span> valeur<span class="token punctuation">:</span>
-            debut <span class="token operator">=</span> milieu <span class="token operator">+</span> <span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            fin <span class="token operator">=</span> milieu <span class="token operator">-</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau_trie<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    debut <span class="token operator">=</span> <span class="token number">0</span></span>
+<span class="highlight-line">    fin <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tableau_trie<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">while</span> fin <span class="token operator">-</span> debut <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> debut<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">if</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">==</span> valeur<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">        <span class="token keyword">elif</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;</span> valeur<span class="token punctuation">:</span></span>
+<span class="highlight-line">            debut <span class="token operator">=</span> milieu <span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">else</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            fin <span class="token operator">=</span> milieu <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span>
+<span class="highlight-line"></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

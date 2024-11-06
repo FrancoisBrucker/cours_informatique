@@ -163,25 +163,22 @@
 <h3>Exemple d'objets en python</h3>
 <h4>Chaîne de caractères</h4>
 <p>Les chaines de caractères sont des objets de la classe (<a href="https://docs.python.org/fr/3/library/string.html">str</a>) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token string">"une chaîne"</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token string">"une chaîne"</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span></code></pre>
 <p>Les méthodes définies dans la classe <code class="language-">str</code>, comme <code class="language-">upper()</code> par exemple sont utilisables par tous les objets de la classe <code class="language-">str</code> (dans l'exemple ci-après par l'objet <code class="language-">&quot;coucou&quot;</code> et l'objet <code class="language-">&quot;toi&quot;</code>) :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"coucou"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token string">'COUCOU'</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"toi"</span><span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token string">'TOI'</span>
-</code></pre>
+<span class="token string">'TOI'</span></code></pre>
 <p>La notation pointée permet de dire que c'est la méthode à droite du <code class="language-">.</code> que l'on cherche dans l'objet à gauche du point.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Le code suivant produit une erreur. Pourquoi ?</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> upper<span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> upper<span class="token punctuation">(</span><span class="token string">"coucou"</span><span class="token punctuation">)</span>
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-NameError<span class="token punctuation">:</span> name <span class="token string">'upper'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined
-</code></pre>
+NameError<span class="token punctuation">:</span> name <span class="token string">'upper'</span> <span class="token keyword">is</span> <span class="token keyword">not</span> defined</code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -209,9 +206,8 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>Un objet <code class="language-">str</code> est bien plus que juste ses caractères ! C'est aussi un ensemble de méthodes permettant de les manipuler.</p>
 <h4>Entiers</h4>
 <p>Les entiers sont aussi des objets d'une classe : <code class="language-">int</code>.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'int'</span><span class="token operator">></span></code></pre>
 <p>Contrairement à la classe <code class="language-">str</code>, la classe <code class="language-">int</code> ne définit pas de méthode mais des opérations. Par exemple <code class="language-">__add__</code> définit l'addition d'un entier par un autre objet. C'est pratique que tout soit défini dans la classe , cela nous permettra à nous aussi de faire nos propres additions.</p>
 <p>Les deux écritures sont identiques en python, mais bien sur, nous préférerons la première, bien plus simple à écrire et à comprendre :</p>
 <ol>
@@ -234,8 +230,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <div class="pl-8 mr-8">
 <p>Pour créer des objets d'une classe, on utilise un <strong><em>constructeur</em></strong>.</p>
 <p>En python, le retour de l'<strong><em>exécution d'une classe</em></strong> (l'utilisation de la classe comme si c'était une fonction) produit un objet. Par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">NomDeLaClasse<span class="token punctuation">(</span>paramètre_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre_n<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>Ainsi :</p>
@@ -297,8 +292,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 <p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms" class="interne">espaces de noms</a>. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 <h4>Processus de création d'un objet</h4>
 <p>En python, on construit et rend un objet en <strong><em>appelant sa classe</em></strong>. Par exemple pour créer un objet de la classe <code class="language-">MaClasse</code>, on exécute l'instruction :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">mon_objet <span class="token operator">=</span> MaClasse<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mon_objet <span class="token operator">=</span> MaClasse<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span></code></pre>
 <p>Python exécute cette instruction en :</p>
 <ol>
 <li>créant un objet vide <code class="language-">o</code> de type <code class="language-">MaClasse</code></li>
@@ -316,16 +310,15 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </ul>
 <h3>Code d'utilisation</h3>
 <p>Cette modélisation doit être capable de répondre au code suivant, dans le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur
-
-c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">from</span> compteur <span class="token keyword">import</span> Compteur</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">c1 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c2 <span class="token operator">=</span> Compteur<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c2<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">c1<span class="token punctuation">.</span>incrémente<span class="token punctuation">(</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>c2<span class="token punctuation">.</span>valeur<span class="token punctuation">)</span></span></code></pre>
 <h4>Analyse du programme</h4>
 <p>C'est du python. On va essayer de comprendre le code pour produire une représentation UML de la classe <code class="language-">Compteur</code>.</p>
 <p>Le programme commence par importer le mot <code class="language-">Compteur</code> et on l'exécute 2 fois pour l'affecter à 2 noms différents. Pour voir ce que peut être <code class="language-">Compteur</code>, plusieurs indices :</p>
@@ -428,16 +421,15 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <p><img src="classes-2.png" alt="compteur"></p>
 <h3>Code python</h3>
 <p>La classe python qui correspond à l'UML précédent est celle-ci, contenu dans le fichier <code class="fichier">compteur.py</code>, placé dans le même dossier que le fichier <code class="fichier">main.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Compteur</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">def</span> incrémente<span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>valeur <span class="token operator">=</span> self<span class="token punctuation">.</span>valeur <span class="token operator">+</span> <span class="token number">1</span>
-
 </code></pre>
 <p>La définition d'une classe est un bloc python :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">class</span> <span class="token operator">&lt;</span>nom de la classe<span class="token operator">></span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         instruction <span class="token number">1</span>
@@ -451,8 +443,7 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
     <span class="token keyword">def</span> méthode m<span class="token punctuation">(</span>self<span class="token punctuation">,</span> paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n_m<span class="token punctuation">)</span><span class="token punctuation">:</span>
         instruction <span class="token number">1</span>
         <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-        instruction p_m
-</code></pre>
+        instruction p_m</code></pre>
 <p>La classe <code class="language-">Compteur</code> contient :</p>
 <ul>
 <li><code class="language-">__init__</code> est le constructeur : <strong>on déclare tous les attributs d'un objet dans celui-ci</strong>.</li>

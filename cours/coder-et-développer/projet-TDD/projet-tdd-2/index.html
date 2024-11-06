@@ -140,7 +140,7 @@
 <li>on a le droit de commettre les pires péchés pour faire marcher le projet (<em>that works</em>), ensuite on fait les choses bien (<em>clean code</em>)</li>
 </ul>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cinq <span class="token operator">=</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -155,8 +155,7 @@
     <span class="token keyword">assert</span> Franc<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">2</span>
     <span class="token keyword">assert</span> Franc<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">3</span>
 
-<span class="token comment"># ... </span>
-</code></pre>
+<span class="token comment"># ... </span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -181,7 +180,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -193,8 +192,7 @@
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> self<span class="token punctuation">.</span>montant <span class="token operator">==</span> other<span class="token punctuation">.</span>montant
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -256,7 +254,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
 
@@ -265,7 +263,6 @@
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
-
 </code></pre>
 </div>
 </details>     
@@ -295,7 +292,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
@@ -310,7 +307,6 @@
     <span class="token comment"># pas de méthode __init__</span>
 
     <span class="token comment"># ...</span>
-
 </code></pre>
 </div>
 </details>     
@@ -340,7 +336,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_egalite_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> Dollar<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
@@ -357,8 +353,7 @@
 <span class="token keyword">def</span> <span class="token function">test_non_egalite_franc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Franc<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Franc<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -421,7 +416,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>montant <span class="token operator">=</span> montant
 
@@ -436,8 +431,7 @@
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -492,13 +486,12 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_franc_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> Dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -529,7 +522,7 @@
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -539,8 +532,7 @@
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -647,7 +639,7 @@
 </div></div>
 
 <p>Commençons par tester le <em>factory</em> la classe <code class="language-">Dollar</code>  dans le test <code class="language-">test_multiplication_dollar()</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar<span class="token punctuation">,</span> Franc
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar<span class="token punctuation">,</span> Franc
 <span class="token keyword">import</span> monnaie
 
 <span class="token comment"># ...</span>
@@ -658,10 +650,9 @@
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">2</span>
     <span class="token keyword">assert</span> Dollar<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span> <span class="token operator">==</span> cinq <span class="token operator">*</span> <span class="token number">3</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Bien sur nos tests ne passent pas (encore) :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">___________________________________________________
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">___________________________________________________
 test_multiplication_dollar 
 ___________________________________________________
 
@@ -669,8 +660,7 @@ ___________________________________________________
 >       cinq = monnaie.dollar(5)
 E       AttributeError: module 'monnaie' has no attribute 'dollar'
 
-test_monnaie.py:6: AttributeError
-</code></pre>
+test_monnaie.py:6: AttributeError</code></pre>
 <p>Ici la fonction <code class="language-">dollar</code> définie dans le module <code class="language-">monnaie</code> (le fichier <code class="fichier">monnaie.py</code>) est le
 <em>factory</em> des objets de classe <code class="language-">Dollar</code>.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -697,13 +687,12 @@ test_monnaie.py:6: AttributeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -734,7 +723,7 @@ test_monnaie.py:6: AttributeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar<span class="token punctuation">,</span> Franc
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> monnaie <span class="token keyword">import</span> Dollar<span class="token punctuation">,</span> Franc
 <span class="token keyword">import</span> monnaie
 
 
@@ -770,7 +759,6 @@ test_monnaie.py:6: AttributeError
 
 <span class="token keyword">def</span> <span class="token function">test_franc_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> Franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
 </code></pre>
 </div>
 </details>     
@@ -821,15 +809,14 @@ test_monnaie.py:6: AttributeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> monnaie
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> monnaie
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -864,7 +851,6 @@ test_monnaie.py:6: AttributeError
 
 <span class="token keyword">def</span> <span class="token function">test_franc_dollar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-
 </code></pre>
 </div>
 </details>     
@@ -907,14 +893,13 @@ test_monnaie.py:6: AttributeError
 <p>La classe <code class="language-">Devise</code> que l'on veut créer doit avoir un attribut qui nous permettra de distinguer les <code class="language-">Franc</code> des <code class="language-">Dollar</code>.</p>
 <p>Faisons un test pour implémenter cette idée :</p>
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">test_devise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token string">"USD"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
     <span class="token keyword">assert</span> <span class="token string">"CHF"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -939,16 +924,15 @@ test_monnaie.py:6: AttributeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>On implémente cet attribut sous la forme d'un attribut de classe, en le définissant directement dans la classe.</p>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     devise <span class="token operator">=</span> <span class="token string">"USD"</span>
@@ -961,8 +945,7 @@ test_monnaie.py:6: AttributeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1006,7 +989,7 @@ test_monnaie.py:6: AttributeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1022,15 +1005,14 @@ test_monnaie.py:6: AttributeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
 <p>Afin de faire remonter l'attribut <code class="language-">devise</code> dans la classe <code class="language-">Monnaie</code>, il va falloir ajouter la devise en paramètre du constructeur.</p>
 <p>Pour que cela se passe sans risque, on va commencer par juste ajouter le paramètre et voir ce que ça donne :</p>
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1038,16 +1020,14 @@ test_monnaie.py:6: AttributeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 <p>Et les tests plantent :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">
     def __init__(self, montant):
 >       super().__init__(montant)
 E       TypeError: __init__() missing 1 required positional argument: 'devise'
 
-monnaie.py:19: TypeError
-</code></pre>
+monnaie.py:19: TypeError</code></pre>
 <p>On a oublié de modifier l'appel au constructeur dans les constructeur des classes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1073,7 +1053,7 @@ monnaie.py:19: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1089,8 +1069,7 @@ monnaie.py:19: TypeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1119,7 +1098,7 @@ monnaie.py:19: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1140,8 +1119,7 @@ monnaie.py:19: TypeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1189,7 +1167,7 @@ monnaie.py:19: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1197,18 +1175,16 @@ monnaie.py:19: TypeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
 <p>Les tests donnent :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token operator">></span>       <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>montant<span class="token punctuation">)</span>
 E       TypeError<span class="token punctuation">:</span> __init__<span class="token punctuation">(</span><span class="token punctuation">)</span> missing <span class="token number">1</span> required positional argument<span class="token punctuation">:</span> <span class="token string">'devise'</span>
 
-monnaie<span class="token punctuation">.</span>py<span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span> TypeError
-</code></pre>
+monnaie<span class="token punctuation">.</span>py<span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span> TypeError</code></pre>
 <p>C'est le factory.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1234,13 +1210,12 @@ monnaie<span class="token punctuation">.</span>py<span class="token punctuation"
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1253,12 +1228,11 @@ monnaie<span class="token punctuation">.</span>py<span class="token punctuation"
 </div></div>
 
 <p>Les tests ratent toujours :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">    def __mul__(self, multiplicateur):
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    def __mul__(self, multiplicateur):
 >       return Franc(self.montant * multiplicateur)
 E       TypeError: __init__() missing 1 required positional argument: 'devise'
 
-monnaie.py:31: TypeError
-</code></pre>
+monnaie.py:31: TypeError</code></pre>
 <p>Ah, c'est inattendu... On avait oublié <code class="language-">__mul__</code> : elle n'utilise pas le factory pour créer ses objets.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1284,7 +1258,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -1292,8 +1266,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1323,7 +1296,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
@@ -1337,8 +1310,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> dollar<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1368,7 +1340,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
@@ -1382,8 +1354,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1412,7 +1383,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Dollar<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
@@ -1426,8 +1397,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> dollar<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1456,7 +1426,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1467,8 +1437,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1531,7 +1500,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1542,8 +1511,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">;</span> "CHF<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1573,7 +1541,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> montant<span class="token punctuation">,</span> devise<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1586,8 +1554,7 @@ monnaie.py:31: TypeError
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">,</span> self<span class="token punctuation">.</span>devise<span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1616,13 +1583,12 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1653,14 +1619,13 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Franc<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1689,7 +1654,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Monnaie</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span>
@@ -1699,8 +1664,7 @@ monnaie.py:31: TypeError
 
     <span class="token comment"># ...</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1729,13 +1693,12 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Franc</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1765,13 +1728,12 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">class</span> <span class="token class-name">Dollar</span><span class="token punctuation">(</span>Monnaie<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">pass</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1817,7 +1779,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token comment"># ...</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># ...</span>
 
 <span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
@@ -1826,8 +1788,7 @@ monnaie.py:31: TypeError
 <span class="token keyword">def</span> <span class="token function">franc</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"CHF"</span><span class="token punctuation">)</span>
 
-<span class="token comment"># ...</span>
-</code></pre>
+<span class="token comment"># ...</span></code></pre>
 </div>
 </details>     
 </div>
@@ -1881,7 +1842,7 @@ monnaie.py:31: TypeError
 </summary>
 <div class="mx-8 pb-2">
 <p>Fichier <code class="fichier">test_monnaie.py</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> monnaie
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> monnaie
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1906,7 +1867,6 @@ monnaie.py:31: TypeError
 <span class="token keyword">def</span> <span class="token function">test_devise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token string">"USD"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
     <span class="token keyword">assert</span> <span class="token string">"CHF"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
-
 </code></pre>
 </div>
 </details>     
@@ -1938,7 +1898,7 @@ monnaie.py:31: TypeError
 </ul>
 <h3>Code</h3>
 <h4><code class="fichier">test_monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">import</span> monnaie
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> monnaie
 
 
 <span class="token keyword">def</span> <span class="token function">test_multiplication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -1963,10 +1923,9 @@ monnaie.py:31: TypeError
 <span class="token keyword">def</span> <span class="token function">test_devise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> <span class="token string">"USD"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>dollar<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
     <span class="token keyword">assert</span> <span class="token string">"CHF"</span> <span class="token operator">==</span> monnaie<span class="token punctuation">.</span>franc<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>devise
-
 </code></pre>
 <h4><code class="fichier">monnaie.py</code></h4>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">dollar</span><span class="token punctuation">(</span>montant<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>montant<span class="token punctuation">,</span> <span class="token string">"USD"</span><span class="token punctuation">)</span>
 
 
@@ -1984,7 +1943,6 @@ monnaie.py:31: TypeError
 
     <span class="token keyword">def</span> <span class="token function">__mul__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> multiplicateur<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">return</span> Monnaie<span class="token punctuation">(</span>self<span class="token punctuation">.</span>montant <span class="token operator">*</span> multiplicateur<span class="token punctuation">,</span> self<span class="token punctuation">.</span>devise<span class="token punctuation">)</span>
-
 </code></pre>
 
 

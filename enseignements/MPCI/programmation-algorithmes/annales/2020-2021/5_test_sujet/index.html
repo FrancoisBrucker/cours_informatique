@@ -103,15 +103,14 @@
 <li>on doit pouvoir connaître et modifier l'attaque d'un personnage</li>
 </ul>
 <h2>1) créer le code python de la classe personnage en sachant qu'il doit pouvoir en plus exécuter le code suivant</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">from</span> personnage <span class="token keyword">import</span> Personnage
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> personnage <span class="token keyword">import</span> Personnage
 
 gandalf <span class="token operator">=</span> Personnage<span class="token punctuation">(</span>pv<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span>
 balrog <span class="token operator">=</span> Personnage<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span>
 balrog<span class="token punctuation">.</span>tape<span class="token punctuation">(</span>gandalf<span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Le Balrog a donné"</span><span class="token punctuation">,</span> balrog<span class="token punctuation">.</span>get_attaque<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"dégats à Gandalf"</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"il lui reste : "</span><span class="token punctuation">,</span> gandalf<span class="token punctuation">.</span>get_pv<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"pv (le pauvre)"</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"il lui reste : "</span><span class="token punctuation">,</span> gandalf<span class="token punctuation">.</span>get_pv<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"pv (le pauvre)"</span><span class="token punctuation">)</span></code></pre>
 <h2>2) décrivez comment s'exécute la ligne balrog.tape(gandalf) du code précédent (en particulier les namespaces utilisés)</h2>
 <h2>3) comment créer une méthode se_fait_taper_par(un_perso) en utilisant tape() ?</h2>
 

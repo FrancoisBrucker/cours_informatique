@@ -105,7 +105,7 @@
 <h2>Environnement de test</h2>
 <p>Créons une base de donnée en mémoire pour notre environnement de tests.</p>
 <p>Dans le fichier <code class="fichier">db.js</code>, on remplace la création de la constante sequelize par :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token comment">// ...</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token comment">// ...</span>
 
 <span class="token keyword">let</span> env <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">||</span> <span class="token string">'development'</span><span class="token punctuation">;</span>
 
@@ -124,7 +124,6 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// ...</span>
-
 </code></pre>
 <h2>Tests</h2>
 <p>On peut maintenant créer nos tests.</p>
@@ -134,7 +133,7 @@
 <li>utilisation de supertest pour tester l'accès à la base via les routes</li>
 </ol>
 <p>Fichier <code class="fichier">__tests__/db.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'supertest'</span><span class="token punctuation">;</span>
 
 
 <span class="token keyword">import</span> <span class="token punctuation">{</span> app <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../app.js'</span><span class="token punctuation">;</span>
@@ -181,8 +180,7 @@
             <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>Quelques subtilités :</p>
 <ul>
 <li>on a changé le port du serveur en 3001. Comme les tests s'effectuent en parallèle, il est parfois possible que les 2 tests supertests soient exécutées ensembles</li>
@@ -197,7 +195,7 @@
 <p>La seconde solution est de ne pas toucher la base de donnée et de remplacer un appel de la base de donnée par notre propre code.</p>
 <p>Pour cela on utilise le fait qu'en javascript, une fois un module importé une fois, il n'est plus lu ensuite, on ne fait que rendre les objets exportés. De là, on <a href="https://fr.wikipedia.org/wiki/Mock_(programmation_orient%C3%A9e_objet)">mock</a> le module ou une partie de celui ci en l'important une première fois avant tout le monde. Lorsque les autres fichiers importeront le module, c'est notre mock qu'ils vont importer.</p>
 <p>On a utilisé cette technique pour tester la route <code>/api/prenoms/read'</code>en mockant la partie <code>model</code> du module db. Fichier <code class="fichier">__test__/donnees.mock.js</code> :</p>
-<pre class="language-js " style="counter-reset: linenumber 0"><code class="language-js"><span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'supertest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">const</span> request <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'supertest'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 
 
@@ -239,8 +237,7 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
             <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>On a dans le code ci-dessus remplacé la partie model du retour du <code>require(&quot;db&quot;)</code> par une <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise">promesse</a> qui rend toujours <code>[{ prenom: &quot;toto&quot; }]</code>. IL n'y a alors plus d'appel à la base de donnée dans la route et le code se poursuit jusqu'à renvoyer la liste qui est notre test.</p>
 <blockquote>
 <p>La technique de mock est très puissante ! Elle permet de tester presque tout ce qu'on veut sans soucis. Lisez <a href="https://jestjs.io/docs/mock-functions">la documentation de jest</a> pour plus de renseignements sur ce qu'on peut faire avec.</p>

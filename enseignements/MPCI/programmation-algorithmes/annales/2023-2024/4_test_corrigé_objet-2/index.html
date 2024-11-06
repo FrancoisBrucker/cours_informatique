@@ -79,7 +79,7 @@
   
 
   <h2>1.</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UndoRedo</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">UndoRedo</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> l<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
         self<span class="token punctuation">.</span>l <span class="token operator">=</span> l
         self<span class="token punctuation">.</span>x <span class="token operator">=</span> x
@@ -89,13 +89,12 @@
             self<span class="token punctuation">.</span>l<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">remet</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>x<span class="token punctuation">)</span>
-</code></pre>
+        self<span class="token punctuation">.</span>l<span class="token punctuation">.</span>append<span class="token punctuation">(</span>self<span class="token punctuation">.</span>x<span class="token punctuation">)</span></code></pre>
 <h2>2.</h2>
 <blockquote>
 <p>TBD</p>
 </blockquote>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
 <span class="token keyword">from</span> random <span class="token keyword">import</span> randint
 
 l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
@@ -116,10 +115,9 @@ sauve <span class="token operator">=</span> <span class="token punctuation">[</s
    undo_redo<span class="token punctuation">.</span>remet<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-
 </code></pre>
 <h2>3.</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MaListe</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MaListe</span><span class="token punctuation">(</span><span class="token builtin">list</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">)</span>
         self<span class="token punctuation">.</span>stock <span class="token operator">=</span> <span class="token boolean">None</span>
@@ -140,8 +138,7 @@ l<span class="token punctuation">.</span>append<span class="token punctuation">(
 l<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
 l<span class="token punctuation">.</span>depop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span></code></pre>
 <p>Ce n'est pas parfait car si on fait deux <code class="language-">pop</code> de suite cela ne marche plus, mais c'est un début.</p>
 
 

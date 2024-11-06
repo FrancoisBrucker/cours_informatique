@@ -103,13 +103,12 @@
 </svg>
 <div class="pl-8 mr-8">
 <p>Une <em><strong>fonction</strong></em> est <a href="../blocs" class="interne">un bloc</a> auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token operator">&lt;</span>nom<span class="token operator">></span><span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> paramètre <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token operator">&lt;</span>nom<span class="token operator">></span><span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> paramètre <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span><span class="token punctuation">:</span>
     instruction <span class="token number">1</span>
     instruction <span class="token number">2</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
     instruction n
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>objet<span class="token operator">></span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>objet<span class="token operator">></span></code></pre>
 </div></div>
 
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -121,9 +120,8 @@
 </div></div>
 
 <p>La partie de programme suivant définit une fonction :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span></code></pre>
 <p>La première ligne est la définition du bloc fonction. Il contient :</p>
 <ul>
 <li>un mot clé spécial précisant que l'on s'apprête à définir une fonction: <code class="language-">def</code></li>
@@ -144,30 +142,27 @@
 <h2>Nom d'une fonction</h2>
 <p>Un nom de fonction est variable comme une autre. Elle est affectée dans l'espace de nom du bloc dans lequel elle est défini.</p>
 <p>Dans le code suivant, exécuté dans un interpréteur on regarde le type d'un nom associé à une fonction :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
-<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'function'</span><span class="token operator">></span>
-</code></pre>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'function'</span><span class="token operator">></span></code></pre>
 <p>On peut aussi associer la fonction à une autre variable comme on le ferait avec n'importe quel autre objet. Dans l'exemple suivant on associe la fonction à une autre variable, <code class="language-">x</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
 <span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> bonjour
 <span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">(</span><span class="token punctuation">)</span>
-Salutations
-</code></pre>
+Salutations</code></pre>
 <p>En python, lorsque l'on exécute une fonction on dit qu'on <strong>l'appelle</strong>. <em><strong>Appeler une variable</strong></em> est alors le fait de mettre des <code>()</code> après son nom.</p>
 <p>Si cela produit une erreur ce n'était pas une fonction. Regardez l'exemple ci-après, exécutable dans un interpréteur. On tente d'appeler un entier et python nous indique que ce n'est pas possible :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> n <span class="token operator">=</span> <span class="token number">3</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> n <span class="token operator">=</span> <span class="token number">3</span>
 <span class="token operator">>></span><span class="token operator">></span> n<span class="token punctuation">(</span><span class="token punctuation">)</span>
 Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
   File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
-TypeError<span class="token punctuation">:</span> <span class="token string">'int'</span> <span class="token builtin">object</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token builtin">callable</span>
-</code></pre>
+TypeError<span class="token punctuation">:</span> <span class="token string">'int'</span> <span class="token builtin">object</span> <span class="token keyword">is</span> <span class="token keyword">not</span> <span class="token builtin">callable</span></code></pre>
 <p>Enfin, en python être une fonction n'est rien d'autre que d'être un <em><strong>objet appelable</strong></em>. Savoir si un objet est appelable ou pas se fait par la fonction <code class="language-">callable</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">def</span> <span class="token function">bonjour</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Salutations"</span><span class="token punctuation">)</span>
 <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">callable</span><span class="token punctuation">(</span>bonjour<span class="token punctuation">)</span>
@@ -175,8 +170,7 @@ TypeError<span class="token punctuation">:</span> <span class="token string">'in
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">callable</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token boolean">False</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">callable</span><span class="token punctuation">(</span><span class="token string">"ee"</span><span class="token punctuation">)</span>
-<span class="token boolean">False</span>
-</code></pre>
+<span class="token boolean">False</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -187,12 +181,11 @@ TypeError<span class="token punctuation">:</span> <span class="token string">'in
 </div></div>
 
 <h2>Paramètres d'une fonction</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus_moins</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus_moins</span><span class="token punctuation">(</span>nombre<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> nombre <span class="token operator">></span> <span class="token number">42</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Supérieur à 42"</span><span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Inférieur à 42"</span><span class="token punctuation">)</span>
-</code></pre>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Inférieur à 42"</span><span class="token punctuation">)</span></code></pre>
 <p>Cette fonction nécessite donc un paramètre pour être invoquée. Testez alors <code class="language-">plus_moins(17)</code>.
 La variable nombre sera associée à l'objet entier de valeur 17 dans la fonction. La variable nombre n'existe que dans la fonction.</p>
 <p>Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.</p>
@@ -205,9 +198,8 @@ La variable nombre sera associée à l'objet entier de valeur 17 dans la fonctio
 </div></div>
 
 <p>Regardons le bout de code suivant, qui utilise la fonction <code class="language-">plus_moins</code> définie précédemment :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">x <span class="token operator">=</span> <span class="token number">12</span>
-plus_moins<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">12</span>
+plus_moins<span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
 <p>Lorsque python exécute la deuxième du code précédent il va :</p>
 <ol>
 <li>créer un espace de nom pour la fonction</li>
@@ -239,11 +231,10 @@ plus_moins<span class="token punctuation">(</span>x<span class="token punctuatio
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cube</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">cube</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">**</span> <span class="token number">3</span><span class="token punctuation">)</span>
 
-cube<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-</code></pre>
+cube<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
@@ -270,22 +261,20 @@ cube<span class="token punctuation">(</span><span class="token number">2</span><
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">**</span> y<span class="token punctuation">)</span>
 
 puissance<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
-puissance<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
-</code></pre>
+puissance<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
 <h2>Paramètres par défaut</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus_moins</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> seuil<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">plus_moins</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> seuil<span class="token operator">=</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">if</span> nombre <span class="token operator">></span> seuil<span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Supérieur à"</span><span class="token punctuation">,</span> seuil<span class="token punctuation">)</span>
     <span class="token keyword">else</span><span class="token punctuation">:</span>
         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Inférieur à"</span><span class="token punctuation">,</span> seuil<span class="token punctuation">)</span>
-
 </code></pre>
 <p>On peut alors utiliser la fonction comme précédemment, <code class="language-">plus_moins(20)</code>, ou en utilisant le paramètre seuil <code class="language-">plus_moins(20, seuil=10)</code>.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -319,18 +308,16 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">**</span> y<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>x <span class="token operator">**</span> y<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
 <h2>Retour d'une fonction</h2>
 <p>Toute fonction peut rendre une valeur. On utilise le mot-clef <code class="language-">return</code> suivi de la valeur à rendre pour cela. Le fonction suivante rend le double de la valeur de l'objet passé en paramètre:</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double</span><span class="token punctuation">(</span>valeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double</span><span class="token punctuation">(</span>valeur<span class="token punctuation">)</span><span class="token punctuation">:</span>
     x <span class="token operator">=</span> valeur <span class="token operator">*</span> <span class="token number">2</span>
-    <span class="token keyword">return</span> x
-</code></pre>
+    <span class="token keyword">return</span> x</code></pre>
 <p>Il ne sert à rien de mettre des instructions après une instruction <code class="language-">return</code> car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -340,8 +327,7 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 <div class="pl-8 mr-8">
 <p>Dans un <a href="../../notebooks" class="interne">notebook</a> ou dans <a href="https://www.spyder-ide.org/">Spyder</a>, définissez la fonction précédente dans une cellule puis exécutez là.</p>
 <p>Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>double<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>double<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <p>Le résultat de la cellule devrait être : 42.</p>
@@ -378,25 +364,21 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x <span class="token operator">**</span> y
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">**</span> y</code></pre>
 </div>
 </details>     
 </div>
 <h2>Fonction en paramètre</h2>
 <p>Une fonction étant un objet comme un autre, elle peut très bien être utilisée comme paramètre :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>fct<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> fct<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token operator">+</span> z
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>fct<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> fct<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token operator">+</span> z</code></pre>
 <p>Le premier paramètre de la fonction <code class="language-">calcul</code> est appelé avec deux paramètres et son résultat est additionné au second paramètre.</p>
 <p>La ligne suivante est alors du python correct :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>calcul<span class="token punctuation">(</span>produit<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>calcul<span class="token punctuation">(</span>produit<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>Si on a au préalable définit <code class="language-">produit</code> comme une fonction à deux paramètres, comme par exemple :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x <span class="token operator">*</span> y
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x <span class="token operator">*</span> y</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -421,14 +403,13 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 </summary>
 <div class="mx-8 pb-2">
 <p>Le code final doit définir produit avant son utilisation. Il faut par exemple avoir le code :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>fct<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> fct<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token operator">+</span> z
-
-<span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x <span class="token operator">*</span> y
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>calcul<span class="token punctuation">(</span>produit<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">calcul</span><span class="token punctuation">(</span>fct<span class="token punctuation">,</span> z<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> fct<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">17</span><span class="token punctuation">)</span> <span class="token operator">+</span> z</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> x <span class="token operator">*</span> y</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>calcul<span class="token punctuation">(</span>produit<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span></code></pre>
 <p>Notez que lors de la définition de la fonction <code class="language-">calcul</code>, la variable <code class="language-">fct</code> n'est qu'un paramètre anonyme. Ce paramètre ne doit être défini que lors de son appel, à la ligne 7.</p>
 <p>La ligne 7 fonctionne alors comme suit :</p>
 <ol>
@@ -450,36 +431,30 @@ puissance<span class="token punctuation">(</span><span class="token number">3</s
 
 <p>Les lambda sont ue façon d'écrire rapidement une fonction avec une unique instruction.</p>
 <p>Les deux codes suivant sont identiques :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">double <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token operator">*</span> x
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">double <span class="token operator">=</span> <span class="token keyword">lambda</span> x<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token operator">*</span> x</code></pre>
 <p>et :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token number">2</span> <span class="token operator">*</span> x
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">double</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">2</span> <span class="token operator">*</span> x</code></pre>
 <p>Le principal intérêt de ces fonction est d'être utilisée comme paramètre d'autres fonction.</p>
 <p>Par exemple avec <a href="https://docs.python.org/fr/3/library/stdtypes.html#list.sort">le paramètre <code class="language-">key</code> de la méthode de liste <code class="language-">sort</code></a>. Considérons la liste <code class="language-">l</code> :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 <p>Si on cherche à trier <code class="language-">l</code>, la liste sera triée en comparant le 1er élément de chaque liste :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['au revoir', 2], ['bonjour', 1]]</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['au revoir', 2], ['bonjour', 1]]</span></code></pre>
 <p>Si l'on veut trier sur le deuxième élément de chaque liste, on utilise le paramètre <code class="language-">key</code> qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
 l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>second<span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Que donnerait le tri si la fonction <code class="language-">second</code> avait été définie comme ceci :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -499,25 +474,23 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 
 l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 
 l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>second<span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
 <p>Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
 
 l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span>
-</code></pre>
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span></code></pre>
 <h2>Annotations de type</h2>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -533,19 +506,17 @@ l<span class="token punctuation">.</span>sort<span class="token punctuation">(</
 <li>le type de sortie (précédé d'un <code>-&gt;</code>)</li>
 </ul>
 <p>Par exemple, la fonction suivante permet de savoir si un élément est dans une liste :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
         <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <p>Si l'on veut restreindre cette fonctions aux listes d'entier on pourra écrire :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">bool</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">bool</span>
     <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
         <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

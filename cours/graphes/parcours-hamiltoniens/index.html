@@ -582,7 +582,7 @@ Or comme $E \subseteq E'$ on aurait également $\delta(x_0) + \delta(x_{n-1}) &l
 </summary>
 <div class="mx-8 pb-2">
 <p>algorithme sur tri topologique :</p>
-<pre class="language-text " style="counter-reset: linenumber 0"><code class="language-text">Entrée :
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Entrée :
     - un graphe orienté G = (V, E)
     - un tri topologique V0 < ... < Vn des éléments de V
 Initialisation :
@@ -602,8 +602,7 @@ Algorithme :
         x = predecesseur(x)
         ajoute x au début de chemin
 Retour :
-    chemin
-</code></pre>
+    chemin</code></pre>
 <p>La complexité est de $\mathcal{O}(\vert E \vert + \vert V \vert)$, ce qui est optimal.</p>
 <p>Pour prouver l'algorithme, on montre par récurrence sur $\vert V \vert$ que <code>longueur(x)</code> est la longueur d'un plus long chemin finissant en <code>x</code>.</p>
 <p>Si $\vert V \vert = 1$, c'est Ok. On suppose la propriété vraie à $\vert V \vert = n$. Pour $\vert V \vert = n +1$ on remarque que <code>longueur(Vi)</code> est la même pour le graphe $G$ et pour le graphe $G$ auquel on a enlevé $v_{n+1}$ pour tout $i \neq n+1$. Comme tous les prédécesseurs de $v_{n+1}$ seront vus pour l'algorithme et que <code>longueur(Vi)</code> ne change pas après l'étape $i$ on en conclut que la récurrence est vraie à $\vert V \vert = n +1$.</p>

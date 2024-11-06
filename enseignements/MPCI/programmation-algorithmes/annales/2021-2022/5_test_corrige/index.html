@@ -101,18 +101,15 @@
 <h3>2.1</h3>
 <p>Permet aux objets observant un sujet d'être informé des changements d'un sujet par celui-ci.</p>
 <h3>2.2</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> observer<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>observer_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>observer<span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> observer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>observer_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>observer<span class="token punctuation">)</span></code></pre>
 <h3>2.3</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> subject<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>subject_update <span class="token operator">=</span> subject<span class="token punctuation">.</span>get_state<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">update</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> subject<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>subject_update <span class="token operator">=</span> subject<span class="token punctuation">.</span>get_state<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <h3>2.4</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">notify</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">notify</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> observer <span class="token keyword">in</span> self<span class="token punctuation">.</span>observer_list<span class="token punctuation">:</span>
-        observer<span class="token punctuation">.</span>update<span class="token punctuation">(</span>self<span class="token punctuation">)</span>
-</code></pre>
+        observer<span class="token punctuation">.</span>update<span class="token punctuation">(</span>self<span class="token punctuation">)</span></code></pre>
 <h3>2.5</h3>
 <p>C'est le principe de la programmation événementielle.</p>
 

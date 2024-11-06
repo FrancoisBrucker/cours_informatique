@@ -115,7 +115,7 @@
 <li><code class="language-">hanoï(B, C, A, n-1)</code></li>
 </ol>
 <p>On obtient alors l'algorithme optimal suivant, en considérant que les tours sont des listes :</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python">A <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">A <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 B <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 C <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
@@ -129,8 +129,7 @@ C <span class="token operator">=</span> <span class="token punctuation">[</span>
     hanoi<span class="token punctuation">(</span>intermédiaire<span class="token punctuation">,</span> arrivée<span class="token punctuation">,</span> départ<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> B<span class="token punctuation">,</span> C<span class="token punctuation">)</span>
-hanoi<span class="token punctuation">(</span>A<span class="token punctuation">,</span> C<span class="token punctuation">,</span> B<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
+hanoi<span class="token punctuation">(</span>A<span class="token punctuation">,</span> C<span class="token punctuation">,</span> B<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>On a montré que notre stratégie était optimale. Comptons le nombre d'appels récursif. Il suit l'équation de récurrence :</p>
 <div>
 $$

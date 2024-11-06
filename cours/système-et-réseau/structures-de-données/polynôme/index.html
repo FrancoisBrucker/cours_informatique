@@ -133,7 +133,7 @@ $$</p>
 [a_0, \dots, a_n]
 $$</p>
 <h3>$P(x) + Q(x)$</h3>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">somme</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     longueur1 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">)</span>
     longueur2 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients2<span class="token punctuation">)</span>
 
@@ -147,10 +147,9 @@ $$</p>
         résultat<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> coefficients2<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
     <span class="token keyword">return</span> résultat
-
 </code></pre>
 <h2>$P(x) \cdot Q(x)$</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">produit</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">,</span> coefficients2<span class="token punctuation">)</span><span class="token punctuation">:</span>
     longueur1 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients1<span class="token punctuation">)</span>
     longueur2 <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>coefficients2<span class="token punctuation">)</span>
 
@@ -168,30 +167,27 @@ $$</p>
         résultat<span class="token punctuation">.</span>append<span class="token punctuation">(</span>valeur_k<span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> résultat
-
 </code></pre>
 <h2>$P(A)$</h2>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">valeur</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
     résultat <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>coefficients<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         résultat <span class="token operator">+=</span> coefficients<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span> x <span class="token operator">**</span> i
     <span class="token keyword">return</span> résultat
-
 </code></pre>
 <p>En utilisant l'exponentiation rapide, le calcul de $x^i$ prend $\log(i)$ multiplications. On effectue donc au total de l'ordre $n\log(n)$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.</p>
 <h2>Méthode de Horner</h2>
 <p>L'optimisation proposée est dite <a href="https://fr.wikipedia.org/wiki/M%C3%A9thode_de_Ruffini-Horner#Valeur_d'un_polyn%C3%B4me_en_un_point">de Horner</a>. Comme beaucoup d'optimisation, elle cherche à ne pas recalculer plein de fois la même chose, ici $x^i$ dans le calcul de $x^k$ lorsque $i &lt; j$.</p>
 <p>En utilisant l'optimisation de Horner, on effectue au total de l'ordre $n$ multiplications pour calculer tous les $x^i$, $0 \leq i \leq n$.
 i</p>
-<pre class="language-python " style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">evaluation</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">evaluation</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token builtin">eval</span> <span class="token operator">=</span> P<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token builtin">eval</span> <span class="token operator">=</span> P<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> v <span class="token operator">*</span> <span class="token builtin">eval</span>
 
-    <span class="token keyword">return</span> <span class="token builtin">eval</span>
-</code></pre>
+    <span class="token keyword">return</span> <span class="token builtin">eval</span></code></pre>
 
 
 </article>

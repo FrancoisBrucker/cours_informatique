@@ -111,10 +111,9 @@
 </div></div>
 
 <p>Par exemple le pseudo-code suivant :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">x = 30
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x = 30
 if ((x > 12) AND (x < 36)):
-    z = "entre 13 et 35"
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    z = "entre 13 et 35"</code></pre>
 <ol>
 <li>Création de l'entier valant 30 : 1 instruction</li>
 <li>on affecte l'entier à x : 1 instruction</li>
@@ -152,16 +151,15 @@ if ((x > 12) AND (x < 36)):
 </div></div>
 
 <p>Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :</p>
-<pre class="language-python line-numbers" style="counter-reset: linenumber 0"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
-
-t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-affiche à l'écran trouve
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">affiche à l'écran trouve</span></code></pre>
 <ol>
 <li>exécution de la ligne 7 : création d'un tableau et affectation à une variable : 2 instructions</li>
 <li>exécution de la ligne 8 :
@@ -223,15 +221,14 @@ instructions c'est à dire $24$ instructions.</p>
 <p>Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une <code class="language-">ma_liste.index(&quot;?&quot;)</code>, <code class="language-">x in ma_chaîne_de_caractères</code>) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.</p>
 <h2>Complexité d'un algorithme</h2>
 <p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 45$ :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">F = un tableau vide de 10 cases
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">F = un tableau vide de 10 cases
 F[0] = 1
 F[1] = 2
 
 pour i allant de 2 à 9:
   F[i] = F[i-1] + F[i-2]
 
-rendre F[9]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+rendre F[9]</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -305,7 +302,7 @@ $$</p>
 </details>     
 </div>
 <p>Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction fibonacci(n):
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction fibonacci(n):
   F = un tableau vide de n cases
   F[0] = 1
   F[1] = 2
@@ -313,8 +310,7 @@ $$</p>
   pour i allant de 2 à n-1:
     F[i] = F[i-1] + F[i-2]
 
-  rendre F[n-1]
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  rendre F[n-1]</code></pre>
 <p>Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot n+2$ qui dépend de la valeur du paramètre d'entrée.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -349,12 +345,11 @@ $$</p>
 </details>     
 </div>
 <p>Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure général. Par exemple l'algorithme suivant, écrit en python, qui cherche si une <code class="language-">valeur</code> est dans un <code class="language-">tableau</code> :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction est_dans_tableau(valeur, tableau):
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction est_dans_tableau(valeur, tableau):
     pour chaque élément x du tableau:
         si x == valeur:
             rend OUI
-    rend NON
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    rend NON</code></pre>
 <p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.</p>
 <p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour la fonction <code class="language-">est_dans_tableau</code> on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -466,7 +461,7 @@ $$</p>
 <li>1 case pour le stockage de l'entier $i$</li>
 </ul>
 <p>Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la suite de Fibonacci :</p>
-<pre class="language-text line-numbers" style="counter-reset: linenumber 0"><code class="language-text">fonction fibonacci_sobre(n):
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction fibonacci_sobre(n):
   a = 1
   b = 1
 
@@ -475,8 +470,7 @@ $$</p>
     a = b
     b = c
 
-  rendre b
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  rendre b</code></pre>
 <p>Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
 <p>Sa complexité un peu plus élevée :</p>
 <ol>
