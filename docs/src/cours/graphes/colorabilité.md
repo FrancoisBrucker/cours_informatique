@@ -85,7 +85,7 @@ Pour tout graphe $G = (V, E)$, on a :
 
 <div>
 $$
-\omega(G) \leq \chi(G) \neq \vert V \vert
+\omega(G) \leq \chi(G) \leq \vert V \vert
 $$
 </div>
 {% endnote %}
@@ -97,7 +97,7 @@ Les inégalités peuvent être strictes, comme pour les cycles de longueur impai
 Le lecteur attentif aura remarqué que la notion de colorabilité est équivalente à la notion [de graphes $k$-parti](../graphe-biparti/#k-parti){.interne} :
 
 {% note "**Proposition**" %}
-Un graphe $G$ est $\chi(G)$-parti si et n'est pas $(\chi(G)-1)$-parti.
+Un graphe $G$ est $\chi(G)$-parti et n'est pas $(\chi(G)-1)$-parti.
 {% endnote %}
 
 On en déduit donc immédiatement :
@@ -143,9 +143,9 @@ La fonction $c: V_1 \times V_2 \to \\{0, \dots, m-1\\}$ telle que $c((x, y)) = c
 
 {% endlien %}
 
-> TBD cours papier :  glouton + améliorations en classant par ordre décroissant (nb couleur dépend uniquement du nombre de voisins déjà placées).
+> TBD cours papier :  glouton + améliorations en classant par ordre décroissant de degré (nb couleur dépend uniquement du nombre de voisins déjà placées).
 >
-> TBD parler de [dsatur](https://en.wikipedia.org/wiki/DSatur)
+> TBD parler de [dsatur](https://en.wikipedia.org/wiki/DSatur) et leur faire montrer qu'il fonctionne sur les cycles, les graphes bi-parti et les roues.
 
 ### Majorations de la colorabilité
 
@@ -178,7 +178,7 @@ Cette borne est atteinte, on l'a vue, pour les graphes complets et les cycles im
 
 {% note "**Proposition**" %}
 
-Un graphe $k$-régulier avec $\geq 3$ 2-connexe admet trois sommets $u$ et $v$ et $w$  tels que :
+Un graphe 2-connexe $k$-régulier avec $3\leq k < \vert V(G)\vert - 1$ admet trois sommets $u$ et $v$ et $w$  tels que :
 
 - $vw$ n'est pas une arête de $G$,
 - $uv$ et $uw$ sont deux arêtes de $G$,
