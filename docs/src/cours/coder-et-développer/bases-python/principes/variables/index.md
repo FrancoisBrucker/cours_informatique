@@ -39,10 +39,6 @@ Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers e
 
 Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
-{% info %}
-Si vous voulez en savoir plus sur les espaces de noms, vous pouvez consulter le cours sur [la mémoire et espace de noms]({{ "../../../mémoire-espace-noms"  }}){.interne}
-{% endinfo %}
-
 ## Affectation des objets à l'espace de noms
 
 Attardons nous un moment sur ces notions car elles seront cruciales plus tard pour appréhender les possibilités offertes par les objets.

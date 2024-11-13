@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Ensembles et dictionnaires
 
 eleventyComputed:
@@ -10,21 +10,22 @@ eleventyComputed:
 ---
 
 Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.
-Elles partagent beaucoup de chose, en particulier elles sont créés de la même manière (en utilisant des [fonctions de hash]({{ "/cours/algorithme-code-théorie/théorie/fonctions-hash"  }}){.interne}).
+
+> TBD exercices simples par parties.
 
 ## Ensembles
 
 Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :
 
-* est-ce un de mes contacts qui appelle ?
-* est-ce que cette lettre est une majuscule ?
-* est-ce un mot que j'ai déjà vu ?
+- est-ce un de mes contacts qui appelle ?
+- est-ce que cette lettre est une majuscule ?
+- est-ce un mot que j'ai déjà vu ?
 
 Gérer des ensembles rapidement et avec peu de place en mémoire :
 
-* ajouter un élément à un ensemble (on ne rajoute pas un élément qui y est déjà)
-* supprimer un élément à un ensemble
-* savoir si un élément est déjà dans un ensemble
+- ajouter un élément à un ensemble (on ne rajoute pas un élément qui y est déjà)
+- supprimer un élément à un ensemble
+- savoir si un élément est déjà dans un ensemble
 
 ## Dictionnaires
 
@@ -32,8 +33,8 @@ Un dictionnaire, aussi appelé [tableau associatif](https://fr.wikipedia.org/wik
 
 Mais cela peut être bien plus général que ça :
 
-* les clés peuvent être de mots et les valeur un nombre. Cela permet par exemple de compter le nombre de fois où un chaque mot d'un texte apparaît.
-* associer un nom (valeur) à un numéro de téléphone (clé) sans avoir besoin d'une liste allant de 0 à numéro max de téléphone.
+- les clés peuvent être de mots et les valeur un nombre. Cela permet par exemple de compter le nombre de fois où un chaque mot d'un texte apparaît.
+- associer un nom (valeur) à un numéro de téléphone (clé) sans avoir besoin d'une liste allant de 0 à numéro max de téléphone.
 
 {% info %}
 Un ensemble peut être codé en utilisant la structure de dictionnaire en considérant que les valeurs sont toutes les mêmes. On ne considère que les clés qui représentent les éléments de l'ensemble.
@@ -43,21 +44,21 @@ Un ensemble peut être codé en utilisant la structure de dictionnaire en consid
 
 ce que c'est :
 
-* ensemble : [`set`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
-* dictionnaires : [`dict`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries)
+- ensemble : [`set`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#sets)
+- dictionnaires : [`dict`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#dictionaries)
 
 Les éléments pouvant être stockés dans des ensemble ou les clés des dictionnaires doivent être des objets **non modifiables**. Comme par exemple :
 
-* des entiers
-* des réels
-* des chaines de caractères
-* ...
+- des entiers
+- des réels
+- des chaines de caractères
+- ...
 
 Les éléments modifiables ne peuvent **pas** être des clés. Par exemple :
 
-* des listes
-* des ensembles
-* des dictionnaires
+- des listes
+- des ensembles
+- des dictionnaires
 
 Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérables mais contrairement aux listes, leur ordre d'itération est **inconnu**. Il peut changer d'une itération à l'autre.
 
@@ -69,9 +70,9 @@ Les ensembles et les dictionnaires sont tous deux des conteneurs, donc itérable
 
 On peut créer des ensemble de multiples manières :
 
-* directe : `{1, 2, 3}`{.language-}
-* avec un itérable `set("coucou")`{.language-}
-* avec une list comprehension : `{x for x in range(10) if x % 2 == 0}`{.language-}
+- directe : `{1, 2, 3}`{.language-}
+- avec un itérable `set("coucou")`{.language-}
+- avec une list comprehension : `{x for x in range(10) if x % 2 == 0}`{.language-}
 
 {% attention %}
 L'ensemble vide se crée avec l'instruction `set()`{.language-}. L'instruction `{}`{.language-} rend un dictionnaire vide.
@@ -117,9 +118,9 @@ N'hésitez pas à regarder les méthodes associées aux ensembles, ils permetten
 
 On peut créer des dictionnaires de multiples manières. Les 3 façons ci-dessous créent le même dictionnaire :
 
-* directe : `{"un": 1, "deux": 2}`{.language-}
-* via un itérable de couples `[clé, valeur]`{.language-} : `dict([["un", 1], ["deux", 2]])`{.language-}
-* via une list compréhension : `{clé: valeur for clé, valeur in [["un", 1], ["deux", 2]]}`{.language-}
+- directe : `{"un": 1, "deux": 2}`{.language-}
+- via un itérable de couples `[clé, valeur]`{.language-} : `dict([["un", 1], ["deux", 2]])`{.language-}
+- via une list compréhension : `{clé: valeur for clé, valeur in [["un", 1], ["deux", 2]]}`{.language-}
 
 Les clés ne doivent pas changer une fois créées, sinon la serrure fabriquée dans le dictionnaire ne fonctionne plus. On ne doit donc utiliser que des objets **non modifiable** pour créer des clés d'un dictionnaire python. Les valeurs en revanche peuvent être modifiables. Par exemple `{"l": [1, 2]}`{.language-} est une définition correcte d'un dictionnaire, alors que `{[1, 2]: "liste"}`{.language-} ne l'est pas.
 
@@ -129,10 +130,10 @@ Identique à une liste, mais on utilise les clés plutôt que les indices :
 
 avec `d = {"un":1, "deux":2}`{.language-} :
 
-* `d["un"]`{.language-}  retourne 1
-* `d["trois"]`{.language-} retourne une erreur : la clé "trois" n'existe pas.
-* Ajout d'un élément :  `d["trois"] = 3`{.language-}
-* Suppression d'un élément :  `del d["deux"]`{.language-}
+- `d["un"]`{.language-} retourne 1
+- `d["trois"]`{.language-} retourne une erreur : la clé "trois" n'existe pas.
+- Ajout d'un élément : `d["trois"] = 3`{.language-}
+- Suppression d'un élément : `del d["deux"]`{.language-}
 
 #### Itération
 
@@ -154,12 +155,12 @@ for x in d:
 
 Affichera les clés du dictionnaires. On affichera donc :
 
-* peut être `'a'`{.language-} puis `'b'`{.language-}
-* peut être `'b'`{.language-} puis `'a'`{.language-}
+- peut être `'a'`{.language-} puis `'b'`{.language-}
+- peut être `'b'`{.language-} puis `'a'`{.language-}
 
 {% attention %}
 
-L'ordre d'itération des clés n'est **PAS** connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire  contient des éléments stockés sans ordre particulier.
+L'ordre d'itération des clés n'est **PAS** connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire contient des éléments stockés sans ordre particulier.
 
 {% endattention %}
 
@@ -182,12 +183,12 @@ Ou encore itérer sur les couples (clé, valeur) avec la méthode `items`{.langu
 ```python
 for x in d.items():
     print(x) # affichera les couples (clé, valeur)
-     
+
 ```
 
 ### Présence
 
-L'opérateur  `in`{.language-} appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :
+L'opérateur `in`{.language-} appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :
 
 ```python
 >>> d = {"réponse": 42, "utile": "serviette"}

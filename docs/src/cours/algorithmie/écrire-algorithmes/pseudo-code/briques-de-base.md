@@ -13,9 +13,14 @@ Le pseudo-code est constitué d'instructions dont le but est soit de manipuler d
 
 Commençons par décrire les objets que l'on peut manipuler en pseudo-code et les moyens d'y accéder.
 
+> TBD définir les opérations et donner les variantes ($\leftarrow$, $:=$)
+> TBD fonction = algorithme
+> TBD dire que $=$ est un _devient_.
+> TBD parler des portée des variables : l'algorithme c'est à dire la fonction.
+
 ## <span id="objets-basique"></span> Objets et variables
 
-## <span id="objets-basique"></span> Objets basiques
+### <span id="objets-basique"></span> Objets basiques
 
 Les objets que nous aurons directement à notre disposition sans avoir besoin de les définir sont appelés **_objets basiques_** et sont au nombre de cinq :
 
@@ -51,7 +56,7 @@ On peut très bien sans perte de généralité se restreindre aux entiers entree
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
 {% endnote %}
 
-## Variables
+### Variables
 
 Les objets que l'on manipule doivent pouvoir être conservés pour que l'on puisse les réutiliser tout au long du programme. Cet espace espace de stockage, que l'on nomme **_une mémoire_**, est identifié d'un point de vue algorithmique, à une gigantesque suite de cases adjacentes à laquelle l'algorithme peut accéder en 1 instruction et pouvant contenir **_un objet basique_**.
 
@@ -70,7 +75,7 @@ Les instructions autorisées sur les variables sont :
 {% attention %}
 Une variable est un nom, elle ne copie ni ne modifie un objet dans le pseudo-code suivant, les deux variables `a`{.language-} et `b`{.language-} référencent le même objet entier.
 
-```python
+```pseudocode
 a = 3
 b = a
 ```
@@ -167,19 +172,20 @@ On décale les instructions du bloc de sa définition. C'est un truc clair qui p
 
 ### <span id="tests"></span> Exécution conditionnelle d’instructions
 
-On veut pouvoir exécuter un bloc de code si une condition logique est vérifiée :
+On veut pouvoir exécuter un bloc de code si une condition logique est VRAIE :
 
-```text
-si (condition logique) est vraie:
+```pseudocode
+si (condition logique):
     instruction 1
+
     ...
     instruction n
 ```
 
 Cette instruction basique peut avoir plein de variantes comme :
 
-```text
-si (condition logique) est vraie:
+```pseudocode
+si (condition logique):
     instruction 1
     ...
     instruction n
@@ -191,12 +197,12 @@ sinon:
 
 ou encore :
 
-```text
-si (condition logique) est vraie:
+```pseudocode
+si (condition logique):
     instruction 1
     ...
     instruction n
-sinon si (autre condition logique) est vraie:
+sinon si (autre condition logique):
     instruction 1
     ...
     instruction n'
@@ -214,8 +220,8 @@ On peut dériver toutes les variantes de la forme initiale.
 
 On doit pouvoir répéter un bloc tant qu'une condition logique est vérifiée (boucle _while_):
 
-```text
-tant que (condition logique) est vraie:
+```pseudocode
+tant que (condition logique):
     instruction 1
     ...
     instruction n
@@ -223,7 +229,7 @@ tant que (condition logique) est vraie:
 
 Il existe une variation de ce bloc très utile (boucle _for_):
 
-```text
+```pseudocode
 pour chaque élément x d'un tableau:
     instruction 1
     ...
@@ -233,5 +239,5 @@ pour chaque élément x d'un tableau:
 On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable `x` vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.
 
 {% info %}
-On peut dériver la variante `pour chaque`{.language-} de la forme initiale `tant que`{.language-}.
+On peut dériver la variante `pour chaque`{.language-pseudocode} de la forme initiale `tant que`{.language-pseudocode}.
 {% endinfo %}

@@ -102,10 +102,6 @@ Le terminal permet d'exécuter rapidement des commandes.
 [Terminal](terminal){.interne}
 {% endaller %}
 
-{% aller %}
-[Utilisation courante du terminal](terminal-utilisation){.interne}
-{% endaller %}
-
 ## Outils utiles
 
 Les outils ci-après ne sont pas stricto-sensu obligatoire, mais les avoir va fluidifier vos développements.

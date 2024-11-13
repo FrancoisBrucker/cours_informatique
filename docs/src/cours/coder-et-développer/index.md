@@ -34,6 +34,8 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 [Bases de python](bases-python){.interne}
 {% endaller %}
 
+> TBD : QCM sur les notions vues (variable, conteneurs, espace de noms)
+
 ### Tutoriels
 
 #### Matplotlib
@@ -84,11 +86,19 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 
 ## <span id="développer"></span>Développer
 
+> TBD refaire on fait des fichiers et on importe des choses sans l'avoir défini avant.
+
 {% aller %}
 [Écrire et exécuter du code](développement){.interne}
 {% endaller %}
 
 Python gère les noms de variables via un concept appelé espace de noms. Il est crucial de comprendre comment cela fonctionne pour ne pas laisser par au doute quand à savoir quelle variable est utilisée quand :
+
+> TBD exercices : plein de fonctions différentes à créer (voir partie algorithmie ?). Utilisation de listes, suppression de doublon, recursion (flocon de koch ?) etc
+>
+> TBD faire de petits programmes
+
+> TBD : mettre espace de nom dans bases de python.
 
 {% aller %}
 [Espace de noms](espace-noms){.interne}
@@ -96,8 +106,37 @@ Python gère les noms de variables via un concept appelé espace de noms. Il est
 
 Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
 
+> TBD exos théoriques (avec récursion)
+> TBD exercices : variables locales vs globales/fonctions/ajout d'éléments dans une liste
+
 {% aller %}
 [Déboguer son code](debugger){.interne}
+{% endaller %}
+
+> TBD exercices/projet
+
+## Gestion des dépendances
+
+On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
+
+### Un interpréteur par projet
+
+{% aller %}
+[Environnements virtuels](environnements-virtuels){.interne}
+{% endaller %}
+
+### Créer ses propres modules
+
+{% aller %}
+[Modules python](modules-python){.interne}
+{% endaller %}
+
+### Projet
+
+> TBD projet création de module. code correcteur d'erreur de Shannon.
+
+{% aller %}
+[Modules et projets](modules-projets){.interne}
 {% endaller %}
 
 ## Stockage des données
@@ -127,21 +166,7 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 [Fichiers](fichiers){.interne}
 {% endaller %}
 
-## Gestion des dépendances
-
-On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
-
-### Créer ses propres modules
-
-{% aller %}
-[Modules python](modules-python){.interne}
-{% endaller %}
-
-### Modules et projets
-
-{% aller %}
-[Modules et projets](modules-projets){.interne}
-{% endaller %}
+## Archétype de programmation
 
 ### Programmation objet
 
@@ -160,6 +185,8 @@ La programmation évènementielle est un principe de développement très utilis
 {% aller %}
 [Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}
+
+## Maintenir et développer du code sûr
 
 ### Programmation par les tests
 

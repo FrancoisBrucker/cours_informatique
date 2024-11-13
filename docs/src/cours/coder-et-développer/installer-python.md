@@ -150,7 +150,7 @@ Python 3.11.5
 Pour connaître tous les paramètres possible, on peut soit se référer à la [documentation](https://docs.python.org/3/using/cmdline.html), soit taper : `python --help`
 {% endinfo %}
 
-### Emplacement de votre interpréteur
+### <span id="interpréteur-emplacement"></span>Emplacement de votre interpréteur
 
 L'interpréteur python est un programme comme un autre. Il est parfois utile de savoir dans quel dossier il se trouve. Il existe pour cela des commandes terminal bien pratique :
 

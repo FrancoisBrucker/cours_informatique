@@ -27,7 +27,7 @@ sortie = nom(entrée 1, ..., entrée n)
 
 {% endnote %}
 
-## Fonctions et programmes
+## Fonctions et algorithmes
 
 ### Appels de fonctions
 

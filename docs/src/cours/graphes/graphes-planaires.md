@@ -71,10 +71,20 @@ eleventyComputed:
 ## Coloration de graphes planaires
 
 > TBD pareil que colorier les faces.
-
+ 
 > TBD 3 colorable planaire np-complet : <https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf>
 
 - coloriable :
+
+---
+
+Nom de l'algorithme
+
+> algo
+> > autre algo $x_1 \leftarrow 3$
+> fin
+
+---
 
 ### Théorème des 4 couleurs
 

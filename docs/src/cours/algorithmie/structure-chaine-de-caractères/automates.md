@@ -77,3 +77,12 @@ De nombreux langages sont rationnels :
 > TBD (on appelle cela des [expression régulières](https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re))
 
 La formalisation et l'étude des expressions régulières dépassent le cadre de ce cours introductif mais c'est un sujet à la fois marrant, utile et intéressant. Si vous voulez vous initier en douceur, lisez [le tuto python](https://docs.python.org/fr/3/howto/regex.html) qui y est consacré, ou passez directement à [O'reilly](https://www.oreilly.com/library/view/introducing-regular-expressions/9781449338879/).
+
+## TBD
+
+- <https://pressbooks.senecapolytechnic.ca/uli101/chapter/extended-regular-expressions/>
+- <https://docs.python.org/fr/3.13/library/re.html>
+- <https://github.com/gawron/python-for-social-science/blob/master/text_classification/regular_expressions.ipynb>
+- <https://cs.uwaterloo.ca/~dtompkin/teaching/08a/lab7/>
+
+Pour aller plus loin : [grammaires, parseur de langages et automates à pile](https://www.youtube.com/watch?v=ENKT0Z3gldE)

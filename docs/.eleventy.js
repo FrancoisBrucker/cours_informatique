@@ -33,7 +33,28 @@ export default function(eleventyConfig) {
 
     // init callback lets you customize Prism
     init: function({ Prism }) {
-      Prism.languages.myCustomLanguage = { /* … */ };
+      Prism.languages.pseudocode =
+        {
+          'comment': {
+            pattern: /(^|[^\\])#.*/,
+            lookbehind: true,
+            greedy: true
+          },
+          'string': {
+            pattern: /(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i,
+            greedy: true
+          },
+          'function': {
+            pattern: /((?:^|\s)algorithme[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
+            lookbehind: true
+          },
+          'keyword': /\b(?:_(?=\s*:)|et|ou|de|si|sinon si|sinon|pour chaque|pour|rendre|tant que)\b/,
+          'builtin': /\b(?:entier|booléen|réel|caractère|chaîne|algorithme)\b/,
+          'boolean': /\b(?:Faux|Vide|Vrai)\b/,
+          'number': / [ijn]([0-9])*(')*[\n ]|\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i,
+          'operator': /[-+%=]=?|←|→|!=|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
+          'punctuation': /[{}[\];(),.:]/
+        };
     },
 
     // Added in 3.1.1, add HTML attributes to the <pre> or <code> tags

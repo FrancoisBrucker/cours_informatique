@@ -346,7 +346,7 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 [Mélanger un tableau](./projet-mélange){.interne}
 {% endaller %}
 
-> TBD nombre aléatoires
+> TBD nombre aléatoires : <https://xkcd.com/221/> et <https://imgur.com/random-number-generator-bwFWMqQ>
 
 > TBD : [projet Multiplication de matrices](./multiplication-matrices){.interne}
 

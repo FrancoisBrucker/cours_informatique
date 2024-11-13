@@ -59,9 +59,44 @@ Commençons par décrire la _grammaire de base_ du pseudo-code :
 
 ### Format
 
+> TBD algo et types <https://docs.python.org/3/library/typing.html>
+
 Le pseudo-code d'un programme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie (son but). Par exemple :
 
 <div id="problème-recherche"></div>
+
+```pseudocode
+algorithme recherche(t: [entier], 
+                     x: entier     # entier recherché dans t
+                    ) → booléen:  # Vrai si x est dans t
+
+    pour chaque e de t:
+        si e == x:
+            rendre Vrai
+    rendre Faux
+
+    x ← 3
+```
+
+```python/
+def recherche(t, x):
+    for e in t:
+        if e == x:
+            return True
+    return False
+```
+
+```
+Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+    pour chaque élément e de t:
+        si e == x:
+            Retour vrai
+    Retour faux
+```
 
 ```text
 Nom : recherche

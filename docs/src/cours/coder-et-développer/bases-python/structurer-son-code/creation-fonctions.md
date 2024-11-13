@@ -114,6 +114,8 @@ Il en existe de nombreux autres, python étant friand de ce genre d'opérations.
 
 ## Paramètres d'une fonction
 
+> TBD parler d'espace de nom
+
 ```python
 def plus_moins(nombre):
     if nombre > 42:

@@ -31,6 +31,8 @@ Avant d'écrire des programmes en python, on commence par s'intéresser à ses m
 [Principes](principes){.interne}
 {% endaller %}
 
+> TBD exercices
+
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
 {% aller %}
@@ -69,7 +71,11 @@ Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà exis
 [Structurer son code](structurer-son-code){.interne}
 {% endaller %}
 
+> TBD exercice avec fonctions, méthodes et listes
+
 ## Mutable vs non-mutable
+
+> TBD mettre les dessins avec espaces de noms
 
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira ***non mutables***). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
