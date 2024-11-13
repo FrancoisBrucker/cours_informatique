@@ -6,11 +6,13 @@
 
     <title>Pseudo-code</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.css" rel="stylesheet">
     
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
     <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
-
+    
     <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
   </head>
@@ -154,8 +156,36 @@
 </div></div>
 
 <h3>Format</h3>
+<blockquote>
+<p>TBD algo et types <a href="https://docs.python.org/3/library/typing.html">https://docs.python.org/3/library/typing.html</a></p>
+</blockquote>
 <p>Le pseudo-code d'un programme va contenir, en plus de ses instructions, un nom, des entrées et souvent une sortie (son but). Par exemple :</p>
 <div id="problème-recherche"></div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>     <span class="token comment"># entier recherché dans t</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>  <span class="token comment"># Vrai si x est dans t</span>
+
+    <span class="token keyword">pour chaque</span> e <span class="token keyword">de</span> t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+
+    x <span class="token operator">←</span> <span class="token number">3</span></code></pre>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
+<pre><code>Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+    pour chaque élément e de t:
+        si e == x:
+            Retour vrai
+    Retour faux
+</code></pre>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
 Entrées :
     t : un tableau d'entiers

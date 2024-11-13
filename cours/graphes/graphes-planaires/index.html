@@ -6,11 +6,13 @@
 
     <title>Graphes planaires</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.css" rel="stylesheet">
     
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
     <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
-
+    
     <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
   </head>
@@ -94,7 +96,10 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+  <blockquote>
+<p>TBD : Il sont aussi extrêmement utilisés pour les mesh 3D. C'est une surface sans trous.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
@@ -121,14 +126,13 @@
 <p>TBD</p>
 <ol>
 <li>définition</li>
-<li>formule euler sur les faces</li>
+<li>formule Euler sur les faces</li>
 <li>majoration nombre d'arêtes : il n'y en a pas beaucoup</li>
 <li>existe un sommet de degré ≤ 5</li>
 </ol>
 </blockquote>
 <blockquote>
-<p>TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
-TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représentation, il l'est pour toute ?</p>
+<p>TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représentation, il l'est pour toute ?</p>
 </blockquote>
 <h2>Théorème de Kuratowski</h2>
 <blockquote>
@@ -163,6 +167,10 @@ TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représenta
 </ul>
 <h2>Algorithmes</h2>
 <h3>Reconnaissance</h3>
+<blockquote>
+<p>Par blocks (2-connexe maximals).
+puis reconnaissance de blocs</p>
+</blockquote>
 <h3>Dessin</h3>
 <blockquote>
 <p>TBD dessin sans courbure dans un triangle.</p>
@@ -177,42 +185,88 @@ TBD Triangulation d'un graphe planaire. S'il est triangulé pour une représenta
 </li>
 </ul>
 <h2>Coloration de graphes planaires</h2>
+<blockquote>
+<p>TBD pareil que colorier les faces.</p>
+</blockquote>
+<blockquote>
+<p>TBD 3 colorable planaire np-complet : <a href="https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf">https://www.cs.cmu.edu/afs/cs/academic/class/15451-s04/www/Lectures/chapter23.pdf</a></p>
+</blockquote>
 <ul>
-<li>4 colorier un graphe planaire 3 coloriable p27 : <a href="https://perso.ens-lyon.fr/eric.thierry/ER02/esperet-col.pdf">https://perso.ens-lyon.fr/eric.thierry/ER02/esperet-col.pdf</a></li>
-<li>5 coloration <a href="https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf">https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf</a></li>
 <li>coloriable :</li>
-<li>3 coloriable et problème de la galerie d'art : &lt;<a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a>&gt;</li>
-<li>3 coloriable et lemme de Sperner <a href="https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18">https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18</a></li>
 </ul>
+<hr>
+<p>Nom de l'algorithme</p>
+<blockquote>
+<p>algo</p>
+<blockquote>
+<p>autre algo $x_1 \leftarrow 3$
+fin</p>
+</blockquote>
+</blockquote>
+<hr>
 <h3>Théorème des 4 couleurs</h3>
 <blockquote>
-<p>TBD 6, 5 par notre algo de coloration 3 colorable np-complet.
-TBD Une démo du théorème des 4 couleurs par Kempe : <a href="https://www.youtube.com/watch?v=adZZv4eEPs8">https://www.youtube.com/watch?v=adZZv4eEPs8</a>. Elle ne fonctionne pas. Pourquoi ? Peut-on l'utiliser comme preuve alternative de 5 couleurs ?
+<p>TBD 6 par notre algo de coloration
+TBD 5 couleur : démonstration de Kempe.</p>
+</blockquote>
+<blockquote>
+<p>Elle ne fonctionne pas pour 4 couleurs. Pourquoi ?
+TBD Une démo du théorème des 4 couleurs par Kempe : <a href="https://www.youtube.com/watch?v=adZZv4eEPs8">https://www.youtube.com/watch?v=adZZv4eEPs8</a>
 TBD théorème des 4 couleurs :</p>
 <ul>
 <li><a href="https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html">https://www.lix.polytechnique.fr/~werner/PI-4C/sujet4C.html</a></li>
 <li>4 couleurs : <a href="https://inria.hal.science/hal-04034866/document">https://inria.hal.science/hal-04034866/document</a></li>
 </ul>
 </blockquote>
-<h3>NP-complétude</h3>
+<h3>Algorithmes de coloration</h3>
 <blockquote>
-<p>TBD 3 color planaire est NP-complet : <a href="https://graal.ens-lyon.fr/~yrobert/algoL3/color-np.pdf">https://graal.ens-lyon.fr/~yrobert/algoL3/color-np.pdf</a>, <a href="https://www.youtube.com/watch?v=MJNpclV45rw">https://www.youtube.com/watch?v=MJNpclV45rw</a></p>
+<ul>
+<li>6 coloration avec l'algo de coloration</li>
+<li>5 coloration linéaire <a href="https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf">https://www.enseignement.polytechnique.fr/profs/informatique/Francois.Morain/INF431/X06/5col.pdf</a></li>
+<li>4 coloration d'un graphe planaire 3 colorable (Kawarabayashi et Ozeki 2009) <a href="https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf">https://tgt.ynu.ac.jp/ozeki/2009KO2.pdf</a>. Soit il sort une 4 coloration, soit il dit que le graphe n'est pas 3 colorable. Pourquoi n'est-ce pas en contradiction avec le fait que le problème est NP-complet ?</li>
+</ul>
 </blockquote>
-<ul>
-<li>3 coloriable :
-<ul>
-<li>NP complet <a href="https://perso.eleves.ens-rennes.fr/people/pierre.le-barbenchon/devinfo/3colo.pdf">https://perso.eleves.ens-rennes.fr/people/pierre.le-barbenchon/devinfo/3colo.pdf</a></li>
-<li>planaire aussi : <a href="https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD11-correction.pdf">https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD11-correction.pdf</a></li>
-</ul>
-</li>
-</ul>
+<h3>Variantes</h3>
+<blockquote>
+<p>TBD pays non connexes
+TBD colonies lunaires</p>
+</blockquote>
 <h2>Colorabilité et partage de secrets</h2>
 <blockquote>
-<p>ce qui peut ensuite servir pour les <a href="https://www.youtube.com/watch?v=5ovdoxnfFVc">zero knowledge proof</a></p>
+<p>TBD un sujet qui lie tout ce qu'on a fait jusqu'à maintenant.</p>
 </blockquote>
-<h2>Isomorphisme de graphes planaires</h2>
 <blockquote>
-<p>TBD isomorphisme de graphe planaire</p>
+<p><a href="https://fr.wikipedia.org/wiki/Preuve_%C3%A0_divulgation_nulle_de_connaissance">https://fr.wikipedia.org/wiki/Preuve_à_divulgation_nulle_de_connaissance</a></p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=5ovdoxnfFVc">Avi Wigderson parle des zero knowledge proof</a></li>
+<li><a href="https://www.wisdom.weizmann.ac.il/~oded/X/gmw1j.pdf">le papier</a></li>
+</ul>
+</div></div>
+
+<blockquote>
+<p><a href="https://fr.wikipedia.org/wiki/Correspondance_de_Curry-Howard">Curry howard correspondance</a></p>
+</blockquote>
+<h2>Odds and ends</h2>
+<p>Nombreux problèmes NP-complets sont facile à les graphes planaires.</p>
+<h3>Propriétés</h3>
+<ul>
+<li>
+<p>3 coloriable et problème de la galerie d'art : <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_la_galerie_d%27art">https://fr.wikipedia.org/wiki/Problème_de_la_galerie_d'art</a></p>
+</li>
+<li>
+<p>Lemme de Sperner <a href="https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18">https://www.youtube.com/watch?v=cpIexccvYjI&amp;list=PLdUzuimxVcC0QCFYP0Af3TNldswjL8_ep&amp;index=18</a>, on peut le démontrer avec la planarité : <a href="https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf">https://www.ams.jhu.edu/~abasu9/AMS_550-472-672/sperner.pdf</a>. Attention, ce n'est <strong>pas</strong> de la coloration de graphes (pas de contrainte sur les voisins).</p>
+</li>
+</ul>
+<h3>Facile pour les graphes planaires</h3>
+<blockquote>
+<p>TBD Theorem (Tutte, 1956). A 4-connected planar graph has a Hamiltonian cycle.
+TBD isomorphisme de graphe planaire</p>
 </blockquote>
 
 

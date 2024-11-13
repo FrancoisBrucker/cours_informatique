@@ -6,11 +6,13 @@
 
     <title>Ensembles et dictionnaires</title>
 
-    <link href="/cours_informatique/assets/node_modules/prismjs/themes/prism-solarizedlight.css" rel="stylesheet">
     
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
     <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
     <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
-
+    
     <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
 
   </head>
@@ -94,8 +96,10 @@
     
   
 
-  <p>Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.
-Elles partagent beaucoup de chose, en particulier elles sont créés de la même manière (en utilisant des <a href="/cours_informatique/cours/algorithme-code-th%C3%A9orie/th%C3%A9orie/fonctions-hash" class="interne">fonctions de hash</a>).</p>
+  <p>Les ensembles et les dictionnaires sont des structures de données très utiles si on sait les utiliser.</p>
+<blockquote>
+<p>TBD exercices simples par parties.</p>
+</blockquote>
 <h2>Ensembles</h2>
 <p>Les structure ensemblistes permettent de répondre facilement à des problématiques du genre :</p>
 <ul>
@@ -210,10 +214,10 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 <p>Identique à une liste, mais on utilise les clés plutôt que les indices :</p>
 <p>avec <code class="language-">d = {&quot;un&quot;:1, &quot;deux&quot;:2}</code> :</p>
 <ul>
-<li><code class="language-">d[&quot;un&quot;]</code>  retourne 1</li>
+<li><code class="language-">d[&quot;un&quot;]</code> retourne 1</li>
 <li><code class="language-">d[&quot;trois&quot;]</code> retourne une erreur : la clé &quot;trois&quot; n'existe pas.</li>
-<li>Ajout d'un élément :  <code class="language-">d[&quot;trois&quot;] = 3</code></li>
-<li>Suppression d'un élément :  <code class="language-">del d[&quot;deux&quot;]</code></li>
+<li>Ajout d'un élément : <code class="language-">d[&quot;trois&quot;] = 3</code></li>
+<li>Suppression d'un élément : <code class="language-">del d[&quot;deux&quot;]</code></li>
 </ul>
 <h4>Itération</h4>
 <p>supposons que l'on ait le dictionnaire :</p>
@@ -234,7 +238,7 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'ordre d'itération des clés n'est <strong>PAS</strong> connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire  contient des éléments stockés sans ordre particulier.</p>
+<p>L'ordre d'itération des clés n'est <strong>PAS</strong> connu à l'avance : il peut changer d'une ordinateur à l'autre, et même d'une exécution à l'autre. Un dictionnaire contient des éléments stockés sans ordre particulier.</p>
 </div></div>
 
 <p>On peut aussi itérer sur les clés en utilisant la méthode <code class="language-">keys</code> :</p>
@@ -246,9 +250,9 @@ Elles partagent beaucoup de chose, en particulier elles sont créés de la même
 <p>Ou encore itérer sur les couples (clé, valeur) avec la méthode <code class="language-">items</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> d<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment"># affichera les couples (clé, valeur)</span>
-     </code></pre>
+</code></pre>
 <h3>Présence</h3>
-<p>L'opérateur  <code class="language-">in</code> appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :</p>
+<p>L'opérateur <code class="language-">in</code> appliquée à un dictionnaire vérifie si une clé est dans le dictionnaire, elle ne s'occupe pas des valeurs :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> d <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"réponse"</span><span class="token punctuation">:</span> <span class="token number">42</span><span class="token punctuation">,</span> <span class="token string">"utile"</span><span class="token punctuation">:</span> <span class="token string">"serviette"</span><span class="token punctuation">}</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token string">"utile"</span> <span class="token keyword">in</span> d
 <span class="token boolean">True</span>

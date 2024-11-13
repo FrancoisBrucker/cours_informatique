@@ -1654,6 +1654,7 @@ a.fichier:visited {
 
 pre {
   counter-reset: lineNumber;
+  box-shadow: 4px 4px 2px 1px #858585;
 }
 
 code .highlight-line:before {
@@ -1668,6 +1669,12 @@ code .highlight-line:before {
   padding-right: 1.2em;
   text-align: right;
   width: 2.4em;
+}
+
+/* commentaire pour latte */
+
+.token.comment {
+  color: #549441;
 }
 
 .before\:px-1::before {
