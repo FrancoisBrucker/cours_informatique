@@ -48,7 +48,7 @@ Bases de la programmation sous la forme d'un tutoriel au langage python.
 Pour aller plus loin, vous pouvez suivre le [cours d'analyse des données](/cours/analyse-données#pandas) sur l'utilisation de la bibliothèque d'analyse des données [pandas](https://pandas.pydata.org/).
 {% endinfo %}
 
-#### python
+#### Python
 
 Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :
 
@@ -98,16 +98,16 @@ Python gère les noms de variables via un concept appelé espace de noms. Il est
 >
 > TBD faire de petits programmes
 
+{% aller %}
 > TBD : mettre espace de nom dans bases de python.
 
-{% aller %}
 [Espace de noms](espace-noms){.interne}
+
+> TBD exercices : variables locales vs globales/fonctions/ajout d'éléments dans une liste
+
 {% endaller %}
 
 Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
-
-> TBD exos théoriques (avec récursion)
-> TBD exercices : variables locales vs globales/fonctions/ajout d'éléments dans une liste
 
 {% aller %}
 [Déboguer son code](debugger){.interne}
@@ -127,16 +127,12 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 
 ### Créer ses propres modules
 
+> TBD déjà vu ?
+> parler de module dossier avec `__init__.py` (vide. Le remplir est niveau 2)
+> référence dans le module
+
 {% aller %}
 [Modules python](modules-python){.interne}
-{% endaller %}
-
-### Projet
-
-> TBD projet création de module. code correcteur d'erreur de Shannon.
-
-{% aller %}
-[Modules et projets](modules-projets){.interne}
 {% endaller %}
 
 ## Stockage des données

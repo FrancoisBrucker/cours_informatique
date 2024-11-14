@@ -48,7 +48,12 @@ Alors que le même code sans `#`{.language-} est interprété par python et comm
 SyntaxError: invalid syntax
 ```
 
-## Objets
+## Objets, variables et noms
+
+> TBD chapeau : important de comprendre comment tout ça fonctionne.
+> TBD expliciter début de espace de noms ici.
+
+### Objets
 
 Tout sur les objets courant que vous manipulerez en python.
 
@@ -56,13 +61,17 @@ Tout sur les objets courant que vous manipulerez en python.
 [Objets types et types d'objets](objets-types){.interne}
 {% endaller %}
 
-## Variables
+### Variables
 
 Principe de l'affectation des variables en python.
 
 {% aller %}
 [Variables](variables){.interne}
 {% endaller %}
+
+### Espace de noms
+
+> TBD
 
 ## Opérations sur les objets
 

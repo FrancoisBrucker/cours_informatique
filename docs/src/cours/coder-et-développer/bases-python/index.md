@@ -63,6 +63,18 @@ Spyder est un éditeur lié à un interpréteur python. L'application est très 
 
 > TBD : un petit tuto.
 
+### Vscode
+
+> TBD installer un interpréteur (Microsoft Store ou utiliser ceux déjà sur le système). On y reviendra (cite). Ici juste coder un peu.
+> installation module python.
+
+> TBD le triangle
+> TBD les projets et les projets/fichiers (ne pas oublier de sauver)
+
+## Utilisation de modules
+
+> TBD ici utilisation de modules python (retirer de structurer son code). Parler d'espace de noms
+
 ## Structurer du code
 
 Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules) ou de données (conteneurs).
