@@ -117,64 +117,160 @@
 </div></div>
 
 <h2>Environnement python</h2>
-<p><a href="../installer-python/#interpr%C3%A9teur-emplacement" class="interne">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés. L'ensemble python et module est appelé environnement python et est placé dans un dossier :</p>
+<p><a href="../installer-python/#interpr%C3%A9teur-emplacement" class="interne">On a vu que l'interpréteur python était un fichier</a> sur notre ordinateur qui était exécuté pour interpréter du code, chacun pouvant avoir ses propres modules d'installés.</p>
+<h3>Emplacement</h3>
+<p>L'ensemble python et module est appelé environnement python et est placé dans un dossier. Le code suivant permet de l'expliciter :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">print</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>prefix<span class="token punctuation">)</span></code></pre>
-<p>Ce qui donne chez moi le dossier <code class="fichier">/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13</code>. Ce dossier contient tout l'environnement python. En regardant cette arborescence avec la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)">tree</a>, on voit qu'elle contient un grand nombre de dossiers et de fichiers :</p>
-<pre><code>❯ tree -L 2 /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 
-/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13
-├── Headers -&gt; include/python3.13
-├── Python
-├── Resources
-│   ├── Info.plist
-│   └── Python.app
-├── _CodeSignature
-│   └── CodeResources
-├── bin
-│   ├── idle3 -&gt; idle3.13
-│   ├── idle3.13
-│   ├── pip3
-│   ├── pip3.13
-│   ├── pydoc3 -&gt; pydoc3.13
-│   ├── pydoc3.13
-│   ├── python3 -&gt; python3.13
-│   ├── python3-config -&gt; python3.13-config
-│   ├── python3.13
-│   └── python3.13-config
-├── etc
-│   └── jupyter
-├── include
-│   └── python3.13
-├── lib
-│   ├── libpython3.13.dylib -&gt; ../Python
-│   ├── pkgconfig
-│   └── python3.13
-└── share
-    ├── doc
-    └── jupyter
 
-16 directories, 14 files
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"environnement :"</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>prefix<span class="token punctuation">)</span></code></pre>
+<p>Ce qui donne chez moi (en 2024) le dossier <code class="fichier">/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13</code>.</p>
+<p>Testez le chez vous. Pour cela, créons un projet vscode qui nous permettra de tester tout ça.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Créez un nouveau projet avec vscode que vous placerez dans un dossier nommé <code class="fichier">virt-python/</code>.</li>
+<li>Créez un fichier <code class="fichier">main.py</code> contenant le code :</li>
+</ol>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
 
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"environnement :"</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>prefix<span class="token punctuation">)</span>
 </code></pre>
+</div></div>
+
+<p>Vous pouvez exécuter le fichier <code class="fichier">main.py</code> pour connaître le chemin vers l'interpréteur utilisé :</p>
+<p><img src="vs-code-1.png" alt="code exécution"></p>
+<p>Remarquez que :</p>
+<ul>
+<li>un nouveau terminal a été crée par vscode pour ses exécutions</li>
+<li>que le nom correspond à celui du bas.</li>
+</ul>
+<p>En regardant cette arborescence avec la commande <a href="https://en.wikipedia.org/wiki/Tree_(command)">tree</a> dans un terminal, on voit qu'elle contient un grand nombre de dossiers et de fichiers :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="highlight-line">❯ tree <span class="token parameter variable">-L</span> <span class="token number">2</span> /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13 </span>
+<span class="highlight-line">/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13</span>
+<span class="highlight-line">├── Headers -<span class="token operator">></span> include/python3.13</span>
+<span class="highlight-line">├── Python</span>
+<span class="highlight-line">├── Resources</span>
+<span class="highlight-line">│   ├── Info.plist</span>
+<span class="highlight-line">│   └── Python.app</span>
+<span class="highlight-line">├── _CodeSignature</span>
+<span class="highlight-line">│   └── CodeResources</span>
+<span class="highlight-line">├── bin</span>
+<span class="highlight-line">│   ├── idle3 -<span class="token operator">></span> idle3.13</span>
+<span class="highlight-line">│   ├── idle3.13</span>
+<span class="highlight-line">│   ├── pip3</span>
+<span class="highlight-line">│   ├── pip3.13</span>
+<span class="highlight-line">│   ├── pydoc3 -<span class="token operator">></span> pydoc3.13</span>
+<span class="highlight-line">│   ├── pydoc3.13</span>
+<span class="highlight-line">│   ├── python3 -<span class="token operator">></span> python3.13</span>
+<span class="highlight-line">│   ├── python3-config -<span class="token operator">></span> python3.13-config</span>
+<span class="highlight-line">│   ├── python3.13</span>
+<span class="highlight-line">│   └── python3.13-config</span>
+<span class="highlight-line">├── etc</span>
+<span class="highlight-line">│   └── jupyter</span>
+<span class="highlight-line">├── include</span>
+<span class="highlight-line">│   └── python3.13</span>
+<span class="highlight-line">├── lib</span>
+<span class="highlight-line">│   ├── libpython3.13.dylib -<span class="token operator">></span> <span class="token punctuation">..</span>/Python</span>
+<span class="highlight-line">│   ├── pkgconfig</span>
+<span class="highlight-line">│   └── python3.13</span>
+<span class="highlight-line">└── share</span>
+<span class="highlight-line">    ├── doc</span>
+<span class="highlight-line">    └── jupyter</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token number">16</span> directories, <span class="token number">14</span> files</span>
+<span class="highlight-line"></span></code></pre>
 <p>Chaque dossier a sa propre fonction, citons-en deux :</p>
 <ul>
-<li><code>bin</code> contient les fichiers exécutables, dont <code class="fichier">python</code> et <code class="fichier">pip</code></li>
-<li><code class="fichier">lib/python3.13</code> contient les modules. Baladez-vous y, vous y retrouverez de vieilles connaissances comme <code>random.py</code> par exemple</li>
+<li><code class="fichier">bin/</code> contient les fichiers exécutables, dont <code class="fichier">python</code> et <code class="fichier">pip</code></li>
+<li><code class="fichier">lib/python3.13/</code> contient les modules. Baladez-vous y et vous y retrouverez de vieilles connaissances comme <code class="fichier">random.py</code> par exemple</li>
 </ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous n'y trouverez en revanche pas <code>math.py</code> et <code>sys.py</code> car ces deux modules sont spéciaux car très souvent utilisés : ils sont directement inclus dans l'interpréteur (bien qu'il faille tout de même les importer).</p>
+<p>Tous les modules ne sont pas présent dans le dossier <code class="fichier">lib/python3.13/</code>. Par exemple <code>math.py</code> et <code>sys.py</code> ne s'y trouvent pas.</p>
+<p>Les modules très souvent utilisés sont enb effet directement inclus dans l'interpréteur (bien qu'il faille tout de même les importer). Pour les voir, vous pouvez exécuter le code suivant :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+
 <span class="token keyword">for</span> nom_module <span class="token keyword">in</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>sys<span class="token punctuation">.</span>stdlib_module_names<span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token keyword">print</span><span class="token punctuation">(</span>nom_module<span class="token punctuation">)</span></code></pre>
 </div></div>
 
-<p>C'est toute cette architecture que l'on veut dupliquer dans chacun de nos projet.</p>
+<p>Les petites flèches que vous voyiez à côté de certains noms, par exemple la ligne 17 précédente :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">│   ├── python3 -<span class="token operator">></span> python3.13</code></pre>
+<p>Ceci correspond à <a href="https://fr.wikipedia.org/wiki/Lien_symbolique">un lien symbolique</a> : le fichier <code class="fichier">python3</code> correspond en fait au fichier <code class="fichier">python3.13</code>. Ce mécanisme permet de conserver un même nom (<code>python3</code>) à plusieurs versions python.</p>
+<p>Si je change d'interpréteur (en cliquant sur la ligne en bas de vscode) :</p>
+<p><img src="vs-code-environnements.png" alt="Différents environnements"></p>
+<p>Vscode a trouvé plein d'environnements différents (et il ne les a pas trouvés tous). Si je change d'environnement et que je re-exécute le code :</p>
+<p><img src="vs-code-2.png" alt="code exécution autre environnement"></p>
+<p>Ce qui pourrait sembler être anecdotique est en fait crucial car les modules installés sont différents.</p>
+<p>Packages installés pour l'environnement par défaut :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin/python3 <span class="token parameter variable">-m</span> pip list
+Package                   Version
+------------------------- --------------
+anyio                     <span class="token number">4.6</span>.2.post1
+appnope                   <span class="token number">0.1</span>.4
+argon2-cffi               <span class="token number">23.1</span>.0
+argon2-cffi-bindings      <span class="token number">21.2</span>.0
+arrow                     <span class="token number">1.3</span>.0
+asttokens                 <span class="token number">2.4</span>.1
+async-lru                 <span class="token number">2.0</span>.4
+attrs                     <span class="token number">24.2</span>.0
+babel                     <span class="token number">2.16</span>.0
+beautifulsoup4            <span class="token number">4.12</span>.3
+bleach                    <span class="token number">6.2</span>.0
+
+<span class="token punctuation">[</span><span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+webencodings              <span class="token number">0.5</span>.1
+websocket-client          <span class="token number">1.8</span>.0
+wheel                     <span class="token number">0.44</span>.0</code></pre>
+<p>Packages installés pour l'autre environnement :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/bin/python3 <span class="token parameter variable">-m</span> pip list
+Package           Version
+----------------- -------
+aiohttp           <span class="token number">3.9</span>.1
+aiosignal         <span class="token number">1.3</span>.1
+altgraph          <span class="token number">0.17</span>.2
+async-timeout     <span class="token number">4.0</span>.3
+attrs             <span class="token number">23.1</span>.0
+black             <span class="token number">23.12</span>.0
+
+<span class="token punctuation">[</span><span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>. snip <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+
+wheel             <span class="token number">0.37</span>.0
+yarl              <span class="token number">1.9</span>.4</code></pre>
+<p>Il y en a d'autres. Comme chaque projet va nécessiter des modules spécifiques il est important d'installer les modules dans le bon environnement.</p>
+<h3>Usage</h3>
+<p>Tout projet informatique va utiliser un environnement python <em>via</em> son interpréteur. Il utilisera ses modules, voir en installera de nouveaux qui iront se placer dans le dossier <code class="fichier">lib/python&lt;version&gt;/</code> (dans mon environnement courant c'est le dossier <code class="fichier">lib/python3.13/</code>).</p>
+<p>La gestion de ces modules peut s'avérer fastidieuse car :</p>
+<ol>
+<li>si vous partagez votre code, il faut une liste des modules dont dépend votre projet pour être utilisé et qu'il faut installer</li>
+<li>il faut faire attention aux versions car un changement de version d'un module peut entraîner des changements dans son comportement et casser votre projet</li>
+</ol>
+<p>La première solution qui vient à l'esprit est de distribuer les modules en même temps que votre projet, dans un dossier dédié. C'est cependant une <strong>très mauvaise idée</strong> ! En effet :</p>
+<ul>
+<li>vous vous privez des développements futurs et des corrections de bug des modules. Il vous faut redistribuer votre projet à chaque mise à jour des modules, en plus de chaque mise à jour de votre code</li>
+<li>vous perdez de la place et si vous utilisez un contrôleur de version (comme git) vous allez à la fois stocker votre code et du code tierce.</li>
+<li>certains modules peuvent être compliqué à installer et dépendent de bibliothèque de votre système. Copier leur code uniquement ne suffira pas à les installer proprement</li>
+</ul>
+<p>Les remarques ci-dessus mènent à une unique conclusion :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il faut utiliser un outil de gestion des dépendances qui s'occupera d'installer, de maintenir à jour et d'éviter les incompatibilités d'une liste de modules dont dépend le projet.</p>
+</div></div>
+
+<p>La solution utilisée par python est de permettre de créer facilement un environnement python dédié pour chaque projet.</p>
 <h2>Création d'un environnement</h2>
-<p>Nous utiliserons le module <a href="https://docs.python.org/fr/3/library/venv.html"><code>venv</code></a>.</p>
+<p>Nous utiliserons le module <a href="https://docs.python.org/fr/3/library/venv.html"><code>venv</code></a>, qui doit normalement être disponible.</p>
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -185,7 +281,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>installation sous Linux</p>
+<p>installation du module venv sous Linux</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -197,7 +293,7 @@
 </div>
 </details>     
 </div>
-<p>Le but de ce module est d'installer un environnement python vierge (sans aucun autre module que les modules essentiels) dans un dossier.</p>
+<p>Le but de ce module est de créer un environnement python vierge (sans aucun autre module que les modules essentiels), nommé <em>environnement virtuel</em>, dans un dossier.</p>
 <p>Par défaut, ce dossier s'appelle <code class="fichier">.venv</code> (il est donc caché) et est placé à la racine de votre site.</p>
 <h3>Avec vscode</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -208,61 +304,182 @@
 <p><a href="https://code.visualstudio.com/docs/python/environments#_creating-environments">https://code.visualstudio.com/docs/python/environments#_creating-environments</a></p>
 </div></div>
 
+<p>Lorsque l'on a changé d'environnement, on a vu que vscode propose de créer un nouvel environnement virtuel.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Dans le projet &quot;virt-python&quot; :</p>
+<ol>
+<li>cliquez sur l'environnement python courant :</li>
+<li>choisissez &quot;+ Créer un environnement virtuel...&quot; dans le menu déroulant
+<img src="vscode-cr%C3%A9ation-1.png" alt="création 1"></li>
+<li>Choisissez &quot;Venv&quot; si vscode vous propose de choisir
+<img src="vscode-cr%C3%A9ation-2.png" alt="création 2"></li>
+<li>choisissez un interpréteur. C'est puis qui sera utilisé pour créer l'environnement virtuel. Cela va uniquement déterminer la version de python du nouvel environne,ent, aucun module de l'environnement d'origine ne sera dupliqué
+<img src="vscode-cr%C3%A9ation-3.png" alt="création 3"></li>
+<li>L'environnement est crée. Si tout s'est bien passé, ce nouvel environnement est devenu celui de vscode :
+<img src="vscode-cr%C3%A9ation-4.png" alt="création 4"></li>
+</ol>
+</div></div>
+
+<p>En exécutant le programme avec vscode, on obtient bien le nouvel environnement :</p>
+<p><img src="vscode-cr%C3%A9ation-5.png" alt="création 5"></p>
+<p>Dans la liste de fichiers, on voit que le nouvel environnement a été créé dans le dossier du projet, dans un dossier nommé <code class="fichier">.venv/</code>.</p>
+<blockquote></blockquote>
+<p>Ce dossier n'est pas directement visible du terminal car il commence par un <code>.</code>, il est caché :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">ls</span>
+main.py 
+</code></pre>
+<p>Pour le voir, il faut ajouter un paramètre :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">ls</span> <span class="token parameter variable">-a</span>
+<span class="token builtin class-name">.</span>     <span class="token punctuation">..</span>    .venv       main.py 
+</code></pre>
+<p>Ceci n'empêche cependant pas d'exécuter l'interpréteur directement depuis le terminal. Chez moi (un mac/linux) :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ .venv/bin/python main.py
+environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Documents/temp/virt-python/.venv
+</code></pre>
 <blockquote>
-<p>TBD <code>.venv</code> caché sous unix (sous windows on le voit). Je préfère utiliser <code>venv</code> comme ça on le voit et on sait ce que c'est.
-TBD certains mettent l'env dans un dossier de la maison <code class="fichier">~/.env/</code> et réutilisent les env pour plusieurs projets. C'est une utilisation avancée que je déconseille pour commencer. Faites 1 python par projet avec un fichier requirement pour tout installer en bloc : c'est plus clair</p>
+<p>TBD faire mieux</p>
 </blockquote>
+<p>Sous windows il faut taper : <code>venv\Scripts\python main.py</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>sous Windows</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4">Script execution policy</a> sous windows.</p>
+<p>Pour la connaître :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
+<p>Pour la modifier :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Set-ExecutionPolicy Unrestricted</code></pre>
+</div></div>
+
 <h3>À la main</h3>
-<blockquote>
-<p>TBD interpréteur + modules
-TBD voir où ils sont terminal + env pythons.</p>
-</blockquote>
-<p>Pour connaître l'emplacement de ce fichier vous pouvez</p>
-<blockquote>
-<p>TBD plusieurs pythons</p>
-</blockquote>
-<p>Ce programme n'est pas seul, il nécessite tout un tas d'autres programmes pour fonctionner (c'est pourquoi l'installation de python ne consiste pas juste à télécharger un unique fichier <code class="fichier">python.exe</code> sous windows par exemple). En particulier tous ses modules</p>
-<blockquote>
-<p>TBD modules. Voir les fichiers où ils sont
-TBD voir le dossier</p>
-</blockquote>
-<h2>Usage</h2>
+<p>On peut créer les environnement directement avec le terminal.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Supprimez l'environnement précédemment crée avec vscode en :</p>
+<ol>
+<li>supprimant le dossier <code class="fichier">.venv</code></li>
+<li>reprenant l'interpréteur par défaut</li>
+</ol>
+<p>Vous devez revenir à l'état suivant :</p>
+<p><img src="terminal-cr%C3%A9ation-1.png" alt="création terminal"></p>
+</div></div>
+
+<p>Puis dans le terminal, on crée l'environnement en utilisant le module venv :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python <span class="token parameter variable">-m</span> venv venv/
+</code></pre>
+<p>Ceci a pour conséquence de créer un environnement virtuel dans le dossier <code class="fichier">venv</code> du dossier du projet. Notez que l'on ne l'a <strong>pas</strong> appelé <code>.venv</code> : les environnement virtuels peuvent s'appeler <code>.venv</code> (dossier commençant par un <code>.</code> donc caché) ou <code>venv</code> (ne commençant pas par un <code>.</code> donc visible) vscode les reconnait tout de même :</p>
+<p><img src="terminal-cr%C3%A9ation-2.png" alt="création terminal 2"></p>
+<h3>Modules</h3>
+<p>Un nouvel environnement vient sans aucun module d'installé :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ venv/bin/python <span class="token parameter variable">-m</span> pip list
+Package Version
+------- -------
+pip     <span class="token number">24.2</span>
+</code></pre>
+<h2>Utilisation</h2>
+<p>On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l;interpréteur directement depuis le terminal :</p>
+<ul>
+<li>sous mac/linux : <code>venv/bin/python</code></li>
+<li>sous windows : <code>venv\Scripts\python</code></li>
+</ul>
+<p>Mais l'utilisation courante depuis le terminal se fait par activation de l'environnement.</p>
+<h3>Activation</h3>
+<p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work">une commande qui dépend de votre environnement</a> :</p>
+<ul>
+<li>sous mac : <code>source venv/bin/activate</code></li>
+<li>sous windows : <code>venv\Scripts\Activate.ps1</code></li>
+</ul>
+<p>Chez moi cela donne :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ python main.py
+environnement <span class="token builtin class-name">:</span> /opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13
+❯ <span class="token builtin class-name">source</span> venv/bin/activate
+❯ python main.py
+environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Documents/temp/virt-python/venv
+</code></pre>
+<p>Après activation, en tapant <code>python</code>, c'est bien l'environnement virtuel qui est exécuté.</p>
+<p>Cette transformation est liée au terminal. Si vous en changez, il faudra re activer l'environnement.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><strong><em>Activer</em></strong> un environnement, c'est associer le programme python avec l'environnement virtuel pour le terminal dans laquelle la commande est exécutée.</p>
+</div></div>
+
+<h3>ajout de modules</h3>
+<p>Peut se faire comme on fait depuis toujours :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell"><span class="token punctuation">[</span>nom de l'interpréteur<span class="token punctuation">]</span> <span class="token parameter variable">-m</span> pip <span class="token function">install</span> <span class="token punctuation">[</span>nom <span class="token function">du</span> module<span class="token punctuation">]</span></code></pre>
+<p>Si l'on veut par exemple installer le module <code class="language-">numpy</code> pour l'environnement virtuel  :</p>
+<ul>
+<li>sous mac : <code>venv/bin/python -m pip install numpy</code></li>
+<li>sous windows : <code>venv\Scripts\python -m pip install numpy</code></li>
+</ul>
+<p>Si l'environnement virtuel est activé on peut tout simplement utiliser :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> numpy</code></pre>
+<p>Voir utiliser directement pip puisqu'il est directement lié à notre environnement :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">pip <span class="token function">install</span> numpy</code></pre>
+<p>Activer permet de ne pas se soucier du chemin, et permet d'avoir les même commandes sous windows et mac/Linux.</p>
+<h2>Gestion des environnements virtuels</h2>
+<h3>Partage des modules</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3.13/library/venv.html">https://docs.python.org/fr/3.13/library/venv.html</a></p>
+<p><a href="https://pip.pypa.io/en/stable/cli/pip_freeze/">Documentation de la commande <code>pip freeze</code></a></p>
+</div></div>
+
+<p>Lorsque l'on partage son projet, on ne va pas donner son environnement virtuel en même temps que son code, on ne donne que le code et la liste des modules à installer.</p>
+<p>On procède alors comme suit :</p>
+<ol>
+<li>on installe un à un tous les modules nécessaires à notre projet avec l'interpréteur de l'environnement virtuel. Comme rien n'est installé initialement, seuls les modules utiles au projet sont installés</li>
+<li>on utilise une commande de <code>pip</code> qui sauvegarde tous les modules dans un fichier nommé <code class="fichier">requirement.txt</code> : <code>venv/bin/python -m pip freeze &gt; requirements.txt</code></li>
+</ol>
+<p>La commande précédente a créée un fichier <code class="fichier">requirements.txt</code> qui contient tous les modules installés.</p>
+<p>Par exemple chez moi, j'ai juste installé le module <code class="language-">pytest</code> et mon fichier requirements.txt est :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">iniconfig==2.0.0
+packaging==24.0
+pluggy==1.5.0
+pytest==8.2.1</code></pre>
+<p>Il contient le module <code class="language-">pytest</code>, ses dépendances et les versions installées.</p>
+<p>Pour partager votre code, vous n'avez qu'à donner le fichier <code class="fichier">requirements.txt</code> en plus de celui-ci. La personne recevant votre code :</p>
+<ol>
+<li>créera un nouvel environnement virtuel</li>
+<li>exécutera la commande <code>venv/bin/python -m pip install -r requirements.txt</code> qui installera tous les modules du fichier <code class="fichier">requirements.txt</code>.</li>
+</ol>
+<p>Le lien ci-dessous explicite le format du fichier <code class="fichier">requirements.txt</code> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://pip.pypa.io/en/stable/reference/requirement-specifiers/#requirement-specifiers">Spécification des modules</a></p>
+</div></div>
+
+<h3>Poetry</h3>
+<p>La méthode de partage précédente nécessite plusieurs opérations à effectuer à la main. Il existe des outils plus puissant permettant de gérer plus efficacement le partage et le maintient de projets, nous allons en montrer un :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://python-poetry.org/">https://python-poetry.org/</a></p>
 </div></div>
 
 <blockquote>
-<p>TBD venv</p>
-</blockquote>
-<blockquote>
-<p>TBD usage avec le nom</p>
-</blockquote>
-<h3>Activation</h3>
-<blockquote>
-<p>TBD terminal
-TBD usage avec vscode</p>
-</blockquote>
-<h3>Modules</h3>
-<blockquote>
-<p>TBD à la main, avec requirements.txt
-récupérer les packages installés dans un fichier pur le donner aux autres utilisant le projet.</p>
-</blockquote>
-<h2>Gestion des environnements virtuels</h2>
-<blockquote>
-<p>TBD où ranger ses environnements virtuels
-TBD dans son projet par défaut mais peut y avoir des exceptions.</p>
-</blockquote>
-<h3>Poetry</h3>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-<h3>Différentes versions de python</h3>
-<blockquote>
-<p>TBD</p>
+<p>TBD : faire un exemple. Attention à ce que venv soit bien dans le dossier du projet</p>
 </blockquote>
 
 
