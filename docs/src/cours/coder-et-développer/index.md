@@ -154,6 +154,7 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 > - split
 > - caractères spéciaux : tabulation, fin de ligne
 > - strip
+> - supprimer les accents. transformation et ascii. voir partie data
 >
 
 ### Sur des fichiers
