@@ -97,9 +97,15 @@ Lier les pages dans un projet front et un serveur web de fichiers statiques.
 [Site statique](/cours/web/projet-front/){.interne}
 {% endaller %}
 
-### cours 7
+## cours 7
 
 Presentation des projets.
+
+## Cours 8&9 : backend
+
+{% aller %}
+[Site statique](/cours/web/serveur-web/){.interne}
+{% endaller %}
 
 ## Projet final
 

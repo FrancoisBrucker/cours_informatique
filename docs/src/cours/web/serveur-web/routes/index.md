@@ -3,7 +3,7 @@ layout: layout/post.njk
 
 title: "Gestion des routes"
 authors:
-    - "François Brucker"
+  - "François Brucker"
 
 eleventyComputed:
   eleventyNavigation:
@@ -17,8 +17,6 @@ eleventyComputed:
 Gestion des routes avec un serveur web.
 
 <!-- fin résumé -->
-
-> TBD : faire avec du texte, pas de fichiers,
 
 {% note "**Définition**" %}
 Le but d'un serveur web est de répondre quelque chose à partir d'une requête constituée d'une url et d'une méthode (GET ou POST). Ces différentes url auxquelles peut répondre un serveur sont appelées **routes**.
@@ -34,19 +32,19 @@ Il est crucial de bien organiser les routes d'un serveur pour pouvoir le modifie
 Reprenons le serveur de la [partie précédente](../minimal){.interne} :
 
 ```javascript
-import http from 'http';
+import http from "http";
 
-const hostname = '127.0.0.1';
+const hostname = "127.0.0.1";
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello World\n');
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/plain");
+  res.end("Hello World\n");
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 ```
 
@@ -61,22 +59,34 @@ node index.js
 Modifions le code du serveur pour qu'il lise un fichier html :
 
 ```javascript
-import http from 'http';
-import fs from 'fs';
+import http from "http";
 
-const hostname = '127.0.0.1';
+const hostname = "127.0.0.1";
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-
-    let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
-    res.end(fichier);
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
+  res.end(`
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Une page</title>
+  </head>
+  <body>
+    <p>
+    Coucou !
+    </p>
+  </body>
+</html>
+    `);
+  let fichier = fs.readFileSync("./index.html", { encoding: "utf8" });
+  res.end(fichier);
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 ```
 
@@ -114,20 +124,31 @@ Notre serveur est vraiment frustre, il ne permet de rendre que d'un fichier html
 // ...
 
 const server = http.createServer((req, res) => {
-    console.log(req.url)
-    if ((req.url === "/") || (req.url === "/index.html")) {
-        console.log("index")
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
-    
-        let fichier = fs.readFileSync("./index.html", {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else {
+  console.log(req.url);
+  if (req.url === "/" || req.url === "/index.html") {
+    console.log("index");
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+
+    res.end(`
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Une page</title>
+  </head>
+  <body>
+    <p>
+    Coucou !
+    </p>
+  </body>
+</html>
+        `);
+  } else {
     res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader("Content-Type", "text/plain");
     res.end();
-    }    
+  }
 });
 
 // ...
@@ -158,35 +179,31 @@ Déplacez vos fichiers html, css et js dans un dossier que vous nommerez `static
 {% endfaire %}
 
 ```javascript
+import http from "http";
+import fs from "fs";
 
-// ...
+const hostname = "127.0.0.1";
+const port = 3000;
 
 const server = http.createServer((req, res) => {
-    console.log(req.url)
+  console.log(req.url);
 
-    if (req.url === "/") {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
-    
-        let fichier = fs.readFileSync("./static/index.html", {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else if (req.url.startsWith("/static/")) {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html');
-    
-        let fichier = fs.readFileSync("." + req.url, {encoding:'utf8'})
-        res.end(fichier);
-    }
-    else {
+  if (req.url.startsWith("/static/")) {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+
+    let fichier = fs.readFileSync("." + req.url, { encoding: "utf8" });
+    res.end(fichier);
+  } else {
     res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader("Content-Type", "text/plain");
     res.end();
-    }
+  }
 });
 
-// ...
-
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 ```
 
 Si l'url est du type `/static/[fin de l'url]`, le serveur essaye de lire le fichier nommé `static/[fin de l'url]`{.fichier} dans le répertoire courant, c'est à dire un fichier qui se trouve dans le dossier `static/`{.fichier}.
@@ -197,66 +214,58 @@ Ceci est effectué en :
 2. en concaténant avec `.` puis en chargeant ce fichier. Dans notre cas, on cherche à lire le fichier `./static/[fin de l'url]`{.fichier}
 3. Une fois ce fichier lu avec la méthode [`fs.readFileSync`{.language-}](https://nodejs.org/api/fs.html#fsreadfilesyncpath-options), il est envoyé par le serveur
 
+{% info %}
+La lecture de fichiers se fait par flux en node. Nous reviendrons là-dessus un oeu plus tard dans le cours.
+{% endinfo %}
+
 On commence à voir deux besoins indispensables dans la gestion des routes :
 
-* il faut pouvoir choisir une route parmi plusieurs possibles
-* il faut pouvoir séparer l'url en plusieurs parties
+- il faut pouvoir choisir une route parmi plusieurs possibles
+- il faut pouvoir séparer l'url en plusieurs parties
 
 {% faire %}
 Accédez au fichier `index.html`{.fichier} des deux façons possibles.
 {% endfaire %}
 
-## Jardinons un peu le code
+### Redirection
 
-La version ci-après du serveur est une version améliorée du précédent qui :
-
-* raccourcit et factorise les routes
-* gère de façon précise les fichiers
+Le code ci-après effectue une redirection pour que l'adresse `/` du serveur permette d'afficher l'index situé à l'adresse `/static/index.html`.
 
 ```javascript
-import http from 'http';
-import fs from 'fs';
-import path from 'path';
+import http from "http";
+import fs from "fs";
 
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const hostname = '127.0.0.1';
+const hostname = "127.0.0.1";
 const port = 3000;
 
 const server = http.createServer((req, res) => {
-    console.log(req.url)
+  console.log(req.url);
 
-    if (req.url === "/") {
-        console.log("redirection");
-
-        res.writeHead(301, {Location: "http://" + req.headers['host'] + '/static/index.html'});
-        res.end();
-    } else  if (req.url.startsWith("/static/")) {
-        console.log("fichier statique");
-        let fichier = path.join(__dirname,  req.url);
-        
-        res.writeHead(200,  {'Content-Type': 'text/html'});
-        fichier = fs.readFileSync(fichier, {encoding:'utf8'});
-        res.end(fichier);
-    }
-    else {
-    res.writeHead(404,  {'Content-Type': 'text/plain'})
+  if (req.url === "/") {
+    res.writeHead(302, {
+      Location: "/static/index.html",
+      "Content-Type": "text/html",
+    });
     res.end();
-    }
+  } else if (req.url.startsWith("/static/")) {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "text/html");
+
+    let fichier = fs.readFileSync("." + req.url, { encoding: "utf8" });
+    res.end(fichier);
+  } else {
+    res.statusCode = 404;
+    res.setHeader("Content-Type", "text/plain");
+    res.end();
+  }
 });
 
 server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
-
 ```
 
-### Redirection
-
-Nous avons utiliser une [redirection](https://http.cat/301) de la requête `/` vers la requête `http://127.0.0.1:3000/static/index.html` (la variable `req.headers['host']`js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).
+Nous avons utilisé une [redirection](https://http.cat/301) de la requête `/` vers la requête `http://127.0.0.1:3000/static/index.html` (la variable `req.headers['host']`js contient le nom du serveur et son port. Affichez là dans la console pour vous en convaincre).
 
 Ainsi, lorsque le serveur fait une requête `http://127.0.0.1:3000` :
 
@@ -265,19 +274,68 @@ Ainsi, lorsque le serveur fait une requête `http://127.0.0.1:3000` :
 3. cette nouvelle requête tombe dans le if des fichiers statique, et le fichier index.html pourra être servi.
 
 {% faire %}
-Faire l'expérience de la redirection en demandons depuis un navigateur la route `http://127.0.0.1:3000` et voir dans la console du serveur les deux appels : la requête initiale et la redirection.
+Faire l'expérience de la redirection en demandant depuis un navigateur la route `http://127.0.0.1:3000` et voir dans la console du serveur les deux appels : la requête initiale et la redirection.
 {% endfaire %}
 
 ### headers
 
 On peut utiliser `res.writeHead(200,  {'Content-Type': 'text/html'})` pour écrire en une fois le status et le type de la réponse.
 
+## Jardinons un peu le code
+
+La version ci-après du serveur est une version améliorée du précédent qui :
+
+- raccourcit et factorise les routes
+- gère de façon précise les fichiers
+
+```javascript
+import http from "http";
+import fs from "fs";
+import path from "path";
+
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const hostname = "127.0.0.1";
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  console.log(req.url);
+
+  if (req.url === "/") {
+    console.log("redirection");
+
+    res.writeHead(302, {
+      Location: "/static/index.html",
+      "Content-Type": "text/html",
+    });
+    res.end();
+  } else if (req.url.startsWith("/static/")) {
+    console.log("fichier statique");
+    let fichier = path.join(__dirname, req.url);
+
+    res.writeHead(200, { "Content-Type": "text/html" });
+    fichier = fs.readFileSync(fichier, { encoding: "utf8" });
+    res.end(fichier);
+  } else {
+    res.writeHead(404, { "Content-Type": "text/plain" });
+    res.end();
+  }
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+```
+
 ### Localisation des fichiers
 
 La localisation d'un fichier sur le disque dur est une opération :
 
-* non triviale
-* dépendante de l'architecture du disque dur sur lequel le programme tourne
+- non triviale
+- dépendante de l'architecture du disque dur sur lequel le programme tourne
 
 C'est très problématique pour les serveur web puisque l'on veut que le code fonctionne sur la machine du (des) développeur(s) et sur la (les) machine(s) de production. Chacune ayant un autre disque dur et une autre architecture.
 
@@ -287,14 +345,14 @@ Nous avons utiliser la notation `"./index.html"` pour indiquer que le fichier `i
 
 Le **dossier courant** est le dossier dans lequel se trouve le terminal qui a exécuté la commande node. De là, notre serveur :
 
-* **fonctionnera** si on le lance depuis le dossier où se trouve les fichier avec la commande : `node index.js`
-* **ne fonctionnera pas** si on le lance depuis le dossier parent avec la commande : `node serveur_web/index.js`. Le serveur trouvera bien `serveur_web/index.js`{.fichier} mais n'arrivera pas à trouver `./index.html`{.fichier} dans le code.
+- **fonctionnera** si on le lance depuis le dossier où se trouve les fichier avec la commande : `node index.js`
+- **ne fonctionnera pas** si on le lance depuis le dossier parent avec la commande : `node serveur_web/index.js`. Le serveur trouvera bien `serveur_web/index.js`{.fichier} mais n'arrivera pas à trouver `./index.html`{.fichier} dans le code.
 
 Il ne faut donc pas prendre comme référence le dossier courant mais le dossier où est `index.js`{.fichier}
 
 Node nous permet de faire ça en définissant les constantes `__filename`{.language-} et `__dirname`{.language-} en début de programme. Ces deux constantes contiennent respectivement le nom et le dossier du fichier exécuté (ici notre serveur). On utlise ensuite ce dossier comme racien de notre projet.
 
-Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est *bad karma* : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.
+Enfin, on ne concatène **jamais** des fichiers à la main. On utilise **toujours** une bibliothèque pour cela (sinon c'est _bad karma_ : ça va forcément vous sauter à la tête un jour) qui traite tous les cas particulier pour vous. En node, c'est la [bibliothèque path](https://nodejs.org/api/path.html) qui s'occupe de ça.
 
 ### A vous
 
@@ -313,7 +371,7 @@ Bloc à ajouter juste avant le bloc du 404 :
 
     else if (req.url.startsWith("/API/hasard")) {
         console.log("API");
-        
+
         res.writeHead(200,  {'Content-Type': 'text/plain'});
         res.end(String(Math.random()));
     }

@@ -11,6 +11,9 @@ export default function (eleventyConfig) {
   // images 
   eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{jpg,png,ico,pdf,svg,gif}");
 
+  // html
+  eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{html}");
+
   // videos
   eleventyConfig.addPassthroughCopy("src/**/!(node_modules)/**/*.{webm,mov,mp4,ogv}");
   

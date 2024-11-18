@@ -26,8 +26,11 @@ Cours de développement web. On y verra la partie front, le back, la gestion d'u
 
 ## URL ?
 
-1. Différence entre exécuter un fichier soit et sur un serveur : [Qu'est qu'une url](./anatomie-url){.interne}
-2. Bases de réseau pour communiquer sur internet : [Bases de réseau](../système-et-réseau/réseau/){.interne}
+Différence entre exécuter un fichier soit et sur un serveur.
+
+{% aller %}
+[Qu'est qu'une url](./anatomie-url){.interne}
+{% endaller %}
 
 ## <span id="trinité"><span>  Trinité html/css/js
 
@@ -103,45 +106,73 @@ Modifier votre page animal préféré avec bootstrap
 [Projet front](projet-front){.interne}
 {% endaller %}
 
-## Gestion des données
-
-1. [Lire des données](./lire-données){.interne}
-
 ## <span id="serveur"><span> Serveur web
 
-Avant de vous langer dans la création de site web, lisez le lien suivant qui vous donnera les bases réseaux nécessaire pour comprendre ce qui va suivre :
+### Bases de réseau
 
-{% lien %}
-[Linux Networking-concepts HOWTO](https://www.netfilter.org/documentation/HOWTO/networking-concepts-HOWTO.html)
+Avant de vous langer dans la création de serveurs web, commençons par dégrossir un peut la notion de réseau et de protocole.
 
-Il vous permettra de comprendre les notions fondamentales :
+{% aller %}
+Lisez jusqu'à port logiciel le cours sur [les Bases de réseau](/cours/système-et-réseau/réseau/){.interne}
+{% endaller %}
 
-- d'ordinateur sur le réseau : IP et nom
-- de port
+{% faire %}
+Avec le serveur local de la partie front, ouvrez [un Wireshark](https://www.wireshark.org/) et regardez le flux réseau sur le loopback.
+{% endfaire %}
 
-{% endlien %}
+### Créer un serveur web
 
-3. [Serveur web](./serveur-web){.interne}
+{% aller %}
+[Serveur web](./serveur-web){.interne}
+{% endaller %}
+
+à faire : décathlon, faire un client/serveur : tous
+
+## Gestion des données
+
+### Lecture asynchrone
+
+La lecture de donnée est un processus asynchrone et doit être traité avec des promesses :
+
+{% aller %}
+[Lecture asynchrone de fichiers](./lire-données){.interne}
+{% endaller %}
+
+La suite du projet numérologie qui intègre une route et échange des données avec le serveur.
 
 {% faire %}
 [Projet Numérologie partie 2](projet-numérologie/partie-2-serveur/){.interne}.
 {% endfaire %}
 
-à faire : décathlon, faire un client/serveur : tous
+### <span id="données"><span> Gestion de données Serveur
 
-## <span id="données"><span> Gestion de données Serveur
+> TBD parler d'une requête http : header/type/body
+> TBD fetch : dire que c'est une fonction distante et donc asynchrone ; lier json / faire un await puis un then en v2 et dire que l'on essaie de faire ça en vrai
 
-1. [côté serveur](./gestion-données-serveur){.interne}
-2. [utilisation de bases de données](./bases-de-données){.interne}
+{% aller %}
+
+[côté serveur](./gestion-données-serveur){.interne}
+
+{% endaller %}
+
+{% aller %}
+
+[utilisation de bases de données](./bases-de-données){.interne}
+
+{% endaller %}
 
 {% faire %}
 [Projet Numérologie partie 3](./projet-numérologie/partie-3-données/){.interne}.
 {% endfaire %}
 
-## <span id="données"><span> Gestion de données Clients
+### <span id="données"><span> Gestion de données Clients
+
+{% aller %}
 
 1. [côté client](./gestion-données-client){.interne}
 2. [cookies](./gestion-données-cookies){.interne}
+
+{% endaller %}
 
 ## Projets
 

@@ -272,38 +272,11 @@ Pour le voir, il faut ajouter un paramètre :
 
 ```shell
 ❯ ls -a
-.     ..    .venv       main.py 
+.     ..    .venv     main.py 
 
 ```
 
-Ceci n'empêche cependant pas d'exécuter l'interpréteur directement depuis le terminal. Chez moi (un mac/linux) :
-
-```shell
-❯ .venv/bin/python main.py
-environnement : /Users/fbrucker/Documents/temp/virt-python/.venv
-
-```
-
-> TBD faire mieux
-
-Sous windows il faut taper : `venv\Scripts\python main.py`
-
-{% attention "sous Windows" %}
-[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) sous windows.
-
-Pour la connaître :
-
-```shell
-Get-ExecutionPolicy
-```
-
-Pour la modifier :
-
-```shell
-Set-ExecutionPolicy Unrestricted
-```
-
-{% endattention %}
+Le fait que le dossier soit caché ne change pas grand chose. On peut très bien créer des environnement virtuels dans des dossiers non caché, comme `venv/`{.fichier} par exemple. C'est que nous allons faire maintenant.
 
 ### À la main
 
@@ -345,12 +318,33 @@ pip     24.2
 
 ## Utilisation
 
-On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l;interpréteur directement depuis le terminal :
+On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l'interpréteur directement depuis le terminal :
 
-- sous mac/linux : `venv/bin/python`
-- sous windows : `venv\Scripts\python`
+- sous mac/Linux : `venv/bin/python main.py`
+- sous windows : `venv\Scripts\python main.py`
 
-Mais l'utilisation courante depuis le terminal se fait par activation de l'environnement.
+L'exécution donne chez moi :
+
+```shell
+environnement : /Users/fbrucker/Documents/temp/virt-python/.venv
+```
+
+{% attention "sous Windows" %}
+[Script execution policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4) sous windows.
+
+Pour la connaître :
+
+```shell
+Get-ExecutionPolicy
+```
+
+Pour la modifier :
+
+```shell
+Set-ExecutionPolicy Unrestricted
+```
+
+{% endattention %}
 
 ### Activation
 

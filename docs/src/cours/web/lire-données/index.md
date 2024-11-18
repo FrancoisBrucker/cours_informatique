@@ -3,7 +3,7 @@ layout: layout/post.njk
 
 title: Lire des données
 authors:
-    - "François Brucker"
+  - "François Brucker"
 
 eleventyComputed:
   eleventyNavigation:
@@ -12,11 +12,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Récupérer des données sur internet avec javascript.
-
-<!-- fin résumé -->
 
 ## Gestion des fichiers
 
@@ -38,25 +34,25 @@ Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au 
 
 ### format json
 
-{% aller %}
+{% lien %}
 [description du format json](https://www.json.org/json-fr.html)
-{% endaller %}
+{% endlien %}
 
-Des données écrites sous un format texte comme le json sont dites ***sérialisées***. On les ***désérialise*** pour les retransformer en js.
+Des données écrites sous un format texte comme le json sont dites **_sérialisées_**. On les **_désérialise_** pour les retransformer en js.
 
 {% exercice %}
 Dans une console node :
 
 1. créez la variable `t`{.language-} contenant le tableau `[1, "deux", {x:1, y:3}]`{.language-} contenant un entier, une chaîne de caractères et un dictionnaire.
 2. en utilisant la fonction [`JSON.stringify()`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify), sérialisez `t`{.language-} en une chaîne de caractères au format json que vous stockerez dans la variable `t_json`{.language-}
-3. En utilisant l'opérateur [`typeof`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) vérifiez bien que `t_json`{.language-} est bien une chaîne de caractères et non un objet comme `t`{.language-}, ces deux variables ne sont donc ***pas égale***
+3. En utilisant l'opérateur [`typeof`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof) vérifiez bien que `t_json`{.language-} est bien une chaîne de caractères et non un objet comme `t`{.language-}, ces deux variables ne sont donc **_pas égale_**
 4. désérialisez `t_json`{.language-} en utilisant la fonction [`JSON.parse()`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) et placez le résultat dans la variable `t2`{.language-}
 5. vérifiez que `t2`{.language-} possède bien les mêmes valeurs que `t`{.language-}
-{% endexercice %}
-{% details "solution" %}
+   {% endexercice %}
+   {% details "solution" %}
 
 ```shell
-» node                        
+» node
 Welcome to Node.js v21.1.0.
 Type ".help" for more information.
 > t = [1, "deux", {x:1, y:3}]
@@ -78,44 +74,18 @@ Type ".help" for more information.
 Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de [vérifier l'égalité entre deux tableaux](https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/) est de vérifier que leur sérialisation est identique...
 {% endinfo %}
 
-### Utiliser des données json
+Côté client, la façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant [la fonction `JSON.parse`{.language-}](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) (on va voir un exemple juste après en utilisant la fonction fetch de javascript).
 
-La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction `JSON.parse`{.language-}
+### Charger des fichiers avec la fonction `fetch`{.language-}
 
-> TBD : en node
-> TBD : en html avec lecture du fichier puis création de liste.
+> TBD problème de sécurité expliciter cors et htaccess
 
-> TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)
+{% lien %}
 
-## Charger des fichiers sans input
+- [problème CORS](https://grafikart.fr/tutoriels/cors-http-navigateur-1180)
+- [fichier htaccess](https://www.mauricelargeron.com/parametrer-les-acces-a-son-serveur/)
 
-> TBD
->
-> 1. problème CORS
-> 2. faire fichier serveur statique
-> 3. asynchrone. Mettre un await.
-> TBD
-
-
-> 1. format json
-> 2. lire depuis son site et son serveur statique, sinon CORS
-> 3. depuis une page web
-> 4. depuis une page web que l'on maintient avec un fichier .htaccess
-
-### fetch
-
-> Asynchrone : await
-
-> TBD directement en js sans utilisateur.
-> TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
-> TBD ici await d'abord
-> TBD comme pour l'url pas totalement chargé au retour
-
-### htaccess
-
-> TBD depuis une page web que l'on maintient avec un fichier .htaccess
-
-## Fonction `fetch` en javascript
+{% endlien %}
 
 La fonction fetch de javascript permet de charger tout un tas de choses, bien plus que juste des fichiers json :
 

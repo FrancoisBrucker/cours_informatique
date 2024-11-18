@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "Serveur web avec express"
 
 authors:
-    - "François Brucker"
+  - "François Brucker"
 
 eleventyComputed:
   eleventyNavigation:
@@ -40,7 +40,7 @@ Comme fait [précédemment](../minimal/){.interne} on prépare le projet en cré
 
 A la fin de cette opération, vous devriez avoir le fichier un fichier nommé `package.json`{.fichier} qui contient la configuration minimale d'un projet utilisant node :
 
-```json#
+```json/
 {
   "name": "code",
   "version": "1.0.0",
@@ -70,10 +70,10 @@ npm add --save express
 ```
 
 {% attention %}
-N'oubliez pas `--save`, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier *"package.json"* ce qui est tarte.
+N'oubliez pas `--save`, sinon le module sera installé mais la dépendance ne sera pas ajoutée au fichier _"package.json"_ ce qui est tarte.
 {% endattention %}
 
-Cette commande a ajouté une dépendance à notre fichier *"package.json"* :
+Cette commande a ajouté une dépendance à notre fichier _"package.json"_ :
 
 ```json
 "dependencies": {
@@ -93,8 +93,8 @@ La différence entre `package.json`{.fichier} et `package-lock.json`{.fichier} e
 
 Le dossier `node_modules`{.fichier} n'est pas un module à sauver, on peut installer toutes les dépendances avec la commande `npm install` :
 
-* grâce au fichier `package-lock.json`{.fichier} : la commande `npm --install` sait exactement quels modules installer
-* le fichier `package.json`{.fichier} donnant les dépendances générales de notre projet.
+- grâce au fichier `package-lock.json`{.fichier} : la commande `npm --install` sait exactement quels modules installer
+- le fichier `package.json`{.fichier} donnant les dépendances générales de notre projet.
 
 ## Routes
 
@@ -102,8 +102,8 @@ Le module [express](https://expressjs.com/) va nous permettre de créer nos rout
 
 Avant d'utiliser le module, penchons nous un peut sur que l'on veut :
 
-* site statique : on demande à l'utilisateur de taper son prénom
-* une fois que l'on appuie sur le bouton, le prénom est envoyé au server qui retourne le chiffre associé.
+- site statique : on demande à l'utilisateur de taper son prénom
+- une fois que l'on appuie sur le bouton, le prénom est envoyé au server qui retourne le chiffre associé.
 
 Pour l'instant nous n'avons qu'un site front. Donc commençons par organiser le tout.
 
@@ -129,41 +129,40 @@ On a utilisé la commande unix [tree](https://linux.die.net/man/1/tree) (`tree -
 Modifions le fichier `index.js`{.fichier} pour que notre site fonctionne sous express :
 
 ```javascript
-import path from 'path';
+import path from "path";
 
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import express from 'express';
-const app = express()
+import express from "express";
+const app = express();
 
-const hostname = '127.0.0.1';
+const hostname = "127.0.0.1";
 const port = 3000;
 
-app.use("/static", express.static(path.join(__dirname, '/static')))
+app.use("/static", express.static(path.join(__dirname, "/static")));
 
-app.get('/', (req, res) => {
-    res.redirect(301, '/static/index.html')
-})
-
+app.get("/", (req, res) => {
+  res.redirect(301, "/static/index.html");
+});
 
 app.use(function (req, res) {
-    console.log("et c'est le 404 : " + req.url);
+  console.log("et c'est le 404 : " + req.url);
 
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/html');
+  res.statusCode = 404;
+  res.setHeader("Content-Type", "text/html");
 
-    res.end("<html><head><title>la quatre cent quatre</title></head><body><img  src=\"https://upload.wikimedia.org/wikipedia/commons/b/b4/Peugeot_404_Champs.jpg\" /></body></html>");
-
-})
+  res.end(
+    '<html><head><title>la quatre cent quatre</title></head><body><img  src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Peugeot_404_Champs.jpg" /></body></html>'
+  );
+});
 
 app.listen(port, hostname);
 console.log(`Server running at http://${hostname}:${port}/`);
-
 ```
 
-Tout se passe *via* l'objet `app`{.language-}, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
+Tout se passe _via_ l'objet `app`{.language-}, qui est le résultat de l'import de express. Chaque requête au serveur passera d'un appel de `app` à l'autre (dans l'ordre du fichier).
 
 {% note %}
 Express appelle ces bouts de codes qui interceptent une requête un [middleware](https://expressjs.com/fr/guide/using-middleware.html)
@@ -172,9 +171,9 @@ Express appelle ces bouts de codes qui interceptent une requête un [middleware]
 Pour chaque appel de app (dans notre cas on en a 2 `app.use`{.language-} et `app.get`{.language-}) :
 
 1. on vérifie si la requête satisfait l'appel de `app`{.language-} :
-   * `app.use()`{.language-} : reçoit toutes les requêtes
-   * `app.get()`{.language-} : ne reçoit que les requêtes de méthode `get`{.language-}
-   * `app.post()`{.language-} : ne reçoit que les requêtes de méthode `post`{.language-}
+   - `app.use()`{.language-} : reçoit toutes les requêtes
+   - `app.get()`{.language-} : ne reçoit que les requêtes de méthode `get`{.language-}
+   - `app.post()`{.language-} : ne reçoit que les requêtes de méthode `post`{.language-}
 2. Si la requête satisfait l'appel de `app`{.language-}, on vérifie si elle satisfait le 1er paramètre
 3. Si la requête satisfait le 1er paramètre on exécute la méthode du second paramètre avec la requête en 1er paramètre.
 
@@ -185,7 +184,7 @@ Comme dit précédemment, la route `/static` ne doit être utilisée qu'en déve
 Dans notre cas l'enchaînement de route est ainsi :
 
 1. 1er `app.use`{.language-} : si l'url de la requête commence par `/static` on envoie cette requête dans le gestionnaire de fichiers statiques de express.
-2. `app.get`{.language-}  :  si l'url de la requête est `/` on redirige la requête vers `/static/index.html`. Cette requête redirigée sera alors consommée par le `app.use`{.language-}
+2. `app.get`{.language-} : si l'url de la requête est `/` on redirige la requête vers `/static/index.html`. Cette requête redirigée sera alors consommée par le `app.use`{.language-}
 3. 2ème `app.use`{.language-} : s on arrive là, c'est que toutes les routes précédentes ont échouées : on ne peut rien faire de la requêtes on indique au client que c'est un 404. On en a aussi profité pour rendre du contenu (toute une famille).
 
 {% note %}
@@ -204,10 +203,16 @@ Ajoutez par exemple ce code en début de fichier en faisant en sorte que ce soit
 // ...
 
 app.use(function (req, res, next) {
-    let date = new Date(Date.now())
-    console.log('Time:', date.toLocaleDateString(), date.toLocaleTimeString(), "; url :", req.url);
-    next(); // sans cette ligne on ne pourra pas poursuivre.
-})
+  let date = new Date(Date.now());
+  console.log(
+    "Time:",
+    date.toLocaleDateString(),
+    date.toLocaleTimeString(),
+    "; url :",
+    req.url
+  );
+  next(); // sans cette ligne on ne pourra pas poursuivre.
+});
 
 // ...
 ```
