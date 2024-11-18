@@ -107,9 +107,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Récupérer des données sur internet avec javascript.</p>
-<!-- fin résumé -->
+  <p>Récupérer des données sur internet avec javascript.</p>
 <h2>Gestion des fichiers</h2>
 <h3>Fichier avec node</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -132,15 +130,15 @@
 <h2>Données json</h2>
 <p>Lorsque l'on veut stocker ou transmettre des données, il faut les convertir au format texte. L'usage courant est de les écrire au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">json</a>. Ce format est facile à lire et ressemble aux dictionnaires de js ou de python.</p>
 <h3>format json</h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
 <div class="pl-8 mr-8">
 <p><a href="https://www.json.org/json-fr.html">description du format json</a></p>
 </div></div>
 
-<p>Des données écrites sous un format texte comme le json sont dites <em><strong>sérialisées</strong></em>. On les <em><strong>désérialise</strong></em> pour les retransformer en js.</p>
+<p>Des données écrites sous un format texte comme le json sont dites <strong><em>sérialisées</em></strong>. On les <strong><em>désérialise</em></strong> pour les retransformer en js.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -148,7 +146,7 @@
 <ol>
 <li>créez la variable <code class="language-">t</code> contenant le tableau <code class="language-">[1, &quot;deux&quot;, {x:1, y:3}]</code> contenant un entier, une chaîne de caractères et un dictionnaire.</li>
 <li>en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><code class="language-">JSON.stringify()</code></a>, sérialisez <code class="language-">t</code> en une chaîne de caractères au format json que vous stockerez dans la variable <code class="language-">t_json</code></li>
-<li>En utilisant l'opérateur <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"><code class="language-">typeof</code></a> vérifiez bien que <code class="language-">t_json</code> est bien une chaîne de caractères et non un objet comme <code class="language-">t</code>, ces deux variables ne sont donc <em><strong>pas égale</strong></em></li>
+<li>En utilisant l'opérateur <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof"><code class="language-">typeof</code></a> vérifiez bien que <code class="language-">t_json</code> est bien une chaîne de caractères et non un objet comme <code class="language-">t</code>, ces deux variables ne sont donc <strong><em>pas égale</em></strong></li>
 <li>désérialisez <code class="language-">t_json</code> en utilisant la fonction <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse"><code class="language-">JSON.parse()</code></a> et placez le résultat dans la variable <code class="language-">t2</code></li>
 <li>vérifiez que <code class="language-">t2</code> possède bien les mêmes valeurs que <code class="language-">t</code></li>
 </ol>
@@ -171,7 +169,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">» <span class="token function">node</span>                        
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">» <span class="token function">node</span>
 Welcome to Node.js v21.1.0.
 Type <span class="token string">".help"</span> <span class="token keyword">for</span> <span class="token function">more</span> information.
 <span class="token operator">></span> t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span>, <span class="token string">"deux"</span>, <span class="token punctuation">{</span>x:1, y:3<span class="token punctuation">}</span><span class="token punctuation">]</span>
@@ -197,48 +195,22 @@ Type <span class="token string">".help"</span> <span class="token keyword">for</
 <p>Contrairement à python, javascript ne possède pas de fonction permettant de tester l'égalité entre deux tableaux. La façon courante de <a href="https://www.freecodecamp.org/news/how-to-compare-arrays-in-javascript/">vérifier l'égalité entre deux tableaux</a> est de vérifier que leur sérialisation est identique...</p>
 </div></div>
 
-<h3>Utiliser des données json</h3>
-<p>La façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant la fonction <code class="language-">JSON.parse</code></p>
+<p>Côté client, la façon la plus simple d'utiliser des fichiers json avec node ou côté front est de charger le fichier texte, puis de le convertir en json en utilisant <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">la fonction <code class="language-">JSON.parse</code></a> (on va voir un exemple juste après en utilisant la fonction fetch de javascript).</p>
+<h3>Charger des fichiers avec la fonction <code class="language-">fetch</code></h3>
 <blockquote>
-<p>TBD : en node
-TBD : en html avec lecture du fichier puis création de liste.</p>
+<p>TBD problème de sécurité expliciter cors et htaccess</p>
 </blockquote>
-<blockquote>
-<p>TBD exemple d'utilisation avec les communes du 13 (restriction du fichier raw)</p>
-</blockquote>
-<h2>Charger des fichiers sans input</h2>
-<blockquote>
-<p>TBD</p>
-<ol>
-<li>problème CORS</li>
-<li>faire fichier serveur statique</li>
-<li>asynchrone. Mettre un await.
-TBD</li>
-</ol>
-</blockquote>
-<blockquote>
-<ol>
-<li>format json</li>
-<li>lire depuis son site et son serveur statique, sinon CORS</li>
-<li>depuis une page web</li>
-<li>depuis une page web que l'on maintient avec un fichier .htaccess</li>
-</ol>
-</blockquote>
-<h3>fetch</h3>
-<blockquote>
-<p>Asynchrone : await</p>
-</blockquote>
-<blockquote>
-<p>TBD directement en js sans utilisateur.
-TBD 1. problème CORS 2. faire fichier serveur statique 3. asynchrone. Mettre un await.
-TBD ici await d'abord
-TBD comme pour l'url pas totalement chargé au retour</p>
-</blockquote>
-<h3>htaccess</h3>
-<blockquote>
-<p>TBD depuis une page web que l'on maintient avec un fichier .htaccess</p>
-</blockquote>
-<h2>Fonction <code>fetch</code> en javascript</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://grafikart.fr/tutoriels/cors-http-navigateur-1180">problème CORS</a></li>
+<li><a href="https://www.mauricelargeron.com/parametrer-les-acces-a-son-serveur/">fichier htaccess</a></li>
+</ul>
+</div></div>
+
 <p>La fonction fetch de javascript permet de charger tout un tas de choses, bien plus que juste des fichiers json :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

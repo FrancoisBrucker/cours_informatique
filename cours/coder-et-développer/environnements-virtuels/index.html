@@ -335,30 +335,9 @@ main.py
 </code></pre>
 <p>Pour le voir, il faut ajouter un paramètre :</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ <span class="token function">ls</span> <span class="token parameter variable">-a</span>
-<span class="token builtin class-name">.</span>     <span class="token punctuation">..</span>    .venv       main.py 
+<span class="token builtin class-name">.</span>     <span class="token punctuation">..</span>    .venv     main.py 
 </code></pre>
-<p>Ceci n'empêche cependant pas d'exécuter l'interpréteur directement depuis le terminal. Chez moi (un mac/linux) :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">❯ .venv/bin/python main.py
-environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Documents/temp/virt-python/.venv
-</code></pre>
-<blockquote>
-<p>TBD faire mieux</p>
-</blockquote>
-<p>Sous windows il faut taper : <code>venv\Scripts\python main.py</code></p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p>sous Windows</p>
-</div><div class="pl-8 mr-8">
-<p><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4">Script execution policy</a> sous windows.</p>
-<p>Pour la connaître :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
-<p>Pour la modifier :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Set-ExecutionPolicy Unrestricted</code></pre>
-</div></div>
-
+<p>Le fait que le dossier soit caché ne change pas grand chose. On peut très bien créer des environnement virtuels dans des dossiers non caché, comme <code class="fichier">venv/</code> par exemple. C'est que nous allons faire maintenant.</p>
 <h3>À la main</h3>
 <p>On peut créer les environnement directement avec le terminal.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
@@ -389,12 +368,27 @@ Package Version
 pip     <span class="token number">24.2</span>
 </code></pre>
 <h2>Utilisation</h2>
-<p>On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l;interpréteur directement depuis le terminal :</p>
+<p>On peut bien sur utiliser vscode et placer l'environne,ent virtuel sur celui que nous venons de créer, on utiliser l'interpréteur directement depuis le terminal :</p>
 <ul>
-<li>sous mac/linux : <code>venv/bin/python</code></li>
-<li>sous windows : <code>venv\Scripts\python</code></li>
+<li>sous mac/Linux : <code>venv/bin/python main.py</code></li>
+<li>sous windows : <code>venv\Scripts\python main.py</code></li>
 </ul>
-<p>Mais l'utilisation courante depuis le terminal se fait par activation de l'environnement.</p>
+<p>L'exécution donne chez moi :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">environnement <span class="token builtin class-name">:</span> /Users/fbrucker/Documents/temp/virt-python/.venv</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>sous Windows</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4">Script execution policy</a> sous windows.</p>
+<p>Pour la connaître :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Get-ExecutionPolicy</code></pre>
+<p>Pour la modifier :</p>
+<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">Set-ExecutionPolicy Unrestricted</code></pre>
+</div></div>
+
 <h3>Activation</h3>
 <p>On peut activer l'environnement virtuel à la main grace à <a href="https://docs.python.org/3/library/venv.html#how-venvs-work">une commande qui dépend de votre environnement</a> :</p>
 <ul>
