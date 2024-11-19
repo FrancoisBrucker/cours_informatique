@@ -295,4 +295,20 @@ Les informaticiens aiment rigoler. Le status 418 fait parti d'une RFC publiée l
 
 ### Côté client
 
-> TBD <https://www.postman.com/> (pas besoin d'un compte)
+Postman est un outil plutôt utilisé dans le cadre des routes des APIs. L permet de tester les réponses des serveur à des requêtes front.
+
+Vous pouvez le télécharger ici :
+
+{% lien %}
+[https://www.postman.com/downloads/](https://www.postman.com/downloads/)
+
+{% endlien %}
+
+En ouvrant un testeur de requêtes (cadre 1), on peut entrer une url qu'on veut tester avec la méthode HTTP correspondante (cadre 2) et éventuellement ajouter les paramètres que l'on veut envoyer avec la route dans _Query Params_ (cadre 3). En cliquant sur _Send_, on verra la réponse de l'url dans la partie _Response_ (cadre 4). Les routes que l'ont teste sont conservées dans l’historique (cadre 5) pour pouvoir être réutilisées facilement ensuite.
+
+_Interface de postman :_
+![Interface de postman](postman.png)
+
+{% faire %}
+Tester la route de notre serveur minimal pour voir les headers et le corps du message envoyé au client.
+{% endfaire %}
