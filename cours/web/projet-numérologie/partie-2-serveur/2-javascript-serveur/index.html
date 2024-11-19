@@ -103,14 +103,15 @@
 <p>TBD : à refaire sans json. Uniquement avec du texte.</p>
 </blockquote>
 <p>Le projet ressemble maintenant à ça, en excluant le dossier <code class="fichier">node_modules</code> :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">.
+<pre><code>.
 ├── index.js
 ├── package-lock.json
 ├── package.json
 └── static
     ├── index.html
     ├── main.css
-    └── numérologie.js</code></pre>
+    └── numérologie.js
+</code></pre>
 <p>Nous échangerons dans cette partie des données entre le client (le navigateur) et le serveur (en node). Nous passerons ces objets dans le format <a href="https://www.json.org/json-fr.html">json</a> qui est — en gros — un moyen de transformer des dictionnaires javascript en texte en vue de les transférer (ce qu'on fera) ou de les stocker au format texte.</p>
 <p>Dans cette partie, retenez donc juste que l'on transfère (via le format json) des dictionnaires depuis le serveur vers le client.</p>
 <h2>Route avec paramètres</h2>

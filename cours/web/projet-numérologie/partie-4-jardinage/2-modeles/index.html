@@ -96,9 +96,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Rationalisation des différents modèles de données.</p>
-<!-- fin résumé -->
+  <p>Rationalisation des différents modèles de données.</p>
 <p>Le principe qui nous a fait séparer nos routes nous fait également séparer les modèles.</p>
 <h2>Injection de dépendances</h2>
 <p>La différence par rapport aux routes est que l'on a besoin de la base de donnée (<code>sequelize</code>) pour définir le modèle. La solution élégante à ce problème est d'utiliser <a href="https://fr.wikipedia.org/wiki/Injection_de_d%C3%A9pendances">l'injection de dépendance</a> : <strong>on va donner notre base de donnée à l'import du modèle</strong>.</p>
@@ -106,70 +104,71 @@
 <p>Avant de montrer le code des modèles, créons un dossier <code class="fichier">numérologie/modèles/</code> qui va contenir nos modèles.</p>
 <h3>Modèle <code class="language-">Signification</code></h3>
 <p>Le modèle <code class="language-">Signification</code> est alors crée dans le fichier <code class="fichier">numérologie/models/signification.js</code> :</p>
-<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token parameter">sequelize</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">return</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'Signification'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">INTEGER</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Other model options go here</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
+  <span class="token keyword">return</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span>
+    <span class="token string">"Signification"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">nombre</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">INTEGER</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// Other model options go here</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Remarquez que l'objet exporté n'est plus un dictionnaire comme précédemment, mais une fonction. Lors de l'import dans le fichier <code class="fichier">db.js</code> (on le fera juste après) on passera en paramètre l'objet <code class="fichier">sequelize</code> qui contient notre lien à la base de donnée.</p>
 <p>Ceci nous permet d'avoir plusieurs fichiers de modèles avec un unique objet <code class="fichier">sequelize</code> : on injecte les dépendances dans l'initialisation des objets.</p>
 <h3>Modèle <code class="language-">Prénoms</code></h3>
 <p>De la même manière, on crée le modèle <code class="language-">Prénoms</code> dans le fichier <code class="fichier">numérologie/models/prénoms.js</code> :</p>
-<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token parameter">sequelize</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">return</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'Prénoms'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">prénom</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-            <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
-            <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        <span class="token comment">// Other model options go here</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-<span class="token punctuation">}</span>
-</code></pre>
+  <span class="token keyword">return</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span>
+    <span class="token string">"Prénoms"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token literal-property property">prénom</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token comment">// Other model options go here</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h2>Base de donnée</h2>
 <p>Les modèles crées vont être importé puis exécutés dans notre fichier <code class="fichier">numérologie/db.js</code> remanié :</p>
-<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'sequelize'</span><span class="token punctuation">;</span>
+<pre class="language-js" tabindex="0" data-language="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Sequelize<span class="token punctuation">,</span> DataTypes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"sequelize"</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'url'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> fileURLToPath <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"url"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">"path"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> __filename <span class="token operator">=</span> <span class="token function">fileURLToPath</span><span class="token punctuation">(</span><span class="token keyword">import</span><span class="token punctuation">.</span>meta<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> __dirname <span class="token operator">=</span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span>__filename<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">'sqlite'</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'db.sqlite'</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">dialect</span><span class="token operator">:</span> <span class="token string">"sqlite"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">storage</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"db.sqlite"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> signification <span class="token keyword">from</span> <span class="token string">"./modèles/signification.js"</span>
-<span class="token keyword">import</span> prénoms <span class="token keyword">from</span> <span class="token string">"./modèles/prénoms.js"</span>
+<span class="token keyword">import</span> signification <span class="token keyword">from</span> <span class="token string">"./modèles/signification.js"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> prénoms <span class="token keyword">from</span> <span class="token string">"./modèles/prénoms.js"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    <span class="token literal-property property">sequelize</span><span class="token operator">:</span> sequelize<span class="token punctuation">,</span>
-    <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token literal-property property">Signification</span><span class="token operator">:</span> <span class="token function">signification</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token literal-property property">Prénoms</span><span class="token operator">:</span> <span class="token function">prénoms</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+  <span class="token literal-property property">sequelize</span><span class="token operator">:</span> sequelize<span class="token punctuation">,</span>
+  <span class="token literal-property property">model</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">Signification</span><span class="token operator">:</span> <span class="token function">signification</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">Prénoms</span><span class="token operator">:</span> <span class="token function">prénoms</span><span class="token punctuation">(</span>sequelize<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <p>Voyez comment le modèle est tout d'abord chargé (<code class="language-">import signification from &quot;./modèles/signification.js&quot;</code>) puis exécuté à l'export (<code class="language-">Signification: signification(sequelize)</code>) en utilisant la base de donnée en injection de dépendance.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
