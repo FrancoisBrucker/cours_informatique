@@ -47,7 +47,7 @@ L'utilisation est aisée pour les choses simples.
 
 Notez que notre route a suivi la redirection.
 
-POur supprimer cette feature, allez dans les préférences (l'engrenage en haut à droite) et mettez sur OFF "Automatically follow redirects"
+Pour supprimer cette feature, allez dans les préférences (l'engrenage en haut à droite) et mettez sur OFF "Automatically follow redirects"
 
 ![GET google](get-numérologie-sans-redirect.png)
 

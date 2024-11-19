@@ -81,8 +81,6 @@ const server = http.createServer((req, res) => {
   </body>
 </html>
     `);
-  let fichier = fs.readFileSync("./index.html", { encoding: "utf8" });
-  res.end(fichier);
 });
 
 server.listen(port, hostname, () => {

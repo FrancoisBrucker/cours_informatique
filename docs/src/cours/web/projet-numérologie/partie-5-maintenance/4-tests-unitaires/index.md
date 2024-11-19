@@ -10,19 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Nous allons ajouter des tests unitaires à notre projet.
-
-<!-- fin résumé -->
-
-## Plan
-
-Nous allons voir plusieurs aspects des tests :
-
-1. [tests js avec jest](./js-jest){.interne}
-2. [routes](./tests-routes){.interne}
-3. [test de bases de données](./tests-db){.interne}
 
 ## Motivation
 
@@ -81,3 +69,11 @@ Si on attend trop longtemps :
 - on ne se rappelle plus ce qu'on a codé
 - on a pu introduire d'autres bug à d'autres endroits du code qui fond que le test de la méthode rate
 - il est extrêmement difficile d'ajouter des tests à un programme déjà écrit il y a trop de dépendance et on à vraiment l'impression que cela ne finira jamais.
+
+## Plan
+
+Nous allons voir plusieurs aspects des tests :
+
+1. [tests js avec jest](./js-jest){.interne}
+2. [routes](./tests-routes){.interne}
+3. [test de bases de données](./tests-db){.interne}

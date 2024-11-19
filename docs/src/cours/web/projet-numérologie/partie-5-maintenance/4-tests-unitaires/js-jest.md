@@ -10,13 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Nous allons ajouter des tests unitaires à notre projet.
-
-<!-- fin résumé -->
-
-Il existe de [nombreuses bibliothèques](https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/) de tests en javascript. Nous allons nous focaliser sur [jest](https://jestjs.io/fr/) efficace et populaire.
+Nous allons ajouter des tests unitaires à notre projet. Il existe de [nombreuses bibliothèques](https://www.lambdatest.com/blog/best-javascript-unit-testing-frameworks/) de tests en javascript. Nous allons nous focaliser sur [jest](https://jestjs.io/fr/) efficace et populaire.
 
 ## Installation
 

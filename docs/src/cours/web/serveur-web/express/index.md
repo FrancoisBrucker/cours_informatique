@@ -144,7 +144,7 @@ const port = 3000;
 app.use("/static", express.static(path.join(__dirname, "/static")));
 
 app.get("/", (req, res) => {
-  res.redirect(301, "/static/index.html");
+  res.redirect(302, "/static/index.html");
 });
 
 app.use(function (req, res) {
