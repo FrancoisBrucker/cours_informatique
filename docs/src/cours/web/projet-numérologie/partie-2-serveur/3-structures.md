@@ -20,7 +20,7 @@ Structure du projet à l'issue de la partie 2.
 
 Le nom du dossier du projet est `numérologie`{.fichier}. Sa structure finale est :
 
-```text
+```
 .
 ├── back
 │   └── numérologie.js

@@ -194,7 +194,7 @@ Certains présenteront la fois d'après.
 ### Numérologie
 
 {% aller %}
-[Projet Numérologie](projet-numérologie)
+[Projet Numérologie](projet-numérologie){.interne}
 {% endaller %}
 
 Ce projet en 5 parties (dont les 3 premières sont des support applicatif du cours) vous montrent la création complète d'un petit site web avec une partie front, une partie back et des données.

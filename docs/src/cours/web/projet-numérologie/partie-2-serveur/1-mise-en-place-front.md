@@ -41,7 +41,7 @@ Qui correspond peu ou prou à la partie front de notre serveur. Rendons ceci exp
 
 On obtient la structure classique d'un serveur web en node :
 
-```text
+```
 .
 ├── index.js
 └── static
@@ -113,7 +113,7 @@ console.log(`Server running at http://${hostname}:${port}/`);
 
 Le projet ressemble maintenant à ça :
 
-```text
+```
 .
 ├── index.js
 ├── node_modules

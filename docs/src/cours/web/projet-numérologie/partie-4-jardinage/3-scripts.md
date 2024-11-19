@@ -10,12 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-On explicite les divers scripts de notre serveur
-
-<!-- fin résumé -->
-
 Ajout des scripts permettant l'installation et l'exécution du serveur.
 
 ## Scripts utiles

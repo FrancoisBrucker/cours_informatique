@@ -3,7 +3,7 @@ layout: layout/post.njk
 title: "Projet numérologie"
 
 authors:
-    - "François Brucker"
+  - "François Brucker"
 
 eleventyComputed:
   eleventyNavigation:
@@ -31,8 +31,8 @@ Associer un chiffre à toute chaîne de caractère en [Unicode](https://unicode-
 Avant de se lancer à corps perdu dans le développement et le code, vérifions que nous avons (enfin, surtout vous avez) tous les outils nécessaires :
 
 1. et c'est le plus important **la bonne attitude** :
-   * si vous ne connaissez rien : ne cédez pas à la facilité de copier/coller sans comprendre : c'est *bad karma* et ça vous rattrapera tôt ou tard. La magie — tout du moins en informatique — n'existe pas (et je suis le premier à le déplorer) : si ça fonctionne sans que vous savez au moins superficiellement pourquoi, c'est que ça n'a que l'air de fonctionner.
-   * si vous connaissez déjà tout ça : faite-le tout de même cela vous permettra de suivre plus facilement les niveaux ultérieurs
+   - si vous ne connaissez rien : ne cédez pas à la facilité de copier/coller sans comprendre : c'est _bad karma_ et ça vous rattrapera tôt ou tard. La magie — tout du moins en informatique — n'existe pas (et je suis le premier à le déplorer) : si ça fonctionne sans que vous savez au moins superficiellement pourquoi, c'est que ça n'a que l'air de fonctionner.
+   - si vous connaissez déjà tout ça : faite-le tout de même cela vous permettra de suivre plus facilement les niveaux ultérieurs
 2. **un cerveau** en état de marche : pour voir les correspondances, lire la doc, et poser des questions.
 3. avoir **un éditeur de texte** fonctionnel. Nous utiliserons [vscode](https://code.visualstudio.com/) dans ce cours, téléchargez le et installez le.
 4. un **navigateur internet** munis d'outils de développement. Tous les exemple seront fait avec [chrome](https://www.google.fr/chrome/).
@@ -56,7 +56,7 @@ Vous téléchargez la version courante de node : <https://nodejs.org/en/download
 {% enddetails %}
 
 {% attention %}
-Il existe 2 versions de [Node](https://nodejs.org/en/), la *LTS (long term support)* et la *current*. On choisira la version *current* qui est la plus récente. La version *LTS* est là pour des raisons de compatibilité.
+Il existe 2 versions de [Node](https://nodejs.org/en/), la _LTS (long term support)_ et la _current_. On choisira la version _current_ qui est la plus récente. La version _LTS_ est là pour des raisons de compatibilité.
 {% endattention %}
 
 ## Plan
@@ -73,6 +73,6 @@ Ce projet va être séparé en cinq parties :
 
 > TBD
 >
-> * Local : différence entre fichier et via node.  [cors](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)
-> * sur le serveur de l'école sans node (cyberduck/scp/git)
-> * sur l'ovh : scp/git
+> - Local : différence entre fichier et via node. [cors](https://developer.mozilla.org/fr/docs/Web/HTTP/CORS)
+> - sur le serveur de l'école sans node (cyberduck/scp/git)
+> - sur l'ovh : scp/git

@@ -12,17 +12,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Code complet après la partie 1.
-
-<!-- fin résumé -->
 
 ## Structure du projet
 
 Le nom du dossier du projet est `numérologie`{.fichier}. Sa structure finale est :
 
-```text
+```
 .
 ├── index.html
 ├── main.css

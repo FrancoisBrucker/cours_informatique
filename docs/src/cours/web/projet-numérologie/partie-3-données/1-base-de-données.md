@@ -10,11 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Ajout d'une base de données SQlite au serveur
-
-<!-- fin résumé -->
+Ajout d'une base de données SQlite au serveur.
 
 On va utiliser l'ORM sequelize en conjonction avec une base SQlite. Donc commençons par ajouter les 2 modules à notre projet :
 
@@ -28,46 +24,49 @@ On va commencer par créer une base de donnée en lecture seule pour associer à
 
 ### Modèle
 
-Le modèle va être identique au [modèle du cours]({{"/cours/web/base-données" | url}}).
+Le modèle va être identique au [modèle du cours](../../../bases-de-données/){.interne}.
 
 {% faire %}
 Créez le fichier `numérologie/db.js`{.fichier} et copiez/collez y le code suivant, qui crée le modèle :
 {% endfaire %}
 
 ```js
-import { Sequelize, DataTypes } from 'sequelize';
+import { Sequelize, DataTypes } from "sequelize";
 
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { fileURLToPath } from "url";
+import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
 const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: path.join(__dirname, 'db.sqlite')
+  dialect: "sqlite",
+  storage: path.join(__dirname, "db.sqlite"),
 });
 
-const Signification = sequelize.define('Signification', {
+const Signification = sequelize.define(
+  "Signification",
+  {
     message: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     nombre: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-}, {
+  },
+  {
     // Other model options go here
-});
+  }
+);
 
 export default {
-    sequelize: sequelize,
-    model: {
-        Signification: Signification,
-    }
-}
+  sequelize: sequelize,
+  model: {
+    Signification: Signification,
+  },
+};
 ```
 
 ### Initialisation
@@ -82,59 +81,65 @@ Créez le fichier `numérologie/db.init.js`{.fichier} et copiez/collez y le code
 import db from "./db.js";
 
 async function initDB() {
-    await db.sequelize.sync({force: true})
-    
-    await db.model.Signification.create({
-        message: "Une main de fer dans un gant de velours... Votre caractère bien trempé vous cause parfois du tort, mais pas question de vous adoucir : vous êtes comme vous êtes, que ça plaise ou non ! Au moins, vous avez le mérite de jouer cartes sur table. Vos amis savent qu'ils peuvent compter sur votre loyauté.",
-        nombre: 1,
-    })
+  await db.sequelize.sync({ force: true });
 
-    await db.model.Signification.create({
-        message: "Au premier abord, on vous juge froide, distante. Mais c'est mal vous connaître car sous votre carapace glaciale, vous êtes ultrasensible ! Le sarcasme et l'ironie vous protègent des déceptions... Combien de fois avez-vous accordé votre confiance à des gens qui ne la méritaient pas ?",
-        nombre: 2,
-    })
+  await db.model.Signification.create({
+    message:
+      "Une main de fer dans un gant de velours... Votre caractère bien trempé vous cause parfois du tort, mais pas question de vous adoucir : vous êtes comme vous êtes, que ça plaise ou non ! Au moins, vous avez le mérite de jouer cartes sur table. Vos amis savent qu'ils peuvent compter sur votre loyauté.",
+    nombre: 1,
+  });
 
-    await db.model.Signification.create({
-        message: "Vous avez l'âme d'une artiste ! Dessin, chant, danse... Vous vous épanouissez dans les activités créatives, et vous avez une imagination débordante.",
-        nombre: 3,
-    })
+  await db.model.Signification.create({
+    message:
+      "Au premier abord, on vous juge froide, distante. Mais c'est mal vous connaître car sous votre carapace glaciale, vous êtes ultrasensible ! Le sarcasme et l'ironie vous protègent des déceptions... Combien de fois avez-vous accordé votre confiance à des gens qui ne la méritaient pas ?",
+    nombre: 2,
+  });
 
-    await db.model.Signification.create({
-        message: "La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu...",
-        nombre: 4,
-    })
+  await db.model.Signification.create({
+    message:
+      "Vous avez l'âme d'une artiste ! Dessin, chant, danse... Vous vous épanouissez dans les activités créatives, et vous avez une imagination débordante.",
+    nombre: 3,
+  });
 
-    await db.model.Signification.create({
-        message: "Le changement, l'imprévu, la nouveauté, vous adorez ! Ultra curieuse, vous êtes bien décidée à tout essayer, et les expériences extrêmes ne vous font pas peur.",
-        nombre: 5,
-    })
+  await db.model.Signification.create({
+    message:
+      "La spontanéité, ce n'est pas votre truc. Dans votre vie, tout doit être rangé, organisé, planifié, sinon c'est la panique ! Au travail, les responsabilités vous font peur : vous préférez vous mettre au service d'un supérieur plutôt que de prendre les commandes. Votre prudence naturelle vous pousse à ne pas vous aventurer en terrain inconnu...",
+    nombre: 4,
+  });
 
-    await db.model.Signification.create({
-        message: "Vous attendez le prince charmant !",
-        nombre: 6,
-    })
+  await db.model.Signification.create({
+    message:
+      "Le changement, l'imprévu, la nouveauté, vous adorez ! Ultra curieuse, vous êtes bien décidée à tout essayer, et les expériences extrêmes ne vous font pas peur.",
+    nombre: 5,
+  });
 
-    await db.model.Signification.create({
-        message: "Sous votre petit air mystérieux, vous cachez des capacités d'observation et d'analyse incroyables. D'ailleurs, lorsque vous leur donnez des conseils, vos proches les suivent à la lettre !",
-        nombre: 7,
-    })
+  await db.model.Signification.create({
+    message: "Vous attendez le prince charmant !",
+    nombre: 6,
+  });
 
-    await db.model.Signification.create({
-        message: "Des projets, vous en avez toujours en pagaille ! Visionnaire, vous avez l'âme d'un chef : vous commandez, et les autres vous obéissent sans discuter. Et à l'arrivée, on reconnaît vos mérites.",
-        nombre: 8,
-    })
+  await db.model.Signification.create({
+    message:
+      "Sous votre petit air mystérieux, vous cachez des capacités d'observation et d'analyse incroyables. D'ailleurs, lorsque vous leur donnez des conseils, vos proches les suivent à la lettre !",
+    nombre: 7,
+  });
 
-    await db.model.Signification.create({
-        message: "Vous rêvez d'un monde paisible et harmonieux... L'idéaliste de la famille, c'est vous ! Vous êtes vulnérable face au mensonge et à la trahison. Pourtant, lorsque les choses se corsent, vous êtes capable de vous démener pour résoudre les problèmes au plus vite. Pas question de rester passive face aux situations difficiles !",
-        nombre: 9,
-    })
+  await db.model.Signification.create({
+    message:
+      "Des projets, vous en avez toujours en pagaille ! Visionnaire, vous avez l'âme d'un chef : vous commandez, et les autres vous obéissent sans discuter. Et à l'arrivée, on reconnaît vos mérites.",
+    nombre: 8,
+  });
 
+  await db.model.Signification.create({
+    message:
+      "Vous rêvez d'un monde paisible et harmonieux... L'idéaliste de la famille, c'est vous ! Vous êtes vulnérable face au mensonge et à la trahison. Pourtant, lorsque les choses se corsent, vous êtes capable de vous démener pour résoudre les problèmes au plus vite. Pas question de rester passive face aux situations difficiles !",
+    nombre: 9,
+  });
 }
 
-initDB()
-    .then(() => {
-        console.log("base initialisée")
-    })
+initDB().then(() => {
+  console.log("base initialisée");
+});
 ```
 
 ### Script d'initialisation de la base
@@ -193,26 +198,26 @@ Avec le numéro calculé, on cherche dans la base [e premier élément ayant ce 
 ```js
 // ...
 
-import db from "./db.js"
+import db from "./db.js";
 
 // ...
 
-app.get(encodeURI('/prénom'), (req, res) => {
-    console.log(req.query)
-    let prénom = req.query["valeur"]
-    let chiffre = numérologie.chiffre(prénom) 
-    db.model.Signification.findOne({
-        where: {
-            nombre: chiffre
-        }
-    }).then((data) => {
-        res.json({
-            prénom: prénom,
-            chiffre: chiffre, 
-            message: data.message
-        })
-    })
-})
+app.get(encodeURI("/prénom"), (req, res) => {
+  console.log(req.query);
+  let prénom = req.query["valeur"];
+  let chiffre = numérologie.chiffre(prénom);
+  db.model.Signification.findOne({
+    where: {
+      nombre: chiffre,
+    },
+  }).then((data) => {
+    res.json({
+      prénom: prénom,
+      chiffre: chiffre,
+      message: data.message,
+    });
+  });
+});
 
 // ...
 ```
@@ -226,49 +231,54 @@ On va créer un div qui va afficher le message reçu en plus du chiffre (pour l'
 ```html
 <!-- ... -->
 
-    <body>
-        <div class="main">
-            <form class="pure-form">
-                <label>Prénom :</label>
-                <input type="text" id="form-input"/>
-            
-                <button type="submit" id="form-button" class="pure-button pure-button-primary">Envoi</button>
-            </form>
-            <div class="pure-g">
-                <div class="pure-u-1-3"></div>
-                <div class="pure-u-1-3"><p id="chiffre">7</p></div>
-                <div class="pure-u-1-3"></div>
-            </div>
+<body>
+  <div class="main">
+    <form class="pure-form">
+      <label>Prénom :</label>
+      <input type="text" id="form-input" />
 
-        </div>
-        <div id="message"></div>
+      <button
+        type="submit"
+        id="form-button"
+        class="pure-button pure-button-primary"
+      >
+        Envoi
+      </button>
+    </form>
+    <div class="pure-g">
+      <div class="pure-u-1-3"></div>
+      <div class="pure-u-1-3"><p id="chiffre">7</p></div>
+      <div class="pure-u-1-3"></div>
+    </div>
+  </div>
+  <div id="message"></div>
 
-        <script>
-            function on_click() {
-                let prénom = document.querySelector("#form-input").value;
-                if (prénom) {
-                    fetch('/prénom/?valeur=' + prénom)
-                        .then(response => response.json())
-                        .then(data => {
-                            document.querySelector("#chiffre").textContent = data.chiffre
-                            document.querySelector("#message").textContent = data.message
+  <script>
+    function on_click() {
+      let prénom = document.querySelector("#form-input").value;
+      if (prénom) {
+        fetch("/prénom/?valeur=" + prénom)
+          .then((response) => response.json())
+          .then((data) => {
+            document.querySelector("#chiffre").textContent = data.chiffre;
+            document.querySelector("#message").textContent = data.message;
 
-                            console.log(data)
-                        })
-                } else {
-                    document.querySelector("#chiffre").textContent = "?"
-                }
-
-            }
-            document.querySelector("#form-button").addEventListener("click", (event) => {
-                on_click()
-                event.preventDefault();
-            })
-        </script>
-    </body>
+            console.log(data);
+          });
+      } else {
+        document.querySelector("#chiffre").textContent = "?";
+      }
+    }
+    document
+      .querySelector("#form-button")
+      .addEventListener("click", (event) => {
+        on_click();
+        event.preventDefault();
+      });
+  </script>
+</body>
 
 <!-- ... -->
-
 ```
 
 ## Base en écriture
@@ -282,24 +292,28 @@ On modifie `numérologie/db.js`{.fichier} pour qu'il inclut le nouveau modèle :
 ```js
 // ...
 
-const Prénoms = sequelize.define('Prénoms', {
+const Prénoms = sequelize.define(
+  "Prénoms",
+  {
     prénom: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-}, {
+  },
+  {
     // Other model options go here
-});
+  }
+);
 
 // ...
 
 export default {
-    sequelize: sequelize,
-    model: {
-        Signification: Signification,
-        Prénoms: Prénoms,
-    }
-}
+  sequelize: sequelize,
+  model: {
+    Signification: Signification,
+    Prénoms: Prénoms,
+  },
+};
 ```
 
 Puis on recrée notre base de données avec la commande :
@@ -315,34 +329,34 @@ Il nous reste plus qu'à ajouter, si nécessaire, le prénom dans la base. On mo
 ```js
 // ...
 
-app.get(encodeURI('/prénom'), (req, res) => {
-    console.log(req.query)
-    let prénom = req.query["valeur"]
-    let chiffre = numérologie.chiffre(prénom) 
-    db.model.Prénoms.findOne({
-        where: {
-            prénom: prénom
-        }
-    }).then((data) => {
-        if (data === null ) {
-            db.model.Prénoms.create({
-                prénom: prénom
-            })
-        }
-        console.log(data)
-    })
-    db.model.Signification.findOne({
-        where: {
-            nombre: chiffre
-        }
-    }).then((data) => {
-        res.json({
-            prénom: prénom,
-            chiffre: chiffre, 
-            message: data.message
-        })
-    })
-})
+app.get(encodeURI("/prénom"), (req, res) => {
+  console.log(req.query);
+  let prénom = req.query["valeur"];
+  let chiffre = numérologie.chiffre(prénom);
+  db.model.Prénoms.findOne({
+    where: {
+      prénom: prénom,
+    },
+  }).then((data) => {
+    if (data === null) {
+      db.model.Prénoms.create({
+        prénom: prénom,
+      });
+    }
+    console.log(data);
+  });
+  db.model.Signification.findOne({
+    where: {
+      nombre: chiffre,
+    },
+  }).then((data) => {
+    res.json({
+      prénom: prénom,
+      chiffre: chiffre,
+      message: data.message,
+    });
+  });
+});
 
 //...
 ```
@@ -364,19 +378,18 @@ GET `/api/prénoms/read/` pour lire tous nos prénoms. Ajoutons cette route à `
 ```js
 // ...
 
-app.get(encodeURI('/api/prénoms/read'), (req, res) => {
-    db.model.Prénoms.findAll()
-        .then((data) => {
-            var liste = []
-            for (element of data) {
-                liste.push({
-                    prénom: element.prénom,
-                    chiffre: numérologie.chiffre(element.prénom)
-                })
-            }
-            res.json(liste)
-        })
-})
+app.get(encodeURI("/api/prénoms/read"), (req, res) => {
+  db.model.Prénoms.findAll().then((data) => {
+    var liste = [];
+    for (element of data) {
+      liste.push({
+        prénom: element.prénom,
+        chiffre: numérologie.chiffre(element.prénom),
+      });
+    }
+    res.json(liste);
+  });
+});
 
 //...
 ```
@@ -391,45 +404,49 @@ Testez cette route après avec l'url <http://127.0.0.1:3000/api/prenoms/read> av
 On peut maintenant finir cette partie en ajoutant une page html `numérologie/static/prénoms.html`{.fichier} qui liste tous les prénoms de la base :
 
 ```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Les prénoms recherchés</title>
-        
-        <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
-        
-        <link href="main.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <title>Les prénoms recherchés</title>
 
-    </head>
-    <body>
-        <div id="main">
-            <p>Chargement des prénoms...</p>
-        </div>
-        
-        <script>
-        let main = document.querySelector("#main")
-        fetch("/api/prénoms/read")
-            .then(response => response.json())
-            .then(data => {
-                main.innerHTML = ""
-                if (data.length == 0) {
-                    element = document.createElement("p")
-                    element.innerText = "pas de prénoms sauvés dans la base."                    
-                    main.appendChild(element)
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/purecss@2.0.6/build/pure-min.css"
+      integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5"
+      crossorigin="anonymous"
+    />
 
-                    return;
-                }
-                let list = document.createElement("ul")
-                main.appendChild(list)
-                for (prénom of data) {                    
-                    element = document.createElement("li")
-                    element.innerText = prénom.prénom
-                    list.appendChild(element)
-                }
-            })
-        </script>
-    </body>
+    <link href="main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main">
+      <p>Chargement des prénoms...</p>
+    </div>
+
+    <script>
+      let main = document.querySelector("#main");
+      fetch("/api/prénoms/read")
+        .then((response) => response.json())
+        .then((data) => {
+          main.innerHTML = "";
+          if (data.length == 0) {
+            element = document.createElement("p");
+            element.innerText = "pas de prénoms sauvés dans la base.";
+            main.appendChild(element);
+
+            return;
+          }
+          let list = document.createElement("ul");
+          main.appendChild(list);
+          for (prénom of data) {
+            element = document.createElement("li");
+            element.innerText = prénom.prénom;
+            list.appendChild(element);
+          }
+        });
+    </script>
+  </body>
 </html>
 ```
 
@@ -437,9 +454,9 @@ Cette page affiche un texte par défaut (`<p>Chargement des prénoms...</p>`) qu
 
 Notez comment on a fait pour :
 
-* supprimer tous les enfant d'un élément de l'arbre DOM : `main.innerHTML = ""`
-* créer des éléments : `element = document.createElement("p")`
-* ajouter des enfants à un élément : `main.appendChild(element)`
+- supprimer tous les enfant d'un élément de l'arbre DOM : `main.innerHTML = ""`
+- créer des éléments : `element = document.createElement("p")`
+- ajouter des enfants à un élément : `main.appendChild(element)`
 
 {% faire %}
 

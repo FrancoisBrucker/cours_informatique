@@ -20,7 +20,7 @@ On crée notre première route écrite en javascript et on récupère le résult
 
 Le projet ressemble maintenant à ça, en excluant le dossier `node_modules`{.fichier} :
 
-```text
+```
 .
 ├── index.js
 ├── package-lock.json
