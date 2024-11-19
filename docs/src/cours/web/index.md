@@ -146,9 +146,6 @@ La suite du projet numérologie qui intègre une route et échange des données 
 
 ### <span id="données"><span> Gestion de données Serveur
 
-> TBD parler d'une requête http : header/type/body
-> TBD fetch : dire que c'est une fonction distante et donc asynchrone ; lier json / faire un await puis un then en v2 et dire que l'on essaie de faire ça en vrai
-
 {% aller %}
 
 [côté serveur](./gestion-données-serveur){.interne}
