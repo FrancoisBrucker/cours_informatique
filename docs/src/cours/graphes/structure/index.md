@@ -628,11 +628,17 @@ Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une fonction $f: V\to V'$ e
 On le voit dans l'exemple $f$ n'est pas forcément une bijection de $V$ dans $V'$ et l'implication n'est que dans un sens : l'arête  $f(x)f(y)$ peut exister dans $G'$ alors que $xy \notin E$. Pour avoir une correspondance parfaite entre $G$ et $G'$ il faut qu'il existe un **_isomorphisme_** entre eux :
 
 {% note "**Définition**" %}
-Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une bijection $f: V\to V'$ est un **_isomorphisme_** entre $G$ et $G'$ si $xy \in E$ est équivalent à $f(x)f(y) \in E'$.
+Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes.  Une fonction $f: V\to V'$ est un **_isomorphisme_** entre $G$ et $G'$ si :
+
+- $f$ est une bijection
+- $f$ est un morphisme entre $G$ et $G'$
+- $f^{-1}$ est un morphisme entre $G'$ et $G$
 
 {% endnote %}
 
-Deux graphes isomorphes sont structurellement équivalents. Ils ne diffèrent que par le nom des sommets.
+Deux graphes isomorphes sont structurellement équivalents : il existe une bijection $f$ entre les deux ensembles de sommets tel que $xy$ est une arête du premier graphe si et seulement si $f(x)f(y)$ est une arête du second.
+
+C'est à dire que les deux graphes ne diffèrent que par le nom de leurs sommets.
 
 > TBD dire que c'est une relation d'équivalence et que les classes d'équivalences donnent les formes de graphes à $n$ sommets. Donner exemple à 3 ?
 
