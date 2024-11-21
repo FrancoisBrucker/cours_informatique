@@ -1010,10 +1010,16 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes. Une bijection $f: V\to V'$ est un <strong><em>isomorphisme</em></strong> entre $G$ et $G'$ si $xy \in E$ est équivalent à $f(x)f(y) \in E'$.</p>
+<p>Soient $G = (V, E)$ et $G' = (V', E')$ deux graphes.  Une fonction $f: V\to V'$ est un <strong><em>isomorphisme</em></strong> entre $G$ et $G'$ si :</p>
+<ul>
+<li>$f$ est une bijection</li>
+<li>$f$ est un morphisme entre $G$ et $G'$</li>
+<li>$f^{-1}$ est un morphisme entre $G'$ et $G$</li>
+</ul>
 </div></div>
 
-<p>Deux graphes isomorphes sont structurellement équivalents. Ils ne diffèrent que par le nom des sommets.</p>
+<p>Deux graphes isomorphes sont structurellement équivalents : il existe une bijection $f$ entre les deux ensembles de sommets tel que $xy$ est une arête du premier graphe si et seulement si $f(x)f(y)$ est une arête du second.</p>
+<p>C'est à dire que les deux graphes ne diffèrent que par le nom de leurs sommets.</p>
 <blockquote>
 <p>TBD dire que c'est une relation d'équivalence et que les classes d'équivalences donnent les formes de graphes à $n$ sommets. Donner exemple à 3 ?</p>
 </blockquote>
