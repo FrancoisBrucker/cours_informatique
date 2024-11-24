@@ -96,9 +96,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Faire une API avec son serveur.</p>
-<!-- fin résumé -->
+  <p>Faire une API avec son serveur.</p>
 <p>Gérer des données côté serveur nécessite plusieurs actions bien distinctes :</p>
 <ol>
 <li>organisation des requêtes possible sous la forme d'une API</li>
@@ -150,51 +148,145 @@
 <li>écrire la données avec la route <a href="http://127.0.0.1:3000/?valeur=12">http://127.0.0.1:3000/?valeur=12</a> en utilisant la méthode POST</li>
 </ul>
 <p>On peut utiliser le code express suivant :</p>
-<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> express <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'express'</span><span class="token punctuation">)</span>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
+
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
 
-donnée <span class="token operator">=</span> <span class="token number">42</span>
+<span class="token keyword">let</span> donnée <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">valeur</span><span class="token operator">:</span> <span class="token number">42</span>
+<span class="token punctuation">}</span>
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     res<span class="token punctuation">.</span>statusCode <span class="token operator">=</span> <span class="token number">200</span><span class="token punctuation">;</span>
-    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html; charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/json; charset=utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>donnée<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span>donnée<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 
 app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 
-    donnée <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>valeur
-    res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+    donnée <span class="token operator">=</span> req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>valeur<span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 
 app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Plusieurs remarques :</p>
 <ul>
 <li>vous voyez comment express permet facilement de différentier les méthodes : <code class="language-">app.get</code> pour des méthodes <code>GET</code> et <code class="language-">app.post</code> pour des méthodes <code>POST</code></li>
 <li>à la fin de la méthode post la ligne <code class="language-">res.redirect('/')</code> est importante. C'est le pattern <a href="https://en.wikipedia.org/wiki/Post/Redirect/Get">Post/Redirect/Get</a> (aussi appelé <em>Redirect after post</em>) qu'il faut que vous utilisiez après chaque requête post. Elle permet de refaire une requête GET après la méthode post (dans notre exemple on refait une requête GET vers <code>/</code> mais cela peut différer selon ce que vous voulez faire). Ceci pour éviter — entre autre — de renvoyer une donnée lorsque l'on rafraîchit le navigateur.</li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
+<p>Il nous est impossible de tester des requêtes POST directement avec le navigateur, nous les utiliserons via des requêtes fetch en javascript plus tard. Pour l'instant testons notre serveur avec <a href="https://www.postman.com/">postman</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester le serveur précédant.</p>
+<ol>
+<li>créez le projet serveur.</li>
+<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/</code> en GET</li>
+</ol>
 </div></div>
 
-<blockquote>
-<p>TBD montrer comment ça marche (screenshot)</p>
-</blockquote>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour le projet n'oubliez pas d'ajouter le module express et de préciser à node que l'on utilise des modules ES6.</p>
+<p>Ensuite la requête postman doit donner :</p>
+<p><img src="postman-GET.png" alt="postman-GET"></p>
+<p>On voit bien que le retour (le body de la requête) est 42.</p>
+</div>
+</details>     
+</div>
+<p>Une fois l'exercice précédent réussi, on peut tenter la requête POST :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en POST</li>
+<li>demandez la route <code>/</code> en GET. Est-ce cohérent ?</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La requête POST modifie une valeur dans le serveur :</p>
+<p><img src="postman-POST.png" alt="postman-POST"></p>
+<p>En refaisant une requête GET ensuite, on voit bien que la valeur a été modifiée côté serveur.</p>
+<p><img src="postman-GET-after-POST.png" alt="postman-GET-after-POST"></p>
+</div>
+</details>     
+</div>
+<p>On vérifie que l'on a bien compris tout ce qu'il s'est passé :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ol>
+<li>Utilisez <a href="https://www.postman.com/">https://www.postman.com/</a> pour tester la route <code>/&amp;valeur=12</code> en GET. Que se passe-t-il ?</li>
+<li>Pourquoi la requête <code>/&amp;valeur=12</code> en POST rend-elle un résultat dans le body ?</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>La seule route GET de notre serveur est <code>/</code>. C'est cette route qui a été choisie :</p>
+<p><img src="postman-GET-avec-parametres.png" alt="postman-GET-avec-paramètres"></p>
+<p>La requête POST rend quelque chose dans le body car postman suit directement les redirect. C'est la réponse du redirect ue l'on observe. On peut le vérifier en supprimant le redirect automatique :</p>
+<p><img src="postman-redirect-settings.png" alt="postman-redirect-settings"></p>
+<p>et en recommençant la requête :</p>
+<p><img src="postman-POST-no-redirect.png" alt="postman-POST-no-redirect"></p>
+</div>
+</details>     
+</div>
 <h2>JSON pour sérialiser ses données</h2>
 <p>La <a href="https://fr.wikipedia.org/wiki/S%C3%A9rialisation">sérialisation/désérialisation</a> est l'opération consistant à transformer une donnée en un format facilement transportable/stockable et à procéder à l'opération inverse pour retrouver la donnée originelle.</p>
 <p>Cette opération est cruciale dans toute gestion des données. Pour le web :</p>
@@ -211,9 +303,49 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div></div>
 
 <p>Le json est tellement bien fait qu'il est utilisé partout ! Il est en effet très facile à lire, à modifier avec un simple éditeur de texte, et à transférer avec une simple requête http.</p>
-<blockquote>
-<p>TBD exemple avec dictionnaire -&gt; fichier json -&gt; dictionaire</p>
-</blockquote>
+<p>Le code suivant est la version json du serveur précédent :</p>
+<pre class="language-javascript" tabindex="0" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> hostname <span class="token operator">=</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> port <span class="token operator">=</span> <span class="token number">3000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> donnée <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">valeur</span><span class="token operator">:</span> <span class="token number">42</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span>donnée<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// console.log(req.body)</span>
+
+    donnée<span class="token punctuation">.</span>valeur <span class="token operator">=</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>valeur<span class="token punctuation">;</span>
+    res<span class="token punctuation">.</span><span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span>port<span class="token punctuation">,</span> hostname<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Server running at http://</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>hostname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>port<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>On utilise un middleware express <a href="https://expressjs.com/en/5x/api.html#express.json"><code>express.json()</code></a> qui ajoute un attribut body à la requête contenant ce que auà envoyé le client.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous verrez des tutoriels qui vous font installer <code>body-parser</code>, ils sont obsolètes. Depuis express 4.16, on peut utiliser express directement.</p>
+</div></div>
+
+<p>Lorsque l'on veut envoyer directement on place directement le json dans le corps du message (body) que l'on envoie :</p>
+<p><img src="postman-json.png" alt="postman-json"></p>
+<p>Attention dans postman à bien choisir <code>raw</code> comme format d'envoie et à choisir <code>json</code>  comme format raw.</p>
 
 
 </article>
