@@ -10,20 +10,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Utiliser une base de données avec express et node.
-
-<!-- fin résumé -->
-
-> TBD : refaire avec les modules ES6
-
 On peut très bien uniquement stocker ses données sous la forme de variables, de liste ou encore de dictionnaires pendant l'exécution du serveur. Mais lorsque le serveur va s'arrêter on perdra toutes ses données... Pour conserver ses données il faut les stocker dans une base (il en existe de différents types selon l'usage) facilement accessible (en utilisant des requêtes facile à créer et à maintenir).
 
 Nous allons montrer ici un cas d'utilisation simple que vous pourrez adapter à vos besoins futur :
 
-* utilisation d'une base de donnée relationnelle [SQLite](https://www.sqlite.org).
-* utilisation de sequelize pour la gestion de celle-ci
+- utilisation d'une base de donnée relationnelle [SQLite](https://www.sqlite.org).
+- utilisation de sequelize pour la gestion de celle-ci
 
 Nous aurons besoin d'un projet pour tester ce que nous allons voir donc :
 
@@ -33,6 +25,12 @@ Créez un dossier `bd-tests`{.fichier}, puis initialisez-le :
 
 ```
 npm init
+```
+
+Et on ajoute express :
+
+```
+ npm install --save express
 ```
 
 {% endfaire %}
@@ -58,30 +56,30 @@ npm install --save sqlite3
 Il existe également Le module node [better-sqlite3](https://www.npmjs.com/package/better-sqlite3) est une version amélioré — selon ses auteurs — du module classique [sqlite3](https://www.npmjs.com/package/sqlite3), mais il ne fonctionne pas — à l'heure où je tape ces caractères — avec sequelize que nous utiliserons ensuite.
 {% endinfo %}
 
-Il est parfois aussi utile d'avoir une [cli(https://fr.wikipedia.org/wiki/CLI)] pour vérifier ou installer des données. Installons également le package  :
+Il est parfois aussi utile d'avoir une [cli](https://fr.wikipedia.org/wiki/CLI) pour vérifier ou installer des données. Vous pouvez l'installer directement sur votre système :
 
-{% faire %}
+- sous windows : <https://www.sqlite.org/download.html>
+- sous mac `brew install sqlite`
+- sous Linux/Ubuntu : `sudo apt-get install sqlite3`
 
-```
-npm install --save-dev cli-sqlite
-```
-
-{% endfaire %}
-{% info %}
-Nous avons utilisé l'option `--save-dev` pour indiquer qeu ce module ne sera utilisé que pour le développement. On en aura pas besoin en production.
-
-Vous pouvez voir la différence de traitement ce ces modules dans le fichier `package.json`{.fichier}
-{% endinfo %}
-
-Le module ci-dessus installe le programme `sqlite` exécutable dans un terminal. Classiquement ces programmes sont placés dans le dossier `node_modles/.bin`{.fichier}. `npm`  fourni le programme [`npx`](https://www.npmjs.com/package/npx) pour exécuter ces programmes sans se soucier du chemin. Pour installer SQLite il nous suffit, une fois dans le dossier du projet, de taper :
+Une fois ce module installé vous pourrez utiliser l'utilitaire `sqlite3` :
 
 ```
-npx sqlite
+❯ sqlite3
+SQLite version 3.43.2 2023-10-10 13:08:14
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>
 ```
 
 ### Usage
 
 On tape directement les commandes SQL dans une fonction js. Avec des promesses.
+
+Nous n'utiliserons pas cette façon de faire qui est pleine de défauts (voir après) on va donc passer vite. Sachez juste que ça existe.
+
+> TBD : faire un tuto ?
 
 #### fichier en cli
 
@@ -89,37 +87,31 @@ On tape directement les commandes SQL dans une fonction js. Avec des promesses.
 <https://www.sqlite.org/cli.html>
 {% endlien %}
 
-```
-npx sqlite
-```
-
-> TBD : tuto sqlite
-
 #### fichier sous node
 
+{% lien %}
 <https://www.linode.com/docs/guides/getting-started-with-nodejs-sqlite/>
-
-> TBD
+{% endlien %}
 
 #### mémoire sous node
 
+{% lien %}
 <https://www.sqlite.org/inmemorydb.html>
-
-> TBD
+{% endlien %}
 
 ## ORM : sequelize
 
 Nous n'allons pas utiliser sqlite en tapant juste des commandes sql pour plusieurs raisons :
 
-* la vie est trop courte pour faire du SQL : qui est compliqué à utiliser (sa syntaxe et son fonctionnement n'ont pas changé depuis les années 1970...)
-* impossible à débuguer ou a modifier
-* plein de dialectes différents. Une fois qu'on a une pase très difficile d'en changer à cause des différents dialectes SQL possibles
+- la vie est trop courte pour faire du SQL : qui est compliqué à utiliser (sa syntaxe et son fonctionnement n'ont pas changé depuis les années 1970...)
+- impossible à déboguer ou a modifier
+- plein de dialectes différents. Une fois qu'on a une pase très difficile d'en changer à cause des différents dialectes SQL possibles
 
-On utilise un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) (*Object-Relational Mapping*) qiu permet
+On utilise un [ORM](https://fr.wikipedia.org/wiki/Mapping_objet-relationnel) (_Object-Relational Mapping_) qiu permet
 
-* permet d'écrire des bases et d'utiliser des requêtes comme on fait des objets
-* pattern facade : indépendant de la base. On peut changer la base de donnée sans changer le code (juste la config)
-* très facilement débuguable et modifiable car lisible
+- permet d'écrire des bases et d'utiliser des requêtes comme on fait des objets
+- pattern facade : indépendant de la base. On peut changer la base de donnée sans changer le code (juste la config)
+- très facilement déboguable et modifiable car lisible
 
 ### Installation
 
@@ -135,58 +127,72 @@ npm install --save sequelize
 
 Lien avec une base de données SQlite en mémoire :
 
-```js#
-const { Sequelize } = require('sequelize');
+````js/
+import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize('sqlite::memory:');
-```
-
-Ou avec un fichier (le fichier sera crée s'il n'existe pas encore) :
-
-```js#
-path = require('path')
-
-const sequelize = new Sequelize({
+const db = new Sequelize({
   dialect: 'sqlite',
-  storage: path.join(__dirname, 'db.sqlite')
-});
-```
+  storage: ':memory:',
+})```
 
 A la ligne 3, on crée la variable `sequelize`{.language-} qui sera notre intermédiaire à la base de donnée.
 
+On peut aussi utiliser un fichier (le fichier sera crée s'il n'existe pas encore). Ici c'est le fichier `db.sqlite`{.fichier} qui sera utilisé :
+
+```js
+import { Sequelize } from 'sequelize';
+
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
+const db = new Sequelize({
+  dialect: 'sqlite',
+  storage: path.join(__dirname, 'db.sqlite')
+});
+````
+
 ### Modèles
 
-L'intérêt des ORM est que l'on va décrire la base de donnée et interagir avec elle via des *modèles*. Chaque modèle est constitué de champs qui vont décrire nos données. Dans un formalisme objet :
+L'intérêt des ORM est que l'on va décrire la base de donnée et interagir avec elle via des _modèles_. Chaque modèle est constitué de champs qui vont décrire nos données. Dans un formalisme objet :
 
-* le modèle est la classe et les attributs correspondent aux colonne de la table SQL
-* l'objet est une donnée et il correspond à  une ligne de la table SQL
+- le modèle est la classe et les attributs correspondent aux colonne de la table SQL
+- l'objet est une donnée et il correspond à une ligne de la table SQL
 
 Les types possible de champs sont disponible [dans la documentation](https://sequelize.org/v5/manual/data-types.html).
 
 On va par exemple créer un modèle constitué d'une chaîne de caractère (`STRING` : chaîne de caractère d'au plus 255 caractères) et d'un entier (`INTEGER`) :
 
 ```js
-const MonModèle = sequelize.define('MonModèle', {
-  message: {
-    type: DataTypes.STRING,
-    allowNull: false
+import { DataTypes } from "sequelize";
+
+const MonModèle = db.define(
+  "MonModèle",
+  {
+    nom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    valeur: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   },
-  nombre: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-}, {
-  // Other model options go here
-});
+  {
+    // Other model options go here
+  }
+);
 ```
 
 Une fois le modèle donné, il faut [synchroniser la base de donnée](https://sequelize.org/master/manual/model-basics.html#model-synchronization) avec celui-ci (si par exemple la base était créer avec un vieux modèle, il faut même changer la base pour qu'elle corresponde à notre nouveau modèle). Ceci se fait avec la promesse `sync` :
 
 ```js
-sequelize.sync()
-    .then(() => {
-        console.log("synchronisation terminée.")
-    })
+await sequelize.sync();
+
+console.log("synchronisation terminée.");
 ```
 
 {% attention %}
@@ -196,6 +202,36 @@ Il est important d'attendre la fin de la synchronisation avant de lire ou sauver
 Normalement, la synchronisation des bases ne se fait pas en production. On a un script de création des modèles et de synchronisation que l'on n'exécute que lorsque le modèle change.
 
 Comme ici on a une base de donnée en mémoire, elle est crée à chaque lancement du serveur, ce qui nous oblige à synchroniser à chaque démarrage (il faut ajouter les tables à la base fraîchement créée).
+
+```javascript
+import { Sequelize, DataTypes } from "sequelize";
+
+const db = new Sequelize({
+  dialect: "sqlite",
+  storage: ":memory:",
+});
+
+const MonModèle = db.define(
+  "MonModèle",
+  {
+    nom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    valeur: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    // Other model options go here
+  }
+);
+
+await db.sync();
+
+console.log("Base de donnée créée et synchronisée.");
+```
 
 ### Champs spéciaux
 
@@ -224,76 +260,84 @@ Le type de ces champ et `DataTypes.DATE`{.language-}. A chaque fois que vous dev
 ## Exemple
 
 ```js
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:');
+import { Sequelize, DataTypes } from "sequelize";
 
-const MonModèle = sequelize.define('MonModèle', {
-    message: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    nombre: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
-}, {
-    // Other model options go here
+const db = new Sequelize({
+  dialect: "sqlite",
+  storage: ":memory:",
 });
 
-async function initDB() {
-    await sequelize.sync()
-    var data = await MonModèle.create({
-        message: "mon premier message",
-        nombre: 7,
-    })
-    console.log("message crée : ")
-    console.log(data.toJSON())
+const MonModèle = db.define(
+  "MonModèle",
+  {
+    nom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    valeur: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    // Other model options go here
+  }
+);
 
-    data = await MonModèle.create({
-        message: "un autre massage",
-        nombre: 3,
-    })
-    console.log("message crée : ")
-    console.log(data.toJSON())
-    
+async function initDB() {
+  await db.sync();
+
+  var data = await MonModèle.create({
+    nom: "un nombre premier",
+    valeur: 7,
+  });
+
+  console.log("message crée : ");
+  console.log(data.toJSON());
+
+  data = await MonModèle.create({
+    nom: "un autre nombre premier",
+    valeur: 3,
+  });
+  console.log("message crée : ");
+  console.log(data.toJSON());
 }
 
-initDB().then(async () => {
-    
-    console.log("Lecture id = 1 :")
-    data = await MonModèle.findByPk(1); 
-    console.log(data.toJSON())
+await initDB();
+console.log("Base de donnée créée et synchronisée.");
 
-    console.log("---------")
-    console.log("clé primaire : ", data.id)
-    console.log("message : ", data.message)
-    console.log("nombre : ", data.nombre)
-    console.log("date de création création : ", data.createdAt)
-    console.log("dernière modification : ", data.updatedAt)
-    console.log("---------")
+let data;
+console.log("Lecture id = 1 :");
+data = await MonModèle.findByPk(1);
+console.log(data.toJSON());
 
-    console.log("Lecture id qui n'existe pas :")
-    data = await MonModèle.findByPk(42);
-    console.log(data) // n'existe pas
+console.log("---------");
+console.log("clé primaire : ", data.id);
+console.log("nom : ", data.nom);
+console.log("valeur : ", data.valeur);
+console.log("date de création création : ", data.createdAt);
+console.log("dernière modification : ", data.updatedAt);
+console.log("---------");
 
-    console.log("Lecture tous les éléments :")
-    data = await MonModèle.findAll(); 
-    for (element of data) {
-        console.log(element.toJSON())
-    }
-    
-    console.log("Lecture requête :")
-    data = await MonModèle.findAll({
-        where: {
-            nombre: 3
-        }
-    }); 
-    for (element of data) {
-        console.log(element.toJSON())
-    }
-})
+console.log("Lecture id qui n'existe pas :");
+data = await MonModèle.findByPk(42);
+console.log(data); // n'existe pas
 
-console.log("coucou")
+console.log("Lecture tous les éléments :");
+data = await MonModèle.findAll();
+for (let element of data) {
+  console.log(element.toJSON());
+}
+
+console.log("Lecture requête :");
+data = await MonModèle.findAll({
+  where: {
+    valeur: 3,
+  },
+});
+for (let element of data) {
+  console.log(element.toJSON());
+}
 ```
 
 {% faire %}
@@ -309,23 +353,117 @@ Le code vu dans la console qui ressemble à du SQL est bien du SQL. Ce sont les 
 
 On crée une fonction asynchrone `initDB`{.language-} dont le but est de se synchroniser puis de créer des données dans la base. A l'intérieur d'une fonction asynchrone on exécute du code avec `await`{.language-}, comme ça on est sur qu'on ne passera à la ligne suivant qu'une fois la ligne avec le `await`{.language-} exécutée (on est sur que l'on crée des données une fois la base synchronisée)
 
+Les données sont affichées à l'écran sous la forme d'un json. Mais vous avez accès aux différents champs (entre les deux `console.log("---------")`{.language-}).
+
+{% exercice %}
+Modifier le code pour qu'il utilise `initDB` via une promesse.
+{% endexercice %}
+{% details "corrigé" %}
+
 On utilise ensuite cette fonction de façon asynchrone, avec un `then`{.language-}. On voit que c'est exécuté de façon asynchrone puisque lorsque l'on exécute le code, la chaîne `"coucou"`{.language-} est écrite tout en haut de l'exécution, bien avant les requêtes en base de sequelize.
 
-Les données sont affichées à l'écran sous la forme d'un json. Mais vous avez accès aux différents champs (entre les deux `console.log("---------")`{.language-}) :
+```javascript
+import { Sequelize, DataTypes } from "sequelize";
+
+const db = new Sequelize({
+  dialect: "sqlite",
+  storage: ":memory:",
+});
+
+const MonModèle = db.define(
+  "MonModèle",
+  {
+    nom: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    valeur: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+  },
+  {
+    // Other model options go here
+  }
+);
+
+async function initDB() {
+  await db.sync();
+
+  var data = await MonModèle.create({
+    nom: "un nombre premier",
+    valeur: 7,
+  });
+
+  console.log("message crée : ");
+  console.log(data.toJSON());
+
+  data = await MonModèle.create({
+    nom: "un autre nombre premier",
+    valeur: 3,
+  });
+  console.log("message crée : ");
+  console.log(data.toJSON());
+}
+
+console.log("Début synchronisation.");
+initDB().then(async () => {
+  console.log("Fin synchronisation.");
+  console.log("Début utilisation.");
+  let data;
+  console.log("Lecture id = 1 :");
+  data = await MonModèle.findByPk(1);
+  console.log(data.toJSON());
+
+  console.log("---------");
+  console.log("clé primaire : ", data.id);
+  console.log("nom : ", data.nom);
+  console.log("valeur : ", data.valeur);
+  console.log("date de création création : ", data.createdAt);
+  console.log("dernière modification : ", data.updatedAt);
+  console.log("---------");
+
+  console.log("Lecture id qui n'existe pas :");
+  data = await MonModèle.findByPk(42);
+  console.log(data); // n'existe pas
+
+  console.log("Lecture tous les éléments :");
+  data = await MonModèle.findAll();
+  for (let element of data) {
+    console.log(element.toJSON());
+  }
+
+  console.log("Lecture requête :");
+  data = await MonModèle.findAll({
+    where: {
+      valeur: 3,
+    },
+  });
+  for (let element of data) {
+    console.log(element.toJSON());
+  }
+
+  console.log("Fin utilisation.");
+});
+
+console.log("coucou !");
+```
+
+{% enddetails %}
 
 ## CRUD
 
 Accéder aux données se fait, on l'a vue, en utilisant le formalisme [CRUD](https://fr.wikipedia.org/wiki/CRUD), c'est à dire que l'on veut avoir des url qui nous permettent de :
 
-* **C**reate : créer un message
-* **R**ead : lire un message
-* **U**pdate : mettre à jour un message
-* **D**elete : supprimer un message
+- **C**reate : créer un message
+- **R**ead : lire un message
+- **U**pdate : mettre à jour un message
+- **D**elete : supprimer un message
 
 Nous allons accéder à la base uniquement en utilisant ces méthodes.
 
 {% note %}
-Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement  un message.
+Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécifier directement un message.
 {% endnote %}
 
 ### Create
@@ -337,16 +475,13 @@ Nous utiliserons l'id qui est ajouté par défaut à chaque message pour spécif
 Créer une donnée en sequelize peu se faire comme ça :
 
 ```js
-MonModèle.create({
-        message: "un autre massage",
-        nombre: 3,
-    })
-    .then((data) => {
-        console.log(data.toJSON())
-    })
+await MonModèle.create({
+    nom: "un nombre premier",
+    valeur: 7,
+});
 ```
 
-Le message est poussé en base. La clé primaire est le champ `id`.  Si c'est le premier élément que vous créez, son `id` sera de 1, et si vous en créez d'autres, l'`id` va augmenter. C'est la clé primaire de notre modèle.
+Le message est poussé en base. La clé primaire est le champ `id`. Si c'est le premier élément que vous créez, son `id` sera de 1, et si vous en créez d'autres, l'`id` va augmenter. C'est la clé primaire de notre modèle.
 
 ### Read
 
@@ -354,13 +489,20 @@ Le message est poussé en base. La clé primaire est le champ `id`.  Si c'est le
 <https://sequelize.org/master/manual/model-querying-finders.html#-code-findbypk--code->
 {% endlien %}
 
-Lire une instance en connaissant sa clé primaire :
+Lire une instance en connaissant sa clé primaire.
+
+Asynchrone :
 
 ```js
-MonModèle.findByPk(1)
-    .then((data) => {
-        console.log(data.toJSON())
-    })
+var data = await MonModèle.findByPk(1);
+```
+
+Ou avec une promesse, ce qui va souvent être le cas :
+
+```js
+MonModèle.findByPk(1).then((data) => {
+  console.log(data.toJSON());
+});
 ```
 
 Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
@@ -374,11 +516,10 @@ Si l'on donne une clé primaire inexistante, on récupère l'objet `null`.
 Mettre à jour un objet en connaissant sa clé primaire et les attributs à changer :
 
 ```js
-MonModèle.findByPk(1)
-    .then(async (data) => {
-        data.nombre = 9
-        await data.save()
-    })
+MonModèle.findByPk(1).then(async (data) => {
+  data.valeur = 9;
+  await data.save();
+});
 ```
 
 Remarquez que l'on a créée une fonction de type `async` pour assurer que la donnée sera sauvée avant de terminer la fonction du `then`.
@@ -390,10 +531,9 @@ Remarquez que l'on a créée une fonction de type `async` pour assurer que la do
 {% endlien %}
 
 ```js
-MonModèle.findByPk(1)
-    .then(async (data) => {
-        await data.destroy()
-    })
+MonModèle.findByPk(1).then(async (data) => {
+  await data.destroy();
+});
 ```
 
 Remarquez que l'on a créée une fonction de type `async` pour assurer que la donnée sera détruite avant de terminer la fonction du `then`.
@@ -413,33 +553,45 @@ Créez le fichier `db.js`{.language-} et copiez_collez-y le code suivant.
 {% endfaire %}
 
 ```js
-const { Sequelize, DataTypes } = require('sequelize');
-path = require('path')
+import { Sequelize, DataTypes } from 'sequelize';
+
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: path.join(__dirname, 'db.sqlite')
 });
 
-const MonModèle = sequelize.define('MonModèle', {
-    message: {
-        type: DataTypes.STRING,
-        allowNull: false
+const MonModèle = sequelize.define(
+  "MonModèle",
+  {
+    nom: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    nombre: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    valeur: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-}, {
+  },
+  {
     // Other model options go here
-});
+  }
+);
 
-module.exports = {
+
+export default {
     sequelize: sequelize,
     model: {
-        MonModèle: MonModèle,
+        MonModèle: MonModèle,    
     }
 }
+
 ```
 
 Ce fichier contient tout ce qui est nécessaire à l'utilisation de la base de donnée. Il exporte l'orm `sequelize`{.language-} et le `model`{.language-}
@@ -447,14 +599,16 @@ Ce fichier contient tout ce qui est nécessaire à l'utilisation de la base de d
 En javascript lorsque l'on lit un module (avec `require`{.language-}) ce module n'est lu qu'une seule fois. Toutes les autres fois il ne fera que rendre l'objet `module.exports`{.language-}.
 
 Ceci permet de ne faire l’initialisation de la base qu'une seule fois et d'être assuré de rendre toujours **le même objet**
- `module.exports`.
+`export default`.
 
 {% info %}
-Dans la vraie vie, on a plusieurs fichier d'initialisation selon l'environnement du serveur :
 
-* en production : avec la vraie base, souvent derrière un serveur de base de donnée
-* en développement : pour les petit tests lorsque l'on développe : avec une base en sqlite sous la forme d'un fichier
-* en test : pour les tests unitaires de routes. Souvent une base en mémoire.
+Dans la vraie vie, on a plusieurs fichiers d'initialisation selon l'environnement du serveur :
+
+- en production : avec la vraie base, souvent derrière un serveur de base de donnée
+- en développement : pour les petit tests lorsque l'on développe : avec une base en sqlite sous la forme d'un fichier
+- en test : pour les tests unitaires de routes. Souvent une base en mémoire.
+
 {% endinfo %}
 
 ### Initialisation de la base
@@ -464,33 +618,35 @@ Créez le fichier `init.db.js`{.language-} et copiez_collez-y le code suivant.
 {% endfaire %}
 
 ```js
-const db = require("./db")
+import db from "./db.js"
 
 async function initDB() {
-    await db.sequelize.sync({force: true})
-    
-    var data = await db.model.MonModèle.create({
-        message: "mon premier message",
-        nombre: 7,
-    })
+  await db.sequelize.sync({ force: true });
 
-    data = await db.model.MonModèle.create({
-        message: "un autre massage",
-        nombre: 3,
-    })
+  var data = await db.model.MonModèle.create({
+    nom: "un nombre premier",
+    valeur: 7,
+  });
 
+  console.log("message crée : ");
+  console.log(data.toJSON());
+
+  data = await db.model.MonModèle.create({
+    nom: "un autre nombre premier",
+    valeur: 3,
+  });
 }
 
-initDB()
-    .then(() => {
-        console.log("base initialisée")
-    })
+initDB().then(() => {
+  console.log("base initialisée");
+});
+
 ```
 
 Ce code synchronise la base si nécessaire. Il utilise la base rendue par le require du fichier `db.js`{.fichier}. Il ne faut le faire que lorsque la base est nouvellement créée. On l'exécute par la commande :
 
 ```
-node init.db.js 
+node init.db.js
 ```
 
 ### Utilisation de la base
@@ -500,46 +656,50 @@ Créez le fichier `app.js`{.language-} et copiez_collez-y le code suivant.
 {% endfaire %}
 
 ```js
-const db = require("./db")
+import db from "./db.js"
 
 async function utilisation() {
-    console.log("Lecture id = 1 :")
-    data = await db.model.MonModèle.findByPk(1);
-    console.log(data.toJSON())
+  var data
 
-    console.log("---------")
-    console.log("clé primaire : ", data.id)
-    console.log("message : ", data.message)
-    console.log("nombre : ", data.nombre)
-    console.log("date de création création : ", data.createdAt)
-    console.log("dernière modification : ", data.updatedAt)
-    console.log("---------")
+  console.log("Lecture id = 1 :");
+  data = await db.model.MonModèle.findByPk(1);
+  console.log(data.toJSON());
 
-    console.log("Lecture id qui n'existe pas :")
-    data = await db.model.MonModèle.findByPk(42);
-    console.log(data) // n'existe pas
+  console.log("---------");
+  console.log("clé primaire : ", data.id);
+  console.log("nom : ", data.nom);
+  console.log("valeur : ", data.valeur);
+  console.log("date de création création : ", data.createdAt);
+  console.log("dernière modification : ", data.updatedAt);
+  console.log("---------");
 
-    console.log("Lecture tous les éléments :")
-    data = await db.model.MonModèle.findAll();
-    for (element of data) {
-        console.log(element.toJSON())
-    }
+  console.log("Lecture id qui n'existe pas :");
+  data = await db.model.MonModèle.findByPk(42);
+  console.log(data); // n'existe pas
 
-    console.log("Lecture requête :")
-    data = await db.model.MonModèle.findAll({
-        where: {
-            nombre: 3
-        }
-    });
-    for (element of data) {
-        console.log(element.toJSON())
-    }
+  console.log("Lecture tous les éléments :");
+  data = await db.model.MonModèle.findAll();
+  for (let element of data) {
+    console.log(element.toJSON());
+  }
+
+  console.log("Lecture requête :");
+  data = await db.model.MonModèle.findAll({
+    where: {
+      valeur: 3,
+    },
+  });
+  for (let element of data) {
+    console.log(element.toJSON());
+  }
 }
 
-utilisation()
+utilisation();
 ```
 
-On est obligé de charger le modèle via le `require`{.language-}, mais on est pas obligé de faire la synchronisation si le fichier de base existe déjà.
+{% note %}
+On est obligé de charger le modèle via le `import`{.language-}, mais on est pas obligé de faire la synchronisation si le fichier de base existe déjà et est synchronisé avec le modèle.
+{% endnote %}
 
 On peut exécuter la modification et la visualisation du code avec :
 
@@ -547,4 +707,4 @@ On peut exécuter la modification et la visualisation du code avec :
 node app.js
 ```
 
-Notez qu'on a utilisé une fonction asynchrone car on veut pourvoir exécuter nos trois requêtes à la suite (d'où les `await).
+Notez qu'on a utilisé une fonction asynchrone car on veut pourvoir exécuter nos trois requêtes à la suite (d'où les `await`).

@@ -5,20 +5,23 @@ const app = express()
 const hostname = '127.0.0.1';
 const port = 3000;
 
-let donnée = 42
+let donnée = {
+	valeur: 42
+}
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-
-    res.end(donnée.toString());
+    res.json(donnée);
 
 })
 
 
 app.post('/', (req, res) => {
-    donnée = req.query.valeur
-    res.redirect('/')
+	console.log(req.body)
+    donnée.valeur = req.body.valeur;
+    res.redirect('/');
+
 })
 
 
