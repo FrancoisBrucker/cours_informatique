@@ -147,9 +147,10 @@
               <li>
                 <a class="interne" href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/terminal/">Terminal</a>
               </li>
-            <li>
-              <a href="/cours_informatique/cours/coder-et-développer/ordinateur-développement/terminal-utilisation/">/cours/coder-et-développer/ordinateur-développement/terminal-utilisation/</a>
-            </li></ul>
+              
+              <li>
+                <a class="interne" href="/cours_informatique/cours/coder-et-développer/environnements-virtuels/">Environnements virtuels</a>
+              </li></ul>
       
 
 </div></div>
@@ -182,7 +183,15 @@
 <p>Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de données déjà codées et faire de toutes petites fonctions. Si avez besoin d'écrire des fonctions plus grosses, il vous faudra apprendre à écrire des tests et connaître l'outil de de debug de python. Toutes ces notions sont développées dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/" class="interne">le cours de développement</a></p>
 </div></div>
 
-<h2>Installation des modules pythons</h2>
+<h2><span id="packages-nécessaires"></span>Installation des modules pythons</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il pourra être utile d'installer les différents modules python dans <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/environnements-virtuels/" class="interne">un environnement virtuel</a>.</p>
+</div></div>
+
 <p>Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)</p>
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> jupyterlab</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
@@ -204,11 +213,20 @@
 </div></div>
 
 <p>Vous aurez besoin d'installer :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>modules à installer</p>
+</div><div class="pl-8 mr-8">
 <ul>
 <li><a href="https://pandas.pydata.org/">pandas</a> : <code>python -m pip install pandas</code></li>
 <li><a href="https://seaborn.pydata.org/">seaborn</a> : <code>python -m pip install seaborn</code></li>
 <li><a href="https://scikit-learn.org/stable/">scikit-learn</a> : <code>python -m pip install scikit-learn</code></li>
 </ul>
+</div></div>
+
 <blockquote>
 <p>TBD : <code>scikit-learn</code> et <code>statsmodels</code>. Autre truc ?</p>
 </blockquote>
@@ -220,16 +238,7 @@
 <p>Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fait que vous l'ayez installé, essayez d'installer les <a href="https://pypi.org/project/msvc-runtime/">bibliothèques DLL de visual C++</a> : <code>python -m pip install msvc-runtime</code>.</p>
 </div></div>
 
-<h2>Méthodes d'analyse des données</h2>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse">cette adresse</a></p>
-</div></div>
-
-<h3><span id="pandas"></span>Utilisation de pandas</h3>
+<h2><span id="pandas"></span>Utilisation de pandas</h2>
 <blockquote>
 <p>TBD : tuto jupyterlab</p>
 </blockquote>
@@ -276,6 +285,120 @@
 </div>
 </details>     
 </div>
+<h2><span id="data-viz"></span>Visualisation de données</h2>
+<p>Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz">cette adresse</a></p>
+</div></div>
+
+<p>Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez vous un environnement virtuel et, en plus <a href="#packages-n%C3%A9cessaires" class="interne">des packages précédents</a> installez les packages suivants :</p>
+<ul>
+<li><a href="https://geopandas.org/en/stable/"><code class="language">geopandas</code></a> pour la gestion des données cartographiques : <code>python -m pip install geopandas</code></li>
+<li><a href="https://geodatasets.readthedocs.io/"><code class="language">geodatasets</code></a> pour la gestion des données cartographiques : <code>python -m pip install geodatasets</code></li>
+<li><a href="https://contextily.readthedocs.io/"><code class="language">contextily</code></a> pour les fond de cartes : <code>python -m pip install contextily</code></li>
+<li><a href="https://github.com/gboeing/osmnx"><code class="language-">osmnx</code></a> qui permet de récupérer des données d'<a href="https://www.openstreetmap.fr/">https://www.openstreetmap.fr/</a> et de les structurer sous la forme d'un graphe en utilisant la biliothèque <a href="https://networkx.org"><code class="language-">networkx</code></a> : <code>python -m pip install osmnx</code></li>
+<li><a href="https://scikit-learn.org/"><code class="language-">scikit-learn</code></a> qui permettra de faire des calculs sur nos graphes: <code>python -m pip install scikit-learn</code></li>
+<li><a href="https://python-visualization.github.io/folium/"><code class="language">folium</code></a> pour gérer rapidement des cartes : <code>python -m pip install folium</code></li>
+<li><a href="https://pysal.org/mapclassify/"><code class="language">mapclassify</code></a> pour utiliser la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html"><code class="language">explore</code></a> de GeoPandas : <code>python -m pip install mapclassify</code></li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>sous anaconda</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :</p>
+<ol>
+<li>dans anaconda-navigator allez dans la partie <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/">environnement</a></li>
+<li>ouvre un terminal en <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment">cliquant sur le triangle vert</a> de l'environnement <em>base (root)</em>.</li>
+</ol>
+<p>Une fois dans le terminal on peut installer nos packages :</p>
+<ol>
+<li><em>étape facultative</em> : mettre à jour conda. Tapez la commande : <code>conda update --all</code></li>
+<li>installez les bibliothèques nécessaires avec <code>pip</code>.</li>
+</ol>
+</div>
+</details>     
+</div>
+<ol>
+<li><a href="notebooks-dataviz/1_1_cours_cartes_de_g%C3%A9ographies.ipynb" class="fichier">Cartes de géographie</a></li>
+<li><a href="notebooks-dataviz/1_2_cours_crs.ipynb" class="fichier">CRS</a></li>
+<li><a href="notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb" class="fichier">Geopandas</a></li>
+<li><a href="https://www.openstreetmap.fr/">OSM</a>
+<ol>
+<li><a href="notebooks-dataviz/2_1_cours_OSM_r%C3%A9seau_routier.ipynb" class="fichier">réseau routier</a></li>
+<li><a href="notebooks-dataviz/2_2_cours_OSM_requ%C3%AAtes.ipynb" class="fichier">requêtes</a></li>
+</ol>
+</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<ul>
+<li>Création d'un GeoDataFrame (vous aurez besoin du jeu de données <a href="notebooks-dataviz/villes_france_30000.csv" class="fichier">villes_france_30000.csv</a>)</li>
+<li><a href="notebooks-dataviz/3_1_a_vous_chloropl%C3%A8tes_%C3%A0_gogo.ipynb" class="fichier">Chloroplètes à gogo</a> (vous aurez besoin du jeu de données <a href="notebooks-dataviz/arrondissements.geojson" class="fichier">arrondissements.geojson</a>)</li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li><a href="notebooks-dataviz/1_3_3_corrig%C3%A9_cr%C3%A9ation_donn%C3%A9es_g%C3%A9ographiques.ipynb" class="fichier">corrigé Création d'un GeoDataFrame</a></li>
+</ul>
+</div>
+</details>     
+</div>
+<blockquote>
+<p>TBD : <a href="https://geojson.io/">https://geojson.io/</a></p>
+</blockquote>
+<h2>Méthodes d'analyse des données</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse">cette adresse</a></p>
+</div></div>
+
 <h3>Statistiques descriptives</h3>
 <ol start="0">
 <li>jeu de données utilisé <a href="notebooks-analyse/%C3%A9preuve.txt" class="fichier">épreuve d'analyse des données</a></li>
@@ -460,111 +583,6 @@
 </div>
 </details>     
 </div>
-<h2>Visualisation de données</h2>
-<p>Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>L'ensemble des notebooks est disponible à <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz">cette adresse</a></p>
-</div></div>
-
-<p>Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Installer les packages suivants :</p>
-<ul>
-<li><a href="https://geopandas.org/en/stable/"><code class="language">geopandas</code></a> pour la gestion des données cartographiques : <code>python -m pip install geopandas</code></li>
-<li><a href="https://geodatasets.readthedocs.io/"><code class="language">geodatasets</code></a> pour la gestion des données cartographiques : <code>python -m pip install geodatasets</code></li>
-<li><a href="https://contextily.readthedocs.io/"><code class="language">contextily</code></a> pour les fond de cartes : <code>python -m pip install contextily</code></li>
-<li><a href="https://github.com/gboeing/osmnx"><code class="language-">osmnx</code></a> qui permet de récupérer des données d'<a href="https://www.openstreetmap.fr/">https://www.openstreetmap.fr/</a> et de les structurer sous la forme d'un graphe en utilisant la biliothèque <a href="https://networkx.org"><code class="language-">networkx</code></a> : <code>python -m pip install osmnx</code></li>
-<li><a href="https://scikit-learn.org/"><code class="language-">scikit-learn</code></a> qui permettra de faire des calculs sur nos graphes: <code>python -m pip install scikit-learn</code></li>
-<li><a href="https://python-visualization.github.io/folium/"><code class="language">folium</code></a> pour gérer rapidement des cartes : <code>python -m pip install folium</code></li>
-<li><a href="https://pysal.org/mapclassify/"><code class="language">mapclassify</code></a> pour utiliser la méthode <a href="https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html"><code class="language">explore</code></a> de GeoPandas : <code>python -m pip install mapclassify</code></li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>sous anaconda</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :</p>
-<ol>
-<li>dans anaconda-navigator allez dans la partie <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/">environnement</a></li>
-<li>ouvre un terminal en <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment">cliquant sur le triangle vert</a> de l'environnement <em>base (root)</em>.</li>
-</ol>
-<p>Une fois dans le terminal on peut installer nos packages :</p>
-<ol>
-<li><em>étape facultative</em> : mettre à jour conda. Tapez la commande : <code>conda update --all</code></li>
-<li>installez les bibliothèques nécessaires avec <code>pip</code>.</li>
-</ol>
-</div>
-</details>     
-</div>
-<ol>
-<li><a href="notebooks-dataviz/1_1_cours_cartes_de_g%C3%A9ographies.ipynb" class="fichier">Cartes de géographie</a></li>
-<li><a href="notebooks-dataviz/1_2_cours_crs.ipynb" class="fichier">CRS</a></li>
-<li><a href="notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb" class="fichier">Geopandas</a></li>
-<li><a href="https://www.openstreetmap.fr/">OSM</a>
-<ol>
-<li><a href="notebooks-dataviz/2_1_cours_OSM_r%C3%A9seau_routier.ipynb" class="fichier">réseau routier</a></li>
-<li><a href="notebooks-dataviz/2_2_cours_OSM_requ%C3%AAtes.ipynb" class="fichier">requêtes</a></li>
-</ol>
-</li>
-</ol>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<ul>
-<li>Création d'un GeoDataFrame (vous aurez besoin du jeu de données <a href="notebooks-dataviz/villes_france_30000.csv" class="fichier">villes_france_30000.csv</a>)</li>
-<li><a href="notebooks-dataviz/3_1_a_vous_chloropl%C3%A8tes_%C3%A0_gogo.ipynb" class="fichier">Chloroplètes à gogo</a> (vous aurez besoin du jeu de données <a href="notebooks-dataviz/arrondissements.geojson" class="fichier">arrondissements.geojson</a>)</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>corrigé</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<ul>
-<li><a href="notebooks-dataviz/1_3_3_corrig%C3%A9_cr%C3%A9ation_donn%C3%A9es_g%C3%A9ographiques.ipynb" class="fichier">corrigé Création d'un GeoDataFrame</a></li>
-</ul>
-</div>
-</details>     
-</div>
-<blockquote>
-<p>TBD : <a href="https://geojson.io/">https://geojson.io/</a></p>
-</blockquote>
 
 
 </article>
