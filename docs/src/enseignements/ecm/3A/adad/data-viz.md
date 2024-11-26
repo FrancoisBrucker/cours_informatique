@@ -33,7 +33,9 @@ Deux cours d'introductions aux méthodes d'analyse des données en python en uti
 
 Basé sur [la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}.
 
-### Cours 1.1
+### Cours 1
+
+#### 1.1
 
 On vérifie que l'on a les bases nécessaire en python :
 
@@ -43,7 +45,15 @@ On vérifie que l'on a les bases nécessaire en python :
 - utilisation de vscode et/ou de jupyterlab (affichage à l'écran et html)
 - matplotlib et seaborn
 
-### Cours 1.2
+{% aller %}
+Vous serez amené à installer tout un tas de modules pour python. Donc ayez intégré comment on manipule un interpréteur :
+
+- [Installer un interpréteur python](/cours/coder-et-développer/installer-python/){.interne}
+- [travailler avec un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne}
+
+{% endaller %}
+
+#### 1.2
 
 Pandas et les premières analyses.
 
@@ -67,3 +77,13 @@ Basées sur les [à vous de la partie utilisation de Panda](/cours/analyse-donn�
 {% attention  %}
 Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
 {% endattention  %}
+
+## Semaine 2
+
+Visualisation de cartes.
+
+Basé sur [la partie utilisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+
+### Cours 2
+
+### Rendu 2

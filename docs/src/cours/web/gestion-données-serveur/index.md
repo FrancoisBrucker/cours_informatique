@@ -67,15 +67,13 @@ const app = express()
 const hostname = '127.0.0.1';
 const port = 3000;
 
-let donnée = {
-    valeur: 42
-}
+let donnée = 42
 
 app.get('/', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
 
-    res.end(donnée..stringify());
+    res.end(donnée.stringify());
 
 })
 

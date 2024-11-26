@@ -12,7 +12,7 @@ eleventyNavigation:
     - "/cours/coder-et-développer/bases-python/"
     - "/tutoriels/matplotlib/"
     - "/cours/coder-et-développer/ordinateur-développement/terminal/"
-    - "/cours/coder-et-développer/ordinateur-développement/terminal-utilisation/"
+    - "/cours/coder-et-développer/environnements-virtuels/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -41,7 +41,11 @@ Ces bases vous seront suffisantes pour utiliser des méthodes d'analyses de donn
 
 {% endinfo %}
 
-## Installation des modules pythons
+## <span id="packages-nécessaires"></span>Installation des modules pythons
+
+{% info %}
+Il pourra être utile d'installer les différents modules python dans [un environnement virtuel](/cours/coder-et-développer/environnements-virtuels/){.interne}.
+{% endinfo %}
 
 Le cours est sous la forme de notebooks Jupyter. Téléchargez le fichier de cours et utilisez le via Jupyter notebook (avec vscode ou autre)
 
@@ -65,10 +69,13 @@ Si la commande précédente ne fonctionne pas (sous mac avec brew par exemple), 
 
 Vous aurez besoin d'installer :
 
+{% note "modules à installer" %}
+
 - [pandas](https://pandas.pydata.org/) : `python -m pip install pandas`
 - [seaborn](https://seaborn.pydata.org/) : `python -m pip install seaborn`
 - [scikit-learn](https://scikit-learn.org/stable/) : `python -m pip install scikit-learn`
 
+{% endnote %}
 > TBD : `scikit-learn` et `statsmodels`. Autre truc ?
 
 {% info %}
@@ -77,13 +84,7 @@ Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fa
 
 {% endinfo %}
 
-## Méthodes d'analyse des données
-
-{% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
-{% endinfo %}
-
-### <span id="pandas"></span>Utilisation de pandas
+## <span id="pandas"></span>Utilisation de pandas
 
 > TBD : tuto jupyterlab
 
@@ -108,6 +109,68 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 2. [Lecture d'un dataframe](./notebooks-analyse/1_3_3_corrigé_lecture_données.ipynb){.fichier}
 
 {% enddetails %}
+
+## <span id="data-viz"></span>Visualisation de données
+
+Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
+
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz)
+{% endinfo %}
+
+Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
+{% faire %}
+
+Créez vous un environnement virtuel et, en plus [des packages précédents](./#packages-nécessaires){.interne} installez les packages suivants :
+
+- [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
+- [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
+- [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
+- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
+- [`scikit-learn`{.language-}](https://scikit-learn.org/) qui permettra de faire des calculs sur nos graphes: `python -m pip install scikit-learn`
+- [`folium`{.language}](https://python-visualization.github.io/folium/) pour gérer rapidement des cartes : `python -m pip install folium`
+- [`mapclassify`{.language}](https://pysal.org/mapclassify/) pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html) de GeoPandas : `python -m pip install mapclassify`
+
+{% endfaire %}
+
+{% details "sous anaconda" %}
+Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
+
+1. dans anaconda-navigator allez dans la partie [environnement](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
+2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement _base (root)_.
+
+Une fois dans le terminal on peut installer nos packages :
+
+1. _étape facultative_ : mettre à jour conda. Tapez la commande : `conda update --all`
+2. installez les bibliothèques nécessaires avec `pip`.
+
+{% enddetails %}
+
+1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
+2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
+3. [Geopandas](./notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb){.fichier}
+4. [OSM](https://www.openstreetmap.fr/)
+   1. [réseau routier](./notebooks-dataviz/2_1_cours_OSM_réseau_routier.ipynb){.fichier}
+   2. [requêtes](./notebooks-dataviz/2_2_cours_OSM_requêtes.ipynb){.fichier}
+
+{% exercice %}
+
+- Création d'un GeoDataFrame (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
+- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
+{% endexercice %}
+{% details "corrigé" %}
+
+- [corrigé Création d'un GeoDataFrame](./notebooks-dataviz/1_3_3_corrigé_création_données_géographiques.ipynb){.fichier}
+
+{% enddetails %}
+
+> TBD : <https://geojson.io/>
+
+## Méthodes d'analyse des données
+
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse)
+{% endinfo %}
 
 ### Statistiques descriptives
 
@@ -195,59 +258,3 @@ Les deux exercices suivant utilisent les méthodes de partitionnement, de MDS et
 2. [Analyse de textes](./notebooks-analyse/4_7_2_corrigé_texte_et_distance_de_jaccard.ipynb){.fichier}
 
 {% enddetails %}
-
-## Visualisation de données
-
-Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
-
-{% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz)
-{% endinfo %}
-
-Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
-{% faire %}
-
-Installer les packages suivants :
-
-- [`geopandas`{.language}](https://geopandas.org/en/stable/) pour la gestion des données cartographiques : `python -m pip install geopandas`
-- [`geodatasets`{.language}](https://geodatasets.readthedocs.io/) pour la gestion des données cartographiques : `python -m pip install geodatasets`
-- [`contextily`{.language}](https://contextily.readthedocs.io/) pour les fond de cartes : `python -m pip install contextily`
-- [`osmnx`{.language-}](https://github.com/gboeing/osmnx) qui permet de récupérer des données d'<https://www.openstreetmap.fr/> et de les structurer sous la forme d'un graphe en utilisant la biliothèque [`networkx`{.language-}](https://networkx.org) : `python -m pip install osmnx`
-- [`scikit-learn`{.language-}](https://scikit-learn.org/) qui permettra de faire des calculs sur nos graphes: `python -m pip install scikit-learn`
-- [`folium`{.language}](https://python-visualization.github.io/folium/) pour gérer rapidement des cartes : `python -m pip install folium`
-- [`mapclassify`{.language}](https://pysal.org/mapclassify/) pour utiliser la méthode [`explore`{.language}](https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.explore.html) de GeoPandas : `python -m pip install mapclassify`
-
-{% endfaire %}
-
-{% details "sous anaconda" %}
-Pour installer tous les packages nécessaire pour ce cours (anaconda ne les connaît pas a priori), on va utiliser le terminal. Pour activer un terminal configuré pour fonctionner avec anaconda il faut :
-
-1. dans anaconda-navigator allez dans la partie [environnement](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
-2. ouvre un terminal en [cliquant sur le triangle vert](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/#using-an-environment) de l'environnement _base (root)_.
-
-Une fois dans le terminal on peut installer nos packages :
-
-1. _étape facultative_ : mettre à jour conda. Tapez la commande : `conda update --all`
-2. installez les bibliothèques nécessaires avec `pip`.
-
-{% enddetails %}
-
-1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
-2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
-3. [Geopandas](./notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb){.fichier}
-4. [OSM](https://www.openstreetmap.fr/)
-   1. [réseau routier](./notebooks-dataviz/2_1_cours_OSM_réseau_routier.ipynb){.fichier}
-   2. [requêtes](./notebooks-dataviz/2_2_cours_OSM_requêtes.ipynb){.fichier}
-
-{% exercice %}
-
-- Création d'un GeoDataFrame (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
-- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
-{% endexercice %}
-{% details "corrigé" %}
-
-- [corrigé Création d'un GeoDataFrame](./notebooks-dataviz/1_3_3_corrigé_création_données_géographiques.ipynb){.fichier}
-
-{% enddetails %}
-
-> TBD : <https://geojson.io/>
