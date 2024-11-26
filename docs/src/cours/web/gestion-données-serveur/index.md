@@ -99,7 +99,7 @@ Il nous est impossible de tester des requêtes POST directement avec le navigate
 
 {% exercice %}
 
-1. créez le projet serveur.
+1. créez le projet serveur. N'oubliez pas de faire un `npm init` et d'ajouter la ligne `"type": "module",` à votre fichier `package.json`{.fichier} comme on [l'a vu en cours](../serveur-web/express/#npm-init).
 2. Utilisez <https://www.postman.com/> pour tester la route `/` en GET
 
 {% endexercice %}
