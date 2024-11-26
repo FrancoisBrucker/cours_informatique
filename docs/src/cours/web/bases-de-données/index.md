@@ -133,7 +133,8 @@ import { Sequelize } from 'sequelize';
 const db = new Sequelize({
   dialect: 'sqlite',
   storage: ':memory:',
-})```
+})
+```
 
 A la ligne 3, on crée la variable `sequelize`{.language-} qui sera notre intermédiaire à la base de donnée.
 
@@ -153,7 +154,7 @@ const db = new Sequelize({
   dialect: 'sqlite',
   storage: path.join(__dirname, 'db.sqlite')
 });
-````
+```
 
 ### Modèles
 
