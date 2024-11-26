@@ -127,7 +127,7 @@ npm install --save sequelize
 
 Lien avec une base de données SQlite en mémoire :
 
-````js/
+```js/
 import { Sequelize } from 'sequelize';
 
 const db = new Sequelize({
