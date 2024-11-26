@@ -73,7 +73,7 @@ app.get('/', (req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/json; charset=utf-8');
 
-    res.end(donnée.stringify());
+    res.end(donnée.toString());
 
 })
 
