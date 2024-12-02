@@ -82,8 +82,20 @@ Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
 
 Visualisation de cartes.
 
-Basé sur [la partie utilisation de Panda](/cours/analyse-données/#data-viz){.interne}.
-
 ### Cours 2
 
+#### Environnement virtuel
+
+Commencez par télécharger les différents notebooks puis on va créer un environnement virtuel.
+
+1. création de l'environnement
+2. installation des modules classiques
+3. installation des modules de dataviz
+
+#### Cartes et CRS
+
+Basé sur [la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+
 ### Rendu 2
+
+Rendez **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice){.interne} (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.

@@ -86,6 +86,12 @@ Si sous windows vous n'arrivez pas à faire fonctionner matplotlib malgré le fa
 
 ## <span id="pandas"></span>Utilisation de pandas
 
+{% info %}
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-analyse).
+
+Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
+{% endinfo %}
+
 > TBD : tuto jupyterlab
 
 Quelques moyens utile de manipuler des jeux de données avec la [bibliothèque pandas](https://pandas.pydata.org/docs/index.html).
@@ -115,7 +121,9 @@ Deux notebooks à remplir en utilisant ce que vous avez vu en cours :
 Cette partie du cours est consacrée aux données cartographiques, et comment les utiliser pour faire des visualisations de données.
 
 {% info %}
-L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz)
+L'ensemble des notebooks est disponible à [cette adresse](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/analyse-donn%C3%A9es/notebooks-dataviz).
+
+Vous pouvez utiliser cette url <https://download-directory.github.io/> pour télécharger le dossier.
 {% endinfo %}
 
 Nous aurons besoin de plusieurs bibliothèques python pour cette partie du cours :
@@ -146,25 +154,41 @@ Une fois dans le terminal on peut installer nos packages :
 
 {% enddetails %}
 
+### Base de la cartographie
+
+{% lien %}
+<https://geojson.io/>
+{% endlien %}
+
 1. [Cartes de géographie](./notebooks-dataviz/1_1_cours_cartes_de_géographies.ipynb){.fichier}
 2. [CRS](./notebooks-dataviz/1_2_cours_crs.ipynb){.fichier}
-3. [Geopandas](./notebooks-dataviz/1_3_1_cours_geopandas_manipulations.ipynb){.fichier}
-4. [OSM](https://www.openstreetmap.fr/)
-   1. [réseau routier](./notebooks-dataviz/2_1_cours_OSM_réseau_routier.ipynb){.fichier}
-   2. [requêtes](./notebooks-dataviz/2_2_cours_OSM_requêtes.ipynb){.fichier}
+3. [GeoPandas](./notebooks-dataviz/1_3_cours_geopandas_manipulations.ipynb){.fichier}
 
 {% exercice %}
 
-- Création d'un GeoDataFrame (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier})
-- [Chloroplètes à gogo](./notebooks-dataviz/3_1_a_vous_chloroplètes_à_gogo.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
+[carte chloroplète](1_4_a_vous_création_données_géographiques.ipynb){.fichier} (vous aurez besoin du jeu de données [villes_france_30000.csv](./notebooks-dataviz/villes_france_30000.csv){.fichier}).
 {% endexercice %}
 {% details "corrigé" %}
 
-- [corrigé Création d'un GeoDataFrame](./notebooks-dataviz/1_3_3_corrigé_création_données_géographiques.ipynb){.fichier}
+> TBD
 
 {% enddetails %}
 
-> TBD : <https://geojson.io/>
+### Données géographiques
+
+{% lien %}
+[OSM](https://www.openstreetmap.fr/)
+{% endlien %}
+
+1. [requêtes OSM](./notebooks-dataviz/2_1_cours_OSM_requêtes.ipynb){.fichier}
+2. [réseau routier](./notebooks-dataviz/2_2_cours_OSM_réseau_routier.ipynb){.fichier}
+
+<div id="data-viz-exercice"></div>
+
+{% exercice "**A vous**" %}
+
+[Données cartographiques](./notebooks-dataviz/2_3_a_vous_données_et_cartes.ipynb){.fichier} (vous aurez besoin du jeu de données [arrondissements.geojson](./notebooks-dataviz/arrondissements.geojson){.fichier})
+{% endexercice %}
 
 ## Méthodes d'analyse des données
 

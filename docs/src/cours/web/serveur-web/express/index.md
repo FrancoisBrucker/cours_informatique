@@ -26,7 +26,7 @@ Pour installer des packages node, on peut utiliser [npm](https://www.npmjs.com/)
 Un [tutoriel pour utiliser npm](https://www.digitalocean.com/community/tutorials/how-to-use-node-js-modules-with-npm-and-package-json-fr)
 {% endinfo %}
 
-### <span id="npm-init"></span>`npm init`
+### <span id="npm-init"></spana>`npm init`
 
 Comme fait [précédemment](../minimal/){.interne} on prépare le projet en créant un fichier `package.json`{.fichier}.
 
