@@ -31,7 +31,9 @@ Chaque semaine de cours, un travail est à rendre pour la semaine de cours proch
 
 Deux cours d'introductions aux méthodes d'analyse des données en python en utilisant la bibliothèque pandas.
 
-Basé sur [la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}.
+{% aller %}
+[la partie utilisation de Panda](/cours/analyse-données/#pandas){.interne}
+{% endaller %}
 
 ### Cours 1
 
@@ -80,7 +82,11 @@ Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
 
 ## Semaine 2
 
-Visualisation de cartes. Basé sur [la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+Visualisation de cartes.
+
+{% aller %}
+[la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+{% endaller %}
 
 ### Cours 2
 
@@ -88,18 +94,18 @@ Visualisation de cartes. Basé sur [la partie visualisation de Panda](/cours/ana
 
 Commencez par télécharger les différents notebooks puis on va créer un environnement virtuel.
 
-1. création de l'environnement
+1. [création de l'environnement](/cours/coder-et-développer/environnements-virtuels/){.interne}
 2. installation des modules classiques
-3. installation des modules de dataviz
+3. installation des modules de data-viz
 
 #### Cartes et CRS
 
-- Qu'est-ce qu'une carte ? Qu'un CRS ?
-- représenter graphiquement ses données
+- [Qu'est-ce qu'une carte ? Qu'un CRS ?](/cours/analyse-données/#data-viz-bases){.interne}
+- A vous : [représenter graphiquement des données](1_4_a_vous_création_données_géographiques.ipynb){.fichier}
 
 #### Trouver des données cartographiques
 
-Utilisation de requêtes OpenStreetMap pour trouver des données géographiques.
+[Utilisation de requêtes OpenStreetMap pour trouver des données géographiques](/cours/analyse-données/#data-viz-OSM){.interne}.
 
 ### Rendu 2
 

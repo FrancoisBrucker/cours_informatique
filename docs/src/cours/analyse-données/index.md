@@ -154,7 +154,7 @@ Une fois dans le terminal on peut installer nos packages :
 
 {% enddetails %}
 
-### Base de la cartographie
+### <span id="data-viz-bases"></span>Base de la cartographie
 
 {% lien %}
 <https://geojson.io/>
@@ -174,7 +174,7 @@ Une fois dans le terminal on peut installer nos packages :
 
 {% enddetails %}
 
-### Données géographiques
+### <span id="data-viz-OSM"></span>Données géographiques
 
 {% lien %}
 [OSM](https://www.openstreetmap.fr/)
