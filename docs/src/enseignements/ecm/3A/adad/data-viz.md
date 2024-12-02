@@ -80,7 +80,7 @@ Le rendu est à rendre sur moodle **avant** le lundi 2 décembre à 9h.
 
 ## Semaine 2
 
-Visualisation de cartes.
+Visualisation de cartes. Basé sur [la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
 
 ### Cours 2
 
@@ -94,7 +94,12 @@ Commencez par télécharger les différents notebooks puis on va créer un envir
 
 #### Cartes et CRS
 
-Basé sur [la partie visualisation de Panda](/cours/analyse-données/#data-viz){.interne}.
+- Qu'est-ce qu'une carte ? Qu'un CRS ?
+- représenter graphiquement ses données
+
+#### Trouver des données cartographiques
+
+Utilisation de requêtes OpenStreetMap pour trouver des données géographiques.
 
 ### Rendu 2
 
