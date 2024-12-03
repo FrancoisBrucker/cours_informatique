@@ -170,8 +170,7 @@ Une fois dans le terminal on peut installer nos packages :
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
-
+[carte chloroplète](1_5_corrigé_création_données_géographiques.ipynb){.fichier}
 {% enddetails %}
 
 ### <span id="data-viz-OSM"></span>Données géographiques
