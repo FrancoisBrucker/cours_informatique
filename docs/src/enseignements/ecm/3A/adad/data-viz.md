@@ -109,4 +109,7 @@ Commencez par télécharger les différents notebooks puis on va créer un envir
 
 ### Rendu 2
 
-Rendez **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice){.interne} (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.
+Rendez :
+
+1. **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice){.interne} (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.
+2. un fichier `requirement.txt` comme expliqué dans la partie environnement virtuel du cours.
