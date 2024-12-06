@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Variables
 
 eleventyComputed:
@@ -9,13 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 Les variables permettent à l'interpréteur de se rappeler d'objets qu'il a crée lors d'exécutions précédentes. Sans elles, on ne pourrait exécuter que des lignes indépendantes les unes entre elles : bref, on ne pourrait rien faire d'intéressant.
 
 {% note %}
-Une variable est un ***nom*** auquel est associé un objet.
+Une variable est un **_nom_** auquel est associé un objet.
 
-Pour associer un nom à un objet on utilise l’opérateur d’affectation `=`{.language-} tel que:
+Pour associer un nom à un objet on utilise **_l’opérateur d’affectation_** `=`{.language-} tel que:
 
 ```txt
 nom = objet
@@ -23,42 +22,64 @@ nom = objet
 
 {% endnote %}
 
-A gauche de l’opérateur `=`{.language-} se trouve un **nom** (en gros, quelque chose ne pouvant commencer par un nombre) et à droite un **objet**. Dans toute la suite du programme, dès que l'interpréteur python rencontrera le nom, il le remplacera par l'objet.
+A gauche de l’opérateur d'affection `=`{.language-} se trouve une **variable** (en gros, un nom ne pouvant commencer par un nombre) et à droite un **objet**. Après affectation, dans toute la suite du programme l'interpréteur python  remplacera la variable par l'objet à chaque fois qu'elle la rencontrera.
 
 {% attention %}
-Un nom n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’un nom n’est qu’un alias vers un objet.
+Une variable n'est **PAS** une chaîne de caractères. Une chaîne de caractère est un objet alors qu’un nom n’est qu’un alias vers un objet.
 {% endattention %}
 
-Il est important de comprendre que l’opérateur d’affectation `=`{.language-} n’est pas symétrique. À gauche, des noms et à droite, des objets.
+Il est important de comprendre que l’opérateur d’affectation `=`{.language-} n’est pas symétrique. À gauche, des variables et à droite, des objets.
 
 {% info %}
 Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers exemples et exercices
 {% endinfo %}
 
-## <span id="espace-nom"></span> Espace de nom
+## Affectation des objets à une variable
 
-Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
-
-## Affectation des objets à l'espace de noms
-
-Attardons nous un moment sur ces notions car elles seront cruciales plus tard pour appréhender les possibilités offertes par les objets.
+Attardons nous un moment sur le processus d'affectation car il est seront crucial pour appréhender les possibilités offertes par les objets.
 
 Considérons le programme suivant :
 
-```python
+```python/
 x = 1
 y = 1
-x = y
+y = x
 ```
 
-![association nom variable](python-nom-et-objets.png)
+Et regardons ce qu'il se passe au niveaux des variables et des objets après chaque instruction.
 
-La figure montre le résultat après chaque instruction. On voit qu’un même objet peut parfaitement
-avoir plusieurs noms. Cependant, à un nom correspond un unique objet. Les objets qui n’ont plus de
-noms sont supprimés à intervalles réguliers (c’est ce qu’on appelle le [garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c)) puisque l’on ne peut plus y accéder.
+Au départ, avant l'exécution par l'interpréteur de la première ligne le programme ne possède aucune variable ni aucun objet. On possède cependant deux espaces **_distincts_** pour les accueillir :
 
-Le mécanisme décrit précédemment (remplacement des noms par les objets référencés avant exécution
-de l’instruction) montre que l’on peut affecter plusieurs noms en même temps, comme le montre l’exemple suivant qui échange les objets des noms `i`{.language-} et `j`{.language-} :
+![association nom variable 1](python-variables-objets-1.png)
+
+Après l'exécution de la ligne 1, nous sommes dans la situation suivante :
+
+![association nom variable 2](python-variables-objets-2.png)
+
+La variable de nom `x` est affectée à un objet entier valant 1. Notez bien que la variable et l'objet sont deux choses différentes et sont uniquement mis en relation par la flèche. De plus :
+
+{% note %}
+On ne peut accéder à un objet en python que via une variable qui lui est affectée.
+{% endnote %}
+
+L'exécution de la deuxième instruction procède de la même manière, à l'issue de celle-ci on se trouve dans l'état suivant :
+
+![association nom variable 3](python-variables-objets-3.png)
+
+Notez bien que les objets mis en relations ne sont pas les mêmes, ce sont deux objets de type entier valant 1.
+
+L'instruction de la ligne 3 est plus spéciale puisqu'à droite de l'opérateur d'assignation `=` est une variable. Python procède alors ainsi :
+
+1. il cherche l'objet associé à la variable `x`
+2. il assigne l'objet trouvé à la nouvelle variable `y`
+
+On se trouve dans la situation suivante :
+
+![association nom variable 4](python-variables-objets-4.png)
+
+L'objet précédemment assigné à `y` n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle le [garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c)).
+
+Ce mécanisme d'affectation est puissant, il permet par exemple d'affecter plusieurs variables en même temps, comme le montre l’exemple suivant qui échange les objets des noms `i`{.language-} et `j`{.language-} :
 
 ```python
 i = 2
@@ -66,13 +87,17 @@ j = 3
 i, j = j, i
 ```
 
+> TBD dessin en exercice.
+
 Enfin, il est possible d'affecter plusieurs noms à un même objet. Par exemple l'exemple suivant affecte le même entier 1 aux noms `x`{.language-} et `y`{.language-} :
 
 ```python
 x = y = 1
 ```
 
-## Supprimer un nom
+> TBD dessin en exercice.
+
+## Supprimer une variable
 
 On peut supprimer un nom en utilisant le mot clé `del`{.language-}.
 
@@ -106,7 +131,7 @@ Affectez la valeur 3 à la variable `a`{.language-}, puis affichez à l'écran l
 
 {% enddetails %}
 {% exercice %}
-Affectez la *nouvelle* valeur 6 à la variable `a`{.language-}, puis affichez à l'écran la valeur associée à la variable `a`{.language-}.
+Affectez la _nouvelle_ valeur 6 à la variable `a`{.language-}, puis affichez à l'écran la valeur associée à la variable `a`{.language-}.
 {% endexercice %}
 {% details "solution" %}
 

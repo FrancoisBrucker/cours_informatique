@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-*Python* est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
+_Python_ est un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation) inventé en 1991 par [Guido van Rossum](https://fr.wikipedia.org/wiki/Guido_van_Rossum). C'est comme une langue mais en beaucoup plus simple car :
 
 - il n'y a pas d'exception
 - il y a très peu de vocabulaire de base
@@ -18,7 +18,7 @@ eleventyComputed:
 
 Son but est de faire faire des choses à un ordinateur.
 
-On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle ***code*** ou ***programme***) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine), on passe par un intermédiaire, un programme nommé ***interpréteur python***.
+On ne peut cependant pas directement donner un texte écrit en python (qu'on appelle **_code_** ou **_programme_**) à un ordinateur pour qu'il l'exécute car celui-ci ne comprend que le [langage machine](https://fr.wikipedia.org/wiki/Langage_machine), on passe par un intermédiaire, un programme nommé **_interpréteur python_**.
 
 ## Interpréteur python
 
@@ -50,8 +50,11 @@ SyntaxError: invalid syntax
 
 ## Objets, variables et noms
 
-> TBD chapeau : important de comprendre comment tout ça fonctionne.
-> TBD expliciter début de espace de noms ici.
+Les **_objets_** de python correspondent à tout ce qui est manipulé : le but d'un programme python est de créer et de rendre des objets. Une **_variable_** est un nom que peut prendre un objet dans un cadre, appelé **_espace de nom_**, particulier.
+
+{% attention %}
+Une variable n'est **pas** un objet, ce n'est qu'un moyen d'y accéder.
+{% endattention %}
 
 ### Objets
 
@@ -69,9 +72,9 @@ Principe de l'affectation des variables en python.
 [Variables](variables){.interne}
 {% endaller %}
 
-### Espace de noms
+### <span id="espace-nom"></span> Espace de nom
 
-> TBD
+Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
 
 ## Opérations sur les objets
 
