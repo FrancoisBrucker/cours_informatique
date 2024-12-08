@@ -96,11 +96,8 @@
     
   
 
-  <blockquote>
-<p>TBD expliciter les divers formes d'algorithme (diviser pour régner, gloutons, etc)</p>
-</blockquote>
-<p>Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.</p>
-<p>Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.</p>
+  <p>Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.</p>
+<p>Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif du sujet, commençons par définir le problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -116,7 +113,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Soit deux points $A=(x, y)$ et $B=(x', y')$. Le <strong><em>segment $[A, B]$</em></strong> est l'ensemble des points $C$ tels que :</p>
 <div>
@@ -148,7 +145,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est <strong><em>convexe</em></strong> si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :</p>
 <div>
@@ -160,7 +157,7 @@ $$
 
 <p>Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (x', f(x'))$, quelque soit $(u, v) \in [A, B]$ on a $v \geq f(u)$ (le segment est au dessus de la courbe) :</p>
 <p><img src="fonction-convexe.png" alt="fonction convexe"></p>
-<p>Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de gradient de trouver son minimum.</p>
+<p>Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de type gradient de trouver son minimum.</p>
 <h3>Ensemble convexe</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -175,7 +172,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Un sous-ensemble $C \in \mathbb{R}^2$ est <strong><em>convexe</em></strong> si pour tous $A, B \in C$, $[A, B] \subseteq C$.</p>
 </div></div>
@@ -191,9 +188,9 @@ $$
 <p>Si $f$ est une fonction convexe, alors $\{ (x, y) \mid x \in \mathbb{R}, y \geq f(x)\}$ est un ensemble convexe.</p>
 </div></div>
 
-<p>Les ensembles convexes sont en forme de patate et en tout point, la tangente est à <strong>l'extérieur de l'ensemble</strong> :</p>
+<p>Les ensembles bornés convexes sont en forme de patate et en tout point la tangente est à <strong>l'extérieur de l'ensemble</strong> :</p>
 <p><img src="ensemble-convexe.png" alt="ensemble convexe"></p>
-<p>Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :</p>
+<p>Les ensembles non convexes vont avoir localement des creux : il va exister des points où la tangente traversera la forme (en bleu), d'où l'existence de segments non inclus dans l'ensemble alors que leurs extrémités le sont (en rouge) :</p>
 <p><img src="ensemble-pas-convexe.png" alt="ensemble pas convexe"></p>
 <p>Les ensembles convexes ont de fortes propriétés de stabilité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -201,13 +198,13 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors leur intersection $\cap \mathcal{C}$ est un ensemble convexe.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -216,7 +213,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -233,13 +230,13 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le <strong><em>plus petit ensemble convexe contenant $A$</em></strong> (pour l'ordre d'inclusion $\subseteq$)</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -248,7 +245,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -264,7 +261,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Les ensembles convexes ont de multiples propriétés mathématiques sympathiques très utiles en topologie. Ils sont également très utiles en optimisation sous la forme particulière des polygones convexes.</p>
+<p>Les ensembles convexes ont de multiples propriétés mathématiques sympathiques très utiles en topologie ou en optimisation sous la forme particulière des polygones convexes.</p>
 <h3>Polygone convexe</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -275,6 +272,7 @@ $$
 </div></div>
 
 <p>En informatique (et dans la vie réelle), les ensembles convexes se rencontrent uniquement sous la forme de polygones convexes.</p>
+<h4>Définition</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -305,25 +303,50 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>définition</strong></p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un polygone simple $A_1 \dots A_h$ est convexe si les angles intérieurs du polygone sont tous inférieurs à 180°</p>
+<p>Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forme un ensemble convexe.</p>
 </div></div>
 
-<p><img src="polygone-convexe.png" alt="polygone convexe"></p>
-<p>Quelques exemples de polygones non convexes (polygone croisé à gauche et angle supérieur à 180 à droite):</p>
-<p><img src="polygone-pas-convexe.png" alt="polygone pas convexe"></p>
-<p>Bien sûr :</p>
+<p>On a la propriété suivant qui le caractérise :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>propriété</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forment un ensemble convexe.</p>
+<p>Un polygone simple $P_1 \dots P_h$ est convexe si et seulement les angles intérieurs du polygone sont tous inférieurs à 180°.</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si le polygone n'est pas convexe il existe deux point $x$ et $y$ de celui-ci ne contenant pas tout son segment. Il existe alors $1 \leq i &lt; j \leq h$ tel que l'on se retrouve dans la figure suivante :</p>
+<p><img src="angle-180.png" alt="angle 180"></p>
+<p>Il existe alors forcément $i \leq k &lt; j$ tel que l'angle $(P_{k-1}, P_{k}, P_{k+1})$ soit inférieur à 180 degrés.</p>
+</div>
+</details>     
+</div>
+<p>Les polygone convexe sont des patates :</p>
+<p><img src="polygone-convexe.png" alt="polygone convexe"></p>
+<p>Quelques exemples de polygones non convexes (polygone croisé à gauche et angle supérieur à 180 à droite):</p>
+<p><img src="polygone-pas-convexe.png" alt="polygone pas convexe"></p>
+<h4>Utilité</h4>
 <p>Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :</p>
 <ul>
 <li>un polygone convexe et une droite, ce qui est crucial en <em>raytracing</em></li>
@@ -349,7 +372,7 @@ $$
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -358,7 +381,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -386,7 +409,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p>définition</p>
+<p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'<strong><em>enveloppe convexe</em></strong> $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.</p>
 </div></div>
@@ -397,7 +420,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p>proposition</p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'<strong><em>enveloppe convexe</em></strong> d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
 <p>$$
@@ -421,7 +444,7 @@ $$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -430,7 +453,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -440,7 +463,7 @@ $$</p>
 <p>Nommons $\mathcal{P}$ l'ensemble contenant l'ensemble des points $x$ pouvant s'écrire $x = \sum_{i=1}^m \lambda_i\cdot  x_i$ avec $\sum_{i=1}^m \lambda_i = 1$ et $x_i \in P$ pour tout $1\leq i \leq m$.</p>
 <p>Montrons que cet ensemble est un convexe contenant $P$.</p>
 <ol>
-<li>comme $x = \sum_{i=1}^1 1 \cdot x$ pour tout $x \in P$ on a $P \subseteq \mathcal{P}$</li>
+<li>comme $x = 1 \cdot x$ pour tout $x \in P$ on a $P \subseteq \mathcal{P}$</li>
 <li>soient $u = \sum_{i=1}^p \alpha_i\cdot u_i$ et $v = \sum_{i=1}^{q} {\beta_i}\cdot {v_i}$ deux points de $\mathcal{P}$. Tout élément $s$ du segment $[xx']$ s'écrit $s = \lambda \cdot u + (1-\lambda) \cdot v$ avec $0\leq \lambda \leq 1$. De là $s = \sum_{i=1}^p \lambda \cdot \alpha_i u_i + \sum_{i=1}^{q} (1-\lambda) \cdot \beta_i v_i$ et comme $\sum_{i=1}^p \lambda \cdot \alpha_i + \sum_{i=1}^{q} (1-\lambda) \cdot \beta_i = 1$, on a $s \in \mathcal{P}$</li>
 </ol>
 <p>Ceci prouve que $\text{Conv}(P) \subseteq \mathcal{P}$. Prouvons la réciproque.</p>
@@ -450,11 +473,11 @@ $$</p>
 $$
 \begin{array}{ccl}
 x &=& \sum_{i=1}^{m-1}\lambda_i\cdot x_i + \lambda_m \cdot x_m \\
-&=&(\sum_{i=1}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
+&=&(\sum_{i=j}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
 \end{array}
 $$
 </div>
-<p>Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.</p>
+<p>Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.</p>
 <p>Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.</p>
 </div>
 </details>     
@@ -465,7 +488,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p>proposition</p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'<strong><em>enveloppe convexe</em></strong> d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :</p>
 <p>$$
@@ -480,7 +503,7 @@ $$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -489,7 +512,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -521,7 +544,7 @@ $$</p>
 <p>On a alors :</p>
 <ul>
 <li>$\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$</li>
-<li>$a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$</li>
+<li>$x_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$</li>
 </ul>
 <p>En injectant tout ça dans notre équation de départ, on trouve :</p>
 <div>
@@ -553,7 +576,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>L'enveloppe convexe d'un ensemble fini $P$ de points de $\mathbb{R}^2$ est un polygone convexe formé de points de $P$</p>
 </div></div>
@@ -569,7 +592,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>conventions</strong></p>
+<p><strong>Conventions</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
 <li>on se place dans le plan (euclidien) $\mathbb{R}^2$</li>
@@ -583,7 +606,7 @@ $$
 <h3>Droite, points et segments</h3>
 <p><img src="droite-points.png" alt="droites et points"></p>
 <p>Une droite coupe l'espace en deux demi-plans (rouge et vert dans la figure ci-dessus). Comment savoir efficacement dans quel demi plan se trouve un point ?</p>
-<p>Une possibilité efficace est de regarder l'angle fait par un vecteur directeur de la droite ($\overrightarrow{ab}$ dans la figure ci-dessous) et un autre vecteur dont une extrémité est le point dont on veut connaître le demo-plan et l'autre un point de la droite ($\overrightarrow{au}$ et $\overrightarrow{av}$ dans la figure ci-dessous) :</p>
+<p>Une possibilité est de regarder l'angle fait par un vecteur directeur de la droite ($\overrightarrow{ab}$ dans la figure ci-dessous) et un autre vecteur dont une extrémité est le point dont on veut connaître le demi-plan et l'autre un point de la droite ($\overrightarrow{au}$ et $\overrightarrow{av}$ dans la figure ci-dessous) :</p>
 <p><img src="droite-points-angles.png" alt="droites et points"></p>
 <p>En considérant le sens trigonométrique (anti-horaire) et des angles entre -180 et 180 degrés, le demi-plan vert a un angle négatif et le demi-plan rouge un angle positif.</p>
 <p>Le calcul du signe de l'angle est de plus très simple !</p>
@@ -592,7 +615,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Le signe de l'angle dans l'intervalle $[-180, 180]$ degrés entre deux vecteurs $\overrightarrow{v_1} = (x_1, y_1)$ et $\overrightarrow{v_2} = (x_2, y_2)$ est égal au signe de :</p>
 <p>$$
@@ -610,14 +633,14 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On considère le <a href="https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien">déterminant</a> entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :</p>
+<p>On considère <a href="https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien">le déterminant</a> entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :</p>
 <p>$$
 \text{det}(\overrightarrow{v_1}, \overrightarrow{v_2}) = x_1 \cdot y_2 - y_1 \cdot x_2 = \sin(\theta)\cdot ||v_1|| \cdot ||v_2||
 $$</p>
@@ -626,7 +649,7 @@ $$</p>
 </details>     
 </div>
 <p>Remarquez que le calcul du signe de l'angle ne requiert que 2 multiplications et 1 soustractions, ce qui se fait donc extrêmement rapidement !</p>
-<p>Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(x, y)$, le vecteur $\overrightarrow{ab}^\perp = (-y, x)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :</p>
+<p>Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(u, v)$, le vecteur $\overrightarrow{ab}^\perp = (-v, u)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :</p>
 <p>$$
 \overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0
 $$</p>
@@ -639,7 +662,7 @@ Ax + By + C &= 0
 \end{array}
 $$
 </div>
-<p>Si un point $(x, y)$ n'est pas sur la droite alors :</p>
+<p>Avec $A$, $B$ et $C$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :</p>
 <ul>
 <li>$Ax + By + C &gt; 0$ s'il est dans le demi-plan rouge</li>
 <li>$Ax + By + C &lt; 0$ s'il est dans le demi-plan vert</li>
@@ -651,7 +674,7 @@ $$
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -660,7 +683,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -697,7 +720,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -743,7 +766,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -760,7 +783,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>On peut vérifier en $\mathcal{O}(h)$ si un polygone simple est convexe.</p>
 </div></div>
@@ -775,7 +798,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -793,7 +816,9 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Convention</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Pour ne pas alourdir les notations, on considérera que tous les indices sont modulo p.</p>
 </div></div>
 
@@ -814,7 +839,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -855,14 +880,15 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On peut également procéder par dichotomie :</p>
+<p>Remarquez que pour la droite $xp_i$, si les deux points $p_{i-1}$ et $p_{i+1}$ sont du même côté c'est une tangente.</p>
+<p>En prenant les deux sommets $p_{i}$ et $p_{i + h/2}$, soit un des deux est une tangente soit la droite $p_{i}p_{i + h/2}$ sépare les deux tangentes. On peut alors procéder par dichotomie la tangente haute est situé du coté vert, la tangent basse du côté rouge :</p>
 <p><img src="tangentes-dichotomie.png" alt="min dichotomie"></p>
 </div>
 </details>     
@@ -887,7 +913,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -908,7 +934,7 @@ $$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
+<details class="group">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -917,7 +943,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -992,13 +1018,13 @@ $$</p>
 <p><a href="https://fr.wikipedia.org/wiki/Marche_de_Jarvis">Marche de Jarvis</a>, 1973</p>
 </div></div>
 
-<p>Le principe de la marche de Jarvis est simple : construire l'enveloppe convexe de façon gloutonne. Il utilise pour cela la proposition suivante :</p>
+<p>Le principe de la marche de Jarvis est simple : <strong>construire l'enveloppe convexe de façon gloutonne</strong>. Il utilise pour cela la proposition suivante :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$, alors pour tout $p_i$, les seuls points $x$ de $\mathcal{P}$ tels que la droite $(p_i, x)$ place tous les points de $\mathcal{P}$ dans le même demi plan sont $p_{i-1}$ et $p_{i+1}$.</p>
 </div></div>
@@ -1070,7 +1096,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la <a href="../tris#complexit%C3%A9-probl%C3%A8me" class="interne">complexité du problème du tri</a> :</p>
+<p>Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que <a href="../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me/#complexit%C3%A9-probl%C3%A8me" class="interne">la complexité du problème du tri</a> :</p>
 <p>Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\log(n))$ si les $n$ points sont sur l'enveloppe.</p>
 </div></div>
 
@@ -1164,7 +1190,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Dans le cas de du polygone obtenu par l'algorithme de Graham, comme les cônes vides entre deux sommets successifs assurent qu'il n'y aura jamais de croisement de segments et donc que la simplification de Sklansky va fonctionner et donner un polygone convexe en fin de simplification.</p>
+<p>Dans le cas de du polygone obtenu par l'algorithme de Graham, les cônes vides entre deux sommets successifs assurent qu'il n'y aura jamais de croisement de segments et donc que la simplification de Sklansky va fonctionner et donner un polygone convexe en fin de simplification.</p>
 <p>Cette simplification va vite !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1175,7 +1201,7 @@ $$
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
+<details class="group" open="">
 <summary class="list-none py-0.5">
 <svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -1184,7 +1210,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -1217,55 +1243,61 @@ $$
 <p>Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins grande que l'algorithme de Jarvis.</p>
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2><span id="division-préa"></span>Les divisions de Préa</h2>
-<p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il ressemble à l'algorithme <a href="https://fr.wikipedia.org/wiki/Quickhull">Quickhull</a>, mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction diviser(P):
-    soit p le point de P d'ordonnée maximum
-    soit q le point de P d'ordonnée minimum
-
-    Soient G les points de P strictement à gauche de la droite (p, q)
-    Soient D les points de P strictement à droite de la droite (p, q)
-
-    return p, q, G, D
-
-fonction simplifier(p, q, p', q'):
-    si p' est dans le triangle qq'p alors :
-        p' = p
-    si q' est dans le triangle qp'p alors :
-        q' = q
-
-    return p', q'
-
-fonction convexe(P):
-    p,q, G, D = diviser(P)
-
-    P = [p]
-    Q = [q]
-
-    Tant que D est non vide:
-        p' ,q', G, D = diviser(D)
-        p', q' = simplifier(p, q, p', q')
-
-        ajoute p à la fin de P
-        si q ≠ p:
-            ajoute q au début de Q
-
-    Tant que G est non vide:
-        p', q', G, D = diviser(G)
-        p', q' = simplifier(p, q, p', q')
-
-        ajoute p au début de P
-        si q ≠ p:
-            ajoute q à la fin de Q
-
-    C = P + Q
-    Faire une simplification de Sklansky sur C
-
-    rendre C</code></pre>
+<p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il est basé sur le principe algorithmique de <strong>diviser pour régner</strong> et  ressemble à <a href="https://fr.wikipedia.org/wiki/Quickhull">l'algorithme Quickhull</a>. Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">diviser</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    soit p le point <span class="token keyword">de</span> P d'ordonnée maximum</span>
+<span class="highlight-line">    soit q le point <span class="token keyword">de</span> P d'ordonnée minimum</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    Soient G les points <span class="token keyword">de</span> P strictement à gauche <span class="token keyword">de</span> la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
+<span class="highlight-line">    Soient D les points <span class="token keyword">de</span> P strictement à droite <span class="token keyword">de</span> la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">simplifier</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span> p' est dans le triangle qq'p alors <span class="token punctuation">:</span></span>
+<span class="highlight-line">        p' <span class="token operator">←</span> p</span>
+<span class="highlight-line">    <span class="token keyword">si</span> q' est dans le triangle qp'p alors <span class="token punctuation">:</span></span>
+<span class="highlight-line">        q' <span class="token operator">←</span> q</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> p'<span class="token punctuation">,</span> q'</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">convexe</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    p<span class="token punctuation">,</span>q<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>P<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    P <span class="token operator">←</span> <span class="token punctuation">[</span>p<span class="token punctuation">]</span></span>
+<span class="highlight-line">    Q <span class="token operator">←</span> <span class="token punctuation">[</span>q<span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> D est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line">        p' <span class="token punctuation">,</span>q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>D<span class="token punctuation">)</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute p' à la fin <span class="token keyword">de</span> P</span>
+<span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute q' au début <span class="token keyword">de</span> Q</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> G est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>G<span class="token punctuation">)</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute p' au début <span class="token keyword">de</span> P</span>
+<span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute q' à la fin <span class="token keyword">de</span> Q</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    C <span class="token operator">←</span> P <span class="token operator">+</span> Q</span>
+<span class="highlight-line">    faire Sklansky sur C</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> C</span></code></pre>
 <p>L'algorithme va séparer l'espace en 2 à chaque appel de <code class="language-">diviser</code> et ne va garder que le demi-espace utile.</p>
 <p>Par exemple :</p>
 <p><img src="pr%C3%A9a-1.png" alt="Divisions de Préa"></p>
 <p>Au bout d'un <code class="language-">diviser</code> à droite et un <code class="language-">diviser</code> à gauche, tous les points inutiles ont été supprimés. Après la seconde passe, on a obtenu l'enveloppe convexe.
-L'étape de simplification (ci après une simplification à droite. Le procédé est similaire pour une simplification à gauche et si la pente $(p, q)4 est inversée), permet de minimiser le nombre de points restant et donc de s'assurer une complexité moyenne faible (les points dons les triangles ne sont jamais sur l'enveloppe convexe) :</p>
+L'étape de simplification (ci après une simplification à droite. Le procédé est similaire pour une simplification à gauche et si la pente $(p, q)$ est inversée), permet de minimiser le nombre de points restant et donc de s'assurer une complexité moyenne faible (les points dons les triangles ne sont jamais sur l'enveloppe convexe) :</p>
 <p><img src="simplification.png" alt="simplification"></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -1288,7 +1320,7 @@ L'étape de simplification (ci après une simplification à droite. Le procédé
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité de l'algorithme est en $\mathcal{O}(n^2)$ où $n$ est le nombre de points.</p>
 </div></div>
@@ -1303,7 +1335,7 @@ L'étape de simplification (ci après une simplification à droite. Le procédé
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>preuve</p>
+<p>Preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -1324,14 +1356,14 @@ $$</p>
 <p>$$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$</p>
-<p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolue avec le <a href="../tris/#master-theorem" class="interne">master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
+<p>Comme $\frac{1}{1-\alpha} &gt; 1$, cette équation peut être résolue avec <a href="../probl%C3%A8me-tris/algorithme-fusion/#master-theorem" class="interne">le master theorem</a> et on obtient : $T(n) = \mathcal{O}(n)$.</p>
 <p>Il nous reste à montrer que c'est bien vrai :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>La complexité en moyenne des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.</p>
 </div></div>
@@ -1361,7 +1393,7 @@ $$</p>
 $$</p>
 <p>Chaque étape va ainsi supprimer au moins tous les points du triangle ci-dessous :</p>
 <p><img src="pr%C3%A9a-6.png" alt="diviser à droite"></p>
-<p>Notez que les étapes de simplification des lignes 26 et 34 empêchent le cas où $q'$ est dans le triangle rouge.</p>
+<p>Notez que les étapes de simplification des lignes 26 et 37 empêchent le cas où $q'$ est dans le triangle rouge.</p>
 <p>L'aire de ce triangle vaut :</p>
 <p>$$
 \frac{(x + a)\cdot h}{2}
@@ -1386,7 +1418,7 @@ $$
 $$
 </div>
 <p>On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.</p>
-<p>L'équation de récurrence des boucles <code class="language-">while</code> des lignes 24 et 32 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.</p>
+<p>L'équation de récurrence des boucles <code class="language-">Tant que</code> des lignes 24 et 35 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.</p>
 </div>
 </details>     
 </div>
@@ -1407,7 +1439,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>solution</p>
+<p>Solution</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -1438,7 +1470,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>proposition</strong></p>
+<p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
 <p>Si Soit $\mathcal{P} = \mathcal{P}_1 \cup \mathcal{P}_2$ un ensemble de points. L'enveloppe convexe de $\mathcal{P}$ est uniquement composée de points des enveloppes convexes de $\mathcal{P}_1$ $\mathcal{P}_2$</p>
 </div></div>
@@ -1458,7 +1490,7 @@ $$
 <div class="pl-8 mr-8">
 <p>Il se peut que les polygones ne se joignent pas au maximum ou au minimum :</p>
 <p><img src="combinaison-disjointe-4.png" alt="pas minimum"></p>
-<p>Les polygone vert et bleues se rassemblent avec le segment noir qui ne lie aucun des 2 minimum (en rouge).</p>
+<p>Les polygones vert et bleu se rassemblent avec le segment noir qui ne lie aucun des 2 minimum (en rouge).</p>
 </div></div>
 
 <p>La complexité totale de cette jonction est en :</p>
@@ -1495,7 +1527,7 @@ $$
 <p>La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seule de taille $h$ se fait, en utilisant la marche de Jarvis en : $\mathcal{O}(h\cdot (\log(h_1) + \log(h_2))) \leq \mathcal{O}((h_1 + h_2) \cdot (\log(h_1) + \log(h_2)))$ opérations.</p>
 </div></div>
 
-<p>Cette complexité dépend de la taille de la sortie. Elle est donc plus importante que la première méthode lorsque $h$ est de l'ordre de $h_1 + h2$ mais plus petite lorsque $h$ est petit.</p>
+<p>Cette complexité dépend de la taille de la sortie. Elle est donc plus importante que la première méthode lorsque $h$ est de l'ordre de $h_1 + h_2$ mais plus petite lorsque $h$ est petit.</p>
 <h3>Algorithmes diviser pour régner</h3>
 <p>Le principe de l'algorithme diviser pour régner est toujours le même :</p>
 <ol>
@@ -1509,7 +1541,7 @@ $$
 C(n) = \underbracket{\sum_k C(n_k)}_{\text{solutions partielles}} + \underbracket{R(n)}_{\text{recollement}}
 $$
 </div>
-<p>Dont la solution est donnée par le <a href="../tris/#master-theorem" class="interne">master theorem</a>.</p>
+<p>Dont la solution est donnée par <a href="../probl%C3%A8me-tris/algorithme-fusion/#master-theorem" class="interne">le master theorem</a>.</p>
 <p>Nous allons montrer deux méthodes et comparer leurs complexités.</p>
 <h4>Méthode 1 : polygones disjoints</h4>
 <p>Pour s'assurer que les deux enveloppes convexes $P_1$ et $P_2$ soient disjoints, on commence par trier les points de $\mathcal{P}$ par abscisses croissantes, ce qui permet de toujours séparer en deux parties séparées par un axe vertical.</p>
@@ -1517,7 +1549,7 @@ $$
 <p>$$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$</p>
-<p>Le <a href="../tris/#master-theorem" class="interne">master theorem</a> nous indique que cette complexité vaut : $C(n) = n\log(n)$.</p>
+<p><a href="../probl%C3%A8me-tris/algorithme-fusion/#master-theorem" class="interne">Le master theorem</a> nous indique que cette complexité vaut : $C(n) = n\log(n)$.</p>
 <p>Le tri initial des points (en $\mathcal{O}(n\log(n))$ opérations) n'a pas dégradé la complexité :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
