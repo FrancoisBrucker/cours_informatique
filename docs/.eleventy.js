@@ -41,7 +41,7 @@ export default function(eleventyConfig) {
             greedy: true
           },
           'string': {
-            pattern: /(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i,
+            pattern: /(?:[rub]|br|rb)?(")(?:\\.|(?!\1)[^\\\r\n])*\1/i,
             greedy: true
           },
           'function': {

@@ -9,11 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD expliciter les divers formes d'algorithme (diviser pour régner, gloutons, etc)
-
 Les algorithmes de recherche d'enveloppes convexes d'ensembles de points de $\mathbb{R}^2$ font partie, comme les algorithmes de tri, des problèmes qu'adorent les algorithmiciens. Ces problèmes peuvent en effet se résoudre de multiples manières et les algorithmes résultant sont à la fois ingénieux et élégants. Ils sont cependant souvent plus compliqués que les algorithmes de tris.
 
-Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif, commençons par définir le problème.
+Nous allons ici montrer quelques uns de ces algorithmes, les plus connus. Mais avant de rentrer dans le vif du sujet, commençons par définir le problème.
 
 {% info %}
 Nous nous restreignons ici à la géométrie du plan euclidien $\mathbb{R}^2$. Certaines applications (en particulier graphiques ou mécaniques) nécessitent de rechercher des enveloppes convexes de points de l'espace, mais nous n'en parlerons pas ici.
@@ -23,7 +21,7 @@ Nous nous restreignons ici à la géométrie du plan euclidien $\mathbb{R}^2$. C
 
 La notion de _convexité_, très générale, est utilisée lorsque l'on manipule des objets _pleins_ et de forme _bombée_. Elle se formalise en utilisant les segments :
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Soit deux points $A=(x, y)$ et $B=(x', y')$. Le **_segment $[A, B]$_** est l'ensemble des points $C$ tels que :
 
 <div>
@@ -50,7 +48,7 @@ De nombreux problèmes d'optimisations deviennent facile lorsque l'objet étudi�
 <https://fr.wikipedia.org/wiki/Fonction_convexe>
 {% endlien %}
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Une fonction $f: \mathbb{R} \rightarrow \mathbb{R}$ est **_convexe_** si pour tous $x, x' \in \mathbb{R}$ et $0 \leq \lambda \leq 1$ :
 
 <div>
@@ -64,7 +62,7 @@ Pour une fonction convexe, pour tous couples de points $A = (x, f(x))$ et $B = (
 
 ![fonction convexe](./fonction-convexe.png)
 
-Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de gradient de trouver son minimum.
+Les fonctions convexes sont sympathiques en optimisation car tout minimum local est un minimum global. Il est donc très facile avec une méthode de type gradient de trouver son minimum.
 
 ### Ensemble convexe
 
@@ -72,7 +70,7 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 <https://fr.wikipedia.org/wiki/Ensemble_convexe>
 {% endlien %}
 
-{% note "**définition**" %}
+{% note "**Définition**" %}
 Un sous-ensemble $C \in \mathbb{R}^2$ est **_convexe_** si pour tous $A, B \in C$, $[A, B] \subseteq C$.
 {% endnote %}
 
@@ -82,30 +80,30 @@ La première propriété que l'on peut donner est, clairement, que :
 Si $f$ est une fonction convexe, alors $\\{ (x, y) \mid x \in \mathbb{R}, y \geq f(x)\\}$ est un ensemble convexe.
 {% endnote %}
 
-Les ensembles convexes sont en forme de patate et en tout point, la tangente est à **l'extérieur de l'ensemble** :
+Les ensembles bornés convexes sont en forme de patate et en tout point la tangente est à **l'extérieur de l'ensemble** :
 
 ![ensemble convexe](./ensemble-convexe.png)
 
-Les ensembles non convexes vont avoir une forme de haricot. Il va exister des points où la tangente traversera la forme (en bleu) et des segments qui ne sont pas inclus dans l'ensemble et dont les extrémités sont dans l'ensemble (en rouge) :
+Les ensembles non convexes vont avoir localement des creux : il va exister des points où la tangente traversera la forme (en bleu), d'où l'existence de segments non inclus dans l'ensemble alors que leurs extrémités le sont (en rouge) :
 
 ![ensemble pas convexe](./ensemble-pas-convexe.png)
 
 Les ensembles convexes ont de fortes propriétés de stabilité :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 Si $\mathcal{C}$ est un ensemble d'ensembles convexes, alors leur intersection $\cap \mathcal{C}$ est un ensemble convexe.
 {% endnote %}
-{% details "preuve" %}
+{% details "Preuve", "open" %}
 
 Soient $x, y \in \cap \mathcal{C}$, alors $[x, y] \subseteq C$ quel que soit $C \in \mathcal{C}$. Donc $[x, y] \subseteq \mathcal{C}$
 {% enddetails %}
 
 Comme l'ensemble $\mathbb{R}^2$ est convexe, on déduit de la proposition précédente que :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 Pour tout ensemble $A \subseteq \mathbb{R}^2$, il existe $\text{Conv}(A) \subseteq \mathbb{R}^2$ le **_plus petit ensemble convexe contenant $A$_** (pour l'ordre d'inclusion $\subseteq$)
 {% endnote %}
-{% details "preuve" %}
+{% details "Preuve", "open" %}
 Comme $A \subseteq \mathbb{R}^2$ et que $\mathbb{R}^2$ est convexe, l'ensemble $\mathcal{A}$ de tous les convexes contenant $A$ est non vide donc :
 
 - $A \subseteq \cap \mathcal{A}$
@@ -114,7 +112,7 @@ Comme $A \subseteq \mathbb{R}^2$ et que $\mathbb{R}^2$ est convexe, l'ensemble $
 Les deux remarques ci-dessus prouvent que $\text{Conv}(A)$ existe et qu'il vaut $\cap \mathcal{A}$.
 {% enddetails %}
 
-Les ensembles convexes ont de multiples propriétés mathématiques sympathiques très utiles en topologie. Ils sont également très utiles en optimisation sous la forme particulière des polygones convexes.
+Les ensembles convexes ont de multiples propriétés mathématiques sympathiques très utiles en topologie ou en optimisation sous la forme particulière des polygones convexes.
 
 ### Polygone convexe
 
@@ -123,6 +121,8 @@ Les ensembles convexes ont de multiples propriétés mathématiques sympathiques
 {% endlien %}
 
 En informatique (et dans la vie réelle), les ensembles convexes se rencontrent uniquement sous la forme de polygones convexes.
+
+#### Définition
 
 {%note "**définitions**" %}
 Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[P_1, \dots, P_h]$ :
@@ -143,9 +143,26 @@ On confond souvent intérieur et polygone simple.
 
 Un polygone convexe est un polygone simple particulier :
 
-{% note "**définition**" %}
-Un polygone simple $A_1 \dots A_h$ est convexe si les angles intérieurs du polygone sont tous inférieurs à 180°
+{% note "**Définition**" %}
+Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forme un ensemble convexe.
 {% endnote %}
+
+On a la propriété suivant qui le caractérise :
+
+{% note "**Proposition**" %}
+Un polygone simple $P_1 \dots P_h$ est convexe si et seulement les angles intérieurs du polygone sont tous inférieurs à 180°.
+{% endnote %}
+{% details "preuve", "open" %}
+
+Si le polygone n'est pas convexe il existe deux point $x$ et $y$ de celui-ci ne contenant pas tout son segment. Il existe alors $1 \leq i < j \leq h$ tel que l'on se retrouve dans la figure suivante :
+
+![angle 180](./angle-180.png)
+
+Il existe alors forcément $i \leq k < j$ tel que l'angle $(P_{k-1}, P_{k}, P_{k+1})$ soit inférieur à 180 degrés.
+
+{% enddetails %}
+
+Les polygone convexe sont des patates :
 
 ![polygone convexe](./polygone-convexe.png)
 
@@ -153,11 +170,7 @@ Quelques exemples de polygones non convexes (polygone croisé à gauche et angle
 
 ![polygone pas convexe](./polygone-pas-convexe.png)
 
-Bien sûr :
-
-{% note "**propriété**" %}
-Un polygone simple est convexe si et seulement si l'ensemble des points qui le constituent forment un ensemble convexe.
-{% endnote %}
+#### Utilité
 
 Les polygones convexes sont très utilisés en infographie car ils permettent de calculer très rapidement des intersections entre :
 
@@ -179,7 +192,7 @@ Je veux faire le tour du monde en ballon. Il faut donc que j'emporte dans ma mon
 
 Combien de calories puis-je emmener au maximum ?
 {% endexercice %}
-{% details "solution", "open" %}
+{% details "Solution" %}
 On note respectivement $x$ et $y$ le poids des noisettes et de la gelée de framboise à emporter. Les contraintes de faisabilité s'écrivent comme des contraintes linéaires qui forment un polygone convexe (en noir) :
 
 ![optimisation linéaire](./optimisation-linéaire.png)
@@ -196,13 +209,13 @@ Les résultats précédents en deux dimensions se généralisent à $\mathbb{R}^
 
 ### Enveloppe convexe
 
-{% note "définition" %}
+{% note "**Définition**" %}
 L'**_enveloppe convexe_** $\text{Conv}(P)$ d'un ensemble de points $P$ est le plus petit ensemble convexe contenant $P$.
 {% endnote %}
 
 Lorsque l'on se place dans $\mathbb{R}^n$ (ou plus généralement dans un espace affine réel), la définition précédente est équivalente à la définition ci-dessous :
 
-{% note "proposition" %}
+{% note "**Proposition**" %}
 L'**_enveloppe convexe_** d'un ensemble de points $P$ de $\mathbb{R}^n$ est l'ensemble de tous les points $x$ que l'on peut écrire :
 
 $$
@@ -220,13 +233,13 @@ Avec :
 {% info %}
 Remarquez que $P$ n'est pas forcément fini, ni même dénombrable.
 {% endinfo %}
-{% details "preuve" %}
+{% details "Preuve", "open" %}
 
 Nommons $\mathcal{P}$ l'ensemble contenant l'ensemble des points $x$ pouvant s'écrire $x = \sum_{i=1}^m \lambda_i\cdot  x_i$ avec $\sum_{i=1}^m \lambda_i = 1$ et $x_i \in P$ pour tout $1\leq i \leq m$.
 
 Montrons que cet ensemble est un convexe contenant $P$.
 
-1. comme $x = \sum_{i=1}^1 1 \cdot x$ pour tout $x \in P$ on a $P \subseteq \mathcal{P}$
+1. comme $x = 1 \cdot x$ pour tout $x \in P$ on a $P \subseteq \mathcal{P}$
 2. soient $u = \sum_{i=1}^p \alpha_i\cdot u_i$ et $v = \sum_{i=1}^{q} {\beta_i}\cdot {v_i}$ deux points de $\mathcal{P}$. Tout élément $s$ du segment $[xx']$ s'écrit $s = \lambda \cdot u + (1-\lambda) \cdot v$ avec $0\leq \lambda \leq 1$. De là $s = \sum_{i=1}^p \lambda \cdot \alpha_i u_i + \sum_{i=1}^{q} (1-\lambda) \cdot \beta_i v_i$ et comme $\sum_{i=1}^p \lambda \cdot \alpha_i + \sum_{i=1}^{q} (1-\lambda) \cdot \beta_i = 1$, on a $s \in \mathcal{P}$
 
 Ceci prouve que $\text{Conv}(P) \subseteq \mathcal{P}$. Prouvons la réciproque.
@@ -239,12 +252,12 @@ Comme $P \subseteq \text{Conv}(P)$, la propriété est vraie pour $m=1$. Supposo
 $$
 \begin{array}{ccl}
 x &=& \sum_{i=1}^{m-1}\lambda_i\cdot x_i + \lambda_m \cdot x_m \\
-&=&(\sum_{i=1}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
+&=&(\sum_{i=j}^{m-1}\lambda_i) \cdot \sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i + \lambda_m \cdot x_m
 \end{array}
 $$
 </div>
 
-Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{i=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.
+Comme $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i} = 1$, $\sum_{i=1}^{m-1}\frac{\lambda_i}{\sum_{j=1}^{m-1}\lambda_i}\cdot x_i$ est dans $\text{Conv}(P)$ par hypothèse de récurrence.
 
 Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il y est également.
 
@@ -252,7 +265,7 @@ Le point $x$ est alors sur le segment entre deux points de $\text{Conv}(P)$ : il
 
 On peut même aller plus loin lorsque nos points sont dans $\mathbb{R}^2$ ([dans le cas général](<https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Carath%C3%A9odory_(g%C3%A9om%C3%A9trie)>), il suffit que l'espace soit de dimension fini) :
 
-{% note "proposition" %}
+{% note "**Proposition**" %}
 L'**_enveloppe convexe_** d'un ensemble de points $P$ de $\mathbb{R}^2$ est l'ensemble de tous les points $x$ que l'on peut écrire :
 
 $$
@@ -266,7 +279,7 @@ Avec :
 - $x_i \in P$ pour tout $1\leq i \leq 3$
 
 {% endnote %}
-{% details "preuve" %}
+{% details "Preuve", "open" %}
 
 La proposition précédente nous indique que les points de $\text{Conv}(P)$ s'écrivent $x = \sum_{i=1}^m \lambda_i x_i$ avec $\sum_{i=1}^{m} \lambda_i = 1$ et les $x_i$ dans $P$.
 
@@ -303,7 +316,7 @@ Soit $k$ réalisant le minimum de $\frac{\lambda_i}{\mu_i}$ pour les $\mu_i > 0$
 On a alors :
 
 - $\sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k} = 1$
-- $a_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$
+- $x_k = \sum_{1 \leq i\neq k \leq 4}\frac{-\mu_i}{\mu_k}x_i$
 
 En injectant tout ça dans notre équation de départ, on trouve :
 
@@ -337,7 +350,7 @@ est l'union de ses triangles :
 
 On peut maintenant conclure :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 L'enveloppe convexe d'un ensemble fini $P$ de points de $\mathbb{R}^2$ est un polygone convexe formé de points de $P$
 {% endnote %}
 
@@ -353,7 +366,7 @@ Notez qu'une fois que l'enveloppe convexe est déterminée, il est facile de tro
 
 Avant de partir bille en tête sur les algorithmes de construction d'enveloppe convexe, commençons par résoudre quelques problèmes connexes, qui permettrons de nous échauffer et qui seront bien utiles plus tard.
 
-{% attention "**conventions**" %}
+{% attention "**Conventions**" %}
 
 - on se place dans le plan (euclidien) $\mathbb{R}^2$
 - tous les points sont donnés par leurs coordonnées cartésiennes
@@ -370,7 +383,7 @@ Avant de partir bille en tête sur les algorithmes de construction d'enveloppe c
 
 Une droite coupe l'espace en deux demi-plans (rouge et vert dans la figure ci-dessus). Comment savoir efficacement dans quel demi plan se trouve un point ?
 
-Une possibilité efficace est de regarder l'angle fait par un vecteur directeur de la droite ($\overrightarrow{ab}$ dans la figure ci-dessous) et un autre vecteur dont une extrémité est le point dont on veut connaître le demo-plan et l'autre un point de la droite ($\overrightarrow{au}$ et $\overrightarrow{av}$ dans la figure ci-dessous) :
+Une possibilité est de regarder l'angle fait par un vecteur directeur de la droite ($\overrightarrow{ab}$ dans la figure ci-dessous) et un autre vecteur dont une extrémité est le point dont on veut connaître le demi-plan et l'autre un point de la droite ($\overrightarrow{au}$ et $\overrightarrow{av}$ dans la figure ci-dessous) :
 
 ![droites et points](./droite-points-angles.png)
 
@@ -378,7 +391,7 @@ En considérant le sens trigonométrique (anti-horaire) et des angles entre -180
 
 Le calcul du signe de l'angle est de plus très simple !
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 Le signe de l'angle dans l'intervalle $[-180, 180]$ degrés entre deux vecteurs $\overrightarrow{v_1} = (x_1, y_1)$ et $\overrightarrow{v_2} = (x_2, y_2)$ est égal au signe de :
 
 $$
@@ -386,9 +399,9 @@ x_1 \cdot y_2 - y_1 \cdot x_2
 $$
 
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "Preuve", "open", "open" %}
 
-On considère le [déterminant](<https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien>) entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :
+On considère [le déterminant](<https://fr.wikipedia.org/wiki/D%C3%A9terminant_(math%C3%A9matiques)#D%C3%A9terminant_de_deux_vecteurs_dans_le_plan_euclidien>) entre $\overrightarrow{v_1}$ et $\overrightarrow{v_2}$ qui vaut :
 
 $$
 \text{det}(\overrightarrow{v_1}, \overrightarrow{v_2}) = x_1 \cdot y_2 - y_1 \cdot x_2 = \sin(\theta)\cdot ||v_1|| \cdot ||v_2||
@@ -400,7 +413,7 @@ Avec $\theta$ l'angle entre les deux vecteurs dans le sens trigonométrique (ant
 
 Remarquez que le calcul du signe de l'angle ne requiert que 2 multiplications et 1 soustractions, ce qui se fait donc extrêmement rapidement !
 
-Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(x, y)$, le vecteur $\overrightarrow{ab}^\perp = (-y, x)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :
+Le signe du déterminant est lié aux droites. Considérons les points $a$ et $b$ de la figure précédente. Si le vecteur $\overrightarrow{ab}$ est de coordonnée $(u, v)$, le vecteur $\overrightarrow{ab}^\perp = (-v, u)$ est orthogonal à $\overrightarrow{ab}$ et l'équation de la droite $(a, b)$ est :
 
 $$
 \overrightarrow{ab}^\perp \cdot \overrightarrow{ax} = 0
@@ -417,7 +430,7 @@ Ax + By + C &= 0
 $$
 </div>
 
-Si un point $(x, y)$ n'est pas sur la droite alors :
+Avec $A$, $B$ et $C$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :
 
 - $Ax + By + C > 0$ s'il est dans le demi-plan rouge
 - $Ax + By + C < 0$ s'il est dans le demi-plan vert
@@ -425,7 +438,7 @@ Si un point $(x, y)$ n'est pas sur la droite alors :
 {% exercice %}
 Soit $x, y, x', y' \in \mathbb{R}^2$ quatre points. Proposez une méthode permettant de déterminer si les segments $[x, y]$ et $[x', y']$ se croisent.
 {% endexercice %}
-{% details "solution", "open" %}
+{% details "Solution" %}
 
 Il suffit de remarquer que les segments $[x, y]$ et $[x', y']$ se croisent si et seulement si les deux propositions ci-dessous sont vérifiées :
 
@@ -449,7 +462,7 @@ Nous allons dans la suite nous concentrer sur les polygones simples. Mais commen
 {% exercice %}
 Proposez un algorithme en $\mathcal{O}(h^2)$ permettant de savoir si un polygone est simple ou non.
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
 On vérifie que deux segments non consécutifs du polygone ne se croisent jamais :
 
@@ -483,7 +496,7 @@ $$
 ![angle intérieur](./angle-intérieur.png)
 
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
 La figure montre que si l'angle est supérieur à 180 alors le déterminant entre les vecteurs $\overrightarrow{p_{i-1}p_i}$ et $\overrightarrow{p_ip_{i+1}}$ est négatif.
 
@@ -491,11 +504,11 @@ La figure montre que si l'angle est supérieur à 180 alors le déterminant entr
 
 De la proposition précédente on peut déduire :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 
 On peut vérifier en $\mathcal{O}(h)$ si un polygone simple est convexe.
 {% endnote  %}
-{% details "preuve", "open" %}
+{% details "Preuve", "open", "open" %}
 On vérifie la proposition précédente pour les segments consécutifs $(p_{i-1}, p_i, p_{(i+1) \\% h})$
 {% enddetails %}
 
@@ -505,7 +518,7 @@ Nous allons montrer ici quelques propriétés sympathiques des polygones convexe
 
 Dans toute cette partie on considère que $P = [p_1, \dots, p_h]$ est un polygone convexe ($p_i = (p_i^x, p_i^y)$ pour tout $1\leq i \leq h$) donné dans le sens horaire.
 
-{% attention %}
+{% attention "**Convention**" %}
 Pour ne pas alourdir les notations, on considérera que tous les indices sont modulo p.
 {% endattention %}
 
@@ -514,7 +527,7 @@ Pour ne pas alourdir les notations, on considérera que tous les indices sont mo
 {% exercice %}
 Montrez que l'on peut trouver $\min(\\{ p_i^x \mid 1 \leq i \leq h \\})$ en $\mathcal{O}(\log(h))$ opérations.
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
 On peut procéder par dichotomie :
 
@@ -539,9 +552,11 @@ L'une pour laquelle tous les points du polygone sont à sa droite (la droite ver
 {% exercice %}
 Montrez que l'on peut trouver la tangente rouge (_resp._ verte) en $\mathcal{O}(\log(h))$ opérations.
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
-On peut également procéder par dichotomie :
+Remarquez que pour la droite $xp_i$, si les deux points $p_{i-1}$ et $p_{i+1}$ sont du même côté c'est une tangente.
+
+En prenant les deux sommets $p_{i}$ et $p_{i + h/2}$, soit un des deux est une tangente soit la droite $p_{i}p_{i + h/2}$ sépare les deux tangentes. On peut alors procéder par dichotomie la tangente haute est situé du coté vert, la tangent basse du côté rouge :
 
 ![min dichotomie](./tangentes-dichotomie.png)
 
@@ -558,7 +573,7 @@ Commençons simplement :
 {% exercice %}
 Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(h)$ opérations.
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
 Pour qu'un point soit à l'intérieur d'un polygone convexe, il faut qu'il soit à droite de tous les segments de celui-ci, parcourut dans le sens horaire :
 
@@ -574,7 +589,7 @@ Sans surprise :
 Montrez que l'on peut savoir si un point est à l'intérieur d'un polygone convexe en $\mathcal{O}(\log(h))$ opérations.
 
 {% endexercice %}
-{% details "solution", "open" %}
+{% details "Solution" %}
 
 On commence par regarder les triplets $(p_{j-1}, p_{j}, p_{j +1})$ pour $j \in \\{ i, i+h/4, i + h/2\\}$ comme pour l'exercice précédent. Si cette vérification n'échoue pas, on peut supposer sans perte de généralité que le point est à gauche de la droite $(p_i, p_{i+h/2})$ et le point recherché est dans le polygone convexe vert :
 
@@ -633,9 +648,9 @@ savoir si un polygone convexe $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de
 [Marche de Jarvis](https://fr.wikipedia.org/wiki/Marche_de_Jarvis), 1973
 {% endlien %}
 
-Le principe de la marche de Jarvis est simple : construire l'enveloppe convexe de façon gloutonne. Il utilise pour cela la proposition suivante :
+Le principe de la marche de Jarvis est simple : **construire l'enveloppe convexe de façon gloutonne**. Il utilise pour cela la proposition suivante :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 Si $P = [p_1, \dots, p_h]$ est l'enveloppe convexe de $\mathcal{P}$, alors pour tout $p_i$, les seuls points $x$ de $\mathcal{P}$ tels que la droite $(p_i, x)$ place tous les points de $\mathcal{P}$ dans le même demi plan sont $p_{i-1}$ et $p_{i+1}$.
 {% endnote %}
 
@@ -714,7 +729,7 @@ De là, l'enveloppe convexe des points est :
 Une fois le maximum des points trouvé (en $\mathcal{O}(\log(n))$ opération), suivre l'enveloppe c'est trier les points par ordre décroissant.
 
 {% note %}
-Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que la [complexité du problème du tri](../tris#complexité-problème){.interne} :
+Le problème du tri est un cas particulier de calcul d'enveloppe convexe, la complexité du problème de l'enveloppe convexe est plus grande que [la complexité du problème du tri](../problème-tris/complexité-problème/#complexité-problème){.interne} :
 
 Tout algorithme trouvant l'enveloppe convexe de $n$ points a au moins une complexité de $\mathcal{O}(n\log(n))$ si les $n$ points sont sur l'enveloppe.
 {% endnote %}
@@ -792,14 +807,14 @@ Et on peut même créer des croisements :
 
 {% enddetails %}
 
-Dans le cas de du polygone obtenu par l'algorithme de Graham, comme les cônes vides entre deux sommets successifs assurent qu'il n'y aura jamais de croisement de segments et donc que la simplification de Sklansky va fonctionner et donner un polygone convexe en fin de simplification.
+Dans le cas de du polygone obtenu par l'algorithme de Graham, les cônes vides entre deux sommets successifs assurent qu'il n'y aura jamais de croisement de segments et donc que la simplification de Sklansky va fonctionner et donner un polygone convexe en fin de simplification.
 
 Cette simplification va vite !
 
 {% note %}
 La complexité de la simplification de Sklansky est $\mathcal{O}(n)$ où $n$ est la taille du polygone simple passé en entrée.
 {% endnote %}
-{% details "preuve" %}
+{% details "Preuve", "open" %}
 À chaque retour, un sommet est supprimé, on ne peut donc effectuer en tout que $n$ retours. On examine donc au maximum $2\cdot n$ points et chaque examen est en $\mathcal{O}(1)$ opérations.
 {% enddetails %}
 
@@ -824,50 +839,56 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 
 ## <span id="division-préa"></span>Les divisions de Préa
 
-On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il ressemble à l'algorithme [Quickhull](https://fr.wikipedia.org/wiki/Quickhull), mais le calcul de ses complexités, en particulier en moyenne est cependant plus simple.
+On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull). Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
 
-```text#
-fonction diviser(P):
+```pseudocode/
+algorithme diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée minimum
 
     Soient G les points de P strictement à gauche de la droite (p, q)
     Soient D les points de P strictement à droite de la droite (p, q)
 
-    return p, q, G, D
+    rendre p, q, G, D
 
-fonction simplifier(p, q, p', q'):
+algorithme simplifier(p, q, p', q'):
     si p' est dans le triangle qq'p alors :
-        p' = p
+        p' ← p
     si q' est dans le triangle qp'p alors :
-        q' = q
+        q' ← q
 
-    return p', q'
+    rendre p', q'
 
-fonction convexe(P):
-    p,q, G, D = diviser(P)
+algorithme convexe(P):
+    p,q, G, D ← diviser(P)
 
-    P = [p]
-    Q = [q]
+    P ← [p]
+    Q ← [q]
 
-    Tant que D est non vide:
-        p' ,q', G, D = diviser(D)
-        p', q' = simplifier(p, q, p', q')
+    tant que D est non vide:
+        p' ,q', G, D ← diviser(D)
+        p', q' ← simplifier(p, q, p', q')
 
-        ajoute p à la fin de P
-        si q ≠ p:
-            ajoute q au début de Q
+        si p' ≠ p:
+            ajoute p' à la fin de P
+        si q' ≠ q et q' ≠ p':
+            ajoute q' au début de Q
+    
+        p, q ← p', q'
 
-    Tant que G est non vide:
-        p', q', G, D = diviser(G)
-        p', q' = simplifier(p, q, p', q')
+    tant que G est non vide:
+        p', q', G, D ← diviser(G)
+        p', q' ← simplifier(p, q, p', q')
 
-        ajoute p au début de P
-        si q ≠ p:
-            ajoute q à la fin de Q
+        si p' ≠ p:
+            ajoute p' au début de P
+        si q' ≠ q et q' ≠ p':
+            ajoute q' à la fin de Q
+    
+        p, q ← p', q'
 
-    C = P + Q
-    Faire une simplification de Sklansky sur C
+    C ← P + Q
+    faire Sklansky sur C
 
     rendre C
 ```
@@ -879,7 +900,7 @@ Par exemple :
 ![Divisions de Préa](./préa-1.png)
 
 Au bout d'un `diviser`{.language-} à droite et un `diviser`{.language-} à gauche, tous les points inutiles ont été supprimés. Après la seconde passe, on a obtenu l'enveloppe convexe.
-L'étape de simplification (ci après une simplification à droite. Le procédé est similaire pour une simplification à gauche et si la pente $(p, q)4 est inversée), permet de minimiser le nombre de points restant et donc de s'assurer une complexité moyenne faible (les points dons les triangles ne sont jamais sur l'enveloppe convexe) :
+L'étape de simplification (ci après une simplification à droite. Le procédé est similaire pour une simplification à gauche et si la pente $(p, q)$ est inversée), permet de minimiser le nombre de points restant et donc de s'assurer une complexité moyenne faible (les points dons les triangles ne sont jamais sur l'enveloppe convexe) :
 
 ![simplification](simplification.png)
 
@@ -903,10 +924,10 @@ Les boucles `while`{.language-} des lignes 24 et 32 peuvent dans le cas le pire 
 
 De là :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 La complexité de l'algorithme est en $\mathcal{O}(n^2)$ où $n$ est le nombre de points.
 {% endnote %}
-{% details "preuve", "open" %}
+{% details "Preuve", "open", "open" %}
 La complexité de la fonction `diviser`{.language-} est linéaire en la taille de la liste passée en paramètre.
 
 A chaque étape, on supprime au minimum deux points (ceux réalisant le minimum et le maximum), il y aura donc $\frac{n}{2}$ étapes au plus. Chaque étape `diviser`{.language-} nécessitant de parcourir tous les points restant pour en trouver le minimum et le maximum, Ces étapes prendront au pire une complexité de :
@@ -926,11 +947,11 @@ $$
 T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)
 $$
 
-Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec le [master theorem](../tris/#master-theorem){.interne} et on obtient : $T(n) = \mathcal{O}(n)$.
+Comme $\frac{1}{1-\alpha} > 1$, cette équation peut être résolue avec [le master theorem](../problème-tris/algorithme-fusion/#master-theorem){.interne} et on obtient : $T(n) = \mathcal{O}(n)$.
 
 Il nous reste à montrer que c'est bien vrai :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 La complexité en moyenne des divisions de Préa est en $\mathcal{O}(n)$ pour des points répartis de façon uniforme.
 {% endnote %}
 {% details "**preuve**", "open" %}
@@ -948,7 +969,7 @@ Chaque étape va ainsi supprimer au moins tous les points du triangle ci-dessous
 
 ![diviser à droite](./préa-6.png)
 
-Notez que les étapes de simplification des lignes 26 et 34 empêchent le cas où $q'$ est dans le triangle rouge.
+Notez que les étapes de simplification des lignes 26 et 37 empêchent le cas où $q'$ est dans le triangle rouge.
 
 L'aire de ce triangle vaut :
 
@@ -981,7 +1002,7 @@ $$
 
 On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.
 
-L'équation de récurrence des boucles `while`{.language-} des lignes 24 et 32 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.
+L'équation de récurrence des boucles `Tant que`{.language-} des lignes 24 et 35 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.
 
 {% enddetails %}
 
@@ -990,7 +1011,7 @@ Cet algorithme est donc très efficace lorsque les données sont répartis de fa
 {% exercice %}
 Puisqu'il y a équivalence entre algorithme de tri et enveloppe convexe, pourquoi ne peut-on pas utiliser cet algorithme pour avoir un algorithme de tri en complexité $\mathcal{O}(n)$ en moyenne ?
 {% endexercice %}
-{% details "solution" %}
+{% details "Solution" %}
 
 Lorsque on a montré l'équivalence, la taille de l'enveloppe convexe du problème du tri transformé était toujours de $n$ et les sommets étaient réparties sur tout l'axe des abscisses.
 
@@ -1010,7 +1031,7 @@ Comment calculer l'enveloppe convexe de $\mathcal{P}_1 \cup \mathcal{P}_2$
 
 Nous allons montrer deux méthodes pour le faire. Mais avant de commencer, remarquez que :
 
-{% note "**proposition**" %}
+{% note "**Proposition**" %}
 Si Soit $\mathcal{P} = \mathcal{P}_1 \cup \mathcal{P}_2$ un ensemble de points. L'enveloppe convexe de $\mathcal{P}$ est uniquement composée de points des enveloppes convexes de $\mathcal{P}_1$ $\mathcal{P}_2$
 
 {% endnote %}
@@ -1036,7 +1057,7 @@ Il se peut que les polygones ne se joignent pas au maximum ou au minimum :
 
 ![pas minimum](./combinaison-disjointe-4.png)
 
-Les polygone vert et bleues se rassemblent avec le segment noir qui ne lie aucun des 2 minimum (en rouge).
+Les polygones vert et bleu se rassemblent avec le segment noir qui ne lie aucun des 2 minimum (en rouge).
 
 {% endattention %}
 
@@ -1075,7 +1096,7 @@ La combinaison de deux enveloppes convexes de tailles $h_1$ et $h_2$ en une seul
 
 {% endnote %}
 
-Cette complexité dépend de la taille de la sortie. Elle est donc plus importante que la première méthode lorsque $h$ est de l'ordre de $h_1 + h2$ mais plus petite lorsque $h$ est petit.
+Cette complexité dépend de la taille de la sortie. Elle est donc plus importante que la première méthode lorsque $h$ est de l'ordre de $h_1 + h_2$ mais plus petite lorsque $h$ est petit.
 
 ### Algorithmes diviser pour régner
 
@@ -1093,7 +1114,7 @@ C(n) = \underbracket{\sum_k C(n_k)}_{\text{solutions partielles}} + \underbracke
 $$
 </div>
 
-Dont la solution est donnée par le [master theorem](../tris/#master-theorem){.interne}.
+Dont la solution est donnée par [le master theorem](../problème-tris/algorithme-fusion/#master-theorem){.interne}.
 
 Nous allons montrer deux méthodes et comparer leurs complexités.
 
@@ -1107,7 +1128,7 @@ $$
 C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
 $$
 
-Le [master theorem](../tris/#master-theorem){.interne} nous indique que cette complexité vaut : $C(n) = n\log(n)$.
+[Le master theorem](../problème-tris/algorithme-fusion/#master-theorem){.interne} nous indique que cette complexité vaut : $C(n) = n\log(n)$.
 
 Le tri initial des points (en $\mathcal{O}(n\log(n))$ opérations) n'a pas dégradé la complexité :
 
