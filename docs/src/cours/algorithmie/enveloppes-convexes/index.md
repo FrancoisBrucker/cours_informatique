@@ -71,7 +71,7 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 {% endlien %}
 
 {% note "**Définition**" %}
-Un sous-ensemble $C \in \mathbb{R}^2$ est **_convexe_** si pour tous $A, B \in C$, $[A, B] \subseteq C$.
+Un sous-ensemble $\mathcal{C} \subseteq \mathbb{R}^2$ est **_convexe_** si pour tous $A, B \in \mathcal{C}$, $[A, B] \subseteq \mathcal{C}$.
 {% endnote %}
 
 La première propriété que l'on peut donner est, clairement, que :
