@@ -430,7 +430,7 @@ Ax + By + C &= 0
 $$
 </div>
 
-Avec $A$, $B$ et $C$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :
+Avec $A=-(b^y-a^y)$, $B=(b^x- a^x)$ et $C=a^x\cdot b^y-a^y\cdot b^x$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :
 
 - $Ax + By + C > 0$ s'il est dans le demi-plan rouge
 - $Ax + By + C < 0$ s'il est dans le demi-plan vert
@@ -842,7 +842,7 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull). Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
 
 ```pseudocode/
-algorithme diviser(P):
+fonction diviser(P):
     soit p le point de P d'ordonnée maximum
     soit q le point de P d'ordonnée minimum
 
@@ -851,7 +851,7 @@ algorithme diviser(P):
 
     rendre p, q, G, D
 
-algorithme simplifier(p, q, p', q'):
+fonction simplifier(p, q, p', q'):
     si p' est dans le triangle qq'p alors :
         p' ← p
     si q' est dans le triangle qp'p alors :
