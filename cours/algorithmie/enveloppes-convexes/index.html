@@ -1244,7 +1244,41 @@ $$
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2><span id="division-préa"></span>Les divisions de Préa</h2>
 <p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il est basé sur le principe algorithmique de <strong>diviser pour régner</strong> et  ressemble à <a href="https://fr.wikipedia.org/wiki/Quickhull">l'algorithme Quickhull</a>. Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">diviser</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">convexe</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    p<span class="token punctuation">,</span>q<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>P<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    P <span class="token operator">←</span> <span class="token punctuation">[</span>p<span class="token punctuation">]</span></span>
+<span class="highlight-line">    Q <span class="token operator">←</span> <span class="token punctuation">[</span>q<span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> D est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line">        p' <span class="token punctuation">,</span>q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>D<span class="token punctuation">)</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">si</span> p' <span class="token operator">≠</span> p<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute p' à la fin de P</span>
+<span class="highlight-line">        <span class="token keyword">si</span> q' <span class="token operator">≠</span> q <span class="token keyword">et</span> q' <span class="token operator">≠</span> p'<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute q' au début de Q</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> G est non vide<span class="token punctuation">:</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>G<span class="token punctuation">)</span></span>
+<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        <span class="token keyword">si</span> p' <span class="token operator">≠</span> p<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute p' au début de P</span>
+<span class="highlight-line">        <span class="token keyword">si</span> q' <span class="token operator">≠</span> q <span class="token keyword">et</span> q' <span class="token operator">≠</span> p'<span class="token punctuation">:</span></span>
+<span class="highlight-line">            ajoute q' à la fin de Q</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    C <span class="token operator">←</span> P <span class="token operator">+</span> Q</span>
+<span class="highlight-line">    faire Sklansky sur C</span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> C</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">diviser</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    soit p le point de P d'ordonnée maximum</span>
 <span class="highlight-line">    soit q le point de P d'ordonnée minimum</span>
 <span class="highlight-line"></span>
@@ -1259,40 +1293,7 @@ $$
 <span class="highlight-line">    <span class="token keyword">si</span> q' est dans le triangle qp'p alors <span class="token punctuation">:</span></span>
 <span class="highlight-line">        q' <span class="token operator">←</span> q</span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> p'<span class="token punctuation">,</span> q'</span>
-<span class="highlight-line"></span>
-<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">convexe</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    p<span class="token punctuation">,</span>q<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>P<span class="token punctuation">)</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    P <span class="token operator">←</span> <span class="token punctuation">[</span>p<span class="token punctuation">]</span></span>
-<span class="highlight-line">    Q <span class="token operator">←</span> <span class="token punctuation">[</span>q<span class="token punctuation">]</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">tant que</span> D est non vide<span class="token punctuation">:</span></span>
-<span class="highlight-line">        p' <span class="token punctuation">,</span>q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>D<span class="token punctuation">)</span></span>
-<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute p' à la fin de P</span>
-<span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute q' au début de Q</span>
-<span class="highlight-line">    </span>
-<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">tant que</span> G est non vide<span class="token punctuation">:</span></span>
-<span class="highlight-line">        p'<span class="token punctuation">,</span> q'<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D <span class="token operator">←</span> diviser<span class="token punctuation">(</span>G<span class="token punctuation">)</span></span>
-<span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute p' au début de P</span>
-<span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute q' à la fin de Q</span>
-<span class="highlight-line">    </span>
-<span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    C <span class="token operator">←</span> P <span class="token operator">+</span> Q</span>
-<span class="highlight-line">    faire Sklansky sur C</span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> C</span></code></pre>
+<span class="highlight-line">    <span class="token keyword">rendre</span> p'<span class="token punctuation">,</span> q'</span></code></pre>
 <p>L'algorithme va séparer l'espace en 2 à chaque appel de <code class="language-">diviser</code> et ne va garder que le demi-espace utile.</p>
 <p>Par exemple :</p>
 <p><img src="pr%C3%A9a-1.png" alt="Divisions de Préa"></p>
@@ -1312,7 +1313,7 @@ L'étape de simplification (ci après une simplification à droite. Le procédé
 <p>Il est cependant simple et une <a href="#sklansky" class="interne">simplification de Sklansky</a> ne va jamais produire de croisement. En effet, entre 2 points successifs, il existe une bande horizontale sans points qui correspond à la différence entre les 2 max ou min successifs :</p>
 <p><img src="pr%C3%A9a-3.png" alt="pas convexe"></p>
 <p>L'argument donné pour le parcours de Graham peut donc être réutilisé ici pour montrer que la simplification de Sklansky va bien se passer. Cette étape de raffinage prend alors au pire $\mathcal{O}(n)$ opérations.</p>
-<p>Les boucles <code class="language-">while</code> des lignes 24 et 32 peuvent dans le cas le pire des cas n'éliminer aucun point différents de <code class="language-">p</code> et <code class="language-">q</code> (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :</p>
+<p>Les boucles <code class="language-">tant que</code> des lignes 7 et 18 peuvent dans le cas le pire des cas n'éliminer aucun point différents de <code class="language-">p</code> et <code class="language-">q</code> (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :</p>
 <p><img src="pr%C3%A9a-4.png" alt="pas convexe"></p>
 <p>De là :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -1418,7 +1419,7 @@ $$
 $$
 </div>
 <p>On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.</p>
-<p>L'équation de récurrence des boucles <code class="language-">Tant que</code> des lignes 24 et 35 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.</p>
+<p>L'équation de récurrence des boucles <code class="language-">Tant que</code> des lignes 7 et 18 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.</p>
 </div>
 </details>     
 </div>
