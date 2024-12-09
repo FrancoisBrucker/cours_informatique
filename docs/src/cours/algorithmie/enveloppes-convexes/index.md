@@ -842,23 +842,6 @@ Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux l
 On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull). Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
 
 ```pseudocode/
-fonction diviser(P):
-    soit p le point de P d'ordonnée maximum
-    soit q le point de P d'ordonnée minimum
-
-    Soient G les points de P strictement à gauche de la droite (p, q)
-    Soient D les points de P strictement à droite de la droite (p, q)
-
-    rendre p, q, G, D
-
-fonction simplifier(p, q, p', q'):
-    si p' est dans le triangle qq'p alors :
-        p' ← p
-    si q' est dans le triangle qp'p alors :
-        q' ← q
-
-    rendre p', q'
-
 algorithme convexe(P):
     p,q, G, D ← diviser(P)
 
@@ -891,6 +874,24 @@ algorithme convexe(P):
     faire Sklansky sur C
 
     rendre C
+
+
+fonction diviser(P):
+    soit p le point de P d'ordonnée maximum
+    soit q le point de P d'ordonnée minimum
+
+    Soient G les points de P strictement à gauche de la droite (p, q)
+    Soient D les points de P strictement à droite de la droite (p, q)
+
+    rendre p, q, G, D
+
+fonction simplifier(p, q, p', q'):
+    si p' est dans le triangle qq'p alors :
+        p' ← p
+    si q' est dans le triangle qp'p alors :
+        q' ← q
+
+    rendre p', q'
 ```
 
 L'algorithme va séparer l'espace en 2 à chaque appel de `diviser`{.language-} et ne va garder que le demi-espace utile.
@@ -918,7 +919,7 @@ Il est cependant simple et une [simplification de Sklansky](./#sklansky){.intern
 
 L'argument donné pour le parcours de Graham peut donc être réutilisé ici pour montrer que la simplification de Sklansky va bien se passer. Cette étape de raffinage prend alors au pire $\mathcal{O}(n)$ opérations.
 
-Les boucles `while`{.language-} des lignes 24 et 32 peuvent dans le cas le pire des cas n'éliminer aucun point différents de `p`{.language-} et `q`{.language-} (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
+Les boucles `tant que`{.language-} des lignes 7 et 18 peuvent dans le cas le pire des cas n'éliminer aucun point différents de `p`{.language-} et `q`{.language-} (si on veut trouver l'enveloppe convexe d'un zèbre par exemple) :
 
 ![pas convexe](./préa-4.png)
 
@@ -1002,7 +1003,7 @@ $$
 
 On retrouve le résultat intuitif : en moyenne $x$ sera placé à la moitié de la grande base du trapèze, à savoir $x=(b-a)/2$ et $\alpha \geq 1/4$.
 
-L'équation de récurrence des boucles `Tant que`{.language-} des lignes 24 et 35 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.
+L'équation de récurrence des boucles `Tant que`{.language-} des lignes 7 et 18 respectent donc en moyenne l'équation : $T(n) = \mathcal{O}(n) + T((1-\alpha)\cdot n)$ avec $\alpha \geq \frac{1}{4}$.
 
 {% enddetails %}
 
