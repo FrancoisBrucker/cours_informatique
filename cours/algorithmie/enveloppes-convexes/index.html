@@ -662,7 +662,7 @@ Ax + By + C &= 0
 \end{array}
 $$
 </div>
-<p>Avec $A$, $B$ et $C$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :</p>
+<p>Avec $A=-(b^y-a^y)$, $B=(b^x- a^x)$ et $C=a^x\cdot b^y-a^y\cdot b^x$ trois constantes. De là, si un point $(x, y)$ n'est pas sur la droite alors :</p>
 <ul>
 <li>$Ax + By + C &gt; 0$ s'il est dans le demi-plan rouge</li>
 <li>$Ax + By + C &lt; 0$ s'il est dans le demi-plan vert</li>
@@ -1244,16 +1244,16 @@ $$
 <p>Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.</p>
 <h2><span id="division-préa"></span>Les divisions de Préa</h2>
 <p>On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale <s>marseille</s> méditerranée. Il est basé sur le principe algorithmique de <strong>diviser pour régner</strong> et  ressemble à <a href="https://fr.wikipedia.org/wiki/Quickhull">l'algorithme Quickhull</a>. Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">diviser</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    soit p le point <span class="token keyword">de</span> P d'ordonnée maximum</span>
-<span class="highlight-line">    soit q le point <span class="token keyword">de</span> P d'ordonnée minimum</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">diviser</span><span class="token punctuation">(</span>P<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    soit p le point de P d'ordonnée maximum</span>
+<span class="highlight-line">    soit q le point de P d'ordonnée minimum</span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    Soient G les points <span class="token keyword">de</span> P strictement à gauche <span class="token keyword">de</span> la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
-<span class="highlight-line">    Soient D les points <span class="token keyword">de</span> P strictement à droite <span class="token keyword">de</span> la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
+<span class="highlight-line">    Soient G les points de P strictement à gauche de la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
+<span class="highlight-line">    Soient D les points de P strictement à droite de la droite <span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">)</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> G<span class="token punctuation">,</span> D</span>
 <span class="highlight-line"></span>
-<span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">simplifier</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">simplifier</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span> p' est dans le triangle qq'p alors <span class="token punctuation">:</span></span>
 <span class="highlight-line">        p' <span class="token operator">←</span> p</span>
 <span class="highlight-line">    <span class="token keyword">si</span> q' est dans le triangle qp'p alors <span class="token punctuation">:</span></span>
@@ -1272,9 +1272,9 @@ $$
 <span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute p' à la fin <span class="token keyword">de</span> P</span>
+<span class="highlight-line">            ajoute p' à la fin de P</span>
 <span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute q' au début <span class="token keyword">de</span> Q</span>
+<span class="highlight-line">            ajoute q' au début de Q</span>
 <span class="highlight-line">    </span>
 <span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
 <span class="highlight-line"></span>
@@ -1283,9 +1283,9 @@ $$
 <span class="highlight-line">        p'<span class="token punctuation">,</span> q' <span class="token operator">←</span> simplifier<span class="token punctuation">(</span>p<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p'<span class="token punctuation">,</span> q'<span class="token punctuation">)</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">        <span class="token keyword">si</span> p' ≠ p<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute p' au début <span class="token keyword">de</span> P</span>
+<span class="highlight-line">            ajoute p' au début de P</span>
 <span class="highlight-line">        <span class="token keyword">si</span> q' ≠ q <span class="token keyword">et</span> q' ≠ p'<span class="token punctuation">:</span></span>
-<span class="highlight-line">            ajoute q' à la fin <span class="token keyword">de</span> Q</span>
+<span class="highlight-line">            ajoute q' à la fin de Q</span>
 <span class="highlight-line">    </span>
 <span class="highlight-line">        p<span class="token punctuation">,</span> q <span class="token operator">←</span> p'<span class="token punctuation">,</span> q'</span>
 <span class="highlight-line"></span>
