@@ -71,7 +71,7 @@ Les fonctions convexes sont sympathiques en optimisation car tout minimum local 
 {% endlien %}
 
 {% note "**Définition**" %}
-Un sous-ensemble $\mathcal{C} \subseteq \mathbb{R}^2$ est **_convexe_** si pour tous $A, B \in \mathcal{C}$, $[A, B] \subseteq \mathcal{C}$.
+Un ensemble $C \subseteq \mathbb{R}^2$ est **_convexe_** si pour tous $x, y \in C$, $[x, y] \subseteq C$.
 {% endnote %}
 
 La première propriété que l'on peut donner est, clairement, que :
@@ -125,7 +125,7 @@ En informatique (et dans la vie réelle), les ensembles convexes se rencontrent 
 #### Définition
 
 {%note "**définitions**" %}
-Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[P_1, \dots, P_h]$ :
+Un [**_polygone_**](https://fr.wikipedia.org/wiki/Polygone) est une suite finie de points $[p_1, \dots, p_h]$ :
 
 ![exemple polygones](./exemple-polygones.png)
 
@@ -150,7 +150,7 @@ Un polygone simple est convexe si et seulement si l'ensemble des points qui le c
 On a la propriété suivant qui le caractérise :
 
 {% note "**Proposition**" %}
-Un polygone simple $P_1 \dots P_h$ est convexe si et seulement les angles intérieurs du polygone sont tous inférieurs à 180°.
+Un polygone simple $p_1 \dots p_h$ est convexe si et seulement les angles intérieurs du polygone sont tous inférieurs à 180°.
 {% endnote %}
 {% details "preuve", "open" %}
 
@@ -158,7 +158,7 @@ Si le polygone n'est pas convexe il existe deux point $x$ et $y$ de celui-ci ne 
 
 ![angle 180](./angle-180.png)
 
-Il existe alors forcément $i \leq k < j$ tel que l'angle $(P_{k-1}, P_{k}, P_{k+1})$ soit inférieur à 180 degrés.
+Il existe alors forcément $i \leq k < j$ tel que l'angle $(p_{k-1}, p_{k}, p_{k+1})$ soit inférieur à 180 degrés.
 
 {% enddetails %}
 
