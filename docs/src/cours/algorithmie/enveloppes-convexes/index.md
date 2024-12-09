@@ -740,7 +740,7 @@ Comme l'algorithme suivant atteint cette borne, on peut écrire :
 La complexité du problème du calcul de l'enveloppe convexe de $n$ points est : $\mathcal{O}(n\log(n))$.
 {% endnote %}
 
-Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(h\log(h))$ ou encore $\mathcal{O}(n\log(h))$.
+Notez que notre transformation admet d'autres bornes possibles si on prend en compte le nombre d'éléments $h$ de l'enveloppe, par exemple $\mathcal{O}(n + h\log(h))$ ou encore $\mathcal{O}(n\log(h))$.
 
 ### Parcours de Graham
 

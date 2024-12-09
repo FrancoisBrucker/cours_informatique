@@ -72,10 +72,6 @@ Principe de l'affectation des variables en python.
 [Variables](variables){.interne}
 {% endaller %}
 
-### <span id="espace-nom"></span> Espace de nom
-
-Un **espace de noms** est un endroit où python stocke les noms. Une variable est un nom d'un espace de noms. Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
-
 ## Opérations sur les objets
 
 Créer de nouveaux objets avec d'autres objets.

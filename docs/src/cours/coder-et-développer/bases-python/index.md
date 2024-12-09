@@ -31,8 +31,6 @@ Avant d'écrire des programmes en python, on commence par s'intéresser à ses m
 [Principes](principes){.interne}
 {% endaller %}
 
-> TBD exercices
-
 Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
 
 {% aller %}
@@ -73,7 +71,20 @@ Spyder est un éditeur lié à un interpréteur python. L'application est très 
 
 ## Utilisation de modules
 
+### <span id="espace-nom"></span> Espace de nom
+
+Un **espace de noms** est un endroit où python stocke les variables. Une variable est un nom d'un espace de noms.
+
+Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
+
+> TBD reprendre les exemples d'avant.
+
+> TBD python va créer des espaces
+
+### Utiliser des modules
+
 > TBD ici utilisation de modules python (retirer de structurer son code). Parler d'espace de noms
+
 
 ## Structurer du code
 

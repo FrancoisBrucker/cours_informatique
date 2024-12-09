@@ -43,7 +43,7 @@ Considérons le programme suivant :
 ```python/
 x = 1
 y = 1
-y = x
+y = 3
 ```
 
 Et regardons ce qu'il se passe au niveaux des variables et des objets après chaque instruction.
@@ -68,34 +68,65 @@ L'exécution de la deuxième instruction procède de la même manière, à l'iss
 
 Notez bien que les objets mis en relations ne sont pas les mêmes, ce sont deux objets de type entier valant 1.
 
-L'instruction de la ligne 3 est plus spéciale puisqu'à droite de l'opérateur d'assignation `=` est une variable. Python procède alors ainsi :
-
-1. il cherche l'objet associé à la variable `x`
-2. il assigne l'objet trouvé à la nouvelle variable `y`
-
-On se trouve dans la situation suivante :
+L'instruction de la ligne 3 est identique aux deux précédentes : on associe un objet à une variable. Que cette variables était précédemment **n'a pas d'importance** : on l'associe à l'objet à droite de l'opérateur d'affectation `=` :
 
 ![association nom variable 4](python-variables-objets-4.png)
 
-L'objet précédemment assigné à `y` n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle le [garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c)).
+L'objet précédemment assigné à `y` n'est plus associé à aucune variable : il n'y a plus aucun moyen d'y acceder. Ces objets non assignés sont supprimés à intervalles réguliers (c’est ce qu’on appelle [le garbage collector](https://towardsdatascience.com/memory-management-and-garbage-collection-in-python-c1cb51d1612c)).
+
+Le même mécanisme est à l'oeuvre si on a une variable à droite de l'opérateur d'affectation `=`. Considérons le programme suivant :
+
+```python/
+x = 1
+y = 1
+y = x
+```
+
+L'instruction de la ligne 3 commence par trouver l'objet à droite de l'opérateur d'affectation `=` _via_ la variable : **c'est l'objet et non la variable** qui est associé. Une fois l'objet trouvé, il est assigné à la variable à gauche de l'opérateur d'assignation `=` :
+
+![association nom variable 5](python-variables-objets-5.png)
+
+{% note "**A retenir**" %}
+Le mécanisme d'affectation procède en 2 temps :
+
+1. on cherche l'objet associé à droite de `=`
+2. on affecte l'objet trouvé à la variable à gauche de `=`
+
+{% endnote %}
 
 Ce mécanisme d'affectation est puissant, il permet par exemple d'affecter plusieurs variables en même temps, comme le montre l’exemple suivant qui échange les objets des noms `i`{.language-} et `j`{.language-} :
 
-```python
-i = 2
-j = 3
-i, j = j, i
+```python/
+x = 2
+y = 3
+x, y = y, x
 ```
 
-> TBD dessin en exercice.
+{% exercice %}
+A quels objets sont liés les variables $i$ et $j$ après la ligne 3 de l'exemple précédent ? Comment python procède-t-il pour exécuter cette ligne ?
+{% endexercice %}
+{% details "Solution" %}
+
+1. on commence par chercher les objets à droite du `=`
+2. on les affecte aux variables.
+
+Rappelez vous que la variable existe ou pas au moment de l'affectation n'a pas d'importance.
+
+Avant l'exécution de la ligne 3 :
+
+![association nom variable 6](python-variables-objets-6.png)
+
+Après l'exécution de la ligne 3 :
+
+![association nom variable 7](python-variables-objets-7.png)
+
+{% enddetails %}
 
 Enfin, il est possible d'affecter plusieurs noms à un même objet. Par exemple l'exemple suivant affecte le même entier 1 aux noms `x`{.language-} et `y`{.language-} :
 
 ```python
 x = y = 1
 ```
-
-> TBD dessin en exercice.
 
 ## Supprimer une variable
 
@@ -167,7 +198,7 @@ Affectez la valeur 4 à la variable `b`{.language-}, puis affectez le résultat 
 
 ```python
 >>> b = 4
->>> c = (a+b)/2
+>>> c = (a + b)/2
 >>> print(b)
 4
 >>> print(c)
