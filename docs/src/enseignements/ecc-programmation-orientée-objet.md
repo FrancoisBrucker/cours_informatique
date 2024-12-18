@@ -71,7 +71,7 @@ Le but de cette partie constituée de **deux séances de cours** (les 26 et 27 s
 
 Deux séances de cours pour couvrir trois sujets :
 
-1. [Mémoire et espace de noms]({{ '/cours/algorithme-code-théorie/code/mémoire-espace-noms' }})
+1. [Mémoire et espace de noms]({{ '/cours/algorithme-code-théorie/code/mémoire-espace-nommage' }})
 2. [Classes et objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/classes-et-objets' }})
 3. [Coder ses objets]({{ '/cours/algorithme-code-théorie/code/programmation-objet/coder-ses-objets' }})
 

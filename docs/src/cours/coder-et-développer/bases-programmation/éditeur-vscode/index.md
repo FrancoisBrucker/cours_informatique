@@ -13,11 +13,9 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
+Configuration et utilisation de l'éditeur de texte [visual studio code (vsc)](https://code.visualstudio.com/).
 
-Installation, configuration et utilisation de l'éditeur de texte [visual studio code (vsc)](https://code.visualstudio.com/).
-
-<!-- fin résumé -->
+## Installation
 
 Si vous ne l'avez pas déjà fait :
 
@@ -33,26 +31,16 @@ sudo snap install --classic code
 
 {% endinfo %}
 
+## Bases
+
 Commençons par faire le tour du propriétaire :
 
 {% aller %}
 [Prise en main](prise-en-main){.interne}
 {% endaller %}
 
-Vscode fonctionne main dans la main avec le terminal, ce qui permet d'être très productif :
-
-{% aller %}
-[Utilisation du terminal](terminal){.interne}
-{% endaller %}
-
-Il est bien sur possible de faire du développement avec python :
+## vscode et python
 
 {% aller %}
 [vscode et python](python){.interne}
-{% endaller %}
-
-Enfin, vscode possède ne nombreuses extensions :
-
-{% aller %}
-[extensions](extensions){.interne}
 {% endaller %}

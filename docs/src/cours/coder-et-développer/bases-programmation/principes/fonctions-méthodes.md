@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Fonctions et méthodes
 
 eleventyComputed:
@@ -26,17 +26,18 @@ C'est un objet :
 <class 'builtin_function_or_method'>
 ```
 
-On *exécute* l'objet en faisant suivre son nom de parenthèses :
+On _**exécute**_ l'objet en faisant suivre son nom de parenthèses :
 
 ```python
 >>> print()
 
+>>> 
 ```
 
 L'exécution de la fonction `print`{.language-} à produit un retour à la ligne.
 
 {% note %}
-De nombreuses fonctions peuvent être exécutées avec des *paramètres* qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
+De nombreuses fonctions peuvent être exécutées avec des _paramètres_ qui sont placées les un à la suite des autres entre les parenthèses et séparés par des virgules :
 
 ```python
 nom_de_la_fonction(paramètre1, paramètre2, ..., paramètre_n)
@@ -55,8 +56,8 @@ L'exécution de la fonction `print`{.language-} avec les trois paramètres `"cou
 
 Toutes les fonctions de python sont documentées. On peut y accéder :
 
-* via le site de python. L'aide de la fonction `print`{.language-} est là : <https://docs.python.org/fr/3/library/functions.html#print>
-* en console en utilisant la fonction `help`{.language-} : `help(print)`{.language-} donne l'aide de `print`{.language-}
+- via le site de python. L'aide de la fonction `print`{.language-} est là : <https://docs.python.org/fr/3/library/functions.html#print>
+- en console en utilisant la fonction `help`{.language-} : `help(print)`{.language-} donne l'aide de `print`{.language-}
 
 {% exercice %}
 Affichez l'aide de la fonction print dans la console.
@@ -69,7 +70,7 @@ Help on built-in function print in module builtins:
 
 print(...)
     print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
-    
+
     Prints the values to a stream, or to sys.stdout by default.
     Optional keyword arguments:
     file:  a file-like object (stream); defaults to the current sys.stdout.
@@ -84,6 +85,41 @@ Si votre fenêtre est trop petite, l'affichage peut être différent.
 {% endinfo %}
 
 {% enddetails %}
+
+À retenir : Les fonctions sont des objets pouvant être exécuté, c'est à dire que faire suivre l'objet de parenthèses va effectuer une action. Tout comme pour les variables, le nom de la fonction n'est qu'un moyen d'y accéder. On peut par exemple tout à fait écrire :
+
+```python
+>>> écrire = print
+>>> écrire("coucou")
+coucou
+>>>
+```
+
+### Retour de fonction
+
+L'exécution de toute fonction va retourner un objet. C'est parfois utile (comme [abs](https://docs.python.org/3/library/functions.html#abs)) :
+
+```python
+>>> x = abs(-10)
+>>> print(x)
+10
+```
+
+Parfois inutile (comme avec la fonction `print`{.language-}) et dans ce cas là on a coutume de renvoyer l'objet vide, `None`{.language-} :
+
+```python
+>>> x = print("coucou")
+coucou
+>>> print(x)
+None
+```
+
+Notez bien que l'exécution de la fonction `print`{.language-} qui affiche quelque chose à l'écran (ici `coucou`{.language-}) est différent de son résultat (ici `None`{.language-})
+
+Enfin, comme ici on exécute notre code directement dans l'interpréteur python, le résultat de chaque fonction est également affiché à l'écran, sauf :
+
+- si l'instruction est une affectation (c'est pour ça que l'interpréteur n'affiche pas `-10`{.language-} après l'instruction `x = abs(-10)`{.language-} alors qu'il l'affiche après l'instruction `abs(-10)`{.language-})
+- si le résultat est `None`{.language-} (c'est pour ça que l'interpréteur n'affiche rien après l'instruction `None`{.language-} ni après après avoir affiché `coucou`{.language-} après l'exécution de la fonction `print("coucou")`{.language-})
 
 ### <span id="paramètres"></span> Paramètres d'une fonction
 
@@ -112,7 +148,7 @@ Les paramètres d'une fonctions doivent être mis dans cet ordre :
 1. **tous** les paramètres sans valeurs par défaut dans l'ordre de la définition
 2. **puis** les paramètres optionnels utilisés sans nom, dans l'ordre de leurs définitions
 3. **puis** les paramètres optionnels utilisés avec leur nom (`nom=valeur`{.language-}) que l'on peut les mettre dans n'importe quel ordre.
-{% endnote %}
+   {% endnote %}
 
 {% info %}
 La fonction print n'a pas de nombre déterminé de paramètres sans valeurs par défaut (il y a un `...`), la règle 2 ne s'applique donc pas pour print.
@@ -150,14 +186,16 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 
 1. crochets extérieurs absents : `complex()`{.language-}
 
-    ```python
-    >>> complex()
-    0j
-    ```
+   ```python
+   >>> complex()
+   0j
+   ```
 
-    On vient de créer le complexe nul.
+   On vient de créer le complexe nul.
+
 2. crochets extérieurs présents : `complex(real[, imag])`{.language-}. On a à nouveau deux choix :
-   1. crochets absents :  `complex(real)`{.language-}
+
+   1. crochets absents : `complex(real)`{.language-}
 
       ```python
       >>> complex(1)
@@ -166,62 +204,18 @@ C'est **un raccourci d'écriture**, ce n'est pas une structure python. Cela sign
 
    2. crochets présents : `complex(real, imag)`{.language-}
 
-        ```python
-        >>> complex(1, 2)
-        (1+2j)
-        ```
+      ```python
+      >>> complex(1, 2)
+      (1+2j)
+      ```
 
-### Fonctions usuelles
+## Nom d'une classe comme fonction
 
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html>
-{% endlien %}
+`int`{.language-}, `float`{.language-}, `complex`{.language-}, `str`{.language-} et `bool`{.language-} permettent de créer des objets du nom du type. Ces classes peuvent être exécutées.
 
-Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
-
-#### <span id="print"></span> Fonction `print`{.language-}
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#print>
-{% endlien %}
-
-Affiche à l'écran ses paramètres.
-
-#### Fonction `type`{.language-}
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#type>
-{% endlien %}
-
-Donne le type d'un objet.
-
-{% info %}
-On l'a utilisée dans la partie [objets types et types d'objets](../principes/objets-types){.interne}.
-{% endinfo %}
-
-#### <span id="len"></span> Fonction `len`{.language-}
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/library/functions.html#len>
-{% endlien %}
-
-Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../structurer-son-code/conteneurs){.interne} que l'on verra plus tard).
-
-{% exercice %}
-Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
-{% endexercice %}
-{% details "solution" %}
-
-```python
->>> len("anticonstitutionnellement")
-25
-```
-
-{% enddetails %}
-
-### Nom d'une classe comme fonction
-
-`int`{.language-}, `float`{.language-},  `complex`{.language-}, `str`{.language-} et `bool`{.language-} permettent de créer des objets du nom du type.
+{% note %}
+En python les fonctions ne sont pas les seules objets pouvant être exécuté. En particulier l'exécution d'une classe permet de créer des objets de ce type.
+{% endnote %}
 
 On a déjà vu cette possibilité dans la partie [objets types et types d'objets](../principes/objets-types){.interne}, c'est très utile pour changer un objet de classe. Mais utilisons ce qu'on a vu maintenant pour aller plus loin :
 
@@ -253,7 +247,55 @@ En utilisant le fait que la fonction `len(chaîne_de_caractères)`{.language-} d
 
 {% enddetails %}
 
-#### <span id="input"></span> Fonction `input`{.language-}
+## Fonctions usuelles
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html>
+{% endlien %}
+
+Certaines sont plus utiles que d'autres. Nous allons en citer certaines, parmi les plus utilisées.
+
+### <span id="print"></span> Fonction `print`{.language-}
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html#print>
+{% endlien %}
+
+Affiche à l'écran ses paramètres.
+
+### Fonction `type`{.language-}
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html#type>
+{% endlien %}
+
+Donne le type d'un objet.
+
+{% info %}
+On l'a utilisée dans la partie [objets types et types d'objets](../principes/objets-types){.interne}.
+{% endinfo %}
+
+### <span id="len"></span> Fonction `len`{.language-}
+
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/library/functions.html#len>
+{% endlien %}
+
+Rend le nombre d'éléments d'une chaîne de caractères (et plus généralement d'[un conteneur](../structurer-son-code/conteneurs){.interne} que l'on verra plus tard).
+
+{% exercice %}
+Quel est le nombre de caractères du mot "anticonstitutionnellement" ?
+{% endexercice %}
+{% details "solution" %}
+
+```python
+>>> len("anticonstitutionnellement")
+25
+```
+
+{% enddetails %}
+
+### <span id="input"></span> Fonction `input`{.language-}
 
 {% lien "**Documentation**" %}
 <https://docs.python.org/fr/3/library/functions.html#input>
@@ -279,13 +321,13 @@ Tout ce qui vient de l'utilisateur est une **chaîne de caractère**. Si l'on ve
 Les méthodes sont un autre moyen d'agir sur un objet. On les utilise de cette façon :
 
 ```python
-objet.méthode(paramètre 1, paramètre 2, ..., paramètre n)
+objet.méthode(paramètre_1, paramètre_2, ..., paramètre_n)
 ```
 
 On applique `méthode`{.language-} à `objet`{.language-} en utilisant les paramètres de la méthode.
 
 {% note "Utilisation des méthodes d'une classe" %}
-Supposons que l'on ait un objet de nom `objet`{.language-} et une méthode nommée `méthode`{.language-} associée au type de l'objet de nom  `objet`{.language-}.
+Supposons que l'on ait un objet de nom `objet`{.language-} et une méthode nommée `méthode`{.language-} associée au type de l'objet de nom `objet`{.language-}.
 
 L'instruction `objet.méthode()`{.language-} exécutera la méthode `méthode`{.language-} pour l'objet `objet`{.language-}. Si la méthode nécessite des paramètres, ils seront placés à l'intérieur de la parenthèse, séparés par des virgules. Par exemple `objet.méthode(paramètre_1, paramètre_2)`{.language-}.
 {% endnote %}
@@ -343,9 +385,9 @@ Dans un interpréteur :
 {% exercice %}
 Avec le mot "choucroute garnie" et les méthodes [`count`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.count), [`index`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.index) et [`rindex`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#str.rindex) :
 
-* combien y a-t-il de "ou" ?
-* quel est l'indice du premier "e" ?
-* quel est l'indice du dernier "e" ?
+- combien y a-t-il de "ou" ?
+- quel est l'indice du premier "e" ?
+- quel est l'indice du dernier "e" ?
 
 {% endexercice %}
 {% details "solution" %}
@@ -367,15 +409,30 @@ On peut chaîner les méthodes, la sortie d'une méthode devenant l'entrée de l
 objet.méthode_1().méthode_2()
 ```
 
-Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-}
+Signifie que méthode2() est appliquée à l'objet résultat de `objet.méthode_1()`{.language-}.
 
-Et avec $n$ méthodes :
+{% note %}
+L'application des méthodes est **associative à gauche**.
+
+```python
+objet.méthode_1().méthode_2()
+```
+
+est équivalent à :
+
+```python
+(objet.méthode_1()).méthode_2()
+```
+
+{% endnote %}
+
+Ceci se généralise avec $n$ méthodes :
 
 ```python
 objet.méthode_1().méthode_2(). ... .méthode_n()
 ```
 
-Signifie que `méthode_n()`{.language-} est appliquée au résultat de `objet.méthode_1(). ... .méthode_n-1()`{.language-}
+La méthode `méthode_n()`{.language-} est appliquée au résultat de `objet.méthode_1(). ... .méthode_n-1()`{.language-}
 
 {% exercice %}
 Que fait :
@@ -387,6 +444,12 @@ str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")
 {% endexercice %}
 {% details "solution" %}
 
+De part l'associativité à gauche, la commande précédente est équivalente à :
+
+```python
+((str(2 ** 44497 - 1).replace("2","x")).replace("7","2")).replace("x","7")
+```
+
 Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
 
 1. `replace("x","7")`{.language-} est appliqué à ce qui est à sa gauche donc `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-}
@@ -395,7 +458,7 @@ Il est aisé de comprendre ce que ça fait en procédant de droite à gauche :
 
 En remontant les opérations précédentes :
 
-1. le résultat de `str(2 ** 44497 - 1)`{.language-}  sera une chaîne de caractère représentant le 27ème nombre premier de Mersenne
+1. le résultat de `str(2 ** 44497 - 1)`{.language-} sera une chaîne de caractère représentant le 27ème nombre premier de Mersenne
 2. `str(2 ** 44497 - 1).replace("2","x")`{.language-} on a remplacé les 2 par des "x" dans la chaîne précédente
 3. `str(2 ** 44497 - 1).replace("2","x").replace("7","2")`{.language-} on a remplacé les 7 par des 2 de la chaîne précédente
 4. `str(2 ** 44497 - 1).replace("2","x").replace("7","2").replace("x","7")`{.language-} on a remplacé les "x" par des 2 dans la chaîne précédente
@@ -415,7 +478,7 @@ Ne confondez pas fonctions et méthodes. Une fonction s'exécute toute seule alo
 COUCOU !
 ```
 
-La première ligne crée une chaîne de caractères. La seconde instruction est une *méthode* (`upper`{.language-}) qui s'applique à l'objet de nom `ma_chaîne`{.language-} et qui n'a pas de paramètre.
+La première ligne crée une chaîne de caractères. La seconde instruction est une _méthode_ (`upper`{.language-}) qui s'applique à l'objet de nom `ma_chaîne`{.language-} et qui n'a pas de paramètre.
 
 {% info %}
 On peut voir les méthodes comme des fonctions définies dans l'espace de nom de l'objet.
@@ -423,7 +486,7 @@ On peut voir les méthodes comme des fonctions définies dans l'espace de nom de
 
 ## Attributs d'une classe
 
-C'est plus rare, mais certaines classes possèdent  des également des *attributs* en plus des méthodes. Ce sont des valeurs associées à l'objet.
+C'est plus rare, mais certaines classes possèdent des également des _attributs_ en plus des méthodes. Ce sont des valeurs associées à l'objet.
 
 Par exemple les objets de la classe `complex`{.language-} qui possède les attributs `real`{.language-} et `imag`{.language-} pour rendre la partie réelle et imaginaire d'un complexe.
 

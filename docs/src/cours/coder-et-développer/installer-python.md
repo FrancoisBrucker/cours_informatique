@@ -28,58 +28,7 @@ Chaque année sort une nouvelle version de python (voir les différentes [versio
 La version majeur actuelle de python est 3, il n'y pas prévu d'en changer avant un certain temps.
 {% endinfo %}
 
-### <span id="installation-développement"></span>Installation pour le développement
-
-Cette partie concerne les personnes voulant coder avec python. Il pourra être utile que vous commenciez par vous familiariser avec votre système avant de procéder à l'installation :
-
-{% details "sous Windows 11" %}
-Utilisez le Microsoft store.
-
-{% lien %}
-[Tutoriel d'installation](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
-{% endlien %}
-{% enddetails %}
-
-{% details "sous Linux/Ubuntu" %}
-Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
-
-```
-sudo apt install python3-pip
-```
-
-De plus, le python d'installé ne contient pas non plus le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
-
-Pour installer une version de python avec Tkinter, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
-
-```
-sudo apt install python3-tk
-```
-
-Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez installer :
-
-```
-sudo apt install python-is-python3
-```
-
-Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpréteur python,
-{% enddetails %}
-
-{% details "sous Macos" %}
-De même que sous Linux/Ubuntu, python est installé par défaut, mais pas le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
-
-Il va falloir installer python avec [brew](../ordinateur-développement/brew){.interne} puis. Dans [un terminal](../ordinateur-développement/terminal){.interne} tapez :
-
-```
-brew install python-tk
-```
-
-Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez taper dans un terminal :
-
-```shell
-echo "alias python=python3" >> ~/.zshrc
-```
-
-{% enddetails %}
+> TBD dire que python est déjà installé et renvoyer à la partie installation si nécessaire.
 
 ### <span id="quel-python-jai"></span> J'ai quoi comme python ?
 

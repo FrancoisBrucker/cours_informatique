@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Modules
 
 eleventyComputed:
@@ -13,13 +13,7 @@ eleventyComputed:
 Utilisez un notebook de <https://notebook.basthon.fr/> pour exécuter les divers exemples et exercices
 {% endinfo %}
 
-<!-- début résumé -->
-
-Import et utilisation des modules en python.
-
-<!-- fin résumé -->
-
-Un *module* (aussi appelé *bibliothèque* ou *library*) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
+Un _module_ (aussi appelé _bibliothèque_ ou _library_) est un ensemble de fonctions utiles, utilisables dans de nombreux programmes. Plutôt que de refaire à chaque fois ces fonctions ou (c'est pire) de les copier/coller dans chaque programme, on les importe directement pour les utiliser.
 
 Certains modules sont très utiles en python scientifique :
 
@@ -33,7 +27,7 @@ Ils ne viennent pas automatiquement lorsque l'on installe python, mais beaucoup 
 
 {% note %}
 Il existe de nombreux modules, réalisant une foultitude d'opérations. Avant de se mettre à coder quelque chose, commencez toujours par vérifier (google
- est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de [nombreux](https://docs.python.org/3/library/index.html)
+est votre ami) s'il n'existe pas un module tout fait, vous gagnerez du temps. Python en fournit déjà de [nombreux](https://docs.python.org/3/library/index.html)
 {% endnote %}
 
 ## Utiliser un module
@@ -48,8 +42,8 @@ On met le nom complet avant chaque appel :
 
 ```python
 import math
-pi_sur_deux = math.pi / 2 
-x = math.cos(pi_sur_deux) 
+pi_sur_deux = math.pi / 2
+x = math.cos(pi_sur_deux)
 ```
 
 Lors de la ligne `import math`{.language-} python crée un espace de nom qu'il appelle `math`{.language-}. Il lit ensuite math avec cet espace de nom. Donc tout ce qui est défini dans math, le sera dans l'espace de nom nommé `math`. On accède ensuite aux noms de math par la notation `.`.

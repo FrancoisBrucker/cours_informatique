@@ -4,7 +4,7 @@ title: Classes et objets
 
 eleventyNavigation:
   prerequis:
-    - "../../mémoire-espace-noms/"
+    - "../../mémoire-espace-nommage/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -18,7 +18,7 @@ Un objet est un bout de code auquel est associé :
 - des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
 - des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
 
-Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../mémoire-espace-noms#espace-noms){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
+Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../mémoire-espace-nommage#espace-nommage){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
 
 ## Classes et objets
 
@@ -41,7 +41,7 @@ Pour résumer, une classe :
 Un objet issu d'une certaine classe :
 
 - possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses **attributs**
-- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via la [notation pointée](../../mémoire-espace-noms#notation-pointée){.interne} : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
+- possède un lien vers les **méthodes** (définies dans sa classe) qu'il peut utiliser via la [notation pointée](../../mémoire-espace-nommage#notation-pointée){.interne} : `objet.méthode(paramètre_1, ..., paramètre_n)`{.language-}
 
 ### But
 
@@ -181,7 +181,7 @@ La méthode `__init__`{.language-} n'a pas de `return`{.language-}, mais elle es
 
 #### Espace de noms (namespaces)
 
-La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-noms#espace-noms){.interne}. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
+La gestion des noms en python se fait via des [espaces de noms](../../mémoire-espace-nommage#espace-nommage){.interne}. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.
 
 #### Processus de création d'un objet
 

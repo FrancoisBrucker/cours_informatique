@@ -13,6 +13,8 @@ Une fonction est un bloc de code exécutable. On peut lui associer un nom et ex�
 
 Il n'est jamais bon de copier/coller un bout de programme qui se répète plusieurs fois (corriger un problème dans ce bout de code reviendrait à le corriger autant de fois qu'il a été dupliqué... si on se rappelle des endroits où il l'a été). Il est de plus souvent utile de séparer les éléments logiques d'un programme en unités autonomes, ceci rend le programme plus facile à relire.
 
+> TBD espace de nommage et `vars()` pour avoir l'espace actuel.
+
 ## Définition d'une fonction
 
 {% note %}
@@ -421,3 +423,104 @@ La plupart du temps, pour de petits programme, ce genre de précision n'est pas 
 Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langage que python... Plus adapté au développement de grosses applications comme le java ou encore le rust.
 
 {% endinfo %}
+
+
+## Espace de nommage et fonctions
+
+> TBD à faire propre
+
+## Port d'attache d'un espace de noms
+
+Les espaces de noms sont des objets spéciaux qui ne peuvent vivre indépendamment. Il sont toujours rattachés à leur contexte qui est soit :
+
+- le programme principal : c'est le cas de l'espace de nom globals
+- une fonction : crée lors de l'appel d'une fonction pour gérer ses paramètre et variables locales.
+- un module : les espaces de noms crées après un import
+
+### Fonctions
+
+L'exécution d'une fonction est un moment où un espace de noms est créé. Cela se passe selon le processus suivant :
+
+{% note %}
+Lorsque l'on exécute une fonction on procède comme suit :
+
+1. on crée un nouvel espace de noms $F$
+2. l'espace de noms courant est affecté au parent de $F$
+3. $F$ devient le nouvel espace de noms courant.
+4. on affecte les paramètres de la fonction à leurs noms
+5. on exécute ligne à ligne la fonction
+6. le parent de $F$ devient le nouvel espace de noms courant
+7. on supprime l'espace de noms $F$
+
+{% endnote %}
+
+#### Exécution d'une fonction
+
+```python/
+def f(x):
+   i = 2 * x
+   return i + 3
+
+i = 2
+x = f(i)
+```
+
+Exécutons le ligne à ligne :
+
+1. avant l'exécution de la première ligne :
+   1. on a un unique espace de noms (`global`) qui est l'espace courant (en vert sur la figure)
+      ![cas-1-1](cas-1-1.png)
+2. la ligne 2 définit une fonction de nom `f`{.language-} qui est ajouté à l'espace de noms courant.
+   ![cas-4-1](cas-4-1.png)
+3. on passe directement à la ligne 5 puisque les lignes 3 et 4 sont le contenu de la fonction.
+   1. Cette ligne crée un objet entier (valant 2) et l'affecte au nom `i`{.language-}.
+      ![cas-4-2](cas-4-2.png)
+4. la ligne 6 est encore une affectation. On commence par trouver l'objet à droite du `=` c'est le résultat de `f(i)`{.language-}. Il faut donc exécuter la fonction `f`{.language-} pour connaître cet objet :
+   1. on cherche l'objet associé à `i`{.language-} qui sera le (premier) paramètre de la fonction
+   2. on crée un espace de noms qui devient l'espace de noms courant :
+      1. l'ancien espace de noms courant devient son parent
+         ![cas-4-3](cas-4-3.png)
+   3. on affecte le premier paramètre de `f`{.language-} au nom `x`{.language-} (le nom du premier paramètre de `f`{.language-} lors de sa définition)
+      1. les nouveaux noms sont **toujours** créés dans l'espace de noms courant
+         ![cas-4-4](cas-4-4.png)
+   4. on exécute la ligne 2 qui est la première ligne de la fonction `f`{.language-} :
+      1. on crée un objet entier (valant 4) qui est le résultat de l'opération à droite du `=`{.language-} (notez que le nom `x`{.language-} est bien défini dans l'espace de noms courant) et on l'affecte au nom `i`{.language-} dans l'espace de noms courant
+         ![cas-4-5](cas-4-5.png)
+   5. on exécute la ligne 3 :
+      1. on crée l'objet résultant de l'opération somme (un entier valant 7)
+      2. la fonction est terminée, son espace de noms courant est détruit
+      3. l'espace de noms courant devient le parent de l'espace de noms détruit
+         ![cas-4-6](cas-4-6.png)
+      4. on rend l'objet résultat de la fonction
+   6. la droite du signe `=`{.language-} de la ligne 6 est trouvée (c'est un entier valant 7) et il est affecté à la variable `x`{.language-} de l'espace de noms courant (qui est à nouveau `global`)
+      1. ![cas-4-7](cas-4-7.png)
+      2. les objets sans nom sont détruits
+         ![cas-4-8](cas-4-8.png)
+
+#### Espaces de noms parent
+
+L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de noms courant :
+
+{% note %}
+Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.
+{% endnote %}
+
+```python/
+def f(x):
+   i = C * x
+   return i + 3
+
+C = 2
+i = 2
+x = f(i)
+```
+
+Lors de l'exécution de la fonction `f`{.language-} (instruction de la ligne 7), sa première ligne cherche la variable nommée `C`{.language-}. On se trouve dans cet état là :
+
+![cas-5-1](cas-5-1.png)
+
+La variable `C`{.language-} n'existe pas dans l'espace de noms courant (celui de `f`{.language-}), le programme va alors chercher dans l'espace de noms parent s'il existe. Ici c'est le cas puisque l'espace parent de `f`{.language-} est `global` dans lequel `C`{.language-} est défini : le programme ne produit donc pas une erreur et trouve le bon objet.
+
+{% note %}
+Les variables sont **toujours** créées dans l'espace de noms courant, mais leur recherche remonte de parent en parent jusqu'à la trouver.
+{% endnote %}

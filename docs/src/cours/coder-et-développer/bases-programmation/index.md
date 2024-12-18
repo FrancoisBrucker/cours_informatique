@@ -1,10 +1,10 @@
 ---
 layout: layout/post.njk
 
-title: Bases du langage python
+title: Bases de programmation et du langage python
 authors:
-    - François Brucker
-    - Pierre Brucker
+  - François Brucker
+  - Pierre Brucker
 
 eleventyComputed:
   eleventyNavigation:
@@ -13,31 +13,19 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation [python](https://fr.wikipedia.org/wiki/Python_(langage)) dont le site est : <https://www.python.org/>
+Nous montrerons dans ce cours les bases du codage en utilisant le langage de programmation [python](<https://fr.wikipedia.org/wiki/Python_(langage)>) dont le site est : <https://www.python.org/>
 
 Nous verrons comment est structuré un langage informatique et comment écrire puis exécuter du code.
 
 Ce n'est pas un cours d'informatique proprement dit, nous ne ferons quasiment pas d'algorithmie par exemple et il n'y a aucun prérequis informatique à avoir. Le but est de pouvoir exécuter (de la façon la plus optimale possible) des lignes de code pour obtenir un résultat concret (qui n'aura souvent rien à voir avec de l'informatique).
 
-<!-- fin résumé -->
-
-## Principes de Python
+## Partie I : principes
 
 Avant d'écrire des programmes en python, on commence par s'intéresser à ses mécanismes internes en comprenant ce qu'est une instruction python et ce que'on peut faire avec.
 
 {% aller %}
 [Principes](principes){.interne}
 {% endaller %}
-
-Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
-
-{% aller %}
-[Fonctions et méthodes](fonctions-méthodes){.interne}
-{% endaller %}
-
-## Écrire pour un interpréteur python
 
 Écrire directement à l'interpréteur comme on l'a fait jusqu'à présent est faisable lorsque l'on a besoin de n'écrire qu'une ligne de python à la fois, mais lorsque l'on veut faire des choses plus compliquées comme créer des tests ou effectuer des boucles, il faut des outils plus perfectionnés.
 
@@ -61,51 +49,121 @@ Spyder est un éditeur lié à un interpréteur python. L'application est très 
 
 > TBD : un petit tuto.
 
-### Vscode
+### Utiliser le module matplotlib
 
-> TBD installer un interpréteur (Microsoft Store ou utiliser ceux déjà sur le système). On y reviendra (cite). Ici juste coder un peu.
-> installation module python.
+Installé avec la plupart des environnements fournissant un interpréteur, le module matplotlib est devenu un standard de fait (pour le meilleur et surtout le pire) pour représenter des graphiques.
 
-> TBD le triangle
-> TBD les projets et les projets/fichiers (ne pas oublier de sauver)
+{% aller %}
+[Tutoriel Matplotlib](matplotlib){.interne}
+{% endaller %}
 
-## Utilisation de modules
+Si vous avez le choix, je conseille plutôt d'utiliser [le module seaborn](https://seaborn.pydata.org/) pour dessiner vos graphique. Mais comme ce module est basé sur matplotlib, une connaissance minimale de matplotlib, comme le donne le tutoriel précédent est tout de même nécessaire.
 
-### <span id="espace-nom"></span> Espace de nom
+## Partie II : coder en python
 
-Un **espace de noms** est un endroit où python stocke les variables. Une variable est un nom d'un espace de noms.
+Nous avons pour l'instant utilisé python pour exécuter des instructions ou des fonctions. Ceci permet déjà d'utiliser python mais va se révéler rapidement limitant lorsque l'on voudra effectuer des tâches plus complexes ou tout simplement non prévue par les modules.
 
-Les espaces de noms sont hiérarchisées et tout en haut se trouve l'espace de nom **global** qui est créé lorsque l'interpréteur est lancé.
+Coder en python (ou en tout autre langage) ce cependant nécessiter des connaissances (un peu) plus poussées et des outils dédiées au code. Nous irons plus loin plus tard.
 
-> TBD reprendre les exemples d'avant.
+### <span id="installation-développement"></span>Installer et utiliser un interpréteur
 
-> TBD python va créer des espaces
+Commençons par installer un interpréteur indépendant de l'application utilisée pour coder. Selon le système d'exploitation, la méthode d'installation est un peu différente :
 
-### Utiliser des modules
+{% details "sous Windows 11" %}
+Utilisez le Microsoft store.
 
-> TBD ici utilisation de modules python (retirer de structurer son code). Parler d'espace de noms
+{% lien %}
+[Tutoriel d'installation](https://learn.microsoft.com/fr-fr/windows/python/beginners#install-python)
+{% endlien %}
+{% enddetails %}
 
+{% details "sous Linux/Ubuntu" %}
+Python est installé par défaut, mais il ne contient pas le module pip permettant d'installer de nouveaux modules à python. Pour installer pip, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
 
-## Structurer du code
+```
+sudo apt install python3-pip
+```
 
-Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules) ou de données (conteneurs).
+De plus, le python d'installé ne contient pas non plus le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
+
+Pour installer une version de python avec Tkinter, tapez dans [un terminal](../ordinateur-développement/terminal){.interne} :
+
+```
+sudo apt install python3-tk
+```
+
+Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez installer :
+
+```
+sudo apt install python-is-python3
+```
+
+Vous pourrez uniquement taper `python` dans un terminal pour exécuter l'interpréteur python,
+{% enddetails %}
+
+{% details "sous Macos" %}
+
+De même que sous Linux/Ubuntu, python est installé par défaut, mais pas le module [Tkinter](https://docs.python.org/fr/3/library/tkinter.html). Ceci pose des problèmes lorsque l'on veut utiliser le [module turtle](https://docs.python.org/fr/3/library/turtle.html).
+
+Il va falloir installer python avec [brew](../ordinateur-développement/brew){.interne} puis. Dans [un terminal](../ordinateur-développement/terminal){.interne} tapez :
+
+```
+brew install python-tk
+```
+
+Enfin, la commande pour taper python est `python3`. Pour avoir le même comportement que sous windows où cette commande s'appelle juste `python`, vous pouvez taper dans un terminal :
+
+```shell
+echo "alias python=python3" >> ~/.zshrc
+```
+
+{% enddetails %}
+
+Une fois l'interpréteur installé, on va l'utiliser _via_ [un IDE](https://fr.wikipedia.org/wiki/Environnement_de_d%C3%A9veloppement). Il existe plusieurs choix possible, mais le plus utilisé actuellement est vscode :
+
+{% aller %}
+[Éditeur vscode](éditeur-vscode){.interne}
+{% endaller %}
+
+Un interpréteur tout neuf vient presque nu. Il ne possède aucun des modules mis à disposition d'environnement tels que anaconda ou Spyder. Mais ce n'est pas grave, nous allons les installer nous même !
+
+{% aller %}
+[Installer des modules](modules-python){.interne}
+{% endaller %}
+
+### Structurer du code
+
+Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules).
+
+> TBD blocs, conditions et boucles
 
 {% aller %}
 [Structurer son code](structurer-son-code){.interne}
 {% endaller %}
 
-> TBD exercice avec fonctions, méthodes et listes
+> TBD exercice méthodes et listes
 
-## Mutable vs non-mutable
+## <span id="conteneurs"></span> Conteneurs
 
-> TBD mettre les dessins avec espaces de noms
+### Liste, ensembles et dictionnaire Conteneurs
 
-Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira ***non mutables***). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
+Les conteneurs sont des objets contenant d'autres objets. Ils permettent de structurer ses données.
+
+{% aller %}
+[Conteneurs](conteneurs){.interne}
+{% endaller %}
+
+### mutable et non mutable
+
+> TBD mettre les dessins avec espaces de nommage.
+> TBD donner les contrepartie non mutable des types de données. Ensemble des ensemble d'ensembles et des clés de dictionnaire sous la forme de tuples.
+
+Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira **_non mutables_**). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
 - si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
 - `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
 
-Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira ***mutables***), c'est à dire que leurs méthodes peuvent les modifier :
+Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira **_mutables_**), c'est à dire que leurs méthodes peuvent les modifier :
 
 - `l.append("x")`{.language-} modifiera la liste `l`{.language-}
 - `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
@@ -179,7 +237,7 @@ On peut alors utiliser des tuples et des `frozenset`{.language-} comme élément
 Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 
 ```python
->>> x = {frozenset(), frozenset([1]), frozenset([2]), frozenset([1, 2])} 
+>>> x = {frozenset(), frozenset([1]), frozenset([2]), frozenset([1, 2])}
 >>> x
 {frozenset(), frozenset({2}), frozenset({1}), frozenset({1, 2})}
 ```
@@ -187,11 +245,3 @@ Par exemple l'ensemble de tous les sous-ensemble de ${1, 2}$ s'écrira :
 {% info %}
 Le tuple vide s'écrira `(,)`{.language-} (ou `tuple()`{.language-}) pour la différentier la notation `()`{.language-} qui est la parenthèse vide.
 {% endinfo %}
-
-### Notation `.`{.language-}
-
-On l'a vue pour les méthodes et les modules. De façon générale la notation `A.B`{.language-} : se lit ainsi on cherche le nom `B`{.language-} dans l'espace de nom `A`{.language-}.
-
-{% note %}
-Une méthode n'est rien d'autre qu'un nom appelable dans l'espace de nom de l'objet à gauche du point
-{% endnote %}

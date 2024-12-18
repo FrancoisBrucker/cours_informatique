@@ -18,7 +18,7 @@ Les modules python sont des fichiers (on l'a vu) ou des dossiers (on le verra) q
 import math
 ```
 
-L'importation du module crée, comme on l'a vu, [des espaces de noms](../espace-noms){.interne} utilisables dans le programme qui importe :
+L'importation du module crée, comme on l'a vu, [des espaces de noms](../espace-nommage){.interne} utilisables dans le programme qui importe :
 
 ```python
 import math

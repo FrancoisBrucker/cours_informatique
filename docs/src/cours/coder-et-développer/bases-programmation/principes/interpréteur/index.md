@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Interpréteur
 
 eleventyComputed:
@@ -9,15 +9,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 L'interpréteur python comme intermédiaire entre le code python et son exécution.
-
-<!-- fin résumé -->
 
 ## L'interpréteur est un intermédiaire
 
-Tout code python est exécuté *via* un interpréteur dont le but est de transformer le code python en code machine.
+Tout code python est exécuté _via_ un interpréteur dont le but est de transformer le code python en code machine.
 
 Ceci se fait **toujours** comme suit :
 
@@ -26,13 +22,13 @@ Ceci se fait **toujours** comme suit :
 3. une fois la ligne exécutée, l'interpréteur redonne la main à l'utilisateur
 4. retour à l'étape 1.
 
-Tant que l'interpréteur est actif, un mécanisme de stockage permet de conserver des ***objets*** pour une utilisation future via des ***variables***.
+Tant que l'interpréteur est actif, un mécanisme de stockage permet de conserver des **_objets_** pour une utilisation future via des **_variables_**.
 
 {% note %}
 L'interpréteur python est **toujours** présent lorsque l'on exécute du code python.
 {% endnote %}
 
-IL y a plusieurs façon d'exécuter du code python, celle qui montre le plus explicitement l'interpréteur est l'***exécution en mode console***.
+IL y a plusieurs façon d'exécuter du code python, celle qui montre le plus explicitement l'interpréteur est l'**_exécution en mode console_**.
 
 {% faire "Allez sur le site <https://basthon.fr/> et choisissez *menu console > python*" %}
 
@@ -43,15 +39,15 @@ Vous devriez avoir quelque chose du genre :
 
 ![console python](console-1.png)
 
-Intéressons nous pour l'instant à la partie de droite nommée la ***console*** :
+Intéressons nous pour l'instant à la partie de droite nommée la **_console_** :
 
-* l'interpréteur python utilisé est 3.8.2
-* le ***prompt*** (les `>>>`) indique que l'on peut écrire une ligne de code
+- l'interpréteur python utilisé est 3.8.2
+- le **_prompt_** (les `>>>`) indique que l'on peut écrire une ligne de code
 
 Allons-y ! Exécutons notre premier programme :
 
 {% faire %}
-A droite du prompt, écrivez le code `print("Bonjour monde !")`{.language-} puis appuyez sur la touche *entrée*.
+A droite du prompt, écrivez le code `print("Bonjour monde !")`{.language-} puis appuyez sur la touche _entrée_.
 {% endfaire %}
 
 Vous devriez obtenir quelque chose du type :
@@ -59,20 +55,20 @@ Vous devriez obtenir quelque chose du type :
 ![hello world](console-2.png)
 
 {% info %}
-Si vous n'obtenez pas ça, vous pouvez toujours recharger la page (*menu afficher > actualiser cette page* avec le navigateur chrome) pur recommencer avec un interpréteur vierge.
+Si vous n'obtenez pas ça, vous pouvez toujours recharger la page (_menu afficher > actualiser cette page_ avec le navigateur chrome) pur recommencer avec un interpréteur vierge.
 {% endinfo %}
 
 Ce qu'il s'est passé :
 
 1. vous avez écrit une ligne de code dans la console
-2. en appuyant sur la touche *entrée*, celle-ci a transmis la ligne à l'interpréteur
+2. en appuyant sur la touche _entrée_, celle-ci a transmis la ligne à l'interpréteur
 3. l'interpréteur à exécuté la ligne de code (son résultat est affiché)
 4. une fois le code exécuté, la console reprend la main (le prompt a réapparu) et on peut recommencer en 1.
 
-Ne nous arrêtons pas en si bon chemin et écrivons *plusieurs* lignes de code.
+Ne nous arrêtons pas en si bon chemin et écrivons _plusieurs_ lignes de code.
 
 {% faire %}
-Dans la partie *éditeur de code* de la fenêtre copiez/collez le code suivant :
+Dans la partie _éditeur de code_ de la fenêtre copiez/collez le code suivant :
 
 ```python
 print("Bonjour :")
@@ -81,7 +77,7 @@ print("* Pierre")
 print("* Odile")
 ```
 
-Puis appuyez sur le bouton *Exécutez*.
+Puis appuyez sur le bouton _Exécutez_.
 {% endfaire %}
 
 Vous devriez obtenir quelque chose du type :

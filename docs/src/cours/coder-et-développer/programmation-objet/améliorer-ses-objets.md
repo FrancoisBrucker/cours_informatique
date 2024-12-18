@@ -4,7 +4,7 @@ title: Améliorer ses objets
 
 eleventyNavigation:
   prerequis:
-    - "../../mémoire-espace-noms/"
+    - "../../mémoire-espace-nommage/"
 
 eleventyComputed:
   eleventyNavigation:

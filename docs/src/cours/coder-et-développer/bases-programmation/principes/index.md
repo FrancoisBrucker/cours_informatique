@@ -79,3 +79,27 @@ Créer de nouveaux objets avec d'autres objets.
 {% aller %}
 [Opérations sur les objets](opérations){.interne}
 {% endaller %}
+
+## Fonctions et méthodes
+
+Les fonctions et méthodes permettent d'utiliser les objets de python de façon pratique et puissante.
+
+{% aller %}
+[Fonctions et méthodes](fonctions-méthodes){.interne}
+{% endaller %}
+
+## Modules
+
+Les [modules](https://docs.python.org/fr/3/tutorial/modules.html) pythons sont des espaces de noms regroupant diverses fonctions pouvant être utilisées une fois _chargé_.
+
+{% aller %}
+[Modules](modules){.interne}
+{% endaller %}
+
+## Espace de nommage
+
+On a vu que les variables étaient des noms permettant d'acceder aux objets, qui sont les seules choses que l'on peut manipuler en python. Python stocke ces variables dans des [espaces de nommage](https://docs.python.org/fr/3.13/glossary.html#term-namespace) (_namespace_ en anglais)
+
+{% aller %}
+[Espace de nommage](espace-nommage){.interne}
+{% endaller %}

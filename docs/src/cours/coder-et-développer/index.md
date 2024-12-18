@@ -26,29 +26,11 @@ Aucune compétences en informatique préalable n'est nécessaire.
 
 ## <span id="bases"></span>Bases
 
-### Langage python
-
-Bases de la programmation sous la forme d'un tutoriel au langage python.
+### Programmation avec python
 
 {% aller %}
-[Bases de python](bases-python){.interne}
+[Bases de la programmation](bases-programmation){.interne}
 {% endaller %}
-
-> TBD : QCM sur les notions vues (variable, conteneurs, espace de noms)
-
-### Tutoriels
-
-#### Matplotlib
-
-{% aller %}
-[Tutoriel Matplotlib](/tutoriels/matplotlib){.interne}
-{% endaller %}
-
-{% info %}
-Pour aller plus loin, vous pouvez suivre le [cours d'analyse des données](/cours/analyse-données#pandas) sur l'utilisation de la bibliothèque d'analyse des données [pandas](https://pandas.pydata.org/).
-{% endinfo %}
-
-#### Python
 
 Une fois les bases acquises, terminez cette partie en faisant le tutoriel de python qui reprend tout ce que nous avons vu de façon plus détaillée :
 
@@ -80,6 +62,8 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 [Installer python](installer-python){.interne}
 {% endaller %}
 
+> TBD vscode terminal, installation de modules, etc.
+
 {% aller %}
 [Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
 {% endaller %}
@@ -101,13 +85,15 @@ Python gère les noms de variables via un concept appelé espace de noms. Il est
 {% aller %}
 > TBD : mettre espace de nom dans bases de python.
 
-[Espace de noms](espace-noms){.interne}
+[Espace de nommage](espace-nommage){.interne}
 
 > TBD exercices : variables locales vs globales/fonctions/ajout d'éléments dans une liste
 
 {% endaller %}
 
 Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seulement un excellent outil pour corriger son code, mais également un très bon outil d'apprentissage puisqu'il vous permettra d'assimiler plus rapidement ces notions de variables, d'objets et d'espaces de noms :
+
+> TBD ici versions de python
 
 {% aller %}
 [Déboguer son code](debugger){.interne}

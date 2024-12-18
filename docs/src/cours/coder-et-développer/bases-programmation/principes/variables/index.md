@@ -94,6 +94,8 @@ Le mécanisme d'affectation procède en 2 temps :
 
 {% endnote %}
 
+Pour exécuter une instruction, on commence **toujours** par remplacer les variables par les objets qu'elles référencent.
+
 Ce mécanisme d'affectation est puissant, il permet par exemple d'affecter plusieurs variables en même temps, comme le montre l’exemple suivant qui échange les objets des noms `i`{.language-} et `j`{.language-} :
 
 ```python/
@@ -143,6 +145,21 @@ Dans une console :
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 NameError: name 'x' is not defined
+```
+
+Notez bien que seule la variable est supprimée, pas l'objet associé. Considérons par exemple le code suivant, qui affecte le même objet aux variables `x`{.language-} et `y`{.language-} :
+
+```python
+>>> x = 1
+>>> y = x
+```
+
+Si on supprime la variable `x`{.language-} cela ne supprime pas l'objet (il est aussi affecté à la variable `y`{.language-}) :
+
+```python
+>>> del x
+>>> y
+1
 ```
 
 ## Exercices

@@ -111,7 +111,7 @@ Parties abordées :
 
 {% faire "**Prérequis**" %}
 
-Lire [Espace de noms](/cours/coder-et-développer/espace-noms/){.interne}
+Lire [Espace de noms](/cours/coder-et-développer/espace-nommage/){.interne}
 
 {% endfaire %}
 {% info %}
