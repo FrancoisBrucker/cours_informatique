@@ -108,7 +108,7 @@
 
       <ul>
             <li>
-              <a href="../../mémoire-espace-noms/">../../mémoire-espace-noms/</a>
+              <a href="../../mémoire-espace-nommage/">../../mémoire-espace-nommage/</a>
             </li></ul>
       
 
@@ -123,7 +123,7 @@
 <li>des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe</li>
 <li>des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.</li>
 </ul>
-<p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../m%C3%A9moire-espace-noms#espace-noms" class="interne">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
+<p>Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa <em>classe</em>. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les <a href="../../m%C3%A9moire-espace-nommage#espace-nommage" class="interne">espaces de noms</a> (<em>namespaces</em>). Cela lui permet de réutiliser le même code pour plusieurs objets.</p>
 <h2>Classes et objets</h2>
 <p>Lorsque l'on écrit du code python, on ne fait que manipuler des objets. Les entiers, les chaines de caractères et même les fonctions peuvent être considérées comme des objets.</p>
 <p>De façon générale, on peut définir un objet et une classe comme :</p>
@@ -144,7 +144,7 @@
 <p>Un objet issu d'une certaine classe :</p>
 <ul>
 <li>possède la même structure de données que les autres objets de la classe mais les valeurs de celle-ci lui sont uniques : ses <strong>attributs</strong></li>
-<li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via la <a href="../../m%C3%A9moire-espace-noms#notation-point%C3%A9e" class="interne">notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
+<li>possède un lien vers les <strong>méthodes</strong> (définies dans sa classe) qu'il peut utiliser via la <a href="../../m%C3%A9moire-espace-nommage#notation-point%C3%A9e" class="interne">notation pointée</a> : <code class="language-">objet.méthode(paramètre_1, ..., paramètre_n)</code></li>
 </ul>
 <h3>But</h3>
 <p>La programmation objet n'a pas pour but de révolutionner votre façon de programmer. Elle permet juste de bien mettre en œuvre les paradigmes de développement que l'on a vus jusqu'à présent. Il est fortement conseillé de <em>coder objet</em> car :</p>
@@ -291,7 +291,7 @@ NameError<span class="token punctuation">:</span> name <span class="token string
 </div></div>
 
 <h4>Espace de noms (namespaces)</h4>
-<p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-noms#espace-noms" class="interne">espaces de noms</a>. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
+<p>La gestion des noms en python se fait via des <a href="../../m%C3%A9moire-espace-nommage#espace-nommage" class="interne">espaces de noms</a>. L'ordre dans lequel ces noms sont cherchés pour être associés à un objet est logique et se règle en sachant quel namespace est utilisé.</p>
 <h4>Processus de création d'un objet</h4>
 <p>En python, on construit et rend un objet en <strong><em>appelant sa classe</em></strong>. Par exemple pour créer un objet de la classe <code class="language-">MaClasse</code>, on exécute l'instruction :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mon_objet <span class="token operator">=</span> MaClasse<span class="token punctuation">(</span>paramètre <span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> paramètre n<span class="token punctuation">)</span></code></pre>
