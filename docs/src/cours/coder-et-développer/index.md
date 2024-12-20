@@ -2,9 +2,9 @@
 layout: layout/post.njk
 
 title: Coder et développer
-tags: ['cours', 'code', 'python']
+tags: ["cours", "code", "python"]
 authors:
-    - François Brucker
+  - François Brucker
 
 resume: "Ce cours est dédié au code informatique. Comment l'écrire, le tester et l'exécuter."
 
@@ -15,8 +15,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
-Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple),
+Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple).
 
 On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.
 
@@ -53,9 +52,9 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 ### Installation d'un interpréteur
 
 Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
-Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est  indispensable de pouvoir :
+Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :
 
-1. créer un nouvel interpréteur python pour ***chaque*** exécution du programme.
+1. créer un nouvel interpréteur python pour **_chaque_** exécution du programme.
 2. écrire notre programme en-dehors de tout interpréteur
 
 {% aller %}
@@ -83,6 +82,7 @@ Python gère les noms de variables via un concept appelé espace de noms. Il est
 > TBD faire de petits programmes
 
 {% aller %}
+
 > TBD : mettre espace de nom dans bases de python.
 
 [Espace de nommage](espace-nommage){.interne}
@@ -103,22 +103,12 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 
 ## Gestion des dépendances
 
-On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)) pour installer des modules python comme [pytest](https://docs.pytest.org/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
+On a utilisé [pip](<https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets)>) pour installer des modules python comme [pytest](https://docs.pytest.org/) (voir [partie modules](installer-python/#modules){.interne}). Nous allons voir dans cette partie comment créer ses propres modules et la gestion des modules par projets.
 
 ### Un interpréteur par projet
 
 {% aller %}
 [Environnements virtuels](environnements-virtuels){.interne}
-{% endaller %}
-
-### Créer ses propres modules
-
-> TBD déjà vu ?
-> parler de module dossier avec `__init__.py` (vide. Le remplir est niveau 2)
-> référence dans le module
-
-{% aller %}
-[Modules python](modules-python){.interne}
 {% endaller %}
 
 ## Stockage des données
@@ -141,7 +131,6 @@ On a utilisé [pip](https://fr.wikipedia.org/wiki/Pip_(gestionnaire_de_paquets))
 > - caractères spéciaux : tabulation, fin de ligne
 > - strip
 > - supprimer les accents. transformation et ascii. voir partie data
->
 
 ### Sur des fichiers
 
@@ -163,7 +152,7 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 
 ### Programmation évènementielle
 
-La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des *réactions* qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un *évènement*) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
 
 {% aller %}
 [Programmation évènementielle](programmation-évènementielle){.interne}
@@ -173,7 +162,7 @@ La programmation évènementielle est un principe de développement très utilis
 
 ### Programmation par les tests
 
-On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (*Test Driven Development*, ou *TDD*)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
 
 {% aller %}
 [Projet de programmation par les tests](projet-TDD){.interne}
@@ -181,8 +170,27 @@ On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude 
 
 ### Couverture de code
 
-La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (*ie.* couvertes).
+La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
 
 {% aller %}
 [Couverture de code](couverture-de-code){.interne}
 {% endaller %}
+
+### Packages
+
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_.
+
+{% lien %}
+[package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
+{% endlien %}
+
+Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
+
+{% note %}
+Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
+
+- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
+
+- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
+
+{% endnote %}

@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Listes
 
 eleventyComputed:
@@ -21,6 +21,8 @@ Utilisez la console de <https://console.basthon.fr/> pour exécuter les divers e
 
 Une liste est une classe python.
 
+## Création et références
+
 On crée un objet de type liste comme d'habitude, en mettant son nom suivie de parenthèses :
 
 ```python
@@ -33,27 +35,50 @@ Comme la liste fait partie des conteneurs les plus utilisés de python, on peut 
 x = []
 ```
 
-Les deux instructions précédentes ont créées des liste vides, mais on peut aussi directement créer une liste avec des objets dedans :
+Les deux instructions précédentes ont créées des liste vides. L'état de l'espace de nommage après l'affectation est :
+
+![liste vide](./liste-1.png)
+
+mais on peut aussi directement créer une liste avec des objets dedans :
 
 ```python
 x = [1, 4, "douze"]
 ```
 
-L'exemple précédent à créé une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position.
+L'exemple précédent à créé une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position. L'espace de nommage est alors :
 
-On peut aussi utiliser des variables dans ce type de création directe :
+![liste 3 éléments](./liste-2.png)
+
+On voit que les 3 objets ne sont pas contenus dans la liste, elle ne possède qu'une référence vers eux. Explicitons ça :
 
 ```python
 réponse = 42
 x = [réponse]
-y = ['un élément', x]
 ```
 
-{% info %}
-Notez que la variable `y`{.language-} précédente est une liste contenant une liste comme deuxième paramètre.
-{% endinfo %}
+Ce qui donne comme espace de nommage :
 
-Enfin, pon peut afficher une liste en utilisant la fonction print :
+![liste 1 élément](./liste-3.png)
+
+Le premier élément de la liste est aussi associé à la variable `réponse`{.language-}.
+
+On peut aussi, bien sur faire ce genre de choses :
+
+```python
+réponse = 42
+x = [réponse]
+y = [x, 'un élément']
+```
+
+L'espace de nommage est alors :
+
+![liste 2 éléments](./liste-4.png)
+
+Remarquez qu'une liste peut avoir une référence à autre liste.
+
+## Affichage
+
+On peut afficher une liste en utilisant la fonction print :
 
 ```python
 print([1, 4, "douze"])
@@ -106,10 +131,10 @@ On peut aussi commencer par la fin, d'index -1 :
 
 Pour la chaîne `"PYTHON"`{.language-} :
 
-| itérable  | P  | Y | T | H  | O | N |
-| :-:  | :-: |:-:| :-:|:-:| :-:| :-:|
-| numérotation à partir du début  | 0  | 1 | 2 | 3 | 4 | 5 |
-| numérotation à partir de la fin | -6  | -5 | -4 | -3 | -2 | -1 |
+|            itérable             |  P  |  Y  |  T  |  H  |  O  |  N  |
+| :-----------------------------: | :-: | :-: | :-: | :-: | :-: | :-: |
+| numérotation à partir du début  |  0  |  1  |  2  |  3  |  4  |  5  |
+| numérotation à partir de la fin | -6  | -5  | -4  | -3  | -2  | -1  |
 
 {% exercice %}
 Quel est la quatrième lettre avant la fin du mot "anticonstitutionnellement" ?
@@ -151,24 +176,24 @@ Nous utiliserons essentiellement deux façons d'ajouter des éléments à une li
 
 Pour ajouter des éléments à une liste, nous utiliserons les méthodes :
 
-* `append`{.language-} qui ajoutent un élément en fin de liste :
+- `append`{.language-} qui ajoutent un élément en fin de liste :
 
-    ```python
-    >>> x = [1, 4, "douze"]
-    >>> x.append("a la fin")
-    >>> x
-    [1, 4, 'douze', 'a la fin']
-    ```
+  ```python
+  >>> x = [1, 4, "douze"]
+  >>> x.append("a la fin")
+  >>> x
+  [1, 4, 'douze', 'a la fin']
+  ```
 
-* `insert`{.language-} qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
+- `insert`{.language-} qui permettent d'ajouter un élément **avant** un indice passé en paramètre. Dans l'exemple, on ajoute un élément avant le l'élément d'indice 0, c'est à dire au début :
 
-    ```python
-    >>> x = [1, 4, "douze"]
-    >>> x.insert(0, "au debut")
-    >>> x
-    ['au debut', 1, 4, 'douze']
-    >>> 
-    ```
+  ```python
+  >>> x = [1, 4, "douze"]
+  >>> x.insert(0, "au debut")
+  >>> x
+  ['au debut', 1, 4, 'douze']
+  >>>
+  ```
 
 ### Suppression d'un élément
 
@@ -231,7 +256,7 @@ for i in range(10):
 
 {% enddetails %}
 
-### <span id="list-comprehension"></span> Avec une *list comprehension*
+### <span id="list-comprehension"></span> Avec une _list comprehension_
 
 {% lien %}
 <https://docs.python.org/fr/3/tutorial/datastructures.html#s>
@@ -242,7 +267,7 @@ l = [i ** 2 for i in range(10)]
 ```
 
 {% exercice %}
-Créez avec une *list comprehension* une liste contenant tous les entiers de 0 à 10.
+Créez avec une _list comprehension_ une liste contenant tous les entiers de 0 à 10.
 {% endexercice %}
 {% details "solution" %}
 
@@ -255,7 +280,7 @@ Créez avec une *list comprehension* une liste contenant tous les entiers de 0 �
 {% enddetails %}
 
 {% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec i allant de 0 à 10 et j allant de 2 à 5.
+Créez avec une _list comprehension_ une liste contenant toutes les sommes $i + j$ avec i allant de 0 à 10 et j allant de 2 à 5.
 {% endexercice %}
 {% details "solution" %}
 
@@ -268,7 +293,7 @@ Créez avec une *list comprehension* une liste contenant toutes les sommes $i + 
 {% enddetails %}
 
 {% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5.
+Créez avec une _list comprehension_ une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5.
 {% endexercice %}
 {% details "solution" %}
 
@@ -281,7 +306,7 @@ Créez avec une *list comprehension* une liste contenant toutes les sommes $i + 
 {% enddetails %}
 
 {% exercice %}
-Créez avec une *list comprehension* une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5 si $j-i$ est négatif ou nul.
+Créez avec une _list comprehension_ une liste contenant toutes les sommes $i + j$ avec les i pairs pour les entiers allant de 0 à 10 et j allant de 2 à 5 si $j-i$ est négatif ou nul.
 {% endexercice %}
 {% details "solution" %}
 
@@ -413,7 +438,7 @@ Ou l'utilisation de [`random.randrange`{.language-}](https://docs.python.org/fr/
 
 ## Arrays du module numpy
 
-Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas *stricto sensu* des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
+Le [module `numpy`{.language-}](https://numpy.org/) possède de nombreuses fonction permettant de manipuler des tableaux. Ce ne sont pas _stricto sensu_ des listes puisque leur type est [`array`{.language-}](https://numpy.org/doc/stable/reference/generated/numpy.array.html) mais on peut souvent utiliser des `array`{.language-}s à la place des listes et réciproquement.
 
 {% exercice %}
 Utilisez la fonction [`numpy.random.randint`{.language-}](https://numpy.org/doc/stable/reference/random/generated/numpy.random.randint.html) pour créer un array de 10 entiers pris aléatoirement entre 3 et 9.
@@ -468,8 +493,8 @@ M = [[1, 2, 3], [4, 4, 6]]
 
 On a crée une variable `M`{.language-} qui contient une liste de 2 listes : c'est une matrice à 2 lignes et 3 colonnes.
 
-* La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
-* l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
+- La 1ère ligne de la matrice est `M[0]`{.language-} et la seconde `M[1]`{.language-}
+- l'élément à la 1ère ligne et deuxième colonne s'écrit : `M[0][1]`{.language-}
 
 La façon la plus sûre de fabriquer des listes de listes est de le faire avec des boucles for. Par exemple, pour créer une matrice M à 4 lignes et 5 colonnes ne possédant que des 1 :
 
@@ -501,10 +526,10 @@ for i in range(5):  # lignes
 
 {% enddetails %}
 
-Si on se sent plus hardi, on pourra utiliser des [*list comprehension*](./#){.interne} :
+Si on se sent plus hardi, on pourra utiliser des [_list comprehension_](./#){.interne} :
 
 {% exercice %}
-Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique *list comprehension*.
+Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une unique _list comprehension_.
 {% endexercice %}
 {% details "solution" %}
 
@@ -516,10 +541,10 @@ Créez la matrice M à 4 lignes et 5 colonnes ne possédant que des 1 avec une u
 
 {% enddetails %}
 
-On peut aussi utiliser des *list comprehension* pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
+On peut aussi utiliser des _list comprehension_ pour créer des matrices plus compliquée, mais il faut souvent ruser car on n'a le droit qu'à une unique instruction par liste compréhension.
 
 {% exercice %}
-Créez la matrice identité à 5 ligne et 5 colonnes avec une unique *list comprehension*. Il pourra être utile de se rappeler le [*AND/OR trick*](../../../principes/opérations#and-or-trick){.interne} avant de résoudre cet exercice.
+Créez la matrice identité à 5 ligne et 5 colonnes avec une unique _list comprehension_. Il pourra être utile de se rappeler le [_AND/OR trick_](../../../principes/opérations#and-or-trick){.interne} avant de résoudre cet exercice.
 {% endexercice %}
 {% details "solution" %}
 
@@ -567,7 +592,7 @@ Alors que :
 ### <span id="slice"></span> D'une sous-liste
 
 {% info %}
-En anglais, cette technique est appelée *slicing* (des tranches).
+En anglais, cette technique est appelée _slicing_ (des tranches).
 {% endinfo %}
 
 On peut copier une partie d'une liste.
@@ -575,9 +600,9 @@ Pour **copier la liste l à partir de l'indice i jusqu'à l'indice j avec un pas
 
 Il n'est pas nécessaire de renseigner tous les champs. Si $l = [l_0, \dots, l_{n-1}]$, alors :
 
-* `l[i:]`{.language-} sera la liste $[l_i, \dots, l_{n-1}]$
-* `l[:i]`{.language-} sera la liste $[l_0, \dots, l_{i-1}]$
-* `l[i:j]`{.language-} sera la liste $[l_i, \dots, l_{j-1}]$
+- `l[i:]`{.language-} sera la liste $[l_i, \dots, l_{n-1}]$
+- `l[:i]`{.language-} sera la liste $[l_0, \dots, l_{i-1}]$
+- `l[i:j]`{.language-} sera la liste $[l_i, \dots, l_{j-1}]$
 
 {% exercice %}
 que donne `l[::3]`{.language-} ou `l[1::5]`{.language-} pour la liste `[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]`{.language-} ?
@@ -594,11 +619,11 @@ que donne `l[::3]`{.language-} ou `l[1::5]`{.language-} pour la liste `[3, 6, 9,
 
 {% enddetails %}
 
-Le *slicing* permet aussi de remplacer directement la partie de liste si on procède à une affectation. Par exemple :
+Le _slicing_ permet aussi de remplacer directement la partie de liste si on procède à une affectation. Par exemple :
 
 ```python
 >>> l = list(range(10))
->>> l 
+>>> l
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> l[2:4] = ["deux", "trois"]
 >>> l
@@ -615,9 +640,9 @@ Les méthodes de listes, comme les méthodes de chaînes de caractères, sont tr
 
 Par exemple pour ajouter ou supprimer des éléments d'une liste :
 
-* `append`{.language-} ajoute un élément à la fin d'une liste. Par exemple `l.append(3)`{.language-} ajoute l'entier 3 à la fin d'une liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, 4, 3]`{.language-} après)
-* `insert`{.language-} ajoute un élément à un index donné d la liste d'une liste. Par exemple `l.insert(1, "X")`{.language-} insère `"X"`{.language-} à l'indice 1 (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, "X", 4]`{.language-} après)
-* `del`{.language-} supprime l'élément à l'indice de la liste. Par exemple `del l[0]`{.language-} supprime l'élément d'indice 0 dune liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[4]`{.language-} après)
+- `append`{.language-} ajoute un élément à la fin d'une liste. Par exemple `l.append(3)`{.language-} ajoute l'entier 3 à la fin d'une liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, 4, 3]`{.language-} après)
+- `insert`{.language-} ajoute un élément à un index donné d la liste d'une liste. Par exemple `l.insert(1, "X")`{.language-} insère `"X"`{.language-} à l'indice 1 (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[1, "X", 4]`{.language-} après)
+- `del`{.language-} supprime l'élément à l'indice de la liste. Par exemple `del l[0]`{.language-} supprime l'élément d'indice 0 dune liste (si `l`{.language-} valait `[1, 4]`{.language-} avant, elle vaudra `[4]`{.language-} après)
 
 {% exercice %}
 Attention à `remove`{.language-}, `extend`{.language-} ou `pop`{.language-} qui ne font pas ce qu'on croit qu'elle font.
@@ -628,16 +653,16 @@ Que font-elles ?
 
 La réponse se trouve dans [la documentation](https://docs.python.org/fr/3/tutorial/datastructures.html#more-on-lists) :
 
-* `remove`{.language-} supprime le **premier** élément trouvé, pas tous
-* `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
-* `pop`{.language-} supprime le dernier élément de la liste et le rend
+- `remove`{.language-} supprime le **premier** élément trouvé, pas tous
+- `extend`{.language-} ajoute les éléments d'une **liste** passée en paramètre à la la liste à gauche du `.`
+- `pop`{.language-} supprime le dernier élément de la liste et le rend
 
 {% enddetails %}
 
 Il existe aussi de nombreuses méthodes de chaines de caractères qui utilisent des listes. Citons en deux :
 
-* `split`{.language-} est une méthode des chaînes de caractères qui produit des chaines
-* `join(liste)`{.language-} est une méthode des chaînes de caractères qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
+- `split`{.language-} est une méthode des chaînes de caractères qui produit des chaines
+- `join(liste)`{.language-} est une méthode des chaînes de caractères qui produit une chaîne à partir d'une liste de chaines de caractère passé en paramètre
 
 Attention cependant lorsque vous utilisez des méthodes :
 
@@ -668,8 +693,8 @@ Créez une liste de 20 entiers aléatoire allant de 1 à 10.
 1. afficher cette liste à l'écran
 2. triez cette liste puis affichez là à nouveau
 3. retournez la liste obtenue en 2 puis affichez là à nouveau
-{% endexercice %}
-{% details "solution" %}
+   {% endexercice %}
+   {% details "solution" %}
 
 ```python
 import random
@@ -686,12 +711,73 @@ print(L)
 
 {% enddetails %}
 
+### Lambda et listes
+
+Les fonction lambda permettent d'être utilisée directement dans des méthodes de liste. Par exemple avec [le paramètre `key`{.language-} de la méthode de liste `sort`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list.sort). Considérons la liste `l`{.language-} :
+
+```python
+l = [["au revoir", 2], ["bonjour", 1]]
+```
+
+Si on cherche à trier `l`{.language-}, la liste sera triée en comparant le 1er élément de chaque liste :
+
+```python
+l.sort()
+
+print(l)  # donnera [['au revoir', 2], ['bonjour', 1]]
+```
+
+Si l'on veut trier sur le deuxième élément de chaque liste, on utilise le paramètre `key`{.language-} qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :
+
+```python
+def second(x):
+    return x[1]
+
+l.sort(key=second)
+
+print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
+```
+
+{% exercice %}
+Que donnerait le tri si la fonction `second`{.language-} avait été définie comme ceci :
+
+```python
+def second(x):
+    return 1 / x[1]
+```
+
+{% endexercice %}
+{% details "solution" %}
+
+```python
+def second(x):
+    return 1 / x[1]
+
+l = [["au revoir", 2], ["bonjour", 1]]
+
+l.sort(key=second)
+
+print(l)
+```
+
+{% enddetails %}
+
+Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :
+
+```python
+l = [["au revoir", 2], ["bonjour", 1]]
+
+l.sort(key=lambda x: x[1])
+
+print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
+```
+
 ## Opérateurs de listes
 
 Comme pour les chaines de caractères :
 
-* l'opération `+`{.language-} désigne la concaténation entre deux listes
-* l'opération `*`{.language-} par en entier $i$ recopie la liste (ses éléments) $i$ fois.
+- l'opération `+`{.language-} désigne la concaténation entre deux listes
+- l'opération `*`{.language-} par en entier $i$ recopie la liste (ses éléments) $i$ fois.
 
 Par exemple :
 
@@ -704,8 +790,8 @@ Par exemple :
 
 Remarquez que :
 
-* `[1, 4, "douze"] + 42`{.language-} produit une erreur puisque `42`{.language-} est un entier et pas une liste.
-* `3 * [1, 4, "douze"]`{.language-} fonctionne également
+- `[1, 4, "douze"] + 42`{.language-} produit une erreur puisque `42`{.language-} est un entier et pas une liste.
+- `3 * [1, 4, "douze"]`{.language-} fonctionne également
 
 {% attention %}
 N'utilisez pas l'opérateur `*`{.language-} pour créer des matrices. C'est le même objet qui est dupliqué. Si les objets dupliqué sont des types de bases, aucun problème mais si le type est un objet modifiable comme un conteneur, cela peut se finir en catastrophe. Ainsi :
@@ -725,3 +811,86 @@ N'utilisez pas l'opérateur `*`{.language-} pour créer des matrices. C'est le m
 ```
 
 {% endattention %}
+
+## Cas particulier des chaines de caractères
+
+Une chaîne de caractères peut être vue comme un conteneur de caractères. On peut donc accéder à un caractère particulier comme une liste :
+
+```python
+
+>>> "abcdefghijklmnopqrstuvwxyz"[2]
+'c'
+```
+
+Ou même utiliser des [slices de liste](./listes/#slices){.interne} :
+
+```python
+>>> "abcdefghijklmnopqrstuvwxyz"[2:15:4]
+'cgko'
+```
+
+En revanche, il est impossible de modifier une chaîne :
+
+```python
+>>> x = "Francois"
+>>> x[4] = "ç"
+Traceback (most recent call last):
+  File "<python-input-4>", line 1, in <module>
+    x[4] = "ç"
+    ~^^^
+TypeError: 'str' object does not support item assignment
+>>>
+```
+
+Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 27ème [nombre de Mersenne](https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier) sous sa forme chaîne de caractères : `m27 = str(2 ** 44497 - 1)`{.language-}.
+
+{% exercice %}
+Quels sont les 10 premiers chiffres de `m27`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27)[:10]`{.language-}
+
+{% enddetails %}
+
+{% exercice %}
+Quels sont les 10 derniers chiffres de `m27`{.language-} ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27)[-10:]`{.language-}
+
+{% enddetails %}
+
+{% exercice %}
+Est-ce que  `m27`{.language-} est un [palindrome](https://fr.wikipedia.org/wiki/Palindrome) ?
+{% endexercice %}
+{% details "solution" %}
+
+`str(m27) == str(m27)[::-1]`{.language-} (`s[::-1]`{.language-} renverse la chaîne)
+
+{% enddetails %}
+
+En revanche, il est interdit de modifier une chaine de caractère :
+
+```python
+>>> x = "chaine"
+>>> x[0] = "C"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+
+```
+
+Enfin on ne le répètera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les [méthodes de chaînes](https://docs.python.org/3/library/stdtypes.html#string-methods) en python pour résoudre les exercices suivants :
+
+{% exercice %}
+Index de la première occurrence de `1234` dans m27. Et de la deuxième ?
+{% endexercice %}
+{% details "solution" %}
+
+- `str(m27).find('1234')`{.language-}
+- `str(m27).find('1234', 19260 + 1)`{.language-} : la première occurrence est à l'indice 19260, on cherche donc après.
+- on peut faire en une ligne : `str(m27).find('1234', str(m27).find('1234') + 1)`{.language-}
+
+{% enddetails %}

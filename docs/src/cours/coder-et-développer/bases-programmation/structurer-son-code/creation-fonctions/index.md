@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: Créer ses fonctions
 
 eleventyComputed:
@@ -18,7 +18,7 @@ Il n'est jamais bon de copier/coller un bout de programme qui se répète plusie
 ## Définition d'une fonction
 
 {% note %}
-Une ***fonction*** est [un bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
+Une **_fonction_** est [un bloc](../blocs){.interne} auquel on donne un nom (le nom de la fonction) qui peut être exécuté lorsqu'on l'invoque par son nom.
 
 ```python
 def <nom>(paramètre 1, paramètre 2, ..., paramètre n):
@@ -47,13 +47,13 @@ La première ligne est la définition du bloc fonction. Il contient :
 - le nom de la fonction. Ici `bonjour`{.language-}
 - des parenthèses qui pourront contenir des paramètres (on verra ça plus tard)
 - le `:`{.language-} qui indique que la ligne d'après va commencer le bloc proprement dit
-  
+
 Ensuite vient le bloc fonction en lui-même qui ne contient ici qu'une seule ligne.
 
 Si on exécute le bloc précédent, il ne se passe rien. En effet on n'a fait que définir la fonction. Pour l'utiliser, ajoutez `bonjour()`{.language-} à la suite du bloc.
 
 {% note %}
-Une **fonction** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par une virgule (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
+Une **_fonction_** s'utilise toujours en faisant suivre son nom d'une parenthèse contenant ses paramètres séparés par des virgules (notre fonction n'a pour l'instant pas de paramètres). Donner juste son nom ne suffit pas à l'invoquer.
 {% endnote %}
 
 ## Nom d'une fonction
@@ -65,7 +65,7 @@ Dans le code suivant, exécuté dans un interpréteur on regarde le type d'un no
 ```python
 >>> def bonjour():
 ...     print("Salutations")
-... 
+...
 >>> type(bonjour)
 <class 'function'>
 ```
@@ -75,13 +75,13 @@ On peut aussi associer la fonction à une autre variable comme on le ferait avec
 ```python
 >>> def bonjour():
 ...     print("Salutations")
-... 
+...
 >>> x = bonjour
 >>> x()
 Salutations
 ```
 
-En python, lorsque l'on exécute une fonction on dit qu'on **l'appelle**. ***Appeler une variable*** est alors le fait de mettre des `()` après son nom.
+En python, lorsque l'on exécute une fonction on dit qu'on **l'appelle**. **_Appeler une variable_** est alors le fait de mettre des `()` après son nom.
 
 Si cela produit une erreur ce n'était pas une fonction. Regardez l'exemple ci-après, exécutable dans un interpréteur. On tente d'appeler un entier et python nous indique que ce n'est pas possible :
 
@@ -93,12 +93,12 @@ Traceback (most recent call last):
 TypeError: 'int' object is not callable
 ```
 
-Enfin, en python être une fonction n'est rien d'autre que d'être un ***objet appelable***. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-} :
+Enfin, en python être une fonction n'est rien d'autre que d'être un **_objet appelable_**. Savoir si un objet est appelable ou pas se fait par la fonction `callable`{.language-} :
 
 ```python
 >>> def bonjour():
 ...     print("Salutations")
-... 
+...
 >>> callable(bonjour)
 True
 >>> callable(1)
@@ -108,15 +108,13 @@ False
 ```
 
 {% info %}
-Les fonctions ne sont pas les seules objets appelables, les types le sont également : le résultat de l'appel du type `list`{.language-} (c'est à dire `list()`{.language-}) crée une liste vide.
+Les fonctions ne sont pas les seules objets appelables, les types le sont également : le résultat de l'appel du type `int`{.language-} (c'est à dire `int()`{.language-}) crée un entier valant 0.
 
 Il en existe de nombreux autres, python étant friand de ce genre d'opérations.
 
 {% endinfo %}
 
 ## Paramètres d'une fonction
-
-> TBD parler d'espace de nom
 
 ```python
 def plus_moins(nombre):
@@ -132,7 +130,7 @@ La variable nombre sera associée à l'objet entier de valeur 17 dans la fonctio
 Python, à chaque exécution d'une fonction crée un espace de nom pour elle. Cet espace de nom sera détruit lorsque la fonction aura fini d'être exécutée. Une fois cet espace de nom crée, il associe le nom du paramètre à l'objet passé en paramètre.
 
 {% attention %}
-Les *paramètres* d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
+Les _paramètres_ d'une fonction sont des **noms** de variables qui ne seront connus qu'à l'intérieur de la fonction. À l'exécution de la fonction, le nom de chaque paramètre est associé à l'objet correspondant.
 {% endattention %}
 
 Regardons le bout de code suivant, qui utilise la fonction `plus_moins`{.language-} définie précédemment :
@@ -221,7 +219,7 @@ def double(valeur):
 Il ne sert à rien de mettre des instructions après une instruction `return`{.language-} car dès qu'une fonction exécute cette instruction, elle s'arrête en rendant l'objet en paramètre. Le retour d'une fonction est pratique pour calculer des choses et peut ainsi être affecté à une variable.
 
 {% faire %}
-Dans un [notebook](../../notebooks){.interne} ou dans [Spyder](https://www.spyder-ide.org/), définissez la fonction précédente dans une cellule puis exécutez là.
+Définissez la fonction précédente dans un fichier python puis exécutez là.
 
 Puis, dans une seconde cellules collez la ligne ci-après puis exécutez la.
 
@@ -325,65 +323,24 @@ def double(x):
     return 2 * x
 ```
 
-Le principal intérêt de ces fonction est d'être utilisée comme paramètre d'autres fonction.
-
-Par exemple avec [le paramètre `key`{.language-} de la méthode de liste `sort`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#list.sort). Considérons la liste `l`{.language-} :
+On peut très bien définir une fonction lambda et l'utiliser directement :
 
 ```python
-l = [["au revoir", 2], ["bonjour", 1]]
+x = (lambda x:2 * x)(21)
 ```
 
-Si on cherche à trier `l`{.language-}, la liste sera triée en comparant le 1er élément de chaque liste :
+La variable `x`{.language-} vaudra 42, puisque résultat de l'exécution de la fonction lambda `lambda x:2 * x`{.language-} avec 21 comme paramètre.
+
+Une fonction lambda peut avoir plusieurs paramètres, par exemple la fonction suivante qui rend le produit de deux objets passés en paramètre :
 
 ```python
-l.sort()
-
-print(l)  # donnera [['au revoir', 2], ['bonjour', 1]]
+produit = lambda x, y: x * y
 ```
 
-Si l'on veut trier sur le deuxième élément de chaque liste, on utilise le paramètre `key`{.language-} qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :
+Le principal intérêt de ces fonction est d'être utilisée comme paramètre d'autres fonction. En reprenant l'exemple précédent on pourrait ainsi écrire :
 
 ```python
-def second(x):
-    return x[1]
-
-l.sort(key=second)
-
-print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
-```
-
-{% exercice %}
-Que donnerait le tri si la fonction `second`{.language-} avait été définie comme ceci :
-
-```python
-def second(x):
-    return 1 / x[1]
-```
-
-{% endexercice %}
-{% details "solution" %}
-
-```python
-def second(x):
-    return 1 / x[1]
-
-l = [["au revoir", 2], ["bonjour", 1]]
-
-l.sort(key=second)
-
-print(l)
-```
-
-{% enddetails %}
-
-Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :
-
-```python
-l = [["au revoir", 2], ["bonjour", 1]]
-
-l.sort(key=lambda x: x[1])
-
-print(l)  # donnera [['bonjour', 1], ['au revoir', 2]]
+print(calcul(lambda x, y: x * y, 8))
 ```
 
 ## Annotations de type
@@ -424,29 +381,16 @@ Mais alors, il est de toute façon plus pertinent d'écrire dans un autre langag
 
 {% endinfo %}
 
-
 ## Espace de nommage et fonctions
 
-> TBD à faire propre
-
-## Port d'attache d'un espace de noms
-
-Les espaces de noms sont des objets spéciaux qui ne peuvent vivre indépendamment. Il sont toujours rattachés à leur contexte qui est soit :
-
-- le programme principal : c'est le cas de l'espace de nom globals
-- une fonction : crée lors de l'appel d'une fonction pour gérer ses paramètre et variables locales.
-- un module : les espaces de noms crées après un import
-
-### Fonctions
-
-L'exécution d'une fonction est un moment où un espace de noms est créé. Cela se passe selon le processus suivant :
+Pour garantir le fait que les objets crées dans les fonctions restent dans les fonction, un espace de nommage est crée à chaque exécution. Cela se passe selon le processus suivant :
 
 {% note %}
 Lorsque l'on exécute une fonction on procède comme suit :
 
-1. on crée un nouvel espace de noms $F$
-2. l'espace de noms courant est affecté au parent de $F$
-3. $F$ devient le nouvel espace de noms courant.
+1. on crée un nouvel espace de nommage $F$
+2. l'espace de nommage courant est affecté au parent de $F$
+3. $F$ devient le nouvel espace de nommage courant.
 4. on affecte les paramètres de la fonction à leurs noms
 5. on exécute ligne à ligne la fonction
 6. le parent de $F$ devient le nouvel espace de noms courant
@@ -454,7 +398,7 @@ Lorsque l'on exécute une fonction on procède comme suit :
 
 {% endnote %}
 
-#### Exécution d'une fonction
+### Exécution d'une fonction
 
 ```python/
 def f(x):
@@ -497,9 +441,9 @@ Exécutons le ligne à ligne :
       2. les objets sans nom sont détruits
          ![cas-4-8](cas-4-8.png)
 
-#### Espaces de noms parent
+### Espaces de nommage parent
 
-L'espace de noms parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de noms courant :
+L'espace de nommage parent sert lorsque l'on cherche un nom qui n'est pas défini dans l'espace de nommage courant :
 
 {% note %}
 Si un nom est recherché, mais que celui-ci n'est défini dans l'espace de noms courant, le nom est recherché dans l'espace de noms parent de l'espace courant.

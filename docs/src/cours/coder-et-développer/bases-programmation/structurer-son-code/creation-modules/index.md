@@ -5,54 +5,20 @@ title: Modules python
 
 eleventyComputed:
   eleventyNavigation:
-    prerequis:
-        - '../bases-python/structurer-son-code/modules/'
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les modules python sont des fichiers (on l'a vu) ou des dossiers (on le verra) que l'on peut _importer_ dans un fichier en cours d'exécution. Il y a essentiellement 2 manières d'importer un module en python soit directement :
+Un module python est en réalité un fichier qui est lu lorsqu'il est importé.
+
+Par exemple, le code suivant cherche un fichier `random.py`{.fichier} qu'il exécute dans son espace de nommage :
 
 ```python
-import math
+import random
 ```
 
-L'importation du module crée, comme on l'a vu, [des espaces de noms](../espace-nommage){.interne} utilisables dans le programme qui importe :
-
-```python
-import math
-
-print(math.pi)
-```
-
-Soit en important un nom du module dans l'espace de nom `global`{.langage-} :
-
-```python
-from math import pi
-```
-
-Le nom `pi`{.language-} de l'espace de nom du module `math`{.language-} est importé dans l'espace de nom `global`{.langage-} :
-
-```python
-from math import pi
-
-print(pi)
-```
-
-Enfin on peut importer tout un espace de nom dans l'espace de nom `global`{.langage-} :
-
-```python
-from math import *
-```
-
-Cette pratique est **fortement déconseillée** car on ne sait pas ce qu'on importe :
-
-```python
-from math import *
-
-print(pi)
-```
+Il est tout à fait possible, et on va le faire souvent par la suite de créer ses propres modules.
 
 {% lien %}
 [Documentation python sur les modules](https://docs.python.org/fr/3/tutorial/modules.html)
@@ -60,14 +26,20 @@ print(pi)
 
 ## Mécanisme d'importation de modules
 
-Importer un module revient à exécuter un fichier python et à renommer son espace de nom `global`{.langage-} dans le nom du fichier. Par exemple supposons que l'on ait dans le même dossier les fichier `mon_module.py`{.fichier} et `programme_principal.py`{.fichier} tels que :
+Lorsque l'interpréteur python exécute une instruction d'import comme :
 
-- `mon_module.py`{.fichier} vale :
+```python
+import mon_module
+```
 
-    ```python/
-    MA_CONSTANTE = 42
-    va_variable = None
-    ```
+Il procède en deux temps :
+
+1. il cherche dans le dossier courant s'il existe un fichier nommé `mon_module.py`{.fichier}. Si ce fichier n'existe pas il passe à l'étape 2, sinon il passe à l'étape 4.
+2. il cherche dans ses dossiers à lui s'il existe un fichier nommé `mon_module.py`{.fichier}. Si ce fichier n'existe pas il passe à l'étape 3.
+3. il produit une erreur d'importation : `ModuleNotFoundError: No module named 'mon_module'`{.language-}
+4. il exécute le fichier `mon_module.py`{.fichier} dans un nouvel espace de nommage créé pour l'occasion.
+
+Supposons que l'on ait dans le même dossier les fichiers  `programme_principal.py`{.fichier} et `mon_module.py`{.fichier} et tels que :
 
 - `programme_principal.py`{.fichier} vale :
 
@@ -75,6 +47,13 @@ Importer un module revient à exécuter un fichier python et à renommer son esp
     import mon_module
 
     print(mon_module.MA_CONSTANTE)
+    ```
+
+- `mon_module.py`{.fichier} vale :
+
+    ```python/
+    MA_CONSTANTE = 42
+    va_variable = None
     ```
 
 À la fin de l'exécution de la ligne 1 du fichier `programme_principal.py`{.fichier}, on a les différents espaces de noms suivant :
@@ -188,27 +167,6 @@ Cette différence dans le nom d'une variable permet de différentier les deux ty
 if __name__ == "__main__":
     # code du programme principal
 ```
-
-## Modules python et _packages_
-
-Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_.
-
-{% lien %}
-[_package_ en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
-{% endlien %}
-
-Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier `__init__.py`{.fichier} présent dans le dossier.
-
-{% note %}
-Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
-
-- importer le dossier revient à exécuter le fichier `__init__.py`{.fichier}.
-
-- exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
-
-{% endnote %}
-
-L'import d'un fichier ou d'un dossier est ainsi résolu de la même manière par python.
 
 ## Où sont les modules ?
 

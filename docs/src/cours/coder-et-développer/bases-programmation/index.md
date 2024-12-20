@@ -135,17 +135,13 @@ Un interpréteur tout neuf vient presque nu. Il ne possède aucun des modules mi
 
 Lorsque l'on veut plus que juste utiliser des méthodes et fonctions déjà existante, il faut structurer son code en parties utilisables indépendamment, que ce soit sous la forme de code (bloc, fonctions, modules).
 
-> TBD blocs, conditions et boucles
-
 {% aller %}
 [Structurer son code](structurer-son-code){.interne}
 {% endaller %}
 
-> TBD exercice méthodes et listes
+## <span id="conteneurs"></span> Partie III : Conteneurs
 
-## <span id="conteneurs"></span> Conteneurs
-
-### Liste, ensembles et dictionnaire Conteneurs
+### Liste, ensembles et dictionnaire
 
 Les conteneurs sont des objets contenant d'autres objets. Ils permettent de structurer ses données.
 
@@ -153,17 +149,14 @@ Les conteneurs sont des objets contenant d'autres objets. Ils permettent de stru
 [Conteneurs](conteneurs){.interne}
 {% endaller %}
 
-### mutable et non mutable
-
-> TBD mettre les dessins avec espaces de nommage.
-> TBD donner les contrepartie non mutable des types de données. Ensemble des ensemble d'ensembles et des clés de dictionnaire sous la forme de tuples.
+### Mutable et non mutable
 
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira **_non mutables_**). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
-- si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`
+- si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`{.language-}
 - `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
 
-Les liste, ensembles et dictionnaires sont eux **modifiables** (python dira **_mutables_**), c'est à dire que leurs méthodes peuvent les modifier :
+Les listes, ensembles et dictionnaires sont eux **modifiables** (python dira **_mutables_**), c'est à dire que leurs méthodes peuvent les modifier :
 
 - `l.append("x")`{.language-} modifiera la liste `l`{.language-}
 - `d["un"] = 1`{.language-} modifiera le dictionnaire `d`{.language-} en lui ajoutant une clé
@@ -231,6 +224,10 @@ Il existe des objets non modifiable pouvant être utilisé à la place des liste
 
 - un [`tuple`{.language-}](https://docs.python.org/fr/3/tutorial/datastructures.html#tuples-and-sequences) pour une liste. Elle se crée en remplaçant les `[]`{.language-} d'une liste par des `()`{.language-} : `(1, 2, 3)`{.language-} crée un tuple à 3 éléments. Il pourra être utilisé comme une liste mais on ne pourra jamais lui ajouter ou modifier ses éléments.
 - un [`frozenset`{.language-}](https://docs.python.org/fr/3/library/stdtypes.html#frozenset) sera le pendant non mutable d'un ensemble. On place les éléments directement à la création et ils ne peuvent plus être modifiés ensuite.
+
+{% info %}
+Il n'existe pas d'équivalent non mutable aux dictionnaires.
+{% endinfo %}
 
 On peut alors utiliser des tuples et des `frozenset`{.language-} comme éléments d'un ensemble ou comme clé de dictionnaires.
 

@@ -1,7 +1,7 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 
-title: Blocs
+title: Blocs et code
 
 eleventyComputed:
   eleventyNavigation:
@@ -10,71 +10,55 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les blocs python qui permettent de grouper un ensemble de lignes de codes ensemble. On verra les blocs `while`{.language-}, `for`{.language-} et les blocs `if/elif/else`{.language-}.
+Les blocs permettent de structurer son code. La façon la plus simple de les utiliser est dans les blocs `if/elif/else`{.language-} qui permettent une exécution conditionnelle et les blocs `while`{.language-} et `for`{.language-} qui permettent de répéter des blocs.
 
-Si python ne pouvait qu'exécuter ligne à ligne un code on ne pourrait pas faire grand chose. Le principe des programmes est de pouvoir grouper les instructions en bloc.
+## Exécution conditionnelle
 
-## Définition d'un bloc
+{% lien "**Documentation**" %}
+<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>
+{% endlien %}
 
-En python, un bloc est toujours défini de la même manière  :
+Permet d'exécuter un bloc si une condition logique est vraie :
 
-* Ce qui va identifier le bloc pour son exécution (une condition, son nombre d'exécution, son nom) et se finit par un `:`{.language-}
-* Les instructions le constituant.
-
-Pour séparer les blocs les un des autres, et savoir ce qui le définit, le langage Python utilise l'indentation (4 espaces par défaut): un bloc est donc une suite d'instructions ayant la même indentation.
-
-```text
-type de bloc:
+```python
+if <condition logique>:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+elif <condition logique>:
+    instruction 1
+    instruction 2
+    ...
+    instruction n
+else:
     instruction 1
     instruction 2
     ...
     instruction n
 ```
 
-Ces différents blocs sont pratiques car ils vont nous permettre :
+Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
 
-* répéter des blocs
-* d'exécuter des blocs conditionnellement
-
-Les blocs peuvent bien sur se combiner :
-
-```text
-bloc A:
-    instruction 1 du bloc A
-    bloc B:
-        instruction 1 du bloc B
-        ...
-        instruction m du bloc B
-    instruction 2 du bloc A
-    ...
-    instruction n du bloc A
-```
-
-L'indentation permet **toujours** de s'y retrouver.
-
-## Blocs et interpréteur
-
-Lorsque l'on crée un bloc avec l'interpréteur, après la première ligne qui défini le bloc (la ligne avec le `:`{.language-}.
-), l'interpréteur passe en *mode bloc* (il écrit `...` en début de ligne) ce qui permet d'écrire son bloc (en n'oubliant pas l'indentation). Une fois le bloc terminé, pour faire repasser l'interpréteur en mode normal et exécuter le bloc on appuie juste sur la touche entrée pour insérer ue ligne vide.
-
-Par exemple l'exemple suivant crée un bloc qui écrit `coucou`{.language} indéfiniment directement dans l'interpréteur :
+{% exercice %}
+Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../../fonctions-méthodes#input){.interne}) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
+{% endexercice %}
+{% details "solution" %}
 
 ```python
->>> while True:
-...     print("coucou")
-... 
+
+entier = int(input("Un entier entre 2 et 8 : "))
+if 2 >= entier and entier <= 8:
+    print("C'est entre 2 et 8")
+else:
+    print("ce n'est pas entre 2 et 8")
 ```
 
-Le même bloc écrit dans un notebook puis exécuté aurait été écrit comme ça :
-
-```python
-while True:
-    print("coucou")
-```
+{% enddetails %}
 
 ## Répétition de blocs
 
-Deux types de boucles existent en python : les boucles *tant que* (`while`{.language-}) et les boucles *pour chaque* (`for`{.language-})
+Deux types de boucles existent en python : les boucles _tant que_ (`while`{.language-}) et les boucles _pour chaque_ (`for`{.language-})
 
 ### Bloc while : boucle tant que
 
@@ -141,7 +125,7 @@ for <nom> in <itérable>:
     instruction n
 ```
 
-Le bloc sera exécuté pour chaque élément de l'*itérable*. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-} Beaucoup d'objet peuvent être considérés comme itérable (nous en verrons plusieurs par la suite) et nous en connaissons déjà un : les chaînes de caractères.
+Le bloc sera exécuté pour chaque élément de l'_itérable_. A chaque exécution, l'élément courant de l'itérateur sera nommé `<nom>`{.language-} Beaucoup d'objet peuvent être considérés comme itérable (nous en verrons plusieurs par la suite) et nous en connaissons déjà un : les chaînes de caractères.
 
 L'exécution du code suivant :
 
@@ -174,9 +158,9 @@ Il sera plus simple de s'y retrouver avec des noms de variables explicites qu'av
 Écrire un programme qui affiche la table de 9 :
 
 ```text
-1 x 9 = 9   
-2 x 9 = 18  
-...   
+1 x 9 = 9
+2 x 9 = 18
+...
 ```
 
 {% endexercice %}
@@ -221,9 +205,9 @@ Affichera les 10 premiers entiers (de 0 à 9). Le résultat de `range(10)`{.lang
 
 On peut utiliser la fonction `range`{.language-} de trois façons différentes qu'elle soit appelée avec un, deux ou trois paramètres :
 
-* de `0`{.language-} à juste avant `paramètre`{.language-}. Par exemple `range(10)`{.language-} rendra un itérateur de la suite des 10 entiers allant de 0 à 9.
-* de `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}. Par exemple `range(4, 10)`{.language-} rendra un itérateur de la suite des 6 entiers allant de 4 à 9.
-* `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}, avec un saut de `troisième paramètre`{.language-}. Par exemple `range(10, -1, -1)`{.language-} rendra un itérateur de la suite 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.
+- de `0`{.language-} à juste avant `paramètre`{.language-}. Par exemple `range(10)`{.language-} rendra un itérateur de la suite des 10 entiers allant de 0 à 9.
+- de `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}. Par exemple `range(4, 10)`{.language-} rendra un itérateur de la suite des 6 entiers allant de 4 à 9.
+- `premier paramètre`{.language-} à juste avant `deuxième paramètre`{.language-}, avec un saut de `troisième paramètre`{.language-}. Par exemple `range(10, -1, -1)`{.language-} rendra un itérateur de la suite 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0.
 
 {% exercice %}
 Afficher à l'écran les 16 premiers entiers, allant de 0 à 15
@@ -274,50 +258,6 @@ Afficher à l'écran les entiers allant de 5 à 0, dans cet ordre.
 for x in range(5, -1, -1):
     print(x)
 
-```
-
-{% enddetails %}
-
-## Blocs if : Exécution conditionnelle
-
-{% lien "**Documentation**" %}
-<https://docs.python.org/fr/3/reference/compound_stmts.html#the-if-statement>
-{% endlien %}
-
-Permet d'exécuter un bloc si une condition logique est vraie :
-
-```python
-if <condition logique>:
-    instruction 1
-    instruction 2
-    ...
-    instruction n
-elif <condition logique>:
-    instruction 1
-    instruction 2
-    ...
-    instruction n
-else:
-    instruction 1
-    instruction 2
-    ...
-    instruction n
-```
-
-Notez qu'il peut y avoir autant de bloc `elif`{.language-} que l'on veut (même 0) et qu'il n'est pas nécessaire d'avoir de `else`{.language-}.
-
-{% exercice %}
-Demandez à l'utilisateur de rentrer un entier au clavier (en utilisant la [fonction `input`{.language-}](../../fonctions-méthodes#input){.interne}) et de répondre "C'est entre 2 et 8" si le nombre rentré est entre 2 et 8 et de répondre "ce n'est pas entre 2 et 8" sinon.
-{% endexercice %}
-{% details "solution" %}
-
-```python
-
-entier = int(input("Un entier entre 2 et 8 : "))
-if 2 >= entier and entier <= 8:
-    print("C'est entre 2 et 8")
-else:
-    print("ce n'est pas entre 2 et 8")
 ```
 
 {% enddetails %}
