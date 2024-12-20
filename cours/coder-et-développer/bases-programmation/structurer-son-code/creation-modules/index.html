@@ -87,55 +87,19 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/modules-python/">Modules python</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/">Bases de programmation et du langage python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/structurer-son-code/">Structurer son code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/bases-programmation/structurer-son-code/creation-modules/">Modules python</a>
 
 </div></div>
 
-
-
-    
-      
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-
-<b>Prérequis :</b>
-
-</div><div class="pl-8 mr-8">
-
-
-      <ul>
-            <li>
-              <a href="../bases-python/structurer-son-code/modules/">../bases-python/structurer-son-code/modules/</a>
-            </li></ul>
-      
-
-</div></div>
 
 
     
   
 
-  <p>Les modules python sont des fichiers (on l'a vu) ou des dossiers (on le verra) que l'on peut <em>importer</em> dans un fichier en cours d'exécution. Il y a essentiellement 2 manières d'importer un module en python soit directement :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> math</code></pre>
-<p>L'importation du module crée, comme on l'a vu, <a href="../espace-nommage" class="interne">des espaces de noms</a> utilisables dans le programme qui importe :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> math
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span></code></pre>
-<p>Soit en important un nom du module dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi</code></pre>
-<p>Le nom <code class="language-">pi</code> de l'espace de nom du module <code class="language-">math</code> est importé dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> pi
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
-<p>Enfin on peut importer tout un espace de nom dans l'espace de nom <code class="langage-">global</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span></code></pre>
-<p>Cette pratique est <strong>fortement déconseillée</strong> car on ne sait pas ce qu'on importe :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>pi<span class="token punctuation">)</span></code></pre>
+  <p>Un module python est en réalité un fichier qui est lu lorsqu'il est importé.</p>
+<p>Par exemple, le code suivant cherche un fichier <code class="fichier">random.py</code> qu'il exécute dans son espace de nommage :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> random</code></pre>
+<p>Il est tout à fait possible, et on va le faire souvent par la suite de créer ses propres modules.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -145,18 +109,27 @@
 </div></div>
 
 <h2>Mécanisme d'importation de modules</h2>
-<p>Importer un module revient à exécuter un fichier python et à renommer son espace de nom <code class="langage-">global</code> dans le nom du fichier. Par exemple supposons que l'on ait dans le même dossier les fichier <code class="fichier">mon_module.py</code> et <code class="fichier">programme_principal.py</code> tels que :</p>
+<p>Lorsque l'interpréteur python exécute une instruction d'import comme :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module</code></pre>
+<p>Il procède en deux temps :</p>
+<ol>
+<li>il cherche dans le dossier courant s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 2, sinon il passe à l'étape 4.</li>
+<li>il cherche dans ses dossiers à lui s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 3.</li>
+<li>il produit une erreur d'importation : <code class="language-">ModuleNotFoundError: No module named 'mon_module'</code></li>
+<li>il exécute le fichier <code class="fichier">mon_module.py</code> dans un nouvel espace de nommage créé pour l'occasion.</li>
+</ol>
+<p>Supposons que l'on ait dans le même dossier les fichiers  <code class="fichier">programme_principal.py</code> et <code class="fichier">mon_module.py</code> et tels que :</p>
 <ul>
-<li>
-<p><code class="fichier">mon_module.py</code> vale :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span></span>
-<span class="highlight-line">va_variable <span class="token operator">=</span> <span class="token boolean">None</span></span></code></pre>
-</li>
 <li>
 <p><code class="fichier">programme_principal.py</code> vale :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> mon_module</span>
 <span class="highlight-line"></span>
 <span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">.</span>MA_CONSTANTE<span class="token punctuation">)</span></span></code></pre>
+</li>
+<li>
+<p><code class="fichier">mon_module.py</code> vale :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span></span>
+<span class="highlight-line">va_variable <span class="token operator">=</span> <span class="token boolean">None</span></span></code></pre>
 </li>
 </ul>
 <p>À la fin de l'exécution de la ligne 1 du fichier <code class="fichier">programme_principal.py</code>, on a les différents espaces de noms suivant :</p>
@@ -257,34 +230,6 @@ avg <span class="token number">8.9936</span>, stddev <span class="token number">
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     <span class="token comment"># code du programme principal</span></code></pre>
-<h2>Modules python et <em>packages</em></h2>
-<p>Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle <em>package</em>.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/tutorial/modules.html#packages"><em>package</em> en python</a></p>
-</div></div>
-
-<p>Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier <code class="fichier">__init__.py</code> présent dans le dossier.</p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Un <em>package</em> est un dossier contenant un fichier <code class="fichier">__init__.py</code>.</p>
-<ul>
-<li>
-<p>importer le dossier revient à exécuter le fichier <code class="fichier">__init__.py</code>.</p>
-</li>
-<li>
-<p>exécuter le dossier avec l'interpréteur revient à exécuter le fichier <code class="fichier">__main__.py</code>.</p>
-</li>
-</ul>
-</div></div>
-
-<p>L'import d'un fichier ou d'un dossier est ainsi résolu de la même manière par python.</p>
 <h2>Où sont les modules ?</h2>
 <p>Les dossiers où python va cherchez les modules sont listés dans la variable <code>sys.path</code> et dépendent de l'interpréteur utilisé :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">

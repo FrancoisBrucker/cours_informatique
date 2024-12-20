@@ -116,26 +116,32 @@
 </div></div>
 
 <p>Une liste est une classe python.</p>
+<h2>Création et références</h2>
 <p>On crée un objet de type liste comme d'habitude, en mettant son nom suivie de parenthèses :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <p>Comme la liste fait partie des conteneurs les plus utilisés de python, on peut aussi directement créer une liste avec des crochets :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre>
-<p>Les deux instructions précédentes ont créées des liste vides, mais on peut aussi directement créer une liste avec des objets dedans :</p>
+<p>Les deux instructions précédentes ont créées des liste vides. L'état de l'espace de nommage après l'affectation est :</p>
+<p><img src="liste-1.png" alt="liste vide"></p>
+<p>mais on peut aussi directement créer une liste avec des objets dedans :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"douze"</span><span class="token punctuation">]</span></code></pre>
-<p>L'exemple précédent à créé une liste de nom <code class="language-">x</code> qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères <code class="language-">&quot;douze&quot;</code> en troisième position.</p>
-<p>On peut aussi utiliser des variables dans ce type de création directe :</p>
+<p>L'exemple précédent à créé une liste de nom <code class="language-">x</code> qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères <code class="language-">&quot;douze&quot;</code> en troisième position. L'espace de nommage est alors :</p>
+<p><img src="liste-2.png" alt="liste 3 éléments"></p>
+<p>On voit que les 3 objets ne sont pas contenus dans la liste, elle ne possède qu'une référence vers eux. Explicitons ça :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">réponse <span class="token operator">=</span> <span class="token number">42</span>
+x <span class="token operator">=</span> <span class="token punctuation">[</span>réponse<span class="token punctuation">]</span></code></pre>
+<p>Ce qui donne comme espace de nommage :</p>
+<p><img src="liste-3.png" alt="liste 1 élément"></p>
+<p>Le premier élément de la liste est aussi associé à la variable <code class="language-">réponse</code>.</p>
+<p>On peut aussi, bien sur faire ce genre de choses :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">réponse <span class="token operator">=</span> <span class="token number">42</span>
 x <span class="token operator">=</span> <span class="token punctuation">[</span>réponse<span class="token punctuation">]</span>
-y <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'un élément'</span><span class="token punctuation">,</span> x<span class="token punctuation">]</span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que la variable <code class="language-">y</code> précédente est une liste contenant une liste comme deuxième paramètre.</p>
-</div></div>
-
-<p>Enfin, pon peut afficher une liste en utilisant la fonction print :</p>
+y <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> <span class="token string">'un élément'</span><span class="token punctuation">]</span></code></pre>
+<p>L'espace de nommage est alors :</p>
+<p><img src="liste-4.png" alt="liste 2 éléments"></p>
+<p>Remarquez qu'une liste peut avoir une référence à autre liste.</p>
+<h2>Affichage</h2>
+<p>On peut afficher une liste en utilisant la fonction print :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"douze"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
 <h2>Accès à un élément d'une liste</h2>
 <p>On accède à un élément de la liste en faisant suivre le nom de la liste par des <code>[]</code> et en mettant l'index voulu dans les crochets. Si <code class="language-">x = [1, 4, &quot;douze&quot;]</code>, alors :</p>
@@ -274,7 +280,7 @@ x<span class="token punctuation">[</span><span class="token number">3</span><spa
 <span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">"au debut"</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> x
 <span class="token punctuation">[</span><span class="token string">'au debut'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">'douze'</span><span class="token punctuation">]</span>
-<span class="token operator">>></span><span class="token operator">></span> </code></pre>
+<span class="token operator">>></span><span class="token operator">></span></code></pre>
 </li>
 </ul>
 <h3>Suppression d'un élément</h3>
@@ -829,7 +835,7 @@ Pour <strong>copier la liste l à partir de l'indice i jusqu'à l'indice j avec 
 </div>
 <p>Le <em>slicing</em> permet aussi de remplacer directement la partie de liste si on procède à une affectation. Par exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> l <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> l 
+<span class="token operator">>></span><span class="token operator">></span> l
 <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> l<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"deux"</span><span class="token punctuation">,</span> <span class="token string">"trois"</span><span class="token punctuation">]</span>
 <span class="token operator">>></span><span class="token operator">></span> l
@@ -956,6 +962,62 @@ L<span class="token punctuation">.</span>reverse<span class="token punctuation">
 </div>
 </details>     
 </div>
+<h3>Lambda et listes</h3>
+<p>Les fonction lambda permettent d'être utilisée directement dans des méthodes de liste. Par exemple avec <a href="https://docs.python.org/fr/3/library/stdtypes.html#list.sort">le paramètre <code class="language-">key</code> de la méthode de liste <code class="language-">sort</code></a>. Considérons la liste <code class="language-">l</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
+<p>Si on cherche à trier <code class="language-">l</code>, la liste sera triée en comparant le 1er élément de chaque liste :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['au revoir', 2], ['bonjour', 1]]</span></code></pre>
+<p>Si l'on veut trier sur le deuxième élément de chaque liste, on utilise le paramètre <code class="language-">key</code> qui est une fonction. Les éléments $x$ de la liste seront triés selon $key(x)$ plutôt que $x$ :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>second<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Que donnerait le tri si la fonction <code class="language-">second</code> avait été définie comme ceci :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">second</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span> <span class="token operator">/</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span>second<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Utiliser une fonction lambda permet de raccourcir le code précédent tout en le gardant très clair :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"au revoir"</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">"bonjour"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+l<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span>  <span class="token comment"># donnera [['bonjour', 1], ['au revoir', 2]]</span></code></pre>
 <h2>Opérateurs de listes</h2>
 <p>Comme pour les chaines de caractères :</p>
 <ul>
@@ -987,6 +1049,144 @@ L<span class="token punctuation">.</span>reverse<span class="token punctuation">
 <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span></code></pre>
 </div></div>
 
+<h2>Cas particulier des chaines de caractères</h2>
+<p>Une chaîne de caractères peut être vue comme un conteneur de caractères. On peut donc accéder à un caractère particulier comme une liste :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
+<span class="token operator">>></span><span class="token operator">></span> <span class="token string">"abcdefghijklmnopqrstuvwxyz"</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span>
+<span class="token string">'c'</span></code></pre>
+<p>Ou même utiliser des <a href="listes/#slices" class="interne">slices de liste</a> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token string">"abcdefghijklmnopqrstuvwxyz"</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">15</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">]</span>
+<span class="token string">'cgko'</span></code></pre>
+<p>En revanche, il est impossible de modifier une chaîne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token string">"Francois"</span>
+<span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"ç"</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;python-input-4>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+    x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"ç"</span>
+    <span class="token operator">~</span><span class="token operator">^</span><span class="token operator">^</span><span class="token operator">^</span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'str'</span> <span class="token builtin">object</span> does <span class="token keyword">not</span> support item assignment
+<span class="token operator">>></span><span class="token operator">></span></code></pre>
+<p>Entraînons nous un peut à manipuler les chaînes de caractères sous la forme d'un conteneur en reprenant le 27ème <a href="https://fr.wikipedia.org/wiki/Nombre_de_Mersenne_premier">nombre de Mersenne</a> sous sa forme chaîne de caractères : <code class="language-">m27 = str(2 ** 44497 - 1)</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quels sont les 10 premiers chiffres de <code class="language-">m27</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code class="language-">str(m27)[:10]</code></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Quels sont les 10 derniers chiffres de <code class="language-">m27</code> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code class="language-">str(m27)[-10:]</code></p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Est-ce que  <code class="language-">m27</code> est un <a href="https://fr.wikipedia.org/wiki/Palindrome">palindrome</a> ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p><code class="language-">str(m27) == str(m27)[::-1]</code> (<code class="language-">s[::-1]</code> renverse la chaîne)</p>
+</div>
+</details>     
+</div>
+<p>En revanche, il est interdit de modifier une chaine de caractère :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token string">"chaine"</span>
+<span class="token operator">>></span><span class="token operator">></span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"C"</span>
+Traceback <span class="token punctuation">(</span>most recent call last<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  File <span class="token string">"&lt;stdin>"</span><span class="token punctuation">,</span> line <span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">in</span> <span class="token operator">&lt;</span>module<span class="token operator">></span>
+TypeError<span class="token punctuation">:</span> <span class="token string">'str'</span> <span class="token builtin">object</span> does <span class="token keyword">not</span> support item assignment
+</code></pre>
+<p>Enfin on ne le répètera jamais assez, python vient avec tout un tas de méthodes utilitaires permettant de résoudre nombre d'opérations courantes. Utilisez la documentation sur les <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">méthodes de chaînes</a> en python pour résoudre les exercices suivants :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Index de la première occurrence de <code>1234</code> dans m27. Et de la deuxième ?</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<ul>
+<li><code class="language-">str(m27).find('1234')</code></li>
+<li><code class="language-">str(m27).find('1234', 19260 + 1)</code> : la première occurrence est à l'indice 19260, on cherche donc après.</li>
+<li>on peut faire en une ligne : <code class="language-">str(m27).find('1234', str(m27).find('1234') + 1)</code></li>
+</ul>
+</div>
+</details>     
+</div>
 
 
 </article>

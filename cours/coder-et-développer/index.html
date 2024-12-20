@@ -122,7 +122,7 @@
     
   
 
-  <p>Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple),</p>
+  <p>Ce cours est dédié au code informatique. On utilisera le language python comme support car c'est un langage très utilisé et qui permet de mettre en lumière tous les aspects du développement d'un code informatique. La très grande majorité des concepts que l'on verra seront cependant transposables dans d'autres langages (comme le javascript ou encore ruby par exemple).</p>
 <p>On supposera que vous avez des connaissances scientifiques de base (ie. mathématiques de Lycée) et que vous disposer d'un ordinateur dont vous êtes administrateur.</p>
 <p>Aucune compétences en informatique préalable n'est nécessaire.</p>
 <!-- fin résumé -->
@@ -162,9 +162,9 @@
 
 <h3>Installation d'un interpréteur</h3>
 <p>Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
-Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est  indispensable de pouvoir :</p>
+Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :</p>
 <ol>
-<li>créer un nouvel interpréteur python pour <em><strong>chaque</strong></em> exécution du programme.</li>
+<li>créer un nouvel interpréteur python pour <strong><em>chaque</em></strong> exécution du programme.</li>
 <li>écrire notre programme en-dehors de tout interpréteur</li>
 </ol>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -241,20 +241,6 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="environnements-virtuels" class="interne">Environnements virtuels</a></p>
-</div></div>
-
-<h3>Créer ses propres modules</h3>
-<blockquote>
-<p>TBD déjà vu ?
-parler de module dossier avec <code>__init__.py</code> (vide. Le remplir est niveau 2)
-référence dans le module</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="modules-python" class="interne">Modules python</a></p>
 </div></div>
 
 <h2>Stockage des données</h2>
@@ -335,6 +321,33 @@ référence dans le module</p>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="couverture-de-code" class="interne">Couverture de code</a></p>
+</div></div>
+
+<h3>Packages</h3>
+<p>Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle <em>package</em>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3/tutorial/modules.html#packages">package en python</a></p>
+</div></div>
+
+<p>Comme l'import d'un module revient à exécuter un fichier et qu'importer un package revient à importer un dossier, python exécute le fichier <code class="fichier">__init__.py</code> présent dans le dossier.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Un <em>package</em> est un dossier contenant un fichier <code class="fichier">__init__.py</code>.</p>
+<ul>
+<li>
+<p>importer le dossier revient à exécuter le fichier <code class="fichier">__init__.py</code>.</p>
+</li>
+<li>
+<p>exécuter le dossier avec l'interpréteur revient à exécuter le fichier <code class="fichier">__main__.py</code>.</p>
+</li>
+</ul>
 </div></div>
 
 
