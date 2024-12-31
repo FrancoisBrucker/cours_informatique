@@ -108,162 +108,138 @@
 <p><a href="https://docs.python.org/fr/3/tutorial/modules.html">Documentation python sur les modules</a></p>
 </div></div>
 
-<h2>Mécanisme d'importation de modules</h2>
-<p>Lorsque l'interpréteur python exécute une instruction d'import comme :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module</code></pre>
-<p>Il procède en deux temps :</p>
+<p>L'endroit où l'interpréteur cherche les modules locaux dépend de l'endroit où il est exécuté. Nous rentrerons dans ces détails plus tard, mais pour l'instant on considère que vous avez suivi <a href="../%C3%A9diteur-vscode/python/">les consignes du tutoriel vscode et python</a> :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <ol>
-<li>il cherche dans le dossier courant s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 2, sinon il passe à l'étape 4.</li>
-<li>il cherche dans ses dossiers à lui s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 3.</li>
-<li>il produit une erreur d'importation : <code class="language-">ModuleNotFoundError: No module named 'mon_module'</code></li>
-<li>il exécute le fichier <code class="fichier">mon_module.py</code> dans un nouvel espace de nommage créé pour l'occasion.</li>
+<li>vous avez créé un projet avec vscode</li>
+<li>que tous les fichiers que vous créez sont dans le dossier du projet</li>
+<li>que vous exécutez le code en utilisant le triangle vert</li>
 </ol>
-<p>Supposons que l'on ait dans le même dossier les fichiers  <code class="fichier">programme_principal.py</code> et <code class="fichier">mon_module.py</code> et tels que :</p>
-<ul>
-<li>
-<p><code class="fichier">programme_principal.py</code> vale :</p>
+<p>Ces consignes précédentes assurent que <strong>vous exécutez votre code python à partir du dossier contenant votre projet</strong>.</p>
+</div></div>
+
+<p>Préparons nos fichiers pour comprendre comment tout ça fonctionne :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Créez un nouveau projet avec vscode dans le dossier <code class="fichier">projet_module</code>. Dans ce projet, créez les deux fichiers <code class="fichier">mon_module.py</code> et <code class="fichier">mon_programme.py</code> tels que :</p>
+<p>Fichier <code class="fichier">mon_programme.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> mon_module</span>
 <span class="highlight-line"></span>
 <span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>mon_module<span class="token punctuation">.</span>MA_CONSTANTE<span class="token punctuation">)</span></span></code></pre>
-</li>
-<li>
-<p><code class="fichier">mon_module.py</code> vale :</p>
+<p>Fichier <code class="fichier">mon_module.py</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line">MA_CONSTANTE <span class="token operator">=</span> <span class="token number">42</span></span>
 <span class="highlight-line">va_variable <span class="token operator">=</span> <span class="token boolean">None</span></span></code></pre>
-</li>
-</ul>
-<p>À la fin de l'exécution de la ligne 1 du fichier <code class="fichier">programme_principal.py</code>, on a les différents espaces de noms suivant :</p>
+</div></div>
+
+<h2>Mécanisme d'importation de modules</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Exécutez le fichier <code class="fichier">mon_programme.py</code>.</p>
+</div></div>
+
+<p>Vous devriez voir s'afficher <code>42</code> dans le terminal de vscode. Examinons comment tout ça se passe. Lorsque l'interpréteur python exécute la première ligne du fichier :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> mon_module</span></code></pre>
+<p>Process d'import :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'interpréteur procède en deux temps pour exécuter la ligne d'import :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> mon_module</code></pre>
+<ol>
+<li>il cherche dans le dossier d'exécution s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 2, sinon il passe à l'étape 4.</li>
+<li>il cherche dans ses dossiers à lui s'il existe un fichier nommé <code class="fichier">mon_module.py</code>. Si ce fichier n'existe pas il passe à l'étape 3.</li>
+<li>il produit une erreur d'importation : <code class="language-">ModuleNotFoundError: No module named 'mon_module'</code></li>
+<li>il exécute le fichier <code class="fichier">mon_module.py</code> dans un nouvel espace de nommage créé pour lui.</li>
+</ol>
+</div></div>
+
+<p>À la fin de la première instruction on est dans la situation suivante :</p>
 <p><img src="import-1.png" alt="import"></p>
-<p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module, contenant un espace de nom. On peut accéder aux noms de son espace avec la notation pointée :</p>
+<p>Le nom <code class="language-">mon_module</code> correspond à un objet de type module, contenant un espace de nommage. On peut accéder aux noms de son espace avec la notation pointée :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">mon_module<span class="token punctuation">.</span>MA_CONSTANTE</code></pre>
 <p>On cherche le nom <code class="language-">MA_CONSTANTE</code> dans l'espace de nom associé à l'objet de nom <code class="language-">mon_module</code>.</p>
-<p>Faite l'exercice ci-dessous pour vous convaincre que l'import exécute bien le fichier importé :</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Créez les deux fichiers <code class="fichier">mon_module.py</code> et <code class="fichier">programme_principal.py</code> et copiez/collez y leurs codes.</p>
-<ol>
-<li>exécutez le fichier <code class="fichier">programme_principal.py</code> pour voir s'afficher <code class="language-">42</code></li>
-<li>Ajouter dans le fichier <code class="fichier">mon_module.py</code> une ligne avec l'instruction <code class="language-">print(&quot;coucou de l'import&quot;)</code> puis exécutez le fichier <code class="fichier">programme_principal.py</code>.</li>
-</ol>
-<p>Vous devriez voir s'afficher <code>&quot;coucou de l'import&quot;</code> à l'écran, ce qui prouve que chaque ligne du fichier <code class="fichier">mon_module.py</code> est exécuté à l'import.</p>
+<p>Créez un projet vscode et créez le fichier <code class="fichier">main.py</code> suivant que vous exécuterez :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">import</span> math</span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>pi<span class="token punctuation">)</span></span></code></pre>
+<p>Explicitez comment s'est exécuté le programme.</p>
 </div></div>
 
-<h2>Exécution de modules</h2>
-<h3>Exécution d'un module comme un programme</h3>
-<p>On peut utiliser l'interpréteur python pour exécuter un module. Par exemple notre fichier <code class="fichier">mon_module.py</code> précédent :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_module.py</code></pre>
-<p>Il n'y a pas de différence fondamentale entre un programme et un module en python. C'est juste un programme dont on garde trace de son espace de noms <code class="language-">global</code> après exécution.</p>
-<h3>Exécution d'un module python</h3>
-<p>Pour exécuter un module python, il n'est pas nécessaire de connaître son emplacement, on peut utiliser l'option <code>-m</code> de l'interpréteur python.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
 </svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Exactement comme pour le fichier <code class="fichier">mon_programme.py</code>, sauf que l'interpréteur est passé à l'étape 2 et a trouvé un fichier nommé <code class="fichier">math.py</code> dans ses propres fichiers qu'il a exécuté.</p>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m">Option <code>-m</code> de l'interpréteur Python</a></p>
+<p>Ajoutez au projet un fichier <code class="fichier">math.py</code> vide et exécutez à nouveau le fichier <code class="fichier">main.py</code>. Que doit-il se passer ?</p>
 </div></div>
 
-<p>On l'a déjà fait à de multiples reprises en utilisant le module pip :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip</code></pre>
-<p>Le résultat de la commande précédente dans le terminal affichera l'aide de <code class="fichier">pip</code>.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>L'interpréteur trouve le fichier <code class="fichier">math.py</code> dans le projet et l'a exécuté. Comme ce fichier ne contient pas de variable <code class="language-">pi</code>, le programme plante avec le message d'erreur :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">AttributeError<span class="token punctuation">:</span> module <span class="token string">'math'</span> has no attribute <span class="token string">'pi'</span></code></pre>
+</div>
+</details>     
+</div>
+<p>Vous pouvez vous convaincre que le fichier est bien exécuté en ajoutant la ligne suivant dans le fichier <code class="fichier">mon_module.py</code> :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"coucou de l'import"</span><span class="token punctuation">)</span></code></pre>
+<p>En exécutant le fichier <code class="fichier">mon_programme.py</code>, vous devriez voir s'afficher <code>&quot;coucou de l'import&quot;</code> dans le terminal. C'est pour cette raison que :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Exécutez le module <code class="language-">random</code> de python dans le terminal avec la commande : <code>python -m random</code>.</p>
-</div></div>
-
-<p>Si vous exécutez le module python <code class="language-">random</code>, vous verrez s'afficher tout un tas de choses sur l'écran :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python <span class="token parameter variable">-m</span> random
-
-<span class="token number">0.000</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>
-avg <span class="token number">0.498948</span>, stddev <span class="token number">0.285393</span>, min <span class="token number">1</span>.74181e-05, max <span class="token number">0.999923</span>
-
-<span class="token number">0.003</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> normalvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg -0.00160272, stddev <span class="token number">1.00174</span>, min -3.42565, max <span class="token number">3.90493</span>
-
-<span class="token number">0.003</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> lognormvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg <span class="token number">1.64736</span>, stddev <span class="token number">2.19193</span>, min <span class="token number">0.0147119</span>, max <span class="token number">65.9514</span>
-
-<span class="token number">0.004</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> vonmisesvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg <span class="token number">3.11325</span>, stddev <span class="token number">2.28549</span>, min <span class="token number">0.000433248</span>, max <span class="token number">6.28223</span>
-
-<span class="token number">0.009</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> binomialvariate<span class="token punctuation">(</span><span class="token number">15</span>, <span class="token number">0.6</span><span class="token punctuation">)</span>
-avg <span class="token number">8.9936</span>, stddev <span class="token number">1.89413</span>, min <span class="token number">2</span>, max <span class="token number">15</span>
-
-<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
-<p>Ces lignes montrent le temps mis pour générer des nombres aléatoires selon plusieurs lois de probabilités.</p>
-<p>Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?</p>
-<h3>Variable <code class="language-">__name__</code></h3>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3.12/library/__main__.html"><code class="language-">__name__</code> et <code class="language-">__main__</code> en python</a></p>
-</div></div>
-
-<p>Python distingue les deux types d'exécutions d'un programme via la variable spéciale <code class="language-">__name__</code> :</p>
-<ul>
-<li>elle vaut la chaîne de caractères <code class="language-">&quot;__main__&quot;</code> si le fichier est exécuté directement</li>
-<li>elle vaut le nom du fichier s'il est exécuté via un import</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un fichier nommé <code class="fichier">test_exécution.py</code> et copiez/collez y le code suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></code></pre>
-<p>Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code <code class="language-">import test_exécution</code>.</p>
-</div></div>
-
-<p>Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># code pouvant être importé</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    <span class="token comment"># code du programme principal</span></code></pre>
-<h2>Où sont les modules ?</h2>
-<p>Les dossiers où python va cherchez les modules sont listés dans la variable <code>sys.path</code> et dépendent de l'interpréteur utilisé :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Il faut installer les modules en utilisant <code>python -m pip</code> et non directement le programme <code>pip</code>, car l'interpréteur pour lequel sera installé le module est ainsi explicite.</p>
-</div></div>
-
-<p>vous pouvez le voir en exécutant le code :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">for</span> dossier <span class="token keyword">in</span> sys<span class="token punctuation">.</span>path<span class="token punctuation">:</span>
-   <span class="token keyword">print</span><span class="token punctuation">(</span>dossier<span class="token punctuation">)</span></code></pre>
-<p>Chez moi, sur un mac où python est installé avec <a href="https://brew.sh/">brew</a> ce programme rend :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
-/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
-/opt/homebrew/lib/python3.11/site-packages
-/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
-/opt/homebrew/opt/python-tk@3.11/libexec</code></pre>
-<p>Il y a plusieurs dossiers :</p>
-<ul>
-<li><code class="fichier">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11</code> contient les packages de bibliothèque standard (il contient par exemple un fichier <em>&quot;<a href="http://random.py">random.py</a>&quot;</em> qui contient le code du package <code>random</code>)</li>
-<li><code class="fichier">/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload</code> contient les packages python qui ne sont pas écrit en python mais en C</li>
-<li><code class="fichier">/opt/homebrew/lib/python3.11/site-packages</code> qui contient les packages qui seront installés par pip.</li>
-</ul>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant <a href="https://opensource.com/article/19/4/managing-python-packages">ce tuto</a>, ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.</p>
+<p>Les fichiers utilisés comme modules ne doivent contenir que des déclarations de fonctions ou des variables. Ils ne doivent comporter aucun affichage ni interactions avec l'utilisateur (via des <code class="language-">input</code> par exemple) pour ne pas gêner le processus d'import.</p>
 </div></div>
 
 
