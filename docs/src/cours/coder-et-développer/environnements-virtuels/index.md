@@ -447,3 +447,13 @@ La méthode de partage précédente nécessite plusieurs opérations à effectue
 {% endlien %}
 
 > TBD : faire un exemple. Attention à ce que venv soit bien dans le dossier du projet
+
+### uv
+
+> TBD : tout en un et en rust.
+
+{% lien %}
+<https://github.com/astral-sh/uv>
+{% endlien %}
+
+> TBD : faire un exemple.

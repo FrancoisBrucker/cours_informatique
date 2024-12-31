@@ -103,7 +103,7 @@ Enfin, en python être une fonction n'est rien d'autre que d'être un **_objet a
 True
 >>> callable(1)
 False
->>> callable("ee")
+>>> callable("une chaîne")
 False
 ```
 

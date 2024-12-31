@@ -208,13 +208,13 @@ On peut utiliser la commande `del`{.language-} pour supprimer un indice d'une li
 
 ## Création
 
-On a déjà vu la création directe d'une liste
-
-L'exemple suivant crée une liste de nom `x`{.language-} qui contient l'entier 1 en 1ère position, l'entier 4 en 2ème position et la chaîne de caractères `"douze"`{.language-} en troisième position :
+On a déjà vu la création directe d'une liste :
 
 ```python
 >>> x = [1, 4, "douze"]
 ```
+
+Il existe d'autres façons, indirectes, de créer des listes, utile lorsque les listes sont issues de boucles.
 
 ### Avec range
 
