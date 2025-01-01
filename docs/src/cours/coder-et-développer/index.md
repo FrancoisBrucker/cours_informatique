@@ -37,38 +37,21 @@ Une fois les bases acquises, terminez cette partie en faisant le tutoriel de pyt
 
 ## <span id="s-équiper"></span> S'équiper pour le développement
 
+Avant de pouvoir écrire des programmes conséquents il faut comprendre comment est organisé votre ordinateur et pouvoir minimalement interagir avec son système d'exploitation.
 
-### Un ordinateur pour le développement
+### Connaissances système minimales
 
-- connaissances minimales du fonctionnement d'un ordinateur (application, process, mémoire)
-- dossiers/fichiers
-- terminal pour exécuter des commandes/applications
+{% aller %}
+[Dossiers, fichiers et terminal](connaissances-système-minimales){.interne}
+{% endaller %}
+
+### Préparer son ordinateur pour le développement
 
 {% aller %}
 [Un ordinateur pour le développement](ordinateur-développement){.interne}
 {% endaller %}
 
-### Installation d'un interpréteur
-
-Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
-Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :
-
-1. créer un nouvel interpréteur python pour **_chaque_** exécution du programme.
-2. écrire notre programme en-dehors de tout interpréteur
-
-{% aller %}
-[Installer python](installer-python){.interne}
-{% endaller %}
-
-> TBD vscode terminal, installation de modules __name__, __file__, etc.
-
-{% aller %}
-[Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
-{% endaller %}
-
 ## <span id="développer"></span>Développer
-
-> TBD refaire on fait des fichiers et on importe des choses sans l'avoir défini avant.
 
 {% aller %}
 [Écrire et exécuter du code](développement){.interne}
@@ -99,6 +82,68 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 {% endaller %}
 
 > TBD exercices/projet
+
+## Python et système
+
+> TBD dossier d'exécution
+
+version de python, interpréteur ou il est, dossier d'exécution, __file__, modules et __name__, packages. environnement virtuel.
+
+### Installation d'un interpréteur
+
+Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
+Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :
+
+1. créer un nouvel interpréteur python pour **_chaque_** exécution du programme.
+2. écrire notre programme en-dehors de tout interpréteur
+
+{% aller %}
+[Installer python](installer-python){.interne}
+{% endaller %}
+
+> TBD vscode terminal, installation de modules __name__, __file__, etc.
+
+{% aller %}
+[Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
+{% endaller %}
+
+### Où sont les modules python
+
+Les dossiers où python va cherchez les modules sont listés dans la variable `sys.path` et dépendent de l'interpréteur utilisé :
+
+{% attention %}
+Il faut installer les modules en utilisant `python -m pip` et non directement le programme `pip`, car l'interpréteur pour lequel sera installé le module est ainsi explicite.
+{% endattention %}
+
+vous pouvez le voir en exécutant le code :
+
+```python
+import sys
+for dossier in sys.path:
+   print(dossier)
+```
+
+Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend :
+
+```shell
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
+/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
+/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
+/opt/homebrew/lib/python3.11/site-packages
+/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
+/opt/homebrew/opt/python-tk@3.11/libexec
+```
+
+Il y a plusieurs dossiers :
+
+- `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11`{.fichier} contient les packages de bibliothèque standard (il contient par exemple un fichier _"random.py"_ qui contient le code du package `random`)
+- `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload`{.fichier} contient les packages python qui ne sont pas écrit en python mais en C
+- `/opt/homebrew/lib/python3.11/site-packages`{.fichier} qui contient les packages qui seront installés par pip.
+
+{% attention %}
+La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.
+{% endattention %}
 
 ## Gestion des dépendances
 
@@ -175,13 +220,11 @@ La couverture de code est un outils essentiel lorsque l'on programme par les tes
 [Couverture de code](couverture-de-code){.interne}
 {% endaller %}
 
-## MISC modules
+### Création de packages
 
 > TBD odds and ends
 
-### packages
-
-Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_.
+Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
 
 {% lien %}
 [package en python](https://docs.python.org/fr/3/tutorial/modules.html#packages)
@@ -197,44 +240,6 @@ Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
 - exécuter le dossier avec l'interpréteur revient à exécuter le fichier `__main__.py`{.fichier}.
 
 {% endnote %}
-
-### Où sont les modules python
-
-Les dossiers où python va cherchez les modules sont listés dans la variable `sys.path` et dépendent de l'interpréteur utilisé :
-
-{% attention %}
-Il faut installer les modules en utilisant `python -m pip` et non directement le programme `pip`, car l'interpréteur pour lequel sera installé le module est ainsi explicite.
-{% endattention %}
-
-vous pouvez le voir en exécutant le code :
-
-```python
-import sys
-for dossier in sys.path:
-   print(dossier)
-```
-
-Chez moi, sur un mac où python est installé avec [brew](https://brew.sh/) ce programme rend :
-
-```shell
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python311.zip
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11
-/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload
-/Users/fbrucker/Library/Python/3.11/lib/python/site-packages
-/opt/homebrew/lib/python3.11/site-packages
-/opt/homebrew/lib/python3.11/site-packages/gpg-1.22.0-py3.11-macosx-13-arm64.egg
-/opt/homebrew/opt/python-tk@3.11/libexec
-```
-
-Il y a plusieurs dossiers :
-
-- `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11`{.fichier} contient les packages de bibliothèque standard (il contient par exemple un fichier _"random.py"_ qui contient le code du package `random`)
-- `/opt/homebrew/Cellar/python@3.11/3.11.5/Frameworks/Python.framework/Versions/3.11/lib/python3.11/lib-dynload`{.fichier} contient les packages python qui ne sont pas écrit en python mais en C
-- `/opt/homebrew/lib/python3.11/site-packages`{.fichier} qui contient les packages qui seront installés par pip.
-
-{% attention %}
-La gestion des packages peut être compliquée. Normalement, si vous vous y prenez comme indiqué ici et en utilisant votre ordinateur personnel, tout devrait bien se passer. Si cela commence à ne plus aller, vous pouvez essayer d'installer les packages à un autre en endroit en suivant [ce tuto](https://opensource.com/article/19/4/managing-python-packages), ou, comme on le fera plus tard en utilisant un environnement virtuel. Mais, dans le doute, consultez un prof qui s'y connaît.
-{% endattention %}
 
 ### Exécution de modules
 

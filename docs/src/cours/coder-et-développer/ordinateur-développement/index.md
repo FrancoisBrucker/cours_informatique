@@ -20,7 +20,8 @@ On regardera comment faire sous 3 systèmes d'exploitations :
 - Windows 11
 - Macos
 - Linux/Ubuntu (si vous êtes avec une autre distribution, vous devriez savoir vous déb rouiller tout seul)
-  {% endinfo %}
+
+{% endinfo %}
 
 ## Préparation
 
@@ -75,32 +76,13 @@ Je conseille d'installer [notepad++](https://notepad-plus-plus.org/)
 {% enddetails %}
 {% details "sous Macos" %}
 
-- En éditeur gratuit à rout faire, vous pouvez télécharger [CotEditor sur l'appstore](https://coteditor.com/), simple et efficace.
-- Je conseille aussi d'utiliser la version gratuite (ou de payer le logiciel si vous l'utilisez beaucoup ou avec besoin des fonctionnalités avancées que la version payante propose) de [bbedit](http://www.barebones.com/products/bbedit/).
+J'aime utiliser l'éditeur [Textmate](https://macromates.com/) pour les petites manipulations de fichiers.
 
 {% enddetails %}
 {% details "sous Linux/Ubuntu" %}
 Par défaut, Ubuntu installe l'application `Éditeur de texte` qui permet d'éditer et de modifier des fichiers textes.
 
 {% enddetails %}
-
-## <span id="connaissances-indispensables"></span>Connaissances indispensables
-
-### Système de Fichiers
-
-Savoir comment est organisé le disque dur de votre ordinateur
-
-{% aller %}
-[Naviguer dans un système de fichiers](fichiers-navigation){.interne}
-{% endaller %}
-
-### Utilisation du Terminal
-
-Le terminal permet d'exécuter rapidement des commandes.
-
-{% aller %}
-[Terminal](terminal){.interne}
-{% endaller %}
 
 ## Outils utiles
 

@@ -5,7 +5,7 @@ title: Vsc et terminal
 
 eleventyNavigation:
   prerequis:
-      - '../../ordinateur-développement/terminal/'
+      - '../../../bases-programmation/éditeur-vscode/'
 
 
 eleventyComputed:
@@ -15,11 +15,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Les différentes manières d'invoquer un terminal avec  [visual studio code](https://code.visualstudio.com/). C'est un condensé de la documentation officielle qui bien plus complète : <https://code.visualstudio.com/docs/editor/integrated-terminal>
-
-<!-- fin résumé -->
 
 ## Palette de commande
 
