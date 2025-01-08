@@ -98,7 +98,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/">Éditeur vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/">Outils Complémentaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/python/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/python/pytest/">Outils complémentaires pour Vsc et python : pytest</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/développement/">Écrire du code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/développement/tutoriel-hello-dev/">Mise en œuvre d&#39;un projet informatique</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/développement/tutoriel-hello-dev/extensions-python-vscode/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/développement/tutoriel-hello-dev/extensions-python-vscode/pytest/">Outils complémentaires pour Vsc et python : pytest</a>
 
 </div></div>
 
@@ -107,9 +107,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Nous utilisons <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
-<!-- fin résumé -->
+  <p>Nous utilisons <a href="https://docs.pytest.org/">pytest</a> comme bibliothèque de test.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -122,7 +120,7 @@
 <pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> pytest</code></pre>
 <h2><span id="configuration-pytest"></span> Configuration</h2>
 <ol>
-<li>dans les préférences (<em>menu file/code &gt; Préférences &gt; settings</em>) tapez <code>python.testing.pytestEnabled</code>  dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).</li>
+<li>dans les préférences (<em>menu file/code &gt; Préférences &gt; settings</em>) tapez <code>python.testing.pytestEnabled</code> dans la barre de recherche et cochez la case. Ceci dit à vscode que notre framework de test est pytest (il y en a d'autres possible comme <a href="https://docs.python.org/fr/3.9/library/unittest.html">unittest</a> ou encore <a href="https://nose.readthedocs.io/en/latest/">nosetests</a>, mais on ne va pas les utiliser. Assurez vous cependant qu'un seul framework de test soit utilisé à la fois. Ca devrait être le cas si vous n'avez pas cliqué un peu partout).</li>
 <li>on configure les tests de notre projet en tapant la commande (dans la <a href="../vsc-installation-et-prise-en-main#palette-de-commande" class="interne">palette de commande</a>) : <em>python : Configure tests</em> on choisit <em>pytest</em> puis <em>. (root)</em> qui donne le dossier de départ où aller chercher nos tests</li>
 </ol>
 <h2><span id="utilisation-pytest"></span> Utilisation</h2>
@@ -149,7 +147,7 @@
 <li>...</li>
 </ul>
 <p><img src="../python-pytest-env.png" alt="tests"></p>
-<p>On peut également directement utiliser pytest avec le terminal, en tapant <code>python -m pytest</code>  alors que vous êtes dans le dossier du projet.</p>
+<p>On peut également directement utiliser pytest avec le terminal, en tapant <code>python -m pytest</code> alors que vous êtes dans le dossier du projet.</p>
 
 
 </article>

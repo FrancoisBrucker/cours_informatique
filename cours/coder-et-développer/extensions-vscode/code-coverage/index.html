@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Outils complémentaires pour Vsc et python : linter</title>
+    <title>Outils complémentaires pour Vsc et python : code coverage</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Outils complémentaires pour Vsc et python : linter</h1>
+  <h1>Outils complémentaires pour Vsc et python : code coverage</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/">Éditeur vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/">Outils Complémentaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/python/">Outils complémentaires pour Vsc et python</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/éditeur-vscode-2/extensions/python/flake8/">Outils complémentaires pour Vsc et python : linter</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/">Coder et développer</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/extensions-vscode/">Outils Complémentaires vscode</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/coder-et-développer/extensions-vscode/code-coverage/">Outils complémentaires pour Vsc et python : code coverage</a>
 
 </div></div>
 
@@ -96,36 +96,49 @@
     
   
 
-  <!-- début résumé -->
-<p><a href="https://code.visualstudio.com/docs/python/linting">Le linting en python avec vscode</a> permet de souligner les fautes de style de python.</p>
-<p>C'est une aide précieuse pour écrire du code qui est à la fois fonctionnel et lisible. Cela permet de supprimer la majorité des problèmes avant l'exécution.</p>
-<!-- fin résumé -->
-<p>Il faut installer des plugins pythons spécifiques pour le linting. Il en existe de nombreux. On vous propose ici d'utiliser <a href="https://flake8.pycqa.org/en/latest/">flake8</a> qui permet de respecter la <a href="https://www.python.org/dev/peps/pep-0008/">PEP8</a>.</p>
-<h2><span id="installation-flake8"></span> Installation</h2>
+  <h2><span id="installation-coverage"></span> Installation</h2>
+<h3>Coverage pour pytest</h3>
+<p>On va utiliser le <em>code coverage</em> de pytest :</p>
+<pre><code>python -m pip install pytest-cov
+</code></pre>
+<p>Ce module python installe deux choses :</p>
+<ul>
+<li>le module de couverture de code <a href="https://coverage.readthedocs.io/en/7.4.1/">coverage</a></li>
+<li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a></li>
+</ul>
 <h3>Extension vscode</h3>
-<p>Pour utiliser le linter avec vscode, <strong>installez <a href="../../../prise-en-main#extensions" class="interne">l'extension vscode</a></strong> nommée &quot;<em>flake8</em>&quot; développé par microsoft.</p>
-<p>Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères (<a href="https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes">l'erreur 501</a>), qui est une règle plus ou moins obsolète.</p>
-<ol>
-<li>aller <a href="https://code.visualstudio.com/docs/getstarted/settings#_settings-editor">dans les paramètres</a> : cliquez sur l'engrenage &gt; paramètres <img src="vscode-param%C3%A8tres.png" alt="paramètres vscode"></li>
-<li>en prenant garde d'ètre dans l'onglet utilisateur, tapez <code>flake8</code> dans la bvarre de recherche</li>
-<li>dans la liste d'options, trouver la ligne <code>Flake8: args</code> et ajouter la ligne <code>--ignore=E501</code> <img src="flake8-param%C3%A8tres.png" alt="paramètres flake8"></li>
-</ol>
+<p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
+<h2><span id="code-coverage"></span> Utilisation</h2>
+<h3>Utiliser coverage sans pytest</h3>
+<p>En 2 temps :</p>
+<ul>
+<li>exécution de la couverture de code : <code>python -m coverage run [mon_fichier]</code>. Cette exécution crée un fichier <code class="fichier">.coverage</code> qui contient le rapport d'exécution</li>
+<li>visualisation du rapport : <code>python -m coverage report</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :</p>
+<p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
+</div></div>
+
+<h3>Couverture de code avec pytest</h3>
+<p>Dans un terminal tapez <code>python -m pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code>.</code>) avec le coverage qui sera retourné au format texte.</p>
+<p>Si l'on veut les ligne manquantes, on peut utiliser la commande : <code>--cov-report term-missing</code></p>
+<p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code>python -m pytest --cov=. --cov-report html</code>.</p>
+<h3>Utilisation de l'extension *<em>Coverage Gutters</em></h3>
+<p>La commande <code>python -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code>python -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Si vous trouvez qu'une erreur soulignée par le linter n'en est pas une (comme l'erreuir 501), il faut la supprimer des erreurs rendues. Si le linter souligne une erreur il <strong>faut</strong> que s'en soit une, sinon vous allez vite ne plus tenir compte de ses recommendations... Et le linter ne servira à rien, voir sera néfaste car il rendra votre code moins lisible en soulignant des choses.</p>
+<p>Si le petit <em>watch</em> n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="../../../prise-en-main/#palette-de-commande" class="interne">palette de commande</a>
+<em>Coverage Gutters: Display Coverage</em>.</p>
 </div></div>
 
-<h3>Module python</h3>
-<p>Dans <a href="../../../../ordinateur-d%C3%A9veloppement/terminal" class="interne">un terminal</a>, qui peut être celui de vscode, tapez la commande :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip <span class="token function">install</span> flake8</code></pre>
-<p>Ceci vous permettra d'utiliser le linter dans le terminal. De plus, l'extension vscode va préférentiellement utiliser votre version de flake8 que la sienne.</p>
-<h2>Utilisation</h2>
-<p>Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de  style.</p>
-<h2><code>flake8</code> dans le terminal</h2>
-<p>Vous pouvez aussi toujours exécuter la commande <code>flake8 mon-fichier.py</code> dans <a href="../../../terminal#terminal-int%C3%A9gr%C3%A9" class="interne">un terminal intégré</a> pour obtenir le linting de votre fichier. C'est moins pratique que lorsque vscode le fait puisque la ligne en question n'est pas soulignée dans l'interface.</p>
 
 
 </article>

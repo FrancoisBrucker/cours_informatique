@@ -157,7 +157,7 @@
 <p>Cependant Unicode n'est <strong>pas</strong> un système d'encodage de caractère, c'est juste une table de correspondance. Cette table est néanmoins utilisée dans les système d'encodage de caractères, comme l'utf-8.</p>
 <h2><span id="utf8"></span>Encodage utf-8</h2>
 <p>On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.</p>
-<p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il  permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
+<p>On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format <em>utf</em> (Unicode transformation format) et il permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.</p>
 <p>Il existe plusieurs format utf, mais c'est <a href="https://fr.wikipedia.org/wiki/UTF-8">utf-8</a> qui s'est imposé.</p>
 <h3>Organisation du code</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
@@ -209,6 +209,14 @@
 </div></div>
 
 <h2>Python et chaînes de caractères</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://docs.python.org/fr/3.13/howto/unicode.html">https://docs.python.org/fr/3.13/howto/unicode.html</a></p>
+</div></div>
+
 <p>Une chaîne de caractères <code class="language-">s</code> est de type <code class="language-">str</code>. Elle peut être considérée comme un tableaux de <code class="language-">len(s)</code> cases. Ces objets son <strong>non modifiables</strong>.</p>
 <p>En python, la concaténation est symbolisée par l'opérateur <code language-="">+</code>.</p>
 <p>On peut faire de nombreuses choses avec des chaînes de caractères en python, n'hésitez pas à aller voir <a href="https://docs.python.org/3/library/stdtypes.html#textseq">la documentation</a> si vous voulez faire une opération sur les chaînes, elle est souvent déjà implémentée.</p>
@@ -225,13 +233,103 @@
 </div></div>
 
 <h3><code class="language-">byte</code> et <code class="language-">str</code></h3>
-<p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code>  des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
+<p>Par défaut toutes les chaînes de caractères sont de type <code class="language-">str</code>, et encodées en <code>utf-8</code>. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode <code class="language-">encode</code> des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.</p>
 <p>C'est comme une chaîne de caractères mais qui commence par <code>b</code> . On peut ensuite décoder un byte pour le retransformer en <code class="language-">str</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token string">"ma chaîne de caractères"</span>
 x_en_byte <span class="token operator">=</span> x<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span>  <span class="token comment"># devient : b'ma cha\xc3\xaene de caract\xc3\xa8res'</span>
 re_x <span class="token operator">=</span> x_en_byte<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span></code></pre>
 <p>Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. Ce seront des <code>byte</code> qu'il faudra re-écrire en <code>utf8</code>.</p>
 <p>Les différents encoding possibles sont disponibles <a href="https://docs.python.org/3/library/codecs.html#standard-encodings">dans la documentation</a>.</p>
+<h2>Supprimer les accents</h2>
+<p>Il est parfois utile de pouvoir transformer une chaîne Unicode en ASCII, ce qui revient en Français à supprimer les accents/cédilles. Par exemple :</p>
+<ul>
+<li>François devient Francois</li>
+<li>Cécile devient Cecile</li>
+<li>Éléonore devient Eleonore</li>
+</ul>
+<h3>Solution simple à utiliser par défaut</h3>
+<p>La réponse la plus simple pour faire cela en python est d'utiliser un module qui fait cela pour nous :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://pypi.org/project/Unidecode/">Module unidecode</a></p>
+</div></div>
+
+<h3>Solution compliquée mais qui permet de comprendre des choses</h3>
+<p>Une autre solution plus artisanale mais qui à l'intérêt de plonger un peu plus dans l'encodage Unicode est changer la façon dont est codé la chaîne.</p>
+<p>Prenons le cas du français comme exemple. On l'a vu, le caractère <code>é</code> Unicode  correspond à la glyphe numéro <code>U+00E9</code>. Mais on peut aussi voir ce caractère comme l'accentuation du caractère <code>e</code>. Dans ce cas, <code>é</code> n'est plus un unique caractère, mais il est formé de la combinaison de <code>e</code> (glyphe <code>U+0065</code>) et de <code>\'</code> (glyphe <code>U+0301</code>). On appelle ces caractères <a href="https://www.cnrtl.fr/definition/diacritique">diacritiques</a>. Il y a de multiples possibilités de combinaison :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Combining_character">Combiner des caractères</a></p>
+</div></div>
+
+<p>Unicode permet d'écrire selon l'un ou l'autre des formalismes (soit <code>é</code> soit <code>e\'</code>), et régule tout ceci selon des normes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<ul>
+<li><a href="https://fr.wikipedia.org/wiki/Normalisation_Unicode">Normalisation Unicode</a></li>
+<li><a href="https://xebia.com/blog/handling-encoding-issues-with-unicode-normalisation-in-python/">Normalisation et python</a></li>
+</ul>
+</div></div>
+
+<p>L'astuce est alors de :</p>
+<ol>
+<li>normaliser une chaîne Unicode selon <a href="https://fr.wikipedia.org/wiki/Normalisation_Unicode#NFKD">le format NFKD</a> qui sépare les caractères (<code>é</code> sera écrit <code>e\'</code>)</li>
+<li>supprimer les caractères non ASCII de la chaîne obtenue</li>
+<li>retransformer la chaîne en Unicode</li>
+</ol>
+<p>En python cela donne :</p>
+<p>Création de la chaîne Unicode :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">=</span> <span class="token string">'é'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+<span class="token number">1</span></code></pre>
+<p>La chaîne est formée d'une glyphe.</p>
+<p>Transformons la chaîne en la re-normalisant :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s2 <span class="token operator">=</span> unicodedata<span class="token punctuation">.</span>normalize<span class="token punctuation">(</span><span class="token string">'NFKD'</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'str'</span><span class="token operator">></span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span>
+<span class="token number">2</span></code></pre>
+<p>Les deux chaînes ont le même affichage, mais sont différentes !</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s <span class="token operator">==</span> s2
+<span class="token boolean">False</span></code></pre>
+<p>On ne garde que les caractères ASCII :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> b <span class="token operator">=</span> s2<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'ASCII'</span><span class="token punctuation">,</span> <span class="token string">'ignore'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> b
+<span class="token string">b'e'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">type</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token string">'bytes'</span><span class="token operator">></span></code></pre>
+<p>On a maintenant une chaine au format bytes qu'il faut retransformer en Unicode :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s3 <span class="token operator">=</span> b<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> s3
+<span class="token string">'e'</span>
+<span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">len</span><span class="token punctuation">(</span>s3<span class="token punctuation">)</span>
+<span class="token number">1</span></code></pre>
+<p>Ouf !</p>
+<p>On peut aussi faire tout ça en une seule grosse ligne de commande :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> s3 <span class="token operator">=</span> unicodedata<span class="token punctuation">.</span>normalize<span class="token punctuation">(</span><span class="token string">'NFKD'</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'ASCII'</span><span class="token punctuation">,</span> <span class="token string">'ignore'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> s3
+<span class="token string">'e'</span>
+</code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Cela ne fonctionne que pour les glyphes qui ont une forme diacritique. Cela ne fonctionne pas par exemple pour le caractère <code>đ</code> ou <code>ø</code>.</p>
+<p>Pour des textes français cependant, cela fonctionne très bien.</p>
+</div></div>
+
 
 
 </article>
