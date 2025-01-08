@@ -163,16 +163,16 @@ c1<span class="token punctuation">.</span>incrémente<span class="token punctuat
 <p>Le fonctionnement de la couverture de code est le suivant :</p>
 <ol>
 <li>on exécute un fichier dans le terminal via le module coverage : <code>python -m coverage run main.py</code></li>
-<li>le rapport est visible avec la commande  <code>python -m coverage report</code></li>
+<li>le rapport est visible avec la commande <code>python -m coverage report</code></li>
 </ol>
 <p>Dns mon cas, dans un terminal, je commence par exécuter le programme via le module coverage :</p>
-<pre><code>» python -m coverage run main.py                       
+<pre><code>» python -m coverage run main.py
 6 Compteur(pas=3, valeur=6)
 1 Compteur(pas=1, valeur=1)
 False
 </code></pre>
 <p>Puis je visualise le rapport :</p>
-<pre><code>» python -m coverage report                              
+<pre><code>» python -m coverage report
 Name                                                                 Stmts   Miss  Cover
 ----------------------------------------------------------------------------------------
 /usr/local/lib/python3.9/site-packages/_distutils_hack/__init__.py      92     88     4%
@@ -227,7 +227,7 @@ TOTAL            23      2    91%
 <h2>Utilisation via <code>pytest</code></h2>
 <p>L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests. Exécutons les tests en même temps que coverage avec le l'extension <code>pytest-cov</code> que nous venons d'installer :</p>
 <ol>
-<li>on exécute les tests dans le terminal en ajoutant l'extension coverage  <code>python -m pytest --cov=.</code></li>
+<li>on exécute les tests dans le terminal en ajoutant l'extension coverage <code>python -m pytest --cov=.</code></li>
 <li>le résultat est donné dans le terminal.</li>
 </ol>
 <p>J'obtiens :</p>
@@ -236,7 +236,7 @@ TOTAL            23      2    91%
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                  
+collected 1 item
 
 test_compteur.py .                                                                          [100%]
 
@@ -268,7 +268,7 @@ TOTAL                 26     14    50%
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item 
+collected 1 item
 
 test_compteur.py .                                                                       [100%]
 
@@ -314,6 +314,52 @@ TOTAL                 26     13    50%
 </div>
 </details>     
 </div>
+<h2><span id="installation-coverage"></span> Installation pour vscode</h2>
+<blockquote>
+<p>TBD à remanier. Des choses sont en doublon avec ce qui précède</p>
+</blockquote>
+<h3>Coverage pour pytest</h3>
+<p>On va utiliser le <em>code coverage</em> de pytest :</p>
+<pre><code>python -m pip install pytest-cov
+</code></pre>
+<p>Ce module python installe deux choses :</p>
+<ul>
+<li>le module de couverture de code <a href="https://coverage.readthedocs.io/en/7.4.1/">coverage</a></li>
+<li>l'utilisation de coverage avec pytest : <a href="https://pytest-cov.readthedocs.io/en/latest/">pytest-cov</a></li>
+</ul>
+<h3>Extension vscode</h3>
+<p>Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez <a href="https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters">Coverage Gutters</a> dans le <em>menu affichage &gt; extensions</em>.</p>
+<h2><span id="code-coverage"></span> Avec vscode</h2>
+<h3>Utiliser coverage sans pytest</h3>
+<p>En 2 temps :</p>
+<ul>
+<li>exécution de la couverture de code : <code>python -m coverage run [mon_fichier]</code>. Cette exécution crée un fichier <code class="fichier">.coverage</code> qui contient le rapport d'exécution</li>
+<li>visualisation du rapport : <code>python -m coverage report</code></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :</p>
+<p><a href="https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report">https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report</a></p>
+</div></div>
+
+<h3>Couverture de code avec pytest</h3>
+<p>Dans un terminal tapez <code>python -m pytest --cov=.</code>. Cela exécute les tests à partir du dossier courant (<code>.</code>) avec le coverage qui sera retourné au format texte.</p>
+<p>Si l'on veut les ligne manquantes, on peut utiliser la commande : <code>--cov-report term-missing</code></p>
+<p>Enfin, pour avoir un rapport html complet on peut utiliser la ligne : <code>python -m pytest --cov=. --cov-report html</code>.</p>
+<h3>Utilisation de l'extension *<em>Coverage Gutters</em></h3>
+<p>La commande <code>python -m pytest --cov=.</code> crée un fichier de coverage qui s'appelle <code>.coverage</code>. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en <a href="https://fr.wikipedia.org/wiki/Extensible_Markup_Language">xml</a> avec la commande : <code>python -m pytest --cov=.  --cov-report xml:cov.xml</code></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Si le petit <em>watch</em> n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la <a href="../../../prise-en-main/#palette-de-commande" class="interne">palette de commande</a>
+<em>Coverage Gutters: Display Coverage</em>.</p>
+</div></div>
+
 
 
 </article>

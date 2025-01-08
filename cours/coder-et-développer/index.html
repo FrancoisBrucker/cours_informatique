@@ -249,32 +249,7 @@
 </div></div>
 
 <h2>Maintenir et développer du code sûr</h2>
-<h3>Programmation par les tests</h3>
-<p>On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la <a href="https://fr.wikipedia.org/wiki/Test_driven_development">programmation par les tests (<em>Test Driven Development</em>, ou <em>TDD</em>)</a> que l'on vous propose d'essayer dans le projet ci-après.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="projet-TDD" class="interne">Projet de programmation par les tests</a></p>
-</div></div>
-
-<h3>Couverture de code</h3>
-<p>La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (<em>ie.</em> couvertes).</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="couverture-de-code" class="interne">Couverture de code</a></p>
-</div></div>
-
 <h3>Gestion des dépendances</h3>
-<blockquote>
-<p>TBD dossier d'exécution</p>
-</blockquote>
-<p>version de python, interpréteur ou il est, dossier d'exécution, <strong>file</strong>, modules et <strong>name</strong>, packages. environnement virtuel.</p>
-<h4>Installation d'un interpréteur</h4>
 <p>Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
 Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :</p>
 <ol>
@@ -286,21 +261,10 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="installer-python" class="interne">Installer python</a></p>
+<p><a href="version-python" class="interne">Version de l'interpréteur python</a></p>
 </div></div>
 
-<blockquote>
-<p>TBD vscode terminal, installation de modules <strong>name</strong>, <strong>file</strong>, etc.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="%C3%A9diteur-vscode/prise-en-main/" class="interne">Prendre en main l'éditeur vscode</a></p>
-</div></div>
-
-<h4>Où sont les modules python</h4>
+<h4>Dépendances de l'interpréteurs</h4>
 <p>Les dossiers où python va cherchez les modules sont listés dans la variable <code>sys.path</code> et dépendent de l'interpréteur utilisé :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -345,10 +309,27 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 <p><a href="environnements-virtuels" class="interne">Environnements virtuels</a></p>
 </div></div>
 
-<h2>Création de packages</h2>
-<blockquote>
-<p>TBD odds and ends</p>
-</blockquote>
+<h3>Programmation par les tests</h3>
+<p>On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la <a href="https://fr.wikipedia.org/wiki/Test_driven_development">programmation par les tests (<em>Test Driven Development</em>, ou <em>TDD</em>)</a> que l'on vous propose d'essayer dans le projet ci-après.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="projet-TDD" class="interne">Projet de programmation par les tests</a></p>
+</div></div>
+
+<h3>Couverture de code</h3>
+<p>La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (<em>ie.</em> couvertes).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="couverture-de-code" class="interne">Couverture de code</a></p>
+</div></div>
+
+<h3>Packages</h3>
 <p>Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle <em>package</em>. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <a href="https://pypi.org/">https://pypi.org/</a> pour être utilisés par d'autres.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -375,88 +356,15 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 </ul>
 </div></div>
 
-<h3>Exécution de modules</h3>
-<h4>Exécution d'un module comme un programme</h4>
-<p>On peut utiliser l'interpréteur python pour exécuter un module. Par exemple notre fichier <code class="fichier">mon_module.py</code> précédent :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python mon_module.py</code></pre>
-<p>Si vous avez fait les exercices précédents votre fichier <code class="fichier">mon_module.py</code> devrait être :</p>
-<blockquote>
-<p>TBD
-Il n'y a pas de différence fondamentale entre un programme et un module en python. C'est juste un programme dont on garde trace de son espace de noms <code class="language-">global</code> après exécution.</p>
-</blockquote>
-<h4>Exécution d'un module python</h4>
-<p>Pour exécuter un module python on peut utiliser l'option <code>-m</code> de l'interpréteur python.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
+<p>Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m">Option <code>-m</code> de l'interpréteur Python</a></p>
+<p><a href="ex%C3%A9cution-modules" class="interne">Exécuter des modules python</a></p>
 </div></div>
 
-<p>On l'a déjà fait à de multiples reprises en utilisant le module pip :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">python <span class="token parameter variable">-m</span> pip</code></pre>
-<p>Le résultat de la commande précédente dans le terminal affichera l'aide de <code class="fichier">pip</code>.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Exécutez le module <code class="language-">random</code> de python dans le terminal avec la commande : <code>python -m random</code>.</p>
-</div></div>
-
-<p>Si vous exécutez le module python <code class="language-">random</code>, vous verrez s'afficher tout un tas de choses sur l'écran :</p>
-<pre class="language-shell" tabindex="0" data-language="shell"><code class="language-shell">$ python <span class="token parameter variable">-m</span> random
-
-<span class="token number">0.000</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> random<span class="token punctuation">(</span><span class="token punctuation">)</span>
-avg <span class="token number">0.498948</span>, stddev <span class="token number">0.285393</span>, min <span class="token number">1</span>.74181e-05, max <span class="token number">0.999923</span>
-
-<span class="token number">0.003</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> normalvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg -0.00160272, stddev <span class="token number">1.00174</span>, min -3.42565, max <span class="token number">3.90493</span>
-
-<span class="token number">0.003</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> lognormvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg <span class="token number">1.64736</span>, stddev <span class="token number">2.19193</span>, min <span class="token number">0.0147119</span>, max <span class="token number">65.9514</span>
-
-<span class="token number">0.004</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> vonmisesvariate<span class="token punctuation">(</span><span class="token number">0.0</span>, <span class="token number">1.0</span><span class="token punctuation">)</span>
-avg <span class="token number">3.11325</span>, stddev <span class="token number">2.28549</span>, min <span class="token number">0.000433248</span>, max <span class="token number">6.28223</span>
-
-<span class="token number">0.009</span> sec, <span class="token number">10000</span> <span class="token builtin class-name">times</span> binomialvariate<span class="token punctuation">(</span><span class="token number">15</span>, <span class="token number">0.6</span><span class="token punctuation">)</span>
-avg <span class="token number">8.9936</span>, stddev <span class="token number">1.89413</span>, min <span class="token number">2</span>, max <span class="token number">15</span>
-
-<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span></code></pre>
-<p>Ces lignes montrent le temps mis pour générer des nombres aléatoires selon plusieurs lois de probabilités.</p>
-<p>Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?</p>
-<h4>Variable <code class="language-">__name__</code></h4>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3.12/library/__main__.html"><code class="language-">__name__</code> et <code class="language-">__main__</code> en python</a></p>
-</div></div>
-
-<p>Python distingue les deux types d'exécutions d'un programme via la variable spéciale <code class="language-">__name__</code> :</p>
-<ul>
-<li>elle vaut la chaîne de caractères <code class="language-">&quot;__main__&quot;</code> si le fichier est exécuté directement</li>
-<li>elle vaut le nom du fichier s'il est exécuté via un import</li>
-</ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Créez un fichier nommé <code class="fichier">test_exécution.py</code> et copiez/collez y le code suivant :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>__name__<span class="token punctuation">)</span></code></pre>
-<p>Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code <code class="language-">import test_exécution</code>.</p>
-</div></div>
-
-<p>Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token comment"># code pouvant être importé</span>
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    <span class="token comment"># code du programme principal</span></code></pre>
 
 
 </article>
