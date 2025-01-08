@@ -4,12 +4,11 @@ layout: layout/post.njk
 title: "Couverture de code"
 
 eleventyComputed:
-    eleventyNavigation:
-        key: "{{ page.url }}"
-        title: "{{ title | safe }}"
-        parent: "{{ '../' | siteUrl(page.url) }}"
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ '../' | siteUrl(page.url) }}"
 ---
-
 
 Lorsque l'on développe un projet informatique, faire des tests est obligatoire : chaque fonction codée doit être testée. Les tests nous permette d'avoir confiance dans la qualité du code, mais il est parfois compliqué d'être sur que nos tests vérifient bien toutes les lignes écrites (testent-ils bien tous les blocs `si/alors/sinon`{.language-} ?).
 
@@ -17,7 +16,7 @@ Un outil pour vérifier cela est la [couverture de code](https://fr.wikipedia.or
 
 {% faire %}
 
-Installez l'outil de couverture de code en suivant [le tutoriel d'installation de *code coverage*](../éditeur-vscode/extensions/python/code-coverage){.interne}.
+Installez l'outil de couverture de code en suivant [le tutoriel d'installation de _code coverage_](../éditeur-vscode/extensions/python/code-coverage){.interne}.
 
 {% endfaire %}
 
@@ -29,7 +28,7 @@ Dans vos futurs projets, faites en sorte d'avoir toujours 100% de couverture de 
 
 Pour les besoin de cet exemple, prenons [le compteur (final) du cours coder ses objets](../programmation-objet/coder-ses-objets/){.interne} du cours sur les classes et les objets.
 
- Fichier `compteur.py`{.fichier} :
+Fichier `compteur.py`{.fichier} :
 
 ```python
 class Compteur:
@@ -88,12 +87,12 @@ print(c1 < c2)
 Le fonctionnement de la couverture de code est le suivant :
 
 1. on exécute un fichier dans le terminal via le module coverage : `python -m coverage run main.py`
-2. le rapport est visible avec la commande  `python -m coverage report`
+2. le rapport est visible avec la commande `python -m coverage report`
 
 Dns mon cas, dans un terminal, je commence par exécuter le programme via le module coverage :
 
 ```
-» python -m coverage run main.py                       
+» python -m coverage run main.py
 6 Compteur(pas=3, valeur=6)
 1 Compteur(pas=1, valeur=1)
 False
@@ -102,7 +101,7 @@ False
 Puis je visualise le rapport :
 
 ```
-» python -m coverage report                              
+» python -m coverage report
 Name                                                                 Stmts   Miss  Cover
 ----------------------------------------------------------------------------------------
 /usr/local/lib/python3.9/site-packages/_distutils_hack/__init__.py      92     88     4%
@@ -114,9 +113,9 @@ TOTAL                                                                  115     9
 
 On voit plusieurs choses :
 
-* le module coverage utilise un fichier qui n'est pas dans notre projet : `/usr/local/lib/python3.9/site-packages/_distutils_hack/__init__.py`{.fichier}
-* toutes les lignes du fichier `main.py`{.fichier} sont lues
-* seules 88% des lignes du fichier `compteur.py`{.fichier} sont lues
+- le module coverage utilise un fichier qui n'est pas dans notre projet : `/usr/local/lib/python3.9/site-packages/_distutils_hack/__init__.py`{.fichier}
+- toutes les lignes du fichier `main.py`{.fichier} sont lues
+- seules 88% des lignes du fichier `compteur.py`{.fichier} sont lues
 
 Commençons par supprimer les fichier qui ne font pas parti de notre projet en utilisant le paramètre `--omit` qui permet de supprimer un fichier du rapport :
 
@@ -159,7 +158,7 @@ Vérifiez que vous avez la même chose pour votre projet.
 
 L'exécution directe de coverage nous permet de voir s'il y a des fonction codées non utilisées. Il est souvent bien plus intéressant de voir quelles lignes du programme ne sont pas utilisées dans les tests. Exécutons les tests en même temps que coverage avec le l'extension `pytest-cov` que nous venons d'installer :
 
-1. on exécute les tests dans le terminal en ajoutant l'extension coverage  `python -m pytest --cov=.`
+1. on exécute les tests dans le terminal en ajoutant l'extension coverage `python -m pytest --cov=.`
 2. le résultat est donné dans le terminal.
 
 J'obtiens :
@@ -170,7 +169,7 @@ J'obtiens :
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item                                                                                  
+collected 1 item
 
 test_compteur.py .                                                                          [100%]
 
@@ -203,7 +202,7 @@ Cinq lignes de `compteur.py` n'ont pas été vues. Pour savoir exactement les qu
 platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/sous_git/cours_informatique/docs/src/tutoriels/couverture-de-code/code
 plugins: dash-1.19.0, cov-4.0.0
-collected 1 item 
+collected 1 item
 
 test_compteur.py .                                                                       [100%]
 
@@ -221,8 +220,62 @@ TOTAL                 26     13    50%
 ```
 
 {% faire %}
-Analysez le résultat précédents. Quelles sont les lignes non *vues* par les tests ?
+Analysez le résultat précédents. Quelles sont les lignes non _vues_ par les tests ?
 {% endfaire %}
 {% details "corrigé" %}
 C'est le des fonctions qui n'est pas exécuté. Lors de l'import de Compteur, python lis le fichier, en particulier les définitions de fonctions (qui sont donc lues) mais il ne les exécutent pas.
 {% enddetails %}
+
+## <span id="installation-coverage"></span> Installation pour vscode
+
+> TBD à remanier. Des choses sont en doublon avec ce qui précède
+
+### Coverage pour pytest
+
+On va utiliser le _code coverage_ de pytest :
+
+```
+python -m pip install pytest-cov
+```
+
+Ce module python installe deux choses :
+
+- le module de couverture de code [coverage](https://coverage.readthedocs.io/en/7.4.1/)
+- l'utilisation de coverage avec pytest : [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/)
+
+### Extension vscode
+
+Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le _menu affichage > extensions_.
+
+## <span id="code-coverage"></span> Avec vscode
+
+### Utiliser coverage sans pytest
+
+En 2 temps :
+
+- exécution de la couverture de code : `python -m coverage run [mon_fichier]`. Cette exécution crée un fichier `.coverage`{.fichier} qui contient le rapport d'exécution
+- visualisation du rapport : `python -m coverage report`
+
+{% lien %}
+Il est possible de paramétrer très finement le rapport. Lisez la documentation pour voir toutes les possibilités :
+
+<https://coverage.readthedocs.io/en/7.1.0/cmd.html#coverage-summary-coverage-report>
+
+{% endlien %}
+
+### Couverture de code avec pytest
+
+Dans un terminal tapez `python -m pytest --cov=.`. Cela exécute les tests à partir du dossier courant (`.`) avec le coverage qui sera retourné au format texte.
+
+Si l'on veut les ligne manquantes, on peut utiliser la commande : `--cov-report term-missing`
+
+Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python -m pytest --cov=. --cov-report html`.
+
+### Utilisation de l'extension \*_Coverage Gutters_
+
+La commande `python -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python -m pytest --cov=.  --cov-report xml:cov.xml`
+
+{% info %}
+Si le petit _watch_ n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../prise-en-main/#palette-de-commande){.interne}
+_Coverage Gutters: Display Coverage_.
+{% endinfo %}

@@ -117,29 +117,7 @@ La programmation évènementielle est un principe de développement très utilis
 
 ## Maintenir et développer du code sûr
 
-### Programmation par les tests
-
-On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
-
-{% aller %}
-[Projet de programmation par les tests](projet-TDD){.interne}
-{% endaller %}
-
-### Couverture de code
-
-La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
-
-{% aller %}
-[Couverture de code](couverture-de-code){.interne}
-{% endaller %}
-
 ### Gestion des dépendances
-
-> TBD dossier d'exécution
-
-version de python, interpréteur ou il est, dossier d'exécution, **file**, modules et **name**, packages. environnement virtuel.
-
-#### Installation d'un interpréteur
 
 Lorsque l'on veut utiliser l'interpréteur python exécuter un programme informatique que l'on aura développé, il faut s'assurer que chaque exécution du programme soit identique.
 Pour éviter les effets de bords (anciennes variables déclarées, modules importées, etc) Il est indispensable de pouvoir :
@@ -148,16 +126,10 @@ Pour éviter les effets de bords (anciennes variables déclarées, modules impor
 2. écrire notre programme en-dehors de tout interpréteur
 
 {% aller %}
-[Installer python](installer-python){.interne}
+[Version de l'interpréteur python](version-python){.interne}
 {% endaller %}
 
-> TBD vscode terminal, installation de modules **name**, **file**, etc.
-
-{% aller %}
-[Prendre en main l'éditeur vscode](éditeur-vscode/prise-en-main/){.interne}
-{% endaller %}
-
-#### Où sont les modules python
+#### Dépendances de l'interpréteurs
 
 Les dossiers où python va cherchez les modules sont listés dans la variable `sys.path` et dépendent de l'interpréteur utilisé :
 
@@ -201,9 +173,23 @@ La gestion des packages peut être compliquée. Normalement, si vous vous y pren
 [Environnements virtuels](environnements-virtuels){.interne}
 {% endaller %}
 
-## Création de packages
+### Programmation par les tests
 
-> TBD odds and ends
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
+
+{% aller %}
+[Projet de programmation par les tests](projet-TDD){.interne}
+{% endaller %}
+
+### Couverture de code
+
+La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
+
+{% aller %}
+[Couverture de code](couverture-de-code){.interne}
+{% endaller %}
+
+### Packages
 
 Lorsqu'un module devient important, il devient compliqué de mettre tout son code dans un seul fichier. On a alors coutume de rassembler tout le code du module dans un dossier que python appelle _package_. Ces packages pourront ensuite être réutilisés dans d'autres projets, voir être directement placés sur <https://pypi.org/> pour être utilisés par d'autres.
 
@@ -222,94 +208,8 @@ Un _package_ est un dossier contenant un fichier `__init__.py`{.fichier}.
 
 {% endnote %}
 
-### Exécution de modules
+Enfin, on peut faire en sorte que nos modules/packages soient exécutables directement avec un interpréteur :
 
-#### Exécution d'un module comme un programme
-
-On peut utiliser l'interpréteur python pour exécuter un module. Par exemple notre fichier `mon_module.py`{.fichier} précédent :
-
-```shell
-python mon_module.py
-```
-
-Si vous avez fait les exercices précédents votre fichier `mon_module.py`{.fichier} devrait être :
-
-> TBD
-> Il n'y a pas de différence fondamentale entre un programme et un module en python. C'est juste un programme dont on garde trace de son espace de noms `global`{.language-} après exécution.
-
-#### Exécution d'un module python
-
-Pour exécuter un module python on peut utiliser l'option `-m` de l'interpréteur python.
-
-{% lien %}
-[Option `-m` de l'interpréteur Python](https://docs.python.org/fr/3/using/cmdline.html#cmdoption-m)
-{% endlien %}
-
-On l'a déjà fait à de multiples reprises en utilisant le module pip :
-
-```shell
-python -m pip
-```
-
-Le résultat de la commande précédente dans le terminal affichera l'aide de `pip`{.fichier}.
-
-{% faire %}
-Exécutez le module `random`{.language-} de python dans le terminal avec la commande : `python -m random`.
-{% endfaire %}
-
-Si vous exécutez le module python `random`{.language-}, vous verrez s'afficher tout un tas de choses sur l'écran :
-
-```shell
-$ python -m random
-
-0.000 sec, 10000 times random()
-avg 0.498948, stddev 0.285393, min 1.74181e-05, max 0.999923
-
-0.003 sec, 10000 times normalvariate(0.0, 1.0)
-avg -0.00160272, stddev 1.00174, min -3.42565, max 3.90493
-
-0.003 sec, 10000 times lognormvariate(0.0, 1.0)
-avg 1.64736, stddev 2.19193, min 0.0147119, max 65.9514
-
-0.004 sec, 10000 times vonmisesvariate(0.0, 1.0)
-avg 3.11325, stddev 2.28549, min 0.000433248, max 6.28223
-
-0.009 sec, 10000 times binomialvariate(15, 0.6)
-avg 8.9936, stddev 1.89413, min 2, max 15
-
-[...]
-```
-
-Ces lignes montrent le temps mis pour générer des nombres aléatoires selon plusieurs lois de probabilités.
-
-Mais pourquoi ces lignes ne s'affichent-elles pas lorsque l'on importe le module random ?
-
-#### Variable `__name__`{.language-}
-
-{% lien %}
-[`__name__`{.language-} et `__main__`{.language-} en python](https://docs.python.org/fr/3.12/library/__main__.html)
-{% endlien %}
-
-Python distingue les deux types d'exécutions d'un programme via la variable spéciale `__name__`{.language-} :
-
-- elle vaut la chaîne de caractères `"__main__"`{.language-} si le fichier est exécuté directement
-- elle vaut le nom du fichier s'il est exécuté via un import
-
-{% faire %}
-Créez un fichier nommé `test_exécution.py`{.fichier} et copiez/collez y le code suivant :
-
-```python
-print(__name__)
-```
-
-Exécutez le fichier précédant directement avec l'interpréteur puis via un import. Vous pourrez créez puis exécuter un fichier contenant uniquement la ligne de code `import test_exécution`{.language-}.
-{% endfaire %}
-
-Cette différence dans le nom d'une variable permet de différentier les deux types d'exécution et est parfois utilisé pour séparer le programme principal d'un fichier du reste du code avec :
-
-```python
-# code pouvant être importé
-
-if __name__ == "__main__":
-    # code du programme principal
-```
+{% aller %}
+[Exécuter des modules python](exécution-modules){.interne}
+{% endaller %}
