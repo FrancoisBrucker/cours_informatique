@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Encodage des caractères"
 
 eleventyComputed:
@@ -18,16 +18,17 @@ On a coutume d'écrire les octets de façon hexadécimale, de 00 (0) à FF (255)
 ## Codage des caractères
 
 ### ASCII et avatars
+
 Le premier codage utilisé était le code [ASCII](http://fr.wikipedia.org/wiki/ASCII) dont chaque symbole était codé sur 7 bits, ce qui permettait de représenter 128 symboles. Plusieurs extensions ont été proposées par la suite dont le codage [ISO-8859-1](http://fr.wikipedia.org/wiki/ISO_8859-1) où chaque symbole est codé sur un octet (8 bits). Ce codage avait l'avantage de permettre d'écrire en français, les accents y étant présents.
 
 Il y en a eu une foultitude d'autres jusqu'à arriver au standard actuel.
 
 A priori lorsque l'on ouvre un fichier texte avec un éditeur rien ne dit quel est l'encodage utilisé : ce n'est qu'une suite d'octets. Par exemple, la chaîne de caractères "j'écris en Français" se code :
 
-* `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1) aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.
-* `6A278E6372697320656E204672616E8D616973` dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman). Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichiers entre possesseurs de mac et de pc ?
-* `6A27C3A96372697320656E204672616EC3A7616973` dans le format [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Remarquez qu'il y a plus d'octets que de lettres.
-* `FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073` dans le format [utf-16 big endian](https://fr.wikipedia.org/wiki/UTF-16)
+- `6A27E96372697320656E204672616EE7616973` dans le format [ISO-8859-1](https://fr.wikipedia.org/wiki/ISO/CEI_8859-1) aussi appelé ISO-latin 1, un format populaire pour écrire du Français avant l'utf-8. Remarquez qu'il y a autant d'octets que de lettres.
+- `6A278E6372697320656E204672616E8D616973` dans le format [mac-roman](https://fr.wikipedia.org/wiki/MacRoman). Remarquez comment le `é` et le `ç` ne se codent pas de la même manière... Vous imaginez l'enfer pour se passer des fichiers entre possesseurs de mac et de pc ?
+- `6A27C3A96372697320656E204672616EC3A7616973` dans le format [utf-8](https://fr.wikipedia.org/wiki/UTF-8). Remarquez qu'il y a plus d'octets que de lettres.
+- `FEFF006A002700E9006300720069007300200065006E0020004600720061006E00E7006100690073` dans le format [utf-16 big endian](https://fr.wikipedia.org/wiki/UTF-16)
 
 Il n'y a aucun moyen a priori de savoir en quel format le texte est codé. Pour éviter des problèmes :
 
@@ -39,7 +40,7 @@ Codez tous vos textes en utf-8, ce qui devrait être le comportement par défaut
 
 Les formats d'encodage anciens, comme le codage ASCII ou le ISO-8859-1 permettent d'écrire en anglais, voire en français. Mais... Pas dans beaucoup de langues parlées par plus de locuteurs comme le Chinois ou encore le Russe. Elles avaient eux aussi leur propre format d'encodage.
 
-Pour rationaliser cela, le format [Unicode](https://fr.wikipedia.org/wiki/Unicode) a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [Klingon](https://fr.wikipedia.org/wiki/Klingon_(langue)) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans Unicode)
+Pour rationaliser cela, le format [Unicode](https://fr.wikipedia.org/wiki/Unicode) a été créé. Son but est d'associer un nombre à chaque caractère de toutes les langues humaines possibles (donc pas de [Tengwar](https://fr.wikipedia.org/wiki/Tengwar), de [Klingon](<https://fr.wikipedia.org/wiki/Klingon_(langue)>) ou encore de [Khuzdul](https://fr.wikipedia.org/wiki/Khuzdul) dans Unicode)
 
 Ce n'est pas un format fixe, il évolue sans cesse en ajoutant de nouveaux caractères. Il y a actuellement (en 2023) près de 150000 caractères possibles. À chaque caractère est associé un numéro entre 0 et FFFFFF (16777215).
 
@@ -51,11 +52,11 @@ Ainsi `U+1823` correspond à la lettre mongole o : ᠣ, retrouvez là dans la la
 
 Les caractères sont organisés [en blocs](https://www.compart.com/fr/unicode/block), par exemple :
 
-* de [0 à 7F](https://www.compart.com/fr/unicode/block/U+0000) : Latin de base
-* de [80 à FF](https://www.compart.com/fr/unicode/block/U+0080) : supplément latin-1 : les accents
-* ...
-* de [4DC0 à 4DFF](https://www.compart.com/fr/unicode/block/U+4DC0) : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing) pour faire ses propres prédictions
-* ...
+- de [0 à 7F](https://www.compart.com/fr/unicode/block/U+0000) : Latin de base
+- de [80 à FF](https://www.compart.com/fr/unicode/block/U+0080) : supplément latin-1 : les accents
+- ...
+- de [4DC0 à 4DFF](https://www.compart.com/fr/unicode/block/U+4DC0) : le [Yi-king](https://fr.wikipedia.org/wiki/Yi_Jing) pour faire ses propres prédictions
+- ...
 
 {% note %}
 Unicode permet d'unifier tous les encodages de caractères en associant à tout caractère d'une langue humaine un numéro.
@@ -67,7 +68,7 @@ Cependant Unicode n'est **pas** un système d'encodage de caractère, c'est just
 
 On ne peut pas vraiment utiliser Unicode directement pour encoder les caractères, sinon chaque caractère devrait être encodé par 3 octets, alors que seul un très petit nombre de caractères seraient utilisés. En particulier si on écrit du code ou de l'anglais.
 
-On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format *utf* (Unicode transformation format) et il  permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.
+On utilise donc une transformation de ces codes pour diminuer la taille de l'encodage. On appelle ce format _utf_ (Unicode transformation format) et il permet de coder chaque symbole sur 1 à 4 octets. C'est un octet de plus que tout nombre Unicode au maximum, mais le plus souvent -- si on écrit en anglais -- tout est stocké sur 1 octet par caractère, comme l’ASCII.
 
 Il existe plusieurs format utf, mais c'est [utf-8](https://fr.wikipedia.org/wiki/UTF-8) qui s'est imposé.
 
@@ -79,17 +80,17 @@ Il existe plusieurs format utf, mais c'est [utf-8](https://fr.wikipedia.org/wiki
 
 Comment encoder des caractères sur un nombre variables d'octets ? Il faut pour cela résoudre deux problèmes épineux :
 
-* connaître le nombre d'octets nécessaires pour décoder un caractère
-* savoir si on est au début d'un caractère ou au milieu de son encodage
+- connaître le nombre d'octets nécessaires pour décoder un caractère
+- savoir si on est au début d'un caractère ou au milieu de son encodage
 
 Utf-8 résout ce problème de façon élégante (voir [la description de l'encodage](https://fr.wikipedia.org/wiki/UTF-8#Description)) :
 
-* tout octet qui n'est pas un début d'encodage commencent par `10`
-* le nombre d'octets utilisés est encodé au début :
-  * `0` pour 1 octet
-  * `110` pour 2 octets
-  * `1110` pour 3 octets
-  * `11110` pour 4 octets
+- tout octet qui n'est pas un début d'encodage commencent par `10`
+- le nombre d'octets utilisés est encodé au début :
+  - `0` pour 1 octet
+  - `110` pour 2 octets
+  - `1110` pour 3 octets
+  - `11110` pour 4 octets
 
 Les autres bits des octets de codes raboutés entre eux donnent le code Unicode du caractère utilisé.
 
@@ -104,13 +105,17 @@ Le symbole `é` est par exemple de code : `U+00E9`.
 
 {% info "**En python**" %}
 
-* On peut écrire des nombres en python en base 10, de façon normale, `42`{.language-} par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`{.language-}, comme `0b101010`{.language-} par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`{.language-}.
-* convertir un nombre en binaire ou en hex via les fonctions `bin`{.language-} et `hex`{.language-} rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi `bin(42)`{.language-} donne `'0b101010'`{.language-} et `hex(42)`{.language-} donne `'0x2a'`{.language-}.
-* notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)
+- On peut écrire des nombres en python en base 10, de façon normale, `42`{.language-} par exemple. On peut écrire des nombres en base 2 directement en commençant le nombre par `0b`{.language-}, comme `0b101010`{.language-} par exemple. On encore en base 16, en les faisant commencer par `0x`, comme `0x2A`{.language-}.
+- convertir un nombre en binaire ou en hex via les fonctions `bin`{.language-} et `hex`{.language-} rendent des chaînes de caractères. En effet, un nombre est un nombre; sa représentation dans une autre base est une chaîne de caractères. Ainsi `bin(42)`{.language-} donne `'0b101010'`{.language-} et `hex(42)`{.language-} donne `'0x2a'`{.language-}.
+- notez bien la différence entre écrire un nombre en base 10, 2, et 16 et voir sa forme dans une base particulière (2 ou 16)
 
 {% endinfo %}
 
 ## Python et chaînes de caractères
+
+{% lien %}
+<https://docs.python.org/fr/3.13/howto/unicode.html>
+{% endlien %}
 
 Une chaîne de caractères `s`{.language-} est de type `str`{.language-}. Elle peut être considérée comme un tableaux de `len(s)`{.language-} cases. Ces objets son **non modifiables**.
 
@@ -134,7 +139,7 @@ Dans le bout de code ci-dessus, `x`{.language-} est une chaîne de caractères. 
 
 ### `byte`{.language-} et `str`{.language-}
 
-Par défaut toutes les chaînes de caractères sont de type `str`{.language-}, et encodées en `utf-8`. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode `encode`{.language-}  des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.
+Par défaut toutes les chaînes de caractères sont de type `str`{.language-}, et encodées en `utf-8`. Si on veut connaître explicitement les octets d'une chaîne, il faut l'encoder en un autre format par la méthode `encode`{.language-} des chaînes de caractères qui rend un objet de type byte qui est une suite d'octets.
 
 C'est comme une chaîne de caractères mais qui commence par `b` . On peut ensuite décoder un byte pour le retransformer en `str`{.language-} :
 
@@ -148,3 +153,110 @@ Ceci va s'avérer utile lorsque l'on récupérera des fichiers depuis internet. 
 
 Les différents encoding possibles sont disponibles [dans la documentation](https://docs.python.org/3/library/codecs.html#standard-encodings).
 
+## Supprimer les accents
+
+Il est parfois utile de pouvoir transformer une chaîne Unicode en ASCII, ce qui revient en Français à supprimer les accents/cédilles. Par exemple :
+
+- François devient Francois
+- Cécile devient Cecile
+- Éléonore devient Eleonore
+
+### Solution simple à utiliser par défaut
+
+La réponse la plus simple pour faire cela en python est d'utiliser un module qui fait cela pour nous :
+
+{% lien %}
+[Module unidecode](https://pypi.org/project/Unidecode/)
+{% endlien %}
+
+### Solution compliquée mais qui permet de comprendre des choses
+
+Une autre solution plus artisanale mais qui à l'intérêt de plonger un peu plus dans l'encodage Unicode est changer la façon dont est codé la chaîne.
+
+Prenons le cas du français comme exemple. On l'a vu, le caractère `é` Unicode  correspond à la glyphe numéro `U+00E9`. Mais on peut aussi voir ce caractère comme l'accentuation du caractère `e`. Dans ce cas, `é` n'est plus un unique caractère, mais il est formé de la combinaison de `e` (glyphe `U+0065`) et de `\'` (glyphe `U+0301`). On appelle ces caractères [diacritiques](https://www.cnrtl.fr/definition/diacritique). Il y a de multiples possibilités de combinaison :
+
+{% lien %}
+[Combiner des caractères](https://en.wikipedia.org/wiki/Combining_character)
+{% endlien %}
+
+Unicode permet d'écrire selon l'un ou l'autre des formalismes (soit `é` soit `e\'`), et régule tout ceci selon des normes :
+
+{% lien %}
+- [Normalisation Unicode](https://fr.wikipedia.org/wiki/Normalisation_Unicode)
+- [Normalisation et python](https://xebia.com/blog/handling-encoding-issues-with-unicode-normalisation-in-python/)
+
+{% endlien %}
+
+L'astuce est alors de :
+
+1. normaliser une chaîne Unicode selon [le format NFKD](https://fr.wikipedia.org/wiki/Normalisation_Unicode#NFKD) qui sépare les caractères (`é` sera écrit `e\'`)
+2. supprimer les caractères non ASCII de la chaîne obtenue
+3. retransformer la chaîne en Unicode
+
+En python cela donne :
+
+Création de la chaîne Unicode :
+
+```python
+>>> s = 'é'
+>>> type(s)
+<class 'str'>
+>>> len(s)
+1
+```
+
+La chaîne est formée d'une glyphe.
+
+Transformons la chaîne en la re-normalisant :
+
+```python
+>>> s2 = unicodedata.normalize('NFKD', s)
+>>> type(s2)
+<class 'str'>
+>>> len(s2)
+2
+```
+
+Les deux chaînes ont le même affichage, mais sont différentes !
+
+```python
+>>> s == s2
+False
+```
+
+On ne garde que les caractères ASCII :
+
+```python
+>>> b = s2.encode('ASCII', 'ignore')
+>>> b
+b'e'
+>>> type(b)
+<class 'bytes'>
+```
+
+On a maintenant une chaine au format bytes qu'il faut retransformer en Unicode :
+
+```python
+>>> s3 = b.decode("utf-8")
+>>> s3
+'e'
+>>> len(s3)
+1
+```
+
+Ouf !
+
+On peut aussi faire tout ça en une seule grosse ligne de commande :
+
+```python
+>>> s3 = unicodedata.normalize('NFKD', s).encode('ASCII', 'ignore').decode("utf-8")
+>>> s3
+'e'
+
+```
+
+{% attention %}
+Cela ne fonctionne que pour les glyphes qui ont une forme diacritique. Cela ne fonctionne pas par exemple pour le caractère `đ` ou `ø`.
+
+Pour des textes français cependant, cela fonctionne très bien.
+{% endattention %}

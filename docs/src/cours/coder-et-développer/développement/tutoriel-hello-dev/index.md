@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Mise en œuvre d'un projet informatique"
 
 eleventyComputed:
@@ -7,14 +7,7 @@ eleventyComputed:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
 ---
-
-<!-- début résumé -->
-
-Définir et conduire un projet informatique. On y montrera les outils nécessaire à tout projet : un linter et une bibliothèque de tests.
-
-<!-- end résumé -->
 
 Un projet informatique a un début, lorsque l'on crée le dossier qui va le contenir, mais il n'a que rarement de fin : il y a toujours des fonctionnalités à ajouter et des bugs à corriger. Enfin, et c'est le plus important, un code est fait pour être utilisé.
 
@@ -27,19 +20,19 @@ De ces deux constatations, on en déduit trois règles fondamentales d'un code u
 Le langage d'application n'a que peu d'intérêt en soit. On choisit celui qui est le plus adapté à notre but. Ici, on utilisera le python mais tout ce qu'on verra est transposable pour tout autre langage sérieux. L'éditeur de texte que l'on utilisera sera vscode. Il en existe d'autres très bien aussi et tout ce qu'on verra avec vscode (les raccourcis claviers, et aides au développement) sont transposables à d'autres éditeurs en lisant la doc.
 
 {% note %}
-Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que *ça suffit bien pour ce que je veux faire*. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
+Écrire du code nécessite de nombreuses automatisations et aides pour que ce ne soit pas pénible, ne vous privez pas d'outils parce que vous n'avez pas envie d'apprendre de nouvelles choses et que _ça suffit bien pour ce que je veux faire_. Vous allez au final perdre plus de temps que l'apprentissage initial (ce qui est tarte).
 {% endnote %}
 
 ## Un projet
 
 On va créer un projet pour comprendre comment tout ça fonctionne.
 
-Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle *workspace*.
+Nous allons préparer le projet dans lequel nous allons coder. Ceci se fait avec vscode en ouvrant un dossier. Ce dossier sera le départ de votre projet et s'appelle _workspace_.
 
 {% faire %}
 
 1. Commencez par créer le dossier `hello-dev`{.fichier} dans un explorateur de fichier
-2. dans vscode, choisissez : "*fichier > ouvrir le dossier...*" puis naviguez jusqu'à votre dossier `hello-dev`{.fichier}. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
+2. dans vscode, choisissez : "_fichier > ouvrir le dossier..._" puis naviguez jusqu'à votre dossier `hello-dev`{.fichier}. On vous demande si vous faites confiances aux auteurs, puisque c'est vous dites oui.
 
 {% endfaire %}
 
@@ -60,8 +53,8 @@ On va créer notre premier fichier python :
 
 {% faire %}
 
-1. allez dans *menu Fichier > Nouveau Fichier*
-2. et sauvez le de suite : *menu Fichier > Enregistrer* avec le nom `main.py`{.fichier}.
+1. allez dans _menu Fichier > Nouveau Fichier_
+2. et sauvez le de suite : _menu Fichier > Enregistrer_ avec le nom `main.py`{.fichier}.
 
 {% endfaire %}
 
@@ -90,7 +83,7 @@ print("bonjour les gens !")
 
 {% endfaire %}
 
-En vous rappelant ce que vous avez vu dans [le tutorial python et vscode](../../éditeur-vscode/python/exécuter-programme){.interne} :
+En vous rappelant ce que vous avez vu [ici](../../bases-programmation/éditeur-vscode/python/#exécuter-programme){.interne} et [là](../../connaissances-système-minimales/terminal/terminal-vscode/#exécuter-programme){.interne} :
 
 {% faire %}
 Exécutez le code de deux manières différentes :
@@ -113,7 +106,7 @@ Il existe de nombreux linter, nous allons utiliser [flake8](https://flake8.pycqa
 #### Installation
 
 {% aller %}
-[Installer flake8](../../éditeur-vscode/extensions/python/flake8){.interne}.
+[Installer flake8](./extensions-python-vscode/flake8){.interne}.
 {% endaller %}
 
 #### Utilisation
@@ -159,7 +152,7 @@ Tout au long de ce projet et des prochains, il faut faire en sorte qu'il n'y ait
 Il existe des outils permettant de formatter automatiquement le code, comme l'utilitaire [black](https://github.com/psf/black) par exemple.
 
 {% aller %}
-[Installer black](../../éditeur-vscode/extensions/python/black){.interne}.
+[Installer black](./extensions-python-vscode/black){.interne}.
 {% endaller %}
 
 Une fois black installé, vous pouvez l'utiliser depuis un terminal ou depuis vscode.
@@ -209,7 +202,7 @@ print(le_code.bonjour())
 La notation pointée se lit alors : exécute le nom `bonjour` définit dans `le_code.py`{.fichier}.
 
 {% aller %}
-[Cours sur les modules python](../../bases-python/structurer-son-code/modules){.interne} pour plus d'information.
+[Cours sur les modules python](../../bases-programmation/structurer-son-code/creation-modules/){.interne} pour plus d'information.
 {% endaller %}
 
 {% attention %}
@@ -217,7 +210,7 @@ Ne **jamais jamais jamais** utiliser `from le_code import *`{.language-} qui imp
 {% endattention %}
 
 {% note %}
-Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**.  On préférera toujours **la lisibilité à la rapidité**.
+Comme on va passer plus de temps à lire/comprendre du code qu'à l'écrire, il faut **optimiser la lecture et non l'écriture de code**. On préférera toujours **la lisibilité à la rapidité**.
 {% endnote %}
 
 ## Tests
@@ -308,7 +301,7 @@ def test_somme_1_plus_0():
 
 def test_somme_1_plus_2():
     assert 1 + 2 == 3
- 
+
 ```
 
 Exécutez le fichier `test_projet.py`{.fichier}.
@@ -324,7 +317,7 @@ Pour tester la somme, j'ai décidé de faire 3 tests :
 Lorsque l'on exécute ce code, il ne se passe rien. Est-ce bon signe ?
 
 {% faire %}
-Modifiez la fonction `test_somme_neutre`{.language-} du fichier `test_projet.py`{.fichier} pour qu'elle soit égale à  :
+Modifiez la fonction `test_somme_neutre`{.language-} du fichier `test_projet.py`{.fichier} pour qu'elle soit égale à :
 
 ```python
 # ...
@@ -359,7 +352,7 @@ Nous allons utiliser la seconde option avec le module [Pytest](https://docs.pyte
 ### Installation de la bibliothèque de tests
 
 {% aller %}
-[Installer la bibliothèque de test avec vsc](../../éditeur-vscode/extensions/python/pytest){.interne}
+[Installer la bibliothèque de test](./extensions-python-vscode/pytest){.interne}
 {% endaller %}
 
 ### Utilisation de la bibliothèque de tests
@@ -370,7 +363,7 @@ On y reviendra à de nombreuses reprises :
 Les tests sont la pierre angulaire d'une bonne programmation : ils garantissent le fonctionnement de votre code et qu'[il ne peut pas régresser](https://blog.octo.com/via-negativa-tdd-et-la-conception-de-logiciel/).
 {% endnote %}
 
-Les tests sont de petites fonctions dont le but est de *tester* une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
+Les tests sont de petites fonctions dont le but est de _tester_ une fonctionnalité du programme (souvent le résultat de l'exécution d'une fonction). Le test consiste en [une assertion](https://fr.wikipedia.org/wiki/Assertion) que l'on veut être vraie si que le code fonctionne. Si l'assertion est fausse c'est qu'il y a un bug.
 
 {% faire %}
 Tapez la commande `python -m pytest` dans un terminal.
@@ -454,4 +447,9 @@ Félicitations, vous avez fait votre premier projet fonctionnel !
 
 ## Les fichiers
 
+{% lien %}
 [Les trois fichiers du projet final sont disponibles](https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/tutoriel-hello-dev/hello-dev)
+{% endlien %}
+{% lien %}
+[extensions vscode utilisées](./extensions-python-vscode/){.interne}
+{% endlien %}

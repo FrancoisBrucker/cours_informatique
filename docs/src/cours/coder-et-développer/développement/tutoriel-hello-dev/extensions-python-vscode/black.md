@@ -22,7 +22,7 @@ Son but est de re-formater sans faute de style tout programme python.
 
 ### Extension vscode
 
-Pour utiliser black directement avec vscode, **installez [l'extension vscode](../../../prise-en-main#extensions){.interne}** nommée "*black formatter*" développé par microsoft.
+Pour utiliser black directement avec vscode, installez l'extension vscode nommée "_black formatter_" développé par microsoft.
 
 ### Module python
 
@@ -40,8 +40,8 @@ En cliquant droit sur du code puis choisir "Mettre le document en forme" utilise
 
 Vous pouvez aussi :
 
-* exécuter directement la commande *format document* dans [palette de commande](../../../prise-en-main#palette-de-commande){.interne}.
-* cocher le paramètre `editor.formatOnSave` dans les préférences.
+- exécuter directement la commande _format document_ dans [palette de commande](../../../prise-en-main#palette-de-commande){.interne}.
+- cocher le paramètre `editor.formatOnSave` dans les préférences.
 
 ## Black dans le terminal
 

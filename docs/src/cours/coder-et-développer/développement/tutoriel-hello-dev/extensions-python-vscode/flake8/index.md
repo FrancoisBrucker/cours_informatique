@@ -24,7 +24,7 @@ Il faut installer des plugins pythons spécifiques pour le linting. Il en existe
 
 ### Extension vscode
 
-Pour utiliser le linter avec vscode, **installez [l'extension vscode](../../../prise-en-main#extensions){.interne}** nommée "*flake8*" développé par microsoft.
+Pour utiliser le linter avec vscode,installez l'extension vscode nommée "_flake8_" développé par microsoft.
 
 Une fois l'extension installée, nous allons la configurer pour qu'elle ne nous embête pas si l'on écrit une ligne de plus de 80 caractères ([l'erreur 501](https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes)), qui est une règle plus ou moins obsolète.
 
@@ -48,7 +48,7 @@ Ceci vous permettra d'utiliser le linter dans le terminal. De plus, l'extension 
 
 ## Utilisation
 
-Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de  style.
+Une fois installée, l'extension est automatiquement activée et elle va souligner en rouge toute faute de style.
 
 ## `flake8` dans le terminal
 

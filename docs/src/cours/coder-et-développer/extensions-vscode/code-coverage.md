@@ -10,12 +10,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-
 ## <span id="installation-coverage"></span> Installation
 
 ### Coverage pour pytest
 
-On va utiliser le *code coverage* de pytest :
+On va utiliser le _code coverage_ de pytest :
 
 ```
 python -m pip install pytest-cov
@@ -28,7 +27,7 @@ Ce module python installe deux choses :
 
 ### Extension vscode
 
-Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le *menu affichage > extensions*.
+Puis l'extension de vscode qui permet de rendre compte du coverage dans l'interface. Tapez [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters) dans le _menu affichage > extensions_.
 
 ## <span id="code-coverage"></span> Utilisation
 
@@ -54,11 +53,11 @@ Si l'on veut les ligne manquantes, on peut utiliser la commande : `--cov-report 
 
 Enfin, pour avoir un rapport html complet on peut utiliser la ligne : `python -m pytest --cov=. --cov-report html`.
 
-### Utilisation de l'extension **Coverage Gutters*
+### Utilisation de l'extension \*_Coverage Gutters_
 
 La commande `python -m pytest --cov=.` crée un fichier de coverage qui s'appelle `.coverage`. Il n'est cependant pas lisible dans ce format par défaut par l'extension. Il faut générer un format de sorti en [xml](https://fr.wikipedia.org/wiki/Extensible_Markup_Language) avec la commande : `python -m pytest --cov=.  --cov-report xml:cov.xml`
 
 {% info %}
-Si le petit *watch* n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../prise-en-main/#palette-de-commande){.interne}
- *Coverage Gutters: Display Coverage*.
+Si le petit _watch_ n'est pas visible dans la barre de status, vous pouvez le faire à la main dans avec la [palette de commande](../../../prise-en-main/#palette-de-commande){.interne}
+_Coverage Gutters: Display Coverage_.
 {% endinfo %}

@@ -2,7 +2,12 @@
 layout: layout/post.njk
 
 title: Outils complémentaires pour Vsc et python
-tags: ['tutoriel', 'éditeur', 'vsc', 'python']
+
+eleventyNavigation:
+  prerequis:
+    - "../../../bases-programmation/éditeur-vscode/"
+    - "../../../connaissances-système-minimales/terminal/terminal-vscode/"
+
 authors:
     - François Brucker
 
@@ -14,7 +19,7 @@ eleventyComputed:
         parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
+Extensions non fondamentales mais bien sympathiques pour le développement en python avec vscode.
 
 ## <span id="pytest"></span> Tests
 
@@ -33,10 +38,4 @@ Ce tutoriel se consacre à l'installation d'extensions non fondamentales mais bi
 
 {% aller %}
 [Installation de black](black){.interne}
-{% endaller %}
-
-## <span id="code-coverage"></span> Couverture de code
-
-{% aller %}
-[Installation de coverage](code-coverage){.interne}
 {% endaller %}

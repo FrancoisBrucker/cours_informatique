@@ -3,6 +3,11 @@ layout: layout/post.njk
 
 title: Installer des modules python
 
+eleventyNavigation:
+  prerequis:
+      - '../éditeur-vscode/python/'
+
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -57,7 +62,7 @@ Si je veux installer le module `matplotlib` par exemple, ma ligne de commande à
 /usr/bin/python3 -m pip install matplotlib
 ```
 
-Pour vous, ce sera peut-être différent car le `nom-du-programme-python` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](éditeur-vscode/python/){.interne}.
+Pour vous, ce sera peut-être différent car le `nom-du-programme-python` sera différent. Pour connaître le nom du programme python à utiliser et trouver un terminal, vous pouvez utiliser ce qu'on a vue dans [la partie sur l'éditeur vscode](../éditeur-vscode/python/#exécuter-programme){.interne}.
 
 ## Exemple
 

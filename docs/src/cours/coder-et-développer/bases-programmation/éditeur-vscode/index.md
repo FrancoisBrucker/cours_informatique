@@ -44,3 +44,14 @@ Commençons par faire le tour du propriétaire :
 {% aller %}
 [vscode et python](python){.interne}
 {% endaller %}
+
+## Préférences
+
+Vscode possède une foultitude de préférences qui le rendent très modulable et lui permettent de s'adapter à (presque) toutes vos envies et besoins.
+
+Je vous conseille très fortement d'aller y jeter un coup d'œil :
+
+{% lien %}
+[préférences vscode](https://code.visualstudio.com/docs/getstarted/settings)
+
+{% endlien %}

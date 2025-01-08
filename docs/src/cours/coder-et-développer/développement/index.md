@@ -17,11 +17,10 @@ Principes à garder en mémoire pour tout développement de code :
 [Coder](coder){.interne}
 {% endaller %}
 
-
 Installation et utilisation des outils de développement :
 
 {% aller %}
-[Projet `hello-dev`{.fichier}](tutoriel-hello-dev){.interne}
+[Projet Mise en œuvre d'un projet informatique](tutoriel-hello-dev){.interne}
 {% endaller %}
 
 Mise en pratique :

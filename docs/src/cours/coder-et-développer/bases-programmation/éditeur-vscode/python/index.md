@@ -79,14 +79,16 @@ Vous devriez obtenir quelque chose du genre :
 
 ![hello world](python-interpreteur-execution-python.png)
 
-Pour exécuter du python, vscode écrit une _ligne de commande_ dans le terminal. Dans l'exemple précédent, la ligne de commande était :
+Pour exécuter du python, vscode écrit une _ligne de commande_ dans un _terminal_. Nous expliciterons ces deux notions plus tard, pour l'instant admettez que l'exécution de notre programme s'est effectué dans une nouvelle fenêtre appelée terminal via l'exécution d'une commande.
+
+Dans l'exemple précédent, la ligne de commande était :
 
 ```shell
 /bin/python /home/fbrucker/Documents/code/hello-world-python/main.py
 ```
 
 {% info %}
-Ce qui est avant la ligne de code, c'est à dire `fbrucker@MV-ubuntu:~/Documents/code/hello-world-python$` dans l'exemple précédent est appelé le _prompt_ et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.
+Ce qui est avant la ligne de commande, c'est à dire `fbrucker@MV-ubuntu:~/Documents/code/hello-world-python$` dans l'exemple précédent est appelé le _prompt_ et est ce que le terminal met au début de chaque ligne avant que l'on puisse taper des commandes.
 {% endinfo %}
 
 La ligne de commande d'un terminal est toujours composée de la même façon :
@@ -107,64 +109,3 @@ Pour connaître le python utilisé, il suffit de cliquer en bas à droite de la 
 
 Celui utilisé est précédé d'une étoile.
 {% endinfo %}
-
-### <span id="quel-python"></span> Trouver le python utilisé par vscode
-
-Pour accéder facilement à `nom-du-programme-python`. Cliquez sur le triangle vert pour exécuter le code. Dans le terminal, la ligne de code suivante est exécutée :
-
-```
-nom-du-programme-python fichier-exécuté
-```
-
-Une fois le programme exécuté, dans le terminal, tapez sur la flèche du haut pour rappeler la commande précédente. Il suffit ensuite de supprimer la fin de la commande (le nom du fichier à exécuter) pour ne garder que le programme python utilisé.
-
-## Exécuter du python
-
-Il y a deux façons principales d'exécuter du code python avec vscode. Chacune avec avantages et inconvénients. Il est donc recommandé de toutes les connaître.
-
-### Via le triangle
-
-On a déjà vu comment exécuter l'onglet courant en python en [cliquant sur le triangle en haut à droite de l'interface](https://code.visualstudio.com/docs/python/python-tutorial#_run-hello-world).
-
-### Via le terminal
-
-Vous pouvez utiliser [le terminal intégré](../terminal#terminal-intégré){.interne} pour exécuter vous programmes python comme vous le feriez avec un terminal externe.
-
-{% faire %}
-Ouvrez un [terminal dans vscode](../terminal){.interne} : _menu Affichage > Terminal_.
-{% endfaire %}
-
-{% faire %}
-Utilisez la [partie précédente](./#exécuter-programme){.interne} pour déterminer votre `nom-du-programme-python`, puis exécutez le.
-{% endfaire %}
-
-![interpréteur](python-interpreteur.png)
-
-Dans l'interpréteur (à côté des `>>>`, qu'on appelle [invite de commande ou prompt](https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande)) :
-
-{% faire %}
-Tapez :
-
-```python
-print("Bonjour monde !")
-```
-
-Puis appuyez sur la touche entrée.
-{% endfaire %}
-
-Vous devriez avoir quelque chose du genre à la sortie :
-
-![hello world](python-hello-world-interpreteur.png)
-
-Ca a l'air d'avoir marché. La ligne de code a affiché à l'écran `Bonjour Monde`, puis l'invite de commande est revenue (une fois l'instruction exécutée, on attend la suivante).
-
-Pour quitter l'interpréteur python :
-
-{% faire %}
-Tapez `quit()` puis appuyez sur la touche entrée.
-{% endfaire %}
-
-l’intérêt d'utiliser le terminal est que l'on peut :
-
-- utiliser la flèche du haut du clavier pour rappeler la commande précédente. Cela va plus vite que de se déplacer sur le triangle
-- on peut exécuter le code sans être sur l'onglet du fichier à exécuter
