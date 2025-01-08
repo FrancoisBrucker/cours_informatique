@@ -31,9 +31,9 @@ Entrées :
     m : un mot à définir
 Programme :
     1. étant donné la définition de m dans le dictionnaire du 'Petit Robert'
-    2. afficher la définition à l'écran.
+    2. afficher la définition à l'écran
     3. pour chaque mot non compris dans la définition :
-       1. comprendre_une_définition_du_petit_Robert(mot)
+       3.1. comprendre_une_définition_du_petit_Robert(mot)
 ```
 
 C'est un algorithme tout à fait valable. Ce n'est pas du python, mais c'est :
@@ -85,17 +85,17 @@ La définition très générale d'un algorithme se décline usuellement sous deu
 1. [le pseudo-code](../../écrire-algorithmes/pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
 2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
-Ces feux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout _théoricien_ doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout _développeur_ doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
+Ces deux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout _théoricien_ doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout _développeur_ doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
-Mais avant den'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire u algorithme de façon générale et sans autres contraintes que celle de la définition.
+Mais avant de n'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire un algorithme de façon générale et sans autres contraintes que celle de la définition.
 
 ## Nombre de programme
 
-La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symbole. De plus, c'est implicite, mais un programme doit être compris par un humain.
+La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
 
 ### Une infinité de programmes différents
 
-On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithmes on peut donc déjà conclure que :
+On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithme on peut donc déjà conclure que :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes différents.
@@ -107,30 +107,30 @@ Si on considère l'instruction `Ne fait rien`{.language-}, le texte ci-dessous e
 Ne fait rien
 ```
 
-En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite (l'algorithme précédent est $A_1$).
+En notant alors $R_k$ ($k >0$) l'algorithme de $k$ instructions `Ne fait rien`{.language-} à la suite (l'algorithme précédent est $R_1$).
 
 Les algorithmes $R_k$ sont tous différents puisque leurs suites d'instructions sont différentes : il existe donc une infinité d'algorithmes différents.
 {% enddetails %}
 
-De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose (tous les algorithmes $R_k$ pour $k$ entier font la même chose : rien)
+De la preuve de la proposition précédente montre qu'il existe une infinité d’algorithmes différents mais faisant la même chose : tous les algorithmes $R_k$ pour $k$ entier font la même chose, rien.
 
 {% info %}
 On y reviendra, mais savoir ce que fait un algorithme n'est pas un problème simple du tout dans le cas général.
 {% endinfo %}
 
-Mais, on peut aussi démonter :
+Mais, on peut aussi démontrer :
 
 {% note "**Proposition**" %}
 Il existe une infinité d'algorithmes faisant des choses deux à deux différentes.
 {% endnote %}
 {% details "preuve", "open" %}
-On peut par exemple considérer la familles $A_i$ d'algorithmes ($i > 0$) définis tels que $A_i$ soit constitué d'une seule instruction :
+On peut par exemple considérer la familles $A_k$ d'algorithmes ($k > 0$) définis tels que $A_k$ soit constitué d'une seule instruction :
 
 ```text
-Rend l'entier i
+Rend l'entier k
 ```
 
-Les $A_i$ sont bien des algorithmes puisque chaque entier $i$ se décrit avec un nombre fini de chiffres. De plus, les $A_i$ rendent tous des entiers différents.
+Les $A_k$ sont bien des algorithmes puisque chaque entier $k$ se décrit avec un nombre fini de chiffres. De plus, les $A_k$ rendent tous des entiers différents.
 
 {% enddetails %}
 
@@ -156,9 +156,7 @@ On note $\mathcal{A}$ cet ensemble.
 Un algorithme est composée d'une suite finie d'instruction. Comme chaque instruction peut être nommée par un texte et que chaque instruction est décrite un texte en Français, tout algorithme est une suite de caractères Unicode.
 {% enddetails %}
 
-Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode.
-
-On peut alors utiliser l'ordre entre caractères Unicode (en triant les caractères par [numéro](http://ressources.univ-lemans.fr/AccesLibre/UM/Pedago/physique/02/divers/unicode.html) croissant) pour ordonner les algorithmes selon l'ordre du dictionnaire :
+Bref, les programmes correspondent à un sous-ensemble de l'ensemble des chaînes de caractères écrites en Unicode. On peut alors utiliser l'ordre entre caractères Unicode (chaque caractère est identifié par un entier) pour ordonner les algorithmes selon l'ordre du dictionnaire :
 
 <div id="encodage-algorithme"></div>
 {% note "**Proposition**" %}
@@ -189,17 +187,17 @@ On déduit immédiatement la proposition suivante :
 Il y a exactement autant d'algorithmes différents que de nombres entiers.
 {% endnote %}
 {% details "preuve", "open" %}
-Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_i)_{i \geq 1}$ telle que :
+Comme à chaque algorithme est associé un entier strictement positif unique, on peut les ranger par nombre croissant et considérer la suite d'algorithmes $(A_k)_{k \geq 1}$ telle que :
 
 - $A_1$ est l'algorithme de plus petit nombre associé
-- pour $i > 1$, $A_i$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{i-1}$
+- pour $k > 1$, $A_k$ est l'algorithme est dont le nombre associé est le plus petit qui est plus grand que le nombre associé à $A_{k-1}$
 
 On a alors :
 
-- $A_i$ existe pour entier $i$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)
-- pour tout algorithme $A$, il existe $i$ telle que $A=A_i$
+- $A_k$ existe pour entier $k$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)
+- pour tout algorithme $A$, il existe $k$ telle que $A=A_k$
 
-Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_i)_{i \geq 1}$ est une bijection entre l'ensemble des algorithme et l'ensemble des entier strictement positifs.
+Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des algorithme et l'ensemble des entier strictement positifs.
 
 {% enddetails %}
 
@@ -207,18 +205,18 @@ La preuve ci-dessus est classique. Lorsqu'il y a un nombre infini de choses dén
 
 ### Nombres réels sans algorithme
 
-Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante, car elle montre qu'un algorithme ne peut pas tout faire.
+Savoir qu'il n'y a pas plus d'algorithmes que de nombres entiers est une très information très importante car elle montre qu'un algorithme ne peut pas tout faire. En effet :
 
 <span id="diagonale-cantor"></span>
 {% note "**Théorème**" %}
 Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de nombres entiers strictement positifs.
 {% endnote %}
 {% details "preuve", "open" %}
-On doit cette preuve au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Cette preuve magnifique s'appelle [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
+On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Elle est basée sur l'argument s'appelant [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
 
-On commence la preuve en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
+On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
-On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
+On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
 
 - on appelle $r_1$ le 1er réel, c'est à dire celui tel que $f(r_1) \leq f(x)$, quelque soit $x \in [0, 1]$
 - on appelle $r_2$ le second réel $r_2$ , c'est à dire celui tel que $f(r_2) \leq f(x)$ pour tout $x \in [0, 1] \backslash \\{ r_1 \\}$
@@ -228,8 +226,8 @@ On suppose qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre l
 
 Chaque réel pouvant s'écrire sous sa représentation décimale (par exemple $0.1034842$), on construit le nombre réel $r$ de $[0, 1]$ tel que sont $i$ème chiffre après la virgule soit :
 
-- $1$ si le $i$ chiffre après la virgule de $r_i$ est différent de $1$
-- $2$ si le $i$ chiffre après la virgule de $r_i$ est $1$
+- $1$ si le $i$ème chiffre après la virgule de $r_i$ est différent de $1$
+- $2$ si le $i$ème chiffre après la virgule de $r_i$ est $1$
 
 Le nombre $r$ est bien dans $[0, 1]$ mais il ne peut pas être $r_i$ quelque soit $i$ ! Il y a une contradiction (comme notre nombre ne finit ni par 9 ni par 0 il a [un unique développement décimal](https://fr.wikipedia.org/wiki/D%C3%A9veloppement_d%C3%A9cimal#Cas_des_nombres_r%C3%A9els), il apparaît forcément dans notre liste). Notre hypothèse était donc fausse, il ne peut exister d'injection entre les réels de l'intervalle $[0, 1]$ et les entiers.
 
@@ -237,9 +235,7 @@ Il y a donc strictement plus de réels dans $[0, 1]$ que d'entiers.
 
 {% enddetails %}
 
-Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond.
-
-On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
+Le fait qu'il y ait des infinis plus ou moins gros est un résultat que l'on doit à Cantor et qui est très profond. On note communément $\aleph_0$ le nombre d'entiers qui est strictement plus petit que le nombre de réels, noté $\aleph_1$. Une question reste encore en suspend, mais on a pour l'instant toujours pas la réponse, c'est : y a-t-il un infini entre $\aleph_0$ et $\aleph_1$ ? On ne sais pas, mais on pense que non. C'est l'[hypothèse du continu](https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_du_continu).
 
 {% info %}
 Pour une introduction en douceur sur ces sujets, consulter [cette émission d'Arte](https://www.arte.tv/fr/videos/097454-005-A/voyages-au-pays-des-maths/), très bien faite.
@@ -253,7 +249,7 @@ Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcu
 
 {% endnote %}
 
-Trouver de tels nombre est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... mais... ils existent.
+Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais, ils existent.
 
 ## Objets manipulables par un algorithme
 
@@ -272,7 +268,7 @@ Puisque l'on a le droit de ne manipuler que des choses finies, un algorithme ne 
 
 {% note "**un algorithme ne peut pas manipuler de nombres réels**" %}
 
-On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (on ne considère qu'un nombre fini de décimales).
+On ne peut considérer un réel que comme une abstraction (un symbole particulier) ou une approximation (ne considérer qu'un nombre fini de ses décimales).
 {% endnote %}
 
 Prenons $\pi$ par exemple. Il existe des algorithmes qui [calculent les décimales de pi](https://fr.wikipedia.org/wiki/Approximation_de_%CF%80#Calcul_de_la_n-i%C3%A8me_d%C3%A9cimale_de_%CF%80), mais on ne pourra jamais écrire que le nombre $\pi$ est le résultat d'un algorithme, puisque l'algorithme doit s'arrêter : on aura qu'un nombre fini de décimales, pas le nombre $\pi$.

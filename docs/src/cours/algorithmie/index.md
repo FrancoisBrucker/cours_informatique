@@ -3,9 +3,14 @@ layout: layout/post.njk
 
 title: Algorithmie
 tags: ["cours", "algorithmie"]
+
 authors:
   - François Brucker
 resume: "Un cours d'algoritmie"
+
+eleventyNavigation:
+  prerequis:
+    - "/cours/coder-et-développer/bases-programmation/"
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,15 +19,13 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD : refaire juste avec du pseudo-code et ajouter le code python/C en exercice.
-
 Cours d'algorithmie.
 
 {% info %}
 _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est celle des télescopes_ [E. Dijkstra](https://fr.wikipedia.org/wiki/Edsger_Dijkstra)
 {% endinfo %}
 
-Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au cours [coder et développer](/cours/coder-et-développer){.interne}.
+Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
 
 ## <span id="partie-2"></span>Partie I
 
