@@ -99,10 +99,10 @@
   <p>La notion d'algorithme stipule qu'il doit, à partir d'une entrée, rendre un calcul en un temps fini.</p>
 <p><a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">La définition d'un algorithme</a> stipule qu'un algorithme doit respecter 4 propriétés. Les 3 premières sont faciles à vérifier, il suffit que :</p>
 <ul>
-<li>la description de chaque instruction et leurs enchaînements soient compréhensible s'il doit être exécuté par u humain</li>
+<li>la description de chaque instruction et leurs enchaînements soient compréhensible s'il doit être exécuté par un humain</li>
 <li>le code soit syntaxiquement correct s'il est écrit sous la forme d'un programme.</li>
 </ul>
-<p>Mais quand est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelque soit sont entrée ? On le verra cette question est cruciale et... compliquée. Commençons par définir un algorithme qui ne fini pas forcément :</p>
+<p>Mais quand est-il de la quatrième condition, celle qui demande que l'algorithme s'arrête après un temps fini quelque soit son entrée ? On verra que cette question est cruciale et... compliquée. Commençons par définir un algorithme qui ne fini pas forcément :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -110,44 +110,49 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>On dira qu'un texte respectant les trois premières propriétés de <a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">la définition d'un algorithme</a> est un <em><strong>programme</strong></em>.</p>
+<p>On appelle <strong><em>programme</em></strong> un texte respectant les trois premières propriétés de <a href="../d%C3%A9finition/#r%C3%A8gles-g%C3%A9n%C3%A9rales" class="interne">la définition d'un algorithme</a> :</p>
+<ol>
+<li>il est constitué d'un <strong>suite fini d'instructions</strong>, chacune décrite avec <strong>un nombre fini de symboles</strong></li>
+<li>un humain doit pouvoir suivre chaque étape avec <strong>un papier et un crayon</strong></li>
+<li>exécuter une instruction <strong>ne doit pas nécessiter d'intelligence</strong> (à part celle pour comprendre l'instruction)</li>
+</ol>
 </div></div>
 
 <p>C'est pourquoi lorsque l'on vous demande de trouver un algorithme, il faut toujours se poser la question de la terminaison de votre programme.</p>
 <h2>Problème de l'arrêt</h2>
-<p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. IL y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :</p>
+<p>Savoir si un programme va s'arrêter, ou pas, sur une entrée donnée est un problème compliqué. Il y a bien sur des cas simples, comme celui-ci qui ne s'arrête pas :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérité
-Entrées : 
+Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
         dire à voix haute : "L'informatique c'est vraiment super chouette !"</code></pre>
 <p>Ou celui-ci qui l'est clairement :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : compte à rebours
-Entrées : 
+Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 0:
-        dire à voix haute le nombre n
-        n = n - 1</code></pre>
+        dire à voix haute : "L'informatique c'est vraiment super méga chouette !"
+        décrémenter la valeur de n de 1</code></pre>
 <p>Mais si on prend le programme suivant qui implémente <a href="https://fr.wikipedia.org/wiki/Conjecture_de_Syracuse">la célèbre conjecture de Syracuse</a> :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : syracuse
-Entrées : 
+Entrées :
     n : un entier strictement positif
 Programme :
     tant que n est strictement plus grand que 1:
         si n est pair:
-            n = n / 2
+            diviser n par 2
         sinon:
-            n = 3n + 1
+            multiplier n par 3 et lui ajouter 1
     rendre 1</code></pre>
-<p>On ne sait pas (pas de démonstration) s'il s'arrête quelque soit $n$ ou pas.</p>
+<p>On ne sait pas (on a pas de démonstration) s'il s'arrête quelque soit $n$ ou pas.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>De nombreux travaux ont été fait pour connaître mieux ce problème. Vous pouvez allez jeter un coup d'œil aux liens suivant pour (beaucoup plus d'informations) :</p>
+<p>De nombreux travaux ont été fait pour connaître mieux ce problème. Vous pouvez allez jeter un coup d'œil aux liens suivant pour (beaucoup) plus d'informations :</p>
 <ul>
 <li><a href="https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf">https://www.cristal.univ-lille.fr/~jdelahay/SIME/Cours/Syracuse_poly.pdf</a></li>
 <li><a href="https://hal.science/hal-01593181v3/document">https://hal.science/hal-01593181v3/document</a></li>
@@ -163,9 +168,8 @@ Programme :
 <p>Testez le programme <code class="language-">syracuse</code> pour quelques entrées. Vous verrez que très rapidement $n$ va tendre vers 1.</p>
 </div></div>
 
-<p>Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée.</p>
-<p>Bref, savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.</p>
-<p>Supposons en effet que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le <code class="language-">stop</code> :</p>
+<p>Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée : savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.</p>
+<p>Supposons que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le <code class="language-">stop</code> :</p>
 <div id="algorithme-STOP"></div>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : stop
 Entrée :
@@ -179,11 +183,10 @@ Sortie :
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Une démonstration étant un algorithme (une preuve est finie et s'appuie sur un nombre fini d'axiomes), si une méthode formelle de vérification existe, c'est un algorithme !</p>
+<p>Notez que la solution consistant à exécuter le programme en entrée pour voir s'il s'arrête n'est pas une solution valide pas car si ce dernier ne s'arrête pas <code class="language-">stop</code> ne s'arrêtera pas non plus, ce qui est impossible puisque c'est un algorithme.</p>
 </div></div>
 
-<p>On ne donne pas le code de cet algorithme parce que ce n'est pas évident à faire a priori. On ne peut bien sûr pas exécuter l'algorithme en entrée pour savoir s'il s'arrête car s'il ne s'arrête pas, notre algorithme n'en est pas un puisque lui non plus ne s'arrêtera pas. Si <code class="language-">stop</code> existe il doit être plus malin que ça.</p>
-<p>Mais arrêtons le suspens tout de suite, <a href="https://fr.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> lui-même a montré qu'un tel algorithme ne peut exister dans le cadre de ses machine (<a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">le problème de l'arrêt de la machine de Turing</a>) :</p>
+<p>C'est <a href="https://fr.wikipedia.org/wiki/Alan_Turing">Alan Turing</a> lui-même qui a montré qu'un tel algorithme ne peut exister dans le cadre de ses machines (c'est <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_de_l%27arr%C3%AAt">le problème de l'arrêt de la machine de Turing</a>) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -216,18 +219,17 @@ Sortie :
 Programme :
     si le retour de l'algorithme stop avec comme entrée le numéro de oups vaut 1:
         faire une boucle infinie</code></pre>
-<p>Le programme <code class="language-">oups</code> est infernal. En effet :</p>
+<p>Le programme <code class="language-">oups</code> ne peut exister. En effet :</p>
 <ul>
 <li><code class="language-">oups</code> est programme, il a donc bien un numéro $N$,</li>
 <li>si <code class="language-">oups</code> est un algorithme alors <code class="language-">stop(N)</code> va rendre 1 ce qui fait que <code class="language-">oups</code> ne s'arrêtera pas,</li>
 <li>si <code class="language-">oups</code> n'est pas un algorithme alors <code class="language-">stop(N)</code> va rendre 0 ce qui fait que <code class="language-">oups</code> s'arrêtera.</li>
 </ul>
-<p>Bref, <code class="language-">oups</code> ne peut pas exister et donc <code class="language-">stop</code>, notre hypothèse, non plus.</p>
+<p>Si <code class="language-">oups</code> ne peut pas exister, <code class="language-">stop</code> ne le peut pas non plus, ce qui contredit notre hypothèse.</p>
 </div>
 </details>     
 </div>
-<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini) qu'auraient tout algorithme. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.</p>
-<p>La conclusion de cette partie est pratique :</p>
+<p>Comprenez bien le théorème ci-dessus. Il signifie qu'il n'existe pas de propriété <strong>démontrable</strong> (donc en temps fini) qu'auraient tout les algorithmes et qui les différencieraient des programmes. Si on peut montrer qu'un programme s'arrête, il faut faire la preuve pour cet algorithme spécifiquement.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -247,7 +249,7 @@ Programme :
 <p>Cette partie est consacrée au <a href="https://fr.wikipedia.org/wiki/Th%C3%A9or%C3%A8me_de_Rice">Théorème de Rice</a></p>
 </div></div>
 
-<p>S'il est impossible de savoir si un programme  s'arrête ou pas a priori, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une <em>propriété</em> donnée, et ce, quelque soit celle-ci.</p>
+<p>S'il est impossible de savoir si un programme s'arrête ou pas a priori, il est aussi impossible de savoir ce qu'il va faire... Il n'existe en effet pas de démonstration qu'un algorithme possède une <em>propriété</em> donnée, et ce, quelque soit celle-ci.</p>
 <p>Commençons par définir ce qu'est une propriété :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -256,8 +258,8 @@ Programme :
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une <em><strong>propriété</strong></em> est un ensemble non vide $P$ de programmes.</p>
-<p>Un programme $A$ <em><strong>vérifie la propriété $P$</strong></em> s'il existe un programme $A' \in P$ tel que $A$ et $A'$ coincident pour toute entrée :</p>
+<p>Une <strong><em>propriété</em></strong> est un ensemble non vide $P$ de programmes.</p>
+<p>Un programme $A$ <strong><em>vérifie la propriété $P$</em></strong> s'il existe un programme $A' \in P$ tel que $A$ et $A'$ coincident pour toute entrée :</p>
 <ul>
 <li>$A(n)$ ne s'arrête pas si $A'(n)$ ne s'arrête pas,</li>
 <li>$A(n) = A'(n)$ sinon.</li>
@@ -275,7 +277,7 @@ Programme :
 </div><div class="pl-8 mr-8">
 <p>Quelque soit la propriété $P$, l'algorithme suivant n'existe pas :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : propriété-P
-Entrée : 
+Entrée :
     n : un entier représentant un programme
 Sortie :
     1 si l'algorithme en entrée vérifie la propriété P
@@ -301,29 +303,27 @@ Sortie :
 <div class="mx-8 pb-2">
 <p>Soit $A_0 \in P$ et $A$ un programme. On peut alors construire l'algorithme suivant :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : vérifie-P
-Entrée : 
+Entrée :
     n : un entier
 Sortie :
     A(n)
     A_0(n)</code></pre>
 <p>L'algorithme <code class="language-">vérifie-P</code> vérifie la propriété $P$ si et seulement si $A$ est un algorithme (s'il s'arrête).</p>
-<p>On en conclut qu'il ne peut exister une machine décidant si un programme vérifie une propriété que si l'algorithme <code class="language-">stop</code> existe, ce qui est impossible.</p>
+<p>On en conclut que l'algorithme <code class="language-">propriété-P</code> appliqué au numéro associé à <code class="language-">vérifie-P</code> va rendre 1 si le programme <code>A</code> s'arrête et 0 sinon : c'est <code class="language-">stop</code> !</p>
+<p>Comme l'algorithme <code class="language-">stop</code> ne peut pas exister, <code class="language-">propriété-P</code> non plus.</p>
 </div>
 </details>     
 </div>
 <p>Ceci signifie que pour toute propriété voulu sur la sortie d'un algorithme il existe une infinité de façon différente de faire. Si on veut démontrer qu'un algorithme a une propriété donnée, il faut le démontrer pour cet algorithme, et il n'existe pas de preuve générale.</p>
-<p>Réciproquement, quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront.</p>
-<p>Par exemple : il est indécidable de savoir si un programme calcule $n!$, en revanche il est parfois possible de démonter qu'un programme donné calcule ou pas $n!$.</p>
+<p>Réciproquement, quelque soit la tâche à effectuer on ne peut pas connaître les algorithmes qui l'effectueront. Il est par exemple impossible de savoir si un programme calcule $n!$, en revanche il est parfois possible de démonter qu'un programme donné calcule ou pas $n!$.</p>
 <p>Il est donc nécessaire :</p>
 <ul>
 <li>de prouver individuellement tout algorithme que l'on conçoit</li>
 <li>de tester personnellement toute fonction que l'on code</li>
 </ul>
-<p>Si on sait ce que l'on veut faire, on peut créer des algorithme (exemple des fonctions calculables), mais si on a un programme savoir s'il s'arrête est compliqué et si on a un algorithme savoir ce qu'il fait l'est aussi.</p>
-<p>La conclusion de cette partie est pratique :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -331,7 +331,7 @@ Sortie :
 <p>Lorsque vous créez des algorithmes, il faut <strong>toujours</strong> :</p>
 <ol>
 <li>expliciter ce que vous pensez qu'il fait</li>
-<li>démontrer qu'il le fait bien</li>
+<li>démontrer qu'il le fait</li>
 </ol>
 <p>Il n'y a pas de condition nécessaire et suffisante qui garantirait qu'un programme fait ce que l'on pense qu'il fait, et ce quelque soit ce qu'on pense qu'il fait.</p>
 </div></div>
