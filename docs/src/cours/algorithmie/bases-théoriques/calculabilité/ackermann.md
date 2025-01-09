@@ -9,6 +9,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD déplacer récursive non primitive pour ne garder que les majoration et dire qu'elle grossit super vite.
+
 La [fonction d'Ackermann](https://fr.wikipedia.org/wiki/Fonction_d%27Ackermann), outre le fait qu'elle est rigolote car elle croît très très rapidement (plus que factoriel, c'est dire), est importante théoriquement car c'est le premier exemple connu de fonction calculable mais non primitive récursive.
 
 ## Définition

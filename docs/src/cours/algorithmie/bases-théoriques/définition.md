@@ -52,11 +52,11 @@ Règles de construction de l'algorithme utilisé :
 
 Donald Knuth (1938-) liste, comme prérequis d'un algorithme, [cinq propriétés](https://fr.wikipedia.org/wiki/Algorithme) :
 
-- **finitude** : _« Un algorithme doit toujours se terminer après un nombre fini d’étapes. »_
-- **définition précise** : _« Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas. »_
-- **entrées** : _« […] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié. »_
-- **sortie** : _« […] des quantités ayant une relation spécifiée avec les entrées. »_
-- **rendement** : _« […] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon. »_
+- **finitude** : _Un algorithme doit toujours se terminer après un nombre fini d’étapes._
+- **définition précise** : _Chaque étape d'un algorithme doit être définie précisément, les actions à transposer doivent être spécifiées rigoureusement et sans ambiguïté pour chaque cas._
+- **entrées** : _[…] des quantités qui lui sont données avant qu'un algorithme ne commence. Ces entrées sont prises dans un ensemble d'objets spécifié._
+- **sortie** : _[…] des quantités ayant une relation spécifiée avec les entrées._
+- **rendement** : _[…] toutes les opérations que l'algorithme doit accomplir doivent être suffisamment basiques pour pouvoir être en principe réalisées dans une durée finie par un homme utilisant un papier et un crayon._
 
 On peut en déduire la définition suivante : Un **_algorithme_** est une succession d'instructions simples et clairement définies. A partir d'entrées, il produit une sortie en un nombre fini d'instructions. Ou, de façon équivalente :
 
@@ -78,7 +78,7 @@ On appellera **_programme_** un texte qui ne respecte que les 3 premières propr
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## <span id="algorithmes-trois-voies"></span> Algorithmes !
+## <span id="algorithmes-trois-voies"></span> Algorithmes
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
