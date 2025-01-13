@@ -275,7 +275,7 @@ Pour $x+y+z=k+1$, on analyse tous les cas possibles :
 
 {% enddetails %}
 
-Il nous reste à montrer que le nombre d'itération est bien fini. Il faut pour cela utiliser l'exercice précédent.
+Il nous reste à montrer que le nombre d'itération est bien fini. Ce n'est en effet pas parce que l'équation de récurrence admet une solution qu'on peut la calculer avec un algorithme, c'est à dire en temps fini. On utilise pour cela utiliser l'exercice précédent et une récurrence :
 
 {% note "**Proposition**" %}
 
