@@ -326,7 +326,7 @@ La fonction de Takeuchi montre que pour résoudre un problème simple il existe 
 Lorsque vous essayer de résoudre un problème avec un algorithme essayer toujours de trouver la solution la plus simple possible. Vous verrez que souvent, sans réfléchir on va produire la version compliquée plutôt la version simple.
 {% endnote %}
 
-## Non calculabilité
+## <span id="non-calculable"></span>Non calculabilité
 
 Trouver une fonction ou un nombre qu'on ne peut pas calculer est un exercice mental compliqué. En effet, si l'on pense à un nombre précis, on lui associe une définition et donc très souvent un moyen de le construire.
 

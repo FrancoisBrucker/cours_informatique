@@ -1,6 +1,6 @@
 ---
 layout: layout/post.njk
-title: "Itératif et récursif"
+title: "Projet : Écrire et prouver des algorithmes Itératif et récursif"
 
 eleventyComputed:
   eleventyNavigation:
@@ -31,6 +31,43 @@ eleventyComputed:
 > exemples :
 >
 > - <https://www.youtube.com/watch?v=pKO9UjSeLew>
+
+
+### Maximum d'un tableau
+
+
+> TBD mettre en récursif en exercice.
+> 
+On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.
+
+### <span id="max-rec"></span> Algorithme récursif
+
+```python
+def maximum(tab):
+    if len(tab) == 1:
+        return tab[0]
+    x = maximum(tab[1:])
+    if tab[0] > x
+        return tab[0]
+    else:
+        return x
+```
+
+{% info %}
+On a utilisé la [copie de sous-listes (_slicing_)](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#slice){.interne} de python : `tab[1:]`{.language-} est la liste contenant les éléments de `tab`{.language-} à partir de l'index 1 (donc sans le premier élément de `tab`{.language-}).
+{% endinfo %}
+
+#### <span id="M-F-rec-1"></span> Finitude
+
+À chaque récursion, la taille du tableau diminue strictement. La récursion s'arrêtera donc forcément lorsque le tableau sera de taille 1.
+
+#### <span id="M-P-rec-1"></span> Preuve
+
+Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.
+
+## euclide
+
+Faire euclide récursif.
 
 ### Algorithmes itératif
 

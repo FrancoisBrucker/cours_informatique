@@ -9,30 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Nous n'avons pour l'instant décrit les algorithmes que comme des fonctions permettant de calculer des nombres. La principale utilité de ceux-ci est cependant ailleurs. Les algorithmes sont utilisés parce ce qu'il permettent de répondre à des questions, de résoudre des problèmes. Bref, le résultat d'un algorithme a un _sens_.
+## Problème et Programme
 
-## Problème
-
-Formalisons cette intuition en définissant la notion de **_problème_**.
-
-{% note "**Définition**" %}
-Un **_problème_** est un texte composé de 3 parties :
-
-- **nom** : le nom du problème
-- **données** : les paramètres dont on a besoin
-- **question** : ce que l'on cherche à résoudre
-
-{% endnote %}
-
-Par exemple :
-
-{% note "**Problème**" %}
-
-- **nom** : maximum
-- **données** : un tableau d'entiers
-- **question** : quel est l'entier maximum du tableau ?
-
-{% endnote %}
+Les problèmes décidables admettent un algorithme comme résolution. c'est à dire que l'on 
 
 Une importante classe de problème est **_les problèmes de décision_** :
 
@@ -54,19 +33,6 @@ Par exemple :
 
 {% endnote %}
 
-On se placera dans ce cours dans un cadre algorithmique. On se posera donc uniquement des questions sérieuses comme la recherche d'un éléments dans un tableau ou l'existence d'un algorithme pour résoudre un problème. On laissera de côté les problèmes futiles comme ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["quel est le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4).
-
-{% note "**Définition**" %}
-**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
-
-- prend en paramètres les entrées du problème
-- donne la réponse à la question.
-
-{% endnote %}
-
-Dans la suite de ce cours nous allons nous concentrer sur les problèmes algorithmique et voir comment les résoudre le plus vite possible. Mais avant de conclure cette courte partie examinons quelques problèmes non décidables mais informatisable.
-
-## <span id="décidable"></span> Décidabilité
 
 On peut très souvent se restreindre aux problèmes de décision solvable par un algorithme :
 
@@ -88,6 +54,10 @@ Vous verrez parfois des décideurs qui à la place de répondre OUI rendent 1 et
 L'important est que la sortie du décideur soit binaire et que l'on puisse associer une sémantique de vérité à la sortie.
 
 {% endinfo %}
+
+## odds and ends
+
+Mais avant de conclure cette courte partie examinons quelques problèmes non décidables mais informatisable.
 
 En effet, on peut très souvent se ramener à un problème décidable pour prouver qu'un problème est algorithmique. Par exemple le problème maximum peut être associé au problème de décision `maximum-v`{.language-} :
 

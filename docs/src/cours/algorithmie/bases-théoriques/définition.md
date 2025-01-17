@@ -78,18 +78,105 @@ On appellera **_programme_** un texte qui ne respecte que les 3 premières propr
 
 Une recette de cuisine est donc un algorithme, un trajet google maps, etc.
 
-## <span id="algorithmes-trois-voies"></span> Algorithmes
+## <span id="algorithmes-trois-voies"></span> Programmes et Algorithmes
+
+Prenons l'énoncé suivant qui décrit une procédure permettant de chercher un élément particulier dans une suite finie de nombres :
+
+```text
+Demander à l'utilisateur :
+  - de donner un entier que l'on appellera x
+  - de donner une suite d'entiers que l'on appellera t
+
+parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+Si on trouve un tel élément, afficher "Vrai" à l'écran.
+```
+
+Pour transformer cette description en algorithme, il faut procéder à plusieurs modifications :
+
+1. Un programme a un nom pour qu'on puisse le retrouver une fois décrit
+2. L'utilisateur n'existe pas : un programme doit exister en tant que tel. Les entrées (demander des choses à l'utilisateur) et les sorties (afficher des résultats) sont abstraites :
+   - on parle de paramètres d'entrées du programme
+   - on parle de sortie du programme (le programme rend quelque chose, comme une fonction)
+
+En appliquant ces règles, la description précédente devient :
+
+```text
+Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+ 
+    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai".
+
+```
+
+Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas `x`{.language-} dans `t`{.language-}. Modifions le :
+
+```text
+Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+ 
+    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai".
+    Sinon rendre "Faux".
+
+```
+
+Notre programme s'arrêtant tout le temps, c'est même un algorithme.
+
+{% note "**À retenir**" %}
+Un programme **programme** possède :
+
+- un nom
+- des paramètres d'entrées (il peut y en avoir 0). Chaque paramètre à un nom qui pourra être utilisé dans la description du programme et un type qui décrit sa nature.
+- une sortie. Si le programme s'arrête il doit rendre quelque chose.
+- une description qui explicite ce qu'il fait.
+
+Si le programme s'arrête quelque soient ses entrées, c'est un **algorithme**.
+{% endnote %}
+{% attention %}
+Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
+{% endattention %}
+
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
 1. [le pseudo-code](../../écrire-algorithmes/pseudo-code){.interne} : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.
 2. [le code](/cours/coder-et-développer/développement/coder){.interne} : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.
 
+Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :
+
+```pseudocode
+algorithme recherche(t: [entier],
+                     x: entier
+                    ) → booléen:
+
+    pour chaque e de t:
+        si e == x:
+            rendre Vrai
+    rendre Faux
+```
+
+Et en code python (qui est très similaire au pseudo-code) :
+
+```python/
+def recherche(t, x):
+    for e in t:
+        if e == x:
+            return True
+    return False
+```
+
 Ces deux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout _théoricien_ doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout _développeur_ doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.
 
 Mais avant de n'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire un algorithme de façon générale et sans autres contraintes que celle de la définition.
 
-## Nombre de programme
+## Nombre de programmes
 
 La définition générale d'un programme stipule qu'il doit être constitué d'un nombre **fini** d'instructions, chaque instruction décrite par un nombre **fini** de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.
 

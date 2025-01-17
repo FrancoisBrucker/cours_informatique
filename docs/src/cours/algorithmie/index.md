@@ -42,10 +42,10 @@ Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas
 On peut maintenant définir une grammaire permettant décrire des algorithmes sous la forme de pseudo-code et s'en servir pour résoudre des problèmes :
 
 {% aller %}
-[Écrire des algorithmes](./écrire-algorithmes){.interne}
+[Écrire les algorithmes en pseudo code](./pseudo-code){.interne}
 {% endaller %}
 
-Le [pseudo-code](./écrire-algorithmes/pseudo-code/){.interne} permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
+Le pseudo-code permet d'écrire des programmes sur papier que l'on peut exécuter dans sa tête aidé d'un papier et d'un crayon. Les langages de programmation permettent d'exécuter du code sur un ordinateur un utilisant un [langage de programmation](https://fr.wikipedia.org/wiki/Langage_de_programmation).
 
 Pour la plupart d'entre eux, il est facile de transcrire le pseudo-code en code pouvant être exécuté, on a alors l'implication suivante :
 
@@ -72,13 +72,58 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 [Autres modèles](./autres-modèles){.interne}
 {% endaller %}
 
-### Algorithmes itératifs et récursifs
+### Problème algorithmique
 
-> TBD : à faire propre et ne garder que le simple. En donnant une définition de récursif.
-> TBD Supprimer la pile. Ne montrer que dans les cas simples, récursion terminal, que l'on peut rendre le tout itératif. S'intéresser uniquement à la finitude et la preuve.
+Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètre) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Mais comment prouver qu'un algorithme répond bien au problème posé ?
+
+On a vu que toute question n'admet pas forcément un algorithme pour le résoudre et que si on possède un algorithme il n'est pas évident de savoir ce qu'il fait. Cependant, on utilise quotidiennement des algorithmes et on se repose sur eux pour résoudre des problèmes concret.
+
+Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est [le théorème de Rice](/bases-théoriques/arrêt-rice/#théorème-rice)) ? C'est ce qu'on va aborder ici, en deux temps :
+
+1. on va commencer par formaliser ce qu'est un problème
+2. se donner des outils pour prouver qu'un algorithme donné résout bien le problème posé.
+
+{% note "**Définition**" %}
+Un **_problème_** est un texte composé de 3 parties :
+
+- **nom** : le nom du problème
+- **données** : les paramètres dont on a besoin
+- **question** : ce que l'on cherche à résoudre
+
+{% endnote %}
+
+Par exemple :
+
+{% note "**Problème**" %}
+
+- **nom** : maximum
+- **données** : un tableau d'entiers
+- **question** : quel est l'entier maximum du tableau ?
+
+{% endnote %}
+
+On se placera dans ce cours dans un cadre algorithmique : c'est à dire des problèmes qui admettent des algorithmes qui en trouve la solution (on se posera donc uniquement des questions sérieuses comme la recherche d'un éléments dans un tableau et on laissera de côté les problèmes futiles comme ["quand est-ce qu'on mange ?"](https://www.youtube.com/watch?v=WtetsFQHD9A) ou encore ["quel est le sens de la vie ?"](https://www.youtube.com/watch?v=LAwDWZoETk4)). Définissons formellement ce type de problème :
+
+{% note "**Définition**" %}
+**_Un problème est algorithmique_** s'il existe un algorithme pour le résoudre, c'est à dire que cet algorithme :
+
+- prend en paramètres les entrées du problème
+- donne la réponse à la question.
+
+{% endnote %}
+
+Cette définition a un sens puisqu'[il existe des problèmes non résoluble par un algorithme](../bases-théoriques/calculabilité#non-calculable){.interne}. Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice) ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
-[Itératif et récursif](./projet-itératif-récursif){.interne}
+[Prouver des algorithmes](./prouver-un-algorithme){.interne}
+{% endaller %}
+
+### On s’entraîne : algorithmes itératifs et récursifs
+
+Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
+
+{% aller %}
+[Projet : Écrire et prouver des algorithmes Itératif et récursif](./projet-itératif-récursif){.interne}
 {% endaller %}
 
 ### Complexités
@@ -87,19 +132,29 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 [une intro très bien faite sur la complexité des problèmes algorithmiques](https://www.youtube.com/watch?v=n8Z7v09zrl0&list=PLF0b3ThojznQJ6u4FUcpyzi0it5EpR3dh&index=12)
 {% endlien %}
 
-Cette partie s'intéresse à la notion de complexités pour un algorithme et un problème.
+Cette partie s'intéresse à la notion de complexités pour un algorithme.
 
 {% aller %}
 [Calcul de complexité d'un algorithme](./complexité-calculs){.interne}
+{% endaller %}
+
+Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
+
+### Problèmes algorithmique
+
+> TBD tout ne peux pas se résoudre par un algorithme.
+
+{% aller %}
+[Problème algorithmique](./probleme-algorithmique){.interne}
 {% endaller %}
 {% aller %}
 [Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
 
-La notion de complexité est centrale en algorithmie, nous en reparlerons encore plus tard dans le cours.
-
 ### On s'entraîne
 
+> TBD: lisible, juste performances.
+> 
 > TBD reprendre les exos d'avant avec calcul de complexité.
 
 ### projet : problèmes liés à l'exponentiation

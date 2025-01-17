@@ -93,7 +93,64 @@ Le calcul de la fonction en utilisant l'algorithme précédent est possible, mai
 
 Au final on trouve $\text{Ack}(2, 1) = 5$. Toutes ces récursions pour ça. Attention cependant, ces nombres vont grossir très très vite.
 
-### Valeurs
+## Nombre de récursion
+
+Intuitivement, le nombre de récursions nécessaire pour effectuer le calcul de la valeur de la fonction d'Ackermann est de l'ordre de sa valeur puisque les appels récursif se font en décrémentant les valeurs des paramètres de 1. Formalisons ceci :
+
+{% note "**Proposition**" %}
+
+Le nombre de récursion nécessaire pour calculer la fonction d'Ackermann en utilisant la définition est définie telle que :
+
+<div>
+$$
+\left\{
+    \begin{array}{ll}
+        \text{R}(0, n) = 0&\\
+        \text{R}(m, 0) = 1 + \text{R}(m-1, 1)&\text{pour }m>0\\
+        \text{R}(m, n) =  \text{R}(m, n - 1) + 1 + \text{R}(m - 1, \text{Ack}(m, n - 1)) &\text{pour }m, n>0\\
+    \end{array}
+\right. %}
+$$
+</div>
+
+{% endnote %}
+{% details "preuve", "open" %}
+
+Clair en utilisant la définition de la fonction :
+
+- le cas $m=0$ est un cas terminal,
+- le cas $m>0$ et $n=0$ fait une récursion puis calcule $\text{Ack}(m-1, 1)$,
+- le cas $m, n>0$ doit commencer par calculer $\text{Ack}(m, n - 1)$ (il faut $\text{R}(m, n - 1)$ récursions) fait une recursion pour calculer $\text{Ack}(m - 1, \text{Ack}(m, n - 1))$ (il faut $\text{R}(m - 1, \text{Ack}(m, n - 1))$ récursions)
+{% enddetails %}
+
+Ce nombre peut facilement être majoré :
+
+{% exercice %}
+Montrez que pour tout $m, n > 0$, on a $R(m,n) \geq  R(m,n-1) + 1$ et en déduire que pour $m, n > 1$:
+
+<div>
+$$
+R(m,n) \geq  \text{Ack}(m, n - 1)
+$$
+</div>
+{% endexercice %}
+{% details "Corrigé" %}
+
+La première inégalité est évidente puisque pour $m, n > 0$ on a $\text{R}(m, n) =  \text{R}(m, n - 1) + 1 + \text{R}(m - 1, \text{Ack}(m, n - 1))$ et que $\text{R}(m - 1, \text{Ack}(m, n - 1)) \geq 0$.
+
+Pour en déduire la seconde, il suffit de remarquer que l'on a aussi, pour $m, n > 0$, que $\text{R}(m, n) \geq \text{R}(m - 1, \text{Ack}(m, n - 1))$ et donc que pour $m, n > 1$ on a :
+
+<div>
+$$
+$R(m,n) \geq  \text{R}(m-1, 0) + \text{Ack}(m, n - 1) \geq \text{Ack}(m, n - 1)
+$$
+</div>
+
+{% enddetails %}
+
+Il faut donc (plus que) de l'ordre de de la valeur de la fonction d'Ackermann récursions pour  la calculer, ce qui est astronomique comme on va le voir.
+
+## Valeurs
 
 Donnons une valeur à la fonction d'Ackermann. On doit cette évaluation à [D. Knuth](https://fr.wikipedia.org/wiki/Donald_Knuth) qui pour cela a inventé une nouvelle opération mathématique, l'opération $x \uparrow y$ :
 
@@ -213,60 +270,3 @@ De plus la proposition précédente nous permet d'écrire :
 - $\text{Ack}(m, n+1) \leq \text{Ack}(m+1, n)$
 
 L'exercice précédent montre que la fonction d'Ackermann croit très vite en $m$ puisque toute somme ou composition de fonction d'Ackermann va être borné à un moment par une autre fonction d'Ackermann.
-
-## Nombre de récursion
-
-Intuitivement, le nombre de récursions nécessaire pour effectuer le calcul de la valeur de la fonction d'Ackermann est de l'ordre de sa valeur puisque les appels récursif se font en décrémentant les valeurs des paramètres de 1. Formalisons ceci :
-
-{% note "**Proposition**" %}
-
-Le nombre de récursion nécessaire pour calculer la fonction d'Ackermann en utilisant la définition est définie telle que :
-
-<div>
-$$
-\left\{
-    \begin{array}{ll}
-        \text{R}(0, n) = 0&\\
-        \text{R}(m, 0) = 1 + \text{R}(m-1, 1)&\text{pour }m>0\\
-        \text{R}(m, n) =  \text{R}(m, n - 1) + 1 + \text{R}(m - 1, \text{Ack}(m, n - 1)) &\text{pour }m, n>0\\
-    \end{array}
-\right. %}
-$$
-</div>
-
-{% endnote %}
-{% details "preuve", "open" %}
-
-Clair en utilisant la définition de la fonction :
-
-- le cas $m=0$ est un cas terminal,
-- le cas $m>0$ et $n=0$ fait une récursion puis calcule $\text{Ack}(m-1, 1)$,
-- le cas $m, n>0$ doit commencer par calculer $\text{Ack}(m, n - 1)$ (il faut $\text{R}(m, n - 1)$ récursions) fait une recursion pour calculer $\text{Ack}(m - 1, \text{Ack}(m, n - 1))$ (il faut $\text{R}(m - 1, \text{Ack}(m, n - 1))$ récursions)
-{% enddetails %}
-
-Ce nombre peut facilement être majoré :
-
-{% exercice %}
-Montrez que pour tout $m, n > 0$, on a $R(m,n) \geq  R(m,n-1) + 1$ et en déduire que pour $m, n > 1$:
-
-<div>
-$$
-R(m,n) \geq  \text{Ack}(m, n - 1)
-$$
-</div>
-{% endexercice %}
-{% details "Corrigé" %}
-
-La première inégalité est évidente puisque pour $m, n > 0$ on a $\text{R}(m, n) =  \text{R}(m, n - 1) + 1 + \text{R}(m - 1, \text{Ack}(m, n - 1))$ et que $\text{R}(m - 1, \text{Ack}(m, n - 1)) \geq 0$.
-
-Pour en déduire la seconde, il suffit de remarquer que l'on a aussi, pour $m, n > 0$, que $\text{R}(m, n) \geq \text{R}(m - 1, \text{Ack}(m, n - 1))$ et donc que pour $m, n > 1$ on a :
-
-<div>
-$$
-$R(m,n) \geq  \text{R}(m-1, 0) + \text{Ack}(m, n - 1) \geq \text{Ack}(m, n - 1)
-$$
-</div>
-
-{% enddetails %}
-
-Il faut donc (plus que) de l'ordre de de la valeur de la fonction d'Ackermann récursions pour  la calculer, ce qui est astronomique !
