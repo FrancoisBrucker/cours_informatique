@@ -172,15 +172,94 @@ Programme :
 </div></div>
 
 <p>Une recette de cuisine est donc un algorithme, un trajet google maps, etc.</p>
-<h2><span id="algorithmes-trois-voies"></span> Algorithmes</h2>
+<h2><span id="algorithmes-trois-voies"></span> Programmes et Algorithmes</h2>
+<p>Prenons l'énoncé suivant qui décrit une procédure permettant de chercher un élément particulier dans une suite finie de nombres :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Demander à l'utilisateur :
+  - de donner un entier que l'on appellera x
+  - de donner une suite d'entiers que l'on appellera t
+
+parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+Si on trouve un tel élément, afficher "Vrai" à l'écran.</code></pre>
+<p>Pour transformer cette description en algorithme, il faut procéder à plusieurs modifications :</p>
+<ol>
+<li>Un programme a un nom pour qu'on puisse le retrouver une fois décrit</li>
+<li>L'utilisateur n'existe pas : un programme doit exister en tant que tel. Les entrées (demander des choses à l'utilisateur) et les sorties (afficher des résultats) sont abstraites :
+<ul>
+<li>on parle de paramètres d'entrées du programme</li>
+<li>on parle de sortie du programme (le programme rend quelque chose, comme une fonction)</li>
+</ul>
+</li>
+</ol>
+<p>En appliquant ces règles, la description précédente devient :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+ 
+    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai".
+</code></pre>
+<p>Il nous manque cependant encore une chose : si le programme s'arrête il doit rendre quelque chose, ce qui n'est pas le cas ici si on ne trouve pas <code class="language-">x</code> dans <code class="language-">t</code>. Modifions le :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
+Entrées :
+    t : un tableau d'entiers
+    x : un entier
+Programme :
+ 
+    parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
+    Si on trouve un tel élément, rendre "Vrai".
+    Sinon rendre "Faux".
+</code></pre>
+<p>Notre programme s'arrêtant tout le temps, c'est même un algorithme.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un programme <strong>programme</strong> possède :</p>
+<ul>
+<li>un nom</li>
+<li>des paramètres d'entrées (il peut y en avoir 0). Chaque paramètre à un nom qui pourra être utilisé dans la description du programme et un type qui décrit sa nature.</li>
+<li>une sortie. Si le programme s'arrête il doit rendre quelque chose.</li>
+<li>une description qui explicite ce qu'il fait.</li>
+</ul>
+<p>Si le programme s'arrête quelque soient ses entrées, c'est un <strong>algorithme</strong>.</p>
+</div></div>
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est <em>perdu</em>, le second peut être à nouveau utilisé par au autre programme.</p>
+</div></div>
+
 <p>La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :</p>
 <ol>
 <li><a href="../../%C3%A9crire-algorithmes/pseudo-code" class="interne">le pseudo-code</a> : l'écriture (sans ordinateur) d'algorithmes en utilisant un nombre restreint d'instructions générales précisément définies. Un pseudo-code n'est pas directement fait pour être exécuté par un ordinateur, même si l'on peut utiliser la syntaxe d'un langage de programmation pour le décrire (le python, par exemple, est très utilisé pour décrire des algorithmes). Le but ici est de montrer que l'on peut résoudre un problème donné avec un algorithme.</li>
 <li><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/d%C3%A9veloppement/coder" class="interne">le code</a> : l'écriture d'un programme pouvant s'exécuter sur un ordinateur. Le but sera ici de faire en sorte de vérifier que le code correspond bien au pseudo-code et — surtout — de maintenir son fonctionnement au court du temps.</li>
 </ol>
+<p>Par exemple l'algorithme recherche s'écrirait en pseudo-code de cette façon :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
+<p>Et en code python (qui est très similaire au pseudo-code) :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
+<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
 <p>Ces deux formes ont des buts différents, mais on ne peut exceller dans l'une sans connaître l'autre. Tout <em>théoricien</em> doit avoir de bonnes connaissances pratiques sur ce que peut calculer un ordinateur et — tôt ou tard — il devra programmer ses algorithmes. Réciproquement, tout <em>développeur</em> doit avoir des connaissances fortes en algorithmie pour pouvoir écrire du code performant.</p>
 <p>Mais avant de n'utiliser plus que du pseudo-code, regardons ce que cela veut dire d'écrire un algorithme de façon générale et sans autres contraintes que celle de la définition.</p>
-<h2>Nombre de programme</h2>
+<h2>Nombre de programmes</h2>
 <p>La définition générale d'un programme stipule qu'il doit être constitué d'un nombre <strong>fini</strong> d'instructions, chaque instruction décrite par un nombre <strong>fini</strong> de symboles. De plus, c'est implicite, mais un programme doit être compris par un humain.</p>
 <h3>Une infinité de programmes différents</h3>
 <p>On va se concentrer sur les algorithmes puisque tout algorithme est un programme. De la définition d'un algorithme on peut donc déjà conclure que :</p>

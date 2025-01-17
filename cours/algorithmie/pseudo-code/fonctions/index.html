@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/">Écrire des Algorithmes</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/écrire-algorithmes/pseudo-code/fonctions/">Fonctions</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/">Pseudo-code</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/pseudo-code/fonctions/">Fonctions</a>
 
 </div></div>
 
@@ -96,7 +96,7 @@
     
   
 
-  <p>Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des <em>sous-programmes</em> réutilisables à volonté, appelés <em>**fonctions</em>**.</p>
+  <p>Dans un programme, de nombreuses phases sont répétées à divers endroits du code (sommer ou multiplier des vecteurs 3D dans un moteur physique par exemple). Pour éviter de devoir replacer toutes ces instructions à chaque fois on définis des <em>sous-programmes</em> réutilisables à volonté, appelés <strong><em>fonctions</em></strong>.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -104,70 +104,54 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Une fonction est un algorithme. Elle a :</p>
+<p>Une fonction est un programme. Elle a ainsi :</p>
 <ul>
 <li>un nom</li>
 <li>des paramètres d'entrée</li>
 <li>une sortie</li>
-<li>des instructions, appelées <em>**corps de la fonction</em>**</li>
+<li>des instructions, appelées <strong><em>corps de la fonction</em></strong></li>
 </ul>
 <p>Une fois définie, on peut l'appeler comme une instruction (sa sortie est affectée à la variable <code class="language-">sortie</code> dans l'exemple ci-après) :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">sortie = nom(entrée 1, ..., entrée n)</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> nom<span class="token punctuation">(</span>entrée_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> entrée_n<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <h2>Fonctions et algorithmes</h2>
 <h3>Appels de fonctions</h3>
-<p>On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme suivant :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : recherche
-Entrées :
-    t : un tableau d'entiers
-    x : un entier
-Programme :
-    pour chaque élément e de t:
-        si e == x:
-            Retour vrai
-    Retour faux</code></pre>
+<p>On peut définir des fonctions puis les utiliser ensuite comme dans tout langage de programmation. Considérons l'algorithme de recherche :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                     x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></code></pre>
 <p>On peut utiliser le pseudo code de nom <em>recherche</em> dans d'autres pseudo-code comme une fonction. Par exemple :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 affiche à l'écran trouve</code></pre>
 <p>Est un pseudo-code valide puisque <code class="language-">recherche</code> est bien défini et utilisé correctement (le type de ses paramètres est correct).</p>
 <h3>Pseudo-code avec fonctions</h3>
 <p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : exorcisme
-Entrées :
-    t : un tableau d'entiers
-Programme :
-    Fonction :
-        Nom : recherche
-        Entrées :
-            t : un tableau d'entiers
-            x : un entier
-        Programme :
-            pour chaque élément e de t:
-                si e == x:
-                    Retour vrai
-            Retour faux
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
 
-    Si recherche(t, 666):
-        affiche à l'écran "Aspergez votre ordinateur d'eau bénite. Vite !"
-    Sinon:
-        affiche à l'écran "Tout va bien, le tableau n'est pas possédé. Ouf"</code></pre>
-<p>Ce genre d'écriture devenant vite pénible, on lui préférera une écriture plus compacte, comme par exemple en python :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span>
+    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
 
-<span class="token keyword">def</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Aspergez votre ordinateur d'eau bénite. Vite !"</span><span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Tout va bien, le tableau n'est pas possédé. Ouf"</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token builtin">algorithme</span> <span class="token function">exorcisme</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">)</span> <span class="token operator">→</span> str<span class="token punctuation">:</span>
+
+    <span class="token keyword">si</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token string">"Aspergez votre ordinateur d'eau bénite. Vite !"</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token string">"Tout va bien, le tableau n'est pas possédé. Ouf."</span></code></pre>
 <h3>Signature d'une fonction</h3>
-<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite souvent le type des objets en entrées et en sortie. Par exemple l'algorithme recherche nécessite un tableau d'entier et un entier en paramètre et sa sortie est un booléen. Lorsque l'on écrit une fonction, en particulier en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <strong><em>les signatures de fonctions</em></strong></p>
+<p>Lorsque l'on défini un algorithme ou un pseudo-code on explicite le type des objets en entrées et en sortie, comme on l'a fait pour l'algorithme recherche.</p>
+<p>Lorsque l'on code une fonction en python on a pas toujours l'habitude (ni le besoin) de le faire, mais on peut le spécifier en utilisant <strong><em>les signatures de fonctions</em></strong>, qui correspond juste à la description de son bloc :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -187,24 +171,23 @@ Programme :
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Par exemple, la signature de <a href="#fonction-recherche">la fonction recherche</a> est :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">bool</span></code></pre>
+<p>Par exemple, la signature de la fonction recherche est :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span></code></pre>
 </div></div>
 
-<p>On ne peut bien sur utiliser de signature que lorsque les entrées et les sorties sont de types parfaitement définis, ce qui n'est pas toujours le cas.</p>
 <h3>Variables locales</h3>
 <p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Le code suivant affichera 4 et pas 6 qui est dernière valeur prise par la variable <code class="language-">e</code> de la fonction <code class="language-">recherche</code> :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">e <span class="token operator">=</span> <span class="token number">4</span>
-t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
-affiche à l'écran e</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">←</span> <span class="token number">4</span>
+t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+affiche à l'écran trouve</code></pre>
 <h2>Objet fonction</h2>
 <p>Une fonction peut être associée à un nom comme tout autre objet. Par exemple, en supposant que la fonction <code class="language-">recherche</code> soit définie :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">e <span class="token operator">=</span> recherche
-t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
-trouve <span class="token operator">=</span> e<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">f <span class="token operator">←</span> recherche
+t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+trouve <span class="token operator">←</span> f<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>
 
-<span class="token keyword">print</span><span class="token punctuation">(</span>trouve<span class="token punctuation">)</span></code></pre>
+affiche à l'écran trouve</code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
