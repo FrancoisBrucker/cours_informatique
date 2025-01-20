@@ -80,8 +80,10 @@ Ce cours est composée de plusieurs parties :
 
 {% faire "**Prérequis**" %}
 
-- [avoir python d'installé](/cours/coder-et-développer/installer-python/#installation-développement){.interne} et savoir s'en servir (relisez la partie [bases de python](/cours/coder-et-développer/bases-python/){.interne})
-- fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/éditeur-vscode/prise-en-main/){.interne}
+Avoir relu et compris [les bases de la programmation](/cours/coder-et-développer/bases-programmation/){.interne}. En particulier :
+
+- [avoir python d'installé](/cours/coder-et-développer/bases-programmation/){.interne} et savoir s'en servir
+- fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/prise-en-main/){.interne}
 
 {% endfaire %}
 {% info %}
@@ -92,12 +94,14 @@ Parties abordées :
 
 {% aller %}
 
-1. [Connaissances indispensables](/cours/coder-et-développer/ordinateur-développement/#connaissances-indispensables){.interne}
+1. [Connaissances systèmes indispensables](/cours/coder-et-développer/connaissances-système-minimales/){.interne}
 2. [écrire du code](/cours/coder-et-développer/développement/){.interne}, les parties :
    1. [coder](/cours/coder-et-développer/développement/coder){.interne}
-   2. [projet `hello dev`](/cours/coder-et-développer/développement/tutoriel-hello-dev){.interne}
+   2. [projet `hello dev`](/cours/coder-et-développer/développement/tutoriel-hello-dev/){.interne}
 
 {% endaller %}
+
+<!--
 
 ### Semaine 2
 
@@ -389,6 +393,8 @@ Dernière semaine de cours. Le début de la séance sera consacrée aux question
 1. [Dossiers et chemins en python](/cours/coder-et-développer/fichiers/dossiers-et-chemins/){.interne}
 2. [Stocker ses données dans un fichier texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
 {% endaller %}
+
+ -->
 
 ## Annales
 
