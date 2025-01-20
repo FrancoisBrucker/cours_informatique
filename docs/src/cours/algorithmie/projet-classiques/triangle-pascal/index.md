@@ -29,5 +29,5 @@ et $C(n, 1) = C(n, n) = 1$
 On vous demande de créer un algorithme :
 
 1. récursif pour calculer $C(n, p)$, et d'en donner la complexité.
-2. itératif pour calculer $C(n, p)$ en utilisant une variable matricielle $M[i][j]$ qui stoque toutes les valeurs de $C(i, j)$ intermédiaires, et d'en donner la complexité en mémoire et en nombre d'opérations.
+2. itératif pour calculer $C(n, p)$ en utilisant une variable matricielle $M[i][j]$ qui stocke toutes les valeurs de $C(i, j)$ intermédiaires, et d'en donner la complexité en mémoire et en nombre d'opérations.
 3. itératif avec une complexité en mémoire de $\mathcal{O}(n)$ en remarquant qu'il suffit de conserver une seule ligne de a matrice.

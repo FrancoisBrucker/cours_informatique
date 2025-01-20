@@ -14,7 +14,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=119143)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=113169)).
+Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre de la licence MPCI ([lien AMeTICE AMU Informatique S2](https://ametice.univ-amu.fr/course/view.php?id=129120)). Il s'appuie sur le cours de _Programmation_ donné au S1 ([lien AMeTICE AMU Informatique S1](https://ametice.univ-amu.fr/course/view.php?id=125682)).
 
 Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
 
@@ -24,7 +24,7 @@ Cela va vous demander un travail personnel important pour comprendre et assimile
 
 ## Note
 
-La note de cette UE résulte de cette formule :
+Le cours est composé de deux UEes, l'une consacrée à l'algorithmie, l'autre à la programmation. La note de chaque UE résulte de cette formule :
 
 $$
 \max (\frac{CC+ DS + ET}{3}, ET)
@@ -33,9 +33,9 @@ $$
 Avec :
 
 - $CC = \frac{1}{2}(TUT + TEST)$ où :
-  - $TUT$ est la moyenne formée des 2 notes de tutorats
-  - $TEST$ est la moyenne des tests de débuts de séances ($6$ tests).
-- $DS$ est la moyenne des deux devoirs surveillées (DS1 et DS2)
+  - $TUT$ est la moyenne formée de la note de tutorat
+  - $TEST$ est la moyenne des tests de débuts de séances.
+- $DS$ est la note du devoirs surveillé
 - $ET$ est l'examen terminal
 
 ## Prérequis
@@ -51,7 +51,7 @@ Avoir une notion de ce qu'est une variable, une instruction et une fonction. Auc
 Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est **indispensable** que vous relisez le cours ci-après pour s'assurer que vous avez bien les bases nécessaires en programmation python pour commencer ce cours :
 
 {% aller %}
-[Bases de python](/cours/coder-et-développer/bases-python/){.interne}
+[Bases de python](/cours/coder-et-développer/bases-programmation/){.interne}
 {% endaller %}
 
 ## Cours

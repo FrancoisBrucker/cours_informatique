@@ -56,7 +56,7 @@ La différence entre les approches itératives et récursive est lié au traitem
 Pour expliciter la différence entre les deux approches nous allons utiliser le calcul de la factorielle définie pour tout entier $n\geq 1$ telle que :
 
 $$
-n! = \Pi_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
+n! = \prod\limits_{1\leq i \leq n} i = 1 \times 2 \times \dots \times (n-1)\times n
 $$
 
 ### Récursif
@@ -70,7 +70,8 @@ $$
 Pour le calcul de la factorielle, on va commencer par calculer $n!$ en supposant que $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$ :
 
 ```pseudocode
-algorithme factorielle(n: entier) → entier:
+algorithme factorielle(n: entier  # n > 1
+                      ) → entier:
     si n == 1:
         rendre 1
     rendre n * factorielle(n-1)
@@ -98,7 +99,7 @@ def factorielle(n):
 Pour le calcul de la factorielle, on va commencer par calculer $1!$ puis remarquer que $n! = ((n-1)!) \times n$ :
 
 ```pseudocode
-algorithme factorielle(n: entier)  → entier:
+algorithme factorielle(n: entier) → entier:
     r ← 1
     i ← 1
     tant que i ≤ n:
@@ -165,18 +166,30 @@ Nous allons prouver que les deux algorithmes de calcul de factorielle calculent 
 
 ### <span id="facto-rec"></span> Algorithme récursif
 
-Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent.
+Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :
 
 ```pseudocode
 algorithme factorielle(n: entier) → entier:
-    si n == 1:
+    si n ≤ 1:
         rendre 1
     rendre n * factorielle(n-1)
 ```
 
+{% exercice %}
+La version ci-dessus de l'algorithme factorielle récursif est différente de la première version. Quelle est la différence et pourquoi avons-nous fait ça ?
+{% endexercice %}
+{% details "corrigé" %}
+On a mis un `≤`{.language-} plutôt qu'un `==`{.language-} dans le test.
+
+Ceci permet de prendre en compte le cas où $n$ vaut 0, et évite des récursions infinie pour tout entier relatif $n$.
+
+Ce genre d'optimisation n'est pas nécessaire, mais si on y pense autant le faire car cela ne complexifie pas l'algorithme.
+
+{% enddetails %}
+
 #### Finitude de Factorielle récursif
 
-Si $n\geq 1$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n == 1$.
+Si $n\geq 1$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.
 
 #### Correction de Factorielle récursif
 

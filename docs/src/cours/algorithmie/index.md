@@ -140,13 +140,6 @@ Cette partie s'intéresse à la notion de complexités pour un algorithme.
 
 Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log de ce cours.
 
-### Problèmes algorithmique
-
-> TBD tout ne peux pas se résoudre par un algorithme.
-
-{% aller %}
-[Problème algorithmique](./probleme-algorithmique){.interne}
-{% endaller %}
 {% aller %}
 [Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
@@ -155,7 +148,10 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 
 > TBD: lisible, juste performances.
 > 
-> TBD reprendre les exos d'avant avec calcul de complexité.
+> TBD reprendre les exos d'avant avec calcul de complexité :
+> 
+> - factoriel
+> - euclide
 
 ### projet : problèmes liés à l'exponentiation
 
@@ -184,14 +180,6 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 [Algorithmes classiques](./projet-classiques){.interne}
 {% endaller %}
 
-> TBD faire un lien avec les exos vu en écriture d'algo + complexité pour que tout soit aussi là.
-> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
-
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
-> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.
-
-> TBD lièvre et lapin.
-
 ### Structures linéaires
 
 #### Conteneurs
@@ -205,12 +193,14 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 >
 > TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
 
-### Complexité amortie
+> TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 
-Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
+#### Todo list
+
+Implémenter et utiliser efficacement des structures permettant de stocker pendant son execution les choses que devra faire l'algorithme plus tard.
 
 {% aller %}
-[Complexité amortie](./complexité-amortie){.interne}
+[Piles et files](./structure-pile-file){.interne}
 {% endaller %}
 
 #### Chaînes de caractères
@@ -219,6 +209,14 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 
 {% aller %}
 [Chaines de caractères](./structure-chaine-de-caractères){.interne}
+{% endaller %}
+
+### Complexité amortie
+
+Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
+
+{% aller %}
+[Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
 ### Design d'algorithmes

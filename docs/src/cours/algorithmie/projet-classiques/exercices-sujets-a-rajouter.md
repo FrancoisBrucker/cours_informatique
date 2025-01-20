@@ -172,3 +172,14 @@ le pire.
 
 Cet algorithme est en fait une variante d'un algorithme vu en cours. Lequel ?
 
+## Odds and ends
+
+> TBD ajouter : k-médiane (voir et 20/21 mpci.)
+
+> TBD faire un lien avec les exos vu en écriture d'algo + complexité pour que tout soit aussi là.
+> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
+> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.
+
+> TBD lièvre et lapin.
