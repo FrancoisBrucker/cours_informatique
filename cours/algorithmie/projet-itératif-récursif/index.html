@@ -96,243 +96,207 @@
     
   
 
-  <blockquote>
-<p>TBD : à faire propre</p>
-</blockquote>
+  <p>Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.</p>
 <blockquote>
-<p>TBD premières séries d'exercice permettant comprendre comment créer des algorithmes simple de façon itérative, r´´cursives et comment passer de l'un à l'autre.</p>
-</blockquote>
-<p>Écrire des algorithmes simples en pseudo-code (ou en python) pour résoudre des problèmes algorithmiques.</p>
-<blockquote>
-<p>TBD : écrire des algos pour résoudre des problèmes.
-TBD essence même d'un algorithme c'est la boucle et les if/them/else
-sinon fait tout le temps la même chose (addition, etc). Le problème est de transformer une idée en code et en succession logique d'arguments (conditions) et d'action (instruction) tant que ce n'est pas résolu (boucles).</p>
-<ol>
-<li>exos simples avec 1 boucle puis 2 boucles imbriquées (compter le nb d’occurrences,  suppression de doublons, max tableau, etc)</li>
-<li>dichotomie</li>
-<li>récursion et pile d'appel (tours de hanoï ; min et max d'un tableau)</li>
-<li>plusieurs boucles a la suite</li>
-<li>récursion et boucles</li>
-</ol>
 <p>voir les parties complexité et remettre si possible les réponse dans cette partie.</p>
 <p>exemples :</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=pKO9UjSeLew">https://www.youtube.com/watch?v=pKO9UjSeLew</a></li>
 </ul>
 </blockquote>
-<h3>Maximum d'un tableau</h3>
-<blockquote>
-<p>TBD mettre en récursif en exercice.</p>
-</blockquote>
-<p>On va voir 2 algorithmes pour calculer la valeur maximum d'un tableau de réels.</p>
-<h3><span id="max-rec"></span> Algorithme récursif</h3>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">maximum</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    x <span class="token operator">=</span> maximum<span class="token punctuation">(</span>tab<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">></span> x
-        <span class="token keyword">return</span> tab<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> x</code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
+<h2>Maximum d'un tableau</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>On a utilisé la <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes/#slice" class="interne">copie de sous-listes (<em>slicing</em>)</a> de python : <code class="language-">tab[1:]</code> est la liste contenant les éléments de <code class="language-">tab</code> à partir de l'index 1 (donc sans le premier élément de <code class="language-">tab</code>).</p>
+<p>Donnez et prouvez <strong>un algorithme récursif</strong> de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">maximum<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Qui rend l'indice $0 \leq j \leq i$ tel que $t[j] = \min({t[k] \vert 0\leq k \leq i})$.</p>
 </div></div>
 
-<h4><span id="M-F-rec-1"></span> Finitude</h4>
-<p>À chaque récursion, la taille du tableau diminue strictement. La récursion s'arrêtera donc forcément lorsque le tableau sera de taille 1.</p>
-<h4><span id="M-P-rec-1"></span> Preuve</h4>
-<p>Par récurrence sur la longueur d'un tableau. On vérifie que l'algorithme fonctionne pour une longueur de tableau valant 1, puis on effectue preuve par récurrence sur la longueur du tableau.</p>
-<h2>euclide</h2>
-<p>Faire euclide récursif.</p>
-<h3>Algorithmes itératif</h3>
-<h3>Algorithmes récursif</h3>
-<p>terminale/ pas terminale. <a href="https://web4.ensiie.fr/~dubois/recursivite.pdf">https://web4.ensiie.fr/~dubois/recursivite.pdf</a>
-TBD :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <blockquote>
-<ol>
-<li>factorielle.</li>
-<li>Fibonacci</li>
-<li>Triangle de pascal (optimisation pas tout garder)</li>
-<li>hanoi</li>
+<p>TBD algorithme
+TBD finitude
+TBD correction</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h2>Concaténation</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez et prouvez <strong>un algorithme itératif</strong> de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">concaténation<span class="token punctuation">(</span>début<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> fin<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></code></pre>
+<p>Qui rend <strong>un nouveau tableau</strong> contenant la concaténation de <code class="language-">début</code> et de <code class="language-">fin</code>.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD algorithme
+TBD : doit commencer par créer un tableau.
+TBD finitude
+TBD correction</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h2>Suppression de valeurs</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez et prouvez <strong>un algorithme itératif</strong> de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">supprime<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></code></pre>
+<p>Qui rend <strong>un nouveau tableau</strong> contenant la restriction de <code class="language-">t</code> aux valeurs différentes de <code class="language-">v</code>. Le nouveau tableau aura la même taille que le tableau <code class="language-">t</code> passé en premier paramètre.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD algorithme
+TBD : doit commencer par créer un tableau et une boucle sur i avec incrément de j.
+TBD finitude
+TBD correction</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<p>Utilisez l'algorithme concaténation de la question précédente pour résoudre l'exercice suivant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Donnez et prouvez <strong>un algorithme récursif</strong> de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">supprime<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></code></pre>
+<p>Qui rend <strong>un nouveau tableau</strong> contenant la restriction de <code class="language-">t</code> aux valeurs différentes de <code class="language-">v</code>. Le nouveau tableau aura la même taille que le tableau <code class="language-">t</code> passé en premier paramètre.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD algorithme
+TBD : doit commencer par créer un tableau.
+TBD finitude
+TBD correction</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<h2>Euclide</h2>
+<blockquote>
+<p>TBD Faire euclide récursif.</p>
+</blockquote>
+<h2>Lancer de dés</h2>
+<blockquote>
+<p>TBD récursif</p>
+<ol start="5">
 <li>lancers de nd6 avec nombre max de récursion à trouver.</li>
 </ol>
 </blockquote>
-<h3>Rendre itératif des algorithmes récursifs</h3>
+<h2>pgcd</h2>
 <blockquote>
-<p>TBD grace à une todo list (aka une pile)
-<a href="https://www.youtube.com/watch?v=HXNhEYqFo0o">https://www.youtube.com/watch?v=HXNhEYqFo0o</a></p>
+<p>TBD <a href="https://www.lirmm.fr/~dony/notesCours/c4.s.pdf">https://www.lirmm.fr/~dony/notesCours/c4.s.pdf</a></p>
 </blockquote>
+<h2>Récursion terminale</h2>
 <blockquote>
-<p>TBD :</p>
-<p>cours ici  <a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration</a></p>
-<ol>
-<li>factorielle (reprendre ce qu'on a vue et le formaliser)</li>
-<li>recursive simple : montrer que l'on peut sauver les paramètre et les remettre avec une todo list</li>
-<li>on peut faire mieux avec récursivité terminale et sa chaîne d'égalité.</li>
-<li>fonction 91 de Mc Carty. Récursif mais pas terminal. Montrer qu'on peut le rendre terminal.</li>
-<li>Fibonacci. par terminal. On utilise la pile. Puis on simplifie. A la fin fibo plus besoin de pile.</li>
-<li>Pas toujours le cas. Exemple : Ackermann.</li>
-</ol>
-<ul>
-<li>recursivité terminale = qu'une suite d'égalité. C'est donc super.</li>
-<li><a href="https://www.lirmm.fr/~dony/notesCours/c4.s.pdf">https://www.lirmm.fr/~dony/notesCours/c4.s.pdf</a></li>
-<li><a href="https://www.enseignement.polytechnique.fr/informatique/INF321/Amphis12/amphi5.pdf">https://www.enseignement.polytechnique.fr/informatique/INF321/Amphis12/amphi5.pdf</a></li>
-<li><a href="https://web4.ensiie.fr/~dubois/recursivite.pdf">https://web4.ensiie.fr/~dubois/recursivite.pdf</a> fact est récursive primitive.L'écrire de façon itérative.</li>
-</ul>
+<p>TBD factorielle.</p>
+<p>terminale/ pas terminale. <a href="https://web4.ensiie.fr/~dubois/recursivite.pdf">https://web4.ensiie.fr/~dubois/recursivite.pdf</a></p>
+<p>récursivité terminale = qu'une suite d'égalité. C'est donc super.</p>
 </blockquote>
-<h3>Fonction 91 de McCarty</h3>
+<h3>reverse d'un tableau</h3>
+<blockquote>
+<p>TBD itératif puis on récursifie le tout avec la récursion terminale.</p>
+</blockquote>
+<h2>Dichotomie</h2>
+<blockquote>
+<p>TBD est présent tableau trié.
+TBD récursif -&gt; récursif terminal -&gt; itératif
+<a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration</a></p>
+</blockquote>
+<h2>Fibonacci</h2>
+<blockquote>
+<p>Marche pas toujours ex : fibonacci. On ruse.
+On peut montrer que toutes les fonctions récursives ne peuvent pas être terminale.</p>
+</blockquote>
+<h2>Fonction 91 de McCarty</h2>
+<p>Mais parfois on crois que c´st pas possible alors que ça l'est.</p>
 <p>Dans le même ordre d'idée que la fonction de Takeuchi.</p>
+<blockquote>
+<p>inventeur du lisp.</p>
+</blockquote>
 <blockquote>
 <p>TBD : <a href="https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy">https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy</a></p>
 <p>TBD a écrire algo avec récursion puis : essayer de se passer de f(f(x))</p>
 <ol>
 <li>écrire comme récursion terminale (cf. wikipédia pour la fonction et <a href="https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale">https://fr.wikipedia.org/wiki/Récursion_terminale</a> pour la définition)</li>
-<li>avec un tant que utiliser <a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration</a> pour faire <a href="https://www.corsi.univr.it/documenti/OccorrenzaIns/matdid/matdid779820.pdf">https://www.corsi.univr.it/documenti/OccorrenzaIns/matdid/matdid779820.pdf</a></li>
 </ol>
-<p>récursivité terminale = qu'une suite d'égalité. C'est donc super.</p>
 </blockquote>
+<p><a href="https://www.corsi.univr.it/documenti/OccorrenzaIns/matdid/matdid779820.pdf">https://www.corsi.univr.it/documenti/OccorrenzaIns/matdid/matdid779820.pdf</a></p>
+<blockquote></blockquote>
 <blockquote>
 <p>TBD et quelle est sa valeur ?</p>
 </blockquote>
-<h4>Ackermann, le retour</h4>
-<p>Essayons de voir comment écrire l'algorithme d'Ackermann sans toutes ces récurrences, comme on l'a fait avec la fonction 91.</p>
-<p>Pour calculer $\text{Ack}(m, n)$ :</p>
-<ol>
-<li>soit $m=0$ alors $A = n+1$</li>
-<li>soit $m&gt;0$ et $n=0$ et alors $A = \text{Ack}(m-1, 1)$</li>
-<li>soit $m&gt;0$ et $n&gt;0$ et alors :
-<ol>
-<li>$A = \text{Ack}(m, n-1)$</li>
-<li>$A = \text{Ack}(m-1, A)$</li>
-</ol>
-</li>
-</ol>
-<p>On voit que ce n'est pas une formulation récursive terminale à cause du troisième cas. En 3.2 :</p>
-<ul>
-<li>on utilise la valeur de $A$ calculée en 3.1</li>
-<li>on utilise la valeur que valait $m$ avant 3.1</li>
-</ul>
-<p>Il faut donc se rappeler de $m$ pour le calcul de 3.2 tout en utilisant la valeur de $A$ calculée précédemment. Pour ce genre de récursion, on peut utiliser une <a href="https://fr.wikipedia.org/wiki/To-do_list">TODO list</a> qui nous permet de nous rappeler toutes les tâches à effectuer et des variables à sauvegarder :</p>
-<ol>
-<li>on commence avec une TODO liste vide</li>
-<li>positionner les variables $m$ et $n$ à leurs valeurs et $A$ à 0</li>
-<li>on ajoute à la liste le triplet (1, m, n)</li>
-<li>tant que la TODO liste n'est pas vide :
-<ol>
-<li>prendre le dernier item de la list (en le supprimant de la liste)
-<ol>
-<li>si le premier élément de l'item vaut 1 alors on affecte :
-<ol>
-<li>$m$ au second élément du triplet</li>
-<li>$n$ au troisième élément du triplet</li>
-</ol>
-</li>
-<li>si le premier élément vaut 2 alors on affecte :
-<ol>
-<li>$m$ au second élément du triplet</li>
-<li>$A$ à $n$</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>On fait le calcul :
-<ol>
-<li>si $m=0$ alors $A=n+1$</li>
-<li>si $m&gt;0$ et $n=0$ alors on ajoute $(1, m-1, 1)$ à la TODO list</li>
-<li>si $m&gt;0$ et $n&gt;0$ alors :
-<ul>
-<li>on ajoute $(2, m-1)$ à la TODO list</li>
-<li>on ajoute $(1, m, n-1)$ à la TODO list</li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>rendre $A$</li>
-</ol>
-<blockquote>
-<p>TBD faire $A(2, 3)$</p>
-</blockquote>
-<p>On peut même se passer de $A$ complètement :</p>
-<ol>
-<li>on commence avec une TODO liste vide</li>
-<li>positionner les variables $m$ et $n$ à leurs valeurs</li>
-<li>on ajoute à la liste l'entier $m$</li>
-<li>tant que la TODO liste n'est pas vide :
-<ol>
-<li>prendre le dernier item de la list (en le supprimant de la liste) et en l'affectant à $m$</li>
-<li>On a un choix selon les valeurs de $m$ et $n$ :
-<ul>
-<li>si $m=0$ alors $n=n+1$</li>
-<li>si $m&gt;0$ et $n=0$ alors (récursion terminale):
-<ul>
-<li>$n = 1$</li>
-<li>ajoute l'entier $m-1$ à la TODO  List</li>
-</ul>
-</li>
-<li>$m&gt;0$ et $n&gt;0$ alors :
-<ul>
-<li>ajoute l'entier $m-1$ à la TODO  List</li>
-<li>ajoute l'entier $m$ à la TODO  List</li>
-<li>$n=n-1$</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>rendre $A$</li>
-</ol>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Implémentation en python en utilisant une liste comme TODO-list :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">Ack</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    s <span class="token operator">=</span> <span class="token punctuation">[</span>m<span class="token punctuation">]</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        m <span class="token operator">=</span> s<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> m <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            n <span class="token operator">+=</span> <span class="token number">1</span>
-        <span class="token keyword">elif</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            n <span class="token operator">=</span> <span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-            s<span class="token punctuation">.</span>append<span class="token punctuation">(</span>m<span class="token punctuation">)</span>
-            n <span class="token operator">-=</span> <span class="token number">1</span>
-        <span class="token keyword">return</span> n</code></pre>
-</div></div>
-
-<blockquote>
-<p>pas récursivité terminale = il faut faire des trucs en plus de la récursion. Il faut se rappeler de que l'on veut faire. Avec une TODO list (faire exemple avec ack petit) = pile en informatique
-faire un item de la todo list = dépile.</p>
-</blockquote>
-<blockquote>
-<p>truc à faire = empile
-<a href="https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks">https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks</a></p>
-<ol>
-<li>curryfication puis decurryfication
-A(m, n) = A(0, n')
-A'(s, n) = A'(s[:-1], A(s[-1], n))
-A'([m], n) = A(m, n) par récurrence sur m+n = k</li>
-</ol>
-<p>TBD faire la preuve que c'est ok (voir <a href="https://stackoverflow.com/a/54356919">https://stackoverflow.com/a/54356919</a>)</p>
-</blockquote>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Notez que tout algorithme récursif peut s'écrire de façon itérative avec une TODO-list (une pile).</p>
-</div></div>
-
 
 
 </article>
