@@ -151,7 +151,7 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 > TBD reprendre les exos d'avant avec calcul de complexité :
 > 
 > - factoriel
-> - euclide
+> - Les algorithmes récursifs manipulent mal les tableaux : on verra plus tard des structures plus adaptés, comme les listes, qui permettent d'être modifiées.
 
 ### projet : problèmes liés à l'exponentiation
 
@@ -194,6 +194,7 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 > TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
 
 > TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
+> TBD compteur, jets de dés.
 
 #### Todo list
 

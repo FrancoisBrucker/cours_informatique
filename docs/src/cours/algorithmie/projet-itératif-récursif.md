@@ -12,13 +12,6 @@ eleventyComputed:
 
 Écrire des algorithmes (simples) en pseudo-code pour résoudre des problèmes algorithmiques.
 
-
-> voir les parties complexité et remettre si possible les réponse dans cette partie.
->
-> exemples :
->
-> - <https://www.youtube.com/watch?v=pKO9UjSeLew>
-
 ## Maximum d'un tableau
 
 {% exercice %}
@@ -98,31 +91,44 @@ Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux 
 
 {% enddetails %}
 
-## Euclide
+## Retournement d'un tableau
 
-> TBD Faire euclide récursif.
+{% exercice %}
+Donnez et prouvez **un algorithme récursif** de signature :
 
-## Lancer de dés
+```pseudocode
+reverse_indice(t: [entier], i: entier) → vide
+```
 
-> TBD récursif
->
-> 5. lancers de nd6 avec nombre max de récursion à trouver.
+Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.longueur - 1 - j]$ soit échangés pour tous $i \leq j < t.longueur - i$
+{% endexercice %}
+{% details "corrigé" %}
 
-## pgcd
+> TBD algorithme récursion terminale
+> TBD finitude
+> TBD correction
 
-> TBD <https://www.lirmm.fr/~dony/notesCours/c4.s.pdf>
+{% enddetails %}
+
+Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si l'on veut retourner complètement un tableau il faudrait écrire `reverse_indice(t: [entier], 0)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global. Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion. Pour le retournement d'un tableau, l'algorithme sera :
+
+```pseudocode
+fonction reverse_indice(t: [entier], i: entier) → vide
+    ...  # code de la fonction récursive
+
+algorithme reverse(t: [entier]) → vide
+    reverse_indice(t, 0)
+```
 
 ## Récursion terminale
 
-> TBD factorielle.
+> TBD on voit que la récursion est le dernier calcul dans l'exemple précédent. On appelle ça récursion terminale. Ceci permet de créer des algorithmes itératif. Le faire là avant de généraliser.
+
+> TBD factorielle pas terminale. Le rendre terminale
 > 
 > terminale/ pas terminale. <https://web4.ensiie.fr/~dubois/recursivite.pdf>
 > 
 > récursivité terminale = qu'une suite d'égalité. C'est donc super.
-
-### reverse d'un tableau
-
-> TBD itératif puis on récursifie le tout avec la récursion terminale.
 
 ## Dichotomie
 
@@ -132,7 +138,7 @@ Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux 
 
 ## Fibonacci
 
-> Marche pas toujours ex : fibonacci. On ruse.
+> Marche pas toujours ex : Fibonacci. On ruse.
 > On peut montrer que toutes les fonctions récursives ne peuvent pas être terminale.
 
 ## Fonction 91 de McCarty
@@ -153,3 +159,7 @@ Dans le même ordre d'idée que la fonction de Takeuchi.
 > 
 
 > TBD et quelle est sa valeur ?
+
+## Pair et impair
+
+> TBD Récursion croisée

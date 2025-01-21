@@ -355,7 +355,7 @@ La définition semble idiote. Pour rendre 5 Il suffit d'utiliser l'algorithme tr
 affiche à l'écran la chaîne de caractères "101"
 ```
 
-Mais il faut écrire $\log_{10}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{10}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
+Mais il faut écrire $\log_{2}(n)$ chiffres dans l'algorithme, ce qui donne une taille de $\log_{2}(n) + 42 + 2$ (le nombre en base 10, le texte avant et les deux `"`). Si ce nombre est gros, on peut fait bien mieux.
 
 Par exemple :
 

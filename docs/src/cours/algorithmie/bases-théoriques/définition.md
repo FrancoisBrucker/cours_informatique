@@ -106,7 +106,7 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
- 
+
     parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
     Si on trouve un tel élément, rendre "Vrai".
 
@@ -120,14 +120,14 @@ Entrées :
     t : un tableau d'entiers
     x : un entier
 Programme :
- 
+
     parcourir chaque élément de t jusqu'à trouver un élément dont la valeur est égale à la valeur de x.
     Si on trouve un tel élément, rendre "Vrai".
     Sinon rendre "Faux".
 
 ```
 
-Notre programme s'arrêtant tout le temps, c'est même un algorithme.
+Notre programme s'arrêtant tout le temps : c'est un algorithme.
 
 {% note "**À retenir**" %}
 Un programme **programme** possède :
@@ -142,7 +142,6 @@ Si le programme s'arrête quelque soient ses entrées, c'est un **algorithme**.
 {% attention %}
 Afficher un résultat à l'écran est différent de rendre un résultat : le premier s'adresse à un utilisateur et est _perdu_, le second peut être à nouveau utilisé par au autre programme.
 {% endattention %}
-
 
 La définition très générale d'un algorithme se décline usuellement sous deux formes concrètes :
 
