@@ -102,10 +102,10 @@ Nom : Entier i
 Entrées :
     n : un entier
 Programme :
-    si n == i
-        rend i
+    si n vaut 0
+        rendre i
     sinon:
-        rend 0
+        rendre 0
 ```
 
 C'est bien un algorithme puisque :
