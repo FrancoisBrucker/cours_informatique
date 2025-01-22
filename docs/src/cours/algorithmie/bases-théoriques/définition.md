@@ -283,7 +283,7 @@ On a alors :
 - $A_k$ existe pour entier $k$ (puisqu'il y a une infinité d'algorithmes différents, donc de descriptions différentes)
 - pour tout algorithme $A$, il existe $k$ telle que $A=A_k$
 
-Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des algorithme et l'ensemble des entier strictement positifs.
+Ce qui implique que la fonction qui associe à tout algorithme sa position dans la suite $(A_k)_{k \geq 1}$ est une bijection entre l'ensemble des algorithmes et l'ensemble des entiers strictement positifs.
 
 {% enddetails %}
 
@@ -300,7 +300,7 @@ Il existe strictement plus de nombres réels dans l'intervalle $[0, 1]$ que de n
 {% details "preuve", "open" %}
 On doit cette preuve magnifique au mathématicien allemand [Georg Cantor](https://fr.wikipedia.org/wiki/Georg_Cantor). Elle est basée sur l'argument s'appelant [diagonale de Cantor](https://fr.wikipedia.org/wiki/Argument_de_la_diagonale_de_Cantor#La_non-d%C3%A9nombrabilit%C3%A9_des_r%C3%A9els).
 
-On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimal $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
+On commence en remarquant que l'on peut associer à tout entier $i$ formé des chiffres $c_1\dots c_k$ le réel de représentation décimale $0.c_1\dots c_k$, ce qui démontre qu'il y a au moins autant de réels dans $[0, 1]$ que de nombres entiers.
 
 On suppose ensuite qu'il existe une injection $f: [0, 1] \rightarrow \mathbb{N}$ entre les réels de l'intervalle $[0, 1]$ et les entiers. On peut alors classer tous les réels selon leurs valeurs selon $f$ :
 
@@ -335,7 +335,7 @@ Il existe des réels pour lesquels il n'existe aucun algorithme $A(i)$ qui calcu
 
 {% endnote %}
 
-Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais, ils existent.
+Trouver de tels nombres est compliqué, car pour y penser il faut le décrire et donc en proposer un algorithme... Mais... ils existent (nous en verrons un plus tard).
 
 ## Objets manipulables par un algorithme
 
