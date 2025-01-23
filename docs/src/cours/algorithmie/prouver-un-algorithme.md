@@ -137,7 +137,7 @@ Un programme récursif est un algorithme s'il n'existe pas de récursion infinie
 
 {% note %}
 
-**Un programme récursif** est un algorithme si toute récursion va appeler à un moment une instance du programme sans récursion et ce quelque soit ses entrées.
+**Un programme récursif** est un algorithme si quelque soient ses entrées il n'y aura qu'un nombre fini de récursions.
 {% endnote %}
 
 Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles `tant que`{.languages-} :
@@ -168,7 +168,7 @@ Nous allons prouver que les deux algorithmes de calcul de factorielle calculent 
 
 Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :
 
-```pseudocode
+```pseudocode/
 algorithme factorielle(n: entier) → entier:
     si n ≤ 1:
         rendre 1
@@ -189,7 +189,25 @@ Ce genre d'optimisation n'est pas nécessaire, mais si on y pense autant le fair
 
 #### Finitude de Factorielle récursif
 
-Si $n\geq 1$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.
+Pour comprendre comment écrire la preuve de la finitude d'un algorithme récursif re-écrivons l'algorithme de cette façon, clairement équivalente :
+
+```pseudocode/
+algorithme factorielle(n: entier) → entier:
+    si n ≤ 1:
+        rendre 1
+    f = factorielle(n-1)
+    rendre n * f
+```
+
+L'idée est de démontrer la finitude par récurrence sur $n$.
+
+1. **initialisation** de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.
+2. **hypothèse de récurrence** : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un no,bre fini de récursions.
+3. **pour $n + 1$** : `factorielle(n+1)`{.language-} va exécuter la ligne 4 (`f = factorielle(n-1)`{.language-}) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme `factorielle(n+1)`{.language-} va également se terminer.
+
+La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter : tout appel récursif doit se rapprocher strictement d'un état de terminaison. Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :
+
+Si $n\geq 1$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.
 
 #### Correction de Factorielle récursif
 

@@ -154,7 +154,7 @@ Les conteneurs sont des objets contenant d'autres objets. Ils permettent de stru
 Les 5 type d'objets de base (`int`{.language-}, `float`{.language-}, `complex`{.language-}, `bool`{.language-} et `str`{.language-}) sont **non modifiables** (python dira **_non mutables_**). Ceci signifie que les méthodes et opérations sur ces objets ne peuvent les modifier :
 
 - si `i`{.language-} contient un entier, `i = i + 1`{.language-} créera un nouvel entier qui sera associé à la variable `i`{.language-}
-- `"coucou".replace{"c", "b"}`{.language-} créera une nouvelle chaîne de caractères
+- `"coucou".replace("c", "b")`{.language-} créera une nouvelle chaîne de caractères
 
 Les listes, ensembles et dictionnaires sont eux **modifiables** (python dira **_mutables_**), c'est à dire que leurs méthodes peuvent les modifier :
 

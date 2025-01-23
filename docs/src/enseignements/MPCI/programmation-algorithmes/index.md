@@ -82,7 +82,7 @@ Ce cours est composée de plusieurs parties :
 
 Avoir relu et compris [les bases de la programmation](/cours/coder-et-développer/bases-programmation/){.interne}. En particulier :
 
-- [avoir python d'installé](/cours/coder-et-développer/bases-programmation/){.interne} et savoir s'en servir
+- [avoir python d'installé](/cours/coder-et-développer/bases-programmation/#installation-développement){.interne} et savoir s'en servir
 - fait le tutoriel de [prise en main de l'éditeur vscode](/cours/coder-et-développer/bases-programmation/éditeur-vscode/prise-en-main/){.interne}
 
 {% endfaire %}
