@@ -246,7 +246,7 @@ $$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><strong>Un programme récursif</strong> est un algorithme si toute récursion va appeler à un moment une instance du programme sans récursion et ce quelque soit ses entrées.</p>
+<p><strong>Un programme récursif</strong> est un algorithme si quelque soient ses entrées il n'y aura qu'un nombre fini de récursions.</p>
 </div></div>
 
 <p>Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles <code class="languages-">tant que</code> :</p>
@@ -278,10 +278,10 @@ $$</p>
 <p>Nous allons prouver que les deux algorithmes de calcul de factorielle calculent effectivement la factorielle. Cet exemple sera l'occasion de mener à bien deux types de preuves, une par récurrence l'autre pa invariant de boucle.</p>
 <h3><span id="facto-rec"></span> Algorithme récursif</h3>
 <p>Les preuves des algorithmes récursifs sont souvent les plus simples car ils sont souvent les plus proches de la définition récursive qu'ils implémentent. Reprenons une version (un peu modifiée) du programme du calcul de la factorielle récursif :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> <span class="token number">1</span>
-    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -312,7 +312,20 @@ $$</p>
 </details>     
 </div>
 <h4>Finitude de Factorielle récursif</h4>
-<p>Si $n\geq 1$ est un entier, l'algorithme précédent va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
+<p>Pour comprendre comment écrire la preuve de la finitude d'un algorithme récursif re-écrivons l'algorithme de cette façon, clairement équivalente :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
+<span class="highlight-line">    f <span class="token operator">=</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> f</span></code></pre>
+<p>L'idée est de démontrer la finitude par récurrence sur $n$.</p>
+<ol>
+<li><strong>initialisation</strong> de la preuve : si $n=1$, l'algorithme va se finir sans exécuter la ligne 4, il y a un nombre fini de récursion.</li>
+<li><strong>hypothèse de récurrence</strong> : pour tout entier plus petit que $n\geq 1$, l'algorithme va avoir un no,bre fini de récursions.</li>
+<li><strong>pour $n + 1$</strong> : <code class="language-">factorielle(n+1)</code> va exécuter la ligne 4 (<code class="language-">f = factorielle(n-1)</code>) qui, par hypothèse de récurrence,  va se terminer au bout d'un nombre fini de récursions : le programme <code class="language-">factorielle(n+1)</code> va également se terminer.</li>
+</ol>
+<p>La preuve précédente donne un moyen simple de prouver qu'un algorithme récursif va s'arrêter : tout appel récursif doit se rapprocher strictement d'un état de terminaison. Ceci fonctionne même s'il y a plus d'un appel récursif. On peut donc simplement écrire pour prouver la convergence :</p>
+<p>Si $n\geq 1$ est un entier, l'algorithme va s'arrêter car $n$ décroît strictement de 1 à chaque appelle récursif et on stoppe si $n \leq 1$.</p>
 <h4>Correction de Factorielle récursif</h4>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
