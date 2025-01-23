@@ -85,7 +85,14 @@ Testez le programme `syracuse`{.language-} pour quelques entrées. Vous verrez q
 
 {% endfaire %}
 
-Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée : savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit. Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.
+Le problème de l'arrêt d'un programme est donc une notion qui peut-être compliquée : savoir si un programme est un algorithme ne peut se faire qu'en analysant le programme proprement dit.
+
+{% lien %}
+Un algorithme physique de division qui ne s'arrête pas tout le temps :
+[Une calculatrice ancienne tente de diviser par zéro](https://www.youtube.com/watch?v=JU9ICaPZUCg)
+{% endlien %}
+
+Il n'y a pas de méthode générale pour le faire et c'est ce que nous allons démontrer.
 
 Supposons que l'on puisse automatiser le processus de vérification, il existe alors un algorithme permettant de le faire, nommons le `stop`{.language-} :
 
