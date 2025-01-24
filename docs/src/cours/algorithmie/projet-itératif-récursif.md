@@ -18,7 +18,7 @@ eleventyComputed:
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-maximum(t: [réel], i: entier) → entier
+maximum_rec(t: [réel], i: entier) → entier
 ```
 
 Qui rend un indice $0 \leq j \leq i$ tel que $t[j] = \min(\{t[k] \vert 0\leq k \leq i\})$.
@@ -26,7 +26,7 @@ Qui rend un indice $0 \leq j \leq i$ tel que $t[j] = \min(\{t[k] \vert 0\leq k \
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum(t: [réel], i: entier) → entier
+algorithme maximum_rec(t: [réel], i: entier) → entier
     si i ≥ t.longueur:
         rendre i
     sinon:
@@ -175,16 +175,33 @@ Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte 
 {% endexercice %}
 {% details "corrigé" %}
 
-```pseudocode
+```pseudocode/
 algorithme reverse_indice(t: [entier], i: entier) → ∅
-    si 
+    si t.longueur - 1 - i > i:
+        temp ← t[i]
+        t[i] ← t[t.longueur - 1 - i]
+        t[t.longueur - 1 - i] ← temp
+
+        reverse_indice(t, i + 1)
 ```
 
-> TBD algorithme récursion terminale
-> TBD finitude
-> TBD correction
+Les lignes 3-5 permettent d'échanger les valeurs `t[i]`{.language-} et `t[t.longueur - 1 - i]`{.language-} du tableau. On peut aussi écrire `t[i], t[t.longueur - 1 - i] ← t[t.longueur - 1 - i], t[i]`{.language-}, comme on le ferait en python, si l'on autorise le fait d'affecter 2 valeurs **en même temps**.
+
+Le finitude est claire puisque :
+
+1. il n'y a qu'un appel récursif
+2. chaque appel se rapproche strictement de la condition d'arrêt
+
+La correction vient du fait que l'on échange bien des valeurs symétriques du tableau par rapport à l'indice du milieu du tableau qui est ici la partie entière de $t.longueur - 1/ 2$.
 
 {% enddetails %}
+{% attention %}
+Lorsque l'on manipule des indices de tableau il faut **toujours** :
+
+1. attentivement vérifier que tout se passe bien.
+2. faire attention aux divisions entières.
+
+{% endattention %}
 
 Lorsque l'on crée des algorithmes récursif, on a souvent besoin d'initialiser les paramètres. Par exemple si l'on veut retourner complètement un tableau il faudrait écrire `reverse_indice(t: [entier], 0)`{.language-}. Le paramètre $i$ est un paramètre important pour la récursion mais inutile pour l'appel global. Pour éviter d'avoir des paramètres inutile on _encapsulera_ la fonction récursive dans un algorithme dont le seul but est d'initialiser la récursion. Pour le retournement d'un tableau, l'algorithme sera :
 
@@ -196,9 +213,79 @@ algorithme reverse(t: [entier]) → ∅
     reverse_indice(t, 0)
 ```
 
-> TBD ici reprendre maximum récursif, avec encapsulation.
+La méthode ci-dessus est indispensable à connaître car lorsque l'on manipule des algorithmes récursifs les paramètres font office de variables que l'opn pourrait avoir pour des algorithmes itératifs.
+
+Entraînons nous :
+
+{% exercice %}
+Encapsulez la fonction récursive `maximum_rec(t: [réel], i: entier) → entier`{.language-pseudocode} du premier exercice dans une fonction permettant de rendre le maximum d'un tableau passé en paramètre.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme maximum(t: [entier]) → entier
+    rendre maximum_rec(t, 0)
+```
+
+{% enddetails %}
 
 ## Récursion terminale
+
+{% lien %}
+[Récursion terminale](https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale)
+{% endlien %}
+
+```pseudocode
+
+algorithme f(n: A) → B:
+    si c(n) == Vrai:
+        rendre g(n)
+    sinon:
+        rendre f(h(n))
+```
+
+Où `c: A → Booléen`{.language-}, `g: A → B`{.language-} et `h: A → A`{.language-} sont trois fonctions parfaitement définies.
+
+Pour que la définition de `f`{.language-} ait du sens il faut bien sur que chaque récursion sr _rapproche_ de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.
+
+La récursion terminale est sympathique car équivalente à la forme itérative suivante :
+
+```
+algorithme f(n: A) → B:
+    tant que c(n) est Faux:
+        n ← h(n)
+    rendre g(n)
+```
+
+Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateur lorsque'ils repèrent une telle forme).
+
+> A peut être de toute forme, c'est souvent un type composé comme on le verra.
+
+### un
+
+> plus petite puissance de 2 strictement plus grande que n
+> signature à deux paramètres.
+> 
+### Transformer en une forme terminale
+Entraînons nous à écrire de tels algorithmes :
+
+```pseudocode
+algorithme factorielle(n: entier  # n > 1
+                      ) → entier:
+    si n == 1:
+        rendre 1
+    rendre n * factorielle(n-1)
+```
+
+> TBD pas terminale
+> pour le rendre terminale on ajoute un paramètre qui va véhiculer les calculs intermédiaire
+> TBD donner la signature et à eux de faire.
+
+> TBD autre exo.
+
+> TBD la def. et pourquoi c'est bien.
+> TBD formalise le fait d'avoir plus que paramètre que nécessaire : on donne les résultats intermédiaires en paramètre. Cela permet de réduire le nombre d'appels et transforme la récursion en itération (en machine c'est comme ça qu'on fait)
 
 > TBD on voit que la récursion est le dernier calcul dans l'exemple précédent. On appelle ça récursion terminale. Ceci permet de créer des algorithmes itératif. Le faire là avant de généraliser.
 
@@ -216,7 +303,12 @@ algorithme reverse(t: [entier]) → ∅
 
 ## Fonction 91 de McCarty
 
-Mais parfois on crois que c´st pas possible alors que ça l'est.
+{% lien %}
+[John McCarty](https://fr.wikipedia.org/wiki/John_McCarthy) fût un informaticien de renom et le créateur [du langage Lisp](https://fr.wikipedia.org/wiki/Lisp) en 1958. Lisp est le premier langage fonctionnel et a été [le deuxième langage de programmation](https://fr.wikipedia.org/wiki/Histoire_des_langages_de_programmation) au monde, deux ans après le Fortran.
+
+{% endlien %}
+
+Mais parfois on crois que c´est pas possible alors que ça l'est.
 
 Dans le même ordre d'idée que la fonction de Takeuchi.
 
@@ -238,6 +330,41 @@ Dans le même ordre d'idée que la fonction de Takeuchi.
 > Marche pas toujours ex : Fibonacci. On ruse.
 > On peut montrer que toutes les fonctions récursives ne peuvent pas être terminale.
 
-## Pair et impair
+## Récursion croisée
 
-> TBD Récursion croisée
+Une dernière technique qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
+
+{% exercice %}
+Écrire les deux fonctions récursives suivantes sans utiliser de division entière :
+
+```pseudocode
+algorithme pair(n: entier) → booléen
+algorithme impair(n: entier) → booléen
+```
+
+Vous pourrez utiliser le fait que `pair(0)`{.language-} est vrai alors que'`impair(0)`{.language-} est faux.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme pair(n: entier) → booléen
+    si n == 0:
+        rendre Vrai
+    rendre non impair(n - 1)
+
+algorithme impair(n: entier) → booléen
+    si n == 0:
+        rendre Faux
+    rendre non pair(n - 1)
+
+```
+
+La finitude est claire puisque :
+
+1. il n'y a qu'un appel récursif
+2. chaque appel se rapproche strictement de la condition d'arrêt
+
+La correction est évidente par définition de la parité.
+
+{% enddetails %}
