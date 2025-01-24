@@ -390,44 +390,113 @@
 <p>Où <code class="language-">c: A → Booléen</code>, <code class="language-">g: A → B</code> et <code class="language-">h: A → A</code> sont trois fonctions parfaitement définies.</p>
 <p>Pour que la définition de <code class="language-">f</code> ait du sens il faut bien sur que chaque récursion sr <em>rapproche</em> de la condition d'arrêt. C'est ce qu'il faut démontrer pour chaque algorithme sous la forme d'une récursion terminale.</p>
 <p>La récursion terminale est sympathique car équivalente à la forme itérative suivante :</p>
-<pre><code>algorithme f(n: A) → B:
-    tant que c(n) est Faux:
-        n ← h(n)
-    rendre g(n)
-</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> A<span class="token punctuation">)</span> <span class="token operator">→</span> B<span class="token punctuation">:</span>
+    <span class="token keyword">tant que</span> c<span class="token punctuation">(</span>n<span class="token punctuation">)</span> est <span class="token boolean">Faux</span><span class="token punctuation">:</span>
+       <span class="token number"> n </span><span class="token operator">←</span> h<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span> g<span class="token punctuation">(</span>n<span class="token punctuation">)</span></code></pre>
 <p>Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateur lorsque'ils repèrent une telle forme).</p>
 <blockquote>
 <p>A peut être de toute forme, c'est souvent un type composé comme on le verra.</p>
 </blockquote>
-<h3>un</h3>
-<blockquote>
-<p>plus petite puissance de 2 strictement plus grande que n
-signature à deux paramètres.</p>
-</blockquote>
+<h3>Puissance de deux</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Écrivez sous la forme d'une récursion terminale l'algorithme de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">puissance_2</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Qui rend le plus petit entier de la forme $2^p \cdot m$ plus grand que $n$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">puissance_2</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> m <span class="token operator">≥</span> n<span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> m
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> f<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> m<span class="token punctuation">,</span> n<span class="token punctuation">)</span></code></pre>
+<p>C'est bien une récursion terminale puisque le code est équivalent à :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">c</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> m <span class="token operator">≥</span><span class="token number"> n
+</span>
+<span class="token builtin">fonction</span> <span class="token function">g</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> m
+
+<span class="token builtin">algorithme</span> <span class="token function">puissance_2</span><span class="token punctuation">(</span>m<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> c<span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token boolean">Vrai</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> g<span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> f<span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> m<span class="token punctuation">,</span> n<span class="token punctuation">)</span></code></pre>
+<p>Avec le type <code>A</code> étant un couple d'entier et <code>B</code> le type entier.</p>
+</div>
+</details>     
+</div>
 <h3>Transformer en une forme terminale</h3>
-<p>Entraînons nous à écrire de tels algorithmes :</p>
+<p>La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre <a href="../prouver-un-algorithme/#fact-rec">fonction factorielle récursive</a> n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span>  <span class="token comment"># n > 1</span>
                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
     <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">*</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p>Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé <strong><em>accumulateur</em></strong> qui va transmettre à la fonction récursive les calculs intermédiaire, dans notre cas le début du calcul de factoriel. Dans notre cas :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">function factorielle_term<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> acc<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> acc
+    <span class="token keyword">rendre</span> factorielle<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">*</span> acc<span class="token punctuation">)</span>
+
+
+<span class="token builtin">algorithme</span> <span class="token function">factorielle</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span>  <span class="token comment"># n > 1</span>
+                      <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span> factorielle_term<span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que l'algorithme précédent :</p>
+<ol>
+<li>est bien sous la forme terminale</li>
+<li>calcule bien la factorielle</li>
+</ol>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
 <blockquote>
-<p>TBD pas terminale
-pour le rendre terminale on ajoute un paramètre qui va véhiculer les calculs intermédiaire
-TBD donner la signature et à eux de faire.</p>
+<p>TBD</p>
 </blockquote>
+</div>
+</details>     
+</div>
 <blockquote>
 <p>TBD autre exo.</p>
-</blockquote>
-<blockquote>
-<p>TBD la def. et pourquoi c'est bien.
-TBD formalise le fait d'avoir plus que paramètre que nécessaire : on donne les résultats intermédiaires en paramètre. Cela permet de réduire le nombre d'appels et transforme la récursion en itération (en machine c'est comme ça qu'on fait)</p>
-</blockquote>
-<blockquote>
-<p>TBD on voit que la récursion est le dernier calcul dans l'exemple précédent. On appelle ça récursion terminale. Ceci permet de créer des algorithmes itératif. Le faire là avant de généraliser.</p>
-</blockquote>
-<blockquote>
-<p>TBD factorielle pas terminale. Le rendre terminale</p>
 <p>terminale/ pas terminale. <a href="https://web4.ensiie.fr/~dubois/recursivite.pdf">https://web4.ensiie.fr/~dubois/recursivite.pdf</a></p>
 <p>récursivité terminale = qu'une suite d'égalité. C'est donc super.</p>
 </blockquote>
