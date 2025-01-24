@@ -69,6 +69,8 @@ $$
 
 Pour le calcul de la factorielle, on va commencer par calculer $n!$ en supposant que $(n-1)!$ est connu, $n! = n \times ((n-1)!)$, et en remarquant que l'on connaît $1!$ qui vaut $1$ :
 
+<div id="fact-rec"></div>
+
 ```pseudocode
 algorithme factorielle(n: entier  # n > 1
                       ) → entier:

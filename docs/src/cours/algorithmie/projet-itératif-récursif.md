@@ -251,7 +251,7 @@ Pour que la définition de `f`{.language-} ait du sens il faut bien sur que chaq
 
 La récursion terminale est sympathique car équivalente à la forme itérative suivante :
 
-```
+```pseudocode
 algorithme f(n: A) → B:
     tant que c(n) est Faux:
         n ← h(n)
@@ -262,13 +262,52 @@ Ce qui permet une implémentation en machine efficace (c'est ce que font les com
 
 > A peut être de toute forme, c'est souvent un type composé comme on le verra.
 
-### un
+### Puissance de deux
 
-> plus petite puissance de 2 strictement plus grande que n
-> signature à deux paramètres.
-> 
+{% exercice %}
+
+Écrivez sous la forme d'une récursion terminale l'algorithme de signature :
+
+```pseudocode
+algorithme puissance_2(m: entier, n: entier) → entier
+```
+
+Qui rend le plus petit entier de la forme $2^p \cdot m$ plus grand que $n$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme puissance_2(m: entier, n: entier) → entier:
+    si m ≥ n:
+        rendre m
+    sinon:
+        rendre f(2 * m, n)
+```
+
+C'est bien une récursion terminale puisque le code est équivalent à :
+
+```pseudocode
+fonction c(m: entier, n: entier) → entier:
+    rendre m ≥ n
+
+fonction g(m: entier, n: entier) → entier:
+    rendre m
+
+algorithme puissance_2(m: entier, n: entier) → entier:
+    si c(m, n) == Vrai:
+        rendre g(m, n)
+    sinon:
+        rendre f(2 * m, n)
+```
+
+Avec le type `A` étant un couple d'entier et `B` le type entier.
+
+{% enddetails %}
+
 ### Transformer en une forme terminale
-Entraînons nous à écrire de tels algorithmes :
+
+La récursion terminale ne fait aucun calcul en propre, il envoie de nouveaux paramètres. Cela semble très restrictif. Par exemple notre [fonction factorielle récursive](../prouver-un-algorithme/#fact-rec) n'est pas sous forme terminale puisque l'on fait un calcul en plus de la récursion :
 
 ```pseudocode
 algorithme factorielle(n: entier  # n > 1
@@ -278,18 +317,35 @@ algorithme factorielle(n: entier  # n > 1
     rendre n * factorielle(n-1)
 ```
 
-> TBD pas terminale
-> pour le rendre terminale on ajoute un paramètre qui va véhiculer les calculs intermédiaire
-> TBD donner la signature et à eux de faire.
+Le rendre récursif terminal est impossible en ne gardant qu'un seul paramètre. L'astuce est d'ajouter un paramètre, appelé **_accumulateur_** qui va transmettre à la fonction récursive les calculs intermédiaire, dans notre cas le début du calcul de factoriel. Dans notre cas :
+
+```pseudocode
+function factorielle_term(n: entier, acc: entier) → entier:
+    si n == 1:
+        rendre acc
+    rendre factorielle(n-1, n * acc)
+
+
+algorithme factorielle(n: entier  # n > 1
+                      ) → entier:
+    rendre factorielle_term(n, 1)
+```
+
+{% exercice %}
+
+Montrer que l'algorithme précédent :
+
+1. est bien sous la forme terminale
+2. calcule bien la factorielle
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
 
 > TBD autre exo.
-
-> TBD la def. et pourquoi c'est bien.
-> TBD formalise le fait d'avoir plus que paramètre que nécessaire : on donne les résultats intermédiaires en paramètre. Cela permet de réduire le nombre d'appels et transforme la récursion en itération (en machine c'est comme ça qu'on fait)
-
-> TBD on voit que la récursion est le dernier calcul dans l'exemple précédent. On appelle ça récursion terminale. Ceci permet de créer des algorithmes itératif. Le faire là avant de généraliser.
-
-> TBD factorielle pas terminale. Le rendre terminale
 > 
 > terminale/ pas terminale. <https://web4.ensiie.fr/~dubois/recursivite.pdf>
 > 
