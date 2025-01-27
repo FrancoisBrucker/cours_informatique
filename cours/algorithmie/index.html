@@ -216,10 +216,10 @@
 <p><a href="autres-mod%C3%A8les" class="interne">Autres modèles</a></p>
 </div></div>
 
-<h3>Problème algorithmique</h3>
+<h3><span id="probleme-algorithmique"></span> Problème algorithmique</h3>
 <p>Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètre) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Mais comment prouver qu'un algorithme répond bien au problème posé ?</p>
 <p>On a vu que toute question n'admet pas forcément un algorithme pour le résoudre et que si on possède un algorithme il n'est pas évident de savoir ce qu'il fait. Cependant, on utilise quotidiennement des algorithmes et on se repose sur eux pour résoudre des problèmes concret.</p>
-<p>Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est <a href="/cours_informatique/bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">le théorème de Rice</a>) ? C'est ce qu'on va aborder ici, en deux temps :</p>
+<p>Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est <a href="/cours_informatique/bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">le théorème de Rice</a>) ? C'est ce qu'on va aborder ici, en deux temps :</p>
 <ol>
 <li>on va commencer par formaliser ce qu'est un problème</li>
 <li>se donner des outils pour prouver qu'un algorithme donné résout bien le problème posé.</li>
@@ -269,7 +269,7 @@
 </ul>
 </div></div>
 
-<p>Cette définition a un sens puisqu'<a href="../bases-th%C3%A9oriques/calculabilit%C3%A9#non-calculable" class="interne">il existe des problèmes non résoluble par un algorithme</a>. Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice">aucune méthode générale pour savoir ce que fait un algorithme</a> ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :</p>
+<p>Cette définition a un sens puisqu'<a href="../bases-th%C3%A9oriques/calculabilit%C3%A9#non-calculable" class="interne">il existe des problèmes non résoluble par un algorithme</a>. Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe <a href="bases-th%C3%A9oriques/arr%C3%AAt-rice/#th%C3%A9or%C3%A8me-rice" class="interne">aucune méthode générale pour savoir ce que fait un algorithme</a> ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -419,27 +419,6 @@ TBD compteur, jets de dés.</p>
 <p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
 </div></div>
 
-<h3>Design d'algorithmes</h3>
-<blockquote>
-<p>TBD reprendre les algos d'avant et les classer dans les cases.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="design-algorithmes" class="interne">Design d'algorithmes</a></p>
-</div></div>
-
-<p>On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="enveloppes-convexes" class="interne">Problème de l'enveloppe convexe</a></p>
-</div></div>
-
 <h3>Réductions : passer d'un problème à un autre</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -469,6 +448,27 @@ TBD compteur, jets de dés.</p>
   </svg>
 <div class="pl-8 mr-8">
 <p><a href="probl%C3%A8me-sac-%C3%A0-dos" class="interne">Problème du sac à dos</a></p>
+</div></div>
+
+<h3>Design d'algorithmes</h3>
+<blockquote>
+<p>TBD reprendre les algos d'avant et les classer dans les cases.</p>
+</blockquote>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="design-algorithmes" class="interne">Design d'algorithmes</a></p>
+</div></div>
+
+<p>On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="enveloppes-convexes" class="interne">Problème de l'enveloppe convexe</a></p>
 </div></div>
 
 <h2>Intermède : recherche universelle</h2>
