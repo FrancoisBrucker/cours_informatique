@@ -72,13 +72,13 @@ Le modèle du pseudo-code n'est pas la seule façon d'écrire des algorithmes. L
 [Autres modèles](./autres-modèles){.interne}
 {% endaller %}
 
-### Problème algorithmique
+### <span id="probleme-algorithmique"></span> Problème algorithmique
 
 Un algorithme est sensé faire quelque chose : à partir de données passées en entrée (ses paramètre) il va produire une sortie. Cette sortie dépend de ses paramètres et répond à une question ou plus généralement résout un problème. Mais comment prouver qu'un algorithme répond bien au problème posé ?
 
 On a vu que toute question n'admet pas forcément un algorithme pour le résoudre et que si on possède un algorithme il n'est pas évident de savoir ce qu'il fait. Cependant, on utilise quotidiennement des algorithmes et on se repose sur eux pour résoudre des problèmes concret.
 
-Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est [le théorème de Rice](/bases-théoriques/arrêt-rice/#théorème-rice)) ? C'est ce qu'on va aborder ici, en deux temps :
+Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est [le théorème de Rice](/bases-théoriques/arrêt-rice/#théorème-rice){.interne}) ? C'est ce qu'on va aborder ici, en deux temps :
 
 1. on va commencer par formaliser ce qu'est un problème
 2. se donner des outils pour prouver qu'un algorithme donné résout bien le problème posé.
@@ -112,7 +112,7 @@ On se placera dans ce cours dans un cadre algorithmique : c'est à dire des prob
 
 {% endnote %}
 
-Cette définition a un sens puisqu'[il existe des problèmes non résoluble par un algorithme](../bases-théoriques/calculabilité#non-calculable){.interne}. Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice) ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
+Cette définition a un sens puisqu'[il existe des problèmes non résoluble par un algorithme](../bases-théoriques/calculabilité#non-calculable){.interne}. Mais même si on a un problème algorithmique et un algorithme, comment prouver que le second résout le premier puisqu'il n'existe [aucune méthode générale pour savoir ce que fait un algorithme](bases-théoriques/arrêt-rice/#théorème-rice){.interne} ? Il faut le faire au cas par cas. Mais rassurez-vous, selon le type d'algorithme il existe des méthodes qui fonctionnent souvent :
 
 {% aller %}
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
@@ -220,20 +220,6 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-### Design d'algorithmes
-
-> TBD reprendre les algos d'avant et les classer dans les cases.
-
-{% aller %}
-[Design d'algorithmes](./design-algorithmes){.interne}
-{% endaller %}
-
-On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :
-
-{% aller %}
-[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
-{% endaller %}
-
 ### Réductions : passer d'un problème à un autre
 
 {% aller %}
@@ -254,6 +240,20 @@ Un problème NP-complet, le sac à dos :
 
 {% aller %}
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
+{% endaller %}
+
+### Design d'algorithmes
+
+> TBD reprendre les algos d'avant et les classer dans les cases.
+
+{% aller %}
+[Design d'algorithmes](./design-algorithmes){.interne}
+{% endaller %}
+
+On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :
+
+{% aller %}
+[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
 ## Intermède : recherche universelle

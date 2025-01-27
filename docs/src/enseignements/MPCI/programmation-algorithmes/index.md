@@ -70,7 +70,7 @@ Ce cours est composée de plusieurs parties :
 
 ### Semaine 1
 
-#### Mardi : qu'est-ce qu'un algorithme
+#### Mercredi : qu'est-ce qu'un algorithme
 
 {% aller %}
 [bases théorique de l'algorithmie](/cours/algorithmie/bases-théoriques){.interne}
@@ -101,61 +101,58 @@ Parties abordées :
 
 {% endaller %}
 
-<!--
-
 ### Semaine 2
 
-#### Mardi : écrire des algorithmes
+#### Mercredi : écrire des algorithmes
 
 {% aller %}
-[Écrire des algorithmes](/cours/algorithmie/écrire-algorithmes){.interne}{.interne}
+
+1. [Écrire des algorithmes en pseudocode](/cours/algorithmie/pseudo-code/){.interne}
+2. [Problèmes algorithmique](/cours/algorithmie/#probleme-algorithmique){.interne}
+3. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
+
+{% endaller %}
+
+Si on a le temps, on le fait en cours sinon faites le chez vous :
+
+{% aller %}
+
+[On s'entraîne](/cours/algorithmie/projet-itératif-récursif/){.interne}
+
 {% endaller %}
 
 #### Vendredi : écrire du code
 
-{% faire "**Prérequis**" %}
-
-Lire [Espace de noms](/cours/coder-et-développer/espace-nommage/){.interne}
-
-{% endfaire %}
-{% info %}
-[Stockage bas-niveaux des données en mémoire](/cours/coder-et-développer/données-mémoire){.interne}
-{% endinfo %}
-
-Programme de la séance :
-
 {% aller %}
 
-1. Fin de [la partie écrire du code](/cours/coder-et-développer/développement/){.interne} : 3. [projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
+1. [Projet pourcentages](/cours/coder-et-développer/développement/projet-pourcentages/){.interne}
 2. [Déboguer ses programmes](/cours/coder-et-développer/debugger/){.interne}
-3. Pour aller plus loin : annales test code des années précédentes.
 
 {% endaller %}
 
-On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
+Si on a le temps, on le fait en cours sinon faites le chez vous :
 
-{% faire %}
-[Sujet du DM](./annales/2023-2024/palindromes/){.interne}
+{% aller %}
 
-Il faudra rendre un dossier contenant :
+On s'entraîne.
 
-- un dossier contenant le rendu de la partie algorithmie. Il devra être sous la forme d'un fichier markdown et de sa conversion en html.
-- un dossier contenant le rendu de la partie code contenant le projet vscode et les différents programmes.
-
-{% endfaire %}
-{% info %}
-[Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
-{% endinfo %}
+{% endaller %}
 
 ### Semaine 3
 
-#### Mardi : complexité algorithmique
+#### Mercredi : complexité algorithmique
+
+{% attention %}
+Test de 15min en début de cours sur **la partie preuve d'algorithmes**. Il faudra rendre une feuille de papier.
+{% endattention %}
+{% faire %}
+Sujet du test 1
+{% endfaire %}
+
+Ce cours est basé sur la notion de complexité algorithmique que vous avez du aborder au S1.
 
 {% faire "**Prérequis**" %}
-Reprendre la partie complexité de votre cours de S1. Ce dont nous aurons besoin est rassemblé là :
-
-1. [définition de la complexité](/cours/algorithmie/complexité-calculs/définitions){.interne}
-2. [comparaisons asymptotiques](/cours/algorithmie/complexité-calculs/comparaisons-asymptotiques){.interne}
+Reprendre la partie complexité de votre cours de S1.
   
 {% endfaire  %}
 
@@ -167,29 +164,47 @@ Parties abordées :
 
 {% aller %}
 
-1. [$\mathcal{O}$ pour l'algorithmie](/cours/algorithmie/complexité-calculs/O-pour-l-algorithmie){.interne}
-2. [règles de calculs](/cours/algorithmie/complexité-calculs/règles-de-calcul){.interne}
-3. [complexités des structures et des méthodes](/cours/algorithmie/complexité-calculs/méthodes-structures-calcul){.interne}
-4. [Complexité d'un problème Algorithmique](/cours/algorithmie/complexité-problème/){.interne}
+1. [Complexité d'un algorithme](/cours/algorithmie/complexité-calculs/){.interne}
+2. [Complexité d'un problème](/cours/algorithmie/complexité-problème/){.interne}
+
+{% endaller %}
+
+Si on a le temps, on le fait en cours sinon faites le chez vous :
+
+{% aller %}
+
+On s'entraîne.
 
 {% endaller %}
 
 #### Vendredi : étude de l'exponentiation
 
-{% attention %}
-Test de 15min en début de cours. Il faudra rendre plusieurs fichiers python (code et tests) sur AMeTICE.
-{% endattention %}
+> TBD stockage de données
+
+On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
+
 {% faire %}
-[Sujet du test 1](annales/2023-2024/1_test_sujet_code){.interne}
+Sujet du DM
+
+Il faudra rendre un dossier contenant :
+
+- un dossier contenant le rendu de la partie algorithmie. Il devra être sous la forme d'un fichier markdown et de sa conversion en html.
+- un dossier contenant le rendu de la partie code contenant le projet vscode et les différents programmes.
+
 {% endfaire %}
-Parties abordées dans le cours :
+{% info %}
+[Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
+{% endinfo %}
 
-{% aller %}
+### Semaine 4
 
-1. [Calculer $x^y$](/cours/algorithmie/projet-exponentiation){.interne}
-2. Pour aller plus loin : [Les suites additives](/cours/algorithmie/projet-suite-additive){.interne}
+> TBD exponentiation toute la semaine.
 
-{% endaller %}
+### Semaine 5
+
+> TBD tris toute la semaine.
+
+<!--
 
 ### Semaine 4
 

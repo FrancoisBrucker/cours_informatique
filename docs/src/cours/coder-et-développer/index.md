@@ -66,7 +66,10 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 > TBD exercices :
 >
 > - plein de fonctions différentes à créer (voir partie algorithmie ?). Utilisation de listes, suppression de doublon, recursion (flocon de Koch ?) etc
+> - reprendre tests code des mpci.
 > - faire de petits programmes
+> - code à déboguer
+> - exhiber des invariants de boucles avec le débogueur.
 
 ## Stockage des données
 
@@ -87,7 +90,7 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 > - split
 > - caractères spéciaux : tabulation, fin de ligne
 > - strip
-> - supprimer les accents. transformation et ascii.
+> - supprimer les accents. transformation et ASCII.
 
 ### Sur des fichiers
 
@@ -95,9 +98,7 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 [Fichiers](fichiers){.interne}
 {% endaller %}
 
-## Archétype de programmation
-
-### Programmation objet
+## Programmation objet
 
 La programmation objet est un principe de programmation utilisé par la quasi-totalité des langages de programmation. Nes nuances existent bien sur, la programmation objet en rust n'est pas la même qu'en java par exemple, mais quelques principes fondateurs sont utilisés partout.
 
@@ -105,14 +106,6 @@ Nous allons dans cette partie du cours nous atteler à montrer ces principes et 
 
 {% aller %}
 [Programmation objet](programmation-objet){.interne}
-{% endaller %}
-
-### Programmation évènementielle
-
-La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
-
-{% aller %}
-[Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}
 
 ## Maintenir et développer du code sûr
@@ -173,20 +166,22 @@ La gestion des packages peut être compliquée. Normalement, si vous vous y pren
 [Environnements virtuels](environnements-virtuels){.interne}
 {% endaller %}
 
-### Programmation par les tests
-
-On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
-
-{% aller %}
-[Projet de programmation par les tests](projet-TDD){.interne}
-{% endaller %}
-
 ### Couverture de code
 
 La couverture de code est un outils essentiel lorsque l'on programme par les tests et plus généralement lorsque l'on code tout court. Cet outil permet de vérifier les lignes de codes qui sont testées (_ie._ couvertes).
 
 {% aller %}
 [Couverture de code](couverture-de-code){.interne}
+{% endaller %}
+
+### Programmation par les tests
+
+> TBD ajouter couverture du code.
+
+On a pris l'habitude d'écrire des tests pour se rassurer quant à l'exactitude de nos fonctions. Mais pourquoi pas ne pas écrire les tests avant ? C'est le parti pris osé (mais très efficace) de la [programmation par les tests (_Test Driven Development_, ou _TDD_)](https://fr.wikipedia.org/wiki/Test_driven_development) que l'on vous propose d'essayer dans le projet ci-après.
+
+{% aller %}
+[Projet de programmation par les tests](projet-TDD){.interne}
 {% endaller %}
 
 ### Packages
@@ -212,4 +207,14 @@ Enfin, on peut faire en sorte que nos modules/packages soient exécutables direc
 
 {% aller %}
 [Exécuter des modules python](exécution-modules){.interne}
+{% endaller %}
+
+## Programmation évènementielle
+
+> TBD mettre un environnement virtuel
+
+La programmation évènementielle est un principe de développement très utilisé dans le développement de [GUI](https://fr.wikipedia.org/wiki/Interface_graphique). Le principe est de coder des _réactions_ qui seront exécutées lorsqu'un utilisateur effectuera une action spécifique (générant un _évènement_) comme cliquer sur quelque chose, appuyer sur une touche, etc.
+
+{% aller %}
+[Programmation évènementielle](programmation-évènementielle){.interne}
 {% endaller %}

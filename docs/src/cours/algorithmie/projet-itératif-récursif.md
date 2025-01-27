@@ -260,7 +260,7 @@ algorithme f(n: A) → B:
 
 Ce qui permet une implémentation en machine efficace (c'est ce que font les compilateur lorsque'ils repèrent une telle forme).
 
-> A peut être de toute forme, c'est souvent un type composé comme on le verra.
+Le type `A`{.language-} peut être de toute forme, c'est souvent un type composé comme on le verra.
 
 ### Puissance de deux
 
@@ -341,21 +341,244 @@ Montrer que l'algorithme précédent :
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Il est clairement sous la forme récursive terminale. Il fini car chaque récursion se rapproche strictement de la condition d'arrêt.
+
+Enfin, `acc`{.language-} va contenir la factorielle comme le prouve une récursion triviale sur $n$.
 
 {% enddetails %}
 
-> TBD autre exo.
-> 
-> terminale/ pas terminale. <https://web4.ensiie.fr/~dubois/recursivite.pdf>
-> 
-> récursivité terminale = qu'une suite d'égalité. C'est donc super.
+La récursion terminale est un moyen efficace d'implémenter des [suites arithmétiques](https://fr.wikipedia.org/wiki/Suite_arithm%C3%A9tique) ou [géométriques](https://fr.wikipedia.org/wiki/Suite_g%C3%A9om%C3%A9trique). Montrez le :
+
+{% exercice %}
+
+Donner un prouvez un algorithme écrit sous la forme d'une récursion terminale permettant de calculer tout élément $u_n$ d'une suite arithmétique définie telle que :
+
+<div>
+$$
+u_n = \left\{
+    \begin{array}{ll}
+        u_0 & \mbox{si } n = 0 \\
+        r + n_{n-1} & \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+function u_n_term(n: entier, 
+                 u0: entier, 
+                 r: entier, 
+                 acc: entier) → entier:
+    si n == 0:
+        rendre u0 + acc
+    rendre u_n_term(n-1, u0, r, r + acc)
+
+
+algorithme u_n(n : entier, 
+               u0: entier, 
+               r : entier
+              ) → entier:
+    rendre u_n_term(n, u0, r, 0)
+```
+
+{% enddetails %}
+{% exercice %}
+
+Transformez l'algorithme récursif précédent en un algorithme itératif.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Le but de la récursion terminale est de facile,ent transformer un algorithme récursif en un algorithme itératif cr la récursion est une boucle `tant que`{.language-pseudocode}.
+
+```pseudocode
+algorithme u_n(n : entier, 
+               u0: entier, 
+               r : entier
+              ) → entier:
+    acc ← 0
+    tant que n > 0:
+        acc ← r + acc
+        n ← n - 1
+    
+    rendre u0 + acc
+```
+
+{% enddetails %}
 
 ## Dichotomie
 
-> TBD est présent tableau trié.
-> TBD récursif -> récursif terminal -> itératif
-> <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration>
+Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
+
+On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :
+
+- si $t[\lfloor (a + b)/2 \rfloor] == v$ on a trouvé l'élément
+- si $t[\lfloor (a + b)/2 \rfloor] > v$ on recommence la procédure avec $a' = \lfloor (a + b)/2 \rfloor + 1$ et $b' =b$
+- si $t[\lfloor (a + b)/2 \rfloor] < v$ on recommence la procédure avec $a' = a$ et $b' = \lfloor (a + b)/2 \rfloor - 1$
+
+{% exercice %}
+
+Implémentez cet algorithme de façon récursive avec la signature :
+
+```pseudocode
+dichotomie_rec(t: [entier], 
+               v: entier,
+               a: entier,
+               b: entier  # b > a
+               ) → entier:  #rend -1 si v n'est pas dans t, l'indice où il est présent sinon
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme dichotomie_rec(t: [entier], v: entier, a: entier, b: entier) → entier:
+    si b > a:
+        rendre -1
+
+    m ← (a + b) // 2  # division entière
+    si (t[m] == v):
+        rendre m
+    si (t[m] > v):
+        rendre dichotomie_rec(t, v, m + 1, b)
+    si (t[m] < v):
+        rendre dichotomie_rec(t, v, a, m - 1)
+```
+
+Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement.
+{% enddetails %}
+
+A priori l'algorithme précédent n'est pas terminal. Le faire :
+
+{% exercice %}
+Utilisez l'algorithme précédent pour écrire l'algorithme qui recherche un élément dans une liste triée de signature :
+
+```pseudocode
+recherche(t: [entier], v: entier) → entier
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme recherche(t: [entier], v: entier) → entier:
+    rendre dichotomie_rec(t, v, 0, t.longueur -1)
+```
+
+{% enddetails %}
+
+## Fibonacci
+
+[La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci), bien connue, se définie ainsi pour tout $n>0$ :
+
+<div>
+$$
+F_n = \left\{
+    \begin{array}{ll}
+        1 & \mbox{si } n \leq 2 \\
+        F_{n-1} + F_{n-2}& \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+{% exercice %}
+Utilisez la définition précédente pour créer un algorithme récursif calculant $F_n$ de signature :
+
+```pseudocode
+fibo(n: entier) → entier
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme fibo(n: entier) → entier:
+    si n ≤ 2:
+        rendre 1
+    rendre fibo(n-1) + fibo(n-2)
+```
+
+Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !
+
+Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.
+
+1. initialisation : $\mbox{fibo}(n)$ admet un nombre fini de récursion pour $n\leq 2$.
+2. hypothèse de récurrence : $\mbox{fibo}(m)$ admet un nombre fini de récursion pour $m\leq n$.
+3. Pour $n + 1$, $\mbox{fibo}(n)$ et $\mbox{fibo}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.
+
+Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursif, puisque l'algorithme ne fait que transcrire l'équation de récursion.
+
+{% enddetails %}
+
+La preuve de l'exercice précédent donne une règle générale de preuve de finitude d'un programme récursif :
+
+{% note "**À retenir**" %}
+Si tous les appels récursifs d'un programme se _rapprochent strictement_ de la condition d'arrêt, alors le nombre de récursion est fini.
+
+La condition de rapprochement va dépendre des paramètres et du programme et doit être explicitée.
+{% endnote %}
+
+L'algorithme précédent n'est pas sous la forme de récursion terminale. On peut le rentre terminal en utilisant 2 accumulateurs :
+
+{% exercice %}
+Modifiez l'algorithme récursif précédent pour qu'il devienne une récursion terminale grace à l'utilisation de deux accumulateurs. Cet algorithme sera de signature :
+
+```pseudocode
+fibo(n: entier, u_i, u_i_moins_un) → entier
+```
+
+Quels seraient les paramètres pour calculer $F_n$ ?
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme fibo(n: entier, u_i, u_i_moins_un) → entier:
+    si n == 1:
+        rendre u_i
+    sinon:
+        rendre fibo(n-1, u_i + u_i_moins_un, u_i)
+```
+
+Pour calculer $F_n$ :
+
+```pseudocode
+fibo(n: entier, 1, 0)
+```
+
+{% enddetails %}
+
+Maintenant que la récursion est terminale il est facile de transformer notre algorithme récursif en un algorithme itératif :
+
+{% exercice %}
+Modifiez l'algorithme récursif précédent pour qu'il devienne itératif. Sa signature doit être :
+
+```pseudocode
+fibo(n: entier) → entier
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme fibo(n: entier) → entier:
+    u_i ← 1
+    u_i_moins_un ← 0
+
+    tant que n > 1:
+        temp ← u_i 
+        u_i ← u_i + u_i_moins_un
+        u_i_moins_un ← u_i
+    
+    rendre u_i
+```
+
+N'oubliez pas le stockage temporaire de `u_i`{.language-} dans la variable `temp`{.language-}.
+
+{% enddetails %}
 
 ## Fonction 91 de McCarty
 
@@ -364,27 +587,215 @@ Montrer que l'algorithme précédent :
 
 {% endlien %}
 
-Mais parfois on crois que c´est pas possible alors que ça l'est.
+[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) est définie telle que :
+
+<div>
+$$
+M(n) = \left\{
+    \begin{array}{ll}
+        n-10 & \mbox{si } n > 100 \\
+        M(M(n + 11))& \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+{% exercice %}
+Implémentez l'algorithme récursif qui mime la définition.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme M(n: entier) → entier:
+    si n > 100:
+        rendre n - 10
+    sinon:
+        x ← M(n + 11)
+        rendre M(x)
+```
+
+Mais est-ce que ce programme se termine ? Rien n'est moins sur.
+{% enddetails %}
+
+Le programme de la question précédente n'est pas forcément un algorithme puisqu'on ne sait pas si les récursion vont s'arrêter. Avant de répondre à cette question, montrons que l'on peut transformer cet algorithme en un programme itératif en appliquant les techniques de la récursion terminale :
+
+{% exercice %}
+
+Montrez que $M^k(n) = g(n, k)$ avec :
+
+<div>
+$$
+g(n, k) = \left\{
+    \begin{array}{ll}
+        n & \mbox{si } c = 0 \\
+        g(n-10, c-1) & \mbox{si } n > 100 \mbox{ et } c \neq 0 \\
+        g(n+11, c+1)& \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+En déduire une version itérative pour résoudre McCarty.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode/
+algorithme M(n: entier) → entier:
+    c ← 1
+
+    tant que c ≠ 0:
+        si n > 100:
+            n ← n - 10
+            c ← c - 1
+        sinon:
+            n ← n + 11
+            c ← c + 1
+    rendre n
+```
+
+{% enddetails %}
+
+On est pas vraiment sur que cette fonction soit bien définie et donc que le programme ci-dessus soit un algorithme ! Montrons le.
+
+{% exercice %}
+Démontrez que pour tout entier $n$ tel que $90 \leq n < 101$, on a $M(n) = M(n+1)$ et que l'on arrive à cette égalité en un nombre fini de récursion.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Pour $90 \leq n < 101$, on a :
+
+<div>
+$$
+\begin{array}{lcl}
+M(n) & = & M(M(n + 11))\\
+     &   & M((n + 11) - 10)\\
+     &   & M(n + 1)
+\end{array}
+$$
+</div>
+
+On arrive à ce résultat en 1 récursion : la ligne 5 de l'algorithme en pseudocode de la question précédente.
+{% enddetails %}
+
+{% exercice %}
+Déduire de l'exercice précédent que pour tout $n < 101$, il existe $k\geq 1$ et $90 \leq n < 101$ tel que $M(n) = M^k(n')$.
+{% endexercice %}
+{% details "corrigé" %}
+
+<div>
+$$
+\begin{array}{lcl}
+M(n) & = & M^{2}(n + 11)\\
+     &   & M(M(n + 11))\\
+     &   & M(M^{2}(n + 22))\\
+     &   & M^{3}(n + 22)\\
+     &   & \dots\\
+     &   & M^{k}(n')\\
+\end{array}
+$$
+
+</div>
+
+{% enddetails %}
+
+{% exercice %}
+Donnez la valeur de $M(n)$ pour tout $n< 101$ et en déduire que la fonction de McCarty est bien définie pour tout entier positif (ie le calcul se fait en un no,bre fini de récursion).
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On a $M(91) = M(91 + 1 + \dots + 1) = M(101) = 91$ et pour tout $n < 90$ on il existera $k > 1$ tel que $M(n) = M^k(91) = 91$
+
+Comme il faut un nombre fini d'itération pour passer de $M(n)$ à M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k>0$ (il en faut $k\cdot I$).
+
+{% enddetails %}
+
+{% exercice %}
+En donner un algorithme itératif simple pour la calculer.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme M(n: entier) → entier:
+    si n > 100:
+        rendre n - 10
+    sinon:
+        rendre 91
+```
 
 Dans le même ordre d'idée que la fonction de Takeuchi.
 
-> inventeur du lisp.
+{% enddetails %}
 
-> TBD : <https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy>
->
-> TBD a écrire algo avec récursion puis : essayer de se passer de f(f(x))
->
-> 1. écrire comme récursion terminale (cf. wikipédia pour la fonction et <https://fr.wikipedia.org/wiki/R%C3%A9cursion_terminale> pour la définition)
+## Triangle de Pascal
 
-<https://www.corsi.univr.it/documenti/OccorrenzaIns/matdid/matdid779820.pdf>
-> 
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
 
-> TBD et quelle est sa valeur ?
+<div>
+$$
+\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
+$$
+</div>
 
-## Fibonacci
+{% exercice %}
+Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
 
-> Marche pas toujours ex : Fibonacci. On ruse.
-> On peut montrer que toutes les fonctions récursives ne peuvent pas être terminale.
+{% endexercice %}
+{% details "corrigé" %}
+
+La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
+
+- soit $k = 1$ et $\binom{n}{1} = 1$
+- soit $k = n$ et $\binom{n}{n} = 1$
+
+On a alors le code :
+
+```pseudocode
+algorithme binom(n: entier, k: entier) → entier:
+    si (n == k) ou (k == 1):
+        rendre 1
+    sinon:
+        rendre binom(n-1, k-1) + binom(n - 1, k)
+```
+
+Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
+
+{% enddetails %}
+
+Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative en remarquant que l'on peut calculer $\binom{n}{k}$ pour tout $1\leq k \leq n$ si l'on connaît tous les $\binom{n-1}{k}$ pour $1\leq k \leq n-1$ :
+
+{% exercice %}
+En utilisant deux tableaux de taille n donner une version itérative de l'algorithme
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme binom(n: entier, k: entier) → entier:
+    courant ← un tableau de taille n
+    précédent ← un tableau de taille n
+
+    courant[0] ← 1
+    pour chaque i allant de 1 à n-1:
+        pour chaque j allant de 0 à n-1:
+            précédent[j] ← courant[j]
+
+            si (j == i) ou (j == 0):
+                courant[j] ← 1
+            sinon:
+                courant[j] ← précédent[j-1] + précédent[j]
+
+    rendre courant[k - 1]
+```
+
+Remarquez que le tableau précédent est obligatoire et se remplit au fur et à mesure, à chaque incrément de i
+
+{% enddetails %}
+
+Il existe des solutions à un seul de taille $n$, essayez de trouver comment faire !
 
 ## Récursion croisée
 

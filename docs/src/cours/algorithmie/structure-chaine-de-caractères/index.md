@@ -9,8 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD <https://www.youtube.com/watch?v=ENKT0Z3gldE>
 
-Une chaine de caractères est dans toute sa généralité définie comme un **_mot_** produit par un **_alphabet_** :
+Une chaîne de caractères est dans toute sa généralité définie comme un **_mot_** produit par un **_alphabet_** :
 
 {% note "**Définition**" %}
 

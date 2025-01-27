@@ -9,6 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD <https://www.youtube.com/watch?v=GZPqDvG615k>. Facteur pour grossir. 2, 1.5 autre chose ? Si seul et si plusieurs ? Bref : se méfier des solutions simples (1. x2 puis on regarde place perdue -> x1.5 puis on regarde si plusieurs -> x2)
 
 Une liste est une amélioration de la [structure de tableau](../../écrire-algorithmes/pseudo-code/#tableaux){.interne} et sont les conteneurs de base du langage python.
 Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.

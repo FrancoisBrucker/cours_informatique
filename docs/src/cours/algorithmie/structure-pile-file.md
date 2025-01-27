@@ -12,6 +12,22 @@ eleventyComputed:
 > TBD : todo-lists
 > TBD pile et file. Intérêt : implémenter une todo list. Application à la recursion terminale et non terminale.
 
+> TBD liste facole ajouter et supprimer à la fin : pile ok
+> mais file ? Supprimer au début
+> liste chaînée supprimer au milieu ?
+
+### Dérivés
+
+> listes chaînées très utilisé en système et en algo lorsque l'on a besoin uniquement d'accéder au suivant
+> TBD : pile/files : structure
+> invention de la pile : <https://www.youtube.com/watch?v=2vBVvQTTdXg> Hamblin's stack
+>  utilisation de deux piles une opération et une nombre. Samelson et bauer
+> 
+> TBD : bornées : faire avec des listes + démo amortie
+> TBD : decques circulaires
+> TBD : faire gain/perte
+> TBD : exo pile/file simple (jouer avec la structure) et usage dans des algos. Montrer aussi que la pile peut être utilisée pour stocker des variables : faire fibo et enfin dire que c'est comme ça en mémoire : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
+
 ## Usage
 
 ## Structure

@@ -9,6 +9,9 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+
+> TBD <https://www.youtube.com/watch?v=kPqk07Gpj0A>
+
 La [structure de tableau](../écrire-algorithmes/pseudo-code/#tableaux){.interne} est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un.
 
 Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité.
@@ -20,18 +23,6 @@ Nous allons commencer par aborder la première extension des tableaux, les liste
 {% aller %}
 [liste](./liste/){.interne}
 {% endaller %}
-
-### Dérivés
-
-> listes chaînées très utilisé en système et en algo lorsque l'on a besoin uniquement d'accéder au suivant
-> TBD : pile/files : structure
-> invention de la pile : <https://www.youtube.com/watch?v=2vBVvQTTdXg> Hamblin's stack
->  utilisation de deux piles une opération et une nombre. Samelson et bauer
-> 
-> TBD : bornées : faire avec des listes + démo amortie
-> TBD : decques circulaires
-> TBD : faire gain/perte
-> TBD : exo pile/file simple (jouer avec la structure) et usage dans des algos. Montrer aussi que la pile peut être utilisée pour stocker des variables : faire fibo et enfin dire que c'est comme ça en mémoire : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
 
 ## Tableau associatifs
 
@@ -47,4 +38,3 @@ Aussi appelé dictionnaires
 ### Dérivés
 
 > ensembles
-
