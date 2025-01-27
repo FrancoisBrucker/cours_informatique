@@ -177,7 +177,7 @@ On s'entraîne.
 
 {% endaller %}
 
-#### Vendredi : étude de l'exponentiation
+#### Vendredi : stockage de données
 
 > TBD stockage de données
 

@@ -65,9 +65,7 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 
 > TBD exercices :
 >
-> - plein de fonctions différentes à créer (voir partie algorithmie ?). Utilisation de listes, suppression de doublon, recursion (flocon de Koch ?) etc
 > - reprendre tests code des mpci.
-> - faire de petits programmes
 > - code à déboguer
 > - exhiber des invariants de boucles avec le débogueur.
 

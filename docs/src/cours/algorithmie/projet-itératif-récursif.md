@@ -731,72 +731,6 @@ Dans le même ordre d'idée que la fonction de Takeuchi.
 
 {% enddetails %}
 
-## Triangle de Pascal
-
-Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
-
-<div>
-$$
-\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
-$$
-</div>
-
-{% exercice %}
-Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
-
-- soit $k = 1$ et $\binom{n}{1} = 1$
-- soit $k = n$ et $\binom{n}{n} = 1$
-
-On a alors le code :
-
-```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
-    si (n == k) ou (k == 1):
-        rendre 1
-    sinon:
-        rendre binom(n-1, k-1) + binom(n - 1, k)
-```
-
-Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
-
-{% enddetails %}
-
-Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative en remarquant que l'on peut calculer $\binom{n}{k}$ pour tout $1\leq k \leq n$ si l'on connaît tous les $\binom{n-1}{k}$ pour $1\leq k \leq n-1$ :
-
-{% exercice %}
-En utilisant deux tableaux de taille n donner une version itérative de l'algorithme
-{% endexercice %}
-{% details "corrigé" %}
-
-```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
-    courant ← un tableau de taille n
-    précédent ← un tableau de taille n
-
-    courant[0] ← 1
-    pour chaque i allant de 1 à n-1:
-        pour chaque j allant de 0 à n-1:
-            précédent[j] ← courant[j]
-
-            si (j == i) ou (j == 0):
-                courant[j] ← 1
-            sinon:
-                courant[j] ← précédent[j-1] + précédent[j]
-
-    rendre courant[k - 1]
-```
-
-Remarquez que le tableau précédent est obligatoire et se remplit au fur et à mesure, à chaque incrément de i
-
-{% enddetails %}
-
-Il existe des solutions à un seul de taille $n$, essayez de trouver comment faire !
-
 ## Récursion croisée
 
 Une dernière technique qui peut être utile est la récursion croisée qui définie une fonction par rapport à une autre et réciproquement :
@@ -835,3 +769,77 @@ La finitude est claire puisque :
 La correction est évidente par définition de la parité.
 
 {% enddetails %}
+
+## Triangle de Pascal
+
+Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
+
+<div>
+$$
+\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
+$$
+</div>
+
+{% exercice %}
+Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
+
+- soit $k = 1$ et $\binom{n}{1} = 1$
+- soit $k = n$ et $\binom{n}{n} = 1$
+
+On a alors le code :
+
+```pseudocode
+algorithme binom(n: entier, k: entier) → entier:
+    si (n == k) ou (k == 1):
+        rendre 1
+    sinon:
+        rendre binom(n-1, k-1) + binom(n - 1, k)
+```
+
+Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
+
+{% enddetails %}
+
+Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients
+$\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :
+
+{% lien %}
+[Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
+{% endlien %}
+
+Vous pouvez ensuite remarquer que vous n'utilisez qu'une seule ligne (celle contenant les valeurs $\binom{n}{k}$ pour tout $1\leq k \leq n-1$) pour calculer la nouvelle ligne $n$. Ceci vous permettra de :
+
+{% exercice %}
+En utilisant deux tableaux de taille n donner une version itérative de l'algorithme
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme binom(n: entier, k: entier) → entier:
+    courant ← un tableau de taille n
+    précédent ← un tableau de taille n
+
+    courant[0] ← 1
+    pour chaque i allant de 1 à n-1:
+        pour chaque j allant de 0 à n-1:
+            précédent[j] ← courant[j]
+
+            si (j == i) ou (j == 0):
+                courant[j] ← 1
+            sinon:
+                courant[j] ← précédent[j-1] + précédent[j]
+
+    rendre courant[k - 1]
+```
+
+Remarquez que le tableau précédent est obligatoire et se remplit au fur et à mesure, à chaque incrément de i
+
+{% enddetails %}
+
+Il existe des solutions à un seul de taille $n$, essayez de trouver comment faire !
+
