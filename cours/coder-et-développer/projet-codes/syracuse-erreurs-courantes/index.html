@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>corrigé Test 1 : code</title>
+    <title>Erreurs courantes : Syracuse</title>
 
     
 
@@ -71,34 +71,16 @@
       
 <article>
 
-  <h1 class="mb-1">corrigé Test 1 : code</h1>
-  <div class="mb-4">
+  <h1>Erreurs courantes : Syracuse</h1>
+  <div>
     
 
-    
-      <div class=" px-4 flex items-center">
-        
-          <div class="font-bold">Auteur : </div>
-        
-        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
-          
-            <li class="before:content-['•'] before:px-1">François Brucker</li>
-          
-        </ul>
-      </div>
     
   </div>
 
   
 
-  <h2>Barème</h2>
-<ul>
-<li>fonction <code class="language-">syracuse</code> + test : 2pt</li>
-<li>suite Syracuse + test : 2pt</li>
-<li>fichier <code class="fichier">main.py</code> : 1pt</li>
-</ul>
-<h2>Erreurs fréquemment rencontrées</h2>
-<h3>Tests indépendants</h3>
+  <h2>Tests indépendants</h2>
 <p>Une fonction de test doit être indépendante du reste du code.
 De là :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">x <span class="token operator">=</span> <span class="token number">1</span>
@@ -108,14 +90,14 @@ De là :</p>
 <p>N'est pas correcte. On préférera être explicite :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test_syracuse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<h3>Noms des tests</h3>
+<h2>Noms des tests</h2>
 <p>Un test à sa son utilité. Son nom doit dire à quoi il sert. Ainsi <code class="language-">test_1</code> n'est <strong>PAS</strong> un bon nom de test. On pourra avoir la convention de nommage suivante : <code class="language-">test_nom_quoi</code> où <code class="language-">nom</code> est le nom de la fonction que l'on teste et <code>quoi</code>ce que l'on teste.</p>
 <p>exemple :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> syracuse
 
 <span class="token keyword">def</span> <span class="token function">test_syracuse_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span></code></pre>
-<h3>Vos tests/main doivent se lancer</h3>
+<h2>Vos tests/main doivent se lancer</h2>
 <p>Un programme doit <strong>TOUJOURS</strong> marcher. Lorsque l'on exécute un <em>&quot;<a href="http://main.py">main.py</a>&quot;</em> où que l'on lance les tests avec la commande <code>pytest</code> ils doivent se lancer. Cela ne veut pas dire que les tests soient tous vert, vous pouvez avoir un tests rouge ce qui signifie que vous êtes entrain de travailler sur cette fonctionnalité et qu'elle ne fonctionne pas encore, mais ils doivent se lancer.</p>
 <p>Ainsi :</p>
 <ul>
@@ -125,54 +107,9 @@ De là :</p>
 </ul>
 <p>Si on ne peut pas exécuter votre fichier main ou que vos tests ne se lancent pas parce que vous vous êtres trompé dans un import ou que vous avez des erreurs de syntaxe, votre note chute drastiquement.</p>
 <p>Dernière remarque : vos tests doivent tester des choses... Mettre des fonctions de tests sans qu'ils soient utile (genre <code>assert 1 == 1</code>) est également rédhibitoire.</p>
-<h3>Entrée utilisateurs et conversion de types</h3>
+<h2>Entrée utilisateurs et conversion de types</h2>
 <p>Après un input vous aurez <strong>toujours</strong> une chaîne de caractère. Il faut la convertir dans ce que va demander vos fonctions, ici des entiers.</p>
 <p>Ne faites <strong>PAS</strong> de conversion de type dans vos fonctions. Si elles demandent des entrées entiers supposez que c'est le cas (par de <code>int(x) % 2</code> par exemple dans la fonction <code>syracuse</code>). Tôt ou tard ce genre chose va vous sauter à la figure car un jour vous votre programme va planter sans que vous compreniez pourquoi ni où est le soucis.</p>
-<h2><code class="fichier">syracuse.py</code></h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">syracuse</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> x <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> x <span class="token operator">/</span> <span class="token number">2</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">3</span> <span class="token operator">*</span> x <span class="token operator">+</span> <span class="token number">1</span>
-
-
-<span class="token keyword">def</span> <span class="token function">suite</span><span class="token punctuation">(</span>u_0<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    sortie <span class="token operator">=</span> <span class="token punctuation">[</span>u_0<span class="token punctuation">]</span>
-    
-    u_n <span class="token operator">=</span> u_0
-    <span class="token keyword">while</span> u_n <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        u_n <span class="token operator">=</span> syracuse<span class="token punctuation">(</span>u_n<span class="token punctuation">)</span>
-        sortie<span class="token punctuation">.</span>append<span class="token punctuation">(</span>u_n<span class="token punctuation">)</span>
-    
-    <span class="token keyword">return</span> sortie
-</code></pre>
-<h2><code class="fichier">test_syracuse.py</code></h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> syracuse<span class="token punctuation">,</span> suite
-
-<span class="token keyword">def</span> <span class="token function">test_syracuse_pair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_syracuse_impair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> syracuse<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">4</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_suite_u_0_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> suite<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-
-<span class="token keyword">def</span> <span class="token function">test_suite_u_0_5</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">assert</span> suite<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
-</code></pre>
-<h2><code class="fichier">main.py</code></h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> syracuse <span class="token keyword">import</span> suite
-
-sortie_utilisateur <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Donnez un entier : "</span><span class="token punctuation">)</span>
-
-u_0 <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>sortie_utilisateur<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"suite de syracuse associée : "</span><span class="token punctuation">,</span> suite<span class="token punctuation">(</span>u_0<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
 
 
 </article>

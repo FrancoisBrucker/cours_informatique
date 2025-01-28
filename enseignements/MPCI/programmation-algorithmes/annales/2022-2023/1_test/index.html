@@ -105,7 +105,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Lorsque l'on vous demande d'<em><strong>écrire une fonction</strong></em>, cela <strong>signifie</strong> :</p>
+<p>Lorsque l'on vous demande d'<strong><em>écrire une fonction</em></strong>, cela <strong>signifie</strong> :</p>
 <ul>
 <li>écrire le code de la fonction</li>
 <li>écrire les tests qui vérifient son bon fonctionnement</li>
@@ -114,96 +114,148 @@
 
 <p>Ce n'est pas grave si vous ne faites pas toutes les questions, mais si vous donnez une fonction sans ses tests ou qui ne fonctionne pas elle ne sera pas notée.</p>
 <p>Enfin, faites aussi en sorte que votre code ait 0 défaut de style (le linter ne doit pas râler).</p>
-<h2>But</h2>
-<p>On essaye d'écrire un programme qui joue au pendu.</p>
-<h2>1. fonction <code class="language-">est_une_lettre(lettre, mot)</code></h2>
-<p>On vous demande d'écrire la fonction <code class="language-">est_une_lettre(lettre, mot)</code> telle que :</p>
-<ul>
-<li><strong>paramètres d'entrée</strong> :
+<h2>Sujet</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/#pendu" class="interne">Pendu</a></p>
+</div></div>
+
+<h2>Barème</h2>
+<p>Une note sur 5 répartie comme suit :</p>
 <ol>
-<li><code class="language-">lettre</code> un caractère</li>
-<li><code class="language-">mot</code> une chaîne de caractères</li>
+<li>sur 1 point (.5 pour le code et .5 pour les tests)</li>
+<li>sur 1 point (.5 pour le code et .5 pour les tests)</li>
+<li>sur 1 point (.5 pour le code et .5 pour les tests)</li>
+<li>sur 1 point (.5 pour le code et .5 pour les tests)</li>
+<li>sur 1 point</li>
 </ol>
-</li>
-<li><strong>sortie</strong> :
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 5 par $6$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
 <ul>
-<li>si au moins une des lettres de <code class="language-">mot</code> et <code class="language-">lettre</code>, la fonction rend <code class="language-">True</code></li>
-<li>sinon, la fonction rend <code class="language-">False</code></li>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire parfaitement les 2 premières questions. Ce qui lui permet d'avoir 2/5, soit 12/20</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir les 3 premières questions. Ce qui lui permet d'avoir 3/5 et donc 18/20</li>
+<li><strong>un très bon élève</strong> fait plus que les 3 premières questions.</li>
 </ul>
-</li>
-<li><strong>exemples</strong> :
+</div></div>
+
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/5</th>
+<th>0</th>
+<th>0.5</th>
+<th>1</th>
+<th>1.25</th>
+<th>1.5</th>
+<th>1.75</th>
+<th>2</th>
+<th>2.25</th>
+<th>2.5</th>
+<th>2.75</th>
+<th>3</th>
+<th>3.5</th>
+<th>4</th>
+<th>5</th>
+</tr>
+<tr>
+<th>note/20</th>
+<th>0</th>
+<th>3</th>
+<th>6</th>
+<th>7.5</th>
+<th>9</th>
+<th>10.5</th>
+<th>12</th>
+<th>13.5</th>
+<th>15</th>
+<th>16.5</th>
+<th>18</th>
+<th>21</th>
+<th>24</th>
+<th>30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>3</td>
+<td>5</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>12</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rang</td>
+<td>41</td>
+<td>36</td>
+<td>26</td>
+<td>25</td>
+<td>24</td>
+<td>23</td>
+<td>11</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+<td>4</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td># &lt;</td>
+<td>0</td>
+<td>3</td>
+<td>8</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>21</td>
+<td>33</td>
+<td>34</td>
+<td>35</td>
+<td>36</td>
+<td>40</td>
+<td>41</td>
+<td>42</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><code class="language-">est_une_lettre(&quot;i&quot;, &quot;victoire&quot;)</code> doit rendre <code class="language-">True</code></li>
-<li><code class="language-">est_une_lettre(&quot;e&quot;, &quot;la disparition&quot;)</code> doit rendre <code class="language-">False</code></li>
+<li>moyenne : 10.2/20 (1.7/5)</li>
+<li>écart-type : 6.57/20 (1.09/5)</li>
+<li>médiane : 12/20 (2/5)</li>
 </ul>
-</li>
-</ul>
-<h2>2. fonction <code class="language-">caractères(lettre, mot)</code></h2>
-<p>On vous demande d'écrire la fonction <code class="language-">caractères(lettre, mot)</code> telle que :</p>
-<ul>
-<li><strong>paramètres d'entrée</strong> :
-<ol>
-<li><code class="language-">lettre</code> un caractère</li>
-<li><code class="language-">mot</code> une chaîne de caractères</li>
-</ol>
-</li>
-<li><strong>sortie</strong> :
-<ul>
-<li>une liste $L$ contenant tous les indices des caractères de <code class="language-">mot</code> qui valent <code class="language-">lettre</code>. Cette liste doit être triée par ordre croissant.</li>
-</ul>
-</li>
-<li><strong>exemples</strong> :
-<ul>
-<li><code class="language-">caractères(&quot;i&quot;, &quot;victoire&quot;)</code> doit rendre <code class="language-">[1, 5]</code></li>
-<li><code class="language-">caractères(&quot;e&quot;, &quot;la disparition&quot;)</code> doit rendre <code class="language-">[]</code></li>
-</ul>
-</li>
-</ul>
-<h2>3. fonction <code class="language-">découvre(mot_caché, lettre, positions)</code></h2>
-<p>On vous demande d'écrire la fonction <code class="language-">découvre(mot_caché, lettre, positions)</code> telle que :</p>
-<ul>
-<li><strong>paramètres d'entrée</strong> :
-<ol>
-<li><code class="language-">mot_caché</code> une chaîne de caractères</li>
-<li><code class="language-">lettre</code> un caractère</li>
-<li><code class="language-">positions</code> une liste d'entiers rangés par ordre croissant</li>
-</ol>
-</li>
-<li><strong>sortie</strong> :
-<ul>
-<li>la chaîne de caractères <code class="language-">mot_caché</code> où les indices correspondants aux entiers de <code class="language-">positions</code> sont remplacés par <code class="language-">lettre</code></li>
-</ul>
-</li>
-<li><strong>exemples</strong> :
-<ul>
-<li><code class="language-">découvre(&quot;......&quot;, &quot;r&quot;, [1, 2, 5])</code> doit rendre <code class="language-">&quot;.rr..r&quot;</code></li>
-<li><code class="language-">découvre(&quot;erre.r&quot;, &quot;u&quot;, [4])</code> doit rendre <code class="language-">&quot;erreur&quot;</code></li>
-<li><code class="language-">découvre(&quot;erre.r&quot;, &quot;u&quot;, [])</code> doit rendre <code class="language-">&quot;erre.r&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h2>4. fonction <code class="language-">caché(mot)</code></h2>
-<p>On vous demande d'écrire la fonction <code class="language-">caché(mot)</code> telle que :</p>
-<ul>
-<li><strong>paramètres d'entrée</strong> :
-<ol>
-<li><code class="language-">mot</code> une chaîne de caractères</li>
-</ol>
-</li>
-<li><strong>sortie</strong> :
-<ul>
-<li>une chaîne de caractères composée uniquement de <code class="language-">&quot;.&quot;</code> et de longueur égale à celle de <code class="language-">mot</code></li>
-</ul>
-</li>
-<li><strong>exemples</strong> :
-<ul>
-<li><code class="language-">caché(&quot;anticonstitutionnellement&quot;)</code> doit rendre <code class="language-">&quot;.........................&quot;</code></li>
-<li><code class="language-">caché(&quot;&quot;)</code> doit rendre <code class="language-">&quot;&quot;</code></li>
-</ul>
-</li>
-</ul>
-<h2>5. programme principal</h2>
-<p>Créez un programme principal permettant de jouer au pendu jusqu'à ce que le mot à trouver ne contienne plus de <code class="language-">&quot;.&quot;</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Beaucoup d'entres vous sont venus sans réelle préparation au test. Cela se ressent dans les notes (la moité des élèves ont moins de dix et un quart moins de six) !</p>
+</div></div>
+
+<p>Vous <strong>devez</strong> préparer chaque test pour obtenir une note correcte (12 ou plus). Le cours est en ligne, il y a des annales et les profs — très sympas — répondent à vos questions en direct ou par mail.</p>
+<p>Outre le manque de préparation, j'ai vu beaucoup de code ou de tests qui ne s'exécutent manifestement pas. Votre code <strong>doit</strong> être exécutable sinon le correcteur peut penser que vous tentez de l'enfumer et ça le force à modifier votre code pour le faire fonctionner, en particulier pour lancer les tests (ce qui le rend irritable et moins enclin à être bienveillant).</p>
+<p>Enfin, cela masque les fonctions ou les tests qui sont corrects !</p>
 
 
 </article>

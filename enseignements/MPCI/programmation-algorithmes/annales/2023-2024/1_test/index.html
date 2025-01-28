@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sujet Test 1 : code</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">sujet Test 1 : code</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous avez 15min pour faire le test.</p>
+</div></div>
+
+<h2>Rendu</h2>
+<p>On vous rappelle que toute fonction (hors du programme principal) doit être testée.</p>
+<h3>Type de rendu</h3>
+<p>Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si nécessaire). Commencez donc par créer un projet dans un dossier que vous appellerez <code class="fichier">test1</code>.</p>
+<h3>Éléments de notation</h3>
+<ol>
+<li>3 fichiers dans un projet :
+<ul>
+<li>le programme principal <code class="fichier">main.py</code>,</li>
+<li>les fonctions utilisées <code class="fichier">fonctions.py</code>,</li>
+<li>les tests des fonctions <code class="fichier">test_fonctions.py</code>.</li>
+</ul>
+</li>
+<li>Du joli code :
+<ul>
+<li>0 warning,</li>
+<li>le code doit être passé par black.</li>
+</ul>
+</li>
+<li>Bons noms :
+<ul>
+<li>de fichiers,</li>
+<li>de variables.</li>
+</ul>
+</li>
+<li>Tests unitaires : toute fonction non testée ne sera pas corrigée.</li>
+</ol>
+<h2>Sujet</h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/projet-codes/#compte-caractere" class="interne">Le compte est bon</a></p>
+</div></div>
+
+<h2>Barème</h2>
+<p>Une note sur 4 répartie comme suit :</p>
+<ul>
+<li>1 point de note de style répartit en :
+<ul>
+<li>1/4 point si trois fichiers utilisés : <code class="language-">main.py</code> pour le programme principal, <code class="language-">fonctions.py</code> pour le code des fonctions utilisées dans le programme principal et <code class="language-">test_fonctions.py</code> pour les tests des fonctions de <code class="language-">fonctions.py</code></li>
+<li>1/4 point pour le choix de noms de variables explicites</li>
+<li>1/4 point si les tests passent et/ou sont cohérent avec le code</li>
+<li>1/4 point si black a été utilisé pour que le code soit agréable à lire</li>
+</ul>
+</li>
+<li>1 point pour la question 1 répartit en :
+<ul>
+<li>1/3 point pour la gestion du <code class="language-">while</code></li>
+<li>1/3 point pour l'utilisation de la fonction <code class="language-">find</code> ou du recodage de sa fonctionnalité</li>
+<li>1/3 point pour le reste (<code class="language-">input</code>, ...)</li>
+</ul>
+</li>
+<li>1 point pour la question 2 répartit en :
+<ul>
+<li>1/3 point pour le code de la fonction</li>
+<li>1/3 point pour les tests de la fonction</li>
+<li>1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)</li>
+</ul>
+</li>
+<li>1 point pour la question 3 répartit en :
+<ul>
+<li>1/3 point pour le code de la fonction</li>
+<li>1/3 point pour les tests de la fonction</li>
+<li>1/3 point pour l'utilisation de la fonction dans le programme principal (ou à minima la fonctionnalité utilisée)</li>
+</ul>
+</li>
+</ul>
+<p>La question 4 n'a été abordée par personne.</p>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 4 par $5$</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire la première question sans le <code class="language-">while</code> et le code/test de la deuxième question. Ce qui lui permet d'avoir 2.333333 points sur 4, soit 11.66666/20</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir les 2 premières questions. Ce qui lui permet d'avoir 3/4 et donc 15/20</li>
+<li><strong>un très bon élève</strong> fait plus que les 2 premières questions.</li>
+</ul>
+</div></div>
+
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/4</th>
+<th>≤1</th>
+<th>]1, 1.5]</th>
+<th>]1.5, 2]</th>
+<th>]2, 2.25]</th>
+<th>]2.25, 2.5]</th>
+<th>]2.5,2.75]</th>
+<th>]2.75, 3]</th>
+<th>]3, 3.5]</th>
+<th>&gt;3.5</th>
+</tr>
+<tr>
+<th>note/20</th>
+<th>≤4.2</th>
+<th>[5.2, 6.7]</th>
+<th>[8.3, 10]</th>
+<th>[10.4, 11.3]</th>
+<th>[11.7, 12.5]</th>
+<th>[12.9, 13.8]</th>
+<th>[14.2, 15]</th>
+<th>[15.4, 17.1]</th>
+<th>18.3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>4</td>
+<td>3</td>
+<td>8</td>
+<td>6</td>
+<td>9</td>
+<td>6</td>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>42</td>
+<td>39</td>
+<td>31</td>
+<td>25</td>
+<td>16</td>
+<td>10</td>
+<td>6</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td># &lt;</td>
+<td>0</td>
+<td>4</td>
+<td>7</td>
+<td>15</td>
+<td>21</td>
+<td>30</td>
+<td>36</td>
+<td>40</td>
+<td>44</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 11.1/20 (2.22/4)</li>
+<li>écart-type : 3.57/20 (0.71/4)</li>
+<li>médiane : 11.67/20 (2.33/4)</li>
+</ul>
+<p>Je suis globalement content de vous, vous avez globalement tous travaillé pour le test et la plupart des notes en dessous de 10 sont dues à un manque d'expérience. Quelques notes sont cependant préoccupantes et il faudra vraiment travailler sa production de code et comprendre comment tout ceci fonctionne ensemble.</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
