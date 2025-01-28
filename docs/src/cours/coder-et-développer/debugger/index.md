@@ -458,10 +458,10 @@ Utiliser `pas à pas sortant` alors que l'on est pas dans une fonction est équi
 
 Lorsque l'on exécute une fonction, on ne passe à la ligne suivante que lorsque la fonction est terminée, c'est à dire lorsque toutes les instructions de la fonction ont été effectuées. Ce processus est récursif  : on peut appeler une fonction à l'intérieur d'une fonction...
 
-Ce mécanisme est gérféavec ce que l'on appelle [une pile d'exécution (ou pile d'appels)](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) :
+Ce mécanisme est géré avec ce que l'on appelle [une pile d'exécution (ou pile d'appels)](https://fr.wikipedia.org/wiki/Pile_d%27ex%C3%A9cution) :
 
 {% note %}
-Lorsque l'on appelle une fonction, l'instruction courante est stockée (on dit ***empilée***) A la fin de la fonction, on dépile cette instruction pour pouvoir y revenir.
+Lorsque l'on appelle une fonction B depuis une fonction A (qui peut être le programme principal), la fonction A est stockée (on dit ***empilée***) A la fin de la fonction B, on dépile cette fonction pour pouvoir y revenir et continuer son instruction.
 {% endnote %}
 
 Pour visualiser ce mécanisme, créons un petit programme :

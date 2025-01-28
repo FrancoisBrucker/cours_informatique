@@ -1,40 +1,14 @@
 ---
 layout: layout/post.njk
 
-title:  "sujet Test 1 : code"
-authors:
-    - François Brucker
+title: "Le compte est bon"
 ---
 
-{% attention %}
-Vous avez 15min pour faire le test.
-{% endattention %}
 
-## Rendu
-
-On vous rappelle que toute fonction (hors du programme principal) doit être testée.
-
-### Type de rendu
-
-Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si nécessaire). Commencez donc par créer un projet dans un dossier que vous appellerez `test1`{.fichier}.
-
-### Éléments de notation
-
-1. 3 fichiers dans un projet :
-    - le programme principal `main.py`{.fichier},
-    - les fonctions utilisées `fonctions.py`{.fichier},
-    - les tests des fonctions `test_fonctions.py`{.fichier}.
-2. Du joli code :
-    - 0 warning,
-    - le code doit être passé par black.
-3. Bons noms :
-    - de fichiers,
-    - de variables.
-4. Tests unitaires : toute fonction non testée ne sera pas corrigée.
 
 ## 1. Création du programme principal
 
-Créer le fichier `main.py`{.fichier} qui va contenir le programme principal. Celui-ci consistera à demander à l'utilisateur une chaine de caractères et un caractère et l'on cherchera à savoir combien de fois apparait le caractère dans la chaîne. Nous allons répondre à cette question en 3 questions.
+Créer le fichier `main.py`{.fichier} qui va contenir le programme principal. Celui-ci consistera à demander à l'utilisateur une chaîne de caractères et un caractère et l'on cherchera à savoir combien de fois apparaît le caractère dans la chaîne. Nous allons répondre à cette question en 3 questions.
 
 {% faire %}
 Créer dans le fichier `main.py`{.fichier} le code permettant d'exécuter les 4 étapes de l'algorithme suivant :

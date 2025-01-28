@@ -12,7 +12,7 @@ Tests et examens pour l'année scolaire 2020/2021
 
 ## Tests
 
-1. code : [sujet](./1_test_sujet){.interne} et [corrigé](./1_test_corrige){.interne}
+1. [code](./1_test){.interne}
 2. complexité : [sujet](./2_test_sujet){.interne} et [corrigé](./2_test_corrige){.interne}
 3. preuve : [sujet](./3_test_sujet){.interne} et [corrigé](./3_test_corrige){.interne}
 4. modélisation : [sujet](./5_test_sujet){.interne} et [corrigé](./5_test_corrige){.interne}

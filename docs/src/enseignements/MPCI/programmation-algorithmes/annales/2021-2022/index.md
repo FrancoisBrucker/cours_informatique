@@ -12,7 +12,7 @@ Tests et examens pour l'année scolaire 2021/2022
 
 ## Tests
 
-1. code : [sujet](./1_test_sujet){.interne} et [corrigé](./1_test_corrige){.interne}
+1. [code](./1_test){.interne}
 2. complexité et preuve : [sujet](./2_test_sujet){.interne} et [corrigé](./2_test_corrige){.interne}
 3. DS 1 : [sujet](./3_ds_sujet){.interne} et [corrigé](./3_ds_corrige){.interne}
 4. classes et objets : [sujet](./4_test_sujet){.interne} et [corrigé](./4_test_corrige){.interne}

@@ -108,7 +108,7 @@ Parties abordées :
 {% aller %}
 
 1. [Écrire des algorithmes en pseudocode](/cours/algorithmie/pseudo-code/){.interne}
-2. [Problèmes algorithmique](/cours/algorithmie/#probleme-algorithmique){.interne}
+2. [Problèmes algorithmique](/cours/algorithmie/probleme-algorithmique){.interne}
 3. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
 
 {% endaller %}
@@ -134,7 +134,7 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 
 {% aller %}
 
-On s'entraîne.
+[On s'entraîne](/cours/coder-et-développer/projet-codes/){.interne}
 
 {% endaller %}
 

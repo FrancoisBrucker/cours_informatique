@@ -11,9 +11,7 @@ Tests et examens pour l'année scolaire 2023/2024
 
 ## Tests
 
-1. Test 1 : Code
-   - [sujet](./1_test_sujet_code){.interne}
-   - [corrigé](./1_test_corrigé_code){.interne}
+1. [Test 1 : Code](./1_test){.interne}
 2. Test 2 : Preuve
    - [sujet](./2_test_sujet_preuve){.interne}
    - [corrigé](./2_test_corrigé_preuve){.interne}

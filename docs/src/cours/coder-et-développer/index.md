@@ -63,11 +63,11 @@ Le débogueur, qui permet d'exécuter ligne à ligne du code python est non seul
 [Déboguer son code](debugger){.interne}
 {% endaller %}
 
-> TBD exercices :
->
-> - reprendre tests code des mpci.
-> - code à déboguer
-> - exhiber des invariants de boucles avec le débogueur.
+On s'entraîne sur de petits projets :
+
+{% aller %}
+[On s’entraîne : petits projets de code](projet-codes){.interne}
+{% endaller %}
 
 ## Stockage des données
 
