@@ -112,7 +112,7 @@
 <li>des instructions, appelées <strong><em>corps de la fonction</em></strong></li>
 </ul>
 <p>Une fois définie, on peut l'appeler comme une instruction (sa sortie est affectée à la variable <code class="language-">sortie</code> dans l'exemple ci-après) :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> nom<span class="token punctuation">(</span>entrée_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> entrée_n<span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">sortie <span class="token operator">←</span> nom_fonction<span class="token punctuation">(</span>entrée_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> entrée_n<span class="token punctuation">)</span></code></pre>
 </div></div>
 
 <h2>Fonctions et algorithmes</h2>
@@ -134,8 +134,8 @@ affiche à l'écran trouve</code></pre>
 <h3>Pseudo-code avec fonctions</h3>
 <p>On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-                    x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-                    <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
+                   x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                  <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
 
     <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span>
         <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span>
@@ -161,8 +161,8 @@ affiche à l'écran trouve</code></pre>
 </div><div class="pl-8 mr-8">
 <p>Une signature de fonction associe :</p>
 <ul>
-<li>son type à chaque paramètre (précédé d'un <code>:</code>)</li>
-<li>le type de sortie (précédé d'un <code>-&gt;</code>)</li>
+<li>son type à chaque paramètre (précédé d'un <code class="language-">:</code>)</li>
+<li>le type de sortie (précédé d'un <code class="language-">→</code>)</li>
 </ul>
 </div></div>
 
@@ -172,7 +172,7 @@ affiche à l'écran trouve</code></pre>
 </svg>
 <div class="pl-8 mr-8">
 <p>Par exemple, la signature de la fonction recherche est :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">booléen</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></code></pre>
 </div></div>
 
 <h3>Variables locales</h3>
