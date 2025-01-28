@@ -45,7 +45,7 @@ Notez que tous les objets basiques à part les entiers sont de taille fixe :
 - caractères 32bits si on utilise les caractères Unicode
 - réel norme IEEE sur 64bits
 
-On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2^{64}$ et ainsi être représenté par un tableau d'entiers codé sur 64bits. C'est d'ailleurs ce qui se passe en python pr exemple où un entier, qui n'est pas borné, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
+On peut sans perte de généralité se restreindre aux entiers entree 0 et $2^{64}$, et c'est d'ailleurs ce que beaucoup de langages de programmation font, puisque qu'un entier quelconque peut être représenté en base $2$ et découpé en paquets de 64 bits. C'est ce  que font les languages d programmation comme python où un entier, qui n'est pas borné pfr nature, est composé d'un tableau d'entiers codés sur 64bits. Ceci est cependant transparent pour l'utilisateur (et c'est tant mieux).
 
 {% note "**À retenir**" %}
 On considérera toujours qu'un objet basique est de taille connue et donnée au début du programme.
@@ -93,7 +93,7 @@ Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables. $n$ est
 
 Si le tableau est nommé $t$ :
 
-- $t.longueur$ sera égal à sa taille.
+- $t.\mbox{longueur}$ sera égal à sa taille.
 - $t[i]$ est sa variable d'indice $i$ si $0 \leq i < n$
 - $t[-i]$ vaut $t[n-i]$ si si $0 < i  \leq n$
 
@@ -141,7 +141,7 @@ Les chaines étant très utilisées, des langages comme python les considèrent 
 - on définit l'opération de concaténation avec l'opérateur `+`{.language-} : `"salut" + " toi !"`{.language-} vaut la chaîne de caractères `"salut toi !"`{.language-}
 
 {% note %}
-Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction. [On justifiera ceci proprement plus tard](../../complexité-calculs/O-pour-l-algorithmie) (les chaînes crées sont des constantes).
+Chacune des quatre opérations précédentes (création, affectation, accès et concaténation) prend 1 instruction (les chaînes crées sont des constantes).
 {% endnote %}
 
 ## <span id="instruction"></span> Instructions de contrôle

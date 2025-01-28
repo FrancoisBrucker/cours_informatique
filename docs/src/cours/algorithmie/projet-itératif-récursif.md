@@ -171,7 +171,7 @@ Donnez et prouvez **un algorithme récursif** de signature :
 reverse_indice(t: [entier], i: entier) → ∅
 ```
 
-Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.longueur - 1 - j]$ soit échangés pour tous $i \leq j < t.longueur - i$
+Qui **modifie le tableau** passé en entrée (il ne rend rien !) de telle sorte que les éléments $t[j]$ et $t[t.\mbox{longueur} - 1 - j]$ soit échangés pour tous $i \leq j < t.\mbox{longueur} - i$
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -192,7 +192,7 @@ Le finitude est claire puisque :
 1. il n'y a qu'un appel récursif
 2. chaque appel se rapproche strictement de la condition d'arrêt
 
-La correction vient du fait que l'on échange bien des valeurs symétriques du tableau par rapport à l'indice du milieu du tableau qui est ici la partie entière de $t.longueur - 1/ 2$.
+La correction vient du fait que l'on échange bien des valeurs symétriques du tableau par rapport à l'indice du milieu du tableau qui est ici la partie entière de $t.\mbox{longueur} - 1/ 2$.
 
 {% enddetails %}
 {% attention %}

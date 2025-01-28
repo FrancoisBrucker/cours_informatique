@@ -22,7 +22,7 @@ Une fonction est un programme. Elle a ainsi :
 Une fois définie, on peut l'appeler comme une instruction (sa sortie est affectée à la variable `sortie`{.language-} dans l'exemple ci-après) :
 
 ```pseudocode
-sortie ← nom(entrée_1, ..., entrée_n)
+sortie ← nom_fonction(entrée_1, ..., entrée_n)
 ```
 
 {% endnote %}
@@ -60,8 +60,8 @@ On peut aussi directement coder des fonctions dans un pseudo-code. Par exemple :
 
 ```pseudocode
 fonction recherche(t: [entier],
-                    x: entier
-                    ) → booléen:
+                   x: entier
+                  ) → booléen:
 
     pour chaque e de t:
         si e == x:
@@ -86,14 +86,14 @@ Lorsque l'on code une fonction en python on a pas toujours l'habitude (ni le bes
 {% note "**Définition**" %}
 Une signature de fonction associe :
 
-- son type à chaque paramètre (précédé d'un `:`)
-- le type de sortie (précédé d'un `->`)
+- son type à chaque paramètre (précédé d'un `:`{.language-})
+- le type de sortie (précédé d'un `→`{.language-})
   {% endnote %}
   {% info %}
   Par exemple, la signature de la fonction recherche est :
 
 ```pseudocode
-recherche(t: [entier], x: entier) -> booléen
+recherche(t: [entier], x: entier) → booléen
 ```
 
 {% endinfo %}

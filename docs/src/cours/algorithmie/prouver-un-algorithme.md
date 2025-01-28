@@ -94,7 +94,7 @@ def factorielle(n):
 
 {% note %}
 
-**Un algorithme itératif** va gérer les 2 points d'adaptation aux données en modifiant des variables et en utilisant des boucles `pour chaque`{.languages-} et `tant que`{.languages-}. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.
+**Un algorithme itératif** va gérer les 2 points d'adaptation aux données en modifiant des variables et en utilisant des boucles `pour chaque`{.language-pseudocode} et `tant que`{.language-}. Il va avoir tendance à aller du cas particulier vers le cas général en stockant les éléments intermédiaires dans des variables.
 
 {% endnote %}
 
@@ -142,11 +142,11 @@ Un programme récursif est un algorithme s'il n'existe pas de récursion infinie
 **Un programme récursif** est un algorithme si quelque soient ses entrées il n'y aura qu'un nombre fini de récursions.
 {% endnote %}
 
-Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles `tant que`{.languages-} :
+Un programme itératif est un algorithme s'il n'existe pas de boucle infinie. Ceci n'est possible que pour les boucles `tant que`{.language-} :
 
 {% note %}
 
-**Un programme itératif** est un algorithme si les conditions d'arrêt des boucles `tant que`{.languages-} seront vraies au court de l'exécution du programme quelque soit ses entrées.
+**Un programme itératif** est un algorithme si les conditions d'arrêt des boucles `tant que`{.language-} seront vraies au court de l'exécution du programme quelque soit ses entrées.
 {% endnote %}
 
 ### Correction

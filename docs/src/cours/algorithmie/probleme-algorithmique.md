@@ -12,7 +12,7 @@ eleventyComputed:
 
 On a vu que toute question n'admet pas forcément un algorithme pour le résoudre et que si on possède un algorithme il n'est pas évident de savoir ce qu'il fait. Cependant, on utilise quotidiennement des algorithmes et on se repose sur eux pour résoudre des problèmes concret.
 
-Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est [le théorème de Rice](/bases-théoriques/arrêt-rice/#théorème-rice){.interne}) ? C'est ce qu'on va aborder ici, en deux temps :
+Comment faire c eci alors que l'on a vu qu'il n'existe pas de procédure automatique pour le faire (on l'a vue, c'est [le théorème de Rice](../bases-théoriques/arrêt-rice/#théorème-rice){.interne}) ? C'est ce qu'on va aborder ici, en deux temps :
 
 1. on va commencer par formaliser ce qu'est un problème
 2. se donner des outils pour prouver qu'un algorithme donné résout bien le problème posé.

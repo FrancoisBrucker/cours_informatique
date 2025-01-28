@@ -58,7 +58,7 @@ Commençons par décrire la _grammaire de base_ du pseudo-code :
 
 ### Algorithmes en pseudo-code
 
-[On a vu](../../bases-théoriques/définition/#algorithmes-trois-voies){.interne} qu'un programme et un algorithme doivent posséder des paramètres d'entrées
+Un programme et un algorithme doivent posséder des paramètres d'entrées
 En pseudo-code, un algorithme est une suite d'instructions qui, a partir de paramètres d'entrée, rend une sortie. Considérons par exemple la description de  l'algorithme de recherche d'un élément dans une liste :
 
 ```text
