@@ -69,7 +69,7 @@ fonction recherche(t: [entier],
     rendre Faux
 
 algorithme exorcisme(t: [entier]
-                    ) → str:
+                    ) → chaîne:
 
     si recherche(t, 666):
         rendre "Aspergez votre ordinateur d'eau bénite. Vite !"

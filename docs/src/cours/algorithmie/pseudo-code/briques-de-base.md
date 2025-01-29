@@ -105,10 +105,14 @@ Les tableaux peuvent être simples comme une suite finie d'entiers ou des types 
 
 On considérera que :
 
-- la création d'un tableau prend 1 instruction : `[1, 3, x]`{.language-} crée un tableau qui affecte à sa variable :
-  - d'indice 0 un entier valant 1
-  - d'indice 1 un entier valant 3
-  - d'indice 2 l'objet associé à la variable `x`{.language-}
+- la création d'un tableau prend 1 instruction
+  - l'instruction `[1, 3, x]`{.language-} crée un tableau qui affecte à sa variable :
+    - d'indice 0 un entier valant 1
+    - d'indice 1 un entier valant 3
+    - d'indice 2 l'objet associé à la variable `x`{.language-}
+  - l'instruction `crée un tableau de longueur k`{.language-} crée un tableau de longueur k.
+    - **Attention** : la valeur de chaque case est **indéterminée !**
+    - lorsque l'on crée des tableau de cette façon, il est **indispensable** d'initialiser les valeurs de chaque case avant de les utiliser.
 - l'affectation d'un tableau à une variable prend 1 instruction : `t ← [1, 3, x]`{.language-} prend 2 instructions une pour la création et une pour l'affectation
 - l’accès à un élément particulier du tableau se fait en 1 instruction et en utilisant les crochets : `t[2]`{.language-} vaut le caractère `"l"`{.language-}
 

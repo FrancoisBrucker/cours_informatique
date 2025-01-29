@@ -743,7 +743,7 @@ algorithme pair(n: entier) → booléen
 algorithme impair(n: entier) → booléen
 ```
 
-Vous pourrez utiliser le fait que `pair(0)`{.language-} est vrai alors que'`impair(0)`{.language-} est faux.
+Vous pourrez utiliser le fait que `pair(0)`{.language-} est `Vrai`{.language-pseudocode} alors que'`impair(0)`{.language-} est `Faux`{.language-pseudocode}.
 
 {% endexercice %}
 {% details "corrigé" %}
