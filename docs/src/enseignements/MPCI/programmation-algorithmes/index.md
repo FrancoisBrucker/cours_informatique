@@ -143,7 +143,7 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 #### Mercredi : complexité algorithmique
 
 {% attention %}
-Test de 15min en début de cours sur **la partie preuve d'algorithmes**. Il faudra rendre une feuille de papier.
+Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
 {% endattention %}
 {% faire %}
 Sujet du test 1
