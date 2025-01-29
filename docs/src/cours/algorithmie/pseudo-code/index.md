@@ -116,6 +116,7 @@ Un bon pseudo-code doit être compréhensible en tant que tel, sans commentaires
 
 Pour cela il faut :
 
+- expliciter la signature de vos algorithme
 - utiliser des noms de variables ou de fonctions explicites et utile à la compréhension
 - séparer les différentes parties d'un algorithmes en fonctions au nom explicite.
 
