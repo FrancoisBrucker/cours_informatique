@@ -113,14 +113,18 @@
 </div></div>
 
 <p>Par exemple le pseudo-code suivant :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x = 30
-if ((x > 12) AND (x < 36)):
-    z = "entre 13 et 35"</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">x <span class="token operator">←</span> <span class="token number">30</span></span>
+<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    z <span class="token operator">←</span> <span class="token string">"entre 13 et 35"</span></span></code></pre>
+<ul>
+<li>première ligne : 2 instructions
 <ol>
 <li>Création de l'entier valant 30 : 1 instruction</li>
 <li>on affecte l'entier à x : 1 instruction</li>
-<li>Pour faire cette instruction il faut :
-<ul>
+</ol>
+</li>
+<li>deuxième ligne : 8 instructions
+<ol>
 <li>faire <code class="language-">x &gt; 12</code>. Pour cela :
 <ul>
 <li>on crée l'entier valant 12 : 1 instruction</li>
@@ -136,12 +140,17 @@ if ((x > 12) AND (x < 36)):
 </ul>
 </li>
 <li>faire l'instruction <code class="language-">AND</code> : 1 instruction</li>
-<li>faire le <code class="language-">if</code> : 1 instruction</li>
-</ul>
-</li>
-<li>on commence par récupérer la valeur de <code class="language-">x</code> (1 instruction), on crée la chaîne (1 instruction) puis affecte le résultat d'une opération élémentaire (2 instructions) : donc un total de 4 instructions</li>
+<li>faire le <code class="language-">si</code> : 1 instruction</li>
 </ol>
-<p>Un nombre total d'instructions de 14.</p>
+</li>
+<li>troisième ligne : 2 instructions
+<ol>
+<li>on crée la chaîne : 1 instruction</li>
+<li>puis affecte le résultat : 1 instruction</li>
+</ol>
+</li>
+</ul>
+<p>Un nombre total d'instructions de 12 pour ces trois lignes de pseudo-code.</p>
 <h2>Complexité des appels de fonctions</h2>
 <p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -153,17 +162,24 @@ if ((x > 12) AND (x < 36)):
 </div></div>
 
 <p>Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">for</span> e <span class="token keyword">in</span> t<span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">if</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">fonction</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">t <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">trouve <span class="token operator">=</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
+<span class="highlight-line">t <span class="token operator">←</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">trouve <span class="token operator">←</span> recherche<span class="token punctuation">(</span>t<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span></span>
 <span class="highlight-line">affiche à l'écran trouve</span></code></pre>
 <ol>
-<li>exécution de la ligne 7 : création d'un tableau et affectation à une variable : 2 instructions</li>
+<li>exécution de la ligne 7 : 8 instructions
+<ul>
+<li>création d'un tableau : 1 instruction</li>
+<li>création de 3 entiers : 3 instructions</li>
+<li>affectation des 3 entiers aux indices du tableau :  3 instructions</li>
+<li>affectation du tableau à une variable : 1 instruction</li>
+</ul>
+</li>
 <li>exécution de la ligne 8 :
 <ol>
 <li>exécution de la fonction recherche (ligne à ligne) :
@@ -178,21 +194,21 @@ if ((x > 12) AND (x < 36)):
 </li>
 <li>affecter les paramètres aux variables de la fonction :
 <ul>
-<li>affectation du premier paramètre à la variable locale t : 1 instruction</li>
-<li>affectation du second paramètre à la variable locale e : 1 instruction</li>
+<li>affectation du premier paramètre à la variable locale <code class="language-">t</code> : 1 instruction</li>
+<li>affectation du second paramètre à la variable locale <code class="language-">x</code> : 1 instruction</li>
 </ul>
 </li>
 </ol>
 </li>
-<li>exécution de la ligne 2 (3 fois): affecter <code>e</code> : 1 instruction</li>
-<li>exécution de la ligne 3 : un test
+<li>exécution de la ligne 2 (3 fois) : trouver l'objet du tableau puis l'affecter à <code class="language-">e</code> : 2 instructions</li>
+<li>exécution de la ligne 3 (3 fois) : un test
 <ul>
-<li>on trouve les objets associées à t et e : 2 instructions</li>
+<li>on trouve les objets associées à <code class="language-">t</code> et <code class="language-">e</code> : 2 instructions</li>
 <li>on teste l'égalité : 1 instruction</li>
-<li>on fait le <code class="language-">if</code> : 1 instruction</li>
+<li>on fait le <code class="language-">si</code> : 1 instruction</li>
 </ul>
 </li>
-<li>exécution de la ligne 4 : on arrive à cette ligne à la troisième itération : 1 instruction</li>
+<li>exécution de la ligne 4 (1 fois) : on arrive à cette ligne à la troisième itération : 2 instructions (une pour créer le booléen, l'autre pour le rendre)</li>
 </ol>
 </li>
 <li>affection de la variable <code class="language-">trouve</code></li>
@@ -205,14 +221,11 @@ if ((x > 12) AND (x < 36)):
 </ul>
 </li>
 </ol>
-<p>Au total on eu besoin de $2+2+1+\underbracket{(1+1+1+1+3 \cdot (2+1+1) + 1)}_{\mbox{recherche(t, 6)}} + 1 + 1$
-instructions c'est à dire $24$ instructions.</p>
+<p>Au total on eu besoin de $8+\underbracket{(4 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
+instructions c'est à dire $41$ instructions.</p>
 <h2>Complexité des structures</h2>
-<blockquote>
-<p>TBD re-écrire sous la forme de structures avec l'exemple de la pile et de son implémentation sous la forme d'un tableau de taille fixe donné a la création et d'une méthode copie dans pile qui copie toute la structure dans une autre.</p>
-</blockquote>
-<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
-<p>Par exemple pour les listes, qui sont des tableaux redimensionnables :</p>
+<p>Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes de python par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.</p>
+<p>Par exemple pour les listes de python, qui sont des tableaux redimensionnables, on admet pour l'instant (on les verra en détails plus tard) que les complexités sont :</p>
 <ul>
 <li>complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction</li>
 <li>complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions</li>
@@ -222,15 +235,20 @@ instructions c'est à dire $24$ instructions.</p>
 </ul>
 <p>Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une <code class="language-">ma_liste.index(&quot;?&quot;)</code>, <code class="language-">x in ma_chaîne_de_caractères</code>) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous <strong>devez</strong> en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.</p>
 <h2>Complexité d'un algorithme</h2>
-<p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 45$ :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">F = un tableau vide de 10 cases
-F[0] = 1
-F[1] = 2
-
-pour i allant de 2 à 9:
-  F[i] = F[i-1] + F[i-2]
-
-rendre F[9]</code></pre>
+<p>Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 194$ :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">F <span class="token operator">←</span> un tableau de <span class="token number">10</span> entiers</span>
+<span class="highlight-line">F<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">F<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">i <span class="token operator">←</span> <span class="token number">2</span></span>
+<span class="highlight-line"><span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> <span class="token number">9</span> <span class="token punctuation">:</span></span>
+<span class="highlight-line"> <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">  k <span class="token operator">←</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">2</span></span>
+<span class="highlight-line">  F<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> F<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>k<span class="token punctuation">]</span></span>
+<span class="highlight-line">  </span>
+<span class="highlight-line"> <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"><span class="token keyword">rendre</span> F<span class="token punctuation">[</span><span class="token number">9</span><span class="token punctuation">]</span></span></code></pre>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
@@ -254,70 +272,79 @@ rendre F[9]</code></pre>
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Il y a cinq types d'instructions élémentaires :</p>
+<p>La complexité de chaque ligne :</p>
 <ul>
-<li>les créations :
-<ul>
-<li>ligne 1 : un tableau</li>
-<li>ligne 2 : un entier</li>
-<li>ligne 3 : un entier</li>
-<li>ligne 5 : deux entiers</li>
-</ul>
-</li>
-<li>les affectations :
-<ul>
-<li>ligne 1 : on affecte une valeur au tableau</li>
-<li>ligne 2, 3 : on affecte une valeur à une case du tableau</li>
-<li>ligne 5 : on affecte les valeurs 2 à 9 à la variable i</li>
-<li>ligne 6 : on affecte une valeur à une case du tableau</li>
-</ul>
-</li>
-<li>les récupérations de variables :
-<ul>
-<li>ligne 6 : on récupère les valeurs de 2 cases du tableau</li>
-<li>ligne 8 : on récupère les valeurs de 1 case du tableau</li>
-</ul>
-</li>
-<li>opérations sur des entiers :
-<ul>
-<li>ligne 6 : une somme</li>
-</ul>
-</li>
-<li>retour de l'algorithme en ligne 8</li>
-</ul>
-<p>On en conclut la complexité de chaque ligne :</p>
-<ul>
-<li>ligne 1 : 2 instruction</li>
-<li>ligne 2 : 2 instructions</li>
-<li>ligne 3 : 3 instruction</li>
+<li>ligne 1 : 2 instructions (une création et une affectation)</li>
+<li>ligne 2 : 2 instructions (une création et une affectation)</li>
+<li>ligne 3 : 2 instructions (une création et une affectation)</li>
 <li>ligne 4 : 0 instruction</li>
-<li>ligne 5 : 3 instructions la première fois et 1 instruction les autres fois (on ne recrée pas les objets)</li>
-<li>ligne 6 : 4 instructions</li>
-<li>ligne 7 : 0 instruction</li>
-<li>ligne 8 : 2 instructions</li>
+<li>ligne 5 : 2 instructions (une création et une affectation)</li>
+<li>ligne 6 : 4 instructions
+<ul>
+<li>création de l'entier 9</li>
+<li>récupération de la variable <code class="language-">i</code></li>
+<li>test logique <code class="language-">≤</code></li>
+<li>gestion du <code class="language-">tant que</code></li>
 </ul>
-<p>Comme la ligne 5 et 6 sont exécutées 8 fois, on en conclut que la complexité est :</p>
-<p>$$
-2+2+3+0+ 2 + 8\cdot(1 + 4) + 0 + 2 = 49
-$$</p>
+</li>
+<li>ligne 7 : 4 instructions
+<ul>
+<li>création de l'entier 1</li>
+<li>récupération de la variable <code class="language-">i</code></li>
+<li>opération <code class="language-">-</code></li>
+<li>affectation</li>
+</ul>
+</li>
+<li>ligne 8 : 4 instructions
+<ul>
+<li>création de l'entier 2</li>
+<li>récupération de la variable <code class="language-">i</code></li>
+<li>opération <code class="language-">-</code></li>
+<li>affectation</li>
+</ul>
+</li>
+<li>ligne 9 : 7 instructions
+<ul>
+<li>récupération des variables <code class="language-">i</code>, <code class="language-">j</code> et <code class="language-">k</code></li>
+<li>récupération des 2 cases du tableau</li>
+<li>opération <code class="language-">+</code></li>
+<li>affectation</li>
+</ul>
+</li>
+<li>ligne 10 : 0 instruction</li>
+<li>ligne 11 : 4 instructions</li>
+<li>ligne 12 : 0 instruction</li>
+<li>ligne 13 : 2 instructions</li>
+</ul>
+<p>Comme les lignes 6 à 11 sont exécutées 8 fois, on en conclut que la complexité est :</p>
+<div>
+$$
+2+2+2+0+2 + 8\cdot(4 + 4 + 4 + 7 + 0 + 4) + 0 + 2 = 10 + 8 \cdot 23 = 194
+$$
+</div>
 </div>
 </details>     
 </div>
 <p>Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :</p>
 <pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction fibonacci(n):
-  F = un tableau vide de n cases
-  F[0] = 1
-  F[1] = 2
+  F ← un tableau de n entiers
+  F[0] ← 1
+  F[1] ← 1
 
-  pour i allant de 2 à n-1:
-    F[i] = F[i-1] + F[i-2]
+  i ← 2
+  tant que i < n :
+    j ← i - 1
+    k ← i - 2
+    F[i] ← F[j] + F[k]
+    
+    i ← i + 1
 
   rendre F[n-1]</code></pre>
-<p>Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 5\cdot n+2$ qui dépend de la valeur du paramètre d'entrée.</p>
+<p>Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 23\cdot n-32$ qui dépend de la valeur du paramètre d'entrée.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que la complexité est bien de $5\cdot n+2$</p>
+<p>Montrez que la complexité est bien de $23\cdot n-32$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -340,18 +367,19 @@ $$</p>
 <p>Il y a deux différences :</p>
 <ul>
 <li>il faut affecter un objet au paramètre $n$</li>
-<li>on ne rentre plus 8 fois dans la boucle mais $n-2$ fois.</li>
+<li>on ne rentre plus 8 fois dans la boucle mais $n-2$ fois</li>
+<li>la case de retour n'est plus une constante mais dépend d'un calcul ($n-1$)</li>
 </ul>
-<p>La complexité est alors : $1 + 11 + (n-2)\cdot 5 = 5\cdot n+2$.</p>
+<p>La complexité est alors : $1 + 10 + (n-2) \cdot 23 + 3 = 23\cdot n-32$.</p>
 </div>
 </details>     
 </div>
-<p>Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure général. Par exemple l'algorithme suivant, écrit en python, qui cherche si une <code class="language-">valeur</code> est dans un <code class="language-">tableau</code> :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction est_dans_tableau(valeur, tableau):
-    pour chaque élément x du tableau:
-        si x == valeur:
-            rend OUI
-    rend NON</code></pre>
+<p>Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur <code class="language-">v</code> est dans un tableau <code class="language-">t</code> :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <p>La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.</p>
 <p>Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances <em>a priori</em> sur ses entrées. Pour la fonction <code class="language-">est_dans_tableau</code> on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -390,7 +418,7 @@ $$</p>
 <p><strong><em>La complexité</em></strong> $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div></div>
 
-<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">est_dans_tableau</code> vaut $5N+4$.</p>
+<p>En utilisant la définition ci-dessus, la complexité de l'algorithme <code class="language-">recherche</code> vaut $5N+4$.</p>
 <p>Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction <code class="language-">fibonacci(n)</code>, la taille de stockage d'un entier étant de 1 case mémoire.</p>
 <p>Si l'on avait calculé la complexité en regroupant les entrées par taille, on aurait eu qu'une seule classe d'entrée et la complexité aurait été infinie... Il a donc fallu supposer que l'on connaissait la valeur de l'entrée pour calculer une complexité finie.</p>
 <p>Il n'y a pas de règle immuable dans le choix des connaissances que l'on s'accorde sur les paramètres, mais ne vous inquiétez pas, cela ressortira immédiatement du calcul. En revanche, comme la nature du paramètre peut changer :</p>
@@ -410,7 +438,7 @@ $$</p>
 <h2>Autres types de complexités</h2>
 <p>Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant la définition précédente. Il existe cependant d'autres types de complexité que l'on pourra utiliser.</p>
 <h2>Complexité min</h2>
-<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">est_dans_tableau</code> par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">est_dans_tableau</code>) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme <code class="language-">est_dans_tableau</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
+<p>Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme <code class="language-">recherche</code> par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme <code class="language-">recherche</code>) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme <code class="language-">recherche</code>, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -418,7 +446,7 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité minimum $C</em>{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$_</strong> est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité minimum</em></strong> $C_{\min}(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre minimum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.</p>
 </div></div>
 
 <h2><span id="complexité-temps"></span>Complexité en temps</h2>
@@ -430,7 +458,7 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p><strong><em>La complexité en temps</em></strong> $T(N)$ d'un code $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
+<p><strong><em>La complexité en temps</em></strong> $T(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le temps maximum pris pour exécuter le code $A$ avec des entrées dont la taille vaut $N$.</p>
 </div></div>
 
 <p>Si chaque instruction élémentaire prend le même temps à être effectuée sur une machine (ou que l'on borne le tout par l'instruction élémentaire la plus gourmande), la complexité d'un pseudo-code nous donne un nombre proportionnel au temps qu'il mettra à s'exécuter :</p>
@@ -463,39 +491,22 @@ $$</p>
 <li>1 case pour le stockage de l'entier $i$</li>
 </ul>
 <p>Comparez avec l'algorithme suivant qui calcule aussi le $n$ème élément de la suite de Fibonacci :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">fonction fibonacci_sobre(n):
-  a = 1
-  b = 1
-
-  pour i allant de 2 à n-1:
-    c = a + b
-    a = b
-    b = c
-
-  rendre b</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_sobre</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">  F <span class="token operator">←</span> un tableau de<span class="token number"> n </span>entiers</span>
+<span class="highlight-line">  a <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">  b <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line"> <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">2</span></span>
+<span class="highlight-line">  <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span><span class="token number"> n </span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    c <span class="token operator">←</span> a <span class="token operator">+</span> b</span>
+<span class="highlight-line">    a <span class="token operator">←</span> b</span>
+<span class="highlight-line">    b <span class="token operator">←</span> c</span>
+<span class="highlight-line">    </span>
+<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">  <span class="token keyword">rendre</span> b</span></code></pre>
 <p>Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.</p>
-<p>Sa complexité un peu plus élevée :</p>
-<ol>
-<li>1 instruction : affectation du paramètre</li>
-<li>2 instructions : création d'un objet et affectation</li>
-<li>2 instructions : création d'un objet et affectation</li>
-<li>
-<ul>
-<li></li>
-</ul>
-</li>
-<li>$n+2$ instructions : $n-2$ affectations de <code class="language-">i</code> et 4 instruction pour la création des bornes (2 créations (entiers 2 et 1) ; une lecture et une opération de soustraction)</li>
-<li>$4(n-2)$ instructions : $n-2$ itérations de 2 lectures, une somme et une affectation</li>
-<li>$2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation</li>
-<li>$2(n-2)$ instructions : $n-2$ itérations de 1 lecture et une affectation</li>
-<li>
-<ul>
-<li></li>
-</ul>
-</li>
-<li>2 instructions : 1 lecture, un retour</li>
-</ol>
-<p>Pour un total de $9\cdot n-15$, mais reste comparable au premier.</p>
+<p>Sa complexité un peu plus élevée puisqu'il faut gérer les variables $a$, $b$ et $c$ mais reste comparable au premier.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Corrigé</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Corrigé</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-calcul-complexite/">Projet : calcul de complexité</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-calcul-complexite/suppression-doublons/">Suppressions de doublons</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-calcul-complexite/suppression-doublons/corrigé/">Corrigé</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>La structure de donnée utilisée ici est la <strong><em>liste</em></strong>. On considérera que :</p>
+<ul>
+<li>la création d'une liste vide se fait en $\mathcal{O}(1)$ opérations,</li>
+<li>l'ajout d'un élément en fin de liste se fait en $\mathcal{O}(1)$ opérations,</li>
+<li>lire un élément d'une liste se fait en $\mathcal{O}(1)$ opérations.</li>
+</ul>
+<h2>Suppression de doublon en conservant l'ordre</h2>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-2
+Entrées :
+    L : une liste de n valeurs
+Programme :
+    création d’une liste L2 vide
+    tant que L est non vide:
+        x = L[0]
+        ajoute x à la fin de L2
+        L = algorithme-1(L, x)
+    Retour L2</code></pre>
+<h3>complexité de l'algorithme 2</h3>
+<p>Commençons par compter le nombre de fois où la boucle <code class="language-">tant que</code> sera exécutée. <code class="language-">L</code> est modifiée à chaque fin de boucle <code class="language-">L = algorithme-1(L, x)</code> avec <code class="language-">x = L[0]</code>. Comme l'algorithme de la question 1 rend la restriction de de <code class="language-">L</code> aux valeurs différentes de <code class="language-">x</code>, elle va forcément être strictement plus petite (puisque <code class="language-">x=L[0]</code> il est forcément dans la liste) : la longueur de la liste diminue strictement à chaque itération, on ne peut y rentrer que la longueur de <code class="language-">L</code> initiale fois.</p>
+<p>La seule ligne de l'algorithme qui n'est pas de complexité $\mathcal{O}(1)$ est : <code class="language-">L = algorithme-1(L, x)</code>. Sa complexité est égale à une affectation ($\mathcal{O}(1)$) plus la complexité de l'algorithme de la question 1, qui vaut de l'ordre de la taille de la liste passée en entrée.</p>
+<p>Cette taille diminue strictement à chaque itération : on peut utiliser l'astuce du cours pour ne garder que la complexité la plus importante, c'est à dire $\mathcal{O}(len(L))$ avec <code class="language-">L</code> la liste initiale.</p>
+<p>Notre complexité est donc de l'ordre : $\mathcal{O}(1) + A * (\mathcal{O}(1) + B)$ où :</p>
+<ul>
+<li>A est le nombre de fois où l'on rentre dans la boucle tant que : $\mathcal{O}(len(L))$</li>
+<li>B est la complexité maximale de l'algorithme de la question 1 : $\mathcal{O}(len(L))$</li>
+</ul>
+<p>Notre algorithme est de complexité : $\mathcal{O}(len(L)^2)$</p>
+<h3>preuve algorithme 2</h3>
+<p>La liste <code class="language-">L</code> contient $k$ valeurs différentes que l'on note $v_1, \dots v_k$ dans l'ordre de la liste (le 1er indice où l'on rencontre $v_i$ est strictement plus petit que le 1er indice où l'on rencontre $v_j$ si $i &lt; j$).</p>
+<p>Notre invariant de boucle sera : au bout de la $i$ème itération :</p>
+<ul>
+<li>
+<p>$L2 = [v_1, \dots, v_i]$.</p>
+</li>
+<li>
+<p><code class="language-">L</code> vaut la restriction de <code class="language-">L</code> initiale aux valeurs différentes de $v_1$ jusqu'à $v_i$.</p>
+</li>
+<li>
+<p><strong>initialisation</strong> : comme $v_1= L[0]$ notre invariant est vrai puisque l'algorithme 1 rendra la restriction de <code class="language-">L</code> initiale aux éléments différents de $v_1$.</p>
+</li>
+<li>
+<p><strong>récurrence</strong> : On suppose la propriété vraie à la fin de l'itération $i$. Au début de l'itération $i+1$, on a par hypothèse de récurrence que $L2 = [v_1, \dots, v_i]$ et que <code class="language-">L</code> vaut la restriction de la liste <code class="language-">L</code> initiale aux valeurs différentes de $v_1$ jusqu'à $v_i$. Donc $L[0] = v_{i+1}$ et tout se passe comme à la 1ère itération.</p>
+</li>
+</ul>
+<p>A la fin de l'algorithme, notre invariant est toujours juste : $L2 = [v_1, \dots, v_k]$</p>
+<h2>Suppression de doublon d'une liste ordonnée</h2>
+<p>Il suffit de parcourir tous les éléments de <code class="language-">L</code> dans l'ordre :</p>
+<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Algorithme-2'
+Entrées :
+    L : une liste de n valeurs
+Programme :
+    création d’une liste L2 contenant le premier élément de L
+    pour i allant de 1 à n-1:
+        si L[i] != L[i-1]:
+            ajoute L[i] à la fin de L2
+    Retour L2</code></pre>
+<h3>complexité de l'algorithme 2'</h3>
+<p>Clairement en $\mathcal{O}(n)$</p>
+<h3>preuve de l'algorithme 2'</h3>
+<p>L'invariant de boucle et sa preuve est identique à celle de la preuve de l'algorithme 2 en tenant compte du fait que <code class="language-">L</code> est trié.</p>
+<h2>Suppression de doublon d'une liste sans ordre</h2>
+<p>On commence par trier la liste on utilise l'algorithme de la question précédente. Ceci fait passer la complexité de $\mathcal{O}(len(L)^2)$ à $\mathcal{O}(len(L)\log(len(L)))$</p>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

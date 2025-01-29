@@ -162,11 +162,11 @@ $$</p>
 <li>une <strong>borne minimale</strong> : $\mathcal{O}(1)$ puisque la taille la sortie est un booléen</li>
 <li>une <strong>borne maximale</strong> : $\mathcal{O}(n)$ où $n$ est la taille du tableau puisque l'algorithme ci-dessous (dont on <a href="../complexit%C3%A9-calculs/O-pour-l-algorithmie/#exemple-recherche" class="interne">on a déjà calculé la complexité</a>) résout le problème</li>
 </ul>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">True</span>
-    <span class="token keyword">return</span> <span class="token boolean">False</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
 <h3><spans id="complexité-recherche"> Complexité du problème &quot;recherche&quot;</spans></h3>
 <p>Notre borne minimale de $\mathcal{O}(1)$ semble irréaliste. Supposons de façon plus générale qu'il existe un algorithme $A$ qui résout le problème de recherche pour tous les tableaux de longueur $n$ en prenant strictement moins de $n$ instructions : ceci signifie l'algorithme $A$ n'a pas besoin de regarder toutes les cases d'un tableau de longueur $n$ pour répondre.</p>
 <p>Soit alors un tableau $T$ de taille $n$ qui ne contient pas <code>valeur</code>. Notre algorithme va répondre NON à la question <em>&quot;est-ce que valeur est dans $T$ ?&quot;</em> en strictement moins de $n$ instructions. Ceci signifie qu'il existe une case du tableau, disons $T[i^\star]$, que l'algorithme n'a jamais regardé lors de son exécution : il ne sait pas ce que contient cette case.</p>
@@ -233,30 +233,23 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 <p>Le problème <em>&quot;recherche ordonnée&quot;</em> est un sous problème de <em>&quot;recherche&quot;</em>, on a donc une borne maximale de $\mathcal{O}(n)$ (où $n$ est la taille du tableau) pour le résoudre puisqu'il suffit d'utiliser l'algorithme <code class="language-">est_dans_tableau(T)</code>.</p>
 <p>Cependant, on utilise souvent un autre algorithme : la recherche dichotomique.</p>
 <h4>Algorithme de la recherche dichotomique</h4>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau_trie<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    debut <span class="token operator">=</span> <span class="token number">0</span></span>
-<span class="highlight-line">    fin <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tableau_trie<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">while</span> fin <span class="token operator">-</span> debut <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        milieu <span class="token operator">=</span> <span class="token punctuation">(</span>fin <span class="token operator">+</span> debut<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span></span>
-<span class="highlight-line"></span>
-<span class="highlight-line">        <span class="token keyword">if</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">==</span> valeur<span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
-<span class="highlight-line">        <span class="token keyword">elif</span> tableau_trie<span class="token punctuation">[</span>milieu<span class="token punctuation">]</span> <span class="token operator">&lt;</span> valeur<span class="token punctuation">:</span></span>
-<span class="highlight-line">            debut <span class="token operator">=</span> milieu <span class="token operator">+</span> <span class="token number">1</span></span>
-<span class="highlight-line">        <span class="token keyword">else</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            fin <span class="token operator">=</span> milieu <span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span>
-<span class="highlight-line"></span></code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Lorsque l'on code la recherche dichotomique, il faut faire <strong>très attention</strong> à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.</p>
-<p>On a utilisé ici le fait que <code class="language-">(fin + debut) // 2</code> va donner la valeur entière de <code class="language-">(fin + debut) / 2</code>.</p>
-</div></div>
+<p>On reprend <a href="../projet-it%C3%A9ratif-r%C3%A9cursif/#dichotomie">l'algorithme récursif du calcul dichotomique</a> sous la forme récursive terminale et on le transcrit en algorithme itératif :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">recherche_dichotomique</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> v<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+  a <span class="token operator">←</span> <span class="token number">0</span>
+  b <span class="token operator">←</span> t<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span>
+  <span class="token keyword">si</span> b <span class="token operator">></span> a<span class="token punctuation">:</span>
+  <span class="token keyword">tant que</span> a <span class="token operator">≤</span> b<span class="token punctuation">:</span>
+    m <span class="token operator">←</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
 
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> m
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        a <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        b <span class="token operator">←</span> m <span class="token operator">-</span> <span class="token number">1</span>
+
+  <span class="token keyword">rendre</span> <span class="token operator">-</span><span class="token number">1</span>
+</code></pre>
 <p>Étudions l'algorithme :</p>
 <ul>
 <li><strong>fonctionnement</strong>. On vérifie que pour :
@@ -267,11 +260,11 @@ si l'algorithme ne regarde pas la case $T[i^\star]$ lors de son exécution pour 
 </li>
 <li><strong>preuve</strong> :
 <ul>
-<li><strong>finitude</strong>. La quantité entière <code class="language-">fin - debut</code> <strong>décroît strictement</strong> à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.</li>
+<li><strong>finitude</strong>. La quantité entière <code class="language-">b - a</code> <strong>décroît strictement</strong> à chaque itération, elle sera donc strictement négative après un nombre fini d'opération et l'algorithme s'arrêtera.</li>
 <li><strong>preuve</strong>.
 <ol>
-<li>on montre trivialement l'invariant de boucle suivant: si valeur est dans <code class="language-">tableau_trie</code>, alors sa position est plus grande que <code class="language-">debut</code> et plus petite que <code class="language-">fin</code></li>
-<li>si l'on sort de la boucle l'invariant est toujours vérifié mais comme <code class="language-">debut</code> &gt; <code class="language-">fin</code>, valeur ne peut être dans <code class="language-">tableau_trie</code></li>
+<li>on montre trivialement l'invariant de boucle suivant: si valeur est dans <code class="language-">t</code>, alors sa position est plus grande que <code class="language-">a</code> et plus petite que <code class="language-">b</code></li>
+<li>si l'on sort de la boucle l'invariant est toujours vérifié mais comme <code class="language-">a</code> &gt; <code class="language-">b</code>, <code class="language-">v</code> ne peut être dans <code class="language-">t</code></li>
 </ol>
 </li>
 </ul>
@@ -306,7 +299,7 @@ C(n) & = & 3 \cdot \mathcal{O}(1) + \\
 \end{array}
 $$
 </div>
-<p>Comme à chaque itération, <code class="language-">fin - debut</code> est divisé par 2 : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau) :</p>
+<p>Comme à chaque itération, <code class="language-">b - a</code> est divisé par 2 : il y a donc au plus $K \leq \log_2(n)$ itérations (avec $n$ la taille du tableau) :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -318,7 +311,7 @@ $$
 </div></div>
 
 <h4><span id="complexité-recherche-ordonnée"></span> Complexité du problème &quot;recherche ordonnée&quot;</h4>
-<p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">est_dans_tableau</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
+<p>L'algorithme de la recherche dichotomique résout le problème de la &quot;recherche ordonnée&quot; de façon bien plus efficace que l'algorithme <code class="language-">recherche</code> : il n'a pas besoin de connaître toutes les cases du tableau pour répondre à la question car le tableau est trié. Une borne maximum de la complexité du problème &quot;recherche ordonnée&quot; est alors $\mathcal{O}(\ln(n))$ (avec $n$ la taille du tableau).</p>
 <p>Nous allons montrer que l'on ne peut pas faire mieux en montrant que $\mathcal{O}(\ln(n))$ est une borne minimum de notre problème.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -328,13 +321,13 @@ $$
 <p>Remarquez bien que la preuve que l'on a donné pour la complexité de <em>&quot;recherche&quot;</em> ne fonctionne pas dans le cas de &quot;recherche ordonnée&quot;. On ne peut pas fabriquer comme précédemment de tableau $T'$ car les valeurs doivent être ordonnées.</p>
 </div></div>
 
-<p>Commençons par remarquer que <code class="language-">valeur</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
+<p>Commençons par remarquer que <code class="language-">v</code> peut se trouver à chaque position du tableau. Tout algorithme qui résout &quot;recherche ordonnée&quot; doit ainsi réussir à distinguer parmi $n + 1$ cas :</p>
 <ul>
-<li>soit <code class="language-">valeur</code> n'est pas dans tableau</li>
-<li>soit <code class="language-">valeur</code> est à l'indice 0 du tableau</li>
-<li>soit <code class="language-">valeur</code> est à l'indice 1 du tableau</li>
+<li>soit <code class="language-">v</code> n'est pas dans tableau</li>
+<li>soit <code class="language-">v</code> est à l'indice 0 du tableau</li>
+<li>soit <code class="language-">v</code> est à l'indice 1 du tableau</li>
 <li>...</li>
-<li>soit <code class="language-">valeur</code> est à l'indice $n-1$ du tableau</li>
+<li>soit <code class="language-">v</code> est à l'indice $n-1$ du tableau</li>
 </ul>
 <p>En algorithmie, distinguer parmi plusieurs cas se fait par des tests (on utilise les opérations <code>si alors sinon</code>). De là :</p>
 <ul>

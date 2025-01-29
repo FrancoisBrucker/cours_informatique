@@ -200,7 +200,16 @@
 </div>
 </details>     
 </div>
-<p>La preuve de l'invariant dans le corrigé est formelle mais évidente. Il n'est pas nécessaire (et on ne le fera plus) d'être aussi rigoureux pour des preuves aussi évidente. Contentez vous de donner l'invariant ou juste le résultat de la boucle.</p>
+<p>La preuve de l'invariant dans le corrigé est formelle mais évidente. Il n'est pas nécessaire (et on ne le fera plus) d'être aussi rigoureux pour des boucles aussi simple :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque le résultat d'une boucle est évidente, il n'est n'est pas nécessaire de faire une preuve formelle (qui sera souvent lourde et inintéressante).</p>
+<p>Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.</p>
+</div></div>
+
 <h2>Suppression de valeurs</h2>
 <p>Trouver un invariant permet de prouver efficacement un algorithme itératif. Pour des algorithmes simples, les bons invariants sont évidents à prouver une fois trouvé (on ne le donc fera pas explicitement) et permettent une preuve aisée. Entraînez vous avec l'exercice suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -595,7 +604,7 @@ $$
 </div>
 </details>     
 </div>
-<h2>Dichotomie</h2>
+<h2><span id="dichotomie"></span>Dichotomie</h2>
 <p>Le principe de <a href="https://fr.wikipedia.org/wiki/Recherche_dichotomique">la recherche dichotomique</a> permet de savoir si un entier donné est dans un tableau d'entier trié.</p>
 <p>On cherche à savoir si l'entier $v$ est entre les indices $a$ et $b \geq a$ d'un tableau d'entiers $t$. On procède récursivement selon la valeur de $t[\lfloor (a + b)/2 \rfloor]$ :</p>
 <ul>
@@ -638,14 +647,22 @@ $$
     m <span class="token operator">←</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>  <span class="token comment"># division entière</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">==</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> m
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span> dichotomie_rec<span class="token punctuation">(</span>t<span class="token punctuation">,</span> v<span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
     <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">&lt;</span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> dichotomie_rec<span class="token punctuation">(</span>t<span class="token punctuation">,</span> v<span class="token punctuation">,</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>t<span class="token punctuation">[</span>m<span class="token punctuation">]</span> <span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> dichotomie_rec<span class="token punctuation">(</span>t<span class="token punctuation">,</span> v<span class="token punctuation">,</span> a<span class="token punctuation">,</span> m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <p>Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement.</p>
 </div>
 </details>     
 </div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Lorsque l'on code la recherche dichotomique, il faut faire <strong>très attention</strong> à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.</p>
+</div></div>
+
 <p>A priori l'algorithme précédent n'est pas terminal. Le faire :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -1156,11 +1173,28 @@ $\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant l
 <p><a href="https://www.youtube.com/watch?v=6JGrHD5nAoc">Calculer un coefficient binomial : triangle de Pascal - Terminale</a></p>
 </div></div>
 
-<p>Vous pouvez ensuite remarquer que vous n'utilisez qu'une seule ligne (celle contenant les valeurs $\binom{n}{k}$ pour tout $1\leq k \leq n-1$) pour calculer la nouvelle ligne $n$. Ceci vous permettra de :</p>
+<p>Une matrice pourra être construite comme un tableau de (tableaux d'entiers). Si $M$ est est une matrice alors :</p>
+<ul>
+<li>$M$ est de type <code class="language-">[[entier]]</code></li>
+<li>$M[i]$ est la (i+1) ème ligne de la matrice</li>
+<li>$M[i][j]$ est le (j+1) ème élément de la (i+1) ème ligne de la matrice.</li>
+</ul>
+<p>Le code suivant crée une matrice triangulaire inférieure à $n$ lignes valant 1 à toutes les cases du tableau :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> crée_matrice<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille<span class="token number"> n
+</span>
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    ligne <span class="token operator">←</span> un tableau d'entiers de taille<span class="token number"> i
+</span>
+    matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> ligne
+    <span class="token keyword">pour chaque</span><span class="token number"> j </span>allant de <span class="token number">1</span> à i<span class="token punctuation">:</span>
+        ligne<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span> </code></pre>
+<p>Utiliser le code précédent pour résoudre l'exercice suivant :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En utilisant deux tableaux de taille n donner une version itérative de l'algorithme</p>
+<p>En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -1180,26 +1214,35 @@ $\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant l
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    courant <span class="token operator">←</span> un tableau de taille<span class="token number"> n
-</span>    précédent <span class="token operator">←</span> un tableau de taille<span class="token number"> n
+<p>Première version qui calcule toute la matrice triangulaire inférieure :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+    matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille<span class="token number"> n
 </span>
-    courant<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>allant de <span class="token number">1</span> à n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">pour chaque</span><span class="token number"> j </span>allant de <span class="token number">0</span> à n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
-            précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> courant<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-
-            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-                courant<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span>
-            <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-                courant<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
-
-    <span class="token keyword">rendre</span> courant<span class="token punctuation">[</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></code></pre>
-<p>Remarquez que le tableau précédent est obligatoire et se remplit au fur et à mesure, à chaque incrément de i</p>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+        ligne <span class="token operator">←</span> un tableau d'entiers de taille<span class="token number"> i
+</span>
+<span class="highlight-line">        matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> ligne</span>
+<span class="highlight-line">        <span class="token keyword">pour chaque</span><span class="token number"> j </span>allant de <span class="token number">1</span> à i<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                ligne<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">            <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                précédent <span class="token operator">←</span> matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">                ligne<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> matrice</span></code></pre>
+<p>Il y a deux boucles imbriquées, donc deux invariants à trouver !</p>
+<p>L'invariant de la boucle 4-13 peut être :</p>
+<blockquote>
+<p><strong>Invariant de la boucle 4-13</strong> : <code class="language-">matrice[i-1]</code> contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.</p>
+</blockquote>
+<p>Pour le prouver, il faut trouver un invariant à la boucle 8-13. Par exemple :</p>
+<blockquote>
+<p><strong>Invariant de la boucle 8-13</strong> : si <code class="language-">matrice[i-2]</code> contient la $i-1$ème ligne de la matrice triangulaire inférieure de Pascal, alors <code class="language-">ligne</code> contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.</p>
+</blockquote>
+<p>Ce dernier invariant est évidemment vrai par construction de la boucle (c'est la relation de récurrence). Une fois la boucle 8-13 prouvée, cela prouve l'invariant de la boucle 4-13.</p>
 </div>
 </details>     
 </div>
-<p>Il existe des solutions à un seul de taille $n$, essayez de trouver comment faire !</p>
 
 
 </article>

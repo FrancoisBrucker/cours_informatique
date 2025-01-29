@@ -113,7 +113,7 @@
 
 <h2>Gérer les constantes additives et multiplicatives</h2>
 <p>Les constantes additives et multiplicatives ne changent pas l'allure de la complexité.</p>
-<p>Le plus grand intérêt dans le comptage de complexité algorithmique est que <a href="../comparaisons-asymptotiques/#OA-constantes-additives" class="interne">la règle des constantes</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../pseudo-code#instruction-basique" class="interne">instructions basiques</a> est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :</p>
+<p>Le plus grand intérêt dans le comptage de complexité algorithmique est que <a href="../comparaisons-asymptotiques/#OA-constantes-additives" class="interne">la règle des constantes</a> montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'<a href="../../pseudo-code/briques-de-base/" class="interne">instructions basiques</a> est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -161,12 +161,12 @@
 </div></div>
 
 <p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie <a href="../pseudo-code#complexit%C3%A9" class="interne">complexité des pseudo-code</a> :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x = 30
-if ((x > 12) AND (x < 36)):
-    z = x * "coucou"</code></pre>
+<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x ← 30
+si ((x > 12) ET (x < 36)):
+    z ← x * "coucou"</code></pre>
 <ol>
 <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
-<li>un test avec 2 comparaisons et un <code class="language-">AND</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
+<li>un test avec 2 comparaisons et un <code class="language-">ET</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
 <li>on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.</li>
 </ol>
 <p>Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.</p>
@@ -239,17 +239,17 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.</p>
 <p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me" class="interne">problèmes algorithmiques</a> ou il faudra comparer plusieurs algorithmes entre eux.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
-<p>Prenons par exemple l'algorithme suivant, écrit en python :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">est_dans_tableau</span><span class="token punctuation">(</span>valeur<span class="token punctuation">,</span> tableau<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">for</span> x <span class="token keyword">in</span> tableau<span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">if</span> x <span class="token operator">==</span> valeur<span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">return</span> <span class="token boolean">True</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> <span class="token boolean">False</span></span></code></pre>
-<p>Cet algorithme recherche si le paramètre <code class="language-">valeur</code> est un élément de <code class="language-">tableau</code>.</p>
+<p>Prenons par exemple notre algorithme fétiche :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span> e de t<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> e <span class="token operator">==</span> x<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> <span class="token boolean">Faux</span></span></code></pre>
+<p>Cet algorithme recherche si le paramètre <code class="language-">x</code> est un élément de <code class="language-">t</code>.</p>
 <p>Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :</p>
 <ol>
 <li>définition de la fonction : $C_1 = \mathcal{O}(1)$</li>
-<li>une boucle <code class="language-">for</code> de $k$ itérations</li>
+<li>une boucle <code class="language-">pour chaque</code> de $k$ itérations</li>
 <li>un test entre 2 variables : $C_3 = \mathcal{O}(1)$</li>
 <li>un retour de fonction $C_4 = \mathcal{O}(1)$</li>
 <li>un retour de fonction : $C_5 = \mathcal{O}(1)$</li>
@@ -257,11 +257,11 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 <p>Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :</p>
 <ul>
 <li>$C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)</li>
-<li>$C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle <code class="language-">for</code> de la ligne 2</li>
+<li>$C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle <code class="language-">pour chaque</code> de la ligne 2</li>
 </ul>
 <p>Les deux cas se simplifient en : $\mathcal{O}(k)$</p>
 <p>En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$</p>
-<p>On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle <code class="language-">for</code> parcourt tout le tableau, c'est à dire pour deux cas :</p>
+<p>On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle <code class="language-">pour chaque</code> parcourt tout le tableau, c'est à dire pour deux cas :</p>
 <ul>
 <li>l'élément recherché n'est pas dans le tableau</li>
 <li>l'élément recherché est le dernier élément du tableau</li>
@@ -272,7 +272,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
+<p>La complexité de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.</p>
 </div></div>
 
 <p>La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :</p>
@@ -281,7 +281,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La complexité minimale de l'algorithme <code class="language-">est_dans_tableau</code> est $\mathcal{O}(1)$.</p>
+<p>La complexité minimale de l'algorithme <code class="language-">recherche</code> est $\mathcal{O}(1)$.</p>
 </div></div>
 
 
