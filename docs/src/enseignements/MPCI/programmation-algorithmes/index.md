@@ -142,13 +142,6 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 
 #### Mercredi : complexité algorithmique
 
-{% attention %}
-Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
-{% endattention %}
-{% faire %}
-Sujet du test 1
-{% endfaire %}
-
 Ce cours est basé sur la notion de complexité algorithmique que vous avez du aborder au S1.
 
 {% faire "**Prérequis**" %}
@@ -159,6 +152,15 @@ Reprendre la partie complexité de votre cours de S1.
 {% info %}
 N'hésitez pas à poser des questions en début de cours si vous avez des questions concernant les prérequis.
 {% endinfo %}
+
+Fin du cours précédent :
+
+{% aller %}
+
+1. [Prouver des algorithmes](/cours/algorithmie/prouver-un-algorithme/){.interne}
+2. [On s'entraîne](/cours/coder-et-développer/projet-codes/){.interne}
+
+{% endaller %}
 
 Parties abordées :
 
@@ -178,6 +180,13 @@ On s'entraîne.
 {% endaller %}
 
 #### Vendredi : stockage de données
+
+{% attention %}
+Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
+{% endattention %}
+{% faire %}
+Sujet du test 1
+{% endfaire %}
 
 > TBD stockage de données
 

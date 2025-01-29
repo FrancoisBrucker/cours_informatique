@@ -59,15 +59,16 @@ Qui rend **un nouveau tableau** contenant la concaténation de `début`{.languag
 ```pseudocode/
 concaténation(début: [entier], fin: [entier]) → [entier]
     t ← tableau de taille début.longueur + fin.longueur
-    i = 0
+    i = -1
 
     pour j allant de 0 à début.longueur - 1:
-        t[i] ← début[j]
         i ← i + 1
+        t[i] ← début[j]
+        
 
     pour j allant de 0 à fin.longueur - 1:
-        t[i] ← fin[j]
         i ← i + 1
+        t[i] ← fin[j]
 
     rendre t
 ```
@@ -76,11 +77,28 @@ La finitude est claire puisqu'il n'y a que deux boucles de type `pour chaque`{.l
 
 On a deux boucles, il faut donc à priori 2 invariants, un pour chaque boucle. Ici il est clair que l'on va remplir tous les éléments des tableaux `début`{.language-} et `fin`{.language-} dans `t`{.language-}. L'invariant peut être :
 
-> si $i_0$ est la valeur de $i$ à la ligne 4 (resp. 8) alors à chaque fin d'itération les $i$ éléments de `t`{.language-} à partir de $i_0$ correspondent aux $i$ premiers éléments de `début`{.language-} (resp. `fin`{.language-}).
+> si $i_0$ est la valeur de $i$ à la ligne 4 (resp. 8) alors à chaque fin d'itération on a $t[i_0 + 1 + k] == \mbox{début}[k]$ (resp. `fin`{.language-}) pour tout $0\leq k \leq j$.
 
- Il faut juste faire très attention à l'endroit on commence dans `t`{.language-}. ici c'est Ok car avant la première boucle `i = 0`{.language-} et `i = début.longueur`{.language-} au début de la seconde boucle. Les éléments de `début`{.language-} et `fin`{.language-} ne vont pas se chevaucher dans `t`{.language-} et se suivre sans interruption.
+Démontrons l'invariant rigoureusement pour la première boucle.
+
+À la fin de la première itération, on a bien :
+
+- $t[i_0 + 1] == \mbox{début}[0]$
+- $j = 0$
+- $i = i_0 + 1 + j$
+
+Supposons la propriété vraie après une itération donnée. Après une itération supplémentaire, les variables $i$ et $j$ ont été modifiées telles que :
+
+- $j' = j + 1$
+- $i' = i + 1 = i_0 + 1 + j'$
+
+L'hypothèse de l'invariant de boucle stipule que $t[i_0 + k] == \mbox{début}[k]$ pour tout $0\leq k \leq j = j'-1$ et comme la boucle a effectué l'affectation : `t[i'] ← début[j']`{.language-}, l'invariant continue d'être vérifié. Ce qui conclut la preuve.
+
+Il faut juste faire très attention à l'endroit on commence dans `t`{.language-}. ici c'est Ok car avant la première boucle `i = -1`{.language-} et `i = début.longueur - 1`{.language-} au début de la seconde boucle. Les éléments de `début`{.language-} et `fin`{.language-} ne vont pas se chevaucher dans `t`{.language-} et se suivre sans interruption.
 
 {% enddetails %}
+
+La preuve de l'invariant dans le corrigé est formelle mais évidente. Il n'est pas nécessaire (et on ne le fera plus) d'être aussi rigoureux pour des preuves aussi évidente. Contentez vous de donner l'invariant ou juste le résultat de la boucle.
 
 ## Suppression de valeurs
 
