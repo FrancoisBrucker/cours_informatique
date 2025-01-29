@@ -210,11 +210,21 @@ b <span class="token operator">←</span> a</code></pre>
 <p>Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.</p>
 <p>On considérera que :</p>
 <ul>
-<li>la création d'un tableau prend 1 instruction : <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
+<li>la création d'un tableau prend 1 instruction
+<ul>
+<li>l'instruction <code class="language-">[1, 3, x]</code> crée un tableau qui affecte à sa variable :
 <ul>
 <li>d'indice 0 un entier valant 1</li>
 <li>d'indice 1 un entier valant 3</li>
 <li>d'indice 2 l'objet associé à la variable <code class="language-">x</code></li>
+</ul>
+</li>
+<li>l'instruction <code class="language-">crée un tableau de longueur k</code> crée un tableau de longueur k.
+<ul>
+<li><strong>Attention</strong> : la valeur de chaque case est <strong>indéterminée !</strong></li>
+<li>lorsque l'on crée des tableau de cette façon, il est <strong>indispensable</strong> d'initialiser les valeurs de chaque case avant de les utiliser.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>l'affectation d'un tableau à une variable prend 1 instruction : <code class="language-">t ← [1, 3, x]</code> prend 2 instructions une pour la création et une pour l'affectation</li>
