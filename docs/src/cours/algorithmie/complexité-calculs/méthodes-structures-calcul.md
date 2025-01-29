@@ -10,15 +10,19 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Cette partie est à utiliser lorsque l'on cherche à mesurer la complexité d'un code. Nous prendrons l'exemple du python mais cela s'applique à tout langage informatique.
+
 Lorsque l'on code un algorithme, on a coutume (et c'est très bien) d'utiliser des fonctions, des méthodes ou des structures de données que l'on n'a pas écrites. Il faut en revanche bien connaître leurs complexités pour ne pas commettre d'erreur de calcul.
 
 {% attention "**À retenir**" %}
-Lorsque l'on calcule une complexité toutes les méthodes et fonctions doivent être examinées.
+Lorsque l'on calcule la complexité d'un code, toutes les méthodes et fonctions doivent être examinées.
 {% endattention %}
 
 ## Complexité de structure
 
-En informatique, les **objets que l'on manipule ont des types**. On connaît déjà des [objets basiques](../pseudo-code#objets-basique){.interne} qui sont de types booléens, entiers, réels ou encore chaines de caractères pour lesquels toutes les opérations basiques que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$ opérations. Ce n'est plus le cas lorsque l'on utilise des type plus complexes, composé de types basiques comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
+En informatique, les **objets que l'on manipule ont des types**. On connaît déjà des objets basiques qui sont de types booléens, entiers, réels ou encore chaines de caractères pour lesquels toutes les opérations basiques que l'on peut effectuer avec eux sont en $\mathcal{O}(1)$ opérations.
+
+Ce n'est plus le cas lorsque l'on utilise des types plus complexes, composé de types basiques comme les tableaux, ou encore les listes de python. Pour pouvoir calculer la complexité d'un algorithme les utilisant, il faut connaître les complexités de ses opérations. Souvent, les opérations suivantes suffisent :
 
 {% attention "**À retenir**" %}
 Pour chaque type de donnée, il faut connaître la complexité de :
@@ -43,7 +47,7 @@ Avec un tableau on peut faire uniquement 3 choses :
 il est **impossible** de redimensionner un tableau. Sa taille est **fixée** à la création. Toute méthode qui vise à augmenter ou diminuer la taille d'un tableau recrée un nouveau tableau et copie tous les éléments de l'ancien tableau dans le nouveau.
 {% endattention %}
 
-### Listes
+### Listes de python
 
 Le langage python ne connaît pas les tableaux. Il utilise le type [liste](https://docs.python.org/fr/3/tutorial/introduction.html#lists) à la place. Une liste peut être vue comme l'évolution du type tableau. On donne ici juste les complexités de cette structure pour que vous puissiez les utiliser dans vos programmes :
 
@@ -60,7 +64,7 @@ Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la 
 Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !
 {% endattention %}
 
-## Opérations sur les conteneurs
+## Opérations sur les listes python
 
 On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.
 
@@ -94,7 +98,7 @@ De là :
   - $n_1$ et $n_2$ sont les tailles des deux conteneurs
   - $C$ la complexité de créer un conteneur vide (souvent $\mathcal{O}(1)$)
 
-## Fonctions et méthodes données
+## Fonctions et méthodes données de python
 
 Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
 

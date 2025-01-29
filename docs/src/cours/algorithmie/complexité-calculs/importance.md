@@ -27,14 +27,14 @@ Les types de complexités ci-dessus sont rangés par ordre, de la moins grande �
 
 Remarquez que si $n$ représente la taille des données, un algorithme de complexité linaire nécessite de lire toutes les données au plus un nombre constant de fois pour s'exécuter, alors qu'un algorithme de complexité logarithmique n'a même pas besoin de lire une fois toutes les données pour s'exécuter ! Ceci n'est souvent possible que si les données en entrées ont une structure très particulière. Par exemple pour le problème de la recherche d'une valeur particulière dans un tableau :
 
-- trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme `est_dans_tableau`{.language-},
+- trouver cette valeur nécessite un temps linéaire si on utilise notre algorithme `recherche`{.language-},
 - trouver cette valeur nécessite un temps logarithmique si le tableau est un tableau trié et qu'on utilise l'algorithme de [recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique)
 
 {% info %}
 Notez bien que la complexité logarithmique est la même quelque soit la base utilisée puisque $\log_k(n) = \frac{\ln (n)}{\ln (k)}$ et donc $\log_k(n) = K\cdot \ln(n)$ avec $K = \frac{1}{\ln (k)}$ constant.
 {% endinfo %}
 
-Il est crucial de chercher la meilleure complexité pour un algorithme car ses performance seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability). Ce qu'il faut retenir :
+Il est crucial de chercher la meilleure complexité pour un algorithme car ses performances seront drastiquement différentes selon le type de complexité qu'il possède, comme le montre les deux tableaux ci-dessous, repris du livre [Computer and intractability](https://en.wikipedia.org/wiki/Computers_and_Intractability). Ce qu'il faut retenir :
 
 {% note %}
 

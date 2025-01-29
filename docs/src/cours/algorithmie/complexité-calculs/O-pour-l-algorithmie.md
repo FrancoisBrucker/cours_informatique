@@ -27,7 +27,7 @@ C'est le grand informaticien D. Knuth qui a popularisé l'usage de ces fonctions
 
 Les constantes additives et multiplicatives ne changent pas l'allure de la complexité.
 
-Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../pseudo-code#instruction-basique){.interne} est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
+Le plus grand intérêt dans le comptage de complexité algorithmique est que [la règle des constantes](../comparaisons-asymptotiques/#OA-constantes-additives){.interne} montre qu'un nombre constant est toujours en $\mathcal{O}(1)$ (ainsi qu'en $\Omega(1)$ et en $\Theta(1)$). On l'a vu et vous l'avez expérimenté, pour un algorithme, il est souvent compliqué de savoir exactement de combien d'[instructions basiques](../../pseudo-code/briques-de-base/){.interne} est constituée une opération ou le temps exact qu'elle va prendre. On pourra cependant toujours montrer qu'il y en a un nombre constant ou plus généralement borné :
 
 {% attention "**À retenir**" %}
 La complexité d'une instruction basique est de $\Theta(1)$ (donc également $\mathcal{O}(1)$) opérations.
@@ -54,13 +54,13 @@ L'exécution un nombre constant de fois d'un bloc d'instruction :
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie [complexité des pseudo-code](../pseudo-code#complexité){.interne} :
 
 ```text#
-x = 30
-if ((x > 12) AND (x < 36)):
-    z = x * "coucou"
+x ← 30
+si ((x > 12) ET (x < 36)):
+    z ← x * "coucou"
 ```
 
 1. on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.
-2. un test avec 2 comparaisons et un `AND`{.language-} pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.
+2. un test avec 2 comparaisons et un `ET`{.language-} pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.
 3. on affecte le résultat d'une opération élémentaire : 3 instructions, donc $\mathcal{O}(3) = \mathcal{O}(1)$ opérations.
 
 Un nombre total d'instructions de $3 \cdot \mathcal{O}(1) = \mathcal{O}(1)$ opérations.
@@ -114,22 +114,22 @@ En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsqu
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 
-Prenons par exemple l'algorithme suivant, écrit en python :
+Prenons par exemple notre algorithme fétiche :
 
-```python/
-def est_dans_tableau(valeur, tableau):
-    for x in tableau:
-        if x == valeur:
-            return True
-    return False
+```pseudocode/
+algorithme recherche(t: [entier], x: entier):
+    pour chaque e de t:
+        si e == x:
+            rendre Vrai
+    rendre Faux
 ```
 
-Cet algorithme recherche si le paramètre `valeur`{.language-} est un élément de `tableau`{.language-}.
+Cet algorithme recherche si le paramètre `x`{.language-} est un élément de `t`{.language-}.
 
 Calculons ses complexités maximale et minimale. Commençons par regarder les complexités de chaque ligne :
 
 1. définition de la fonction : $C_1 = \mathcal{O}(1)$
-2. une boucle `for`{.language-} de $k$ itérations
+2. une boucle `pour chaque`{.language-} de $k$ itérations
 3. un test entre 2 variables : $C_3 = \mathcal{O}(1)$
 4. un retour de fonction $C_4 = \mathcal{O}(1)$
 5. un retour de fonction : $C_5 = \mathcal{O}(1)$
@@ -137,13 +137,13 @@ Calculons ses complexités maximale et minimale. Commençons par regarder les co
 Comme il y a 2 retours de fonctions (lignes 4 et 5), la complexité sera soit :
 
 - $C = C_1 + k \cdot (C_3) + C_5 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1)) + \mathcal{O}(1)$ si on utilise la sortie de la ligne 5 (on est jamais passé par le ligne 4)
-- $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `for`{.language-} de la ligne 2
+- $C' = C_1 + k \cdot (C_3) + C_4 = \mathcal{O}(1) + k \cdot (\mathcal{O}(1) + \mathcal{O}(1))$ si on utilise la sortie de la ligne 4 en passant lors de la dernière itération de la boucle `pour chaque`{.language-} de la ligne 2
 
 Les deux cas se simplifient en : $\mathcal{O}(k)$
 
 En effet $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$ on a $C = C' = \mathcal{O}(1) + k \cdot (\mathcal{O}(1))$. De là, $C = C' = \mathcal{O}(1) + \mathcal{O}(k) = \mathcal{O}(k)$
 
-On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `for`{.language-} parcourt tout le tableau, c'est à dire pour deux cas :
+On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque la boucle `pour chaque`{.language-} parcourt tout le tableau, c'est à dire pour deux cas :
 
 - l'élément recherché n'est pas dans le tableau
 - l'élément recherché est le dernier élément du tableau
@@ -151,11 +151,11 @@ On cherche le cas le pire, c'est à dire lorsque $k$ est maximum, donc lorsque l
 On en conclut que :
 
 {% note %}
-La complexité de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
+La complexité de l'algorithme `recherche`{.language-} est $\mathcal{O}(n)$ où $n$ est la taille du tableau qui est un paramètre d'entrée.
 {% endnote %}
 
 La complexité minimale est quant à elle atteinte lorsque l'on ne parcourt pas notre boucle, c'est à dire lorsque la valeur recherchée est la 1ère valeur du tableau :
 
 {% note %}
-La complexité minimale de l'algorithme `est_dans_tableau`{.language-} est $\mathcal{O}(1)$.
+La complexité minimale de l'algorithme `recherche`{.language-} est $\mathcal{O}(1)$.
 {% endnote %}

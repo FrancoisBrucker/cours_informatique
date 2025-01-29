@@ -30,7 +30,7 @@ Nous avons calculé explicitement des complexité dans la partie précédente. V
 
 Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte :
 
-- est-ce que `x = a + 1`{.language-} c'est 1, 2 ou 3 instructions ? Ou plus ?
+- est-ce que `x ← a + 1`{.language-} c'est 1, 2 ou 3 instructions ? Ou plus ?
 - quel est le nombre d'instructions de la ligne `pour chaque élément x du tableau T`{.language-} ? 1, 2 ou plus ?
 
 ### Algorithme équivalents aux comptes très différents
@@ -38,7 +38,7 @@ Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte 
 De plus, selon l'implémentation, un même algorithme peut avoir plusieurs complexités :
 
 ```text
-pour i allant de 2 à 9:
+pour chaque i de [2, 9]:
   affiche à l'écran i
 ```
 
@@ -52,10 +52,10 @@ Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que 
 En remplaçant la boucle for par une boucle tant que, on obtient :
 
 ```text
-i = 2
+i ← 2
 tant que i ≤ 9:
   affiche à l'écran i
-  i = i + 1
+  i ← i + 1
 ```
 
 Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !
@@ -66,7 +66,7 @@ En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend v
 
 En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.
 
-L'instruction python `x = 1`{.language-} prendra certainement plus de 2 instructions élémentaires pour l'interpréteur python (il lui faut d'abord créer l'entier, la variable puis les lier) et cela prendra encore plus d'instructions basique au processeur pour réaliser tout ça.
+L'instruction python `x = 1`{.language-} en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code `x ← 1`{.language-}. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça.
 
 Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).
 
@@ -74,7 +74,7 @@ Sans parler du fait que chaque instruction basique pour un processeur peut prend
 
 ### Beaucoup de calcul pour par grand chose
 
-Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et plus important, [on a vu](../définitions/#forme-asymptotique) que :
+Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :
 
 {% note %}
 Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.
@@ -101,11 +101,3 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}
 {% endaller %}
-
-## Temps vs espace
-
-> TBD : 
-> - dire que nb instruction = temps
-> - souvent pour un même problème soit rapide mais beaucoup de mémoire soit le contraire
-> - exemple nombres premiers <https://www.youtube.com/watch?v=fwxjMKBMR7>
-> en faire un TP

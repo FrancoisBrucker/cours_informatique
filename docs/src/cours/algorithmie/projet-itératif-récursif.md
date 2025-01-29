@@ -98,7 +98,13 @@ Il faut juste faire très attention à l'endroit on commence dans `t`{.language-
 
 {% enddetails %}
 
-La preuve de l'invariant dans le corrigé est formelle mais évidente. Il n'est pas nécessaire (et on ne le fera plus) d'être aussi rigoureux pour des preuves aussi évidente. Contentez vous de donner l'invariant ou juste le résultat de la boucle.
+La preuve de l'invariant dans le corrigé est formelle mais évidente. Il n'est pas nécessaire (et on ne le fera plus) d'être aussi rigoureux pour des boucles aussi simple :
+
+{% note %}
+Lorsque le résultat d'une boucle est évidente, il n'est n'est pas nécessaire de faire une preuve formelle (qui sera souvent lourde et inintéressante).
+
+Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
+{% endnote %}
 
 ## Suppression de valeurs
 
@@ -427,7 +433,7 @@ algorithme u_n(n : entier,
 
 {% enddetails %}
 
-## Dichotomie
+## <span id="dichotomie"></span>Dichotomie
 
 Le principe de [la recherche dichotomique](https://fr.wikipedia.org/wiki/Recherche_dichotomique) permet de savoir si un entier donné est dans un tableau d'entier trié.
 
@@ -460,14 +466,18 @@ algorithme dichotomie_rec(t: [entier], v: entier, a: entier, b: entier) → enti
     m ← (a + b) // 2  # division entière
     si (t[m] == v):
         rendre m
-    si (t[m] > v):
-        rendre dichotomie_rec(t, v, m + 1, b)
     si (t[m] < v):
+        rendre dichotomie_rec(t, v, m + 1, b)
+    si (t[m] > v):
         rendre dichotomie_rec(t, v, a, m - 1)
 ```
 
 Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement.
 {% enddetails %}
+{% attention %}
+Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
+
+{% endattention %}
 
 A priori l'algorithme précédent n'est pas terminal. Le faire :
 
@@ -830,34 +840,68 @@ $\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant l
 [Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
 {% endlien %}
 
-Vous pouvez ensuite remarquer que vous n'utilisez qu'une seule ligne (celle contenant les valeurs $\binom{n}{k}$ pour tout $1\leq k \leq n-1$) pour calculer la nouvelle ligne $n$. Ceci vous permettra de :
+Une matrice pourra être construite comme un tableau de (tableaux d'entiers). Si $M$ est est une matrice alors :
+
+- $M$ est de type `[[entier]]`{.language-}
+- $M[i]$ est la (i+1) ème ligne de la matrice
+- $M[i][j]$ est le (j+1) ème élément de la (i+1) ème ligne de la matrice.
+
+Le code suivant crée une matrice triangulaire inférieure à $n$ lignes valant 1 à toutes les cases du tableau :
+
+```pseudocode
+algorithme crée_matrice(n: entier) → [[entier]]
+matrice ← un tableau de [entier] de taille n
+
+pour chaque i de [1, n]:
+    ligne ← un tableau d'entiers de taille i
+
+    matrice[i-1] ← ligne
+    pour chaque j allant de 1 à i:
+        ligne[j-1] ← 1 
+```
+
+Utiliser le code précédent pour résoudre l'exercice suivant :
 
 {% exercice %}
-En utilisant deux tableaux de taille n donner une version itérative de l'algorithme
+En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :
+
+```pseudocode
+algorithme binom(n: entier) → [[entier]]:
+```
+
 {% endexercice %}
 {% details "corrigé" %}
 
-```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
-    courant ← un tableau de taille n
-    précédent ← un tableau de taille n
+Première version qui calcule toute la matrice triangulaire inférieure :
 
-    courant[0] ← 1
-    pour chaque i allant de 1 à n-1:
-        pour chaque j allant de 0 à n-1:
-            précédent[j] ← courant[j]
+```pseudocode/
+algorithme binom(n: entier) → [[entier]]:
+    matrice ← un tableau de [entier] de taille n
 
-            si (j == i) ou (j == 0):
-                courant[j] ← 1
+    pour chaque i de [1, n]:
+        ligne ← un tableau d'entiers de taille i
+
+        matrice[i-1] ← ligne
+        pour chaque j allant de 1 à i:
+            si (j == i) ou (j == 1):
+                ligne[j - 1] ← 1
             sinon:
-                courant[j] ← précédent[j-1] + précédent[j]
+                précédent ← matrice[i-2]
+                ligne[j - 1] ← précédent[j-2] + précédent[j - 1]
 
-    rendre courant[k - 1]
+    rendre matrice
 ```
 
-Remarquez que le tableau précédent est obligatoire et se remplit au fur et à mesure, à chaque incrément de i
+Il y a deux boucles imbriquées, donc deux invariants à trouver !
+
+L'invariant de la boucle 4-13 peut être :
+
+> **Invariant de la boucle 4-13** : `matrice[i-1]`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
+
+Pour le prouver, il faut trouver un invariant à la boucle 8-13. Par exemple :
+
+> **Invariant de la boucle 8-13** : si `matrice[i-2]`{.language-} contient la $i-1$ème ligne de la matrice triangulaire inférieure de Pascal, alors `ligne`{.language-} contient la $i$ème ligne de la matrice triangulaire inférieure de Pascal.
+
+Ce dernier invariant est évidemment vrai par construction de la boucle (c'est la relation de récurrence). Une fois la boucle 8-13 prouvée, cela prouve l'invariant de la boucle 4-13.
 
 {% enddetails %}
-
-Il existe des solutions à un seul de taille $n$, essayez de trouver comment faire !
-
