@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les comparaisons asymptotiques servent à comparer l'*allure* de deux fonctions à l'infini : plus grande, plus petite ou équivalente.
+Les comparaisons asymptotiques servent à comparer l'_allure_ de deux fonctions à l'infini : plus grande, plus petite ou équivalente.
 
 On considérera dans la suite de ce cours uniquement des fonctions **positives**, ce qui est le cas lorsque l'on appliquera à la mesure de complexité. Donc :
 
@@ -18,19 +18,19 @@ On considérera dans la suite de ce cours uniquement des fonctions **positives**
 Certaines équivalences ci-dessous ne sont vraies que dans le cas de fonctions positives.
 {% endattention %}
 
-## *Fonctions* asymptotiques
+## _Fonctions_ asymptotiques
 
-On montre 3 *fonctions* asymptotiques, a plus utilisée étant la fonction $\mathcal{O}()$
+On montre 3 _fonctions_ asymptotiques, a plus utilisée étant la fonction $\mathcal{O}()$
 
 ### Les $\mathcal{O}()$ pour majorer
 
-Les *grand O*, $\mathcal{O}()$, permettent de caractériser les fonctions qui en majorent une autre.
+Les _grand O_, $\mathcal{O}()$, permettent de caractériser les fonctions qui en majorent une autre.
 
 {% note %}
 Une fonction <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot f'(N)$ pour tout $N > N_0$.
 {% endnote %}
 
-Connaître le comportement en $\mathcal{O}$ de $f(N)$  nous donne un majorant de son *allure* lorsque $N$ devient grand.
+Connaître le comportement en $\mathcal{O}$ de $f(N)$ nous donne un majorant de son _allure_ lorsque $N$ devient grand.
 
 Par abus de langage, on notera :
 
@@ -41,7 +41,7 @@ Par abus de langage, on notera :
 
 ### Les $\Omega()$ pour minorer
 
-De façon symétrique, on défini les *grand Omega*, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
+De façon symétrique, on défini les _grand Omega_, $\Omega()$, qui permettent de caractériser les fonctions qui en minorent une autre.
 
 {% note %}
 Une fonction <span>$f(N)$</span> est en $\Omega(f'(N))$ s'il existe 2 constantes $c_0$ et $N_0$ tels que $f(N) \geq c_0 \cdot f'(N)$ pour tout $N > N_0$.
@@ -53,10 +53,10 @@ La fonction $\Omega$ est le symétrique de la fonction $\mathcal{O}$ :
 {% note %}
 $f(N) = \mathcal{O}(g(N)) \Leftrightarrow g(N) = \Omega(f(N))$
 {% endnote %}
-{% details  "preuve" %}
-Si $f(N) = \mathcal{O}(g(N))$, il existe  $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot f(N) \leq  g(N)$ pour $N > N_0$ : $g(N) = \Omega(f(N))$
+{% details  "preuve", "open" %}
+Si $f(N) = \mathcal{O}(g(N))$, il existe $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot f(N) \leq  g(N)$ pour $N > N_0$ : $g(N) = \Omega(f(N))$
 
-Réciproquement, si $g(N) = \Omega(f(N))$, il existe  $c_0$ et $N_0$ tels que $c_0 \cdot f(N) \leq g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot g(N) \geq  f(N)$ pour $N > N_0$ : $f(N) = \mathcal{O}(g(N))$
+Réciproquement, si $g(N) = \Omega(f(N))$, il existe $c_0$ et $N_0$ tels que $c_0 \cdot f(N) \leq g(N)$ pour $N > N_0$. Les fonctions étant positives, on a $c_0 > 0$ et donc $\frac{1}{c_0} \cdot g(N) \geq  f(N)$ pour $N > N_0$ : $f(N) = \mathcal{O}(g(N))$
 
 {% enddetails %}
 
@@ -67,14 +67,14 @@ Une fonction <span>$f(N)$</span> est en $\Theta(f'(N))$ si :
 
 - <span>$f(N)$</span> est en $\mathcal{O}(f'(N))$
 - <span>$f(N)$</span> est en $\Omega(f'(N))$
-{% endnote %}
+  {% endnote %}
 
 La fonction $\Omega$ rend compte de fonctions aux allures similaires :
 
 {% note %}
 $f(N) = \Theta(g(N)) \Rightarrow g(N) = \Theta(f(N))$
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 Clair grace à [la propriété précédente](./#omega-GO){.interne} qui montre que si <span>$f(N)$</span> est en $\Theta(f'(N))$, alors on a également :
 
 - <span>$f'(N)$</span> est en $\Omega(f(N))$
@@ -92,13 +92,13 @@ Commençons par deux règles liant les 3 fonctions :
 {% note %}
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \Omega(g(N)) \text{ et } g(N) = \Omega(f(N))$
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO){.interne}.
 {% enddetails  %}
 {% note %}
 $f(N) = \Theta(g(N)) \Leftrightarrow f(N) = \mathcal{O}(g(N)) \text{ et } g(N) = \mathcal{O}(f(N))$
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 Immédiat grace à la définition de $\Theta()$ et à [la propriété liant $\Omega$ et $\mathcal{O}$](./#omega-GO){.interne}.
 
 {% enddetails  %}
@@ -111,7 +111,7 @@ La règle suivante va se retrouver fort utile :
 {% note "**Règle des constantes additives**" %}
 $ A = \Theta(1)$, avec $A$ une constante strictement positive.
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(A)$. Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_0 \cdot A$.
 
@@ -127,7 +127,7 @@ Il existe donc $c_0$ et $N_0$ tels que pour tout $N > N_0$, on ait $f(N) \leq c_
 {% note "**Règle des constantes multiplicatives**" %}
 $ A\cdot f(N) = \Theta(f(N))$, avec $A$ une constante strictement positive.
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Pour tout $N > 0$, on a $A\cdot f(N) \leq c_0\cdot f(N)$ avec $c_0 = A$ ce qui prouve que A\cdot f(N) = \mathcal{O}(f(N))$.
 
@@ -144,7 +144,7 @@ En combinant les $\mathcal{O}$ pour $f$ et $g$, deux fonctions positives :
 $\mathcal{O}(f(N)) + \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) + g(N))$
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
@@ -161,7 +161,7 @@ En combinant les $\mathcal{O}$ pour $f$ et $g$ deux fonctions positives :
 $\mathcal{O}(f(N)) \cdot \mathcal{O}(g(N)) \Rightarrow \mathcal{O}(f(N) \cdot g(N))$
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soient $f'(N) = \mathcal{O}(f(N))$ et $g' = \mathcal{O}(g(N))$, il existe donc $c_0$, $c'_0$, $N_0$ et $N'_0$ tels que $f'(N) \leq c_0 f(N)$ pour $N > N_0$ et $g'(N) \leq c'_0 g(N)$ pour $N > N'_0$.
 
@@ -174,18 +174,18 @@ Les trois règles suivantes permettent de négliger les fonctions majorées. Ell
 {% note "**Règle des polynômes**" %}
 $\mathcal{O}(N^p) \Rightarrow \mathcal{O}(N^q)$ pour $q \geq p$
 {% endnote %}
-{% details "preuve" %}
+{% details "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(N^p)$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot N^p$ pour $N > N_0$.
 
-Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p \leq N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N > 1 = N_0$  et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$
+Comme $1 < 2 \cdot N^\alpha$ pour $\alpha \geq 0$ et $N> 1$, on a $N^p \leq N^p \cdot (2 \cdot N^{q-p}) = c_0 \cdot N^q$ pour $c_0 = 2$, $N > 1 = N_0$ et $p \leq q$. Donc $N^p = \mathcal{O}(N^q)$ pour tout $p \leq q$
 
 {% enddetails %}
 
 {% note "**Règle des sommes négligeables**" %}
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) + g(N) + h(N)) \Rightarrow \mathcal{O}(g(N) + h(N))$ pour f, g et h des fonctions positives.
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$.
 
@@ -201,7 +201,7 @@ On a bien : $f'(N) = \mathcal{O}(g(N) + h(N))$
 $f(N) = \mathcal{O}(g(N))$ implique $\mathcal{O}(f(N) \cdot g(N) \cdot h(N) + h'(N)) \Rightarrow \mathcal{O}((g(N))^2 \cdot h(N)+ h'(N))$ pour f, g, h et h' des fonctions positives.
 
 {% endnote %}
-{% details  "preuve" %}
+{% details  "preuve", "open" %}
 
 Soit $f(N) = \mathcal{O}(g(N))$. Il existe donc $c_0$ et $N_0$ tels que $f(N) \leq c_0 \cdot g(N)$ pour $N > N_0$. Les fonctions étant positives, on pet considérer sans perte de généralité que $c_0 > 1$
 
