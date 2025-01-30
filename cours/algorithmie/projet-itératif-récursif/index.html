@@ -102,8 +102,8 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Donnez et prouvez <strong>un algorithme récursif</strong> de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">maximum_rec<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
-<p>Qui rend un indice $0 \leq j \leq i$ tel que $t[j] = \min({t[k] \vert 0\leq k \leq i})$.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">maximum_rec<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max({t[k] \vert 0\leq k \leq n})$.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -123,18 +123,23 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum_rec</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
-    <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">≥</span> t<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
-        <span class="token keyword">rendre</span><span class="token number"> i
-</span>    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
-       <span class="token number"> i2 </span><span class="token operator">←</span> maximum<span class="token punctuation">(</span>t<span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">si</span> t<span class="token punctuation">[</span>i2<span class="token punctuation">]</span> <span class="token operator">></span> t<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">rendre</span><span class="token number"> i
-</span>        <span class="token keyword">sinon</span>
-            <span class="token keyword">rendre</span><span class="token number"> i2
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">maximum_rec</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">réel</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> <span class="token number">0</span>
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        x <span class="token operator">←</span> maximum_rec<span class="token punctuation">(</span>t<span class="token punctuation">,</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token keyword">si</span> t<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">></span> t<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> x
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span><span class="token number"> n
 </span></code></pre>
-<p>Le paramètre <code class="language-">i</code> est un entier qui augmente strictement. Il sera donc à un moment strictement plus grand que la longueur du tableau qui est constante ce qui stoppera la récursion.</p>
-<p>La correction se fait par récurrence sur <code class="language-">i</code> allant de <code class="language-">i = t.tableau</code> à <code class="language-">i = 0</code> en décroissant.</p>
+<p>Le paramètre <code class="language-">n</code> est un entier qui diminue strictement. Il sera donc à un moment égal à 0 ce qui stoppera la récursion.</p>
+<p>La correction se fait par récurrence sur <code class="language-">n</code> allant de <code class="language-">n = 0</code> à <code class="language-">n = t.longueur - 1</code>.</p>
+<ol>
+<li>initialisation : pour <code class="language-">n = 0</code>, le résultat est clair.</li>
+<li>hypothèse de récurrence : on suppose que l'algorithme fonctionne pour <code class="language-">n - 1</code></li>
+<li>preuve pour <code class="language-">n - 1</code>. Si l'algorithme fonctionne pour <code class="language-">n - 1</code>, <code class="language-">x</code> contient l'indice max des indices allant de 0 à <code class="language-">n - 1</code> et on rend <code>x</code> si <code>t[x] &gt; t[n]</code> et <code>n</code> sinon : on rend bien l'indice de la valeur maximale du tableau.</li>
+</ol>
 </div>
 </details>     
 </div>
@@ -166,7 +171,7 @@
 <div class="mx-8 pb-2">
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">concaténation<span class="token punctuation">(</span>début<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> fin<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span></span>
 <span class="highlight-line">    t <span class="token operator">←</span> tableau de taille début<span class="token punctuation">.</span>longueur <span class="token operator">+</span> fin<span class="token punctuation">.</span>longueur</span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span></span>
+<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> <span class="token operator">-</span><span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">pour</span><span class="token number"> j </span>allant de <span class="token number">0</span> à début<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">       <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></span>

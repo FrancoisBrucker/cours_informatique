@@ -168,6 +168,18 @@
 <p>Ne confondez pas liste et <a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">liste chaînée</a> ce n'est pas du tout la même structure !</p>
 </div></div>
 
+<h2>Itérateur</h2>
+<p>La gestion des boucles <code class="language-">pour chaque</code> en python se fait via des itérateurs. Ce sont de petits programmes dont le but est de donner le prochain élément. Par exemple :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1000000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span></code></pre>
+<p>Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itérateur qui rend la prochaine valeur en $\mathcal{O}(1)$.</p>
+<p>On a pris ce parti pour l'écriture des boucles en pseudo-code :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span> x de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">999999</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  affiche à l'écran x</code></pre>
+<p>Prend $\mathcal{O}(1)$ instructions et ne crée pas l'intervalle en entier.</p>
+<p>Vous verrez parfois l'écriture alternative qui explicite l'itérateur et est considérée comme équivalente :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour</span> x allant de <span class="token number">0</span> à <span class="token number">999999</span><span class="token punctuation">:</span>
+  affiche à l'écran x</code></pre>
 <h2>Opérations sur les listes python</h2>
 <p>On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.</p>
 <p>Les opérations de création d'un conteur (comme un tableau, une liste, un ensemble, ou encore un dictionnaire) possédant $K$ objets est usuellement de complexité en $\mathcal{O}(K)$.</p>
@@ -201,10 +213,10 @@
 </li>
 </ul>
 <h2>Fonctions et méthodes données de python</h2>
-<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
+<p>Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode <code class="language-">index</code> des listes ((comme une <code class="language-">l.index(&quot;?&quot;)</code>) ou encore  la méthode <code class="language-">max</code> de python, qui prend en entrée une liste <code>l</code> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python">l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<p>Est de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste <code>l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.</p>
+<p>Sont de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste <code>l</code> et pas $\mathcal{O}(1)$. Il <strong>faut</strong> en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>

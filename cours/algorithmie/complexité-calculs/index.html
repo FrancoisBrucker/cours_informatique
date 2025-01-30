@@ -117,16 +117,14 @@
 <h2>Problème du comptage exhaustif de la complexité</h2>
 <p>Nous avons calculé explicitement des complexité dans la partie précédente. Vous avez du vous en rendre compte, c'est assez pénible car plusieurs problèmes surviennent.</p>
 <h3>Ligne au compte incertain</h3>
-<p>Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte :</p>
-<ul>
-<li>est-ce que <code class="language-">x ← a + 1</code> c'est 1, 2 ou 3 instructions ? Ou plus ?</li>
-<li>quel est le nombre d'instructions de la ligne <code class="language-">pour chaque élément x du tableau T</code> ? 1, 2 ou plus ?</li>
-</ul>
-<h3>Algorithme équivalents aux comptes très différents</h3>
-<p>De plus, selon l'implémentation, un même algorithme peut avoir plusieurs complexités :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">pour chaque i de [2, 9]:
-  affiche à l'écran i</code></pre>
-<p>Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que :</p>
+<p>Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte. Reprenons par exemple un compte que l'on a fait précédemment :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">F<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> F<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span></code></pre>
+<p>On a considéré que cette instruction nécessitait 3 lectures de la variable <code class="language-">i</code>. Mais dire que l'on ne lit <code class="language-">i</code> qu'une seule fois aurait-été tout aussi légitime.</p>
+<p>Ou encore le code suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  affiche à l'écran<span class="token number"> i
+</span></code></pre>
+<p>Où l'on a considéré que l'on ne calculait pas tout l'intervalle à chaque itération et que l'on savait quel était l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot 3 = 29$ :</p>
 <ul>
 <li>la première ligne est constituée de :
 <ul>
@@ -136,25 +134,31 @@
 </li>
 <li>l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$</li>
 </ul>
-<p>En remplaçant la boucle for par une boucle tant que, on obtient :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">i ← 2
-tant que i ≤ 9:
-  affiche à l'écran i
-  i ← i + 1</code></pre>
+<p>Il aurait été tout aussi légitime de compter différemment, en créant tout le tableau, en stockant la valeur courante, etc. Selon ce que l'on considère le compte serait très différent.</p>
+<h3>Algorithmes équivalents aux comptes très différents</h3>
+<p>Reprenons l'exemple précédent :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+  affiche à l'écran<span class="token number"> i
+</span></code></pre>
+<p>En remplaçant la boucle for par une boucle tant que pour expliciter le calcul, on obtient :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">←</span> <span class="token number">2</span>
+<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> <span class="token number">9</span><span class="token punctuation">:</span>
+  affiche à l'écran<span class="token number"> i
+</span> <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
 <p>Qui est de complexité : $2+1+10(1+1+1) + 9(2+4) = 33 + 9 \cdot 6 = 87$ ce qui semble énorme !</p>
 <p>En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend vers une constante : la différence n'est plus si importante que cela lorsque $n$ devient grand.</p>
 <h3>Dépend du code/pseudo-code</h3>
 <p>En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.</p>
-<p>L'instruction python <code class="language-">x = 1</code> en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code <code class="language-">x ← 1</code>. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça.</p>
-<p>Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).</p>
-<p>Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).</p>
+<p>L'instruction python <code class="language-">x = 1</code> en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code <code class="language-">x ← 1</code>. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça. Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC). Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).</p>
 <h3>Beaucoup de calcul pour par grand chose</h3>
-<p>Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :</p>
+<p>Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. En effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.</p>
 </div></div>
 
@@ -184,7 +188,8 @@ tant que i ≤ 9:
 <p><a href="r%C3%A8gles-de-calcul" class="interne">Règles et astuces de calcul</a></p>
 </div></div>
 
-<h2>Complexité de méthodes et de structures de données</h2>
+<h2>Complexité d'un code</h2>
+<p>En code, on utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées que des tableaux (des listes ou des dictionnaires en python par exemple). Il faut connaître la complexité de chacune de ces fonctions et de la manipulation de ces structures pour pouvoir calculer la complexité du code produit, utiliser une méthode plutôt qu'une autre pouvant mener à une augmentation dramatique de la complexité.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>

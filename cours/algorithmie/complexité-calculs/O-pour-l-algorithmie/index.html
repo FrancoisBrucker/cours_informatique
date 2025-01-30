@@ -153,7 +153,7 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Corollaire</strong></p>
 </div><div class="pl-8 mr-8">
-<p>L'exécution un nombre constant de fois d'un bloc d'instruction :</p>
+<p>L'exécution d'<strong>un nombre constant de fois</strong> un bloc d'instruction :</p>
 <ul>
 <li>de complexité $\Theta(f(N))$ nécessite $\Theta(f(N))$ opérations.</li>
 <li>de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.</li>
@@ -161,9 +161,9 @@
 </div></div>
 
 <p>Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie <a href="../pseudo-code#complexit%C3%A9" class="interne">complexité des pseudo-code</a> :</p>
-<pre class="language-text#" tabindex="0" data-language="text#"><code class="language-text#">x ← 30
-si ((x > 12) ET (x < 36)):
-    z ← x * "coucou"</code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">x <span class="token operator">←</span> <span class="token number">30</span></span>
+<span class="highlight-line"><span class="token keyword">si</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">12</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">36</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    z <span class="token operator">←</span> x <span class="token operator">*</span> <span class="token string">"coucou"</span></span></code></pre>
 <ol>
 <li>on affecte un objet à x : 1 instruction, donc $\mathcal{O}(1)$ opérations.</li>
 <li>un test avec 2 comparaisons et un <code class="language-">ET</code> pour deux variables : 6 instructions, donc $\mathcal{O}(6) = \mathcal{O}(1)$ opérations.</li>
@@ -217,9 +217,9 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </div>
 <h2>Voir l'infini</h2>
 <p>Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
@@ -234,10 +234,10 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$</p>
 </ul>
 </div></div>
 
-<p>Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
+<p>Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.</p>
 <h2>Usage de $\Omega$ et $\Theta$</h2>
 <p>On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.</p>
-<p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me" class="interne">problèmes algorithmiques</a> ou il faudra comparer plusieurs algorithmes entre eux.</p>
+<p>En revanche, ces deux <em>fonctions</em> asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de problèmes algorithmiques où il faudra comparer plusieurs algorithmes entre eux.</p>
 <h2><span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau</h2>
 <p>Prenons par exemple notre algorithme fétiche :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">recherche</span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
