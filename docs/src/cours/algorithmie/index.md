@@ -91,7 +91,7 @@ Mais même si on a un problème algorithmique et un algorithme, comment prouver 
 Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
 {% aller %}
-[Projet : Écrire et prouver des algorithmes Itératif et récursif](./projet-itératif-récursif){.interne}
+[Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif){.interne}
 {% endaller %}
 
 ### Complexités
@@ -117,7 +117,7 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./#entrainement-preuve) :
 
 {% aller %}
-[Projet : Écrire et prouver des algorithmes Itératif et récursif](./projet-calcul-complexite){.interne}
+[Projet : calculer des complexités d'algorithmes itératifs et récursifs](./projet-calcul-complexite){.interne}
 {% endaller %}
 
 ### projet : problèmes liés à l'exponentiation

@@ -10,8 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> debug : point de journalisation pour vérifier les invariants de boucles.
-
 Quelques exercices pour se mettre le code dans les pattes. Utilisez toutes les bonnes pratiques vues dans le cours et forcez vous à prendre de bonnes habitudes :
 
 {% faire %}
@@ -37,8 +35,6 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 3. comparez votre code au corrigé
 
 {% endfaire %}
-
-> TBD explicitez l'utilisation du debug dans les sujets.
 
 ## <span id="syracuse"></span>Syracuse
 

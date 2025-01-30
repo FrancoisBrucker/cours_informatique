@@ -61,16 +61,15 @@ Qui rend **un nouveau tableau** contenant la concaténation de `début`{.languag
 {% details "corrigé" %}
 
 ```pseudocode/
-concaténation(début: [entier], fin: [entier]) → [entier]
+algorithme concaténation(début: [entier], fin: [entier]) → [entier]
     t ← tableau de taille début.longueur + fin.longueur
     i ← -1
 
-    pour j allant de 0 à début.longueur - 1:
+    pour chaque j de [0, début.longueur - 1]:
         i ← i + 1
         t[i] ← début[j]
-        
 
-    pour j allant de 0 à fin.longueur - 1:
+    pour chaque j de [0, fin.longueur - 1]:
         i ← i + 1
         t[i] ← fin[j]
 
@@ -162,7 +161,7 @@ Utilisez l'algorithme `concaténation`{.language-} de la question précédente p
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-supprime(t: [entier], v: entier) → [entier]
+supprime_rec(t: [entier], v: entier) → [entier]
 ```
 
 Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux valeurs différentes de `v`{.language-}. Le nouveau tableau aura la même taille que le tableau `t`{.language-} passé en premier paramètre.
@@ -170,7 +169,7 @@ Qui rend **un nouveau tableau** contenant la restriction de `t`{.language-} aux 
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme supprime(t: [entier], v: entier) → [entier]
+algorithme supprime_rec(t: [entier], v: entier) → [entier]
     si t.longueur == 0:
         rendre t
 
@@ -179,9 +178,9 @@ algorithme supprime(t: [entier], v: entier) → [entier]
         t2[i] ← t[i + 1]
     
     si t[0] == v:
-        rendre concaténation([], supprime(t2, v))
+        rendre concaténation([], supprime_rec(t2, v))
     sinon:
-        rendre concaténation([t[0]], supprime(t2, v))
+        rendre concaténation([t[0]], supprime_rec(t2, v))
 ```
 
 Il n'y a qu'une seule récursion par algorithme et la taille du tableau passé en paramètre est strictement plus petite : il y a un nombre finie de récursion puisque la condition terminale est basée sur une taille nulle de tableau.
