@@ -45,7 +45,7 @@ Enfin, [la règle des constantes multiplicatives](../comparaisons-asymptotiques/
 L'exécution un nombre constant de fois d'un bloc d'instruction de complexité $f(N)$ nécessite $\Theta(f(N))$ (donc également $\mathcal{O}(f(N))$) opérations.
 {% endnote %}
 {% note "**Corollaire**" %}
-L'exécution un nombre constant de fois d'un bloc d'instruction :
+L'exécution d'**un nombre constant de fois** un bloc d'instruction :
 
 - de complexité $\Theta(f(N))$ nécessite $\Theta(f(N))$ opérations.
 - de complexité $\mathcal{O}(f(N))$ nécessite $\mathcal{O}(f(N))$ opérations.
@@ -53,7 +53,7 @@ L'exécution un nombre constant de fois d'un bloc d'instruction :
 
 Ceci est pratique, car cela permet de ne pas compter toutes les opérations basiques précisément. Ainsi, en reprenant l'exemple de la partie [complexité des pseudo-code](../pseudo-code#complexité){.interne} :
 
-```text#
+```pseudocode/
 x ← 30
 si ((x > 12) ET (x < 36)):
     z ← x * "coucou"
@@ -93,7 +93,7 @@ $$\sum_{i=0}^na_i x^i = \mathcal{O}(x^n) \mbox{ si } a_n \neq 0$$
 
 Calculer avec les fonction asymptotiques va nous permettre de donner la complexité sous la forme d'une allure de complexité :
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 
 On cherchera à borner la complexité par une allure de complexité :
 
@@ -102,15 +102,15 @@ On cherchera à borner la complexité par une allure de complexité :
 - ***complexité linéaire*** en $\mathcal{O}(n)$
 - ***complexité polynomiale*** en $\mathcal{O}(n^k)$ avec $k>1$ constant le plus petit possible
 - ***complexité exponentielle*** en $\mathcal{O}(k^n)$ avec $k>1$ constant le plus petit possible
-{% endattention %}
+{% endnote %}
 
-Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$)$, on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
+Si nos approximations ne sont pas disproportionnés (genre en disant que $log_2(n) = \mathcal{O}(2^n)$), on aura trouvé l'allure de la complexité de notre algorithme sans trop de soucis.
 
 ## Usage de $\Omega$ et $\Theta$
 
 On utilisera très peu les fonctions $\Omega$ et $\Theta$ dans le calcul de complexité d'un algorithme car le but des calculs de complexité est de majorer et non de les minorer une complexité et utiliser des $\Theta$ est presque aussi contraignant que de faire des calculs de complexité exacts.
 
-En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de [problèmes algorithmiques](../../écrire-algorithmes/problème){.interne} ou il faudra comparer plusieurs algorithmes entre eux.
+En revanche, ces deux *fonctions* asymptotiques trouveront leurs utilité lorsque l'on étudiera des complexité de problèmes algorithmiques où il faudra comparer plusieurs algorithmes entre eux.
 
 ## <span id="exemple-recherche"></span> Exemple de la recherche d'un élément dans un tableau
 

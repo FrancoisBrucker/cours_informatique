@@ -18,28 +18,32 @@ eleventyComputed:
 Donnez et prouvez **un algorithme récursif** de signature :
 
 ```pseudocode
-maximum_rec(t: [réel], i: entier) → entier
+maximum_rec(t: [réel], n: entier) → entier
 ```
 
-Qui rend un indice $0 \leq j \leq i$ tel que $t[j] = \min(\{t[k] \vert 0\leq k \leq i\})$.
+Qui rend un indice $0 \leq j \leq n$ tel que $t[j] = \max(\{t[k] \vert 0\leq k \leq n\})$.
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme maximum_rec(t: [réel], i: entier) → entier
-    si i ≥ t.longueur:
-        rendre i
+algorithme maximum_rec(t: [réel], n: entier) → entier:
+    si n == 0:
+        rendre 0
     sinon:
-        i2 ← maximum(t, i + 1)
-        si t[i2] > t[i]:
-            rendre i
-        sinon
-            rendre i2
+        x ← maximum_rec(t, n-1)
+        si t[x] > t[n]:
+            rendre x
+        sinon:
+            rendre n
 ```
 
-Le paramètre `i`{.language-} est un entier qui augmente strictement. Il sera donc à un moment strictement plus grand que la longueur du tableau qui est constante ce qui stoppera la récursion.
+Le paramètre `n`{.language-} est un entier qui diminue strictement. Il sera donc à un moment égal à 0 ce qui stoppera la récursion.
 
-La correction se fait par récurrence sur `i`{.language-} allant de `i = t.tableau`{.language-} à `i = 0`{.language-} en décroissant.
+La correction se fait par récurrence sur `n`{.language-} allant de `n = 0`{.language-} à `n = t.longueur - 1`{.language-}.
+
+1. initialisation : pour `n = 0`{.language-}, le résultat est clair.
+2. hypothèse de récurrence : on suppose que l'algorithme fonctionne pour `n - 1`{.language-}
+3. preuve pour `n - 1`{.language-}. Si l'algorithme fonctionne pour `n - 1`{.language-}, `x`{.language-} contient l'indice max des indices allant de 0 à `n - 1`{.language-} et on rend `x` si `t[x] > t[n]` et `n` sinon : on rend bien l'indice de la valeur maximale du tableau.
 
 {% enddetails %}
 
@@ -59,7 +63,7 @@ Qui rend **un nouveau tableau** contenant la concaténation de `début`{.languag
 ```pseudocode/
 concaténation(début: [entier], fin: [entier]) → [entier]
     t ← tableau de taille début.longueur + fin.longueur
-    i = -1
+    i ← -1
 
     pour j allant de 0 à début.longueur - 1:
         i ← i + 1

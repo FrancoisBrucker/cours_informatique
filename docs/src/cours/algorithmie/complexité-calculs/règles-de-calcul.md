@@ -18,14 +18,13 @@ Lorsque l'on a une boucle où le nombre de fois où l'on va rentrer dedans est �
 
 Par exemple :
 
-```python
-
+```pseudocode
 tant que condition:
     bloc d'instructions
-
 ```
 
 {% note "**Complexité d'une boucle tant que**" %}
+
 <div>
 $$
 \mathcal{O}(\text{nombre de fois ou la condition est remplie}) \cdot (\mathcal{O}(\text{complexité de la vérification de la condition}) + \mathcal{O}(\text{complexité du bloc d'instruction}))
@@ -35,14 +34,13 @@ $$
 
 Souvent, $\mathcal{O}$(complexité de la vérification de la condition) sera égal à $\mathcal{O}(1)$ et pourra ne pas en tenir compte dans le calcul. C'est le cas, entre autre pour une boucle tant que :
 
-```python
-
-pour chaque element de structure:
+```pseudocode
+pour chaque élément de structure:
     bloc d'instructions
-
 ```
 
 {% note "**Complexité d'une boucle pour chaque**" %}
+
 <div>
 $$
 \mathcal{O}(\text{nombre d'éléments de la structure}) \cdot \mathcal{O}(\text{complexité du bloc d'instruction})
@@ -54,14 +52,14 @@ Si le bloc d'instructions est une suite d'instructions de complexité $\mathcal{
 
 Exemple :
 
-```python
-total = 0
-de i = 1 à n - 1 faire:
-    total = total + 1
-Rendre total
+```pseudocode/
+total ← 0
+pour chaque i de [1, n - 1]:
+    total ← total + 1
+rendre total
 ```
 
-En conclusion :
+La ligne 3 étant de complexité $\mathcal{O}(1)$ la complexité de la boucle 2-3 est de complexité $\mathcal{O}(n)$.
 
 {% attention "**À retenir**"%}
 Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O}(1)$ et que la vérification de la fin de la boucle est $\mathcal{O}(1)$, la complexité de la boucle est égal au nombre de fois où l'on effectue la boucle
@@ -71,7 +69,7 @@ Si le bloc d'instruction est une suite d'instructions de complexité $\mathcal{O
 
 Plusieurs boucles imbriquées dont dont le nombre de fois où l'on va rentrer dedans est indépendant des autres boucles. Par exemple :
 
-```python
+```pseudocode
 boucle 1 exécutée n1 fois:
     boucle 2 exécutée n2 fois:
         ...
@@ -88,29 +86,27 @@ La complexité des boucles imbriquées est le produit du nombre de fois où l'on
 
 Exemple :
 
-```python
-total = 0
-de i = 1 à n - 1 faire:
-    de j = 1 à n faire:
-        total = total + 1
-Rendre total
+```pseudocode/
+total ← 0
+pour chaque i de [1, n - 1]:
+    pour chaque j de [1, n]:
+        total ← total + 1
+rendre total
 ```
 
-La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité du bloc d'instruction est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées vaut :
+La boucle en $i$ est exécuté $n-1$ fois ($i$ va de 1 à $n-1$), donc $\mathcal{O}(n)$ fois. La boucle en $j$ va également être exécutée $\mathcal{O}(n)$ fois indépendamment de la boucle en $i$. Enfin la complexité de la ligne 5 est $\mathcal{O}(1)$, la complexité totale des deux boucles imbriquées 2-5 vaut :
 
 <p>
 \[
-\underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{bloc d'instructions}}
+\underbracket{\mathcal{O}(n)}_{\mbox{boucle en i}} \cdot \underbracket{\mathcal{O}(n)}_{\mbox{boucle en j}} \cdot \underbracket{\mathcal{O}(1)}_{\mbox{ligne 5}}
  = \mathcal{O}(n^2)
 \]
 </p>
 
-{% attention "**À retenir**" %}
-Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$.
+{% note "**À retenir**" %}
+Compter le nombre d'itération d'une boucle avec les $\mathcal{O}()$. Une boucle de $n-3$ exécutions pouvant être avantageusement remplacée par $\mathcal{O}(n)$
 
-Une boucle de $n-3$ exécutions pouvant être avantageusement remplacé par $\mathcal{O}(n)$
-
-{% endattention %}
+{% endnote %}
 
 ### <span id="règle-croissance"></span>Boucles dépendantes mais monotones
 
@@ -124,39 +120,39 @@ Si une boucle s'exécute un nombre variable de fois, mais que cette variation es
 
 On va vérifier cela avec un exemple :
 
-```python/
-total=0
-de i=1 à n-1 faire :
-    de j=i+1 à n faire :
-        total=total+1
+```pseudocode/
+total ← 0
+pour chaque i de [1, n-1]:
+    pour chaque j de [i+1, n]:
+        total ← total + 1
 Rendre total
 ```
 
-Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle  on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
+Le nombre de fois où la boucle en $j$ est exécutée est un nombre variable de fois qui dépend de la valeur de $i$. Comme $i$ va croître, le nombre de fois où cette boucle va s'exécuter va décroître. Si l'on applique la règle on peut dire qu'elle va s'exécuter de l'ordre de $\mathcal{O}(n)$ fois comme dans l'exemple de la partie précédente. La complexité de l'algorithme est donc de $\mathcal{O}(n^2)$.
 
 Refaisons le calcul en décomposant toutes les instructions, comme on le ferait dans le cas général, pour voir que notre règle est valide (et donnera aussi une idée de la preuve de cette règle) :
 
-* ligne 1 : $\mathcal{O}(1)$
-* itération pour $i=1$:
-  * une affectation $i=1$ : $\mathcal{O}(1)$
-  * boucle pour $j=1$:
-    * une affectation de $j$ :  $\mathcal{O}(1)$
-    * la ligne 4 :  $\mathcal{O}(1)$
-    * le tout $n-1$ fois
-* itération pour $i=2$:
-  * une affectation $i=2$ : $\mathcal{O}(1)$
-  * boucle pour $j=2$:
-    * une affectation de $j$ :  $\mathcal{O}(1)$
-    * la ligne 4 :  $\mathcal{O}(1)$
-    * le tout $n-2$ fois
-* ...
-* itération pour $i=n-1$:
-  * une affectation $i=n-1$ : $\mathcal{O}(1)$
-  * boucle pour $j=n-1$:
-    * une affectation de $j$ :  $\mathcal{O}(1)$
-    * la ligne 4 :  $\mathcal{O}(1)$
-    * le tout $1$ fois
-* ligne 5 : $\mathcal{O}(1)$
+- ligne 1 : $\mathcal{O}(1)$
+- itération pour $i=1$:
+  - ligne 2 : une affectation $i=1$ : $\mathcal{O}(1)$
+  - boucle pour $j=1$:
+    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
+    - ligne 4 : $\mathcal{O}(1)$
+    - le tout $n-1$ fois
+- itération pour $i=2$:
+  - ligne 2 : une affectation $i=2$ : $\mathcal{O}(1)$
+  - boucle pour $j=2$:
+    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
+    - ligne 4 : $\mathcal{O}(1)$
+    - le tout $n-2$ fois
+- ...
+- itération pour $i=n-1$:
+  - ligne 2 : une affectation $i=n-1$ : $\mathcal{O}(1)$
+  - boucle pour $j=n-1$:
+    - ligne 3 : une affectation de $j$ : $\mathcal{O}(1)$
+    - ligne 4 : $\mathcal{O}(1)$
+    - le tout $1$ fois
+- ligne 5 : $\mathcal{O}(1)$
 
 Notre complexité totale est donc :
 
@@ -166,8 +162,8 @@ Notre complexité totale est donc :
     (\mathcal{O}(1) + (n-1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
     (\mathcal{O}(1) + (n-2) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) + \\
     \dots\\
- + (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) \\
- + \mathcal{O}(1)
+  (\mathcal{O}(1) + (1) \cdot (\mathcal{O}(1) + \mathcal{O}(1))) +\\
+ \mathcal{O}(1)
 \end{aligned}
 \]</p>
 
@@ -179,8 +175,8 @@ Comme $\mathcal{O}(1) + \mathcal{O}(1) = \mathcal{O}(1)$, on a :
     (\mathcal{O}(1) + (n-1) \cdot \mathcal{O}(1)) + \\
     (\mathcal{O}(1) + (n-2) \cdot \mathcal{O}(1)) + \\
     \dots\\
- + (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) \\
- + \mathcal{O}(1)
+ (\mathcal{O}(1) + 1 \cdot \mathcal{O}(1)) +\\
+ \mathcal{O}(1)
 \end{aligned}
 \]</p>
 
@@ -192,7 +188,7 @@ Ce qui donne :
     n \cdot \mathcal{O}(1) + \\
     (n-1) \cdot \mathcal{O}(1) + \\
     \dots\\
- + \mathcal{O}(1)
+ \mathcal{O}(1)
 \end{aligned}
 \]</p>
 
@@ -206,7 +202,7 @@ $$\mathcal{O}(1) + \frac{(n+1)(n)}{2} \mathcal{O}(1)$$
 
 Ce qui est de l'ordre de : $\mathcal{O}(\frac{(n+1)(n)}{2})$. Or :
 
-$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^n + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$
+$$\mathcal{O}(\frac{(n+1)(n)}{2}) = \mathcal{O}(\frac{n^2 + n}{2}) = \mathcal{O}(n^2 +n) = \mathcal{O}(n^2)$$
 
 On retrouve bien le résultat attendu.
 
@@ -218,26 +214,21 @@ Un algorithme récursif est un algorithme qui s'appelle lui-même jusqu'à ce qu
 Pour calculer la complexité d'un algorithme récursif en fonction de la taille $n$ de l'entrée, on pose que $C(n)$ est la complexité et l'on utilise cette fonction pour estimer la complexité des appels récursifs. Une fois les complexités des éléments d'arrêts estimés, trouver $C(n)$ revient à résoudre une équation de récurrence.
 {% endattention %}
 
-Pour illustrer ce calcul, prenons l'exemple suivant :
+Pour illustrer ce calcul, reprenons l'exemple du calcul du maximum :
 
-```python/
-fonction maximum(t, n):
-    si n == 1
-        rendre t[0]
+```pseudocode/
+algorithme maximum_rec(t: [réel], n: entier) → entier:
+    si n == 0:
+        rendre 0
     sinon:
-        x = maximum(t, n-1)
-        si x > t[n-1]:
+        x ← maximum_rec(t, n-1)
+        si t[x] > t[n]:
             rendre x
         sinon:
-            rendre t[n-1]
+            rendre n
 ```
 
-On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`{.language-} de taille `n`{.language-}. On vérifie qu'avec ces paramètres initiaux :
-
-1. l'algorithme converge bien
-2. il rend bien le maximum de `t`{.language-}
-
-La taille des données est de l'ordre de la taille du tableau, c'est à dire le paramètre $n$. On pose alors que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :
+On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`{.language-} de taille `n = t.longueur - 1`{.language-}. On sait que cet algorithme fonctionne (on l'a déjà prouvé). Le calcul de la complexité se fait en résolvant une équation de récurrence. On pose que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :
 
 1. définition d'une fonction $\mathcal{O}(1)$
 2. une comparaison entre une constante et une variable : $\mathcal{O}(1)$

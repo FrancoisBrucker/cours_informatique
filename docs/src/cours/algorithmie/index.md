@@ -86,7 +86,7 @@ Mais même si on a un problème algorithmique et un algorithme, comment prouver 
 [Prouver des algorithmes](./prouver-un-algorithme){.interne}
 {% endaller %}
 
-### On s’entraîne : algorithmes itératifs et récursifs
+### <span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
 
 Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
@@ -112,14 +112,13 @@ Cette notion est centrale en algorithmie, nous en reparlerons encore tout au log
 [Complexité d'un problème algorithmique](./complexité-problème){.interne}
 {% endaller %}
 
-### On s'entraîne
+### <span id="entrainement-complexite"></span>On s'entraîne : calcul de complexité
 
-> TBD: lisible, juste performances.
-> 
-> TBD reprendre les exos d'avant avec calcul de complexité :
-> 
-> - factoriel
-> - Les algorithmes récursifs manipulent mal les tableaux : on verra plus tard des structures plus adaptés, comme les listes, qui permettent d'être modifiées.
+Maintenant que l'on peut calculer les complexités, on peut reprendre les algorithmes itératifs et récursifs que [nous avons crées précédemment](./#entrainement-preuve) :
+
+{% aller %}
+[Projet : Écrire et prouver des algorithmes Itératif et récursif](./projet-calcul-complexite){.interne}
+{% endaller %}
 
 ### projet : problèmes liés à l'exponentiation
 

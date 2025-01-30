@@ -64,6 +64,33 @@ Une liste peut-être vue comme un tableau dont on peut augmenter ou diminuer la 
 Ne confondez pas liste et [liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e) ce n'est pas du tout la même structure !
 {% endattention %}
 
+## Itérateur
+
+La gestion des boucles `pour chaque`{.language-} en python se fait via des itérateurs. Ce sont de petits programmes dont le but est de donner le prochain élément. Par exemple :
+
+```python
+for x in range(1000000):
+  print(x)
+```
+
+Ne commence pas par créer la liste allant de 0 à 999999, mais produit un itérateur qui rend la prochaine valeur en $\mathcal{O}(1)$.
+
+On a pris ce parti pour l'écriture des boucles en pseudo-code :
+
+```pseudocode
+pour chaque x de [0, 999999]:
+  affiche à l'écran x
+```
+
+Prend $\mathcal{O}(1)$ instructions et ne crée pas l'intervalle en entier.
+
+Vous verrez parfois l'écriture alternative qui explicite l'itérateur et est considérée comme équivalente :
+
+```pseudocode
+pour x allant de 0 à 999999:
+  affiche à l'écran x
+```
+
 ## Opérations sur les listes python
 
 On a dit que l'on pouvait considérer que la création d'une liste, d'un tableau et d'une chaîne de caractères comme valant $\mathcal{O}(1)$. Ceci était un raccourci qu'il nous faut maintenant expliciter car il peut induire en erreur lorsque l'on considères des opérations sur les conteneurs comme la concaténation.
@@ -100,14 +127,14 @@ De là :
 
 ## Fonctions et méthodes données de python
 
-Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
+Il faut connaître les différentes complexités des méthodes et fonctions utilisées. Ne vous laissez pas méprendre. Ce n'est pas parce qu'elle font 1 seule ligne que leur complexité est en $\mathcal{O}(1)$. Par exemple la complexité de la méthode `index`{.language-} des listes ((comme une `l.index("?")`{.language-}) ou encore  la méthode `max`{.language-} de python, qui prend en entrée une liste `l` :
 
 ```python
 l = [1, 3, 2, 6, 4, 5]
 print(l.max())
 ```
 
-Est de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
+Sont de complexité $\mathcal{O}(n)$  où $n$ est la taille de la liste `l` et pas $\mathcal{O}(1)$. Il **faut** en effet parcourir tous les éléments d'une liste (a priori non triée) pour en trouver le maximum.
 
 {% attention %}
 Lorsque vous utilisez des fonctions et des méthodes en python, **il faut toujours vérifier la complexité de celles-ci**. Ce n'est pas toujours $\mathcal{O}(1)$.

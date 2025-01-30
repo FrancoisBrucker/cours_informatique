@@ -28,30 +28,42 @@ Nous avons calculé explicitement des complexité dans la partie précédente. V
 
 ### Ligne au compte incertain
 
-Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte :
+Certaines ligne n'ont pas le même nombre d'instruction selon comment on compte. Reprenons par exemple un compte que l'on a fait précédemment :
 
-- est-ce que `x ← a + 1`{.language-} c'est 1, 2 ou 3 instructions ? Ou plus ?
-- quel est le nombre d'instructions de la ligne `pour chaque élément x du tableau T`{.language-} ? 1, 2 ou plus ?
+```pseudocode
+F[i] ← F[i - 1] + F[i - 2]
+```
 
-### Algorithme équivalents aux comptes très différents
+On a considéré que cette instruction nécessitait 3 lectures de la variable `i`{.language-}. Mais dire que l'on ne lit `i`{.language-} qu'une seule fois aurait-été tout aussi légitime.
 
-De plus, selon l'implémentation, un même algorithme peut avoir plusieurs complexités :
+Ou encore le code suivant :
 
-```text
+```pseudocode
 pour chaque i de [2, 9]:
   affiche à l'écran i
 ```
 
-Peut être considéré de complexité $2+ 8\cdot 3 = 29$ si l'on considère que :
+Où l'on a considéré que l'on ne calculait pas tout l'intervalle à chaque itération et que l'on savait quel était l'élément suivant en 1 instruction, ce qui donne une complexité de $2+ 8\cdot 3 = 29$ :
 
 - la première ligne est constituée de :
   - 2 création de bornes
   - 8 affectations
 - l'affichage nécessite 1 opération et qu'il faut retrouver la valeur de $i$
 
-En remplaçant la boucle for par une boucle tant que, on obtient :
+Il aurait été tout aussi légitime de compter différemment, en créant tout le tableau, en stockant la valeur courante, etc. Selon ce que l'on considère le compte serait très différent.
 
-```text
+### Algorithmes équivalents aux comptes très différents
+
+Reprenons l'exemple précédent :
+
+```pseudocode
+pour chaque i de [2, 9]:
+  affiche à l'écran i
+```
+
+En remplaçant la boucle for par une boucle tant que pour expliciter le calcul, on obtient :
+
+```pseudocode
 i ← 2
 tant que i ≤ 9:
   affiche à l'écran i
@@ -66,17 +78,13 @@ En revanche, si l'on remplace $9$ par $n$ le rapport des deux complexité tend v
 
 En écrivant le pseudo-code en code, par exemple en python, il n'est pas garantie du tout que les instructions basiques de mon pseudo-code seront aussi les instructions basiques de l'interpréteur.
 
-L'instruction python `x = 1`{.language-} en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code `x ← 1`{.language-}. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça.
-
-Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC).
-
-Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).
+L'instruction python `x = 1`{.language-} en python prendra certainement plus que les 2 instructions élémentaires du pseudo-code `x ← 1`{.language-}. l'interpréteur python (il lui faut d'abord créer un objet de type entier, la variable puis les lier) et cela prendra encore plus d'instructions basiques au processeur pour réaliser tout ça. Ah oui, et ça dépend du processeur : un processeur ARM (comme sur les mac) prendra plus d'instructions qu'un processeur INTEL (sur les PC). Sans parler du fait que chaque instruction basique pour un processeur peut prendre plusieurs cycles processeur et que ce n'est pas constant, même pour une instruction donnée (à cause des prédictions).
 
 ### Beaucoup de calcul pour par grand chose
 
-Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. Em effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :
+Enfin, ce calcul exact semble un peu vain puisqu'au final seule l'allure générale et asymptotique de la complexité nous intéresse. En effet, si les entrées sont de petites tailles c'est de toute façon rapide et lorsque les entrées deviennent grandes :
 
-{% note %}
+{% note "**À retenir**" %}
 Les coefficients multiplicatifs et additifs constants sont négligeable par rapport à l'allure logarithmique, linéaire, polynomiale ou exponentielle de la complexité.
 {% endnote %}
 
@@ -96,7 +104,9 @@ Comme il est impossible de connaître le nombre exact d’instructions et qu'au 
 [Règles et astuces de calcul](./règles-de-calcul){.interne}
 {% endaller %}
 
-## Complexité de méthodes et de structures de données
+## Complexité d'un code
+
+En code, on utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées que des tableaux (des listes ou des dictionnaires en python par exemple). Il faut connaître la complexité de chacune de ces fonctions et de la manipulation de ces structures pour pouvoir calculer la complexité du code produit, utiliser une méthode plutôt qu'une autre pouvant mener à une augmentation dramatique de la complexité.
 
 {% aller %}
 [Complexité de méthodes et de structures](./méthodes-structures-calcul){.interne}

@@ -12,7 +12,7 @@ eleventyComputed:
 
 La complexité d'un pseudo-code est une mesure associée au pseudo-code. Elle peut mesurer 2 grandeurs physique lors de l'exécution d'un algorithme :
 
-- **_complexité en temps_** : le nombre d'instruction effectuées pendant son exécution
+- **_complexité en temps_** : le nombre d'instructions effectuées pendant son exécution
 - **_complexité en espace_** : le nombre de cases mémoires maximales utilisées pendant son exécution.
 
 Par défaut, la complexité utilisée est celle en temps :
@@ -60,7 +60,7 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
-fonction recherche(t: [entier], x: entier):
+algorithme recherche(t: [entier], x: entier) → booléen:
     pour chaque e de t:
         si e == x:
             rendre Vrai
@@ -99,23 +99,29 @@ affiche à l'écran trouve
 Au total on eu besoin de $8+\underbracket{(4 + 3 \cdot (4+4) + 2)}_{\mbox{recherche(t, 6)}} + 1 + 2$
 instructions c'est à dire $41$ instructions.
 
-## Complexité des structures
+## Complexité des accès à un tableau ?
 
-Si l'on devait à chaque pseudo-code redéfinir tout les algorithmes qu'on utilise ce serait vraiment fastidieux. On utilise souvent des fonctions non basiques (comme l'affichage à l'écran qu'on a déjà vu) ou des structures plus élaborées (les listes de python par exemples qui sont des extensions des tableaux). Il faudra cependant toujours connaître les complexités de ce qu'on utilise.
+Combien d'instructions nécessite la création et l'accès à un tableau ?
 
-Par exemple pour les listes de python, qui sont des tableaux redimensionnables, on admet pour l'instant (on les verra en détails plus tard) que les complexités sont :
+On considérera en algorithmie que tous les accès à un élément donné d'un tableau nécessite 1 instruction. Ainsi :
 
-- complexité d'ajout d'un élément à la fin de la liste : coût de 1 instruction
-- complexité de l'ajout d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
-- complexité de la suppression d'un élément à la fin de la liste : coût de 1 instruction
-- complexité de la suppression d'un élément pas à la fin de la liste : coût de la taille de la liste instructions
-- usage comme un tableau : 1 instruction
+- créer un tableau de taille $n$ nécessite 1 instruction
+- accéder à un indice donnée en lecture nécessite 1 instruction
+- accéder à un indice donnée pour une affectation nécessite 1 instruction
 
-Si vous utilisez des méthodes d'objets comme vous avez l'habitude de le faire en python (comme une `ma_liste.index("?")`{.language-}, `x in ma_chaîne_de_caractères`{.language-}) ou des structures compliquées (télécharger un fichier d'internet) vous avez le droit mais vous **devez** en connaître le coût : la complexité, les cas d'usage (comme être connecté à internet), etc.
+De là l'instruction :
+
+- créer un tableau de taille 42 nécessite  1 instruction
+- créer un tableau de taille $2^{42} nécessite  1 instruction
+- `F ← un tableau de taille 42`{.language-} nécessite 2 instructions, une pour la création, la seconde pour l'affectation
+- `afficher à l'écran F[3]`{.language-} nécessite 2 instructions, une pour retrouver l'objet associé à `F[3]`{.language-}, l'autre pour l'afficher
+- `F[3] ← 42`{.language-} nécessite 2 instructions, une pour créer l'entier `42`{.language-}, l'autre pour l'affecter
+- `F[i] ← 42`{.language-} nécessite 3 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-} (ce n'est pas une constante) l'autre pour l'affecter
+- `F[i-1] ← 42`{.language-} nécessite 5 instructions, une pour créer l'entier `42`{.language-}, une pour trouver l'objet associé à `i`{.language-}, une pour créer l'entier 1, une pour l'addition et la dernière pour l'affectation.
 
 ## Complexité d'un algorithme
 
-Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 194$ :
+Le pseudo-code suivant, qui calcule la dixième valeur de la suite de Fibonacci a une complexité $C = 144$ :
 
 ```pseudocode/
 F ← un tableau de 10 entiers
@@ -124,10 +130,7 @@ F[1] ← 1
 
 i ← 2
 tant que i ≤ 9 :
-  j ← i - 1
-  k ← i - 2
-  F[i] ← F[j] + F[k]
-  
+  F[i] ← F[i - 1] + F[i - 2]
   i ← i + 1
 
 rendre F[9]
@@ -150,31 +153,27 @@ La complexité de chaque ligne :
   - récupération de la variable `i`{.language-}
   - test logique `≤`{.language-}
   - gestion du `tant que`{.language-}
-- ligne 7 : 4 instructions
-  - création de l'entier 1
-  - récupération de la variable `i`{.language-}
-  - opération `-`{.language-}
-  - affectation
+- ligne 7 : 9 instructions
+  - 2 créations d'entiers (l'entier 1 et 2)
+  - 3 récupérations de la variable `i`{.language-}
+  - 2 opérations `-`{.language-}
+  - 1 opération `+`{.language-}
+  - 1 affectation
 - ligne 8 : 4 instructions
-  - création de l'entier 2
-  - récupération de la variable `i`{.language-}
-  - opération `-`{.language-}
-  - affectation
-- ligne 9 : 7 instructions
-  - récupération des variables `i`{.language-}, `j`{.language-} et `k`{.language-}
-  - récupération des 2 cases du tableau
-  - opération `+`{.language-}
-  - affectation
-- ligne 10 : 0 instruction
-- ligne 11 : 4 instructions
-- ligne 12 : 0 instruction
-- ligne 13 : 2 instructions
+  - 1 création de l'entier 1
+  - 1 récupération de la variable `i`{.language-}
+  - 1 opération `+`{.language-}
+  - 1 affectation
+- ligne 9 : 0 instructions
+- ligne 10 : 2 instructions
+  - 1 récupération de l'objet associé à `F[9]`{.language-}
+  - 1 instruction `rendre`{.language-}
 
-Comme les lignes 6 à 11 sont exécutées 8 fois, on en conclut que la complexité est :
+Comme les lignes 6 à 8 sont exécutées 8 fois, on en conclut que la complexité est :
 
 <div>
 $$
-2+2+2+0+2 + 8\cdot(4 + 4 + 4 + 7 + 0 + 4) + 0 + 2 = 10 + 8 \cdot 23 = 194
+2+2+2+0+2 + 8\cdot(4 + 9 + 4) + 0 + 2 = 10 + 8 \cdot 17 = 144
 $$
 </div>
 
@@ -182,52 +181,55 @@ $$
 
 Mais souvent la complexité dépend des paramètres du programme, comme par exemple le pseudo-code suivant qui rend la $n$ème valeur de la suite de Fibonacci où $n$ est le paramètre de l'algorithme :
 
-```text#
-fonction fibonacci(n):
+```pseudocode/
+algorithme fibonacci(n: entier) → entier:
   F ← un tableau de n entiers
   F[0] ← 1
   F[1] ← 1
 
   i ← 2
   tant que i < n :
-    j ← i - 1
-    k ← i - 2
-    F[i] ← F[j] + F[k]
-    
+    F[i] ← F[i - 1] + F[i - 2]    
     i ← i + 1
 
   rendre F[n-1]
 ```
 
-Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 23\cdot n-32$ qui dépend de la valeur du paramètre d'entrée.
+Le nombre de fois où l'on rentre dans la boucle va dépendre de l'entrée et on a maintenant une complexité de $C(n) = 17\cdot n-20$ qui dépend de la valeur du paramètre d'entrée.
 
 {% exercice %}
-Montrez que la complexité est bien de $23\cdot n-32$
+Montrez que la complexité est bien de $17\cdot n-20$
 {% endexercice %}
 {% details "corrigé" %}
 Il y a deux différences :
 
-- il faut affecter un objet au paramètre $n$
+- il faut affecter un objet au paramètre $n$ : 1 instruction supplémentaire
 - on ne rentre plus 8 fois dans la boucle mais $n-2$ fois
-- la case de retour n'est plus une constante mais dépend d'un calcul ($n-1$)
+- la case de retour n'est plus une constante mais dépend d'un calcul ($n-1$) : 3 instructions supplémentaires
 
-La complexité est alors : $1 + 10 + (n-2) \cdot 23 + 3 = 23\cdot n-32$.
+La complexité est alors :
+
+<div>
+$$
+1 +2+2+2+0+2 + (n-2)\cdot(4 + 9 + 4) + 0 + 3 + 2 = 14 + (n-2) \cdot 17 = 17\cdot n-20
+$$
+</div>
 
 {% enddetails %}
 
 Enfin, en règle générale, la complexité dépend trop profondément de la nature même de ses entrées et empêche d'en tirer une allure générale. Par exemple l'algorithme suivant qui cherche si une valeur `v`{.language-} est dans un tableau `t`{.language-} :
 
 ```pseudocode/
-algorithme recherche(t: [entier], x: entier):
+algorithme recherche(t: [entier], x: entier) → booléen:
     pour chaque e de t:
         si e == x:
             rendre Vrai
     rendre Faux
 ```
 
-La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 9 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; une affectation de $x$ ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $5n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $n$ affectations de $x$ ; deux $n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 5i + 4$ où $i$ est la position de la valeur dans le tableau.
+La complexité de cet algorithme va dépendre de l'endroit où se trouve la valeur dans le tableau. Si l'on utilise la taille $n$ du tableau comme paramètre de complexité, sa complexité ira de 10 lorsque la valeur est le premier élément du tableau (les deux affectations des paramètres ; trouver `t[0]`{.language-} puis l'affecter à `e`{.language-} ; deux lectures, une opération booléenne et un test ; une création d'objet puis un retour) à $6n + 4$ si la valeur n'est pas dans le tableau (les deux affectations des paramètres ; $2n$ instruction de l'affectation de la boucle `pour chaque`{.language-} ; $2n$ lectures, $n$ opérations booléennes et $n$ tests ; une création d'objet puis un retour). La complexité de l'algorithme est alors $C(i) = 6i + 4$ où $i$ est la position de la valeur dans le tableau.
 
-Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour la fonction `est_dans_tableau`{.language-} on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
+Lorsque l'on utilise un algorithme on a jamais beaucoup de connaissances _a priori_ sur ses entrées. Pour l'algorithme `rechercher`{.language-} on sait que l'on a un entier et un tableau en paramètre mais pas la natures des entiers contenus dans le tableau. Avoir une complexité qui dépend des valeurs contenues dans le tableau est donc inutile en pratique. Il serait pus intéressant de connaître la complexité de l'algorithme pour un tableau d'une taille donnée. Dans ce cas là on calculera la complexité maximale pour tous les tableaux de même taille.
 
 {% note %}
 On calcule la complexité d'un algorithme par rapport à un paramètre qui rend compte de la connaissance _a priori_ que l'on a sur les entrées de celui-ci.
@@ -257,7 +259,7 @@ En prenant en compte les connaissances minimales que l'on a sur les entrées d'u
 **_La complexité_** $C(N)$ d'un algorithme $A(p_1, \dots, p_m)$ est le nombre maximum d'instructions élémentaires effectuées pour exécuter l'algorithme $A$ avec des entrées dont la taille vaut $N$.
 {% endnote %}
 
-En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $5N+4$.
+En utilisant la définition ci-dessus, la complexité de l'algorithme `recherche`{.language-} vaut $6N+4$.
 
 Comme rien n'est jamais simple, il existe des cas où la connaissance de la taille ne done pas un critère pertinent pour établir une complexité. C'est souvent le cas lorsque les paramètres de l'algorithmes sont de taille fixe, comme pour la fonction `fibonacci(n)`{.language-}, la taille de stockage d'un entier étant de 1 case mémoire.
 
@@ -279,7 +281,7 @@ Lorsque l'on parle de complexité d'un algorithme ce sera toujours en utilisant 
 
 ## Complexité min
 
-Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($5N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($9$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
+Lorsqu'à paramètre fixé le nombre d'instructions varie selon les paramètres utilisé (l'algorithme `recherche`{.language-} par exemple), la complexité prend le maximum ($6N+4$ où $N$ est la la taille du tableau en entrée pour l'algorithme `recherche`{.language-}) mais il peut être utile de connaître le minimum ($10$ pour l'algorithme `recherche`{.language-}, indépendant de la taille du tableau en entrée) pour voir la variation de ce nombre en fonction des entrées.
 
 {% note "**Définition**" %}
 
@@ -339,10 +341,8 @@ algorithme fibonacci_sobre(n):
 
 Il demande beaucoup moins de mémoire, 5 cases mémoires seulement (pour stocker le paramètre $n$ et les 4 variables $a$, $b$, $c$ et $i$), ce qui lui permet de calculer de grandes valeurs de la suite de Fibonacci, plus grande que la taille mémoire de l'ordinateur qui exécutera le code associé.
 
-Sa complexité un peu plus élevée puisqu'il faut gérer les variables $a$, $b$ et $c$ mais reste comparable au premier.
-
 {% info %}
-Souvent, lors du design de nos algorithmes on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
+Ce n'est pas le cas ici mais souvent, lors du design de nos algorithmes, on aura le choix entre entre consommer beaucoup de mémoire et être sobre en instructions ou le contraire.
 {% endinfo %}
 
 Complexité et complexité spatiale sont liées puisque chaque affectation d'une variable prend une instruction :

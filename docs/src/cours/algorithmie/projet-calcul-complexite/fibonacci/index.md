@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD pas terminale = beaucoup trop ! Terminal = bien en complexité.
+
 {% lien %}
 [Corrigé](./corrigé){.interne}
 {% endlien %}
