@@ -869,7 +869,7 @@ Utiliser le code précédent pour résoudre l'exercice suivant :
 En créant itérativement la matrice triangulaire inférieure, donner une version itérative de l'algorithme calculant le triangle de Pascal. Sa signature devra être :
 
 ```pseudocode
-algorithme binom(n: entier) → [[entier]]:
+algorithme binom_matrice(n: entier) → [[entier]]:
 ```
 
 {% endexercice %}
