@@ -102,9 +102,9 @@ Calculez la factorielle de 45.
 ```python
 factorielle = x = 45
 
-while x >= 1:
-    factorielle = factorielle * x
+while x > 1:
     x -= 1
+    factorielle = factorielle * x
 
 print(factorielle)
 ```

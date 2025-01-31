@@ -811,6 +811,14 @@ $$
 $$
 </div>
 
+et :
+
+<div>
+$$
+\binom{n}{1} = \binom{n}{n} = 1
+$$
+</div>
+
 {% exercice %}
 Après avoir examiné les conditions d'arrêt, donner un algorithme récursif permettant de calculer le coefficient binomial.
 

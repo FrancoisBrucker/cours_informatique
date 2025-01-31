@@ -20,11 +20,17 @@ Pour $n > p > 0$ :
 
 <div>
 $$
-C(n, p) = C(n-1, p-1) + C(n-1, p)
+\binom{n}{k} = \binom{n-1}{k-1} \mathrel{+} \binom{n-1}{k}
 $$
 </div>
 
-et $C(n, 1) = C(n, n) = 1$
+et :
+
+<div>
+$$
+\binom{n}{1} = \binom{n}{n} = 1
+$$
+</div>
 
 ## Récursif
 
@@ -37,7 +43,7 @@ algorithme binom_rec(n: entier, k: entier) → entier:
 ```
 
 {% exercice %}
-Quelle est la complexité de l'algorithme `reverse_indice`{.language-} ?
+Quelle est la complexité de l'algorithme `binom_rec`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -62,6 +68,13 @@ fonction binom_matrice(n: entier) → [[entier]]:
 
     rendre matrice
 ```
+
+{% exercice %}
+Utilisez la fonction `binom_matrice(n: entier) → [[entier]]`{.language-} pour rendre la valeur de 
+{% endexercice %}
+{% details "corrigé" %}
+
+{% enddetails %}
 
 > TBD faire binom
 

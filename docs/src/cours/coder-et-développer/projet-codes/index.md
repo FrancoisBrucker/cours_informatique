@@ -76,8 +76,8 @@ Chaque sujet contient son corrigé, mais faites dans l'ordre :
 Uniquement des fonctions à créer.
 
 {% exercice %}
-[Sujet](./polynome-sujet){.interne}
+[Sujet](./polynomes-sujet){.interne}
 {% endexercice %}
 {% details "corrigé", "open" %}
-[Éléments de corrigé](./syracuse-corrigé){.interne}
+[Éléments de corrigé](./polynomes-corrigé){.interne}
 {% enddetails %}
