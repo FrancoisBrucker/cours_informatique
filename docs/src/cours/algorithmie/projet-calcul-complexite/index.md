@@ -250,7 +250,7 @@ En déduire que le nombre de récursion pour calculer $M(n)$ est en $\mathcal{O}
 {% details "corrigé" %}
 
 - si $n > 100$ il y a 0 itération,
-- si $n > 90$ il y a un nombre fini d'itération pour que le calcul de $M(91)$ soit égal qu calcul de $M(101)$.
+- si $n > 90$ il y a un nombre fini d'itération pour que le calcul de $M(91)$ soit égal qu calcul de $M(101)$ qui donne 91 en 0 itération supplémentaire.
 - sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 < n' < 101$.
 
 Comme il y a un nombre fini de no,bre plus petit que 90, le nom,bre maximum d'itération est bien en $\mathcal{O}(1)$.

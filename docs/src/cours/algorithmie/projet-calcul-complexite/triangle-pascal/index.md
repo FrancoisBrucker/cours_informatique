@@ -10,10 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% lien %}
-[Corrigé](./corrigé){.interne}
-{% endlien %}
-
 Le calcul du coefficient binomial se fait en utilisant [le triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal).
 
 Pour $n > p > 0$ :
@@ -67,7 +63,7 @@ que $C(n, k) \geq \binom{n}{k}$
 Nous allons montrer que cette complexité est rédhibitoire pour la plupart des calculs.
 
 {% exercice %}
-Montrez que pour $n \geq 2$:
+Montrez que pour $n \geq 1$:
 
 <div>
 $$
@@ -85,12 +81,12 @@ $$
 \begin{array}{lcl}
 \binom{2n}{n} & = & \binom{2n-1}{n-1} + \binom{2n-1}{n}\\
               &&  \binom{2n-2}{n-2} + \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\leq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\leq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
-              &\leq & 2\cdot\binom{2n-2}{n-1}\\
-              &\leq & \dots \\
-              &\leq & 2^k\cdot\binom{2(n-k)}{n-k}\\
-              &\leq & 2^{n}\cdot\binom{n}{0}
+              &\geq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
+              &\geq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
+              &\geq & 2\cdot\binom{2n-2}{n-1}\\
+              &\geq & \dots \\
+              &\geq & 2^k\cdot\binom{2(n-k)}{n-k}\\
+              &\geq & 2^{n}\cdot\binom{n}{0}
 \end{array}
 $$
 </div>
@@ -102,7 +98,7 @@ En déduire que cette complexité est rédhibitoire dans le cas le pire.
 {% endexercice %}
 {% details "corrigé" %}
 
-Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul exponentiel.
+Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul $\Omega(2^n)$, ce qui est exponentiel.
 {% enddetails %}
 
 ## Itératif v1
@@ -128,8 +124,8 @@ algorithme binom_matrice(n: entier) → [[entier]]:
 {% exercice %}
 Utilisez la fonction `binom_matrice(n: entier) → [[entier]]`{.language-} pour créer l'algorithme itératif de signature :
 
-```pseudocode/
-algorithm binom(n: entier, k:entier) → entier
+```pseudocode
+algorithme binom(n: entier, k:entier) → entier
 ```
 
 calculant $\binom{n}{k}$.
@@ -140,7 +136,7 @@ Donnez-en sa complexité.
 {% details "corrigé" %}
 
 ```pseudocode
-algorithm binom(n: entier, k:entier) → entier:
+algorithme binom(n: entier, k:entier) → entier:
     matrice ← binom_matrice(n)
 
     rendre matrice[n-1][k]
@@ -185,7 +181,7 @@ La complexité de la fonction `binom_matrice2`{.language-} est clairement en $\m
 de là, l'algorithme suivant est aussi de complexité $\mathcal{O}(nk)$ :
 
 ```pseudocode
-algorithm binom(n: entier, k:entier) → entier:
+algorithme binom(n: entier, k:entier) → entier:
     matrice ← binom_matrice2(n, k)
 
     rendre matrice[n-1][k]
