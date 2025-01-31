@@ -520,26 +520,26 @@ $$
 Utilisez la définition précédente pour créer un algorithme récursif calculant $F_n$ de signature :
 
 ```pseudocode
-fibo(n: entier) → entier
+fibonacci_rec(n: entier) → entier
 ```
 
 {% endexercice %}
 {% details "corrigé" %}
 
 ```pseudocode/
-algorithme fibo(n: entier) → entier:
+algorithme fibonacci_rec(n: entier) → entier:
     si n ≤ 2:
         rendre 1
-    rendre fibo(n-1) + fibo(n-2)
+    rendre fibonacci_rec(n-1) + fibonacci_rec(n-2)
 ```
 
 Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !
 
 Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.
 
-1. initialisation : $\mbox{fibo}(n)$ admet un nombre fini de récursion pour $n\leq 2$.
-2. hypothèse de récurrence : $\mbox{fibo}(m)$ admet un nombre fini de récursion pour $m\leq n$.
-3. Pour $n + 1$, $\mbox{fibo}(n)$ et $\mbox{fibo}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.
+1. initialisation : $\mbox{fibonacci\\_rec}(n)$ admet un nombre fini de récursion pour $n\leq 2$.
+2. hypothèse de récurrence : $\mbox{fibonacci\\_rec}(m)$ admet un nombre fini de récursion pour $m\leq n$.
+3. Pour $n + 1$, $\mbox{fibonacci\\_rec}(n)$ et $\mbox{fibonacci\\_rec}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.
 
 Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursif, puisque l'algorithme ne fait que transcrire l'équation de récursion.
 
@@ -740,7 +740,7 @@ Donnez la valeur de $M(n)$ pour tout $n< 101$ et en déduire que la fonction de 
 
 On a $M(91) = M(91 + 1 + \dots + 1) = M(101) = 91$ et pour tout $n < 90$ on il existera $k > 1$ tel que $M(n) = M^k(91) = 91$
 
-Comme il faut un nombre fini d'itération pour passer de $M(n)$ à M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k>0$ (il en faut $k\cdot I$).
+Comme il faut un nombre fini d'itération pour passer de $M(n)$ à $M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k>0$ (il en faut $k\cdot I$).
 
 {% enddetails %}
 

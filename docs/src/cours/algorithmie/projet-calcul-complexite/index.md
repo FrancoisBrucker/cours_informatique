@@ -83,7 +83,9 @@ Quelle est la complexité de l'algorithme `supprime`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Toutes les lignes sont en $\mathcal{O}(1)$ et deux boucles de $\mathcal{O}(\mbox{t.longueur})$ itérations.
+
+La complexité est donc en $\mathcal{O}(1) + 2\cdot\mathcal{O}(\mbox{t.longueur}) = \mathcal{O}(\mbox{t.longueur})$
 
 {% enddetails %}
 
@@ -109,15 +111,109 @@ Quelle est la complexité de l'algorithme `supprime_rec`{.language-} ?
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+L'algorithme est récursif calculer sa complexité va dépendre d'une équation récurrente. Une analyse rapide de l'algorithme nous indique que cette équation de récursion est basée sur la taille du tableau en entrée, on note alors $C(n)$ la complexité de `supprime_rec`{.language-} pour un tableau de taille $n$ passé en entrée.
+
+Regardons la complexité de l'algorithme ligne à ligne :
+
+- lignes 1 à 4 : chaque ligne est en $\mathcal{O}(1)$. Complexité totale de ce paquet : $\mathcal{O}(1)$
+- lignes 6 à 7 : une boucle de $n-1 = \mathcal{O}(n)$ itérations. Comme chaque ligne de la boucle est en $\mathcal{O}(1)$, la complexité totale de ce paquet est : $\mathcal{O}(n)$
+- lignes 9 à 12 : selon la valeur du test soit la ligne 10 soit la ligne 12 est exécutée.
+
+Il faut faire **très attention** pour ce genre de lignes car :
+
+- un des paramètres d'une fonction est le résultat d'une fonction
+- la complexité de la fonction `concaténation`{.language-} n'est **pas** $\mathcal{O}(1)$, on ne peut donc pas l'ignorer dans nos calculs.
+
+Ces deux lignes sont de même complexité : $C(n-1) + \mathcal{O}(n)$. Le premier terme correspond au calcul du second paramètre de l'appel à la fonction `concaténation`{.language-} et le second à la complexité de l'exécution de `concaténation`{.language-}.
+
+On a maintenant assez pour écrire l'équation qui régit la complexité :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) & = & \mathcal{O}(1) + \\
+&  & \mathcal{O}(n) + \\
+&  & \mathcal{O}(n) + C(n-1)\\
+&=& \mathcal{O}(n) + C(n-1)
+\end{array}
+$$
+</div>
+
+Cette équation se résout simplement :
+
+<div>
+$$
+\begin{array}{lcl}
+C(n) & = & \mathcal{O}(n) + C(n-1)\\
+     & = & \mathcal{O}(n) + \mathcal{O}(n) + C(n-2)\\
+     & = & \dots\\
+     & = & \mathcal{O}(n) + \dots + \mathcal{O}(n) + C(1)\\
+     & = & n\cdot \mathcal{O}(n) + \mathcal{O}(1)\\
+     & = & \mathcal{O}(n^2)
+\end{array}
+$$
+</div>
+
+{% enddetails %}
+
+### Comparaison
+
+{% exercice %}
+Quel algorithme est préférable pour résoudre le problème de la suppression ? Et pourquoi ?
+{% endexercice %}
+{% details "corrigé" %}
+L'algorithme itératif est bien meilleur que l'algorithme récursif : $\mathcal{O}(n)$ versus $\mathcal{O}(n^2)$ si $n$ est la taille du tableau passé en paramètre.
+
+Ceci est du à la duplication du tableau dans la version récursive qui ajoute un facteur $\mathcal{O}(n)$ à chaque récursion.
+
+Pour que les complexités soient comparables il faudrait pouvoir ajouter petit à petit des éléments au tableau ce qui est impossible. Les algorithmes récursifs préfèrent utiliser des structures dynamiques comme les listes qui permettent d'ajouter efficacement des objets à un conteneur. Nous verrons ces structures plus tard dans le cours.
 
 {% enddetails %}
 
 ## Retournement d'un tableau
 
-## Factorielle
+```pseudocode/
+algorithme reverse_indice(t: [entier], i: entier) → ∅
+    si t.longueur - 1 - i > i:
+        temp ← t[i]
+        t[i] ← t[t.longueur - 1 - i]
+        t[t.longueur - 1 - i] ← temp
 
-> TBD terminale = for
+        reverse_indice(t, i + 1)
+```
+
+{% exercice %}
+Quelle est la complexité de l'algorithme `reverse_indice`{.language-} ?
+{% endexercice %}
+{% details "corrigé" %}
+
+L'algorithme est récursif et toutes les lignes à part l'appel récursif sont en $\mathcal{O}(1)$. Comme la condition d'arrêt de la récursion se passe sur le second paramètre, on peut écrire
+l'équation de récurrence :
+
+<div>
+$$
+\begin{array}{lcl}
+C(i) & = & \mathcal{O}(1) + C(i + 1)\\
+\end{array}
+$$
+</div>
+
+Avec $C(n/2) = \mathcal{O}(1)$ si $n$ est la taille du tableau. La complexité maximale sera atteinte pour $i = 0$ et dans ce cas :
+
+<div>
+$$
+\begin{array}{lcl}
+C(0) & = & \mathcal{O}(1) + C(1)\\
+     & = & \mathcal{O}(1) + \mathcal{O}(1) + C(2)\\
+     & = & \dots\\
+     & = & \mathcal{O}(1) + \dots + \mathcal{O}(1) + C(n/2)\\
+     & = & \frac{n}{2}\cdot \mathcal{O}(1) + \mathcal{O}(1)\\
+     & = & \mathcal{O}(n)
+\end{array}
+$$
+</div>
+
+{% enddetails %}
 
 ## Fibonacci
 
@@ -126,6 +222,8 @@ Quelle est la complexité de l'algorithme `supprime_rec`{.language-} ?
 {% endaller %}
 
 ## McCarty
+
+> TBD
 
 ## Triangle de Pascal
 

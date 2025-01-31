@@ -54,7 +54,7 @@ C(n) &\leq & \mathcal{O}(1) + 2 \cdot C(n-1)&\\
 $$
 </div>
 
-On peut reappliquer l'inégalité de récurrence autant de fois que l'on veut ce qui donne, en l'appliquant $K$ fois :
+On peut réappliquer l'inégalité de récurrence autant de fois que l'on veut ce qui donne, en l'appliquant $K$ fois :
 
 <div>
 $$
@@ -80,9 +80,9 @@ De même, en utilisant l'inégalité $\mathcal{O}(1) + 2 \cdot C(n-2) \leq C(n)$
 $$
 \begin{array}{ccll}
 C(n) &\geq & \mathcal{O}(1) + 2 \cdot C(n-2)&\\
-     &\geq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-4)) & \text{en réapplicant l'inégalité pour } C(n-2)\\
+     &\geq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-4)) & \text{en réappliquant l'inégalité pour } C(n-2)\\
      &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot C(n-4)&\\
-     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-6)) & \text{en réapplicant l'inégalité pour } C(n-4)\\
+     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-6)) & \text{en réappliquant l'inégalité pour } C(n-4)\\
      &\geq & \mathcal{O}(1)\cdot (1 + 2 + 4) + 8 \cdot C(n-6)&\\
 \end{array}
 $$
@@ -127,22 +127,11 @@ Comme $\varphi$ et $-\frac{1}{\varphi}$ sont les racines du polynôme $P(X) = X^
 
 $F(n) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(\varphi^2) - \frac{1}{(-\varphi)^{n-2}}(\frac{1}{\varphi^2})) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})$
 
-## Itératif
-
-```python
-def fibo_iter(n):
-    a = 1
-    b = 1
-    for i in rang(n):
-        a, b = a+b, a
-    return a
-```
-
 ## Récursif terminal
 
 La complexité étant terminale, il y a $\mathcal{O}(n)$ appels récursifs. Comme le reste de la fonction est en $\mathcal{O}(1)$ la complexité totale est en $\mathcal{O}(n)$.
 
-Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que `fibo_rec2(n, a, b)` rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.
+Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que `fibo(n, a, b)` rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.
 
-- Initialisation : `fibo_rec2(1, a, b) = b` et `fibo_rec2(2, a, b) = a`
-- On suppose la propriété vraie pour `fibo_rec2(n-1, a, b)`. Comme `fibo_rec2(n, a, b) = fibo_rec2(n-1,a+b , a)`, la propriété est vérifiée.
+- Initialisation : `fibo(1, a, b) = b` et `fibo(2, a, b) = a`
+- On suppose la propriété vraie pour `fibo(n-1, a, b)`. Comme `fibo(n, a, b) = fibo(n-1,a+b , a)`, la propriété est vérifiée.
