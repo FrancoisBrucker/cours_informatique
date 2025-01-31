@@ -825,11 +825,11 @@ La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (premiè
 On a alors le code :
 
 ```pseudocode
-algorithme binom(n: entier, k: entier) → entier:
+algorithme binom_rec(n: entier, k: entier) → entier:
     si (n == k) ou (k == 1):
         rendre 1
     sinon:
-        rendre binom(n-1, k-1) + binom(n - 1, k)
+        rendre binom_rec(n-1, k-1) + binom_rec(n - 1, k)
 ```
 
 Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de la condition d'arrêt, le programme s'arrête à chaque fois : c'est un algorithme.
@@ -878,7 +878,7 @@ algorithme binom(n: entier) → [[entier]]:
 Première version qui calcule toute la matrice triangulaire inférieure :
 
 ```pseudocode/
-algorithme binom(n: entier) → [[entier]]:
+algorithme binom_matrice(n: entier) → [[entier]]:
     matrice ← un tableau de [entier] de taille n
 
     pour chaque i de [1, n]:
