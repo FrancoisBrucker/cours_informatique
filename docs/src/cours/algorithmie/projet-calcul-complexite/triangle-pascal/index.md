@@ -215,15 +215,10 @@ algorithme binom_ligne(n: entier, k: entier) → [[entier]]:
             si (j == i) ou (j == 0):
                 courante[j] ← 1
             sinon:
-                précédent ← matrice[i-2]
-                ligne[j - 1] ← précédent[j-2] + précédent[j - 1]
+                ligne[j] ← précédent[j-1] + précédent[j]
 
     rendre matrice
 ```
 
-Sachez que l'on peut encore faire mieux en utilisant qu'un seul tableau auxiliaire ce qui divise par deux la complexité spatiale (mais qui reste en $\mathcal{O}(k)$).
+Sachez que l'on peut encore faire mieux en utilisant qu'un seul tableau auxiliaire (la deuxième boucle devant aller de $min(i, k)$ à 0) ce qui divise par deux la complexité spatiale (mais qui reste en $\mathcal{O}(k)$).
 {% enddetails %}
-
-## Itératif v3
-
-> TBD O(n) en mémoire avec 1 seul tableau

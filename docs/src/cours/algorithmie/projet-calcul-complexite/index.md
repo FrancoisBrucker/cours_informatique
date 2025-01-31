@@ -223,7 +223,39 @@ $$
 
 ## McCarty
 
-> TBD
+[La fonction 91 de McCarty](https://fr.wikipedia.org/wiki/Fonction_91_de_McCarthy) est définie telle que :
+
+<div>
+$$
+M(n) = \left\{
+    \begin{array}{ll}
+        n-10 & \mbox{si } n > 100 \\
+        M(M(n + 11))& \mbox{sinon.}
+    \end{array}
+\right.
+$$
+</div>
+
+{% exercice %}
+Montrer que le calcul de $M^k(91)$ passe par le calcul de $M^{k-1}(91)$ si $k>1$.
+{% endexercice %}
+{% details "corrigé" %}
+
+$M^k(91) = M^k(M(102)) = M^k(92) = \dots M^k(101) = M^{k-1}(91)$
+{% enddetails %}
+
+{% exercice %}
+En déduire que le nombre de récursion pour calculer $M(n)$ est en $\mathcal{O}(1)$.
+{% endexercice %}
+{% details "corrigé" %}
+
+- si $n > 100$ il y a 0 itération,
+- si $n > 90$ il y a un nombre fini d'itération pour que le calcul de $M(91)$ soit égal qu calcul de $M(101)$.
+- sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 < n' < 101$.
+
+Comme il y a un nombre fini de no,bre plus petit que 90, le nom,bre maximum d'itération est bien en $\mathcal{O}(1)$.
+
+{% enddetails %}
 
 ## Triangle de Pascal
 
