@@ -96,15 +96,7 @@
     
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
-</div></div>
-
-<p>Le calcul du coefficient binomial se fait en utilisant <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal">le triangle de Pascal</a>.</p>
+  <p>Le calcul du coefficient binomial se fait en utilisant <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal">le triangle de Pascal</a>.</p>
 <p>Pour $n &gt; p &gt; 0$ :</p>
 <div>
 $$
@@ -164,7 +156,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Montrez que pour $n \geq 2$:</p>
+<p>Montrez que pour $n \geq 1$:</p>
 <div>
 $$
 \begin{array}{lcl}
@@ -196,12 +188,12 @@ $$
 \begin{array}{lcl}
 \binom{2n}{n} & = & \binom{2n-1}{n-1} + \binom{2n-1}{n}\\
               &&  \binom{2n-2}{n-2} + \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\leq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
-              &\leq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
-              &\leq & 2\cdot\binom{2n-2}{n-1}\\
-              &\leq & \dots \\
-              &\leq & 2^k\cdot\binom{2(n-k)}{n-k}\\
-              &\leq & 2^{n}\cdot\binom{n}{0}
+              &\geq  & \binom{2n-2}{n-1} + \binom{2n-1}{n}\\
+              &\geq & \binom{2n-2}{n-1} + \binom{2n-2}{n-1} + \binom{2n-2}{n}\\
+              &\geq & 2\cdot\binom{2n-2}{n-1}\\
+              &\geq & \dots \\
+              &\geq & 2^k\cdot\binom{2(n-k)}{n-k}\\
+              &\geq & 2^{n}\cdot\binom{n}{0}
 \end{array}
 $$
 </div>
@@ -231,7 +223,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul exponentiel.</p>
+<p>Comme la complexité du calcul récursif de $\binom{n}{k}$ est en $\Omega(\binom{n}{k})$, le calcul de $\binom{2n}{n}$ va prendre un temps de calcul $\Omega(2^n)$, ce qui est exponentiel.</p>
 </div>
 </details>     
 </div>
@@ -255,7 +247,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utilisez la fonction <code class="language-">binom_matrice(n: entier) → [[entier]]</code> pour créer l'algorithme itératif de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line">algorithm binom<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 <p>calculant $\binom{n}{k}$.</p>
 <p>Donnez-en sa complexité.</p>
 </div></div>
@@ -277,7 +269,7 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">algorithm binom<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     matrice <span class="token operator">←</span> binom_matrice<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> matrice<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span></code></pre>
@@ -329,7 +321,7 @@ $$
 <span class="highlight-line">    <span class="token keyword">rendre</span> matrice</span></code></pre>
 <p>La complexité de la fonction <code class="language-">binom_matrice2</code> est clairement en $\mathcal{O}(nk)$ puisque la boucle intérieure ne fera jamais plus de $k$ itérations.</p>
 <p>de là, l'algorithme suivant est aussi de complexité $\mathcal{O}(nk)$ :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">algorithm binom<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     matrice <span class="token operator">←</span> binom_matrice2<span class="token punctuation">(</span>n<span class="token punctuation">,</span> k<span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> matrice<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span></code></pre>
