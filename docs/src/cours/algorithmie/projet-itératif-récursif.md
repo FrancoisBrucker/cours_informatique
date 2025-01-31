@@ -827,14 +827,14 @@ Après avoir examiné les conditions d'arrêt, donner un algorithme récursif pe
 
 La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :
 
-- soit $k = 1$ et $\binom{n}{1} = 1$
+- soit $k = 0$ et $\binom{n}{0} = 1$
 - soit $k = n$ et $\binom{n}{n} = 1$
 
 On a alors le code :
 
 ```pseudocode
 algorithme binom_rec(n: entier, k: entier) → entier:
-    si (n == k) ou (k == 1):
+    si (n == k) ou (k == 0):
         rendre 1
     sinon:
         rendre binom_rec(n-1, k-1) + binom_rec(n - 1, k)
@@ -845,7 +845,7 @@ Comme $n$ diminue strictement et $1\leq k \leq n$ on se rapproche strictement de
 {% enddetails %}
 
 Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients
-$\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :
+$\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :
 
 {% lien %}
 [Calculer un coefficient binomial : triangle de Pascal - Terminale](https://www.youtube.com/watch?v=6JGrHD5nAoc)
@@ -887,18 +887,18 @@ Première version qui calcule toute la matrice triangulaire inférieure :
 
 ```pseudocode/
 algorithme binom_matrice(n: entier) → [[entier]]:
-    matrice ← un tableau de [entier] de taille n
+    matrice ← un tableau de [entier] de taille n+1
 
-    pour chaque i de [1, n]:
-        ligne ← un tableau d'entiers de taille i
+    pour chaque i de [0, n]:
+        ligne ← un tableau d'entiers de taille i+1
 
-        matrice[i-1] ← ligne
-        pour chaque j allant de 1 à i:
-            si (j == i) ou (j == 1):
-                ligne[j - 1] ← 1
+        matrice[i] ← ligne
+        pour chaque j allant de 0 à i:
+            si (j == i) ou (j == 0):
+                ligne[j] ← 1
             sinon:
                 précédent ← matrice[i-2]
-                ligne[j - 1] ← précédent[j-2] + précédent[j - 1]
+                ligne[j] ← précédent[j-1] + précédent[j]
 
     rendre matrice
 ```

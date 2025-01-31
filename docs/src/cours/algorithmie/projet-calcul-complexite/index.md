@@ -121,7 +121,7 @@ Regardons la complexité de l'algorithme ligne à ligne :
 
 Il faut faire **très attention** pour ce genre de lignes car :
 
-- un des paramètres d'une fonction est le résultat d'une fonction
+- un des paramètres de l'appel à `concaténation`{.language-}le résultat de l'appel récursif
 - la complexité de la fonction `concaténation`{.language-} n'est **pas** $\mathcal{O}(1)$, on ne peut donc pas l'ignorer dans nos calculs.
 
 Ces deux lignes sont de même complexité : $C(n-1) + \mathcal{O}(n)$. Le premier terme correspond au calcul du second paramètre de l'appel à la fonction `concaténation`{.language-} et le second à la complexité de l'exécution de `concaténation`{.language-}.
