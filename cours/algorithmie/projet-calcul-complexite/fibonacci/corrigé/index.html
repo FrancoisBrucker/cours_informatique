@@ -132,7 +132,7 @@ C(n) &\leq & \mathcal{O}(1) + 2 \cdot C(n-1)&\\
 \end{array}
 $$
 </div>
-<p>On peut reappliquer l'inégalité de récurrence autant de fois que l'on veut ce qui donne, en l'appliquant $K$ fois :</p>
+<p>On peut réappliquer l'inégalité de récurrence autant de fois que l'on veut ce qui donne, en l'appliquant $K$ fois :</p>
 <div>
 $$
 \begin{array}{ccll}
@@ -153,9 +153,9 @@ $$
 $$
 \begin{array}{ccll}
 C(n) &\geq & \mathcal{O}(1) + 2 \cdot C(n-2)&\\
-     &\geq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-4)) & \text{en réapplicant l'inégalité pour } C(n-2)\\
+     &\geq & \mathcal{O}(1) + 2 \cdot (\mathcal{O}(1) + 2 \cdot C(n-4)) & \text{en réappliquant l'inégalité pour } C(n-2)\\
      &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot C(n-4)&\\
-     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-6)) & \text{en réapplicant l'inégalité pour } C(n-4)\\
+     &\geq & \mathcal{O}(1)\cdot (1 + 2) + 4 \cdot (\mathcal{O}(1) + 2 \cdot C(n-6)) & \text{en réappliquant l'inégalité pour } C(n-4)\\
      &\geq & \mathcal{O}(1)\cdot (1 + 2 + 4) + 8 \cdot C(n-6)&\\
 \end{array}
 $$
@@ -188,19 +188,12 @@ $$
 <p>$F(n) = F(n-1) + F(n-2) = \frac{1}{\sqrt{5}}(\varphi^{n-1}-\frac{1}{(-\varphi)^{n-1}}) + \frac{1}{\sqrt{5}}(\varphi^{n-2}-\frac{1}{(-\varphi)^{n-2}}) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(1 + \varphi) - \frac{1}{(-\varphi)^{n-2}}(1+ \frac{1}{\varphi}))$</p>
 <p>Comme $\varphi$ et $-\frac{1}{\varphi}$ sont les racines du polynôme $P(X) = X^2 - X -1$ on a :</p>
 <p>$F(n) = \frac{1}{\sqrt{5}}(\varphi^{n-2}(\varphi^2) - \frac{1}{(-\varphi)^{n-2}}(\frac{1}{\varphi^2})) = \frac{1}{\sqrt{5}}(\varphi^n-\frac{1}{(-\varphi)^n})$</p>
-<h2>Itératif</h2>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_iter</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    a <span class="token operator">=</span> <span class="token number">1</span>
-    b <span class="token operator">=</span> <span class="token number">1</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> rang<span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        a<span class="token punctuation">,</span> b <span class="token operator">=</span> a<span class="token operator">+</span>b<span class="token punctuation">,</span> a
-    <span class="token keyword">return</span> a</code></pre>
 <h2>Récursif terminal</h2>
 <p>La complexité étant terminale, il y a $\mathcal{O}(n)$ appels récursifs. Comme le reste de la fonction est en $\mathcal{O}(1)$ la complexité totale est en $\mathcal{O}(n)$.</p>
-<p>Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que <code>fibo_rec2(n, a, b)</code> rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.</p>
+<p>Le fait que la fonction calcule bien la suite de Fibonacci se fait par récurrence. On va montrer par récurrence que <code>fibo(n, a, b)</code> rend la valeur de la suite pour $F(1) = b$ et $F(2) = a$.</p>
 <ul>
-<li>Initialisation : <code>fibo_rec2(1, a, b) = b</code> et <code>fibo_rec2(2, a, b) = a</code></li>
-<li>On suppose la propriété vraie pour <code>fibo_rec2(n-1, a, b)</code>. Comme <code>fibo_rec2(n, a, b) = fibo_rec2(n-1,a+b , a)</code>, la propriété est vérifiée.</li>
+<li>Initialisation : <code>fibo(1, a, b) = b</code> et <code>fibo(2, a, b) = a</code></li>
+<li>On suppose la propriété vraie pour <code>fibo(n-1, a, b)</code>. Comme <code>fibo(n, a, b) = fibo(n-1,a+b , a)</code>, la propriété est vérifiée.</li>
 </ul>
 
 

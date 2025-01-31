@@ -713,7 +713,7 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <p>Utilisez la définition précédente pour créer un algorithme récursif calculant $F_n$ de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibo<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">fibonacci_rec<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -733,16 +733,16 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> fibo<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibo<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
+<span class="highlight-line">    <span class="token keyword">rendre</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
 <p>Il faut démontrer que ce programme est bien un algorithme car il y a plusieurs récursions !</p>
 <p>Ceci se fait facilement par une récurrence sur $n$ car chaque appel se rapproche strictement de la condition d'arrêt.</p>
 <ol>
-<li>initialisation : $\mbox{fibo}(n)$ admet un nombre fini de récursion pour $n\leq 2$.</li>
-<li>hypothèse de récurrence : $\mbox{fibo}(m)$ admet un nombre fini de récursion pour $m\leq n$.</li>
-<li>Pour $n + 1$, $\mbox{fibo}(n)$ et $\mbox{fibo}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.</li>
+<li>initialisation : $\mbox{fibonacci\_rec}(n)$ admet un nombre fini de récursion pour $n\leq 2$.</li>
+<li>hypothèse de récurrence : $\mbox{fibonacci\_rec}(m)$ admet un nombre fini de récursion pour $m\leq n$.</li>
+<li>Pour $n + 1$, $\mbox{fibonacci\_rec}(n)$ et $\mbox{fibonacci\_rec}(n-1)$ se terminent en un nombre fini de récursion donc la ligne 4 de l'algorithme aura aussi un nombre fini de récursion.</li>
 </ol>
 <p>Une fois la finitude démontrée la correction est évidente, comme souvent avec les algorithmes récursif, puisque l'algorithme ne fait que transcrire l'équation de récursion.</p>
 </div>
@@ -1039,7 +1039,7 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <p>On a $M(91) = M(91 + 1 + \dots + 1) = M(101) = 91$ et pour tout $n &lt; 90$ on il existera $k &gt; 1$ tel que $M(n) = M^k(91) = 91$</p>
-<p>Comme il faut un nombre fini d'itération pour passer de $M(n)$ à M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k&gt;0$ (il en faut $k\cdot I$).</p>
+<p>Comme il faut un nombre fini d'itération pour passer de $M(n)$ à $M(n+1)$ on en déduit qu'il faut bien un nombre fini d'itération pour calculer $M(91)$ (disons $I$), et donc également pour calculer $M^k(91)$ quelque soit $k&gt;0$ (il en faut $k\cdot I$).</p>
 </div>
 </details>     
 </div>

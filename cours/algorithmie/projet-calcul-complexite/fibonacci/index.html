@@ -96,10 +96,7 @@
     
   
 
-  <blockquote>
-<p>TBD pas terminale = beaucoup trop ! Terminal = bien en complexité.</p>
-</blockquote>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
@@ -116,14 +113,14 @@ $$
 <p>Si $n &gt; 2$ et $F(1) = F(2) = 1$</p>
 <p>Nous allons utiliser cette suite pour donner des techniques utiles pour l'étude d'algorithmes récursifs</p>
 <h3>Fibonacci récursif</h3>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> <span class="token number">1</span>
-    <span class="token keyword">return</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">fibonacci_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">≤</span> <span class="token number">2</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> fibonacci_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
 <p>Cette partie vous donne le principe général lorsque l'on calcule des complexités d'algorithmes récursifs.</p>
 <ol>
-<li>Donnez l'équation de récurrence permettant de calculer le nombre $A(n)$ d'appels à la fonction dans l'exécution de <code>fibonacci_rec(n)</code>. Montrer que cette valeur est égale à $F(n)$.</li>
-<li>Donnez l'équation de récurrence permettant de calculer la complexité $C(n)$ de l'exécution de <code>ma_fonction(n)</code>.</li>
+<li>Donnez l'équation de récurrence permettant de calculer le nombre $A(n)$ d'appels à la fonction dans l'exécution de <code class="language-">fibonacci_rec(n)</code>. Montrer que cette valeur est égale à $F(n)$.</li>
+<li>Donnez l'équation de récurrence permettant de calculer la complexité $C(n)$ de l'exécution de <code class="language-">ma_fonction(n)</code>.</li>
 <li>Montrez que $\mathcal{O}(1) + 2\cdot C(n-2) \leq C(n) \leq \mathcal{O}(1) + 2\cdot C(n-1)$</li>
 <li>En déduire que :
 <ol>
@@ -143,7 +140,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>La valeur d'<a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique">une série géométrique</a> est à connaitre. On en a souvent besoin en algorithmie.</p>
+<p>La valeur d'<a href="https://fr.wikipedia.org/wiki/S%C3%A9rie_g%C3%A9om%C3%A9trique">une série géométrique</a> est à connaître. On en a souvent besoin en algorithmie.</p>
 </div></div>
 
 <h3>Valeur de $F(n)$</h3>
@@ -167,19 +164,13 @@ $$
 <p>Donnez un algorithme itératif de complexité $\mathcal{O}(n)$ pour calculer $F(n)$</p>
 <h3>Récursif terminal</h3>
 <p>L'algorithme récursif est sous optimal car il recalcule plein de fois la même chose. Pour calculer $F(n)$ il calcule deux fois $F(n-2)$, une fois dans la somme et une fois dans le calcul de $F(n-1)$.</p>
-<p>L'algorithme itératif ne fait pas la même chose car il stocke les valeurs intermédiaires. Une technique puissante pour accéder à la même chose récursivement est de passer les variables en paramètres :</p>
-<p>Démontrer que :</p>
-<ul>
-<li><code class="language-">fibo_rec_terminal(n, 1, 1)</code> calcule bien $F(n)$ :</li>
-<li>sa complexité est $\mathcal{O}(n)$</li>
-</ul>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fibo_rec2</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> b
-    <span class="token keyword">elif</span> n <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> a
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> fibo_rec2<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> a <span class="token operator">+</span> b<span class="token punctuation">,</span> a<span class="token punctuation">)</span></code></pre>
+<p>L'algorithme itératif ne fait pas la même chose car il stocke les valeurs intermédiaires. Une technique puissante pour accéder à la même chose récursivement est de passer les variables en paramètres en utilisant la récursion terminale :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fibo</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> u_i<span class="token punctuation">,</span> u_i_moins_un<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> u_i
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> fibo<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> u_i <span class="token operator">+</span> u_i_moins_un<span class="token punctuation">,</span> u_i<span class="token punctuation">)</span></code></pre>
+<p>Démontrer que la complexité du calcul de la suite de Fibonacci avec la récursion terminale est $\mathcal{O}(n)$.</p>
 
 
 </article>
