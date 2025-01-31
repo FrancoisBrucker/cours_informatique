@@ -1160,12 +1160,12 @@ $$
 <div class="mx-8 pb-2">
 <p>La formule de récursion s'arrête dans deux cas possibles soit $k = 1$ (première récursion) soit $n - 1 = k$ deuxième récursion. On a alors deux conditions d'arrêts à regarder pour $1\leq k \leq n$ :</p>
 <ul>
-<li>soit $k = 1$ et $\binom{n}{1} = 1$</li>
+<li>soit $k = 0$ et $\binom{n}{0} = 1$</li>
 <li>soit $k = n$ et $\binom{n}{n} = 1$</li>
 </ul>
 <p>On a alors le code :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">binom_rec</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> k<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    <span class="token keyword">si</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> k<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> <span class="token number">1</span>
     <span class="token keyword">sinon</span><span class="token punctuation">:</span>
         <span class="token keyword">rendre</span> binom_rec<span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> binom_rec<span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span></code></pre>
@@ -1174,7 +1174,7 @@ $$
 </details>     
 </div>
 <p>Pas de récursion terminale garantie si double récursion. Mais on peut tout de même ici en donner une version itérative. Avant de résoudre l'exercice suivant, regardez comment vous faisiez au lycée en remplissant petit à petit chaque ligne d'une matrice. La ligne $n$ correspond aux coefficients
-$\binom{n}{k}$ pour tout $1\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :</p>
+$\binom{n}{k}$ pour tout $0\leq k \leq n$, et vous la remplissiez en utilisant les lignes précédentes avec l'équation. Mais si, rappelez-vous :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
@@ -1226,18 +1226,18 @@ matrice <span class="token operator">←</span> un tableau de <span class="token
 <div class="mx-8 pb-2">
 <p>Première version qui calcule toute la matrice triangulaire inférieure :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">binom_matrice</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-    matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille<span class="token number"> n
-</span>
-<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-        ligne <span class="token operator">←</span> un tableau d'entiers de taille<span class="token number"> i
-</span>
-<span class="highlight-line">        matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> ligne</span>
-<span class="highlight-line">        <span class="token keyword">pour chaque</span><span class="token number"> j </span>allant de <span class="token number">1</span> à i<span class="token punctuation">:</span></span>
-<span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">                ligne<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
+<span class="highlight-line">    matrice <span class="token operator">←</span> un tableau de <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span> de taille n<span class="token operator">+</span><span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        ligne <span class="token operator">←</span> un tableau d'entiers de taille i<span class="token operator">+</span><span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">        matrice<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> ligne</span>
+<span class="highlight-line">        <span class="token keyword">pour chaque</span><span class="token number"> j </span>allant de <span class="token number">0</span> à i<span class="token punctuation">:</span></span>
+<span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">            <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">                précédent <span class="token operator">←</span> matrice<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">                ligne<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></span>
+<span class="highlight-line">                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">rendre</span> matrice</span></code></pre>
 <p>Il y a deux boucles imbriquées, donc deux invariants à trouver !</p>
