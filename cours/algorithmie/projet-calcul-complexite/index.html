@@ -421,14 +421,14 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>$M^k(91) = M^k(M(102)) = M^k(92) = \dots M^k(101) = M^{k-1}(91)$</p>
+<p>$M^k(91) = M^k(M(102)) = M^k(92) = \dots = M^k(101) = M^{k-1}(91)$</p>
 </div>
 </details>     
 </div>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>En déduire que le nombre de récursion pour calculer $M(n)$ est en $\mathcal{O}(1)$.</p>
+<p>En déduire que le nombre maximum d'appels à $M$ pour calculer $M(n)$ est 201.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -449,11 +449,33 @@ $$
 </summary>
 <div class="mx-8 pb-2">
 <ul>
-<li>si $n &gt; 100$ il y a 0 itération,</li>
-<li>si $n &gt; 90$ il y a un nombre fini d'itération pour que le calcul de $M(91)$ soit égal qu calcul de $M(101)$ qui donne 91 en 0 itération supplémentaire.</li>
-<li>sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 &lt; n' &lt; 101$.</li>
+<li>si $n &gt; 100$ il y a 1 appel,</li>
+<li>si $101 &gt; n &gt; 90$, il y 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.</li>
+<li>sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 &lt; n' &lt; 101$. Le maximum sera atteint pour $n=1$ en 11 appels, $M^{11}(111) = M^{10}(101) = M^{9}(91)$.</li>
 </ul>
-<p>Comme il y a un nombre fini de no,bre plus petit que 90, le nom,bre maximum d'itération est bien en $\mathcal{O}(1)$.</p>
+<p>Le nombre d'appel maximum sera atteint pour $n=1$. Dans ce cas là
+Au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.</p>
+<p>Une borne sera donc de $13 + 21 \cdot 8 + 20 = 201$ appels.</p>
+<p>Une vérification expérimentale possible en python :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">compte <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">M</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  compte<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
+  <span class="token comment"># print("    ", compte[0], n)</span>
+
+  <span class="token keyword">if</span> n <span class="token operator">></span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> n <span class="token operator">-</span> <span class="token number">10</span>
+  <span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> M<span class="token punctuation">(</span>M<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+max_compte <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">102</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  compte<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span>
+  m <span class="token operator">=</span> M<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+  <span class="token comment"># print("n =", n, "M = ", m, "compte =", compte[0])</span>
+  max_compte <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>max_compte<span class="token punctuation">,</span> compte<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"max ="</span><span class="token punctuation">,</span> max_compte<span class="token punctuation">)</span></code></pre>
 </div>
 </details>     
 </div>
