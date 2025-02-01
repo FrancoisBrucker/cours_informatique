@@ -241,19 +241,46 @@ Montrer que le calcul de $M^k(91)$ passe par le calcul de $M^{k-1}(91)$ si $k>1$
 {% endexercice %}
 {% details "corrigé" %}
 
-$M^k(91) = M^k(M(102)) = M^k(92) = \dots M^k(101) = M^{k-1}(91)$
+$M^k(91) = M^k(M(102)) = M^k(92) = \dots = M^k(101) = M^{k-1}(91)$
 {% enddetails %}
 
 {% exercice %}
-En déduire que le nombre de récursion pour calculer $M(n)$ est en $\mathcal{O}(1)$.
+En déduire que le nombre maximum d'appels à $M$ pour calculer $M(n)$ est 201.
 {% endexercice %}
 {% details "corrigé" %}
 
-- si $n > 100$ il y a 0 itération,
-- si $n > 90$ il y a un nombre fini d'itération pour que le calcul de $M(91)$ soit égal qu calcul de $M(101)$ qui donne 91 en 0 itération supplémentaire.
-- sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 < n' < 101$.
+- si $n > 100$ il y a 1 appel,
+- si $101 > n > 90$, il y 2 appels pour passer $M(n)$ à $M(n+1)$. Donc au plus 19 appels pour aller de $M(91)$ à $M(100)$ qui se calcule en 2 appels $M(100) = M(M(111)) = M(101) = 91$.
+- sinon, $n \leq 90$ et $M(n)$ sera égal à un $M^k(n')$ avec $90 < n' < 101$. Le maximum sera atteint pour $n=1$ en 11 appels, $M^{11}(111) = M^{10}(101) = M^{9}(91)$.
 
-Comme il y a un nombre fini de no,bre plus petit que 90, le nom,bre maximum d'itération est bien en $\mathcal{O}(1)$.
+Le nombre d'appel maximum sera atteint pour $n=1$. Dans ce cas là
+Au pire il faudra 13 appels pour arriver à $M^{9}(91)$, puis 21 appels pour arriver à $M^{8}(91)$, puis encore $7 \cdot 21$ appels pour arriver à $M(91)$ qui se calcule en 20 appels supplémentaires.
+
+Une borne sera donc de $13 + 21 \cdot 8 + 20 = 201$ appels.
+
+Une vérification expérimentale possible en python :
+
+```python
+compte = [0]
+
+def M(n):
+  compte[0] += 1
+  # print("    ", compte[0], n)
+
+  if n > 100:
+    return n - 10
+  else:
+    return M(M(n+11))
+
+max_compte = 0
+
+for n in range(1, 102):
+  compte[0] = 0
+  m = M(n)
+  # print("n =", n, "M = ", m, "compte =", compte[0])
+  max_compte = max(max_compte, compte[0])
+print("max =", max_compte)
+```
 
 {% enddetails %}
 
