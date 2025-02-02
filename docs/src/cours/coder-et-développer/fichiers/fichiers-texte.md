@@ -9,11 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
 Comment lire ou écrire des fichiers en python.
-
-<!-- end résumé -->
 
 {% lien %}
 [Documentation python](https://docs.python.org/fr/3/tutorial/inputoutput.html#reading-and-writing-files)

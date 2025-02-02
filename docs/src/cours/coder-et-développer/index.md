@@ -83,13 +83,6 @@ On s'entraîne sur de petits projets :
 [Encodage Unicode](encodage-unicode){.interne}
 {% endaller %}
 
-> TBD exercice méthodes de chaines de caractères :
->
-> - split
-> - caractères spéciaux : tabulation, fin de ligne
-> - strip
-> - supprimer les accents. transformation et ASCII.
-
 ### Sur des fichiers
 
 {% aller %}

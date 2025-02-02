@@ -173,17 +173,17 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 
 {% aller %}
 
-On s'entraîne.
+[On s'entraîne](/cours/algorithmie/projet-calcul-complexite/){.interne}
 
 {% endaller %}
 
 #### Vendredi : stockage de données
 
-> TBD stockage de données
-
+{% attention %}
 On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
-
+{% endattention %}
 {% faire %}
+
 Sujet du DM
 
 Il faudra rendre un dossier contenant :
@@ -196,7 +196,48 @@ Il faudra rendre un dossier contenant :
 [Suivre le tutoriel Markdown](/tutoriels/format-markdown/){.interne}
 {% endinfo %}
 
+Comment conserver et accéder à des données :
+
+{% aller %}
+
+1. [Variables et objets en mémoire](/cours/coder-et-développer/données-mémoire/){.interne}
+2. [Notion de fichier](/cours/coder-et-développer/fichiers/structure/){.interne}
+{% endaller %}
+
+Cas particulier du texte :
+
+{% aller %}
+
+1. [Coder des caractères avec Unicode](/cours/coder-et-développer/encodage-unicode/){.interne}
+2. [Fichiers texte](/cours/coder-et-développer/fichiers/fichiers-texte/){.interne}
+
+{% endaller %}
+
+On s'entraîne :
+
+{% aller %}
+
+[Projet : fichiers textes](/cours/coder-et-développer/fichiers/projet-texte/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin, vous pouvez regarder :
+
+{% info %}
+
+Le reste [du cours sur les fichier et dossiers](/cours/coder-et-développer/fichiers/){.interne}
+
+{% endinfo %}
+
 ### Semaine 4
+
+{% attention %}
+Test de 15min en début de cours sur **la partie code (main/cfonctions/tests)**. Il faudra rendre des fichiers sur AMeTICE.
+{% endattention %}
+{% faire %}
+Sujet du test 2
+{% endfaire %}
+
 
 > TBD exponentiation toute la semaine.
 

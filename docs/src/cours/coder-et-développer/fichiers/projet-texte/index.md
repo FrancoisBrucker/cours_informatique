@@ -9,12 +9,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-<!-- début résumé -->
-
-Utilisation des fichiers en python.
-
-<!-- end résumé -->
-
 Mise en place de votre projet :
 
 {% faire %}
@@ -27,7 +21,7 @@ Mise en place de votre projet :
 Dans tout ce projet on vous demande de coder le moins d'algorithmes possibles et d'utiliser au maximum les méthodes de listes de python :
 
 {% lien %}
-[Méthodes de chaines de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
+[Méthodes de chaînes de caractères](https://docs.python.org/fr/3/library/stdtypes.html#string-methods)
 {% endlien %}
 
 De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variables puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.
@@ -38,7 +32,7 @@ De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule 
 
 {% exercice %}
 
-1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv>
+1. récupérez directement le fichier `dictionary.csv`{.fichier} à l'adresse : <https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv> (cliquez droit sur le lien puis téléchargez le sur votre ordinateur)
 2. sauvez le dans le dossier de votre projet (`fichiers-donnees`{.fichier}) sous le nom `mots.txt`{.fichier}
    {% endexercice %}
 
@@ -72,19 +66,18 @@ Notre fichier contient une donnée (un mot) par ligne. Il peut donc être utile 
 Vous avez du remarquer que l'affichage de la ligne 42 va 2 fois à la ligne. Ceci s'explique par le fait que :
 
 1. la commande `print`{.language-} termine son affichage par un retour à la ligne
-2. le mot lui même est une ligne du fichier et contient donc également le caractère  `"\n"`{.language-} 
+2. le mot lui même est une ligne du fichier et contient donc également le caractère `"\n"`{.language-}
 
-Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de _nettoyer les données_, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères  espaces `" "`{.language-} de début et de fin de ligne. Par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaine `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin.
-
+Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de _nettoyer les données_, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères espaces `" "`{.language-} de début et de fin de ligne. Par exemple si la ligne contient `"   coucou  \n"`{.language-} on aura envie de ne conserver que la chaîne `"coucou"`{.language-}, c'est à dire la ligne sans le caractère de retour à la ligne (`"\n"`{.language-}) et sans les espaces au début et à la fin.
 
 Pour faire cela automatiquement, python met à votre disposition [la méthode strip](https://docs.python.org/fr/3/library/stdtypes.html#str.strip) des chaînes de caractères. Donc :
-
 
 {% faire %}
 Modifier votre liste `mots`{.language-} pour que chaque élément contienne la version _stripée_ de la ligne.
 
 {% endfaire %}
 {% details "corrigé" %}
+
 ```python
 mots = []
 f = open("mots.txt", "r", encoding="uft-8")
@@ -93,11 +86,13 @@ for l in f:
     mots.append(l.strip())
 f.close()
 ```
+
 {% enddetails %}
 
 Avec cette nouvelle liste il vous sera plus facile de répondre aux questions suivantes :
 
 {% faire %}
+
 1. Combien de mots contient ce fichier ?
 2. Quel est le 42ème mot du dictionnaire ?
 3. Combien de mots finissent par `g` ?
@@ -126,15 +121,14 @@ Téléchargez [le comte de Monte-Cristo](http://www.gutenberg.org/cache/epub/179
 Les accès réseau sont toujours coûteux en temps, on a donc coutume de ne télécharger le fichier qu'une fois puis d'utiliser une copie locale pour tous les traitements.
 {% endattention %}
 
-Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est iomportant et pas une ligne particulière :
-
+Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est important et pas une ligne particulière :
 
 {% faire %}
-Récupérez tout le fichier dans une chaine de caractères que vous appellerez `monte_cristo`{.language-}.
+Récupérez tout le fichier dans une chaîne de caractères que vous appellerez `monte_cristo`{.language-}.
 
 {% endfaire %}
 
-Avec cette chaine de caractères :
+Avec cette chaîne de caractères :
 
 {% faire %}
 
@@ -198,7 +192,8 @@ Comptons en utilisant ce que l'on a fait précédemment :
   - (3, 'particulièrement')
   - (1, 'révolutionnairement')
   - (1, 'imperceptiblement')
-    {% enddetails %}
+
+{% enddetails %}
 
 Suites de mots :
 
