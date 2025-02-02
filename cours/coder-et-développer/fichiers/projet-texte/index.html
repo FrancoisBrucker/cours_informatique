@@ -96,10 +96,7 @@
     
   
 
-  <!-- début résumé -->
-<p>Utilisation des fichiers en python.</p>
-<!-- end résumé -->
-<p>Mise en place de votre projet :</p>
+  <p>Mise en place de votre projet :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -118,7 +115,7 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">Méthodes de chaines de caractères</a></p>
+<p><a href="https://docs.python.org/fr/3/library/stdtypes.html#string-methods">Méthodes de chaînes de caractères</a></p>
 </div></div>
 
 <p>De plus, lorsque l'on utilise des fichiers, il faut lire les fichiers une seule fois en stockant le contenu utile dans une ou plusieurs variables puis ne plus utiliser le fichier car l'accès à un fichier sur le disque dur est beaucoup plus long que l'accès à des variables en mémoire.</p>
@@ -128,7 +125,7 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
 <ol>
-<li>récupérez directement le fichier <code class="fichier">dictionary.csv</code> à l'adresse : <a href="https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv">https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv</a></li>
+<li>récupérez directement le fichier <code class="fichier">dictionary.csv</code> à l'adresse : <a href="https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv">https://raw.githubusercontent.com/hbenbel/French-Dictionary/master/dictionary/dictionary.csv</a> (cliquez droit sur le lien puis téléchargez le sur votre ordinateur)</li>
 <li>sauvez le dans le dossier de votre projet (<code class="fichier">fichiers-donnees</code>) sous le nom <code class="fichier">mots.txt</code></li>
 </ol>
 </div></div>
@@ -173,9 +170,9 @@
 <p>Vous avez du remarquer que l'affichage de la ligne 42 va 2 fois à la ligne. Ceci s'explique par le fait que :</p>
 <ol>
 <li>la commande <code class="language-">print</code> termine son affichage par un retour à la ligne</li>
-<li>le mot lui même est une ligne du fichier et contient donc également le caractère  <code class="language-">&quot;\n&quot;</code></li>
+<li>le mot lui même est une ligne du fichier et contient donc également le caractère <code class="language-">&quot;\n&quot;</code></li>
 </ol>
-<p>Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de <em>nettoyer les données</em>, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères  espaces <code class="language-">&quot; &quot;</code> de début et de fin de ligne. Par exemple si la ligne contient <code class="language-">&quot;   coucou  \n&quot;</code> on aura envie de ne conserver que la chaine <code class="language-">&quot;coucou&quot;</code>, c'est à dire la ligne sans le caractère de retour à la ligne (<code class="language-">&quot;\n&quot;</code>) et sans les espaces au début et à la fin.</p>
+<p>Lorsque les données sont contenues dans chaque ligne d'un fichier texte, on a coutume de <em>nettoyer les données</em>, c'est à dire de supprimer les caractères de fin de ligne de la donnée ainsi que les caractères espaces <code class="language-">&quot; &quot;</code> de début et de fin de ligne. Par exemple si la ligne contient <code class="language-">&quot;   coucou  \n&quot;</code> on aura envie de ne conserver que la chaîne <code class="language-">&quot;coucou&quot;</code>, c'est à dire la ligne sans le caractère de retour à la ligne (<code class="language-">&quot;\n&quot;</code>) et sans les espaces au début et à la fin.</p>
 <p>Pour faire cela automatiquement, python met à votre disposition <a href="https://docs.python.org/fr/3/library/stdtypes.html#str.strip">la méthode strip</a> des chaînes de caractères. Donc :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -256,17 +253,17 @@ f<span class="token punctuation">.</span>close<span class="token punctuation">(<
 <p>Les accès réseau sont toujours coûteux en temps, on a donc coutume de ne télécharger le fichier qu'une fois puis d'utiliser une copie locale pour tous les traitements.</p>
 </div></div>
 
-<p>Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est iomportant et pas une ligne particulière :</p>
+<p>Lisons ce fichier avec python. On veut le lire en une seule fois car c'est le texte en entier qui est important et pas une ligne particulière :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
   <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Récupérez tout le fichier dans une chaine de caractères que vous appellerez <code class="language-">monte_cristo</code>.</p>
+<p>Récupérez tout le fichier dans une chaîne de caractères que vous appellerez <code class="language-">monte_cristo</code>.</p>
 </div></div>
 
-<p>Avec cette chaine de caractères :</p>
+<p>Avec cette chaîne de caractères :</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
