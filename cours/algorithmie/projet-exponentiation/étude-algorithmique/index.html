@@ -96,22 +96,14 @@
     
   
 
-  <p>On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :</p>
+  <p>On va étudier deux algorithmes permettant de calculer $a^b$ à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :</p>
 <ul>
 <li>fonctionnement</li>
 <li>preuve</li>
 <li>complexité</li>
 </ul>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>On utilisera le python comme langage de pseudo-code</p>
-</div></div>
-
 <h2><span id="algo-naif"></span> Algorithme naïf</h2>
-<p>Le calcul <em>naïf</em> de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n$,  par l'équation suivante :</p>
+<p>Le calcul <em>naïf</em> de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers <strong>strictement positifs</strong> $x$ et $n$, par l'équation suivante :</p>
 <div>
 $$
 x^n = \left\{
@@ -146,59 +138,23 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> nombre
-    <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> exposant<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> nombre
+    <span class="token keyword">rendre</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
 </div>
 </details>     
 </div>
 <p>Pour cette étude, nous allons uniquement utiliser des algorithmes non récursifs (ils sont dit itératifs). Pour créer l'algorithme itératif à partir d'une définition récursive, il faut pouvoir stocker les résultats intermédiaires dans une variable :</p>
 <p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Exponentiation
-Entrées :
-    x, n : deux entiers strictement positifs
-Programme :
-1:    c = n - 1
-2:    r = x
-3:    tant que c est strictement positif :
-4:        r = r * x
-5:        c = c - 1
-6:    Rendre r</code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Écrivez l'algorithme itératif ci dessus en python (utilisez des noms explicites).</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    résultat <span class="token operator">=</span> nombre</span>
-<span class="highlight-line">    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        résultat <span class="token operator">*=</span> nombre</span>
-<span class="highlight-line">        compteur <span class="token operator">-=</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> résultat</span></code></pre>
-</div>
-</details>     
-</div>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    r <span class="token operator">←</span> x</span>
+<span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
+<span class="highlight-line">        c <span class="token operator">←</span> c <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
 <p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
 <h3><span id="marche-naif"></span> Est-ce que ça marche ?</h3>
 <p>On teste l'algorithme itératif sur de petits exemples qui vont nous permettre d'appréhender son fonctionnement :</p>
@@ -320,8 +276,8 @@ $$
 <li><code class="language-">r' = r * x</code></li>
 <li><code class="language-">c' = c - 1</code></li>
 </ul>
-<p>On a alors :<br>
-$$
+<p>On a alors :</p>
+<p>$$
 r' \cdot {(x')}^{c'} = (r \cdot x) \cdot x^{c - 1} = r \cdot x^c = x^n = {(x')}^{n'}
 $$</p>
 <p>On a démontré notre invariant de boucle.</p>
@@ -376,7 +332,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Écrivez un algorithme récursif en python pour résoudre cette équation.</p>
+<p>Écrivez un algorithme récursif pour résoudre cette équation.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -396,14 +352,13 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> exposant <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> nombre
-    <span class="token keyword">elif</span> exposant <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> nombre <span class="token operator">*</span> puissance<span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> puissance<span class="token punctuation">(</span>nombre <span class="token operator">*</span> nombre<span class="token punctuation">,</span> exposant <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> </code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    <span class="token keyword">si</span><span class="token number"> n </span><span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> x</span>
+<span class="highlight-line">    <span class="token keyword">sinon si</span><span class="token number"> n </span><span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">rendre</span> x <span class="token operator">*</span> puissance<span class="token punctuation">(</span>x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> puissance<span class="token punctuation">(</span>x <span class="token operator">*</span> x<span class="token punctuation">,</span><span class="token number"> n </span><span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">)</span></span></code></pre>
 <p>On a utilisé deux choses :</p>
 <ul>
 <li>L'opérateur <code class="language-">%</code> signifie <em>modulo</em> en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si <code class="language-">exposant</code> est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)</li>
@@ -413,63 +368,20 @@ $$
 </div>
 </details>     
 </div>
-<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :</p>
-<p><span id="pseudo-code-naif"></span></p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">Nom : Exponentiation-indienne
-Entrées :
-    x, n : deux entiers strictement positifs
-Programme :
- 1:    c = n - 1
- 2:    r = x
- 3:
- 4:    tant que c est strictement positif :
- 5:        si c est impair :
- 6:            r = r * x
- 7:            c = c - 1
- 8:        sinon :
- 9:            x = x * x
-10:            c = c / 2
-11:
-12:    Rendre r</code></pre>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-<div class="pl-8 mr-8">
-<p>Transcrivez l'algorithme ci-dessus en python.</p>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>solution</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">puissance</span><span class="token punctuation">(</span>nombre<span class="token punctuation">,</span> exposant<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    résultat <span class="token operator">=</span> nombre
-    compteur <span class="token operator">=</span> exposant <span class="token operator">-</span> <span class="token number">1</span>
-
-    <span class="token keyword">while</span> compteur <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> compteur <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
-            résultat <span class="token operator">*=</span> nombre
-            compteur <span class="token operator">-=</span> <span class="token number">1</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            nombre <span class="token operator">*=</span> nombre
-            compteur <span class="token operator">/=</span> <span class="token number">2</span>
-
-    <span class="token keyword">return</span> résultat</code></pre>
-</div>
-</details>     
-</div>
+<p>Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient :</p>
+<p><span id="pseudo-code-rapide"></span></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">    r <span class="token operator">←</span> x</span>
+<span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> c <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
+<span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            x <span class="token operator">←</span> x <span class="token operator">*</span> x</span>
+<span class="highlight-line">            c <span class="token operator">←</span> c <span class="token operator">/</span> <span class="token number">2</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> r</span></code></pre>
 <p>C'est cet algorithme itératif que nous allons étudier maintenant.</p>
 <h3><span id="marche-rapide"></span> Est-ce que ça marche ?</h3>
 <p>Comme pour l'algorithme naïf, on vérifie que tout fonctionne avec les cas simples :</p>
@@ -628,7 +540,7 @@ $$
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
 <div class="pl-8 mr-8">
-<p>Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?</p>
+<p>Combien de multiplications sont nécessaires pour calculer $x^{15}$ si on utilisait l'exponentiation naïf ?</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -743,7 +655,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Définition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>une <em><strong>suite multiplicative pour $x^n$</strong></em> est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :</p>
+<p>une <strong><em>suite multiplicative pour $x^n$</em></strong> est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :</p>
 <ul>
 <li>$a_0 = x$</li>
 <li>$a_r = x^n$</li>
@@ -814,12 +726,10 @@ $$
 <li>$a_0 = x$</li>
 <li>$a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$</li>
 </ul>
-<p>Que l'on peut produire comme suit :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    a = [x]
-    y = a[-1] * a[-1]
-    tant que y < x ** n:        
-        ajoute y à la fin de a
-        y = a[-1] * a[-1]</code></pre>
+<p>Il nous reste ensuite à ajouter les éléments restant, c'est à dire ceux pour lesquels</p>
+<blockquote>
+<p>TBD ici impair</p>
+</blockquote>
 <p>On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :</p>
 <pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    c = n-1
     i = 0
@@ -827,7 +737,7 @@ $$
     tant que c est strictement positif:
         si c est impair:
             r = r * a[i]
-            ajoute r à la fin de a  
+            ajoute r à la fin de a
             c = c - 1
         sinon:
             i = i + 1
@@ -918,7 +828,7 @@ $$
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$  est telle que :</p>
+<p>Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$ est telle que :</p>
 <div>
 $$
 \log_2(n) \leq r
