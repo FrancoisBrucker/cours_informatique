@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Étude : exponentiation"
 
 eleventyComputed:
@@ -9,19 +9,15 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-On va étudier deux algorithmes permettant de calculer $a^b$  à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :
+On va étudier deux algorithmes permettant de calculer $a^b$ à partir de deux entiers $a$ et $b$. Pour chaque algorithme on étudiera son fonctionnement selon 3 axes :
 
 - fonctionnement
 - preuve
 - complexité
 
-{% info %}
-On utilisera le python comme langage de pseudo-code
-{% endinfo %}
-
 ## <span id="algo-naif"></span> Algorithme naïf
 
-Le calcul *naïf* de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$,  par l'équation suivante :
+Le calcul _naïf_ de l'exponentielle est basé sur sa définition mathématique, qui peut être décrite, pour deux entiers **strictement positifs** $x$ et $n$, par l'équation suivante :
 
 <div>
 $$
@@ -41,11 +37,11 @@ Bien que non nécessaire, la contrainte de positivité stricte pour $x$ et $n$ n
 {% endexercice %}
 {% details  "solution" %}
 
-```python
-def puissance(nombre, exposant):
-    if exposant == 1:
-        return nombre
-    return nombre * puissance(nombre, exposant - 1)
+```pseudocode
+algorithme puissance(nombre: entier, exposant: entier) → entier:
+    si exposant == 1:
+        rendre nombre
+    rendre nombre * puissance(nombre, exposant - 1)
 ```
 
 Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
@@ -56,36 +52,15 @@ Pour cette étude, nous allons uniquement utiliser des algorithmes non récursif
 
 <span id="pseudo-code-naif"></span>
 
-```text
-Nom : Exponentiation
-Entrées :
-    x, n : deux entiers strictement positifs
-Programme :
-1:    c = n - 1
-2:    r = x
-3:    tant que c est strictement positif :
-4:        r = r * x
-5:        c = c - 1
-6:    Rendre r
+```pseudocode/
+algorithme puissance(x: entier, n: entier) → entier:
+    r ← x
+    c ← n - 1
+    tant que c > 0:
+        r ← r * x
+        c ← c - 1
+    rendre r
 ```
-
-{% exercice %}
-Écrivez l'algorithme itératif ci dessus en python (utilisez des noms explicites).
-{% endexercice %}
-
-{% details "solution"  %}
-
-```python/
-def puissance(nombre, exposant):
-    résultat = nombre
-    compteur = exposant - 1
-    while compteur > 0:
-        résultat *= nombre
-        compteur -= 1
-    return résultat
-```
-
-{% enddetails %}
 
 C'est cet algorithme itératif que nous allons étudier maintenant.
 
@@ -138,7 +113,7 @@ Pour des nombres, on préférera toujours des conditions d'arrêt larges (plus p
 
 #### Preuve de l'algorithme
 
-Le fonctionnement de l'algorithme est *à peu près* clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une *jolie* preuve en exhibant un invariant de boucle.
+Le fonctionnement de l'algorithme est _à peu près_ clair si les entrées sont des entiers : il multiplie $a$ par lui-même $b$ fois grâce à une boucle. Une preuve par récurrence doit donc fonctionner, mais essayons de faire une _jolie_ preuve en exhibant un invariant de boucle.
 
 {% note "**Invariant de boucle**" %}
 Si `x`{.language-} et `n`{.language-} sont des entiers strictement positifs, on a l'invariant de boucle : $ r \cdot x^c = x^n $
@@ -149,7 +124,7 @@ Un invariant doit capturer en une phrase le but de la boucle. En regardant notre
 - $r$ est multiplié par $x$
 - $c$ est décrémenté de 1
 
-Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : "à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$". 
+Comme $r$ et $c$ valent initialement $x$ et $n-1$ respectivement, on en conclut un premier invariant possible (il faudra encore le démontrer rigoureusement plus tard) : "à la fin de la $i$ème itération, $c=n-i-1$ et $r = x^{i+1}$".
 
 Ceci pourrait être un invariant tout ce qu'il y a de plus correct, mais on peut faire plus élégant en injectant $i = n-c-1$, la première égalité, dans la seconde :
 
@@ -175,7 +150,8 @@ Juste avant la première itération de la boucle, `r = x`{.language-} et `c = n-
 - `r' = r * x`{.language-}
 - `c' = c - 1`{.language-}
 
-On a alors :  
+On a alors :
+
 $$
 r' \cdot {(x')}^{c'} = (r \cdot x) \cdot x^{c - 1} = r \cdot x^c = x^n = {(x')}^{n'}
 $$
@@ -233,75 +209,47 @@ $$
 </div>
 
 {% exercice %}
-Écrivez un algorithme récursif en python pour résoudre cette équation.
+Écrivez un algorithme récursif pour résoudre cette équation.
 {% endexercice %}
 {% details  "solution" %}
 
-```python
-def puissance(nombre, exposant):
-    if exposant == 1:
-        return nombre
-    elif exposant % 2 != 0:
-        return nombre * puissance(nombre, exposant - 1)
-    else:
-        return puissance(nombre * nombre, exposant // 2)
-    return 
+```pseudocode/
+algorithme puissance(x: entier, n: entier) → entier:
+    si n == 1:
+        rendre x
+    sinon si n % 2 ≠ 0:
+        rendre x * puissance(x, n - 1)
+
+    rendre puissance(x * x, n // 2)
 ```
 
 On a utilisé deux choses :
 
-- L'opérateur `%`{.language-} signifie *modulo* en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `exposant`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
+- L'opérateur `%`{.language-} signifie _modulo_ en python : il retourne le reste de la division entière. L'algorithme s'en sert pour vérifier si `exposant`{.language-} est pair (reste de la division entière par 2 vaut 0) ou impair (reste de la division entière par 2 vaut 1)
 - la division entière `//`{.language-} pour s'assurer que exposant reste un entier. Le type de `4 / 2`{.language-} en python est un réel alors que le type de `4 // 2`{.language-} est un entier.
 
 Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
 
 {% enddetails %}
 
-Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient  :
+Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient :
 
-<span id="pseudo-code-naif"></span>
+<span id="pseudo-code-rapide"></span>
 
-```text
-Nom : Exponentiation-indienne
-Entrées :
-    x, n : deux entiers strictement positifs
-Programme :
- 1:    c = n - 1
- 2:    r = x
- 3:
- 4:    tant que c est strictement positif :
- 5:        si c est impair :
- 6:            r = r * x
- 7:            c = c - 1
- 8:        sinon :
- 9:            x = x * x
-10:            c = c / 2
-11:
-12:    Rendre r
+```pseudocode/
+algorithme puissance(x: entier, n: entier) → entier:
+    r ← x
+    c ← n - 1
+    tant que c > 0:
+        si c % 2 == 1:
+            r ← r * x
+            c ← c - 1
+        sinon:
+            x ← x * x
+            c ← c / 2
+
+    rendre r
 ```
-
-{% exercice %}
-Transcrivez l'algorithme ci-dessus en python.
-{% endexercice %}
-{% details "solution"  %}
-
-```python
-def puissance(nombre, exposant):
-    résultat = nombre
-    compteur = exposant - 1
-
-    while compteur > 0:
-        if compteur % 2 != 0:
-            résultat *= nombre
-            compteur -= 1
-        else:
-            nombre *= nombre
-            compteur /= 2
-
-    return résultat
-```
-
-{% enddetails %}
 
 C'est cet algorithme itératif que nous allons étudier maintenant.
 
@@ -438,7 +386,7 @@ Cette différence va aller exponentiellement lorsque compteur augmente, par exem
 ## Complexité du problème
 
 {% lien %}
-Cet exemple est traité dans le volume 2, partie 4.6.3, de *The Art of Computer Programming* de Knuth.
+Cet exemple est traité dans le volume 2, partie 4.6.3, de _The Art of Computer Programming_ de Knuth.
 {% endlien %}
 
 Peut-on faire mieux que l'exponentiation indienne pour calculer $x^n$ ? Remarquez que la complexité des algorithmes vus (itératif naïf et exponentiation indienne) dépendent exclusivement du nombre de multiplications utilisées :
@@ -467,7 +415,7 @@ Et on a besoin de 4 multiplications si $n=10$ (on le prouve en vérifiant qu'il 
 Avant de voir le cas général, allons un peu plus loin en comptant le nombre de multiplications utilisé par nos 2 algorithmes.
 
 {% exercice %}
-Combien de multiplications sont nécessaires pour calculer  $x^{15}$ si on utilisait l'exponentiation naïf ?
+Combien de multiplications sont nécessaires pour calculer $x^{15}$ si on utilisait l'exponentiation naïf ?
 {% endexercice %}
 {% details "solution" %}
 
@@ -526,7 +474,7 @@ Sous l'angle du nombre de multiplications, le calcul d'une exponentielle $x^n$ p
 <span id="suite-multiplicative"></span>
 {% note "**Définition**" %}
 
-une ***suite multiplicative pour $x^n$*** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
+une **_suite multiplicative pour $x^n$_** est une suite finie $(a_i)_{0\leq i \leq r}$ telle que :
 
 - $a_0 = x$
 - $a_r = x^n$
@@ -561,15 +509,9 @@ Cette suite est bien multiplicative :
 - $a_0 = x$
 - $a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$
 
-Que l'on peut produire comme suit :
+Il nous reste ensuite à ajouter les éléments restant, c'est à dire ceux pour lesquels 
 
-```text
-    a = [x]
-    y = a[-1] * a[-1]
-    tant que y < x ** n:        
-        ajoute y à la fin de a
-        y = a[-1] * a[-1]
-```
+> TBD ici impair
 
 On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :
 
@@ -580,7 +522,7 @@ On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à c
     tant que c est strictement positif:
         si c est impair:
             r = r * a[i]
-            ajoute r à la fin de a  
+            ajoute r à la fin de a
             c = c - 1
         sinon:
             i = i + 1
@@ -630,7 +572,8 @@ C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai
 Ceci permet de montrer que :
 
 {% note "**Proposition**" %}
-Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$  est telle que :
+Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$ est telle que :
+
 <div>
 $$
 \log_2(n) \leq r
@@ -652,10 +595,9 @@ Tout algorithme calculant l'exponentielle $x^n$ est en $\Omega(\ln(n))$
 Il faut toujours au moins $\log_2(n)$ multiplications donc la complexité est forcément supérieure à ce nombre.
 {% enddetails %}
 
-L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal ! 
+L'exponentiation indienne n'a donc certes pas le nombre minimum de multiplications, mais son ordre de grandeur est optimal !
 
 Ceci nous permet d'écrire :
-
 
 {% note "**Proposition**" %}
 La complexité du problème de l'exponentiation est en $\Theta(\log_2 (n))$.

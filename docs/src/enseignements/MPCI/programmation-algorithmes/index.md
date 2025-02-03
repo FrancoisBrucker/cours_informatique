@@ -70,6 +70,8 @@ Ce cours est composée de plusieurs parties :
 
 ### Semaine 1
 
+> 20/01 au 24/01
+
 #### Mercredi : qu'est-ce qu'un algorithme
 
 {% aller %}
@@ -102,6 +104,8 @@ Parties abordées :
 {% endaller %}
 
 ### Semaine 2
+
+> 27/01 au 31/01
 
 #### Mercredi : écrire des algorithmes
 
@@ -139,6 +143,8 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 {% endaller %}
 
 ### Semaine 3
+
+> 03/02 au 07/02
 
 #### Mercredi : complexité algorithmique
 
@@ -231,20 +237,110 @@ Le reste [du cours sur les fichier et dossiers](/cours/coder-et-développer/fich
 
 ### Semaine 4
 
+> 11/02 au 14/02
+> 4h mercredi
+
 {% attention %}
-Test de 15min en début de cours sur **la partie code (main/cfonctions/tests)**. Il faudra rendre des fichiers sur AMeTICE.
+Test de 15min en début de cours sur **la partie code (main/fonctions/tests)**. Il faudra rendre des fichiers sur AMeTICE.
 {% endattention %}
 {% faire %}
 Sujet du test 2
 {% endfaire %}
 
-
 > TBD exponentiation toute la semaine.
 
 ### Semaine 5
 
+> 24/02 au 28/02
+> 2h mercredi
+> 2h vendredi
+
+{% attention %}
+Test de 15min en début de cours sur **la partie complexité**. 
+{% endattention %}
+{% faire %}
+Sujet du test 3
+{% endfaire %}
+
 > TBD tris toute la semaine.
 
+{% attention %}
+Rendre le DM 1.
+{% endattention %}
+
+### Semaine 6
+
+> 03/03 au 07/03
+>
+> 2h mercredi : DS
+> 2h vendredi : classes et objets
+
+{% attention %}
+DS algorithmie 2h , mercredi 5/03.
+{% endattention %}
+
+### Semaine 7
+
+> 10/03 au 14/03
+>
+> 2h mercredi : composition / agrégation
+> 2h vendredi : programmation par les tests et code coverage
+
+### Semaine 8
+
+> 17/03 au 21/03
+>
+> 2h mercredi : héritage
+> 2h vendredi : environnements virtuels
+
+### Semaine 9
+
+> 24/03 au 28/03
+>
+> 2h mercredi : programmation événementielle
+> 2h vendredi :              "
+
+{% attention %}
+Sujet DM2
+{% endattention %}
+
+### Semaine 10
+
+> 31/03 au 04/04
+>
+> 2h mercredi : P&NP
+> 2h vendredi
+
+### Semaine 11
+
+> 14/04 au 18/04
+>
+> 4h mercredi
+
+{% attention %}
+Rendre DM2
+{% endattention %}
+
+> TBD méthode de résolution de problèmes
+
+### Semaine 12
+
+> 21/04 au 25/04
+> 4h mercredi : DS
+> 2h vendredi
+
+{% attention %}
+DS code : 3h le 23/04
+{% endattention %}
+
+> TBD méthode de résolution de problèmes suite
+
+### Semaine 13
+
+> 05/05 au 09/05
+> 4h mercredi
+
+> TBD méthode de résolution de problèmes fin
 <!--
 
 ### Semaine 4

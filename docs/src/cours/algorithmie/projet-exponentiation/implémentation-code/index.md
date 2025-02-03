@@ -15,8 +15,6 @@ eleventyComputed:
 ---
 
 
-> TBD : montrer invariants avec le débogueur.
-
 On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.
 
 ## Mise en place
@@ -54,7 +52,7 @@ On se force, jusqu'à que cela devienne un automatisme, à écrire du code styl�
 
 {% faire %}
 
-- dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme naïf itératif dans une fonction nommée `puissance_naif`{.language-}
+- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme naïf itératif](../étude-algorithmique/#pseudo-code-naif) dans une fonction nommée `puissance_naif`{.language-} (utilisez des noms explicites).
 - dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme naïf itératif :
   - vérifiez que les cas simples avec nombre et/ou exposant à 1 fonctionnent
   - vérifiez qu'un cas général est correct (comme $2^3$ par exemple)
@@ -75,14 +73,34 @@ Organisation des tests :
 
 {% endnote %}
 
+Terminons cette partie en utilisant le débogueur :
+
+{% faire %}
+
+Dans le programme principal, calculez la factorielle d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez sa factorielle.
+
+En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
+
+{% endfaire %}
+
 ### Algorithme rapide
 
 {% faire %}
 
-- dans le fichier `exponentiation.py`{.fichier} : implémentez l'algorithme rapide dans une fonction nommée `puissance_rapide`{.language-}
-- dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf. :
+- dans le fichier `exponentiation.py`{.fichier} : implémentez [l'algorithme rapide](../étude-algorithmique/#pseudo-code-rapide) dans une fonction nommée `puissance_rapide`{.language-}
+- dans le fichier `test_exponentiation.py`{.fichier} : implémentez les tests de l'algorithme rapide en faisant les mêmes tests que pour l'algorithme naïf.
 
 Vérifier que vos tests se lancent bien dans le terminal.
+
+{% endfaire %}
+
+Terminons cette partie en utilisant le débogueur :
+
+{% faire %}
+
+Dans le programme principal, calculez la factorielle d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez sa factorielle issue du calcul rapide.
+
+En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
 
 {% endfaire %}
 

@@ -6,7 +6,7 @@ authors:
   - François Brucker
 ---
 
-Ce test vous demande de créer des fonctions de recherche de caractères dans une chaine de caractères.
+Ce test vous demande de créer des fonctions de recherche de caractères dans une chaîne de caractères.
 
 ## Rendu
 

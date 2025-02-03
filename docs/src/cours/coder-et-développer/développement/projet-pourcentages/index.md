@@ -1,5 +1,5 @@
 ---
-layout: layout/post.njk 
+layout: layout/post.njk
 title: "Projet pourcentage"
 
 eleventyComputed:
@@ -156,14 +156,14 @@ platform darwin -- Python 3.9.13, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: /Users/fbrucker/Documents/code/projet-pourcentages/
 plugins: dash-1.19.0, cov-3.0.0
 collected 2
-items                                                                                           
+items
 
 test_pourcentage.py ..                                                                                                     [100%]
 
 ======================================================= 2 passed in 0.02s =======================================================
 ```
 
-On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que  `"101"`{.language-} rende `100 * (1/3)`{.language-}.
+On a testé les cas limites de notre fonction. Ajoutons un cas général, où il y a à la fois des `"0"`{.language-} et des `"1"`{.language-}, par exemple que `"101"`{.language-} rende `100 * (1/3)`{.language-}.
 
 Ceci nous impose de tester l'égalité entre 2 réels. Ceci est impossible à faire en informatique car il faudrait regarder une infinité de chiffres après la virgule... Or les réels en informatique sont en fait des entiers déguisés, ce sont des approximations (voir [la doc](https://docs.python.org/fr/3/tutorial/floatingpoint.html)).
 
@@ -177,7 +177,7 @@ On ne peut donc pas écrire directement `assert pourcent('101') == 100 * (1/3)`{
 On ne teste **JAMAIS** l'égalité entre 2 réels. On les compare toujours à $\epsilon$ près.
 {% endnote %}
 
-Pour cela on va utiliser une fonction spéciale de pytest qui vérifie si 2 réels sont *à peu près égaux* (par défaut à dix moins six près) : [`approx`{.language-}](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
+Pour cela on va utiliser une fonction spéciale de pytest qui vérifie si 2 réels sont _à peu près égaux_ (par défaut à dix moins six près) : [`approx`{.language-}](https://docs.pytest.org/en/latest/reference.html#pytest-approx).
 
 Comme nos deux autres tests comparaient déjà des réels, on va les modifier pour qu'ils utilisent approx avant d'ajouter le nouveau test
 
@@ -228,7 +228,7 @@ def test_pourcent_01():
 On a 3 tests. Deux de ces tests correspondent aux cas limites, et le troisième à un cas général.
 
 {% note  "**Coding mantra :** que tester ?" %}
-Ce qui est nécessaire pour que **vous** (*ie.* le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.
+Ce qui est nécessaire pour que **vous** (_ie._ le développeur) soyez convaincu que votre fonction marche. Ni plus, ni moins.
 {% endnote %}
 
 {% note  "**Coding mantra :** pourquoi tester ?" %}
@@ -265,7 +265,7 @@ Toute interaction avec l'utilisateur est par défaut considéré comme une chaî
 
 {% faire %}
 
-Dans  le fichier `main.py`{.fichier}, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de "0" de ce nombre.
+Dans le fichier `main.py`{.fichier}, créez un programme principal qui demande à l'utilisateur d'écrire un nombre en binaire, puis qui rende le pourcentage de "0" de ce nombre.
 
 Faite le programme le plus simple possible.
 
