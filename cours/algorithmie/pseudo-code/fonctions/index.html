@@ -175,6 +175,8 @@ affiche à l'écran trouve</code></pre>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">recherche<span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span></code></pre>
 </div></div>
 
+<h3><span id="type"></span>Type d'une fonction</h3>
+<p>Une fonction peut très bien être un paramètre d'une autre fonction. Son type est alors sa signature. Par exemple le type de la fonction <code class="language-">recherche</code> précédente sera tout simplement <code class="language-">([entier], entier) → booléen</code> : on donne le type de ses entrées et de sa sortie.</p>
 <h3>Variables locales</h3>
 <p>Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Le code suivant affichera 4 et pas 6 qui est dernière valeur prise par la variable <code class="language-">e</code> de la fonction <code class="language-">recherche</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">←</span> <span class="token number">4</span>

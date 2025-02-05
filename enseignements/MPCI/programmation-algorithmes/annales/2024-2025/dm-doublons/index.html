@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Projet Doppelganger</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1 class="mb-1">Projet Doppelganger</h1>
+  <div class="mb-4">
+    
+
+    
+      <div class=" px-4 flex items-center">
+        
+          <div class="font-bold">Auteur : </div>
+        
+        <ul class="flex not-prose list-none my-0 last:after:content-['•'] last:after:px-1 mx-0 px-1">
+          
+            <li class="before:content-['•'] before:px-1">François Brucker</li>
+          
+        </ul>
+      </div>
+    
+  </div>
+
+  
+
+  <p>Le but du projet est de résoudre le problème algorithmique suivant :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème algorithmique</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : Doppelganger</li>
+<li>Entrée : Un tableau de $n$ entiers compris entre 1 et $n-1$</li>
+<li>Sortie : Un entier $v$ tel qu'il existe $0\leq i\neq j &lt; n$ avec $v = T[i] = T[j]$</li>
+</ul>
+</div></div>
+
+<h2>Rendu</h2>
+<p>Le projet comporte deux partie : l'une algorithmique et l'autre dédiée au code.</p>
+<p>Il faudra rendre la partie algorithmique sous la forme d'un fichier markdown et la partie développement sous la forme d'un projet informatique.</p>
+<h3>Ordre des questions</h3>
+<p>Le but du projet est de faire les questions dans l'ordre. Non seulement les questions se suivent, mais elles racontent une histoire. La suivre vous permettra, j'espère, de passer un bon moment algorithmique.</p>
+<h3>Partie algorithmique</h3>
+<p>Tout algorithme doit être donné en pseudocode et être démontré (finitude et correction).</p>
+<h3>Partie code</h3>
+<p>Toute fonction devra être testée.</p>
+<h2>I. Prélude</h2>
+<p>Commençons par montrer que notre problème est bien défini et algorithmique.</p>
+<h3>I.1 Existence</h3>
+<h4>I.1.1</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que l'entier $v$ du problème <em>Doppelganger</em> existe toujours.</p>
+</div></div>
+
+<h4>I.1.2</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Démontrez que le problème <em>Doppelganger</em> peut admettre plusieurs solutions.</p>
+</div></div>
+
+<h3>I.2 Algorithme</h3>
+<p>Montrez que l'algorithme suivant permet de résoudre le problème <em>Doppelganger</em> avec comme complexités :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n^2)$</li>
+<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
+</ul>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">doppelganger_naif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
+<h3>I.3 Complexité du problème</h3>
+<p>Le but du problème est de trouver une solution optimale au problème. Commençons par donner des bornes à celui-ci.</p>
+<h4>I.3.1</h4>
+<p>Montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Omega(n)$ et en $\mathcal{O}(n^2)$.</p>
+<h4>I.3.2</h4>
+<p>Montrer que la complexité spatiale du problème <em>Doppelganger</em> est en $\Theta(1)$ (sans compter l'entrée).</p>
+<h3>I.4 Simulation</h3>
+<p>On vous demande de  créer un projet vscode dans le dossier <code class="fichier">doppelganger</code>. Ce projet contiendra :</p>
+<ul>
+<li>un fichier <code class="fichier">doppelganger.py</code></li>
+<li>un fichier <code class="fichier">test_doppelganger.py</code> qui contiendra les tests des fonctions du fichier <code class="fichier">doppelganger.py</code></li>
+<li>autant de programmes principaux que demandé dans la suite du projet.</li>
+</ul>
+<h4>I.4.1 Vérification</h4>
+<p>Créez une fonction python vérifiera qu'un tableau passé en paramètre est une entrée valide du problème doppelganger Qui devra rendre une entrée du problème. Sa signature doit être :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_valide<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> → <span class="token builtin">bool</span></code></pre>
+<h4>I.4.2 Entrée</h4>
+<p>Créez une fonction python Qui devra rendre une entrée du problème. Sa signature doit être :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_entrée<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> → <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span></code></pre>
+<p>Vous ferez en sorte que la probabilité que T[i] soit égal à x soit de 1/(n-1) quelque soient x et i.</p>
+<h4>I.4.3 Sortie</h4>
+<p>Implémentez l'algorithme du I.2 dans une fonction de signature :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_naif<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
+<h4>I.4.4 programme principal</h4>
+<p>Créez un programme principal dans un fichier <code class="fichier">main_I.py</code> permettant à un utilisateur de rentrer une taille de tableau. Le programme devra :</p>
+<ol>
+<li>rendre une sortie du problème Doppelganger</li>
+<li>donner le temps mis par l'algorithme pour s'exécuter</li>
+</ol>
+<h2>II. Une première borne</h2>
+<p>Affinons un peu la complexité de notre problème.</p>
+<h3>II.1 Trié</h3>
+<h4>II.1.1</h4>
+<p>Montrer que si le tableau en entrée du problème est trié, on peut résoudre le problème Doppelganger en temps linéaire.</p>
+<h4>II.1.2</h4>
+<p>Déduire de la question précédente un algorithme modifiant le tableau en entrée et résolvant le problème Doppelganger avec une complexité :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n\log(n))$</li>
+<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
+</ul>
+<h4>II.1.3</h4>
+<p>Implémentez l'algorithme du II.1.2 dans une fonction de signature :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_tri<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
+<h4>II.1.4</h4>
+<p>Créez un programme principal dans un fichier <code class="fichier">main_II.py</code> permettant à un utilisateur de rentrer une taille de tableau. Le programme devra :</p>
+<ol>
+<li>rendre une sortie du problème Doppelganger</li>
+<li>comparer les temps d'exécution des deux algorithmes <code class="language-">doppelganger_tri</code> et <code class="language-">doppelganger_naif</code></li>
+</ol>
+<h4>II.1.5</h4>
+<p>Expérimentalement, votre algorithme naif doit très souvent aller plus vite que votre algorithme qui tri au préalable votre tableau. Si cela n'arrive pas, faite une amélioration de votre algorithme naif pour que cela arrive.</p>
+<p>Pourquoi ?</p>
+<h4>II.1.6</h4>
+<p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf.</p>
+<h3>II.2</h3>
+<p>Utilisons le fait que les entiers dont sont composés le tableau pour lequel il faut trouver le doublon sont entre 0 et n-1, soit les indices d'un tableau de taille $n$.</p>
+<h4>II.2.1</h4>
+<p>Montrez qu'en utilisant un tableau <code class="language-">B</code> de taille $n$ de booléens, on peut créer un algorithme permettant de résoudre le problème Doppelganger avec une complexité :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n)$</li>
+<li>spatiale en $\mathcal{O}(n)$ (sans compter l'entrée)</li>
+</ul>
+<h4>II.2.2</h4>
+<p>Implémentez l'algorithme du II.2.1 dans une fonction de signature :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">doppelganger_bool<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> → <span class="token builtin">int</span></code></pre>
+<p>Ajoutez au programme principal du fichier <code class="fichier">main_II.py</code> le temps d'exécution de l'algorithme <code class="language-">doppelganger_bool</code>.</p>
+<h4>II.2.3</h4>
+<p>L'algorithme <code class="language-">doppelganger_bool</code> est-il effectivement le plus rapide ?</p>
+<h3>II.3</h3>
+<p>Utilisez la question II.2.3 pour montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Theta(n)$ et la complexité spatiale de $\mathcal{O}(1)$ (sans compter l'entrée).</p>
+<p>Quelle est (pour l'instant) la complexité spatiale de l'algorithme en $\mathcal{O}(n)$ et la complexité temporelle de l'algorithme de complexité spatiale $\mathcal{O}(1)$ ?</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On va montrer dans la suite qu'il existe un algorithme optimal pour les deux types de complexités en même temps !</p>
+<p>Réfléchissez-y un instant avant de continuer. Pensez-vous que ce soit possible ?</p>
+</div></div>
+
+<h2>III. Interlude</h2>
+<p>Prenons un petit moment pour analyser un autre problème.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problème algorithmique</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Nom : Période</li>
+<li>Entrées :
+<ul>
+<li>$f: [\![ 1, n]\!] \to [\![ 1, n]\!]$</li>
+<li>$x \in [\![ 1, n]\!]$</li>
+</ul>
+</li>
+<li>Sortie : Deux entiers positifs $\lambda$ et $\mu$ tels que $f^\lambda(x) = f^{\lambda +\mu}(x)$</li>
+</ul>
+</div></div>
+
+<h3>III.1 Existence</h3>
+<p>Une suite $(a_i)_{0\leq i}$ est dite <em>ultimement périodique</em> si il existe $\lambda$ et $\mu$ tels que :</p>
+<ul>
+<li>les valeurs $a_0$ à $a_{\lambda + \mu - 1}$ sont distinctes</li>
+<li>$a_{ n + \lambda} = a_{ n }$ pour tout $n\geq \mu$</li>
+</ul>
+<p>Une suite  ultimement périodique ressemble à un $\rho$ (rho) :</p>
+<p><img src="rho.png" alt="rho"></p>
+<h4>III.1.1</h4>
+<p>Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.</p>
+<h4>III.1.2</h4>
+<p>Montrez que si $(a_i)_{0\leq i}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
+<h4>III.1.3</h4>
+<p>Montrez que si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ et $x \in [\![ 1, n]\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
+</ul>
+<p>est ultimement périodique.</p>
+<h4>III.1.4</h4>
+<p>Donnez une fonction $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ telle que la suite ultimement périodique associée (comme en III.1.3) avec $a_0 = 1$ a le même $\rho$ que la figure.</p>
+<h4>III.1.5</h4>
+<p>Montrez que le problème <em>Période</em> est bien un problème algorithmique.</p>
+<h3>III.2</h3>
+<p>Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.</p>
+<h4>III.2.1</h4>
+<p>Montrez qu'il existe $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
+<h4>III.2.2</h4>
+<p>Montrez que programme suivant est un algorithme pour tout couple (f, x) entrée du problème du point fixe.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
+                        x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+                       <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    t <span class="token operator">←</span> f<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    l <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    m <span class="token operator">←</span> <span class="token number">1</span>
+    <span class="token keyword">tant que</span> t <span class="token operator">≠</span> l<span class="token punctuation">:</span>
+        t <span class="token operator">←</span> f<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
+        l <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        m <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
+    
+    <span class="token keyword">rendre</span> m</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous aurez remarqué qu'un des paramètres du programme est une fonction. <a href="/cours_informatique/cours/algorithmie/pseudo-code/fonctions/#type">Le type d'une fonction est sa signature</a>.</p>
+</div></div>
+
+<h4>III.3.3</h4>
+<p>Montrer que l'algorithme <code class="language-">lièvre_tortue</code> permet de retrouver $\lambda$ et $\mu$ pour une suite ultimement périodique définie comme en III.1.3 (vous pourrez utiliser un tableau auxiliaire comme en II.2.1).</p>
+<h4>III.3.4</h4>
+<p>Montrer que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$.</p>
+<h3>III.4</h3>
+<p>Nous allons coder cette partie. Pour cela, vous créerez deux fichiers, <code class="language-">point_fixe.py</code> et <code class="language-">test_point_fixe.py</code> dans lesquels vous créerez les fonctions demandées.</p>
+<h4>III.4.1</h4>
+<p>Créez la fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">suite_création<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span><span class="token punctuation">)</span></code></pre>
+<p>Le tableau en entrée <code class="language-">T</code> sera tel que <code class="language-">1 ≤ T[i] &lt; T.longueur</code> et la fonction <code>f</code> de sortie sera telle que f(i) = T[i] pour tout <code class="language-">1 ≤ i &lt; T.longueur</code>.</p>
+<p>Un test de cette fonction pourrait être :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> test_suite_création<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
+    f <span class="token operator">=</span> suite_création<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">assert</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
+<h4>III.4.2</h4>
+<p>Implémentez l'algorithme de la question III.2.2.</p>
+<h4>III.4.3</h4>
+<p>Dans le programme <code class="fichier">main_III.py</code></p>
+<h4>III.4.4</h4>
+<p>Implémentez un algorithme permettant de résoudre le problème du point fixe.</p>
+<h4>III.4.5</h4>
+<blockquote>
+<p>TBD à montrer $\rho$ et toute fonction de ce type
+2 parties.
+lièvre et tortue
+application normale suite
+application crypto</p>
+</blockquote>
+<h2>IV. Solution optimale</h2>
+<h2>Courbes</h2>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

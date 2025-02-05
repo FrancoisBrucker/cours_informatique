@@ -99,6 +99,59 @@
 <p>Vous avez 15min pour faire le test.</p>
 </div></div>
 
+<h2>Rendu</h2>
+<h3>Type de rendu</h3>
+<p>Rendu sur feuille.</p>
+<h3>Éléments de notation</h3>
+<ol>
+<li>Écriture sous la forme d'un pseudo-code correct</li>
+<li>Lorsque l'on vous demande de donner un algorithme, il faudra toujours prouver :
+<ul>
+<li>sa finitude</li>
+<li>son exactitude</li>
+</ul>
+</li>
+</ol>
+<p>Ne tartinez pas des pages et des pages de démonstration. Allez directement au fait et si c'est évident, dites le.</p>
+<h2>Sujet</h2>
+<p>Dans la suite de ce test, on supposera connu l'algorithme suivant qui rend le successeur d'un entier positif :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">succ</span><span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    <span class="token keyword">rendre</span><span class="token number"> n </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<h3>Question 1</h3>
+<p>On considère le programme suivant définis pour tous <code class="language-">a</code> et <code class="language-">b</code> entiers positifs :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme <span class="token function">somme</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">0</span>
+   <span class="token number"> j </span><span class="token operator">←</span> a
+    <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≠</span> b<span class="token punctuation">:</span>
+       <span class="token number"> i </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+       <span class="token number"> j </span><span class="token operator">←</span> succ<span class="token punctuation">(</span>j<span class="token punctuation">)</span>
+    <span class="token keyword">rendre</span><span class="token number"> j
+</span></code></pre>
+<h4>1.1</h4>
+<p>Montrez que l'expression <code class="language-">a + i = j</code> est un invariant de boucle du programme <code class="language-">somme</code>.</p>
+<h4>1.2</h4>
+<p>Montrez que <code class="language-">somme</code> est un algorithme et utilisez l'invariant de la question 1.1 pour prouver que <code class="language-">somme(a, b) = a + b</code> pour tous <code class="language-">a</code> et <code class="language-">b</code> entiers positifs.</p>
+<h3>Question 2</h3>
+<p>En utilisant uniquement <code class="language-">somme</code>, donnez un algorithme itératif permettant de calculer le produit de deux entiers passés en paramètre. Sa signature doit être :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">produit<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Et on doit avoir l'égalité <code class="language-">produit(a, b) = a * b</code> pour tous <code class="language-">a</code> et <code class="language-">b</code> entiers positifs ou nuls.</p>
+<h3>Question 3</h3>
+<p>En utilisant uniquement <code class="language-">succ</code> comme opération arithmétique donnez un algorithme permettant de calculer le prédécesseur d'un entier positif passé en paramètre. Sa signature doit être :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">pred<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Et on doit avoir pour tout <code class="language-">a</code> entier positif ou nul :</p>
+<ul>
+<li><code class="language-">pred(a) = a - 1</code> si <code class="language-">a &gt; 0</code></li>
+<li><code class="language-">pred(0) = 0</code></li>
+</ul>
+<h3>Question 4</h3>
+<h4>4.1</h4>
+<p>En utilisant <code class="language-">succ</code> et <code class="language-">pred</code> comme opérations arithmétiques, donnez un algorithme récursif permettant de calculer la somme de deux entiers passés en paramètre. Sa signature doit être :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">somme_rec<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Et on doit avoir l'égalité <code class="language-">somme_rec(a, b) = a + b</code> pour tous <code class="language-">a</code> et <code class="language-">b</code> entiers positifs ou nuls.</p>
+<h4>4.2</h4>
+<p>En utilisant uniquement <code class="language-">somme_rec</code> et <code class="language-">pred</code>, donnez un algorithme récursif permettant le produit de deux entiers passés en paramètre. Sa signature doit être :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">produit_rec<span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span></code></pre>
+<p>Et on doit avoir l'égalité <code class="language-">produit_rec(a, b) = a * b</code> pour tous <code class="language-">a</code> et <code class="language-">b</code> entiers positifs ou nuls.</p>
 
 
 </article>
