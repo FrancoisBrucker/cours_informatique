@@ -45,7 +45,7 @@ export default function(eleventyConfig) {
             greedy: true
           },
           'function': {
-            pattern: /((?:^|\s)(algorithme|fonction)[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
+            pattern: /((?:^|\s)(algorithme|fonction|programme)[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
             lookbehind: true
           },
           'keyword': /\b(?:_(?=\s*:)|et|ou|si|sinon si|sinon|pour chaque|pour|rendre|tant que)\b/,

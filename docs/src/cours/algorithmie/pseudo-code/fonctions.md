@@ -98,6 +98,10 @@ recherche(t: [entier], x: entier) → booléen
 
 {% endinfo %}
 
+### <span id="type"></span>Type d'une fonction
+
+Une fonction peut très bien être un paramètre d'une autre fonction. Son type est alors sa signature. Par exemple le type de la fonction `recherche`{.language-} précédente sera tout simplement `([entier], entier) → booléen`{.language-} : on donne le type de ses entrées et de sa sortie.
+
 ### Variables locales
 
 Il est important de voir que lorsque l'on exécute une fonction, les variables qu'elle crée existeront dans un espace à elle, pas dans celui du pseudo-code appelant. Le code suivant affichera 4 et pas 6 qui est dernière valeur prise par la variable `e`{.language-} de la fonction `recherche`{.language-} :

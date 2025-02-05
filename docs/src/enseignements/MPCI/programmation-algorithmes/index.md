@@ -152,7 +152,7 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
 {% endattention %}
 {% faire %}
-Sujet du test 1
+[Sujet du test 1](./annales/2024-2025/1_test/)
 {% endfaire %}
 
 Ce cours est basé sur la notion de complexité algorithmique que vous avez du aborder au S1.
@@ -252,21 +252,21 @@ Sujet du test 2
 ### Semaine 5
 
 > 24/02 au 28/02
-> 2h mercredi
-> 2h vendredi
+> 2h mercredi : complexité en moyenne et tris
+> 2h vendredi : tp tris
 
 {% attention %}
-Test de 15min en début de cours sur **la partie complexité**. 
+Test de 15min en début de cours sur **la partie complexité**.
 {% endattention %}
 {% faire %}
 Sujet du test 3
 {% endfaire %}
 
-> TBD tris toute la semaine.
-
 {% attention %}
 Rendre le DM 1.
 {% endattention %}
+
+> TBD fin des tris
 
 ### Semaine 6
 
@@ -279,26 +279,32 @@ Rendre le DM 1.
 DS algorithmie 2h , mercredi 5/03.
 {% endattention %}
 
+> TBD : tp objet à faire chez eux
+
 ### Semaine 7
 
 > 10/03 au 14/03
 >
 > 2h mercredi : composition / agrégation
-> 2h vendredi : programmation par les tests et code coverage
+> 2h vendredi : héritage
+
+> TBD : tp objet à faire chez eux
 
 ### Semaine 8
 
 > 17/03 au 21/03
 >
-> 2h mercredi : héritage
-> 2h vendredi : environnements virtuels
+> 2h mercredi : TP 1 + code coverage
+> 2h vendredi : TP 2 + environnement virtuels
+
+> TBD : tp programmation par les tests à faire chez eux
 
 ### Semaine 9
 
 > 24/03 au 28/03
 >
-> 2h mercredi : programmation événementielle
-> 2h vendredi :              "
+> 2h mercredi : TD programmation événementielle
+> 2h vendredi : TP              "
 
 {% attention %}
 Sujet DM2
@@ -308,30 +314,28 @@ Sujet DM2
 
 > 31/03 au 04/04
 >
-> 2h mercredi : P&NP
-> 2h vendredi
+> 2h mercredi : listes et dictionnaires
+> 2h vendredi : Structures de données TP
 
 ### Semaine 11
 
 > 14/04 au 18/04
 >
-> 4h mercredi
+> 4h mercredi : DS
+
+{% attention %}
+DS code : 3h le 23/04
+{% endattention %}
 
 {% attention %}
 Rendre DM2
 {% endattention %}
 
-> TBD méthode de résolution de problèmes
-
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : DS
+> 4h mercredi P&NP
 > 2h vendredi
-
-{% attention %}
-DS code : 3h le 23/04
-{% endattention %}
 
 > TBD méthode de résolution de problèmes suite
 
@@ -341,6 +345,7 @@ DS code : 3h le 23/04
 > 4h mercredi
 
 > TBD méthode de résolution de problèmes fin
+
 <!--
 
 ### Semaine 4

@@ -60,7 +60,7 @@ Lorsque l'on calcule la complexité d'un pseudo-code utilisant des fonctions, il
 Prenons par exemple le code suivant et comptons les instructions utilisées au cours de son exécution :
 
 ```pseudocode/
-algorithme recherche(t: [entier], x: entier) → booléen:
+fonction recherche(t: [entier], x: entier) → booléen:
     pour chaque e de t:
         si e == x:
             rendre Vrai
