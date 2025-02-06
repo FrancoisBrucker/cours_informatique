@@ -263,7 +263,7 @@ Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\lambda$
 
 #### III.2.1
 
-Montrez qu'il existe $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
 
 #### III.2.2
 
