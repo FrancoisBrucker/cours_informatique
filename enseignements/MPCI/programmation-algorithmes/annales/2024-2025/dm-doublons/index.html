@@ -119,25 +119,9 @@
 <p>Commençons par montrer que notre problème est bien défini et algorithmique.</p>
 <h3>I.1 Existence</h3>
 <h4>I.1.1</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
 <p>Démontrez que l'entier $v$ du problème <em>Doppelganger</em> existe toujours.</p>
-</div></div>
-
 <h4>I.1.2</h4>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-</svg>
-<div class="pl-8 mr-8">
 <p>Démontrez que le problème <em>Doppelganger</em> peut admettre plusieurs solutions.</p>
-</div></div>
-
 <h3>I.2 Algorithme</h3>
 <p>Montrez que l'algorithme suivant permet de résoudre le problème <em>Doppelganger</em> avec comme complexités :</p>
 <ul>
@@ -154,7 +138,7 @@
 <h4>I.3.1</h4>
 <p>Montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Omega(n)$ et en $\mathcal{O}(n^2)$.</p>
 <h4>I.3.2</h4>
-<p>Montrer que la complexité spatiale du problème <em>Doppelganger</em> est en $\Theta(1)$ (sans compter l'entrée).</p>
+<p>Montrer que la complexité spatiale du problème <em>Doppelganger</em> est en $\mathcal{O}(1)$ (sans compter l'entrée).</p>
 <h3>I.4 Simulation</h3>
 <p>On vous demande de  créer un projet vscode dans le dossier <code class="fichier">doppelganger</code>. Ce projet contiendra :</p>
 <ul>
@@ -206,11 +190,11 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous pourrez utiliser le fait que $\lim(1-1/n)^n = 1/e$.</p>
+<p>Vous pourrez utiliser le fait que $\lim_{n\to +\infty}(1-1/n)^n = 1/e$.</p>
 </div></div>
 
 <h4>II.1.6</h4>
-<p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf. Et vérifiez expérimentalement que le temps mis pour résoudre cette instance est bien plus importante pour l'algorithme naif que pour celui qui trie au préalable le tableau.</p>
+<p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf et vérifiez le expérimentalement en ajoutant ce tableau à <code class="fichier">main_II.py</code>.</p>
 <h3>II.2</h3>
 <p>Utilisons le fait que les entiers dont sont composés le tableau pour lequel il faut trouver le doublon sont entre 0 et n-1, soit les indices d'un tableau de taille $n$.</p>
 <h4>II.2.1</h4>
@@ -228,9 +212,9 @@
 <h3>II.3</h3>
 <p>Utilisez la question II.2.3 pour montrer que la complexité temporelle du problème <em>Doppelganger</em> est en $\Theta(n)$ et la complexité spatiale de $\mathcal{O}(1)$ (sans compter l'entrée).</p>
 <p>Quelle est (pour l'instant) la complexité spatiale de l'algorithme en $\mathcal{O}(n)$ et la complexité temporelle de l'algorithme de complexité spatiale $\mathcal{O}(1)$ ?</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
 <p>On va montrer dans la suite qu'il existe un algorithme optimal pour les deux types de complexités en même temps !</p>
@@ -247,7 +231,7 @@
 <p><strong>Problème algorithmique</strong></p>
 </div><div class="pl-8 mr-8">
 <ul>
-<li>Nom : Période</li>
+<li>Nom : Point fixe</li>
 <li>Entrées :
 <ul>
 <li>$f: [\![ 1, n]\!] \to [\![ 1, n]\!]$</li>
@@ -269,7 +253,7 @@
 <h4>III.1.1</h4>
 <p>Donnez les $\lambda$ et $\mu$ pour la suite représentée par la figure précédente.</p>
 <h4>III.1.2</h4>
-<p>Montrez que si $(a_i)_{0\leq i}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
+<p>Montrez que si $(a_i)_{i\geq 0}$ est ultimement périodique alors les entiers $\lambda$ et $\mu$ sont uniques.</p>
 <h4>III.1.3</h4>
 <p>Montrez que si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ et $x \in [\![ 1, n]\!]$ alors la suite $(a_i)_{0\leq i}$ définie telle que :</p>
 <ul>
@@ -279,14 +263,12 @@
 <p>est ultimement périodique.</p>
 <h4>III.1.4</h4>
 <p>Donnez une fonction $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ telle que la suite ultimement périodique associée (comme en III.1.3) avec $a_0 = 1$ a le même $\rho$ que la figure.</p>
-<h4>III.1.5</h4>
-<p>Montrer que l'on peut déterminer la période d'une suite ultimement périodique à partir de la sortie dsu problème <em>Période</em>.</p>
 <h3>III.2</h3>
-<p>Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.</p>
+<p>Soit $(a_i)_{i\geq 0}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.</p>
 <h4>III.2.1</h4>
 <p>Montrez qu'il existe $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
 <h4>III.2.2</h4>
-<p>Montrez que programme suivant est un algorithme permettant de résoudre le problème du point fixe.</p>
+<p>Montrez que programme suivant est un algorithme qui rend le $a_m$ de la question précédente.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
                         x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
                        <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
@@ -307,22 +289,25 @@
 </div></div>
 
 <h4>III.2.3</h4>
-<p>Soit <code class="language-">y</code> le retour de la fonction <code class="language-">lièvre_tortue(f, x)</code>. Combien d'itération la boucle <code class="language-">tant que</code> va effectuer dans l'exécution de <code class="language-">lièvre_tortue(f, y)</code> ?</p>
-<h4>III.2.4</h4>
-<p>En déduire le $\lambda$ associé à la suite ultimement périodique associée à :</p>
-<ul>
-<li>$a_0 = x$</li>
-<li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
-</ul>
-<p>Avec un algorithme de complexité :</p>
-<ul>
-<li>temporelle en $\mathcal{O}(n)$</li>
-<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
-</ul>
+<p>Montrez que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ ?</p>
+<h3>III.3</h3>
+<p>Nous allons chercher ici $a_\mu$ qui est le début du cycle. Soit $m$ avec $\mu \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
+<h4>III.3.1</h4>
+<p>Montrez que $m$ est un multiple de $\lambda$.</p>
+<h4>III.3.2</h4>
+<p>Utilisez la question précédente et la nature de $m$ pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$.</p>
 <h4>III.3.3</h4>
-<p>Montrer que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$.</p>
+<p>Déduire de ce qui précède un algorithme de complexité temporelle $\mathcal{O}(\lambda + \mu)$ et de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Où se rencontrent deux tortues démarrant en $a_m$ et en $a_0$ respectivement ?</p>
+</div></div>
+
 <h3>III.4</h3>
-<p>Nous allons coder cette partie. Pour cela, vous créerez deux fichiers, <code class="language-">point_fixe.py</code> et <code class="language-">test_point_fixe.py</code> dans lesquels vous créerez les fonctions demandées.</p>
+<p>Nous allons coder cette partie. Pour cela, créez deux fichiers, <code class="language-">point_fixe.py</code> et <code class="language-">test_point_fixe.py</code>, dans lesquels vous créerez les fonctions demandées.</p>
 <h4>III.4.1</h4>
 <p>Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">lièvre_tortue<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
@@ -332,30 +317,7 @@
 <li>$x = T[0]$</li>
 </ul>
 <h4>III.4.2</h4>
-<p>Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">paramètre_lambda<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
-<p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
-<ul>
-<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
-<li>$x = T[0]$</li>
-</ul>
-<h3>IV.5</h3>
-<p>Nous allons chercher ici $a_\mu$ qui est le début du cycle ($a_3$ sur la figure).</p>
-<h4>IV.5.1</h4>
-<p>Soit $m$ avec $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
-<p>Montrez que $m$ est un multiple de $\lambda$</p>
-<h4>IV.5.2</h4>
-<p>Utilisez la question précédente pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$ et en déduire un algorithme de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$ à partir de $m$.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Vous pourrez faire démarrer une nouvelle tortue en continuant l'ancienne.</p>
-</div></div>
-
-<h4>IV.5.3</h4>
-<p>Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :</p>
+<p>Codez l'algorithme de la question IV.3.3. Cet algorithme devra être de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">mu<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
 <p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
 <ul>
@@ -367,7 +329,6 @@
 <ol>
 <li>afficher un tableau créé aléatoirement avec <code class="language-">doppelganger_entrée(n + 1)</code></li>
 <li>afficher la sortie de l'algorithme <code class="language-">lièvre_tortue</code></li>
-<li>afficher le paramètre $\lambda$ de la suite ultimement périodique associée au tableau</li>
 <li>affiche la période de la suite ultimement périodique associée au tableau commençant avec $a_\mu$</li>
 </ol>
 <h2>IV. Solution optimale</h2>
@@ -378,11 +339,12 @@
 </ul>
 <p>Cet algorithme sera alors optimal et en temps et en espace !</p>
 <h3>IV.1</h3>
-<p>Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\mu &gt; 0$ et $\lambda$.</p>
+<p>Soit ${(a_i)}_{i\geq 0}$ une suite ultimement périodique de paramètres $\mu &gt; 0$ et $\lambda$.</p>
 <p>Montrez que $f(a_{\mu - 1}) = f(a_{\mu + \lambda - 1})$ et en déduire que $a_\mu$ est une solution au problème <em>Doppelganger</em> pour le tableau $T$ tel que :</p>
 <ul>
 <li>$T[0] = a_0$</li>
-<li>$T[i] = a_i$ pour tout $1\leq i \leq n$</li>
+<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
+<li>$a_{i+1} = f(a_i)$</li>
 </ul>
 <h3>IV.2</h3>
 <p>Déduire de ce qui précède un algorithme permettant de résoudre le problème <em>Doppelganger</em> avec un algorithme de complexité :</p>
@@ -393,21 +355,10 @@
 <h3>IV.3</h3>
 <p>On termine ce projet en implémentant tout ça !</p>
 <h4>IV.3.1</h4>
-<p>Ajoutez dans le fichier <code class="language-">point_fixe.py</code> la fonction de signature :</p>
-<p>Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">paramètre_mu<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
-<p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
-<ul>
-<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
-<li>$x = T[0]$</li>
-</ul>
-<h4>IV.3.2</h4>
-<p>Ajoutez au programme <code class="fichier">main_III.py</code> le calcul de $\mu$ à l'affichage.</p>
-<h4>IV.3.3</h4>
 <p>Ajoutez dans le fichier <code class="fichier">doppelganger.py</code> un algorithme de signature :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_optimal<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
 <p>Qui résout de façon optimale en temps et en espace le problème <em>Doppelganger</em>.</p>
-<h4>IV.3.4</h4>
+<h4>IV.3.2</h4>
 <p>Créez un programme principal dans un fichier <code class="fichier">main_IV.py</code> qui compare le temps mis pour résoudre le problème Doppelganger avec la version naive, triée et optimale pour une taille de tableau donnée par l'utilisateur et en utilisant 2 tableaux :</p>
 <ul>
 <li>un crée par <code class="language-">doppelganger_entrée</code></li>
