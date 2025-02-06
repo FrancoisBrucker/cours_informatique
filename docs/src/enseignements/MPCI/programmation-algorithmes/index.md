@@ -152,7 +152,7 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 Test de 15min en début de cours sur **la partie preuve et création d'algorithmes**. Il faudra rendre une feuille de papier.
 {% endattention %}
 {% faire %}
-[Sujet du test 1](./annales/2024-2025/1_test/)
+[Sujet du test 1](./annales/2024-2025/1_test/){.interne}
 {% endfaire %}
 
 Ce cours est basé sur la notion de complexité algorithmique que vous avez du aborder au S1.
@@ -186,7 +186,7 @@ Si on a le temps, on le fait en cours sinon faites le chez vous :
 #### Vendredi : stockage de données
 
 {% attention %}
-On vous remettra également le premier DM à rendre sur AMeTICE au format Markdown.
+On vous remettra également le premier DM à rendre pour le **28 février 23h59** sur AMeTICE au format Markdown.
 {% endattention %}
 {% faire %}
 
@@ -238,7 +238,6 @@ Le reste [du cours sur les fichier et dossiers](/cours/coder-et-développer/fich
 ### Semaine 4
 
 > 11/02 au 14/02
-> 4h mercredi
 
 {% attention %}
 Test de 15min en début de cours sur **la partie code (main/fonctions/tests)**. Il faudra rendre des fichiers sur AMeTICE.
@@ -247,7 +246,21 @@ Test de 15min en début de cours sur **la partie code (main/fonctions/tests)**. 
 Sujet du test 2
 {% endfaire %}
 
-> TBD exponentiation toute la semaine.
+Plan de la séance :
+
+{% aller %}
+
+[Projet : exponentiation](/cours/algorithmie/projet-exponentiation/){.interne}
+
+{% endaller %}
+
+Pour aller plus loin :
+
+{% aller %}
+
+[Projet : suites additives](/cours/algorithmie/projet-suite-additive/){.interne}
+
+{% endaller %}
 
 ### Semaine 5
 
@@ -266,7 +279,38 @@ Sujet du test 3
 Rendre le DM 1.
 {% endattention %}
 
-> TBD fin des tris
+#### Mercredi : tris TD
+
+{% aller %}
+
+Introduction aux algorithmes de tri :
+
+1. [Problème du tri : définition et reconnaissance](/cours/algorithmie/problème-tris/){.interne}
+2. [Algorithme de tris simple (selection et insertion)](/cours/algorithmie/problème-tris/#tris-simples){.interne}
+{% endaller %}
+
+L'analyse de ces algorithme simple nous permettra de formaliser la notion de complexité en moyenne :
+
+{% aller %}
+[Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+{% endaller %}
+
+Puis on abordera des notion plus avancées du tri :
+
+{% aller %}
+
+1. [Complexité du problème du tri](/cours/algorithmie/problème-tris/complexité-problème/){.interne}
+2. [Algorithmes de tris optimaux](/cours/algorithmie/problème-tris/#tris-optimaux){.interne}
+
+{% endaller %}
+
+#### Vendredi : tris TP
+
+{% aller %}
+
+[Projet tri](/cours/algorithmie/problème-tris/projet-tris/){.interne}
+
+{% endaller %}
 
 ### Semaine 6
 

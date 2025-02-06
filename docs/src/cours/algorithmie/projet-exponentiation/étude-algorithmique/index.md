@@ -166,8 +166,8 @@ Notre invariant est vrai avant et après chaque itération, il est donc égaleme
 
 Ligne à ligne :
 
-1. une soustraction et une affection : $\mathcal{O}(1)$
-2. une affection : $\mathcal{O}(1)$
+1. une affection : $\mathcal{O}(1)$
+2. une soustraction et une affection : $\mathcal{O}(1)$
 3. une boucle de $\mathcal{O}(n)$ itération (`c`{.language-} vaut initialement `n`{.language-} et est décrémentée de $1$ à chaque itération)
 4. une multiplication et une affection : $\mathcal{O}(1)$
 5. une soustraction et une affection : $\mathcal{O}(1)$
@@ -185,8 +185,11 @@ C & = & \mathcal{O}(1) + \\
 & & \mathcal{O}(1)) + \\
 & & \mathcal{O}(1)\\
 & = & 2 \cdot \mathcal{O}(1) + \mathcal{O}(n) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
-&=& 3 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(n)\\
+&=& 3 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(1) \cdot \mathcal{O}\mbox(n)\\
+&=& \mathcal{O}(3 \cdot 1) + \mathcal{O}\mbox(2\cdot 1 \cdot n)\\
+&=& \mathcal{O}(3) + \mathcal{O}\mbox(2n)\\
 &=& \mathcal{O}(1) + \mathcal{O}(n)\\
+&=& \mathcal{O}(1 + n)\\
 C&=& \mathcal{O}(n)\\
 \end{array}
 $$
@@ -230,6 +233,7 @@ On a utilisé deux choses :
 
 Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.
 
+Remarquez que cette version n'est cependant par récursive terminal. On pourrit le faire en ajoutant un accumulateur comme paramètre.
 {% enddetails %}
 
 Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. En procédant comme la partie précédente on obtient :
@@ -240,6 +244,7 @@ Pour cette étude, nous allons uniquement utiliser des algorithmes itératifs. E
 algorithme puissance(x: entier, n: entier) → entier:
     r ← x
     c ← n - 1
+
     tant que c > 0:
         si c % 2 == 1:
             r ← r * x
@@ -328,9 +333,8 @@ C & = & \mathcal{O}(1) + &\\
 &  & \mathcal{O}(1) + &\\
 &  & K \cdot (\mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\\
-& & \mathcal{O}(1) + &\mbox{(ligne 6 ou ligne 9)}\\
-& & \mathcal{O}(1) + & \mbox{(ligne 7 ou ligne 10)}\\
-& & \mathcal{O}(1)) +&\\
+& & \mathcal{O}(1) + &\mbox{(ligne 7 ou ligne 10)}\\
+& & \mathcal{O}(1)) + & \mbox{(ligne 8 ou ligne 11)}\\
 & & \mathcal{O}(1)&\\
 &=& 2 \cdot \mathcal{O}(1) + K \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&\\
 &=& 3 \cdot \mathcal{O}(1) + K \cdot 5 + &\\
@@ -509,25 +513,20 @@ Cette suite est bien multiplicative :
 - $a_0 = x$
 - $a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$
 
-Il nous reste ensuite à ajouter les éléments restant, c'est à dire ceux pour lesquels 
+Il nous reste ensuite à ajouter les éléments restant, c'est à dire tous les cas où le compteur est impair dans l'exécution de l'algorithme et qui correspondront à des $a_j = a_{j-1} \cdot a_i$ avec $1 \leq i \leq \log_2(n) \leq j$ qui correspondent au premier cas impairs de l'exécution de l'algorithme tel que $a_{j_0} = a_{i} \cdot a_{i'}$.
 
-> TBD ici impair
+Cela donne la suite :
 
-On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :
-
-```text
-    c = n-1
-    i = 0
-    r = a[i]
-    tant que c est strictement positif:
-        si c est impair:
-            r = r * a[i]
-            ajoute r à la fin de a
-            c = c - 1
-        sinon:
-            i = i + 1
-            c = c / 2
-```
+- $a_0$
+- $a_1 = a_0 \cdot a_0$
+- $a_2 = a_1 \cdot a_1$
+- ...
+- $a_i = a_{i-1} \cdot a_{i-1}$
+- $a_j = a_{0} \cdot a_{1}$ (premier impair)
+- $a_{j+1} = a_{j} \cdot a_{2}$
+- $a_{j+2} = a_{j+1} \cdot a_{3}$
+- ...
+- $a_{m} = a_{m-1} \cdot a_{\log_2(n)}$
 
 {% enddetails %}
 {% exercice %}
@@ -537,23 +536,20 @@ Que donne cette suite pour $n=15$ ? et pour $n=10$ ?
 Pour n=15 :
 
 - $a_0 = x$
-- $a_1 = x^2$
-- $a_2 = x^4$
-- $a_3 = x^8$
-- $a_4 = x^3$
-- $a_5 = x^7$
-- $a_6 = x^{15}$
+- $a_1 = a_0 \cdot a_0 = x^2$
+- $a_2 = a_1 \cdot a_1 = x^4$
+- $a_3 = a_2 \cdot a_2 = x^8$
+- $a_4 = a_0 \cdot a_1 = x^3$ (premier impair)
+- $a_5 = a_4 \cdot a_2 = x^7$
+- $a_6 = a_5 \cdot a_3 = x^{15}$
 
 Pour n=10 :
 
 - $a_0 = x$
-- $a_1 = x^2$
-- $a_2 = x^4$
-- $a_3 = x^8$
-- $a_4 = x^2$
-- $a_5 = x^{10}$
-
-On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplications pour $n=10$.
+- $a_1 = a_0 \cdot a_0 = x^2$
+- $a_2 = a_1 \cdot a_1 = x^4$
+- $a_3 = a_2 \cdot a_2 = x^8$
+- $a_4 = a_1 \cdot a_3 = x^{10}$ (premier impair)
 
 {% enddetails %}
 

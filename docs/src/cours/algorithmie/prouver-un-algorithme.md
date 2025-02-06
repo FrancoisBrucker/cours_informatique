@@ -417,7 +417,7 @@ Notre invariant doit lier, à la $i$ème itération, $m$ aux $i$ premiers élém
 ```pseudocode
 algorithme maximum(t: [entier]) → entier:
     m ← t[0]
-    pour chaque i de [0, t.longueur - 1]:
+    pour chaque i de [0, t.longueur[:
         x ← t[i]
         si m < x:
             m ← x

@@ -1,15 +1,7 @@
 ---
 layout: layout/post.njk
 
-title:  "Introduction à <https://matplotlib.org>"
-tags: ['tutoriel', 'python', 'matplotlib']
-authors: 
-    - François Brucker
-    - Pierre Brucker
-
-eleventyNavigation:
-  prerequis:
-    - /cours/coder-et-développer/bases-python/
+title:  "Introduction à matplotlib"
 
 eleventyComputed:
     eleventyNavigation:

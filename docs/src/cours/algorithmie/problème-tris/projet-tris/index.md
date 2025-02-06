@@ -2,11 +2,6 @@
 layout: layout/post.njk
 title: "Projet : tris"
 
-eleventyNavigation:
-  prerequis:
-    - /cours/coder-et-développer/bases-python/
-    - /cours/coder-et-développer/développement/
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"

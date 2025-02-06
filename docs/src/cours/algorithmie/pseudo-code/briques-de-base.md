@@ -241,7 +241,7 @@ Le code précédent est équivalent au code suivant, moins élégant, mais qui e
  :
 
 ```pseudocode
-pour chaque i de [0, tableau.longueur - 1]:
+pour chaque i de [0, tableau.longueur[:
     x ← tableau[i]
 
     instruction 1

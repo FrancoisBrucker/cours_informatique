@@ -13,9 +13,9 @@ Définissions le problème de décision associé au problème de savoir si oui o
 
 {% note "**Problème de décision**" %}
 
-- **nom** : est trié ?
-- **données** : un tableau $T$ d'entiers
-- **réponse** : $T$ est-il trié de façon croissante ?
+- **Nom** : est trié ?
+- **Entrée** : un tableau $T$ d'entiers
+- **Question** : $T$ est-il trié de façon croissante ?
 
 {% endnote %}
 
@@ -23,13 +23,13 @@ Il existe un algorithme très simple pour le résoudre.
 
 ## <span id="algo-est-trie"></span> Algorithme
 
-```python/
-def est_trie(T):
+```pseudocode/
+def est_trie(T: [entier]) → booléen:
 
-    for i in range(1, len(T)):
-        if T[i] < T[i-1]:
-            return False
-    return True
+    pour chaque i de [1, T.longueur[:
+        si T[i] < T[i-1]:
+            rendre Faux
+    rendre Vrai
 ```
 
 ### Tests de Fonctionnement

@@ -10,12 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-{% prerequis %}
-
-Parties [bases](/cours/coder-et-développer/#bases){.interne} et [développer](/cours/coder-et-développer/#développer){.interne} du [cours de développement](/cours/coder-et-développer){.interne}.
-
-{% endprerequis %}
-
 Étude du problème du tri et implémentation de quelques algorithmes pour _voir_ les différentes façon de trier et leurs complexités.
 
 Les informaticiens adorent [les algorithmes de tris](https://fr.wikipedia.org/wiki/Algorithme_de_tri). Pas parce qu'ils aiment l'ordre — loin de là — mais parce qu'il existe des millions de façons différentes de trier.
@@ -28,9 +22,9 @@ Commençons par définir le problème :
 
 {% note "**Problème**" %}
 
-- **nom** : tri
-- **données** : un tableau d'entiers
-- **réponse** : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
+- **Nom** : tri
+- **Entrées** : un tableau d'entiers
+- **Sortie** : un tableau contenant les valeurs du tableau en entrée triées selon l'ordre croissant
 
 {% endnote %}
 
@@ -44,7 +38,7 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 
 Pouvoir vérifier qu'une solution à un problème en est vraiment une est un point crucial en algorithmie. Nous y reviendrons intensivement lorsque nous parlerons de classes de problèmes.
 
-## Algorithmes Tris simples
+## <span id="tris-simples"></span>Algorithmes Tris simples
 
 Deux Algorithmes simples pour trier un tableau.
 
@@ -70,7 +64,7 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 [Complexité du problème](./complexité-problème){.interne}
 {% endaller %}
 
-## Algorithmes de tris optimaux
+## <span id="tris-optimaux"></span>Algorithmes de tris optimaux
 
 ### Tri fusion
 

@@ -65,11 +65,11 @@ algorithme concaténation(début: [entier], fin: [entier]) → [entier]
     t ← tableau de taille début.longueur + fin.longueur
     i ← -1
 
-    pour chaque j de [0, début.longueur - 1]:
+    pour chaque j de [0, début.longueur[:
         i ← i + 1
         t[i] ← début[j]
 
-    pour chaque j de [0, fin.longueur - 1]:
+    pour chaque j de [0, fin.longueur[:
         i ← i + 1
         t[i] ← fin[j]
 
@@ -135,7 +135,7 @@ algorithme supprime(t: [entier], v: entier) → [entier]
     t2 ← tableau de taille t.longueur - nombre
 
     j ← 0
-    pour tout i allant de 0 à t.longueur - 1:
+    pour tout i de [0, t.longueur[:
         si t[i] ≠ v:
             t2[j] ← t[i]
             j ← j + 1
@@ -174,7 +174,7 @@ algorithme supprime_rec(t: [entier], v: entier) → [entier]
         rendre t
 
     t2 ← tableau de longueur t.longueur - 1
-    pour i allant de 0 à t2.longueur - 1:
+    pour i de [0, t2.longueur[:
         t2[i] ← t[i + 1]
     
     si t[0] == v:
