@@ -190,7 +190,7 @@ On vous remettra également le premier DM à rendre sur AMeTICE au format Markdo
 {% endattention %}
 {% faire %}
 
-Sujet du DM
+[Sujet du DM](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/dm-doublons/){.interne}
 
 Il faudra rendre un dossier contenant :
 
@@ -272,39 +272,35 @@ Rendre le DM 1.
 
 > 03/03 au 07/03
 >
-> 2h mercredi : DS
-> 2h vendredi : classes et objets
-
-{% attention %}
-DS algorithmie 2h , mercredi 5/03.
-{% endattention %}
-
-> TBD : tp objet à faire chez eux
+> 2h mercredi : listes et dictionnaires
+> 2h vendredi : Structures de données TP
 
 ### Semaine 7
 
 > 10/03 au 14/03
 >
-> 2h mercredi : composition / agrégation
-> 2h vendredi : héritage
-
-> TBD : tp objet à faire chez eux
+> 2h mercredi : gloutons
+> 2h vendredi : méthode de résolution de pb 1
 
 ### Semaine 8
 
+{% attention %}
+DS algorithmie 2h , mardi 18/03.
+{% endattention %}
+
 > 17/03 au 21/03
 >
-> 2h mercredi : TP 1 + code coverage
-> 2h vendredi : TP 2 + environnement virtuels
+> 2h mercredi : classes et objets
+> 2h vendredi : tp objet + code coverage
 
-> TBD : tp programmation par les tests à faire chez eux
+>
 
 ### Semaine 9
 
 > 24/03 au 28/03
 >
-> 2h mercredi : TD programmation événementielle
-> 2h vendredi : TP              "
+> 2h mercredi : composition / agrégation
+> 2h vendredi : TP + environnement virtuels
 
 {% attention %}
 Sujet DM2
@@ -314,37 +310,35 @@ Sujet DM2
 
 > 31/03 au 04/04
 >
-> 2h mercredi : listes et dictionnaires
-> 2h vendredi : Structures de données TP
+> 2h mercredi : héritage
+> 2h vendredi : TP
+
+> TBD : tp programmation par les tests à faire chez eux
 
 ### Semaine 11
 
 > 14/04 au 18/04
 >
-> 4h mercredi : DS
+> 4h mercredi : programmation événementielle
 
-{% attention %}
-DS code : 3h le 23/04
-{% endattention %}
+### Semaine 12
+
+> 21/04 au 25/04
+> 4h mercredi : P&NP
+> 2h vendredi : méthode de résolution de problèmes
 
 {% attention %}
 Rendre DM2
 {% endattention %}
 
-### Semaine 12
-
-> 21/04 au 25/04
-> 4h mercredi P&NP
-> 2h vendredi
-
-> TBD méthode de résolution de problèmes suite
-
 ### Semaine 13
 
-> 05/05 au 09/05
-> 4h mercredi
+{% attention %}
+DS code 3h, lundi 05/05.
+{% endattention %}
 
-> TBD méthode de résolution de problèmes fin
+> 05/05 au 09/05
+> 4h mercredi : méthode de résolution de problèmes fin
 
 <!--
 

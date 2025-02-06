@@ -226,6 +226,7 @@ algorithme maximum_rec(t: [réel], n: entier) → entier:
             rendre x
         sinon:
             rendre n
+
 ```
 
 On exécute cette fonction avec comme paramètres initiaux un tableau nommé `t`{.language-} de taille `n = t.longueur - 1`{.language-}. On sait que cet algorithme fonctionne (on l'a déjà prouvé). Le calcul de la complexité se fait en résolvant une équation de récurrence. On pose que la complexité de notre algorithme pour un tableau de taille $n$ est : $C(n)$. De là, ligne à ligne :

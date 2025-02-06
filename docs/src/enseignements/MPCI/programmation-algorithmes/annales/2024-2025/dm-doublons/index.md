@@ -66,7 +66,7 @@ Montrez que l'algorithme suivant permet de résoudre le problème _Doppelganger_
 ```pseudocode
 algorithme doppelganger_naif(T: [entier]) → entier:
     pour chaque i de [0, T.longueur -1 ]:
-        pour chaque j de [i+1, T.longueur -1 ]:
+        pour chaque j de [i+1, T.longueur -1]:
             si T[i] == T[j]:
                 rendre T[i]
 ```
@@ -162,9 +162,13 @@ Expérimentalement, votre algorithme naif doit très souvent aller plus vite que
 
 Pourquoi ?
 
+{% info %}
+Vous pourrez utiliser le fait que $\lim(1-1/n)^n = 1/e$.
+{% endinfo %}
+
 #### II.1.6
 
-Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf.
+Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf. Et vérifiez expérimentalement que le temps mis pour résoudre cette instance est bien plus importante pour l'algorithme naif que pour celui qui trie au préalable le tableau.
 
 ### II.2
 
@@ -213,7 +217,7 @@ Prenons un petit moment pour analyser un autre problème.
 - Entrées :
   - $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$
   - $x \in [\\![ 1, n]\\!]$
-- Sortie : Deux entiers positifs $\lambda$ et $\mu$ tels que $f^\lambda(x) = f^{\lambda +\mu}(x)$
+- Sortie : Un entier positif $x'$ tel qu'il existe $u \neq v$ pour lesquels $f^u(x) = f^{v}(x) = x'$
 
 {% endnote %}
 
@@ -251,7 +255,7 @@ Donnez une fonction $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$ telle que la suite 
 
 #### III.1.5
 
-Montrez que le problème _Période_ est bien un problème algorithmique.
+Montrer que l'on peut déterminer la période d'une suite ultimement périodique à partir de la sortie dsu problème _Période_.
 
 ### III.2
 
@@ -263,32 +267,43 @@ Montrez qu'il existe $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$
 
 #### III.2.2
 
-Montrez que programme suivant est un algorithme pour tout couple (f, x) entrée du problème du point fixe.
+Montrez que programme suivant est un algorithme permettant de résoudre le problème du point fixe.
 
 ```pseudocode
 programme lièvre_tortue(f: (entier) → entier,
                         x: entier
                        ) → entier:
-    t ← f(x)
-    l ← f(f(x))
-    m ← 1
-    tant que t ≠ l:
-        t ← f(t)
-        l ← f(f(l))
-        m ← m + 1
+    tortue ← f(x)
+    lièvre ← f(f(x))
+
+    tant que tortue ≠ lièvre:
+        tortue ← f(tortue)
+        lièvre ← f(f(lièvre))
     
-    rendre m
+    rendre tortue
 ```
 
 {% info %}
 Vous aurez remarqué qu'un des paramètres du programme est une fonction. [Le type d'une fonction est sa signature](/cours/algorithmie/pseudo-code/fonctions/#type).
 {% endinfo %}
 
+#### III.2.3
+
+Soit `y`{.language-} le retour de la fonction `lièvre_tortue(f, x)`{.language-}. Combien d'itération la boucle `tant que`{.language-} va effectuer dans l'exécution de `lièvre_tortue(f, y)`{.language-} ?
+
+#### III.2.4
+
+En déduire le $\lambda$ associé à la suite ultimement périodique associée à :
+
+- $a_0 = x$
+- $a_i = f(a_{i-1})$ pour $i>0$
+
+Avec un algorithme de complexité :
+
+- temporelle en $\mathcal{O}(n)$
+- spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
+
 #### III.3.3
-
-Montrer que l'algorithme `lièvre_tortue`{.language-} permet de retrouver $\lambda$ et $\mu$ pour une suite ultimement périodique définie comme en III.1.3 (vous pourrez utiliser un tableau auxiliaire comme en II.2.1).
-
-#### III.3.4
 
 Montrer que la complexité de l'algorithme `lièvre_tortue`{.language-} est en $\mathcal{O}(n)$ si $f: [\\![ 1, n]\\!] \to [\\![ 1, n]\\!]$.
 
@@ -298,46 +313,127 @@ Nous allons coder cette partie. Pour cela, vous créerez deux fichiers, `point_f
 
 #### III.4.1
 
-Créez la fonction de signature :
+Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :
 
 ```pseudocode
-suite_création(T: [entier]) -> ((entier) -> entier)
+lièvre_tortue(T: [entier]) -> entier
 ```
 
-Le tableau en entrée `T`{.language-} sera tel que `1 ≤ T[i] < T.longueur`{.language-} et la fonction `f` de sortie sera telle que f(i) = T[i] pour tout `1 ≤ i < T.longueur`{.language-}.
+Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
 
-Un test de cette fonction pourrait être :
-
-```python
-def test_suite_création():
-    T = [0, 1, 3, 2, 6, 4, 5]
-    f = suite_création(T)
-
-    for i in range(1, len(T)):
-        assert f(i) == T[i]
-```
+- $f(i) = T[i]$ pour tout $1\leq i \leq n$
+- $x = T[0]$
 
 #### III.4.2
 
-Implémentez l'algorithme de la question III.2.2.
+Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :
+
+```pseudocode
+paramètre_lambda(T: [entier]) -> entier
+```
+
+Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
+
+- $f(i) = T[i]$ pour tout $1\leq i \leq n$
+- $x = T[0]$
 
 #### III.4.3
 
-Dans le programme `main_III.py`{.fichier}
+Dans un nouveau programme principal `main_III.py`{.fichier}, demandez à un utilisateur de rentrer une taille $n$ de tableau. Le programme devra :
 
-#### III.4.4
-
-Implémentez un algorithme permettant de résoudre le problème du point fixe.
-
-#### III.4.5
-
-
-> TBD à montrer $\rho$ et toute fonction de ce type
->  2 parties.
-> lièvre et tortue
-> application normale suite
-> application crypto
+1. afficher un tableau créé aléatoirement avec `doppelganger_entrée(n + 1)`{.language-}
+2. afficher la sortie de l'algorithme `lièvre_tortue`{.language-}
+3. afficher le paramètre $\lambda$ de la suite ultimement périodique associée au tableau
+4. affiche la période de la suite ultimement périodique associée au tableau commençant avec la sortie de l'algorithme `lièvre_tortue`{.language-}
 
 ## IV. Solution optimale
 
-## Courbes
+Nous allons montrer dans cette partie que l'on peut résoudre le problème _Doppelganger_ avec un algorithme de complexité :
+
+- temporelle en $\mathcal{O}(n)$
+- spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
+
+Cet algorithme sera alors optimal et en temps et en espace !
+
+### IV.1
+
+Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\mu > 0$ et $\lambda$.
+
+#### IV.1.1
+
+Montrez que $f(a_{\mu - 1}) = f(a_{\mu + \lambda - 1})$ et en déduire que $a_\mu$ est une solution au problème _Doppelganger_ pour le tableau $T$ tel que :
+
+- $T[0] = a_0$
+- $T[i] = a_i$ pour tout $1\leq i \leq n$
+
+#### IV.1.2
+
+Soit $m$ avec $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+
+Montrez que $m$ est un multiple de $\lambda$
+
+#### IV.1.3
+
+Utilisez la question précédente pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$ et en déduire un algorithme de complexité spatiale $\mathcal{O}(1)$ pour calculer $\mu$ à partir de $m$.
+
+{% info %}
+Vous pourrez faire démarrer une nouvelle tortue en continuant l'ancienne.
+{% endinfo %}
+
+### IV.2
+
+Déduire de ce qui précède un algorithme permettant de résoudre le problème _Doppelganger_ avec un algorithme de complexité :
+
+- temporelle en $\mathcal{O}(n)$
+- spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)
+
+### IV.3
+
+On termine ce projet en implémentant tout ça !
+
+#### IV.3.1
+
+Ajoutez dans le fichier `point_fixe.py`{.language-} la fonction de signature :
+
+Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :
+
+```pseudocode
+paramètre_mu(T: [entier]) -> entier
+```
+
+Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
+
+- $f(i) = T[i]$ pour tout $1\leq i \leq n$
+- $x = T[0]$
+
+#### IV.3.2
+
+Ajoutez au programme `main_III.py`{.fichier} le calcul de $\mu$ à l'affichage.
+
+#### IV.3.3
+
+Ajoutez dans le fichier `doppelganger.py`{.fichier} un algorithme de signature :
+
+```pseudocode
+doppelganger_optimal(T: [entier]) -> entier
+```
+
+Qui résout de façon optimale en temps et en espace le problème _Doppelganger_.
+
+#### IV.3.4
+
+Créez un programme principal dans un fichier `main_IV.py`{.fichier} qui compare le temps mis pour résoudre le problème Doppelganger avec la version naive, triée et optimale pour une taille de tableau donnée par l'utilisateur et en utilisant 2 tableaux :
+
+- un crée par `doppelganger_entrée`{.language-}
+- l'autre dans le cas le pire (voir question II.1.6)
+
+Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le cas le pire.
+
+{% attention %}
+Assurez vous d'être **effectivement** dans le cas le pire !
+
+Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
+
+Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle) pour mélanger un tableau trié).
+
+{% endattention %}
