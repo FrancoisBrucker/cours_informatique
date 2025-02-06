@@ -146,7 +146,7 @@
 </ul>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">doppelganger_naif</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">:</span>
-        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">pour chaque</span><span class="token number"> j </span>de <span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
             <span class="token keyword">si</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
 <h3>I.3 Complexité du problème</h3>
@@ -201,8 +201,16 @@
 <h4>II.1.5</h4>
 <p>Expérimentalement, votre algorithme naif doit très souvent aller plus vite que votre algorithme qui tri au préalable votre tableau. Si cela n'arrive pas, faite une amélioration de votre algorithme naif pour que cela arrive.</p>
 <p>Pourquoi ?</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que $\lim(1-1/n)^n = 1/e$.</p>
+</div></div>
+
 <h4>II.1.6</h4>
-<p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf.</p>
+<p>Donnez un tableau d'entré où le programme de tri est plus rapide que l'algorithme naïf. Et vérifiez expérimentalement que le temps mis pour résoudre cette instance est bien plus importante pour l'algorithme naif que pour celui qui trie au préalable le tableau.</p>
 <h3>II.2</h3>
 <p>Utilisons le fait que les entiers dont sont composés le tableau pour lequel il faut trouver le doublon sont entre 0 et n-1, soit les indices d'un tableau de taille $n$.</p>
 <h4>II.2.1</h4>
@@ -246,7 +254,7 @@
 <li>$x \in [\![ 1, n]\!]$</li>
 </ul>
 </li>
-<li>Sortie : Deux entiers positifs $\lambda$ et $\mu$ tels que $f^\lambda(x) = f^{\lambda +\mu}(x)$</li>
+<li>Sortie : Un entier positif $x'$ tel qu'il existe $u \neq v$ pour lesquels $f^u(x) = f^{v}(x) = x'$</li>
 </ul>
 </div></div>
 
@@ -272,25 +280,24 @@
 <h4>III.1.4</h4>
 <p>Donnez une fonction $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$ telle que la suite ultimement périodique associée (comme en III.1.3) avec $a_0 = 1$ a le même $\rho$ que la figure.</p>
 <h4>III.1.5</h4>
-<p>Montrez que le problème <em>Période</em> est bien un problème algorithmique.</p>
+<p>Montrer que l'on peut déterminer la période d'une suite ultimement périodique à partir de la sortie dsu problème <em>Période</em>.</p>
 <h3>III.2</h3>
 <p>Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\lambda$ et $\mu$.</p>
 <h4>III.2.1</h4>
 <p>Montrez qu'il existe $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
 <h4>III.2.2</h4>
-<p>Montrez que programme suivant est un algorithme pour tout couple (f, x) entrée du problème du point fixe.</p>
+<p>Montrez que programme suivant est un algorithme permettant de résoudre le problème du point fixe.</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme lièvre_tortue<span class="token punctuation">(</span>f<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">,</span>
                         x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
                        <span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    t <span class="token operator">←</span> f<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    l <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    m <span class="token operator">←</span> <span class="token number">1</span>
-    <span class="token keyword">tant que</span> t <span class="token operator">≠</span> l<span class="token punctuation">:</span>
-        t <span class="token operator">←</span> f<span class="token punctuation">(</span>t<span class="token punctuation">)</span>
-        l <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span>
-        m <span class="token operator">←</span> m <span class="token operator">+</span> <span class="token number">1</span>
+    tortue <span class="token operator">←</span> f<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    lièvre <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">tant que</span> tortue <span class="token operator">≠</span> lièvre<span class="token punctuation">:</span>
+        tortue <span class="token operator">←</span> f<span class="token punctuation">(</span>tortue<span class="token punctuation">)</span>
+        lièvre <span class="token operator">←</span> f<span class="token punctuation">(</span>f<span class="token punctuation">(</span>lièvre<span class="token punctuation">)</span><span class="token punctuation">)</span>
     
-    <span class="token keyword">rendre</span> m</code></pre>
+    <span class="token keyword">rendre</span> tortue</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -299,39 +306,115 @@
 <p>Vous aurez remarqué qu'un des paramètres du programme est une fonction. <a href="/cours_informatique/cours/algorithmie/pseudo-code/fonctions/#type">Le type d'une fonction est sa signature</a>.</p>
 </div></div>
 
+<h4>III.2.3</h4>
+<p>Soit <code class="language-">y</code> le retour de la fonction <code class="language-">lièvre_tortue(f, x)</code>. Combien d'itération la boucle <code class="language-">tant que</code> va effectuer dans l'exécution de <code class="language-">lièvre_tortue(f, y)</code> ?</p>
+<h4>III.2.4</h4>
+<p>En déduire le $\lambda$ associé à la suite ultimement périodique associée à :</p>
+<ul>
+<li>$a_0 = x$</li>
+<li>$a_i = f(a_{i-1})$ pour $i&gt;0$</li>
+</ul>
+<p>Avec un algorithme de complexité :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n)$</li>
+<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
+</ul>
 <h4>III.3.3</h4>
-<p>Montrer que l'algorithme <code class="language-">lièvre_tortue</code> permet de retrouver $\lambda$ et $\mu$ pour une suite ultimement périodique définie comme en III.1.3 (vous pourrez utiliser un tableau auxiliaire comme en II.2.1).</p>
-<h4>III.3.4</h4>
 <p>Montrer que la complexité de l'algorithme <code class="language-">lièvre_tortue</code> est en $\mathcal{O}(n)$ si $f: [\![ 1, n]\!] \to [\![ 1, n]\!]$.</p>
 <h3>III.4</h3>
 <p>Nous allons coder cette partie. Pour cela, vous créerez deux fichiers, <code class="language-">point_fixe.py</code> et <code class="language-">test_point_fixe.py</code> dans lesquels vous créerez les fonctions demandées.</p>
 <h4>III.4.1</h4>
-<p>Créez la fonction de signature :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">suite_création<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span><span class="token punctuation">)</span></code></pre>
-<p>Le tableau en entrée <code class="language-">T</code> sera tel que <code class="language-">1 ≤ T[i] &lt; T.longueur</code> et la fonction <code>f</code> de sortie sera telle que f(i) = T[i] pour tout <code class="language-">1 ≤ i &lt; T.longueur</code>.</p>
-<p>Un test de cette fonction pourrait être :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> test_suite_création<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-    f <span class="token operator">=</span> suite_création<span class="token punctuation">(</span>T<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">assert</span> f<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">==</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></code></pre>
+<p>Codez l'algorithme de la question III.2.2. Cet algorithme devra être de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">lièvre_tortue<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
+<p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
+<ul>
+<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
+<li>$x = T[0]$</li>
+</ul>
 <h4>III.4.2</h4>
-<p>Implémentez l'algorithme de la question III.2.2.</p>
+<p>Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">paramètre_lambda<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
+<p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
+<ul>
+<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
+<li>$x = T[0]$</li>
+</ul>
 <h4>III.4.3</h4>
-<p>Dans le programme <code class="fichier">main_III.py</code></p>
-<h4>III.4.4</h4>
-<p>Implémentez un algorithme permettant de résoudre le problème du point fixe.</p>
-<h4>III.4.5</h4>
-<blockquote>
-<p>TBD à montrer $\rho$ et toute fonction de ce type
-2 parties.
-lièvre et tortue
-application normale suite
-application crypto</p>
-</blockquote>
+<p>Dans un nouveau programme principal <code class="fichier">main_III.py</code>, demandez à un utilisateur de rentrer une taille $n$ de tableau. Le programme devra :</p>
+<ol>
+<li>afficher un tableau créé aléatoirement avec <code class="language-">doppelganger_entrée(n + 1)</code></li>
+<li>afficher la sortie de l'algorithme <code class="language-">lièvre_tortue</code></li>
+<li>afficher le paramètre $\lambda$ de la suite ultimement périodique associée au tableau</li>
+<li>affiche la période de la suite ultimement périodique associée au tableau commençant avec la sortie de l'algorithme <code class="language-">lièvre_tortue</code></li>
+</ol>
 <h2>IV. Solution optimale</h2>
-<h2>Courbes</h2>
+<p>Nous allons montrer dans cette partie que l'on peut résoudre le problème <em>Doppelganger</em> avec un algorithme de complexité :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n)$</li>
+<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
+</ul>
+<p>Cet algorithme sera alors optimal et en temps et en espace !</p>
+<h3>IV.1</h3>
+<p>Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\mu &gt; 0$ et $\lambda$.</p>
+<h4>IV.1.1</h4>
+<p>Montrez que $f(a_{\mu - 1}) = f(a_{\mu + \lambda - 1})$ et en déduire que $a_\mu$ est une solution au problème <em>Doppelganger</em> pour le tableau $T$ tel que :</p>
+<ul>
+<li>$T[0] = a_0$</li>
+<li>$T[i] = a_i$ pour tout $1\leq i \leq n$</li>
+</ul>
+<h4>IV.1.2</h4>
+<p>Soit $m$ avec $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.</p>
+<p>Montrez que $m$ est un multiple de $\lambda$</p>
+<h4>IV.1.3</h4>
+<p>Utilisez la question précédente pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$ et en déduire un algorithme de complexité spatiale $\mathcal{O}(1)$ pour calculer $\mu$ à partir de $m$.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez faire démarrer une nouvelle tortue en continuant l'ancienne.</p>
+</div></div>
+
+<h3>IV.2</h3>
+<p>Déduire de ce qui précède un algorithme permettant de résoudre le problème <em>Doppelganger</em> avec un algorithme de complexité :</p>
+<ul>
+<li>temporelle en $\mathcal{O}(n)$</li>
+<li>spatiale en $\mathcal{O}(1)$ (sans compter l'entrée)</li>
+</ul>
+<h3>IV.3</h3>
+<p>On termine ce projet en implémentant tout ça !</p>
+<h4>IV.3.1</h4>
+<p>Ajoutez dans le fichier <code class="language-">point_fixe.py</code> la fonction de signature :</p>
+<p>Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">paramètre_mu<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
+<p>Le tableau en entrée <code class="language-">T</code> sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :</p>
+<ul>
+<li>$f(i) = T[i]$ pour tout $1\leq i \leq n$</li>
+<li>$x = T[0]$</li>
+</ul>
+<h4>IV.3.2</h4>
+<p>Ajoutez au programme <code class="fichier">main_III.py</code> le calcul de $\mu$ à l'affichage.</p>
+<h4>IV.3.3</h4>
+<p>Ajoutez dans le fichier <code class="fichier">doppelganger.py</code> un algorithme de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">doppelganger_optimal<span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">entier</span></code></pre>
+<p>Qui résout de façon optimale en temps et en espace le problème <em>Doppelganger</em>.</p>
+<h4>IV.3.4</h4>
+<p>Créez un programme principal dans un fichier <code class="fichier">main_IV.py</code> qui compare le temps mis pour résoudre le problème Doppelganger avec la version naive, triée et optimale pour une taille de tableau donnée par l'utilisateur et en utilisant 2 tableaux :</p>
+<ul>
+<li>un crée par <code class="language-">doppelganger_entrée</code></li>
+<li>l'autre dans le cas le pire (voir question II.1.6)</li>
+</ul>
+<p>Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le cas le pire.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Assurez vous d'être <strong>effectivement</strong> dans le cas le pire !</p>
+<p>Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.</p>
+<p>Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode <a href="https://docs.python.org/fr/3.13/library/random.html#random.shuffle">random.shuffle</a> pour mélanger un tableau trié).</p>
+</div></div>
+
 
 
 </article>
