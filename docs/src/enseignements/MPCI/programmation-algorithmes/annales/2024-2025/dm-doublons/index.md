@@ -337,6 +337,37 @@ Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et compos�
 - $f(i) = T[i]$ pour tout $1\leq i \leq n$
 - $x = T[0]$
 
+### IV.5
+
+Nous allons chercher ici $a_\mu$ qui est le début du cycle ($a_3$ sur la figure).
+
+#### IV.5.1
+
+Soit $m$ avec $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
+
+Montrez que $m$ est un multiple de $\lambda$
+
+#### IV.5.2
+
+Utilisez la question précédente pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$ et en déduire un algorithme de complexité spatiale $\mathcal{O}(1)$ pour calculer $a_\mu$ à partir de $m$.
+
+{% info %}
+Vous pourrez faire démarrer une nouvelle tortue en continuant l'ancienne.
+{% endinfo %}
+
+#### IV.5.3
+
+Codez l'algorithme de la question III.2.4. Cet algorithme devra être de signature :
+
+```pseudocode
+mu(T: [entier]) -> entier
+```
+
+Le tableau en entrée `T`{.language-} sera un tableau de taille $n+1$ et composé d'entiers entre 1 et $n$ avec :
+
+- $f(i) = T[i]$ pour tout $1\leq i \leq n$
+- $x = T[0]$
+
 #### III.4.3
 
 Dans un nouveau programme principal `main_III.py`{.fichier}, demandez à un utilisateur de rentrer une taille $n$ de tableau. Le programme devra :
@@ -344,7 +375,7 @@ Dans un nouveau programme principal `main_III.py`{.fichier}, demandez à un util
 1. afficher un tableau créé aléatoirement avec `doppelganger_entrée(n + 1)`{.language-}
 2. afficher la sortie de l'algorithme `lièvre_tortue`{.language-}
 3. afficher le paramètre $\lambda$ de la suite ultimement périodique associée au tableau
-4. affiche la période de la suite ultimement périodique associée au tableau commençant avec la sortie de l'algorithme `lièvre_tortue`{.language-}
+4. affiche la période de la suite ultimement périodique associée au tableau commençant avec $a_\mu$
 
 ## IV. Solution optimale
 
@@ -359,26 +390,10 @@ Cet algorithme sera alors optimal et en temps et en espace !
 
 Soit $(a_i)_{0\leq i}$ une suite ultimement périodique de paramètres $\mu > 0$ et $\lambda$.
 
-#### IV.1.1
-
 Montrez que $f(a_{\mu - 1}) = f(a_{\mu + \lambda - 1})$ et en déduire que $a_\mu$ est une solution au problème _Doppelganger_ pour le tableau $T$ tel que :
 
 - $T[0] = a_0$
 - $T[i] = a_i$ pour tout $1\leq i \leq n$
-
-#### IV.1.2
-
-Soit $m$ avec $\lambda \leq m \leq \lambda +\mu$ tel que $a_{m} = a_{2m}$.
-
-Montrez que $m$ est un multiple de $\lambda$
-
-#### IV.1.3
-
-Utilisez la question précédente pour montrer que $\mu = b + k \cdot \lambda$ avec $b = \mu + \lambda - m$ et en déduire un algorithme de complexité spatiale $\mathcal{O}(1)$ pour calculer $\mu$ à partir de $m$.
-
-{% info %}
-Vous pourrez faire démarrer une nouvelle tortue en continuant l'ancienne.
-{% endinfo %}
 
 ### IV.2
 
@@ -425,14 +440,12 @@ Qui résout de façon optimale en temps et en espace le problème _Doppelganger_
 Créez un programme principal dans un fichier `main_IV.py`{.fichier} qui compare le temps mis pour résoudre le problème Doppelganger avec la version naive, triée et optimale pour une taille de tableau donnée par l'utilisateur et en utilisant 2 tableaux :
 
 - un crée par `doppelganger_entrée`{.language-}
-- l'autre dans le cas le pire (voir question II.1.6)
+- l'autre dans le cas le pire pour l'algorithme naif **et** pour le tri
 
 Vous devez expérimentalement retrouver l'ordre de complexité attendu pour le cas le pire.
 
 {% attention %}
-Assurez vous d'être **effectivement** dans le cas le pire !
-
-Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
+Assurez vous d'être **effectivement** dans le cas le pire pour le tri ! Le tri de python est en effet en $\mathcal{O}(n)$ si le tableau initial est déjà presque trié et en $\mathcal{O}(n\log(n))$ sinon.
 
 Pour éviter les effets de bords (non utilisation du tri et du coup algorithme avec le tri plus rapide que l'algorithme optimal), utilisez un exemple du II.1.6 pour le quel le tableau n'est pas déjà trié (vous pourrez utiliser la méthode [random.shuffle](https://docs.python.org/fr/3.13/library/random.html#random.shuffle) pour mélanger un tableau trié).
 
