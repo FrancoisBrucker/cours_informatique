@@ -254,7 +254,7 @@ La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$.
 
 Comme de plus tout arbre d'exécution aura plus que $\log_2(n)$ étages, on en conclut que $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ sera minimale que si on a $e(x) \leq \log_2(n)$ pour tout $x \in T_0$.
 
-Ceci est possible si on découpe toujours le tableau en deux parts égales on en conclut donc que la complexité minimale vaut ($K=\log_2(n)$) :
+Ceci est possible si on découpe toujours le tableau en deux parts égales. On en conclut donc que la complexité minimale vaut ($K=\log_2(n)$) :
 
 <div>
 $$

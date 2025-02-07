@@ -80,7 +80,7 @@ Modifier votre liste `mots`{.language-} pour que chaque élément contienne la v
 
 ```python
 mots = []
-f = open("mots.txt", "r", encoding="uft-8")
+f = open("mots.txt", "r", encoding="utf-8")
 
 for l in f:
     mots.append(l.strip())
