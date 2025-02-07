@@ -105,43 +105,86 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Un algorithme de la forme <em><strong>diviser pour régner</strong></em> fonctionne en deux parties :</p>
+<p>Un algorithme de la forme <strong><em>diviser pour régner</em></strong> fonctionne en deux parties :</p>
 <ol>
 <li><strong>résoudre</strong> $k$ sous-problèmes du problème initial</li>
 <li><strong>combiner</strong> les $k$ solutions des sous-problèmes en une solution du problème initial</li>
 </ol>
 <p>Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme générale est :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">def algorithme(données):
-    A partir de données créer k données_partielles_i (1 ≤ i ≤ k)
-    pour chaque i allant de 1 à k:
-        solution_i = algorithme(données_partielles_i)
-    
-    solution = combiner(solution_1, ..., solution_k)
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">algo</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    A partir de données créer k données_partielles_i <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">≤</span><span class="token number"> i </span><span class="token operator">≤</span> k<span class="token punctuation">)</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span> de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        solution_i <span class="token operator">=</span> algo<span class="token punctuation">(</span>données_partielles_i<span class="token punctuation">)</span>
 
-    rendre solution</code></pre>
+    solution <span class="token operator">=</span> combiner<span class="token punctuation">(</span>solution_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> solution_k<span class="token punctuation">)</span>
+
+    <span class="token keyword">rendre</span> solution</code></pre>
 </div></div>
 
-<p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'<code class="language-">algorithme</code> également.</p>
+<p>L'intérêt de ces programme est que si la complexité de la fonction <code class="language-">combiner</code> est faible, la complexité de l'algorithme l'est également.</p>
 <h2>Combiner</h2>
 <p>Pour un tri, si on scinde le tableau le tableau en tableau plus petit que l'on tri, le but de la fonction <code class="language-">combiner</code> est de créer un tableau trié à partir de tableaux <strong>triés</strong>.</p>
 <p>L'algorithme ci-après le fait de façon optimale, en $\mathcal{O}(\vert T1 \vert + \vert T2 \vert)$ :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">combiner</span><span class="token punctuation">(</span>T1<span class="token punctuation">,</span> T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    i1 <span class="token operator">=</span> i2 <span class="token operator">=</span> <span class="token number">0</span></span>
-<span class="highlight-line">    T <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">    <span class="token keyword">while</span> i1 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span> <span class="token keyword">or</span> i2 <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        <span class="token keyword">if</span> i2 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T2<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">            i1 <span class="token operator">+=</span> <span class="token number">1</span></span>
-<span class="highlight-line">        <span class="token keyword">elif</span> i1 <span class="token operator">==</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T1<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">            i2 <span class="token operator">+=</span> <span class="token number">1</span></span>
-<span class="highlight-line">        <span class="token keyword">elif</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">            i1 <span class="token operator">+=</span> <span class="token number">1</span></span>
-<span class="highlight-line">        <span class="token keyword">else</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">.</span>append<span class="token punctuation">(</span>T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span></span>
-<span class="highlight-line">            i2 <span class="token operator">+=</span> <span class="token number">1</span></span>
-<span class="highlight-line">    <span class="token keyword">return</span> T</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">combiner</span><span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   <span class="token number"> i1 </span><span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">   <span class="token number"> i2 </span><span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    T <span class="token operator">←</span> un tableau de taille T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur</span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> i1<span class="token operator">+</span>i2 <span class="token operator">&lt;</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span><span class="token number"> i2 </span><span class="token operator">==</span> T2<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">sinon si</span><span class="token number"> i1 </span><span class="token operator">==</span> T1<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">sinon si</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> T</span></code></pre>
+<p>Faites attentions aux raccourcis que l'on serait tenté de faire en ne regardant que rapidement le code :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que l'algorithme combiner précédent <strong>n'est pas équivalent</strong> à celui-ci :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">combiner_faux</span><span class="token punctuation">(</span>T1<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T2<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">   <span class="token number"> i1 </span><span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">   <span class="token number"> i2 </span><span class="token operator">←</span> <span class="token number">0</span></span>
+<span class="highlight-line">    T <span class="token operator">←</span> un tableau de taille T1<span class="token punctuation">.</span>longueur <span class="token operator">+</span> T2<span class="token punctuation">.</span>longueur</span>
+<span class="highlight-line">    <span class="token keyword">tant que</span> i1<span class="token operator">+</span>i2 <span class="token operator">&lt;</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span></span>
+<span class="highlight-line">        <span class="token keyword">si</span> <span class="token punctuation">(</span>i2 <span class="token operator">==</span> T2<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span> OU <span class="token punctuation">(</span>T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T1<span class="token punctuation">[</span>i1<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i1 </span><span class="token operator">←</span><span class="token number"> i1 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line">        <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
+<span class="highlight-line">            T<span class="token punctuation">[</span>i1 <span class="token operator">+</span> i2<span class="token punctuation">]</span> <span class="token operator">←</span> T2<span class="token punctuation">[</span>i2<span class="token punctuation">]</span></span>
+<span class="highlight-line">           <span class="token number"> i2 </span><span class="token operator">←</span><span class="token number"> i2 </span><span class="token operator">+</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
+<span class="highlight-line">    <span class="token keyword">rendre</span> T</span></code></pre>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Si <code class="language-">i2 &lt; T2.longueur</code> mais que <code class="language-">i1 = T1.longueur</code> l'algorithme va planter car il va tenter d'accéder à <code class="language-">T1[i1]</code> qui n'existe pas.</p>
+<p>Faites très attention aux conditions. C'est très souvent source d'erreurs quand on va trop vite...</p>
+</div>
+</details>     
+</div>
 <h3><span id="fonctionnement-colle"></span> Fonctionnement</h3>
 <p>On vérifie pour deux petits tableaux <strong>triés</strong>. Par exemple pour <code class="language-">T1=[1, 4, 7]</code> et <code class="language-">T2=[0, 2, 3, 98]</code>. <code class="language-">T</code> vaudra :</p>
 <ol>
@@ -154,7 +197,7 @@
 <li><code class="language-">[0, 1, 2, 3, 4, 7, 98]</code> après la 7ème itération (<code class="language-">i1=3</code> et <code class="language-">i2=4</code>)</li>
 </ol>
 <h3><span id="preuve-colle"></span> Preuve</h3>
-<p>L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit <code class="language-">i1</code> soit <code class="language-">i2</code> augmente. Au bout de <code class="language-">len(T1) + len(T2)</code> itération on aura <code class="language-">i1</code> = <code class="language-">len(T1)</code> et <code class="language-">i2</code> = <code class="language-">len(T1)</code>, donc la condition <code class="language-">i1 &lt; len(T1) or i2 &lt; len(T2)</code> ne sera plus vérifiée.</p>
+<p>L'algorithme se finit bien puisqu'à chaque itération de la boucle while soit <code class="language-">i1</code> soit <code class="language-">i2</code> augmente. Au bout de <code class="language-">T1.longueur + T2.longueur</code> itérations on aura <code class="language-">i1</code> = <code class="language-">T1.longueur</code> et <code class="language-">i2</code> = <code class="language-">T2.longueur</code>, donc la condition de la boucle <code class="language-">tant que</code> ne sera plus vérifiée.</p>
 <p>L'invariant de boucle que l'on peut facilement prouver est :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -163,13 +206,13 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de boucle</strong></p>
 </div><div class="pl-8 mr-8">
-<p>À la fin de chaque itération, <code class="language-">T[:i1 +i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
+<p>À la fin de chaque itération, <code class="language-">T[:i1 + i2]</code> est trié et contient les <code class="language-">i1</code> premiers éléments de <code class="language-">T1</code> et les <code class="language-">i2</code> premiers éléments de <code class="language-">T2</code></p>
 </div></div>
 
 <h3><span id="complexités-colle"></span> Complexités</h3>
 <p>Allons un peu plus vite :</p>
 <ul>
-<li>on a une boucle <code class="language-">while</code> de <code class="language-">len(T1) + len(T2)</code> itérations</li>
+<li>on a une boucle <code class="language-">tant que</code> de <code class="language-">T1.longueur + T2.longueur</code> itérations</li>
 <li>chaque ligne de l'algorithme est en $\mathcal{O}(1)$</li>
 </ul>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -179,28 +222,27 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité max et min de <code class="language-">colle</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-">T1</code> et <code class="language-">T2</code> respectivement.</p>
+<p>La complexité max et min de <code class="language-">combiner</code> est $\mathcal{O}(n_1 + n_2)$ avec $n_1$ et $n_2$ les tailles des tableaux <code class="language-">T1</code> et <code class="language-">T2</code> respectivement.</p>
 </div></div>
 
 <h2>Pseudo-code</h2>
 <p>Avec notre fonction <code class="language-">combiner(T1, T2)</code> le pseudo code de l'algorithme fusion est :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">
-<span class="token keyword">def</span> <span class="token function">fusion</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
-        <span class="token keyword">return</span> T
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        milieu <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
-        T1 <span class="token operator">=</span> T<span class="token punctuation">[</span><span class="token punctuation">:</span>milieu<span class="token punctuation">]</span>
-        T2 <span class="token operator">=</span> T<span class="token punctuation">[</span>milieu<span class="token punctuation">:</span><span class="token punctuation">]</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">fusion</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">si</span> T<span class="token punctuation">.</span>longueur <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">rendre</span> T
+    <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+        milieu <span class="token operator">=</span> T<span class="token punctuation">.</span>longueur <span class="token operator">//</span> <span class="token number">2</span>
+        T1 <span class="token operator">←</span> nouveau tableau contenant T<span class="token punctuation">[</span><span class="token punctuation">:</span>milieu<span class="token punctuation">]</span>
+        T2 <span class="token operator">←</span> nouveau tableau contenant T<span class="token punctuation">[</span>milieu<span class="token punctuation">:</span><span class="token punctuation">]</span>
 
-        T1_trié <span class="token operator">=</span> fusion<span class="token punctuation">(</span>T1<span class="token punctuation">)</span>
-        T2_trié <span class="token operator">=</span> fusion<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
-        T_trié <span class="token operator">=</span> combiner<span class="token punctuation">(</span>T1_trié<span class="token punctuation">,</span> T2_trié<span class="token punctuation">)</span>
-    
-        <span class="token keyword">return</span> T_trié 
+        T1_trié <span class="token operator">←</span> fusion<span class="token punctuation">(</span>T1<span class="token punctuation">)</span>
+        T2_trié <span class="token operator">←</span> fusion<span class="token punctuation">(</span>T2<span class="token punctuation">)</span>
+        T_trié <span class="token operator">←</span> combiner<span class="token punctuation">(</span>T1_trié<span class="token punctuation">,</span> T2_trié<span class="token punctuation">)</span>
+
+        <span class="token keyword">rendre</span> T_trié
 </code></pre>
 <h2><span id="preuve-fusion"></span> Preuve</h2>
-<p>Comme  <code class="language-">milieu &lt; len(T)</code> si <code class="language-">len(T) &gt; 1</code>, l'algorithme va bien converger et s'arrêter. De plus, comme l'algorithme <code class="language-">combiner</code> est démontré, <code class="language-">fusion</code> est bien un algorithme de tri.</p>
+<p>Comme <code class="language-">milieu &lt; T.longueur</code> si <code class="language-">T.longueur &gt; 1</code>, l'algorithme va bien converger et s'arrêter. De plus, comme l'algorithme <code class="language-">combiner</code> est démontré, <code class="language-">fusion</code> est bien un algorithme de tri.</p>
 <h2><span id="complexités-fusion"></span> Complexités</h2>
 <p>La complexité de l'algorithme <code class="language-">fusion</code> est (avec $n$ la taille du tableau passé en entrée) :</p>
 <p>$$C(n) = 2 \cdot C(\frac{n}{2}) + D(n)$$</p>
@@ -210,107 +252,12 @@
 <li>$D(n)$ est la complexité de fusionner deux listes triées en une unique liste triées (algorithme <code class="language-">combiner</code>).</li>
 </ul>
 <p>Comme l'algorithme <code class="language-">combiner</code> est en $\mathcal{O}(n)$, l'équation de récurrence de la complexité est :</p>
-<p>$$C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)$$</p>
-<p>Pour connaître la valeur de la complexité on utilise <a href="https://fr.wikipedia.org/wiki/Master_theorem">le master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs. Son énoncé nous permet de déterminer aisément la complexité de nombreux algorithmes récursifs :</p>
-<p><span id="master-theorem"></span></p>
-<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-</svg>
-<div class="pl-8 mb-2 mr-8">
-<p><strong>Forme O <a href="https://fr.wikipedia.org/wiki/Master_theorem">du master theorem</a></strong></p>
-</div><div class="pl-8 mr-8">
-<p>Une complexité de la forme :</p>
 <div>
 $$
-C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+C(n) = 2 \cdot C(\frac{n}{2}) + \mathcal{O}(n)
 $$
 </div>
-<p>Est en :</p>
-<ul>
-<li>$C(n)  = \mathcal{O}(n^d \cdot \ln(n))$ si $a=b^d$ (équivalent à $d = \log_b(a)$)</li>
-<li>$C(n)  = \mathcal{O}(n^{\log_b(a)})$ si $a&gt;b^d$</li>
-<li>$C(n)  = \mathcal{O}(n^d)$ si si $a&lt;b^d$</li>
-</ul>
-</div></div>
-
-<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
-<details class="group" open="">
-<summary class="list-none py-0.5">
-<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-</svg>
-<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-</svg>
-<div class="pl-8 font-bold inline-block">
-<p>preuve</p>
-</div>
-<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
-</svg>
-</summary>
-<div class="mx-8 pb-2">
-<p>Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :</p>
-<div>
-$$
-C(n) \leq a \cdot C(\frac{n}{b}) + n^d
-$$
-</div>
-<p>On en conclut que si $C'(n) = a \cdot C'(\frac{n}{b}) + n^d$ alors $C(n) \leq C'(n)$ pour tout $n$ et donc si $C'(n)$ est en $\mathcal{O}(g(n))$, alors $C(n)$ le sera aussi.</p>
-<div>
-$$
-\begin{array}{lcl}
-C'(n) &=&a \cdot C'(\frac{n}{b}) + n^d \\
-&=& a\cdot (a \cdot C'(\frac{n}{b^2}) + (\frac{n}{b})^d) + n^d\\
-&=& a^2 \cdot C'(\frac{n}{b^2}) + n^d \cdot (1 + \frac{a}{b^d})\\
-&=& a^2 \cdot (a \cdot C'(\frac{n}{b^3}) + (\frac{n}{b^2})^d) + n^d \cdot (1 + \frac{a}{b^d})\\
-&=& a^3 \cdot C'(\frac{n}{b^3}) + n^d \cdot (1 + \frac{a}{b^d} + (\frac{a}{b^d})^2)\\
-&=& \dots \\
-&=& a^{\log_b(n)}C'(1) + n^d \cdot (\sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i)\\
-\end{array}
-$$
-</div>
-<p>Comme $a^{\log_b(n)} = \exp(\ln(a) \cdot \frac{\ln(n)}{\ln(b)} ) = \exp(\ln(n) \cdot \frac{\ln(a)}{\ln(b)} ) = n^{\log_b(a)}$ on en conclut, en posant $C'(1) = K$, que :</p>
-<div>
-$$
-C'(n) = K \cdot n^{\log_b(a)} + n^d \cdot \sum_{i=0}^{\log_b(n)}(\frac{a}{b^d})^i
-$$
-</div>
-<p>Il y a alors plusieurs cas. Commençons par étudier le cas où $\frac{a}{b^d} = 1$ (équivalent à $d = \log_b(a)$). Dans ce cas, on a :</p>
-<div>
-$$
-C'(n) = K \cdot n^d + n^d \cdot \sum_{i=0}^{\log_b(n)}1 = n^d(\log_b(n) + K) = \mathcal{O}(n^d \cdot \ln(n))
-$$
-</div>
-<p>Si $\frac{a}{b^d} \neq 1$, on peut utiliser le fait que $\sum_{i=0}^kx^k = \frac{x^{k+1} -1}{x-1}$ (cette formule  se démontre aisément par récurrence  sur $k$ et est super utile dans plein de calculs de complexité, il est bon de la connaître) pour obtenir :</p>
-<div>
-$$
-\begin{array}{lcl}
-C'(n) &=& K \cdot n^{\log_b(a)} + n^d \cdot \frac{(\frac{a}{b^d})^{\log_b(n) +1} -1}{\frac{a}{b^d}-1}\\
-& = & K \cdot n^{\log_b(a)} + n^d \cdot \frac{\frac{a}{b^d}\cdot\frac{n^{\log_b(a)}}{n^d} -1}{\frac{a}{b^d}-1}\\
-& =& K \cdot n^{\log_b(a)} + \frac{\frac{a}{b^d}\cdot n^{\log_b(a)} - n^d}{\frac{a}{b^d}-1} \\
-& = & (K + \frac{\frac{a}{b^d}}{\frac{a}{b^d} - 1}) \cdot n^{\log_b(a)} - \frac{1}{\frac{a}{b^d} - 1} \cdot n^d
-\end{array}
-$$
-</div>
-<p>On en déduit facilement que :</p>
-<ul>
-<li>$\frac{a}{b^d} &lt; 1$ (équivalent à $\log_b(a) &lt; d$) implique $C'(n) = \mathcal{O}(n^d)$</li>
-<li>$\frac{a}{b^d} &gt; 1$ (équivalent à $\log_b(a) &gt; d$) implique $C'(n) = \mathcal{O}(n^{\log_b(a)})$</li>
-</ul>
-</div>
-</details>     
-</div>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>Le master theorem est la raison pour laquelle vous verrez parfois des complexités avec des exposants non entiers</p>
-</div></div>
-
-<p>Dans notre cas on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :</p>
+<p>Pour connaître la valeur de la complexité on peut utiliser <a href="https://fr.wikipedia.org/wiki/Master_theorem">le master theorem</a> qui est <strong>LE</strong> théorème des complexités pour les algorithmes récursifs (on le verra lorsque l'on étudiera en détail les algorithmes de type diviser pour régner). Mais ici pas besoin d'invoquer l'artillerie lourde, on peut aisément calculer la complexité à la main :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -331,7 +278,7 @@ $$
   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
 </svg>
 <div class="pl-8 font-bold inline-block">
-<p>Calcul de la complexité sans utiliser le master theorem</p>
+<p>preuve</p>
 </div>
 <svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
@@ -359,7 +306,7 @@ $$
 </div>
 </details>     
 </div>
-<p>Tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée.</p>
+<p>Tout comme le tri par sélection, le tri fusion a la particularité d'avoir toujours le même nombre d'opérations quelque soit la liste en entrée. Attention cependant, le tri fusion n'est pas in place, il rend un nouveau tableau.</p>
 
 
 </article>

@@ -113,12 +113,12 @@
 <p>Cette analyse (ce n'est pas encore une preuve formelle) nous permet de dégager le principe suivant :</p>
 <p>On vérifie itérativement que <code class="language-">T[i] &gt;= T[i-1]</code> et si ce n'est pas le cas on fait <em>remonter</em> <code class="language-">T[i]</code> par échanges successifs à la première place où il sera plus grand que le précédent.</p>
 <p>Ce qui se traduit en pseudo-code :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">insertion</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        j <span class="token operator">=</span> i</span>
-<span class="highlight-line">        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span></span>
-<span class="highlight-line">            j <span class="token operator">-=</span> <span class="token number">1</span></span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">insertion</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+       <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> i
+</span>        <span class="token keyword">tant que</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>j<span class="token punctuation">]</span>
+           <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">-</span> <span class="token number">1</span></code></pre>
 <p>L'algorithme <code class="language-">insertion</code>, comme l'algorithme <code class="language-">sélection</code>, <strong>modifie</strong> le tableau passé en paramètre.</p>
 <p>Pour garantir que <code class="language-">T[j - 1]</code> soit toujours valide (il faut que $j-1 \geq 0$), on place en tête de la condition <code class="language-">(courant &lt; T[j - 1])</code> de la ligne 5 <a href="https://en.wikipedia.org/wiki/Sentinel_value">la sentinelle</a> <code class="language-">(j &gt; 0)</code>. Les deux conditions étant liées par un <code class="language-">and</code>, python (et tout autre langage de programmation) n'évaluera la seconde condition <strong>que si la première est vérifiée</strong> (un <code class="language-">and</code> ne peut être vrai que si les deux conditions sont vraies. Si la première condition est fausse, il est impossible que le <code class="language-">and</code> soit vrai il est donc inutile de vérifier la seconde condition).</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
@@ -139,8 +139,8 @@
 </ul>
 <h2><span id="preuve-insertion"></span> Preuve</h2>
 <p>Le principe de programmation du tri par insertion est correct puisque <code class="language-">est_trie</code> est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.</p>
-<p>On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du <code class="language-">while</code>) nous servant à prouver le premier (du <code class="language-">for</code>)</p>
-<p>Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle <code class="language-">for</code> de la ligne 2 va être le même :</p>
+<p>On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du <code class="language-">tant que</code>) nous servant à prouver le premier (du <code class="language-">pour chaque</code>)</p>
+<p>Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle <code class="language-">pour chaque</code> de la ligne 2 va être le même :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -148,19 +148,19 @@
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Invariant de boucle</strong></p>
 </div><div class="pl-8 mr-8">
-<p>À la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
+<p>À la fin d'un itération de la boucle <code class="language-">pour chaque</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
 </div></div>
 
-<p>Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle <code class="language-">while</code> de la ligne 5, c'est à dire lui trouver un invariant.</p>
+<p>Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle <code class="language-">tant que</code> de la ligne 5, c'est à dire lui trouver un invariant.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Invariant de la boucle <code class="language-">while</code></strong></p>
+<p><strong>Invariant de la boucle <code class="language-">tant que</code></strong></p>
 </div><div class="pl-8 mr-8">
-<p>Chaque itération de la boucle <code class="language-">while</code> va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :</p>
-<p>A la fin de chaque itération de la boucle <code class="language-">while</code> $T[j] \leq T[j+1]$ si $j &lt;i$</p>
+<p>Chaque itération de la boucle <code class="language-">tant que</code> va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :</p>
+<p>A la fin de chaque itération de la boucle <code class="language-">tant que</code> $T[j] \leq T[j+1]$ si $j &lt;i$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -184,15 +184,15 @@
 </div>
 </details>     
 </div>
-<p>On peut donc maintenant démontrer l'invariant de la boucle <code class="language-">for</code> :</p>
+<p>On peut donc maintenant démontrer l'invariant de la boucle <code class="language-">pour chaque</code> :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
 <div class="pl-8 mb-2 mr-8">
-<p><strong>Invariant de la boucle <code class="language-">for</code></strong></p>
+<p><strong>Invariant de la boucle <code class="language-">pour chaque</code></strong></p>
 </div><div class="pl-8 mr-8">
-<p>A la fin d'un itération de la boucle <code class="language-">for</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
+<p>A la fin d'un itération de la boucle <code class="language-">pour chaque</code> de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -212,29 +212,29 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>On a $i = 1$ pour la première itération donc à l'issue de la boucle while :</p>
+<p>On a $i = 1$ pour la première itération donc à l'issue de la boucle tant que :</p>
 <ul>
 <li>soit $j=i=1$ et $T[0] \leq T[1]$ (car la boucle s'est arrêtée)</li>
 <li>soit $j=0$ et $T[0] \leq T[1]$ (invariant de boucle)</li>
 </ul>
 <p>Dans les 2 cas, les 2 premiers éléments de $T$ sont triées. L'initialisation de l'invariant est Ok.</p>
 <p>On suppose l'invariant vrai à la fin de la $i-1$ ème boucle et on regarde à la fin de la $i$ boucle.</p>
-<p>La $i$ ème itération de la boucle <code class="language-">for</code> (ligne 2), a fonctionné ainsi :</p>
+<p>La $i$ ème itération de la boucle <code class="language-">pour chaque</code> (ligne 2), a fonctionné ainsi :</p>
 <ul>
 <li>ligne 3 : on a : <code class="language-">T[:i+1] = T[:i] + [T[j]]</code> ($j = i$)</li>
-<li>à la sortie de la boucle <code class="language-">while</code>, en notant <code class="language-">T</code> le tableau avant la boucle <code class="language-">while</code> et <code class="language-">T'</code> le tableau en fin de <code class="language-">while</code>, on a :
+<li>à la sortie de la boucle <code class="language-">tant que</code>, en notant <code class="language-">T</code> le tableau avant la boucle <code class="language-">tant que</code> et <code class="language-">T'</code> le tableau en fin de <code class="language-">tant que</code>, on a :
 <ol>
 <li><code class="language-">T'[:i+1] = T[:j] + [T[j]] + T[j:i]</code></li>
-<li><code class="language-">T[:j]</code> trié (invariant de la boucle <code class="language-">for</code>) et <code class="language-">T[j] &gt;= T[j-1]</code> (car on est sorti de la boucle <code class="language-">while</code>)</li>
-<li><code class="language-">T[j:i]</code> trié (invariant de la boucle <code class="language-">for</code>) et <code class="language-">T[j] &lt; T[j+1]</code> (invariant de la boucle <code class="language-">while</code>)</li>
+<li><code class="language-">T[:j]</code> trié (invariant de la boucle <code class="language-">pour chaque</code>) et <code class="language-">T[j] &gt;= T[j-1]</code> (car on est sorti de la boucle <code class="language-">tant que</code>)</li>
+<li><code class="language-">T[j:i]</code> trié (invariant de la boucle <code class="language-">pour chaque</code>) et <code class="language-">T[j] &lt; T[j+1]</code> (invariant de la boucle <code class="language-">tant que</code>)</li>
 </ol>
 </li>
 </ul>
-<p>Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle <code class="language-">for</code>.</p>
+<p>Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle <code class="language-">pour chaque</code>.</p>
 </div>
 </details>     
 </div>
-<p>On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle <code class="language-">for</code> est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.</p>
+<p>On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle <code class="language-">pour chaque</code> est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.</p>
 <h2><span id="complexités-insertion"></span> Complexités</h2>
 <p>Ligne à ligne :</p>
 <ol>
@@ -247,10 +247,10 @@
 <li>une soustraction et une affectation : $\mathcal{O}(1)$</li>
 <li>affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$</li>
 </ol>
-<p>Comme $K_i$ n'est pas constant pour chaque itération de la boucle <code class="language-">for</code> il faut regarder les valeurs extrêmes que peut prendre $K$ :</p>
+<p>Comme $K_i$ n'est pas constant pour chaque itération de la boucle <code class="language-">pour chaque</code> il faut regarder les valeurs extrêmes que peut prendre $K$ :</p>
 <ul>
-<li>si le tableau est déjà trié : on ne rentre jamais dans la boucle <code class="language-">while</code> : $K = 0$ pour chaque itération.</li>
-<li>si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle <code class="language-">for</code>, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle <code class="language-">while</code>).</li>
+<li>si le tableau est déjà trié : on ne rentre jamais dans la boucle <code class="language-">tant que</code> : $K = 0$ pour chaque itération.</li>
+<li>si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle <code class="language-">pour chaque</code>, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle <code class="language-">tant que</code>).</li>
 </ul>
 <p>On a donc 2 cas extrêmes pour le calcul :</p>
 <ol>
@@ -305,7 +305,7 @@ Pour savoir ce que veut dire <em>standard</em>, il faut déterminer le modèle d
 <div class="pl-8 mb-2 mr-8">
 <p><strong>De façon intuitive</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si les données sont équiprobables, la boucle while remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$</p>
+<p>Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque <code class="language-">T[i]</code>. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$</p>
 </div></div>
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
@@ -338,7 +338,7 @@ $$
 </div>
 </details>     
 </div>
-<p>On en conclut que le nombre moyen d'itérations dans la boucle <code class="language-">while</code>, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$</p>
+<p>On en conclut que le nombre moyen d'itérations dans la boucle <code class="language-">tant que</code>, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la <a href="../../complexit%C3%A9-calculs/r%C3%A8gles-de-calcul#r%C3%A8gle-croissance" class="interne">la règle de croissance</a> pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -369,14 +369,14 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 <h2>Optimisation</h2>
 <p>Une implémentation courante du tri par insertion est la suivante :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="highlight-line"><span class="token keyword">def</span> <span class="token function">insertion</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">        courant <span class="token operator">=</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span></span>
-<span class="highlight-line">        j <span class="token operator">=</span> i</span>
-<span class="highlight-line">        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span>courant <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></span>
-<span class="highlight-line">            j <span class="token operator">-=</span> <span class="token number">1</span></span>
-<span class="highlight-line">        T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> courant</span></code></pre>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">insertion</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token operator">→</span> ∅<span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        courant <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+       <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> i
+</span>        <span class="token keyword">tant que</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>courant <span class="token operator">&lt;</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+           <span class="token number"> j </span><span class="token operator">←</span><span class="token number"> j </span><span class="token operator">-</span> <span class="token number">1</span>
+        T<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> courant</code></pre>
 <p>Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de faire de la place pour l'élément que l'on va insérer en décalant uniquement les valeurs  du tableau. Une fois la place trouvée, il suffit de placer l'élément une fois. Finaud, non ?</p>
 
 

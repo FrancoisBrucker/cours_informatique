@@ -249,6 +249,22 @@ b <span class="token operator">←</span> a</code></pre>
 <p>Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.</p>
 </div></div>
 
+<p>On utilisera parfois, comme en python par exemple des sous tableaux via des slices :</p>
+<ul>
+<li><code class="language-">T[i:]</code> représentera le tableau constitué des éléments de T à partir de l'indice i <strong>inclus</strong> jusqu'à la fin</li>
+<li><code class="language-">T[:j]</code> représentera le tableau constitué des éléments de T à partir de l'indice 0 <strong>inclus</strong> jusqu'à j <strong>exclu</strong></li>
+<li><code class="language-">T[i:j]</code> représentera le tableau constitué des éléments de T à partir de l'indice i <strong>inclus</strong> jusqu'à j <strong>exclu</strong></li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On ne peut  <strong>pas</strong> affecter un slice de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.</p>
+</div></div>
+
+<p>L'instruction suivante n'est donc <strong>pas</strong> une instruction simple, mais nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T' <span class="token operator">←</span> un nouveau tableau contenant T<span class="token punctuation">[</span>i<span class="token punctuation">:</span>j<span class="token punctuation">]</span>  <span class="token comment"># j - i + 1 instructions en 1 ligne</span></code></pre>
 <h3><span id="str"></span>Chaînes de caractères</h3>
 <p>Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.</p>
 <p>Une <strong><em>chaîne de caractères</em></strong> est un tableau constitué uniquement de caractères.</p>
@@ -340,7 +356,7 @@ b <span class="token operator">←</span> a</code></pre>
 <p>On exécutera alors le bloc autant de fois qu'il y a d'éléments dans le tableau et à chaque itération du bloc, la variable <code>x</code> vaudra un autre élément du tableau. On prendra les éléments du tableau par indice croissant.</p>
 <p>Le code précédent est équivalent au code suivant, moins élégant, mais qui explicite le numéro de l'itération courante : à l'itération $i$ on examine le $i+1$ ème élément du tableau et on a déjà examiné les $i$ premiers.
 :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> tableau<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> tableau<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
     x <span class="token operator">←</span> tableau<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
 
     instruction <span class="token number">1</span>

@@ -292,8 +292,8 @@ $$</p>
 <h3><span id="complexité-naif"></span> Complexité de l'algorithme naif</h3>
 <p>Ligne à ligne :</p>
 <ol>
-<li>une soustraction et une affection : $\mathcal{O}(1)$</li>
 <li>une affection : $\mathcal{O}(1)$</li>
+<li>une soustraction et une affection : $\mathcal{O}(1)$</li>
 <li>une boucle de $\mathcal{O}(n)$ itération (<code class="language-">c</code> vaut initialement <code class="language-">n</code> et est décrémentée de $1$ à chaque itération)</li>
 <li>une multiplication et une affection : $\mathcal{O}(1)$</li>
 <li>une soustraction et une affection : $\mathcal{O}(1)$</li>
@@ -310,8 +310,11 @@ C & = & \mathcal{O}(1) + \\
 & & \mathcal{O}(1)) + \\
 & & \mathcal{O}(1)\\
 & = & 2 \cdot \mathcal{O}(1) + \mathcal{O}(n) \cdot (2 \cdot \mathcal{O}(1)) + \mathcal{O}(1)\\
-&=& 3 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(n)\\
+&=& 3 \cdot \mathcal{O}(1) + 2 \cdot \mathcal{O}\mbox(1) \cdot \mathcal{O}\mbox(n)\\
+&=& \mathcal{O}(3 \cdot 1) + \mathcal{O}\mbox(2\cdot 1 \cdot n)\\
+&=& \mathcal{O}(3) + \mathcal{O}\mbox(2n)\\
 &=& \mathcal{O}(1) + \mathcal{O}(n)\\
+&=& \mathcal{O}(1 + n)\\
 C&=& \mathcal{O}(n)\\
 \end{array}
 $$
@@ -365,6 +368,7 @@ $$
 <li>la division entière <code class="language-">//</code> pour s'assurer que exposant reste un entier. Le type de <code class="language-">4 / 2</code> en python est un réel alors que le type de <code class="language-">4 // 2</code> est un entier.</li>
 </ul>
 <p>Cet algorithme est exactement la transcription de la définition mathématique, il est donc correct.</p>
+<p>Remarquez que cette version n'est cependant par récursive terminal. On pourrit le faire en ajoutant un accumulateur comme paramètre.</p>
 </div>
 </details>     
 </div>
@@ -373,6 +377,7 @@ $$
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">puissance</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">    r <span class="token operator">←</span> x</span>
 <span class="highlight-line">    c <span class="token operator">←</span><span class="token number"> n </span><span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> c <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        <span class="token keyword">si</span> c <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">            r <span class="token operator">←</span> r <span class="token operator">*</span> x</span>
@@ -457,9 +462,8 @@ C & = & \mathcal{O}(1) + &\\
 &  & \mathcal{O}(1) + &\\
 &  & K \cdot (\mathcal{O}(1) + &\\
 & & \mathcal{O}(1) + &\\
-& & \mathcal{O}(1) + &\mbox{(ligne 6 ou ligne 9)}\\
-& & \mathcal{O}(1) + & \mbox{(ligne 7 ou ligne 10)}\\
-& & \mathcal{O}(1)) +&\\
+& & \mathcal{O}(1) + &\mbox{(ligne 7 ou ligne 10)}\\
+& & \mathcal{O}(1)) + & \mbox{(ligne 8 ou ligne 11)}\\
 & & \mathcal{O}(1)&\\
 &=& 2 \cdot \mathcal{O}(1) + K \cdot (5\cdot \mathcal{O}(1)) + \mathcal{O}(1)&\\
 &=& 3 \cdot \mathcal{O}(1) + K \cdot 5 + &\\
@@ -726,22 +730,20 @@ $$
 <li>$a_0 = x$</li>
 <li>$a_i = a_{i-1} \cdot a_{i-1}$ pour $1 \leq i \leq \log_2(n)$</li>
 </ul>
-<p>Il nous reste ensuite à ajouter les éléments restant, c'est à dire ceux pour lesquels</p>
-<blockquote>
-<p>TBD ici impair</p>
-</blockquote>
-<p>On peut ensuite exécuter l'algorithme en ajoutant un élément à la suite à chaque fois que le résultat est modifié :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">    c = n-1
-    i = 0
-    r = a[i]
-    tant que c est strictement positif:
-        si c est impair:
-            r = r * a[i]
-            ajoute r à la fin de a
-            c = c - 1
-        sinon:
-            i = i + 1
-            c = c / 2</code></pre>
+<p>Il nous reste ensuite à ajouter les éléments restant, c'est à dire tous les cas où le compteur est impair dans l'exécution de l'algorithme et qui correspondront à des $a_j = a_{j-1} \cdot a_i$ avec $1 \leq i \leq \log_2(n) \leq j$ qui correspondent au premier cas impairs de l'exécution de l'algorithme tel que $a_{j_0} = a_{i} \cdot a_{i'}$.</p>
+<p>Cela donne la suite :</p>
+<ul>
+<li>$a_0$</li>
+<li>$a_1 = a_0 \cdot a_0$</li>
+<li>$a_2 = a_1 \cdot a_1$</li>
+<li>...</li>
+<li>$a_i = a_{i-1} \cdot a_{i-1}$</li>
+<li>$a_j = a_{0} \cdot a_{1}$ (premier impair)</li>
+<li>$a_{j+1} = a_{j} \cdot a_{2}$</li>
+<li>$a_{j+2} = a_{j+1} \cdot a_{3}$</li>
+<li>...</li>
+<li>$a_{m} = a_{m-1} \cdot a_{\log_2(n)}$</li>
+</ul>
 </div>
 </details>     
 </div>
@@ -771,23 +773,21 @@ $$
 <p>Pour n=15 :</p>
 <ul>
 <li>$a_0 = x$</li>
-<li>$a_1 = x^2$</li>
-<li>$a_2 = x^4$</li>
-<li>$a_3 = x^8$</li>
-<li>$a_4 = x^3$</li>
-<li>$a_5 = x^7$</li>
-<li>$a_6 = x^{15}$</li>
+<li>$a_1 = a_0 \cdot a_0 = x^2$</li>
+<li>$a_2 = a_1 \cdot a_1 = x^4$</li>
+<li>$a_3 = a_2 \cdot a_2 = x^8$</li>
+<li>$a_4 = a_0 \cdot a_1 = x^3$ (premier impair)</li>
+<li>$a_5 = a_4 \cdot a_2 = x^7$</li>
+<li>$a_6 = a_5 \cdot a_3 = x^{15}$</li>
 </ul>
 <p>Pour n=10 :</p>
 <ul>
 <li>$a_0 = x$</li>
-<li>$a_1 = x^2$</li>
-<li>$a_2 = x^4$</li>
-<li>$a_3 = x^8$</li>
-<li>$a_4 = x^2$</li>
-<li>$a_5 = x^{10}$</li>
+<li>$a_1 = a_0 \cdot a_0 = x^2$</li>
+<li>$a_2 = a_1 \cdot a_1 = x^4$</li>
+<li>$a_3 = a_2 \cdot a_2 = x^8$</li>
+<li>$a_4 = a_1 \cdot a_3 = x^{10}$ (premier impair)</li>
 </ul>
-<p>On voit qu'il y a une répétition au premier cas (lorsque $1+1 = 2 \cdot 1$) que l'on pourrait filtrer dans l'algorithme pour raccourcir de 1 la longueur de la suite lorsque $n-1$ est impair. Ceci permet d'obtenir le nombre minimum de multiplications pour $n=10$.</p>
 </div>
 </details>     
 </div>
