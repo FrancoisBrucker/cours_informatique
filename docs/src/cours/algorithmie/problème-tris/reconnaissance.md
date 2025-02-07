@@ -24,7 +24,7 @@ Il existe un algorithme très simple pour le résoudre.
 ## <span id="algo-est-trie"></span> Algorithme
 
 ```pseudocode/
-def est_trie(T: [entier]) → booléen:
+algorithme est_trie(T: [entier]) → booléen:
 
     pour chaque i de [1, T.longueur[:
         si T[i] < T[i-1]:
@@ -36,9 +36,9 @@ def est_trie(T: [entier]) → booléen:
 
 L'algorithme rend bien :
 
-- `True`{.language-} pour `est_trie([42])`{.language-}
-- `False`{.language-} pour `est_trie([4, 2])`{.language-}
-- `True`{.language-} pour `est_trie([2, 4])`{.language-}
+- `Vrai`{.language-} pour `est_trie([42])`{.language-}
+- `Faux`{.language-} pour `est_trie([4, 2])`{.language-}
+- `Vrai`{.language-} pour `est_trie([2, 4])`{.language-}
 
 ### Preuve
 

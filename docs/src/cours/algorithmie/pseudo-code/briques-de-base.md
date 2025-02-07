@@ -126,6 +126,22 @@ Les opérations sur les tableaux sont faites graces aux opérations des objets b
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
 {% endnote %}
 
+On utilisera parfois, comme en python par exemple des sous tableaux via des slices :
+
+- `T[i:]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à la fin
+- `T[:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice 0 **inclus** jusqu'à j **exclu**
+- `T[i:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à j **exclu**
+
+{% attention %}
+On ne peut  **pas** affecter un slice de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+{% endattention %}
+
+L'instruction suivante n'est donc **pas** une instruction simple, mais nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
+
+```pseudocode
+T' ← un nouveau tableau contenant T[i:j]  # j - i + 1 instructions en 1 ligne
+```
+
 ### <span id="str"></span>Chaînes de caractères
 
 Les chaines de caractères sont un tableau uniquement composés de caractères. Cette structure est utilisée lorsque l'on veut écrire ou représenter plus qu'un caractère, c'est à dire quasi tout le temps.

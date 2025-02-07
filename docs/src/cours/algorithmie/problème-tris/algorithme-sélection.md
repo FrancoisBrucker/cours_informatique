@@ -13,7 +13,19 @@ Le tri par sélection est un algorithme simple qui fonctionne de la même maniè
 
 On en déduit l'algorithme en pseudo-code suivant :
 
-```python/
+```pseudocode
+algorithme sélection(T: [entier]) → ∅:
+    pour chaque i de [0, T.longueur[:
+        min_index ← i
+        pour chaque j de [i + 1, T.longueur[:
+            si T[j] < T[min_index]:
+                min_index ← j
+        T[i], T[min_index] ← T[min_index], T[i]
+```
+
+{% details "code python" %}
+
+```python
 def sélection(T):
     for i in range(len(T) - 1):
         min_index = i
@@ -23,7 +35,13 @@ def sélection(T):
         T[i], T[min_index] = T[min_index], T[i]
 ```
 
-L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètre. On appelle ces algorithmes [in place](https://en.wikipedia.org/wiki/In-place_algorithm) car ils ne rendent rien, mais modifient les données en entrées.
+{% enddetails  %}
+
+L'algorithme `sélection`{.language-} **modifie** le tableau passé en paramètre.
+
+{% note %}
+On appelle [**_in place_**](https://en.wikipedia.org/wiki/In-place_algorithm) les algorithmes qui modifient leurs entrées.
+{% endnote %}
 
 ## <span id="fonctionnement-sélection"></span> Fonctionnement
 
@@ -36,9 +54,9 @@ On vérifie que l'algorithme fonctionne pour :
 
 Le principe de fonctionnement est clair. Il reste à prouver que c'est bien ce que l'algorithme `sélection`{.language-} fait.
 
-1. la boucle `for`{.language-} de la ligne 4 trouve l'indice du plus petit élément du tableau `T[i:]`{.language-}.
+1. la boucle `pour chaque`{.language-} de la ligne 4 trouve l'indice du plus petit élément du tableau `T[i:]`{.language-}.
 2. la ligne 7 échange le minimum du tableau `T[i:]`{.language-} avec `T[i]`{.language-}
-3. comme la boucle `for`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle :
+3. comme la boucle `pour chaque`{.language-} de la ligne 2 incrémente $i$, on a l'invariant de boucle :
 
 {% note "**Invariant de boucle**" %}
 À la fin de chaque étape $i$ de l'algorithme les $i$ plus petites valeurs du tableau sont triées aux $i$ premiers indices du tableau.
@@ -58,7 +76,7 @@ Ligne à ligne :
 6. une affectation : $\mathcal{O}(1)$
 7. deux affectation et quatre valeurs d'un tableau : $\mathcal{O}(1)$
 
-Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `for`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
+Le nombre d'itérations de la boucle for de la ligne 4 n'est pas constant, mais il décroît puisque $i$ augmente à chaque itération de la boucle `pour chaque`{.language-} de la ligne 2. On peut alors utiliser [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour utiliser le maximum, $n-1$, pour le calcul de la complexité.
 
 Ce qui donne une complexité de :
 
@@ -88,31 +106,3 @@ La complexité de l'algorithme `sélection`{.language-} est ($n$ est la taille d
 - la **complexité en moyenne** vaut également $\mathcal{O}(n^2)$ (car les complexités min et max sont égales)
 
 {% endnote %}
-
-## Variantes
-
-> TBD <https://www.youtube.com/watch?v=_W0yUJlscRA>
->
-
-Sélection est identique à l'algorithme ci-dessous :
-
-```python/
-def sélection(T):
-    for i in range(len(T)):
-        for j in range(i + 1, len(T)):
-            if T[j] < T[i]:
-                T[i], T[j] = T[j], T[i]
-```
-
-Pourquoi ?
-
-Et celui ci tri dans le sens opposé :
-
-```python/
-def sélection(T):
-    for i in range(len(T)):
-        for j in range(len(T)):
-            if T[j] < T[i]:
-                T[i], T[j] = T[j], T[i]
-
-pourquoi ?

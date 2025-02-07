@@ -21,9 +21,57 @@ On a coutume de prendre pivot comme étant `T[0]`{.language-}.
 
 Une fois ce découpage des données fait, la fonction `combiner`{.language-} est triviale puisqu'il suffit de concaténer `T1`{.language-} trié à `[T[0]]`{.language-} puis à `T2`{.language-} trié.
 
+{% attention %}
+Les preuves formelles de complexités sont ardues. On ne vous demande pas de les connaître (mais jetez-y un coup d'oeil elle valent cependant le détour).
+
+**En revanche** vous devez intégrer les preuves intuitives car les arguments exposés sont courant et vous permettront de sentir la complexité de nombreux algorithmes.
+{% endattention %}
+
 ## pseudo-code
 
 En pseudo-code cela donne :
+
+```pseudocode/
+fonction combiner(T1: [entier], pivot: entier, T2: [entier])  → [entier]:
+    T ← un nouveau tableau de taille T1.longueur + T2.longueur + 1
+    i ← 0
+    pour chaque e de T1
+        T[i] ← e
+        i ← i + 1
+
+    T[i] ← pivot
+    i ← i + 1
+
+    pour chaque e de T2
+        T[i] ← e
+        i ← i + 1
+
+    rendre T
+
+algorithme rapide(T: [entier]) → [entier]:
+    si T.longueur <= 1:
+        rendre T
+
+    l1 ← le nombre d'éléments de T[1:] ≤ T[0]
+    T1 ← un nouveau tableau de longueur l1
+    i1 ← 0
+    l2 ← le nombre d'éléments de T[1:] > T[0]
+    T2 ← un nouveau tableau de longueur l2
+    i2 ← 0
+    pour chaque e de T[1:]:
+        si e ≤ T[0]:
+            T1[i1] ← e
+            i1 ← i1 + 1
+        sinon:
+            T2[i2] ← e
+            i2 ← i2 + 1
+
+    rendre combiner(rapide(T1), T[0], rapide(T2))
+```
+
+{% details "code python", "open" %}
+
+En utilisant [des list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension){.interne} de python, le code est plus compacte et plus clair que sa version en pseudocode :
 
 ```python/
 def rapide(T):
@@ -38,13 +86,13 @@ def rapide(T):
     return rapide(T1) + [pivot] + rapide(T2)
 ```
 
-{% info %}
-On a utilisé [les list comprehension](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#list-comprehension){.interne} de python. C'est un moyen clair et efficace de générer des listes. Utilisez-les, ça rend le code plus clair et facile à écrire.
-{% endinfo %}
+Les _list comprehension_ sont un moyen clair et efficace de générer des listes. Utilisez-les !
+
+{% enddetails %}
 
 ## <span id="preuve-rapide"></span> Preuve
 
-Comme `rapide`{.language-} est une implémentation de la méthode diviser pour régner, son fonctionnement est assuré **si** les récursions s'arrêtent.
+Comme `rapide`{.language-} est une implémentation de la méthode diviser pour régner : on tri deux tableaux, le premier contenant les éléments plus petit que T[0], l'autre les éléments strictement plus grand puis on les recombine. Son fonctionnement est donc assuré **si** les récursions s'arrêtent.
 
 C'est effectivement le cas ici puisque les tableaux  `T1`{.language-} et  `T2`{.language-} sont strictement plus petit que  `T`{.language-} et qu'il y a une condition d'arrêt sur la taille du tableau.
 
@@ -64,18 +112,16 @@ $${
 C(n) = \mathcal{O}(n) + \max_{0 \leq i < n}(C(i) + C(n-i-1))
 }$$
 
-[Le master theorem](../algorithme-fusion/#master-theorem){.interne} ne nous aide malheureusement pas car les tailles des sous-problèmes ne sont pas fixe.
-
 On va montrer que :
 
-{% attention "**À retenir**" %}
+{% note "**À retenir**" %}
 Pour trier un tableau de longueur $n$, les complexités de `rapide`{.language-} sont :
 
 - la complexité (maximale) est $C_{\max}(n) = \mathcal{O}(n^2)$,
 - la complexité en moyenne est $C_{\mbox{moy}} =  \mathcal{O}(n\ln (n))$,
 - la complexité minimale est $C_{\min}(n) = \mathcal{O}(n\ln (n))$,
 
-{% endattention %}
+{% endnote %}
 
 Retenez les complexités ci-dessus et les raisons intuitives de leurs calculs. Si vous voulez aller plus loin, vous pouvez étudier les preuves formelles, surtout qu'elles sont jolies et vous apprendront à calculer des complexités dans des cas non triviaux.
 
@@ -132,9 +178,7 @@ $$
 
 Notre hypothèse est démontrée.
 
-On a finalement l'encadrement : $\mathcal{O}(n^2) \leq C_{\max}(n) \leq \mathcal{O}(n^2)$, ce qui nous permet d'énoncer :
-
-La complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$
+On a finalement l'encadrement : $\mathcal{O}(n^2) \leq C_{\max}(n) \leq \mathcal{O}(n^2)$, ce qui nous permet de conclure que la complexité (maximale) du tri rapide pour un tableau de taille $n$ est $\mathcal{O}(n^2)$.
 {% enddetails %}
 
 ### Complexité minimale du tri rapide
@@ -144,11 +188,11 @@ La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
-On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion par exemple, ceci signifie que (au moins asymptotiquement) la courbe de complexité est au-dessus de sa tangente : c'est une fonction convexe
+On a que $C(n) \geq \mathcal{O}(n)$, la complexité de l'algorithme croit donc de façon linéaire ou plus. Si la forme de $C(n)$ est sans point d'inflexion, au moins asymptotiquement, la courbe de complexité sera au-dessus de sa tangente : c'est une fonction convexe.
 
 ![croissance convexe](tris-4.png)
 
-On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et [le master theorem](../algorithme-fusion/#master-theorem) nous permet de conclure que :
+On a alors $C_{\min}(\frac{n}{k}) + C_{\min}(\frac{(k-1)n}{k}) \geq 2\cdot C_{\min}(\frac{n}{2})$. Il sera donc **toujours** plus intéressant de couper notre tableau en 2 exactement. Dans ce cas là, on a l'équation de récurrence : $C_\min(n) = \mathcal{O}(n) + 2 \cdot C_\min(\frac{n}{2})$ et [la preuve de l'algorithme fusion](../algorithme-fusion/#complexités-fusion){.interne} nous permet de conclure que :
 
 $$
 C_{\min(n)} = \mathcal{O}(n\ln(n))
@@ -156,9 +200,9 @@ $$
 
 {% enddetails %}
 
-{% info %}
-De façon générale, les courbes de complexités sont sans points d'inflexions. Les complexités plus grande que $\mathcal{O}(n)$ sont donc quasiment toutes convexes.
-{% endinfo %}
+{% note "**À retenir**" %}
+De façon générale, les courbes de complexités sont sans points d'inflexions (d'où viendraient-ils de toute façon ?). Les complexités plus grande que $\mathcal{O}(n)$ sont donc (quasiment) toutes convexes.
+{% endnote %}
 {% details "preuve formelle" %}
 Faisons la preuve de complexité rigoureusement.
 
@@ -176,99 +220,60 @@ Chaque tableau $T_i$ crée donc soit :
 
 L'étage $k>1$ est ainsi formé d'au plus $2^{k-1}$ tableaux, allant des tableaux allant des indices $(\sum_{0\leq i \leq k - 2}2^i) +1$ à $(\sum_{0\leq i \leq k-1}2^i)$.
 
-Comme chaque exécution de l'algorithme est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :
+Comme chaque exécution de l'algorithme hors récursion est proportionnelle à la taille du tableau en entrée, la complexité totale de l'exécution de toutes les récursion de l'algorithme sera proportionnelle à la somme des tailles des tableaux qui la composent (le tableau de $T_i$ ayant $n_i$ éléments) :
 
-$$C =  \mathcal{O}(\sum_{i} n_i)$$
+<div>
+$$
+C = \mathcal{O}(\sum_{i} n_i)
+$$
+</div>
 
-Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot, ala complexité $C$ de l'algorithme vaut également :
+**La complexité minimale sera atteinte pour la plus petite somme de $n_i$. Nous allons montrer que cela arrive lorsque l'on coupe le tableau en 2 parts égales à chaque itération.**
 
+Chaque élément est compté 1 fois pour chaque tableau qui le compose. Comme l'ensemble des tableaux ayant un élément $x$ donné forme un chemin allant de $T_1$ à un tableau $T_i$ pour lequel $x$ est choisi comme pivot. En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot, la complexité $C$ de l'algorithme vaut alors également :
+
+<div>
 $$
 C = \mathcal{O}(\sum_{x \in T_0}e(x))
 $$
+</div>
 
-En notant $e(x)$ l'étage pour lequel l'élément $x$ de $T_0$ a été choisi comme pivot.
+La complexité minimale va donc être atteinte pour des arbres les plus tassés possibles puisqu'un élément $x$ choisi tard comme pivot aura un $e(x)$ plus important qu'un élément choisi plus tôt comme pivot. Comme chaque arbre de chaque étage produit 1 pivot on en conclut que :
 
-Quelque soit $T_1$, tous les arbres tels que les éléments de $T_i$ sauf 1 sont répartis dans $T_{2\cdot i}$ et $T_{2\cdot i +1}$) sont des exécutions possibles de l'algorithme, nous allons maintenant caractériser les arbres qui engendrent la complexité minimale.
+**La complexité minimale est atteinte si chaque étage $k$ est constitué du nombre maximum d'arbres, c'est à dire $2^k$**.
 
-Notons $K$ l'étage maximum obtenu et supposons qu'il existe $T_i$ à l'étage $k< K-1$ qui n'a pas créé 2 tableaux lors de sa récursion. On se retrouve alors dans la configuration suivante (avec potentiellement $i=j$) :
-
-![arbre pas dense](arbre-pas-dense.png)
-
-On note $T_u$ l'ancêtre commun entre $T_i$ et $T_j$ ($T_u = T_i$ si $i=j$) : il existe un chemin unique entre $T_u$ et $T_i$ et un chemin unique entre $T_u$ et $T_j$.
-
-On peut alors construire un nouvel arbre en :
-
-- déplaçant $T_{4\cdot j}$ et tout son sous arbre de $T_{2\cdot j}$ à $T_i$
-- supprimer les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{2\cdot j}$
-- ajouter les éléments de $T_{4\cdot j}$ dans tous les tableaux du chemin allant de $T_u$ à $T_{i}$
-
-On obtient alors l'arbre suivant qui est une autre exécution possible du l'algorithme :
-
-![arbre densifier](arbre-densifier.png)
-
-La complexité associée à ce nouvel arbre est strictement plus petite que celle de l'arbre originelle car tous les éléments de $T_{4\cdot j}$ deviennent pivot à un étage strictement inférieur.
-
-La complexité minimum est ainsi obtenue pour des arbres où les seuls nœuds ayant un enfant ou moins sont ceux se trouvant à l'avant dernier ou au dernier étage de l'arbre. Pour ces arbres, les $K-1$ premiers étages contiennent $2^{k-1}$ tableaux. De plus, comme chaque tableau choisit exactement un pivot, chacun des $K-1$ premiers étages participe de l'ordre de $\mathcal{O}(k \cdot 2^{k-1})$ à la complexité totale. Ce qui donne :
+Comme le nombre total d'arbre vaut $n$ on en déduit que pour les arbres réalisant la complexité minimale, on a :
 
 <div>
 $$
-\begin{array}{lcl}
-C_\min &\geq& \mathcal{O}(\sum_{k=1}^{K-1}(k \cdot 2^{k-1}))\\
-\end{array}
+n = 1 + \sum_{2 \leq k \leq K}2^{k-1} = 2^K - 1
 $$
 </div>
 
-Travaillons un peu sur cette somme pour la rendre plus sympathique :
+La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$.
+
+Comme de plus tout arbre d'exécution aura plus que $\log_2(n)$ étages, on en conclut que $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ sera minimale que si on a $e(x) \leq \log_2(n)$ pour tout $x \in T_0$.
+
+Ceci est possible si on découpe toujours le tableau en deux parts égales on en conclut donc que la complexité minimale vaut ($K=\log_2(n)$) :
 
 <div>
 $$
-\begin{array}{lcl}
-\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \sum_{k=1}^{K-1}(k \cdot 2^{k})\\
-& =& \frac{1}{2} \cdot (1 \cdot 2^1 + 2 \cdot 2^2 + \dots + i \cdot 2^i + \dots (K-1) \cdot 2^{K-1})\\
-& =& \frac{1}{2} \cdot (\sum_{k=1}^{K-1}2^k + \sum_{k=2}^{K-1}2^k + \dots + \sum_{k=i}^{K-1}2^k + \dots + \sum_{k=K-1}^{K-1}2^k)\\
-&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=i}^{K-1}2^k))\\
-&=& \frac{1}{2} \cdot (\sum_{i=1}^{K-1}(\sum_{k=1}^{K-1}2^k) - \sum_{k=1}^{i-1}2^k)\\
-&=& \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
-\end{array}
+C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1 = \mathcal{O}(n\log_2(n))
 $$
 </div>
 
-On peut maintenant utiliser le fait que $\sum_{k=1}^i(2^k) = 2^{i+1} - 2$ (on le prouve aisément par récurrence) :
-
-<div>
-$$
-\begin{array}{lcl}
-\sum_{k=1}^{K-1}(k \cdot 2^{k-1}) & = &  \frac{1}{2} \cdot ((K-1)\cdot  (\sum_{k=1}^{K-1}2^k)) - \sum_{i=1}^{K-1}\sum_{k=1}^{i-1}2^k)\\
-&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - \sum_{i=1}^{K-1}(2^i-2)\\
-&=& \frac{1}{2} \cdot ((K-1) \cdot (2^{K} -2) - 2 \cdot (K-1) - (2^{K}-2)\\
-&=& (K-1) \cdot (2^{K-1}) - K + 1 -K + 1 - 2^{K-1} - 1\\
-&=& (K-2) \cdot (2^{K-1}) - 2 \cdot K + 1 \\
-\end{array}
-$$
-</div>
-
-Ceci nous donne — effectivement — une forme plus sympathique de la la complexité :
-
-$$
-C_\min \geq \mathcal{O}(K \cdot 2^K)
-$$
-
-Enfin, comme $K \geq \log_{2}(n)$ (le nombre de fois où l'on peut diviser $n$ par 2) on a que :
-
-$$
-C_\min \geq \mathcal{O}(n \log_2(n)) = \mathcal{O}(n \ln(n))
-$$
+La formule $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ se démontre aisément par récurrence.
 
 {% enddetails %}
 
 ### <span id="tri-rapide-complexité-moyenne"></span>Complexité en moyenne du tri rapide
 
 {% note "**Proposition**" %}
-La complexité du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.
+La complexité en moyenne du tri rapide est en $\mathcal{O}(n\ln(n))$ avec $n$ la taille tu tableau à trier.
 {% endnote %}
 {% details "preuve intuitive", "open" %}
 
-on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](./#complexités-insertion){.interne}. Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
+on utilise l'argument utilisé pour calculer la complexité en moyenne du [tri par insertion](../algorithme-insertion/#complexités-insertion){.interne}. Si les données sont aléatoires la moitié de `T[1:]`{.language-} est plus grande que `T[0]`{.language-}. De là, en moyenne, on va toujours couper le tableau en 2 parties (plus ou moins) égales.
 
 Si l'on coupe toujours au milieu on a alors la même équation que pour la complexité minimale : $C(n) = \mathcal{O}(n) + 2 \cdot C(\frac{n}{2})$, ce qui donne une complexité de $\mathcal{O}(n\ln(n))$.
 

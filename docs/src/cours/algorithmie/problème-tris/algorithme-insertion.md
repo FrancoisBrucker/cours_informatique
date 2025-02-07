@@ -31,13 +31,13 @@ On vérifie itérativement que `T[i] >= T[i-1]`{.language-} et si ce n'est pas l
 
 Ce qui se traduit en pseudo-code :
 
-```python/
-def insertion(T):
-    for i in range(1, len(T)):
-        j = i
-        while (j > 0) and (T[j] < T[j - 1]):
-            T[j], T[j - 1] = T[j - 1], T[j]
-            j -= 1
+```pseudocode
+algorithme insertion(T: [entier])  → ∅:
+    pour chaque i de [1, T.longueur[:
+        j ← i
+        tant que (j > 0) ET (T[j] < T[j - 1]):
+            T[j], T[j - 1] ← T[j - 1], T[j]
+            j ← j - 1
 ```
 
 L'algorithme `insertion`{.language-}, comme l'algorithme `sélection`{.language-}, **modifie** le tableau passé en paramètre.
@@ -59,20 +59,20 @@ Tout comme pour l'algorithme de tri par sélection, on vérifie que l'algorithme
 
 Le principe de programmation du tri par insertion est correct puisque `est_trie`{.language-} est prouvé. Mais il faut vérifier qu'il est bien mis en œuvre dans l'algorithme.
 
-On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du `while`{.language-}) nous servant à prouver le premier (du `for`{.language-})
+On a ici deux boucles imbriquée (lignes 2 et 5), il nous faut donc a priori deux invariants de boucles, le second (du `tant que`{.language-}) nous servant à prouver le premier (du `pour chaque`{.language-})
 
-Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle `for`{.language-} de la ligne 2 va être le même :
+Comme l'algorithme du tri par insertion mime l'algorithme de reconnaissance, le premier invariant, celui de la boucle `pour chaque`{.language-} de la ligne 2 va être le même :
 
 {% note "**Invariant de boucle**" %}
-À la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+À la fin d'un itération de la boucle `pour chaque`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
 {% endnote %}
 
-Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `while`{.language-} de la ligne 5, c'est à dire lui trouver un invariant.
+Pour prouver cet invariant, il nous faut comprendre ce que fait la boucle `tant que`{.language-} de la ligne 5, c'est à dire lui trouver un invariant.
 
-{% note "**Invariant de la boucle `while`{.language-}**" %}
-Chaque itération de la boucle `while`{.language-} va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :
+{% note "**Invariant de la boucle `tant que`{.language-}**" %}
+Chaque itération de la boucle `tant que`{.language-} va échanger les éléments placées en $j-1$ et $j$ et décrémenter $j$ jusqu'à ce que soit $j=0$ soit $T[j-1] \leq T[j]$. On a donc l'invariant :
 
-A la fin de chaque itération de la boucle `while`{.language-} $T[j] \leq T[j+1]$ si $j <i$
+A la fin de chaque itération de la boucle `tant que`{.language-} $T[j] \leq T[j+1]$ si $j <i$
 
 {% endnote %}
 {% details "preuve", "open" %}
@@ -81,15 +81,15 @@ Cet invariant est clairement vérifié.
 
 {% enddetails %}
 
-On peut donc maintenant démontrer l'invariant de la boucle `for`{.language-} :
+On peut donc maintenant démontrer l'invariant de la boucle `pour chaque`{.language-} :
 
-{% note "**Invariant de la boucle `for`{.language-}**" %}
-A la fin d'un itération de la boucle `for`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
+{% note "**Invariant de la boucle `pour chaque`{.language-}**" %}
+A la fin d'un itération de la boucle `pour chaque`{.language-} de la ligne 2, les $i + 1$ premiers éléments du tableau sont triés.
 
 {% endnote %}
 {% details "preuve", "open" %}
 
-On a $i = 1$ pour la première itération donc à l'issue de la boucle while :
+On a $i = 1$ pour la première itération donc à l'issue de la boucle tant que :
 
 - soit $j=i=1$ et $T[0] \leq T[1]$ (car la boucle s'est arrêtée)
 - soit $j=0$ et $T[0] \leq T[1]$ (invariant de boucle)
@@ -98,18 +98,18 @@ Dans les 2 cas, les 2 premiers éléments de $T$ sont triées. L'initialisation 
 
 On suppose l'invariant vrai à la fin de la $i-1$ ème boucle et on regarde à la fin de la $i$ boucle.
 
-La $i$ ème itération de la boucle `for`{.language-} (ligne 2), a fonctionné ainsi :
+La $i$ ème itération de la boucle `pour chaque`{.language-} (ligne 2), a fonctionné ainsi :
 
 - ligne 3 : on a : `T[:i+1] = T[:i] + [T[j]]`{.language-} ($j = i$)
-- à la sortie de la boucle `while`{.language-}, en notant `T`{.language-} le tableau avant la boucle `while`{.language-} et `T'`{.language-} le tableau en fin de `while`{.language-}, on a :
+- à la sortie de la boucle `tant que`{.language-}, en notant `T`{.language-} le tableau avant la boucle `tant que`{.language-} et `T'`{.language-} le tableau en fin de `tant que`{.language-}, on a :
   1. `T'[:i+1] = T[:j] + [T[j]] + T[j:i]`{.language-}
-  2. `T[:j]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] >= T[j-1]`{.language-} (car on est sorti de la boucle `while`{.language-})
-  3. `T[j:i]`{.language-} trié (invariant de la boucle `for`{.language-}) et `T[j] < T[j+1]`{.language-} (invariant de la boucle `while`{.language-})
+  2. `T[:j]`{.language-} trié (invariant de la boucle `pour chaque`{.language-}) et `T[j] >= T[j-1]`{.language-} (car on est sorti de la boucle `tant que`{.language-})
+  3. `T[j:i]`{.language-} trié (invariant de la boucle `pour chaque`{.language-}) et `T[j] < T[j+1]`{.language-} (invariant de la boucle `tant que`{.language-})
 
-Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle `for`{.language-}.
+Les constatations précédentes nous montrent que $T'[:i+1]$ est trié, ce qui termine la preuve de l'invariant de la boucle `pour chaque`{.language-}.
 {% enddetails %}
 
-On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle `for`{.language-} est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.
+On conclut la preuve de l'algorithme insertion en constatant que l'invariant de la boucle `pour chaque`{.language-} est vrai en sortie de boucle où  $i=n-1$ : les $n$ premier éléments de $T$ sont triés.
 
 ## <span id="complexités-insertion"></span> Complexités
 
@@ -124,10 +124,10 @@ Ligne à ligne :
 7. une soustraction et une affectation : $\mathcal{O}(1)$
 8. affectation d'une variable et récupération d'un élément d'un tableau : $\mathcal{O}(1)$
 
-Comme $K_i$ n'est pas constant pour chaque itération de la boucle `for`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
+Comme $K_i$ n'est pas constant pour chaque itération de la boucle `pour chaque`{.language-} il faut regarder les valeurs extrêmes que peut prendre $K$ :
 
-- si le tableau est déjà trié : on ne rentre jamais dans la boucle `while`{.language-} : $K = 0$ pour chaque itération.
-- si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `for`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `while`{.language-}).
+- si le tableau est déjà trié : on ne rentre jamais dans la boucle `tant que`{.language-} : $K = 0$ pour chaque itération.
+- si le tableau est trié à l'envers : pour la $i$-ème itération de la boucle `pour chaque`{.language-}, on aura $K=i$. C'est de plus le maximum théorique possible ($j=i$ initialement et j décroît de 1 à chaque itération de la boucle `tant que`{.language-}).
 
 On a donc 2 cas extrêmes pour le calcul :
 
@@ -175,7 +175,7 @@ Cela signifie que pour chaque itération $i$ :
 - `T[i]`{.language-} devra être positionné en $0$ pour une proportion de $\frac{1}{i + 1}$ tableaux, et on aura $K_i = i\cdot\mathcal{O}(1)$ pour ceux-ci.
 
 {% note "**De façon intuitive**" %}
-Si les données sont équiprobables, la boucle while remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$
+Si les données sont équiprobables, la boucle tant que remontera en moyenne de $\frac{i}{2}$ cases chaque `T[i]`{.language-}. Le nombre moyen d'itérations de $K_i$ sera égal à $\widehat{K_i} = \frac{i}{2}$
 {% endnote %}
 {% details "de façon formelle", "open" %}
 On calcule l'espérance $\widehat{K_i}$ de $K_i$ en sommant le nombre fois la probabilité pour chaque cas, ce qui donne le calcul :
@@ -191,7 +191,7 @@ $$
 </div>
 {% enddetails %}
 
-On en conclut que le nombre moyen d'itérations dans la boucle `while`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
+On en conclut que le nombre moyen d'itérations dans la boucle `tant que`{.language-}, $\widehat{K_i}$, va croitre de 0 à $\frac{n}{2}$ et on peut utiliser la [la règle de croissance](../../complexité-calculs/règles-de-calcul#règle-croissance){.interne} pour considérer que la complexité moyenne du tri par insertion vaut $C_\text{moyenne}(n) = \widehat{K} \cdot n$ avec $\widehat{K} = \frac{n}{2}$. On en conclut que la complexité moyenne vaut : $C_\text{moyenne}(n) = \mathcal{O}(n^2)$
 
 {% note %}
 La **complexité en moyenne** de l'algorithme `insertion`{.language-} est $\mathcal{O}(n^2)$ où $n$ est la taille du tableau passé en entrée.
@@ -216,15 +216,15 @@ Pour tout $ y \in A$, il y a 50% de chances que $x \leq y$. Il y a donc en moyen
 
 Une implémentation courante du tri par insertion est la suivante :
 
-```python/
-def insertion(T):
-    for i in range(1, len(T)):
-        courant = T[i]
-        j = i
-        while (j > 0) and (courant < T[j - 1]):
-            T[j] = T[j - 1]
-            j -= 1
-        T[j] = courant
+```pseudocode
+algorithme insertion(T: [entier])  → ∅:
+    pour chaque i de [1, T.longueur[:
+        courant ← T[i]
+        j ← i
+        tant que (j > 0) ET (courant < T[j - 1]):
+            T[j] ← T[j - 1]
+            j ← j - 1
+        T[j] ← courant
 ```
 
 Remarquez qu'elle ne fait pas d'échange à chaque fois. Elle se contente de faire de la place pour l'élément que l'on va insérer en décalant uniquement les valeurs  du tableau. Une fois la place trouvée, il suffit de placer l'élément une fois. Finaud, non ?
