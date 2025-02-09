@@ -54,4 +54,3 @@ while i < len(liste_mots):
         print(liste_mots[i])
         mots[len(liste_mots[i][1])] = True
     i += 1
-

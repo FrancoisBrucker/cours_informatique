@@ -113,3 +113,15 @@ Rendez :
 
 1. **2 des 3 exercices** de [la section **A vous**](/cours/analyse-données/#data-viz-exercice){.interne} (Comptez des trucs à Marseille, France et monde) de la partie visualisation des données.
 2. un fichier `requirement.txt` comme expliqué dans la partie création d'un environnement virtuel du cours.
+
+## Semaine 3
+
+Autre représentations :
+
+{% aller %}
+[la partie autres représentations](/cours/analyse-données/#data-viz-2D){.interne}.
+{% endaller %}
+
+## Pour aller plus loin
+
+> TBD : ACP comme méthode d'analyse des données.

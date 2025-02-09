@@ -110,6 +110,9 @@ Répondez à cette question existentielle : `nycthémères` est-il un mot franç
 
 ## Le compte de Monte-Cristo
 
+> TBD refaire compte.
+> TBD parler du caractère BOM "\uffef"
+
 Utilisez python pour :
 
 {% faire %}

@@ -250,11 +250,7 @@ n = 1 + \sum_{2 \leq k \leq K}2^{k-1} = 2^K - 1
 $$
 </div>
 
-La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$.
-
-Comme de plus tout arbre d'exécution aura plus que $\log_2(n)$ étages, on en conclut que $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ sera minimale que si on a $e(x) \leq \log_2(n)$ pour tout $x \in T_0$.
-
-Ceci est possible si on découpe toujours le tableau en deux parts égales. On en conclut donc que la complexité minimale vaut ($K=\log_2(n)$) :
+La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$ avec des rangées pleines. Cet arbre minimisera effectivement $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ puisque toutes les couches minimale seront prisent. Pour cet arbre on aura $K=\log_2(n)$ et :
 
 <div>
 $$
@@ -262,7 +258,7 @@ C_{\min} = \mathcal{O}(\sum_{x \in T_0}e(x)) = \sum_{1 \leq k \leq K}k\cdot 2^{k
 $$
 </div>
 
-La formule $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$ se démontre aisément par récurrence.
+On a utilisé le fait que $\sum_{1 \leq k \leq K}k\cdot 2^{k-1} = (K-1)2^{K} + 1$, ce qui se démontre aisément par récurrence.
 
 {% enddetails %}
 
