@@ -18,7 +18,7 @@ Ce cours intitulé _Programmation et algorithmes_ est donné au second semestre 
 
 Ce cours montrera l'informatique sous trois aspects complémentaires — théorie, code et algorithmes — que tout [honnête informaticien](https://fr.wikipedia.org/wiki/Honn%C3%AAte_homme) devrait connaître. Il s'adresse à des personnes ayant des connaissances minimales en informatiques mais voulant (ou étant obligé d' :-)) approfondir le sujet. Nous rentrerons dans les détails tant d'un point de vue algorithmique (Tout algorithme sera démontré) que d'un point de vue code (on montrera comment un programme s'exécute sur un ordinateur).
 
-L'informatique est une science incarnée : elle nécessite à la fois de solides connaissances théoriques pour concevoir des des algorithmes efficaces et des capacités d'expérimentations et de rigueur pour les mettre en oeuvre et les faire fonctionner sur un ordinateur.
+L'informatique est une science incarnée : elle nécessite à la fois de solides connaissances théoriques pour concevoir des algorithmes efficaces et des capacités d'expérimentations et de rigueur pour les mettre en oeuvre et les faire fonctionner sur un ordinateur.
 
 Cela va vous demander un travail personnel important pour comprendre et assimiler les bases théoriques **et** un temps certain d’expérimentation pour faire fonctionner le tout sur votre ordinateur en comprenant pourquoi et comment cela fonctionne.
 
@@ -48,7 +48,7 @@ Avoir une notion de ce qu'est une variable, une instruction et une fonction. Auc
 
 ### Programmation
 
-Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est **indispensable** que vous relisez le cours ci-après pour s'assurer que vous avez bien les bases nécessaires en programmation python pour commencer ce cours :
+Il est nécessaire d'avoir des bases de python pour commencer ce cours. Il est **indispensable** que vous relisiez le cours ci-après pour s'assurer que vous avez bien les bases nécessaires en programmation python pour commencer ce cours :
 
 {% aller %}
 [Bases de python](/cours/coder-et-développer/bases-programmation/){.interne}

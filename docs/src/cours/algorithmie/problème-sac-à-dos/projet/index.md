@@ -46,7 +46,7 @@ Exécutez l'algorithme glouton fractionnel avec l'`EXEMPLE`{.language-} du fichi
 Pour vérifier que le profit est bien celui attendu, créons une fonction :
 
 {% faire %}
-Ajoutez au fichier `données.py`{.fichier} une fonction `profit(sac_à_dos, produits)`{.language-} qui rend le profit réalisé pour le sac à dos et les produits en entrée.
+Ajoutez au fichier `données.py`{.fichier} une fonction `profit(sac_à_dos, produits)`{.language-} qui rend le profit réalisé pour le sac à dos (donné comme une liste de proportions de chaque produit, telle que renvoyé par les algorithmes) et les produits en entrée (une liste de dictionnaires, telle que dans l'exemple).
 
 Vous testerez cette fonction dans le fichier  `test_données.py`{.fichier}.
 
