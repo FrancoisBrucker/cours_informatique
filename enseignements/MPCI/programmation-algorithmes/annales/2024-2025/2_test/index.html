@@ -99,6 +99,91 @@
 <p>Vous avez 15min pour faire le test.</p>
 </div></div>
 
+<h2>Rendu</h2>
+<p>On vous rappelle que toute fonction (hors du programme principal) doit être testée.</p>
+<h3>Type de rendu</h3>
+<p>Vous devrez rendre le dossier d'un projet vscode (vous pouvez le compresser si nécessaire). Commencez donc par créer un projet dans un dossier que vous appellerez <code class="fichier">test2</code>.</p>
+<h3>Éléments de notation</h3>
+<ol>
+<li>3 fichiers dans un projet :
+<ul>
+<li>le programme principal <code class="fichier">main.py</code>,</li>
+<li>les fonctions utilisées <code class="fichier">fonctions.py</code>,</li>
+<li>les tests des fonctions <code class="fichier">test_fonctions.py</code>.</li>
+</ul>
+</li>
+<li>Du joli code :
+<ul>
+<li>0 warning,</li>
+<li>le code doit être passé par black.</li>
+</ul>
+</li>
+<li>Bons noms :
+<ul>
+<li>de fichiers,</li>
+<li>de variables.</li>
+</ul>
+</li>
+<li>Tests unitaires : toute fonction non testée ne sera pas corrigée.</li>
+</ol>
+<h2>Sujet</h2>
+<h3>1 Suite alternante</h3>
+<h4>1.1 Code</h4>
+<p>Créez une fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">alternante<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">caractère</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">caractère</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">chaîne</span></code></pre>
+<p>Elle devra rendre une chaîne de caractères de longueur <code class="language-">n</code> alternant les caractères <code class="language-">a</code> et <code class="language-">b</code> et en commençant par <code class="language-">a</code>.</p>
+<p>Par exemples :</p>
+<ul>
+<li><code class="language-">alternante(4, &quot;0&quot;, &quot;1&quot;)</code> doit rendre la chaîne <code class="language-">&quot;0101&quot;</code></li>
+<li><code class="language-">alternante(7, &quot;1&quot;, &quot;z&quot;)</code> doit rendre la chaîne <code class="language-">&quot;1z1z1z1&quot;</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que <code class="language-">+</code> est l'opérateur de concaténation pour deux chaines en python : <code class="language-">&quot;0&quot; + &quot;1&quot;</code> valant <code class="language-">&quot;01&quot;</code></p>
+</div></div>
+
+<h4>1.2 Programme principal</h4>
+<p>Demandez à l'utilisateur un entier $n$ (vous ne ferez aucun test de vérification) puis affichez une suite alternante de &quot;0&quot; et de &quot;1&quot; de longueur $n$ <strong>par ligne de 5 caractères</strong>. Par exemple si l'utilisateur donne $n = 12$ vous afficherez :</p>
+<pre><code>01010
+10101
+01
+</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que <code class="language-">int(c)</code> rendra un entier si <code class="language-">c</code> est une chaîne de caractères représentant un entier.</p>
+</div></div>
+
+<h3>2 Suite croissante</h3>
+<h4>2.1 Code</h4>
+<p>Créez une fonction de signature :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">croissante_alternante<span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token builtin">chiffre</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">chaîne</span></code></pre>
+<p>Qui devra rendre :</p>
+<ul>
+<li><code class="language-">&quot;567&quot;</code> pour <code class="language-">croissante_alternante(3, 5)</code></li>
+<li><code class="language-">&quot;4567891234567&quot;</code> pour <code class="language-">croissante_alternante(13, 4)</code></li>
+<li><code class="language-">&quot;1234567891234567891&quot;</code> pour <code class="language-">croissante_alternante(19, 1)</code></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Vous pourrez utiliser le fait que <code class="language-">str(m)</code> rendra une chaîne de caractère si <code class="language-">m</code> est un entier.</p>
+</div></div>
+
+<h4>2.2 Programme principal</h4>
+<p>Ajoutez à votre programme principal une suite croissante alternante de longueur $n$ commençant à partir de 1 <strong>par ligne de 5 caractères</strong>.</p>
+<p>Par exemple si l'utilisateur donne $n = 12$ vous afficherez :</p>
+<pre><code>12345
+67891
+23
+</code></pre>
 
 
 </article>
