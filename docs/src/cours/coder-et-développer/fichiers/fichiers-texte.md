@@ -26,7 +26,7 @@ Basho.
 ```
 
 {% faire %}
-Créez un fichier texte que vous nommerez `haiku.txt`{.fichier} et et copier/collez-y le texte précédent.
+Créez un fichier texte que vous nommerez `haiku.txt`{.fichier} et copier/collez-y le texte précédent.
 {% endfaire %}
 
 La plupart des fichiers que vous créerez en python seront des fichiers textes.

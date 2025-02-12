@@ -78,7 +78,7 @@ Terminons cette partie en utilisant le débogueur :
 
 Dans le programme principal, calculez l'exponentiation d'un entier par un autre (ces entiers pourront être issus de deux variables ou demandées à l'utilisateur), puis rendez la.
 
-En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
+En utilisant le débogueur, vérifiez l'invariant de boucle (pour pourrez utiliser un espion et un log breakpoint).
 
 {% endfaire %}
 

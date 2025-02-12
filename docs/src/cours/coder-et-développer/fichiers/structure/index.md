@@ -59,7 +59,7 @@ Passer des octets à leurs significations pour un fichier se fait via un [codec]
 
 ## Voir un fichier
 
-Savoir comment interpréter les données d'un fichier n'est pas une chose facile car du point de vue du sytème un fichier n'est que suite de page contenant des octets. 
+Savoir comment interpréter les données d'un fichier n'est pas une chose facile car du point de vue du système un fichier n'est que suite de page contenant des octets. 
 
 Pour savoir quel est le format d'un fichier, on ne possède que de 2 moyens :
 
