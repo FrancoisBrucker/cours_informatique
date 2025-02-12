@@ -305,6 +305,9 @@ Puis on abordera des notion plus avancées du tri :
 {% attention %}
 Rendre le DM 1.
 {% endattention %}
+{% attention %}
+Sujet DM2
+{% endattention %}
 
 On code ce qu'on a vu mercredi :
 
@@ -341,14 +344,17 @@ DS algorithmie 2h , mardi 18/03.
 
 ### Semaine 9
 
+{% attention %}
+Rendre DM2
+{% endattention %}
+{% attention %}
+Sujet DM3 : algorithmie
+{% endattention %}
+
 > 24/03 au 28/03
 >
 > 2h mercredi : composition / agrégation
-> 2h vendredi : TP + environnement virtuels
-
-{% attention %}
-Sujet DM2
-{% endattention %}
+> 2h vendredi : environnement virtuels
 
 ### Semaine 10
 
@@ -359,11 +365,18 @@ Sujet DM2
 
 > TBD : tp programmation par les tests à faire chez eux
 
+{% attention %}
+Rendre DM3
+{% endattention %}
+
 ### Semaine 11
 
 > 14/04 au 18/04
 >
 > 4h mercredi : programmation événementielle
+{% attention %}
+Sujet DM4 : programmation évènementielle.
+{% endattention %}
 
 ### Semaine 12
 
@@ -371,14 +384,14 @@ Sujet DM2
 > 4h mercredi : P&NP
 > 2h vendredi : méthode de résolution de problèmes
 
-{% attention %}
-Rendre DM2
-{% endattention %}
-
 ### Semaine 13
 
 {% attention %}
 DS code 3h, lundi 05/05.
+{% endattention %}
+
+{% attention %}
+Rendre DM4
 {% endattention %}
 
 > 05/05 au 09/05
