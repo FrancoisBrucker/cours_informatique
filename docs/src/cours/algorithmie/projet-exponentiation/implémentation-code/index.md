@@ -76,7 +76,7 @@ Terminons cette partie en utilisant le débogueur :
 
 {% faire %}
 
-Dans le programme principal, calculez la puissance entière d'un entier (cet entier et l'exposant pourront être issus de variables ou demandés à l'utilisateur), puis affichez le résultat.
+Dans le programme principal, calculez l'exponentiation d'un entier par un autre (ces entiers pourront être issus de deux variables ou demandées à l'utilisateur), puis rendez la.
 
 En utilisant le débogueur, vérifiez l'invariant de boucle (pour pourrez utiliser un espion et un log breakpoint).
 
@@ -97,7 +97,7 @@ Terminons cette partie en utilisant le débogueur :
 
 {% faire %}
 
-Dans le programme principal, calculez la factorielle d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez sa factorielle issue du calcul rapide.
+Dans le programme principal, calculez l'exponentiation d'un entier par un autre (ces entiers pourront être issue de variables ou demandés à l'utilisateur), puis rendez la issue du calcul rapide.
 
 En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
 
