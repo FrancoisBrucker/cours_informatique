@@ -266,6 +266,8 @@ Pour aller plus loin :
 
 > 24/02 au 28/02
 
+#### Mercredi : tris TD
+
 {% attention %}
 Test de 15min en début de cours sur **la partie complexité**.
 {% endattention %}
@@ -273,11 +275,7 @@ Test de 15min en début de cours sur **la partie complexité**.
 Sujet du test 3
 {% endfaire %}
 
-{% attention %}
-Rendre le DM 1.
-{% endattention %}
-
-#### Mercredi : tris TD
+Sujets abordés :
 
 {% aller %}
 
@@ -303,6 +301,12 @@ Puis on abordera des notion plus avancées du tri :
 {% endaller %}
 
 #### Vendredi : tris TP
+
+{% attention %}
+Rendre le DM 1.
+{% endattention %}
+
+On code ce qu'on a vu mercredi :
 
 {% aller %}
 

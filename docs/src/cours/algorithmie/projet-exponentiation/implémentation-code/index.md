@@ -76,7 +76,7 @@ Terminons cette partie en utilisant le débogueur :
 
 {% faire %}
 
-Dans le programme principal, calculez la factorielle d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez sa factorielle.
+Dans le programme principal, calculez l'exponentiation d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez son exposant.
 
 En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
 
@@ -97,7 +97,7 @@ Terminons cette partie en utilisant le débogueur :
 
 {% faire %}
 
-Dans le programme principal, calculez la factorielle d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez sa factorielle issue du calcul rapide.
+Dans le programme principal, calculez l'exponentiation d'un entier (cet entier pourra être issue d'une variable ou demandé à l'utilisateur), puis rendez la issue du calcul rapide.
 
 En utilisant le débogueur, vérifiez que l'invariant de boucle est vérifié (pour pourrez utiliser un espion et un log breakpoint).
 
