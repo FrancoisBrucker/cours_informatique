@@ -243,7 +243,7 @@ Le reste [du cours sur les fichier et dossiers](/cours/coder-et-développer/fich
 Test de 15min en début de cours sur **la partie code (main/fonctions/tests)**. Il faudra rendre des fichiers sur AMeTICE.
 {% endattention %}
 {% faire %}
-Sujet du test 2
+[Sujet du test 2](./annales/2024-2025/2_test/){.interne}
 {% endfaire %}
 
 Plan de la séance :
@@ -265,8 +265,8 @@ Pour aller plus loin :
 ### Semaine 5
 
 > 24/02 au 28/02
-> 2h mercredi : complexité en moyenne et tris
-> 2h vendredi : tp tris
+
+#### Mercredi : tris TD
 
 {% attention %}
 Test de 15min en début de cours sur **la partie complexité**.
@@ -275,11 +275,7 @@ Test de 15min en début de cours sur **la partie complexité**.
 Sujet du test 3
 {% endfaire %}
 
-{% attention %}
-Rendre le DM 1.
-{% endattention %}
-
-#### Mercredi : tris TD
+Sujets abordés :
 
 {% aller %}
 
@@ -306,6 +302,12 @@ Puis on abordera des notion plus avancées du tri :
 
 #### Vendredi : tris TP
 
+{% attention %}
+Rendre le DM 1.
+{% endattention %}
+
+On code ce qu'on a vu mercredi :
+
 {% aller %}
 
 [Projet tri](/cours/algorithmie/problème-tris/projet-tris/){.interne}
@@ -316,15 +318,15 @@ Puis on abordera des notion plus avancées du tri :
 
 > 03/03 au 07/03
 >
-> 2h mercredi : listes et dictionnaires
-> 2h vendredi : Structures de données TP
+> 2h mercredi : listes, dictionnaires et piles (introduction à la complexité amortie)
+> 2h vendredi : Structures de données TP (décurryfication, liste et dictionnaires)
 
 ### Semaine 7
 
 > 10/03 au 14/03
 >
-> 2h mercredi : gloutons
-> 2h vendredi : méthode de résolution de pb 1
+> 2h mercredi : gloutons cours
+> 2h vendredi : gloutons TD
 
 ### Semaine 8
 
@@ -336,8 +338,6 @@ DS algorithmie 2h , mardi 18/03.
 >
 > 2h mercredi : classes et objets
 > 2h vendredi : tp objet + code coverage
-
->
 
 ### Semaine 9
 

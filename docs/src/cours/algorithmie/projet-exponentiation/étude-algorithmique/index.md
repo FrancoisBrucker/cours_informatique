@@ -568,7 +568,7 @@ C'est vrai pour $i=0$ puisque $a_0 = x =x^{2^0}$. On suppose la propriété vrai
 Ceci permet de montrer que :
 
 {% note "**Proposition**" %}
-Toute suite multiplicative pur $x^n$ $(a_i)_{0\leq i \leq r}$ est telle que :
+Toute suite multiplicative pour $x^n$ $(a_i)_{0\leq i \leq r}$ est telle que :
 
 <div>
 $$
