@@ -57,7 +57,7 @@ Montrez que l'algorithme suivant permet de résoudre le problème _Doppelganger_
 
 ```pseudocode
 algorithme doppelganger_naif(T: [entier]) → entier:
-    pour chaque i de [0, T.longueur -1 ]:
+    pour chaque i de [0, T.longueur -1]:
         pour chaque j de [i+1, T.longueur -1]:
             si T[i] == T[j]:
                 rendre T[i]

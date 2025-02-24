@@ -266,6 +266,12 @@ Pour aller plus loin :
 
 > 24/02 au 28/02
 
+Semaine basée sur les tris.
+
+{% info %}
+Reprend de grandes parties [du cours d'algorithmie sur les tris](/cours/algorithmie/problème-tris/){,interne}, mais pour aller plus loin ou pour les révisions, n'hésitez pas à aller le lire.
+{% endinfo %}
+
 #### Mercredi : tris TD
 
 {% attention %}
@@ -282,21 +288,24 @@ Sujets abordés :
 Introduction aux algorithmes de tri :
 
 1. [Problème du tri : définition et reconnaissance](/cours/algorithmie/problème-tris/){.interne}
-2. [Algorithme de tris simple (selection et insertion)](/cours/algorithmie/problème-tris/#tris-simples){.interne}
+2. [Complexité du problème du tri](/cours/algorithmie/problème-tris/complexité-problème/){.interne}
 {% endaller %}
 
 L'analyse de ces algorithme simple nous permettra de formaliser la notion de complexité en moyenne :
 
 {% aller %}
-[Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+
+1. [Algorithme de tris par  insertion](/cours/algorithmie/problème-tris/algorithme-insertion/){.interne}
+2. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+
 {% endaller %}
 
 Puis on abordera des notion plus avancées du tri :
 
 {% aller %}
 
-1. [Complexité du problème du tri](/cours/algorithmie/problème-tris/complexité-problème/){.interne}
-2. [Algorithmes de tris optimaux](/cours/algorithmie/problème-tris/#tris-optimaux){.interne}
+1. [Tri fusion : diviser pour régner](/cours/algorithmie/problème-tris//algorithme-fusion/){.interne}
+2. [Tri rapide : calcul des complexités](/cours/algorithmie/problème-tris/algorithme-rapide/){.interne}
 
 {% endaller %}
 
@@ -306,7 +315,7 @@ Puis on abordera des notion plus avancées du tri :
 Rendre le DM 1.
 {% endattention %}
 {% attention %}
-Sujet DM2
+Sujet DM2 : élément majoritaire
 {% endattention %}
 
 On code ce qu'on a vu mercredi :
@@ -321,15 +330,15 @@ On code ce qu'on a vu mercredi :
 
 > 03/03 au 07/03
 >
-> 2h mercredi : listes, dictionnaires et piles (introduction à la complexité amortie)
-> 2h vendredi : Structures de données TP (décurryfication, liste et dictionnaires)
+> 2h mercredi : structures linéaires : listes, dictionnaires et piles (introduction à la complexité amortie) : intérêt de chaque structure
+> 2h vendredi : Structures de données TP (décurryfication, liste,  dictionnaires et pile/file)
 
 ### Semaine 7
 
 > 10/03 au 14/03
 >
-> 2h mercredi : gloutons cours
-> 2h vendredi : gloutons TD
+> 2h mercredi : algorithmes classiques
+> 2h vendredi : méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
 
 ### Semaine 8
 
@@ -337,52 +346,59 @@ On code ce qu'on a vu mercredi :
 DS algorithmie 2h , mardi 18/03.
 {% endattention %}
 
+{% attention %}
+Rendre DM2 (mercredi)
+{% endattention %}
+{% attention %}
+Sujet DM3 : code objet
+{% endattention %}
+
 > 17/03 au 21/03
 >
 > 2h mercredi : classes et objets
-> 2h vendredi : tp objet + code coverage
+> 2h vendredi : composition / agrégation
 
 ### Semaine 9
 
 {% attention %}
-Rendre DM2
+Rendre DM3 (mercredi)
 {% endattention %}
 {% attention %}
-Sujet DM3 : algorithmie
+Sujet DM4 : code objet suite
 {% endattention %}
 
 > 24/03 au 28/03
 >
-> 2h mercredi : composition / agrégation
-> 2h vendredi : environnement virtuels
+> 2h mercredi : héritage
+> 2h vendredi : TP
+>
+> TBD : tp programmation par les tests à faire chez eux
 
 ### Semaine 10
 
 > 31/03 au 04/04
 >
-> 2h mercredi : héritage
-> 2h vendredi : TP
-
-> TBD : tp programmation par les tests à faire chez eux
+> 2h mercredi : programmation évènementielle Cours
+> 2h vendredi : programmation évènementielle TP
 
 {% attention %}
 Rendre DM3
+{% endattention %}
+{% attention %}
+Sujet DM4 : programmation évènementielle.
 {% endattention %}
 
 ### Semaine 11
 
 > 14/04 au 18/04
 >
-> 4h mercredi : programmation événementielle
-{% attention %}
-Sujet DM4 : programmation évènementielle.
-{% endattention %}
+> 4h mercredi : P&NP + méthode de résolution de problèmes
 
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : P&NP
-> 2h vendredi : méthode de résolution de problèmes
+> 4h mercredi : sac à dos.
+> 2h vendredi : méthode de résolution de problèmes suite
 
 ### Semaine 13
 

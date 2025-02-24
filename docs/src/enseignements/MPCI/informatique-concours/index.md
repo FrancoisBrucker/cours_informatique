@@ -33,3 +33,9 @@ Sarah a effectué un stage sous ma direction visant à apprendre le java et à d
 {% lien %}
 [Rapport de Sarah sur son stage d'apprentissage de Java](Rapport_de_stage_KEGHIAN_2024.pdf)
 {% endlien %}
+
+## Oraux Concours Commun INP
+
+Pas forcément un concours que vous passez, mais peut valoir le coup de regarder puisqu'il y a aussi des corrigés :
+
+<https://www.concours-commun-inp.fr/fr/epreuves/les-epreuves-orales.html>
