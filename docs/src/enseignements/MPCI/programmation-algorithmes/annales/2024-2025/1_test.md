@@ -2,8 +2,6 @@
 layout: layout/post.njk
 
 title:  "sujet Test 1 : algorithmie et preuve"
-authors:
-    - François Brucker
 ---
 
 {% attention %}

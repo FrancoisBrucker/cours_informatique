@@ -250,7 +250,7 @@ n = 1 + \sum_{2 \leq k \leq K}2^{k-1} = 2^K - 1
 $$
 </div>
 
-La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$ avec des rangées pleines. Cet arbre minimisera effectivement $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ puisque toutes les couches minimale seront prisent. Pour cet arbre on aura $K=\log_2(n)$ et :
+La hauteur minimale de l'arbre est donc atteinte pour $K \simeq \log_2(n)$ avec des rangées pleines. Cet arbre minimisera effectivement $C = \mathcal{O}(\sum_{x \in T_0}e(x))$ puisque toutes les couches minimales seront prises. Pour cet arbre on aura $K=\log_2(n)$ et :
 
 <div>
 $$

@@ -338,7 +338,7 @@ On code ce qu'on a vu mercredi :
 > 10/03 au 14/03
 >
 > 2h mercredi : algorithmes classiques
-> 2h vendredi : méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
+> 2h vendredi : enveloppe convexe.
 
 ### Semaine 8
 
@@ -392,7 +392,7 @@ Sujet DM4 : programmation évènementielle.
 
 > 14/04 au 18/04
 >
-> 4h mercredi : P&NP + méthode de résolution de problèmes
+> 4h mercredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
 
 ### Semaine 12
 
