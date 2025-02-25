@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sujet Test 2 : code</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>sujet Test 2 : code</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+  <h2>Barème</h2>
+<p>Une note sur 9 répartie comme suit :</p>
+<ul>
+<li>3pt pour la question 1.1</li>
+<li>3pt pour la question 1.2</li>
+<li>2pt pour la question 2.1</li>
+<li>1pt pour la question 2.2</li>
+</ul>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 9 par $2.5$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire la première question correctement (ce qui garantit le 10/20), c'est à dire :
+<ul>
+<li>coder la fonction et son test</li>
+<li>avoir un main fonctionnel rendant à peu prêt ce qui est demandé.</li>
+</ul>
+</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir à faire la première question parfaitement (ce qui fait le 15/20)</li>
+<li><strong>un très bon élève</strong> à commencé la seconde question.</li>
+</ul>
+</div></div>
+
+<p>La ventilation des notes est :</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Erreurs fréquemment rencontrées</h2>
+<ol>
+<li>Votre code <strong>doit</strong> fonctionner. Au pire vous commentez le code non fonctionnel et expliquez, également en commentaire, le problème.</li>
+<li>un test ne doit pas faire semblant de tester... Si la fonction à tester ne marche pas, il <strong>faut</strong> que le test rate.</li>
+<li>Les tests font partie du code : il <strong>doit</strong> fonctionner. Il peut échouer ou réussir, mais il doit s'executer.</li>
+</ol>
+<p>En code il faut avancer petit à petit et tout doit toujours fonctionner. Plein de code qui ne fonctionne qu'à moitié vaudra toujours moins que moins de code mais fonctionnel.</p>
+<p><strong>Le correcteur</strong> ne va pas faire l'effort de corriger votre code pour qu'il fonctionne, ni le lire attentivement comme on le ferait avec un algorithme. Mais plus important encore, <strong>vous</strong> serez plus confiant en bâtissant sur quelque chose qui fonctionne.</p>
+<p>Coder sans exécuter son code c'est coder les yeux bandés : cela ne peut pas fonctionner.</p>
+<h2>Corrigé</h2>
+<h3>Question 1</h3>
+<h4>Code</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">alternante</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            s <span class="token operator">+=</span> a
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            s <span class="token operator">+=</span> b
+
+    <span class="token keyword">return</span> s</code></pre>
+<h4>Test</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante
+
+
+<span class="token keyword">def</span> <span class="token function">test_alternante</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> alternante<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"0101"</span>
+    <span class="token keyword">assert</span> alternante<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">,</span> <span class="token string">"z"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"1z1z1z1"</span></code></pre>
+<h4>Programme principal</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
+
+n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+chaîne <span class="token operator">=</span> alternante<span class="token punctuation">(</span>n_init<span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span>
+n <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> n <span class="token operator">&lt;</span> n_init<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>n<span class="token punctuation">:</span>n<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    n <span class="token operator">+=</span> <span class="token number">5</span></code></pre>
+<h4>Code alternatif</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">alternante_bis</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">+=</span> a
+        a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a
+
+    <span class="token keyword">return</span> s</code></pre>
+<h4>Programme principal alternatif</h4>
+<p>En refaisant à chaque fois une chaîne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante
+
+n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+début <span class="token operator">=</span> <span class="token string">'0'</span>
+fin <span class="token operator">=</span> <span class="token string">'1'</span>
+n <span class="token operator">=</span> n_init
+<span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>alternante<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> début<span class="token punctuation">,</span> fin<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    n <span class="token operator">-=</span> <span class="token number">5</span>
+    début<span class="token punctuation">,</span> fin <span class="token operator">=</span> fin<span class="token punctuation">,</span> début
+
+<span class="token keyword">if</span> n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>alternante<span class="token punctuation">(</span>n<span class="token punctuation">,</span> début<span class="token punctuation">,</span> fin<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3>Question 2</h3>
+<h4>Code</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">croissante_alternante</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+        c <span class="token operator">=</span> c <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> c <span class="token operator">></span> <span class="token number">9</span><span class="token punctuation">:</span>
+            c <span class="token operator">=</span> <span class="token number">1</span>
+
+    <span class="token keyword">return</span> s</code></pre>
+<h4>Test</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> croissante_alternante
+
+
+<span class="token keyword">def</span> <span class="token function">test_croissante_alternante</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"567"</span>
+    <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"4567891234567"</span>
+    <span class="token keyword">assert</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">"1234567891234567891"</span></code></pre>
+<h4>Programme principal</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
+
+n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+chaîne <span class="token operator">=</span> alternante<span class="token punctuation">(</span>n_init<span class="token punctuation">,</span> <span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span>
+n <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> n <span class="token operator">&lt;</span> n_init<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>n<span class="token punctuation">:</span>n<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    n <span class="token operator">+=</span> <span class="token number">5</span>
+
+chaîne <span class="token operator">=</span> croissante_alternante<span class="token punctuation">(</span>n_init<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+n <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> n <span class="token operator">&lt;</span> n_init<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>chaîne<span class="token punctuation">[</span>n<span class="token punctuation">:</span>n<span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    n <span class="token operator">+=</span> <span class="token number">5</span>
+</code></pre>
+<h4>Code alternatif</h4>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">croissante_alternante_bis</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">""</span>
+
+    <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        s <span class="token operator">+=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+        c <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> s</code></pre>
+<h4>Programme principal alternatif</h4>
+<p>En refaisant à chaque fois une chaîne :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">from</span> fonctions <span class="token keyword">import</span> alternante<span class="token punctuation">,</span> croissante_alternante
+
+n_init <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"Un entier (puis entrée) :"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+début <span class="token operator">=</span> <span class="token string">'0'</span>
+fin <span class="token operator">=</span> <span class="token string">'1'</span>
+n <span class="token operator">=</span> n_init
+<span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>alternante<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> début<span class="token punctuation">,</span> fin<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    n <span class="token operator">-=</span> <span class="token number">5</span>
+    début<span class="token punctuation">,</span> fin <span class="token operator">=</span> fin<span class="token punctuation">,</span> début
+
+<span class="token keyword">if</span> n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>alternante<span class="token punctuation">(</span>n<span class="token punctuation">,</span> début<span class="token punctuation">,</span> fin<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+n <span class="token operator">=</span> n_init
+c <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> n <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> croissante_alternante<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+
+    c <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> c <span class="token operator">></span> <span class="token number">9</span><span class="token punctuation">:</span>
+        c <span class="token operator">=</span> <span class="token number">1</span>
+
+    n <span class="token operator">-=</span> <span class="token number">5</span>
+
+<span class="token keyword">if</span> n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> croissante_alternante<span class="token punctuation">(</span>n<span class="token punctuation">,</span> c<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span></code></pre>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>
