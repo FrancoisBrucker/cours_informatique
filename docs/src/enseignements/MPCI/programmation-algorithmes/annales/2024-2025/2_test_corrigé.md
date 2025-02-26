@@ -177,15 +177,35 @@ while n < n_init:
 
 #### Code alternatif
 
+On n'utilise un modulo (comme on n'utilise pas l'itérateur de boucle, python permet de l'exprimer en le remplaçant par `_`{.language-}) :
+
 ```python
 def croissante_alternante_bis(n, c):
     s = ""
 
     for _ in range(n):
         s += str(c)
-        c = max((c + 1) % 10, 1)
+        c = c % 9 + 1
 
     return s
+```
+
+Comme on utilise le modulo on peut modifier le code pour qu'il utilise l'itérateur de la boucle, ce qui est plus _joli_ :
+
+```python
+def croissante_alternante_bis_bis(n, c):
+    s = ""
+    for i in range(c-1, c+ n-1):
+        s += str(i % 9 + 1)
+
+    return s
+```
+
+Et qui permet, en utilisant des list comprehension et la méthode [`join`{.language-}](https://docs.python.org/fr/3.13/library/stdtypes.html#str.join) des chaînes de caractères, de simplifier drastiquement le code en l'[unilignant](https://fr.wikipedia.org/wiki/Uniligne) :
+
+```python
+def croissante_alternante_ultime(n, c):
+    return "".join([str(i % 9 + 1) for i in range(c-1, c+ n-1)])
 ```
 
 #### Programme principal alternatif
