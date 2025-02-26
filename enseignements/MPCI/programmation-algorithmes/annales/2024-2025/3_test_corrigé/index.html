@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>sujet Test 3 : complexité</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>sujet Test 3 : complexité</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+  <h2>Barème</h2>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+<h2>Erreurs fréquemment rencontrées</h2>
+<h2>Corrigé</h2>
+<h3>1 un algorithme de multiplication</h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme <span class="token function">mul</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+    r <span class="token operator">←</span> <span class="token number">0</span>
+    <span class="token keyword">tant que</span> x <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> x est impair<span class="token punctuation">:</span>
+            x <span class="token operator">←</span> x <span class="token operator">-</span> <span class="token number">1</span>
+            r <span class="token operator">←</span> r <span class="token operator">+</span> y
+        x <span class="token operator">←</span> x <span class="token operator">/</span> <span class="token number">2</span>
+        y <span class="token operator">←</span> y <span class="token operator">*</span> <span class="token number">2</span>
+    
+    <span class="token keyword">rendre</span> r</code></pre>
+<h4>1.1</h4>
+<p>Montrer que le programme <code class="language-">mul</code> est un algorithme.</p>
+<h4>1.2</h4>
+<p>Donnez la complexité de l'algorithme <code class="language-">mul</code> en fonction de <code class="language-">x</code>.</p>
+<h4>1.3</h4>
+<p>Démontrez que <code class="language-">mul(x, y) = x * y</code>.</p>
+<h3>2 représentation binaire des nombres</h3>
+<p>Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. C'est le cas lorsque les entiers considérés sont bornés ce qui est habituellement le cas (ils sont codés sur 64 bits et permettent de stocker des entiers de 0 à $2^{64}-1$) mais supposons ici que nous pouvons avoir des entiers aussi grand que l'on veut.</p>
+<p>Pour cela on code un entier $n$ par un tableau $T$ de bits (0 ou 1) tel que :</p>
+<div>
+$$
+n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]
+$$
+</div>
+<h4>2.1</h4>
+<p>Comment savoir si l'entier $n$ représenté par un tableau de bits $T_n$ est pair ?</p>
+<h4>2.2</h4>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">mul2</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span></code></pre>
+<h5>2.2.1</h5>
+<p>Quel est la complexité de l'algorithme <code class="language-">mul2(T: [bit])</code> ?</p>
+<h5>2.2.2</h5>
+<p>Montrez en quelques mots que l'algorithme <code class="language-">mul2(T: [bit])</code> permet de multiplier par deux <strong>en place</strong> (en modifiant le tableau) un entier représenté par $T$ si $T[-1] = 0$.</p>
+<h5>2.3</h5>
+<p>Donnez un algorithme <code class="language-">div2(T: [bit])</code> ainsi que sa complexité permettant de diviser par deux <strong>en place</strong> (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.</p>
+<h4>2.4</h4>
+<p>Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers <code class="language-">x</code> et <code class="language-">y</code> sont tels que $T_x[-1] = T_y[-1] = 1$, quelle est la taille du tableau représentant l'entier $x\cdot y$ ?</p>
+<h3>3 adaptation de l'algorithme</h3>
+<h4>3.1</h4>
+<p>Modifiez l'algorithme <code class="language-">mul(x: entier, y: entier) → entier</code> de la question 1 pour qu'il soit de signature : <code class="language-">mul(Tx: [bit], Ty: [bit]) → [bit]</code></p>
+<h4>3.2</h4>
+<p>Déduire des questions précédentes la complexité de ce nouvel algorithme par rapport à <code class="language-">Tx.longueur</code> et <code class="language-">Ty.longueur</code>.</p>
+<!--
+
+### 4 Pour aller plus loin un autre algorithme
+
+> TBD add en log n
+> TBD soustraction et division : <https://leria-info.univ-angers.fr/~jeanmichel.richer/ensl1i_base_de_l_info_1_sub_div.php>
+> TBD mul plus long c;est pour ça qu'on considère plus gros.
+> TBD si taille fixe ok.
+>
+> TBD avons nous eu raison de choisir 1 et 1 pour mul et 1
+
+### 5 Pour aller plus loin un autre algorithme
+
+> TBD Kolmogorov et Karatsuba.
+>
+> TBD pour aller plus loin et en faire un long exo
+> TBD <https://en.wikipedia.org/wiki/Karatsuba_algorithm>
+>
+> TBD pour ne pas conclure on ne sais pas jusqu'ou on peut aller. 
+
+-->
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

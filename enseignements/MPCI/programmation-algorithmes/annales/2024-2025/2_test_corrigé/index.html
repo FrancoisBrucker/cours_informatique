@@ -88,7 +88,7 @@
 <li>2pt pour la question 2.1</li>
 <li>1pt pour la question 2.2</li>
 </ul>
-<p>La note sur $20$ finale est obtenue en multipliant la note sur 9 par $2.5$.</p>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 9 par $2.25$.</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -104,16 +104,56 @@
 <li>avoir un main fonctionnel rendant à peu prêt ce qui est demandé.</li>
 </ul>
 </li>
-<li><strong>un bon élève</strong> doit parvenir à réussir à faire la première question parfaitement (ce qui fait le 15/20)</li>
-<li><strong>un très bon élève</strong> à commencé la seconde question.</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir à faire la première question parfaitement et commencer la seconde</li>
+<li><strong>un très bon élève</strong> à fini la question 2.1</li>
 </ul>
 </div></div>
 
 <p>La ventilation des notes est :</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>≤8</th>
+<th>]8, 10[</th>
+<th>[10, 12]</th>
+<th>]12, 14]</th>
+<th>]14, 16]</th>
+<th>[16, 20]</th>
+<th>&gt; 20</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>9</td>
+<td>6</td>
+<td>8</td>
+<td>11</td>
+<td>3</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>44</td>
+<td>34</td>
+<td>28</td>
+<td>21</td>
+<td>10</td>
+<td>7</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 11.29/20</li>
+<li>écart-type : 4.3/20</li>
+<li>médiane : 11.48/20</li>
+</ul>
 <h2>Erreurs fréquemment rencontrées</h2>
+<h3>Avoir un code fonctionnel</h3>
 <ol>
 <li>Votre code <strong>doit</strong> fonctionner. Au pire vous commentez le code non fonctionnel et expliquez, également en commentaire, le problème.</li>
 <li>un test ne doit pas faire semblant de tester... Si la fonction à tester ne marche pas, il <strong>faut</strong> que le test rate.</li>
@@ -122,6 +162,10 @@
 <p>En code il faut avancer petit à petit et tout doit toujours fonctionner. Plein de code qui ne fonctionne qu'à moitié vaudra toujours moins que moins de code mais fonctionnel.</p>
 <p><strong>Le correcteur</strong> ne va pas faire l'effort de corriger votre code pour qu'il fonctionne, ni le lire attentivement comme on le ferait avec un algorithme. Mais plus important encore, <strong>vous</strong> serez plus confiant en bâtissant sur quelque chose qui fonctionne.</p>
 <p>Coder sans exécuter son code c'est coder les yeux bandés : cela ne peut pas fonctionner.</p>
+<h3>Erreur de longueur</h3>
+<p>Dans la question 1.1 alterner les 2 caractères a posé des problèmes, l'erreur la plus courante  été de ne rendre que des chaines de longueur paires.</p>
+<h3>Erreur d'affichage</h3>
+<p>L'affichage de la question 1.2  a posé de nombreux problèmes. L'erreur la plus courante, outre le fait de tout afficher sur une ligne, a éte de ne pas alterner les 0 et les 1 en début de chaîne.</p>
 <h2>Corrigé</h2>
 <h3>Question 1</h3>
 <h4>Code</h4>
