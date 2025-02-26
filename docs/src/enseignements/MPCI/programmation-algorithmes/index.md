@@ -278,7 +278,7 @@ Reprend de grandes parties [du cours d'algorithmie sur les tris](/cours/algorith
 Test de 15min en début de cours sur **la partie complexité**.
 {% endattention %}
 {% faire %}
-Sujet du test 3
+[Sujet du test 3](./annales/2024-2025/3_test/){.interne}
 {% endfaire %}
 
 Sujets abordés :
@@ -314,9 +314,6 @@ Puis on abordera des notion plus avancées du tri :
 {% attention %}
 Rendre le DM 1.
 {% endattention %}
-{% attention %}
-Sujet DM2 : élément majoritaire
-{% endattention %}
 
 On code ce qu'on a vu mercredi :
 
@@ -329,9 +326,27 @@ On code ce qu'on a vu mercredi :
 ### Semaine 6
 
 > 03/03 au 07/03
->
-> 2h mercredi : structures linéaires : listes, dictionnaires et piles (introduction à la complexité amortie) : intérêt de chaque structure
-> 2h vendredi : Structures de données TP (décurryfication, liste,  dictionnaires et pile/file)
+
+#### Mercredi : Liste/dictionnaires et piles
+
+{% attention %}
+Test de 15min en début de cours sur **la création d'algorithmes**.
+{% endattention %}
+{% faire %}
+Sujet du test 4
+{% endfaire %}
+
+{% attention %}
+Sujet DM2 : élément majoritaire
+{% endattention %}
+
+> 2h mercredi : structures linéaires : listes, tableaux et piles.
+> introduction à la complexité amortie
+> intérêt de chaque structure
+
+#### Vendredi : Liste/dictionnaires et piles
+
+> 2h vendredi : tables de hachage, dictionnaire et ensembles
 
 ### Semaine 7
 

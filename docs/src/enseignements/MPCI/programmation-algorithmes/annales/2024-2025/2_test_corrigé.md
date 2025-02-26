@@ -14,7 +14,7 @@ Une note sur 9 répartie comme suit :
 - 2pt pour la question 2.1
 - 1pt pour la question 2.2
 
-La note sur $20$ finale est obtenue en multipliant la note sur 9 par $2.5$.
+La note sur $20$ finale est obtenue en multipliant la note sur 9 par $2.25$.
 
 {% note "**Objectif du test**" %}
 
@@ -23,16 +23,27 @@ En 15 minutes :
 - **un élève *normal*** doit parvenir à faire la première question correctement (ce qui garantit le 10/20), c'est à dire :
   - coder la fonction et son test
   - avoir un main fonctionnel rendant à peu prêt ce qui est demandé.
-- **un bon élève** doit parvenir à réussir à faire la première question parfaitement (ce qui fait le 15/20)
-- **un très bon élève** à commencé la seconde question.
+- **un bon élève** doit parvenir à réussir à faire la première question parfaitement et commencer la seconde
+- **un très bon élève** à fini la question 2.1
 
 {% endnote %}
 
 La ventilation des notes est :
 
-> TBD
+La ventilation des notes est :
+
+|note/20  |≤8  | ]8, 10[ | [10, 12]      | ]12, 14]    | ]14, 16]  | [16, 20]    | > 20
+|---------|----|------------|------------|-------------|-----------|-------------|------
+|nombre   | 9  |  6         |  8         |  11         |  3        | 5           |  2
+|rang min | 44 | 34         | 28         | 21          | 10        | 7           |  1
+
+- moyenne : 11.29/20
+- écart-type : 4.3/20
+- médiane : 11.48/20
 
 ## Erreurs fréquemment rencontrées
+
+### Avoir un code fonctionnel
 
 1. Votre code **doit** fonctionner. Au pire vous commentez le code non fonctionnel et expliquez, également en commentaire, le problème.
 2. un test ne doit pas faire semblant de tester... Si la fonction à tester ne marche pas, il **faut** que le test rate.
@@ -43,6 +54,14 @@ En code il faut avancer petit à petit et tout doit toujours fonctionner. Plein 
 **Le correcteur** ne va pas faire l'effort de corriger votre code pour qu'il fonctionne, ni le lire attentivement comme on le ferait avec un algorithme. Mais plus important encore, **vous** serez plus confiant en bâtissant sur quelque chose qui fonctionne.
 
 Coder sans exécuter son code c'est coder les yeux bandés : cela ne peut pas fonctionner.
+
+### Erreur de longueur
+
+Dans la question 1.1 alterner les 2 caractères a posé des problèmes, l'erreur la plus courante  été de ne rendre que des chaines de longueur paires.
+
+### Erreur d'affichage
+
+L'affichage de la question 1.2  a posé de nombreux problèmes. L'erreur la plus courante, outre le fait de tout afficher sur une ligne, a éte de ne pas alterner les 0 et les 1 en début de chaîne.
 
 ## Corrigé
 
