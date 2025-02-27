@@ -314,6 +314,9 @@ Puis on abordera des notion plus avancées du tri :
 {% attention %}
 Rendre le DM 1.
 {% endattention %}
+{% attention %}
+[Sujet DM2 : Palindromes](annales/2023-2024/palindromes/){.interne}
+{% endattention %}
 
 On code ce qu'on a vu mercredi :
 
@@ -336,15 +339,11 @@ Test de 15min en début de cours sur **les tris**.
 Sujet du test 4
 {% endfaire %}
 
-{% attention %}
-Sujet DM2 : élément majoritaire
-{% endattention %}
-
 > 2h mercredi : structures linéaires : listes, tableaux et piles.
 > introduction à la complexité amortie
 > intérêt de chaque structure
 
-#### Vendredi : Liste/dictionnaires et piles
+#### Vendredi : Liste/dictionnaires et ensembles
 
 > 2h vendredi : tables de hachage, dictionnaire et ensembles
 
