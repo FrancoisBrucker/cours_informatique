@@ -330,7 +330,7 @@ On code ce qu'on a vu mercredi :
 #### Mercredi : Liste/dictionnaires et piles
 
 {% attention %}
-Test de 15min en début de cours sur **la création d'algorithmes**.
+Test de 15min en début de cours sur **les tris**.
 {% endattention %}
 {% faire %}
 Sujet du test 4
