@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>sujet Test 3 : complexité</title>
+    <title>corrigé Test 3 : complexité</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>sujet Test 3 : complexité</h1>
+  <h1>corrigé Test 3 : complexité</h1>
   <div>
     
 
@@ -87,50 +87,66 @@
 <h2>Erreurs fréquemment rencontrées</h2>
 <h2>Corrigé</h2>
 <h3>1 un algorithme de multiplication</h3>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">programme <span class="token function">mul</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    r <span class="token operator">←</span> <span class="token number">0</span>
-    <span class="token keyword">tant que</span> x <span class="token operator">≠</span> <span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">si</span> x est impair<span class="token punctuation">:</span>
-            x <span class="token operator">←</span> x <span class="token operator">-</span> <span class="token number">1</span>
-            r <span class="token operator">←</span> r <span class="token operator">+</span> y
-        x <span class="token operator">←</span> x <span class="token operator">/</span> <span class="token number">2</span>
-        y <span class="token operator">←</span> y <span class="token operator">*</span> <span class="token number">2</span>
-    
-    <span class="token keyword">rendre</span> r</code></pre>
+<p>On suppose que les entiers sont positifs.</p>
+<p>Cet algorithme doit vous rappeler très fortement l'algorithme de l'exponentiation rapide. Il est basé sur le même principe et tout ce qu'on a fait pour l'un (complexité et preuve) marche pour l'autre.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'algorithme est connu sous le nom de <a href="https://fr.wikipedia.org/wiki/Technique_de_multiplication_dite_russe">multiplication russe, ou encore multiplication du paysan russe</a>.</p>
+</div></div>
+
 <h4>1.1</h4>
-<p>Montrer que le programme <code class="language-">mul</code> est un algorithme.</p>
+<p>Le programme <code class="language-">mul</code> est un algorithme car la variable <code class="language-">x</code> décroît strictement à chaque itération en restant positive (donc elle vaudra 0 à un moment).</p>
 <h4>1.2</h4>
-<p>Donnez la complexité de l'algorithme <code class="language-">mul</code> en fonction de <code class="language-">x</code>.</p>
+<p>Á chaque étape on divise la variable <code class="language-">x</code> par 2. L'argument est alors le même que pour la factorisation rapide : il y a au plus $\log_2(x)$ itérations de l'algorithme. Comme toutes les autres opérations sont en $\mathcal{O}(1)$, on en déduit que la complexité totale de l'algorithme est en $\mathcal{O}(\ln(x))$.</p>
 <h4>1.3</h4>
-<p>Démontrez que <code class="language-">mul(x, y) = x * y</code>.</p>
+<p>Pour démontrez que <code class="language-">mul(x, y) = x * y</code> on utilise l'invariant : <code class="language-">X * Y = r + x * y</code> avec <code class="language-">X</code> et <code class="language-">Y</code> les paramètres initiaux.</p>
+<p>C'est invariant est quasiment le même que celui de l'exponentiation indienne. On vérifie aisément qu'il fonctionne.</p>
 <h3>2 représentation binaire des nombres</h3>
-<p>Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. C'est le cas lorsque les entiers considérés sont bornés ce qui est habituellement le cas (ils sont codés sur 64 bits et permettent de stocker des entiers de 0 à $2^{64}-1$) mais supposons ici que nous pouvons avoir des entiers aussi grand que l'on veut.</p>
-<p>Pour cela on code un entier $n$ par un tableau $T$ de bits (0 ou 1) tel que :</p>
-<div>
-$$
-n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]
-$$
-</div>
 <h4>2.1</h4>
-<p>Comment savoir si l'entier $n$ représenté par un tableau de bits $T_n$ est pair ?</p>
+<p>L'entier $n$ est pair si et seulement si $T_n[0] = 0$</p>
 <h4>2.2</h4>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">mul2</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-    T<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span></code></pre>
 <h5>2.2.1</h5>
-<p>Quel est la complexité de l'algorithme <code class="language-">mul2(T: [bit])</code> ?</p>
+<p>Une unique boucle de $\mathcal{O}(T.\mbox{\tiny longueur})$ et le reste des lignes est en $\mathcal{O}(1)$ : l'algorithme est de complexité $\mathcal{O}(T.\mbox{\tiny longueur})$.</p>
 <h5>2.2.2</h5>
-<p>Montrez en quelques mots que l'algorithme <code class="language-">mul2(T: [bit])</code> permet de multiplier par deux <strong>en place</strong> (en modifiant le tableau) un entier représenté par $T$ si $T[-1] = 0$.</p>
+<p>Si $n = \sum_{0\leq i &lt; T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $2n \sum_{1\leq i \leq T.\mbox{\tiny longueur}}2^i\cdot T[i-1]$ ce qui correspond à ce que fait l'algorithme.</p>
+<p>Le fait que $T[i-1] = 0$ permet de dire que le tableau représentant $2n$ peut avoir la même taille que $T$.</p>
 <h5>2.3</h5>
-<p>Donnez un algorithme <code class="language-">div2(T: [bit])</code> ainsi que sa complexité permettant de diviser par deux <strong>en place</strong> (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">div2</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">[</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span>
+    T<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span></code></pre>
+<p>Le raisonnement est identique que pour  prouver <code class="language-">mul2(T: [bit])</code> :</p>
+<p>Si $n = \sum_{0\leq i &lt; T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $n/2 = \sum_{0 \leq i &lt; T.\mbox{\tiny longueur} - 1}2^i\cdot T[i+1]$ ce qui correspond à ce que fait l'algorithme.</p>
+<p>Le fait que $T[0] = 0$ permet d'assurer le fait que l'entier représenté par $T$ soit pair et donc divisible par 2.</p>
 <h4>2.4</h4>
-<p>Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers <code class="language-">x</code> et <code class="language-">y</code> sont tels que $T_x[-1] = T_y[-1] = 1$, quelle est la taille du tableau représentant l'entier $x\cdot y$ ?</p>
+<p>La taille doit être égale à $T_x.\mbox{\tiny longueur} + T_y.\mbox{\tiny longueur}$.</p>
 <h3>3 adaptation de l'algorithme</h3>
 <h4>3.1</h4>
-<p>Modifiez l'algorithme <code class="language-">mul(x: entier, y: entier) → entier</code> de la question 1 pour qu'il soit de signature : <code class="language-">mul(Tx: [bit], Ty: [bit]) → [bit]</code></p>
+<p>On suppose que l'on a une méthode <code class="language-">add(Tx, Ty)</code> qui fait l'addition <code class="language-">x+y</code> et la réaffecte dans le tableau <code class="language-">Tx</code>. Sa complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur})$</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">mul</span><span class="token punctuation">(</span>Tx<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">,</span> Ty<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token builtin">bit</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    Ty' <span class="token operator">←</span> un tableau de taille Tx<span class="token punctuation">.</span>longueur <span class="token operator">+</span> Ty<span class="token punctuation">.</span>longueur
+    R <span class="token operator">←</span> un tableau de taille  Tx<span class="token punctuation">.</span>longueur <span class="token operator">+</span> Ty<span class="token punctuation">.</span>longueur
+
+    Ty'<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span> <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">></span> Ty<span class="token punctuation">.</span>longueur
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>dans <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> Tx<span class="token punctuation">.</span>longueur <span class="token operator">+</span> Ty<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        R<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+        <span class="token keyword">si</span><span class="token number"> i </span><span class="token operator">&lt;</span>Ty<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+            Ty'<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> Ty<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+            Ty'<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span>
+
+    <span class="token keyword">pour chaque</span><span class="token number"> i </span>dans <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> Tx<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+        <span class="token keyword">si</span> Tx<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            add<span class="token punctuation">(</span>R<span class="token punctuation">,</span> T'y<span class="token punctuation">)</span>
+        mul2<span class="token punctuation">(</span>T'y<span class="token punctuation">)</span>
+    
+    <span class="token keyword">rendre</span> R</code></pre>
 <h4>3.2</h4>
-<p>Déduire des questions précédentes la complexité de ce nouvel algorithme par rapport à <code class="language-">Tx.longueur</code> et <code class="language-">Ty.longueur</code>.</p>
+<p>La complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur} \cdot Ty.\mbox{\tiny longueur})$.</p>
 <!--
 
 ### 4 Pour aller plus loin un autre algorithme
