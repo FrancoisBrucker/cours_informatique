@@ -105,6 +105,8 @@ Déduire des questions précédentes la complexité de ce nouvel algorithme par 
 
 <!--
 
+> TBD faire addition et soustraction binaire in place avant ça.
+
 ### 4 Pour aller plus loin un autre algorithme
 
 > TBD add en log n

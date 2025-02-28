@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 title: Enseignements
-tags: ['index']
+tags: ["index"]
 
 eleventyComputed:
   eleventyNavigation:
@@ -14,5 +14,5 @@ eleventyNavigation:
 
 Tous les enseignements donnés cette année.
 
-* [Cours à l'ECM](./ecm){.interne}
-* [Cours en MPCI](./MPCI){.interne}
+- [Cours à l'ECM](./ecm){.interne}
+- [Cours en MPCI](./MPCI){.interne}

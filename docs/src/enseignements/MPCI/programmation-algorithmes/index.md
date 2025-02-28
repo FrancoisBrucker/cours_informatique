@@ -333,15 +333,36 @@ On code ce qu'on a vu mercredi :
 #### Mercredi : Liste/dictionnaires et piles
 
 {% attention %}
-Test de 15min en début de cours sur **les tris**.
+Test de 15min en début de cours sur **les tris et la complexité en moyenne**.
 {% endattention %}
 {% faire %}
 Sujet du test 4
 {% endfaire %}
 
-> 2h mercredi : structures linéaires : listes, tableaux et piles.
+> 2h mercredi : structures linéaires : listes, tableaux et listes chaînées. Structure de piles et file (linéaire et circulaire).
 > introduction à la complexité amortie
 > intérêt de chaque structure
+
+<!-- 
+TBD :
+
+1. structure pile et file à quoi ça sert :
+   1. pile : TODO liste = décurriffication
+   2. file : liste d'attente : exemple des entiers
+   3. FIFO/LIFO/... selon la structure
+2. implémentation :
+   1. tableau redimensionnable : la liste
+   2. pile = liste
+   3. file = 3 index avec modulo
+   4. complexité amorite. Implémentation classique avec des cellules, mais on verra ça en L3. En python decques.
+3. 
+- implémentation pile et file avec tableau qu'on double (comme liste). Complexité amortie
+- implémentation avec ds cellules complexité mais on verra ça en L3.
+
+- algo utilisation pile et file : https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf 
+- liste avec cellules en pytyhon : https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html
+
+-->
 
 #### Vendredi : Liste/dictionnaires et ensembles
 

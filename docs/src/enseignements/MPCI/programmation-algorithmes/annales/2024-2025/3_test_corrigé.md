@@ -1,7 +1,7 @@
 ---
 layout: layout/post.njk
 
-title:  "sujet Test 3 : complexité"
+title:  "corrigé Test 3 : complexité"
 ---
 
 ## Barème
@@ -14,81 +14,96 @@ title:  "sujet Test 3 : complexité"
 
 ### 1 un algorithme de multiplication
 
-```pseudocode
-programme mul(x: entier, y: entier) → entier:
-    r ← 0
-    tant que x ≠ 0:
-        si x est impair:
-            x ← x - 1
-            r ← r + y
-        x ← x / 2
-        y ← y * 2
-    
-    rendre r
-```
+On suppose que les entiers sont positifs.
+
+Cet algorithme doit vous rappeler très fortement l'algorithme de l'exponentiation rapide. Il est basé sur le même principe et tout ce qu'on a fait pour l'un (complexité et preuve) marche pour l'autre.
+
+{% lien %}
+L'algorithme est connu sous le nom de [multiplication russe, ou encore multiplication du paysan russe](https://fr.wikipedia.org/wiki/Technique_de_multiplication_dite_russe).
+{% endlien %}
 
 #### 1.1
 
-Montrer que le programme `mul`{.language-} est un algorithme.
+Le programme `mul`{.language-} est un algorithme car la variable `x`{.language-} décroît strictement à chaque itération en restant positive (donc elle vaudra 0 à un moment).
 
 #### 1.2
 
-Donnez la complexité de l'algorithme `mul`{.language-} en fonction de `x`{.language-}.
+Á chaque étape on divise la variable `x`{.language-} par 2. L'argument est alors le même que pour la factorisation rapide : il y a au plus $\log_2(x)$ itérations de l'algorithme. Comme toutes les autres opérations sont en $\mathcal{O}(1)$, on en déduit que la complexité totale de l'algorithme est en $\mathcal{O}(\ln(x))$.
 
 #### 1.3
 
-Démontrez que `mul(x, y) = x * y`{.language-}.
+Pour démontrez que `mul(x, y) = x * y`{.language-} on utilise l'invariant : `X * Y = r + x * y`{.language-} avec `X`{.language-} et `Y`{.language-} les paramètres initiaux.
+
+C'est invariant est quasiment le même que celui de l'exponentiation indienne. On vérifie aisément qu'il fonctionne.
 
 ### 2 représentation binaire des nombres
 
-Dans le calcul de la complexité précédent on a considéré, comme toujours, que la multiplication de deux entiers est effectuée en une opération et que le stockage d'un entier ne prend qu'une case mémoire. C'est le cas lorsque les entiers considérés sont bornés ce qui est habituellement le cas (ils sont codés sur 64 bits et permettent de stocker des entiers de 0 à $2^{64}-1$) mais supposons ici que nous pouvons avoir des entiers aussi grand que l'on veut.
-
-Pour cela on code un entier $n$ par un tableau $T$ de bits (0 ou 1) tel que :
-
-<div>
-$$
-n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]
-$$
-</div>
-
 #### 2.1
 
-Comment savoir si l'entier $n$ représenté par un tableau de bits $T_n$ est pair ?
+L'entier $n$ est pair si et seulement si $T_n[0] = 0$
 
 #### 2.2
 
-```pseudocode
-algorithme mul2(T: [bit]):
-    pour chaque i de [1, T.longueur - 1]:
-        T[i] ← T[i-1]
-    T[0] ← 0
-```
-
 ##### 2.2.1
 
-Quel est la complexité de l'algorithme `mul2(T: [bit])`{.language-} ?
+Une unique boucle de $\mathcal{O}(T.\mbox{\tiny longueur})$ et le reste des lignes est en $\mathcal{O}(1)$ : l'algorithme est de complexité $\mathcal{O}(T.\mbox{\tiny longueur})$.
 
 ##### 2.2.2
 
-Montrez en quelques mots que l'algorithme `mul2(T: [bit])`{.language-} permet de multiplier par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[-1] = 0$.
+Si $n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $2n \sum_{1\leq i \leq T.\mbox{\tiny longueur}}2^i\cdot T[i-1]$ ce qui correspond à ce que fait l'algorithme.
+
+Le fait que $T[i-1] = 0$ permet de dire que le tableau représentant $2n$ peut avoir la même taille que $T$.
 
 ##### 2.3
 
-Donnez un algorithme `div2(T: [bit])`{.language-} ainsi que sa complexité permettant de diviser par deux **en place** (en modifiant le tableau) un entier représenté par $T$ si $T[0] = 0$.
+```pseudocode
+algorithme div2(T: [bit]):
+    pour chaque i de [0, T.longueur - 1[:
+        T[i] ← T[i+1]
+    T[-1] ← 0
+```
+
+Le raisonnement est identique que pour  prouver `mul2(T: [bit])`{.language-} :
+
+Si $n = \sum_{0\leq i < T.\mbox{\tiny longueur}}2^i\cdot T[i]$, alors $n/2 = \sum_{0 \leq i < T.\mbox{\tiny longueur} - 1}2^i\cdot T[i+1]$ ce qui correspond à ce que fait l'algorithme.
+
+Le fait que $T[0] = 0$ permet d'assurer le fait que l'entier représenté par $T$ soit pair et donc divisible par 2.
 
 #### 2.4
 
-Si les tableaux $T_x$ et $T_y$ représentant respectivement deux entiers `x`{.language-} et `y`{.language-} sont tels que $T_x[-1] = T_y[-1] = 1$, quelle est la taille du tableau représentant l'entier $x\cdot y$ ?
+La taille doit être égale à $T_x.\mbox{\tiny longueur} + T_y.\mbox{\tiny longueur}$.
 
 ### 3 adaptation de l'algorithme
 
 #### 3.1
 
-Modifiez l'algorithme `mul(x: entier, y: entier) → entier`{.language-} de la question 1 pour qu'il soit de signature : `mul(Tx: [bit], Ty: [bit]) → [bit]`{.language-}
+On suppose que l'on a une méthode `add(Tx, Ty)`{.language-} qui fait l'addition `x+y`{.language-} et la réaffecte dans le tableau `Tx`{.language-}. Sa complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur})$
+
+```pseudocode
+algorithme mul(Tx: [bit], Ty: [bit]) → [bit]:
+    Ty' ← un tableau de taille Tx.longueur + Ty.longueur
+    R ← un tableau de taille  Tx.longueur + Ty.longueur
+
+    Ty'[i] ← 0 si i > Ty.longueur
+
+    pour chaque i dans [0, Tx.longueur + Ty.longueur[:
+        R[i] ← 0
+        si i <Ty.longueur:
+            Ty'[i] ← Ty[i]
+        sinon:
+            Ty'[i] ← 0
+
+    pour chaque i dans [0, Tx.longueur[:
+        si Tx[i] == 1:
+            add(R, T'y)
+        mul2(T'y)
+    
+    rendre R
+```
 
 #### 3.2
 
-Déduire des questions précédentes la complexité de ce nouvel algorithme par rapport à `Tx.longueur`{.language-} et `Ty.longueur`{.language-}.
+La complexité est en $\mathcal{O}(Tx.\mbox{\tiny longueur} \cdot Ty.\mbox{\tiny longueur})$.
 
 <!--
 
