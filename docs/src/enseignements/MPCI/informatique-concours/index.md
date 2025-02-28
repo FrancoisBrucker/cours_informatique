@@ -33,3 +33,37 @@ Sarah a effectué un stage sous ma direction visant à apprendre le java et à d
 {% lien %}
 [Rapport de Sarah sur son stage d'apprentissage de Java](Rapport_de_stage_KEGHIAN_2024.pdf)
 {% endlien %}
+
+## Oraux Concours Commun INP
+
+Pas forcément un concours que vous passez, mais peut valoir le coup de regarder puisqu'il y a aussi des corrigés :
+
+<https://www.concours-commun-inp.fr/fr/epreuves/les-epreuves-orales.html>
+
+## QCM GEI
+
+### Remarques générales
+
+Au fil des années, les QCM changent de format : moins de C et plus de python. Depuis 2024 il y a même du pseudo-code pour les questions algorithmiques.
+
+{% attention "avec le pseudo-code" %}
+Ils prennent (en tous cas en 2024) la convention du [Cormen](https://www.amazon.fr/Introduction-%C3%A0-lalgorithmique-Thomas-Cormen/dp/2100031287) en faisant commencer les tableaux à l'indice 1. Méfiez vous !
+{% endattention %}
+
+Lisez attentivement chaque question. Il y a de temps en temps des typos, des indentations fantaisistes, des incohérences. Prenez ça comme une feature et non un bug : elles sont là pour voir votre intuition/compréhension informatique. Arriver à comprendre l'esprit de la question, prenez de la hauteur.
+
+{% attention "ne prenez pas la confiance" %}
+Ce n'est pas parce que vous ne comprenez pas la question qu'il y a forcément une erreur...
+{% endattention %}
+
+### Méthode de résolution
+
+Pour gérer un QCM il y a trois approches qui fonctionnent, par ordre de rapidité :
+
+1. **Connaissance**. Vous reconnaissez l'algorithme, la notion : vous répondez directement la bonne réponse. **Attention** cependant à ne pas aller trop vite, il peut y avoir plusieurs réponses correctes et on est pas à l'abris d'un piège (il y en a...)
+2. **Élimination**. On procède par élimination en supprimant itérativement les réponses incorrectes.
+3. **Bourrinage**. Pour les questions algorithmiques, déroulez un exemple simple pour voir comment fonctionne l'algorithme et ce qu'il rend.
+
+### Programme
+
+> TBD

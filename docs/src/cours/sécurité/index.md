@@ -17,6 +17,7 @@ eleventyComputed:
 Embryon de cours de sécurité. On y verra essentiellement les fondements cryptographiques de la sécurité.
 
 > TBD montrer avec openssh comment le faire (voir serious cryptography)
+> TBD xor : <https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/xor/>
 
 ## Cryptographie
 

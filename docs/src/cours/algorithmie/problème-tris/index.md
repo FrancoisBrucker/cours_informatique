@@ -38,6 +38,12 @@ Commençons par travailler sur un problème connexe au problème du tri, celui d
 
 Pouvoir vérifier qu'une solution à un problème en est vraiment une est un point crucial en algorithmie. Nous y reviendrons intensivement lorsque nous parlerons de classes de problèmes.
 
+## Complexité du problème du tri
+
+{% aller %}
+[Complexité du problème](./complexité-problème){.interne}
+{% endaller %}
+
 ## <span id="tris-simples"></span>Algorithmes Tris simples
 
 Deux Algorithmes simples pour trier un tableau.
@@ -58,7 +64,22 @@ Son implémentation va nécessiter d'utiliser une nouvelle technique, le placeme
 [Tri par insertion](./algorithme-insertion){.interne}
 {% endaller %}
 
-### Exercices : variantes
+### Variantes
+
+#### Exercice : Tri à bulles
+
+Très aimé des élèves mais inefficace :
+
+{% lien %}
+[Le tri à bulles](https://fr.wikipedia.org/wiki/Tri_%C3%A0_bulles)
+{% endlien %}
+
+> TBD algo et complexité
+> TBD version optimisée (pourquoi est elle optimisée ?)
+
+#### Exercice : tri par permutation
+
+Finissons cette partie par une bizarrerie algorithmique comme on les aime.
 
 {% lien %}
 [The Simplest Sorting Algorithm](https://www.youtube.com/watch?v=_W0yUJlscRA)
@@ -133,7 +154,7 @@ Par récurrence, on suppose vrai à la fin de l'itération $i$. Au début de l'i
 
 {% enddetails %}
 
-Et terminons cette partie en montrant que cette dernière itération est bien un algorithme de tri :
+Et terminons cette partie en montrant que cette dernière itération est bien un algorithme de tri nommé **_tri par permutation_** :
 
 ```pseudocode/
 algorithme sélection_opposé(T: [entier]) → ∅:
@@ -153,12 +174,6 @@ C'est exactement la même preuve que précédemment en remarquant qu'à la fin d
 A partir de la seconde boucle, chaque boucle va trier les i+1 premiers éléments du tableau par ordre croissant.
 
 {% enddetails %}
-
-## Complexité du problème du tri
-
-{% aller %}
-[Complexité du problème](./complexité-problème){.interne}
-{% endaller %}
 
 ## <span id="tris-optimaux"></span>Algorithmes de tris optimaux
 

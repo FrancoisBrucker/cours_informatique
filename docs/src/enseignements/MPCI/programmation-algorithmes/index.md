@@ -266,13 +266,19 @@ Pour aller plus loin :
 
 > 24/02 au 28/02
 
+Semaine basée sur les tris.
+
+{% info %}
+Reprend de grandes parties [du cours d'algorithmie sur les tris](/cours/algorithmie/problème-tris/){,interne}, mais pour aller plus loin ou pour les révisions, n'hésitez pas à aller le lire.
+{% endinfo %}
+
 #### Mercredi : tris TD
 
 {% attention %}
 Test de 15min en début de cours sur **la partie complexité**.
 {% endattention %}
 {% faire %}
-Sujet du test 3
+[Sujet du test 3](./annales/2024-2025/3_test/){.interne}
 {% endfaire %}
 
 Sujets abordés :
@@ -282,21 +288,24 @@ Sujets abordés :
 Introduction aux algorithmes de tri :
 
 1. [Problème du tri : définition et reconnaissance](/cours/algorithmie/problème-tris/){.interne}
-2. [Algorithme de tris simple (selection et insertion)](/cours/algorithmie/problème-tris/#tris-simples){.interne}
+2. [Complexité du problème du tri](/cours/algorithmie/problème-tris/complexité-problème/){.interne}
 {% endaller %}
 
 L'analyse de ces algorithme simple nous permettra de formaliser la notion de complexité en moyenne :
 
 {% aller %}
-[Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+
+1. [Algorithme de tris par  insertion](/cours/algorithmie/problème-tris/algorithme-insertion/){.interne}
+2. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne/){.interne}
+
 {% endaller %}
 
 Puis on abordera des notion plus avancées du tri :
 
 {% aller %}
 
-1. [Complexité du problème du tri](/cours/algorithmie/problème-tris/complexité-problème/){.interne}
-2. [Algorithmes de tris optimaux](/cours/algorithmie/problème-tris/#tris-optimaux){.interne}
+1. [Tri fusion : diviser pour régner](/cours/algorithmie/problème-tris//algorithme-fusion/){.interne}
+2. [Tri rapide : calcul des complexités](/cours/algorithmie/problème-tris/algorithme-rapide/){.interne}
 
 {% endaller %}
 
@@ -304,6 +313,9 @@ Puis on abordera des notion plus avancées du tri :
 
 {% attention %}
 Rendre le DM 1.
+{% endattention %}
+{% attention %}
+[Sujet DM2 : Palindromes](annales/2023-2024/palindromes/){.interne}
 {% endattention %}
 
 On code ce qu'on a vu mercredi :
@@ -317,16 +329,51 @@ On code ce qu'on a vu mercredi :
 ### Semaine 6
 
 > 03/03 au 07/03
->
-> 2h mercredi : listes, dictionnaires et piles (introduction à la complexité amortie)
-> 2h vendredi : Structures de données TP (décurryfication, liste et dictionnaires)
+
+#### Mercredi : Liste/dictionnaires et piles
+
+{% attention %}
+Test de 15min en début de cours sur **les tris et la complexité en moyenne**.
+{% endattention %}
+{% faire %}
+Sujet du test 4
+{% endfaire %}
+
+> 2h mercredi : structures linéaires : listes, tableaux et listes chaînées. Structure de piles et file (linéaire et circulaire).
+> introduction à la complexité amortie
+> intérêt de chaque structure
+
+<!-- 
+TBD :
+
+1. structure pile et file à quoi ça sert :
+   1. pile : TODO liste = décurriffication
+   2. file : liste d'attente : exemple des entiers
+   3. FIFO/LIFO/... selon la structure
+2. implémentation :
+   1. tableau redimensionnable : la liste
+   2. pile = liste
+   3. file = 3 index avec modulo
+   4. complexité amorite. Implémentation classique avec des cellules, mais on verra ça en L3. En python decques.
+3. 
+- implémentation pile et file avec tableau qu'on double (comme liste). Complexité amortie
+- implémentation avec ds cellules complexité mais on verra ça en L3.
+
+- algo utilisation pile et file : https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf 
+- liste avec cellules en pytyhon : https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html
+
+-->
+
+#### Vendredi : Liste/dictionnaires et ensembles
+
+> 2h vendredi : tables de hachage, dictionnaire et ensembles
 
 ### Semaine 7
 
 > 10/03 au 14/03
 >
-> 2h mercredi : gloutons cours
-> 2h vendredi : gloutons TD
+> 2h mercredi : algorithmes classiques
+> 2h vendredi : enveloppe convexe.
 
 ### Semaine 8
 
@@ -334,51 +381,68 @@ On code ce qu'on a vu mercredi :
 DS algorithmie 2h , mardi 18/03.
 {% endattention %}
 
+{% attention %}
+Rendre DM2 (mercredi)
+{% endattention %}
+{% attention %}
+Sujet DM3 : code objet
+{% endattention %}
+
 > 17/03 au 21/03
 >
 > 2h mercredi : classes et objets
-> 2h vendredi : tp objet + code coverage
+> 2h vendredi : composition / agrégation
 
 ### Semaine 9
 
+{% attention %}
+Rendre DM3 (mercredi)
+{% endattention %}
+{% attention %}
+Sujet DM4 : code objet suite
+{% endattention %}
+
 > 24/03 au 28/03
 >
-> 2h mercredi : composition / agrégation
-> 2h vendredi : TP + environnement virtuels
-
-{% attention %}
-Sujet DM2
-{% endattention %}
+> 2h mercredi : héritage
+> 2h vendredi : TP
+>
+> TBD : tp programmation par les tests à faire chez eux
 
 ### Semaine 10
 
 > 31/03 au 04/04
 >
-> 2h mercredi : héritage
-> 2h vendredi : TP
+> 2h mercredi : programmation évènementielle Cours
+> 2h vendredi : programmation évènementielle TP
 
-> TBD : tp programmation par les tests à faire chez eux
+{% attention %}
+Rendre DM3
+{% endattention %}
+{% attention %}
+Sujet DM4 : programmation évènementielle.
+{% endattention %}
 
 ### Semaine 11
 
 > 14/04 au 18/04
 >
-> 4h mercredi : programmation événementielle
+> 4h mercredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
 
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : P&NP
-> 2h vendredi : méthode de résolution de problèmes
-
-{% attention %}
-Rendre DM2
-{% endattention %}
+> 4h mercredi : sac à dos.
+> 2h vendredi : méthode de résolution de problèmes suite
 
 ### Semaine 13
 
 {% attention %}
 DS code 3h, lundi 05/05.
+{% endattention %}
+
+{% attention %}
+Rendre DM4
 {% endattention %}
 
 > 05/05 au 09/05

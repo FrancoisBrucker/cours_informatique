@@ -280,7 +280,7 @@ python -m pip install matplotlib
 Utiliser cette bibliothèque ne s'improvise pas. Commencez par lire le tutoriel suivant pour en comprendre les bases :
 
 {% aller %}
-Suivez le [tutoriel Matplotlib](/tutoriels/matplotlib){.interne}. Il est fait pour être utilisé avec un notebook, mais vous devriez pouvoir facilement convertir les exemples pour pouvoir les utiliser dans un fichier python normal.
+Suivez le [tutoriel Matplotlib](/cours/coder-et-développer/bases-programmation/matplotlib/){.interne}. Il est fait pour être utilisé avec un notebook, mais vous devriez pouvoir facilement convertir les exemples pour pouvoir les utiliser dans un fichier python normal.
 {% endaller %}
 
 ### Temps naïf
