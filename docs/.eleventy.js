@@ -45,11 +45,15 @@ export default function(eleventyConfig) {
             greedy: true
           },
           'function': {
-            pattern: /((?:^|\s)(algorithme|fonction|programme)[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
+            pattern: /((?:^|\s)(algorithme|fonction|programme|méthode)[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
             lookbehind: true
           },
-          'keyword': /\b(?:_(?=\s*:)|et|ou|si|sinon si|sinon|pour chaque|pour|rendre|tant que)\b/,
-          'builtin': /\b(?:entier|chiffre|booléen|bit|réel|caractère|chaîne|algorithme|fonction)\b/,
+          'class-name': {
+		        pattern: /(\bstructure\s+)\w+/i,
+		        lookbehind: true
+	        },
+          'keyword': /\b(?:_(?=\s*:)|et|ou|si|sinon si|sinon|pour chaque|pour|rendre|tant que|attribut)\b/,
+          'builtin': /\b(?:entier|chiffre|booléen|bit|réel|caractère|chaîne|algorithme|fonction|structure|attributs|méthodes|création)\b/,
           'boolean': /\b(?:Faux|∅|Vrai)\b/,
           'number': / [ijn]([0-9])*(')*[\n ]|\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i,
           'operator': /[-+%=]=?|←|→|!=|≠|≤|≥|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,

@@ -183,7 +183,6 @@ $N$ utilisations successives des méthodes d'ajout ou de suppression du dernier 
 
 La plupart des implémentations des listes ont cette implémentation, ceci en fait une structure idéale pour stocker des objets.
 
-
 ## Bilan
 
 Quand utiliser cette structure : à chaque fois que l'on pourrait utiliser un tableau **et** que l'on est pas contraint  par la taille mémoire (on peut allouer/désallouer de la mémoire et l'endroit de la mémoire où est stocké la liste importe peu).

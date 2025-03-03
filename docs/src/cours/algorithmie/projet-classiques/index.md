@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD ajouter degré de classicité/ difficulté.
+
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 

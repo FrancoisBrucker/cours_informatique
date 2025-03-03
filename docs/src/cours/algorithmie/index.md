@@ -27,7 +27,7 @@ _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
 
-## <span id="partie-2"></span>Partie I
+## <span id="partie-1"></span>Partie I
 
 Tout ce que devrait connaître tout ingénieur de l'informatique.
 
@@ -141,19 +141,124 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}
 
-### On s'entraîne : exercices de complexité et de preuve
+### Structures de données
 
-{% aller %}
-[Algorithmes classiques](./projet-classiques){.interne}
-{% endaller %}
+Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire.
+
+Pour qu'un algorithme puisse utiliser ces données efficacement, on les groupe dans [Une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es)
+
+{% note %}
+Une **_structure de données_** est composée :
+
+- une fonction permettant de créer un objet de cette structure
+- de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
+- d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)
+{% endnote %}
+
+Un point en dimension 2 pourra ainsi être défini comme :
+
+```pseudocode
+structure Point:
+  attributs:
+    x: int
+    y: int
+
+  création(abscisse: int, ordonnée: int) → Point
+  méthodes:
+    méthode addition(p: Point) → vide
+```
+
+On utilisera alors les attributs et les méthode avec la notation pointée, comme on le fait avec la longueur d'un tableau. Par exemple pour notre point :
+
+```pseudocode
+p1 ← création d'un Point d’abscisse 1 et d'ordonnée 2
+p2 ← Point.création(4, 5)  #  création équivalente en explicitant la structure de donnée utilisée
+
+affiche à l'écran p1.x et p1.y  # affiche 1 et 2
+p1.addition(p2)
+affiche à l'écran p1.x et p1.y  # affiche 5 et 7
+
+d ← p1.x * p2.x + p1.y * p2.y
+affiche d à l'écran  # affiche 55
+```
+
+Remarquez que :
+
+- l'on a utilisé la création avec ue phrase ou avec la fonction de façon équivalente
+- on peut accéder aux attributs d'un objet particulier
+- une méthode et un attribut s'applique **toujours** à un objet (à gauche du `.`{.language-})
+
+Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre `Point`{.language-}) et de chaque méthode de celle-ci.
+
+Enfin, lorsque l'on définie une structure, il faut bien sur donner le code de toutes les fonctions de la structure. Pour notre point, une définition complète serait :
+
+```pseudocode
+structure Point:
+  attributs:
+    x: entier
+    y: entier
+  création(x: entier, y: entier) → Point:
+    attribut x ← x
+    attribut y ← y
+  méthodes:
+    méthode addition(p: Point) → vide:
+        attribut x ← attribut x + p.x
+        attribut y ← attribut y + p.y
+```
+
+Remarquez que pour la gestion des attributs on a précisé à qui l'on avait affaire aux attributs. Les attributs d'un autre objet que l'objet appelant sont appelé avec la _notation pointée_ : `objet.attribut`{.language-} ou `objet.méthode()`{.language-}.
+
+{% lien %}
+[Notation pointée](https://reeborg.ca/docs/fr/oop/oop.html)
+
+{% endlien %}
+
+Il est de coutume que les noms des attributs soient repris dans les paramètre de la création pour comprendre qui est affecté à quoi.
+
+Lorsqu'il n'y a pas d'ambiguïté, on se passe souvent du mot clé `attribut`{.language-pseudocode}. On peut alors écrire :
+
+```pseudocode
+structure Point:
+  attributs:
+    x: entier
+    y: entier
+  méthodes:
+    méthode addition(p: Point) → vide:
+        x ← x + p.x
+        y ← y + p.y
+```
+
+{% note "**À retenir**" %}
+On considérera toujours que la taille d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
+{% endnote %}
+
+Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes.
+
 
 ### Structures linéaires
 
-#### Conteneurs
+Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes.
+
+#### Gestion de flux de données
+
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux  structures fondamentales pour cela sont les piles, les files et leurs dérivés :
 
 {% aller %}
-[Conteneurs](./structure-conteneurs){.interne}
+[Structure de gestion de flux](./structure-flux){.interne}
 {% endaller %}
+
+#### Structures dynamiques
+
+La liste est un tableau redimensionnable, qui est utilisé par exemple en python. Nous allons montrer comment réaliser ceci avec très peu de complexité :
+
+{% aller %}
+[Les listes](./structure-liste){.interne}
+{% endaller %}
+
+#### Table de hashage et structures associées
+
+> 3. hashage et dictionnaire
+> 4. chaine de caractères
 
 > TBD ajouter exos pour dictionnaires.
 > TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
@@ -163,15 +268,13 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 > TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 > TBD compteur, jets de dés.
 
-#### Todo list
+#### Listes chaînées
+
+> TBD <https://www.youtube.com/watch?v=kPqk07Gpj0A>
 
 Implémenter et utiliser efficacement des structures permettant de stocker pendant son execution les choses que devra faire l'algorithme plus tard.
 
-{% aller %}
-[Piles et files](./structure-pile-file){.interne}
-{% endaller %}
-
-#### Chaînes de caractères
+### Chaînes de caractères
 
 > TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
 
@@ -186,6 +289,14 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
+
+### On s'entraîne : exercices de complexité et de preuve
+
+{% aller %}
+[Algorithmes classiques](./projet-classiques){.interne}
+{% endaller %}
+
+## <span id="partie-2"></span>Partie II
 
 ### Réductions : passer d'un problème à un autre
 
@@ -225,13 +336,13 @@ On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en
 
 ## Intermède : recherche universelle
 
-Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique :
+Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique. L'Algorithme pour tout résoudre :
 
 {% aller %}
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
 
-## <span id="partie-2"></span>Partie II
+## <span id="partie-3"></span>Partie III
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
 

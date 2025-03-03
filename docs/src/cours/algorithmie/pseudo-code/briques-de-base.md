@@ -78,15 +78,7 @@ b ← a
 Dans la seconde instruction, on commence par retrouver l'objet nommé par `a`{.language-} et on le nomme `b`{.language-} : la case où est stocké l'entier dans la mémoire est donné à `a`{.language-} et à `b`{.language-}
 {% endattention %}
 
-## <span id="structures"></span> Structures
-
-Les objets basiques sont les briques élémentaires permettant de créer tout ce dont un algorithme à besoin. Un nombre complexe est composé de 2 approximations de réels ou une phrases d'une suite de caractères par exemples. Gérer ces objets complexes, appelés **_structures_**, se fait aux **_tableaux_**. Comme une structure est toujours _in fine_ composée d'objet basiques :
-
-{% note "**À retenir**" %}
-On considérera toujours que la taille d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
-{% endnote %}
-
-### <span id="tableaux"></span>Tableaux
+## <span id="tableaux"></span>Tableaux
 
 {% note "**Définition**" %}
 Un **_tableau_** est un conteneur nommé pouvant contenir $n$ variables. $n$ est la **_longueur_** ou la **_taille_** du tableau. La taille d'un tableau est déterminée à sa création et ne peut être modifiée. Chaque variable du tableau peut être accédée via son **_indice_**, qui est un entier entre $0$ et $n-1$.
@@ -100,6 +92,10 @@ Si le tableau est nommé $t$ :
 {% endnote %}
 
 Les différentes variables du tableaux sont stockées de façon contiguë en mémoire pour pouvoir y accéder rapidement pour y être lu ou modifiée.
+
+{% note "**À retenir**" %}
+On considérera toujours que la taille d'un tableau est proportionnelle à la taille des objets qui la compose et est connue à sa création.
+{% endnote %}
 
 Les tableaux peuvent être simples comme une suite finie d'entiers ou des types plus complexes comme une matrice à 2 dimensions où chaque élément du tableau est un autre tableau.
 
@@ -126,14 +122,16 @@ Les opérations sur les tableaux sont faites graces aux opérations des objets b
 Les opérations sur les tableaux seront toujours des opérations composées d'une suite d'opérations effectuées sur les objets basiques les constituants.
 {% endnote %}
 
-On utilisera parfois, comme en python par exemple des sous tableaux via des slices :
+### Tranches
+
+On utilisera parfois, comme en python par exemple des sous tableaux via des **_tranches_** (**_slices_** en anglais) :
 
 - `T[i:]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à la fin
 - `T[:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice 0 **inclus** jusqu'à j **exclu**
 - `T[i:j]`{.language-} représentera le tableau constitué des éléments de T à partir de l'indice i **inclus** jusqu'à j **exclu**
 
 {% attention %}
-On ne peut  **pas** affecter un slice de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
+On ne peut  **pas** affecter une tranche de tableau. Il faut créer un nouveau tableau puis y recopier tous les éléments de l'ancien.
 {% endattention %}
 
 L'instruction suivante n'est donc **pas** une instruction simple, mais nécessite $1 + j - i$ instructions (1 instruction de création du nouveau tableau puis j-i affectations) :
@@ -148,7 +146,7 @@ Les chaines de caractères sont un tableau uniquement composés de caractères. 
 
 Une **_chaîne de caractères_** est un tableau constitué uniquement de caractères.
 
-On peut les manipuler essentiellement comme un tableau. On peut :
+Comme ce sont des tableaux, on peut :
 
 - créer une chaîne de caractères : `"salut"`{.language-} crée la chaîne contenant les caractères `"s"`{.language-}, `"a"`{.language-}, `"l"`{.language-}, `"u"`{.language-} et `"t"`{.language-} de façon contiguë en mémoire.
 - affecter une chaîne de caractères à une variable prend 1 instruction : `s ← "salut"`{.language-} prend 2 instructions, une pour la création et une pour l'affectation.

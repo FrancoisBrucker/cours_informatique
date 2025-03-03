@@ -9,6 +9,12 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD refaire en :
+>
+> - utilisant numpy pour les indices
+> - faire des fonctions qui génèrent des tableaux
+>
+
 On code des tris et on vérifie que nos algorithmes fonctionnent.
 
 ## Mise en place
@@ -172,7 +178,7 @@ Pour connaître l'espérance de la complexité, il faut calculer la complexité 
 Créez dans le fichier `mesure.py`{.fichier} la fonction `tableau_aléatoire(n)`{.language-} qui rend un tableau de taille $n$ contenant les $n$ premiers entiers placé à des positions aléatoires.
 {% endexercice %}
 {% info %}
-Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/#listes-classiques){.interne} pour créer ces listes.
+Vous pourrez utiliser les techniques de [création de listes classiques](/cours/coder-et-développer/bases-programmation/conteneurs/listes/#listes-classiques){.interne} pour créer ces listes.
 {% endinfo %}
 
 Nous allons utiliser cette fonction pour mesurer le temps moyen du tri insertion :
