@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Structure de pile et file</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Structure de pile et file</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-flux/">Structure de pile et file</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données (des données à traiter vont arriver tout au long de son exécution), il doit être capable de stocker les données arrivantes avant de pouvoir les traiter une à une.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une structure de données permettant de gérer un flux de données doit avoir au moins trois méthodes :</p>
+<ul>
+<li><code language-pseudocode="">push(donnée: type des données stockées) -&gt; vide</code> : une méthode de <strong>stockage</strong> d'une donnée dans la structure</li>
+<li><code language-pseudocode="">pop() -&gt; type des données stockées</code> une méthode permettant de <strong>rendre</strong> une donnée stockée, la donnée est également supprimée de la structure</li>
+<li><code language-pseudocode="">number() -&gt; int</code> une méthode permettant de connaître le nombre de données actuellement stockées dans la structure</li>
+</ul>
+</div></div>
+
+<p>Une structure générale serait alors (en ajoutant des méthodes pour savoir si la structure peut accueillir des données) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Flux</span><span class="token punctuation">:</span>
+    <span class="token builtin">création</span><span class="token punctuation">(</span>taille<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Flux
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">push</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide
+        méthode <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
+        méthode <span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span>
+        méthode <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>  <span class="token comment"># Vrai si vide</span>
+        méthode <span class="token function">full</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span>   <span class="token comment"># Vrai si plein</span></code></pre>
+<p>Les structures de gestion de flux de données se distingue selon que la donnée rendue soit :</p>
+<ul>
+<li>la plus récente</li>
+<li>la plus ancienne</li>
+<li>la plus ancienne ou la plus ancienne</li>
+<li>...</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>La gestion de flux de données de priorités différentes sera vu plus tard, lorsque l'on étudiera les arbres.</p>
+</div></div>
+
+<h2>La pile</h2>
+<p>La pile est la structure de données qui rend toujours la donné la plus récente :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="pile" class="interne">La pile</a></p>
+</div></div>
+
+<h2>La file</h2>
+<p>La pile est la structure de données qui rend toujours la donné la plus ancienne :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="file" class="interne">La file</a></p>
+</div></div>
+
+<h2>Variantes</h2>
+<h3>Deques</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://en.wikipedia.org/wiki/Double-ended_queue">https://en.wikipedia.org/wiki/Double-ended_queue</a></p>
+</div></div>
+
+<h3>Listes chaînées</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">Liste chaînée</a></p>
+</div></div>
+
+<p>Les listes chaînées sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer un élément de cette liste en temps constant.</p>
+<p>Pouvoir supprimer un élément en temps constant nécessite de découper la liste en éléments indépendants collés les uns aux autres.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Element</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+        suivant<span class="token punctuation">:</span> Element
+        précédent<span class="token punctuation">:</span> Element
+    <span class="token builtin">création</span><span class="token punctuation">(</span>_valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> _suivant<span class="token punctuation">:</span> Element<span class="token punctuation">,</span> _précédent<span class="token punctuation">:</span> Element<span class="token punctuation">)</span> <span class="token operator">→</span> Element<span class="token punctuation">:</span>
+        valeur <span class="token operator">←</span> _valeur
+        suivant <span class="token operator">←</span> _suivant
+        précédent <span class="token operator">←</span> _précédent
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">ajouter</span><span class="token punctuation">(</span>e<span class="token punctuation">:</span> Element<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            e<span class="token punctuation">.</span>suivant <span class="token operator">←</span> suivant
+            suivant <span class="token operator">←</span> e
+            e<span class="token punctuation">.</span>précédent <span class="token operator">=</span> <span class="token keyword">self</span>
+        méthode <span class="token function">supprimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            suivant<span class="token punctuation">.</span>précédent <span class="token operator">←</span> précédent
+            précédent<span class="token punctuation">.</span>suivant <span class="token operator">←</span> suivant</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a utilisé le mot clé self pour parler de l'objet appelant.</p>
+</div></div>
+
+<blockquote>
+<p>TBD exemple d'utilisation.</p>
+</blockquote>
+<p>Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en temps constant va contraindre le fait que l'on ne peut plus aller à un élément particulier de la liste en temps constant (comme on le fait avec un tableau). On a les complexités :</p>
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression à une position donnée : $\mathcal{O}(1)$</li>
+<li>ajout à une position donnée : $\mathcal{O}(1)$</li>
+<li>aller à une position $n$ donnée : $\mathcal{O}(n)$</li>
+</ul>
+<blockquote>
+<p>TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.</p>
+</blockquote>
+<h2>Exercices</h2>
+<h3>palindrome</h3>
+<blockquote>
+<p>TBD exercice : file et pile pour reconnaître les palindromes</p>
+</blockquote>
+<h3>File et pile</h3>
+<blockquote>
+<p>TBD faire une file avec 2 piles. <a href="https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html">https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html</a></p>
+</blockquote>
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Structures de données</title>
+
+    
+
+    <link href="https://prismjs.catppuccin.com/latte.css" rel="stylesheet">
+
+    <link href="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+    <script src="/cours_informatique/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    
+    <link href="/cours_informatique/assets/stylesheets/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            [
+              '$', '$'
+            ],
+            [
+              '\\(', '\\)'
+            ]
+          ]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+
+      function goTop() {
+        window.scrollTo({top: 0});
+      }
+      function goBottom() {
+        window.scrollTo({top: document.body.scrollHeight});
+      }
+    </script>
+    <script type="text/javascript" id="MathJax-script" src="/cours_informatique/assets/node_modules/mathjax/es5/tex-svg-full.js"></script>
+
+    <header class="border-b-2 border-gray-200 mb-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-between items-center">
+          <a class="mx-2" href="/cours_informatique/">Home</a>
+        </div>
+
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <a class="mx-2" href="/cours_informatique/about">About</a>
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4">
+      
+<article>
+
+  <h1>Structures de données</h1>
+  <div>
+    
+
+    
+  </div>
+
+  
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure_données/">Structures de données</a>
+
+</div></div>
+
+
+
+    
+  
+
+  <p>Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire.</p>
+<p>Pour qu'un algorithme puisse utiliser ces données efficacement, on les groupe dans <a href="https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es">Une structure de données</a></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>Une <strong><em>structure de données</em></strong> est composée :</p>
+<ul>
+<li>une fonction permettant de créer un objet de cette structure</li>
+<li>de <strong><em>méthodes</em></strong> qui sont des fonctions permettant d’interagir avec une donnée de cette structure.</li>
+<li>d'<strong><em>attributs</em></strong> qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)</li>
+</ul>
+</div></div>
+
+<p>Un point en dimension 2 pourra ainsi être défini comme :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+  <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+    x<span class="token punctuation">:</span> int
+    y<span class="token punctuation">:</span> int
+
+  <span class="token builtin">création</span><span class="token punctuation">(</span>abscisse<span class="token punctuation">:</span> int<span class="token punctuation">,</span> ordonnée<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">→</span> Point
+  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide</code></pre>
+<p>On utilisera alors les attributs et les méthode avec la notation pointée, comme on le fait avec la longueur d'un tableau, c'est à dire que l'attribut ou la méthode est appliqué à l'objet à gauche du point (<code class="language-">objet.attribut</code> ou <code class="language-">objet.méthode()</code>). Cette méthode est classique ne programmation, par exemple en python :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://reeborg.ca/docs/fr/oop/oop.html">Notation pointée en python</a></p>
+</div></div>
+
+<p>Par exemple pour notre point, le pseudo-code suivant fonctionne :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">p1 <span class="token operator">←</span> <span class="token builtin">création</span> d'un Point d’abscisse <span class="token number">1</span> <span class="token keyword">et</span> d'ordonnée <span class="token number">2</span>
+p2 <span class="token operator">←</span> Point<span class="token punctuation">.</span><span class="token builtin">création</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>  <span class="token comment">#  création équivalente en explicitant la structure de donnée utilisée</span>
+
+affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 1 et 2</span>
+p1<span class="token punctuation">.</span>addition<span class="token punctuation">(</span>p2<span class="token punctuation">)</span>
+affiche à l'écran p1<span class="token punctuation">.</span>x <span class="token keyword">et</span> p1<span class="token punctuation">.</span>y  <span class="token comment"># affiche 5 et 7</span>
+
+d <span class="token operator">←</span> p1<span class="token punctuation">.</span>x <span class="token operator">*</span> p2<span class="token punctuation">.</span>x <span class="token operator">+</span> p1<span class="token punctuation">.</span>y <span class="token operator">*</span> p2<span class="token punctuation">.</span>y
+affiche d à l'écran  <span class="token comment"># affiche 55</span></code></pre>
+<p>Remarquez que :</p>
+<ul>
+<li>l'on a utilisé la création avec ue phrase ou avec la fonction de façon équivalente</li>
+<li>on peut accéder aux attributs d'un objet particulier</li>
+<li>une méthode et un attribut s'applique <strong>toujours</strong> à un objet (à gauche du <code class="language-">.</code>)</li>
+</ul>
+<p>Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre <code class="language-">Point</code>) et de chaque méthode de celle-ci.</p>
+<p>Enfin, lorsque l'on définie une structure, il faut bien sur donner le code de toutes les fonctions de la structure. Pour notre point, une définition complète serait :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+  <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+    x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    y<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+  <span class="token builtin">création</span><span class="token punctuation">(</span>_x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> _y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Point<span class="token punctuation">:</span>
+    x <span class="token operator">←</span> _x
+    y <span class="token operator">←</span> _y
+  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+        x <span class="token operator">←</span> x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
+        y <span class="token operator">←</span> y <span class="token operator">+</span> p<span class="token punctuation">.</span>y</code></pre>
+<p>Remarquez que pour la gestion des attributs on a précisé à qui l'on avait affaire aux attributs :</p>
+<ul>
+<li>les attributs de l'objet appelant sont accessibles directement dans les différentes méthode</li>
+<li>les attributs d'un autre objet que l'objet appelant sont appelé avec la <em>notation pointée</em></li>
+<li>on a coutume de rappeler les attributs dans les paramètres de la création de l'objet. On les fait précéder d'un <code class="language-">_</code> pour montrer leurs relations.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'objet courant, celui qui appelle, peut être parfois nommé par le mot-clé <code class="language-">self</code>. Cela permet d'utiliser la notation pointée partout. Par exemple, la méthode addition peut-être écrite :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+
+  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+
+    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
+        <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">+</span> p<span class="token punctuation">.</span>y
+</code></pre>
+<p>Certains langages comme python n'autorise que cette notation, d'autre comme le java autorise les deux versions (avec ou sans self).</p>
+</div></div>
+
+<p>Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On considérera toujours que la taille en mémoire d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.</p>
+</div></div>
+
+
+
+</article>
+    </main>
+
+    <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+      <div class="max-w-[1200px] mx-auto px-4 relative">
+        <div class="min-h-[50px] flex justify-center items-center">
+          <p>
+            Cours d'informatique de François Brucker
+          </p>
+        </div>
+        <div class="min-h-[50px] flex justify-center items-center absolute right-0 top-0">
+          <button onclick="goTop()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <button onclick="goBottom()" id="myBtn" title="Go to top">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </footer>
+
+    <script>
+      MathJax
+        .startup
+        .document
+        .getMathItemsWithin(document.body);
+    </script>
+
+  </body>
+</html>

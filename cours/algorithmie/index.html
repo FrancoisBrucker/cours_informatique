@@ -153,7 +153,7 @@
 </div></div>
 
 <p>Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.</p>
-<h2><span id="partie-2"></span>Partie I</h2>
+<h2><span id="partie-1"></span>Partie I</h2>
 <p>Tout ce que devrait connaître tout ingénieur de l'informatique.</p>
 <h3>Algorithmes et programmes</h3>
 <p>Commençons par définir ce qu'est un algorithme et ce qu'il peut ou ne peut pas faire :</p>
@@ -317,25 +317,53 @@
 <p><a href="probl%C3%A8me-tris" class="interne">Problème du tri</a></p>
 </div></div>
 
-<h3>On s'entraîne : exercices de complexité et de preuve</h3>
+<h3>Structures de données</h3>
+<p>Comment créer de nouveaux types d'objets utilisable pour nos algorithmes.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="projet-classiques" class="interne">Algorithmes classiques</a></p>
+<p><a href="structures_donn%C3%A9es" class="interne">Structures de données</a></p>
 </div></div>
 
 <h3>Structures linéaires</h3>
-<h4>Conteneurs</h4>
+<p>Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=kPqk07Gpj0A">Strucutres linéaires</a></p>
+</div></div>
+
+<h4>Gestion de flux de données</h4>
+<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux  structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
   </svg>
 <div class="pl-8 mr-8">
-<p><a href="structure-conteneurs" class="interne">Conteneurs</a></p>
+<p><a href="structure-flux" class="interne">Structure de gestion de flux</a></p>
 </div></div>
 
+<h4>Structures dynamiques</h4>
+<p>La liste est un tableau redimensionnable, qui est utilisé par exemple en python. Nous allons montrer comment réaliser ceci efficacement :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="structure-liste" class="interne">Les listes</a></p>
+</div></div>
+
+<h4>Table de hashage et structures associées</h4>
+<blockquote>
+<ol start="3">
+<li>hashage et dictionnaire</li>
+<li>chaine de caractères</li>
+</ol>
+</blockquote>
 <blockquote>
 <p>TBD ajouter exos pour dictionnaires.
 TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.</p>
@@ -345,16 +373,6 @@ TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change 
 <p>TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 TBD compteur, jets de dés.</p>
 </blockquote>
-<h4>Todo list</h4>
-<p>Implémenter et utiliser efficacement des structures permettant de stocker pendant son execution les choses que devra faire l'algorithme plus tard.</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="structure-pile-file" class="interne">Piles et files</a></p>
-</div></div>
-
 <h4>Chaînes de caractères</h4>
 <blockquote>
 <p>TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\{0, 1\}^\star$ à $\{0, 1\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.</p>
@@ -377,6 +395,16 @@ TBD compteur, jets de dés.</p>
 <p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
 </div></div>
 
+<h3>On s'entraîne : exercices de complexité et de preuve</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="projet-classiques" class="interne">Algorithmes classiques</a></p>
+</div></div>
+
+<h2><span id="partie-2"></span>Partie II</h2>
 <h3>Réductions : passer d'un problème à un autre</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -430,7 +458,7 @@ TBD compteur, jets de dés.</p>
 </div></div>
 
 <h2>Intermède : recherche universelle</h2>
-<p>Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique :</p>
+<p>Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique. L'Algorithme pour tout résoudre :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -439,7 +467,7 @@ TBD compteur, jets de dés.</p>
 <p><a href="recherche-universelle" class="interne">L'algorithme de la recherche universelle</a></p>
 </div></div>
 
-<h2><span id="partie-2"></span>Partie II</h2>
+<h2><span id="partie-3"></span>Partie III</h2>
 <p>Tout ce que devrait connaître tout ingénieur aimant l'informatique.</p>
 <h3><span id="modèle-calculs"></span>Modèle de calculs</h3>
 <p>Nous avons jusqu'à présent utilisé le modèle du pseudo-code pour créer des algorithmes.</p>
