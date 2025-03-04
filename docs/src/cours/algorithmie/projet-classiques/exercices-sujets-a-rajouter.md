@@ -20,6 +20,12 @@ eleventyComputed:
 
 > TBD McCarty, Ackerman, etc.
 
+## parenthèses
+
+> TBD parenthésage avec pile : <https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf>
+
+> TBD avec 2 piles : Samelson et Bauer (voir video sur l'histoire de la pile)
+
 #### Ackermann, le retour
 
 Essayons de voir comment écrire l'algorithme d'Ackermann sans toutes ces récurrences, comme on l'a fait avec la fonction 91.

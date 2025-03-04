@@ -384,3 +384,5 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 
 - de trouver $m$ à partir de $h$ tel que $f(m) = h$
 - de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
+
+> TBD voir partie sécurité et racine de n. Puis parler du point fixe et lièvre et tortue.

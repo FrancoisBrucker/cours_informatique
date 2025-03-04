@@ -41,8 +41,9 @@ Une donnée est traité une fois toutes les données plus récentes traitées. E
 > `1 + 2 - (3+4) * (5 + 6)` devient `1 2 + 3 4 + 5 6 + * -`
 > avec algo si opération dépile op dépile
 
-C'est l'invention de la pile : Hamblin's stack pour les expressions et les variables.
-> puis Disjkstra a vu que ça permettait de gérer l'appel (possiblement récursif) de fonctions.
+C'est l'invention de la pile : Hamblin's stack pour stocker les variables.
+> puis Disjkstra a vu que ça permettait de gérer l'appel (possiblement récursif) de fonctions : : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
+
 
 {% lien %}
 [Histoire de La pile](https://www.youtube.com/watch?v=2vBVvQTTdXg)
@@ -66,37 +67,43 @@ structure Pile:
             suivant ← suivant - 1
             rendre T[suivant]
         méthode vide() → booléen:
-            si suivant > 0:
+            si nombre() == 0:
                 rendre Faux
             rendre Vrai
         méthode pleine() → booléen:
-            si (T.longueur - suivant) > 0:
+            si (nombre() == T.longueur):
                 rendre Vrai
             rendre Faux
         méthode nombre() → entier:
             rendre suivant
 ```
 
-> TBD : complexités
+{% info %}
+Une méthode peut utiliser une autre méthode : les méthodes `pleine`{.language-} et `vide`{.language-} utilisent `nombre`{.language-}.
+{% endinfo %}
+
+On voit facilement que :
+
+{% note "**À retenir**" %}
+Les complexités de toutes les méthodes de la structure `Pile`{.language-} sont en $\mathcal{O}(1)$.
+
+Utiliser une pile peut se voire comme une opération élémentaire.
+{% endnote %}
 
 ## Exemple fondamental : décurryfication d'un algorithme récursif
 
-> rendre itératif des algorithmes récursifs
+{% lien %}
+[Passer de récursif à itératif avec une pile](https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#conversion-using-stacks)
+{% endlien %}
 
-> TBD : exo pile/file simple (jouer avec la structure) et usage dans des algos. Montrer aussi que la pile peut être utilisée pour stocker des variables : faire fibo et enfin dire que c'est comme ça en mémoire : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
+La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !
 
-> TBD grace à une todo list (aka une pile)
-<https://www.youtube.com/watch?v=HXNhEYqFo0o>
+> TBD Fibonacci
 
-> TBD :
->
-> cours ici  <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration>
-> On a vu recursion terminale et parfois ça marche pas ex. fibonnacci.
-> on reprend et on regarde comment on ferait en stockant les infos à fire.
-
-> - <https://www.lirmm.fr/~dony/notesCours/c4.s.pdf>
-> - <https://www.enseignement.polytechnique.fr/informatique/INF321/Amphis12/amphi5.pdf>
-> - <https://web4.ensiie.fr/~dubois/recursivite.pdf> fact est récursive primitive.L'écrire de façon itérative.
-
-avec un tant que utiliser <https://www.cs.odu.edu/~zeil/cs361/latest/Public/recursionConversion/index.html#converting-recursive-algorithms-to-iteration>
->
+```pseudocode
+algorithme fibo_rec(n):
+    si n < 3:
+        rendre 1
+    sinon:
+        rendre fibo_rec(n-1) + fibo_rec(n-2)
+```
