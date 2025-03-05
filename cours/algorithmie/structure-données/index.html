@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure_données/">Structures de données</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-données/">Structures de données</a>
 
 </div></div>
 
@@ -105,7 +105,7 @@
 <div class="pl-8 mr-8">
 <p>Une <strong><em>structure de données</em></strong> est composée :</p>
 <ul>
-<li>une fonction permettant de créer un objet de cette structure</li>
+<li>une fonction <code class="language-">création</code> permettant de créer un objet de cette structure</li>
 <li>de <strong><em>méthodes</em></strong> qui sont des fonctions permettant d’interagir avec une donnée de cette structure.</li>
 <li>d'<strong><em>attributs</em></strong> qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)</li>
 </ul>
@@ -113,13 +113,13 @@
 
 <p>Un point en dimension 2 pourra ainsi être défini comme :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-  <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-    x<span class="token punctuation">:</span> int
-    y<span class="token punctuation">:</span> int
-
-  <span class="token builtin">création</span><span class="token punctuation">(</span>abscisse<span class="token punctuation">:</span> int<span class="token punctuation">,</span> ordonnée<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">→</span> Point
-  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide</code></pre>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        x<span class="token punctuation">:</span> int
+        y<span class="token punctuation">:</span> int
+    <span class="token builtin">création</span><span class="token punctuation">(</span>abscisse<span class="token punctuation">:</span> int<span class="token punctuation">,</span> ordonnée<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">→</span> Point
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide</code></pre>
+<h3>Notation pointée</h3>
 <p>On utilisera alors les attributs et les méthode avec la notation pointée, comme on le fait avec la longueur d'un tableau, c'est à dire que l'attribut ou la méthode est appliqué à l'objet à gauche du point (<code class="language-">objet.attribut</code> ou <code class="language-">objet.méthode()</code>). Cette méthode est classique ne programmation, par exemple en python :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -148,41 +148,83 @@ affiche d à l'écran  <span class="token comment"># affiche 55</span></code></p
 <p>Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre <code class="language-">Point</code>) et de chaque méthode de celle-ci.</p>
 <p>Enfin, lorsque l'on définie une structure, il faut bien sur donner le code de toutes les fonctions de la structure. Pour notre point, une définition complète serait :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-  <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-    x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-    y<span class="token punctuation">:</span> <span class="token builtin">entier</span>
-  <span class="token builtin">création</span><span class="token punctuation">(</span>_x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> _y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Point<span class="token punctuation">:</span>
-    x <span class="token operator">←</span> _x
-    y <span class="token operator">←</span> _y
-  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-        x <span class="token operator">←</span> x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
-        y <span class="token operator">←</span> y <span class="token operator">+</span> p<span class="token punctuation">.</span>y</code></pre>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+        y<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token builtin">création</span><span class="token punctuation">(</span>_x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> _y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Point<span class="token punctuation">:</span>
+        x <span class="token operator">←</span> _x
+        y <span class="token operator">←</span> _y
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            x <span class="token operator">←</span> x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
+            y <span class="token operator">←</span> y <span class="token operator">+</span> p<span class="token punctuation">.</span>y</code></pre>
 <p>Remarquez que pour la gestion des attributs on a précisé à qui l'on avait affaire aux attributs :</p>
 <ul>
 <li>les attributs de l'objet appelant sont accessibles directement dans les différentes méthode</li>
 <li>les attributs d'un autre objet que l'objet appelant sont appelé avec la <em>notation pointée</em></li>
 <li>on a coutume de rappeler les attributs dans les paramètres de la création de l'objet. On les fait précéder d'un <code class="language-">_</code> pour montrer leurs relations.</li>
 </ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Un attribut est différent d'une variable : il est associé à l'objet appelant.</li>
+<li>On différencie un attribut d'une variable dans le code d'une méthode par son nom.</li>
+</ul>
+</div></div>
+
+<h3>mot clé <code class="language-">self</code></h3>
+<p>L'objet courant, celui qui appelle (à gauche du <code>.</code> en notation pointée), peut être parfois nommé par le mot-clé <code class="language-">self</code>. Cela permet d'utiliser la notation pointée partout (et est indispensable si l'on veut connaître l'objet appelant, comme pour la structure de liste chaînée que l'on verra plus tard). En utilisant complètement cette convention, le pseudocode de la structure devient :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+        y<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token builtin">création</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Point<span class="token punctuation">:</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">←</span> x
+        <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">←</span> y
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
+            <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">+</span> p<span class="token punctuation">.</span>y</code></pre>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>L'objet courant, celui qui appelle, peut être parfois nommé par le mot-clé <code class="language-">self</code>. Cela permet d'utiliser la notation pointée partout. Par exemple, la méthode addition peut-être écrite :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
-
-  <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
-
-    méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
-        <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
-        <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">←</span> <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">+</span> p<span class="token punctuation">.</span>y
-</code></pre>
-<p>Certains langages comme python n'autorise que cette notation, d'autre comme le java autorise les deux versions (avec ou sans self).</p>
+<p>Certains langages comme python n'autorisent que cette notation ce qui rend le code sans ambiguïté, d'autres comme le java autorise les deux versions (avec ou sans <code class="language-">self</code>).</p>
 </div></div>
 
+<p>La plupart du temps, on fera un mix des deux approches pour rendre le pseudocode plus digeste. Par exemple pour <code>Point</code>, on pourra utiliser <code class="language-">self</code> pour le constructeur et ainsi se passer des <code class="language-">_</code> et s'en passer pour la méthode <code class="language-">addition</code> qui est claire sans lui :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Point</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        x<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+        y<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+    <span class="token builtin">création</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Point<span class="token punctuation">:</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>x <span class="token operator">←</span> x
+        <span class="token keyword">self</span><span class="token punctuation">.</span>y <span class="token operator">←</span> y
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">addition</span><span class="token punctuation">(</span>p<span class="token punctuation">:</span> Point<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            x <span class="token operator">←</span> x <span class="token operator">+</span> p<span class="token punctuation">.</span>x
+            y <span class="token operator">←</span> y <span class="token operator">+</span> p<span class="token punctuation">.</span>y</code></pre>
+<p>Il faut garder le pseudo-code lisible donc :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>n'utilisez pas de nom d'attribut comme variable d'une méthode</li>
+<li>si le paramètre d'une méthode à le même nom qu'un attribut : c'est qu'il est directement affecté à celui-ci avec <code class="language-">self</code>. On utilise essentiellement ça dans la fonction <code class="language-">création</code></li>
+</ul>
+</div></div>
+
+<h3>Complexités</h3>
 <p>Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

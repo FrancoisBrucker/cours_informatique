@@ -372,6 +372,38 @@ b <span class="token operator">←</span> a</code></pre>
     instruction<span class="token number"> n
 </span>
    <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span></code></pre>
+<h3><em>&quot;abus&quot;</em> de notation</h3>
+<p>On se permettra, lorsque l'instruction est assez claire de procéder à des raccourci pour rendre le pseudocode plus digeste. Attention, la plupart de ces opérations ne seront pas des opérations élémentaires !</p>
+<h4>répétitions</h4>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">répéter k fois<span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>pour :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<h4>répétitions à pas fixé</h4>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">de i<span class="token operator">=</span>a à i<span class="token operator">=</span>b par par pas de k<span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></code></pre>
+<p>pour :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">i <span class="token operator">←</span> a
+<span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">≤</span> b<span class="token punctuation">:</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+ <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> k</code></pre>
+<h4>affectation d'une tranche de tableau</h4>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
+<p>pour :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
+<p>Fonctionne aussi pour :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
+<p>Qui correspond à :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> k</code></pre>
+<p>Ou encore à :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">T<span class="token punctuation">[</span>a<span class="token punctuation">:</span>b<span class="token punctuation">]</span> <span class="token operator">←</span> T'<span class="token punctuation">[</span>a'<span class="token punctuation">:</span><span class="token punctuation">]</span></code></pre>
+<p>Qui correspond à :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> b<span class="token operator">-</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span>
+    T<span class="token punctuation">[</span>a <span class="token operator">+</span> i<span class="token punctuation">]</span> <span class="token operator">←</span> T'<span class="token punctuation">[</span>a' <span class="token operator">+</span> i<span class="token punctuation">]</span></code></pre>
 
 
 </article>

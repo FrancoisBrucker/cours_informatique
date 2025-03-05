@@ -103,9 +103,34 @@
 </ol>
 <p>Ne tartinez pas des pages et des pages de démonstration. Allez directement au fait et si c'est évident, dites le.</p>
 <h2>Sujet</h2>
-<blockquote>
-<p>TBD</p>
-</blockquote>
+<h2>Sujet</h2>
+<h3>1 Complexités</h3>
+<h4>1.1</h4>
+<p>Quelle est la complexité du problème du tri ? Vous justifierez votre réponse en :</p>
+<ul>
+<li>donnant un minorant de cette complexité</li>
+<li>donnant un majorant de cette complexité (avec un nom d'algorithme du cours ayant cette complexité)</li>
+</ul>
+<h4>1.2</h4>
+<p>Donnez une définition (rapide) de la complexité en moyenne d'un algorithme. Pour quels sorte d'algorithme est-elle utile et comment la calculer en pratique ?</p>
+<h3>2 Algorithme</h3>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">1</span>
+   <span class="token keyword">tant que</span><span class="token number"> i </span><span class="token operator">&lt;</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">:</span>
+      <span class="token keyword">si</span> T<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">≤</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token number"> i </span><span class="token operator">←</span><span class="token number"> i </span><span class="token operator">+</span> <span class="token number">1</span>
+      <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+         T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token number"> i </span><span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<h4>2.1</h4>
+<p>Démontrez que l'algorithme précédent est un algorithme de tri.</p>
+<h4>2.2</h4>
+<h5>2.2.1</h5>
+<p>Donnez (et justifiez) la complexité de l'algorithme ?</p>
+<h5>2.2.2</h5>
+<p>Donnez (et justifiez) la complexité minimale de l'algorithme ?</p>
+<h5>2.2.3</h5>
+<p>Donnez (et justifiez) la complexité en moyenne de l'algorithme ? N'oubliez pas de donner le modèle de données utilisé pour calculer votre réponse.</p>
 
 
 </article>
