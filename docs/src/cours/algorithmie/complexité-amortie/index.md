@@ -136,13 +136,18 @@ La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.la
 
 On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme `successeur(N)`{.language-}, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de `successeur(N)`{.language-} ne peut donc être importante qu'au pire une fois sur deux.
 
+{% note %}
+L'analyse amortie de l'algorithme `tous`{.language-} permettra de trouver la complexité amortie de `successeur`{.language-} en divisant le résultat de la complexité de l'algorithme `tous`{.language-} par le nombre de fois où `successeur`{.language-} a été exécuté, c'est à dire $2^k$ fois.
+{% endnote %}
+
 ## Analyses
 
-Trois analyses possibles, de plus en plus générale et complexe à mettre en oeuvre.
+Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.
 
-Pour l'exemple du compteur, l'analyse par agrégat suffit mais parfois il faudra procéder en utilisant la méthode comptable, voir celle des potentiels.
+Pour l'exemple du compteur, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera (bien sur le même) :
 
-On montrera pour le compteur les analyses qui mêmes toutes au même résultat : la complexité amortie du compteur est en $\mathcal{O}(1)$ : en amortie, seulement 2 itérations de la boucle.
+- complexité de tous : $\mathcal{O}(2^n)$
+- complexité amortie de successeur ($2^n$ exécutions successive de `successeur`{.language-} dans `tous`{.language-}): $\frac{1}{2^n}\mathcal{O}(2^n) = \mathcal{O}(1)$
 
 {% info %}
 Réfléchissez à ce résultat, il est assez surprenant.
@@ -289,7 +294,7 @@ Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i +
 On a donc :
 
 $$
-C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$
 
 Encore une fois on retrouve le temps constant en amortie de l'exécution de `successeur`{.language-}.
