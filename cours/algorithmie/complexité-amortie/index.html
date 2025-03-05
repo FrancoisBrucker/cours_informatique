@@ -245,10 +245,21 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 </ul>
 <p>La complexité totale de l'exécution des $2^n$ instances de <code class="language-">successeur(N)</code> est alors estimée à : $\mathcal{O}(n \cdot 2^n)$.</p>
 <p>On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme <code class="language-">successeur(N)</code>, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de <code class="language-">successeur(N)</code> ne peut donc être importante qu'au pire une fois sur deux.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>L'analyse amortie de l'algorithme <code class="language-">tous</code> permettra de trouver la complexité amortie de <code class="language-">successeur</code> en divisant le résultat de la complexité de l'algorithme <code class="language-">tous</code> par le nombre de fois où <code class="language-">successeur</code> a été exécuté, c'est à dire $2^k$ fois.</p>
+</div></div>
+
 <h2>Analyses</h2>
-<p>Trois analyses possibles, de plus en plus générale et complexe à mettre en oeuvre.</p>
-<p>Pour l'exemple du compteur, l'analyse par agrégat suffit mais parfois il faudra procéder en utilisant la méthode comptable, voir celle des potentiels.</p>
-<p>On montrera pour le compteur les analyses qui mêmes toutes au même résultat : la complexité amortie du compteur est en $\mathcal{O}(1)$ : en amortie, seulement 2 itérations de la boucle.</p>
+<p>Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.</p>
+<p>Pour l'exemple du compteur, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera (bien sur le même) :</p>
+<ul>
+<li>complexité de tous : $\mathcal{O}(2^n)$</li>
+<li>complexité amortie de successeur ($2^n$ exécutions successive de <code class="language-">successeur</code> dans <code class="language-">tous</code>): $\frac{1}{2^n}\mathcal{O}(2^n) = \mathcal{O}(1)$</li>
+</ul>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -377,7 +388,7 @@ $$</p>
 <p>Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
 <p>On a donc :</p>
 <p>$$
-C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$</p>
 <p>Encore une fois on retrouve le temps constant en amortie de l'exécution de <code class="language-">successeur</code>.</p>
 <h2>Exemple 2 : la pile</h2>
