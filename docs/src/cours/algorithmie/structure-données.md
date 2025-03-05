@@ -67,16 +67,16 @@ Enfin, lorsque l'on définie une structure, il faut bien sur donner le code de t
 
 ```pseudocode
 structure Point:
-  attributs:
-    x: entier
-    y: entier
-  création(_x: entier, _y: entier) → Point:
-    x ← _x
-    y ← _y
-  méthodes:
-    méthode addition(p: Point) → vide:
-        x ← x + p.x
-        y ← y + p.y
+    attributs:
+        x: entier
+        y: entier
+    création(_x: entier, _y: entier) → Point:
+        x ← _x
+        y ← _y
+    méthodes:
+        méthode addition(p: Point) → vide:
+            x ← x + p.x
+            y ← y + p.y
 ```
 
 Remarquez que pour la gestion des attributs on a précisé à qui l'on avait affaire aux attributs :
@@ -86,45 +86,48 @@ Remarquez que pour la gestion des attributs on a précisé à qui l'on avait aff
 - on a coutume de rappeler les attributs dans les paramètres de la création de l'objet. On les fait précéder d'un `_`{.language-} pour montrer leurs relations.
 
 {% note "**À retenir**" %}
-Un attribut est différent d'une variable : il est associé à l'objet appelant.
 
-On différencie un attribut d'une variable dans le code d'une méthode par son nom.
+- Un attribut est différent d'une variable : il est associé à l'objet appelant.
+- On différencie un attribut d'une variable dans le code d'une méthode par son nom.
+
 {% endnote %}
 
-### mot clé `self`
+### mot clé `self`{.language-}
 
 L'objet courant, celui qui appelle (à gauche du `.` en notation pointée), peut être parfois nommé par le mot-clé `self`{.language-}. Cela permet d'utiliser la notation pointée partout (et est indispensable si l'on veut connaître l'objet appelant, comme pour la structure de liste chaînée que l'on verra plus tard). En utilisant complètement cette convention, le pseudocode de la structure devient :
 
 ```pseudocode
 structure Point:
-  attributs:
-    x: entier
-    y: entier
-  création(x: entier, y: entier) → Point:
-    self.x ← x
-    self.y ← y
-  méthodes:
-    méthode addition(p: Point) → vide:
-        self.x ← self.x + p.x
-        self.y ← self.y + p.y
+    attributs:
+        x: entier
+        y: entier
+    création(x: entier, y: entier) → Point:
+        self.x ← x
+        self.y ← y
+    méthodes:
+        méthode addition(p: Point) → vide:
+            self.x ← self.x + p.x
+            self.y ← self.y + p.y
 ```
 
-Certains langages comme python n'autorise que cette notation, d'autre comme le java autorise les deux versions (avec ou sans self).
+{% info %}
+Certains langages comme python n'autorisent que cette notation ce qui rend le code sans ambiguïté, d'autres comme le java autorise les deux versions (avec ou sans `self`{.language-}).
+{% endinfo %}
 
 La plupart du temps, on fera un mix des deux approches pour rendre le pseudocode plus digeste. Par exemple pour `Point`, on pourra utiliser `self`{.language-} pour le constructeur et ainsi se passer des `_`{.language-} et s'en passer pour la méthode `addition`{.language-} qui est claire sans lui :
 
 ```pseudocode
 structure Point:
-  attributs:
-    x: entier
-    y: entier
-  création(x: entier, y: entier) → Point:
-    self.x ← x
-    self.y ← y
-  méthodes:
-    méthode addition(p: Point) → vide:
-        x ← x + p.x
-        y ← y + p.y
+    attributs:
+        x: entier
+        y: entier
+    création(x: entier, y: entier) → Point:
+        self.x ← x
+        self.y ← y
+    méthodes:
+        méthode addition(p: Point) → vide:
+            x ← x + p.x
+            y ← y + p.y
 ```
 
 Il faut garder le pseudo-code lisible donc :

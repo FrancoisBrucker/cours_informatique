@@ -133,7 +133,19 @@ Notez que comme une liste python n'a pas de borne, cette implémentation de la p
 
 La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !
 
-> TBD Fibonacci
+Par exemple le calcul naif de la factorielle de façon récursive :
+
+```pseudocode
+algorithme fact_rec(n):
+    si n < 1:
+        rendre 1
+    sinon:
+        rendre n * fact_rec(n-1)
+```
+
+> TBD factoriel avec pile
+
+Fonctionne aussi avec plusieurs récursions :
 
 ```pseudocode
 algorithme fibo_rec(n):
@@ -142,3 +154,9 @@ algorithme fibo_rec(n):
     sinon:
         rendre fibo_rec(n-1) + fibo_rec(n-2)
 ```
+
+> TBD Fibonacci avec pile
+
+Cette approche ne diminue cependant pas la complexité, elle ne fait que la réécrire itérativement.
+
+> TBD Dijkstra appel de fonction est identique.
