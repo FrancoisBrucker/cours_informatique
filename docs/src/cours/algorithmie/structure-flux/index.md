@@ -112,6 +112,7 @@ Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en
 - aller à une position $n$ donnée : $\mathcal{O}(n)$
 
 > TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
+> TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 
 ## Exercices
 

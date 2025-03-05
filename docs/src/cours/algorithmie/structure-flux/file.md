@@ -51,6 +51,19 @@ tant que i < n:
     i ← i + 1
 ```
 
+{% exercice %}
+Montrer que pour l'algorithme précédent, il faut une file de taille n/2.
+{% endexercice %}
+{% details "corrigé" %}
+
+Lorsque l'on crée le $n$ème élément que l'on place dans la file, on le crée avec la chaîne de caractères $n_0\dots,n_k$ que l'on vient de sortir de la file.
+
+Le $n$ nombre est alors de la forme $n_0\dots,n_k0$ ou $n_0\dots,n_k1$. Supposons sans perte de généralité que c'est $n_0\dots,n_k0$.
+
+Comme on vient de sortir $n_0\dots,n_k = n/2$ de la file et qu'on y a placé $n_0\dots,n_k0 = n$, il y a bien $n/2$ élément dans la pile.
+
+{% enddetails %}
+
 ### Implémentation
 
 ```pseudocode

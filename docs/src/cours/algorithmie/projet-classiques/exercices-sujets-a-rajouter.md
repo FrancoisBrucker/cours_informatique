@@ -12,6 +12,11 @@ eleventyComputed:
 
 > TBD a ajouter plus tard.
 
+### parcourt min
+
+> TBD classique pour minimiser le parcourt.
+> TBD exo 3 <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf>
+
 ### Elément majoritaire
 
 > avec pile
@@ -24,7 +29,7 @@ eleventyComputed:
 
 > TBD parenthésage avec pile : <https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf>
 
-> TBD avec 2 piles : Samelson et Bauer (voir video sur l'histoire de la pile)
+> TBD avec 2 piles : Samelson et Bauer (voir video sur l'histoire de la pile) : <https://www.youtube.com/watch?v=2vBVvQTTdXg>
 
 #### Ackermann, le retour
 

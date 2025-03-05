@@ -344,43 +344,40 @@ On code ce qu'on a vu mercredi :
 Test de 15min en début de cours sur **les tris et la complexité en moyenne**.
 {% endattention %}
 {% faire %}
-Sujet du test 4
+[Sujet du test 4](./annales/2024-2025/4_test/){.interne}
 {% endfaire %}
 
-> 2h mercredi : structures linéaires : listes, tableaux et listes chaînées. Structure de piles et file (linéaire et circulaire).
-> introduction à la complexité amortie
-> intérêt de chaque structure
+Analyse de structures de données fondamentales en algorithmie :
 
-<!-- 
-TBD :
+{% aller %}
 
-1. structure pile et file à quoi ça sert :
-   1. pile : TODO liste = décurriffication
-   2. file : liste d'attente : exemple des entiers
-   3. FIFO/LIFO/... selon la structure
-2. implémentation :
-   1. tableau redimensionnable : la liste
-   2. pile = liste
-   3. file = 3 index avec modulo
-   4. complexité amortie. Implémentation classique avec des cellules, mais on verra ça en L3. En python deques.
-3. 
-- implémentation pile et file avec tableau qu'on double (comme liste). Complexité amortie
-- implémentation avec ds cellules complexité mais on verra ça en L3.
+1. [structures de données](/cours/algorithmie/structure-données/){.interne}
+2. [pile et files](/cours/algorithmie/structure-flux/){.interne}
+3. [listes](/cours/algorithmie/structure-liste/){.interne}
 
-- algo utilisation pile et file : https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf 
-- liste avec cellules en python : https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html
+{% endaller %}
 
--->
+Un autre type de complexité, très utile pour l'analyse de structures complexes :
 
-#### Vendredi : Liste/dictionnaires et ensembles
+{% aller %}
 
-> 2h vendredi : tables de hachage, dictionnaire et ensembles
+[La complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
+
+{% endaller %}
+
+#### Vendredi : Fonctions de hashage et dictionnaires
+
+{% aller %}
+
+[Hash et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
+
+{% endaller %}
 
 ### Semaine 7
 
 > 10/03 au 14/03
 >
-> 2h mercredi : algorithmes classiques
+> 2h mercredi : algorithmes classiques + rappel du reste des révision (preuve et complexité).
 > 2h vendredi : enveloppe convexe.
 
 ### Semaine 8

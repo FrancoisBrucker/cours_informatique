@@ -146,15 +146,13 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 Comment créer de nouveaux types d'objets utilisable pour nos algorithmes.
 
 {% aller %}
-[Structures de données](structures_données){.interne}
+[Structures de données](structure-données){.interne}
 {% endaller %}
 
-### Structures linéaires
-
-Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes.
+Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes. Ces structures sont dites linéaires car elles permettent de gérer des listes ordonnées d'éléments
 
 {% lien %}
-[Strucutres linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+[Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
 {% endlien %}
 
 #### Gestion de flux de données
@@ -167,31 +165,10 @@ Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de
 
 #### Structures dynamiques
 
-La liste est un tableau redimensionnable, qui est utilisé par exemple en python. Nous allons montrer comment réaliser ceci efficacement :
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un. Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :
 
 {% aller %}
 [Les listes](./structure-liste){.interne}
-{% endaller %}
-
-#### Table de hashage et structures associées
-
-> 3. hashage et dictionnaire
-> 4. chaine de caractères
-
-> TBD ajouter exos pour dictionnaires.
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
->
-> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
-
-> TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
-> TBD compteur, jets de dés.
-
-#### Chaînes de caractères
-
-> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
-
-{% aller %}
-[Chaines de caractères](./structure-chaine-de-caractères){.interne}
 {% endaller %}
 
 ### Complexité amortie
@@ -200,6 +177,14 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
+{% endaller %}
+
+### Table de hashage et structures associées
+
+Une autre structure fondamentale en algorithmie :
+
+{% aller %}
+[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
 {% endaller %}
 
 ### On s'entraîne : exercices de complexité et de preuve
@@ -257,6 +242,14 @@ Avant de finir cette première partie du cours, accordons nous un intermède en 
 ## <span id="partie-3"></span>Partie III
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
+
+### Chaînes de caractères
+
+> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
+
+{% aller %}
+[Chaines de caractères](./structure-chaine-de-caractères){.interne}
+{% endaller %}
 
 ### <span id="modèle-calculs"></span>Modèle de calculs
 

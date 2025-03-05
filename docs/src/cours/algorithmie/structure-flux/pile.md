@@ -90,6 +90,41 @@ Les complexités de toutes les méthodes de la structure `Pile`{.language-} sont
 Utiliser une pile peut se voire comme une opération élémentaire.
 {% endnote %}
 
+Notez qu'une pile s'implémente très facilement en python avec une liste  (c'est même fait pour) :
+
+{% exercice %}
+Implémentez une structure de pile en python.
+{% endexercice %}
+{% details "solution" %}
+On utilise une liste et les méthodes :
+
+- `append`{.language-} pour ajouter un élément à la fin de la liste
+- `pop`{.language-} pour supprimer et rendre le dernier élément de la liste
+
+La fonction `len`{.language-} nous permet de connaître le nombre d'élément dans la structure, ce qui permet de calculer toutes les autres méthodes.
+
+Dans un interpréteur python :
+
+```python
+>>> P = list()
+>>> P.append(2)
+>>> P.append(5)
+>>> len(P)
+2
+>>> x = P.pop()
+>>> print(x)
+5
+>>> x = P.pop()
+>>> len(P)
+0
+>>> print(x)
+2
+>>>
+```
+
+Notez que comme une liste python n'a pas de borne, cette implémentation de la pile n'a pas de taille.
+{% enddetails %}
+
 ## Exemple fondamental : décurryfication d'un algorithme récursif
 
 {% lien %}
