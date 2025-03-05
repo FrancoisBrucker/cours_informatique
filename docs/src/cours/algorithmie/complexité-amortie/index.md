@@ -119,13 +119,12 @@ def tous(n):
 
 {% enddetails %}
 
-La complexité de l'exécution `tous(n)`{.language-} dépend de $2^n$ exécutions de l'algorithme `successeur(N)`{.language-}.
+La complexité de l'exécution `tous(n)`{.language-} dépend de $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.
 
-{% exercice "**Problème**" %}
-Quelle est la complexité totale de l'exécution des $2^n$ exécutions successives de l'algorithme `successeur(entier) → vide`{.language-} ?
+{% note "**Problème**" %}
+En connaissant la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}, on eut en déduire la complexité amortie de l'algorithme `successeur(entier) → vide`{.language-} en divisant la complexité de `tous(n)`{.language-} par $2^n$.
 
-En déduire sa complexité amortie.
-{% endexercice %}
+{% endnote %}
 
 La difficulté du calcul vient du fait que le nombre d'opération effectuée par l'exécution de `successeur(N)`{.language-} dépend de son paramètre :
 
