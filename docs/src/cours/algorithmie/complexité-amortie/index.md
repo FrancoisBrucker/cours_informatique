@@ -51,11 +51,11 @@ La complexité amortie est un concept avancé, utilisée dans deux cas principal
 - comme synonyme de complexité maximale pour des structures de données très utilisées (celui que vous verrez le plus souvent)
 - comme moyen de calcul de complexité pour des algorithmes dont les boucles ou les exécutions successives ont des complexités très différentes
 
-## Algorithmes exemples
+Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) : le compteur binaire et une pile dépilant plusieurs éléments à la fois.
 
-Pour illustrer ces techniques d'analyse amortie nous allons utiliser deux exemples (ultra classiques) ci-dessous. Ils sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
+Ces deux exemples sont paradigmatiques de l'analyse amortie où une même opération peut avoir une complexité très faible ou très importante selon les cas. Une analyse fine de la complexité montrera que dans l'exécution globale de l’algorithme ces complexités sont liées et qu'une opération de complexité importante sera forcément suivie de c'opérations de faibles complexité.
 
-### <span id="compteur-binaire"></span>Compteur binaire
+## <span id="compteur-binaire"></span>Exemple du compteur binaire
 
 Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.
 
@@ -136,36 +136,19 @@ La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.la
 
 On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme `successeur(N)`{.language-}, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de `successeur(N)`{.language-} ne peut donc être importante qu'au pire une fois sur deux.
 
-### Piles
+## Analyses
 
-On va considérer [une pile](../structure-flux/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
+Trois analyses possibles, de plus en plus générale et complexe à mettre en oeuvre.
 
-```pseudocode
-algorithme k-pop(k, P) → entier:
-    k ← min(k, P.nombre())
-    répéter k fois:
-        x ← P.dépiler()
-    rendre x
-```
+Pour l'exemple du compteur, l'analyse par agrégat suffit mais parfois il faudra procéder en utilisant la méthode comptable, voir celle des potentiels.
 
-Si $k = 0$ ou `P`{.language-} est vide la complexité de `k-pop(k, P)`{.language-} est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de `k-pop(k, P)`{.language-} est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et `P`{.language-}.
+On montrera pour le compteur les analyses qui mêmes toutes au même résultat : la complexité amortie du compteur est en $\mathcal{O}(1)$ : en amortie, seulement 2 itérations de la boucle.
 
-Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes `nombre`{.language-} et `empiler`{.language-} et via la fonction `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
+{% info %}
+Réfléchissez à ce résultat, il est assez surprenant.
+{% endinfo %}
 
-{% exercice "**Problème**" %}
-Quelle est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.
-{% endexercice %}
-
-La difficulté du calcul vient du fait que la complexité de la fonction `k-pop`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empiler`{.language-} avant de la vider entièrement avec une instruction `k-pop`{.language-}) : la complexité de `k-pop`{.language-} est bornée par $\mathcal{O}(m)$.
-
-On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `nombre`{.language-}, `empiler`{.language-} et `k-pop`{.language-} donc $\mathcal{O}(m^2)$.
-
-On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
-
-- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-} avec cette grande complexité
-- Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
-
-## Analyse par Agrégat
+### Analyse par Agrégat
 
 {% note %}
 La technique de **_l'analyse par agrégat_** consiste à considérer l'ensemble des $m$ exécutions comme un **tout**.
@@ -173,9 +156,9 @@ La technique de **_l'analyse par agrégat_** consiste à considérer l'ensemble 
 On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.
 {% endnote %}
 
-### <span id="compteur-agrégat"></span> Exemple du compteur
+### <span id="compteur-agrégat"></span> Compteur avec les agrégats
 
-Tout d'abord, on remarque que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
+On remarque tout d'abord que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
 
 - si `N`{.language-} finit par la liste `[0]`{.language-} il faut de l'ordre de 1 opération à successeur (la boucle `tant que`{.language-} de la ligne 4 fait un test et aucune itération)
 - si `N`{.language-} finit par la liste `[0, 1]`{.language-} il faut de l'ordre de 2 opérations à successeur (la boucle `tant que`{.language-} de la ligne 4 fait une itération)
@@ -185,10 +168,6 @@ Tout d'abord, on remarque que le nombre d'opérations de `successeur(N)`{.langua
 - ...
 - si `N`{.language-} finit par la liste `[0] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
 - si `N`{.language-} finit par la liste `[1] + [1] * (n-1)`{.language-} il faut de l'ordre de $n$ opérations à successeur
-
-Nous allons compter le nombre total d'opérations de façons différentes.
-
-#### <span id="compteur-agrégat-partition"></span> Partitionnement de l'ensemble d'entrée
 
 On peut partitionner l'ensemble des $2^n$ nombres binaires à $n$ bits en $n$ ensembles disjoints :
 
@@ -233,25 +212,9 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 $$
 </div>
 
-### <span id="pile-agrégat"></span> Exemple de la pile
+La complexité amortie de `successeur` sera obtenue en divisant par le nombre d'exécution de cette fonction dans tous : $2^n$, ce qui donne une complexité amortie de 2.
 
-Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
-
-- $m'$ fois à la fonction `k-pop`{.language-},
-- $m''$ fois à la fonction `empiler`{.language-},
-- $m - m' - m''$ fois à la fonction `nombre`{.language-}.
-
-Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
-
-Comme la complexité d'un appel à `empiler`{.language-} ou à `nombre`{.language-} vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :
-
-$$
-C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
-$$
-
-Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `empiler`{.language-} ou `nombre`{.language-} est constant, sans distinction de l'opération !
-
-## Méthode comptable
+### Méthode comptable
 
 La méthode comptable va associer des coûts différents à chaque opération, appelé _coût amorti_ :
 
@@ -267,9 +230,9 @@ L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de 
 
 Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.
 
-### <span id="compteur-comptable"></span> Exemple du compteur
+### <span id="compteur-comptable"></span> Compteur comptable
 
-La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
+Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
 
 - 2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 **et** on crédite directement son coût de positionnement à 0)
 - 0 lorsqu'un bit est positionné à 0
@@ -278,23 +241,9 @@ Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est sup�
 
 Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = m$ : l'exécution de `tous(n)`{.language-} est de complexité $\mathcal{O}(2^n)$.
 
-### <span id="pile-comptable"></span> Exemple de la pile
+La complexité amortie de `successeur`{.language-} sera obtenue en divisant par le nombre d'exécution de cette fonction dans tous : $2^n$, ce qui donne une complexité amortie de $\mathcal{O}(1)$.
 
-La complexité de `k-pop`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
-
-- 1 à l'instruction `nombre`{.language-}
-- 2 à l'instruction `empiler`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
-- 1 à l'instruction `k-pop`{.language-}
-
-On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.
-
-Au bout de $m$ exécutions, on aura :
-
-$$
-C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
-$$
-
-## Analyse par potentiel
+### Analyse par potentiel
 
 Cette méthode de calcul est une généralisation des deux méthodes précédentes.
 
@@ -321,7 +270,7 @@ En informatique, le potentiel sera souvent associé à la structure de donnée s
 
 Remarquez que toute mesure de potentielle fonctionne si $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$, mais que pour être efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant. Ce faisant, la différence de potentiel absorbera les variations de coût réel sans trop les surévaluer.
 
-### <span id="compteur-potentiel"></span> Exemple du compteur
+### <span id="compteur-potentiel"></span> Compteur avec le potentiel
 
 Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Comme $\Omega(0) = 0$, on garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$, c'est une mesure de potentiel correct.
 
@@ -337,13 +286,80 @@ On en déduit que :
 
 Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.
 
-on a donc :
+On a donc :
 
 $$
 C \geq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$
 
-### <span id="pile-potentiel"></span> Exemple de la pile
+Encore une fois on retrouve le temps constant en amortie de l'exécution de `successeur`{.language-}.
+
+## Exemple 2 : la pile
+
+### Problème
+
+On va considérer [une pile](../structure-flux/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
+
+```pseudocode
+algorithme k-pop(k, P) → entier:
+    k ← min(k, P.nombre())
+    répéter k fois:
+        x ← P.dépiler()
+    rendre x
+```
+
+Si $k = 0$ ou `P`{.language-} est vide la complexité de `k-pop(k, P)`{.language-} est $\mathcal{O}(1)$ et sinon elle est — clairement — de $\mathcal{O}(\min(k, \mbox{len}(P)))$. On peut donc dire que la complexité de `k-pop(k, P)`{.language-} est de $\mathcal{O}(1 + \min(k, \mbox{len}(P)))$ pour tous $k$ et `P`{.language-}.
+
+Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes `nombre`{.language-} et `empiler`{.language-} et via la fonction `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
+
+{% exercice "**Problème**" %}
+Quelle est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.
+{% endexercice %}
+
+La difficulté du calcul vient du fait que la complexité de la fonction `k-pop`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empiler`{.language-} avant de la vider entièrement avec une instruction `k-pop`{.language-}) : la complexité de `k-pop`{.language-} est bornée par $\mathcal{O}(m)$.
+
+On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithme $A$ est bornée par $m$ fois la complexité maximale des opérations `nombre`{.language-}, `empiler`{.language-} et `k-pop`{.language-} donc $\mathcal{O}(m^2)$.
+
+On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
+
+- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-} avec cette grande complexité
+- Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
+
+### <span id="pile-agrégat"></span> Analyse par agrégat
+
+Au cours des $m$ exécutions, on peut considérer ue l'on a fait appel :
+
+- $m'$ fois à la fonction `k-pop`{.language-},
+- $m''$ fois à la fonction `empiler`{.language-},
+- $m - m' - m''$ fois à la fonction `nombre`{.language-}.
+
+Le nombre total d'éléments dépilés au cours des $m'$ exécutions de la fonction `k-pop`{.language-} ne peut excéder le nombre total $m''$ d'éléments empilés. La complexité totale des $m'$ exécutions de `k-pop`{.language-} vaut donc $\mathcal{O}(m' + m'')$.
+
+Comme la complexité d'un appel à `empiler`{.language-} ou à `nombre`{.language-} vaut invariablement $\mathcal{O}(1)$, on en conclut que la complexité totale recherchée vaut :
+
+$$
+C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
+$$
+
+Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `empiler`{.language-} ou `nombre`{.language-} est constant, sans distinction de l'opération !
+
+### <span id="pile-comptable"></span> Méthode comptable
+
+La complexité de `k-pop`{.language-} étant égale au nombre d'éléments supprimés de la pile, on peut inclure son coût directement à l'empilage de chaque élément. De là si on associe les coûts amortis suivants :
+
+- 1 à l'instruction `nombre`{.language-}
+- 2 à l'instruction `empiler`{.language-} (on compte son coût d'empilage **et** on crédite directement son coût de dépilage)
+- 1 à l'instruction `k-pop`{.language-}
+
+On s'assure que l'exécution de $k$ instructions successives préserve bien l'inégalité $\sum_{i=1}^{k} \widehat{c_i} \geq \sum_{i=1}^{k} {c_i}$.
+
+Au bout de $m$ exécutions, on aura :
+
+$$
+C \leq \sum_{i=1}^{m} \widehat{c_i} \leq \sum_{i=1}^{m} 2 = 2 \cdot m = \mathcal{O}(m)
+$$
+
+### <span id="pile-potentiel"></span> Potentiel
 
 La seule opération ayant un coût variable est `k-pop`{.language-} et il dépend du nombre d'éléments à dépiler, c'est à dire indirectement au nombre d'élément dans la pile.
 
