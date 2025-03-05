@@ -96,7 +96,7 @@
     
   
 
-  <p>Une liste est une amélioration de la <a href="../pseudo-code/briques-de-base/#tableaux" class="interne">structure de tableau</a> et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
+  <p>Une liste est une amélioration de <a href="../pseudo-code/briques-de-base/#tableaux" class="interne">la structure de tableau</a> et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un <em>index</em>, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
@@ -151,8 +151,8 @@
 </div></div>
 
 <h3>Ajout d'un élément</h3>
-<p>L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\mbox{\tiny longueur})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).</p>
-<p><strong>Cependant</strong>, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\tiny longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
+<p>L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\mbox{\small longueur})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).</p>
+<p><strong>Cependant</strong>, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\small longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
 opérations !</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -161,7 +161,7 @@ opérations !</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$ (cas le pire), mais s'il reste de la place, elle est en $\mathcal{O}(1)$.</p>
+<p>La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), mais s'il reste de la place, elle est en $\mathcal{O}(1)$.</p>
 </div></div>
 
 <p>Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :</p>
@@ -172,7 +172,7 @@ opérations !</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$.</p>
+<p>La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.</p>
 </div></div>
 
 <h3>Suppression d'un élément</h3>
@@ -195,15 +195,10 @@ opérations !</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>À retenir</strong></p>
 </div><div class="pl-8 mr-8">
-<p>La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$.</p>
+<p>La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.</p>
 </div></div>
 
-<h2>Complexité amortie</h2>
-<blockquote>
-<p>TBD def $N$ ajout successif puisque c'est pas toujours la mîme chose et c'est pas random.</p>
-</blockquote>
-<p>La seule complexité maximale non constante et l'ajout d'un élément à la fin de la structure. Cependant sa complexité dans le meilleurs des cas est en $\mathcal{O}(1)$. De plus, la complexité dans le cas le pire n'arrive que très rarement. Calculons ça précisément en ajoutant successivement $N$ éléments à la structure.</p>
-<h3>Complexité d'ajout de $N$ éléments à la fin de la structure</h3>
+<h2>Complexité d'ajout de $N$ éléments à la fin de la structure</h2>
 <p>Ajouter un élément à la fin de la structure peut très mal tomber : cela peut être juste au moment où l'on doit doubler la taille de la structure. C'est donc de complexité $\mathcal{O}(n)$ opérations s'il y avait $n$ élément dans la liste au moment de l'ajout... Mais ensuite, les $n-1$ suivants ajout vont <strong>forcément</strong> bien se passer et auront tous une complexité de $\mathcal{O}(1)$ opérations.</p>
 <p>On a le résultat suivant :</p>
 <div id="preuve-liste-ajout"></div>

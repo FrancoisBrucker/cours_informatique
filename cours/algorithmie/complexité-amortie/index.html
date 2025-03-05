@@ -97,7 +97,7 @@
   
 
   <p>L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.</p>
-<p>Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour <a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/listes" class="interne">les listes</a> par exemple).</p>
+<p>Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour <a href="../structure-liste" class="interne">les listes</a> par exemple).</p>
 <p>Ce n'est <strong>pas</strong> une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -153,7 +153,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>Dans ce problème on encode un nombre binaire de $n$ bits par un tableau $N$ de taille $n$. Pour $n=3$ par exemple, $N = [0, 0, 1]$ correspondra à $n=1$ et $N = [1, 1, 0]$ à $n=6$.</p>
 <p>Soit lors l'algorithme suivant :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="highlight-line"><span class="token builtin">algorithme</span> <span class="token function">successeur</span><span class="token punctuation">(</span>N<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span></span>
-<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">=</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span></span>
+<span class="highlight-line">   <span class="token number"> i </span><span class="token operator">←</span> N<span class="token punctuation">.</span>longueur <span class="token operator">-</span> <span class="token number">1</span></span>
 <span class="highlight-line"></span>
 <span class="highlight-line">    <span class="token keyword">tant que</span> <span class="token punctuation">(</span>i <span class="token operator">≥</span> <span class="token number">0</span><span class="token punctuation">)</span> ET <span class="token punctuation">(</span>N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">        N<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">0</span></span>
@@ -248,7 +248,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <h3>Piles</h3>
 <p>On va considérer <a href="../structure-flux/pile/" class="interne">une pile</a> et on crée l'algorithme suivant : <code class="language-">k-pop(k, P)</code> :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> k<span class="token operator">-</span>pop<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
-    k <span class="token operator">=</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    k <span class="token operator">←</span> min<span class="token punctuation">(</span>k<span class="token punctuation">,</span> P<span class="token punctuation">.</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     répéter k fois<span class="token punctuation">:</span>
         x <span class="token operator">←</span> P<span class="token punctuation">.</span>dépiler<span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">rendre</span> x</code></pre>
