@@ -25,6 +25,10 @@ eleventyComputed:
 
 > TBD McCarty, Ackerman, etc.
 
+### File et pile
+
+> TBD faire une file avec 2 piles. <https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html>
+
 ## parenthèses
 
 > TBD parenthésage avec pile : <https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf>

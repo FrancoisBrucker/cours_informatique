@@ -12,7 +12,7 @@ eleventyComputed:
 
 L'analyse amortie (et la complexité amortie qui en découle) est une technique utilisée pour calculer la complexité lorsque plusieurs exécution successive d'un même bloc de code va être de complexité différente.
 
-Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour [les listes](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes){.interne} par exemple).
+Par l'exemple lors de l'utilisation de structures complexes où les instructions coûteuses ne sont faites qu'un petit nombre de fois lorsque l'on exécute la méthode plusieurs fois (comme pour [les listes](../structure-liste){.interne} par exemple).
 
 Ce n'est **pas** une complexité en moyenne, c'est un moyen de calculer des complexités (maximum)
 
@@ -63,7 +63,7 @@ Soit lors l'algorithme suivant :
 
 ```pseudocode/
 algorithme successeur(N: [entier]) → vide:
-    i = N.longueur - 1
+    i ← N.longueur - 1
 
     tant que (i ≥ 0) ET (N[i] == 1):
         N[i] ← 0
@@ -142,7 +142,7 @@ On va considérer [une pile](../structure-flux/pile/){.interne} et on crée l'al
 
 ```pseudocode
 algorithme k-pop(k, P) → entier:
-    k = min(k, P.nombre())
+    k ← min(k, P.nombre())
     répéter k fois:
         x ← P.dépiler()
     rendre x

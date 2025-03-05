@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une liste est une amélioration de la [structure de tableau](../pseudo-code/briques-de-base/#tableaux){.interne} et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
+Une liste est une amélioration de [la structure de tableau](../pseudo-code/briques-de-base/#tableaux){.interne} et sont les conteneurs de base du langage python. Tout comme les tableaux ce sont des objets pouvant contenir une succession d'autres objets auxquels on peut accéder par un _index_, mais on peut facilement ajouter/supprimer un nombre infini d'éléments en fin de liste.
 
 {% info %}
 Vous devriez savoir manipuler des listes comme personne. Mais si vous avez besoin d'une piqûre de rappel, n'hésitez pas à consulter la partie [listes](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/listes/){.interne} du cours sur les bases du code.
@@ -65,19 +65,19 @@ La complexité de la création d'une liste est $\mathcal{O}(1)$.
 
 ### Ajout d'un élément
 
-L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\mbox{\tiny longueur})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).
+L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\mbox{\small longueur})$ dans le pire des cas puisqu'il faut créer un nouveau tableau puis tout recopier. Notez bien que l'on ne peut pas faire mieux puisqu'il est impossible de contrôler l'endroit où l'on crée un nouveau tableau (on ne peut pas le coller à l'ancien tableau).
 
-**Cependant**, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\tiny longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
+**Cependant**, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\small longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
  opérations !
 
 {% note "**À retenir**" %}
-La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$ (cas le pire), mais s'il reste de la place, elle est en $\mathcal{O}(1)$.
+La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), mais s'il reste de la place, elle est en $\mathcal{O}(1)$.
 {% endnote %}
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :
 
 {% note "**À retenir**" %}
-La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$.
+La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
 {% endnote %}
 
 ### Suppression d'un élément
@@ -91,16 +91,10 @@ La complexité de la suppression du dernier élément d'une liste est $\mathcal{
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$ :
 
 {% note "**À retenir**" %}
-La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\tiny longueur})$.
+La complexité de la suppression d'un élément à une position quelconque dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
 {% endnote %}
 
-## Complexité amortie
-
-> TBD def $N$ ajout successif puisque c'est pas toujours la mîme chose et c'est pas random.
-
-La seule complexité maximale non constante et l'ajout d'un élément à la fin de la structure. Cependant sa complexité dans le meilleurs des cas est en $\mathcal{O}(1)$. De plus, la complexité dans le cas le pire n'arrive que très rarement. Calculons ça précisément en ajoutant successivement $N$ éléments à la structure.
-
-### Complexité d'ajout de $N$ éléments à la fin de la structure
+## Complexité d'ajout de $N$ éléments à la fin de la structure
 
 Ajouter un élément à la fin de la structure peut très mal tomber : cela peut être juste au moment où l'on doit doubler la taille de la structure. C'est donc de complexité $\mathcal{O}(n)$ opérations s'il y avait $n$ élément dans la liste au moment de l'ajout... Mais ensuite, les $n-1$ suivants ajout vont **forcément** bien se passer et auront tous une complexité de $\mathcal{O}(1)$ opérations.
 

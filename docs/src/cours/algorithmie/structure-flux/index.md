@@ -114,12 +114,6 @@ Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en
 > TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
 > TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
 
-## Exercices
-
-### palindrome
+## Exercice : palindrome
 
 > TBD exercice : file et pile pour reconnaître les palindromes
-
-### File et pile
-
-> TBD faire une file avec 2 piles. <https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html>
