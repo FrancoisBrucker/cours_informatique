@@ -10,7 +10,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD a ajouter plus tard.
+> TBD regardez tous les exos d'avant et le remettre s'ils sont chouettes, genre ceux des piles/file, fibo, etc. Et ajouter les questions suivantes si nécessaire.
 
 ### parcourt min
 

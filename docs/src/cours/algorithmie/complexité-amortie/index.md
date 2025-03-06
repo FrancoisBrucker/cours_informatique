@@ -91,13 +91,13 @@ def successeur(N):
 
 À un nombre `N`{.language-} écrit au format binaire donné, `successeur(N)`{.language-} va l'incrémenter de 1.
 
-On reverra ce problème dans [la partie exercice](../projet-classiques/compteur-binaire/){.interne} où l'on calculera la complexité maximale et en moyenne d'une de ses exécutions. Nous allons ici exécuter cet algorithme pour afficher tous les entiers :
+On reverra ce problème dans [la partie exercice](../projet-classiques/compteur-binaire/){.interne} où l'on calculera la complexité maximale, minimale et en moyenne d'une de ses exécutions. Nous allons ici calculer la complexité de l'algorithme suivant qui affiche tous les entiers :
 
 ```pseudocode
 algorithme tous(n) → vide:
 
     N ← un tableau de taille n
-    placer des 0 à tous les indices de N
+    N[:] ← 0
 
     pour chaque i de [0, 2^n[:        
         successeur(N)
@@ -122,7 +122,7 @@ def tous(n):
 La complexité de l'exécution `tous(n)`{.language-} dépend de $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.
 
 {% note "**Problème**" %}
-En connaissant la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}, on eut en déduire la complexité amortie de l'algorithme `successeur(entier) → vide`{.language-} en divisant la complexité de `tous(n)`{.language-} par $2^n$.
+Trouver la complexité de l'exécution `tous(n)`{.language-}, qui consiste en l'exécution $2^n$ exécutions successives de l'algorithme `successeur(N)`{.language-}.
 
 {% endnote %}
 
@@ -135,22 +135,11 @@ La complexité totale de l'exécution des $2^n$ instances de `successeur(N)`{.la
 
 On le démontrera précisément mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle car si lors d'une exécution de l'algorithme `successeur(N)`{.language-}, $N[-1] = 1$ alors lors de l'exécution suivante on aura $N[-1] = 0$. La complexité de `successeur(N)`{.language-} ne peut donc être importante qu'au pire une fois sur deux.
 
-{% note %}
-L'analyse amortie de l'algorithme `tous`{.language-} permettra de trouver la complexité amortie de `successeur`{.language-} en divisant le résultat de la complexité de l'algorithme `tous`{.language-} par le nombre de fois où `successeur`{.language-} a été exécuté, c'est à dire $2^k$ fois.
-{% endnote %}
-
 ## Analyses
 
 Il existe trois types d'analyses amortie possibles : par agrégat, comptable et par potentiel. La méthode par potentielle est la plus générale mais également la plus ardue à mettre en oeuvre. La méthode comptable est intermédiaire et la méthode par agrégat (que l'on a déjà utilisé pour les listes) est la méthode la plus simple et qui est souvent suffisante.
 
-Pour l'exemple du compteur, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera (bien sur le même) :
-
-- complexité de tous : $\mathcal{O}(2^n)$
-- complexité amortie de successeur ($2^n$ exécutions successive de `successeur`{.language-} dans `tous`{.language-}): $\frac{1}{2^n}\mathcal{O}(2^n) = \mathcal{O}(1)$
-
-{% info %}
-Réfléchissez à ce résultat, il est assez surprenant.
-{% endinfo %}
+Pour l'exemple de l'algorithme `tous`{.language-}, l'analyse par agrégat suffit, mais on montrera aussi comment les résoudre avec la méthode comptable et par potentiel. Le résultat sera bien sur le même : $\mathcal{O}(2^n)$
 
 ### Analyse par Agrégat
 
@@ -216,8 +205,6 @@ C&=&2^n \cdot (n\cdot \sum_{i=1}^{n}\frac{1}{2^i} - \sum_{k=2}^n\sum_{i=1}^{k-1}
 $$
 </div>
 
-La complexité amortie de `successeur` sera obtenue en divisant par le nombre d'exécution de cette fonction dans tous : $2^n$, ce qui donne une complexité amortie de 2.
-
 ### Méthode comptable
 
 La méthode comptable va associer des coûts différents à chaque opération, appelé _coût amorti_ :
@@ -244,8 +231,6 @@ Appliquons cette méthode au compteur. La complexité totale à calculer est ég
 Ces coûts amortis assurent que la somme des $k$ premiers coûts amorti est supérieur à la somme réelle des $k$ coûts.
 
 Enfin, comme à chaque exécution de `successeur`{.language-} un unique bit est mis à 1, on en conclut que le coût amorti d'une exécution de successeur est 2. Le coût amorti de $m$ exécutions successives de `successeur`{.language-} est donc de $C = m$ : l'exécution de `tous(n)`{.language-} est de complexité $\mathcal{O}(2^n)$.
-
-La complexité amortie de `successeur`{.language-} sera obtenue en divisant par le nombre d'exécution de cette fonction dans tous : $2^n$, ce qui donne une complexité amortie de $\mathcal{O}(1)$.
 
 ### Analyse par potentiel
 
@@ -293,14 +278,67 @@ Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i +
 On a donc :
 
 $$
-C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m) = \mathcal{O}(2^n)
 $$
 
-Encore une fois on retrouve le temps constant en amortie de l'exécution de `successeur`{.language-}.
+## Complexité amortie d'un compteur
+
+La complexité de l'algorithme `successeur`{.language-} est en $\mathcal{O}(N.\mbox{\small longueur})$. Exécuter $m$ fois cet algorithme va donc être de complexité $\mathcal{O}(m\cdot N.\mbox{\small longueur})$ si on ne connaît pas le paramètre $N$ (on peut tout le temps choisir celui qui à une complexité maximale).
+
+En revanche, considérons la structure suivante :
+
+```pseudocode
+structure Compteur:
+    attributs
+        N: [entier]
+    création(n: entier) → Compteur:
+        N ← un tableau de n entiers
+        N[:] ← 0
+    suivant() → vide:
+        successeur(N)
+```
+
+Analysons la complexité de la méthode `suivant`{.language-} :
+
+1. elle n'a pas de paramètre
+2. une exécution peut prendre $\mathcal{O}(N.\mbox{\small longueur})$ opérations
+3. pour 2 exécutions successives, la complexité de la seconde exécution dépend de l'exécution précédente (si N[-1] à été mis à 1 ou à 0)
+
+Si un programme utilise $m$ fois la méthode `suivant`{.language-}, la complexité de ces $m$ exécutions va être égale à $\frac{m}{2^n}$ fois la complexité de `tous`{.language-}, c'est à dire $\mathcal{O}(m)$. On en déduit que :
+
+{% note %}
+La complexité amortie de la méthode `suivant`{.language-} est $\mathcal{O}(1)$.
+
+Lorsqu'un programme utilise de nombreuses fois la méthode `suivant`{.language-}, on peut considérer que la complexité d'un appel vaut sa complexité amortie : $\mathcal{O}(1)$.
+{% endnote %}
+
+La complexité amortie est **une moyenne de complexités maximales** et permet un calcul plus aisé de la complexité : la complexité de tous les appels vaut le nombre d'appels fois la complexité amortie.
+
+Attention, ce n'est pas une complexité en moyenne, la complexité des lignes 2 à 4 de l'algorithme suivant est $\cdot \mathcal{O}(m\cdot n)$ puisque $N$ peut contenir la suite $[1, 1, \dots, 1]$ :
+
+```pseudocode/
+N ← un tableau de m * n nombres 0 ou 1
+pour chaque i de [0, m[:
+    successeur(N[i * n: i * n + m])
+    afficher N[i * n: i * n + m] à l'écran
+```
+
+Alors que la complexité des lignes 2 à 4 de l'algorithme suivant vaut $\cdot \mathcal{O}(m)$ :
+
+```pseudocode/
+c ← un nouveau compteur
+pour chaque i de [0, m[:
+    c.suivant()
+    afficher c.N
+```
+
+Enfin, remarquez que la complexité amortie de `suivant` ne dépend par de la longueur de l'attribut $N$.
+
+{% info %}
+Réfléchissez à ce résultat, il est assez surprenant, non ?.
+{% endinfo %}
 
 ## Exemple 2 : la pile
-
-### Problème
 
 On va considérer [une pile](../structure-flux/pile/){.interne} et on crée l'algorithme suivant : `k-pop(k, P)`{.language-} :
 
@@ -317,8 +355,10 @@ Si $k = 0$ ou `P`{.language-} est vide la complexité de `k-pop(k, P)`{.language
 Soit $A$ un algorithme utilisant une pile $P$ via ses méthodes `nombre`{.language-} et `empiler`{.language-} et via la fonction `k-pop`{.language-}. On suppose que l'algorithme effectue $m$ de ces opérations pendant son exécution.
 
 {% exercice "**Problème**" %}
-Quelle est la complexité totale de ces $m$ opérations ? En déduire la complexité amortie de ces opérations.
+Quelle est la complexité totale de ces $m$ opérations pour $A$ ?
 {% endexercice %}
+
+### Borner la complexité
 
 La difficulté du calcul vient du fait que la complexité de la fonction `k-pop`{.language-} n'est pas constante. Bornons-là. On a effectué $m$ opérations, la taille maximale de la pile est donc de $m-1$ (si on a effectué $m-1$ opérations `empiler`{.language-} avant de la vider entièrement avec une instruction `k-pop`{.language-}) : la complexité de `k-pop`{.language-} est bornée par $\mathcal{O}(m)$.
 
@@ -326,7 +366,7 @@ On en conclut que la complexité de l'utilisation de la pile $P$ par l'algorithm
 
 On le démontrera précisément ci-après, mais on peut intuitivement voir que cette borne surestime grandement la complexité réelle :
 
-- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `push`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-} avec cette grande complexité
+- Pour que `k-pop`{.language-} ait une complexité de $\mathcal{O}(m)$, il faut avoir $\mathcal{O}(m)$ opérations `empiler`{.language-} avant. On ne peut donc pas avoir beaucoup d'opérations `k-pop`{.language-} avec cette grande complexité.
 - Après une exécution de `k-pop`{.language-} avec une complexité de $\mathcal{O}(m)$, la pile est vide. Les exécutions suivante de `k-pop`{.language-} seront de complexité très faible.
 
 ### <span id="pile-agrégat"></span> Analyse par agrégat
@@ -345,7 +385,7 @@ $$
 C = \mathcal{O}(m' + m'') + \mathcal{O}(m'') + \mathcal{O}(m - m' - m'') = \mathcal{O}(m + m'') = \mathcal{O}(m)
 $$
 
-Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$). La complexité amortie d'une opération est ainsi de : $\frac{C}{m} = \mathcal{O}(1)$. Le coût amorti d'une opération `k-pop`{.language-}, `empiler`{.language-} ou `nombre`{.language-} est constant, sans distinction de l'opération !
+Cette complexité est bien inférieure à notre première estimation de la complexité (qui valait $\mathcal{O}(m^2)$).
 
 ### <span id="pile-comptable"></span> Méthode comptable
 
@@ -376,22 +416,39 @@ On choisi donc d'associer le potentiel à la structure de donnée pile : $\Omega
 Le coût amorti peut être borné par 2 pour chaque opération, on a donc :
 
 $$
-C \geq \sum_{i=1}^m \widehat{c_i} \geq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
+C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$
 
+### Complexité amortie
+
+Remarquer que pour l'algorithme $A$ on a pas fait attentions :
+
+- à l'ordre dans lequel les opérations ont été effectuées
+- aux paramètres des opérations
+
+De là, calculer une complexité amortie a un sens. La complexité totale des appels des 3 opérations vaut $\mathcal{O}(m)$. La complexité amortie d'une opération vaut alors : $\frac{1}{m} \cdot \mathcal{O}(m) = \mathcal{O}(1)$.
+
+On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.
+
+Comme pour le compteur, remarquez que la complexité amortie de la fonction `k-pop` ne dépend pas de $k$ puisque'elle est en temps constant.
+
+{% info %}
+Réfléchissez à ce résultat, il est assez surprenant, non ?.
+{% endinfo %}
+
 ## Exercices
-
-### File et pile
-
-> complexité amortie file avec 2 piles : <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf>
 
 ### Potentiel
 
 > TBD exo 4 <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf>
 
+### File et pile
+
+> complexité amortie file avec 2 piles : <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2223.pdf>
+
 ### Ajout et suppression dans une liste
 
-> faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf> avec agregat et comptage pour l'ajout simple.
+> faire un mix avec 8.2 : <https://www.di.ens.fr/~fouque/articles/poly-algo.pdf> avec comptage et potentiel pour l'ajout simple.
 
 > TBD à faire (dire que c'est dur)
 
@@ -403,9 +460,9 @@ $N$ utilisations successives des méthodes d'ajout ou de suppression du dernier 
 
 > TBD le faire.
 
+{% enddetails %}
+
 ### Ajout et suppression dans série de listes triées
 
 > TBD pas évident de pourquoi on fait ça : ie réduire le coup d'insertion. Reprendre l'idée du compteur.
 > exercice 3 : <https://perso.ens-lyon.fr/laureline.pinault/Algo1/TD06-correction.pdf>
-
-{% enddetails %}

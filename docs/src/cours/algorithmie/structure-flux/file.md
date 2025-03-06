@@ -67,32 +67,34 @@ Comme on vient de sortir $n_0\dots,n_k = n/2$ de la file et qu'on y a placé $n_
 ### Implémentation
 
 ```pseudocode
-structure Pile:
+structure File:
     attributs:
         T: [entier]
+        longueur: entier
         début: entier
         fin: entier
     création(taille: entier) → Pile:
-        T ← un nouveau tableau d'entiers de taille taille
-        début ← T.longueur - 1
+        T ← un nouveau tableau d'entiers de longueur taille
+        longueur ← taille
+        début ← longueur - 1
         fin ← 0
     méthodes:
         méthode enfiler(donnée: entier) → vide:
             T[fin] ← donnée
-            fin ← (fin + 1) % T.longueur
+            fin ← (fin + 1) % longueur
         méthode défiler() → entier:
-            début ← (début + 1) % T.longueur
+            début ← (début + 1) % longueur
             rendre T[début]
         méthode vide() → booléen:
             si nombre() == 0:
                 rendre Faux
             rendre Vrai
         méthode pleine() → booléen:
-            si (nombre() == T.longueur):
+            si (nombre() == longueur):
                 rendre Vrai
             rendre Faux
         méthode nombre() → entier:
-            rendre (fin - début - 1 + T.longueur) % T.longueur
+            rendre (fin - début - 1 + longueur) % longueur
 ```
 
 On voit facilement que :

@@ -62,58 +62,151 @@ La pile est la structure de données qui rend toujours la donné la plus ancienn
 
 ## Variantes
 
-### Deques
+Vous trouverez sûrement aussi quelques variantes de ce structures, comme les deques ou les listes chaînées :
 
-{% lien %}
-<https://en.wikipedia.org/wiki/Double-ended_queue>
-{% endlien %}
+{% aller %}
+[Variantes](variantes){.interne}
+{% endaller %}
 
-### Listes chaînées
+## <span id="exercices"></span>Exercices
 
-{% lien %}
-[Liste chaînée](https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e)
-{% endlien %}
+### Parités
 
-Les listes chaînées sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer un élément de cette liste en temps constant.
+On se donne une pile P1 contenant des entiers positifs.
 
-Pouvoir supprimer un élément en temps constant nécessite de découper la liste en éléments indépendants collés les uns aux autres.
+{% exercice %}
+
+Écrire un algorithme pour copier dans P2 les nombres pairs contenus dans P1. Le contenu de P1 après exécution de l’algorithme doit être identique à celui avant exécution. Les nombres pairs dans P2 doivent être dans l’ordre où ils apparaissent dans P1 .
+{% endexercice %}
+{% details "corrigé" %}
+
+On utilise une autre pile où on va placer tous les nombres impairs :
 
 ```pseudocode
-structure Element:
-    attributs:
-        valeur: entier
-        suivant: Element
-        précédent: Element
-    création(_valeur: entier, _suivant: Element, _précédent: Element) → Element:
-        valeur ← _valeur
-        suivant ← _suivant
-        précédent ← _précédent
-    méthodes:
-        méthode ajouter(e: Element) → vide:
-            e.suivant ← suivant
-            suivant ← e
-            e.précédent = self
-        méthode supprimer() → vide:
-            suivant.précédent ← précédent
-            précédent.suivant ← suivant
+P3 ← une pile d'entier de taille P1.longueur
+
+tant que P1.vide() est Faux:
+    x ← P1.dépiler()
+    si x est pair:
+        P2.empiler(x)
+    sinon:
+        P3.empiler(x)
+
+tant que P3.vide() est Faux:
+    x ← P3.dépiler()
+    P1.empiler(x)
 ```
 
-{% info %}
-On a utilisé le mot clé self pour parler de l'objet appelant.
-{% endinfo %}
+{% enddetails %}
 
-> TBD exemple d'utilisation.
+### Palindromes
 
-Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en temps constant va contraindre le fait que l'on ne peut plus aller à un élément particulier de la liste en temps constant (comme on le fait avec un tableau). On a les complexités :
+{% exercice %}
+Montrer que l'on peut trouver si une chaîne de caractères est un palindrome en utilisant une pile et une file.
+{% endexercice %}
+{% details "corrigé" %}
 
-- création : $\mathcal{O}(1)$
-- suppression à une position donnée : $\mathcal{O}(1)$
-- ajout à une position donnée : $\mathcal{O}(1)$
-- aller à une position $n$ donnée : $\mathcal{O}(n)$
+```pseudocode
+algorithme palindrome(s: chaîne) → booléen:
+    P ← une pile de caractères
+    F ← une file de caractères
 
-> TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
-> TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
+    pour chaque c de s:
+        P.empile(c)
+        F.enfile(c)
+    
+    tant que P.vide() est Faux:
+        c1 ← P.dépile()
+        c2 ← F.défile()
 
-## Exercice : palindrome
+        si c1 ≠ c2:
+            rendre Faux
+    rendre Vrai
+```
 
-> TBD exercice : file et pile pour reconnaître les palindromes
+L'algorithme est correct puisque la pile va dépiler de la fin vers le début et la file du début vers la fin.
+{% enddetails %}
+{% exercice %}
+Donnez la complexité de votre algorithme.
+{% endexercice %}
+{% details "corrigé" %}
+Les méthodes des piles et des files sont toutes en $\mathcal{O}(1)$ opérations, l'algorithme précédent est de complexité $\mathcal{O}(|s|)$.
+
+{% enddetails %}
+
+### Permutation circulaire
+
+Soit $T$ un tableau d'entier.
+{% exercice %}
+En utilisant uniquement une file, donnez un algorithme de complexité $\mathcal{O}(T.\mbox{\small longueur})$ permettant de procéder à une permutation circulaire de $T$ de $k$ éléments ($T'[(i + k) \mod T.\mbox{\small longueur}] = T[i]$ pour tout $i$) **in place** (on doit modifier $T$).
+{% endexercice %}
+
+{% details "corrigé" %}
+
+```pseudocode
+F une file d'entier de taille T.longueur
+
+pour chaque i de [0, T.longueur[:
+    F.enfiler(T[i])
+répéter k fois:
+    x ← F.défile()
+    F.enfile(x)
+
+pour chaque i de [0, T.longueur[:
+    x ← F.défile()
+    T[i] ← x
+
+```
+
+{% enddetails %}
+
+### Pile et file
+
+On dispose uniquement de la structure de donnée de Pile et on souhaite créer, en utilisant deux piles P1 et P2, une nouvelle structure de File.
+
+{% exercice %}
+
+Écrire la structure de File en utilisant uniquement 2 piles en attributs.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+structure File:
+    attributs:
+        P1 : Pile d'entiers
+        P2 : Pile d'entiers
+        longueur: entier
+    création(taille: entier) → File:
+        P1 ← une nouvelle pile de taille entiers
+        P2 ← une nouvelle pile de taille entiers
+        longueur ← taille
+    méthodes:
+        méthode enfiler(donnée: entier) → vide:
+            P1.empiler(donnée)
+        méthode défiler() → entier:
+            si P2.vide():
+                tant que P1.vide() est Faux:
+                    x ← P1.dépiler()
+                    P2.empiler(x)
+            rendre P2.dépiler()
+        méthode vide() → booléen:
+            rendre P1.vide() ET P2.vide()
+        méthode pleine() → booléen:
+            si P1.nombre() + P2.nombre() ≥ longueur:
+                rendre Vrai
+            rendre Faux
+        méthode nombre() → entier:
+            rendre P1.nombre() + P2.nombre()
+```
+
+{% enddetails %}
+{% exercice %}
+
+Quelle est la complexité de l'enfilage et du défilage avec cette structure ?
+{% endexercice %}
+{% details "corrigé" %}
+
+L'enfilage sera toujours en $\mathcal{O}(1)$, mais le défilage peut prendre $\mathcal{O}({\small longueur})$ dans le pire des cas si la pile `P1`{.language-} est pleine et la pile `P2`{.language-} vide.
+
+{% enddetails %}

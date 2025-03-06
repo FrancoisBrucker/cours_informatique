@@ -55,9 +55,11 @@ C'est l'invention de la pile : Hamblin's stack pour stocker les variables.
 structure Pile:
     attributs:
         T: [entier]
+        longueur: entier
         suivant: entier
     création(taille: entier) → Pile:
-        T ← un nouveau tableau d'entiers de taille taille
+        T ← un nouveau tableau d'entiers de longueur taille
+        longueur ← taille
         suivant ← 0
     méthodes:
         méthode empiler(donnée: entier) → vide:
@@ -71,7 +73,7 @@ structure Pile:
                 rendre Faux
             rendre Vrai
         méthode pleine() → booléen:
-            si (nombre() == T.longueur):
+            si (nombre() == longueur):
                 rendre Vrai
             rendre Faux
         méthode nombre() → entier:

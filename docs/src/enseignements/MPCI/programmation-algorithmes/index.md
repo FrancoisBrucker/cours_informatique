@@ -352,16 +352,25 @@ Analyse de structures de données fondamentales en algorithmie :
 {% aller %}
 
 1. [structures de données](/cours/algorithmie/structure-données/){.interne}
-2. [pile et files](/cours/algorithmie/structure-flux/){.interne}
-3. [listes](/cours/algorithmie/structure-liste/){.interne}
+2. [file](/cours/algorithmie/structure-flux/file){.interne}
+3. [pile](/cours/algorithmie/structure-flux/pile){.interne}
+4. [listes](/cours/algorithmie/structure-liste/){.interne}
 
 {% endaller %}
 
-Un autre type de complexité, très utile pour l'analyse de structures complexes :
+Un autre type de complexité, très utile pour l'analyse de structures complexes et que l'on a utilisé pour les listes :
 
 {% aller %}
 
 [La complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
+
+{% endaller %}
+
+N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les files :
+
+{% aller %}
+
+[exercices](/cours/algorithmie/structure-flux/#exercices){.interne}
 
 {% endaller %}
 

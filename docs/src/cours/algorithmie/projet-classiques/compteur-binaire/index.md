@@ -10,6 +10,8 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD dire et répéter que ce n'est **pas** la complexité amortie.
+
 {% lien %}
 [Corrigé](./corrigé){.interne}
 {% endlien %}
