@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de données linéaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/tableau-associatif/">Tableaux associatifs</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/tableau-associatif/">Tableaux associatifs</a>
 
 </div></div>
 
@@ -96,57 +96,72 @@
     
   
 
-  <blockquote>
-<p>TBD : diagramme UML propre.</p>
-</blockquote>
-<!-- début résumé -->
-<p>Mise en œuvre de la structure de dictionnaire qui est une structure fondamentale en code.</p>
-<!-- end résumé -->
-<p>Pour créer efficacement une structure de dictionnaire, on utilise des <a href="../fonctions-hash" class="interne">fonctions de hachage</a>.</p>
-<p>Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.</p>
-<p>On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.</p>
-<p>Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.</p>
-<p>Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :</p>
+  <p>Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le tableau associatif, aussi appelé dictionnaire.</p>
+<p>Cette structure utilise de façon sous-jacente une <a href="../fonctions-hash" class="interne">fonctions de hachage</a>.</p>
+<h2>Principe</h2>
+<p>Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$. On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.</p>
+<h3>hash injective</h3>
+<p>Si la fonction $f$ est injective, c'est à dire que tous nos objets ont une valeur de hash unique, on peut accéder aux élément d'un tableau $T$ de taille $m$ soit :</p>
 <ul>
-<li>pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-<ol>
-<li>on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.</li>
-<li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-<ol>
-<li>S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v</li>
-<li>S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-<ol>
-<li>on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.</li>
-<li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-<ol>
-<li>S'il existe $(c, b)$ dans $L'$ on rend $b$</li>
-<li>S'il n'existe pas de couple $(c, b)$ $f(c)$ n'est pas une clé du dictionnaire et on rend une erreur.</li>
-</ol>
-</li>
-</ol>
-</li>
+<li>par un indice $0 \leq i &lt; m$ : $T[i]$</li>
+<li>par un objet $o$ puisque $0 \leq \mbox{hash}(o) &lt; m$  : $T[\mbox{hash}(o)]$</li>
 </ul>
-<p>Pour ces deux opérations, la complexité est alors la somme des complexités :</p>
-<ul>
-<li>du calcul du hash de l'objet $c$ : $f(c)$</li>
-<li>du nombre d'éléments de $L[f(c)]$</li>
-<li>du temps pour vérifier l'égalité entre 2 objets.</li>
-</ul>
-<p>Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(c)$ se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet $c$ à tous les premiers éléments de $L[f(c)]$, ce qui correspond à la complexité $K(c)$ de l'opérateur <code class="language-">==</code> de l'objet $c$ multiplié par la longueur de $L[f(c)]$.</p>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p>La complexité $K(c)$ dépend de l'objet $c$. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer par indice les éléments des deux listes).</p>
-</div></div>
+<p>L'objet $o$ est une <strong><em>clé</em></strong> permettant d'accéder à la <strong><em>valeur</em></strong> $T[\mbox{hash}(o)]$</p>
+<p>La structure de dictionnaire  est alors :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
+        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage injective
+    <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
+        T <span class="token operator">←</span> un tableau de taille m
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+            <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
+        méthode <span class="token function">associe_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> valeur</code></pre>
+<p>On accède aux éléments stockés via un objet et plus un indice, ce qui est vraiment pratique !</p>
+<h3>hash quelconque</h3>
+<p>Si la fonction de hash n'est pas injective (ce qui est généralement le cas), plusieurs objets peuvent avoir le même hash. Il faut pouvoir les distinguer. La façon classique de faire ceci est de créer une indirection via une liste contenant des couples (clé, valeur) possibles :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
+        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage non injective
+    <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
+        T <span class="token operator">←</span> un tableau de taille m
+        <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> nouvelle liste vide
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># liste de couples</span>
 
-<p>Si la taille maximale des objets est connue, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.</p>
+            <span class="token keyword">pour chaque</span> couple <span class="token punctuation">(</span>o<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de l<span class="token punctuation">:</span>
+                <span class="token keyword">si</span> o <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    <span class="token keyword">rendre</span> v
+        méthode <span class="token function">associe_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># liste de couples</span>
+
+            <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+                o<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                <span class="token keyword">si</span> o <span class="token operator">==</span> clé<span class="token punctuation">:</span>  <span class="token comment"># clé est déjà associée à une valeur</span>
+                    l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>  <span class="token comment"># on met à jour</span>
+                    <span class="token keyword">rendre</span> vide
+
+            l<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># clé n'est pas encore stockée</span></code></pre>
+<p>Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.</p>
+<p>C'est cette structure qui est implémentée puisque qu'aucune fonction de hash n'est injective.</p>
+<h2>Complexité de la recherche d'une clé</h2>
+<p>Analysons la complexité dans les deux cas précédents</p>
+<h3>Fonction de hachage injective</h3>
+<p>La complexité de la recherche d'une valeur à partir d'une clé est égale à la complexité du calcule de la fonction de hash de la clé $f(\mbox{clé})$.</p>
+<p>Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(\mbox{clé})$ se fait en $\mathcal{O}(1)$.</p>
+<h3>Fonction de hachage quelconque</h3>
+<p>Outre le calcul de $f(\mbox{clé})$, il faut ensuite :</p>
+<ol>
+<li>parcourir la liste des couples (objet, valeur) stocké pour une valeur de hash donnée</li>
+<li>comparer chaque objet à notre clé avec l'opérateur <code class="language-">==</code>  pour voir s'il sont égaux.</li>
+</ol>
+<p>On considère que l'opérateur <code class="language-">==</code> a une complexité de l'ordre de la taille de la structure à comparer ($\mathcal{O}(1)$ pour des types de base, mais de l'ordre de la taille si on compare deux tableaux d'entiers par exemple). Si la taille maximale des objets est connue, on a coutume de considérer que la complexité de l'opérateur <code class="language-">==</code> vaut $\mathcal{O}(1)$ pour tout objet $c$.</p>
+<p>On en conclut que la recherche et l'affectation dans un dictionnaire est en <em>grand O</em> du nombre maximum de clé stockés avec la même valeur de hash.</p>
 <h2>Taille de la structure</h2>
 <p>Comme la liste principale où stocker les éléments est de taille $m$, il est impossible d'utiliser la fonction de hachage directement. En effet, si l'on utilise <a href="https://fr.wikipedia.org/wiki/SHA-2">sha-2</a> comme fonction de hachage il faudrait une taille de liste de $2^{160}$ ce qui est impossible...</p>
 <p>C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée <strong>fonction d'adressage</strong> qui est une deuxième fonction de hash dont on peut maîtriser la taille :</p>
@@ -154,45 +169,43 @@
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
-<p>Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.</p>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Définition</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Une <strong><em>fonction d'adressage</em></strong> $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.</p>
 </div></div>
 
-<p>Une structure de dictionnaire est alors un couple :</p>
-<ul>
-<li>$L$ : la liste principale de taille $m$</li>
-<li>$f_m$ une fonction d'adressage.</li>
-</ul>
-<p>Pour associer et rechercher une valeur on procède alors comme suit :</p>
-<ul>
-<li>pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-<ol>
-<li>on cherche le hash $f(c)$ de la clé $c$.</li>
-<li>on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$</li>
-<li>Soit $L'= L[i_c]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-<ol>
-<li>S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v</li>
-<li>S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-<ol>
-<li>on cherche le hash $f(c)$ de la clé $c$.</li>
-<li>on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$</li>
-<li>Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-<ol>
-<li>S'il existe $(c, b)$ dans $L'$ on rend $b$</li>
-<li>S'il n'existe pas de couple $(c, b)$ $f(c)$ 'est pas une clé du dictionnaire et on rend une erreur.</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
+<p>Une structure de dictionnaire est alors :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
+        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage non injective
+        f_m<span class="token punctuation">:</span> <span class="token builtin">fonction</span> d'adressage
+    <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
+        T <span class="token operator">←</span> un tableau de taille m
+        <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span>
+            T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> nouvelle liste vide
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f_m<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># liste de couples</span>
+
+            <span class="token keyword">pour chaque</span> couple <span class="token punctuation">(</span>o<span class="token punctuation">,</span> v<span class="token punctuation">)</span> de l<span class="token punctuation">:</span>
+                <span class="token keyword">si</span> o <span class="token operator">==</span> clé<span class="token punctuation">:</span>
+                    <span class="token keyword">rendre</span> v
+        méthode <span class="token function">associe_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            l <span class="token operator">←</span> T<span class="token punctuation">[</span>f_m<span class="token punctuation">(</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># liste de couples</span>
+
+            <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> l<span class="token punctuation">.</span>longueur<span class="token punctuation">[</span><span class="token punctuation">:</span>
+                o<span class="token punctuation">,</span> v <span class="token operator">←</span> l<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+                <span class="token keyword">si</span> o <span class="token operator">==</span> clé<span class="token punctuation">:</span>  <span class="token comment"># clé est déjà associée à une valeur</span>
+                    l<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span>  <span class="token comment"># on met à jour</span>
+                    <span class="token keyword">rendre</span> vide
+
+            l<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>clé<span class="token punctuation">,</span> valeur<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># clé n'est pas encore stockée</span></code></pre>
 <p>La fonction d'adressage permet de choisir $m$ pas trop grand. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.</p>
-<h2>Complexités</h2>
-<p>On va estimer la complexité des opérations suivantes :</p>
+<h2>Complexités des méthodes</h2>
+<p>En supposant que la fonction d'adressage est une fonction de hash utile,
+On va estimer la complexité des opérations suivantes :</p>
 <ul>
 <li>création de la structure</li>
 <li>suppression de la structure (liste de liste)</li>
@@ -200,7 +213,7 @@
 <li>recherche d'un élément à la structure</li>
 <li>suppression d'un élément à la structure</li>
 </ul>
-<p>On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé <code>c</code> est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $L[f_m(f(c))]$.</p>
+<p>On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé <code>c</code> est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $T[f_m(f(c))]$.</p>
 <h3>Création de la structure</h3>
 <p>La création de la structure est en $\mathcal{O}(m)$ puisqu'il faut créer une liste de $m$ éléments chaque élément étant une liste vide.</p>
 <p>Initialement, $m$ est une constante, on a donc :</p>
@@ -226,8 +239,8 @@
 <p>Les complexités sont identiques car cela revient à chercher si la clé $c$ est déjà stockée ou non dans la structure.</p>
 <p>Cette complexité peut aller de :</p>
 <ul>
-<li>cas le meilleurs : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $L[f_m(f(c))]$ est vide</li>
-<li>cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = \mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$</li>
+<li>cas le meilleur : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $T[f_m(f(c))]$ est vide</li>
+<li>cas le pire : $\mathcal{O}(n)$ (en considérant que la complexité de l'opérateur <code class="language-">==</code> vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ sera $n$</li>
 <li>cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.</li>
 </ul>
 <p>Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.</p>
@@ -236,12 +249,14 @@
 <li>on double la fonction d'adressage</li>
 <li>on recalcule le hash de tous les $n$ éléments qu'on replace dans la structure</li>
 </ol>
-<p>On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcul est effectué rarement on montre que :</p>
+<p>On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcule est effectué rarement on à :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Proposition</strong></p>
+</div><div class="pl-8 mr-8">
 <p>La complexité en moyenne d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$</p>
 </div></div>
 
@@ -262,13 +277,24 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
-<p>Le raisonnement est identique à la preuve des <a href="../structure-de-donn%C3%A9es/liste#preuve-liste-ajout" class="interne">$N$ ajouts successifs pour une liste</a></p>
+<p>Le raisonnement est identique à la preuve des <a href="../../structure-liste/#preuve-liste-ajout" class="interne">$N$ ajouts successifs pour une liste</a></p>
 </div>
 </details>     
 </div>
 <p>La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.</p>
+<p>La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.</p>
+</div></div>
+
 <h2>Manipuler des dictionnaires</h2>
-<p>Faisons cet exercice en aliant connaissances algorithmique et language python. Si vous ne savez pas bien utiliser les dictionnaires en python, consultez le lien précédent.</p>
+<p>Exercice fondamental pour comprendre l'intérêt des dictionnaires.</p>
 <ul>
 <li>données :
 <ul>
@@ -304,6 +330,7 @@
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<p>Code python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span>  <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -315,8 +342,35 @@
 </details>     
 </div>
 <h3>Une boucle et un tri</h3>
-<p>Solution en $\mathcal{O}(n\cdot log(n))$</p>
-<p>On trie la liste (ce qui donne la complexité de la solution) puis :</p>
+<p>On trie la liste (ce qui donne la complexité de la solution) puis il suffit de remarquer que :</p>
+<ul>
+<li>si $P[i] + P[j] &gt; C$ alors $P[i'] + P[j'] &gt; C$ pour tous $i' \leq i$ et $j' \geq j$</li>
+<li>si $P[i] + P[j] &lt; C$ alors $P[i'] + P[j'] &lt; C$ pour tous $i' \geq i$ et $j' \leq j$</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créer cet algorithme et calculez-en sa complexité.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Code python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
     p<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -332,8 +386,12 @@
             <span class="token keyword">return</span> <span class="token boolean">None</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span></code></pre>
 <p>Notez que cette solution est aussi en $\mathcal{O}(n\cdot log(n))$ en moyenne car le tri utilisé par python est de complexité $\mathcal{O}(n\cdot log(n))$ en moyenne.</p>
+</div>
+</details>     
+</div>
 <h3>Avec un dictionnaire</h3>
-<p>Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n\cdot log(n))$</p>
+<p>Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n^2)$</p>
+<p>Code python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
     d <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
@@ -342,12 +400,81 @@
             <span class="token keyword">return</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>C<span class="token operator">-</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
         d<span class="token punctuation">[</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i
     <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
-<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+<h3>Expérimentation</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Proposez une méthode permettant de générer une instance du problème admettant au moins une solution.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD On tire des pi au hasard puis on choisi i et j avec C = pi + pj</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Proposez une méthode permettant de générer une instance du problème admettant exactement une solution.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<blockquote>
+<p>TBD On tire des di dans [-m, m] tel que si di est tiré, on ne peut plus tirer -di (on met tout ca dans des ensembles) pi = C/2 + di pour i ≤ n-2. Les deux derniers sont choisis  pour que la somme fasse C.</p>
+</blockquote>
+</div>
+</details>     
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/" class="interne">Dictionnaires python</a></p>
+<p>Implémentez en python les 3 algorithmes précédent pour montrer voir la rapidité croissantes avec laquelle ces problèmes sont traités</p>
+</div></div>
+
+<p>Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/#ensembles-dictionnaires" class="interne">Dictionnaires python</a></p>
 </div></div>
 
 

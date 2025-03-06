@@ -259,7 +259,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <p>On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.</p>
 </div></div>
 
-<h3><span id="compteur-agrégat"></span> Compteur avec les agrégats</h3>
+<h3><span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par agrégats</h3>
 <p>On remarque tout d'abord que le nombre d'opérations de <code class="language-">successeur(N)</code> dépend de l'indice du dernier <code class="language-">0</code> dans la liste <code class="language-">N</code> :</p>
 <ul>
 <li>si <code class="language-">N</code> finit par la liste <code class="language-">[0]</code> il faut de l'ordre de 1 opération à successeur (la boucle <code class="language-">tant que</code> de la ligne 4 fait un test et aucune itération)</li>
@@ -280,7 +280,7 @@ complexité diffère selon les appels, le calcul de la complexité de $A$ va né
 <li>$\mathcal{N}_n$ tous les nombres qui finissent par <code>0</code> suivi de (n-1) <code>1</code>. Il y en a $\frac{2^n}{2^n}$</li>
 <li>$\mathcal{N}'_{n}$ contenant le nombre ne contenant que des <code>1</code>. Il y en a 1</li>
 </ol>
-<p>Il faudra de l'ordre de $i$ opérations à <code class="language-">successeur(N)</code> pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme est :</p>
+<p>Il faudra de l'ordre de $i$ opérations à <code class="language-">successeur(N)</code> pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme <code class="language-">tous(n)</code> est :</p>
 <p>$$
 C = \sum_{i=1}^{n}i\cdot \frac{2^n}{2^i} + n = 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
 $$</p>
@@ -323,7 +323,7 @@ $$</p>
 </div></div>
 
 <p>Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.</p>
-<h3><span id="compteur-comptable"></span> Compteur comptable</h3>
+<h3><span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec la méthode comptable</h3>
 <p>Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :</p>
 <ul>
 <li>2 lorsqu'un bit est positionné à 1 (on compte son coût de positionnement à 1 <strong>et</strong> on crédite directement son coût de positionnement à 0)</li>
@@ -352,7 +352,7 @@ $$</p>
 <p>Cette technique d'analyse vient de la physique où l'on peut associer à un système une énergie potentielle, qui sera modifiée après chaque action : $\Omega(i-1)$. Cette énergie potentielle $\Omega(i-1)$ correspond à l'état du système avant la $i$ème opération et $\Omega(i)$ son état après cette opération, rendant compte de la modification qu'à exercé l'opération sur le système.</p>
 <p>En informatique, le potentiel sera souvent associé à la structure de donnée sous-tendant l'exécution de l'algorithme (ses paramètres, ses variables, etc).</p>
 <p>Remarquez que toute mesure de potentielle fonctionne si $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$, mais que pour être efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant. Ce faisant, la différence de potentiel absorbera les variations de coût réel sans trop les surévaluer.</p>
-<h3><span id="compteur-potentiel"></span> Compteur avec le potentiel</h3>
+<h3><span id="compteur-potentiel"></span>Calcul de la complexité de l'algorithme <code class="language-">tous(n)</code> avec l'analyse par potentiel</h3>
 <p>Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Comme $\Omega(0) = 0$, on garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$, c'est une mesure de potentiel correct.</p>
 <p>A chaque exécution de <code class="language-">successeur</code> on a :</p>
 <ul>
@@ -365,7 +365,7 @@ $$</p>
 <li>la différence de potentiel $\Omega(i) - \Omega(i-1)$ vaut $1 - k$</li>
 </ul>
 <p>Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.</p>
-<p>On a donc :</p>
+<p>On a donc que, encore une fois, la complexité de l'algorithme <code class="language-">tous(n)</code> est :</p>
 <p>$$
 C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m) = \mathcal{O}(2^n)
 $$</p>
@@ -479,13 +479,20 @@ $$</p>
 C \leq \sum_{i=1}^m \widehat{c_i} \leq \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m)
 $$</p>
 <h3>Complexité amortie</h3>
-<p>Remarquer que pour l'algorithme $A$ on a pas fait attentions :</p>
+<p>Remarquer que pour l'algorithme $A$ on a pas fait attention :</p>
 <ul>
 <li>à l'ordre dans lequel les opérations ont été effectuées</li>
 <li>aux paramètres des opérations</li>
 </ul>
 <p>De là, calculer une complexité amortie a un sens. La complexité totale des appels des 3 opérations vaut $\mathcal{O}(m)$. La complexité amortie d'une opération vaut alors : $\frac{1}{m} \cdot \mathcal{O}(m) = \mathcal{O}(1)$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
 <p>On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.</p>
+</div></div>
+
 <p>Comme pour le compteur, remarquez que la complexité amortie de la fonction <code>k-pop</code> ne dépend pas de $k$ puisque'elle est en temps constant.</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

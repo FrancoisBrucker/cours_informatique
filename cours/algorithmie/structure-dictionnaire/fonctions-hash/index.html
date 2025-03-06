@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de données linéaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">Fonction de hachage</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/">Structures de dictionnaires</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-dictionnaire/fonctions-hash/">Fonction de hachage</a>
 
 </div></div>
 
@@ -97,9 +97,9 @@
   
 
   <p>Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction <a href="https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm">sha</a>.</p>
-<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les <a href="../tableau-associatif" class="interne">tableaux ssociatifs</a>).</p>
+<p>On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont <a href="../tableau-associatif" class="interne">les tableaux associatifs</a>, encore appelés dictionnaires).</p>
 <h2>Définitions</h2>
-<p>On peut définir une <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">fonction de hachage</a> $f$ comme étant :</p>
+<p>On peut définir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage">une fonction de hachage</a> $f$ comme étant :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -127,6 +127,14 @@ $$
 <p>Une <strong><em>fonction de hachage</em></strong> est une fonction $f$ qui associe à tout mot de $\{0, 1\}^\star$ un mot de $\{0, 1\}^k$. Avec $k$ est un entier positif.</p>
 </div></div>
 
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On rappelle que que $\{0, 1\}^\star$ est l'ensemble des suites finies $s_0\dots s_n$ où $s_i \in \{0, 1\}$ pour tout $0\leq i \leq n$.</p>
+</div></div>
+
 <p>Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -142,7 +150,7 @@ $$
 </ul>
 </div></div>
 
-<p>En python par exemple, on peut utiliser la fonction <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash"><code class="language-">hash</code></a> :</p>
+<p>En python par exemple, on peut utiliser <a href="https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash">la fonction <code class="language-">hash</code></a> :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token string">"du texte"</span><span class="token punctuation">)</span>
 <span class="token number">1183064373567153871</span>
 <span class="token operator">>></span><span class="token operator">></span> <span class="token builtin">hash</span><span class="token punctuation">(</span><span class="token boolean">True</span><span class="token punctuation">)</span>
@@ -158,7 +166,9 @@ $$
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Propriété fondamentale des fonctions de hachage</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Si $f$ est une fonction de hachage, alors :</p>
 <p>$$
 f(a) \neq f(b) \Rightarrow a \neq b
@@ -170,15 +180,18 @@ $$</p>
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Utilité des fonctions de hachage</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.},{.} } m]$ soit <strong><em>utile</em></strong>, elle doit avoir les 3 propriétés suivantes :</p>
 <ol>
-<li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage.</li>
+<li>elle doit être <strong>déterministe</strong> : un même message doit toujours avoir la même valeur de hachage</li>
 <li>elle doit être <strong>facilement calculable</strong></li>
 <li>elle doit être <strong>uniforme</strong> : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$</li>
 </ol>
 </div></div>
 
+<p>Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leur hash. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.</p>
 <h2>Exemples</h2>
 <h3>Une constante</h3>
 <p>La fonction constante :</p>
@@ -250,28 +263,35 @@ n \mod m &=&  (\sum_{i=0}^l n_i2^{ki}) \mod m \\
 $$
 </div>
 <p>Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.</p>
-<p>De la un pseudo-code du calcul du modulo de $n$ :</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python">e <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
-exp <span class="token operator">=</span> <span class="token number">1</span>
-res <span class="token operator">=</span> n_0 mod m
-<span class="token keyword">for</span> <span class="token number">1</span> <span class="token operator">&lt;=</span> i <span class="token operator">&lt;=</span> l<span class="token punctuation">:</span>
-    exp <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
-    c <span class="token operator">=</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
-    res <span class="token operator">=</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m</code></pre>
+<p>De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">e <span class="token operator">←</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">**</span> k<span class="token punctuation">)</span> mod m
+exp <span class="token operator">←</span> <span class="token number">1</span>
+res <span class="token operator">←</span> n_0 mod m
+<span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">]</span><span class="token punctuation">:</span>
+    exp <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> e<span class="token punctuation">)</span> mod m
+    c <span class="token operator">←</span> <span class="token punctuation">(</span>exp <span class="token operator">*</span> n_i<span class="token punctuation">)</span> mod m
+    res <span class="token operator">←</span> <span class="token punctuation">(</span>res <span class="token operator">+</span> c<span class="token punctuation">)</span> mod m</code></pre>
 <h4>Équiprobable</h4>
-<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2, sont disjoints et recouvrent tous les entier: un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$).</p>
-<p>Attention cependant :</p>
+<p>Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ puisque les ensembles $M_i = \{k\cdot m+i \mid k \geq 0\}$ pour $0\leq i \leq m-1$ :</p>
+<ul>
+<li>sont en bijections 2 à 2,</li>
+<li>sont disjoints</li>
+<li>recouvrent tous les entiers</li>
+</ul>
+<p>Un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$.</p>
+<p>Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur :</p>
 <p>$$
 (k \times p) \mod (p \times q) = (k \mod q) \times p
 $$</p>
-<p>Les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur !
-De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.</p>
-<p>Pour palier ce problème :</p>
+<p>De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.</p>
+<p>Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
 </svg>
-<div class="pl-8 mr-8">
+<div class="pl-8 mb-2 mr-8">
+<p><strong>À retenir</strong></p>
+</div><div class="pl-8 mr-8">
 <p>Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.</p>
 </div></div>
 
@@ -289,16 +309,16 @@ De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais adm
 </div></div>
 
 <h2>Hash de structures composées</h2>
-<p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.</p>
-<p>En java par exemple, une façon classique de procéder est :</p>
-<pre class="language-text" tabindex="0" data-language="text"><code class="language-text">res = 0
-pour chaque élément e du tuple:
-    res = hash(31 * res + hash(e))
+<p>Par exemple considérons le tuple suivant : <code class="language-">(1, 'un', 3.14)</code>. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hashs des différents types d'objets en un hash unique.</p>
+<p>En java par exemple, une façon classique de procéder est décrite par l'algorithme suivant :</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode">res <span class="token operator">←</span> <span class="token number">0</span>
+<span class="token keyword">pour chaque</span> élément e du tuple<span class="token punctuation">:</span>
+    res <span class="token operator">←</span> hash<span class="token punctuation">(</span><span class="token number">31</span> <span class="token operator">*</span> res <span class="token operator">+</span> hash<span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span>
 </code></pre>
 <p>Ceci assure :</p>
 <ul>
 <li>d'avoir un hash facile à calculer si le chaque de chaque élément l'est</li>
-<li>de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va <em>mélanger</em> le tout à chaque fois</li>
+<li>de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va <em>mélanger</em> le tout à chaque fois.</li>
 </ul>
 <h2>Collisions</h2>
 <p>Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.</p>
@@ -391,18 +411,19 @@ $$</p>
 <div class="pl-8 mb-2 mr-8">
 <p><strong>Proposition</strong></p>
 </div><div class="pl-8 mr-8">
-<p>Si $m$ est grand devant $n$, on a :</p>
+<p>Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n &gt; 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h &lt;m$ donné) est :</p>
 <p>$$
 p(n, m) \simeq \exp(-\frac{n}{ m})
 $$</p>
+<p>Et la probabilité $\bar{p}(n, m)$ de tirer $n &gt; 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :</p>
 <p>$$
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
 $$</p>
-<p>et donc :</p>
+<p>On peut alors déterminer $n$ pour atteindre une valeur de $p(n, m)$ ou de $\bar{p}(n, m)$ donnée :</p>
 <div>
 $$
 \begin{array}{lcl}
-n &\simeq &m\ln(p(n, m))\\
+n &\simeq &-m\ln(p(n, m))\\
 &\simeq & \sqrt{-2\cdot m\cdot \ln(\bar{p}(n, m))}
 \end{array}
 $$
@@ -477,7 +498,7 @@ $$
 <p>$$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}
 $$</p>
-<p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !</p>
+<p>Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet (mais est possible... On considère en 2025 qu'une bonne méthode doit avoir au moins $2^{128}$ essais en brute force) !</p>
 <p>De ce qui découle on en déduit une règle universelle de toute fonction de hash :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -509,9 +530,6 @@ $$</p>
 <li>de trouver $m$ à partir de $h$ tel que $f(m) = h$</li>
 <li>de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$</li>
 </ul>
-<blockquote>
-<p>TBD voir partie sécurité et racine de n. Puis parler du point fixe et lièvre et tortue.</p>
-</blockquote>
 
 
 </article>
