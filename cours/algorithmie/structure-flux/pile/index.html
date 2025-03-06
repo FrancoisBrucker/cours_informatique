@@ -149,9 +149,11 @@ avec algo si opération dépile op dépile</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Pile</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
         T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
+        longueur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
         suivant<span class="token punctuation">:</span> <span class="token builtin">entier</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span>taille<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> Pile<span class="token punctuation">:</span>
-        T <span class="token operator">←</span> un nouveau tableau d'entiers de taille taille
+        T <span class="token operator">←</span> un nouveau tableau d'entiers de longueur taille
+        longueur <span class="token operator">←</span> taille
         suivant <span class="token operator">←</span> <span class="token number">0</span>
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
         méthode <span class="token function">empiler</span><span class="token punctuation">(</span>donnée<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
@@ -165,7 +167,7 @@ avec algo si opération dépile op dépile</p>
                 <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
         méthode <span class="token function">pleine</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">booléen</span><span class="token punctuation">:</span>
-            <span class="token keyword">si</span> <span class="token punctuation">(</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> T<span class="token punctuation">.</span>longueur<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> <span class="token punctuation">(</span>nombre<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> longueur<span class="token punctuation">)</span><span class="token punctuation">:</span>
                 <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span>
             <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
         méthode <span class="token function">nombre</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
