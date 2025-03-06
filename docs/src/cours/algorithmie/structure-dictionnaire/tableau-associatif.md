@@ -9,49 +9,97 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+Nous allons montrer dans cette  partie une structure de donnée très utilisée en développement : le tableau associatif, aussi appelé dictionnaire.
 
-> TBD : diagramme UML propre.
+Cette structure utilise de façon sous-jacente une [fonctions de hachage](../fonctions-hash){.interne}.
 
-<!-- début résumé -->
+## Principe
 
-Mise en œuvre de la structure de dictionnaire qui est une structure fondamentale en code.
+Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$. On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.
 
-<!-- end résumé -->
+### hash injective
 
-Pour créer efficacement une structure de dictionnaire, on utilise des [fonctions de hachage](../fonctions-hash){.interne}.
+Si la fonction $f$ est injective, c'est à dire que tous nos objets ont une valeur de hash unique, on peut accéder aux élément d'un tableau $T$ de taille $m$ soit :
 
-Supposons que l'on ait une fonction de hachage $f$ qui a tout objet associe un nombre entre 0 et $m-1$.
+- par un indice $0 \leq i < m$ : $T[i]$
+- par un objet $o$ puisque $0 \leq \mbox{hash}(o) < m$  : $T[\mbox{hash}(o)]$
 
-On peut de plus supposer que le hash est calculé en $\mathcal{O}$ de la taille de l'objet à hacher. Par exemple en $\mathcal{O}(len(s))$ pour une chaîne de caractères $s$ par exemple.
+L'objet $o$ est une **_clé_** permettant d'accéder à la **_valeur_** $T[\mbox{hash}(o)]$
 
-Si la fonction $f$ est injective, il suffit de stocker nos valeurs dans une liste $L$ à $m$ éléments à l'indice égal au hash de sa clé. Ainsi si je veux associer la valeur $v$ à la clé $c$, on effectuera l'opération : $L[f(c)] = v$.
+La structure de dictionnaire  est alors :
 
-Si la fonction n'est pas injective, chaque élément de la liste $L$ est une liste qui stockera les différentes clés ayant même hash. De là :
+```pseudocode
+structure Dictionnaire:
+    attributs:
+        T: [entier]
+        f: fonction de hachage injective
+    création() → Dictionnaire:
+        T ← un tableau de taille m
+    méthodes:
+        méthode donne_valeur(clé: objet) → entier:
+            rendre T[f(clé)]
+        méthode associe_valeur(clé: objet, valeur: entier) → vide:
+            T[f(clé)] ← valeur
+```
 
-- pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
-  2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-     1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
-     2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
-- pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash $f(c)$ qui sera un nombre entre $0$ et $m$.
-  2. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-     1. S'il existe $(c, b)$ dans $L'$ on rend $b$
-     2. S'il n'existe pas de couple $(c, b)$ $f(c)$ n'est pas une clé du dictionnaire et on rend une erreur.
+On accède aux éléments stockés via un objet et plus un indice, ce qui est vraiment pratique !
 
-Pour ces deux opérations, la complexité est alors la somme des complexités :
+### hash quelconque
 
-- du calcul du hash de l'objet $c$ : $f(c)$
-- du nombre d'éléments de $L[f(c)]$
-- du temps pour vérifier l'égalité entre 2 objets.
+Si la fonction de hash n'est pas injective (ce qui est généralement le cas), plusieurs objets peuvent avoir le même hash. Il faut pouvoir les distinguer. La façon classique de faire ceci est de créer une indirection via une liste contenant des couples (clé, valeur) possibles :
 
-Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(c)$ se fait en $\mathcal{O}(1)$. La complexité vient donc de la comparaison de l'objet $c$ à tous les premiers éléments de $L[f(c)]$, ce qui correspond à la complexité $K(c)$ de l'opérateur `==`{.language-} de l'objet $c$ multiplié par la longueur de $L[f(c)]$.
+```pseudocode
+structure Dictionnaire:
+    attributs:
+        T: [Liste]
+        f: fonction de hachage non injective
+    création() → Dictionnaire:
+        T ← un tableau de taille m
+        pour chaque i de [0, m[:
+            T[i] ← nouvelle liste vide
+    méthodes:
+        méthode donne_valeur(clé: objet) → entier:
+            l ← T[f(clé)]  # liste de couples
 
-{% info %}
-La complexité $K(c)$ dépend de l'objet $c$. Pour comparer deux réels, cela se fait en $\mathcal{O}(1)$, mais pour une liste par exemple cela va dépendre des éléments contenus dans la liste (comparer deux listes revient à comparer par indice les éléments des deux listes).
-{% endinfo %}
+            pour chaque couple (o, v) de l:
+                si o == clé:
+                    rendre v
+        méthode associe_valeur(clé: objet, valeur: entier) → vide:
+            l ← T[f(clé)]  # liste de couples
 
-Si la taille maximale des objets est connue, on a coutume de considérer que $K(c) = \mathcal{O}(1)$ pour tout objet $c$.
+            pour chaque i de [0, l.longueur[:
+                o, v ← l[i]
+                si o == clé:  # clé est déjà associée à une valeur
+                    l[i] ← (clé, valeur)  # on met à jour
+                    rendre vide
+
+            l.append((clé, valeur))  # clé n'est pas encore stockée
+```
+
+Chaque élément du tableau T de la structure est une liste qui stockera les différentes clés ayant même hash.
+
+C'est cette structure qui est implémentée puisque qu'aucune fonction de hash n'est injective.
+
+## Complexité de la recherche d'une clé
+
+Analysons la complexité dans les deux cas précédents
+
+### Fonction de hachage injective
+
+La complexité de la recherche d'une valeur à partir d'une clé est égale à la complexité du calcule de la fonction de hash de la clé $f(\mbox{clé})$.
+
+Comme les clés sont associés à des objets non modifiables, leur hash peut être connu à la création des objets donc le calcul de $f(\mbox{clé})$ se fait en $\mathcal{O}(1)$.
+
+### Fonction de hachage quelconque
+
+Outre le calcul de $f(\mbox{clé})$, il faut ensuite :
+
+1. parcourir la liste des couples (objet, valeur) stocké pour une valeur de hash donnée
+2. comparer chaque objet à notre clé avec l'opérateur `==`{.language-}  pour voir s'il sont égaux.
+
+On considère que l'opérateur `==`{.language-} a une complexité de l'ordre de la taille de la structure à comparer ($\mathcal{O}(1)$ pour des types de base, mais de l'ordre de la taille si on compare deux tableaux d'entiers par exemple). Si la taille maximale des objets est connue, on a coutume de considérer que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$ pour tout objet $c$.
+
+On en conclut que la recherche et l'affectation dans un dictionnaire est en _grand O_ du nombre maximum de clé stockés avec la même valeur de hash.
 
 ## Taille de la structure
 
@@ -59,34 +107,46 @@ Comme la liste principale où stocker les éléments est de taille $m$, il est i
 
 C'est pourquoi, en réalité on n'utilise une fonction supplémentaire appelée **fonction d'adressage** qui est une deuxième fonction de hash dont on peut maîtriser la taille :
 
-{% note %}
-Une fonction d'adressage $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.
+{% note "**Définition**" %}
+Une **_fonction d'adressage_** $f_m$ est une fonction : de $\mathbb{N}$ dans $[0\mathrel{ {...} } m[$.
 {% endnote %}
 
-Une structure de dictionnaire est alors un couple :
+Une structure de dictionnaire est alors :
 
-- $L$ : la liste principale de taille $m$
-- $f_m$ une fonction d'adressage.
+```pseudocode
+structure Dictionnaire:
+    attributs:
+        T: [Liste]
+        f: fonction de hachage non injective
+        f_m: fonction d'adressage
+    création() → Dictionnaire:
+        T ← un tableau de taille m
+        pour chaque i de [0, m[:
+            T[i] ← nouvelle liste vide
+    méthodes:
+        méthode donne_valeur(clé: objet) → entier:
+            l ← T[f_m(f(clé))]  # liste de couples
 
-Pour associer et rechercher une valeur on procède alors comme suit :
+            pour chaque couple (o, v) de l:
+                si o == clé:
+                    rendre v
+        méthode associe_valeur(clé: objet, valeur: entier) → vide:
+            l ← T[f_m(f(clé))]  # liste de couples
 
-- pour associer $v$ à la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash $f(c)$ de la clé $c$.
-  2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
-  3. Soit $L'= L[i_c]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-     1. S'il existe $(c, b)$ dans $L'$ on remplace $b$ par v
-     2. S'il n'existe pas de couple $(c, b)$ dans $L'$ on ajoute à la fin de la liste $L'$ le couple $(c, v)$
-- pour retrouver la valeur $v$ associée la clé $c$, on effectue les opérations suivantes :
-  1. on cherche le hash $f(c)$ de la clé $c$.
-  2. on note $i_c = f_m(f(c))$ qui sera un nombre entre 0 et $m-1$
-  3. Soit $L'= L[f(c)]$. $L'$ est une liste composée de couple $(a, b)$. On a alors 2 cas :
-     1. S'il existe $(c, b)$ dans $L'$ on rend $b$
-     2. S'il n'existe pas de couple $(c, b)$ $f(c)$ 'est pas une clé du dictionnaire et on rend une erreur.
+            pour chaque i de [0, l.longueur[:
+                o, v ← l[i]
+                si o == clé:  # clé est déjà associée à une valeur
+                    l[i] ← (clé, valeur)  # on met à jour
+                    rendre vide
+
+            l.append((clé, valeur))  # clé n'est pas encore stockée
+```
 
 La fonction d'adressage permet de choisir $m$ pas trop grand. De plus, on peut considérer que son calcul est toujours en $\mathcal{O}(1)$ car elle sera toujours utilisée avec un nombre de taille fixe qui est le hash d'un objet.
 
-## Complexités
+## Complexités des méthodes
 
+En supposant que la fonction d'adressage est une fonction de hash utile,
 On va estimer la complexité des opérations suivantes :
 
 - création de la structure
@@ -95,7 +155,7 @@ On va estimer la complexité des opérations suivantes :
 - recherche d'un élément à la structure
 - suppression d'un élément à la structure
 
-On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $L[f_m(f(c))]$.
+On le rappelle, une structure de dictionnaire est constitué d'une liste de $m$ éléments, chaque élément étant lui-même une liste. L'accès aux données dépend du nombre d'éléments stockés $n$ et de la taille de la liste principale $m$. Si on cherche si la clé `c` est dans un dictionnaire, il faut regarder chaque élément de la liste stockée à l'indice $T[f_m(f(c))]$.
 
 ### Création de la structure
 
@@ -121,8 +181,8 @@ Les complexités sont identiques car cela revient à chercher si la clé $c$ est
 
 Cette complexité peut aller de :
 
-- cas le meilleurs : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $L[f_m(f(c))]$ est vide
-- cas le pire : $\mathcal{O}(n \times K(c)) = \mathcal{O}(n)$ (en considérant que $K(c) = \mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $L[f_m(f(c))]$ sera $n$
+- cas le meilleur : $\mathcal{O}(1)$. Ceci arrive lorsque la liste $T[f_m(f(c))]$ est vide
+- cas le pire : $\mathcal{O}(n)$ (en considérant que la complexité de l'opérateur `==`{.language-} vaut $\mathcal{O}(1)$). Ceci arrive lorsque tous les éléments de la liste ont même hash, le nombre d'élément de $T[f_m(f(c))]$ sera $n$
 - cas moyen : $\mathcal{O}(\frac{n}{m})$. Si les clés sont uniformément distribuées, il y aura de l'ordre de $\frac{n}{m}$ éléments dans la liste $L[f_m(f(c))]$.
 
 Une astuce permet de diminuer la complexité moyenne. Il suffit de s'assurer que $\frac{n}{m}$ soit une constante.
@@ -132,23 +192,28 @@ On peut alors utiliser un processus semblable à celui des listes où lorsque l'
 1. on double la fonction d'adressage
 2. on recalcule le hash de tous les $n$ éléments qu'on replace dans la structure
 
-On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcul est effectué rarement on montre que :
+On s'assure par là que $\frac{n}{m} \leq 2$. Comme de plus ce recalcule est effectué rarement on à :
 
-{% note %}
+{% note "**Proposition**" %}
 La complexité en moyenne d'ajout, de recherche et suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$
 {% endnote %}
 {% details "preuve" %}
 
-Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../structure-de-données/liste#preuve-liste-ajout){.interne}
+Le raisonnement est identique à la preuve des [$N$ ajouts successifs pour une liste](../../structure-liste/#preuve-liste-ajout){.interne}
 
 {% enddetails %}
 
 La structure de dictionnaire est donc une structure très efficace ! N'hésitez pas à l'utiliser car son temps moyen d'exécution est très rapide.
 
+{% note "**À retenir**" %}
+La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppression d'un élément dans un dictionnaire est $\mathcal{O}(1)$.
+
+La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.
+{% endnote %}
+
 ## Manipuler des dictionnaires
 
-
-Faisons cet exercice en aliant connaissances algorithmique et language python. Si vous ne savez pas bien utiliser les dictionnaires en python, consultez le lien précédent.
+Exercice fondamental pour comprendre l'intérêt des dictionnaires.
 
 - données :
   - une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
@@ -166,6 +231,8 @@ Créer cet algorithme et calculez-en sa complexité.
 {% endexercice %}
 {% details "solution" %}
 
+Code python :
+
 ```python
 def recherche(p):
     for i in range(n):
@@ -181,9 +248,17 @@ Deux boucles imbriquées et le reste en $\mathcal{O}(1)$ : la complexité totale
 
 ### Une boucle et un tri
 
-Solution en $\mathcal{O}(n\cdot log(n))$
+On trie la liste (ce qui donne la complexité de la solution) puis il suffit de remarquer que :
 
-On trie la liste (ce qui donne la complexité de la solution) puis :
+- si $P[i] + P[j] > C$ alors $P[i'] + P[j'] > C$ pour tous $i' \leq i$ et $j' \geq j$
+- si $P[i] + P[j] < C$ alors $P[i'] + P[j'] < C$ pour tous $i' \geq i$ et $j' \leq j$
+
+{% exercice %}
+Créer cet algorithme et calculez-en sa complexité.
+{% endexercice %}
+{% details "solution" %}
+
+Code python :
 
 ```python
 def recherche(p):
@@ -204,9 +279,13 @@ def recherche(p):
 
 Notez que cette solution est aussi en $\mathcal{O}(n\cdot log(n))$ en moyenne car le tri utilisé par python est de complexité $\mathcal{O}(n\cdot log(n))$ en moyenne.
 
+{% enddetails %}
+
 ### Avec un dictionnaire
 
-Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n\cdot log(n))$
+Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n^2)$
+
+Code python :
 
 ```python
 def recherche(p):
@@ -219,6 +298,32 @@ def recherche(p):
     return None
 ```
 
-{% info %}
-[Dictionnaires python](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/){.interne}
-{% endinfo %}
+### Expérimentation
+
+{% exercice %}
+Proposez une méthode permettant de générer une instance du problème admettant au moins une solution.
+{% endexercice %}
+{% details "solution" %}
+
+> TBD On tire des pi au hasard puis on choisi i et j avec C = pi + pj
+
+{% enddetails %}
+
+{% exercice %}
+Proposez une méthode permettant de générer une instance du problème admettant exactement une solution.
+{% endexercice %}
+{% details "solution" %}
+
+> TBD On tire des di dans [-m, m] tel que si di est tiré, on ne peut plus tirer -di (on met tout ca dans des ensembles) pi = C/2 + di pour i ≤ n-2. Les deux derniers sont choisis  pour que la somme fasse C.
+
+{% enddetails %}
+
+{% faire %}
+Implémentez en python les 3 algorithmes précédent pour montrer voir la rapidité croissantes avec laquelle ces problèmes sont traités
+{% endfaire %}
+
+Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :
+
+{% lien %}
+[Dictionnaires python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires){.interne}
+{% endlien %}

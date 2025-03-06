@@ -149,7 +149,7 @@ La technique de **_l'analyse par agrégat_** consiste à considérer l'ensemble 
 On évalue la complexité des $m$ opérations en même temps, sans distinguer les différentes opérations.
 {% endnote %}
 
-### <span id="compteur-agrégat"></span> Compteur avec les agrégats
+### <span id="compteur-agrégat"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par agrégats
 
 On remarque tout d'abord que le nombre d'opérations de `successeur(N)`{.language-} dépend de l'indice du dernier `0`{.language-} dans la liste `N`{.language-} :
 
@@ -171,7 +171,7 @@ On peut partitionner l'ensemble des $2^n$ nombres binaires à $n$ bits en $n$ en
 5. $\mathcal{N}_n$ tous les nombres qui finissent par `0` suivi de (n-1) `1`. Il y en a $\frac{2^n}{2^n}$
 6. $\mathcal{N}'_{n}$ contenant le nombre ne contenant que des `1`. Il y en a 1
 
-Il faudra de l'ordre de $i$ opérations à `successeur(N)`{.language-} pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme est :
+Il faudra de l'ordre de $i$ opérations à `successeur(N)`{.language-} pour traiter un nombre de $\mathcal{N}_i$ et $n$ opérations pour traiter l'élément de $\mathcal{N}'_n$. Comme on a partitionné l'ensemble de toutes les entrées possibles et que notre algorithme va les utiliser tous une unique fois, on en conclut que la complexité totale de l'algorithme `tous(n)`{.language-} est :
 
 $$
 C = \sum_{i=1}^{n}i\cdot \frac{2^n}{2^i} + n = 2^n \cdot \sum_{i=1}^{n}\frac{i}{2^i} + n
@@ -221,7 +221,7 @@ L'inégalité ci-dessus assure que la complexité totale des $m$ exécutions de 
 
 Lorsque l'on utilise la méthode comptable, l'astuce est de choisir certains coûts supérieur au coût réel et certains coûts inférieur : certaines opérations sont crédités d'un coût additionnel qui sera débité lors d'opérations futures. Il faut cependant toujours s'assurer d'avoir un crédit suffisant pour payer les coûts futurs.
 
-### <span id="compteur-comptable"></span> Compteur comptable
+### <span id="compteur-comptable"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec la méthode comptable
 
 Appliquons cette méthode au compteur. La complexité totale à calculer est égale au nombre de bits modifiés. Or un bit n'est mit à 0 que s'il a été mis à 1 à une étape précédente. On peut donc donner comme coût amorti :
 
@@ -259,7 +259,7 @@ En informatique, le potentiel sera souvent associé à la structure de donnée s
 
 Remarquez que toute mesure de potentielle fonctionne si $\Omega(i) \geq \Omega(0)$ pour tout $i \geq 1$, mais que pour être efficace, on va chercher à obtenir un coût amorti le plus petit possible, si possible constant. Ce faisant, la différence de potentiel absorbera les variations de coût réel sans trop les surévaluer.
 
-### <span id="compteur-potentiel"></span> Compteur avec le potentiel
+### <span id="compteur-potentiel"></span>Calcul de la complexité de l'algorithme `tous(n)`{.language-} avec l'analyse par potentiel
 
 Le nombre de bits changés à chaque exécution de successeur dépend du nombre de 1 dans la liste passée en paramètre. Comme $\Omega(0) = 0$, on garanti que $\Omega(i) \geq \Omega(0)$ pour tout $i$, c'est une mesure de potentiel correct.
 
@@ -275,7 +275,7 @@ On en déduit que :
 
 Le coût amorti d'une exécution de successeur vaut alors $\widehat{c_i} = c_i + \Omega(i) - \Omega(i-1) = 1 + k + (1-k) = 2$ quelque soit $i$.
 
-On a donc :
+On a donc que, encore une fois, la complexité de l'algorithme `tous(n)`{.language-} est :
 
 $$
 C \leq \sum_{i=1}^m \widehat{c_i} = \sum_{i=1}^m 2 = 2 \cdot m = \mathcal{O}(m) = \mathcal{O}(2^n)
@@ -421,14 +421,18 @@ $$
 
 ### Complexité amortie
 
-Remarquer que pour l'algorithme $A$ on a pas fait attentions :
+Remarquer que pour l'algorithme $A$ on a pas fait attention :
 
 - à l'ordre dans lequel les opérations ont été effectuées
 - aux paramètres des opérations
 
 De là, calculer une complexité amortie a un sens. La complexité totale des appels des 3 opérations vaut $\mathcal{O}(m)$. La complexité amortie d'une opération vaut alors : $\frac{1}{m} \cdot \mathcal{O}(m) = \mathcal{O}(1)$.
 
+{% note %}
+
 On peut utiliser cette complexité amortie pour calculer la complexité d'un programme utilisant ces 3 opérations.
+
+{% endnote %}
 
 Comme pour le compteur, remarquez que la complexité amortie de la fonction `k-pop` ne dépend pas de $k$ puisque'elle est en temps constant.
 

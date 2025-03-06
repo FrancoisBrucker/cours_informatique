@@ -374,20 +374,46 @@ N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les 
 
 {% endaller %}
 
-#### Vendredi : Fonctions de hashage et dictionnaires
+#### Vendredi : Fonctions de hachages et dictionnaires
 
 {% aller %}
 
-[Hash et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
+[Hachage et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
 
 {% endaller %}
 
 ### Semaine 7
 
 > 10/03 au 14/03
->
-> 2h mercredi : algorithmes classiques + rappel du reste des révision (preuve et complexité).
-> 2h vendredi : enveloppe convexe.
+
+Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices mercredi et vendredi.
+
+#### Mercredi : algorithmes classiques
+
+{% attention %}
+Test de 15min en début de cours sur **les piles et les algorithmes**.
+{% endattention %}
+{% faire %}
+[Sujet du test 5](./annales/2024-2025/5_test/){.interne}
+{% endfaire %}
+
+On passera la séance de TD à résoudre des algorithmes classiques :
+{% aller %}
+
+[Algorithmes classiques](/cours/algorithmie/projet-classiques){.interne}
+
+{% endaller %}
+
+#### Vendredi : Jolis DS
+
+Ayez déjà commencé vos révisions. On répondra aux questions que vous vous posez sur les anciens DS et ET (et il y en a des jolis) d'algorithmie.
+
+{% aller %}
+
+- [Algorithmes classiques](/cours/algorithmie/projet-classiques){.interne} (suite)
+- [Annales DS/ET](annales){.interne} (en prendre des jolis et selon vos questions)
+
+{% endaller %}
 
 ### Semaine 8
 
@@ -405,7 +431,7 @@ Sujet DM3 : code objet
 > 17/03 au 21/03
 >
 > 2h mercredi : classes et objets
-> 2h vendredi : composition / agrégation
+> 4h vendredi : Code
 
 ### Semaine 9
 
@@ -418,8 +444,8 @@ Sujet DM4 : code objet suite
 
 > 24/03 au 28/03
 >
-> 2h mercredi : héritage
-> 2h vendredi : TP
+> 2h mercredi : composition / agrégation
+> 2h vendredi : héritage
 >
 > TBD : tp programmation par les tests à faire chez eux
 
@@ -427,8 +453,8 @@ Sujet DM4 : code objet suite
 
 > 31/03 au 04/04
 >
-> 2h mercredi : programmation évènementielle Cours
-> 2h vendredi : programmation évènementielle TP
+> 2h mercredi : objet fin
+> 2h vendredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons)
 
 {% attention %}
 Rendre DM3
@@ -441,13 +467,13 @@ Sujet DM4 : programmation évènementielle.
 
 > 14/04 au 18/04
 >
-> 4h mercredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
+> 4h mercredi :  glouton
 
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : sac à dos.
-> 2h vendredi : méthode de résolution de problèmes suite
+> 4h mercredi : résolution de problèmes
+> 2h vendredi : sac à dos/enveloppe convexe ?
 
 ### Semaine 13
 
@@ -459,45 +485,7 @@ DS code 3h, lundi 05/05.
 Rendre DM4
 {% endattention %}
 
-> 05/05 au 09/05
-> 4h mercredi : méthode de résolution de problèmes fin
-
 <!--
-
-### Semaine 4
-
-#### Mardi : complexité en moyenne et tris
-
-{% aller %}
-
-1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne){.interne}
-2. [Problème du tri et algorithmes pour le résoudre](/cours/algorithmie/problème-tris){.interne}
-   {% endaller %}
-
-#### Vendredi : projet tris
-
-{% attention %}
-Test de 15min en début de cours. Il faudra rendre une feuille de papier avec des choses écrites dessus.
-{% endattention %}
-
-{% aller %}
-[Projet tri](/cours/algorithmie/problème-tris/implémentation-tris/){.interne}
-{% endaller %}
-
-### Semaine 5
-
-{% info %}
-Le DM1 est à rendre pour le vendredi 23/02/24 à 23h59
-{% endinfo %}
-
-#### Mardi : Révision
-
-Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices.
-
-{% aller %}
-[Exercices](/cours/algorithmie/projet-classiques){.interne}
-
-{% endaller %}
 
 #### Vendredi : DS1
 

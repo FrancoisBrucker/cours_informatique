@@ -14,6 +14,8 @@ eleventyComputed:
 
 ### parcourt min
 
+> TBD à mettre en premier. Il est fondamental qu'ils le connaissent.
+
 > TBD classique pour minimiser le parcourt.
 > TBD exo 3 <https://www.irif.fr/~francoisl/DIVERS/m1algo-td11-2324.pdf>
 

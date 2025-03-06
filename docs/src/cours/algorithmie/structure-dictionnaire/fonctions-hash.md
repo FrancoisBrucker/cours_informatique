@@ -11,11 +11,11 @@ eleventyComputed:
 
 Le but d'une fonction de hachage est d'associer un entier borné à tout objet. Son utilité est de permettre de distinguer rapidement deux objets avec une forte probabilité. Les fonctions de hash sont utilisés tous les jours par des millions de personnes et encore plus d'ordinateurs. Une des fonctions de hash la plus utilisée est la famille de fonction [sha](https://fr.wikipedia.org/wiki/Secure_Hash_Algorithm).
 
-On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont les [tableaux ssociatifs](../tableau-associatif){.interne}).
+On verra plus tard, qu'elles peuvent également être utilisées pour permettre d'indexer des tableaux par autre chose que des entiers (ce sont [les tableaux associatifs](../tableau-associatif){.interne}, encore appelés dictionnaires).
 
 ## Définitions
 
-On peut définir une [fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
+On peut définir [une fonction de hachage](https://fr.wikipedia.org/wiki/Fonction_de_hachage) $f$ comme étant :
 
 {% note "**Définition**" %}
 Une **_fonction de hachage_** est une fonction $f$ :
@@ -34,6 +34,9 @@ Une définition alternative, également souvent utilisée, est :
 {% note "**Définition**" %}
 Une **_fonction de hachage_** est une fonction $f$ qui associe à tout mot de $\\{0, 1\\}^\star$ un mot de $\\{0, 1\\}^k$. Avec $k$ est un entier positif.
 {% endnote %}
+{% info %}
+On rappelle que que $\\{0, 1\\}^\star$ est l'ensemble des suites finies $s_0\dots s_n$ où $s_i \in \\{0, 1\\}$ pour tout $0\leq i \leq n$.
+{% endinfo %}
 
 Enfin, comme tout en informatique est codé comme une suite de 0 et de 1, une fonction de hachage peut ainsi être vue comme :
 
@@ -45,7 +48,7 @@ Une **_fonction de hachage_** est une fonction qui associe à tout **objet** soi
 
 {% endnote %}
 
-En python par exemple, on peut utiliser la fonction [`hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
+En python par exemple, on peut utiliser [la fonction `hash`{.language-}](https://docs.python.org/fr/3/library/functions.html?highlight=hash#hash) :
 
 ```python
 >>> hash("du texte")
@@ -64,7 +67,7 @@ De plus, comme un hash est défini à la création d'un objet, il n'existe pas d
 
 La principale raison de l'utilisation es fonctions de hachage est :
 
-{% note %}
+{% note "**Propriété fondamentale des fonctions de hachage**" %}
 Si $f$ est une fonction de hachage, alors :
 
 $$
@@ -75,15 +78,17 @@ $$
 
 Une fonction de hachage permet de partitionner les entiers (_ie._ les objets) en $m+1$ classes. Pour que ce partitionnement soit utile, on demande à une _bonne_ fonction de hachage d'avoir en plus les propriétés suivantes :
 
-{% note %}
+{% note "**Utilité des fonctions de hachage**" %}
 
 Pour qu'une fonction de hachage $f: \mathbb{N} \rightarrow [0\mathrel{ {.}\,{.} } m]$ soit **_utile_**, elle doit avoir les 3 propriétés suivantes :
 
-1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage.
+1. elle doit être **déterministe** : un même message doit toujours avoir la même valeur de hachage
 2. elle doit être **facilement calculable**
 3. elle doit être **uniforme** : la probabilité que $f(a) = i$ doit être de $\frac{1}{m}$ pour tout $a\in \mathcal{N}$ et $0 \leq i \leq m$
 
 {% endnote %}
+
+Les fonctions de hachage utiles permettent de savoir rapidement (ou en tout cas avec une très forte probabilité) si 2 objets sont différents juste en regardant leur hash. Ceci est très utile, par exemple pour deux très longs textes, deux programmes ou tout autre objet qu'il serait fastidieux de comparer bit à bit.
 
 ## Exemples
 
@@ -181,34 +186,39 @@ $$
 
 Faire tous les calculs de somme et de produit modulo $m$ est très efficace sur un ordinateur car cela revient à travailler à nombre de bit fixé. Or accéder à $k$ bits dans la mémoire ou faire le modulo d'un nombre de taille fixe est une opération élémentaire pour un processeur : on peut facilement calculer le modulo d'un objet aussi grand qu'il soit.
 
-De la un pseudo-code du calcul du modulo de $n$ :
+De la un pseudo-code du calcul du modulo de $n = n_l2^{kl} + n_{l-1} 2^{k(l-1)} + \dots + n_{i} 2^{ki} + \dots + n_0$ qui se fait en $\mathcal{O}(l) :
 
-```python
-e = (2 ** k) mod m
-exp = 1
-res = n_0 mod m
-for 1 <= i <= l:
-    exp = (exp * e) mod m
-    c = (exp * n_i) mod m
-    res = (res + c) mod m
+```pseudocode
+e ← (2 ** k) mod m
+exp ← 1
+res ← n_0 mod m
+pour chaque i de [1, l]:
+    exp ← (exp * e) mod m
+    c ← (exp * n_i) mod m
+    res ← (res + c) mod m
 ```
 
 #### Équiprobable
 
-Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ (les ensembles $M_i = \\{k\cdot m+i \\mid k \geq 0\\}$ pour $0\leq i \leq m-1$ sont en bijections 2 à 2, sont disjoints et recouvrent tous les entier: un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$).
+Si les nombres à hacher sont pris aléatoirement, le modulo est bien uniforme quelque soit $m$ puisque les ensembles $M_i = \\{k\cdot m+i \\mid k \geq 0\\}$ pour $0\leq i \leq m-1$ :
 
-Attention cependant :
+- sont en bijections 2 à 2,
+- sont disjoints
+- recouvrent tous les entiers
+
+Un entier pris au hasard a autant de chance d'être dans $M_i$ que dans $M_j$.
+
+Attention cependant, les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur :
 
 $$
 (k \times p) \mod (p \times q) = (k \mod q) \times p
 $$
 
-Les nombres qui ont un diviseur commun avec $m$ seront hachés par un nombre qui est un multiple de ce diviseur !
-De là, si l'ensemble de nombre que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.
+De là, si l'ensemble de nombres que l'on a à hacher n'est pas uniforme mais admets des diviseurs communs, ce qui arrive souvent, la probabilité de hachage ne sera pas uniforme.
 
-Pour palier ce problème :
+Pour palier ce problème il faut prendre $m$ sans diviseur autre que 1 ou lui même, donc premier :
 
-{% note %}
+{% note "**À retenir**" %}
 Si l'on utilise le modulo comme fonction de hachage, il est recommandé d'utiliser un nombre $m$ premier.
 {% endnote %}
 
@@ -225,23 +235,24 @@ L'algorithme utilisé par python pour effectuer le hash est [sipHash](https://en
 
 ## Hash de structures composées
 
-Par exemple considérons le tuple suivant : `(1, 'un', 3.14)`{.language-}. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hash des des différents types d'objets en un hash unique.
+Par exemple considérons le tuple suivant : `(1, 'un', 3.14)`{.language-}. Il contient 3 types de données différents. On pourrait très bien utiliser sa représentation binaire et faire le hash de cet objet mais, souvent, ce n'est pas cette approche qui est utilisée. On préfère combiner les hashs des différents types d'objets en un hash unique.
 
-En java par exemple, une façon classique de procéder est :
+En java par exemple, une façon classique de procéder est décrite par l'algorithme suivant :
 
-```text
-res = 0
+```pseudocode
+res ← 0
 pour chaque élément e du tuple:
-    res = hash(31 * res + hash(e))
+    res ← hash(31 * res + hash(e))
 
 ```
 
 Ceci assure :
 
 - d'avoir un hash facile à calculer si le chaque de chaque élément l'est
-- de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va _mélanger_ le tout à chaque fois
+- de ne pas avoir de soucis de diviseurs (voir le soucis du modulo) grâce à la multiplication par 31 qui va _mélanger_ le tout à chaque fois.
 
 ## Collisions
+
 Comme le but premier d'une fonction de hachage est de distinguer deux objets, mais que le nombre de possibilité est fini, il faut minimiser la probabilité que deux objets aient le même hash.
 
 {% note "**Définition**" %}
@@ -283,22 +294,24 @@ A chaque fois que l'on tire un nombre au hasard, il faut que son hash soit diff�
 On peut en extraire des solutions approchées si $m$ est très grand devant $n$ :
 
 {% note  "**Proposition**" %}
-Si $m$ est grand devant $n$, on a :
+Si $m$ est grand devant $n$, la probabilité $p(n, m)$ de tirer $n > 1$ nombres $x$ au hasard sans avoir $f(x) = h$ (avec $0 \leq h <m$ donné) est :
 
 $$
 p(n, m) \simeq \exp(-\frac{n}{ m})
 $$
 
+Et la probabilité $\bar{p}(n, m)$ de tirer $n > 1$ nombres $x_1, \dots, x_n$ au hasard tels que $h(x_i) \neq h(x_j)$ pour tous $i \neq j$ vaut :
+
 $$
 \bar{p}(n, m) \simeq \exp(-\frac{n^2}{2\cdot m})
 $$
 
-et donc :
+On peut alors déterminer $n$ pour atteindre une valeur de $p(n, m)$ ou de $\bar{p}(n, m)$ donnée :
 
 <div>
 $$
 \begin{array}{lcl}
-n &\simeq &m\ln(p(n, m))\\
+n &\simeq &-m\ln(p(n, m))\\
 &\simeq & \sqrt{-2\cdot m\cdot \ln(\bar{p}(n, m))}
 \end{array}
 $$
@@ -359,7 +372,7 @@ $$
 n = \sqrt{-2\times 2^{160}\ln({.5})} \simeq 1.2 \cdot \sqrt{2^{160}} \simeq 1.2 \cdot 2^{80}
 $$
 
-Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet !
+Pour avoir 50% de chance d'obtenir une collision. Ce qui fait tout de même un sacré paquet (mais est possible... On considère en 2025 qu'une bonne méthode doit avoir au moins $2^{128}$ essais en brute force) !
 
 De ce qui découle on en déduit une règle universelle de toute fonction de hash :
 
@@ -384,5 +397,3 @@ Les fonctions de hachages sont même utilisées pour stocker les mots de passe s
 
 - de trouver $m$ à partir de $h$ tel que $f(m) = h$
 - de trouver $m'$ à partir de $m$ tel que $f(m') = d(m)$
-
-> TBD voir partie sécurité et racine de n. Puis parler du point fixe et lièvre et tortue.
