@@ -388,14 +388,13 @@ N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les 
 
 Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices mercredi et vendredi.
 
-#### Mercredi : algorithmes classiques
+{% info %}
+Il n'y aura pas de tes cette semaine, cela vous permettra de commencer vos révisions et de venir avec vos questions algorithmique.
 
-{% attention %}
-Test de 15min en début de cours sur **les piles et les algorithmes**.
-{% endattention %}
-{% faire %}
-[Sujet du test 5](./annales/2024-2025/5_test/){.interne}
-{% endfaire %}
+En particulier, lisez DS 1 des précédentes années...
+{% endinfo %}
+
+#### Mercredi : algorithmes classiques
 
 On passera la séance de TD à résoudre des algorithmes classiques :
 {% aller %}

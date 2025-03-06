@@ -837,6 +837,11 @@ Selon la taille de l'enveloppe convexe, cette complexité sera plus ou moins gra
 
 Le suspens est insoutenable. Existe-t-il de meilleurs algorithmes que ces deux là ? Avant de répondre (oui) à cette épineuse question regardons un algorithme dont la complexité en moyenne est linéaire.
 
+#### Balayage d Graham
+
+> TBD les 2 en un avec des piles.
+> p917 Cormen
+
 ## <span id="division-préa"></span>Les divisions de Préa
 
 On doit cet algorithme à Préa (1995), publié dans son poly d'Algorithmie de l'école centrale ~~marseille~~ méditerranée. Il est basé sur le principe algorithmique de **diviser pour régner** et  ressemble à [l'algorithme Quickhull](https://fr.wikipedia.org/wiki/Quickhull). Le calcul de ses complexités, en particulier en moyenne est cependant bien plus simple.
