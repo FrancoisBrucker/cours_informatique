@@ -236,7 +236,7 @@
 </div></div>
 
 <h3><span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs</h3>
-<p>Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.</p>
+<p>Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -336,8 +336,8 @@
 <p><a href="https://www.youtube.com/watch?v=kPqk07Gpj0A">Structures linéaires</a></p>
 </div></div>
 
-<h4>Gestion de flux de données</h4>
-<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux  structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
+<h4>Gestion de flux</h4>
+<p>Lorsqu'un algorithme doit gérer un <em>flux</em> de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -356,6 +356,52 @@
 <p><a href="structure-liste" class="interne">Les listes</a></p>
 </div></div>
 
+<p>Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit supprimer rapidement un élément en milieu de liste, la <em>liste chaînée</em> :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="structure-liste-cha%C3%AEn%C3%A9e" class="interne">Les listes chaînées</a></p>
+</div></div>
+
+<h4>Table de hashage et structures associées</h4>
+<p>Une autre structure fondamentale en algorithmie :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
+  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
+  </svg>
+<div class="pl-8 mr-8">
+<p><a href="structure-dictionnaire" class="interne">Tables de hashage et dictionnaires</a></p>
+</div></div>
+
+<h4>Comparaisons des structures de conteneurs</h4>
+<blockquote>
+<p>Structure génériques
+ajout/suppression :</p>
+<ul>
+<li>liste : O(1) à la fin (amorti) ; O(n) autre part</li>
+<li>dictionnaire : O(1) en moyenne</li>
+<li>liste chaînée : O(1) partout</li>
+</ul>
+<p>recherche :</p>
+<ul>
+<li>liste : O(1) avec indice</li>
+<li>dictionnaire : O(1) en moyenne avec clé</li>
+<li>liste chaînée : O(n) (il faut tout traverser)</li>
+</ul>
+<p>Cas d'utilisation :</p>
+<ul>
+<li>liste : tout le temps à la place d'un tableau</li>
+<li>dictionnaire : tout le temps si on ne manipule pas d'indices mais des objets</li>
+<li>liste chaînée : si veut supprimer/ajouter un élément donné en O(1) mais pas besoin de trouver un élément quelconque (uniquement le premier)</li>
+</ul>
+<p>Gestion de flux : pile, file</p>
+<ul>
+<li>push/pop : O(1) si taille fixe, sinon O(1) en amorti</li>
+<li>recherche : via indice (avec le tableau sous-jacent) en O(1).</li>
+</ul>
+</blockquote>
 <h3>Complexité amortie</h3>
 <p>Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
@@ -366,17 +412,7 @@
 <p><a href="complexit%C3%A9-amortie" class="interne">Complexité amortie</a></p>
 </div></div>
 
-<h3>Table de hashage et structures associées</h3>
-<p>Une autre structure fondamentale en algorithmie :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
-  <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
-  </svg>
-<div class="pl-8 mr-8">
-<p><a href="structure-dictionnaire" class="interne">Tables de hashage et dictionnaires</a></p>
-</div></div>
-
-<h3>On s'entraîne : exercices de complexité et de preuve</h3>
+<h3>On s'entraîne : résolution de problèmes algorithmiques classiques</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-fuchsia-500 bg-fuchsia-100">
   <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-fuchsia-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"></path>
@@ -656,7 +692,7 @@ Clair puisque l'on peut simuler l'exécution d'une machine de Turing universelle
 <blockquote>
 <p>TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 TBD réduction sac a dos à bi-partition : <a href="https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf">https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf</a>
-TBD subsetsum ≤ bi-partition  : <a href="https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/">https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/</a></p>
+TBD subsetsum ≤ bi-partition : <a href="https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/">https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/</a></p>
 </blockquote>
 
 

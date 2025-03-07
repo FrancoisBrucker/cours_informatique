@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Triangle de Pascal</title>
+    <title>Liste Chaînée</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>Triangle de Pascal</h1>
+  <h1>Liste Chaînée</h1>
   <div>
     
 
@@ -87,7 +87,7 @@
 </svg>
 <div class="pl-8 mr-8">
 
-<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/">Algorithmes classiques</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/projet-classiques/triangle-pascal/">Triangle de Pascal</a>
+<a class="interne" href="/cours_informatique/cours/">Cours</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/">Algorithmie</a><span class="px-1">/</span><a class="interne" href="/cours_informatique/cours/algorithmie/structure-liste-chaînée/">Liste Chaînée</a>
 
 </div></div>
 
@@ -101,23 +101,51 @@
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="corrig%C3%A9" class="interne">Corrigé</a></p>
+<p><a href="https://fr.wikipedia.org/wiki/Liste_cha%C3%AEn%C3%A9e">Liste chaînée</a></p>
 </div></div>
 
-<p>Le calcul du coefficient binomial se fait en utilisant <a href="https://fr.wikipedia.org/wiki/Triangle_de_Pascal">le triangle de Pascal</a>.</p>
-<p>Pour $n &gt; p &gt; 0$ :</p>
-<div>
-$$
-C(n, p) = C(n-1, p-1) + C(n-1, p)
-$$
-</div>
-<p>et $C(n, 1) = C(n, n) = 1$</p>
-<p>On vous demande de créer un algorithme :</p>
-<ol>
-<li>récursif pour calculer $C(n, p)$, et d'en donner la complexité.</li>
-<li>itératif pour calculer $C(n, p)$ en utilisant une variable matricielle $M[i][j]$ qui stocke toutes les valeurs de $C(i, j)$ intermédiaires, et d'en donner la complexité en mémoire et en nombre d'opérations.</li>
-<li>itératif avec une complexité en mémoire de $\mathcal{O}(n)$ en remarquant qu'il suffit de conserver une seule ligne de a matrice.</li>
-</ol>
+<p>Les listes chaînées sont très utilisés en algorithmie lorsque l'on a uniquement besoin de parcourir une suite d'éléments et que l'on souhaite pouvoir supprimer un élément de cette liste en temps constant.</p>
+<p>Pouvoir supprimer un élément en temps constant nécessite de découper la liste en éléments indépendants collés les uns aux autres.</p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Element</span><span class="token punctuation">:</span>
+    <span class="token builtin">attributs</span><span class="token punctuation">:</span>
+        valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span>
+        suivant<span class="token punctuation">:</span> Element
+        précédent<span class="token punctuation">:</span> Element
+    <span class="token builtin">création</span><span class="token punctuation">(</span>_valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">,</span> _suivant<span class="token punctuation">:</span> Element<span class="token punctuation">,</span> _précédent<span class="token punctuation">:</span> Element<span class="token punctuation">)</span> <span class="token operator">→</span> Element<span class="token punctuation">:</span>
+        valeur <span class="token operator">←</span> _valeur
+        suivant <span class="token operator">←</span> _suivant
+        précédent <span class="token operator">←</span> _précédent
+    <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
+        méthode <span class="token function">ajouter</span><span class="token punctuation">(</span>e<span class="token punctuation">:</span> Element<span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            e<span class="token punctuation">.</span>suivant <span class="token operator">←</span> suivant
+            suivant <span class="token operator">←</span> e
+            e<span class="token punctuation">.</span>précédent <span class="token operator">=</span> <span class="token keyword">self</span>
+        méthode <span class="token function">supprimer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+            suivant<span class="token punctuation">.</span>précédent <span class="token operator">←</span> précédent
+            précédent<span class="token punctuation">.</span>suivant <span class="token operator">←</span> suivant</code></pre>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>On a utilisé le mot clé self pour parler de l'objet appelant.</p>
+</div></div>
+
+<blockquote>
+<p>TBD exemple d'utilisation.</p>
+</blockquote>
+<p>Comme on a rien sans rien en algorithmie, permettre de supprimer un élément en temps constant va contraindre le fait que l'on ne peut plus aller à un élément particulier de la liste en temps constant (comme on le fait avec un tableau). On a les complexités :</p>
+<ul>
+<li>création : $\mathcal{O}(1)$</li>
+<li>suppression à une position donnée : $\mathcal{O}(1)$</li>
+<li>ajout à une position donnée : $\mathcal{O}(1)$</li>
+<li>aller à une position $n$ donnée : $\mathcal{O}(n)$</li>
+</ul>
+<blockquote>
+<p>TBD def récursive pour les langages fonctionnels comme le lisp (rappelez vous la fonction de McCarty) ou encore le haskell.
+TBD listes chaînées sont super aussi pour les algorithmes récursifs car on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
+TBD reprendre les exo récursif avec une liste. Montrer que ça marche bien.</p>
+</blockquote>
 
 
 </article>

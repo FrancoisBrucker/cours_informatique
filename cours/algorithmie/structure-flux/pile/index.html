@@ -126,23 +126,61 @@
 </div></div>
 
 <h3>exemple : évaluation d'une expression</h3>
-<blockquote>
-<p>TBD classique avec notation polonaise inverse <a href="https://thibautdeguillaume.fr/documents/nsi_terminale/polonaise_inverse.pdf">https://thibautdeguillaume.fr/documents/nsi_terminale/polonaise_inverse.pdf</a> : on met l'opérateur à droite des deux autres. Plus besoin de parenthèses !</p>
-</blockquote>
-<blockquote>
-<p><code>1 + 2 - (3+4) * (5 + 6)</code> devient <code>1 2 + 3 4 + 5 6 + * -</code>
-avec algo si opération dépile op dépile</p>
-</blockquote>
-<p>C'est l'invention de la pile : Hamblin's stack pour stocker les variables.</p>
-<blockquote>
-<p>puis Disjkstra a vu que ça permettait de gérer l'appel (possiblement récursif) de fonctions : : heap et stack. Donner exemple de l'appel de fonction et de la recursion.</p>
-</blockquote>
+<p>On utilise pour cela <a href="https://fr.wikipedia.org/wiki/Notation_polonaise_inverse">la notation polonaise inverse</a> qui place l'opérateur après ses deux paramètres (et ce récursivement si nécessaire).</p>
+<p>Par exemple à la place d'écrire :</p>
+<ul>
+<li><code>1 + 2</code> on écrit <code>[1, 2, +]</code></li>
+<li><code>1 - (2 + 4)</code> on écrit <code>[1, 2, 4, +, -]</code></li>
+</ul>
+<p>On évalue ensuite l'expression avec une pile <code>P</code></p>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> évaluation<span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    P <span class="token operator">←</span> une nouvelle pile de taille T<span class="token punctuation">.</span>longueur
+    <span class="token keyword">pour chaque</span> x du tableau<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> x est un opérateur<span class="token punctuation">:</span>
+            b <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            a <span class="token operator">←</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            y <span class="token operator">←</span> a `x` b
+            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>y<span class="token punctuation">)</span>
+        <span class="token keyword">sinon</span><span class="token punctuation">:</span>
+
+    <span class="token keyword">rendre</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<p>Faisons l'expérience avec l'expression <code>1 + 2 - (3+4) * (5 + 6)</code> qui devient le tableau <code>[1, 2, +, 3, 4, +, 5, 6, +, *, -]</code>. Les différentes opération sur la pile sont :</p>
+<ol>
+<li>empile 1</li>
+<li>empile 2</li>
+<li>dépile 2</li>
+<li>dépile 1</li>
+<li>empile 1 + 2 = 3</li>
+<li>empile 3</li>
+<li>empile 4</li>
+<li>dépile 4</li>
+<li>dépile 3</li>
+<li>empile 3 + 4 = 7</li>
+<li>empile 5</li>
+<li>empile 6</li>
+<li>dépile 6</li>
+<li>dépile 5</li>
+<li>empile 5 + 6 = 11</li>
+<li>dépile 11</li>
+<li>dépile 7</li>
+<li>empile 11 * 7 = 77</li>
+<li>dépile 77</li>
+<li>dépile 3</li>
+<li>empile 3 - 77 = -74</li>
+<li>dépile -74 qui est le résultat final.</li>
+</ol>
+<p>Plus besoin de parenthèses !</p>
+<p>On doit cette technique à Hamblin qui utilise la notion de pile, inventée par Turing.</p>
+<p>C'est ensuite Dijkstra qui se rendra compte que la pile permet non seulement de stocker des variables mais également de gérer les appels de fonctions (on appelle cela <em>la pile d'appels</em>) et qui permet d'exécuter des fonctions (récursives ou non). On généralise à cette époque la notion de pile et de tas pour gérer les variables, les objets et les appels de fonctions de façon sous-jacente dans tout language de programmation.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p><a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">Histoire de La pile</a></p>
+<ul>
+<li><a href="https://www.sigcis.org/files/A%20brief%20history.pdf">Histoire de la pile en texte</a></li>
+<li><a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">Histoire de La pile en vidéo</a></li>
+</ul>
 </div></div>
 
 <h3>Implémentation</h3>
