@@ -26,19 +26,19 @@ Si la fonction $f$ est injective, c'est à dire que tous nos objets ont une vale
 
 L'objet $o$ est une **_clé_** permettant d'accéder à la **_valeur_** $T[\mbox{hash}(o)]$
 
-La structure de dictionnaire  est alors :
+La structure de dictionnaire est alors, en supposant que l'on possède un type générique objet :
 
 ```pseudocode
 structure Dictionnaire:
     attributs:
-        T: [entier]
-        f: fonction de hachage injective
+        T: [Objet]
+        f: (Objet → [0, m[)  # fonction de hachage injective
     création() → Dictionnaire:
         T ← un tableau de taille m
     méthodes:
-        méthode donne_valeur(clé: objet) → entier:
+        méthode donne_valeur(clé: Objet) → entier:
             rendre T[f(clé)]
-        méthode associe_valeur(clé: objet, valeur: entier) → vide:
+        méthode associe_valeur(clé: Objet, valeur: entier) → vide:
             T[f(clé)] ← valeur
 ```
 
@@ -52,11 +52,11 @@ Si la fonction de hash n'est pas injective (ce qui est généralement le cas), p
 structure Dictionnaire:
     attributs:
         T: [Liste]
-        f: fonction de hachage non injective
+        f: (Objet → [0, m[)   # fonction de hachage non injective
     création() → Dictionnaire:
         T ← un tableau de taille m
         pour chaque i de [0, m[:
-            T[i] ← nouvelle liste vide
+            T[i] ← nouvelle liste vide  # liste de couples (clé, valeur)
     méthodes:
         méthode donne_valeur(clé: objet) → entier:
             l ← T[f(clé)]  # liste de couples
@@ -117,8 +117,8 @@ Une structure de dictionnaire est alors :
 structure Dictionnaire:
     attributs:
         T: [Liste]
-        f: fonction de hachage non injective
-        f_m: fonction d'adressage
+        f: (Objet → [0, m'[)   # fonction de hachage non injective
+        f_m: ([0, m'[ → [0, m[) # fonction d'adressage
     création() → Dictionnaire:
         T ← un tableau de taille m
         pour chaque i de [0, m[:
