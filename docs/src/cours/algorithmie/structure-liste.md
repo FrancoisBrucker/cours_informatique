@@ -70,14 +70,14 @@ L'ajout d'un élément en fin de liste va être de complexité $\mathcal{O}(T.\m
 **Cependant**, on va y revenir plus tard, si l'on vient de créer un nouveau tableau $T$, il ne sera qu'à moitié plein : les $T.\mbox{\small longueur} / 2$ prochains ajout d'éléments se feront en $\mathcal{O}(1)$
  opérations !
 
-{% note "**À retenir**" %}
-La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), mais s'il reste de la place, elle est en $\mathcal{O}(1)$.
+{% note %}
+La complexité de l'ajout d'un élément en fin de liste est en $\mathcal{O}(T.\mbox{\small longueur})$ (cas le pire), **mais s'il reste de la place**, elle est en $\mathcal{O}(1)$.
 {% endnote %}
 
 Si l'on insère un élément au milieu de la liste, on commence par faire l'algorithme précédent pour ajouter une case au tableau, puis on décale d'une case vers la droite les éléments à partir du $i$ème et enfin on affecte le nouvel élément à sa place. Comme il faut toujours déplacer des éléments :
 
 {% note "**À retenir**" %}
-La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
+La complexité de l'**insertion d'un élément à une position quelconque** dans une liste est en $\mathcal{O}(T.\mbox{\small longueur})$.
 {% endnote %}
 
 ### Suppression d'un élément
@@ -85,7 +85,7 @@ La complexité de l'insertion d'un élément dans une liste est en $\mathcal{O}(
 Pour supprimer le dernier élément d'une liste on n'a qu'une opération à faire :
 
 {% note "**À retenir**" %}
-La complexité de la suppression du dernier élément d'une liste est $\mathcal{O}(1)$.
+La complexité de la **suppression du dernier élément d'une liste** est $\mathcal{O}(1)$.
 {% endnote %}
 
 Si l'on supprime un élément au milieu de la liste, on commence par décaler d'une case vers la droite les éléments à partir du i+1 ème et enfin on fait $n=n-1$ :
@@ -149,18 +149,17 @@ Le calcul est toujours vrai si l'on part d'une liste non vide au départ.
 {% endinfo %}
 
 {% note %}
-Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations. On peut considérer sans erreur que la complexité de l'ajout d'un élément en fin de liste vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.
+Comme la complexité de l'ajout de $N$ élément en fin de liste est en $\mathcal{O}(N)$ opérations, on considère (sans approximation) que **la complexité de l'ajout d'un élément en fin de liste** vaut $\mathcal{O}(\frac{N}{N}) = \mathcal{O}(1)$.
 
 {% endnote %}
 
-On appelle ce genre de raisonnement [analyse en complexité amortie](../../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.
+On appelle ce genre de raisonnement [analyse en complexité amortie](../complexité-amortie/){.interne} et sera étudié un peu plus tard. C'est très utile lorsque la même opération (ici l'ajout d'un élément en fin de liste) peut prendre des complexité très différentes, mais pas de façon indépendante.
 
 La structure de liste est un cas _simple_ où la complexité amortie est très utile car elle permet de mieux estimer la complexité : lorsque l'on ajoute $n$ fois un élément, cette opération n'est coûteuse qu'un petit nombre de fois :
 
-{% note %}
-Dans nos calculs de complexité on pourra utiliser $\mathcal{O}(1)$ comme complexité d'ajout d'un élément en fin de liste sans erreur puisque c'est sa complexité amortie.
+{% note "**À retenir**" %}
+Dans nos calculs de complexité on utilisera $\mathcal{O}(1)$ comme complexité d'**ajout d'un élément en fin de liste** puisque c'est sa _complexité amortie_.
 
-De plus, l'implémentation des liste fait qu'au pire, on surestime le nombre d'opérations d'un facteur 2.
 {% endnote %}
 
 ## Bilan

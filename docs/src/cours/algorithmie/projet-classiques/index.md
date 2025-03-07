@@ -15,13 +15,14 @@ eleventyComputed:
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
 pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-{% aller %}
-[Suite de Fibonacci](fibonacci){.interne}
-{% endaller %}
+> TBD Fibonacci déjà vu.
+> TBD triangle de Pascal aussi vu
 
 {% aller %}
 [Noob trap](noob-trap){.interne}
 {% endaller %}
+
+> TBD astuce du parcours de la vache.
 
 {% aller %}
 [Tours de Hanoi](tours-hanoi){.interne}

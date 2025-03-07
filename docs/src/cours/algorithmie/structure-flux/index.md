@@ -60,12 +60,12 @@ La pile est la structure de données qui rend toujours la donné la plus ancienn
 [La file](file){.interne}
 {% endaller %}
 
-## Variantes
+## Deques
 
-Vous trouverez sûrement aussi quelques variantes de ce structures, comme les deques ou les listes chaînées :
+Souvent, la pile et la file sont réunie en une seule structure, le _deque_ :
 
 {% aller %}
-[Variantes](variantes){.interne}
+[Le deque](variantes){.interne}
 {% endaller %}
 
 ## <span id="exercices"></span>Exercices

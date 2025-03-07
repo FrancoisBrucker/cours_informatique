@@ -36,17 +36,65 @@ Une donnée est traité une fois toutes les données plus récentes traitées. E
 
 ### exemple : évaluation d'une expression
 
-> TBD classique avec notation polonaise inverse <https://thibautdeguillaume.fr/documents/nsi_terminale/polonaise_inverse.pdf> : on met l'opérateur à droite des deux autres. Plus besoin de parenthèses !
+On utilise pour cela [la notation polonaise inverse](https://fr.wikipedia.org/wiki/Notation_polonaise_inverse) qui place l'opérateur après ses deux paramètres (et ce récursivement si nécessaire).
 
-> `1 + 2 - (3+4) * (5 + 6)` devient `1 2 + 3 4 + 5 6 + * -`
-> avec algo si opération dépile op dépile
+Par exemple à la place d'écrire :
 
-C'est l'invention de la pile : Hamblin's stack pour stocker les variables.
-> puis Disjkstra a vu que ça permettait de gérer l'appel (possiblement récursif) de fonctions : : heap et stack. Donner exemple de l'appel de fonction et de la recursion.
+- `1 + 2` on écrit `[1, 2, +]`
+- `1 - (2 + 4)` on écrit `[1, 2, 4, +, -]`
 
+On évalue ensuite l'expression avec une pile `P`
+
+```pseudocode
+algorithme évaluation(T):
+    P ← une nouvelle pile de taille T.longueur
+    pour chaque x du tableau:
+        si x est un opérateur:
+            b ← P.dépile()
+            a ← P.dépile()
+            y ← a `x` b
+            P.empile(y)
+        sinon:
+
+    rendre P.dépile()
+```
+
+Faisons l'expérience avec l'expression `1 + 2 - (3+4) * (5 + 6)` qui devient le tableau `[1, 2, +, 3, 4, +, 5, 6, +, *, -]`. Les différentes opération sur la pile sont :
+
+1. empile 1
+2. empile 2
+3. dépile 2
+4. dépile 1
+5. empile 1 + 2 = 3
+6. empile 3
+7. empile 4
+8. dépile 4
+9. dépile 3
+10. empile 3 + 4 = 7
+11. empile 5
+12. empile 6
+13. dépile 6
+14. dépile 5
+15. empile 5 + 6 = 11
+16. dépile 11
+17. dépile 7
+18. empile 11 * 7 = 77
+19. dépile 77
+20. dépile 3
+21. empile 3 - 77 = -74
+22. dépile -74 qui est le résultat final.
+
+Plus besoin de parenthèses !
+
+On doit cette technique à Hamblin qui utilise la notion de pile, inventée par Turing.
+
+C'est ensuite Dijkstra qui se rendra compte que la pile permet non seulement de stocker des variables mais également de gérer les appels de fonctions (on appelle cela _la pile d'appels_) et qui permet d'exécuter des fonctions (récursives ou non). On généralise à cette époque la notion de pile et de tas pour gérer les variables, les objets et les appels de fonctions de façon sous-jacente dans tout language de programmation.
 
 {% lien %}
-[Histoire de La pile](https://www.youtube.com/watch?v=2vBVvQTTdXg)
+
+- [Histoire de la pile en texte](https://www.sigcis.org/files/A%20brief%20history.pdf)
+- [Histoire de La pile en vidéo](https://www.youtube.com/watch?v=2vBVvQTTdXg)
+
 {% endlien %}
 
 ### Implémentation

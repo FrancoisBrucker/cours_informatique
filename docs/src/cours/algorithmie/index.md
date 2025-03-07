@@ -88,7 +88,7 @@ Mais même si on a un problème algorithmique et un algorithme, comment prouver 
 
 ### <span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
 
-Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
+Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
 {% aller %}
 [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif){.interne}
@@ -155,9 +155,9 @@ Nous allons définir et utiliser ici des structures de données très utiles dan
 [Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
 {% endlien %}
 
-#### Gestion de flux de données
+#### Gestion de flux
 
-Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux  structures fondamentales pour cela sont les piles, les files et leurs dérivés :
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
 
 {% aller %}
 [Structure de gestion de flux](./structure-flux){.interne}
@@ -171,6 +171,47 @@ La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est l
 [Les listes](./structure-liste){.interne}
 {% endaller %}
 
+Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit supprimer rapidement un élément en milieu de liste, la _liste chaînée_ :
+
+{% aller %}
+[Les listes chaînées](./structure-liste-chaînée){.interne}
+{% endaller %}
+
+#### Table de hashage et structures associées
+
+Une autre structure fondamentale en algorithmie :
+
+{% aller %}
+[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
+{% endaller %}
+
+#### Comparaisons des structures de conteneurs
+
+> Structure génériques
+> ajout/suppression :
+>
+> - liste : O(1) à la fin (amorti) ; O(n) autre part
+> - dictionnaire : O(1) en moyenne
+> - liste chaînée : O(1) partout
+>
+> recherche :
+>
+> - liste : O(1) avec indice
+> - dictionnaire : O(1) en moyenne avec clé
+> - liste chaînée : O(n) (il faut tout traverser)
+>
+>
+> Cas d'utilisation :
+>
+> - liste : tout le temps à la place d'un tableau
+> - dictionnaire : tout le temps si on ne manipule pas d'indices mais des objets
+> - liste chaînée : si veut supprimer/ajouter un élément donné en O(1) mais pas besoin de trouver un élément quelconque (uniquement le premier)
+>
+> Gestion de flux : pile, file
+>
+> - push/pop : O(1) si taille fixe, sinon O(1) en amorti
+> - recherche : via indice (avec le tableau sous-jacent) en O(1).
+
 ### Complexité amortie
 
 Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
@@ -179,15 +220,7 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-### Table de hashage et structures associées
-
-Une autre structure fondamentale en algorithmie :
-
-{% aller %}
-[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
-{% endaller %}
-
-### On s'entraîne : exercices de complexité et de preuve
+### On s'entraîne : résolution de problèmes algorithmiques classiques
 
 {% aller %}
 [Algorithmes classiques](./projet-classiques){.interne}
@@ -392,4 +425,4 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
-> TBD subsetsum ≤ bi-partition  : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
+> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
