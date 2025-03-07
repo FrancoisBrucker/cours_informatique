@@ -293,16 +293,16 @@ On va estimer la complexité des opérations suivantes :</p>
 <p>La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.</p>
 </div></div>
 
-<h2>Manipuler des dictionnaires</h2>
+<h2>Exercice fondamental</h2>
 <p>Exercice fondamental pour comprendre l'intérêt des dictionnaires.</p>
 <ul>
 <li>données :
 <ul>
-<li>une liste de $n$ prix : $p_i$ ($0 \leq i &lt; n$)</li>
+<li>une liste de $n$ prix différents deux à deux : $p_i$ ($0 \leq i &lt; n$)</li>
 <li>un crédit : $C$</li>
 </ul>
 </li>
-<li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou <code class="language-">None</code> si cela n'existe pas.</li>
+<li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.</li>
 </ul>
 <p>On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.</p>
 <h3>Deux boucles for imbriquées</h3>
@@ -335,8 +335,7 @@ On va estimer la complexité des opérations suivantes :</p>
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token keyword">for</span>  <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
             <span class="token keyword">if</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> C<span class="token punctuation">:</span>
-                <span class="token keyword">return</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
+                <span class="token keyword">return</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span></code></pre>
 <p>Deux boucles imbriquées et le reste en $\mathcal{O}(1)$ : la complexité totale est en $\mathcal{O}(n^2)$.</p>
 </div>
 </details>     
@@ -372,34 +371,83 @@ On va estimer la complexité des opérations suivantes :</p>
 <div class="mx-8 pb-2">
 <p>Code python :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    p<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    p2 <span class="token operator">=</span> <span class="token builtin">sorted</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span>
 
     i <span class="token operator">=</span> <span class="token number">0</span>
     j <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span>
-    <span class="token keyword">while</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> C<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> C<span class="token punctuation">:</span>
+    <span class="token keyword">while</span> p2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">!=</span> C<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> p2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> p2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> C<span class="token punctuation">:</span>
             i <span class="token operator">+=</span> <span class="token number">1</span>
         <span class="token keyword">else</span><span class="token punctuation">:</span>
             j <span class="token operator">-=</span> <span class="token number">1</span>
 
         <span class="token keyword">if</span> i <span class="token operator">></span> j<span class="token punctuation">:</span>
             <span class="token keyword">return</span> <span class="token boolean">None</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>i<span class="token punctuation">,</span> j<span class="token punctuation">)</span></code></pre>
+    
+    i2 <span class="token operator">=</span> <span class="token boolean">None</span>
+    j2 <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">for</span> k <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> p<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> p2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            i2 <span class="token operator">=</span> k
+        <span class="token keyword">elif</span> p<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> p2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>
+            j2 <span class="token operator">=</span> k
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>i2<span class="token punctuation">,</span> j2<span class="token punctuation">)</span></code></pre>
 <p>Notez que cette solution est aussi en $\mathcal{O}(n\cdot log(n))$ en moyenne car le tri utilisé par python est de complexité $\mathcal{O}(n\cdot log(n))$ en moyenne.</p>
 </div>
 </details>     
 </div>
 <h3>Avec un dictionnaire</h3>
 <p>Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n^2)$</p>
-<p>Code python :</p>
+<p>L'idée est de mettre les prix en clé et les indices en valeur.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Créer cet algorithme et calculez-en sa complexité.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>solution</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Code python v1 :</p>
 <pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
     d <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> C <span class="token operator">-</span> p<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token keyword">in</span> d<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>C<span class="token operator">-</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
         d<span class="token punctuation">[</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> i
+
+    <span class="token keyword">for</span> u <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        p2 <span class="token operator">=</span> C <span class="token operator">-</span> p<span class="token punctuation">[</span>u<span class="token punctuation">]</span> 
+        <span class="token keyword">if</span> p2 <span class="token keyword">in</span> d<span class="token punctuation">:</span>
+            v <span class="token operator">=</span> d<span class="token punctuation">[</span>p2<span class="token punctuation">]</span>
+            <span class="token keyword">return</span> <span class="token builtin">min</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">max</span><span class="token punctuation">(</span>u<span class="token punctuation">,</span> v<span class="token punctuation">)</span></code></pre>
+<p>Sans tout remplir ert qui évite un max :</p>
+<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">recherche</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    d <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> C <span class="token operator">-</span> p<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token keyword">in</span> d<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>C<span class="token operator">-</span>p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span>
+        d<span class="token punctuation">[</span>p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> j
     <span class="token keyword">return</span> <span class="token boolean">None</span></code></pre>
+</div>
+</details>     
+</div>
 <h3>Expérimentation</h3>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -425,7 +473,7 @@ On va estimer la complexité des opérations suivantes :</p>
 </summary>
 <div class="mx-8 pb-2">
 <blockquote>
-<p>TBD On tire des pi au hasard puis on choisi i et j avec C = pi + pj</p>
+<p>TBD On tire des pi au hasard dans [1, pmax] sans remise (avec choice) puis on choisi i et j avec C = pi + pj</p>
 </blockquote>
 </div>
 </details>     
