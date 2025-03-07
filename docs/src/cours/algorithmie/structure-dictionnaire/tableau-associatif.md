@@ -321,7 +321,7 @@ def recherche(p):
             return min(u, v), max(u, v)
 ```
 
-Sans tout remplir ert qui évite un max :
+Sans tout remplir, qui évite un `max`{.language-} et est plus idiomatique :
 
 ```python
 def recherche(p):
