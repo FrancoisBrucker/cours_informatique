@@ -9,63 +9,139 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire.
+Les variables dans un algorithme ou un programme sont souvent liées. Un nombre complexe par exemple est composée d'une partie réelle et d'une partie imaginaire. Pour rendre compte de ces liens on peut grouper les variables en tuples, voir les structurer en leur ajoutant ds fonctions particulières appelée méthodes.
 
-Pour qu'un algorithme puisse utiliser ces données efficacement, on les groupe dans [Une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es)
+## Tuples
 
-{% note %}
-Une **_structure de données_** est composée :
+Un tuple est un regroupement d'objets. En algorithmie on peut les représenter avec des parenthèses :
 
-- une fonction `création`{.language-} permettant de créer un objet de cette structure
-- de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
-- d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)
+```pseudocode
+p ← (34, 25)  # tuple de 2 entiers
+```
+
+Un tuple peut être composé de types différent :
+
+```pseudocode
+anniversaire ← (11, "avril")  # tuple composé d'un entier et d'une chaîne de caractères
+```
+
+On peut accéder à chaque élément du tuple comme un tableau :
+
+```pseudocode
+p ← (34, 25)  # tuple de 2 entiers
+affiche à l'écran p[0]  # va afficher 34
+affiche à l'écran p[1]  # va afficher 25
+```
+
+Enfin, un tuple peut bien sur être composé d'autres tuples :
+
+```pseudocode
+ps ← ((0, 0), "origine")  # tuple composé d'un tuple et d'une chaîne de caractères
+affiche à l'écran p[0]  # va afficher 34
+affiche à l'écran p[1]  # va afficher 25
+```
+
+En revanche, il est impossible de modifier un tuple une fois créé.
+
+{% note "**À retenir**" %}
+Un **_tuple_** est un regroupement fini d'objets de types pouvant être différent. On peut accéder à chaque élément d'un tuple par son indice.
+
+Un tuple est non modifiable une fois crée.
 {% endnote %}
 
-Un point en dimension 2 pourra ainsi être défini comme :
+## Structures
+
+Les tuples permettent de gérer des groupements informels d'objets en créant des types nouveaux par produit cartésien d'anciens types.
+
+Si l'on veut aller plus loin et créer des fonctions spécifiquement utilisable pour ces groupement, on utilise [Une structure de données](https://fr.wikipedia.org/wiki/Structure_de_donn%C3%A9es).
+
+### Attributs
+
+Par défaut une structure de donnée va posséder des **_attributs_** qui regroupent les objets de la structure. Pour notre point en 2D on aurait la structure :
 
 ```pseudocode
 structure Point:
     attributs:
-        x: int
-        y: int
-    création(abscisse: int, ordonnée: int) → Point
-    méthodes:
-        méthode addition(p: Point) → vide
+        x: entier
+        y: entier
 ```
 
-### Notation pointée
+Par rapport qu tuple, les attributs sont des variables et possèdent ainsi des nom. On peut accéder à ces noms par la notation pointée.
 
-On utilisera alors les attributs et les méthode avec la notation pointée, comme on le fait avec la longueur d'un tableau, c'est à dire que l'attribut ou la méthode est appliqué à l'objet à gauche du point (`objet.attribut`{.language-} ou `objet.méthode()`{.language-}). Cette méthode est classique ne programmation, par exemple en python :
+```pseudocode
+algorithme affiche_point(p: Point) → vide:
+    affiche à l'écran p.x
+    affiche à l'écran p.y
+```
+
+En notation pointée `a.b`{.language-} signifie que `b`{.language-} dépend de `a`{.language-}.
+
+Si `p`{.language-} est un point, `p.x`{.language-} signifie que `x`{.language-} est la valeur de l'attribut `x`{.language-} pour le point `p`{.language-}.
+
+On peut tout à fait modifier les attributs d'un objet. Par exemple la fonction :
+
+```pseudocode
+algorithme additionne_point(p1: Point, p2: Point) → vide:
+    p1.x ← p1.x + p2.x
+    p1.y ← p1.y + p2.y
+```
+
+Va modifier les attributs du premier paramètre.
 
 {% lien %}
 [Notation pointée en python](https://reeborg.ca/docs/fr/oop/oop.html)
 {% endlien %}
 
-Par exemple pour notre point, le pseudo-code suivant fonctionne :
+### Création
 
-```pseudocode
-p1 ← création d'un Point d’abscisse 1 et d'ordonnée 2
-p2 ← Point.création(4, 5)  #  création équivalente en explicitant la structure de donnée utilisée
+Pour créer des nouveau objet d'une structure, on utilise une fonction spéciale appelée `création` qui rend un objet de la structure. Pour notre point cela donnerait :
 
-affiche à l'écran p1.x et p1.y  # affiche 1 et 2
-p1.addition(p2)
-affiche à l'écran p1.x et p1.y  # affiche 5 et 7
-
-d ← p1.x * p2.x + p1.y * p2.y
-affiche d à l'écran  # affiche 55
+```pseudocode/
+structure Point:
+    attributs:
+        x: entier
+        y: entier
+    création(_x: entier, _y: entier) → Point:
+        x ← _x
+        y ← _y
 ```
 
-Remarquez que :
+Remarquez que `création`{.language-} rend _implicitement_ un Point. Son but est d'initialiser les attributs à des valeurs. Les attributs de l'objet créés sont directement accessibles (lignes 6 et 7).
 
-- l'on a utilisé la création avec ue phrase ou avec la fonction de façon équivalente
-- on peut accéder aux attributs d'un objet particulier
-- une méthode et un attribut s'applique **toujours** à un objet (à gauche du `.`{.language-})
+Enfin, comme les attributs sont déjà crées, les paramètres de la fonction création ne peuvent êtres nommées comme eux. Mais si ces paramètres snt directement affectés à la valeur de l'attribut on a coutume de place un `_`{.language-} (_underscore_) avant sont nom pour à la fois les différentier et monter leurs relations.
 
-Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre `Point`{.language-}) et de chaque méthode de celle-ci.
-
-Enfin, lorsque l'on définie une structure, il faut bien sur donner le code de toutes les fonctions de la structure. Pour notre point, une définition complète serait :
+On utilise cette méthode implicitement la fonction création dans le pseudocode suivant :
 
 ```pseudocode
+p ← un nouveau Point de paramètres 3 et 4
+```
+
+Ou explicitement :
+
+```pseudocode
+p ← Point.création(3, 4)
+```
+
+{% info %}
+Il n'est pas nécessaire que les paramètres de `création`{.language-} soient exactement les attributs. La structure suivante est tout à fait possible :
+
+```pseudocode/
+structure Point:
+    attributs:
+        x: entier
+        y: entier
+    création() → Point:
+        x ← 0
+        y ← 0
+```
+
+{% endinfo %}
+
+### Méthodes
+
+L'intérêt fondamental des structures de données est les méthodes qui permettent d'opérer sur les objets de la structure. Transformons la fonction `additionne_point`{.language-} précédente en méthode :
+
+```pseudocode/
 structure Point:
     attributs:
         x: entier
@@ -77,22 +153,43 @@ structure Point:
         méthode addition(p: Point) → vide:
             x ← x + p.x
             y ← y + p.y
+
 ```
 
-Remarquez que pour la gestion des attributs on a précisé à qui l'on avait affaire aux attributs :
+On appelle les méthodes avec la notation pointée :
 
-- les attributs de l'objet appelant sont accessibles directement dans les différentes méthode
-- les attributs d'un autre objet que l'objet appelant sont appelé avec la _notation pointée_
-- on a coutume de rappeler les attributs dans les paramètres de la création de l'objet. On les fait précéder d'un `_`{.language-} pour montrer leurs relations.
+```pseudocode
+p1 ← création d'un Point avec les paramètres 1 et 2
+p2 ← Point.création(4, 5)  #  création équivalente en explicitant la structure de donnée utilisée
+
+affiche à l'écran p1.x et p1.y  # affiche 1 et 2
+p1.addition(p2)
+affiche à l'écran p1.x et p1.y  # affiche 5 et 7
+```
+
+Dans le code de l'addition, la notation pointée assure que les variables `x`{.language-} et `y`{.language-} des lignes 10 et 11 d la définition sont celle de l'objet à gauche de l'appel, ici `p1` dns le programme précédent.
+
+### Résumé
 
 {% note "**À retenir**" %}
+Une **_structure de données_** est composée :
 
-- Un attribut est différent d'une variable : il est associé à l'objet appelant.
-- On différencie un attribut d'une variable dans le code d'une méthode par son nom.
+- une fonction `création`{.language-} permettant de créer un objet de cette structure
+- de **_méthodes_** qui sont des fonctions permettant d’interagir avec une donnée de cette structure.
+- d'**_attributs_** qui correspondent aux différentes données la constituant (de types de base ou d'autres structures de données)
 
+On accède au attributs et aux méthodes d'une structure avec la notation pointée.
 {% endnote %}
 
-### mot clé `self`{.language-}
+Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
+
+{% note "**À retenir**" %}
+On considérera toujours que la taille en mémoire d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
+{% endnote %}
+
+Pour qu'une structure de donnée puisse être utilisée, il est crucial de connaître la complexité de la création d'un objet de la structure ($\mathcal{O}(1)$ pour notre `Point`{.language-}) et de chaque méthode de celle-ci.
+
+## mot clé `self`{.language-}
 
 L'objet courant, celui qui appelle (à gauche du `.` en notation pointée), peut être parfois nommé par le mot-clé `self`{.language-}. Cela permet d'utiliser la notation pointée partout (et est indispensable si l'on veut connaître l'objet appelant, comme pour la structure de liste chaînée que l'on verra plus tard). En utilisant complètement cette convention, le pseudocode de la structure devient :
 
@@ -137,12 +234,4 @@ Il faut garder le pseudo-code lisible donc :
 - n'utilisez pas de nom d'attribut comme variable d'une méthode
 - si le paramètre d'une méthode à le même nom qu'un attribut : c'est qu'il est directement affecté à celui-ci avec `self`{.language-}. On utilise essentiellement ça dans la fonction `création`{.language-}
 
-{% endnote %}
-
-### Complexités
-
-Une fois une structure de données définie, on pourra l'utiliser comme un type de base dans tous nos algorithmes. La taille d'une structure est déterminée par rapport à la taille de ses attributs :
-
-{% note "**À retenir**" %}
-On considérera toujours que la taille en mémoire d'une structure est proportionnelle à la taille des objets qui la compose et est connue à sa création.
 {% endnote %}

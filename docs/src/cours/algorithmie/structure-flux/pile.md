@@ -52,7 +52,7 @@ algorithme évaluation(T):
         si x est un opérateur:
             b ← P.dépile()
             a ← P.dépile()
-            y ← a `x` b
+            y ← a `x` b  # effectue l'opération décrite par `x`
             P.empile(y)
         sinon:
 

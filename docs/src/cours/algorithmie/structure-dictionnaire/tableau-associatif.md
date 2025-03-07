@@ -51,7 +51,7 @@ Si la fonction de hash n'est pas injective (ce qui est généralement le cas), p
 ```pseudocode
 structure Dictionnaire:
     attributs:
-        T: [Liste]
+        T: [Liste de (Objet, Objet)]
         f: (Objet → [0, m[)   # fonction de hachage non injective
     création() → Dictionnaire:
         T ← un tableau de taille m
@@ -116,7 +116,7 @@ Une structure de dictionnaire est alors :
 ```pseudocode
 structure Dictionnaire:
     attributs:
-        T: [Liste]
+        T: [Liste de (Objet, Objet)]
         f: (Objet → [0, m'[)   # fonction de hachage non injective
         f_m: ([0, m'[ → [0, m[) # fonction d'adressage
     création() → Dictionnaire:
@@ -220,7 +220,11 @@ Exercice fondamental pour comprendre l'intérêt des dictionnaires.
   - un crédit : $C$
 - Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.
 
-On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
+On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes. Une fois n'est pas coutume on écrira les algorithmes en python, car les dictionnaires sont bien plus souvent utilisés en programmation qu'en algorithmie. Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :
+
+{% lien %}
+[Dictionnaires python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires){.interne}
+{% endlien %}
 
 ### Deux boucles for imbriquées
 
@@ -355,9 +359,3 @@ Proposez une méthode permettant de générer une instance du problème admettan
 {% faire %}
 Implémentez en python les 3 algorithmes précédent pour montrer voir la rapidité croissantes avec laquelle ces problèmes sont traités
 {% endfaire %}
-
-Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :
-
-{% lien %}
-[Dictionnaires python](/cours/coder-et-développer/bases-programmation/conteneurs/#ensembles-dictionnaires){.interne}
-{% endlien %}

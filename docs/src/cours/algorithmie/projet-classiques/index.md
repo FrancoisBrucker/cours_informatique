@@ -10,13 +10,21 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD ajouter degré de classicité/ difficulté.
+Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),
-pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
+> TBD on utilise des listes par défaut
 
-> TBD Fibonacci déjà vu.
-> TBD triangle de Pascal aussi vu
+## Rappels
+
+On a déjà vu plusieurs exercices classiques que l'on rappel ici.
+
+### Fibonacci
+
+### Triangle de Pascal
+
+> TBD avec un seul tableau
+
+## Exercice
 
 {% aller %}
 [Noob trap](noob-trap){.interne}
