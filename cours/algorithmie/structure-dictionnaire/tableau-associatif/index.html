@@ -124,7 +124,7 @@
 <p>Si la fonction de hash n'est pas injective (ce qui est généralement le cas), plusieurs objets peuvent avoir le même hash. Il faut pouvoir les distinguer. La façon classique de faire ceci est de créer une indirection via une liste contenant des couples (clé, valeur) possibles :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste de <span class="token punctuation">(</span>Objet<span class="token punctuation">,</span> Objet<span class="token punctuation">)</span><span class="token punctuation">]</span>
         f<span class="token punctuation">:</span> <span class="token punctuation">(</span>Objet <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">)</span>   <span class="token comment"># fonction de hachage non injective</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
         T <span class="token operator">←</span> un tableau de taille m
@@ -178,7 +178,7 @@
 <p>Une structure de dictionnaire est alors :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste de <span class="token punctuation">(</span>Objet<span class="token punctuation">,</span> Objet<span class="token punctuation">)</span><span class="token punctuation">]</span>
         f<span class="token punctuation">:</span> <span class="token punctuation">(</span>Objet <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m'<span class="token punctuation">[</span><span class="token punctuation">)</span>   <span class="token comment"># fonction de hachage non injective</span>
         f_m<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m'<span class="token punctuation">[</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">)</span> <span class="token comment"># fonction d'adressage</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
@@ -304,7 +304,15 @@ On va estimer la complexité des opérations suivantes :</p>
 </li>
 <li>Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.</li>
 </ul>
-<p>On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.</p>
+<p>On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes. Une fois n'est pas coutume on écrira les algorithmes en python, car les dictionnaires sont bien plus souvent utilisés en programmation qu'en algorithmie. Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/#ensembles-dictionnaires" class="interne">Dictionnaires python</a></p>
+</div></div>
+
 <h3>Deux boucles for imbriquées</h3>
 <p>Comme il faut trouver deux indices différents dans la liste $p$ (à $n$ éléments), deux boucles imbriquées allant de $0$ à $n-1$ permettent de balayer tous les couples $(i, j)$ avec $0 \leq i, j &lt; n$.</p>
 <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
@@ -514,15 +522,6 @@ On va estimer la complexité des opérations suivantes :</p>
 </svg>
 <div class="pl-8 mr-8">
 <p>Implémentez en python les 3 algorithmes précédent pour montrer voir la rapidité croissantes avec laquelle ces problèmes sont traités</p>
-</div></div>
-
-<p>Si vous n'avez pas de notion pratique sur les dictionnaires en python, n'hésitez pas à aller jeter un coup d'œil à :</p>
-<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
-<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-</svg>
-<div class="pl-8 mr-8">
-<p><a href="/cours_informatique/cours/coder-et-d%C3%A9velopper/bases-programmation/conteneurs/#ensembles-dictionnaires" class="interne">Dictionnaires python</a></p>
 </div></div>
 
 
