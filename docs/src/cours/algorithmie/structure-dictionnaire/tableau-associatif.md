@@ -211,14 +211,14 @@ La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppr
 La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.
 {% endnote %}
 
-## Manipuler des dictionnaires
+## Exercice fondamental
 
 Exercice fondamental pour comprendre l'intérêt des dictionnaires.
 
 - données :
-  - une liste de $n$ prix : $p_i$ ($0 \leq i < n$)
+  - une liste de $n$ prix différents deux à deux : $p_i$ ($0 \leq i < n$)
   - un crédit : $C$
-- Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$ ou `None`{.language-} si cela n'existe pas.
+- Question : donner deux indices $i$ et $j$ tels que $p_i + p_j = C$. On suppose qu'il existe toujours une solution.
 
 On va essayer de répondre à cet exercice de trois façons différentes, toutes avec des complexités différentes.
 
@@ -239,7 +239,6 @@ def recherche(p):
         for  in range(i + 1, n):
             if p[i] + p[j] == C:
                 return (i, j)
-    return None
 ```
 
 Deux boucles imbriquées et le reste en $\mathcal{O}(1)$ : la complexité totale est en $\mathcal{O}(n^2)$.
@@ -262,19 +261,29 @@ Code python :
 
 ```python
 def recherche(p):
-    p.sort()
+
+    p2 = sorted(p)
 
     i = 0
     j = n-1
-    while p[i] + p[j] != C:
-        if p[i] + p[j] < C:
+    while p2[i] + p2[j] != C:
+        if p2[i] + p2[j] < C:
             i += 1
         else:
             j -= 1
 
         if i > j:
             return None
-    return (i, j)
+    
+    i2 = None
+    j2 = None
+    for k in range(len(p)):
+        if p[k] == p2[i]:
+            i2 = k
+        elif p[k] == p2[j]:
+            j2 = k
+
+    return (i2, j2)
 ```
 
 Notez que cette solution est aussi en $\mathcal{O}(n\cdot log(n))$ en moyenne car le tri utilisé par python est de complexité $\mathcal{O}(n\cdot log(n))$ en moyenne.
@@ -285,18 +294,43 @@ Notez que cette solution est aussi en $\mathcal{O}(n\cdot log(n))$ en moyenne ca
 
 Solution en $\mathcal{O}(n)$ en moyenne et complexité maximale $\mathcal{O}(n^2)$
 
-Code python :
+L'idée est de mettre les prix en clé et les indices en valeur.
+
+{% exercice %}
+Créer cet algorithme et calculez-en sa complexité.
+{% endexercice %}
+{% details "solution" %}
+
+Code python v1 :
 
 ```python
 def recherche(p):
     d = dict()
 
     for i in range(n):
-        if C - p[i] in d:
-            return (d[C-p[i]], i)
         d[p[i]] = i
+
+    for u in range(n):
+        p2 = C - p[u] 
+        if p2 in d:
+            v = d[p2]
+            return min(u, v), max(u, v)
+```
+
+Sans tout remplir ert qui évite un max :
+
+```python
+def recherche(p):
+    d = dict()
+
+    for j in range(n):
+        if C - p[j] in d:
+            return (d[C-p[j]], j)
+        d[p[j]] = j
     return None
 ```
+
+{% enddetails %}
 
 ### Expérimentation
 
@@ -305,7 +339,7 @@ Proposez une méthode permettant de générer une instance du problème admettan
 {% endexercice %}
 {% details "solution" %}
 
-> TBD On tire des pi au hasard puis on choisi i et j avec C = pi + pj
+> TBD On tire des pi au hasard dans [1, pmax] sans remise (avec choice) puis on choisi i et j avec C = pi + pj
 
 {% enddetails %}
 

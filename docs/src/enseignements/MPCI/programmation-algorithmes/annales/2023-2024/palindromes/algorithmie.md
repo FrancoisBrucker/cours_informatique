@@ -20,7 +20,7 @@ Commençons par poser le problème du palindrome de façon algorithmique.
 
 {% faire %}
 
-Explicitez le problème de la reconnaissance d'un palindrome par un problème de décision.
+Explicitez le problème de la reconnaissance d'un palindrome par un problème algorithmique.
 
 {% endfaire %}
 

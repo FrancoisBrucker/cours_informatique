@@ -12,6 +12,13 @@ eleventyComputed:
 
 > TBD regardez tous les exos d'avant et le remettre s'ils sont chouettes, genre ceux des piles/file, fibo, etc. Et ajouter les questions suivantes si nécessaire.
 
+## 2-sum et 3-sum
+
+> TBD ajouter exos pour dictionnaires.
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
+>
+> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
+
 ### parcourt min
 
 > TBD à mettre en premier. Il est fondamental qu'ils le connaissent.

@@ -359,7 +359,7 @@ $$
 
 Ces inégalités permettent par exemple de calculer le nombre d'étudiants qu'il faut avoir dans une classe pour avoir 50% de chances d'avoir deux dates d'anniversaires identiques. Ce résultat est connu sous le nom de [paradoxe des anniversaires](https://fr.wikipedia.org/wiki/Paradoxe_des_anniversaires), car il faut :
 
-- 523 étudiants (${-365 \cdot \ln(.5)} \simeq 523$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,
+- 253 étudiants (${-365 \cdot \ln(.5)} \simeq 253$) pour qu'il y ait plus de 50% de chance qu'une personne soit née le même jour que moi,
 - seulement 23 étudiants ($\sqrt{-2\cdot 365 \cdot \ln(.5)} \simeq 22.5$) pour qu'il y ait plus de 50% de chance que 2 personnes soient nées le même jour.
 
 {% faire %}
