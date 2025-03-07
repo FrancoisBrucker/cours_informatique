@@ -107,17 +107,17 @@
 <li>par un objet $o$ puisque $0 \leq \mbox{hash}(o) &lt; m$  : $T[\mbox{hash}(o)]$</li>
 </ul>
 <p>L'objet $o$ est une <strong><em>clé</em></strong> permettant d'accéder à la <strong><em>valeur</em></strong> $T[\mbox{hash}(o)]$</p>
-<p>La structure de dictionnaire  est alors :</p>
+<p>La structure de dictionnaire est alors, en supposant que l'on possède un type générique objet :</p>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
-        T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span>
-        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage injective
+        T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Objet<span class="token punctuation">]</span>
+        f<span class="token punctuation">:</span> <span class="token punctuation">(</span>Objet <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">)</span>  <span class="token comment"># fonction de hachage injective</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
         T <span class="token operator">←</span> un tableau de taille m
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
-        méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
+        méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> Objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
             <span class="token keyword">rendre</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>
-        méthode <span class="token function">associe_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
+        méthode <span class="token function">associe_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> Objet<span class="token punctuation">,</span> valeur<span class="token punctuation">:</span> <span class="token builtin">entier</span><span class="token punctuation">)</span> <span class="token operator">→</span> vide<span class="token punctuation">:</span>
             T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">←</span> valeur</code></pre>
 <p>On accède aux éléments stockés via un objet et plus un indice, ce qui est vraiment pratique !</p>
 <h3>hash quelconque</h3>
@@ -125,11 +125,11 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
         T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
-        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage non injective
+        f<span class="token punctuation">:</span> <span class="token punctuation">(</span>Objet <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">)</span>   <span class="token comment"># fonction de hachage non injective</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
         T <span class="token operator">←</span> un tableau de taille m
         <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span>
-            T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> nouvelle liste vide
+            T<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">←</span> nouvelle liste vide  <span class="token comment"># liste de couples (clé, valeur)</span>
     <span class="token builtin">méthodes</span><span class="token punctuation">:</span>
         méthode <span class="token function">donne_valeur</span><span class="token punctuation">(</span>clé<span class="token punctuation">:</span> objet<span class="token punctuation">)</span> <span class="token operator">→</span> <span class="token builtin">entier</span><span class="token punctuation">:</span>
             l <span class="token operator">←</span> T<span class="token punctuation">[</span>f<span class="token punctuation">(</span>clé<span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment"># liste de couples</span>
@@ -179,8 +179,8 @@
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">structure</span> <span class="token class-name">Dictionnaire</span><span class="token punctuation">:</span>
     <span class="token builtin">attributs</span><span class="token punctuation">:</span>
         T<span class="token punctuation">:</span> <span class="token punctuation">[</span>Liste<span class="token punctuation">]</span>
-        f<span class="token punctuation">:</span> <span class="token builtin">fonction</span> de hachage non injective
-        f_m<span class="token punctuation">:</span> <span class="token builtin">fonction</span> d'adressage
+        f<span class="token punctuation">:</span> <span class="token punctuation">(</span>Objet <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m'<span class="token punctuation">[</span><span class="token punctuation">)</span>   <span class="token comment"># fonction de hachage non injective</span>
+        f_m<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m'<span class="token punctuation">[</span> <span class="token operator">→</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">)</span> <span class="token comment"># fonction d'adressage</span>
     <span class="token builtin">création</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">→</span> Dictionnaire<span class="token punctuation">:</span>
         T <span class="token operator">←</span> un tableau de taille m
         <span class="token keyword">pour chaque</span><span class="token number"> i </span>de <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> m<span class="token punctuation">[</span><span class="token punctuation">:</span>
