@@ -183,6 +183,8 @@ Notez que comme une liste python n'a pas de borne, cette implémentation de la p
 
 La pile est la structure permettant de transformer tout algorithme récursif en un algorithme itératif : il suffit de stocker dans la pile les variables avant de procéder à un appel !
 
+### Factoriel
+
 Par exemple le calcul naif de la factorielle de façon récursive :
 
 ```pseudocode
@@ -193,7 +195,119 @@ algorithme fact_rec(n):
         rendre n * fact_rec(n-1)
 ```
 
-> TBD factoriel avec pile
+Pour mettre en place une pile de récursion, il faut bien décorréler les appels récursifs, le retour de la fonction et les autres opérations. Ce qui donne :
+
+```pseudocode
+algorithme fact_rec(n):
+    # initialisation des variables locales
+    r' ← 0
+
+    si n < 1:
+        r ← 1
+    sinon:
+        r' ← fact_rec(n-1)
+        r ← n * r'
+    rendre r
+```
+
+On peut maintenant mettre en place une pile qui va stocker les variables locales, les paramètres et l'endroit dans le code où doit continuer le code. Le retour de la fonction récursive, `r`{.language-}, ne sera jamais empilé.
+
+On obtient le code :
+
+```pseudocode
+algorithme fact(n):
+    P ← une nouvelle pile de (int, int, int)  # n, r', pos
+    P.empile((n, 0, 1))
+    tant que P.vide() est fausse:
+        c ← P.dépile()
+        n, r', pos ← c
+
+        si pos == 1:
+            si n < 1:      
+                r ← 1
+            sinon:
+                P.empile((n, r', 2))
+                P.empile((n-1, r', 1)) 
+        sinon si pos == 2:
+            r' ← r  # le résultat de la récursion précédente
+            r ← n * r'
+    rendre r
+```
+
+{% details "code python" %}
+
+```python
+def fact(n):
+    P = []
+    P.append((n, 0, 1))
+    while len(P):
+        c = P.pop()
+        n, r1, pos = c
+
+        if pos == 1:
+            if n < 1:
+                r = 1
+            else:
+                P.append((n, r1, 2))
+                P.append((n-1, r1, 1))
+        elif pos == 2:
+            r1 = r
+            r = n * r1
+    return r
+```
+
+{% enddetails %}
+
+Remarquez comment la variable pos permet de rediriger les différents appels récursifs. À chaque nouvel appel récursif on empile deux choses :
+
+1. l'ancien appel qui devra continuer à sa nouvelle position une fois l'appel récursif terminée : `P.append((n, r1, 2))`{.language-}
+2. l'appel récursif en lui même qui doit recommencer tout au début du code, en position 1 : `P.append((n-1, r1, 1))`{.language-}
+
+Enfin, on remarque que la variable locale  `r'`{.language-} n'est jamais utilisé dans la récursion. On n'est donc pas obligé de l'empiler :
+
+```pseudocode
+algorithme fact(n):
+    P ← une nouvelle pile de (int, int)  # n, pos
+    P.empile((n, 1))
+    tant que P.vide() est fausse:
+        c ← P.dépile()
+        n, pos ← c
+
+        si pos == 1:
+            si n < 1:      
+                r ← 1
+            sinon:
+                P.empile((n, 2))
+                P.empile((n-1, 1)) 
+        sinon si pos == 2:
+            r ← n * r
+    rendre r
+```
+
+{% details "code python" %}
+
+```python
+def fact(n):
+    P = []
+    P.append((n, 1))
+    while len(P):
+        c = P.pop()
+        n, pos = c
+
+        if pos == 1:
+            if n < 1:
+                r = 1
+            else:
+                P.append((n, 2))
+                P.append((n-1, 1))
+        elif pos == 2:
+            r = n * r
+    return r
+```
+
+{% enddetails %}
+
+### Fibonacci
 
 Fonctionne aussi avec plusieurs récursions :
 
@@ -205,8 +319,120 @@ algorithme fibo_rec(n):
         rendre fibo_rec(n-1) + fibo_rec(n-2)
 ```
 
-> TBD Fibonacci avec pile
+```pseudocode
+algorithme fibo_rec(n):
+    si n < 3:
+        r ← 1
+    sinon:
+        r' ← fibo_rec(n-1)
+        r'' ← fibo_rec(n-2)
+        r ← r' + r''
+    rendre r
+```
 
-Cette approche ne diminue cependant pas la complexité, elle ne fait que la réécrire itérativement.
+Ce qui donne :
 
-> TBD Dijkstra appel de fonction est identique.
+```pseudocode
+algorithme fibo(n):
+    P ← une nouvelle pile de (int, int, int, int)  # n, r', r'', pos
+    P.empile((n, 0, 0, 1))
+    tant que P.vide() est fausse:
+        c ← P.dépile()
+        n, r', r'', pos ← c
+
+        si pos == 1:
+            si n < 3:
+                r ← 1
+            sinon:
+                P.empile((n, r', r'', 2))
+                P.empile((n-1, r', r'', 1))
+        sinon si pos == 2:
+            r' ← r
+            P.empile((n, r', r'', 3))
+            P.empile((n-2, r', r'', 1))
+        sinon si pos == 3:
+            r'' ← r
+            r ← r' + r''
+    rendre r
+```
+
+{% details "code python" %}
+
+```python
+def fibo(n):
+    P = []
+    P.append((n, 0, 0, 1))
+    while len(P):
+        c = P.pop()
+        n, r1, r2, pos = c
+
+        if pos == 1:
+            if n < 3:
+                r = 1
+            else:
+                P.append((n, r1, r2, 2))
+                P.append((n-1, r1, r2, 1))
+        elif pos == 2:
+            r1 = r
+            P.append((n, r1, r2, 3))
+            P.append((n-2, r1, r2, 1))
+        elif pos == 3:
+            r2 = r
+            r = r1 + r2
+    return r
+```
+
+{% enddetails %}
+
+Et on simplifie puisqu'on a pas besoin de `r'`{.language-} :
+
+```pseudocode
+algorithme fibo(n):
+    P ← une nouvelle pile de (int, int, int)  # n, r', pos
+    P.empile((n, 0, 0, 1))
+    tant que P.vide() est fausse:
+        c ← P.dépile()
+        n, r', pos ← c
+
+        si pos == 1:
+            si n < 3:
+                r ← 1
+            sinon:
+                P.empile((n, r', 2))
+                P.empile((n-1, r', 1))
+        sinon si pos == 2:
+            r' ← r
+            P.empile((n, r', 3))
+            P.empile((n-2, r',  1))
+        sinon si pos == 3:
+            r ← r' + r
+    rendre r
+```
+
+{% details "code python" %}
+
+```python
+def fibo(n):
+    P = []
+    P.append((n, 0, 1))
+    while len(P):
+        c = P.pop()
+        n, r1, pos = c
+
+        if pos == 1:
+            if n < 3:
+                r = 1
+            else:
+                P.append((n, r1, 2))
+                P.append((n-1, r1, 1))
+        elif pos == 2:
+            P.append((n, r, 3))
+            P.append((n-2, r, 1))
+        elif pos == 3:
+            r = r1 + r
+    return r
+```
+
+{% enddetails %}
+
+Cette approche ne diminue cependant pas la complexité, elle ne fait que la réécrire itérativement. La complexité de l'algorithme itératif précédent est donc tout autant catastrophique que l'algorithme récursif initial.
