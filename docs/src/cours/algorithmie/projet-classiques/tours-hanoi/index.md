@@ -23,4 +23,3 @@ On suppose que cette dernière règle est également respectée dans la configur
 
 Donnez un algorithme récursif permettant de résoudre le problème. Quelle est sa complexité ? Peut-on faire mieux ?
 
-> TBD le faire itératif avec une pile.

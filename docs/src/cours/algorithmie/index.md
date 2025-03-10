@@ -220,10 +220,18 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
 
-### On s'entraîne : résolution de problèmes algorithmiques classiques
+### On s'entraîne
+
+#### Résolution d'algorithmiques classiques
 
 {% aller %}
 [Algorithmes classiques](./projet-classiques){.interne}
+{% endaller %}
+
+#### Résolution de problèmes algorithmiques classiques
+
+{% aller %}
+[Problèmes classiques](./projet-problemes-classiques){.interne}
 {% endaller %}
 
 ## <span id="partie-2"></span>Partie II

@@ -109,7 +109,7 @@ Lorsque le résultat d'une boucle est évidente, il n'est n'est pas nécessaire 
 Dans ces cas, contentez vous de donner l'invariant ou le résultat de la boucle.
 {% endnote %}
 
-## Suppression de valeurs
+## <span id="suppression-valeur"></span>Suppression de valeurs
 
 Trouver un invariant permet de prouver efficacement un algorithme itératif. Pour des algorithmes simples, les bons invariants sont évidents à prouver une fois trouvé (on ne le donc fera pas explicitement) et permettent une preuve aisée. Entraînez vous avec l'exercice suivant :
 
@@ -475,7 +475,8 @@ algorithme dichotomie_rec(t: [entier], v: entier, a: entier, b: entier) → enti
         rendre dichotomie_rec(t, v, a, m - 1)
 ```
 
-Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement.
+Pour la preuve, il suffit de montrer que l'intervalle entre $a$ et $b$ se réduit strictement. **Faites attention**, on a tendance à uniquement remplacer a ou b par m et en oubliant le +1 ou le -1, mais cela va rater si $a = b$ ou si $a + 1 = b$. Ces +1 et -1 ne sont donc pas uniquement des optimisations, ils garantissent le bon fonctionnement de l'algorithme.
+
 {% enddetails %}
 {% attention %}
 Lorsque l'on code la recherche dichotomique, il faut faire **très attention** à ce que l'on prend comme milieu et comme condition d'arrêt. Sans quoi votre algorithme risque de tourner indéfiniment.
@@ -485,7 +486,7 @@ Lorsque l'on code la recherche dichotomique, il faut faire **très attention** �
 A priori l'algorithme précédent n'est pas terminal. Le faire :
 
 {% exercice %}
-Utilisez l'algorithme précédent pour écrire l'algorithme qui recherche un élément dans une liste triée de signature :
+Utilisez l'algorithme précédent pour écrire l'algorithme récursif terminal qui recherche un élément dans une liste triée de signature :
 
 ```pseudocode
 recherche(t: [entier], v: entier) → entier
@@ -501,7 +502,39 @@ algorithme recherche(t: [entier], v: entier) → entier:
 
 {% enddetails %}
 
-## Fibonacci
+En déduire une version itérative :
+
+{% exercice %}
+Utilisez l'algorithme précédent pour écrire l'algorithme itératif qui recherche un élément dans une liste triée de signature :
+
+```pseudocode
+recherche(t: [entier], v: entier) → entier
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme recherche(t: [entier], v: entier) → entier:
+    a ← 0
+    b ← t.longueur -1
+
+    tant que a ≤ b: 
+        m ← (a + b) // 2  # division entière
+        si (t[m] == v):
+            rendre m
+        si (t[m] < v):
+                a ← m + 1
+        si (t[m] > v):
+            b ← m - 1
+
+    rendre -1
+
+```
+
+{% enddetails %}
+
+## <span id="fibonacci"></span>Fibonacci
 
 [La suite de Fibonacci](https://fr.wikipedia.org/wiki/Suite_de_Fibonacci), bien connue, se définie ainsi pour tout $n>0$ :
 
@@ -801,7 +834,7 @@ La correction est évidente par définition de la parité.
 
 {% enddetails %}
 
-## Triangle de Pascal
+## <span id="triangle-pascal"></span>Triangle de Pascal
 
 Formule du coefficient binomial dit du [triangle de Pascal](https://fr.wikipedia.org/wiki/Triangle_de_Pascal), avec $1\leq k \leq n$ :
 
@@ -867,7 +900,7 @@ pour chaque i de [1, n]:
     ligne ← un tableau d'entiers de taille i
 
     matrice[i-1] ← ligne
-    pour chaque j allant de 1 à i:
+    pour chaque j de [1, i]:
         ligne[j-1] ← 1 
 ```
 
@@ -893,7 +926,7 @@ algorithme binom_matrice(n: entier) → [[entier]]:
         ligne ← un tableau d'entiers de taille i+1
 
         matrice[i] ← ligne
-        pour chaque j allant de 0 à i:
+        pour chaque j de [0, i]:
             si (j == i) ou (j == 0):
                 ligne[j] ← 1
             sinon:

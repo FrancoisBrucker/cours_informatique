@@ -3,6 +3,11 @@ layout: layout/post.njk
 
 title: Algorithmes classiques
 
+eleventyNavigation:
+  prerequis:
+    - /cours/algorithmie/projet-itératif-récursif/
+    - /cours/algorithmie/projet-calcul-complexite/
+
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -12,46 +17,217 @@ eleventyComputed:
 
 Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de jolis algorithmes),pratiques (ils mettent en oeuvre des techniques facilement réutilisables) et didactiques (trouver et prouver leurs fonctionnement vous fera progresser).
 
-> TBD on utilise des listes par défaut
+{% info %}
+Pour tous ces exercices, si la structure de donnée n'est pas précisé, vous utiliserez des listes.
+{% endinfo %}
 
-## Rappels
+## Dichotomie
 
-On a déjà vu plusieurs exercices classiques que l'on rappel ici.
+> - **Utilité** : brique de base à connaître par cœur
+> - **Difficulté** : trivial
 
-### Fibonacci
-
-### Triangle de Pascal
-
-> TBD avec un seul tableau
-
-## Exercice
+On l'a déjà vu. Uniquement un rappel car fondamental.
 
 {% aller %}
-[Noob trap](noob-trap){.interne}
+
+1. [dichotomie : création et preuve](../projet-itératif-récursif/#dichotomie){.interne}
+2. [dichotomie : complexité](../projet-calcul-complexite/#dichotomie){.interne}
+
 {% endaller %}
 
-> TBD astuce du parcours de la vache.
+## Fibonacci
+
+> - **Utilité** : à connaître car :
+>   - exemple de transformation d'un algo de complexité exponentiel à linéaire.
+>   - un algo dont la complexité vaut son retour dans le cas récursif simple
+> - **Difficulté** : facile pour la création et la complexité de base
+
+On l'a déjà vu. Uniquement un rappel.
 
 {% aller %}
-[Tours de Hanoi](tours-hanoi){.interne}
+
+1. [Fibonacci : création et preuve](../projet-itératif-récursif/#fibonacci){.interne}
+2. [Fibonacci : complexité](../projet-calcul-complexite/fibonacci/){.interne}
+
 {% endaller %}
+
+## Triangle de Pascal
+
+On a déjà vu les 2 premiers. Le troisième est plus compliqué
+
+### Rappel
+
+> - **Utilité** : à connaître car exercice classique réduction de complexité spatiale.
+> - **Difficulté** : facile
+
+{% aller %}
+
+1. [Triangle de Pascal : création et preuve](../projet-itératif-récursif/#triangle-pascal){.interne}
+2. [Triangle de Pascal : complexité](../projet-calcul-complexite/triangle-pascal/){.interne}
+
+{% endaller %}
+
+### Optimisé
+
+> - **Utilité** : classique d'optimisation
+> - **Difficulté** : moyen-.
+
+{% aller %}
+[Triangle de Pascal : complexité spatiale minimale](triangle-pascal/){.interne}
+
+{% endaller %}
+
+## Suppression d'éléments
+
+### Suppression de valeurs
+
+> - **Utilité** : utilisation d'une liste
+> - **Difficulté** : facile.
+
+On a déjà vu comment faire avec un tableau.
+
+#### Tableau
+
+{% aller %}
+
+1. [Suppression de valeur : création et preuve](../projet-itératif-récursif/#suppression-valeur){.interne}
+2. [Suppression de valeur : complexité](../projet-calcul-complexite/#suppression-valeur){.interne}
+
+{% endaller %}
+
+#### Liste
+
+Regardons comment tout ceci peut fonctionner avec une liste :
 
 {% aller %}
 [Suppression de valeurs](suppression-valeurs){.interne}
 {% endaller %}
 
+### Suppression de doublons
+
 {% aller %}
 [Suppression des doublons](suppression-doublons){.interne}
 {% endaller %}
+
+## Complexité
+
+Exercices de base de complexité. Il est important de les connaître pour éviter les fautes idiotes.
+
+### Erreur bête
+
+> - **Utilité** : crucial à comprendre
+> - **Difficulté** : facile
+
+{% aller %}
+[Noob trap](noob-trap){.interne}
+{% endaller %}
+
+### $X$ marks the spot
+
+> - **Utilité** : crucial à comprendre
+> - **Difficulté** : moyen
+
+Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit nst inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
+
+{% exercice %}
+Donnez un algorithme en $\mathcal{O}(K)$ permettant au robot d'atteindre $X$ à partir de sa position initial qui vaut $0$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Remarquer que l'on ne peut pas :
+
+1. avancer uniquement dans une direction : il faut osciller
+2. osciller en incrémentant d'un pas constant : on est de complexité au carré de $X$ (c'est facile à montrer)
+
+L'idée est d'osciller autour de l'origine en puissances de 2 :
+
+1. avancer de $2^0 = 1$ : position finale $+1$
+2. reculer de $2^0 + 2^0$ : position finale $-1$
+3. avancer de $2^0 + 2^1$ : position finale $+2$
+4. reculer de $2^1 + 2^1$ : position finale $-2$
+5. avancer de $2^1 + 2^2$ : position finale $+4$
+6. reculer de $2^2 + 2^2$ : position finale $-4$
+7. avancer de $2^2 + 2^3$ : position finale $+8$
+8. reculer de $2^3 + 2^3$ : position finale $-8$
+9. ...
+
+Au pire, le robot arrivera sur la marque $X$ au bout de $2 \cdot \log_2(X)$ itérations.
+
+Il aura effectué un déplacement d'au plus : $2 \cdot (X + X/2 + X/4 + \dots + 1)$ unités. Or $2 \cdot (X + X/2 + X/4 + \dots + 1) = 2\cdot X \cdot \sum_{i=0}^{i=\log_2(X)} 1/2^i = 2\cdot X \cdot(1- 1/2^{\log_2(X)}) = \mathcal{O}(X)$.
+
+L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X$ car la série des $\sum 1/2^i$ est convergente. Il est crucial de connaître cette technique qui vous tirera de nombreux mauvais pas en algorithmie.
+
+{% enddetails %}
+
+## Tours de Hanoï
+
+> TBD classique parmi les classique. La preuve que c'est la complexité min est importante à connaître
+
+{% aller %}
+[Tours de Hanoi](tours-hanoi){.interne}
+{% endaller %}
+
+## Compteur binaire
+
+> TBD déjà vu pour complexité amorti. Ici juste successeur.
 
 {% aller %}
 [Compteur binaire](compteur-binaire){.interne}
 {% endaller %}
 
+## Col de listes
+
+> TBD un classique des concours
+
 {% aller %}
 [Cols de listes et de matrices](cols){.interne}
 {% endaller %}
 
+## Tris
+
+> TBD des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\log(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.
+
 {% aller %}
 [Tris spéciaux](tris-spéciaux){.interne}
 {% endaller %}
+
+## Min et max d'un tableau d'entiers
+
+> TBD une astuce classique de décomposition de l'espace de recherche
+
+### Un algo
+
+{% exercice %}
+Donnez un algorithme avec $T.\mbox{\small longueur} - 1$ comparaisons permettant de trouver le minimum d'un tableau d'entier.
+
+Que faut-il modifier pour trouver le maximum ?
+{% endexercice %}
+{% details "corrigé" %}
+> TBD simple
+{% enddetails %}
+
+### Complexité du Problème
+
+> TBD preuve simple avec les arbres.
+
+{% exercice %}
+Montrer que si l'on cherche à trouver l'élément minimum d'un tableau d'entiers $T$ il faut au moins $T.\mbox{\small longueur} - 1$ comparaisons
+{% endexercice %}
+{% details "corrigé" %}
+> TBD graphe connexe.
+{% enddetails %}
+On veut minimiser le nombre de comparaisons dans la recherche d'un élément min et max d'un tableau.
+
+### Une astuce
+
+{% exercice %}
+Montrer que si l'on cherche à trouver à la fois le minimum et le maximum d'un tableau d'entiers $T$, on peut s'en sortir avec  $3/2 \cdot T.\mbox{\small longueur} - 1$ comparaisons.
+{% endexercice %}
+{% details "corrigé" %}
+Si on fait les deux à la suite on a 2n comparaisons.
+
+On commence par trier les éléments $T[i]$ et $T[i+1]$ pour tout $i$ ($n/2$ comparaisons)
+
+Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T[[2i +1]$ ($n/2$ comparaisons)
+
+{% enddetails %}

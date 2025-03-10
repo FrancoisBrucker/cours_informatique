@@ -409,8 +409,7 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 
 {% aller %}
 
-- [Algorithmes classiques](/cours/algorithmie/projet-classiques){.interne} (suite)
-- [Annales DS/ET](annales){.interne} (en prendre des jolis et selon vos questions)
+[Problèmes classiques](/cours/algorithmie/projet-problemes-classiques){.interne}
 
 {% endaller %}
 

@@ -57,7 +57,7 @@ La complexité totale est donc en $\mathcal{O}(\mbox{début.longueur} + \mbox{fi
 
 {% enddetails %}
 
-## Suppression de valeurs
+## <span id="suppression-valeur"></span>Suppression de valeurs
 
 ### Itératif
 
@@ -212,6 +212,49 @@ C(0) & = & \mathcal{O}(1) + C(1)\\
 \end{array}
 $$
 </div>
+
+{% enddetails %}
+
+### <span id="dichotomie"></span>Dichotomie
+
+```pseudocode
+algorithme recherche(t: [entier], v: entier) → entier:
+    a ← 0
+    b ← t.longueur -1
+
+    tant que a ≤ b: 
+        m ← (a + b) // 2  # division entière
+        si (t[m] == v):
+            rendre m
+        si (t[m] < v):
+                a ← m + 1
+        si (t[m] > v):
+            b ← m - 1
+
+    rendre -1
+
+```
+
+{% exercice %}
+Donnez la complexité de l'algorithme itératif précédent qui effectue la recherche dichotomique d'un élément dans un tableau trié.
+{% endexercice %}
+{% details "corrigé" %}
+
+On a clairement que $b-a$ est divisé par 2 à chaque itération, il y a donc autant d'itérations que l'on peut diviser $t.{\small longueur}$ par 2.
+
+Si $K$ est le nombre d'itérations, on a que : $2^{K} \leq t.{\small longueur}$. Il existe un nombre $p$ tel que $2^p \leq t.{\small longueur} < 2^{p + 1}$. On ne peut donc pas diviser $t.{\small longueur}$ par 2, ou un nombre plus petit que lui, plus de $p$ fois. Ce nombre est exactement la partie entière de $\log_2(t.{\small longueur})$ puisque :
+
+<div>
+$$
+\begin{array}{lcccl}
+    2^p &\leq &t.{\small longueur} &<& 2^{p + 1}\\
+    \log_2(2^p) &\leq &\log_2(t.{\small longueur}) &< &\log_2(2^{p + 1}) \mbox{ (car la fonction est croissante)} \\
+    p &\leq &\log_2(t.{\small longueur}) &<& p + 1
+\end{array}
+$$
+</div>
+
+On en conclut le théorème fondamental d la dichotomie : le nombre de fois où l'on peut diviser par 2 un nombre $n$ est $\log_2(n)$.
 
 {% enddetails %}
 

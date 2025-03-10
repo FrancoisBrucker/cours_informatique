@@ -302,6 +302,13 @@ de i=a à i=b par par pas de k:
     ...
 ```
 
+ou encore :
+
+```pseudocode
+pour chaque i de [a, b] par pas de k:
+    ...
+```
+
 pour :
 
 ```pseudocode
