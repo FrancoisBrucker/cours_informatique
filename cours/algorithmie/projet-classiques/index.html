@@ -464,7 +464,114 @@
 <div class="mx-8 pb-2">
 <p>Si on fait les deux à la suite on a 2n comparaisons.</p>
 <p>On commence par trier les éléments $T[i]$ et $T[i+1]$ pour tout $i$ ($n/2$ comparaisons)</p>
-<p>Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T[[2i +1]$ ($n/2$ comparaisons)</p>
+<p>Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T[2i +1]$ ($n/2$ comparaisons)</p>
+</div>
+</details>     
+</div>
+<h2>Piles</h2>
+<h3>File avec pile</h3>
+<p>On reprend l'<a href="../structure-flux/#file-avec-pile" class="interne">exercice sur la création d'une file avec 2 piles</a>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que la complexité amortie d'ajout et de suppression d'un élément dans la structure de file créée avec 2 pile est en $\mathcal{O}(1)$</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>On procède comme pour le compteur, on associe une complexité amortie de +2 lorsque l'on empile dans P1 et de 0 lorsque l'on empile dans P2.</p>
+</div>
+</details>     
+</div>
+<h3>Parenthésage</h3>
+<p>Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :</p>
+<ul>
+<li><code>[3 + 3 * (1 + 3)]</code> sera Ok</li>
+<li><code>[3 + 3 * (1 + 3])</code> sera pas Ok</li>
+</ul>
+<p>On ne vérifiera pas que l'expression est arithmétiquement correcte, c'est à dire que pour nous, <code>[3 + + 3 (1 + 3)]</code> sera Ok.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équilibré entre les <code>()</code> et les <code>[]</code>.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> parenthèse<span class="token punctuation">(</span>C<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    P <span class="token operator">←</span> une nouvelle pile de caractères
+    <span class="token keyword">pour chaque</span> c de C<span class="token punctuation">:</span>
+        <span class="token keyword">si</span> c <span class="token operator">==</span> <span class="token string">"("</span> <span class="token keyword">ou</span> c <span class="token operator">==</span> <span class="token string">"["</span><span class="token punctuation">:</span>
+            P<span class="token punctuation">.</span>empile<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+        <span class="token keyword">sinon si</span> c <span class="token operator">==</span> <span class="token string">")"</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token string">"("</span><span class="token punctuation">:</span>
+                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+        <span class="token keyword">sinon si</span> c <span class="token operator">==</span> <span class="token string">"]"</span><span class="token punctuation">:</span>
+            <span class="token keyword">si</span> P<span class="token punctuation">.</span>vide<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">ou</span> P<span class="token punctuation">.</span>dépile<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">≠</span> <span class="token string">"["</span><span class="token punctuation">:</span>
+                <span class="token keyword">rendre</span> <span class="token boolean">Faux</span>
+    <span class="token keyword">rendre</span> <span class="token boolean">Vrai</span></code></pre>
+</div>
+</details>     
+</div>
+<h3>Calcul d'une expression avec deux piles</h3>
+<p>Soit $C$ une expression arithmétique avec uniquement des parenthèses, des <code>+</code> et des <code>*</code>. On suppose qu'elle est arithmétiquement correcte, comme <code>(3 + 3 * (1 + 3))</code></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mr-8">
+<p>Montrer que l'on peut utiliser deux piles (une pour les opérateurs et les parenthèses et l'autre pour les nombres) pour calculer $C$.</p>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>Il faut faire attention au fait que <code>*</code> a une priorité supérieure à <code>+</code> : <code>3 + 4 * 3 = 15</code>.</p>
+<blockquote>
+<p>TBD à 9min13  <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">https://www.youtube.com/watch?v=2vBVvQTTdXg</a></p>
+</blockquote>
 </div>
 </details>     
 </div>

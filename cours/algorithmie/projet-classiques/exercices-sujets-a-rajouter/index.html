@@ -109,17 +109,6 @@ TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change 
 <blockquote>
 <p>TBD McCarty, Ackerman, etc.</p>
 </blockquote>
-<h3>File et pile</h3>
-<blockquote>
-<p>TBD faire une file avec 2 piles. <a href="https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html">https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html</a></p>
-</blockquote>
-<h2>parenthèses</h2>
-<blockquote>
-<p>TBD parenthésage avec pile : <a href="https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf">https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf</a></p>
-</blockquote>
-<blockquote>
-<p>TBD avec 2 piles : Samelson et Bauer (voir video sur l'histoire de la pile) : <a href="https://www.youtube.com/watch?v=2vBVvQTTdXg">https://www.youtube.com/watch?v=2vBVvQTTdXg</a></p>
-</blockquote>
 <h4>Ackermann, le retour</h4>
 <p>Essayons de voir comment écrire l'algorithme d'Ackermann sans toutes ces récurrences, comme on l'a fait avec la fonction 91.</p>
 <p>Pour calculer $\text{Ack}(m, n)$ :</p>
@@ -299,7 +288,7 @@ $$
 </blockquote>
 <h2>Chaînes de caractères</h2>
 <h3>Sous-séquence</h3>
-<p>Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante</p>
+<p>Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une <em>sous-séquence</em> de $S_1$ si il existe une fonction strictement croissante</p>
 <p>$$
 f : {0,\ldots, len(S_2)-1} \longrightarrow {0,\ldots, len(S_1)-1}
 $$</p>
@@ -310,29 +299,6 @@ $$</p>
 <ul>
 <li>Proposez, prouver et donner la complexité d'un algorithme qui détermine si $S_2$ est un sous-mot de $S_1$.</li>
 <li>Si toutes les lettres de $S_2$ sont deux à deux différentes, donnez un algorithme en $\mathcal{O}(len(S_1))$ pour résoudre ce problème.</li>
-</ul>
-<h2>Algorithme mystère</h2>
-<p>L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.</p>
-<pre class="language-python" tabindex="0" data-language="python"><code class="language-python"><span class="token keyword">def</span> mystère<span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    k <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
-    tempo <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token punctuation">(</span>k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
-    sortie <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>tab<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+=</span> <span class="token number">1</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        tempo<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> tempo<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
-
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        sortie<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">1</span>
-        tempo<span class="token punctuation">[</span>tab<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
-
-    <span class="token keyword">return</span> sortie
-</code></pre>
-<ul>
-<li>Donnez la complexité de cet algorithme.</li>
-<li>Dites ce qu'il fait et prouvez le (<em>indication</em>: après chacune des deux premières boucles, que contient tempo ?).</li>
-<li>Commentaires ?</li>
 </ul>
 <h2>Permutation circulaire</h2>
 <p>Étant donné un liste $L$ de longueur $n$ et un entier $k$, le problème est de transformer $L$ par permutation circulaire en décalant (circulairement) tous les éléments de $L$ de $k$ places. Par exemple, avec $L = \text{LongtempsJeMeSuisCouchéDeBonneHeure}$ et $k = 4$, on obtient $L' = \text{eureLongtempsJeMeSuisCouchéDeBonneH}$.</p>
