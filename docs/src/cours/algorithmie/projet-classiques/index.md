@@ -290,6 +290,28 @@ Montrer que l'on peut utiliser deux piles (une pour les opérateurs et les paren
 
 Il faut faire attention au fait que `*` a une priorité supérieure à `+` : `3 + 4 * 3 = 15`.
 
-> TBD à 9min13  <https://www.youtube.com/watch?v=2vBVvQTTdXg>
+On lit l'expression de gauche à droite :
 
+1. si le caractère lu est un nombre on le place dans la pile P2
+2. sinon si le caractère lu est un opérateur O :
+   1. on évalue l'expression comme on la fait avec la notation polonaise inversée :
+      1. pop de P1 dans op
+      2. pop de p2 dans y
+      3. pop de p2 dans x
+      4. x op y = z
+      5. push de z dans P2
+   2. jusqu'à ce que :
+      1. P1 est vide ou
+      2. l'opérateur O a une priorité supérieure à celle sur P1
+   3. place O dans P1
+3. sinon si le caractère lu est une parenthèse ouvrante : on la place dans P1
+4. sinon si le caractère lu est une parenthèse fermante :
+   1. on évalue l'expression jusqu'à trouver une parenthèse ouvrante
+   2. oj push le résultat dans P2
+
+Si on a fini de lire l'expression on évalue le reste des deux piles.
+
+{% lien %}
+à 9min13  <https://www.youtube.com/watch?v=2vBVvQTTdXg>
+{% endlien %}
 {% enddetails %}
