@@ -228,6 +228,68 @@ Si on fait les deux à la suite on a 2n comparaisons.
 
 On commence par trier les éléments $T[i]$ et $T[i+1]$ pour tout $i$ ($n/2$ comparaisons)
 
-Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T[[2i +1]$ ($n/2$ comparaisons)
+Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T[2i +1]$ ($n/2$ comparaisons)
+
+{% enddetails %}
+
+## Piles
+
+### File avec pile
+
+On reprend l'[exercice sur la création d'une file avec 2 piles](../structure-flux/#file-avec-pile){.interne}.
+
+{% exercice %}
+Montrer que la complexité amortie d'ajout et de suppression d'un élément dans la structure de file créée avec 2 pile est en $\mathcal{O}(1)$
+{% endexercice %}
+{% details "corrigé" %}
+On procède comme pour le compteur, on associe une complexité amortie de +2 lorsque l'on empile dans P1 et de 0 lorsque l'on empile dans P2.
+
+{% enddetails %}
+
+### Parenthésage
+
+Soit $C$ une expression arithmétique avec des parenthèses et des crochets. On cherche à savoir si le parenthésage est équilibré :
+
+- `[3 + 3 * (1 + 3)]` sera Ok
+- `[3 + 3 * (1 + 3])` sera pas Ok
+
+On ne vérifiera pas que l'expression est arithmétiquement correcte, c'est à dire que pour nous, `[3 + + 3 (1 + 3)]` sera Ok.
+
+{% exercice %}
+
+Montrer que l'on peut utiliser une pile pour savoir si un parenthésage est équilibré entre les `()` et les `[]`.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme parenthèse(C):
+    P ← une nouvelle pile de caractères
+    pour chaque c de C:
+        si c == "(" ou c == "[":
+            P.empile(c)
+        sinon si c == ")":
+            si P.vide() ou P.dépile() ≠ "(":
+                rendre Faux
+        sinon si c == "]":
+            si P.vide() ou P.dépile() ≠ "[":
+                rendre Faux
+    rendre Vrai
+```
+
+{% enddetails %}
+
+### Calcul d'une expression avec deux piles
+
+Soit $C$ une expression arithmétique avec uniquement des parenthèses, des `+` et des `*`. On suppose qu'elle est arithmétiquement correcte, comme `(3 + 3 * (1 + 3))`
+
+{% exercice %}
+
+Montrer que l'on peut utiliser deux piles (une pour les opérateurs et les parenthèses et l'autre pour les nombres) pour calculer $C$.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut faire attention au fait que `*` a une priorité supérieure à `+` : `3 + 4 * 3 = 15`.
+
+> TBD à 9min13  <https://www.youtube.com/watch?v=2vBVvQTTdXg>
 
 {% enddetails %}

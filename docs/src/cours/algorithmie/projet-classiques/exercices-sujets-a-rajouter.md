@@ -23,16 +23,6 @@ eleventyComputed:
 
 > TBD McCarty, Ackerman, etc.
 
-### File et pile
-
-> TBD faire une file avec 2 piles. <https://saint-francois-xavier.fr/nsi/term/2/2/2_Piles_Files.html>
-
-## parenthèses
-
-> TBD parenthésage avec pile : <https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf>
-
-> TBD avec 2 piles : Samelson et Bauer (voir video sur l'histoire de la pile) : <https://www.youtube.com/watch?v=2vBVvQTTdXg>
-
 #### Ackermann, le retour
 
 Essayons de voir comment écrire l'algorithme d'Ackermann sans toutes ces récurrences, comme on l'a fait avec la fonction 91.
@@ -179,7 +169,7 @@ $$
 
 ### Sous-séquence
 
-Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une {\em sous-séquence} de $S_1$ si il existe une fonction strictement croissante
+Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est une _sous-séquence_ de $S_1$ si il existe une fonction strictement croissante
 
 $$
 f : \{0,\ldots, len(S_2)-1\} \longrightarrow \{0,\ldots, len(S_1)-1\}
@@ -195,33 +185,6 @@ Soient deux chaînes de caractères $S_1$ et $S_2$. On dit que $S_2$ est un **_s
 
 - Proposez, prouver et donner la complexité d'un algorithme qui détermine si $S_2$ est un sous-mot de $S_1$.
 - Si toutes les lettres de $S_2$ sont deux à deux différentes, donnez un algorithme en $\mathcal{O}(len(S_1))$ pour résoudre ce problème.
-
-## Algorithme mystère
-
-L'algorithme suivant, à partir d'une liste d'entiers positifs, rend une autre liste. On suppose pour cet exercice que la création des deux listes tempo et sortie est en $\mathcal{O}(1)$ opérations.
-
-```python
-def mystère(tab):
-    k = max(tab)
-    tempo = [0] * (k + 1)
-    sortie = [0] * len(tab)
-
-    for i in range(len(tab)):
-        tempo[tab[i]] += 1
-    for i in range(1, k + 1):
-        tempo[i] += tempo[i - 1]
-
-    for i in range(n):
-        sortie[i] = tempo[tab[i]] - 1
-        tempo[tab[i]] -= 1
-
-    return sortie
-
-```
-
-- Donnez la complexité de cet algorithme.
-- Dites ce qu'il fait et prouvez le (_indication_: après chacune des deux premières boucles, que contient tempo ?).
-- Commentaires ?
 
 ## Permutation circulaire
 

@@ -160,7 +160,7 @@ pour chaque i de [0, T.longueur[:
 
 {% enddetails %}
 
-### Pile et file
+### <span id="file-avec-pile"></span>Pile et file
 
 On dispose uniquement de la structure de donnée de Pile et on souhaite créer, en utilisant deux piles P1 et P2, une nouvelle structure de File.
 
