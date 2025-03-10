@@ -365,10 +365,12 @@ $$
 <span class="highlight-line">            <span class="token keyword">si</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token keyword">ou</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span></span>
 <span class="highlight-line">                courante<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> <span class="token number">1</span></span>
 <span class="highlight-line">            <span class="token keyword">sinon</span><span class="token punctuation">:</span></span>
-<span class="highlight-line">                ligne<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span></span>
+<span class="highlight-line">                courante<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">←</span> précédent<span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> précédent<span class="token punctuation">[</span>j<span class="token punctuation">]</span></span>
 <span class="highlight-line"></span>
-<span class="highlight-line">    <span class="token keyword">rendre</span> matrice</span></code></pre>
-<p>Sachez que l'on peut encore faire mieux en utilisant qu'un seul tableau auxiliaire (la deuxième boucle devant aller de $min(i, k)$ à 0) ce qui divise par deux la complexité spatiale (mais qui reste en $\mathcal{O}(k)$).</p>
+<span class="highlight-line">    <span class="token keyword">rendre</span> courante<span class="token punctuation">[</span>k<span class="token punctuation">]</span></span></code></pre>
+<blockquote>
+<p>Spoiler : on verra que l'on peut faire encore mieux...</p>
+</blockquote>
 </div>
 </details>     
 </div>
