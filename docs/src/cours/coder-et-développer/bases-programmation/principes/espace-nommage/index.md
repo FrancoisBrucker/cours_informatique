@@ -193,6 +193,11 @@ On peut même supprimer `x` et la voir disparaître de l'espace de nommage :
 
 ## <span id="notation-pointée"></span> Notation pointée
 
+{% lien %}
+[Notation pointée](https://reeborg.ca/docs/fr/oop/oop.html)
+
+{% endlien %}
+
 En python, (pratiquement) tout a un espace de nom. On s'en sert dès qu'on utilise la notation pointée.
 
 on l'a vue pour les modules, mais c'est aussi vrai pour les objets. En considérant le code suivant :

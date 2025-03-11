@@ -27,7 +27,7 @@ _L'informatique n'est pas plus la science des ordinateurs que l'astronomie n'est
 
 Il est conseillé pour ce cours d'avoir des bases de programmation en python. Pour apprendre vous pouvez vous reporter au prérequis.
 
-## <span id="partie-2"></span>Partie I
+## <span id="partie-1"></span>Partie I
 
 Tout ce que devrait connaître tout ingénieur de l'informatique.
 
@@ -88,7 +88,7 @@ Mais même si on a un problème algorithmique et un algorithme, comment prouver 
 
 ### <span id="entrainement-preuve"></span>On s’entraîne : algorithmes itératifs et récursifs
 
-Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort  de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
+Une série de problème algorithmique à résoudre par des algorithmes simples et clairs. Le but d'un algorithme papier est d'être compris. Faites l'effort de préférer des noms de variables explicites et n'hésitez pas à séparer votre pseudo-code en fonctions pour qu'il soit plus clair.
 
 {% aller %}
 [Projet : Écrire et prouver des algorithmes itératifs et récursifs](./projet-itératif-récursif){.interne}
@@ -141,43 +141,76 @@ Maintenant que l'on peut calculer les complexités, on peut reprendre les algori
 [Problème du tri](./problème-tris){.interne}
 {% endaller %}
 
-### On s'entraîne : exercices de complexité et de preuve
+### Structures de données
+
+Comment créer de nouveaux types d'objets utilisable pour nos algorithmes.
 
 {% aller %}
-[Algorithmes classiques](./projet-classiques){.interne}
+[Structures de données](structure-données){.interne}
 {% endaller %}
 
-### Structures linéaires
+Nous allons définir et utiliser ici des structures de données très utiles dans de nombreux problèmes. Ces structures sont dites linéaires car elles permettent de gérer des listes ordonnées d'éléments
 
-#### Conteneurs
+{% lien %}
+[Structures linéaires](https://www.youtube.com/watch?v=kPqk07Gpj0A)
+{% endlien %}
+
+#### Gestion de flux
+
+Lorsqu'un algorithme doit gérer un _flux_ de données, il doit être capable de stocker les données arrivante avant de pouvoir les traiter une à une. Les deux structures fondamentales pour cela sont les piles, les files et leurs dérivés :
 
 {% aller %}
-[Conteneurs](./structure-conteneurs){.interne}
+[Structure de gestion de flux](./structure-flux){.interne}
 {% endaller %}
 
-> TBD ajouter exos pour dictionnaires.
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
+#### Structures dynamiques
+
+La [structure de tableau](pseudo-code/briques-de-base/#tableaux){.interne} est l'élément élémentaire de toute structure permettant de stocker des objets. Elle est puissante car elle permet d'accéder en temps constant à tout élément qu'elle stocke (via son index) mais également limitée car le nombre d'objet qu'un tableau peut stocker (sa taille) est déterminé à sa création et est non modifiable. Enfin, l'index pour retrouver l'objet stocké est forcément un entier entre 0 et sa taille moins un. Nous verrons dans cette partie que l'on peut faire sauter toutes les limitations d'un tableau au prix d'un coût en complexité, souvent acceptable au vu du gain en maniabilité :
+
+{% aller %}
+[Les listes](./structure-liste){.interne}
+{% endaller %}
+
+Enfin, très utilisée dans les langages fonctionnels et le cas o`u l'on doit supprimer rapidement un élément en milieu de liste, la _liste chaînée_ :
+
+{% aller %}
+[Les listes chaînées](./structure-liste-chaînée){.interne}
+{% endaller %}
+
+#### Table de hashage et structures associées
+
+Une autre structure fondamentale en algorithmie :
+
+{% aller %}
+[Tables de hashage et dictionnaires](./structure-dictionnaire){.interne}
+{% endaller %}
+
+#### Comparaisons des structures de conteneurs
+
+> Structure génériques
+> ajout/suppression :
 >
-> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
-
-> TBD listes sont super aussi pour les algorithmes récursifs cqr on peut facilement ajouter des choses sans avoir besoin de recréer des objets.
-> TBD compteur, jets de dés.
-
-#### Todo list
-
-Implémenter et utiliser efficacement des structures permettant de stocker pendant son execution les choses que devra faire l'algorithme plus tard.
-
-{% aller %}
-[Piles et files](./structure-pile-file){.interne}
-{% endaller %}
-
-#### Chaînes de caractères
-
-> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
-
-{% aller %}
-[Chaines de caractères](./structure-chaine-de-caractères){.interne}
-{% endaller %}
+> - liste : O(1) à la fin (amorti) ; O(n) autre part
+> - dictionnaire : O(1) en moyenne
+> - liste chaînée : O(1) partout
+>
+> recherche :
+>
+> - liste : O(1) avec indice
+> - dictionnaire : O(1) en moyenne avec clé
+> - liste chaînée : O(n) (il faut tout traverser)
+>
+>
+> Cas d'utilisation :
+>
+> - liste : tout le temps à la place d'un tableau
+> - dictionnaire : tout le temps si on ne manipule pas d'indices mais des objets
+> - liste chaînée : si veut supprimer/ajouter un élément donné en O(1) mais pas besoin de trouver un élément quelconque (uniquement le premier)
+>
+> Gestion de flux : pile, file
+>
+> - push/pop : O(1) si taille fixe, sinon O(1) en amorti
+> - recherche : via indice (avec le tableau sous-jacent) en O(1).
 
 ### Complexité amortie
 
@@ -186,6 +219,22 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
 {% endaller %}
+
+### On s'entraîne
+
+#### Résolution d'algorithmiques classiques
+
+{% aller %}
+[Algorithmes classiques](./projet-classiques){.interne}
+{% endaller %}
+
+#### Résolution de problèmes algorithmiques classiques
+
+{% aller %}
+[Problèmes classiques](./projet-problemes-classiques){.interne}
+{% endaller %}
+
+## <span id="partie-2"></span>Partie II
 
 ### Réductions : passer d'un problème à un autre
 
@@ -225,15 +274,23 @@ On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en
 
 ## Intermède : recherche universelle
 
-Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique :
+Avant de finir cette première partie du cours, accordons nous un intermède en regardant une petite bizarrerie algorithmique. L'Algorithme pour tout résoudre :
 
 {% aller %}
 [L'algorithme de la recherche universelle](./recherche-universelle){.interne}
 {% endaller %}
 
-## <span id="partie-2"></span>Partie II
+## <span id="partie-3"></span>Partie III
 
 Tout ce que devrait connaître tout ingénieur aimant l'informatique.
+
+### Chaînes de caractères
+
+> TBD on a déjà utilisé les chaines de caractères à de nombreuses reprise. Nous allons maintenant pouvoir étudier plus attentivement. Comme les algo sont de $\\{0, 1\\}^\star$ à $\\{0, 1\\}^\star$, c'est une structure fondamentale pour penser l'algorithmie et comme tout est écrit, en particulier le code, elles sont au centre de nombreux problèmes courant.
+
+{% aller %}
+[Chaines de caractères](./structure-chaine-de-caractères){.interne}
+{% endaller %}
 
 ### <span id="modèle-calculs"></span>Modèle de calculs
 
@@ -376,4 +433,4 @@ Nous allons dans cette partie approfondir et démontrer proprement des choses qu
 
 > TBD SAC à dos deuxième problème dur : montrer que plus dur que SAT, donc équivalent.
 > TBD réduction sac a dos à bi-partition : <https://datamove.imag.fr/denis.trystram/SupportsDeCours/2017KnapSack.pdf>
-> TBD subsetsum ≤ bi-partition  : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>
+> TBD subsetsum ≤ bi-partition : <https://gnarlyware.com/blog/proving-set-partition-problem-is-np-complete-using-reduction-from-subset-sum/>

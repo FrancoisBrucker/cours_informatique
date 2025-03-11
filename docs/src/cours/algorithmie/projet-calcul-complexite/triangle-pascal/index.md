@@ -211,10 +211,10 @@ algorithme binom_ligne(n: entier, k: entier) → [[entier]]:
             si (j == i) ou (j == 0):
                 courante[j] ← 1
             sinon:
-                ligne[j] ← précédent[j-1] + précédent[j]
+                courante[j] ← précédent[j-1] + précédent[j]
 
-    rendre matrice
+    rendre courante[k]
 ```
 
-Sachez que l'on peut encore faire mieux en utilisant qu'un seul tableau auxiliaire (la deuxième boucle devant aller de $min(i, k)$ à 0) ce qui divise par deux la complexité spatiale (mais qui reste en $\mathcal{O}(k)$).
+> Spoiler : on verra que l'on peut faire encore mieux...
 {% enddetails %}

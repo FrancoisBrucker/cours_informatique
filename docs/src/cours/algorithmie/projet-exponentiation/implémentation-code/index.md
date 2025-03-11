@@ -13,6 +13,11 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
+> TBD refaire en :
+>
+> - utilisant numpy pour les indices
+> - donner le code des fonctions numpy etc.
+>
 
 On vérifie expérimentalement que nos calculs théoriques sont validés expérimentalement. On codera et testera nos algorithmes, donc vérifiez que vous avez les prérequis.
 

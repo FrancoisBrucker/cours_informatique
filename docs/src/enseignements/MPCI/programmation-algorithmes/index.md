@@ -68,6 +68,14 @@ Ce cours est composée de plusieurs parties :
 - Programmation objet
 - Méthodes de résolution de problèmes
 
+<!-- 
+
+### Prérequis
+
+> TBD pour s'assurer que les prérequis sont ok, faire un DM avant le début du semestre avec du code, du numpy et de la génération de listes. 
+
+-->
+
 ### Semaine 1
 
 > 20/01 au 24/01
@@ -336,44 +344,74 @@ On code ce qu'on a vu mercredi :
 Test de 15min en début de cours sur **les tris et la complexité en moyenne**.
 {% endattention %}
 {% faire %}
-Sujet du test 4
+[Sujet du test 4](./annales/2024-2025/4_test/){.interne}
 {% endfaire %}
 
-> 2h mercredi : structures linéaires : listes, tableaux et listes chaînées. Structure de piles et file (linéaire et circulaire).
-> introduction à la complexité amortie
-> intérêt de chaque structure
+Analyse de structures de données fondamentales en algorithmie :
 
-<!-- 
-TBD :
+{% aller %}
 
-1. structure pile et file à quoi ça sert :
-   1. pile : TODO liste = décurriffication
-   2. file : liste d'attente : exemple des entiers
-   3. FIFO/LIFO/... selon la structure
-2. implémentation :
-   1. tableau redimensionnable : la liste
-   2. pile = liste
-   3. file = 3 index avec modulo
-   4. complexité amorite. Implémentation classique avec des cellules, mais on verra ça en L3. En python decques.
-3. 
-- implémentation pile et file avec tableau qu'on double (comme liste). Complexité amortie
-- implémentation avec ds cellules complexité mais on verra ça en L3.
+1. [structures de données](/cours/algorithmie/structure-données/){.interne}
+2. [file](/cours/algorithmie/structure-flux/file){.interne}
+3. [pile](/cours/algorithmie/structure-flux/pile){.interne}
+4. [listes](/cours/algorithmie/structure-liste/){.interne}
 
-- algo utilisation pile et file : https://meloni.univ-tln.fr/static/cours/algo/7-pilefile.pdf 
-- liste avec cellules en pytyhon : https://pixees.fr/informatiquelycee/n_site/nsi_term_structDo_liste.html
+{% endaller %}
 
--->
+Un autre type de complexité, très utile pour l'analyse de structures complexes et que l'on a utilisé pour les listes :
 
-#### Vendredi : Liste/dictionnaires et ensembles
+{% aller %}
 
-> 2h vendredi : tables de hachage, dictionnaire et ensembles
+[La complexité amortie](/cours/algorithmie/complexité-amortie/){.interne}
+
+{% endaller %}
+
+N'hésitez pas à aller jeter eu coup d'œil aux exercices sur les piles et les files :
+
+{% aller %}
+
+[exercices](/cours/algorithmie/structure-flux/#exercices){.interne}
+
+{% endaller %}
+
+#### Vendredi : Fonctions de hachages et dictionnaires
+
+{% aller %}
+
+[Hachage et dictionnaires](/cours/algorithmie/structure-dictionnaire/){.interne}
+
+{% endaller %}
 
 ### Semaine 7
 
 > 10/03 au 14/03
->
-> 2h mercredi : algorithmes classiques
-> 2h vendredi : enveloppe convexe.
+
+Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices mercredi et vendredi.
+
+{% info %}
+Il n'y aura pas de tes cette semaine, cela vous permettra de commencer vos révisions et de venir avec vos questions algorithmique.
+
+En particulier, lisez DS 1 des précédentes années...
+{% endinfo %}
+
+#### Mercredi : algorithmes classiques
+
+On passera la séance de TD à résoudre des algorithmes classiques :
+{% aller %}
+
+[Algorithmes classiques](/cours/algorithmie/projet-classiques){.interne}
+
+{% endaller %}
+
+#### Vendredi : Jolis DS
+
+Ayez déjà commencé vos révisions. On répondra aux questions que vous vous posez sur les anciens DS et ET (et il y en a des jolis) d'algorithmie.
+
+{% aller %}
+
+[Problèmes classiques](/cours/algorithmie/projet-problemes-classiques){.interne}
+
+{% endaller %}
 
 ### Semaine 8
 
@@ -391,7 +429,7 @@ Sujet DM3 : code objet
 > 17/03 au 21/03
 >
 > 2h mercredi : classes et objets
-> 2h vendredi : composition / agrégation
+> 4h vendredi : Code
 
 ### Semaine 9
 
@@ -404,8 +442,8 @@ Sujet DM4 : code objet suite
 
 > 24/03 au 28/03
 >
-> 2h mercredi : héritage
-> 2h vendredi : TP
+> 2h mercredi : composition / agrégation
+> 2h vendredi : héritage
 >
 > TBD : tp programmation par les tests à faire chez eux
 
@@ -413,8 +451,8 @@ Sujet DM4 : code objet suite
 
 > 31/03 au 04/04
 >
-> 2h mercredi : programmation évènementielle Cours
-> 2h vendredi : programmation évènementielle TP
+> 2h mercredi : objet fin
+> 2h vendredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons)
 
 {% attention %}
 Rendre DM3
@@ -427,13 +465,13 @@ Sujet DM4 : programmation évènementielle.
 
 > 14/04 au 18/04
 >
-> 4h mercredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons) : principe + un exo paradigmatique par notion.
+> 4h mercredi :  glouton
 
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : sac à dos.
-> 2h vendredi : méthode de résolution de problèmes suite
+> 4h mercredi : résolution de problèmes
+> 2h vendredi : sac à dos/enveloppe convexe ?
 
 ### Semaine 13
 
@@ -445,45 +483,7 @@ DS code 3h, lundi 05/05.
 Rendre DM4
 {% endattention %}
 
-> 05/05 au 09/05
-> 4h mercredi : méthode de résolution de problèmes fin
-
 <!--
-
-### Semaine 4
-
-#### Mardi : complexité en moyenne et tris
-
-{% aller %}
-
-1. [Complexité en moyenne](/cours/algorithmie/complexité-moyenne){.interne}
-2. [Problème du tri et algorithmes pour le résoudre](/cours/algorithmie/problème-tris){.interne}
-   {% endaller %}
-
-#### Vendredi : projet tris
-
-{% attention %}
-Test de 15min en début de cours. Il faudra rendre une feuille de papier avec des choses écrites dessus.
-{% endattention %}
-
-{% aller %}
-[Projet tri](/cours/algorithmie/problème-tris/implémentation-tris/){.interne}
-{% endaller %}
-
-### Semaine 5
-
-{% info %}
-Le DM1 est à rendre pour le vendredi 23/02/24 à 23h59
-{% endinfo %}
-
-#### Mardi : Révision
-
-Venez avec vos questions d'algorithmie, de complexité et de preuves. On passera la séance à caler les notions du DS et à s'entraîner avec des exercices.
-
-{% aller %}
-[Exercices](/cours/algorithmie/projet-classiques){.interne}
-
-{% endaller %}
 
 #### Vendredi : DS1
 

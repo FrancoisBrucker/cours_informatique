@@ -6,9 +6,50 @@ title:  "corrigé Test 3 : complexité"
 
 ## Barème
 
-> TBD
+Une note sur 7 répartie comme suit :
+
+- 1pt pour la question 1.1
+- 1pt pour la question 1.2
+- 2pt pour la question 1.3
+- 0.25pt pour la question 2.1
+- 0.75pt pour la question 2.2
+- 0.75pt pour la question 2.3
+- 0.25pt pour la question 2.4
+- .5pt pour la question 3.1
+- .5pt pour la question 3.2
+
+La note sur $20$ finale est obtenue en multipliant la note sur 7 par $4$.
+
+{% note "**Objectif du test**" %}
+
+En 15 minutes :
+
+- **un élève *normal*** doit parvenir à faire la première question correctement (ce qui garantit le 12/20)
+- **un bon élève** doit parvenir à réussir à faire la première question parfaitement
+- **un très bon élève** à avancé dans la question 2.
+
+{% endnote %}
+
+La question la plus importante était la 1.3. On pouvait s'en passer mais du coup il fallait faire presque tout le reste du test. J'ai noté un petit relâchement sur les notes. Soit vous avez moins préparé le test soit vous avez moins compris cette partie du cours. Dans les 2 cas, il faut plus réviser votre cours.
+
+La question 1 était une application directe du problème de l'exponentiation : les questions 1.1 et 1.2 auraient du être cadeau (et c'est loin d'être le cas...). Enfin, la question 1.3 a fait peur à tout le monde alors que le fonctionnement de l'algorithme est identique à celui de l'exponentiation rapide : vous auriez du tenter de le prouver. Il n'était pas nécessaire de trouver exactement l'invariant de boucle, on pouvait s'en sortir avec une récurrence bien sentie.
+
+La ventilation des notes est :
+
+|note/20  |≤8  | ]8, 10[ | [10, 12[      | [12, 14]    | ]14, 16]  | = 20
+|---------|----|------------|------------|-------------|-----------|---------
+|nombre   | 10 |  6         |  12        |  9          |  5        | 1
+|rang min | 43 | 33         | 27         | 11          |  6        | 1
+
+- moyenne : 10.64/20
+- écart-type : 3.15/20
+- médiane : 10.80/20
 
 ## Erreurs fréquemment rencontrées
+
+- algorithme = finitude ; correction pas obligé
+- complexité : on passe toujours dans le /2
+- attention aux bornes du 2.3
 
 ## Corrigé
 
@@ -35,6 +76,10 @@ Le programme `mul`{.language-} est un algorithme car la variable `x`{.language-}
 Pour démontrez que `mul(x, y) = x * y`{.language-} on utilise l'invariant : `X * Y = r + x * y`{.language-} avec `X`{.language-} et `Y`{.language-} les paramètres initiaux.
 
 C'est invariant est quasiment le même que celui de l'exponentiation indienne. On vérifie aisément qu'il fonctionne.
+
+{% attention %}
+La variable `x`{.language-} est **toujours** divisée par 2 : c'est ce qui fait la différence avec l'exponentiation indienne.
+{% endattention %}
 
 ### 2 représentation binaire des nombres
 

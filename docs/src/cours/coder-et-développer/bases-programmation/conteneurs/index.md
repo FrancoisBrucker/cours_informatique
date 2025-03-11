@@ -22,7 +22,7 @@ Parmi ces conteneurs, la **_liste_** est certainement la plus utilisée.
 [Listes](listes){.interne}
 {% endaller %}
 
-## Ensembles et dictionnaires
+## <span id="ensembles-dictionnaires"></span>Ensembles et dictionnaires
 
 Les deux autres conteneurs à connaître sont les **_ensembles_** et les **_dictionnaires_**. Ces deux structures sont très utiles lorsque l'on manipule des données mais sont plus complexes à manipuler que des listes. Prenez le temps d'apprendre à utiliser leurs nombreux avantages.
 
