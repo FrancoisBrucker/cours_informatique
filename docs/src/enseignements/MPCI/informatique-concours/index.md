@@ -138,7 +138,7 @@ Quelques algorithmes ont aussi à connaître :
 
 ## Oraux/écrit Algorithmie
 
-Vous pouvez tomber sur le même exercices aux mines ou à l'X/ENS. Ce qui changera c'est les indications et le nombre de questions intermédiaires.
+Vous pouvez tomber sur le même exercices aux mines ou à l'X/ENS. Ce qui changera c'est les indications et le nombre de questions intermédiaires. Mais en gros tout peut tomber, c'est pourquoi faire les QCM GEI est un bon exercice pour bien asseoir les bases qui vous seront nécessaires pour résoudre les problèmes plus dur..
 
 Préparez vous en reprenant les cours et en comprenant les démonstrations. Ce sont souvent les mêmes chemins qui sont pris. On ne peut pas vous demander de trouver des preuves digne du [book](https://en.wikipedia.org/wiki/Proofs_from_THE_BOOK) ou la méga astuce algorithmique, mais vous devez montrer que vous connaissez votre sujet, connaissez les _trucs_ de bases et que vous avez un peu d'intuition (ce qui se travaille en cherchant les ressemblances entre les différentes techniques de preuve).
 
