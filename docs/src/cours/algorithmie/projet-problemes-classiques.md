@@ -19,5 +19,6 @@ Quelques exemples de problèmes algorithmiques pouvant être approchés de multi
 - [tri de crêpes (exercice 2)](/enseignements/MPCI/programmation-algorithmes/annales/2021-2022/ds_1_2021_2022.pdf)
 - [échanges d'indices (exercice 3)](/enseignements/MPCI/programmation-algorithmes/annales/2021-2022/ds_1_2021_2022.pdf)
 - [calcul de la médiane (exercice 4)](/enseignements/MPCI/programmation-algorithmes/annales/2020-2021/mpci_et_2020_2021.pdf)
-
+- [points fixe](/enseignements/MPCI/programmation-algorithmes/annales/2024-2025/dm-doublons/)
+- [palindromes](/enseignements/MPCI/programmation-algorithmes/annales/2023-2024/palindromes/)
 {% endaller %}

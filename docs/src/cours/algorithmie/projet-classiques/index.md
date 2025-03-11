@@ -177,7 +177,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Col de listes
 
-> TBD un classique des concours
+> TBD un classique des concours, sans aucune indications bien sur.
 
 {% aller %}
 [Cols de listes et de matrices](cols){.interne}
@@ -315,3 +315,20 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 à 9min13  <https://www.youtube.com/watch?v=2vBVvQTTdXg>
 {% endlien %}
 {% enddetails %}
+
+## 2-sum et 3-sum
+
+> TBD un classique des concours, sans aucune indications bien sur.
+> TBD aussi la base de bien d'autres problèmes qui sont solvables par 2 ou 3 sum.
+
+### 2-SUM
+
+> TBD ajouter exos pour dictionnaires.
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
+>
+> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
+
+> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+
+> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
+> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.

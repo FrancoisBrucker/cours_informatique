@@ -12,12 +12,6 @@ eleventyComputed:
 
 > TBD regardez tous les exos d'avant et le remettre s'ils sont chouettes, genre ceux des piles/file, fibo, etc. Et ajouter les questions suivantes si nécessaire.
 
-## 2-sum et 3-sum
-
-> TBD ajouter exos pour dictionnaires.
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
->
-> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
 
 ## Decurryfications
 
@@ -218,12 +212,7 @@ remarquer que permuter circulairement $L$ revient à prendre les $k$ dernières 
 
 ## Odds and ends
 
-> TBD ajouter : k-médiane (voir et 20/21 mpci.)
 
 > TBD faire un lien avec les exos vu en écriture d'algo + complexité pour que tout soit aussi là.
-> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
-
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
-> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.
 
 > TBD lièvre et lapin.
