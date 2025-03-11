@@ -211,7 +211,7 @@ La complexité minimale et en moyenne de l'ajout, de la recherche et de la suppr
 La complexité maximale de ces méthodes est en $\mathcal{O}(n)$.
 {% endnote %}
 
-## Exercice fondamental
+## <span id="exercice-fondamental"></span>Exercice fondamental
 
 Exercice fondamental pour comprendre l'intérêt des dictionnaires.
 

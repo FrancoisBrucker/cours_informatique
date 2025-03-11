@@ -319,16 +319,136 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 ## 2-sum et 3-sum
 
 > TBD un classique des concours, sans aucune indications bien sur.
-> TBD aussi la base de bien d'autres problèmes qui sont solvables par 2 ou 3 sum.
+
+{% info %}
+
+3-SUM est la base de bien d'autres problèmes. On en reparlera bien plus tard, mais ce problème est une des bases algorithmique de [la géométrie algébrique](https://fr.wikipedia.org/wiki/G%C3%A9om%C3%A9trie_alg%C3%A9brique).
+
+{% endinfo %}
 
 ### 2-SUM
 
-> TBD ajouter exos pour dictionnaires.
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n)$ en moyenne avec dico. Ne change rien pour 3-SUM, il faut le faire n fois.
->
-> TBD pas toujours la meilleur solution le dico : faire lièvre et lapin (qu'on aura vu dans algo classiques) pour deux tableaux avec égalité mieux que dictionnaire.
+{% note "Problème" %}
 
-> TBD exos : <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+- **nom** : 2-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il deux indices $i$ et $j$ (ils peuvent être égaux) tels que $T[i] + T[j] = 0$ ?
+{% endnote %}
 
-> TBD 2-SUM $T[i] + T[j] = 0$ en $\mathcal{O}(n^2)$
-> 3-SUM $T[i] + T[j] + T[k] = 0$ en $\mathcal{O}(n^3)$ (en modifiant 2-sum avec $T[i] + T[j] = K$) puis en $\mathcal{O}(n^2)$ (avec tri). Faire tout est tout aussi rapide que faire 1.
+On a déjà vu une variante de ce problème lorsque l'on a étudié les dictionnaires. Si vous ne vous en rappelez plus, refaites le :
+
+{% exercice %}
+[Exercice fondamental des dictionnaires](../structure-dictionnaire/tableau-associatif/#exercice-fondamental){.interne}
+{% endexercice %}
+
+Regardons maintenant ce problème d'un point de vue complexité spatiale et temporelle.
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : brute force
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}\ln(T.\mbox{\small longueur}))$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : tri
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur})$ en moyenne
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : dictionnaire
+
+{% enddetails %}
+
+Un nouvel algorithme :
+
+{% exercice %}
+Donnez une solution au problème 2-SUM avec comme complexité temporelle de $\mathcal{O}(1)$.
+
+Quelle est sa complexité spatiale ? Est-ce réaliste ?
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
+> TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
+> TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
+
+{% enddetails %}
+
+### 3-SUM
+
+{% note "Problème" %}
+
+- **nom** : 3-SUM
+- **données** : Un tableau T d'entiers relatifs
+- **question** : Existe-t-il trois indices $i$, $j$ et $k$ (ils peuvent être égaux) tel que $T[i] + T[j] + T[k] = 0$ ?
+{% endnote %}
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^3)$
+- spatiale en $\mathcal{O}(1)$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : brute force
+
+{% enddetails %}
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$ en moyenne
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : dictionnaire
+
+{% enddetails %}
+
+Le dictionnaire est souvent la meilleure réponse en moyenne, mais ce n'est pas le cas avec un 3-SUM :
+
+{% exercice %}
+Donnez une solution au problème 3-SUM avec comme complexité :
+
+- temporelle de $\mathcal{O}(T.\mbox{\small longueur}^2)$
+- spatiale en $\mathcal{O}(T.\mbox{\small longueur})$
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD : un tri puis on cherche en $\mathcal{O}(T.\mbox{\small longueur})$ s'il existe i et j pour lesquels $T[i] + T[j] = -T[k]$ pour k allant de 0 à la taille du tableau ($\mathcal{O}(T.\mbox{\small longueur})$ boucles)
+
+{% enddetails %}
+
+## Autres séries d'exercices
+
+- <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>
+- ...
