@@ -53,7 +53,7 @@ On l'a déjà vu. Uniquement un rappel.
 
 ## Triangle de Pascal
 
-On a déjà vu les 2 premiers. Le troisième est plus compliqué
+On a déjà vu les 2 premiers. Le troisième est un peu plus compliqué
 
 ### Rappel
 
@@ -104,6 +104,9 @@ Regardons comment tout ceci peut fonctionner avec une liste :
 {% endaller %}
 
 ### Suppression de doublons
+
+> - **Utilité** : classique et simple.
+> - **Difficulté** : facile
 
 {% aller %}
 [Suppression des doublons](suppression-doublons){.interne}
@@ -161,7 +164,8 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Tours de Hanoï
 
-> TBD classique parmi les classique. La preuve que c'est la complexité min est importante à connaître
+> - **Utilité** : classique parmi les classique. La preuve que la complexité est minimale est à connaître
+> - **Difficulté** : moyen
 
 {% aller %}
 [Tours de Hanoi](tours-hanoi){.interne}
@@ -169,7 +173,8 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Compteur binaire
 
-> TBD déjà vu pour complexité amorti. Ici juste successeur.
+> - **Utilité** : algorithme à la base de nombreux autres algorithme d'énumération.
+> - **Difficulté** : moyen
 
 {% aller %}
 [Compteur binaire](compteur-binaire){.interne}
@@ -177,7 +182,8 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Col de listes
 
-> TBD un classique des concours, sans aucune indication bien sur.
+> - **Utilité** : à connaître car un classique des concours (on le donne sans indications...)
+> - **Difficulté** : moyen
 
 {% aller %}
 [Cols de listes et de matrices](cols){.interne}
@@ -185,7 +191,10 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Tris
 
-> TBD des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\log(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.
+> - **Utilité** : tris pouvant être utile dans des cas particuliers et surtout à la base de nombreux pièges
+> - **Difficulté** : moyen
+
+Des tris utiles dans des cas spécifiques, et dont la complexité semble plus petite que $n\log(n)$. Connaître pourquoi ce n'est (bien sur) pas le cas.
 
 {% aller %}
 [Tris spéciaux](tris-spéciaux){.interne}
@@ -193,7 +202,8 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Min et max d'un tableau d'entiers
 
-> TBD une astuce classique de décomposition de l'espace de recherche
+> - **Utilité** : une optimisation élégante et une astuce utile à garder dans sa poche, car elle se retrouve dans plusieurs algorithmes optimaux classiques.
+> - **Difficulté** : moyen
 
 ### Un algo
 
@@ -207,8 +217,6 @@ Que faut-il modifier pour trouver le maximum ?
 {% enddetails %}
 
 ### Complexité du Problème
-
-> TBD preuve simple avec les arbres.
 
 {% exercice %}
 Montrer que si l'on cherche à trouver l'élément minimum d'un tableau d'entiers $T$ il faut au moins $T.\mbox{\small longueur} - 1$ comparaisons
@@ -233,6 +241,9 @@ Puis on cherche le min sur les $T[2i]$ ($n/2$ comparaisons) et le max sur les $T
 {% enddetails %}
 
 ## Piles
+
+> - **Utilité** : les piles ça sert toujours. Ces exercices vous montrerons des cas classiques d'utilisation
+> - **Difficulté** : moyen
 
 ### File avec pile
 
@@ -307,7 +318,7 @@ On lit l'expression de gauche à droite :
 3. sinon si le caractère lu est une parenthèse ouvrante : on la place dans P1
 4. sinon si le caractère lu est une parenthèse fermante :
    1. on évalue l'expression jusqu'à trouver une parenthèse ouvrante
-   2. oj push le résultat dans P2
+   2. on push le résultat dans P2
 
 Si on a fini de lire l'expression on évalue le reste des deux piles.
 
@@ -317,6 +328,9 @@ Si on a fini de lire l'expression on évalue le reste des deux piles.
 {% enddetails %}
 
 ## 2-sum et 3-sum
+
+> - **Utilité** : un classique des concours !
+> - **Difficulté** : dur
 
 > TBD un classique des concours, sans aucune indications bien sur.
 
@@ -447,6 +461,15 @@ Donnez une solution au problème 3-SUM avec comme complexité :
 > TBD : un tri puis on cherche en $\mathcal{O}(T.\mbox{\small longueur})$ s'il existe i et j pour lesquels $T[i] + T[j] = -T[k]$ pour k allant de 0 à la taille du tableau ($\mathcal{O}(T.\mbox{\small longueur})$ boucles)
 
 {% enddetails %}
+
+## Chaînes de caractères
+
+> - **Utilité** : classique mais pas indispensable
+> - **Difficulté** : ?
+
+{% aller %}
+[Chaines de caractères](./chaine-caracteres){.interne}
+{% endaller %}
 
 ## Autres séries d'exercices
 
