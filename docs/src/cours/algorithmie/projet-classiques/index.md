@@ -70,7 +70,7 @@ On a déjà vu les 2 premiers. Le troisième est un peu plus compliqué
 ### Optimisé
 
 > - **Utilité** : classique d'optimisation
-> - **Difficulté** : moyen-.
+> - **Difficulté** : moyen.
 
 {% aller %}
 [Triangle de Pascal : complexité spatiale minimale](triangle-pascal/){.interne}
@@ -119,7 +119,7 @@ Exercices de base de complexité. Il est important de les connaître pour évite
 ### Erreur bête
 
 > - **Utilité** : crucial à comprendre
-> - **Difficulté** : facile
+> - **Difficulté** : moyen
 
 {% aller %}
 [Noob trap](noob-trap){.interne}
@@ -128,9 +128,9 @@ Exercices de base de complexité. Il est important de les connaître pour évite
 ### $X$ marks the spot
 
 > - **Utilité** : crucial à comprendre
-> - **Difficulté** : moyen
+> - **Difficulté** : dur
 
-Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit nst inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
+Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit est inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
 
 {% exercice %}
 Donnez un algorithme en $\mathcal{O}(K)$ permettant au robot d'atteindre $X$ à partir de sa position initial qui vaut $0$.

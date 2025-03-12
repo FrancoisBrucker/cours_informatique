@@ -22,4 +22,3 @@ Les _tours de Hanoï_ sont un célèbre casse tête inventé par Édouard Lucas 
 On suppose que cette dernière règle est également respectée dans la configuration de départ.
 
 Donnez un algorithme récursif permettant de résoudre le problème. Quelle est sa complexité ? Peut-on faire mieux ?
-
