@@ -14,10 +14,10 @@ eleventyComputed:
 [Tours de Hanoï sur Wikipédia](https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF)
 {% endlien %}
 
-On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on veuille déplacer les disques de la tours A vers la tour C.
+On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on veuille déplacer les disques de la tour A vers la tour C.
 
 1. pour pouvoir déplacer le plus grand disque de la tour A, il faut avoir déplacé tous les disques au-dessus de lui. Comme c'est le plus grand disque, il est de plus seul sur son emplacement
-2. une fois le plus grand disque seul sur sa tour, il faut le déplacer en C. Ceci n'est possible que si tous les autres disques sont en B. Il donc de plus qu'ils forment une tour
+2. une fois le plus grand disque seul sur sa tour, il faut le déplacer en C. Ceci n'est possible que si tous les autres disques sont en B. Il faut donc de plus qu'ils forment une tour
 3. une fois le plus grand disque à sa place, il convient de déplacer la tour formée des autres disques, en B, sur l'emplacement C.
 
 Donc si on possède un algorithme optimal, disons `hanoï(départ, arrivée, intermédiaire, n-1)`{.language-} pour une tour de taille $n-1$, alors l'algorithme optimal pour déplacer une tour de taille $n$ de A à C sera :

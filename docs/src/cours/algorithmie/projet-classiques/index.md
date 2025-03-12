@@ -130,7 +130,7 @@ Exercices de base de complexité. Il est important de les connaître pour évite
 Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit nst inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
 
 {% exercice %}
-Donnez un algorithme en $\mathcal{O}(K)$ permettant au robot d'atteindre $X$ à partir de sa position initial qui vaut $0$.
+Donnez un algorithme en $\mathcal{O}(X)$ permettant au robot d'atteindre $X$ à partir de sa position initiale qui vaut $0$.
 {% endexercice %}
 {% details "corrigé" %}
 
@@ -177,7 +177,7 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 ## Col de listes
 
-> TBD un classique des concours, sans aucune indications bien sur.
+> TBD un classique des concours, sans aucune indication bien sur.
 
 {% aller %}
 [Cols de listes et de matrices](cols){.interne}
