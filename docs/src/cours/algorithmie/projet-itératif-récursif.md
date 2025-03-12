@@ -848,7 +848,7 @@ et :
 
 <div>
 $$
-\binom{n}{1} = \binom{n}{n} = 1
+\binom{n}{0} = \binom{n}{n} = 1
 $$
 </div>
 

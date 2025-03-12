@@ -66,7 +66,7 @@ les deux fonctions [`sélection`{.language-}](../algorithme-sélection){.interne
 def test_sélection_décroissant():
     t = [3, 2, 1]
     sélection(t)
-    assert t = [1, 2, 3]
+    assert t == [1, 2, 3]
 ```
 
 {% endattention %}
@@ -136,7 +136,7 @@ Ajoutez au programme du fichier `main_tris_basiques.py`{.fichier} deux nouvelles
 Affichez le tableau `mesures_temps_sélection`{.language-} et vérifiez que le temps augmente bien lorsque la taille augmente. Précisons un peu cette augmentation :
 
 {% faire %}
-Vérifiez que le rapport `mesures_temps_sélection[i] / (taille_tableau[i]) ** 2`{.language-} reste à peut prêt constant
+Vérifiez que le rapport `mesures_temps_sélection[i] / (taille_tableau[i]) ** 2`{.language-} reste à peu près constant.
 {% endfaire %}
 
 #### Tri par insertion
