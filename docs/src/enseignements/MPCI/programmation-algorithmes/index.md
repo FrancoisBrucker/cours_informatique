@@ -415,44 +415,101 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 
 ### Semaine 8
 
+> 17/03 au 21/03
+
 {% attention %}
 DS algorithmie 2h , mardi 18/03.
 {% endattention %}
 
-{% attention %}
-Rendre DM2 (mercredi)
-{% endattention %}
-{% attention %}
-Sujet DM3 : code objet
-{% endattention %}
+#### Mercredi : classes et objets
 
-> 17/03 au 21/03
->
-> 2h mercredi : classes et objets
-> 4h vendredi : Code
+{% aller %}
+
+[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
+
+{% endaller %}
+
+#### Vendredi : on s'entraîne puis composition et agrégation
+
+On s'entraîne :
+
+{% aller %}
+
+- [projet dé](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
+- [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
+
+{% endaller %}
+
+Puis :
+
+{% aller %}
+
+[Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}
+
+{% endaller %}
 
 ### Semaine 9
 
+> 24/03 au 28/03
+
 {% attention %}
-Rendre DM3 (mercredi)
+Rendre DM2 (vendredi)
 {% endattention %}
 {% attention %}
-Sujet DM4 : code objet suite
+Sujet DM3 : [Bataille navale](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/){.interne}
+
+Il faudra rendre un dossier contenant le projet vscode et les différents programmes.
+
 {% endattention %}
 
-> 24/03 au 28/03
->
-> 2h mercredi : composition / agrégation
-> 2h vendredi : héritage
->
-> TBD : tp programmation par les tests à faire chez eux
+#### Mercredi : on s'entraîne
+
+{% attention %}
+Test de 15min en début de cours sur **les objets, la composition et l'agrégation**.
+{% endattention %}
+{% faire %}
+Sujet du test 5
+{% endfaire %}
+
+On s'entraîne :
+
+{% aller %}
+
+- [Projet composition d'objets : dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
+- [Projet agrégation : cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
+
+{% endaller %}
+
+#### Vendredi : héritage
+
+{% aller %}
+[Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
+{% endaller %}
 
 ### Semaine 10
 
 > 31/03 au 04/04
->
-> 2h mercredi : objet fin
+
+#### Mercredi : projet héritage
+
+{% attention %}
+Test de 15min en début de cours sur **les objets, la compositions, l' agrégation et l'héritage**.
+{% endattention %}
+{% faire %}
+Sujet du test 6
+{% endfaire %}
+
+{% aller %}
+[Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
+{% endaller %}
+
+#### Vendredi : Méthodes de résolution de problèmes
+
 > 2h vendredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons)
+
+### Semaine 11
+
+> 14/04 au 18/04
 
 {% attention %}
 Rendre DM3
@@ -461,10 +518,6 @@ Rendre DM3
 Sujet DM4 : programmation évènementielle.
 {% endattention %}
 
-### Semaine 11
-
-> 14/04 au 18/04
->
 > 4h mercredi :  glouton
 
 ### Semaine 12
@@ -485,68 +538,12 @@ Rendre DM4
 
 <!--
 
-#### Vendredi : DS1
-
-Au programme tout ce qu'on a vu en algorithmie jusque là. Sur feuille.
-
-{% info %}
-De 9h à 12h en amphi CARTAN.
-{% endinfo %}
-
 ### Semaine 6 : Classes et objets
 
 Début du temps 2 de cette UE, consacré à la programmation objet.
 
-{% aller %}
-[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
-{% endaller %}
-
-On vous donne aussi le sujet du DM à rendre pour le 29 mars.
-
-{% faire %}
-[Sujet du DM](/cours/coder-et-développer/programmation-objet/projet-bataille-navale/){.interne}
-
-Il faudra rendre un dossier contenant le projet vscode et les différents programmes.
-
-{% endfaire %}
-
-### Semaine 6.5 (semaine de vacances): Composition et agrégation
-
-**Il y a un prérequis pour la séance d'après les vacances**.
-
-{% faire %}
-1. Terminer les deux projets et leurs améliorations :
-    - [projet dé](/cours/coder-et-développer/programmation-objet/projet-objets-dés/){.interne}
-    - [projet cartes](/cours/coder-et-développer/programmation-objet/projet-objets-cartes/){.interne}
-2. Lire et comprendre la partie [Composition et agrégation](/cours/coder-et-développer/programmation-objet/composition-agrégation/){.interne}, le test de début de cours portera dessus.
-{% endfaire  %}
-
-### Semaine 7 : projet composition et agrégation
-
-{% attention %}
-Test de 15min en début de cours consacré aux **prérequis composition et agrégation**. Il sera à rendre sur feuille.
-{% endattention %}
-
-{% aller %}
-
-- [Projet composition d'objets : dés](/cours/coder-et-développer/programmation-objet/projet-composition-dés/){.interne}
-- [Projet agrégation : cartes](/cours/coder-et-développer/programmation-objet/projet-agrégation-cartes/){.interne}
-
-{% endaller %}
-
-### Semaine 8
-
-#### Mardi : Héritage
-
-{% aller %}
-[Héritage](/cours/coder-et-développer/programmation-objet/héritage/){.interne}
-{% endaller %}
-
 #### Vendredi : Projet Héritage
 
-{% aller %}
-[Projet Héritage](/cours/coder-et-développer/programmation-objet/projet-héritage/){.interne}
-{% endaller %}
 
 ### Semaine 9
 

@@ -2,10 +2,6 @@
 layout: layout/post.njk
 title: Améliorer ses objets
 
-eleventyNavigation:
-  prerequis:
-    - "../../mémoire-espace-nommage/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
