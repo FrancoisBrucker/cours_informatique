@@ -162,6 +162,55 @@ L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X
 
 {% enddetails %}
 
+### Équations de récurrence
+
+Quelques équations de récurrences sont à connaître car elles donnent de complexités très différentes.
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(n - K)
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n^2)$
+
+{% enddetails %}
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(\ln(n))$
+
+{% enddetails %}
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + 2\cdot C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+
 ## Tours de Hanoï
 
 > - **Utilité** : classique parmi les classique. La preuve que la complexité est minimale est à connaître
