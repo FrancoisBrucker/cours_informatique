@@ -28,7 +28,7 @@ Pas forcément un concours que vous passez, mais peut valoir le coup de regarder
 Au fil des années, les QCM changent de format : moins de C et plus de python. Depuis 2024 il y a même du pseudo-code pour les questions algorithmiques.
 
 {% attention "avec le pseudo-code" %}
-Ils prennent (en tous cas en 2023 et pour quelques exemples en 2024) la convention du [Cormen](https://www.amazon.fr/Introduction-%C3%A0-lalgorithmique-Thomas-Cormen/dp/2100031287) en faisant commencer les tableaux à l'indice 1.
+Ils prennent parfois (en tous cas pour quelques exemples en 2024, mais pas tous) la convention du [Cormen](https://www.amazon.fr/Introduction-%C3%A0-lalgorithmique-Thomas-Cormen/dp/2100031287) en faisant commencer les tableaux à l'indice 1.
 
 Cela **ne devrait pas être le cas en 2025**, mais méfiez vous !
 {% endattention %}
