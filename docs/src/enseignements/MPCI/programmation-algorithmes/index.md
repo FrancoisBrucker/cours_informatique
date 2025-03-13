@@ -418,7 +418,7 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 > 17/03 au 21/03
 
 {% attention %}
-DS algorithmie 2h , mardi 18/03.
+**DS algorithmie 2h , mardi 18/03**.
 {% endattention %}
 
 #### Mercredi : classes et objets

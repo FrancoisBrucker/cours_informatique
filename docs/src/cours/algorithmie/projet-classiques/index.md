@@ -399,14 +399,16 @@ Donnez une solution au problème 2-SUM avec comme complexité :
 Un nouvel algorithme :
 
 {% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité temporelle de $\mathcal{O}(1)$.
+Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
 
-Quelle est sa complexité spatiale ? Est-ce réaliste ?
+Est-ce réaliste ?
 
 {% endexercice %}
 {% details "corrigé" %}
 
 > TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
+> TBD attention : même si on ne visite pas toutes les cases du tableau il faut les initialiser à 0 (le contenu de la mémoire est inconnu à l'affectation).
+
 > TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
 > TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
 
