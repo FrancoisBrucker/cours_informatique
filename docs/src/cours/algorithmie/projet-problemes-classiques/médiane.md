@@ -37,7 +37,7 @@ Trouver la médiane d'un ensemble va se faire en utilisant un problème (algorit
 
 - **Nom** : $k$-SELECT
 - **Entrées** :
-  - Un tableau $T$ d'entiers (relatifs) trié par ordre croissant
+  - Un tableau $T$ d'entiers (relatifs)
   - un entier $k$
 - **Sortie** : un entier $x=T[i]$ de $T$ tel que l'on peut séparer les autres élément de $T$ (ceux d'indice différent de $i$) en deux tableaux :
   - l'un de $k-1$ éléments éléments plus petit ou égal à $x$
