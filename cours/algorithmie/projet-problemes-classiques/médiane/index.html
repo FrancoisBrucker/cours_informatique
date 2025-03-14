@@ -383,12 +383,7 @@ $$
 C(n, k) \leq \mathcal{O}(n) + C(\lambda \cdot n, k')
 $$
 </div>
-<p>Ce qui permet à se passer du $k$ dans le calcul de la complexité en prenant le $k$ le pire à chaque fois. Notre complexité vérifiera l'équation de récurrence de l'algorithme idéal précédent :</p>
-<div>
-$$
-C(n) \leq \mathcal{O}(n) + C(\lambda \cdot n)
-$$
-</div>
+<p>En prenant le $k'$ le pire à chaque fois, on a : $C(n, k) \leq C(n)$. SI on trouve un tel pivot pour notre algorithme $k$-SELECT, on aura gagné.</p>
 <p>Il n'y a plus qu'à.</p>
 <h2>On fait optimal (mais c'est plus compliqué)</h2>
 <p>Et c'est parti. L'astuce ultime est de :</p>
