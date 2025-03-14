@@ -177,6 +177,20 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + C(n - K)
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
 > TBD $C(n) = \mathcal{O}(n^2)$
 
 {% enddetails %}
@@ -195,6 +209,20 @@ $$
 > TBD $C(n) = \mathcal{O}(\ln(n))$
 
 {% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
 
 {% exercice %}
 Que vaut $C(n)$ si :
@@ -208,6 +236,20 @@ $$
 {% details "corrigé" %}
 
 > TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n^2)$
 
 {% enddetails %}
 

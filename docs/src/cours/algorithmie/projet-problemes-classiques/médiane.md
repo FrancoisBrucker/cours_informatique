@@ -19,6 +19,8 @@ Pour s'éviter des nœuds au cerveau, on considérera que les tableaux sont en f
 
 {% endinfo %}
 
+Le problème est classique et joli. Il devient cependant de plus en plus difficile.
+
 ## Définitions
 
 {% note "**Définition**" %}
@@ -106,7 +108,7 @@ Pour cela, on reprend l'idée du pivot utilisée dans [l'algorithme du tri rapid
 {% faire %}
 Donnez un algorithme `pivot(T: [entier], v: entier) → ([entier], [entier])`{.language-} de complexité égale à la taille du tableau en entrée qui rend deux tableaux $T_1$ et $T_2$ tels que :
 
-- $T_1$ contient tous les éléments de $T$ plus petit ou égaux à $v$
+- $T_1$ contient tous les éléments de $T$ strictement plus petit que $v$
 - $T_2$ contient tous les éléments de $T$ strictement plus grand que $v$
 
 {% endfaire %}
@@ -136,7 +138,7 @@ En utilisant l'argument utilisé pour le calcul de la complexité en moyenne du 
 
 <div>
 $$
-C_{\mbox{\small moy}}(n) = K\cdot n + C_{\mbox{\small moy}}(\frac{n}{2})
+C_{\mbox{\small moy}}(n) \leq K\cdot n + C_{\mbox{\small moy}}(\frac{n}{2})
 $$
 </div>
 
@@ -197,6 +199,28 @@ Comme notre algorithme est de complexité croissante :
 Donnez des conditions pour $\lambda'$ et $\lambda$ pour que notre algorithme final soit de complexité $\mathcal{O}(n)$
 {% endfaire %}
 
+La complexité de notre algorithme $k$-SELECT réel est : <div>
+$$
+C(n, k) = \mathcal{O}(n) + C(n', k')
+$$
+</div>
+
+Avec $k' \leq k$. Si on arrive à trouver un pivot permettant d'avoir $n' \leq \lambda \cdot n$ avec $0< \lambda< 1$, on pourra borner notre complexité réelle par :
+
+<div>
+$$
+C(n, k) \leq \mathcal{O}(n) + C(\lambda \cdot n, k')
+$$
+</div>
+
+Ce qui permet à se passer du $k$ dans le calcul de la complexité en prenant le $k$ le pire à chaque fois. Notre complexité vérifiera l'équation de récurrence de l'algorithme idéal précédent :
+
+<div>
+$$
+C(n) \leq \mathcal{O}(n) + C(\lambda \cdot n)
+$$
+</div>
+
 Il n'y a plus qu'à.
 
 ## On fait optimal (mais c'est plus compliqué)
@@ -208,14 +232,18 @@ Et c'est parti. L'astuce ultime est de :
 3. le pivot sera la médiane des $n/5$ médianes calculées précédemment
 
 {% faire %}
-Montrez que si $C(n)$ est la complexité du calcul de la médiane d;un tableau de $n$ entiers, alors le calcul du pivot peut se faire en une complexité de $\mathcal{O}(n) + C(n/5)$.
+Montrez que si $C(n)$ est la complexité du calcul de la médiane d'un tableau de $n$ entiers, alors le calcul du pivot peut se faire en une complexité de $\mathcal{O}(n) + C(n/5)$.
 {% endfaire %}
 
 Et maintenant c'est facile :
 
 {% faire %}
-Montrez que l'algorithme pivot appliqué au tableau initial et au pivot calculé précédemment va découper le tableau en deux tableau dont le plus grand ne peut pas être de taille supérieure à $7n/10$.
+Montrez que l'algorithme pivot appliqué à tableau initial  et au pivot calculé précédemment va découper le tableau en deux tableau dont le plus grand ne peut pas être de taille supérieure à $7n/10$.
 {% endfaire %}
+{% info %}
+Vous pourrez supposer qu'il y a plus de 50% de valeurs strictement plus petite que le pivot et compter le nombre de valeurs minimales plus grande ou égale à celui-ci.
+{% endinfo %}
+
 {% faire %}
 En déduire que l'algorithme $k$-SELECT avec notre choix de pivot est de complexité :
 
