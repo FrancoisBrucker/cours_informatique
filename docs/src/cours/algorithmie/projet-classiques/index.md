@@ -249,7 +249,7 @@ $$
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD $C(n) = \mathcal{O}(n^2)$
+> TBD $C(n) = \mathcal{O}(n\ln(n))$
 
 {% enddetails %}
 
