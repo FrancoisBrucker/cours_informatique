@@ -99,7 +99,7 @@
   <p>Les classes de problèmes et leurs significations donnent toujours des problèmes aux étudiants. Ils ne sont certes pas aidés par la terminologie qui, lorsqu'elle n'est pas cryptique, peut induire en erreur. Nous allons tenter d'être le plus clair possible en n'introduisant que ce qu'il est nécessaire de jargon pour comprendre l'enjeu de cette classification.</p>
 <p>En algorithmie théorique on ne peux pas utiliser la thèse de Church-Turing puisqu'elle n'est pas démontrée, ici on considérera que les algorithmes sont écrit en pseudo-code.</p>
 <h2>Problèmes utilisables en pratique</h2>
-<p>Pour qu'un <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/" class="interne">problème algorithmique</a> puisse être utilisé en pratique, il faut bien sûr qu'il soit <a href="../../%C3%A9crire-algorithmes/probl%C3%A8me/#d%C3%A9cidable" class="interne">décidable</a>, c'est à dire qu'il existe un pseudo-code permettant de le résoudre.</p>
+<p>Un <a href="../probleme-algorithmique/" class="interne">problème algorithmique</a> implique qu'il existe un algorithme pour le résoudre On appelle ces problèmes calculables ou <strong><em>décidable</em></strong>. Comme on sait qu'il existe des problème non solvable par un algorithme (on a vu <a href="../bases-th%C3%A9oriques/calculabilit%C3%A9/#complexit%C3%A9-Kolmogorov" class="interne">la complexité de Kolmogorov</a> par exemple), on peut commencer par se restreindre aux problèmes décidables :</p>
 <p><img src="NP-d%C3%A9cidable.png" alt="décidable"></p>
 <p>Mais parmi ces derniers, pour être utile en pratique, encore faut-il que l'on puisse les traiter en temps raisonnable (la durée d'une vie humaine par exemple). On va donner deux définitions du terme <em>traiter</em>. Commençons par la plus évidente : la résolution.</p>
 <h3>Résolution efficace</h3>
@@ -116,11 +116,11 @@
 
 <p>On a vu un certains nombre de problèmes polynomiaux, on peut par exemple citer :</p>
 <ul>
-<li>Trouver le maximum d'un tableau d'entiers dont <a href="../../complexit%C3%A9-probl%C3%A8me/#recherche" class="interne">on a démontré que sa complexité était linéaire</a>,</li>
-<li>Trier un tableau d'entiers dont <a href="../../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me" class="interne">on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$</a> où $n$ est la taille du tableau,</li>
+<li>Trouver le maximum d'un tableau d'entiers dont <a href="../complexit%C3%A9-probl%C3%A8me/#recherche" class="interne">on a démontré que sa complexité était linéaire</a>,</li>
+<li>Trier un tableau d'entiers dont <a href="../probl%C3%A8me-tris/complexit%C3%A9-probl%C3%A8me" class="interne">on a démontré que sa complexité était $\mathcal{O}(n\ln(n))$</a> où $n$ est la taille du tableau,</li>
 </ul>
 <p><img src="NP-P.png" alt="décidable"></p>
-<p>Le cas du <a href="../../projet-expenentiation/%C3%A9tude-algorithmique">problème de l'exponentiation</a> est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.</p>
+<p>Le cas du <a href="../projet-exponentiation/%C3%A9tude-algorithmique" class="interne">problème de l'exponentiation</a> est intéressant car on a démontré qu'il était en $\mathcal{O}(\ln(n))$ où $n$ est la valeur de l'exposant. Il n'est donc pas évident au premier coup d'œil que cela est bien polynomial en la taille des entrées, c'est à dire 2 entiers.</p>
 <p>En informatique théorique l'unité d'information est le bit, la taille de l'entrée d'un algorithme est toujours égale au nombre de bits nécessaires pour la stocker. Pour un entier il s'agit donc du logarithme en base 2 de sa valeur et donc le problème de l'exponentiation est bien polynomiale, il est même linéaire en la taille de l'entrée...</p>
 <div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -169,9 +169,9 @@ En effet l'entier étant la donnée élémentaire, toute opération qui en manip
 </ul>
 </div></div>
 
-<blockquote>
-<p>TBD ne dépend pas de la sortie mais cela borne sa taille par rapport à l'entrée : elle doit être au max de la taille de la complexité du vérifieur, sinon le vérifieur ne pourrait pas parcourir toute la solution.</p>
-</blockquote>
+<p>Remarquez que l'on ne demande pas que sa complexité soit polynomiale par rapport à la sortie ! Seule, l'entrée compte.</p>
+<p>Cependant, comme la complexité doit être polynomiale dans la taille de l'entrée cela implique que la taille de la sortie est polynomiale par rapport à la taille de l'entrée : si l'algorithme est de complexité $\mathcal{O}(|e|^k)$ alors seule $\mathcal{O}(|e|^k)$ bit de $s$ peuvent être examiné, cela ne sert à rien d'avoir des sorties pus longues.</p>
+<p>Enfin, cette définition est réaliste puisque si l'on possède une solution on veut pouvoir vérifier de façon réaliste (<em>ie.</em> polynomialement) que c'est une solution : si sa taille est exponentielle, on ne peut même pas la lire en temps raisonnable !</p>
 <h3>Exemples de vérifieurs efficaces</h3>
 <blockquote>
 <p>TBD exemples de vérifieurs simple puis le somme de sous-ensemble.</p>
@@ -238,8 +238,7 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <p>La complexité totale du vérifieur est donc de $\mathcal{O}(\vert E \vert^2)$ opérations et ne dépend pas du paramètre $E'$.</p>
 <h3>Vérifieur efficace et algorithme de résolution</h3>
 <p>Il est clair que tous les problèmes de la classe $P$ possèdent un vérifieur efficace. Il suffit en effet de commencer par résoudre le problème puis de vérifier que la solution proposée est la même que celle calculée. Ceci peut se faire en temps polynomial de l'entrée puisque sa résolution l'est.</p>
-<p>Enfin, tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
-<p>En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+<p>Enfin :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -250,6 +249,28 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <p>Si un problème admet un <strong><em>vérifieur efficace</em></strong> de complexité $\mathcal{O}(|e|^k)$, alors il est décidable et sa complexité est en $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
 </div></div>
 
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100">
+<details class="group" open="">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block">
+<p>preuve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2">
+<p>tout problème admettant un vérifieur efficace est décidable. Il suffit en effet de tester toutes les possibilités de sorties possibles (il y en a un nombre fini, polynomial par rapport à la taille de l'entrée puisque le vérifieur est efficace et que l'on peut énumérer en considérant leurs représentations binaires) avec le vérifieur et de s'arrêter s'il répond OUI. Au pire il faut tester toutes les solutions possibles ce qui va coûter de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations (avec $k$ une constante), ce qui est certes beaucoup mais reste fini.</p>
+<p>En effet, si le vérifieur est un pseudo-code de complexité $\mathcal{O}(|e|^k)$, la taille de la solution est bornée par $\mathcal{O}(|e|^k)$ et donc sa valeur par $\mathcal{O}(2^{|e|^k})$. Tester toutes les possibilité avec le vérifieur prend alors de l'ordre de $\mathcal{O}(|e|^k\cdot 2^{|e|^k})$ opérations.</p>
+</div>
+</details>     
+</div>
 <h2>Problèmes NP</h2>
 <p>Nous venons de caractériser les problèmes utiles qui s'appellent en algorithmie les problèmes NP :</p>
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
@@ -282,8 +303,17 @@ et en s'arrêtant soit après en avoir compté tous les éléments soit lorsque 
 <p>Il est clair que l'on a l'inclusion des classes $P$ inclut dans $NP$ inclut dans décidable. Mais cette inclusion est-elle stricte ? Nous en parlerons plus en détails dans la partie suivante, dédiée aux problèmes de décision, où l'on montrera qu'il existe des problèmes décidable mais non dans NP.</p>
 <p>En revanche, la question de savoir s'il existe des problèmes de décision qui sont dans $NP$ mais pas dans $P$ est ouverte ! Il existe même un prix d'un million de dollar pour qui donnerai une réponse à cette question (la valeur de cette récompense semble dérisoire par rapport à l'enjeu, mais elle a été proposée <a href="https://www.youtube.com/watch?v=LCZMhs_xpjc">à une  époque où un million de dollar c'était quelque chose</a> et n'a jamais été réévaluée...).</p>
 <p>Certains se demandent même si cette question est décidable (<em>ie.</em> démontrable). Ce qui est en revanche sur c'est que tout le monde espère que c'est vrai car sinon tout code informatique devient facilement déchiffrable et s'en est fini de la sécurité sur les réseaux (pour ne donner qu'une des conséquence de l'égalité de $P$ et de $NP$).</p>
-<p>Enfin il existe des problèmes dans NP, nommé NP-complet, dont la résolution permet de résoudre tout problème (ça aussi on va le voir et même le démontrer !). C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
-<p>Un de ces problème est le problème du sac à dos (nous le démontrerons plus tard). Au final on a :</p>
+<p>Enfin :</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p>il existe des problèmes dans NP, nommé <strong>NP-complet</strong>, dont la résolution permet de résoudre tout problème de NP.</p>
+<p>C'est à dire que si $A$ est un problème NP-complet et que $B$ est un problème de NP alors il existe une <strong>réduction polynomiale</strong> de $B$ vers $A$ : on a $B \leq A$.</p>
+</div></div>
+
+<p>Nous démontrerons ceci rigoureusement plus tard. Pour l'instant contentons nous d'admettre qu'ils existent et que <strong>le problème du sac à dos est NP-complet</strong>.</p>
 <p><img src="NP-NP-2.png" alt="décidable"></p>
 <p>Notez que le statut du problème de l'isomorphisme de graphe est au statut inconnu : on ne connaît aucun algorithme polynomial pour le résoudre et on n'arrive pas à prouver qu'il est NP-complet.</p>
 <h2>Autres classes</h2>

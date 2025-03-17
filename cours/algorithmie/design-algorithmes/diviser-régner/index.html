@@ -119,7 +119,7 @@ TBD médiane en temps linéaire en moyenne. en vrai.
 <p>Une complexité de la forme :</p>
 <div>
 $$
-C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+C(n) \leq a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
 $$
 </div>
 <p>Est en :</p>
@@ -147,6 +147,9 @@ $$
 </svg>
 </summary>
 <div class="mx-8 pb-2">
+<blockquote>
+<p>TBD ajouter constante multiplicative $n^d$ -&gt; $K\codt n^d$</p>
+</blockquote>
 <p>Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :</p>
 <div>
 $$
