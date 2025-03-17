@@ -214,7 +214,7 @@ Une autre structure fondamentale en algorithmie :
 
 ### Complexité amortie
 
-Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
+Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont pas toujours la même complexité mais la complexité importante n'arrive que rarement.
 
 {% aller %}
 [Complexité amortie](./complexité-amortie){.interne}
@@ -236,26 +236,22 @@ Formalisation de ce que l'n a vu avec les listes. Certaines opérations n'ont pa
 
 ## <span id="partie-2"></span>Partie II
 
+On se focalise sur les problèmes algorithmes et les moyens, classiques, de les résoudre.
+
+Commençons par voir comment résoudre un problème inconnu grâce à un problème connu.
+
 ### Réductions : passer d'un problème à un autre
 
 {% aller %}
-[réduction de problèmes](./problème-réduction){.interne}
+[Réduction de problèmes](./problème-réduction){.interne}
 {% endaller %}
 
 On a vu au début de ce cours que certains problèmes [ne pouvaient pas être résolu par un algorithme](./bases-théoriques/calculabilité){.interne} (certains réels ne sont pas calculables, le problème de l'arrêt, etc) : certaines questions resteront sans réponse. De plus, on a vu également que même s'il existe un algorithme pour résoudre un problème mais que si [sa complexité est exponentielle](./complexité-calculs/importance){.interne} le temps de calcul sera rédhibitoire : certaines questions resteront sans réponses en pratique.
 
 Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble une bonne approche. On sait par exemple que le [problème du tri](./problème-tris){.interne} est de complexité $\mathcal{O}(n\ln(n))$ où $n$ est la taille du tableau d'entiers à trier ou encore que la complexité du [problème de l'exponentiation](./projet-exponentiation){.interne} est en $\mathcal{O}(\ln(n))$ où $n$ est l'exposant. Mais qu'en est-il d'un problème quelconque ? Cela nécessite quelques investigations avant de pouvoir ne serait-ce que poser le problème.
 
-> TBD voir si cohérent avec NP-optimization problem de A.3 de "Approximation Algorithms". Ajouter une partie pour l'approximation.
-
 {% aller %}
 [Problèmes NP](./problèmes-NP){.interne}
-{% endaller %}
-
-Un problème NP-complet, le sac à dos :
-
-{% aller %}
-[Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
 ### Design d'algorithmes
@@ -268,8 +264,34 @@ Un problème NP-complet, le sac à dos :
 
 On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :
 
+### On s’entraîne : méthodes classiques de résolution
+
+Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.
+
+#### Problème de l'enveloppe convexe
+
+Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
+
 {% aller %}
 [Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
+{% endaller %}
+
+#### Problème du sac à dos
+
+Le problème du sac à dos est notre exemple de problème NP-complet. On va le voir sous différentes coutures :
+
+{% aller %}
+[Problème du sac à dos](./problème-sac-à-dos){.interne}
+{% endaller %}
+
+#### Problème du voyageur de commerce
+
+> TBD déplacer dans la partie graphe.
+
+ENcore un problème NP-complet. Nous allons ici l'étudier sous un angle d'approximation. On sait que l'on ne pourra pas trouver de solution optimale, mais on cherche une solution approchée acceptable.
+
+{% aller %}
+[Problème cycles et chemins](./projet-chemins-cycles){.interne}
 {% endaller %}
 
 ## Intermède : recherche universelle

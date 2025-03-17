@@ -31,7 +31,7 @@ Une complexité de la forme :
 
 <div>
 $$
-C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
+C(n) \leq a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)
 $$
 </div>
 
@@ -43,6 +43,9 @@ Est en :
 
 {% endnote %}
 {% details "preuve", "open" %}
+
+> TBD ajouter constante multiplicative $n^d$ -> $K\codt n^d$
+
 Comme $C(n) = a \cdot C(\frac{n}{b}) + \mathcal{O}(n^d)$, il existe $N_0$ tel que pour tout $n \geq N_0$, on a :
 
 <div>

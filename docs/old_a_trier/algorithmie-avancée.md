@@ -179,6 +179,7 @@ Ne faire ici que les choses générale et reprendre dans chaque partie un cas d'
 
 - vente de secrets sans savoir lequel. Truc de Pascal. Dans le bouquin ?
 - zéro knowledge proof. Livre + 3 coloration.
+- sudoku et zéro knowledge proof A faire en DM : <https://www.youtube.com/watch?v=Otvcbw6k4eo>
 - attention aux attaques :
   - qui rendent les nombre aléatoire pas aléatoire : signal injection
   - qui mesurent l’énergie prisent pour les calculs

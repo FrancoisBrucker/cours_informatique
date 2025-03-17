@@ -505,7 +505,15 @@ Sujet du test 6
 
 #### Vendredi : Méthodes de résolution de problèmes
 
-> 2h vendredi : P&NP + méthode de résolution de problèmes (diviser pour régner, programmation dynamique, gloutons)
+On refait de l'algorithmie :
+
+{% aller %}
+
+1. [Réduction de problèmes](/cours/algorithmie/problème-réduction/){.interne}
+2. [Problèmes de NP](/cours/algorithmie/problèmes-NP/){.interne}
+3. [Méthode de résolution de problème](/cours/algorithmie/design-algorithmes/){.interne}
+
+{% endaller %}
 
 ### Semaine 11
 
@@ -518,13 +526,25 @@ Rendre DM3
 Sujet DM4 : programmation évènementielle.
 {% endattention %}
 
-> 4h mercredi :  glouton
+On se focalise sur une méthode particulière de design d'algorithme, les algorithmes gloutons :
+
+{% aller %}
+
+[Algorithmes gloutons](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/){.interne}
+
+{% endaller %}
 
 ### Semaine 12
 
 > 21/04 au 25/04
-> 4h mercredi : résolution de problèmes
-> 2h vendredi : sac à dos/enveloppe convexe ?
+
+#### Mercredi : Sac à dos
+
+> 4h mercredi : résolution du sac à dos
+
+#### Vendredi : Enveloppe convexe
+
+> 2h vendredi : enveloppe convexe
 
 ### Semaine 13
 
@@ -535,122 +555,6 @@ DS code 3h, lundi 05/05.
 {% attention %}
 Rendre DM4
 {% endattention %}
-
-<!--
-
-### Semaine 6 : Classes et objets
-
-Début du temps 2 de cette UE, consacré à la programmation objet.
-
-#### Vendredi : Projet Héritage
-
-
-### Semaine 9
-
-{% info %}
-Le DM1 est à rendre pour le vendredi 29/03/24 à 23h59
-{% endinfo %}
-
-#### Mardi : principes de la programmation évènementielle
-
-{% aller %}
-[Principes de la programmation évènementielle](/cours/coder-et-développer/programmation-évènementielle/principes/){.interne}
-{% endaller %}
-
-#### Vendredi : projet Arkanoid
-
-{% attention %}
-Test de 15min en début de cours consacré à **programmation objet**. Il faudra rendre du code python (code et tests) sur AMeTICE.
-{% endattention %}
-
-{% aller %}
-[Projet Arkanoid](/cours/coder-et-développer/programmation-évènementielle/projet-arkanoid/){.interne}
-{% endaller %}
-
-### Semaine 10
-
-#### Mardi : Design patterns
-
-> TBD
-
-#### Vendredi : DS 2
-
-{% aller %}
-[Sujet](./annales/2023-2024/ds-2/){.interne}
-{% endaller %}
-
-### Semaine 11
-
-#### Mardi : Structures de données Linéaires
-
-{% aller %}
-[Listes](/cours/algorithmie/structure-conteneurs/liste){.interne}
-{% endaller %}
-{% aller %}
-
-1. [fonction de hachage](/cours/algorithmie/structure-conteneurs/fonctions-hash){.interne}
-2. [tableau associatif](/cours/algorithmie/structure-conteneurs/tableau-associatif){.interne}
-3. [Dictionnaires de python](/cours/coder-et-développer/bases-python/structurer-son-code/conteneurs/ensembles-dictionnaires/){.interne}
-
-{% endaller %}
-
-#### Vendredi : Programmation dynamique
-
-{% aller %}
-[Programmation dynamique](/cours/algorithmie/design-algorithmes/programmation-dynamique/){.interne}
-{% endaller %}
-
-### Semaine 12
-
-#### Mardi : Algorithmes gloutons
-
-{% aller %}
-[Algorithmes gloutons](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/principe/){.interne}
-{% endaller %}
-
-#### Vendredi : Exercices
-
-{% aller %}
-[Exercices sur les algorithmes gloutons](/cours/algorithmie/design-algorithmes/algorithmes-gloutons/exercices/){.interne}
-{% endaller %}
-
-### Semaine 13
-
-#### Mardi : Problème du Sac à dos
-
-{% aller %}
-[Étude du problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/étude){.interne}
-{% endaller %}
-
-#### Vendredi : Sac à dos, projet
-
-{% aller %}
-[Projet sac à dos](/cours/algorithmie/problème-sac-à-dos/projet){.interne}
-{% endaller %}
-
-### Semaine 14 : Fichiers texte
-
-> TBD : pour 2024-25, à mettre en premier dans la partie développement. Y ajouter la partie interpréteur.
-
-{% aller %}
-
-1. [Qu'est-ce qu'un fichier](/cours/coder-et-développer/fichiers/structure){.interne}
-2. [fichiers texte](/cours/coder-et-développer/fichiers/fichiers-texte){.interne}
-3. [Encodage du texte](/cours/coder-et-développer/encodage-unicode/){.interne}
-4. [projet fichiers texte](/cours/coder-et-développer/fichiers/projet-texte){.interne}
-{% endaller %}
-
-### Semaine 15 : Gestion des données
-
-Dernière semaine de cours. Le début de la séance sera consacrée aux questions et retour sur le cours, puis on terminera la séance sur la suite des fichiers.
-
-{% aller %}
-
-1. [Dossiers et chemins en python](/cours/coder-et-développer/fichiers/dossiers-et-chemins/){.interne}
-2. [Stocker ses données dans un fichier texte](/cours/coder-et-développer/fichiers/projet-données/){.interne}
-{% endaller %}
-
- -->
 
 ## Annales
 

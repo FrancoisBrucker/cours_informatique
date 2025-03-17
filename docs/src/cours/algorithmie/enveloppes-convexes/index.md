@@ -714,7 +714,7 @@ Même si souvent la taille de l'enveloppe convexe est plus petite que $n$.
 
 ### <span id="complexité-problème"></span>Complexité du problème
 
-On montre que le problème du tri est un cas particulier du problème de l'enveloppe convexe.
+Nous allons effectuer une réduction du problème du tri au problème de l'enveloppe convexe, ce qui montrera que le problème du tri est un cas particulier du problème de l'enveloppe convexe et donc que sa complexité ne peut-être que plus grande.
 
 Soit $L=[x_1, \dots, x_n]$ une liste de $n$ nombres que l'on veut trier et considérons les $n$ points $\mathcal{P} = \\{ (x_1, x_1^2), \dots, (x_i, x_i^2), \dots, (x_n, x_n^2)\\}$
 
