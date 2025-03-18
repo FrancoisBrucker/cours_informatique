@@ -222,6 +222,8 @@ Formalisation de ce que l'on a vu avec les listes. Certaines opérations n'ont p
 
 ### On s'entraîne
 
+> TBD sommes classiques à connaître pour les calculs de complexités comme $\sum x^i$, $\sum i\cdot x^i$ et application pour $x =1$. Aussi connaître $\sum 1/i$ et $\sum 1/i^2$
+
 #### Résolution d'algorithmiques classiques
 
 {% aller %}

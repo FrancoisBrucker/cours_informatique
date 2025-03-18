@@ -21,7 +21,7 @@ Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de j
 Pour tous ces exercices, si la structure de donnée n'est pas précisé, vous utiliserez des listes.
 {% endinfo %}
 
-## Dichotomie
+## <span id="dichotomie"></span>Dichotomie
 
 > - **Utilité** : brique de base à connaître par cœur
 > - **Difficulté** : trivial

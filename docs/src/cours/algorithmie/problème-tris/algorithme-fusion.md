@@ -21,12 +21,12 @@ Un algorithme de la forme **_diviser pour régner_** fonctionne en deux parties 
 Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme générale est :
 
 ```pseudocode
-algorithme algo(données):
+algorithme résolution(données):
     A partir de données créer k données_partielles_i (1 ≤ i ≤ k)
     pour chaque i  de [1, k]:
-        solution_i = algo(données_partielles_i)
+        solution_i ← résolution(données_partielles_i)
 
-    solution = combiner(solution_1, ..., solution_k)
+    solution ← combiner(solution_1, ..., solution_k)
 
     rendre solution
 ```

@@ -31,7 +31,7 @@ La **_médiane_** d'un ensemble fini d'entiers $E$ est un élément $m$ de cet e
 
 {% endnote %}
 
-Trouver la médiane d'un ensemble va se faire en utilisant un problème (algorithmique) a priori plus général,$k$-SELECT :
+Trouver la médiane d'un ensemble va se faire en utilisant un problème (algorithmique) a priori plus général, $k$-SELECT :
 
 {% note "**Problème**" %}
 
