@@ -172,13 +172,143 @@ Dans le cas du tri fusion on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 
 ## Exemples
 
+### Multiplication de matrices
+
+[L'algorithme de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen) pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.
+
+On suppose pour cet exercice que l'on cherche à multiplier deux matrices carrées (de dimension $n$) $A$ et $B$, avec $n$ une puissance de 2.
+
+{% info %}
+La méthode de Strassen fonctionne de la même manière pour la multiplication de matrices non carrées ou dont le no,bre de lignes n'est pas une puissance de 2, il faut juste faire attention lorsque l'on divise par 2.
+{% endinfo %}
+
+#### Algorithme naif
+
+{% exercice %}
+Donner un algorithme naïf de signature `multiplication(A: [[entier]], B:[[entier]]) → [[entier]]`{.language-} et de complexité $\mathcal{O}(n^3)$ permettant de multiplier deux matrices carrées de $n$ lignes.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+#### Méthode de Strassen
+
+La méthode de Strassen va diviser la multiplication en sous-matrices **puis** utiliser une astuce de calcul.
+
+Commençons par juste decomposer notre problème en sous-problèmes en écrivant la multiplication des matrices $A$ et $B$ par :
+
+<div>
+$$
+A \cdot B =
+\begin{pmatrix}
+A_{1,1} & A_{1,2} \\
+A_{2,1} & A_{2,2}
+\end{pmatrix} \cdot
+\begin{pmatrix}
+B_{1,1} & B_{1,2} \\
+B_{2,1} & B_{2,2}
+\end{pmatrix} = \begin{pmatrix}
+A_{1,1} \cdot B_{1,1} + A_{1,2} \cdot B_{2,1} & A_{1,1} \cdot B_{1,2} + A_{1,2} \cdot B_{2,2} \\
+A_{2,1} \cdot B_{1,1} + A_{2,2} \cdot B_{2,1} & A_{2,1} \cdot B_{1,2} + A_{2,2} \cdot B_{2,2}
+\end{pmatrix} =
+\begin{pmatrix}
+C_{1,1} & C_{1,2} \\
+C_{2,1} & C_{2,2}
+\end{pmatrix}
+$$
+</div>
+
+Avec $A_{i, j}$ et $B_{i, j}$ des matrices carrées de taille $n/2$.
+
+{% exercice %}
+Exprimez ce calcule par sous matrices dans un algorithme de type diviser pour régner
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En donner l'équation de récurrence de sa complexité.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire sa complexité. Conclusion ?
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+Pour gagner en complexité il faut faire mieux ! L'astuce est la suivante :
+
+On pose les 7 matrices suivantes :
+
+- $M_1 = (A_{1,1} +A_{2,2}) \cdot (B_{1,1} +B_{2,2})$
+- $M_2 = (A_{2,1} +A_{2,2}) \cdot B_{1,1}$
+- $M_3 = A_{1,1} \cdot (B_{1,2} - B_{2,2})$
+- $M_4 = A_{2,2} \cdot (B_{2,1} - B_{1,1})$
+- $M_5 = (A_{1,1} +A_{1,2}) \cdot B_{2,2}$
+- $M_6 = (A_{2,1} - A_{1,1}) \cdot (B_{1,1} +B_{1,2})$
+- $M_7 = (A_{1,2} - A_{2,2}) \cdot (B_{2,1} +B_{2,2})$
+
+C'est une astuce de taille assez conséquente pour donner lui nom de son inventeur... En effet :
+
+{% exercice %}Montrez que :
+
+- $C_{1, 1} = M_1 + M_4 - M_5 + M_7$
+- $C_{1, 2} = M_3 + M_5$
+- $C_{2, 1} = M_2 + M_4$
+- $C_{2, 2} = M_1 - M_2 - M_3 + M_6$
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
+Ce nouveau calcul change l'algorithme et l'équation de récursion. Que devient-elle ?
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire la complexité de ce nouvel algorithme. Conclusion ?
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en complexité... Et on peut faire mieux, l'exposant diminue régulièrement au fil du temps et des nouveaux algorithmes. On en est actuellement (en 2025 et à ma meilleure connaissance) a des algorithmes de complexité $\mathcal{O}(n^{2.37286})$.
+
+{% lien %}
+[Histoire de la multiplication de matrices par Virginia Vassilevska-Williams](https://www.youtube.com/watch?v=HdysaWNs1g8) qui détient le record actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$.
+{% endlien %}
+
 ### Somme
 
 > TBD somme consécutive d'un tableau d'entier consécutifs 5.1 <https://wkerl.me/cours/ouv_td.pdf>
 
+### Pavage incomplet du plan
+
+> exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
+
 ### Nombre d'inversion
 
-> TBD autres exemples
-> TBD transformée de Fourier
+> TBD plus dur
+> TBD nombre d'inversions d'une permutation
 > TBD <https://wkerl.me/#teaching>
 > <https://www.normalesup.org/~simonet/teaching/caml-prepa/tp-caml-2001-02.pdf>
+>
