@@ -111,12 +111,12 @@
 <li><strong>combiner</strong> les $k$ solutions des sous-problèmes en une solution du problème initial</li>
 </ol>
 <p>Puisqu'il suffit de s'utiliser lui pour résoudre les sous-problèmes sa forme générale est :</p>
-<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">algo</span><span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
+<pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> résolution<span class="token punctuation">(</span>données<span class="token punctuation">)</span><span class="token punctuation">:</span>
     A partir de données créer k données_partielles_i <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">≤</span><span class="token number"> i </span><span class="token operator">≤</span> k<span class="token punctuation">)</span>
     <span class="token keyword">pour chaque</span><span class="token number"> i </span> de <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> k<span class="token punctuation">]</span><span class="token punctuation">:</span>
-        solution_i <span class="token operator">=</span> algo<span class="token punctuation">(</span>données_partielles_i<span class="token punctuation">)</span>
+        solution_i <span class="token operator">←</span> résolution<span class="token punctuation">(</span>données_partielles_i<span class="token punctuation">)</span>
 
-    solution <span class="token operator">=</span> combiner<span class="token punctuation">(</span>solution_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> solution_k<span class="token punctuation">)</span>
+    solution <span class="token operator">←</span> combiner<span class="token punctuation">(</span>solution_1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> solution_k<span class="token punctuation">)</span>
 
     <span class="token keyword">rendre</span> solution</code></pre>
 </div></div>
