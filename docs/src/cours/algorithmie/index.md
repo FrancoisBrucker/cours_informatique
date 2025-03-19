@@ -264,19 +264,9 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}
 
-On s'entraîne avec le problème de l'enveloppe convexe qui peut se résoudre en utilisant de nombreux design :
-
 ### On s’entraîne : méthodes classiques de résolution
 
 Ci-après quelques exemples classique de problèmes algorithmes (NP-complet ou non) pouvant se résoudre de multiples manières. Les connaître permet de rapidement forger une solution pour un problème nouveau.
-
-#### Problème de l'enveloppe convexe
-
-Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
-
-{% aller %}
-[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
-{% endaller %}
 
 #### Problème du sac à dos
 
@@ -286,14 +276,12 @@ Le problème du sac à dos est notre exemple de problème NP-complet. On va le v
 [Problème du sac à dos](./problème-sac-à-dos){.interne}
 {% endaller %}
 
-#### Problème du voyageur de commerce
+#### Problème de l'enveloppe convexe
 
-> TBD déplacer dans la partie graphe.
-
-ENcore un problème NP-complet. Nous allons ici l'étudier sous un angle d'approximation. On sait que l'on ne pourra pas trouver de solution optimale, mais on cherche une solution approchée acceptable.
+Aussi aimé des algorithmiciens que le problème du tri, mais plus complexe à appréhender c'est pourquoi on le montre souvent plus tard, le problème de l'enveloppe convexe de points de $\mathbb{R}^2$ peut se résoudre d'un nombre incroyable de manières toutes plus élégantes les unes que les autres :
 
 {% aller %}
-[Problème cycles et chemins](./projet-chemins-cycles){.interne}
+[Problème de l'enveloppe convexe](./enveloppes-convexes){.interne}
 {% endaller %}
 
 ## Intermède : recherche universelle

@@ -294,21 +294,91 @@ En déduire la complexité de ce nouvel algorithme. Conclusion ?
 Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en complexité... Et on peut faire mieux, l'exposant diminue régulièrement au fil du temps et des nouveaux algorithmes. On en est actuellement (en 2025 et à ma meilleure connaissance) a des algorithmes de complexité $\mathcal{O}(n^{2.37286})$.
 
 {% lien %}
-[Histoire de la multiplication de matrices par Virginia Vassilevska-Williams](https://www.youtube.com/watch?v=HdysaWNs1g8) qui détient le record actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$.
+
+- [Les méthodes de multiplications de matrices](https://www.youtube.com/watch?v=DruwS2_cVys) par Josh Alman un des deux co-auteurs de l'algorithme le plus rapide actuel avec un algorithme de complexité $\mathcal{O}(n^{2.37286})$
+- [Multiplication de matrices algorithme actuel](https://www.youtube.com/watch?v=HdysaWNs1g8)  par Virginia Vassilevska-Williams, l'autre co-auteur du record actuel
+
 {% endlien %}
+
+#### Inversion de matrice
+
+On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
+
+Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour inverser un matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'iune matrice est identique à la complexité de la multiplication :
+
+{% exercice %}
+En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion) et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut juste calculer 2 inverses $A^{-1}$ et $(D - CA^{-1}B)^{-1}$ puis multiplier un nombre constant de fois des matrices. En utilisant l'algorithme diviser pour régner on arrive à un algorithme de complexité :
+
+<div>
+$$
+C(n) = \mathcal{O}(n^\Omega) + 2T(n/2)
+$$
+</div>
+
+Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{O}(n^\Omega)$.
+{% enddetails %}
 
 ### Somme
 
-> TBD somme consécutive d'un tableau d'entier consécutifs 5.1 <https://wkerl.me/cours/ouv_td.pdf>
+Soit $T$ un tableau de $n$ entiers relatifs.
+
+{% exercice %}
+Donnez un algorithme en $\mathcal{O}(n)$ de signature `max_somme(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+
+<div>
+$$
+\max_{j\geq i}\sum_{i\leq k \leq j}T[k]
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme en $\mathcal{O}(n)$ de signature `max_somme2(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+
+<div>
+$$
+\max_{j \leq i\leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+Les deux exercices précédents doivent vous permettre de trouver un algorithme permettant de trouver :
+
+<div>
+$$
+\max_{0\leq j \leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+
+{% exercice %}
+Utiliser la méthode diviser pour régner pour créer un algorithme de complexité $\mathcal{O}(n\ln(n))$ permettant de calculer la somme précédente pour un tableau de $n$ entiers relatifs.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
 
 ### Pavage incomplet du plan
 
-> exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
+> TBD exo 3 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>
 
 ### Nombre d'inversion
 
-> TBD plus dur
-> TBD nombre d'inversions d'une permutation
-> TBD <https://wkerl.me/#teaching>
-> <https://www.normalesup.org/~simonet/teaching/caml-prepa/tp-caml-2001-02.pdf>
->
+> TBD exo 4 de <https://info-llg.fr/option-mpsi/pdf/08.diviser_pour_regner.pdf>

@@ -520,6 +520,13 @@ On refait de l'algorithmie :
 > 14/04 au 18/04
 
 {% attention %}
+Test de 15min en début de cours sur **la résolution de problèmes**.
+{% endattention %}
+{% faire %}
+Sujet du test 7
+{% endfaire %}
+
+{% attention %}
 Rendre DM3
 {% endattention %}
 {% attention %}
@@ -540,11 +547,28 @@ On se focalise sur une méthode particulière de design d'algorithme, les algori
 
 #### Mercredi : Sac à dos
 
-> 4h mercredi : résolution du sac à dos
+{% attention %}
+Test de 15min en début de cours sur **les algorithmes gloutons**.
+{% endattention %}
+{% faire %}
+Sujet du test 8
+{% endfaire %}
+
+Au programme, on prépare les vacances et son sac-à-dos :
+
+{% aller %}
+
+[Problème du sac à dos](/cours/algorithmie/problème-sac-à-dos/){.interne}
+
+{% endaller %}
 
 #### Vendredi : Enveloppe convexe
 
-> 2h vendredi : enveloppe convexe
+{% aller %}
+
+[Problème de l'enveloppe convexe](/cours/algorithmie/enveloppes-convexes/){.interne}
+
+{% endaller %}
 
 ### Semaine 13
 
