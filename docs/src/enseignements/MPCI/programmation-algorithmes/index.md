@@ -425,7 +425,8 @@ Ayez déjà commencé vos révisions. On répondra aux questions que vous vous p
 
 {% aller %}
 
-[Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
+- [Présentation du cours du 19 mars 2025](objets){.interne}
+- [Classes et objets](/cours/coder-et-développer/programmation-objet#classes-objets){.interne}
 
 {% endaller %}
 
