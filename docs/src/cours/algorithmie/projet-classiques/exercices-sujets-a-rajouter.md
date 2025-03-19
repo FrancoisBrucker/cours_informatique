@@ -12,6 +12,7 @@ eleventyComputed:
 
 > TBD regardez tous les exos d'avant et le remettre s'ils sont chouettes, genre ceux des piles/file, fibo, etc. Et ajouter les questions suivantes si nécessaire.
 
+> TBD bezout : <http://pascal.delahaye1.free.fr/cpge/informatique/cours%20projetes/cp04.pdf>
 
 ## Decurryfications
 

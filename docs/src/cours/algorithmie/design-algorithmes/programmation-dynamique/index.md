@@ -10,8 +10,6 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-> TBD <https://www.youtube.com/watch?v=tufup6HlwWg>
-
 La programmation dynamique est un principe de création d'algorithme très général permettant de résoudre de nombreux problèmes de façon efficace, voir même optimale.
 
 ## Principe

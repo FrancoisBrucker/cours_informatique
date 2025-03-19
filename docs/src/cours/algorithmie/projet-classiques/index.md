@@ -21,7 +21,7 @@ Algorithmes classiques dont l'intérêt est à la fois esthétique (ce sont de j
 Pour tous ces exercices, si la structure de donnée n'est pas précisé, vous utiliserez des listes.
 {% endinfo %}
 
-## Dichotomie
+## <span id="dichotomie"></span>Dichotomie
 
 > - **Utilité** : brique de base à connaître par cœur
 > - **Difficulté** : trivial
@@ -70,7 +70,7 @@ On a déjà vu les 2 premiers. Le troisième est un peu plus compliqué
 ### Optimisé
 
 > - **Utilité** : classique d'optimisation
-> - **Difficulté** : moyen-.
+> - **Difficulté** : moyen.
 
 {% aller %}
 [Triangle de Pascal : complexité spatiale minimale](triangle-pascal/){.interne}
@@ -119,7 +119,7 @@ Exercices de base de complexité. Il est important de les connaître pour évite
 ### Erreur bête
 
 > - **Utilité** : crucial à comprendre
-> - **Difficulté** : facile
+> - **Difficulté** : moyen
 
 {% aller %}
 [Noob trap](noob-trap){.interne}
@@ -128,9 +128,9 @@ Exercices de base de complexité. Il est important de les connaître pour évite
 ### $X$ marks the spot
 
 > - **Utilité** : crucial à comprendre
-> - **Difficulté** : moyen
+> - **Difficulté** : dur
 
-Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit nst inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
+Un robot se déplace sur une droite d'une unité par unité. Il doit chercher un endroit particulier sur cette droite à $X$ unités de 0, $X$ pouvant être **positif ou négatif**. Cette endroit est inconnu pour le robot, mais s'il passe sur cet endroit il le reconnaîtra.
 
 {% exercice %}
 Donnez un algorithme en $\mathcal{O}(X)$ permettant au robot d'atteindre $X$ à partir de sa position initiale qui vaut $0$.
@@ -159,6 +159,97 @@ Au pire, le robot arrivera sur la marque $X$ au bout de $2 \cdot \log_2(X)$ ité
 Il aura effectué un déplacement d'au plus : $2 \cdot (X + X/2 + X/4 + \dots + 1)$ unités. Or $2 \cdot (X + X/2 + X/4 + \dots + 1) = 2\cdot X \cdot \sum_{i=0}^{i=\log_2(X)} 1/2^i = 2\cdot X \cdot(1- 1/2^{\log_2(X)}) = \mathcal{O}(X)$.
 
 L'astuce de se déplacer par puissance de 2 permet de majorer la distance par $X$ car la série des $\sum 1/2^i$ est convergente. Il est crucial de connaître cette technique qui vous tirera de nombreux mauvais pas en algorithmie.
+
+{% enddetails %}
+
+### Équations de récurrence
+
+Quelques équations de récurrences sont à connaître car elles donnent de complexités très différentes.
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(n - K)
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + C(n - K)
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n^2)$
+
+{% enddetails %}
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(\ln(n))$
+
+{% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(1) + 2\cdot C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n)$
+
+{% enddetails %}
+{% exercice %}
+Que vaut $C(n)$ si :
+
+<div>
+$$
+C(n) = \mathcal{O}(n) + 2\cdot C(\frac{n}{2})
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD $C(n) = \mathcal{O}(n\ln(n))$
 
 {% enddetails %}
 
@@ -399,14 +490,16 @@ Donnez une solution au problème 2-SUM avec comme complexité :
 Un nouvel algorithme :
 
 {% exercice %}
-Donnez une solution au problème 2-SUM avec comme complexité temporelle de $\mathcal{O}(1)$.
+Donnez une solution au problème 2-SUM avec comme complexité $\mathcal{O}(\max(T))$.
 
-Quelle est sa complexité spatiale ? Est-ce réaliste ?
+Est-ce réaliste ?
 
 {% endexercice %}
 {% details "corrigé" %}
 
 > TBD : bucket sort de la valeur absolue. Dès que l'on rencontre la case la deuxième fois on sort.
+> TBD attention : même si on ne visite pas toutes les cases du tableau il faut les initialiser à 0 (le contenu de la mémoire est inconnu à l'affectation).
+
 > TBD complexité spatiale $\mathcal{O}(\max(T))$ ce qui est déraisonnable car cela peut être aussi grand que l'on veut.
 > TBD c'est même exponentiel en la taille du tableau ($\log_2(n)$ bits pour stocker l'entier $n$).
 

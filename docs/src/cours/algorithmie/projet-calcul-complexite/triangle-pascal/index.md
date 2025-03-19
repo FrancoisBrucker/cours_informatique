@@ -115,7 +115,7 @@ algorithme binom_matrice(n: entier) → [[entier]]:
             si (j == i) ou (j == 0):
                 ligne[j] ← 1
             sinon:
-                précédent ← matrice[i-2]
+                précédent ← matrice[i-1]
                 ligne[j] ← précédent[j-1] + précédent[j]
 
     rendre matrice
@@ -170,7 +170,7 @@ algorithme binom_matrice2(n: entier, k: entier) → [[entier]]:
             si (j == i) ou (j == 0):
                 ligne[j] ← 1
             sinon:
-                précédent ← matrice[i-2]
+                précédent ← matrice[i-1]
                 ligne[j] ← précédent[j-1] + précédent[j]
 
     rendre matrice

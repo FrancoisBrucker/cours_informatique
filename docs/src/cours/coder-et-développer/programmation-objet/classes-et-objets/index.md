@@ -2,10 +2,6 @@
 layout: layout/post.njk
 title: Classes et objets
 
-eleventyNavigation:
-  prerequis:
-    - "../../mémoire-espace-nommage/"
-
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
@@ -18,7 +14,7 @@ Un objet est un bout de code auquel est associé :
 - des fonctionnalités (des méthodes) qui sont communes à tous les objets de sa classe
 - des choses à lui tout seul (sa structure de donnée interne qui constitue ses attributs) qui lui permettent de se différentier des autres objets de sa classe même s'il a les mêmes fonctionnalités.
 
-Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../mémoire-espace-nommage#espace-nommage){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
+Un objet, n'est donc pas isolé, il partage ses fonctionnalités avec tous les objets de sa _classe_. Pour s'y retrouver entre, classes, objets méthode et attribut et trouver qui appartient à qui, python utilise les [espaces de noms](../../bases-programmation/principes/espace-nommage/){.interne} (_namespaces_). Cela lui permet de réutiliser le même code pour plusieurs objets.
 
 ## Classes et objets
 

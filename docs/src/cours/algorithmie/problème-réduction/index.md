@@ -9,7 +9,7 @@ eleventyComputed:
     parent: "{{ '../' | siteUrl(page.url) }}"
 ---
 
-Une méthode classique de résoudre un problème algorithmique ($P_1$) est de le transformer en un autre problème ($P_1$) que l'on sait résoudre ($S_2$)puis de transformer sa solution en une solution du problème initial ($S_1$) :
+Une méthode classique de résoudre un problème algorithmique ($P_1$) est de le transformer en un autre problème ($P_1$) que l'on sait résoudre ($S_2$) puis de transformer sa solution en une solution du problème initial ($S_1$) :
 
 <div>
 $$
@@ -21,10 +21,10 @@ S_1 & \leftarrow & S_2
 $$
 </div>
 
-La formalisation de cette opération s'appelle [une réduction](https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)) et peut prendre plusieurs formes, que nous expliciterons. Outre ses applications pratiques évidentes pour le design d'algorithme et la résolution de problèmes, la réduction est est un outil fondamental permettant de comparer et de classer les problèmes algorithmique.
+La formalisation de cette opération s'appelle [une réduction](https://fr.wikipedia.org/wiki/R%C3%A9duction_(complexit%C3%A9)) et peut prendre plusieurs formes, que nous expliciterons. Outre ses applications pratiques évidentes pour le design d'algorithme et la résolution de problèmes, la réduction est est un outil fondamental permettant de comparer et de classer les problèmes algorithmiques.
 
 {% info %}
-Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances, comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)), dont nous ne parlerons pas dans ce cours d'algorithmie.
+Nous ne parlerons pas ici de la [Réduction de Turing](https://en.wikipedia.org/wiki/Turing_reduction), trop générale et demandant des connaissances comme [les machines à oracles](https://fr.wikipedia.org/wiki/Oracle_(machine_de_Turing)) dont nous ne parlerons pas dans ce cours d'algorithmie.
 {% endinfo %}
 
 ## Définitions
@@ -38,11 +38,16 @@ Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction_** de $P
 Les réductions forment un ordre sur les problèmes algorithmiques : s'il existe une réduction de $P_2$ en $P_1$ on notera $P_1 \leq P_2$.
 {% endnote %}
 
-Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$ : que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$.
+Cette définition, très générale, permet de montrer qu'un problème est plus général qu'un autre : $A \leq B$ signifie que $A$ est un cas particulier de $B$ : que résoudre $B$ permet de résoudre $A$. De là, la complexité du problème $B$ ne peut être plus petite que celle du problème $A$. Par exemple :
 
-Rappelez-vous, c'est exactement ce qu'on a fait lorsque l'on a étudié la complexité de [la recherche de l'enveloppe convexe](../enveloppes-convexes/#complexité-problème), on a montré que le problème du tri est plus simple que la complexité de la recherche de l'enveloppe convexe.
+{% exercice %}
+Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs et le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
+{% endexercice %}
+{% details "corrigé", "open" %}
+Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
+{% enddetails %}
 
-Si l'on veut une utilisation plus pratique de la réduction, on va chercher le couple d'algorithmes avec la complexité la plus faible, si possible linéaire et au mieux polynomiale :
+Si l'on veut utiliser la réduction pour résoudre notre problème réduit, on cherche le couple d'algorithmes avec la complexité la plus faible, si possible linéaire (comme dans l'exercice précédent) et au mieux polynomiale :
 
 {% note "**Définition**" %}
 Soient $P_1$ et $P_2$ deux problèmes algorithmiques. Une **_réduction polynomiale_** de $P_2$ en $P_1$ est une réduction ou les deux algorithmes $A_1$ et $A_2$ sont de complexité polynomiale.
@@ -53,23 +58,12 @@ Une réduction polynomiale nous permettra d'utiliser effectivement l'algorithme 
 Enfin :
 
 {% note "**Définition**" %}
-Lorsque $P_1 \leq P_2$ et $P_2 \leq P_1$, on dira que $P_1$ est équivalent à $P_2$.
+On dira que deux problèmes $P_1$ et $P_2$ sont **_équivalents_** s'il existe deux **réductions polynomiales** $P_1 \leq P_2$ et $P_2 \leq P_1$.
 {% endnote %}
 
 ## Exemples et exercices
 
 ### Min et max
-
-Cette première réduction est simple :
-
-{% exercice %}
-Montrez que le problèmes de recherche du minimum dans un tableau d'entiers relatifs et le problème de recherche du maximum dans un tableau d'entiers relatifs sont équivalent et que la réduction est linéaire.
-{% endexercice %}
-{% details "corrigé" %}
-Pour des entiers relatifs, il suffit de faire $T'[x] = -T[x]$.
-{% enddetails %}
-
-La seconde un peu moins :
 
 {% exercice %}
 Montrez que le problème de recherche du minimum dans un tableau d'entiers  est plus simple que le problème de recherche du maximum dans un tableau d'entiers.
@@ -114,13 +108,13 @@ un problème est la négation de l'autre.
 
 {% enddetails %}
 
-Le problème de savoir si un nombre est polynomial, mais sa preuve dépasse le cadre de ce cours.
+Il existe de plus un algorithme polynomial permettant de savoir un nombre est premier, mais sa preuve dépasse le cadre de ce cours.
 
 {% lien %}
 [Article montrant que le problème PRIME est polynomial](https://annals.math.princeton.edu/wp-content/uploads/annals-v160-n2-p12.pdf).
 {% endlien %}
 
-Même si le problème PRIME est polynomial, sa preuve ne permet pas de déterminer les facteurs dont il est composé (problème FACTORS). On a cependant clairement COMPOSITE ≤ FACTOR.
+Cet algorithme ne permet cependant pas de déterminer les facteurs dont il est composé (problème FACTORS). On a cependant clairement COMPOSITE ≤ FACTOR.
 
 {% exercice %}
 Montrez que [l'algorithme du crible d'Ératosthène](https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne) n'est pas polynomial.
