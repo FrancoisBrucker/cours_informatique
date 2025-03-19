@@ -14,7 +14,7 @@ eleventyComputed:
 [Tours de Hanoï sur Wikipédia](https://fr.wikipedia.org/wiki/Tours_de_Hano%C3%AF)
 {% endlien %}
 
-On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on veuille déplacer les disques de la tours A vers la tour C.
+On suppose que l'on a les trois emplacements de tours A, B et C ; et que l'on veuille déplacer les disques de la tour A vers la tour C.
 
 1. pour pouvoir déplacer le plus grand disque de la tour A, il faut avoir déplacé tous les disques au-dessus de lui. Comme c'est le plus grand disque, il est de plus seul sur son emplacement
 2. une fois le plus grand disque seul sur sa tour, il faut le déplacer en C (ce disque peut être en B ou en A)

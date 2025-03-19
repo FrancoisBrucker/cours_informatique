@@ -29,6 +29,8 @@ Si un concept objet va à l'encontre de ce principe dans votre programme **NE L'
 
 La base de la programmation objet, c'est les classes et comment elles permettent de construire (on dira instancier) des objets.
 
+[Présentation du cours du 19 mars 2025](objets.html)
+
 {% aller %}
 [Classes et objets](classes-et-objets){.interne}
 {% endaller %}

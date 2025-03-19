@@ -231,7 +231,7 @@ while delta < temps:
 
 #### <span id="mesure-temps"></span> Liste de temps
 
-On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $n=1$ à $n=N$ (avec le $N$ calculé dans la partie précédente). Ceci nous permettra d'avoir quelques points de contrôles espacés dans le temps et nécessitant chacun peu de temps de calcul (moins d'une seconde pour chaque mesure).
+On va mesurer le temps pris pour chaque algorithme à des pas de temps discrets correspondants aux calculs de $3^{n}$ pour $n$ allant de $n=2$ à $n=N$ (avec le $N$ calculé dans la partie précédente). Ceci nous permettra d'avoir quelques points de contrôles espacés dans le temps et nécessitant chacun peu de temps de calcul (moins d'une seconde pour chaque mesure).
 
 Commençons par créer les points de contrôles sous la forme d'un tableau d'exposants à calculer :
 
