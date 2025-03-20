@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>sujet Test 4 : tris</title>
+    <title>corrigé Test 4 : tris</title>
 
     
 
@@ -71,7 +71,7 @@
       
 <article>
 
-  <h1>sujet Test 4 : tris</h1>
+  <h1>corrigé Test 4 : tris</h1>
   <div>
     
 
@@ -80,38 +80,98 @@
 
   
 
-  <div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+  <h2>Barème</h2>
+<p>Une note sur 7 répartie comme suit :</p>
+<ul>
+<li>1pt pour la question 1.1</li>
+<li>1pt pour la question 1.2</li>
+<li>2pt pour la question 2.1</li>
+<li>1pt pour la question 2.2.1</li>
+<li>1pt pour la question 2.2.2</li>
+<li>1pt pour la question 2.2.3</li>
+</ul>
+<p>La note sur $20$ finale est obtenue en multipliant la note sur 7 par $3$.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Objectif du test</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En 15 minutes :</p>
+<ul>
+<li><strong>un élève <em>normal</em></strong> doit parvenir à faire la première question parfaitement et à comprendre que l'algorithme est en fait le tri par insertion (ce qui garantit le 14/20 avec les divers questions)</li>
+<li><strong>un bon élève</strong> doit parvenir à réussir à justifier parfaitement la question 2.2</li>
+<li><strong>un très bon élève</strong> à tout fait</li>
+</ul>
+</div></div>
+
+<p>J'ai été la gentillesse même dans mes corrections, d'où la moyenne élevée. Cependant pour beaucoup c'est encore bien flou et on sent que vous marchez sur une glace très fine. Reprenez ces notion à tête reposé et comprenez les, elles sont cruciales.</p>
+<p>La ventilation des notes est :</p>
+<table>
+<thead>
+<tr>
+<th>note/20</th>
+<th>≤8</th>
+<th>]8, 10[</th>
+<th>[10, 12[</th>
+<th>[12, 14]</th>
+<th>]14, 16]</th>
+<th>&gt; 16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>3</td>
+<td>6</td>
+<td>8</td>
+<td>15</td>
+<td>6</td>
+<td>5</td>
+</tr>
+<tr>
+<td>rang min</td>
+<td>43</td>
+<td>38</td>
+<td>32</td>
+<td>23</td>
+<td>11</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>moyenne : 12.38/20</li>
+<li>écart-type : 3.27/20</li>
+<li>médiane : 12.38/20</li>
+</ul>
+<h2>Erreurs fréquemment rencontrées</h2>
+<h3>Complexité du tri</h3>
+<p>Vos justifications sont souvent bancales quand elles ne sont pas fausses ! Ne confondez pas cette notion avec la complexité minimale d'un algorithme particulier.</p>
+<p>Enfin, si vous donnez deux algorithme de tri particuliers, ils ne peuvent être tout deux que des majorants de la complexité du problème ! C'est trouver un minorant (dans notre cas le nombre de tests à effectuer pour distinguer parmi n! cas) qui est compliqué.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
 <svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
 </svg>
 <div class="pl-8 mr-8">
-<p>Vous avez 15min pour faire le test.</p>
+<p>Reprenez le corrigé et apprenez la justification par cœur.</p>
 </div></div>
 
-<h2>Rendu</h2>
-<h3>Type de rendu</h3>
-<p>Rendu sur feuille.</p>
-<h3>Éléments de notation</h3>
-<ol>
-<li>Écriture sous la forme d'un pseudo-code correct</li>
-<li>Lorsque l'on vous demande de donner un algorithme il faudra toujours, en plus de son pseudo-code, prouver :
-<ul>
-<li>sa finitude</li>
-<li>son exactitude</li>
-</ul>
-</li>
-</ol>
-<p>Ne tartinez pas des pages et des pages de démonstration. Allez directement au fait et si c'est évident, dites le.</p>
-<h2>Sujet</h2>
+<h2>Corrigé</h2>
 <h3>1 Complexités</h3>
 <h4>1.1</h4>
-<p>Quelle est la complexité du problème du tri ? Vous justifierez votre réponse en :</p>
-<ul>
-<li>donnant un minorant de cette complexité</li>
-<li>donnant un majorant de cette complexité (avec un nom d'algorithme du cours ayant cette complexité)</li>
-</ul>
+<p>La complexité du problème du tri est en $\Theta(n\ln(n))$ car :</p>
+<p>La complexité d'un problème algorithmique est la complexité (maximale) la plus faible d'un algorithme le résolvant.</p>
+<p>Pour le tri :</p>
+<ol>
+<li>cette complexité est en $\Omega(n\ln(n))$ car tout algorithme doit discriminer parmi $n!$ ordres possibles, donc on avoir $\Omega(\log_2(n!)) = \Omega(n\ln(n))$ tests.</li>
+<li>cette complexité est en $\mathcal{O}(n\ln(n))$ car c'est la complexité du tri fusion</li>
+</ol>
+<p>On en conclut que la complexité du tri est en $\Theta(n\ln(n))$.</p>
 <h4>1.2</h4>
-<p>Donnez une définition (rapide) de la complexité en moyenne d'un algorithme. Pour quels sorte d'algorithme est-elle utile et comment la calculer en pratique ?</p>
+<p>La complexité en moyenne d'un algorithme est l'espérance de la complexité pour toutes les entrées possibles (par défaut on choisit un modèle où les entrées sont équiprobables).</p>
+<p>Pour la calculer en pratique, on choisit des entrées au hasard et on mesure la moyenne du temps pris par l'algorithme pour se terminer.</p>
 <h3>2 Algorithme</h3>
 <pre class="language-pseudocode" tabindex="0" data-language="pseudocode"><code class="language-pseudocode"><span class="token builtin">algorithme</span> <span class="token function">tri</span><span class="token punctuation">(</span>T<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token builtin">entier</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
   <span class="token number"> i </span><span class="token operator">←</span> <span class="token number">1</span>
@@ -122,14 +182,33 @@
          T<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">←</span> T<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> T<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
         <span class="token number"> i </span><span class="token operator">←</span> max<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number"> i </span><span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span></code></pre>
 <h4>2.1</h4>
-<p>Démontrez que l'algorithme précédent est un algorithme de tri.</p>
+<p>Cet algorithme ressemble furieusement à un tri par insertion...</p>
+<p>Pour le démontrer on procède par récurrence sur la taille du tableau, puisque l'algorithme va se comporter de la même manière pour $T$ et $T[:-1]$.</p>
+<p>Pour un tableau de longueur 2, l'algorithme va fonctionner. On suppose la propriété vraie pour une longueur de $n$ et on regarde ce qu'il se passe pour une longueur de $n+1$.</p>
+<p>Par hypothèse de récurrence, l'algorithme trie $T[:-1]$. Pour le tableau $T$ en entrée il va donc arriver une itération où $i$ va valoir $T.\mbox{\small longueur} - 1$. On a alors 2 cas :</p>
+<ul>
+<li>soit $T[-1] \geq T[-2]$ et on incrémente $i$ ce qui met fin à l'algorithme : le tableau est trié</li>
+<li>soit $T[-1] &lt; T[-2]$ et, comme pour le tri par insertion, on place sa valeur au bon endroit dans le tableau par échange. Une fois l'élément bien placé, $i$ va s'incrémenter jusqu'à valoir la taille du tableau et l'algorithme va s'arrêter.</li>
+</ul>
 <h4>2.2</h4>
 <h5>2.2.1</h5>
-<p>Donnez (et justifiez) la complexité de l'algorithme ?</p>
+<p>En reprenant la preuve précédente, on arrive à créer l'équation de récurrence suivante :</p>
+<div>
+$$
+C(n) = C(n-1) + \mathcal{O}(n)
+$$
+</div>
+<p>Puisque trié $T$, de complexité $C(n)$ revient au maximum à :</p>
+<ol>
+<li>trier $T[:-1]$, de complexité $C(n-1)$</li>
+<li>placer le dernier élément par échange à sa place $\mathcal{O}(n)$ échanges</li>
+<li>incrémenter $i$ jusqu'à ce qu'il vale la taille du tableau en $\mathcal{O}(n)$ itérations</li>
+</ol>
+<p>Cette équation se résout en $C(n) =  \mathcal{O}(n^2)$</p>
 <h5>2.2.2</h5>
-<p>Donnez (et justifiez) la complexité minimale de l'algorithme ?</p>
+<p>Si le tableau est déjà trié, $i$ n'est jamais décrémenté et on s'arrête en $\mathcal{O}(n)$ itérations. La complexité pour un tableau trié est ainsi de $\mathcal{O}(n)$.</p>
 <h5>2.2.3</h5>
-<p>Donnez (et justifiez) la complexité en moyenne de l'algorithme ? N'oubliez pas de donner le modèle de données utilisé pour calculer votre réponse.</p>
+<p>En moyenne, l'indice $i$ va remonter de la moitié de la taille du tableau pour insérer le nouvel élément, ce qui donne une complexité totale de $\mathcal{O}(n^2)$ opérations.</p>
 
 
 </article>
