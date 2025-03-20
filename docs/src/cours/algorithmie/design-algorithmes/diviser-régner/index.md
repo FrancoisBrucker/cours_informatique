@@ -172,6 +172,58 @@ Dans le cas du tri fusion on a $a = 2$, $b = 2$  et $d = 1$ donc $a=b^d$ :
 
 ## Exemples
 
+### Somme
+
+Soit $T$ un tableau de $n$ entiers relatifs.
+
+{% exercice %}
+Donnez un algorithme en $\mathcal{O}(n)$ de signature `max_somme(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+
+<div>
+$$
+\max_{j\geq i}\sum_{i\leq k \leq j}T[k]
+$$
+</div>
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme en $\mathcal{O}(n)$ de signature `max_somme2(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+
+<div>
+$$
+\max_{j \leq i\leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+Les deux exercices précédents doivent vous permettre de trouver un algorithme permettant de trouver :
+
+<div>
+$$
+\max_{0\leq j \leq j'}\sum_{j\leq k \leq j'}T[k]
+$$
+</div>
+
+{% exercice %}
+Utiliser la méthode diviser pour régner pour créer un algorithme de complexité $\mathcal{O}(n\ln(n))$ permettant de calculer la somme précédente pour un tableau de $n$ entiers relatifs.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
 ### Multiplication de matrices
 
 [L'algorithme de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen) pour multiplier deux matrices  est le plus classique des exemples de diviser pour régner.
@@ -304,7 +356,7 @@ Vous voyez que gagner 1 multiplication de matrice fait fait gagner beaucoup en c
 
 On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
 
-Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour inverser un matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'iune matrice est identique à la complexité de la multiplication :
+Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour inverser un matrice en utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
 En utilisant [la formule de l'inversion par bloc](https://en.wikipedia.org/wiki/Invertible_matrix#Blockwise_inversion) et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
@@ -323,56 +375,29 @@ $$
 Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{O}(n^\Omega)$.
 {% enddetails %}
 
-### Somme
+#### Déterminant de matrice
 
-Soit $T$ un tableau de $n$ entiers relatifs.
+On suppose que l'on possède un algorithme de multiplication de matrices carrée à $n$ lignes optimal, de complexité $\mathcal{O}(n^\Omega)$ avec $2 \leq \Omega$.
+
+Dans son article séminal Strassen montre que l'on peut utiliser cet algorithme pour calculer le déterminant d'un matrice en utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices). Il en conclut que la complexité de l'inversion d'une matrice est identique à la complexité de la multiplication :
 
 {% exercice %}
-Donnez un algorithme en $\mathcal{O}(n)$ de signature `max_somme(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
-
-<div>
-$$
-\max_{j\geq i}\sum_{i\leq k \leq j}T[k]
-$$
-</div>
+En utilisant [les formules de calcul d'un déterminant par bloc](https://en.wikipedia.org/wiki/Determinant#Block_matrices) et le master theorem, montez que la complexité de l'inversion de matrice est de la même complexité que le problème de la multiplication de matrice.
 
 {% endexercice %}
 {% details "corrigé" %}
 
-> TBD
+Si $A$ et $D$ sont non inversibles, alors le déterminant de la matrice est nul. Comme le calcul de l'inverse d'une matrice est en $\mathcal{O}(n^\Omega)$, on peut tester en $\mathcal{O}(n^\Omega)$ laquelle des deux matrice est inversible.
 
-{% enddetails %}
-{% exercice %}
-En déduire un algorithme en $\mathcal{O}(n)$ de signature `max_somme2(T: [entier relatif], i: entier) → entier relatif`{.language-} qui calcule :
+En supposant que c'est $A$ la complexité du calcul de $A^{-1}$ et $(D - CA^{-1}B)$ est de $\mathcal{O}(n^\Omega)$. Puis il suffit de calculer 2 déterminant sur des matrices deux fois plus petites. En utilisant l'algorithme diviser pour régner on arrive à un algorithme de complexité :
 
 <div>
 $$
-\max_{j \leq i\leq j'}\sum_{j\leq k \leq j'}T[k]
-$$
-</div>
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
-{% enddetails %}
-
-Les deux exercices précédents doivent vous permettre de trouver un algorithme permettant de trouver :
-
-<div>
-$$
-\max_{0\leq j \leq j'}\sum_{j\leq k \leq j'}T[k]
+C(n) = \mathcal{O}(n^\Omega) + 2T(n/2)
 $$
 </div>
 
-{% exercice %}
-Utiliser la méthode diviser pour régner pour créer un algorithme de complexité $\mathcal{O}(n\ln(n))$ permettant de calculer la somme précédente pour un tableau de $n$ entiers relatifs.
-
-{% endexercice %}
-{% details "corrigé" %}
-
-> TBD
-
+Comme $\Omega \geq 2$ le master theorem permet de conclure que $C(n) = \mathcal{O}(n^\Omega)$.
 {% enddetails %}
 
 ### Pavage incomplet du plan

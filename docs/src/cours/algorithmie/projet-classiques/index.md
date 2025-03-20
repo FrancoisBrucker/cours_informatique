@@ -564,6 +564,26 @@ Donnez une solution au problème 3-SUM avec comme complexité :
 [Chaines de caractères](./chaine-caracteres){.interne}
 {% endaller %}
 
+## Suites de caractères
+
+> créer toutes les suite de caractères possibles.
+> TBD On commence par afficher le tout
+
+### 0/1
+
+> TBD on utilise une fonction auxiliaire récursive  comme pour ds 1 2025
+
+### Alphabet
+
+> TBD on généralise
+
+### liste
+
+> TBD On stocke dans une liste.
+>
+> 1. variable globale hors algo
+> 2. abec une liste et des appends
+
 ## Autres séries d'exercices
 
 - <https://www.inf.usi.ch/carzaniga/edu/algo19s/exercises.pdf>

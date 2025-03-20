@@ -167,14 +167,6 @@ $$
 
 (- [optimisation de Karastuba](https://fr.wikipedia.org/wiki/Algorithme_de_Karatsuba))
 
-## Matrices
-
-- structure
-- addition
-- produit par un scalaire
-- produit naïf
-
-(- [produit de Strassen](https://fr.wikipedia.org/wiki/Algorithme_de_Strassen))
 
 ## Odds and ends
 

@@ -138,7 +138,9 @@ Il n'y a donc que $n$ appels récursifs, le second élément ayant été mémoï
 
 Notez qu'il faut initialiser le cache et donc avoir une opération préalable de complexité $\mathcal{O}(N)$ pour initialiser le tableau de cache.
 
-## Exemple : sous-suite croissante maximum
+## Exemples
+
+### Sous-suite croissante maximum
 
 {% lien %}
 [Problème de la sous-suite croissante maximum](https://fr.wikipedia.org/wiki/Plus_longue_sous-suite_strictement_croissante)
@@ -237,3 +239,16 @@ print(sous_suite(T))
 La complexité est clairement en $\mathcal{O}(n^2)$.
 
 {% enddetails %}
+
+### Découpage d'un câble
+
+> TBD <https://www.youtube.com/watch?v=tufup6HlwWg>
+
+### Déplacement optimaux
+
+> TBD touriste à Manhattan 7. <https://www.mathly.fr/prog_dyn.pdf>
+
+### Fiabilité maximale
+
+> TBD circuit à dupliquer. Chaque circuit à un coût et une fiabilité.
+> on cherche le circuit de fiabilité maximale à coût ≤ C.
