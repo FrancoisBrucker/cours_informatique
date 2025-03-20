@@ -258,8 +258,6 @@ Pouvoir séparer les problèmes selon la facilité de leurs résolutions semble 
 
 ### Design d'algorithmes
 
-> TBD reprendre les algos d'avant et les classer dans les cases.
-
 {% aller %}
 [Design d'algorithmes](./design-algorithmes){.interne}
 {% endaller %}

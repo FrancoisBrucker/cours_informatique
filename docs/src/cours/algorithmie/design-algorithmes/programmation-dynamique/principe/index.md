@@ -178,7 +178,7 @@ Déterminez une relation de récurrence entre $N[i]$ et les $N[j]$ pour les $j>i
 
 <div>
 $$
-N[i] = 1 + \max(\{0, \max(\{ N[j] \mid j>i, T[j] > T[i]\}) \}) 
+N[i] = 1 + \max(\{0, \max(\{ N[j] \mid j>i, T[j] > T[i]\}) \})
 $$
 </div>
 
@@ -242,7 +242,87 @@ La complexité est clairement en $\mathcal{O}(n^2)$.
 
 ### Découpage d'un câble
 
-> TBD <https://www.youtube.com/watch?v=tufup6HlwWg>
+{% lien %}
+[Découper un cable](https://www.youtube.com/watch?v=tufup6HlwWg)
+{% endlien %}
+
+Ce problème est un classique de la programmation dynamique. Il apparaît de manière détournée dans nombre d'autre problème, il est donc bon de connaître et le problème et sa résolution.
+
+On suppose que l'on possède un câble de $n$ mètres que l'on revendre par bouts. Pour cela on dispose d'un tableau $P$ de taille $n+1$ indiquant en $P[k]$ le prix de vendre d'une longueur de $0\leq k \leq n$ mètres de notre câble (si on ne peut pas vendre de cable de longueur $k$, on aura $P[k] = 0$).
+
+La question est de trouver un tableau $V$ de $n+1$ entiers tel que :
+
+- $\sum V[i] \leq n$
+- $M_n = \sum (V[i] \cdot P[i])$ soit maximum parmi tous les tableaux $V'$ de taille $n+1$ tels que $\sum V'[i] \leq n$.
+
+Ce tableau représente le prix maximum que l'on peut tirer de la vente de notre cable en $V[i]$ bouts de longueur $i$ pour $0\leq i \leq n$.
+
+{% exercice %}
+Exprimez $M_n$ en fonction de $M_m$ avec $m\leq n$.
+{% endexercice %}
+{% details "corrigé" %}
+On pose $M_0 = 0$ et pour $n > 0$ :
+
+<div>
+$$
+M_n = \max(\\{ M_m + P[n-m] \vert 0 \leq m < n \\})
+$$
+</div>
+
+{% enddetails %}
+{% exercice %}
+En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynamique permettant de calculer $M_n$.
+{% endexercice %}
+{% details "corrigé" %}
+
+```pseudocode
+algorithme vente(n → entier, P → [entier]) → entier:
+    M ← un tableau d'entiers de taille n + 1
+    M[0] ← 0
+
+    pour chaque m de [1, n]:
+        M[m] ← 0
+        pour chaque k de [0, m[:
+            si M[m] < M[k] + P[m-k]:
+                 M[m] ← M[k] + P[m-k]
+
+    rendre M[n]
+```
+
+{% enddetails %}
+
+{% exercice %}
+Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet algorithme soit bien de complexité $\mathcal{O}(n^2)$ en temps et $\mathcal{O}(n)$ en espace.
+{% endexercice %}
+{% details "corrigé" %}
+
+On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
+
+```pseudocode
+algorithme vente(n → entier, P → [entier]) → [entier]:
+    M ← un tableau d'entiers de taille n + 1
+    M[0] ← 0
+    D ← un tableau d'entiers de taille n + 1
+    D[0] ← 0
+
+    pour chaque m de [1, n]:
+        M[m] ← 0
+        D[0] ← 0
+        pour chaque k de [0, m[:
+            si M[m] < M[k] + P[m-k]:
+                 M[m] ← M[k] + P[m-k]
+                 D[0] ← m - k
+
+    V ← un tableau d'entiers de taille n + 1
+    V[:] ← 0
+
+    pour chaque m de [0, n]:
+        V[D[m]] ← V[D[m]] + 1 
+    
+    rendre V
+```
+
+{% enddetails %}
 
 ### Déplacement optimaux
 
@@ -250,5 +330,32 @@ La complexité est clairement en $\mathcal{O}(n^2)$.
 
 ### Fiabilité maximale
 
-> TBD circuit à dupliquer. Chaque circuit à un coût et une fiabilité.
-> on cherche le circuit de fiabilité maximale à coût ≤ C.
+Un système complexe est composé de $n$. Chaque composant à un coût $c_i$ et une probabilité de panne valant $p_i$.
+
+On cherche à obtenir le système le plus fiable possible, pour un coût total inférieur à $C$, en dupliquant les composants si nécessaire. Le $i$ composant étant en panne que si ses $n_i$ duplications sont en panne.
+
+{% exercice %}
+Quelle est la probabilité que les $n_i$ duplications du composant $i$ soient en panne ?
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+{% exercice %}
+En déduire la probabilité de panne du système total.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
+
+{% exercice %}
+Trouver le nombre de duplications nécessaires pour chaque composant afin de créer un système de fiabilité maximale à un coût inférieur à $C$.
+{% endexercice %}
+{% details "corrigé" %}
+
+> TBD
+
+{% enddetails %}
