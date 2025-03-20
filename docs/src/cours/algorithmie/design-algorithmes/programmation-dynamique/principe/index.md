@@ -276,7 +276,7 @@ En déduire un algorithme en $\mathcal{O}(n^2)$ utilisant la programmation dynam
 {% details "corrigé" %}
 
 ```pseudocode
-algorithme vente(n → entier, P → [entier]) → entier:
+algorithme vente(n: entier, P: [entier]) → entier:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
 
@@ -299,7 +299,7 @@ Modifiez l'algorithme précédent pour qu'il rende $V[i]$. Assurez-vous que cet 
 On ajoute un tableau, `D` qui va stocker le découpage idéal $n-k$ tel que $M_n = M_k + P[n-k]$. Puis on utilise les valeurs de `D` pour créer `V`.
 
 ```pseudocode
-algorithme vente(n → entier, P → [entier]) → [entier]:
+algorithme vente(n: entier, P: [entier]) → [entier]:
     M ← un tableau d'entiers de taille n + 1
     M[0] ← 0
     D ← un tableau d'entiers de taille n + 1
@@ -326,7 +326,108 @@ algorithme vente(n → entier, P → [entier]) → [entier]:
 
 ### Déplacement optimaux
 
-> TBD touriste à Manhattan 7. <https://www.mathly.fr/prog_dyn.pdf>
+{% lien %}
+[Nombre de chemins (exercice 7)](https://www.mathly.fr/prog_dyn.pdf)
+{% endlien %}
+
+On suppose que l'on se trouve en $(0, 0)$ et que l'on veuille se déplacer sur la case $(n, n)$ en utilisant uniquement les déplacements $(1, 0)$ (d'une case vers le haut) et $(0, 1)$ (une case vers la droite).
+
+{% exercice %}
+Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre de chemins différents permettant d'aller de $(0, 0)$ à $(n, n)$.
+
+{% endexercice %}
+{% details "corrigé" %}
+
+On construit une matrice carrée $N$ à $n+1$ lignes telle que $N[i][j]$ contienne le nombre de chemins différents pour aller en $(i, j)$. Comme on ne peut se déplacer que vers la droite ou vert le haut, il est clair que l'on a :
+
+- $N[0][j] = j$ pour tous $0\leq j \leq n$
+- $N[i][0] = i$ pour tous $0\leq i \leq n$
+- $N[i][j] = N[i-1][j] + N[i][j-1]$ pour tous $0 < i, j \leq n$
+
+On peut alors remplir la matrice ligne à ligne (ou colonne par colonne) :
+
+```pseudocode
+algorithme nombre_chemins(n: entier) → entier:
+    N ← un tableau de [entier] de taille n+1
+    N[:] ← un tableau de n+1 entiers
+
+    pour chaque j de [0, n]:
+        N[0][j] ← j
+
+    pour chaque i de [1, n]:
+        N[1][0] ← 1
+        pour chaque j de [1, n]:
+            N[i][j] ← N[i-1][j] + N[i][j-1]
+        
+    rendre N[n][n]
+```
+
+{% enddetails %}
+
+On suppose maintenant que l'on a des points d'intérêts répartis sur la grille.
+
+{% exercice %}
+Créez un algorithme utilisant la programmation dynamique permettant de calculer le nombre maximum de points d'intérêts que l'on peut visiter pour aller de de $(0, 0)$ à $(n, n)$.
+
+```pseudocode
+algorithme nombre_chemins(n: entier, P: [(entier, entiers)]) → entier:
+    N ← un tableau de [entier] de taille n+1
+    N[:] ← un tableau de n+1 entiers
+
+    si (0, 0) est dans P:
+        N[0][0] ← 1
+    sinon:
+        N[0][0] ← 0
+    pour chaque k de [1, n]:
+        N[0][k] ← N[0][k - 1]
+        N[k][0] ← N[k - 1][0]
+        si (0, k) est dans P:
+            N[0][k] ← N[0][k] + 1
+        si (k, 0) est dans P:
+            N[k][0] ← N[k][0] + 1
+
+    pour chaque i de [1, n]:
+        pour chaque j de [1, n]:
+            N[i][j] ← max(N[i-1][j], N[i][j-1])
+            si (i, j) est dans P:
+                N[i][j] ← N[i][j] + 1
+
+        
+    rendre N[n][n]
+```
+
+{% endexercice %}
+{% details "corrigé" %}
+
+Une petite modification de l'algorithme précédent permet de répondre à la question :
+
+{% enddetails %}
+
+{% exercice %}
+Modifiez l'algorithme précédent pour qu'il puisse rendre un chemin maximisant le nombre de points d'intérêts visités.
+{% endexercice %}
+{% details "corrigé" %}
+
+Il faut parcours la matrice N créé par l'algorithme de la question précédente à rebours en conservant le nombre de points d'intérêt.
+
+```algorithme chemin(N: [[entier]], P: P: [(entier, entiers)]) → [(entier, entiers)]:
+    C ← une liste de (entier, entiers)
+    n ← N.longueur - 1
+    ajouter (n, n) en début de C
+    i, j ← (n, n)
+
+    tant que (i, j) ≠ (0, 0):
+        Si (j == 0) ou (N[i-1][j] > N[i][j - 1]):
+            ajouter (i-1, j) en début de C
+            i, j ← i-1, j
+        sinon:
+            ajouter (i, j-1) en début de C
+            i, j ← i, j - 1
+
+    rendre C
+```
+
+{% enddetails %}
 
 ### Fiabilité maximale
 
